@@ -292,7 +292,8 @@ test('28 calendar: only on an explicit call; deadline/start → My Life to-do; d
 
 test('29 AI reference: only kind/title/href via the search index; http links skipped client-side', () => {
   const ai = read('ai-page.js');
-  assert.match(ai, /if \(!\/\^\(#\|https:\\\/\\\/\)\/i\.test\(it\.href\)\) return;/);
+  /* Completion audit: the client filter is now the chat server's own pattern (REF_HREF), stricter than "# or https" — http links are still skipped */
+  assert.match(ai, /if \(!REF_HREF\.test\(it\.href\) \|\| it\.href\.length > 200\) return;/); assert.equal(/var REF_HREF = (\/.*\/i);/.exec(ai)[1].includes('https:'), true); assert.equal(new RegExp(/var REF_HREF = \/(.*)\/i;/.exec(ai)[1], 'i').test('http://example.or.kr/'), false);
   assert.match(ai, /return \{ kind: String\(it\.typeLabel/);
 });
 

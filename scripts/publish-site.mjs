@@ -8,7 +8,7 @@
  * HTML이 참조하는 이미지·CSS·JS·로케일·i18n 이미지는 모두 이 스크립트가 같은 트리로 복사합니다.
  */
 import { newonAuthConfigFromEnv, newonAuthConfigScript } from "./newon-auth-config.mjs";
-import { livonApiOriginFromEnv, livonApiConfigScript } from "./livon-api-config.mjs";
+import { livonApiOriginFromEnv, livonApiOriginsFromEnv, livonApiConfigScript } from "./livon-api-config.mjs";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -302,6 +302,13 @@ function assemble() {
     copyDir(src, dest);
   }
 
+  /* LIVON Data Manager (/livon/admin/) is a local-only QA tool: it is never published. */
+  fs.rmSync(path.join(OUT, "livon", "admin"), { recursive: true, force: true });
+  if (fs.existsSync(path.join(OUT, "livon", "admin"))) {
+    console.error("publish-site: livon/admin must not be published");
+    process.exit(1);
+  }
+
   for (const name of PUBLISH_ROOT_OPTIONAL) {
     copyFileIfExists(path.join(ROOT, name), path.join(OUT, name));
   }
@@ -500,6 +507,14 @@ function verify() {
   required.push(path.join(OUT, "livon", "life", "20s", "first-independence", "index.html"));
   required.push(path.join(OUT, "livon", "today-feed.js"));
   required.push(path.join(OUT, "livon", "today", "td-indep-missed", "index.html"));
+  required.push(path.join(OUT, "livon", "seo.css"));
+  required.push(path.join(OUT, "livon", "livon-a11y.css"));
+  required.push(path.join(OUT, "livon", "livon-a11y.js"));
+  required.push(path.join(OUT, "livon", "livon-media.js"));
+  required.push(path.join(OUT, "livon", "livon-boot.js"));
+  required.push(path.join(OUT, "livon", "seo-manifest.json"));
+  required.push(path.join(OUT, "livon", "help", "index.html"));
+  required.push(path.join(OUT, "livon", "life-events", "index.html"));
   required.push(path.join(OUT, "livon", "community-data.js"));
   required.push(path.join(OUT, "livon", "explore-data.js"));
   required.push(path.join(OUT, "livon", "assets", "topics", "hangang.jpg"));
@@ -507,6 +522,7 @@ function verify() {
   required.push(path.join(OUT, "ongil-start", "index.html"));
   required.push(path.join(OUT, "assets", "livon-mark.jpg"));
   required.push(path.join(OUT, "assets", "livon-mark-icon.jpg"));
+  required.push(path.join(OUT, "assets", "livon-mark-icon-120.jpg"));
   required.push(path.join(OUT, "assets", "ongil-mark.svg"));
   required.push(path.join(OUT, "film-keep.js"));
   required.push(path.join(OUT, "search-index.json"));
@@ -578,15 +594,38 @@ spawnSync(process.execPath, [path.join(ROOT, "scripts", "render-livon-today-rout
   stdio: "inherit",
 }).status === 0 || process.exit(1);
 
+// LIVON static SEO pages (Life Stage, Life Event, Help) + sitemap entries + seo-manifest.json, generated from the app's own data.
+// Runs after the route stubs above: indexable pages replace their redirect stub; everything else keeps the noindex stub.
+spawnSync(process.execPath, [path.join(ROOT, "scripts", "livon-seo-build.mjs"), "--out", OUT], {
+  cwd: ROOT,
+  stdio: "inherit",
+}).status === 0 || process.exit(1);
+spawnSync(process.execPath, [path.join(ROOT, "scripts", "livon-seo-quality.mjs"), "--root", OUT], {
+  cwd: ROOT,
+  stdio: "inherit",
+}).status === 0 || process.exit(1);
+// LIVON accessibility: static checks on the app page, its CSS/JS templates and every generated static page.
+spawnSync(process.execPath, [path.join(ROOT, "scripts", "livon-accessibility-quality.mjs"), "--root", OUT], {
+  cwd: ROOT,
+  stdio: "inherit",
+}).status === 0 || process.exit(1);
+// LIVON performance: static budgets and loading rules (video/data-src, start-up scheduler, fonts, image sizes, static pages).
+spawnSync(process.execPath, [path.join(ROOT, "scripts", "livon-performance-quality.mjs"), "--root", OUT], {
+  cwd: ROOT,
+  stdio: "inherit",
+}).status === 0 || process.exit(1);
+
 // Newon+ public web config: written only when every NEWON_PLUS_FIREBASE_* public value is set (otherwise stays empty).
 {
   const cfg = newonAuthConfigFromEnv(process.env);
   if (cfg) fs.writeFileSync(path.join(OUT, "newon-auth", "newon-auth-config.js"), newonAuthConfigScript(cfg), "utf8");
 }
-// LIVON API origin (public): written only when LIVON_API_ORIGIN is a valid https origin (otherwise same-origin /api).
+// LIVON API origin (public): written only when LIVON_API_ORIGIN / LIVON_API_ORIGIN_PREVIEW is a valid https origin
+// (otherwise same-origin /api). Production and preview hosts pick their own origin in the browser.
 {
   const origin = livonApiOriginFromEnv(process.env);
-  if (origin) fs.writeFileSync(path.join(OUT, "livon", "livon-api-config.js"), livonApiConfigScript(origin), "utf8");
+  const { preview } = livonApiOriginsFromEnv(process.env);
+  if (origin || preview) fs.writeFileSync(path.join(OUT, "livon", "livon-api-config.js"), livonApiConfigScript(origin, preview), "utf8");
 }
 
 verify();

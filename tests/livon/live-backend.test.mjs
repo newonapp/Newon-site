@@ -189,14 +189,16 @@ test('LB-9 API base: one config file, https origin only, default same-origin; AI
   const d = run(livonApiConfigScript(''));
   assert.equal(d.LivonApi.base, ''); assert.equal(d.LivonApi.url('/api/livon/data'), '/api/livon/data');
   const g = run(livonApiConfigScript('https://livon-api.example.app'));
-  assert.equal(g.LivonApi.url('/api/health'), 'https://livon-api.example.app/api/health');
+  /* Completion audit: a separate API origin (Vercel, trailingSlash: true) redirects /api/x → /api/x/ and a cross-origin fetch
+     cannot follow that redirect, so separate-origin URLs carry the slash (verified against the live API: completion.test LC-16) */
+  assert.equal(g.LivonApi.url('/api/health'), 'https://livon-api.example.app/api/health/');
   assert.equal(run(livonApiConfigScript('http://x.example')).LivonApi.base, '', 'generator refuses http');
   vm.runInContext(src('livon/data/livon-data-config.js'), g);
-  assert.equal(g.LivonDataConfig.serverEndpoint, 'https://livon-api.example.app/api/livon/data');
+  assert.equal(g.LivonDataConfig.serverEndpoint, 'https://livon-api.example.app/api/livon/data/');
   const plain = run(''); vm.runInContext(src('livon/data/livon-data-config.js'), plain);
   assert.equal(plain.LivonDataConfig.serverEndpoint, '/api/livon/data', 'no config → same origin as before');
   const ai = src('livon/ai-page.js');
-  assert.match(ai, /API\.url\("\/api\/livon"\)/); assert.match(ai, /fetch\(API\.url\("\/api\/health"\)/);
+  assert.match(ai, /API\.url\("\/api\/livon\/chat"\)/); assert.match(ai, /fetch\(API\.url\("\/api\/health"\)/);
   assert.doesNotMatch(ai.replace(/\/\*[\s\S]*?\*\//g, ''), /fetch\("\/api\//, 'no hardcoded /api fetch left');
   const html = src('livon/index.html');
   const i = n => html.indexOf(n);

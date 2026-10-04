@@ -78,7 +78,8 @@
     var top = el.getBoundingClientRect().top + window.pageYOffset - gnavOffset();
     window.scrollTo({ top: Math.max(0, top), behavior: (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) ? "auto" : "smooth" });
   }
-  function items() { return Array.isArray(DATA.items) ? DATA.items : []; }
+  /* list served by the LIVON Data Platform (visible rows only); the file's own array if the platform is unavailable */
+  function items() { return window.LivonScreenData ? window.LivonScreenData.exploreItems() : (Array.isArray(DATA.items) ? DATA.items : []); }
   function findItem(id) { return items().find(function (x) { return x.id === id; }); }
 
   function recentQueries() {
@@ -390,16 +391,26 @@
     var stage = localStorage.getItem(KEY_STAGE) || "";
     var prefRegion = localStorage.getItem(KEY_REGION) || "";
     var recent = viewedList();
+    /* onboarding profile: Life Event reasons, and no cross-age recommendation (browsing every category stays as it is) */
+    var PZ = window.LivonPersonalization, prof = PZ ? PZ.getProfile() : null, recById = {}, allowed = null;
+    if (PZ && PZ.hasSignals(prof)) {
+      PZ.recommend(prof, { limit: 400 }).items.forEach(function (x) { recById[x.id] = x; });
+      allowed = prof.lifeStage ? PZ.allowedIds(prof.lifeStage) : null;
+      if (prof.lifeStage) stage = prof.lifeStage;
+    }
     var scored = items().map(function (it) {
       var s = 0;
       var reasons = [];
-      interests.forEach(function (interest) {
+      var fits = !allowed || !!allowed["ex:" + it.id];
+      var rec = recById["ex:" + it.id];
+      if (rec && rec.reasons[0] && rec.reasons[0].type === "event") { s += 3; reasons.push(rec.why); }
+      if (fits) interests.forEach(function (interest) {
         if (scoreItem(it, interest) > 0) {
           s += 3;
           reasons.push("관심 · " + interest);
         }
       });
-      if (stage && scoreItem(it, stage) > 0) {
+      if (fits && stage && scoreItem(it, stage) > 0) {
         s += 2;
         reasons.push("스테이지 연결");
       }
@@ -494,7 +505,7 @@
     var inCompare = compareIds().indexOf(item.id) >= 0;
     return "<article class=\"lv-ex-card lv-ex-card--" + esc(layout) + "\">" +
       "<button type=\"button\" class=\"lv-ex-card__media\" data-lv-ex-open=\"" + esc(item.id) + "\" aria-label=\"" + esc(item.title) + " 상세\">" +
-        (item.img ? "<img src=\"" + esc(item.img) + "\" alt=\"\" loading=\"lazy\" width=\"640\" height=\"400\" />" : "") +
+        (item.img ? "<img src=\"" + esc(item.img) + "\" alt=\"\" decoding=\"async\" loading=\"lazy\" width=\"640\" height=\"400\" />" : "") +
       "</button>" +
       "<div class=\"lv-ex-card__body\">" +
         "<div class=\"lv-ex-card__meta\">" + credBadge(item) +
@@ -646,7 +657,7 @@
     var goLabel = x.realData && x.actionLabel ? x.actionLabel : "공식 사이트";
     var go = x.external
       ? (x.href ? "<a class=\"lv-ex-btn " + (x.tel ? "lv-ex-btn--outline" : "lv-ex-btn--dark") + " lv-ex-btn--sm\" href=\"" + esc(x.href) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + esc(goLabel) + " <span aria-hidden=\"true\">↗</span><span class=\"visually-hidden\"> (새 창)</span></a>" : "")
-      : "<a class=\"lv-ex-btn lv-ex-btn--dark lv-ex-btn--sm\" href=\"" + esc(x.href) + "\">자세히 보기</a>";
+      : "<a class=\"lv-ex-btn lv-ex-btn--dark lv-ex-btn--sm\" href=\"" + esc(x.href) + "\">자세히 보기<span class=\"visually-hidden\">: " + esc(x.title) + "</span></a>";
     if (x.realData && x.entityId && !save) {
       var LPs = window.LivonPlatform, sv = !!(LPs && LPs.listSaves && LPs.listSaves("all").some(function (y) { return y.id === "ext:" + x.entityId; }));
       save = "<button type=\"button\" class=\"lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm\" data-livon-entity-save=\"" + esc(x.entityId) + "\" aria-pressed=\"" + sv + "\">" + (sv ? "저장됨" : "저장") + "</button>";
@@ -657,8 +668,8 @@
         (x.todo.start ? "<button type=\"button\" class=\"lv-ex-btn lv-ex-btn--ghost lv-ex-btn--sm\" data-livon-entity-todo=\"" + esc(x.entityId) + "\" data-kind=\"start\">교육 시작일을 할 일에 추가</button>" : "") + "</div>" : "") +
       "<p class=\"lv-ex-hint\">" + esc(x.attribution || "") + "</p></details>" : "";
     var stages = (x.stageIds || []).slice(0, 3).map(function (id) { return "<span class=\"lv-ex-tag\">" + esc(ageLabel(id)) + "</span>"; }).join("");
-    return "<article class=\"lv-ex-card lv-ex-card--text lv-ex-card--" + esc(x.type) + "\"" + (x.external ? "" : " data-lv-ex-go=\"" + esc(x.href) + "\"") + ">" +
-      (x.img ? "<a class=\"lv-ex-card__media\" href=\"" + esc(x.external ? x.href : x.href) + "\" tabindex=\"-1\" aria-hidden=\"true\"" + (x.external ? " target=\"_blank\" rel=\"noopener noreferrer\"" : "") + "><img src=\"" + esc(x.img) + "\" alt=\"\" loading=\"lazy\" width=\"640\" height=\"400\" /></a>" : "") +
+    return "<article class=\"lv-ex-card lv-ex-card--text lv-ex-card--" + esc(x.type) + "\"" + (x.external ? "" : " data-lv-ex-go=\"" + esc(x.href) + "\"") + (x.eventId ? " data-lv-le-open=\"" + esc(x.eventId) + "\"" : "") + ">" +
+      (x.img ? "<a class=\"lv-ex-card__media\" href=\"" + esc(x.external ? x.href : x.href) + "\" tabindex=\"-1\" aria-hidden=\"true\"" + (x.external ? " target=\"_blank\" rel=\"noopener noreferrer\"" : "") + "><img src=\"" + esc(x.img) + "\" alt=\"\" decoding=\"async\" loading=\"lazy\" width=\"640\" height=\"400\" /></a>" : "") +
       "<div class=\"lv-ex-card__body\"><div class=\"lv-ex-card__meta\">" + (x.official ? "<span class=\"lv-ex-badge\">공식 출처</span>" : "") + (x.trustLabel ? "<span class=\"lv-ex-badge\">" + esc(x.trustLabel) + "</span>" : "") + "<span>" + esc(x.typeLabel) + "</span><span>" + esc(x.meta || "") + "</span>" + (x.status ? "<span>" + esc(x.status) + "</span>" : "") + "</div>" +
       "<h4>" + (x.external ? esc(x.title) : "<a href=\"" + esc(x.href) + "\">" + esc(x.title) + "</a>") + "</h4>" +
       "<p>" + esc(x.desc || "") + "</p>" + (stages ? "<p class=\"lv-ex-tags\">" + stages + "</p>" : "") +
@@ -1053,6 +1064,7 @@
     else location.hash = h;
   }
   function openResults(query, opts) {
+    if (window.LivonBoot) window.LivonBoot.ensure("explore");   /* called from other screens: start this one first */
     opts = opts || {};
     var L = S();
     state.q = String(query == null ? "" : query).trim().slice(0, 80);
@@ -1163,15 +1175,16 @@
       return x.id !== id && (x.categoryIds || []).some(function (c) { return (item.categoryIds || []).indexOf(c) >= 0; });
     }).slice(0, 3);
 
+    var titleHadFocus = !!document.activeElement && document.activeElement.id === "lv-ex-detail-title";
     host.innerHTML =
       "<button type=\"button\" class=\"lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm\" data-lv-ex-back-results>← 결과로</button>" +
       "<article class=\"lv-ex-detail lv-ex-detail--" + esc(item.layout || item.type) + "\">" +
         "<div class=\"lv-ex-detail__hero\">" +
-          (item.img ? "<img src=\"" + esc(item.img) + "\" alt=\"\" width=\"1200\" height=\"700\" />" : "") +
+          (item.img ? "<img src=\"" + esc(item.img) + "\" alt=\"\" decoding=\"async\" width=\"1200\" height=\"700\" />" : "") +
           "<div class=\"lv-ex-detail__hero-copy\">" +
             credBadge(item) +
             "<p class=\"lv-ex-eyebrow\">" + esc(TYPE_LABEL[item.type] || "") + " · " + esc(item.subfield || "") + "</p>" +
-            "<h2 class=\"lv-ex-title lv-ex-title--md\">" + esc(item.title) + "</h2>" +
+            "<h2 class=\"lv-ex-title lv-ex-title--md\" id=\"lv-ex-detail-title\" tabindex=\"-1\">" + esc(item.title) + "</h2>" +
             "<p class=\"lv-ex-lead\">" + esc(item.provider || "") + "</p>" +
           "</div>" +
         "</div>" +
@@ -1219,6 +1232,20 @@
     location.hash = "ex-item-" + id;
     scrollToId("ex-detail");
     renderActivity();
+    /* a newly opened detail: the tab title names it and focus moves to its heading (keyboard and screen-reader users land on the content) */
+    setTitle(item.title);
+    if (state.focusedDetail !== id || titleHadFocus) {
+      state.focusedDetail = id;
+      var dh = document.getElementById("lv-ex-detail-title");
+      if (dh) { try { dh.focus({ preventScroll: true }); } catch (e) { dh.focus(); } }
+    }
+  }
+
+  var EX_TITLE = "탐색 · LIVON";
+  function setTitle(name) {
+    var t = document.title;
+    if (name) { document.title = name + " · " + EX_TITLE; return; }
+    if (t !== EX_TITLE && t.slice(-(EX_TITLE.length + 3)) === " · " + EX_TITLE) document.title = EX_TITLE;
   }
 
   function renderCompare() {
@@ -1388,6 +1415,9 @@
         renderResults();
         return;
       }
+      /* a Life Event search result opens that event in the Life Event guide (same session key as the platform search) */
+      var leOpen = e.target.closest("[data-lv-le-open]");
+      if (leOpen) { try { sessionStorage.setItem("livon.openLifeEvent", leOpen.getAttribute("data-lv-le-open")); } catch (err) {} }
       var goCard = e.target.closest("[data-lv-ex-go]");
       if (goCard && !e.target.closest("a,button,input,label")) { location.hash = goCard.getAttribute("data-lv-ex-go").replace(/^#/, ""); return; }
       var openCat = e.target.closest("[data-lv-ex-open-cat]");
@@ -1564,8 +1594,8 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        links.forEach(function (a) { a.classList.remove("is-on"); });
-        if (map[entry.target.id]) map[entry.target.id].classList.add("is-on");
+        links.forEach(function (a) { a.classList.remove("is-on"); a.removeAttribute("aria-current"); });
+        if (map[entry.target.id]) { map[entry.target.id].classList.add("is-on"); map[entry.target.id].setAttribute("aria-current", "location"); }
       });
     }, { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 });
     Object.keys(map).forEach(function (id) {
@@ -1591,6 +1621,7 @@
   }
 
   function onShow(hash) {
+    if (String(hash || "").indexOf("ex-item-") !== 0) { state.focusedDetail = null; setTitle(""); }
     renderRecentLine();
     renderActivity();
     renderForYou();
@@ -1661,6 +1692,7 @@
     if (document.documentElement.dataset.lvView === "explore") onShow(hash || "explore");
   }
 
+  document.addEventListener("livon:personalization", function () { try { renderForYou(); } catch (e) {} });
   window.LivonExplore = {
     onShow: onShow,
     /* re-render an open result list in place (no scroll) — used when real data arrives after the page opened */
@@ -1671,6 +1703,7 @@
     serialize: function () { return serialize(); }
   };
 
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  if (window.LivonBoot && typeof window.LivonBoot.view === "function") window.LivonBoot.view("explore", init);
+  else if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

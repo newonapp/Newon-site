@@ -1201,6 +1201,122 @@ html[data-lv-view="life"] main > #life {
   font-family: "Noto Sans KR", "Noto Sans", sans-serif;
 }
 .lv-life-modal .lv-life-btn--dark { background: #0a0a0a; color: #fff; }
+.lv-ob .lv-life-btn--outline { background: #fff; color: #0a0a0a; border-color: #d4d4d4; }
+.lv-life-modal .lv-life-btn:focus-visible,
+.lv-ob-entry .lv-life-btn:focus-visible,
+.lv-ob__chip:focus-visible,
+.lv-ob__link:focus-visible,
+.lv-ob .lv-life-modal__close:focus-visible { outline: 2px solid #0a0a0a; outline-offset: 2px; }
+
+/* Onboarding (optional first-run setup) — same modal, chips and buttons as the rest of LIVON */
+.lv-ob { padding-top: calc(var(--gnav-h, 74px) + 0.75rem); }
+.lv-ob .lv-life-modal__panel {
+  width: min(560px, calc(100vw - 2rem));
+  max-height: min(calc(100vh - var(--gnav-h, 74px) - 1.75rem), 720px);
+  max-height: min(calc(100dvh - var(--gnav-h, 74px) - 1.75rem), 720px);
+  padding: 1.5rem 1.5rem 1.25rem;
+}
+.lv-ob [data-lv-ob-body] { font-family: "Noto Sans KR", "Noto Sans", sans-serif; }
+.lv-ob__bar { height: 3px; margin: 0.25rem 2.5rem 0 0; background: #ebebeb; border-radius: 2px; overflow: hidden; }
+.lv-ob__bar span { display: block; height: 100%; background: #0a0a0a; transition: width .25s ease; }
+.lv-ob .lv-life-modal__panel .lv-ob__count { margin: 0.6rem 0 0; font-size: 0.78rem; letter-spacing: 0.04em; color: #6b6b6b; }
+.lv-ob .lv-life-modal__panel h2 { margin-top: 0.5rem; outline: none; }
+.lv-ob .lv-life-modal__panel h3 { margin: 0; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; color: #6b6b6b; }
+.lv-ob__chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.1rem 0 0; }
+.lv-ob__chips[hidden] { display: none; }
+.lv-ob__chip {
+  min-height: 2.75rem;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid #d4d4d4;
+  border-radius: 2px;
+  background: #fff;
+  color: #171717;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+}
+.lv-ob__chip:hover { border-color: #171717; }
+.lv-ob__chip.is-on { background: #0a0a0a; border-color: #0a0a0a; color: #fff; }
+.lv-ob__chips--stage .lv-ob__chip { min-width: 4.5rem; text-align: center; }
+.lv-ob .lv-life-modal__panel .lv-ob__status { min-height: 1.2rem; margin: 0.75rem 0 0; font-size: 0.82rem; color: #525252; }
+.lv-ob .lv-life-modal__panel .lv-ob__empty,
+.lv-ob .lv-life-modal__panel .lv-ob__note { margin: 1rem 0 0; padding: 0.75rem 0.9rem; border: 1px solid #ebebeb; border-radius: 2px; background: #fafafa; font-size: 0.86rem; }
+.lv-ob .lv-life-modal__panel .lv-ob__more { margin: 0.9rem 0 0; }
+.lv-ob__link {
+  padding: 0.5rem 0;
+  min-height: 2.75rem;
+  border: 0;
+  background: none;
+  color: #171717;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.lv-ob__picked { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0 0; padding: 0; list-style: none; }
+.lv-ob__picked li { padding: 0.3rem 0.6rem; border: 1px solid #171717; border-radius: 2px; font-size: 0.82rem; font-weight: 600; }
+.lv-ob__preview { display: grid; gap: 1rem; margin: 1.1rem 0 0; }
+.lv-ob__group ul { display: grid; gap: 0.4rem; margin: 0.45rem 0 0; padding: 0; list-style: none; }
+.lv-ob__group li { display: grid; gap: 0.15rem; padding: 0.65rem 0.8rem; border: 1px solid #ebebeb; border-radius: 2px; min-width: 0; }
+.lv-ob__group li strong { font-size: 0.92rem; font-weight: 650; color: #171717; overflow-wrap: anywhere; }
+.lv-ob__group li small { font-size: 0.78rem; color: #6b6b6b; overflow-wrap: anywhere; }
+.lv-ob__actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.25rem 0 0; }
+.lv-ob__actions .lv-life-btn--dark { flex: 1 1 9rem; }
+.lv-ob .lv-life-modal__panel .lv-ob__later { margin: 0.35rem 0 0; }
+
+/* Arrival note: not a dialog, never blocks the page */
+.lv-ob-entry[hidden] { display: none !important; }
+.lv-ob-entry {
+  position: fixed;
+  top: calc(var(--gnav-h, 74px) + 1rem);
+  right: 1rem;
+  z-index: 150;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  width: min(400px, calc(100vw - 2rem));
+  padding: 1rem 1.15rem;
+  border: 1px solid #171717;
+  border-radius: 2px;
+  background: #fff;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+}
+.lv-ob-entry__copy { flex: 1 1 16rem; min-width: 0; }
+.lv-ob-entry__copy strong { display: block; font-size: 0.98rem; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+.lv-ob-entry__copy p { margin: 0.25rem 0 0; font-size: 0.86rem; line-height: 1.5; color: #525252; }
+.lv-ob-entry__acts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.lv-ob-entry .lv-life-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid #1a1a1a;
+  border-radius: 2px;
+  background: #0a0a0a;
+  color: #fff;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+.lv-ob-entry .lv-life-btn--outline { background: #fff; color: #0a0a0a; border-color: #d4d4d4; }
+@media (max-width: 480px) {
+  .lv-ob .lv-life-modal__panel { padding: 1.25rem 1rem 1rem; }
+  .lv-ob-entry__acts { width: 100%; }
+  .lv-ob-entry__acts .lv-life-btn { flex: 1 1 auto; }
+  .lv-ob__actions .lv-life-btn { flex: 1 1 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lv-ob__bar span { transition: none; }
+}
 
 /* Sticky stage nav */
 #life .lv-life-sticky {
@@ -1835,7 +1951,7 @@ html[data-lv-view="life"] main > #life {
 #life .lv-ls-results .lv-life-svc > a { margin-top: auto; align-self: start; }
 #life .lv-ls-checklist { margin: 1rem 0 1.5rem; border-top: 1px solid #ddd; }
 #life #life-service-detail .lv-ls-checklist label { padding: .75rem 0; border-bottom: 1px solid #e8e8e8; font-weight: 400; }
-#life .lv-ls-checklist label:has(input:checked) { color: #777; text-decoration: line-through; }
+#life .lv-ls-checklist label:has(input:checked) { color: #737373; text-decoration: line-through; }
 #life .lv-ls-workspace h4 { margin-top: 2rem; margin-bottom: .75rem; }
 #life .lv-ls-footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #171717; }
 #life .lv-ls-footer > p { margin: 0 0 .5rem; font-size: .875rem; font-weight: 600; }
@@ -1938,7 +2054,7 @@ html[data-lv-view="life"] main > #life {
 #life .lv-teen-detail dd {margin:0;line-height:1.7;overflow-wrap:anywhere;}
 #life .lv-teen-counsel {border:1px solid #111;padding:clamp(20px,4vw,40px);}
 #life .lv-teen-counsel h4 {font-size:32px;letter-spacing:-.04em;margin:16px 0;}
-#life .lv-teen-caption {font-size:12px!important;color:#777;margin-top:24px;}
+#life .lv-teen-caption {font-size:12px!important;color:#737373;margin-top:24px;}
 #life [data-teen-form] button[type=submit] {align-self:end;min-height:48px;}
 #life [data-teen-form] input:disabled {background:#f4f4f4;cursor:not-allowed;}
 @media(max-width:700px) {
@@ -2085,7 +2201,7 @@ html[data-lv-view="life"] main > #life {
 
 /* breadcrumb + stage selector */
 #life .lh-crumbs ol { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .5rem; margin: 0; padding: 0; list-style: none; font-size: .82rem; min-width: 0; }
-#life .lh-crumbs li { display: inline-flex; align-items: center; gap: .5rem; color: #777; min-width: 0; }
+#life .lh-crumbs li { display: inline-flex; align-items: center; gap: .5rem; color: #737373; min-width: 0; }
 #life .lh-crumbs li + li::before { content: "/"; color: #bbb; }
 #life .lh-crumbs a { color: #171717; text-decoration: none; min-height: 32px; display: inline-flex; align-items: center; }
 #life .lh-crumbs a:hover { text-decoration: underline; text-underline-offset: 4px; }
@@ -2180,7 +2296,7 @@ html[data-lv-view="life"] main > #life {
 .lh-modal-list legend { padding: 0; font-weight: 700; font-size: .9rem; }
 .lh-modal-list label { display: flex; align-items: flex-start; gap: .6rem; min-height: 44px; padding: .6rem 0; border-bottom: 1px solid #eee; font-size: .92rem; line-height: 1.5; font-family: "Noto Sans KR", "Noto Sans", sans-serif; cursor: pointer; }
 .lh-modal-list input { width: 18px; height: 18px; margin: .1rem 0 0; flex: 0 0 auto; accent-color: #111; }
-.lh-modal-list small { color: #777; }
+.lh-modal-list small { color: #737373; }
 .lh-modal :is(a, button, input):focus-visible { outline: 2px solid #0a0a0a; outline-offset: 3px; }
 
 @media (max-width: 700px) {

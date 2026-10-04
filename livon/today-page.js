@@ -37,7 +37,8 @@
     window.scrollTo({ top: Math.max(0, top), behavior: (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) ? "auto" : "smooth" });
   }
 
-  function contents() { return DATA.contents || []; }
+  /* list served by the LIVON Data Platform (visible rows only); the file's own array if the platform is unavailable */
+  function contents() { return window.LivonScreenData ? window.LivonScreenData.todayContents() : (DATA.contents || []); }
   function byId(id) { return contents().find(function (c) { return c.id === id; }) || null; }
   function statusLabel(k) { return (DATA.statusLabel && DATA.statusLabel[k]) || k || "안내"; }
   var IMG_FALLBACK = "/livon/assets/topics/daytrip.jpg";
@@ -84,7 +85,8 @@
   function platformSaved(id) {
     var P = window.LivonPlatform;
     if (!P || !P.listSaves) return false;
-    return P.listSaves("all").some(function (s) { return /^life-hub:\w+:td:/.test(s.id) && s.id.slice(s.id.indexOf(":td:") + 4) === id; });
+    var ids = P.saveIds ? P.saveIds() : P.listSaves("all").map(function (s) { return s.id; });
+    return ids.some(function (sid) { return /^life-hub:\w+:td:/.test(sid) && sid.slice(sid.indexOf(":td:") + 4) === id; });
   }
   function isSaved(id) { return platformSaved(id); }
   /* Old Today saves (livon.tdSaved → platform ids "td:{id}") are converted to the shared
@@ -306,7 +308,7 @@
             "<p>" + esc(c.blurb) + "</p>" +
             '<p class="lv-td-note">' + esc(statusLabel(c.status)) + (c.source ? " · " + esc(c.source) : "") + (c.checkedAt || DATA.checkedAt ? " · 확인 " + esc(c.checkedAt || DATA.checkedAt) : "") + "</p>" +
             '<div class="lv-td-actions">' +
-              '<button type="button" class="lv-td-btn lv-td-btn--sm" data-lv-td-open="' + esc(c.id) + '">자세히</button>' +
+              '<button type="button" class="lv-td-btn lv-td-btn--sm" data-lv-td-open="' + esc(c.id) + '">자세히<span class="visually-hidden">: ' + esc(c.title) + "</span></button>" +
               saveHtml(c, "lv-td-btn lv-td-btn--ghost lv-td-btn--sm") +
             "</div>" +
           "</div>" +
@@ -369,7 +371,7 @@
     var selected = p[key] || [];
     panel.innerHTML = '<div class="lv-td-chips" role="group">' +
       setupOptions(state.tab).map(function (v) {
-        return '<button type="button" data-lv-td-pref="' + esc(key) + '" data-val="' + esc(v) + '"' + (selected.indexOf(v) >= 0 ? ' class="is-on"' : "") + ">" + esc(v) + "</button>";
+        return '<button type="button" data-lv-td-pref="' + esc(key) + '" data-val="' + esc(v) + '"' + (selected.indexOf(v) >= 0 ? ' class="is-on" data-lv-chip aria-pressed="true"' : ' data-lv-chip aria-pressed="false"') + ">" + esc(v) + "</button>";
       }).join("") +
     '</div><p class="lv-td-note">복수 선택 · 기기 저장 · 불필요한 개인정보는 요구하지 않습니다. 라이프 스테이지 관심사가 있으면 초기값으로 불러올 수 있습니다.</p>';
   }
@@ -410,7 +412,7 @@
   }
 
   function renderWeek() {
-    var host = $("[data-lv-td-week]");
+    var host = $("[data-lv-td-week-list]");
     if (!host) return;
     var list = visibleContents().filter(function (c) { return inSection(c, "week") || c.type === "event"; });
     if (state.weekFilter === "free") list = list.filter(function (c) { return c.budget === "무료" || c.free === true; });
@@ -621,8 +623,8 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        links.forEach(function (a) { a.classList.remove("is-on"); });
-        if (map[entry.target.id]) map[entry.target.id].classList.add("is-on");
+        links.forEach(function (a) { a.classList.remove("is-on"); a.removeAttribute("aria-current"); });
+        if (map[entry.target.id]) { map[entry.target.id].classList.add("is-on"); map[entry.target.id].setAttribute("aria-current", "location"); }
       });
     }, { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 });
     Object.keys(map).forEach(function (id) {
@@ -717,14 +719,14 @@
       var week = e.target.closest("[data-lv-td-week]");
       if (week) {
         state.weekFilter = week.getAttribute("data-lv-td-week");
-        $$("[data-lv-td-week]").forEach(function (b) { b.classList.toggle("is-on", b === week); });
+        $$("[data-lv-td-week]").forEach(function (b) { b.classList.toggle("is-on", b === week); b.setAttribute("aria-pressed", b === week ? "true" : "false"); });
         renderWeek();
         return;
       }
       var cat = e.target.closest("[data-lv-td-cat]");
       if (cat) {
         state.libCat = cat.getAttribute("data-lv-td-cat");
-        $$("[data-lv-td-cat]").forEach(function (b) { b.classList.toggle("is-on", b === cat); });
+        $$("[data-lv-td-cat]").forEach(function (b) { b.classList.toggle("is-on", b === cat); b.setAttribute("aria-pressed", b === cat ? "true" : "false"); });
         renderLibrary();
         scrollToId("td-library");
         return;
@@ -736,6 +738,7 @@
         if (state.libCat === "week") state.libCat = "event";
         $$("[data-lv-td-cat]").forEach(function (b) {
           b.classList.toggle("is-on", b.getAttribute("data-lv-td-cat") === state.libCat);
+          b.setAttribute("aria-pressed", b.getAttribute("data-lv-td-cat") === state.libCat ? "true" : "false");
         });
         renderLibrary();
         scrollToId("td-library");
@@ -815,6 +818,7 @@
     }
   };
 
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  if (window.LivonBoot && typeof window.LivonBoot.view === "function") window.LivonBoot.view("today", init);
+  else if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

@@ -438,7 +438,8 @@ test('OPS-15 AI: references are {kind,title,href} only; instructions forbid elig
   const refs = D.jobs.references(['개발']);
   assert.ok(refs.length === 1 && Object.keys(refs[0]).join() === 'kind,title,href');
   const ai = read('ai-page.js');
-  assert.match(ai, /return \{ kind: String\(it\.typeLabel/); assert.match(ai, /if \(!\/\^\(#\|https:\\\/\\\/\)\/i\.test\(it\.href\)\) return;/);
+  assert.match(ai, /return \{ kind: String\(it\.typeLabel/); /* Completion audit: the client filter is now the chat server's own pattern (REF_HREF), stricter than "# or https" — http links are still skipped */
+  assert.match(ai, /if \(!REF_HREF\.test\(it\.href\) \|\| it\.href\.length > 200\) return;/); assert.equal(/var REF_HREF = (\/.*\/i);/.exec(ai)[1].includes('https:'), true); assert.equal(new RegExp(/var REF_HREF = \/(.*)\/i;/.exec(ai)[1], 'i').test('http://example.or.kr/'), false);
   assert.doesNotMatch(ai, /JSON\.stringify\(e\)|raw\s*:/);
   for (const re of [/자격·대상 충족/, /지원금 수령/, /예약·좌석 가능 여부/, /전문가의 자격·검증/, /취업 가능성/, /민간 플랫폼\(Kakao\)/, /LIVON이 검증한 정보라고 말하지 않는다/]) assert.match(INSTRUCTIONS, re);
 });

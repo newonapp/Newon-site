@@ -395,7 +395,7 @@ html[data-lv-view="today"] main > #today {
 
 #today .lv-td-stages {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16.5rem), 1fr));
   gap: 0.9rem;
 }
 #today .lv-td-stage {
@@ -647,7 +647,7 @@ html[data-lv-view="today"] main > #today {
   font-weight: 750;
   letter-spacing: -0.025em;
 }
-#today .lv-td-index span { color: #777; font-size: 0.9rem; }
+#today .lv-td-index span { color: #737373; font-size: 0.9rem; }
 
 #today .lv-td-dr {
   display: grid;
@@ -1532,7 +1532,7 @@ html[data-lv-view="today"] main > #today {
 #today.is-td-detail .lv-td-body > .lv-td-sec:not(#td-detail) { display: none !important; }
 #today.is-td-detail #td-detail { border-top: 0; padding-top: calc(var(--gnav-h, 74px) + 1.25rem); }
 #today .td-crumbs { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; padding-bottom: 1rem; border-bottom: 1px solid #e3e3e3; }
-#today .td-crumbs ol { display: flex; flex-wrap: wrap; gap: 0.25rem 0.5rem; margin: 0; padding: 0; list-style: none; font-size: 0.82rem; color: #777; min-width: 0; }
+#today .td-crumbs ol { display: flex; flex-wrap: wrap; gap: 0.25rem 0.5rem; margin: 0; padding: 0; list-style: none; font-size: 0.82rem; color: #737373; min-width: 0; }
 #today .td-crumbs li { display: inline-flex; align-items: center; gap: 0.5rem; }
 #today .td-crumbs li + li::before { content: "/"; color: #bbb; }
 #today .td-crumbs a { color: #171717; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }

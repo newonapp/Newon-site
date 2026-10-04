@@ -25,7 +25,7 @@ function app({ local = {}, withPlatform = true, files } = {}) {
     document: doc, fetch: () => Promise.reject(new Error('no network in tests')), setTimeout, clearTimeout, console, addEventListener() {}, Promise, CustomEvent: class {} };
   ctx.window = ctx;
   vm.createContext(ctx);
-  const list = files || ['data/livon-user-data.js', ...(withPlatform ? ['livon-platform.js'] : []), 'explore-data.js', 'today-data.js', 'community-data.js', 'life-hub.js', 'today-feed.js', 'explore-search.js', 'community-page.js', 'life-now-data.js', 'life-now-page.js', 'ai-page.js'];
+  const list = files || ['data/livon-user-data.js', ...(withPlatform ? ['livon-platform.js'] : []), 'explore-data.js', 'today-data.js', 'community-data.js', 'life-hub.js', 'today-feed.js', 'explore-search.js', 'community-service.js', 'community-page.js', 'life-now-data.js', 'life-now-page.js', 'ai-page.js'];
   if (!withPlatform) { const saves = new Map(); ctx.LivonPlatform = { listSaves: () => [...saves.values()], saveItem: x => saves.set(x.id, Object.assign({ savedAt: Date.now() }, x)), removeSave: id => saves.delete(id), folders: () => ['나중에 보기'] }; }
   for (const f of list) vm.runInContext(read(f), ctx);
   if (ctx.LivonLifeHub) ctx.LivonLifeHub.repo.use(LIFE);

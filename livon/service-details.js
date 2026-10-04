@@ -15,7 +15,7 @@
   function options(values) { return values.map(function (v) { return '<option value="' + esc(v) + '">' + esc(v) + '</option>'; }).join(''); }
   function select(name, title, values) { return '<label>' + esc(title) + '<select name="' + name + '">' + options(values) + '</select></label>'; }
   function input(name, title, type, extra) { return '<label>' + esc(title) + '<input name="' + name + '" type="' + (type || 'text') + '" ' + (extra || '') + ' /></label>'; }
-  function saved(id) { return !!window.LivonPlatform && window.LivonPlatform.listSaves('all').some(function (s) { return s.id === id; }); }
+  function saved(id) { var P = window.LivonPlatform; if (P && P.hasSave) return P.hasSave(id); return !!P && P.listSaves('all').some(function (s) { return s.id === id; }); }
   function notice(text) { var n = document.getElementById('life-service-status'); if (n) n.textContent = text; }
   function saveItem(id, title, type, url, stage) {
     if (!window.LivonPlatform) return notice('저장 기능을 불러오지 못했습니다. 새로고침해 주세요.');
@@ -46,7 +46,7 @@
     return '<article class="lv-life-svc" data-ls-card="' + id + '"><p class="lv-life-svc__n">' + esc(D.types[s.type]) + ' · ' + esc(s.audience) + cardMark(s.type) + '</p>' +
       '<h4><a href="' + url + '">' + esc(s.name) + '</a></h4><p>' + esc(s.desc) + '</p>' + list((s.feats || []).slice(0, 3)) +
       ((opts || {}).why ? '<p class="lv-life-svc__why">' + esc(reason(s)) + '</p>' : '') +
-      '<div class="lv-life-svc__acts lv-ls-primary">' + link(s.cta, url, true).replace('</a>', '<span aria-hidden="true">→</span></a>') + '</div><div class="lv-life-svc__acts lv-ls-secondary">' +
+      '<div class="lv-life-svc__acts lv-ls-primary">' + link(s.cta, url, true).replace('</a>', '<span aria-hidden="true">→</span></a>') + '</div><div class="lv-life-svc__acts lv-ls-secondary" role="group" aria-label="' + esc(s.name) + '">' +
       button(on ? '저장됨' : '저장하기', 'data-ls-save="' + id + '" aria-pressed="' + on + '"') + button('공유', 'data-ls-share="' + id + '"') + button('AI에 묻기', 'data-ls-ai="' + id + '"') + '</div></article>';
   }
   function ask(s, extra) {

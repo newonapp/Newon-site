@@ -86,7 +86,7 @@
     Object.keys(st.pending.sensitiveCounts || {}).forEach(function (c) { row(c, st.pending.sensitiveCounts[c], true); });
     dialog = doc.createElement("div");
     dialog.className = "lv-life-modal";
-    dialog.innerHTML = '<button type="button" class="lv-life-modal__backdrop" data-livon-consent-close aria-label="닫기"></button>' +
+    dialog.innerHTML = '<button type="button" class="lv-life-modal__backdrop" data-livon-consent-close aria-label="닫기" tabindex="-1"></button>' +
       '<div class="lv-life-modal__panel" role="dialog" aria-modal="true" aria-labelledby="livon-consent-title">' +
       '<button type="button" class="lv-life-modal__close" data-livon-consent-close aria-label="닫기">×</button>' +
       '<h2 id="livon-consent-title">이 기기의 데이터를 계정에 저장할까요?</h2>' +

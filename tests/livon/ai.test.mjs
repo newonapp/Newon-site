@@ -20,7 +20,7 @@ function app({ local = {} } = {}) {
   ctx.LivonPlatform = { listSaves: () => [], saveItem() {}, removeSave() {}, folders: () => [] };
   for (const [k, v] of Object.entries(local)) ctx.localStorage.setItem(k, JSON.stringify(v));
   vm.createContext(ctx);
-  for (const f of ['data/livon-user-data.js', 'explore-data.js', 'today-data.js', 'community-data.js', 'life-hub.js', 'explore-search.js', 'community-page.js', 'life-now-data.js', 'life-now-page.js', 'ai-page.js']) vm.runInContext(read(f), ctx);
+  for (const f of ['data/livon-user-data.js', 'explore-data.js', 'today-data.js', 'community-data.js', 'life-hub.js', 'explore-search.js', 'community-service.js', 'community-page.js', 'life-now-data.js', 'life-now-page.js', 'ai-page.js']) vm.runInContext(read(f), ctx);
   ctx.LivonLifeHub.repo.use(LIFE);
   return { ctx, T: ctx.LivonAI._test, hub: ctx.LivonLifeHub, ml: () => JSON.parse(ctx.localStorage.getItem('livon.mlStore.v1') || 'null') };
 }

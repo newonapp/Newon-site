@@ -25,7 +25,6 @@
     { id: "service", label: "서비스" },
     { id: "system", label: "LIVON 안내" }
   ];
-  var ONBOARD_GOALS = ["공부", "취업", "커리어", "돈", "주거", "건강", "가족", "여행", "취미", "인간관계", "육아", "부모 돌봄"];
   var POPULAR_QUERIES = ["첫 취업", "독립", "이사", "자격증", "육아", "주거", "시니어", "건강", "취미", "커뮤니티"];
   var SEARCH_TABS = [
     { id: "all", label: "전체" },
@@ -134,9 +133,32 @@
     return "service";
   }
 
+  /* Header search and Explore answer from the SAME index (LivonSearch: Life Stage topics, Today, Explore, policies,
+     Life Events, public community posts). The older list below is kept only as a fallback when that index is missing. */
+  var INDEX_KIND = {
+    life: ["content", "Life Stage"], content: ["content", "콘텐츠"], event: ["content", "콘텐츠"], place: ["place", "장소"],
+    service: ["service", "서비스"], class: ["service", "서비스"], policy: ["benefit", "정책·지원"], expert: ["expert", "전문가"],
+    community: ["community", "커뮤니티"]
+  };
+  function searchIndexed(q) {
+    var L = window.LivonSearch;
+    if (!L || typeof L.search !== "function") return null;
+    var res;
+    try { res = L.search(q, {}); } catch (e) { return null; }
+    if (!res || !Array.isArray(res.items)) return null;
+    return res.items.map(function (x) {
+      var it = x.item || {};
+      var k = INDEX_KIND[it.type] || ["content", "콘텐츠"];
+      var label = it.type === "life" && it.typeLabel === "Life Event" ? "Life Event" : k[1];
+      return { kind: k[0], kindLabel: label, title: it.title, href: it.href, external: !!it.external, blurb: it.meta || "", eventId: it.eventId || "" };
+    }).filter(function (r) { return r.title && r.href; });
+  }
+
   function searchAll(q, tab) {
     q = String(q || "").trim();
     tab = tab || "all";
+    var indexed = q ? searchIndexed(q) : [];
+    if (indexed) return tab !== "all" ? indexed.filter(function (r) { return r.kind === tab; }) : indexed;
     var ql = q.toLowerCase();
     var tokens = ql.split(/\s+/).filter(function (t) { return t.length > 1; });
     function hit(hay) {
@@ -176,7 +198,7 @@
 
     var cm = readJSON("livon.cmStore.v1", null);
     if (cm && Array.isArray(cm.posts)) {
-      cm.posts.filter(function (p) { return !p.deleted && !p.draft && p.visibility !== "private"; }).forEach(function (p) {
+      cm.posts.filter(function (p) { return !p.deleted && !p.draft && (!p.visibility || p.visibility === "public"); }).forEach(function (p) {
         var hay = [p.title, p.body, (p.tags || []).join(" ")].join(" ");
         if (!hit(hay)) return;
         results.push({ kind: "community", kindLabel: p.type === "question" ? "질문" : "커뮤니티", title: p.title, href: "#cm-post-" + p.id, blurb: (p.body || "").slice(0, 80) });
@@ -206,7 +228,7 @@
   function renderSearchResults(host, q, tab) {
     var results = searchAll(q, tab);
     var tabs = SEARCH_TABS.map(function (t) {
-      return "<button type=\"button\" data-lv-plat-tab=\"" + t.id + "\"" + (tab === t.id ? " class=\"is-on\"" : "") + ">" + esc(t.label) + "</button>";
+      return "<button type=\"button\" data-lv-plat-tab=\"" + t.id + "\"" + (tab === t.id ? " class=\"is-on\" data-lv-chip aria-pressed=\"true\"" : " data-lv-chip aria-pressed=\"false\"") + ">" + esc(t.label) + "</button>";
     }).join("");
     var body = "";
     if (!results.length) {
@@ -228,13 +250,15 @@
       body = Object.keys(groups).map(function (label) {
         return "<p class=\"livon-panel__note\"><strong>" + esc(label) + "</strong> · " + groups[label].length + "</p>" +
           "<ul class=\"livon-panel__list\">" + groups[label].slice(0, 6).map(function (r) {
-            return "<li><a href=\"" + esc(r.href) + "\" data-lv-plat-result=\"" + esc(r.eventId || "") + "\">" + esc(r.title) + "</a></li>";
+            return "<li><a href=\"" + esc(r.href) + "\" data-lv-plat-result=\"" + esc(r.eventId || "") + "\"" +
+              (r.external ? " target=\"_blank\" rel=\"noopener noreferrer\"" : "") + ">" + esc(r.title) + (r.external ? "<span class=\"visually-hidden\"> (새 창, 공식 사이트)</span>" : "") + "</a></li>";
           }).join("") + "</ul>";
       }).join("");
     }
     host.innerHTML =
       "<div class=\"livon-search-tabs\" data-lv-plat-tabs>" + tabs + "</div>" +
-      "<p class=\"livon-panel__note\">‘" + esc(q) + "’ · " + results.length + "건</p>" + body;
+      "<p class=\"livon-panel__note\">‘" + esc(q) + "’ · " + results.length + "건</p>" + body +
+      (results.length ? "<p class=\"livon-panel__note\"><a href=\"#ex-results?q=" + esc(encodeURIComponent(q)) + "\" data-lv-plat-all-results>탐색에서 전체 결과 보기</a></p>" : "");
   }
 
   function runSearch(q, tab) {
@@ -285,8 +309,25 @@
   }
   function removeSave(id) {
     var s = load();
+    id = String(id);
     s.saves = s.saves.filter(function (x) { return x.id !== id; });
     save(s);
+    /* the legacy lists are re-imported by migrateLegacySaves (every saved-panel refresh): prune them too, or the item comes back */
+    if (id.indexOf("td:") === 0) {
+      var td = readJSON(KEY_TD_SAVED, []);
+      if (Array.isArray(td)) {
+        var tid = id.slice(3);
+        var keep = td.filter(function (x) { return (x && typeof x === "object" ? (x.id || x.label) : x) !== tid; });
+        if (keep.length !== td.length) writeJSON(KEY_TD_SAVED, keep);
+      }
+    } else if (id.indexOf("life:") === 0) {
+      var life = readJSON("livon.lifeSavedLocal", []);
+      if (Array.isArray(life)) {
+        var name = id.slice(5);
+        var rest = life.filter(function (x) { return (typeof x === "string" ? x : x && x.name) !== name; });
+        if (rest.length !== life.length) writeJSON("livon.lifeSavedLocal", rest);
+      }
+    }
     refreshSavedPanel();
     return s;
   }
@@ -303,6 +344,21 @@
     if (folder && folder !== "all") list = list.filter(function (x) { return x.folder === folder; });
     return list;
   }
+  /* "is this saved?" is asked once per card on a screen. The answer comes from an index of ids that is rebuilt only when
+     the stored text changes, so a screen with many cards does not parse the whole store once per card. */
+  var saveIndexMemo = { raw: null, ids: [], set: {} };
+  function saveIndex() {
+    var raw = null;
+    try { raw = localStorage.getItem(KEY_PLATFORM); } catch (e) {}
+    if (raw == null || raw !== saveIndexMemo.raw) {
+      var ids = load().saves.map(function (x) { return String(x && x.id); }), set = {};
+      ids.forEach(function (id) { set[id] = true; });
+      saveIndexMemo = { raw: raw, ids: ids, set: set };
+    }
+    return saveIndexMemo;
+  }
+  function hasSave(id) { return Object.prototype.hasOwnProperty.call(saveIndex().set, String(id)); }
+  function saveIds() { return saveIndex().ids.slice(); }
   function syncLegacySave(item) {
     if (!item) return;
     if (item.type === "today" || (item.id && String(item.id).indexOf("td:") === 0)) {
@@ -322,16 +378,24 @@
     var td = readJSON(KEY_TD_SAVED, []);
     if (Array.isArray(td)) {
       td.forEach(function (x) {
-        var id = "td:" + (x.id || x.label || Math.random());
+        /* old entries may be plain strings; an entry without any id is skipped (a random id would be re-added on every refresh) */
+        var o = x && typeof x === "object" ? x : { id: typeof x === "string" ? x : "" };
+        var key = String(o.id || o.label || "");
+        if (!key) return;
+        var id = "td:" + key;
         if (known[id]) return;
-        s.saves.push({ id: id, label: x.label || x.id || "발견", type: "content", href: x.id ? "#td-item-" + x.id : "#today", folder: "나중에 보기", source: "오늘의 발견", at: x.at || 0 });
+        known[id] = 1;
+        s.saves.push({ id: id, label: o.label || o.id || "발견", type: "content", href: o.id ? "#td-item-" + o.id : "#today", folder: "나중에 보기", source: "오늘의 발견", at: o.at || 0 });
       });
     }
     var life = readJSON("livon.lifeSavedLocal", []);
     if (Array.isArray(life)) {
-      life.forEach(function (name) {
+      life.forEach(function (x) {
+        var name = typeof x === "string" ? x : x && typeof x.name === "string" ? x.name : "";
+        if (!name) return;
         var id = "life:" + name;
         if (known[id]) return;
+        known[id] = 1;
         s.saves.push({ id: id, label: name, type: "life", href: "#life", folder: "나중에 보기", source: "라이프 스테이지", at: 0 });
       });
     }
@@ -356,36 +420,54 @@
   }
 
   /* ——— Alerts ——— */
-  function ensureSeedAlerts() {
-    var s = load();
-    if (s.alerts.length) return s;
+  /* Alerts are derived from what is stored NOW (today's schedule, open to-dos, active Life Events) every time the panel
+     refreshes, so a finished or deleted to-do disappears and a new one appears. Nothing is pushed or sent anywhere.
+     Stored platform alerts of other types (none are written in V1) are kept after the derived ones. */
+  var DERIVED_ALERT = /^(todo|le|sched)-|^sys-1$/;
+  function localDay(d) {
+    d = d || new Date();
+    var m = d.getMonth() + 1, day = d.getDate();
+    return d.getFullYear() + "-" + (m < 10 ? "0" : "") + m + "-" + (day < 10 ? "0" : "") + day;
+  }
+  function currentAlerts(s) {
+    var out = [];
+    var today = localDay();
     var ml = readJSON(KEY_ML, null);
+    var events = ml && Array.isArray(ml.events) ? ml.events : [];
+    events.filter(function (e) { return e && e.date === today && e.title; })
+      .sort(function (a, b) { return String(a.start || "").localeCompare(String(b.start || "")); })
+      .slice(0, 3).forEach(function (e) {
+        out.push({ id: "sched-" + e.id, type: "schedule", title: "오늘 일정 · " + (e.start && !e.allDay ? e.start + " " : "") + e.title, href: "#ml-calendar" });
+      });
     var todos = ml && Array.isArray(ml.todos) ? ml.todos : [];
-    var open = todos.filter(function (t) { return !t.done; }).slice(0, 2);
-    open.forEach(function (t) {
-      s.alerts.push({ id: "todo-" + t.id, type: "todo", title: "할 일 · " + (t.title || ""), href: "#life-now", at: Date.now(), read: false });
-    });
+    todos.filter(function (t) { return t && !t.done && t.title; })
+      .sort(function (a, b) { return String(a.due || "9999").localeCompare(String(b.due || "9999")); })
+      .slice(0, 3).forEach(function (t) {
+        var late = t.due && t.due < today, due = t.due && t.due === today;
+        out.push({ id: "todo-" + t.id, type: "todo", title: "할 일 · " + t.title + (late ? " · 기한 지남" : due ? " · 오늘 마감" : ""), href: "#ml-todos" });
+      });
     var evs = readJSON(KEY_EVENTS, []);
-    if (evs.length) {
-      s.alerts.push({ id: "le-" + evs[0], type: "lifeEvent", title: "진행 중 Life Event를 이어서 준비해 보세요", href: "#life-events", at: Date.now(), read: false });
-    }
-    s.alerts.push({ id: "sys-1", type: "system", title: "LIVON 안내 · 예약·결제는 아직 연결되지 않았습니다", href: "#explore", at: Date.now(), read: false });
-    save(s);
-    return s;
+    var catalog = (window.LivonLifeEvents && window.LivonLifeEvents.events) || [];
+    (Array.isArray(evs) ? evs : []).slice(0, 2).forEach(function (id) {
+      var ev = catalog.find(function (e) { return e.id === id; });
+      out.push({ id: "le-" + id, type: "lifeEvent", title: ev ? "Life Event · " + ev.title + " 준비 이어 하기" : "진행 중 Life Event를 이어서 준비해 보세요", href: "#life-events", eventId: ev ? id : "" });
+    });
+    out.push({ id: "sys-1", type: "system", title: "LIVON 안내 · 예약·결제는 아직 연결되지 않았습니다", href: "#explore" });
+    return out.concat((s.alerts || []).filter(function (a) { return a && !DERIVED_ALERT.test(String(a.id || "")); }));
   }
   function refreshAlertsPanel() {
     var panel = document.querySelector("[data-livon-panel='alerts']");
     if (!panel) return;
     var host = panel.querySelector("[data-livon-alerts-body]");
     if (!host) return;
-    var s = ensureSeedAlerts();
+    var s = load();
     var prefs = s.alertPrefs || {};
-    var list = s.alerts.filter(function (a) { return prefs[a.type] !== false; }).slice(0, 10);
+    var list = currentAlerts(s).filter(function (a) { return prefs[a.type] !== false; }).slice(0, 10);
     host.innerHTML =
       "<ul class=\"livon-panel__list\">" +
         (list.length
           ? list.map(function (a) {
-              return "<li><a href=\"" + esc(a.href || "#life-now") + "\">" + esc(a.title) + "</a></li>";
+              return "<li><a href=\"" + esc(a.href || "#life-now") + "\"" + (a.eventId ? " data-lv-plat-result=\"" + esc(a.eventId) + "\"" : "") + ">" + esc(a.title) + "</a></li>";
             }).join("")
           : "<li>표시할 알림이 없습니다</li>") +
         "<li><a href=\"#ml-settings\" data-lv-plat-goto-settings>알림 설정</a></li>" +
@@ -442,85 +524,11 @@
     return proj;
   }
 
-  /* ——— Onboarding ——— */
-  function needsOnboarding() {
-    var s = load();
-    if (s.onboarded || s.onboardSkipped) return false;
-    var stage = readJSON(KEY_STAGE, null);
-    return !stage;
-  }
-  function completeOnboarding(data) {
-    if (data.stage) writeJSON(KEY_STAGE, data.stage);
-    if (data.situations) writeJSON(KEY_SITUATIONS, data.situations.slice(0, 4));
-    if (data.interests) writeJSON(KEY_INTERESTS, data.interests.slice(0, 8));
-    if (data.goals) writeJSON(KEY_GOALS, data.goals.slice(0, 6));
-    var s = load();
-    s.onboarded = true;
-    s.onboardSkipped = false;
-    save(s);
-    closeOnboarding();
-    if (window.LivonHome && window.LivonHome.render) window.LivonHome.render();
-  }
-  function skipOnboarding() {
-    var s = load();
-    s.onboardSkipped = true;
-    save(s);
-    closeOnboarding();
-  }
-  var onboardReturn = null;
-  function closeOnboarding() {
-    var m = document.getElementById("livon-onboard-modal");
-    if (!m || m.hidden) return;
-    m.hidden = true;
-    if (onboardReturn && document.contains(onboardReturn) && onboardReturn !== document.body) {
-      try { onboardReturn.focus({ preventScroll: true }); } catch (e) {}
-    }
-    onboardReturn = null;
-  }
-  /* Dialog keyboard: Escape = "나중에 하기", Tab stays inside the dialog. */
-  function onboardKeydown(e) {
-    var m = document.getElementById("livon-onboard-modal");
-    if (!m || m.hidden) return;
-    if (e.key === "Escape") { e.preventDefault(); skipOnboarding(); return; }
-    if (e.key !== "Tab") return;
-    var f = Array.prototype.filter.call(m.querySelectorAll("button:not([tabindex='-1']), a[href], input, select, textarea"), function (el) { return el.offsetParent !== null && !el.disabled; });
-    if (!f.length) return;
-    var first = f[0], last = f[f.length - 1];
-    if (!m.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
-    else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-  }
-  function openOnboarding() {
-    var m = document.getElementById("livon-onboard-modal");
-    if (!m) return;
-    if (m.hidden) onboardReturn = document.activeElement;
-    m.hidden = false;
-    if (!m._kbBound) { m._kbBound = true; document.addEventListener("keydown", onboardKeydown); }
-    setTimeout(function () {
-      var c = m.querySelector(".lv-life-modal__close");
-      if (c && !m.hidden) c.focus({ preventScroll: true });
-    }, 0);
-    var stageHost = m.querySelector("[data-lv-onboard-stages]");
-    var sitHost = m.querySelector("[data-lv-onboard-sits]");
-    var goalHost = m.querySelector("[data-lv-onboard-goals]");
-    var stages = (window.LivonLifeData && window.LivonLifeData.stages) || [];
-    var sits = (window.LivonLifeData && window.LivonLifeData.situations) || Object.keys((window.LivonLifeEvents && window.LivonLifeEvents.situationLabels) || {});
-    if (stageHost) {
-      stageHost.innerHTML = stages.map(function (s) {
-        return "<button type=\"button\" data-onboard-stage=\"" + esc(s.id) + "\">" + esc(s.label) + "</button>";
-      }).join("");
-    }
-    if (sitHost) {
-      sitHost.innerHTML = (Array.isArray(sits) ? sits : []).slice(0, 10).map(function (v) {
-        var label = (window.LivonLifeEvents && window.LivonLifeEvents.situationLabels && window.LivonLifeEvents.situationLabels[v]) || v;
-        return "<button type=\"button\" data-onboard-sit=\"" + esc(v) + "\">" + esc(label) + "</button>";
-      }).join("");
-    }
-    if (goalHost) {
-      goalHost.innerHTML = ONBOARD_GOALS.map(function (g) {
-        return "<button type=\"button\" data-onboard-goal=\"" + esc(g) + "\">" + esc(g) + "</button>";
-      }).join("");
-    }
+  /* ——— Onboarding ———
+     The flow lives in livon-onboarding.js (UI) and livon-personalization.js (profile, first-run state, rules).
+     It is never opened automatically: this is only the shared entry point other screens call. */
+  function openOnboarding(opts) {
+    if (window.LivonOnboarding && typeof window.LivonOnboarding.open === "function") window.LivonOnboarding.open(opts);
   }
 
   function profileSnapshot() {
@@ -542,6 +550,16 @@
     var root = document.querySelector("[data-livon-tools]");
     if (!root || root._platBound) return;
     root._platBound = true;
+
+    /* A link inside a header panel (search result, saved item, alert, profile menu) changes the route: close the panel so it
+       does not stay open over the screen that was just opened. Focus is left to the router (it moves to the new screen). */
+    window.addEventListener("hashchange", function () {
+      Array.prototype.forEach.call(root.querySelectorAll('[data-livon-tool][aria-expanded="true"]'), function (btn) {
+        btn.setAttribute("aria-expanded", "false");
+        var panel = document.getElementById(btn.getAttribute("aria-controls"));
+        if (panel) panel.hidden = true;
+      });
+    });
 
     root.addEventListener("click", function (e) {
       var qbtn = e.target.closest("[data-lv-plat-q]");
@@ -598,58 +616,41 @@
     });
   }
 
-  function bindOnboarding() {
-    var m = document.getElementById("livon-onboard-modal");
-    if (!m || m._bound) return;
-    m._bound = true;
-    var state = { stage: "", situations: [], goals: [] };
-    m.addEventListener("click", function (e) {
-      if (e.target.matches("[data-lv-onboard-close]") || e.target.closest("[data-lv-onboard-skip]")) {
-        skipOnboarding();
-        return;
-      }
-      var st = e.target.closest("[data-onboard-stage]");
-      if (st) {
-        state.stage = st.getAttribute("data-onboard-stage");
-        m.querySelectorAll("[data-onboard-stage]").forEach(function (b) { b.classList.toggle("is-on", b === st); });
-        return;
-      }
-      var sit = e.target.closest("[data-onboard-sit]");
-      if (sit) {
-        var v = sit.getAttribute("data-onboard-sit");
-        var i = state.situations.indexOf(v);
-        if (i >= 0) state.situations.splice(i, 1); else state.situations.push(v);
-        sit.classList.toggle("is-on");
-        return;
-      }
-      var g = e.target.closest("[data-onboard-goal]");
-      if (g) {
-        var gv = g.getAttribute("data-onboard-goal");
-        var gi = state.goals.indexOf(gv);
-        if (gi >= 0) state.goals.splice(gi, 1); else state.goals.push(gv);
-        g.classList.toggle("is-on");
-        return;
-      }
-      if (e.target.closest("[data-lv-onboard-apply]")) {
-        completeOnboarding({
-          stage: state.stage,
-          situations: state.situations,
-          interests: state.goals.slice(0, 8),
-          goals: state.goals
-        });
-      }
+  /* The site menu drawer (site-chrome.js, shared) closes itself only for links to other pages; LIVON's menu links are routes
+     inside this page (#today, #explore …), so after one of them the drawer stayed open over the screen just opened. Close it
+     through its own close control; focus then continues on the screen that was opened (not on the menu button). */
+  var drawerBound = false;
+  function bindDrawerClose() {
+    if (drawerBound || typeof window.addEventListener !== "function") return;
+    drawerBound = true;
+    window.addEventListener("hashchange", function () {
+      var drawer = document.getElementById("gnav-mobile-livon");
+      if (!drawer || drawer.hidden) return;
+      var closer = drawer.querySelector("[data-gnav-close]");
+      if (!closer) return;
+      var keep = document.activeElement;
+      setTimeout(function () {
+        if (drawer.hidden) return;
+        closer.click();
+        var target = keep && keep !== document.body && !drawer.contains(keep) && document.contains(keep) ? keep : null;
+        if (!target) {
+          /* the link was inside the drawer: continue on the screen that was opened, as the skip link does */
+          var v = document.documentElement.getAttribute("data-lv-view") || "home";
+          var scr = document.querySelector('main > [data-lv-screen="' + v + '"]');
+          target = scr && scr.querySelector("h1") || scr;
+          if (target && !target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
+        }
+        if (target && typeof target.focus === "function") { try { target.focus({ preventScroll: true }); } catch (e) {} }
+      }, 0);
     });
   }
 
   function init() {
     migrateLegacySaves();
     bindPanels();
-    bindOnboarding();
+    bindDrawerClose();
     refreshSavedPanel();
     refreshAlertsPanel();
-    if (needsOnboarding()) {
-      setTimeout(openOnboarding, 600);
-    }
     try {
       var goto = sessionStorage.getItem("livon.mlGoto");
       if (goto) {
@@ -668,6 +669,8 @@
     removeSave: removeSave,
     setSaveFolder: setSaveFolder,
     listSaves: listSaves,
+    hasSave: hasSave,
+    saveIds: saveIds,
     folders: function () { return load().folders.slice(); },
     alertTypes: ALERT_TYPES,
     setAlertPref: setAlertPref,

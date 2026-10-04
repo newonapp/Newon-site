@@ -40,10 +40,18 @@
   function isObj(x) { return !!x && typeof x === "object" && !Array.isArray(x); }
 
   /* Plain text only: decode a few entities, drop tags (and the contents of script/style), control and bidi chars. */
+  var NEEDS_CLEANING = /[<>&\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F\u202A-\u202E\u2066-\u2069]/;
   function cleanText(v, max) {
     if (v == null) return null;
     if (typeof v !== "string" && typeof v !== "number") return null;
-    var s = String(v)
+    var s = String(v);
+    /* most curated strings contain no markup, entity or control character: only whitespace needs normalising */
+    if (!NEEDS_CLEANING.test(s)) {
+      s = s.replace(/\s+/g, " ").trim();
+      if (!s) return null;
+      return max && s.length > max ? s.slice(0, max - 1) + "…" : s;
+    }
+    s = s
       .replace(/<(script|style|iframe|object|embed|template)[\s\S]*?<\/\1\s*>/gi, " ")
       .replace(/<[^>]*>/g, " ")
       .replace(/&nbsp;/gi, " ").replace(/&amp;/gi, "&").replace(/&lt;/gi, "<").replace(/&gt;/gi, ">").replace(/&quot;/gi, "\"").replace(/&#39;/gi, "'")

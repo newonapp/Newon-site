@@ -7,7 +7,11 @@
   var KEY_REGION = "livon.hmRegion";
   var KEY_SITUATIONS = "livon.lifeSituations";
   var KEY_EVENTS = "livon.lifeEvents";
-  var EVENTS = (window.LivonLifeEvents && window.LivonLifeEvents.events) || [];
+  /* lists served by the LIVON Data Platform (visible rows only); the files' own arrays if the platform is unavailable */
+  var SD = window.LivonScreenData;
+  var EVENTS = SD ? SD.lifeEvents() : (window.LivonLifeEvents && window.LivonLifeEvents.events) || [];
+  function tdList() { return SD ? SD.todayContents() : (window.LivonTodayData && window.LivonTodayData.contents) || []; }
+  function exList() { return SD ? SD.exploreItems() : (window.LivonExploreData && window.LivonExploreData.items) || []; }
   var SIT_LABELS = (window.LivonLifeEvents && window.LivonLifeEvents.situationLabels) || {};
   var EVENT_STATUS = (window.LivonLifeEvents && window.LivonLifeEvents.statusLabel) || {};
 
@@ -78,6 +82,11 @@
 
   function $(sel, root) { return (root || document).querySelector(sel); }
   function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  /* a card photo drawn as a background: fetched near the viewport when the media loader is present */
+  function bgPhoto(url) {
+    var M = window.LivonMedia;
+    return M && M.bgAttr ? M.bgAttr(url, esc) : " style=\"background-image:url(" + esc(url) + ")\"";
+  }
   function esc(s) {
     return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
@@ -180,7 +189,7 @@
           "<a class=\"lv-hm-btn\" href=\"" + esc(s.href) + "\">" + esc(s.cta) + "</a>" +
         "</div>" +
         "<div class=\"lv-hm-svc__film\" aria-hidden=\"false\">" +
-          "<video class=\"lv-hm-svc__video\" muted loop playsinline autoplay preload=\"metadata\" src=\"" + esc(s.video) + "\"></video>" +
+          "<video class=\"lv-hm-svc__video\" muted loop playsinline autoplay preload=\"none\" data-src=\"" + esc(s.video) + "\"></video>" +
           "<div class=\"lv-hm-svc__veil\" aria-hidden=\"true\"></div>" +
           "<div class=\"lv-hm-svc__lockup\">" +
             "<p class=\"lv-hm-svc__wordmark\">" + esc(s.wordmark) + "</p>" +
@@ -226,7 +235,7 @@
     }
     host.innerHTML = EVENTS.map(function (ev) {
       var on = active.indexOf(ev.id) >= 0;
-      return "<button type=\"button\" data-lv-hm-event=\"" + esc(ev.id) + "\"" + (on ? " class=\"is-on\"" : "") + ">" + esc(ev.title) + "</button>";
+      return "<button type=\"button\" data-lv-hm-event=\"" + esc(ev.id) + "\"" + (on ? " class=\"is-on\" data-lv-chip aria-pressed=\"true\"" : " data-lv-chip aria-pressed=\"false\"") + ">" + esc(ev.title) + "</button>";
     }).join("");
   }
 
@@ -320,14 +329,14 @@
           "<div class=\"lv-hm-chips\" data-lv-hm-sit-chips>" +
             Object.keys(SIT_LABELS).map(function (k) {
               var on = situations.indexOf(k) >= 0;
-              return "<button type=\"button\" data-lv-hm-sit=\"" + esc(k) + "\"" + (on ? " class=\"is-on\"" : "") + ">" + esc(SIT_LABELS[k]) + "</button>";
+              return "<button type=\"button\" data-lv-hm-sit=\"" + esc(k) + "\"" + (on ? " class=\"is-on\" data-lv-chip aria-pressed=\"true\"" : " data-lv-chip aria-pressed=\"false\"") + ">" + esc(SIT_LABELS[k]) + "</button>";
             }).join("") +
           "</div>" +
           "<p class=\"lv-hm-eyebrow\">관심사</p>" +
           "<div class=\"lv-hm-chips\" data-lv-hm-interest-chips>" +
             INTEREST_OPTS.map(function (name) {
               var on = interests.indexOf(name) >= 0;
-              return "<button type=\"button\" data-lv-hm-interest=\"" + esc(name) + "\"" + (on ? " class=\"is-on\"" : "") + ">" + esc(name) + "</button>";
+              return "<button type=\"button\" data-lv-hm-interest=\"" + esc(name) + "\"" + (on ? " class=\"is-on\" data-lv-chip aria-pressed=\"true\"" : " data-lv-chip aria-pressed=\"false\"") + ">" + esc(name) + "</button>";
             }).join("") +
           "</div>" +
           "<div class=\"lv-hm-me__row\">" +
@@ -424,7 +433,7 @@
     lifeHtml += "</div>";
 
     var recs = recommendItems(interests, stage).slice(0, 5);
-    var todayData = (window.LivonTodayData && window.LivonTodayData.contents) || [];
+    var todayData = tdList();
     var recHtml = "<div class=\"lv-hm-rec\">" +
       "<div class=\"lv-hm-rec__head\">" +
         "<p class=\"lv-hm-eyebrow\">FOR YOU</p>" +
@@ -446,7 +455,7 @@
         if (i === 3) cls += " is-wide";
         if (img) cls += " has-img";
         recHtml += "<a class=\"" + cls + "\" href=\"" + esc(r.href) + "\"" +
-          (img ? " style=\"background-image:url(" + esc(img) + ")\"" : "") + ">" +
+          (img ? bgPhoto(img) : "") + ">" +
           "<em>" + esc(r.kind) + "</em><strong>" + esc(r.title) + "</strong></a>";
       });
       recHtml += "</div>";
@@ -459,7 +468,7 @@
   function recommendItems(interests, stage) {
     var out = [];
     var q = (interests || []).join(" ") + " " + stage;
-    var today = (window.LivonTodayData && window.LivonTodayData.contents) || [];
+    var today = tdList();
     today.forEach(function (c) {
       if (interests.length) {
         var tags = c.tags || [];
@@ -470,7 +479,7 @@
       }
       out.push({ kind: "발견", title: c.title, href: "#today/" + c.id });
     });
-    var explore = (window.LivonExploreData && window.LivonExploreData.items) || [];
+    var explore = exList();
     explore.slice(0, 40).forEach(function (c) {
       if (interests.length) {
         var hit = interests.some(function (i) {
@@ -486,7 +495,7 @@
   function renderToday() {
     var cats = $("[data-lv-hm-today-cats]");
     var host = $("[data-lv-hm-today]");
-    var list = (window.LivonTodayData && window.LivonTodayData.contents) || [];
+    var list = tdList();
     if (cats) {
       var sections = [["오늘의 발견", "td-pick"], ["이번 주", "td-week"], ["새로운 장소", "td-places"], ["취미·체험", "td-hobby"], ["배움", "td-learn"], ["함께하기", "td-together"], ["계절", "td-season"]];
       cats.innerHTML = sections.map(function (x) {
@@ -506,7 +515,7 @@
 
     host.innerHTML =
       "<a class=\"lv-hm-mag__feature" + (featured.img ? "" : " is-plain") + "\" href=\"#today/" + esc(featured.id) + "\"" +
-        (featured.img ? " style=\"background-image:url(" + esc(featured.img) + ")\"" : "") + ">" +
+        (featured.img ? bgPhoto(featured.img) : "") + ">" +
         "<span class=\"lv-hm-mag__veil\" aria-hidden=\"true\"></span>" +
         "<span class=\"lv-hm-mag__copy\">" +
           "<em>" + esc(featured.category || featured.type || "발견") + "</em>" +
@@ -515,7 +524,7 @@
         "</span></a>" +
       "<div class=\"lv-hm-mag__strip\">" + strip.map(function (c, i) {
         return "<a class=\"lv-hm-mag__cell" + (c.img ? "" : " is-plain") + (i === 0 ? " is-focus" : "") + "\" href=\"#today/" + esc(c.id) + "\"" +
-          (c.img ? " style=\"background-image:url(" + esc(c.img) + ")\"" : "") + ">" +
+          (c.img ? bgPhoto(c.img) : "") + ">" +
           "<span class=\"lv-hm-mag__veil\" aria-hidden=\"true\"></span>" +
           "<span class=\"lv-hm-mag__copy\">" +
             "<em>" + esc(c.category || "") + "</em>" +
@@ -525,7 +534,7 @@
       }).join("") + "</div>" +
       (last
         ? "<a class=\"lv-hm-mag__banner" + (last.img ? "" : " is-plain") + "\" href=\"#today/" + esc(last.id) + "\"" +
-            (last.img ? " style=\"background-image:url(" + esc(last.img) + ")\"" : "") + ">" +
+            (last.img ? bgPhoto(last.img) : "") + ">" +
             "<span class=\"lv-hm-mag__veil\" aria-hidden=\"true\"></span>" +
             "<span class=\"lv-hm-mag__copy\">" +
               "<em>" + esc(last.category || "") + "</em>" +
@@ -545,7 +554,7 @@
       }).join("");
     }
     if (!list) return;
-    var items = Array.isArray(data.items) ? data.items.slice(0, 5) : [];
+    var items = exList().slice(0, 5);
     if (!items.length) {
       list.innerHTML = "<p class=\"lv-hm-note\">등록된 서비스가 없습니다.</p>";
       return;
@@ -809,13 +818,25 @@
             return "<li><a href=\"" + esc(topicHref(x.t)) + "\"><strong>" + esc(x.t.title) + "</strong><small>" + x.done + " / " + x.total + (x.done === x.total ? " 완료" : " 진행") + "</small></a></li>";
           }).join("") + "</ul></div>"
       : "";
+    /* onboarding profile (Life Events / interests): topics with the reason they are shown. Empty profile → nothing changes. */
+    var PZ = window.LivonPersonalization, prof = PZ ? PZ.getProfile() : null, pzTopics = [];
+    if (repo && PZ && PZ.hasSignals(prof) && (prof.lifeEvents.length || !stageMeta)) {
+      pzTopics = PZ.recommend(prof, { kinds: ["topic"], limit: 3 }).items.map(function (x) {
+        return { t: repo.topic(String(x.id).replace(/^topic:/, "")), why: x.why };
+      }).filter(function (x) { return x.t; });
+    }
+    var pzCol = pzTopics.length
+      ? "<div class=\"lv-hm-mystage__col\"><p class=\"lv-hm-eyebrow\">추천 주제</p><ul class=\"lv-hm-mystage__list\">" + pzTopics.map(function (x) {
+          return "<li><a href=\"" + esc(topicHref(x.t)) + "\"><strong>" + esc(x.t.title) + "</strong><small>" + esc(x.why || x.t.category || "") + "</small></a></li>";
+        }).join("") + "</ul></div>"
+      : "";
     if (!stageMeta) {
       host.innerHTML =
         "<div class=\"lv-hm-mystage__card\">" +
           "<div class=\"lv-hm-mystage__head\"><div><p class=\"lv-hm-eyebrow\">MY LIFE STAGE</p>" +
           "<h3>아직 라이프 스테이지를 설정하지 않았어요</h3>" +
           "<p class=\"lv-hm-note\">설정하면 그 단계의 주제와 체크리스트 진행 상황을 이곳에 보여 드립니다. 설정 전에는 개인화하지 않습니다.</p></div></div>" +
-          ((progressHtml || realDataCols("")) ? "<div class=\"lv-hm-mystage__grid\">" + progressHtml + realDataCols("") + "</div>" : "") +
+          ((pzCol || progressHtml || realDataCols("")) ? "<div class=\"lv-hm-mystage__grid\">" + pzCol + progressHtml + realDataCols("") + "</div>" : "") +
           "<div class=\"lv-hm-actions\"><button type=\"button\" class=\"lv-hm-btn\" data-lv-hm-onboard>내 라이프 스테이지 설정하기</button>" +
           "<a class=\"lv-hm-btn lv-hm-btn--ghost\" href=\"#life\">라이프 스테이지 둘러보기</a></div>" +
         "</div>";
@@ -829,6 +850,7 @@
       var st = repo.stage(stageMeta.id);
       var topics = st ? (st.featuredTopicIds || []).map(repo.topic).filter(Boolean) : [];
       topics = byInterest(topics.map(function (t) { return { t: t, title: t.title, category: t.category + " " + (t.communityInterest || ""), tags: [] }; }), getInterests()).map(function (x) { return x.t; }).slice(0, 3);
+      if (pzTopics.length) topics = pzTopics.map(function (x) { return x.t; });
       var seen = {}, services = [];
       topics.forEach(function (t) {
         (t.relatedServiceIds || []).forEach(function (id) {
@@ -837,13 +859,13 @@
         });
       });
       body = "<div class=\"lv-hm-mystage__grid\">" +
-        "<div class=\"lv-hm-mystage__col\"><p class=\"lv-hm-eyebrow\">추천 주제</p>" +
+        (pzCol || "<div class=\"lv-hm-mystage__col\"><p class=\"lv-hm-eyebrow\">추천 주제</p>" +
           (topics.length
             ? "<ul class=\"lv-hm-mystage__list\">" + topics.map(function (t) {
                 return "<li><a href=\"" + esc(topicHref(t)) + "\"><strong>" + esc(t.title) + "</strong><small>" + esc(t.category || "") + "</small></a></li>";
               }).join("") + "</ul>"
             : "<p class=\"lv-hm-note\">이 단계에 등록된 주제가 아직 없습니다.</p>") +
-        "</div>" +
+        "</div>") +
         (progressHtml || "<div class=\"lv-hm-mystage__col\"><p class=\"lv-hm-eyebrow\">진행 중인 체크리스트</p><p class=\"lv-hm-note\">주제 상세에서 체크리스트를 표시하면 진행 상황이 여기에 나타납니다.</p></div>") +
         (services.length
           ? "<div class=\"lv-hm-mystage__col\"><p class=\"lv-hm-eyebrow\">관련 서비스</p><ul class=\"lv-hm-mystage__list\">" + services.map(function (sv) {
@@ -935,8 +957,10 @@
     else renderAll();
   }
 
-  window.LivonHome = { onShow: onShow, search: unifiedSearch, render: renderAll };
+  /* render(): other screens call it after a profile change; before Home has started there is nothing to refresh */
+  window.LivonHome = { onShow: onShow, search: unifiedSearch, render: function () { if (window.LivonBoot && !window.LivonBoot.isStarted("home")) return; renderAll(); } };
 
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  if (window.LivonBoot && typeof window.LivonBoot.view === "function") window.LivonBoot.view("home", init);
+  else if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

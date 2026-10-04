@@ -60,6 +60,16 @@
     "창업": ["스타트업", "사업자", "사업계획"], "커리어": ["이직", "경력", "직무"], "정책": ["지원", "제도", "공고"], "지원": ["정책", "제도", "공고"],
     "이사": ["이삿짐", "입주"], "연금": ["노후"], "취미": ["클래스", "여가", "문화"]
   };
+  /* Content Quality V1: two-way synonyms and everyday phrasings. Kept out of SYN so the suggestion chips stay as they are. */
+  var ALIAS = {
+    "구직": ["취업", "일자리", "채용"], "사업": ["창업", "사업자"], "집": ["주거", "주택"], "양육": ["육아", "보육", "자녀"],
+    "노후": ["은퇴", "연금"], "은퇴": ["노후", "연금"], "재취업": ["취업", "일자리"], "키우기": ["육아", "양육", "보육", "자녀"],
+    "배우고": ["배움", "클래스", "강좌", "평생교육", "학습"], "배우기": ["배움", "클래스", "강좌", "평생교육", "학습"], "배움": ["클래스", "강좌", "평생교육", "학습"],
+    "우울": ["마음", "정신건강"], "스트레스": ["마음", "정신건강"], "치매": ["장기요양", "돌봄", "부모님"], "요양": ["장기요양", "돌봄"],
+    "요리": ["베이킹", "식사"], "청약": ["주택", "주거", "마이홈"]
+  };
+  /* filler words in natural queries ("배우고 싶어", "창업 방법 알려줘") — dropped when another word remains */
+  var FILLER = { "싶어": 1, "싶다": 1, "싶어요": 1, "싶은": 1, "알려줘": 1, "알려주세요": 1, "방법": 1, "어떻게": 1, "하려면": 1, "하고": 1, "좀": 1 };
   var RECOMMENDED = ["독립", "취업", "창업", "주거", "재테크", "건강", "육아", "돌봄", "여행"];
 
   function norm(s) { return String(s == null ? "" : s).toLowerCase().replace(/[\s·・,./()\[\]'"“”‘’!?~\-_:;|+]+/g, ""); }
@@ -90,11 +100,15 @@
   var index = null, indexWithLife = false;
   function build() {
     var r = repo(), out = [];
+    /* lists served by the LIVON Data Platform (visible rows only: no expired / unsourced / sample / draft rows); files as fallback */
+    var SD = window.LivonScreenData;
     var T = window.LivonTodayData || { contents: [] }, E = window.LivonExploreData || { items: [] };
+    if (SD) { T = Object.assign({}, T, { contents: SD.todayContents() }); E = Object.assign({}, E, { items: SD.exploreItems() }); }
+    var TOPICS = r ? (SD ? SD.topics() : r.data.topics) : [], SERVICES = r ? (SD ? SD.serviceTypes() : r.data.serviceTypes) : [], POLICIES = r ? (SD ? SD.policies() : r.data.policies) : [];
     var stageOfTopic = {}, stageLabel = {};
     if (r) {
       r.data.stages.forEach(function (s) { stageLabel[s.id] = s.label; });
-      r.data.topics.forEach(function (t) {
+      TOPICS.forEach(function (t) {
         stageOfTopic[t.id] = t.lifeStageId;
         var href = "#life/" + t.stageSlug + "/" + t.slug;
         out.push(entry({
@@ -105,7 +119,7 @@
           save: { type: "topic", id: t.id, title: t.title, href: href, stage: t.lifeStageId }
         }));
       });
-      r.data.serviceTypes.forEach(function (s) {
+      SERVICES.forEach(function (s) {
         var href = "#life/services/" + s.id;
         out.push(entry({
           key: "svc:" + s.id, type: "service", typeLabel: "서비스 유형", title: s.name, desc: s.description, category: s.group, tags: [s.group],
@@ -113,10 +127,10 @@
           save: { type: "service", id: s.id, title: s.name, href: href, stage: "" }
         }));
       });
-      r.data.policies.forEach(function (p) {
+      POLICIES.forEach(function (p) {
         var url = safeHttp(p.sourceUrl); if (!url) return;
         out.push(entry({
-          key: "pol:" + p.id, type: "policy", typeLabel: "공식 포털", official: true, title: p.name, desc: p.target, category: p.provider, tags: [p.provider],
+          key: "pol:" + p.id, type: "policy", typeLabel: "공식 포털", official: true, title: p.name, desc: p.summary || p.target, category: p.provider, tags: [p.provider],
           meta: "공식 포털 · " + p.provider, href: url, external: true, stageIds: [], date: p.checkedAt || "",
           save: { type: "policy", id: p.id, title: p.name + " · " + p.provider, href: "#ex-results?q=" + encodeURIComponent(p.provider), stage: "" }
         }));
@@ -126,7 +140,7 @@
       var type = c.type === "place" ? "place" : (c.type === "learn" || c.type === "experience") ? "class" : c.type === "event" ? "event" : "content";
       var ref = "td:" + c.id, stages = [];
       (c.lifeTopicIds || []).forEach(function (id) { if (stageOfTopic[id]) stages.push(stageOfTopic[id]); });
-      if (r) r.data.topics.forEach(function (t) { if (t.relatedContentIds.indexOf(ref) >= 0 || t.relatedClassIds.indexOf(ref) >= 0 || t.relatedPlaceIds.indexOf(ref) >= 0) stages.push(t.lifeStageId); });
+      if (r) TOPICS.forEach(function (t) { if (t.relatedContentIds.indexOf(ref) >= 0 || t.relatedClassIds.indexOf(ref) >= 0 || t.relatedPlaceIds.indexOf(ref) >= 0) stages.push(t.lifeStageId); });
       var href = "#today/" + c.id, saveType = type === "place" ? "place" : type === "class" ? "class" : "content";
       out.push(entry({
         key: ref, type: type, typeLabel: type === "event" ? "행사 안내" : "오늘의 발견", title: c.title, desc: c.blurb, category: c.category, tags: c.tags || [],
@@ -148,6 +162,10 @@
         exploreItem: true, save: { type: saveType, id: "ex:" + i.id, title: i.title, href: href, stage: "" }
       }));
     });
+    /* Life Events (Data Platform) — searchable with their own type label; they open the Life Event guide */
+    if (SD && typeof SD.lifeEventSearchEntries === "function") {
+      try { SD.lifeEventSearchEntries().forEach(function (x) { out.push(entry(x)); }); } catch (err) {}
+    }
     /* Real Data Layer: entities from external providers only (LIVON's own data is indexed above).
        No active provider → nothing is added and the existing results/empty states stay as they are. */
     var RD = window.LivonData;
@@ -212,12 +230,42 @@
     for (var i = 0; i < tokens.length; i++) {
       var tok = tokens[i], best = tokenScore(item, tok);
       if (!best) (SYN[tok] || []).forEach(function (syn) { best = Math.max(best, synScore(item, norm(syn))); });
+      /* everyday aliases rank below any direct match of the word itself (title 12 · category 8 < description 14) */
+      if (!best) (ALIAS[tok] || []).forEach(function (syn) { best = Math.max(best, synScore(item, norm(syn)) * 0.4); });
       if (!best) return 0;
       total += best;
     }
     return total;
   }
-  function tokensOf(q) { return uniq(String(q || "").trim().split(/\s+/).map(norm).filter(Boolean)); }
+  /* ───────── debug explanation (local Data Manager only; reuses the same scoring functions, changes nothing) ───────── */
+  var DIRECT_LABEL = { 120: "title = word", 80: "title starts with word", 55: "a title word starts with word", 35: "title contains word",
+    130: "title = word + category/tag", 90: "title starts with word + category/tag", 65: "title word + category/tag", 45: "title contains word + category/tag",
+    30: "a category/tag word starts with word", 15: "category/tag contains word", 14: "a description word starts with word", 8: "description contains word", 5: "related text (guide/checklist)" };
+  function explainItem(item, tokens) {
+    return tokens.map(function (tok) {
+      var d = tokenScore(item, tok);
+      if (d) return { token: tok, kind: "direct", score: d, field: DIRECT_LABEL[d] || "direct" };
+      var best = 0, via = "";
+      (SYN[tok] || []).forEach(function (syn) { var v = synScore(item, norm(syn)); if (v > best) { best = v; via = syn; } });
+      if (best) return { token: tok, kind: "synonym", score: best, field: (best === 30 ? "title" : "category/tag") + " word starts with synonym “" + via + "”" };
+      (ALIAS[tok] || []).forEach(function (syn) { var v = synScore(item, norm(syn)) * 0.4; if (v > best) { best = v; via = syn; } });
+      if (best) return { token: tok, kind: "alias", score: best, field: (best === 12 ? "title" : "category/tag") + " word starts with alias “" + via + "” (ranks below direct matches)" };
+      return { token: tok, kind: "none", score: 0, field: "" };
+    });
+  }
+  function explain(q, f) {
+    var tokens = tokensOf(q), r = search(q, f);
+    return { query: String(q || ""), tokens: tokens, dropped: uniq(String(q || "").trim().split(/\s+/).map(norm).filter(Boolean)).filter(function (t) { return tokens.indexOf(t) < 0; }),
+      total: r.total, items: r.items.map(function (h, i) {
+        var parts = h.via ? [{ token: "", kind: "related", score: h.score, field: "linked from “" + h.via + "” (a strong match)" }] : explainItem(h.item, tokens);
+        return { rank: i + 1, key: h.item.key, title: h.item.title, type: h.item.type, typeLabel: h.item.typeLabel, score: h.score, parts: parts };
+      }) };
+  }
+  function tokensOf(q) {
+    var toks = uniq(String(q || "").trim().split(/\s+/).map(norm).filter(Boolean));
+    var kept = toks.filter(function (t) { return !FILLER[t]; });
+    return kept.length ? kept : toks;
+  }
   function stageFromQuery(q) { var m = /([1-7]0)\s*(대|s)/.exec(String(q || "")); return m ? m[1] : ""; }
 
   function passes(item, f, skipType) {
@@ -300,7 +348,7 @@
 
   window.LivonSearch = {
     TYPES: TYPES, CATS: CATS, EXCAT: EXCAT, LEGACY_TYPE: LEGACY_TYPE, RECOMMENDED: RECOMMENDED,
-    search: search, suggest: suggest, index: getIndex, rebuild: function () { index = null; suggestPool = null; return getIndex(); },
+    search: search, suggest: suggest, index: getIndex, explain: explain, rebuild: function () { index = null; suggestPool = null; return getIndex(); },
     /* community posts are not part of the cached index; only the suggestion pool may hold their titles */
     invalidate: function () { suggestPool = null; },
     lifeStatus: lifeStatus, norm: norm, typeLabel: function (id) { var t = TYPES.find(function (x) { return x.id === id; }); return t ? t.label : id; },

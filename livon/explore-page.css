@@ -342,7 +342,7 @@ html[data-lv-view="explore"] main > #explore {
 #explore .lv-ex-recent {
   margin: 0.35rem 0 0;
   font-size: 0.8125rem;
-  color: #888;
+  color: #737373;
 }
 #explore .lv-ex-recent button {
   border: 0;
@@ -501,7 +501,7 @@ html[data-lv-view="explore"] main > #explore {
 /* Stage rail */
 #explore .lv-ex-stages {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 11.5rem), 1fr));
   gap: 0.85rem;
 }
 #explore .lv-ex-stage {
@@ -931,7 +931,7 @@ html[data-lv-view="explore"] main > #explore {
 #explore .lv-ex-text-btn {
   border: 0;
   background: none;
-  color: #777;
+  color: #737373;
   text-decoration: underline;
   cursor: pointer;
   font: inherit;
@@ -1228,7 +1228,7 @@ html[data-lv-view="explore"] main > #explore {
 }
 #explore .lv-ex-detail__main h3:first-child { margin-top: 0; }
 #explore .lv-ex-detail__main p { margin: 0; color: #444; line-height: 1.7; }
-#explore .lv-ex-detail__main em { color: #777; font-style: normal; font-size: 0.9em; }
+#explore .lv-ex-detail__main em { color: #737373; font-style: normal; font-size: 0.9em; }
 #explore .lv-ex-detail__side {
   padding: 1.15rem;
   border: 1px solid #e8e8e8;
@@ -1292,7 +1292,7 @@ html[data-lv-view="explore"] main > #explore {
   min-height: 44px; padding: 0.5rem 1rem; cursor: pointer; font-size: 0.95rem; color: #0a0a0a;
 }
 #explore .lv-ex-ac li span { min-width: 0; overflow-wrap: anywhere; }
-#explore .lv-ex-ac li small { flex: 0 0 auto; font-size: 0.72rem; color: #888; letter-spacing: 0.04em; }
+#explore .lv-ex-ac li small { flex: 0 0 auto; font-size: 0.72rem; color: #737373; letter-spacing: 0.04em; }
 #explore .lv-ex-ac li:hover,
 #explore .lv-ex-ac li[aria-selected="true"] { background: #0a0a0a; color: #fff; }
 #explore .lv-ex-ac li[aria-selected="true"] small,
@@ -1305,7 +1305,7 @@ html[data-lv-view="explore"] main > #explore {
 #explore .lv-ex-recent__label { margin-right: 0.25rem; }
 #explore .lv-ex-rchip { display: inline-flex; align-items: center; border: 1px solid #e2e2e2; border-radius: 999px; background: #fff; }
 #explore .lv-ex-rchip button { min-height: 44px; padding: 0 0.35rem 0 0.8rem; }
-#explore .lv-ex-rchip .lv-ex-rchip__del { min-width: 44px; padding: 0 0.6rem; color: #777; font-size: 1rem; }
+#explore .lv-ex-rchip .lv-ex-rchip__del { min-width: 44px; padding: 0 0.6rem; color: #737373; font-size: 1rem; }
 #explore .lv-ex-rchip .lv-ex-rchip__del:hover { color: #0a0a0a; }
 #explore .lv-ex-text-btn { min-height: 44px; }
 
@@ -1381,3 +1381,4 @@ html[data-lv-view="explore"] main > #explore {
 #explore .lv-ex-search__box > .lv-ex-search__go { flex: 0 0 auto; }
 /* Only one clear control: hide the browser's own search cancel button next to the existing × */
 #explore .lv-ex-search__input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; display: none; }
+#explore #lv-ex-detail-title:focus { outline: none; }

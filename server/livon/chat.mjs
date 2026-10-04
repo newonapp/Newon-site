@@ -175,8 +175,12 @@ export async function generateReply(input, { env = process.env, fetcher = fetch,
       if ([401, 403].includes(response.status)) throw new ChatError(503, 'AI_AUTH_ERROR');
       throw new ChatError(502, 'UPSTREAM_ERROR');
     }
-    const data = await response.json();
-    const text = (data.output || []).filter(item => item.type === 'message').flatMap(item => item.content || []).map(c => c.type === 'output_text' ? c.text : c.type === 'refusal' ? c.refusal : '').join('');
+    /* safe parsing: a non-JSON body or an unexpected shape is an invalid model response, not a network error */
+    let data;
+    try { data = await response.json(); } catch { throw new ChatError(502, 'INVALID_AI_RESPONSE'); }
+    const output = data && Array.isArray(data.output) ? data.output : [];
+    const text = output.filter(item => item && item.type === 'message' && Array.isArray(item.content)).flatMap(item => item.content)
+      .map(c => c && c.type === 'output_text' && typeof c.text === 'string' ? c.text : c && c.type === 'refusal' && typeof c.refusal === 'string' ? c.refusal : '').join('');
     if (!text || !['completed', 'incomplete'].includes(data.status)) throw new ChatError(502, 'INVALID_AI_RESPONSE');
     return { success: true, message: text, truncated: data.status === 'incomplete' };
   } catch (error) {

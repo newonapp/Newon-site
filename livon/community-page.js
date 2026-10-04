@@ -1,7 +1,8 @@
 /*
  * LIVON Community V1 — local-first.
  *
- *   UI (this file)  ↕  Repo (window.LivonCommunityRepo)  ↕  localStorage "livon.cmStore.v1"
+ *   UI (this file) → Repo (window.LivonCommunityRepo) → LivonCommunityService → Community Adapter → Local Adapter
+ *   (community-service.js holds the model, the rules and the adapters; a future Remote Adapter replaces the local one)
  *
  * Only posts / comments / reactions / reports written on this device exist. No sample posts,
  * users, counts or popularity are generated. When a Newon+ account and Community API exist,
@@ -10,7 +11,15 @@
  */
 (function () {
   var DATA = window.LivonCommunityData || { communities: [], challenges: [], typeLabels: {}, questionFields: [], interests: [], regions: [], rules: [] };
-  var STORE_KEY = "livon.cmStore.v1";
+  var SVC = window.LivonCommunityService;
+  if (!SVC) return;   /* community-service.js (model · rules · adapters) is required */
+  var STORE_KEY = SVC.STORE_KEY;
+  /* a card photo drawn as a background: fetched near the viewport when the media loader is present */
+  function bgPhoto(url) {
+    if (!url) return ' style="background-image:url()"';
+    var M = window.LivonMedia;
+    return M && M.bgAttr ? M.bgAttr(url, esc) : ' style="background-image:url(' + esc(url) + ')"';
+  }
   var KEY_LEGACY_JOINED = "livon.cmJoined";
   var KEY_LEGACY_INTERESTS = "livon.cmInterests";
   var KEY_ML = "livon.mlStore.v1";
@@ -18,8 +27,8 @@
   var KEY_LIFE_INTERESTS = "livon.lifeInterests";
   var KEY_TD_PREFS = "livon.tdPrefs";
   var KEY_FEED_SCROLL = "livon.cmFeedScroll";
-  var STORE_VERSION = 2;
-  var LIMITS = { title: 80, body: 5000, tags: 8, tag: 20, comment: 1000 };
+  var STORE_VERSION = SVC.STORE_VERSION;
+  var LIMITS = SVC.LIMITS;
   var PAGE = 10;
   var SITE_ORIGIN = "https://www.newon.app";
   var STAGES = [
@@ -28,8 +37,8 @@
     { id: "70", slug: "70s", label: "70대 이상" }
   ];
   /* compose types (existing typeLabels, "모임 관련" is kept only for old posts) */
-  var COMPOSE_TYPES = ["question", "experience", "info", "review", "tip", "story"];
-  var REPORT_REASONS = ["스팸·광고", "욕설·혐오 표현", "개인정보 노출", "허위·위험한 정보", "기타"];
+  var COMPOSE_TYPES = SVC.TYPES;
+  var REPORT_REASONS = SVC.REPORT_REASONS;
   var TABS = [{ id: "foryou", label: "For You" }, { id: "latest", label: "최신" }, { id: "following", label: "팔로잉" }];
   /* legacy post.field / communityId → shared category id (one-time migration only) */
   var FIELD_CAT = {
@@ -43,7 +52,7 @@
   };
 
   var state = {
-    tab: "latest", cat: "", type: "", stage: "", q: "", shown: PAGE,
+    tab: "latest", cat: "", type: "", stage: "", event: "", q: "", shown: PAGE, why: {},
     detailId: "", editingId: null, composeType: "story", dirty: false,
     lastFeedHash: "#cm-home", modalOpener: null, replyTo: "", editCommentId: ""
   };
@@ -127,43 +136,25 @@
   }
 
   /* ───────── Store + migration ───────── */
-  function emptyStore() {
-    return {
-      v: STORE_VERSION,
-      profile: { nick: "나", bio: "", interests: [] },
-      posts: [], comments: [], likes: {}, commentLikes: {}, saves: [], joined: [],
-      challenges: {}, blocked: [], reports: [], drafts: [], region: ""
-    };
-  }
+  function emptyStore() { return SVC.emptyStore(); }
+  /* the store always comes from the Community Adapter, already checked and repaired (see normalizeStore) */
   function loadStore() {
-    var raw = readJSON(STORE_KEY, null);
-    var store = raw && typeof raw === "object" ? raw : null;
-    if (!store) {
-      store = emptyStore();
+    var res = SVC.adapter().loadStore(), store = res.store;
+    if (!res.existed) {
       var legacyJoined = readJSON(KEY_LEGACY_JOINED, []);
       var legacyInt = readJSON(KEY_LEGACY_INTERESTS, []);
       if (Array.isArray(legacyJoined) && legacyJoined.length) {
-        store.joined = legacyJoined.map(function (x) {
+        store.joined = legacyJoined.filter(function (x) { return typeof x === "string" || (x && typeof x.id === "string"); }).map(function (x) {
           return typeof x === "string" ? { id: x, at: Date.now() } : { id: x.id, at: x.at || Date.now(), label: x.label || "" };
         });
       }
       if (Array.isArray(legacyInt)) store.profile.interests = legacyInt.slice(0, 20);
     }
-    store.posts = Array.isArray(store.posts) ? store.posts : [];
-    store.comments = Array.isArray(store.comments) ? store.comments : [];
-    store.likes = store.likes && typeof store.likes === "object" ? store.likes : {};
-    store.commentLikes = store.commentLikes && typeof store.commentLikes === "object" ? store.commentLikes : {};
-    store.saves = Array.isArray(store.saves) ? store.saves : [];
-    store.joined = Array.isArray(store.joined) ? store.joined : [];
-    store.challenges = store.challenges && typeof store.challenges === "object" ? store.challenges : {};
-    store.blocked = Array.isArray(store.blocked) ? store.blocked : [];
-    store.reports = Array.isArray(store.reports) ? store.reports : [];
-    store.profile = store.profile && typeof store.profile === "object" ? store.profile : { nick: "나", bio: "", interests: [] };
-    if (migrate(store) || !raw) saveStore(store);
+    if (migrate(store) || !res.existed) saveStore(store);
     return store;
   }
   function saveStore(store) {
-    var ok = writeJSON(STORE_KEY, store);
+    var ok = SVC.adapter().saveStore(store);
     if (!ok) announce("이 기기의 저장 공간이 부족해 저장하지 못했습니다. 이미지가 큰 글을 정리해 주세요.");
     return ok;
   }
@@ -208,26 +199,9 @@
   }
   /* Searchable elsewhere (Explore / Life Stage / Today): public only — never drafts, private or members-only */
   function isSearchable(p) { return !!p && !p.deleted && !p.draft && p.id && p.title && (!p.visibility || p.visibility === "public"); }
-  function validatePost(input) {
-    var title = String(input.title || "").trim(), body = String(input.body || "").trim();
-    /* a draft only needs something to keep; publishing needs title + body + category */
-    if (input.draft && !title && !body) return { field: "title", msg: "임시 저장할 제목이나 본문을 입력해 주세요." };
-    if (!title && !input.draft) return { field: "title", msg: "제목을 입력해 주세요." };
-    if (title.length > LIMITS.title) return { field: "title", msg: "제목은 " + LIMITS.title + "자 이하로 입력해 주세요." };
-    if (!body && !input.draft) return { field: "body", msg: "본문을 입력해 주세요." };
-    if (body.length > LIMITS.body) return { field: "body", msg: "본문은 " + LIMITS.body + "자 이하로 입력해 주세요." };
-    if (!input.draft && !input.category) return { field: "category", msg: "분야를 선택해 주세요." };
-    var tags = parseTags(input.tags);
-    if (tags.error) return { field: "tags", msg: tags.error };
-    return null;
-  }
-  function parseTags(v) {
-    var list = Array.isArray(v) ? v : String(v || "").split(",");
-    list = uniq(list.map(function (t) { return String(t || "").replace(/^#/, "").trim(); }).filter(Boolean));
-    if (list.length > LIMITS.tags) return { error: "태그는 " + LIMITS.tags + "개까지 입력할 수 있어요." };
-    if (list.some(function (t) { return t.length > LIMITS.tag; })) return { error: "태그 하나는 " + LIMITS.tag + "자 이하로 입력해 주세요." };
-    return { list: list };
-  }
+  function validatePost(input) { return SVC.validatePost(input); }
+  function parseTags(v) { return SVC.parseTags(v); }
+  function labelsOf(p) { return { type: typeLabel(p.type), category: catLabel(p.category) }; }
   function saveId(postId) { return "life-hub:community:cm:" + postId; }
   function saveItemOf(p) {
     return {
@@ -254,7 +228,8 @@
       var post = {
         id: uid("post"), type: COMPOSE_TYPES.indexOf(input.type) >= 0 || input.type === "meetup" ? input.type : "story",
         title: String(input.title).trim(), body: String(input.body).trim(), tags: parseTags(input.tags).list,
-        category: input.category || "", lifeStage: stageById(input.lifeStage) ? String(input.lifeStage) : "",
+        category: input.category || (input.draft ? "" : "etc"), lifeStage: stageById(input.lifeStage) ? String(input.lifeStage) : "",
+        lifeEvent: SVC.validEvent(input.lifeEvent),
         lifeTopicId: input.lifeTopicId && topicHref(input.lifeTopicId) ? input.lifeTopicId : "",
         field: "", communityId: input.communityId || "", region: input.region || "",
         visibility: ["public", "members", "private"].indexOf(input.visibility) >= 0 ? input.visibility : "public",
@@ -272,12 +247,13 @@
       var store = loadStore();
       var post = store.posts.find(function (p) { return p.id === id && !p.deleted; });
       if (!post) return { status: "missing" };
-      if (post.authorId !== "local") return { status: "forbidden" };
+      if (!SVC.canEdit(post)) return { status: "forbidden" };   /* only LOCAL records can be changed */
       post.title = String(input.title).trim();
       post.body = String(input.body).trim();
       post.tags = parseTags(input.tags).list;
       if (input.type) post.type = input.type;
-      post.category = input.category || post.category || "";
+      post.category = input.category || post.category || (input.draft ? "" : "etc");
+      post.lifeEvent = SVC.validEvent(input.lifeEvent);
       post.lifeStage = stageById(input.lifeStage) ? String(input.lifeStage) : "";
       post.lifeTopicId = input.lifeTopicId && topicHref(input.lifeTopicId) ? input.lifeTopicId : "";
       if ("communityId" in input) post.communityId = input.communityId || "";
@@ -301,7 +277,7 @@
       var store = loadStore();
       var post = store.posts.find(function (p) { return p.id === id; });
       if (!post) return { status: "missing" };
-      if (post.authorId !== "local") return { status: "forbidden" };
+      if (!SVC.canEdit(post)) return { status: "forbidden" };   /* only LOCAL records can be changed */
       var cids = store.comments.filter(function (c) { return c.postId === id; }).map(function (c) { return c.id; });
       store.posts = store.posts.filter(function (p) { return p.id !== id; });
       store.comments = store.comments.filter(function (c) { return c.postId !== id; });
@@ -368,23 +344,63 @@
     /* one local person → a reaction is on/off, never a number */
     toggleReaction: function (postId) {
       var store = loadStore();
+      /* a reaction to a post that no longer exists would be a dangling record */
+      if (!store.likes[postId] && !store.posts.some(function (p) { return p.id === postId && !p.deleted; })) return false;
       if (store.likes[postId]) delete store.likes[postId]; else store.likes[postId] = Date.now();
       saveStore(store);
       return !!store.likes[postId];
     },
     reacted: function (store, postId) { return !!store.likes[postId]; },
+    /* a local record only: nothing is sent to an operator or a server (the adapter says so in report.status) */
     report: function (target, reason) {
-      if (REPORT_REASONS.indexOf(reason) < 0) return { status: "invalid", msg: "신고 사유를 선택해 주세요." };
       var store = loadStore();
-      /* TODO(API): send to the moderation API; until then this is a record on this device only */
-      var r = { id: uid("report"), target: String(target), reason: reason, at: Date.now(), status: "local-only" };
-      store.reports.push(r);
-      saveStore(store);
-      return { status: "ok", report: r };
+      var res = SVC.addReport(store, String(target), reason, uid("report"), Date.now());
+      if (res.status !== "ok") return res;
+      res.report.status = SVC.adapter().submitReport(res.report).status;
+      if (!saveStore(store)) return { status: "error", msg: "신고 기록을 저장하지 못했습니다." };
+      return res;
     },
     reported: function (target) { return loadStore().reports.some(function (r) { return r.target === target; }); },
+    reports: function () { return SVC.reportsView(loadStore()); },
+    activity: function () { return SVC.activity(loadStore()); },
+    follows: function () { return SVC.adapter().follows(); },
+    /* the unsent post being written (autosave). One slot, new posts only; never shown in the feed or in search. */
+    composeDraft: function () {
+      var c = loadStore().compose;
+      return c && (String(c.title || "").trim() || String(c.body || "").trim()) ? c : null;
+    },
+    saveComposeDraft: function (input) {
+      input = input || {};
+      var s = function (v, max) { return String(v == null ? "" : v).slice(0, max); };
+      var store = loadStore();
+      var d = { type: COMPOSE_TYPES.indexOf(input.type) >= 0 ? input.type : "story", title: s(input.title, LIMITS.title), body: s(input.body, LIMITS.body), tags: s(input.tags, 400),
+        category: s(input.category, 40), lifeStage: stageById(input.lifeStage) ? String(input.lifeStage) : "", lifeEvent: SVC.validEvent(input.lifeEvent),
+        lifeTopicId: input.lifeTopicId && topicHref(input.lifeTopicId) ? input.lifeTopicId : "", visibility: ["public", "members", "private"].indexOf(input.visibility) >= 0 ? input.visibility : "public",
+        communityId: s(input.communityId, 40), region: s(input.region, 40), at: Date.now() };
+      store.compose = d.title.trim() || d.body.trim() ? d : null;
+      return SVC.adapter().saveStore(store) ? { status: "ok", draft: store.compose } : { status: "error" };
+    },
+    clearComposeDraft: function () {
+      var store = loadStore();
+      if (!store.compose) return false;
+      store.compose = null;
+      SVC.adapter().saveStore(store);
+      return true;
+    },
+    /* clears what the community wrote on this device (posts, comments, reactions, reports, joins, the display name).
+       The onboarding profile (Life Stage · interests · Life Events), My Life and other saves are not community data. */
+    resetLocal: function () {
+      var store = loadStore(), P = window.LivonPlatform;
+      var n = { posts: store.posts.length, comments: store.comments.length, reports: store.reports.length };
+      if (P && P.removeSave) store.posts.forEach(function (p) { P.removeSave(saveId(p.id)); });
+      if (!saveStore(emptyStore())) return { status: "error" };
+      writeJSON(KEY_LEGACY_JOINED, []);
+      invalidateSearch();
+      return { status: "ok", removed: n };
+    },
     isSaved: function (postId) {
       var P = window.LivonPlatform;
+      if (P && P.hasSave) return P.hasSave(saveId(postId));
       return !!(P && P.listSaves && P.listSaves("all").some(function (s) { return s.id === saveId(postId); }));
     },
     savedPosts: function () {
@@ -398,42 +414,38 @@
   };
 
   /* ───────── Feed ───────── */
+  /* signals come from the onboarding profile (LivonPersonalization). The community keeps no profile of its own. */
   function userSignals(store) {
-    var stage = readJSON(KEY_STAGE, "");
-    var life = readJSON(KEY_LIFE_INTERESTS, []);
+    var PZ = window.LivonPersonalization, prof = PZ && typeof PZ.getProfile === "function" ? PZ.getProfile() : null;
+    var stage = prof ? prof.lifeStage : readJSON(KEY_STAGE, "");
+    var life = prof ? prof.interests : readJSON(KEY_LIFE_INTERESTS, []);
+    var events = prof ? prof.lifeEvents : readJSON("livon.lifeEvents", []);
     var td = readJSON(KEY_TD_PREFS, null);
     var interests = uniq([].concat(Array.isArray(life) ? life : [], td && Array.isArray(td.interests) ? td.interests : []));
     var cats = {};
-    interests.forEach(function (i) { catsOfText(i).forEach(function (c) { cats[c] = 1; }); });
+    interests.forEach(function (i) { catsOfText(i).forEach(function (c) { if (!cats[c]) cats[c] = i; }); });
     var joinedCats = {};
     store.joined.forEach(function (j) { if (COMM_CAT[j.id]) joinedCats[COMM_CAT[j.id]] = 1; });
-    return { stage: typeof stage === "string" && /^[1-7]0$/.test(stage) ? stage : "", interests: interests, cats: cats, joinedCats: joinedCats };
+    events = (Array.isArray(events) ? events : []).filter(function (x) { return typeof x === "string"; });
+    return { stage: SVC.validStage(stage), interests: interests, events: events, cats: cats, joinedCats: joinedCats };
   }
-  function forYouScore(p, sig) {
-    var s = 0;
-    if (sig.stage && p.lifeStage === sig.stage) s += 3;
-    if (p.category && sig.cats[p.category]) s += 2;
-    if (p.category && sig.joinedCats[p.category]) s += 1;
-    var blob = [p.title, (p.tags || []).join(" ")].join(" ");
-    if (sig.interests.some(function (i) { return i && blob.indexOf(i) >= 0; })) s += 1;
-    return s;
-  }
-  function matchesQuery(p, q) {
-    if (!q) return true;
-    var hay = [p.title, p.body, (p.tags || []).join(" "), catLabel(p.category), typeLabel(p.type), p.field, p.region].join(" ").toLowerCase();
-    return q.toLowerCase().split(/\s+/).filter(Boolean).every(function (t) { return hay.indexOf(t) >= 0; });
-  }
+  function hasSignals(sig) { return !!(sig.stage || sig.interests.length || sig.events.length); }
+  function forYou(p, sig) { return SVC.forYou(p, sig, labelsOf(p)); }
+  function forYouScore(p, sig) { return forYou(p, sig).score; }
+  function matchesQuery(p, q) { return SVC.matchesQuery(p, q, labelsOf(p)); }
   function filterFeed(store) {
     store = store || loadStore();
-    if (state.tab === "following") return []; /* no other user identities exist yet */
+    state.why = {};
+    if (state.tab === "following") return []; /* following needs other people's accounts (see adapter.follows) */
     var q = String(state.q || "").trim();
     var list = store.posts.filter(function (p) { return isVisible(p, store); }).filter(function (p) {
-      return (!state.cat || p.category === state.cat) && (!state.type || p.type === state.type) && (!state.stage || p.lifeStage === state.stage) && matchesQuery(p, q);
+      return (!state.cat || p.category === state.cat) && (!state.type || p.type === state.type) && (!state.stage || p.lifeStage === state.stage) &&
+        (!state.event || p.lifeEvent === state.event) && matchesQuery(p, q);
     });
     var byDate = function (a, b) { return (b.createdAt || 0) - (a.createdAt || 0); };
     if (state.tab === "foryou") {
       var sig = userSignals(store);
-      return list.map(function (p) { return { p: p, s: forYouScore(p, sig) }; })
+      return list.map(function (p) { var f = forYou(p, sig); if (f.why) state.why[p.id] = f.why; return { p: p, s: f.score }; })
         .sort(function (a, b) { return b.s - a.s || byDate(a.p, b.p); }).map(function (x) { return x.p; });
     }
     return list.slice().sort(byDate);
@@ -443,7 +455,7 @@
     var p = [];
     function add(k, v) { if (v) p.push(k + "=" + encodeURIComponent(v)); }
     if (state.tab !== "latest") add("tab", state.tab);
-    add("cat", state.cat); add("type", state.type); add("stage", state.stage); add("q", state.q);
+    add("cat", state.cat); add("type", state.type); add("stage", state.stage); add("event", state.event); add("q", state.q);
     return "#cm-home" + (p.length ? "?" + p.join("&") : "");
   }
   function parseHash(hash) {
@@ -464,6 +476,7 @@
     state.cat = categories().some(function (c) { return c.id === p.cat; }) ? p.cat : "";
     state.type = DATA.typeLabels && DATA.typeLabels[p.type] ? p.type : "";
     state.stage = stageById(p.stage) ? p.stage : "";
+    state.event = SVC.validEvent(p.event);
     state.q = String(p.q || "").slice(0, 80);
     state.shown = PAGE;
   }
@@ -497,9 +510,16 @@
         '<label class="lv-cm-field lv-cm-field--inline"><span>라이프 스테이지</span><select data-lv-cm-stage-filter><option value="">모든 연령대</option>' +
           STAGES.map(function (s) { return '<option value="' + s.id + '"' + (state.stage === s.id ? " selected" : "") + ">" + esc(s.label) + "</option>"; }).join("") +
         "</select></label>" +
+        '<label class="lv-cm-field lv-cm-field--inline"><span>Life Event</span><select data-lv-cm-event-filter><option value="">모든 Life Event</option>' + eventOptions(state.stage, state.event) + "</select></label>" +
       "</div>";
   }
 
+  /* Life Events of the chosen band (or the whole catalog); a selected event outside the band stays listed */
+  function eventOptions(stageId, selected) {
+    var list = SVC.eventsForStage(stageId), sel = SVC.eventById(selected);
+    if (sel && list.indexOf(sel) < 0) list = list.concat([sel]);
+    return list.map(function (e) { return '<option value="' + esc(e.id) + '"' + (e.id === selected ? " selected" : "") + ">" + esc(e.title) + "</option>"; }).join("");
+  }
   function cardHtml(p, store) {
     var comm = findCommunity(p.communityId);
     var comments = Repo.commentCount(store, p.id);
@@ -508,20 +528,22 @@
     var preview = String(p.body || "").slice(0, 140);
     var stage = stageById(p.lifeStage);
     var answered = p.type === "question" ? (p.resolved ? "해결됨" : (comments ? "댓글 " + comments : "답변 대기")) : "";
-    var href = "#cm-post-" + p.id;
+    var href = "#cm-post-" + esc(p.id);
     return '<article class="lv-cm-card lv-cm-card--' + esc(p.type) + (p.image ? " has-image" : "") + '" aria-labelledby="lv-cm-t-' + esc(p.id) + '">' +
-      (p.image ? '<a class="lv-cm-card__media" href="' + href + '" data-lv-cm-go tabindex="-1" aria-hidden="true"><img src="' + esc(p.image) + '" alt="" loading="lazy" /></a>' : "") +
+      (p.image ? '<a class="lv-cm-card__media" href="' + href + '" data-lv-cm-go tabindex="-1" aria-hidden="true"><img src="' + esc(p.image) + '" alt="" decoding="async" loading="lazy" /></a>' : "") +
       '<div class="lv-cm-card__body">' +
         '<div class="lv-cm-card__meta">' +
           '<span class="lv-cm-badge">' + esc(typeLabel(p.type)) + "</span>" +
           (catLabel(p.category) ? "<span>" + esc(catLabel(p.category)) + "</span>" : "") +
           (stage ? "<span>" + esc(stage.label) + "</span>" : "") +
+          (SVC.eventById(p.lifeEvent) ? "<span>" + esc(SVC.eventById(p.lifeEvent).title) + "</span>" : "") +
           (comm ? "<span>" + esc(comm.name) + "</span>" : "") +
           (p.createdAt ? "<span>" + esc(fmtDate(p.createdAt)) + "</span>" : "") +
           (answered ? "<span>" + esc(answered) + "</span>" : "") +
           (p.visibility === "private" ? "<span>비공개</span>" : p.visibility === "members" ? "<span>가입 커뮤니티 공개</span>" : "") +
         "</div>" +
         '<p class="lv-cm-card__author">' + esc(p.authorNick || "나") + "</p>" +
+        (state.tab === "foryou" && state.why[p.id] ? '<p class="lv-cm-card__why">' + esc(state.why[p.id]) + "</p>" : "") +
         '<h3 id="lv-cm-t-' + esc(p.id) + '"><a href="' + href + '" data-lv-cm-go>' + esc(p.title) + "</a></h3>" +
         '<p class="lv-cm-card__preview">' + esc(preview) + (String(p.body || "").length > 140 ? "…" : "") + "</p>" +
         ((p.tags || []).length ? '<p class="lv-cm-card__tags">' + (p.tags || []).map(function (t) { return "#" + esc(t); }).join(" ") + "</p>" : "") +
@@ -537,6 +559,8 @@
       '" data-lh-stage="' + esc(p.lifeStage || "") + '" data-lh-label="저장" aria-pressed="' + saved + '" aria-label="' + esc(p.title) + ' 저장">' + (saved ? "저장됨" : "저장") + "</button>";
   }
 
+  /* contextual help link (Help Center). Empty when Help is not loaded. */
+  function helpLink(id, label) { return window.LivonHelp && typeof window.LivonHelp.link === "function" ? window.LivonHelp.link(id, label) : ""; }
   function emptyHtml(title, body, acts) {
     return '<div class="lv-cm-empty"><h3>' + esc(title) + "</h3>" + (body ? "<p>" + esc(body) + "</p>" : "") + (acts ? '<div class="lv-cm-actions">' + acts + "</div>" : "") + "</div>";
   }
@@ -551,19 +575,20 @@
     renderFilters();
     var store = loadStore();
     var list = filterFeed(store);
-    var filtered = !!(state.q || state.cat || state.type || state.stage);
+    var filtered = !!(state.q || state.cat || state.type || state.stage || state.event);
     if (meta) {
       if (filtered && state.tab !== "following") {
         meta.hidden = false;
-        meta.innerHTML = "<p>" + (state.q ? "‘" + esc(state.q) + "’ · " : "") + [catLabel(state.cat), typeLabel(state.type), (stageById(state.stage) || {}).label].filter(Boolean).map(esc).join(" · ") +
-          (state.q || state.cat || state.type || state.stage ? " · " : "") + "게시글 " + list.length +
+        meta.innerHTML = "<p>" + [state.q ? "‘" + state.q + "’" : "", catLabel(state.cat), typeLabel(state.type), (stageById(state.stage) || {}).label, (SVC.eventById(state.event) || {}).title, "게시글 " + list.length].filter(Boolean).map(esc).join(" · ") +
           ' · <button type="button" class="lv-cm-text-btn" data-lv-cm-reset>필터 초기화</button></p>';
       } else meta.hidden = true;
     }
     var any = store.posts.some(function (p) { return isVisible(p, store); });
     if (state.tab === "following") {
-      host.innerHTML = emptyHtml("아직 팔로우한 사용자가 없습니다.", "다른 사용자 프로필과 팔로우는 준비 중입니다. 지금은 주제별로 글을 둘러볼 수 있어요.",
-        '<a class="lv-cm-btn lv-cm-btn--dark" href="#cm-home?tab=latest">최신 글 보기</a><a class="lv-cm-btn lv-cm-btn--ghost" href="#cm-interests">주제 둘러보기</a>');
+      /* adapter.follows(): { available: false, status: "ACCOUNT_REQUIRED" } — no follow list is simulated */
+      host.innerHTML = emptyHtml("아직 팔로우한 사용자가 없습니다.", "다른 사용자 프로필과 팔로우는 준비 중입니다. 지금은 이 기기에서 쓴 글만 있어 팔로우할 사람이 없어요. 주제별로 글을 둘러볼 수 있어요.",
+        '<a class="lv-cm-btn lv-cm-btn--dark" href="#cm-home?tab=latest">최신 글 보기</a><a class="lv-cm-btn lv-cm-btn--ghost" href="#cm-interests">주제 둘러보기</a>') +
+        (helpLink("community-following") ? '<p class="lv-cm-note lv-cm-note--plain">' + helpLink("community-following", "팔로잉이 왜 비어 있나요?") + "</p>" : "");
       return;
     }
     if (!list.length) {
@@ -575,7 +600,10 @@
       return;
     }
     var sig = state.tab === "foryou" ? userSignals(store) : null;
-    var note = sig && !sig.stage && !sig.interests.length ? '<p class="lv-cm-note lv-cm-note--plain">관심사나 라이프 스테이지를 설정하면 관련 글이 먼저 보입니다. <a href="#ml-interests">관심사 설정</a></p>' : "";
+    var note = !sig ? "" : hasSignals(sig)
+      ? '<p class="lv-cm-note lv-cm-note--plain">내 맞춤 설정(연령대·관심 분야·Life Event)에 맞는 글을 먼저 보여드려요. 이 기기 안에서만 계산해요.</p>'
+      : '<p class="lv-cm-note lv-cm-note--plain">맞춤 설정이 없어 최신순으로 보여드려요. 연령대나 관심 분야를 고르면 관련 글이 먼저 보입니다. ' +
+        (window.LivonOnboarding ? '<button type="button" class="lv-cm-text-btn" data-lv-onboard-edit="stage">맞춤 설정하기</button>' : '<a href="#ml-interests">관심사 설정</a>') + "</p>";
     var shown = list.slice(0, state.shown);
     host.innerHTML = note + '<div class="lv-cm-feed-list">' + shown.map(function (p) { return cardHtml(p, store); }).join("") + "</div>" +
       (list.length > shown.length ? '<p class="lv-cm-more"><button type="button" class="lv-cm-btn lv-cm-btn--outline" data-lv-cm-more>더 보기 <span class="lv-cm-count">(' + shown.length + " / " + list.length + ")</span></button></p>" : "");
@@ -638,7 +666,7 @@
       var joined = isJoined(store, c.id);
       var feed = "#cm-home?" + (COMM_CAT[c.id] ? "cat=" + COMM_CAT[c.id] : "stage=" + String(c.id).slice(6));
       return '<article class="lv-cm-comm">' +
-        '<div class="lv-cm-comm__media" style="background-image:url(' + esc(c.img || "") + ')"></div>' +
+        '<div class="lv-cm-comm__media"' + bgPhoto(c.img) + '></div>' +
         '<div class="lv-cm-comm__body">' +
           '<p class="lv-cm-eyebrow">' + esc(c.interest || c.stage || "") + "</p>" +
           "<h3>" + esc(c.name) + "</h3>" +
@@ -686,16 +714,15 @@
     var host = $("[data-lv-cm-mine]");
     if (!host) return;
     var store = loadStore();
-    var myPosts = store.posts.filter(function (p) { return !p.deleted && !p.draft && p.authorId === "local"; });
-    var drafts = store.posts.filter(function (p) { return !p.deleted && p.draft; });
-    var myComments = store.comments.filter(function (c) { return !c.deleted && c.authorId === "local"; });
+    var act = SVC.activity(store);
     var saved = Repo.savedPosts();
-    var reacted = Object.keys(store.likes).map(function (id) { return store.posts.find(function (p) { return p.id === id && !p.deleted; }); }).filter(Boolean);
     var joined = store.joined.map(function (j) { var c = findCommunity(j.id); return c ? c.name : j.label || ""; }).filter(Boolean);
     var ch = Object.keys(store.challenges).map(function (id) {
       return (DATA.challenges || []).find(function (c) { return c.id === id; });
     }).filter(Boolean);
     var interests = readInterests();
+    var reports = SVC.reportsView(store);
+    var hasAny = store.posts.length || store.comments.length || store.reports.length || store.joined.length || Object.keys(store.likes).length || Object.keys(store.challenges).length;
     function postLink(p) { return '<li><a href="#cm-post-' + esc(p.id) + '">' + esc(p.title) + "</a></li>"; }
     function listBlock(title, items, empty, mapper, extra) {
       return '<div class="lv-cm-mine-block"><h3>' + esc(title) + ' <span class="lv-cm-count">' + items.length + "</span></h3>" +
@@ -704,27 +731,32 @@
     host.innerHTML =
       '<div class="lv-cm-profile-card">' +
         "<h3>" + esc(store.profile.nick || "나") + "</h3>" +
-        "<p>이 기기에서 쓰는 이름입니다. 프로필 사진·팔로워 기능은 준비 중입니다.</p>" +
+        "<p>이 기기에서 쓰는 이름입니다. 계정이 아니며, 프로필 사진·팔로워 기능은 준비 중입니다.</p>" +
         '<form class="lv-cm-inline" data-lv-cm-profile-form><label class="lv-cm-field lv-cm-field--inline"><span>표시 이름</span><input type="text" name="nick" maxlength="20" autocomplete="off" value="' + esc(store.profile.nick || "나") + '" /></label>' +
         '<button type="submit" class="lv-cm-btn lv-cm-btn--outline lv-cm-btn--sm">이름 저장</button></form>' +
         '<p class="lv-cm-note">실명·연락처·주소는 적지 마세요. 새 글부터 이 이름이 표시됩니다.</p>' +
       "</div>" +
+      (hasAny ? "" : '<p class="lv-cm-note lv-cm-note--plain">아직 이 기기에 남긴 커뮤니티 활동이 없습니다. 글을 쓰거나 저장하면 여기에 모입니다.</p>') +
       '<div class="lv-cm-mine-grid">' +
-        listBlock("내가 작성한 글", myPosts, "작성한 글이 없어요.", postLink) +
-        listBlock("임시 저장 글", drafts, "임시 저장한 글이 없어요. 임시 저장 글은 피드·검색에 나오지 않습니다.", function (p) {
+        listBlock("내가 작성한 글", act.posts, "작성한 글이 없어요.", postLink) +
+        listBlock("임시 저장 글", act.drafts, "임시 저장한 글이 없어요. 임시 저장 글은 피드·검색에 나오지 않습니다.", function (p) {
           return '<li><button type="button" class="lv-cm-text-btn" data-lv-cm-edit="' + esc(p.id) + '">' + esc(p.title || "제목 없음") + " · 이어 쓰기</button></li>";
         }) +
         listBlock("저장한 글", saved, "저장한 글이 없어요.", postLink, '<a class="lv-cm-btn lv-cm-btn--outline lv-cm-btn--sm" href="#ml-saved">내 생활 › 저장 전체</a>') +
-        listBlock("공감한 글", reacted, "공감한 글이 없어요.", postLink) +
-        listBlock("내가 작성한 댓글", myComments, "작성한 댓글이 없어요.", function (c) {
+        listBlock("공감한 글", act.reacted, "공감한 글이 없어요.", postLink) +
+        listBlock("내가 작성한 댓글", act.comments, "작성한 댓글이 없어요.", function (c) {
           return '<li><a href="#cm-post-' + esc(c.postId) + '">' + esc((c.body || "").slice(0, 40)) + "</a></li>";
         }) +
         listBlock("관심 주제", interests, "관심사가 없어요.", function (x) { return "<li>" + esc(x) + "</li>"; }, '<a class="lv-cm-btn lv-cm-btn--outline lv-cm-btn--sm" href="#ml-interests">관심사 관리</a>') +
         listBlock("가입한 커뮤니티", joined, "가입한 커뮤니티가 없어요.", function (n) { return "<li>" + esc(n) + "</li>"; }) +
         listBlock("참여 중 챌린지", ch, "챌린지에 참여해 보세요.", function (c) { return "<li>" + esc(c.title) + "</li>"; }) +
         '<div class="lv-cm-mine-block"><h3>팔로우</h3><p class="lv-cm-note">다른 사용자 계정이 연결되지 않아 팔로우·팔로워가 없습니다.</p></div>' +
-        '<div class="lv-cm-mine-block"><h3>신고 기록</h3><p class="lv-cm-note">이 기기에 남긴 신고 ' + store.reports.length + "건 · 서버 신고 시스템은 아직 연결되지 않았습니다.</p></div>" +
-      "</div>";
+        listBlock("신고 기록", reports, "남긴 신고가 없어요.", function (r) {
+          return "<li>" + esc(r.reason) + " · " + esc(r.exists ? (r.kind === "comment" ? "댓글: " : "글: ") + r.title.slice(0, 24) : "삭제된 " + (r.kind === "comment" ? "댓글" : "글")) + " · " + esc(fmtDate(r.at)) + "</li>";
+        }, '<p class="lv-cm-note">신고는 이 기기에만 기록되며 운영자나 서버로 전송되지 않습니다.</p>') +
+      "</div>" +
+      '<div class="lv-cm-mine-reset"><p class="lv-cm-note">커뮤니티 기록(글·댓글·공감·신고·가입·표시 이름)은 이 기기에만 있습니다. 지워도 맞춤 설정과 내 생활의 다른 기록은 그대로 남습니다.' + (helpLink("community-reset") ? " " + helpLink("community-reset", "자세히") : "") + "</p>" +
+        '<button type="button" class="lv-cm-btn lv-cm-btn--ghost lv-cm-btn--sm" data-lv-cm-reset-local' + (hasAny ? "" : " disabled") + ">이 기기의 커뮤니티 기록 지우기</button></div>";
   }
 
   /* ───────── Modals (LIVON UI: focus trap, ESC one level, focus restore) ───────── */
@@ -768,9 +800,9 @@
   function openReport(target, opener) {
     var already = Repo.reported(target);
     openDialog('<h2 id="lv-cm-dialog-title">' + (target.indexOf("comment:") === 0 ? "댓글 신고" : "게시글 신고") + "</h2>" +
-      '<p id="lv-cm-dialog-desc">서버 신고 시스템은 아직 연결되지 않았습니다. 신고하면 이 기기에만 기록되며 운영자에게 전달되지 않습니다.' + (already ? " 이 기기에서 이미 신고한 적이 있는 항목입니다." : "") + "</p>" +
+      '<p id="lv-cm-dialog-desc">신고는 이 기기에만 기록됩니다. 운영자나 서버로 전송되지 않으며, 신고 시스템이 연결되면 실제 검토가 가능해집니다.' + (already ? " 이 기기에서 이미 신고한 적이 있는 항목입니다." : "") + (helpLink("community-report") ? " " + helpLink("community-report", "신고가 운영자에게 전달되나요?") : "") + "</p>" +
       '<form data-lv-cm-report-form data-target="' + esc(target) + '"><fieldset class="lv-cm-fieldset"><legend>신고 사유</legend>' +
-        REPORT_REASONS.map(function (r, i) { return '<label class="lv-cm-radio"><input type="radio" name="reason" value="' + esc(r) + '"' + (i === 0 ? " data-lv-cm-autofocus" : "") + " /> " + esc(r) + "</label>"; }).join("") +
+        REPORT_REASONS.map(function (r, i) { return '<label class="lv-cm-radio"><input type="radio" name="reason" value="' + esc(r.id) + '"' + (i === 0 ? " data-lv-cm-autofocus" : "") + " /> " + esc(r.label) + "</label>"; }).join("") +
       '</fieldset><p class="lv-cm-form__err" data-lv-cm-report-err role="alert"></p>' +
       '<div class="lv-cm-form__acts"><button type="button" class="lv-cm-btn lv-cm-btn--ghost" data-lv-cm-dialog-close>취소</button><button type="submit" class="lv-cm-btn lv-cm-btn--dark">이 기기에 신고 기록</button></div></form>');
     if (opener && dialog) dialog.opener = opener;
@@ -824,7 +856,8 @@
     if (!modal || !form) return;
     closeDialog(false);
     if (!composeOpen()) state.modalOpener = opener || document.activeElement;
-    var p = editPost || {};
+    var restored = !editPost ? Repo.composeDraft() : null;   /* unsent text from last time (autosave) */
+    var p = editPost || restored || {};
     var t = p.type || (COMPOSE_TYPES.indexOf(type) >= 0 ? type : "story");
     state.composeType = t;
     state.editingId = editPost ? editPost.id : null;
@@ -832,12 +865,13 @@
     if (title) title.textContent = editPost ? (editPost.draft ? "임시 저장 글 이어 쓰기" : "글 수정") : "글쓰기";
     var types = COMPOSE_TYPES.concat(p.type === "meetup" ? ["meetup"] : []);
     form.innerHTML =
-      '<p class="lv-cm-note lv-cm-note--plain">개인정보(연락처·주소·실명 등)는 게시하지 마세요. 글은 이 기기에만 저장됩니다.</p>' +
+      '<p class="lv-cm-note lv-cm-note--plain">개인정보(연락처·주소·실명 등)는 게시하지 마세요. 글은 이 기기에만 저장됩니다. <a href="#cm-safe" data-lv-cm-guide>커뮤니티 가이드</a></p>' +
+      (restored ? '<p class="lv-cm-note lv-cm-note--plain lv-cm-restored" data-lv-cm-restored>작성하던 내용을 불러왔어요. <button type="button" class="lv-cm-text-btn" data-lv-cm-discard-draft>지우고 새로 쓰기</button></p>' : "") +
       '<div class="lv-cm-form__row">' +
         '<label class="lv-cm-field"><span>글 유형</span><select name="type">' + types.map(function (k) {
           return '<option value="' + k + '"' + (t === k ? " selected" : "") + ">" + esc(typeLabel(k)) + "</option>";
         }).join("") + "</select></label>" +
-        '<label class="lv-cm-field"><span>분야 <em aria-hidden="true">*</em></span><select name="category" required aria-required="true"><option value="">선택</option>' + categories().map(function (c) {
+        '<label class="lv-cm-field"><span>분야 (선택)</span><select name="category"><option value="">선택 안 함</option>' + categories().map(function (c) {
           return '<option value="' + esc(c.id) + '"' + (p.category === c.id ? " selected" : "") + ">" + esc(c.label) + "</option>";
         }).join("") + "</select></label>" +
       "</div>" +
@@ -848,9 +882,10 @@
         '<label class="lv-cm-field"><span>연령대</span><select name="lifeStage"><option value="">선택 안 함</option>' + STAGES.map(function (s) {
           return '<option value="' + s.id + '"' + (p.lifeStage === s.id ? " selected" : "") + ">" + esc(s.label) + "</option>";
         }).join("") + "</select></label>" +
+        '<label class="lv-cm-field"><span>Life Event</span><select name="lifeEvent"><option value="">선택 안 함</option>' + eventOptions(p.lifeStage, p.lifeEvent) + "</select></label>" +
         '<label class="lv-cm-field"><span>관련 주제</span><select name="lifeTopicId"></select></label>' +
       "</div></fieldset>" +
-      '<label class="lv-cm-field"><span>태그 (선택, 쉼표로 구분 · 최대 ' + LIMITS.tags + '개)</span><input name="tags" autocomplete="off" value="' + esc((p.tags || []).join(", ")) + '" placeholder="예: 자취, 첫 계약" /></label>' +
+      '<label class="lv-cm-field"><span>태그 (선택, 쉼표로 구분 · 최대 ' + LIMITS.tags + '개)</span><input name="tags" autocomplete="off" value="' + esc(Array.isArray(p.tags) ? p.tags.join(", ") : String(p.tags || "")) + '" placeholder="예: 자취, 첫 계약" /></label>' +
       '<details class="lv-cm-more-opts"' + (p.communityId || p.region || (p.visibility && p.visibility !== "public") || p.image ? " open" : "") + "><summary>공개 범위 · 커뮤니티 · 지역 · 이미지</summary>" +
         '<label class="lv-cm-field"><span>공개 범위</span><select name="visibility">' +
           '<option value="public"' + ((p.visibility || "public") === "public" ? " selected" : "") + ">전체 공개</option>" +
@@ -867,6 +902,7 @@
         (p.image ? '<p class="lv-cm-note lv-cm-note--plain">기존 이미지가 있습니다. 새 파일을 고르면 교체됩니다. <button type="button" class="lv-cm-text-btn" data-lv-cm-remove-image aria-pressed="false">이미지 제거</button></p>' : "") +
       "</details>" +
       '<p class="lv-cm-form__err" data-lv-cm-form-err role="alert"></p>' +
+      (editPost ? "" : '<p class="lv-cm-note lv-cm-autosave" data-lv-cm-autosave role="status" aria-live="polite">' + (restored ? "자동 보관된 내용입니다." : "쓰는 동안 이 기기에 자동으로 보관됩니다.") + "</p>") +
       '<div class="lv-cm-form__acts">' +
         '<button type="button" class="lv-cm-btn lv-cm-btn--ghost" data-lv-cm-modal-close>취소</button>' +
         (!editPost || editPost.draft ? '<button type="button" class="lv-cm-btn lv-cm-btn--outline" data-lv-cm-draft>임시 저장</button>' : "") +
@@ -875,16 +911,47 @@
     refreshTopicSelect(form, p.lifeTopicId || "");
     modal.hidden = false;
     document.body.style.overflow = "hidden";
-    var first = form.querySelector(editPost ? "[name=title]" : "[name=category]");
+    var first = form.querySelector("[name=title]");
     if (first) first.focus();
+  }
+  function readForm(form, asDraft) {
+    var fd = new FormData(form);
+    return {
+      type: fd.get("type"), category: fd.get("category") || "", title: fd.get("title"), body: fd.get("body"), tags: fd.get("tags"),
+      lifeStage: fd.get("lifeStage") || "", lifeEvent: fd.get("lifeEvent") || "", lifeTopicId: fd.get("lifeTopicId") || "", visibility: fd.get("visibility") || "public",
+      communityId: fd.get("communityId") || "", region: fd.get("region") || "", draft: !!asDraft
+    };
+  }
+  /* autosave (new posts only): the text is kept in the community store through the adapter, so it survives a reload
+     and — when the browser blocks storage — at least this tab (storage guard / in-memory adapter). */
+  var autosaveTimer = null;
+  function autosaveNow() {
+    if (autosaveTimer) { clearTimeout(autosaveTimer); autosaveTimer = null; }
+    var form = $("[data-lv-cm-write]");
+    if (!form || !composeOpen() || state.editingId) return false;
+    var res = Repo.saveComposeDraft(readForm(form, true));
+    var note = form.querySelector("[data-lv-cm-autosave]");
+    if (note) note.textContent = res.status !== "ok" ? "이 기기에 보관하지 못했어요. 저장 공간을 확인해 주세요." : res.draft ? "자동 보관됨" : "쓰는 동안 이 기기에 자동으로 보관됩니다.";
+    return res.status === "ok" && !!res.draft;
+  }
+  function scheduleAutosave() {
+    if (state.editingId) return;
+    if (autosaveTimer) clearTimeout(autosaveTimer);
+    autosaveTimer = setTimeout(autosaveNow, 500);
   }
   function closeCompose(force) {
     if (!composeOpen()) return;
+    var kept = false;
     if (state.dirty && !force) {
-      confirmDialog({ title: "작성 중인 내용이 있어요", body: "닫으면 지금까지 입력한 내용은 저장되지 않습니다. 보관하려면 ‘임시 저장’을 눌러 주세요.", cancel: "계속 작성", ok: "닫기", danger: true })
-        .then(function (ok) { if (ok) closeCompose(true); });
-      return;
+      if (state.editingId) {
+        /* editing a published post: nothing is autosaved, so ask before dropping the changes */
+        confirmDialog({ title: "수정 중인 내용이 있어요", body: "닫으면 지금까지 바꾼 내용은 저장되지 않습니다.", cancel: "계속 수정", ok: "닫기", danger: true })
+          .then(function (ok) { if (ok) closeCompose(true); });
+        return;
+      }
+      kept = autosaveNow();
     }
+    if (autosaveTimer) { clearTimeout(autosaveTimer); autosaveTimer = null; }
     var modal = $("[data-lv-cm-modal]");
     if (modal) modal.hidden = true;
     document.body.style.overflow = "";
@@ -894,6 +961,7 @@
     state.modalOpener = null;
     if (/^#cm-write/.test(location.hash)) history.replaceState(history.state, "", state.lastFeedHash || "#cm-home");
     restoreFocus(opener);
+    if (kept) announce("작성하던 내용을 이 기기에 보관했어요. 글쓰기를 다시 열면 이어서 쓸 수 있어요.");
   }
   function formError(form, field, msg) {
     var box = form.querySelector("[data-lv-cm-form-err]");
@@ -917,11 +985,7 @@
   }
   function submitCompose(form, asDraft) {
     var fd = new FormData(form);
-    var input = {
-      type: fd.get("type"), category: fd.get("category") || "", title: fd.get("title"), body: fd.get("body"), tags: fd.get("tags"),
-      lifeStage: fd.get("lifeStage") || "", lifeTopicId: fd.get("lifeTopicId") || "", visibility: fd.get("visibility") || "public",
-      communityId: fd.get("communityId") || "", region: fd.get("region") || "", draft: !!asDraft
-    };
+    var input = readForm(form, asDraft);
     var err = validatePost(input);
     if (err) { formError(form, err.field, err.msg); return; }
     var removeImg = form.querySelector('[data-lv-cm-remove-image][aria-pressed="true"]');
@@ -934,6 +998,7 @@
       if (res.status === "invalid") { formError(form, res.field, res.msg); return; }
       if (res.status !== "ok") { formError(form, "", "저장하지 못했습니다. 이 기기의 저장 공간을 확인해 주세요."); return; }
       state.dirty = false;
+      if (!editing) Repo.clearComposeDraft();   /* published or kept as a named draft: the autosave slot is done */
       closeCompose(true);
       renderAll();
       if (asDraft) {
@@ -962,13 +1027,13 @@
     var roots = list.filter(function (c) { return !c.parentId; });
     function one(c, isReply) {
       var kids = isReply ? [] : list.filter(function (x) { return x.parentId === c.id; });
-      var kidsHtml = kids.length ? '<ul class="lv-cm-replies">' + kids.map(function (k) { return one(k, true); }).join("") + "</ul>" : "";
+      var kidsHtml = kids.length ? '<ul class="lv-cm-replies" aria-label="답글 ' + kids.length + '개">' + kids.map(function (k) { return one(k, true); }).join("") + "</ul>" : "";
       if (c.deleted) return '<li class="lv-cm-comment is-deleted"><p>삭제된 댓글입니다.</p>' + kidsHtml + "</li>";
       var own = c.authorId === "local";
       var editing = state.editCommentId === c.id;
       var body = editing
-        ? '<form class="lv-cm-comment-edit" data-lv-cm-comment-edit="' + esc(c.id) + '"><label class="lv-cm-field"><span>댓글 수정</span><textarea name="body" rows="3" maxlength="' + LIMITS.comment + '">' + esc(c.body) + '</textarea></label>' +
-            '<p class="lv-cm-form__err" data-lv-cm-cerr role="alert"></p><div class="lv-cm-comment__acts"><button type="submit">저장</button><button type="button" data-lv-cm-comment-cancel>취소</button></div></form>'
+        ? '<form class="lv-cm-comment-edit" data-lv-cm-comment-edit="' + esc(c.id) + '"><label class="lv-cm-field"><span>댓글 수정</span><textarea name="body" rows="3" maxlength="' + LIMITS.comment + '" aria-describedby="lv-cm-cerr-edit">' + esc(c.body) + '</textarea></label>' +
+            '<p class="lv-cm-form__err" id="lv-cm-cerr-edit" data-lv-cm-cerr role="alert"></p><div class="lv-cm-comment__acts"><button type="submit">저장</button><button type="button" data-lv-cm-comment-cancel>취소</button></div></form>'
         : '<p class="lv-cm-comment__body">' + esc(c.body).replace(/\n/g, "<br>") + "</p>";
       return '<li class="lv-cm-comment' + (isReply ? " is-reply" : "") + '" id="lv-cm-c-' + esc(c.id) + '">' +
         '<p class="lv-cm-comment__meta"><strong>' + esc(c.authorNick || "나") + "</strong> · " + esc(fmtDate(c.createdAt)) + (c.updatedAt ? " · 수정됨" : "") +
@@ -985,13 +1050,24 @@
     var replyTo = state.replyTo ? list.find(function (c) { return c.id === state.replyTo && !c.deleted; }) : null;
     return '<section class="lv-cm-detail__comments" aria-labelledby="lv-cm-comments-title">' +
       '<h3 id="lv-cm-comments-title">댓글 ' + n + "</h3>" +
-      (roots.length ? '<ul class="lv-cm-comments">' + roots.map(function (c) { return one(c, false); }).join("") + "</ul>" : '<p class="lv-cm-note lv-cm-note--plain">아직 댓글이 없습니다.</p>') +
+      (roots.length ? '<ul class="lv-cm-comments" aria-labelledby="lv-cm-comments-title">' + roots.map(function (c) { return one(c, false); }).join("") + "</ul>" : '<p class="lv-cm-note lv-cm-note--plain">아직 댓글이 없습니다.</p>') +
       '<form class="lv-cm-comment-form" id="lv-cm-comment-form" data-lv-cm-comment-form data-post="' + esc(post.id) + '">' +
         (replyTo ? '<p class="lv-cm-note lv-cm-note--plain">‘' + esc(String(replyTo.body).slice(0, 30)) + '’에 답글 작성 중 · <button type="button" class="lv-cm-text-btn" data-lv-cm-reply-cancel>답글 취소</button></p>' : "") +
-        '<label class="lv-cm-field"><span>' + (replyTo ? "답글" : "댓글") + " " + counter("comment", LIMITS.comment, "") + '</span><textarea name="body" maxlength="' + LIMITS.comment + '" rows="3" placeholder="개인정보는 적지 마세요."></textarea></label>' +
-        '<p class="lv-cm-form__err" data-lv-cm-cerr role="alert"></p>' +
+        '<label class="lv-cm-field"><span>' + (replyTo ? "답글" : "댓글") + " " + counter("comment", LIMITS.comment, "") + '</span><textarea name="body" maxlength="' + LIMITS.comment + '" rows="3" placeholder="개인정보는 적지 마세요." aria-describedby="lv-cm-cerr"></textarea></label>' +
+        '<p class="lv-cm-form__err" id="lv-cm-cerr" data-lv-cm-cerr role="alert"></p>' +
         '<button type="submit" class="lv-cm-btn lv-cm-btn--dark lv-cm-btn--sm">' + (replyTo ? "답글 등록" : "댓글 등록") + "</button>" +
       "</form></section>";
+  }
+  /* LIVON information linked to the post through a real relation (its topic or its Life Event). Nothing is guessed. */
+  function relatedInfoHtml(post) {
+    var items = SVC.relatedContent(post, 6);
+    return '<section class="lv-cm-detail__info" aria-labelledby="lv-cm-info-title"><h3 id="lv-cm-info-title">관련 LIVON 정보</h3>' +
+      (items.length
+        ? '<ul class="lv-cm-info-list">' + items.map(function (x) {
+            return '<li><span class="lv-cm-badge">' + esc(x.kind) + '</span> <a href="' + esc(x.href) + '"' + (x.external ? ' target="_blank" rel="noopener noreferrer"' : "") + ">" + esc(x.title) + (x.external ? '<span class="visually-hidden"> (새 창)</span>' : "") + "</a></li>";
+          }).join("") + "</ul>"
+        : '<p class="lv-cm-note lv-cm-note--plain">이 글에 연결된 LIVON 정보가 없습니다. 글에 연령대의 관련 주제나 Life Event를 고르면 여기에 표시됩니다.</p>') +
+      "</section>";
   }
   function showDetail(id, opts) {
     opts = opts || {};
@@ -1019,7 +1095,7 @@
     var reacted = Repo.reacted(store, id);
     var saved = Repo.isSaved(id);
     var related = store.posts.filter(function (p) {
-      return p.id !== id && isVisible(p, store) && ((post.lifeTopicId && p.lifeTopicId === post.lifeTopicId) || (post.category && p.category === post.category) || (p.tags || []).some(function (t) { return (post.tags || []).indexOf(t) >= 0; }));
+      return p.id !== id && isVisible(p, store) && ((post.lifeTopicId && p.lifeTopicId === post.lifeTopicId) || (post.lifeEvent && p.lifeEvent === post.lifeEvent) || (post.category && p.category === post.category) || (p.tags || []).some(function (t) { return (post.tags || []).indexOf(t) >= 0; }));
     }).slice(0, 3);
     var exQ = (topic && topic.title) || catLabel(post.category) || (post.tags || [])[0] || post.title;
     host.innerHTML = back +
@@ -1028,6 +1104,7 @@
           '<span class="lv-cm-badge">' + esc(typeLabel(post.type)) + "</span>" +
           (catLabel(post.category) ? '<a href="#cm-home?cat=' + esc(post.category) + '">' + esc(catLabel(post.category)) + "</a>" : "") +
           (stage ? '<a href="#cm-home?stage=' + esc(stage.id) + '">' + esc(stage.label) + "</a>" : "") +
+          (SVC.eventById(post.lifeEvent) ? '<a href="#cm-home?event=' + esc(post.lifeEvent) + '">' + esc(SVC.eventById(post.lifeEvent).title) + "</a>" : "") +
           (comm ? "<span>" + esc(comm.name) + "</span>" : "") +
           (post.createdAt ? "<span>" + esc(fmtDate(post.createdAt)) + (post.updatedAt && post.updatedAt !== post.createdAt ? " · 수정됨" : "") + "</span>" : "") +
           (post.type === "question" ? "<span>" + (post.resolved ? "해결됨" : "답변을 기다리는 중") + "</span>" : "") +
@@ -1035,7 +1112,7 @@
         "</div>" +
         '<p class="lv-cm-card__author">' + esc(post.authorNick || "나") + (post.authorId === "local" ? " · 내 글" : "") + "</p>" +
         '<h2 class="lv-cm-title lv-cm-title--md" id="lv-cm-detail-title" tabindex="-1">' + esc(post.title) + "</h2>" +
-        (post.image ? '<img class="lv-cm-detail__img" src="' + esc(post.image) + '" alt="" />' : "") +
+        (post.image ? '<img class="lv-cm-detail__img" src="' + esc(post.image) + '" alt="" decoding="async" />' : "") +
         '<div class="lv-cm-detail__body">' + esc(post.body).replace(/\n/g, "<br>") + "</div>" +
         ((post.tags || []).length ? '<p class="lv-cm-card__tags">' + (post.tags || []).map(function (t) { return '<a href="#cm-home?q=' + encodeURIComponent(t) + '">#' + esc(t) + "</a>"; }).join(" ") + "</p>" : "") +
         '<div class="lv-cm-actions lv-cm-detail__acts">' +
@@ -1057,10 +1134,22 @@
           '<li><a href="#ex-results?q=' + encodeURIComponent(exQ) + '">탐색에서 ‘' + esc(exQ) + "’ 찾기</a></li>" +
           (post.category ? '<li><a href="#cm-home?cat=' + esc(post.category) + '">커뮤니티 · ' + esc(catLabel(post.category)) + " 글 더 보기</a></li>" : "") +
         "</ul></section>" +
+        relatedInfoHtml(post) +
         commentsHtml(post, store) +
         (related.length ? '<section class="lv-cm-detail__related" aria-labelledby="lv-cm-related-title"><h3 id="lv-cm-related-title">관련 글</h3><div class="lv-cm-feed-list">' + related.map(function (p) { return cardHtml(p, store); }).join("") + "</div></section>" : "") +
       "</article>";
     document.title = post.title + " · 커뮤니티 · LIVON";
+    /* opened by a direct link before the Life Stage data arrived: fill in the linked information once it is there */
+    var lr = lifeRepo();
+    if ((post.lifeTopicId || post.lifeEvent) && lr && !lr.data && typeof lr.load === "function" && !opts.afterData) {
+      lr.load().then(function () {
+        if (state.detailId !== id || composeOpen() || dialog || state.editCommentId) return;
+        var ta = $("#lv-cm-comment-form textarea");
+        if (ta && ta.value) return;   /* never replace a comment that is being typed */
+        var onTitle = !!document.activeElement && document.activeElement.id === "lv-cm-detail-title";
+        showDetail(id, { scroll: false, afterData: true, focus: onTitle });
+      }, function () {});
+    }
     if (opts.scroll !== false) scrollToId("cm-detail", true);
     if (opts.focus) { var h = $("#lv-cm-detail-title"); if (h) h.focus({ preventScroll: true }); }
   }
@@ -1071,7 +1160,13 @@
     if (/ · 커뮤니티 · LIVON$|^커뮤니티 · LIVON$/.test(document.title)) document.title = document.title.replace(/^.* · 커뮤니티 · LIVON$|^커뮤니티 · LIVON$/, "LIVON");
   }
 
+  function renderGuidelines() {
+    var host = $("[data-lv-cm-rules]");
+    if (!host || host.childElementCount) return;
+    host.innerHTML = SVC.GUIDELINES.map(function (g) { return "<li><strong>" + esc(g.title) + "</strong> " + esc(g.text) + "</li>"; }).join("");
+  }
   function renderAll() {
+    renderGuidelines();
     renderFeed();
     renderSide();
     renderCommunities();
@@ -1125,6 +1220,7 @@
     document.addEventListener("click", function (e) {
       if (!e.target.closest || !e.target.closest("#community")) return;
       if (e.target.closest("[data-lv-cm-dialog-close]")) { e.preventDefault(); closeDialog(false); return; }
+      if (e.target.closest("[data-lv-help-link]")) { if (dialog) closeDialog(false); return; }   /* the link goes to Help */
       if (e.target.closest("[data-lv-cm-dialog-ok]")) { e.preventDefault(); closeDialog(true); return; }
       var scroll = e.target.closest("[data-lv-cm-scroll]");
       if (scroll) {
@@ -1249,6 +1345,30 @@
         return;
       }
       if (e.target.closest("[data-lv-cm-modal-close]")) { e.preventDefault(); closeCompose(false); return; }
+      if (e.target.closest("[data-lv-cm-guide]")) { closeCompose(false); return; }
+      if (e.target.closest("[data-lv-cm-discard-draft]")) {
+        e.preventDefault();
+        Repo.clearComposeDraft();
+        state.dirty = false;
+        openCompose(state.composeType, null, state.modalOpener);
+        announce("보관된 내용을 지웠습니다.");
+        return;
+      }
+      if (e.target.closest("[data-lv-cm-reset-local]")) {
+        e.preventDefault();
+        var opener0 = e.target.closest("[data-lv-cm-reset-local]");
+        confirmDialog({ title: "커뮤니티 기록 지우기", body: "이 기기에 있는 커뮤니티 글·댓글·공감·신고 기록·가입 정보·표시 이름을 모두 지웁니다. 되돌릴 수 없습니다. 맞춤 설정(연령대·관심 분야·Life Event)과 내 생활의 다른 기록은 지워지지 않습니다.", ok: "지우기", danger: true })
+          .then(function (ok) {
+            if (!ok) return;
+            if (Repo.resetLocal().status !== "ok") { announce("지우지 못했습니다."); return; }
+            hideDetail();
+            renderAll();
+            var t0 = $("#cm-mine h2"); if (t0) { t0.setAttribute("tabindex", "-1"); t0.focus({ preventScroll: true }); }
+            announce("이 기기의 커뮤니티 기록을 지웠습니다. 맞춤 설정은 그대로입니다.");
+          });
+        if (dialog) dialog.opener = opener0;
+        return;
+      }
       var edit = e.target.closest("[data-lv-cm-edit]");
       if (edit) {
         e.preventDefault();
@@ -1377,10 +1497,16 @@
       if (!t.closest || !t.closest("#community")) return;
       if (t.matches("[data-lv-cm-type-filter]")) { state.type = t.value; state.shown = PAGE; renderFeed(); syncFeedUrl(); var a = $("[data-lv-cm-type-filter]"); if (a) a.focus(); return; }
       if (t.matches("[data-lv-cm-stage-filter]")) { state.stage = t.value; state.shown = PAGE; renderFeed(); syncFeedUrl(); var b = $("[data-lv-cm-stage-filter]"); if (b) b.focus(); return; }
+      if (t.matches("[data-lv-cm-event-filter]")) { state.event = SVC.validEvent(t.value); state.shown = PAGE; renderFeed(); syncFeedUrl(); var ef = $("[data-lv-cm-event-filter]"); if (ef) ef.focus(); announce("게시글 " + filterFeed().length + "개"); return; }
       var form = t.closest("[data-lv-cm-write]");
       if (form) {
         state.dirty = true;
-        if (t.name === "lifeStage") refreshTopicSelect(form, "");
+        scheduleAutosave();
+        if (t.name === "lifeStage") {
+          refreshTopicSelect(form, "");
+          var evSel = form.querySelector("[name=lifeEvent]");
+          if (evSel) evSel.innerHTML = '<option value="">선택 안 함</option>' + eventOptions(t.value, evSel.value);
+        }
         if (t.name === "category") {
           var n = form.querySelector("[data-lv-cm-safety]");
           var msg = safetyNote(t.value);
@@ -1391,7 +1517,7 @@
     document.addEventListener("input", function (e) {
       var t = e.target;
       if (!t.closest || !t.closest("#community")) return;
-      if (t.closest("[data-lv-cm-write]")) state.dirty = true;
+      if (t.closest("[data-lv-cm-write]")) { state.dirty = true; scheduleAutosave(); }
       if (t.name === "title" || t.name === "body") {
         var cnt = t.closest("form") && t.closest("form").querySelector('[data-lv-cm-counter="' + t.name + '"]');
         if (cnt) cnt.textContent = t.value.length + " / " + (t.name === "title" ? LIMITS.title : LIMITS.body);
@@ -1424,10 +1550,10 @@
         e.preventDefault();
         var reason = (f.querySelector("input[name=reason]:checked") || {}).value;
         var res = Repo.report(f.getAttribute("data-target"), reason);
-        if (res.status !== "ok") { var er = f.querySelector("[data-lv-cm-report-err]"); if (er) er.textContent = res.msg; return; }
+        if (res.status !== "ok") { var er = f.querySelector("[data-lv-cm-report-err]"); if (er) er.textContent = res.msg || "신고를 기록하지 못했습니다."; return; }
         closeDialog(false);
         renderMine();
-        announce("이 기기에 신고 기록이 저장되었습니다. 서버 신고 시스템은 아직 연결되지 않았습니다.");
+        announce("신고를 이 기기에 기록했습니다. 운영자나 서버로 전송되지는 않습니다.");
         return;
       }
       if (f.matches("[data-lv-cm-profile-form]")) {
@@ -1445,7 +1571,7 @@
         e.preventDefault();
         var cid = f.getAttribute("data-lv-cm-comment-edit");
         var r1 = Repo.editComment(cid, new FormData(f).get("body"));
-        if (r1.status === "invalid") { var e1 = f.querySelector("[data-lv-cm-cerr]"); if (e1) e1.textContent = r1.msg; return; }
+        if (r1.status === "invalid") { var e1 = f.querySelector("[data-lv-cm-cerr]"); if (e1) e1.textContent = r1.msg; var t1 = f.querySelector("textarea"); if (t1) { t1.setAttribute("aria-invalid", "true"); t1.focus(); } return; }
         state.editCommentId = "";
         rerenderAfterChange();
         var b1 = $('[data-lv-cm-edit-comment="' + cid + '"]'); if (b1) b1.focus({ preventScroll: true });
@@ -1579,12 +1705,12 @@
   window.LivonCommunityRepo = Repo;
   window.LivonCommunity = {
     onShow: onShow,
-    openCompose: function (type) { init(); openCompose(type); },
+    openCompose: function (type) { if (window.LivonBoot) window.LivonBoot.ensure("community"); init(); openCompose(type); },
     openPost: function (id) { location.hash = "cm-post-" + id; },
     _test: {
       repo: Repo, loadStore: loadStore, migrate: migrate, validatePost: validatePost, parseTags: parseTags, filterFeed: filterFeed,
       applyFeedParams: applyFeedParams, feedHash: feedHash, parseHash: parseHash, state: state, categories: categories,
-      userSignals: userSignals, forYouScore: forYouScore, aiPayload: aiPayload, saveId: saveId, isSearchable: isSearchable, topicHref: topicHref
+      userSignals: userSignals, forYouScore: forYouScore, forYou: forYou, svc: SVC, relatedInfoHtml: relatedInfoHtml, cardHtml: cardHtml, commentsHtml: commentsHtml, eventOptions: eventOptions, aiPayload: aiPayload, saveId: saveId, isSearchable: isSearchable, topicHref: topicHref
     }
   };
 
@@ -1595,6 +1721,7 @@
     if (document.documentElement.dataset.lvView === "community") onShow(hash || "community");
     else renderAll();
   }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  if (window.LivonBoot && typeof window.LivonBoot.view === "function") window.LivonBoot.view("community", boot);
+  else if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
 })();

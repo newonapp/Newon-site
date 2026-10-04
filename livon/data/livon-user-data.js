@@ -80,6 +80,8 @@
     { key: "livon.tdHidden", storage: "local", owner: "today-page.js", schema: "string[]", cls: "ACCOUNT_SYNC", collection: "preferences" },
     { key: "livon.exPrefRegion", storage: "local", owner: "explore-page.js", schema: "string (시/도)", cls: "ACCOUNT_SYNC", collection: "preferences" },
     { key: "livon.hmRegion", storage: "local", owner: "home-page.js / platform", schema: "string (시/도 시군구)", cls: "ACCOUNT_SYNC", collection: "preferences" },
+    { key: "livon.personalization.v1", storage: "local", owner: "livon-personalization.js", schema: "{version, state: NEW|IN_PROGRESS|COMPLETED|SKIPPED, step, draft, updatedAt}", cls: "DEVICE_LOCAL", note: "onboarding first-run state and unfinished draft; the profile itself is livon.lifeStage / lifeInterests / lifeEvents" },
+    { key: "livon.a11y.motion.v1", storage: "local", owner: "livon-a11y.js", schema: "'paused'|'playing'", cls: "DEVICE_LOCAL", note: "the visitor's choice for background video on this device; no personal data" },
     { key: "livon.lifeEventProgress.v1", storage: "local", owner: "livon-platform.js", schema: "{eventId: {areas}}", cls: "ACCOUNT_SYNC", collection: "life_progress" },
     { key: "livon.lifeHub.checklist.v1", storage: "local", owner: "life-hub.js", schema: "{topicId: checked[]}", cls: "ACCOUNT_SYNC", collection: "life_progress" },
     { key: "livon.tdSaved", storage: "local", owner: "today-page.js (legacy mirror of platform saves)", schema: "[{id,label,at}]", cls: "LEGACY" },

@@ -497,6 +497,7 @@
   function day(iso) { var t = iso ? Date.parse(iso) : NaN; return isNaN(t) ? "" : new Date(t + 9 * 3600e3).toISOString().slice(0, 10).replace(/-/g, "."); }
   function isSaved(e) {
     var P = root.LivonPlatform;
+    if (P && P.hasSave) return P.hasSave("ext:" + e.id);
     return !!(P && P.listSaves && P.listSaves("all").some(function (x) { return x.id === "ext:" + e.id; }));
   }
   /* say exactly what the date means: verified by a person, updated by the source, or only collected */
@@ -648,7 +649,8 @@
     dedupe: function (list) { return dedupe(list, function (id) { var p = registry.get(id); return p ? p.priority : 0; }); },
     status: function () { return { providers: registry.list(), monitor: repo.monitor.get(), size: repo.size() }; },
     /* external (non-builtin) providers only — builtin data is already indexed by the existing screens */
-    external: function (list) { return (list || []).filter(function (e) { var p = registry.get(e.provider); return p && !p.builtin; }); },
+    /* external rows also pass the LIVON Data Platform gate (expired / unsourced / lower-priority duplicate → not shown) */
+    external: function (list) { var gate = root.LivonDataGate; return (list || []).filter(function (e) { var p = registry.get(e.provider); return p && !p.builtin && (typeof gate !== "function" || gate(e.id)); }); },
     searchEntries: function () { return LivonData.external(repo.list()).map(toSearchEntry); },
     forTopic: function (topic, type, limit) { return LivonData.external(repo.listByTopic(topic, { type: type, limit: limit || 6 })); },
     forToday: function (content, type, limit) {

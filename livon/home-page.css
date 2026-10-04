@@ -1662,7 +1662,7 @@
   margin-right: 0.4rem;
   font-style: normal;
   font-size: 0.75rem;
-  color: #888;
+  color: #737373;
 }
 
 /* ── Home V1 final: 이어서 하기 · 내 라이프 스테이지 (existing dark section tokens) ── */
@@ -1699,3 +1699,8 @@
   #livon-home .lv-hm-continue__card, #livon-home .lv-hm-mystage__list a { transition: none; }
 }
 #livon-home .lv-hm-cats a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* static guide pages (crawlable, readable without JavaScript) — a quiet line under the final actions */
+#livon-home .lv-hm-guides { margin: 2rem auto 0; color: rgba(255,255,255,0.6); font-size: 0.88rem; line-height: 1.9; }
+#livon-home .lv-hm-guides a { display: inline-block; padding: 0.5rem 0.15rem; color: rgba(255,255,255,0.9); text-underline-offset: 3px; }
+#livon-home .lv-hm-guides a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }

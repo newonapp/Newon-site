@@ -133,7 +133,10 @@ test('every home link and CTA routes to a real LIVON view (no dead links)', () =
   const all = hrefs(section).concat(...[...h.els.values()].map(e => hrefs(e.innerHTML)));
   const inPage = new Set([...section.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]));
   assert.ok(all.length > 30);
-  for (const x of all) {
+  /* SEO V1: three real links to the static guide pages (generated at build time) sit under the final actions */
+  const GUIDES = ['/livon/life/', '/livon/life-events/', '/livon/help/'];
+  assert.deepEqual(all.filter(x => !x.startsWith('#')), GUIDES);
+  for (const x of all.filter(x => x.startsWith('#'))) {
     assert.ok(x.startsWith('#'), 'internal link: ' + x);
     const hsh = x.slice(1);
     assert.ok(hsh.length, 'no href="#"');

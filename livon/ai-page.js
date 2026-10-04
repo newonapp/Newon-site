@@ -14,8 +14,10 @@
   var STORE_KEY = "livon.aiStore.v1";
   /* API origin comes from livon/livon-api-config.js (same origin by default; a separate https API origin in production) */
   var API = window.LivonApi || { url: function (p) { return p; } };
-  var API_BASE = API.url("/api/livon");
+  var CHAT_URL = API.url("/api/livon/chat");   /* one URL from the API config (a separate API origin gets the trailing slash it needs) */
   var LIMITS = { message: 4000, history: 12, historyChars: 12000, refs: 5, render: 80, clientTimeout: 35000 };
+  /* the reference links the chat server accepts — kept identical to REF_HREF in server/livon/chat.mjs (completion.test compares them) */
+  var REF_HREF = /^(#(life\/[1-7]0s\/[a-z0-9-]+|life\/services\/[a-z0-9-]+|today\/[a-z0-9-]+|ex-item-[\w-]+|ex-results\?[\w=&%.-]*|cm-post-[\w-]+)|https:\/\/[a-z0-9.-]+(\/[^\s"'<>]*)?)$/i;
   var SOURCE_LABEL = { "life-stage": "라이프 스테이지", today: "오늘의 발견", explore: "탐색", mylife: "내 생활", community: "커뮤니티" };
   var MENU_LINKS = ["#life", "#today", "#explore", "#community", "#life-now", "#ml-todos", "#ml-goals", "#ml-calendar", "#ml-saved"];
   var DRAFT_HEAD = /^\[(라이프 스테이지|오늘의 발견|탐색|내 생활|커뮤니티)\][^\n]*(\n(?!\n)[^\n]*)*\n\n/;
@@ -163,8 +165,9 @@
         var it = x.item;
         /* experts only from real public data (title/role/region/source/href) — never profiles, never qualifications */
         if (!it || !it.href || (it.type === "expert" && !it.realData) || x.via) return;
-        /* only links the chat server accepts as references (LIVON routes or https) — e.g. http:// institution pages are skipped */
-        if (!/^(#|https:\/\/)/i.test(it.href)) return;
+        /* only links the chat server accepts as references (REF_HREF in server/livon/chat.mjs, same pattern): one link it does
+           not accept — "#life-events", a Help route, an http:// institution page — makes it reject the whole question */
+        if (!REF_HREF.test(it.href) || it.href.length > 200) return;
         byKey[it.key] = it;
         score[it.key] = (score[it.key] || 0) + qw[1] * (8 - i);
         hits[it.key] = (hits[it.key] || 0) + 1;
@@ -174,6 +177,7 @@
     /* 직업훈련 과정 the user looked up on this page (고용24): kind/title/href only — never costs, rates or eligibility */
     var J = window.LivonData && window.LivonData.jobs, jobRefs = [];
     try { jobRefs = J && J.configured() ? J.references(keywords(text).concat(page && page.topicTitle ? [page.topicTitle] : []), 2) : []; } catch (e) { jobRefs = []; }
+    jobRefs = jobRefs.filter(function (r) { return r && REF_HREF.test(r.href) && r.href.length <= 200; });
     if (!keys.length) return jobRefs.slice(0, LIMITS.refs);
     var top = keys[0][1];
     return keys.filter(function (x) { return x[1] >= top * 0.4; }).slice(0, LIMITS.refs).map(function (x) {
@@ -332,7 +336,7 @@
     return { kind: "server", msg: fallback || "LIVON AI에 일시적으로 연결할 수 없습니다. 잠시 후 다시 시도해 주세요." };
   }
   function chatRequest(payload, signal) {
-    return fetch(API_BASE + "/chat", {
+    return fetch(CHAT_URL, {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload), signal: signal
     }).then(function (r) {
@@ -442,6 +446,7 @@
       var info = timedOut ? errorFor(504, "TIMEOUT")
         : state.userAborted ? { kind: "cancelled", msg: "답변 생성을 중지했습니다. 필요하면 다시 시도할 수 있습니다." }
         : err && err.info ? err.info
+        : typeof navigator !== "undefined" && navigator.onLine === false ? { kind: "offline", msg: "인터넷에 연결되어 있지 않습니다. 연결을 확인한 뒤 다시 시도해 주세요." }
         : { kind: "network", msg: "네트워크 연결을 확인하고 다시 시도해 주세요." };
       var th = Threads.get(requestThreadId);
       if (th) { th.messages.push({ role: "error", content: info.msg, kind: info.kind, at: Date.now() }); th.updatedAt = Date.now(); Threads.put(th); }
@@ -698,7 +703,10 @@
     showApiNote(msg + " 내 생활 › 할 일에서 확인할 수 있습니다.", "ok", '<a href="#ml-todos?source=livon-ai">내 생활에서 보기</a>');
   }
 
+  /* contextual help: "is LIVON AI available now?" next to every connection warning */
+  function helpLink() { return window.LivonHelp && typeof window.LivonHelp.link === "function" ? window.LivonHelp.link("ai-status", "LIVON AI는 지금 사용할 수 있나요?") : ""; }
   function showApiNote(text, kind, extraHtml) {
+    if (kind === "warn" && !extraHtml) extraHtml = helpLink();
     var note = $("[data-lv-ai-api-note]");
     if (!note) return;
     note.hidden = !text;
@@ -778,8 +786,8 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        links.forEach(function (a) { a.classList.remove("is-on"); });
-        if (map[entry.target.id]) map[entry.target.id].classList.add("is-on");
+        links.forEach(function (a) { a.classList.remove("is-on"); a.removeAttribute("aria-current"); });
+        if (map[entry.target.id]) { map[entry.target.id].classList.add("is-on"); map[entry.target.id].setAttribute("aria-current", "location"); }
       });
     }, { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 });
     Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
@@ -1039,6 +1047,7 @@
     if (document.documentElement.dataset.lvView === "livon-ai") onShow(hash || "livon-ai");
     else { renderThreads(); renderMessages(); }
   }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  if (window.LivonBoot && typeof window.LivonBoot.view === "function") window.LivonBoot.view("livon-ai", boot);
+  else if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
 })();

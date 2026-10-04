@@ -41,8 +41,9 @@
   function weekSeed() { var d = new Date(); var start = new Date(d.getFullYear(), 0, 1); return d.getFullYear() + "w" + Math.floor((d - start) / 604800000); }
   function jitter(key, seed) { return (hash32(key + "|" + seed) % 1000) / 1000; }
 
-  function TD() { return window.LivonTodayData || { contents: [] }; }
-  function EX() { return window.LivonExploreData || { items: [] }; }
+  /* same data objects, with the lists served by the LIVON Data Platform (visible rows only; falls back to the files) */
+  function TD() { var d = window.LivonTodayData || { contents: [] }, S = window.LivonScreenData; return S ? Object.assign({}, d, { contents: S.todayContents() }) : d; }
+  function EX() { var d = window.LivonExploreData || { items: [] }, S = window.LivonScreenData; return S ? Object.assign({}, d, { items: S.exploreItems() }) : d; }
   function hub() { return window.LivonLifeHub || null; }
   function repo() { var h = hub(); return h && h.repo && h.repo.status === "ready" ? h.repo : null; }
   function repoStatus() { var h = hub(); return h && h.repo ? h.repo.status : "error"; }
@@ -215,7 +216,10 @@
       var n = /^#today\/([\w-]+)$/.exec(t.sourceHref || "");
       if (n) add(byKey("td:" + n[1]), 1);
     });
-    return { stage: typeof stage === "string" && /^[1-7]0$/.test(stage) ? stage : "", interests: interests, weights: weights, personalized: !!(stage || interests.length || signals) };
+    /* Life Events chosen in onboarding / My Life (ids) — an extra ranking signal, nothing is hidden */
+    var events = readJSON("livon.lifeEvents", []);
+    events = (Array.isArray(events) ? events : []).filter(function (x) { return typeof x === "string"; });
+    return { stage: typeof stage === "string" && /^[1-7]0$/.test(stage) ? stage : "", interests: interests, events: events, weights: weights, personalized: !!(stage || interests.length || events.length || signals) };
   }
   function score(item, p) {
     var s = 0;
@@ -223,6 +227,8 @@
     var blob = [item.title, item.desc, item.category].concat(item.tags || []).join(" ");
     var hits = 0;
     p.interests.forEach(function (it) { if (hits < 2 && it && blob.indexOf(it) >= 0) { s += 2; hits++; } });
+    var PZ = window.LivonPersonalization;
+    if (PZ && p.events && p.events.length && PZ.eventBoost(blob, p.events)) s += 2;
     item.cats.forEach(function (c) { s += Math.min(p.weights[c] || 0, 4); });
     if (item.actionable) s += 0.4;
     if (item.featured) s += 0.4;
@@ -238,7 +244,7 @@
   }
   function primaryLink(item, text, cls) {
     if (item.external) return item.href ? '<a class="' + cls + '" href="' + esc(item.href) + '" target="_blank" rel="noopener noreferrer" data-td-key="' + esc(item.key) + '">' + esc(text || "공식 사이트") + ' <span aria-hidden="true">↗</span><span class="lh-sr"> (새 창)</span></a>' : "";
-    return '<a class="' + cls + '" href="' + esc(item.href) + '" data-td-key="' + esc(item.key) + '">' + esc(text || "자세히") + "</a>";
+    return '<a class="' + cls + '" href="' + esc(item.href) + '" data-td-key="' + esc(item.key) + '">' + esc(text || "자세히") + '<span class="visually-hidden">: ' + esc(item.title || "") + "</span></a>";
   }
   function stageTags(item) {
     return item.stageIds.slice(0, 3).map(function (id) { var l = stageLabel(id); return l ? '<span class="td-tag">' + esc(l) + "</span>" : ""; }).join("");
@@ -529,7 +535,7 @@
       // 01 Hero
       '<header class="td-dhero"><div class="lv-td-detail__hero">' + imgTag(c.img || "/livon/assets/topics/daytrip.jpg", c.alt) + "</div>" +
         '<p class="lv-td-eyebrow">' + esc([c.category, item.typeLabel].filter(Boolean).join(" · ")) + "</p>" +
-        '<h2 class="lv-td-title lv-td-title--md" tabindex="-1" data-td-title-focus>' + esc(c.title) + "</h2>" +
+        '<h2 class="lv-td-title lv-td-title--md" aria-level="1" tabindex="-1" data-td-title-focus>' + esc(c.title) + "</h2>" +
         '<p class="lv-td-lead">' + esc(c.blurb) + "</p>" +
         (stageChips ? '<p class="td-tags" aria-label="관련 라이프 스테이지">' + stageChips + "</p>" : "") +
         '<div class="lv-td-actions td-dactions">' + saveBtn(item) + shareBtn + todoBtn + aiBtn("lv-td-btn") + "</div></header>" +
@@ -570,7 +576,7 @@
 
   function notFound(id) {
     return '<nav class="td-crumbs" aria-label="현재 위치"><ol><li><a href="#livon-home">LIVON</a></li><li><a href="#today">오늘의 발견</a></li><li><span aria-current="page">찾을 수 없음</span></li></ol></nav>' +
-      '<h2 class="lv-td-title lv-td-title--md" tabindex="-1" data-td-title-focus>콘텐츠를 찾을 수 없습니다.</h2>' +
+      '<h2 class="lv-td-title lv-td-title--md" aria-level="1" tabindex="-1" data-td-title-focus>콘텐츠를 찾을 수 없습니다.</h2>' +
       empty("주소가 바뀌었거나 삭제된 콘텐츠일 수 있습니다.", "오늘의 발견에서 다시 찾아 주세요.", '<a class="lv-td-btn lv-td-btn--sm" href="#today">오늘의 발견으로</a>');
   }
 
@@ -673,11 +679,13 @@
     if (h && h.repo) h.repo.load().then(refresh, refresh);
   }
 
+  document.addEventListener("livon:personalization", function () { try { refresh(); } catch (e) {} });
   window.LivonTodayFeed = {
     openDetail: openDetail, closeDetail: closeDetail, isDetailOpen: function () { return !!detailId; },
     render: refresh, setTab: setTab, recent: recent, pushRecent: pushRecent, profile: profile,
     _test: { pool: pool, catsOfContent: catsOfContent, catsOfTopic: catsOfTopic, listFor: listFor, relatedTopicsOf: relatedTopicsOf, score: score, saveKey: saveKey, CATS: CATS }
   };
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  if (window.LivonBoot && typeof window.LivonBoot.view === "function") window.LivonBoot.view("today", init);
+  else if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

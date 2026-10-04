@@ -12,7 +12,7 @@
 (function () {
   "use strict";
 
-  var DATA_URL = "/livon/life-topics.json?v=20260928td1";
+  var DATA_URL = "/livon/life-topics.json?v=20261001cq1";
   var SITE_ORIGIN = "https://www.newon.app";
   var KEY_CHECKS = "livon.lifeHub.checklist.v1";
   var KEY_ML = "livon.mlStore.v1";
@@ -82,10 +82,13 @@
     category: function (id) { return Repo.idx ? Repo.idx.cat[id] || null : null; },
     categoriesOf: function (stage) { return stage ? stage.categoryIds.map(Repo.category).filter(Boolean) : []; },
     topicsOf: function (cat) { return cat ? cat.topicIds.map(Repo.topic).filter(Boolean) : []; },
-    service: function (id) { return Repo.idx ? Repo.idx.svc[id] || null : null; },
-    policy: function (id) { return Repo.idx ? Repo.idx.pol[id] || null : null; },
+    /* services / policies pass the LIVON Data Platform gate (expired or unsourced rows are not shown as real) */
+    service: function (id) { var x = Repo.idx ? Repo.idx.svc[id] || null : null; return x && gate("svc:" + id) ? x : null; },
+    policy: function (id) { var x = Repo.idx ? Repo.idx.pol[id] || null : null; return x && gate("pol:" + id) ? x : null; },
     expert: function (id) { return Repo.idx ? Repo.idx.expert[id] || null : null; }
   };
+
+  function gate(entityId) { var SD = window.LivonScreenData; try { return !SD || SD.visible(entityId); } catch (e) { return true; } }
 
   var listeners = [];
   function notify() { listeners.forEach(function (fn) { try { fn(Repo.status); } catch (e) {} }); }
@@ -93,15 +96,15 @@
   /* ───────── Sources: existing LIVON data (read-only adapters) ───────── */
   var Sources = {
     explore: function (id) {
-      var d = window.LivonExploreData;
-      var it = d && (d.items || []).find(function (x) { return x.id === id; });
+      var d = window.LivonExploreData, SD = window.LivonScreenData;
+      var it = SD ? SD.exploreById(id) : d && (d.items || []).find(function (x) { return x.id === id; });
       if (!it) return null;
       return { ref: "ex:" + id, kind: it.type, title: it.title, body: it.blurb || "", provider: it.provider || "",
         href: "#ex-item-" + id, official: safeHttp(it.url || it.officialUrl), source: "탐색 · " + (it.provider || "공식 안내") };
     },
     today: function (id) {
-      var d = window.LivonTodayData;
-      var it = d && (d.contents || []).find(function (x) { return x.id === id; });
+      var d = window.LivonTodayData, SD = window.LivonScreenData;
+      var it = SD ? SD.todayById(id) : d && (d.contents || []).find(function (x) { return x.id === id; });
       if (!it) return null;
       return { ref: "td:" + id, kind: it.type, title: it.title, body: it.blurb || "", provider: it.source || "",
         href: "#td-item-" + id, official: safeHttp(it.officialUrl), source: "오늘의 발견 · " + (it.source || "LIVON") };
@@ -152,7 +155,9 @@
   var SAVE_TYPES = { topic: "주제", guide: "가이드", checklist: "체크리스트", content: "콘텐츠", policy: "정책", service: "서비스", expert: "전문가", class: "클래스", place: "장소", community: "커뮤니티 글" };
   function saveId(type, id) { return "life-hub:" + type + ":" + id; }
   function isSaved(type, id) {
-    return !!window.LivonPlatform && window.LivonPlatform.listSaves("all").some(function (s) { return s.id === saveId(type, id); });
+    var P = window.LivonPlatform;
+    if (P && P.hasSave) return P.hasSave(saveId(type, id));
+    return !!P && P.listSaves("all").some(function (s) { return s.id === saveId(type, id); });
   }
   function doSave(item) {
     if (!window.LivonPlatform) { status("저장 기능을 불러오지 못했습니다. 새로고침 후 다시 시도해 주세요."); return false; }
@@ -211,8 +216,9 @@
     btn: function (text, attrs, kind) {
       return '<button type="button" class="lv-life-btn lv-life-btn--' + (kind || "outline") + ' lv-life-btn--sm" ' + (attrs || "") + ">" + esc(text) + "</button>";
     },
-    link: function (text, href, kind, attrs) {
-      return '<a class="lv-life-btn lv-life-btn--' + (kind || "outline") + ' lv-life-btn--sm" href="' + esc(href) + '" ' + (attrs || "") + ">" + esc(text) + "</a>";
+    /* about: what the link leads to, for screen readers, when the visible label repeats on a page ("자세히 보기") */
+    link: function (text, href, kind, attrs, about) {
+      return '<a class="lv-life-btn lv-life-btn--' + (kind || "outline") + ' lv-life-btn--sm" href="' + esc(href) + '" ' + (attrs || "") + ">" + esc(text) + (about ? '<span class="lh-sr">: ' + esc(about) + "</span>" : "") + "</a>";
     },
     external: function (text, href) {
       var url = safeHttp(href);
@@ -248,7 +254,7 @@
         '<h4><a href="' + esc(topicRoute(t)) + '">' + esc(t.title) + "</a></h4>" +
         "<p>" + esc(t.description) + "</p>" +
         (opts.guideCount !== false ? "<ul><li>가이드 " + t.guide.length + "단계</li><li>체크리스트 " + t.checklist.length + "개</li></ul>" : "") +
-        '<div class="lv-life-svc__acts">' + UI.link("자세히 보기", topicRoute(t), "dark") + "</div></article>";
+        '<div class="lv-life-svc__acts">' + UI.link("자세히 보기", topicRoute(t), "dark", "", t.title) + "</div></article>";
     },
     StageSelector: function (activeSlug, makeHref) {
       var stages = Repo.data ? Repo.data.stages : [];
@@ -464,7 +470,7 @@
       UI.Breadcrumb(ROOT_CRUMBS.concat([stageCrumb(s), { label: t.category, href: route({ view: "category", stage: s.slug, category: t.categoryId.split(".")[1] }) }, { label: t.title }])) +
       UI.StageSelector(s.slug) +
       '<header class="lv-ls-heading lh-heading"><p class="lv-life-kicker">' + esc(t.category) + " · " + esc(s.label) + "</p>" +
-        '<h2 class="lv-life-title" tabindex="-1" data-lh-title-focus>' + esc(t.title) + "</h2>" +
+        '<h2 class="lv-life-title" aria-level="1" tabindex="-1" data-lh-title-focus>' + esc(t.title) + "</h2>" +
         '<p class="lv-life-lead">' + esc(t.description) + "</p>" +
         '<div class="lv-life-svc__acts lh-actions">' + UI.SaveButton("topic", t.id, t.title, here, s.id, "주제 저장") +
           UI.btn("공유", 'data-lh-share="' + esc(t.id) + '"') + UI.AskLivonAIButton(aiPayload, "LIVON AI에게 물어보기", "dark") + "</div>" +
@@ -491,7 +497,7 @@
   function refCard(c, type, stageId) {
     var label = type === "class" ? "클래스·교육" : type === "place" ? "장소" : "콘텐츠";
     return '<article class="lv-life-svc"><p class="lv-life-svc__n">' + esc(label + " · " + c.source) + "</p><h4><a href=\"" + esc(c.href) + "\">" + esc(c.title) + "</a></h4><p>" + esc(c.body) + "</p>" +
-      '<div class="lv-life-svc__acts">' + UI.link("자세히 보기", c.href, "dark") + UI.SaveButton(type, c.ref, c.title, c.href, stageId) + (c.official ? UI.external("공식 사이트", c.official) : "") + "</div></article>";
+      '<div class="lv-life-svc__acts">' + UI.link("자세히 보기", c.href, "dark", "", c.title) + UI.SaveButton(type, c.ref, c.title, c.href, stageId) + (c.official ? UI.external("공식 사이트", c.official) : "") + "</div></article>";
   }
   function policyCard(p, stageId) {
     return '<article class="lv-life-svc lh-policy"><p class="lv-life-svc__n">공식 포털 · ' + esc(p.provider) + "</p><h4>" + esc(p.name) + "</h4>" +
@@ -502,7 +508,7 @@
     var href = t ? route({ view: "service", stage: t.stageSlug, topic: t.slug, service: svc.id }) : route({ view: "service", service: svc.id });
     return '<article class="lv-life-svc" data-lh-card="' + esc(href) + '"><p class="lv-life-svc__n">' + esc(svc.group) + " · 서비스 유형</p><h4><a href=\"" + esc(href) + "\">" + esc(svc.name) + "</a></h4><p>" + esc(svc.description) + "</p>" +
       "<ul>" + svc.features.slice(0, 3).map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ul>" +
-      '<div class="lv-life-svc__acts">' + UI.link("자세히 보기", href, "dark") + "</div></article>";
+      '<div class="lv-life-svc__acts">' + UI.link("자세히 보기", href, "dark", "", svc.name) + "</div></article>";
   }
 
   function renderServices(t) {
@@ -515,7 +521,7 @@
         '<div class="lv-life-services is-trio">' + g.items.map(function (x) { return serviceCard(x, t); }).join("") + "</div></section>";
     }).join("") : UI.EmptyState("현재 연결된 서비스가 없습니다.", "관련 생활 서비스는 순차적으로 연결하고 있습니다.", UI.link("탐색에서 찾아보기", "#explore"));
     show(UI.Breadcrumb(ROOT_CRUMBS.concat([stageCrumb(s), { label: t.title, href: topicRoute(t) }, { label: "관련 서비스" }])) +
-      '<header class="lv-ls-heading lh-heading"><p class="lv-life-kicker">관련 서비스 · ' + esc(s.label) + '</p><h2 class="lv-life-title" tabindex="-1" data-lh-title-focus>' + esc(t.title) + " 관련 서비스</h2>" +
+      '<header class="lv-ls-heading lh-heading"><p class="lv-life-kicker">관련 서비스 · ' + esc(s.label) + '</p><h2 class="lv-life-title" aria-level="1" tabindex="-1" data-lh-title-focus>' + esc(t.title) + " 관련 서비스</h2>" +
       '<p class="lv-life-lead">서비스 유형별로 준비 과정과 확인할 점을 안내합니다. 제휴 사업자는 아직 연결되지 않았으며, 특정 업체를 추천하지 않습니다.</p></header>' + body +
       '<footer class="lv-ls-footer"><div class="lv-life-svc__acts">' + UI.link("← " + t.title + " 주제로", topicRoute(t)) + UI.link("탐색에서 더 찾기", "#explore") + "</div></footer>");
     setMeta({ title: t.title + " 관련 서비스 · " + s.label + " | LivOn", description: t.title + "에 필요한 생활 서비스 유형과 준비 과정을 안내합니다.", canonical: shareUrl(t) });
@@ -535,7 +541,7 @@
       : ROOT_CRUMBS.concat([{ label: "서비스" }, { label: svc.name }]);
     var html = UI.Breadcrumb(crumbs) +
       '<header class="lv-ls-heading lh-heading"><p class="lv-life-kicker">' + esc(svc.group) + " · 서비스" + (s ? " · " + esc(s.label) : "") + "</p>" +
-        '<h2 class="lv-life-title" tabindex="-1" data-lh-title-focus>' + esc(svc.name) + '</h2><p class="lv-life-lead">' + esc(svc.description) + "</p>" +
+        '<h2 class="lv-life-title" aria-level="1" tabindex="-1" data-lh-title-focus>' + esc(svc.name) + '</h2><p class="lv-life-lead">' + esc(svc.description) + "</p>" +
         '<div class="lv-life-svc__acts lh-actions">' + UI.SaveButton("service", svc.id, svc.name, here, s ? s.id : "", "서비스 저장") + UI.AskLivonAIButton(aiPayload, "LIVON AI에게 질문하기", "dark") +
         (svc.externalUrl ? UI.external("서비스 이용하기", svc.externalUrl) : "") + "</div></header>" +
       '<div class="lv-ls-overview"><section class="lv-ls-block"><h3 class="lv-life-title">누구에게 필요한가요?</h3><p>' + esc(svc.forWhom) + '</p></section><section class="lv-ls-block"><h3 class="lv-life-title">LIVON에서 할 수 있는 것</h3><ul>' +
@@ -558,7 +564,7 @@
     var topics = Repo.topicsOf(cat);
     var others = Repo.categoriesOf(s).filter(function (c) { return c.id !== cat.id; });
     show(UI.Breadcrumb(ROOT_CRUMBS.concat([stageCrumb(s), { label: cat.name }])) + UI.StageSelector(s.slug) +
-      '<header class="lv-ls-heading lh-heading"><p class="lv-life-kicker">관심 분야 · ' + esc(s.label) + '</p><h2 class="lv-life-title" tabindex="-1" data-lh-title-focus>' + esc(cat.name) + "</h2>" +
+      '<header class="lv-ls-heading lh-heading"><p class="lv-life-kicker">관심 분야 · ' + esc(s.label) + '</p><h2 class="lv-life-title" aria-level="1" tabindex="-1" data-lh-title-focus>' + esc(cat.name) + "</h2>" +
       '<p class="lv-life-lead">' + esc(s.label) + " " + esc(cat.name) + " 분야의 주제입니다. 주제를 열면 단계별 가이드와 체크리스트, 관련 정보를 볼 수 있습니다.</p></header>" +
       (topics.length ? '<div class="lv-life-services is-trio">' + topics.map(function (t) { return UI.TopicCard(t); }).join("") + "</div>" : UI.EmptyState("이 분야에 등록된 주제가 아직 없습니다.", "주제는 순차적으로 추가됩니다.")) +
       UI.block("", "다른 관심 분야", '<div class="lv-life-fields">' + others.map(function (c) { return '<a class="lh-chip" href="' + esc(route({ view: "category", stage: s.slug, category: c.slug })) + '">' + esc(c.name) + "</a>"; }).join("") + "</div>") +
@@ -593,7 +599,7 @@
     var label = { topic: "주제", guide: "가이드", service: "서비스", policy: "정책", content: "콘텐츠" };
     var stages = Repo.data.stages;
     show(UI.Breadcrumb(ROOT_CRUMBS.concat([{ label: "검색" }])) +
-      '<header class="lv-ls-heading lh-heading"><p class="lv-life-kicker">라이프 스테이지 검색</p><h2 class="lv-life-title" tabindex="-1" data-lh-title-focus>무엇을 준비하고 있나요?</h2></header>' +
+      '<header class="lv-ls-heading lh-heading"><p class="lv-life-kicker">라이프 스테이지 검색</p><h2 class="lv-life-title" aria-level="1" tabindex="-1" data-lh-title-focus>무엇을 준비하고 있나요?</h2></header>' +
       searchForm(q) +
       '<div class="lv-life-chips lh-filters" role="group" aria-label="검색 결과 종류">' + SEARCH_TYPES.map(function (t) {
         return '<button type="button" data-lh-filter-type="' + t.id + '" aria-pressed="' + (searchState.type === t.id) + '"' + (searchState.type === t.id ? ' class="is-on"' : "") + ">" + esc(t.label) + "</button>";
@@ -602,8 +608,8 @@
         stages.map(function (s) { var on = searchState.stage === s.slug; return '<button type="button" data-lh-filter-stage="' + s.slug + '" aria-pressed="' + on + '"' + (on ? ' class="is-on"' : "") + ">" + esc(s.label) + "</button>"; }).join("") + "</div>" +
       (String(q || "").trim()
         ? '<p class="lv-life-note" role="status">‘' + esc(q) + "’ 검색 결과 " + results.length + "건</p>" +
-          (results.length ? '<div class="lv-life-services is-trio">' + results.slice(0, 60).map(function (r) {
-            return '<article class="lv-life-svc"><p class="lv-life-svc__n">' + esc(label[r.type] + " · " + r.sub) + "</p><h4>" + (r.external ? esc(r.title) : '<a href="' + esc(r.href) + '">' + esc(r.title) + "</a>") + "</h4><p>" + esc(r.body) + '</p><div class="lv-life-svc__acts">' + (r.external ? UI.external("공식 사이트", r.href) : UI.link("자세히 보기", r.href, "dark")) + "</div></article>";
+          (results.length ? '<h3 class="lh-sr">검색 결과</h3><div class="lv-life-services is-trio">' + results.slice(0, 60).map(function (r) {
+            return '<article class="lv-life-svc"><p class="lv-life-svc__n">' + esc(label[r.type] + " · " + r.sub) + "</p><h4>" + (r.external ? esc(r.title) : '<a href="' + esc(r.href) + '">' + esc(r.title) + "</a>") + "</h4><p>" + esc(r.body) + '</p><div class="lv-life-svc__acts">' + (r.external ? UI.external("공식 사이트", r.href) : UI.link("자세히 보기", r.href, "dark", "", r.title)) + "</div></article>";
           }).join("") + "</div>" : UI.EmptyState("검색 결과가 없습니다.", "다른 단어로 검색하거나 연령·종류 필터를 바꿔 보세요.", UI.link("라이프 스테이지 둘러보기", "#life")))
         : UI.EmptyState("검색어를 입력해 주세요.", "예: 독립, 취업, 연금, 건강검진, 부모 돌봄")));
     setMeta({ title: "라이프 스테이지 검색 | LivOn", description: "주제·가이드·서비스·정책·콘텐츠를 검색합니다.", canonical: SITE_ORIGIN + "/livon/life/" });
@@ -649,7 +655,7 @@
     lastFocus = opener || document.activeElement;
     modal = document.createElement("div");
     modal.className = "lv-life-modal lh-modal";
-    modal.innerHTML = '<button type="button" class="lv-life-modal__backdrop" data-lh-modal-close aria-label="닫기"></button><div class="lv-life-modal__panel" role="dialog" aria-modal="true" aria-labelledby="lh-modal-title">' +
+    modal.innerHTML = '<button type="button" class="lv-life-modal__backdrop" data-lh-modal-close aria-label="닫기" tabindex="-1"></button><div class="lv-life-modal__panel" role="dialog" aria-modal="true" aria-labelledby="lh-modal-title">' +
       '<button type="button" class="lv-life-modal__close" data-lh-modal-close aria-label="닫기">×</button>' + html + "</div>";
     document.body.appendChild(modal);
     document.body.style.overflow = "hidden";
@@ -723,7 +729,8 @@
   function saveAck(then, opener) {
     if (Account.isSignedIn() || readJSON(KEY_SAVE_ACK, false, sessionStorage)) return then();
     /* anonymous public mode: no login prompt — one local-storage notice per session, then saves go straight to this device */
-    openModal('<h2 id="lh-modal-title">이 기기에 저장됩니다</h2><p>현재 이 기기에 저장됩니다. 브라우저 데이터를 삭제하거나 다른 기기에서 이용하면 저장 내용이 유지되지 않을 수 있습니다. 저장한 항목은 <strong>내 생활 › 저장함</strong>에서 볼 수 있습니다.</p>' +
+    openModal('<h2 id="lh-modal-title">이 기기에 저장됩니다</h2><p>현재 이 기기에 저장됩니다. 브라우저 데이터를 삭제하거나 다른 기기에서 이용하면 저장 내용이 유지되지 않을 수 있습니다. 저장한 항목은 <strong>내 생활 › 저장함</strong>에서 볼 수 있습니다.' +
+      (window.LivonHelp ? ' <a class="lv-help-link" href="#help/a/local-data-storage" data-lv-help-link="local-data-storage" data-lh-modal-close>내 정보는 어디에 저장되나요?</a>' : "") + "</p>" +
       '<div class="lv-life-svc__acts"><button type="button" class="lv-life-btn lv-life-btn--dark" data-lh-save-local data-lh-autofocus>이 기기에 저장</button><button type="button" class="lv-life-btn lv-life-btn--outline" data-lh-modal-close>취소</button></div>', opener);
     pendingSave = then;
   }
@@ -861,7 +868,7 @@
       return true;
     }
     var notFound = function (what) {
-      show(UI.Breadcrumb(ROOT_CRUMBS.concat([{ label: "찾을 수 없음" }])) + '<header class="lv-ls-heading lh-heading"><h2 class="lv-life-title" tabindex="-1" data-lh-title-focus>' + esc(what) + " 찾을 수 없습니다.</h2></header>" +
+      show(UI.Breadcrumb(ROOT_CRUMBS.concat([{ label: "찾을 수 없음" }])) + '<header class="lv-ls-heading lh-heading"><h2 class="lv-life-title" aria-level="1" tabindex="-1" data-lh-title-focus>' + esc(what) + " 찾을 수 없습니다.</h2></header>" +
         UI.EmptyState("주소가 바뀌었거나 삭제된 항목일 수 있습니다.", "라이프 스테이지에서 다시 찾아 주세요.", UI.link("라이프 스테이지로", "#life", "dark") + UI.link("검색하기", "#life/search/")));
       restoreMeta();
       return true;
