@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import vm from 'node:vm';
+import crypto from 'node:crypto';
 import http from 'node:http';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -69,8 +70,24 @@ export const PRODUCTION_INTEGRATION = {
   paths: ['livon', 'docs/livon', 'tests/livon', 'scripts/livon-*', 'scripts/publish-site.mjs', 'scripts/serve-publish.mjs', '.github/workflows/github-pages.yml',
     'assets/livon-mark-icon-120.jpg', 'api/livon/ai/chat.mjs', 'api/livon/data/status.mjs', 'server/livon/ai/tools.mjs', 'server/livon/chat.mjs', 'server/livon/http.mjs'],
   aligned: ['livon/livon-api-config.js', 'livon/ai-page.js', 'livon/index.html', 'scripts/livon-api-config.mjs', 'docs/livon/LIVON_PRODUCT_COMPLETION_AUDIT.md',
-    'tests/livon/completion.test.mjs', 'tests/livon/live-backend.test.mjs', 'tests/livon/release-candidate.test.mjs', 'tests/livon/api-routing-cors.test.mjs']
+    'tests/livon/completion.test.mjs', 'tests/livon/live-backend.test.mjs', 'tests/livon/release-candidate.test.mjs', 'tests/livon/api-routing-cors.test.mjs'],
+  /* the one LIVON-path file the integration kept from main instead of the completion tree (see the integration commit message) */
+  mainKept: ['tests/livon/api-routing-cors.test.mjs'],
+  /* content fingerprint of the completion tree (source) on `paths` without `mainKept`: SHA-256 over the sorted "path blob-id"
+     lines of `git ls-tree -r`. Git blob ids are content hashes, so this pins the exact LIVON V1 product content. It lets a
+     checkout that has only main's history (no livon-v1-completion branch) prove that the integration commit carried that
+     content, without needing the source commit object. */
+  sourceDigest: 'd23fcabc184dd6d1b95b3725db40c76438cf59c28e4b09e046529ef4a5573cdc'
 };
+/* "path blob" lines of a commit's tree on the given paths (git pathspecs), minus excluded files → SHA-256 */
+export function treeDigest(commit, paths, exclude = []) {
+  const r = git('ls-tree', '-r', commit, '--', ...paths);
+  if (r.status !== 0) return null;
+  const lines = r.stdout.split('\n').filter(Boolean).map(l => { const [meta, file] = l.split('\t'); return file + ' ' + meta.split(' ')[2]; })
+    .filter(l => !exclude.includes(l.slice(0, l.lastIndexOf(' ')))).sort();
+  return crypto.createHash('sha256').update(lines.join('\n')).digest('hex');
+}
+const commitBySubject = subject => (git('log', '--format=%H%x09%s', 'HEAD').stdout.split('\n').find(l => l.split('\t')[1] === subject) || '').split('\t')[0] || null;
 
 /* LIVON AI LIVE V1 (branch livon-ai-live-v1): AI orchestration, tools and consent-scoped context. Accepted only on a line
    whose history contains this commit, and only these files. */
@@ -120,23 +137,41 @@ test('RC-1 ancestry: every V1 phase commit is an ancestor of the RC; the RC star
   const history = git('log', '--format=%s', 'HEAD').stdout.split('\n');
   /* a path-level integration branch (livon-production-v1) carries the product as a tree, not as ancestors */
   const integrated = history.includes(PRODUCTION_INTEGRATION.subjects[0]);
-  for (const [name, hash, subject] of PHASES) {
-    if (!hasCommit(hash)) { assert.fail(name + ' commit ' + hash + ' is not in this repository'); }
-    if (!integrated) assert.equal(included(hash), true, name + ' ' + hash + ' is included');
+  if (!integrated) for (const [name, hash, subject] of PHASES) {
+    assert.ok(hasCommit(hash), name + ' commit ' + hash + ' is in this repository');
+    assert.equal(included(hash), true, name + ' ' + hash + ' is included');
     assert.ok(git('log', '-1', '--format=%s', hash).stdout.startsWith(subject), name + ' subject');
   }
   if (integrated) {
-    /* the phases are included by content: everything taken from the completion commit is identical to it, except the listed
-       alignment files; the first phase (already on main) is still an ancestor, and both integration commits are in the history */
+    /*
+     * Path-level integration (main): the V1 phases arrived as the content of the completion commit, not as ancestors, so the
+     * proof is by content and uses only main's own history:
+     *   1. the integration commit is in HEAD's history and its message records the completion commit it came from;
+     *   2. its LIVON tree has exactly the pinned completion fingerprint (sourceDigest) — blob ids are content hashes;
+     *   3. HEAD's LIVON tree differs from the integration commit only in files of later, named commits in this history
+     *      (production routing alignment, AI LIVE V1);
+     *   4. where the completion commit itself is available (a full clone fetches origin/livon-v1-completion), it is checked
+     *      directly as well: same fingerprint, and every V1 phase is its ancestor with the expected subject.
+     */
     const I = PRODUCTION_INTEGRATION;
     assert.equal(included(PHASES[0][1]), true, PHASES[0][0] + ' is an ancestor (it is on main)');
     for (const subj of I.subjects) assert.ok(history.includes(subj), 'integration commit: ' + subj);
-    assert.ok(hasCommit(I.source), 'the integrated completion commit ' + I.source + ' is in this repository');
-    for (const [name, hash] of PHASES) assert.equal(git('merge-base', '--is-ancestor', hash, I.source).status, 0, name + ' ' + hash + ' is included in ' + I.source);
-    const d = git('diff', '--name-only', I.source, 'HEAD', '--', ...I.paths);
+    const integ = commitBySubject(I.subjects[0]);
+    assert.ok(integ, 'the integration commit is in the history');
+    assert.match(git('log', '-1', '--format=%B', integ).stdout, new RegExp('livon-v1-completion ' + I.source), 'the integration commit records its source');
+    assert.equal(treeDigest(integ, I.paths, I.mainKept), I.sourceDigest, 'the integration commit carries exactly the LIVON V1 completion content');
+    if (hasCommit(I.source)) {
+      assert.equal(treeDigest(I.source, I.paths, I.mainKept), I.sourceDigest, 'the completion commit has the pinned fingerprint');
+      for (const [name, hash, subject] of PHASES) {
+        assert.ok(hasCommit(hash), name + ' commit ' + hash + ' is in this repository');
+        assert.equal(git('merge-base', '--is-ancestor', hash, I.source).status, 0, name + ' ' + hash + ' is included in ' + I.source);
+        assert.ok(git('log', '-1', '--format=%s', hash).stdout.startsWith(subject), name + ' subject');
+      }
+    }
+    const d = git('diff', '--name-only', integ, 'HEAD', '--', ...I.paths);
     assert.equal(d.status, 0);
     const aiLive = aiLiveIn() ? AI_LIVE.files : [];
-    assert.deepEqual(d.stdout.split('\n').filter(Boolean).filter(f => !I.aligned.includes(f) && !aiLive.includes(f)), [], 'LIVON tree = ' + I.source + ' except the alignment files');
+    assert.deepEqual(d.stdout.split('\n').filter(Boolean).filter(f => !I.aligned.includes(f) && !aiLive.includes(f)), [], 'LIVON tree = integration commit except the alignment / AI LIVE files');
     /* main's production routing/CORS fix is part of this line */
     assert.ok(history.includes(ROUTING_CORS_FIX.subject), 'main routing/CORS fix is an ancestor');
     assert.ok(history.includes(BACKEND_HARDENING.subject), 'backend hardening is an ancestor');
