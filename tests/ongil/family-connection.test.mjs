@@ -792,3 +792,17 @@ test('FC-33 the old "내가 공유할 내용" preference is never applied to a c
   const { member } = connect(w);
   assert.deepEqual([...new Set(Object.values(w.service.levels(member.id)))], ['NONE']);
 });
+
+test('FC-34 local wording and no stale connection status: "이 기기 안에서 연결했어요"; saving or stopping sharing clears the old "아직 아무것도 공유하지 않아요" line', () => {
+  /* the connect message says the connection is on this device only — never that a family phone is connected */
+  assert.match(VIEW, /님과 이 기기 안에서 연결했어요\. 아직 아무것도 공유하지 않아요\./);
+  assert.equal(/님과 연결했어요/.test(VIEW), false, 'no connect message without "이 기기 안에서"');
+  for (const phrase of ['초대가 전송되었습니다', '초대를 보냈어요', '알림을 보냈습니다', '알림을 보냈어요', '가족이 연결되었습니다', '휴대폰에 연결']) assert.equal(VIEW.includes(phrase), false, phrase);
+  /* the connection card's line is cleared only when the change really happened (r.ok) — sharing saved, one member stopped, all stopped */
+  assert.match(VIEW, /if \(r\.ok\) \{ ui\.draft = null; ui\.consents = \[\]; cards\.connect\.say\(''\); \}\s*say\(card, r, `\$\{m\.displayName\}님에게 보여줄 정보를 저장했어요\.`\);/);
+  assert.match(VIEW, /service\.stopSharing\(m\.id\); ui\.confirm = null; ui\.draft = null; ui\.consents = \[\]; if \(r\.ok\) cards\.connect\.say\(''\);/);
+  assert.match(VIEW, /service\.stopAllSharing\(\); ui\.confirm = null; ui\.draft = null; ui\.consents = \[\]; if \(r\.ok\) cards\.connect\.say\(''\);/);
+  /* a refused save (missing consent) returns before anything is cleared or announced */
+  const save = VIEW.slice(VIEW.indexOf("service.applySharing(m.id, draft"), VIEW.indexOf("cards.connect.say('')"));
+  assert.match(save, /CONSENT_REQUIRED[\s\S]*return;/);
+});

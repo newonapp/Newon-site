@@ -97,7 +97,7 @@ export function createFamilyConnectView({ service, cards, onChange }) {
           const r = service.acceptInvitation(a.code);
           ui.accept = null;
           if (r.ok) { ui.member = r.member.id; ui.draft = null; ui.consents = []; }
-          say(card, r, `${i.displayName}님과 연결했어요. 아직 아무것도 공유하지 않아요. 아래에서 보여줄 정보를 골라 주세요.`, INVITE_TEXT);
+          say(card, r, `${i.displayName}님과 이 기기 안에서 연결했어요. 아직 아무것도 공유하지 않아요. 아래에서 보여줄 정보를 골라 주세요.`, INVITE_TEXT);
           focusLater(r.ok ? `member:${r.member.id}` : 'invite-open');
           renderAll();
           changed();
@@ -207,7 +207,8 @@ export function createFamilyConnectView({ service, cards, onChange }) {
         if (first) first.focus();
         return;
       }
-      if (r.ok) { ui.draft = null; ui.consents = []; }
+      /* the connection card's "아직 아무것도 공유하지 않아요" is no longer true once sharing is saved: clear it */
+      if (r.ok) { ui.draft = null; ui.consents = []; cards.connect.say(''); }
       say(card, r, `${m.displayName}님에게 보여줄 정보를 저장했어요.`);
       focusLater('member-title');
       renderAll();
@@ -254,14 +255,14 @@ export function createFamilyConnectView({ service, cards, onChange }) {
         el('h4', { class: 'og-life-sub', text: '공유 중단과 연결 해제' }),
         el('ul', { class: 'og-family-points' }, el('li', { text: '공유 중단: 연결은 그대로 두고, 이 가족에게 보여 주던 정보를 모두 끕니다. 다시 켤 수 있어요.' }), el('li', { text: '연결 해제: 공유를 끄고 이 가족과의 연결도 끊습니다. 다시 연결하려면 새 초대가 필요해요.' })),
         ui.confirm === 'stop'
-          ? confirmBox({ key: 'stop', question: `${m.displayName}님에게 보여 주던 정보를 모두 끌까요? 연결은 그대로 있어요.`, yes: '공유 중단', onNo: () => { ui.confirm = null; focusLater('stop'); renderMember(); }, onYes: () => { const r = service.stopSharing(m.id); ui.confirm = null; ui.draft = null; ui.consents = []; say(card, r, `${m.displayName}님과의 공유를 모두 멈췄어요. 연결은 그대로예요.`); focusLater('member-title'); renderAll(); changed(); } })
+          ? confirmBox({ key: 'stop', question: `${m.displayName}님에게 보여 주던 정보를 모두 끌까요? 연결은 그대로 있어요.`, yes: '공유 중단', onNo: () => { ui.confirm = null; focusLater('stop'); renderMember(); }, onYes: () => { const r = service.stopSharing(m.id); ui.confirm = null; ui.draft = null; ui.consents = []; if (r.ok) cards.connect.say(''); say(card, r, `${m.displayName}님과의 공유를 모두 멈췄어요. 연결은 그대로예요.`); focusLater('member-title'); renderAll(); changed(); } })
           : ui.confirm === 'disconnect'
             ? confirmBox({ key: 'disconnect', question: `${m.displayName}님과의 연결을 해제할까요? 공유가 모두 꺼지고, 부탁해 둔 도움 요청은 취소돼요.`, yes: '연결 해제', onNo: () => { ui.confirm = null; focusLater('disconnect'); renderMember(); }, onYes: () => { const r = service.disconnect(m.id); ui.confirm = null; ui.member = null; ui.draft = null; ui.viewing = null; say(cards.connect, r, `${m.displayName}님과의 연결을 해제했어요. 더 이상 아무것도 보이지 않아요.`); focusLater('invite-open'); renderAll(); changed(); } })
             : el('div', { class: 'og-form__actions' }, btn('공유 중단', 'ghost', { 'data-og-focus': 'stop', 'data-og-family-stop': m.id, disabled: !m.sharedCount }, () => { ui.confirm = 'stop'; renderMember(); }), btn('연결 해제', 'ghost', { 'data-og-focus': 'disconnect', 'data-og-family-disconnect': m.id }, () => { ui.confirm = 'disconnect'; renderMember(); })));
     }
     if (o.connected.some((x) => x.sharedCount)) {
       put(card.body, ui.confirm === 'stop-all'
-        ? confirmBox({ key: 'stop-all', question: '모든 가족에게 보여 주던 정보를 끌까요? 연결은 그대로 있어요.', yes: '전체 공유 중단', onNo: () => { ui.confirm = null; focusLater('stop-all'); renderMember(); }, onYes: () => { const r = service.stopAllSharing(); ui.confirm = null; ui.draft = null; ui.consents = []; say(card, r, '모든 가족과의 공유를 멈췄어요.'); focusLater('member-title'); renderAll(); changed(); } })
+        ? confirmBox({ key: 'stop-all', question: '모든 가족에게 보여 주던 정보를 끌까요? 연결은 그대로 있어요.', yes: '전체 공유 중단', onNo: () => { ui.confirm = null; focusLater('stop-all'); renderMember(); }, onYes: () => { const r = service.stopAllSharing(); ui.confirm = null; ui.draft = null; ui.consents = []; if (r.ok) cards.connect.say(''); say(card, r, '모든 가족과의 공유를 멈췄어요.'); focusLater('member-title'); renderAll(); changed(); } })
         : el('div', { class: 'og-form__actions' }, btn('전체 공유 중단', 'text', { 'data-og-focus': 'stop-all', 'data-og-family-stop-all': 'true' }, () => { ui.confirm = 'stop-all'; renderMember(); })));
     }
     applyFocus(card);
