@@ -742,10 +742,13 @@ test('FC-31 the remote repository is disabled: nothing is sent and nothing prete
   const chosen = selectFamilyRepository({ storage: w.storage, now: w.now });
   assert.deepEqual([chosen.kind, chosen.mode, chosen.available], ['local', 'LOCAL', true]);
   assert.equal(w.service.mode, 'LOCAL');
-  assert.equal(FAMILY_REMOTE_CONTRACT.status, 'NOT_IMPLEMENTED');
-  assert.equal(FAMILY_REMOTE_CONTRACT.routes.length, 12);
-  assert.equal(FAMILY_REMOTE_CONTRACT.routes.every((r) => r.path.startsWith('/api/ongil/family/') && /^(GET|POST|PUT|PATCH|DELETE)$/.test(r.method) && r.who && r.does), true);
-  assert.equal(fs.existsSync(path.join(ROOT, 'api', 'ongil')), false, 'no family server exists, so none is claimed');
+  /* Family Connection V2: the server exists in code (CODE READY, not live): BEFORE status NOT_IMPLEMENTED, 12 planned REST
+     routes, no api/ongil · AFTER status CODE_READY, 17 operations on one route /api/ongil/family, api/ongil/family.mjs. */
+  assert.equal(FAMILY_REMOTE_CONTRACT.status, 'CODE_READY');
+  assert.equal(FAMILY_REMOTE_CONTRACT.routes.length, 17);
+  assert.equal(FAMILY_REMOTE_CONTRACT.routes.every((r) => r.path === '/api/ongil/family' && /^(GET|POST)$/.test(r.method) && r.op && r.who && r.does), true);
+  assert.equal(fs.existsSync(path.join(ROOT, 'api', 'ongil', 'family.mjs')), true, 'the V2 family route exists in code');
+  /* the local repository is still the only one the V1 screen chooses: nothing pretends to be connected across devices */
   const repo = strip(read('js', 'family-repository.js'));
   assert.doesNotMatch(repo, /createRemoteFamilyRepository\(\)\s*[;)]?\s*$/m);
   assert.doesNotMatch(strip(read('js', 'app.js')), /createRemoteFamilyRepository/);

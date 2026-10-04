@@ -499,7 +499,8 @@ test('OG-EN-49 non-ONGIL preserved: LIVON and site keys survive the erase', () =
 
 test('OG-EN-50 regression: fetch injected once, sources only in data-source.js, existing screens and providers kept', () => {
   assert.equal((APP.match(/\bfetch\(/g) || []).length, 1);
-  for (const f of fs.readdirSync(path.join(ROOT, 'ongil-start', 'js')).filter((x) => x.endsWith('.js') && x !== 'data-source.js')) assert.equal(/fetcher\(|\bfetch\(/.test(strip(read('js', f)).replace(/win\.fetch\(url, init\)/, '')), false, f);
+  /* Family Connection V2: + family-remote.js uses the injected fetch for /api/ongil/family (BEFORE: data-source.js only) */
+  for (const f of fs.readdirSync(path.join(ROOT, 'ongil-start', 'js')).filter((x) => x.endsWith('.js') && x !== 'data-source.js' && x !== 'family-remote.js')) assert.equal(/fetcher\(|\bfetch\(/.test(strip(read('js', f)).replace(/win\.fetch\(url, init\)/, '')), false, f);
   assert.match(APP, /search\.registerProvider\(createCareProvider\(\(\) => care\.items\(\)\)\);/);
   // Phase 9: wrapped by observeSource (see OG-FC-10); still created once.
   assert.match(APP, /const nearbySource = observeSource\(createLifelongClassSource\(dataApi\), /);

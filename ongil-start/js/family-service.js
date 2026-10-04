@@ -24,6 +24,60 @@ import { dateKey, formatTime, formatDateKey } from './dates.js';
 const labelOf = (list, id) => (list.find((o) => o.id === id) || { label: '' }).label;
 const fail = (reason, extra) => ({ ok: false, reason, ...(extra || {}) });
 
+/*
+ * the short lines one category shows at one level — the SAME readers serve the V1 family view on this device and the
+ * V2 account snapshot (family-remote.js publishes them only for a level the server says the member may see).
+ */
+export function createSnapshotReaders(sources = {}) {
+  return Object.freeze({
+    CHECK_IN: (level, date) => {
+      const ci = sources.checkIn ? sources.checkIn.get(date) : null;
+      if (!ci || !ci.status) return ['오늘은 아직 안부를 남기지 않았어요.'];
+      return level === 'DETAIL' ? ['오늘 안부를 남겼어요.', `오늘 고른 기분: ${labelOf(CHECKIN_STATUSES, ci.status)}`] : ['오늘 안부를 남겼어요.'];
+    },
+    SCHEDULE: (level, date) => {
+      const events = (sources.schedule ? sources.schedule.listForDate(date) : []).filter((e) => !isHealthEvent(e));
+      if (!events.length) return ['오늘 적어 둔 일정이 없어요.'];
+      return level === 'DETAIL' ? events.map((e) => (e.time ? `${formatTime(e.time)} ${e.title}` : e.title)) : [`오늘 일정 ${events.length}개`];
+    },
+    MEDICATION: (level, date) => {
+      const meds = sources.medication ? sources.medication.listForDate(date) : [];
+      return meds.length ? [`오늘 먹을 약 ${meds.length}개 가운데 ${meds.filter((m) => m.taken).length}개를 먹었다고 표시했어요.`] : ['오늘 먹을 약으로 적어 둔 것이 없어요.'];
+    },
+    HEALTH: (level, date) => {
+      const ci = sources.checkIn ? sources.checkIn.get(date) : null;
+      return [ci && (ci.body || ci.energy || ci.pain) ? '오늘 몸 상태를 적었어요.' : '오늘은 몸 상태를 적지 않았어요.'];
+    },
+    CHECKUP: (level, date) => {
+      const events = sources.schedule ? HEALTH_EVENT_KINDS.flatMap((kind) => sources.schedule.listUpcoming(kind, date)) : [];
+      if (!events.length) return ['다가오는 병원·검진 일정이 없어요.'];
+      if (level !== 'DETAIL') return [`다가오는 병원·검진 일정 ${events.length}개`];
+      return events.sort((a, b) => a.date.localeCompare(b.date)).slice(0, 10).map((e) => `${formatDateKey(e.date)} ${eventKindLabel(eventKind(e))}`);
+    },
+    ACTIVITY: (level, date) => {
+      const d = sources.dailyLife ? sources.dailyLife.get(date) : null;
+      if (!d || !d.exercise) return ['오늘은 운동을 적지 않았어요.'];
+      if (level !== 'DETAIL') return ['오늘 운동을 적었어요.'];
+      return [`오늘 운동: ${[labelOf(EXERCISE_TYPES, d.exerciseType), d.exerciseMinutes ? `${d.exerciseMinutes}분` : ''].filter(Boolean).join(' ') || '했어요'}`];
+    },
+    MEAL: (level, date) => {
+      const d = sources.dailyLife ? sources.dailyLife.get(date) : null;
+      if (!d || !d.meals) return ['오늘은 식사를 적지 않았어요.'];
+      return [level === 'DETAIL' ? `오늘 식사 ${d.meals}끼를 적었어요.` : '오늘 식사를 적었어요.'];
+    },
+    SLEEP: (level, date) => {
+      const s = sources.sleep ? sources.sleep.get(date) : null;
+      if (!s) return ['어젯밤 잠을 적지 않았어요.'];
+      if (level !== 'DETAIL') return ['어젯밤 잠을 적었어요.'];
+      return [[s.bedTime ? `잠든 시각 ${formatTime(s.bedTime)}` : '', s.wakeTime ? `일어난 시각 ${formatTime(s.wakeTime)}` : ''].filter(Boolean).join(' · ') || '어젯밤 잠을 적었어요.'];
+    },
+    EMERGENCY_INFO: () => {
+      const n = sources.emergencyContacts ? sources.emergencyContacts.count() : 0;
+      return [n ? `긴급 연락처 ${n}명을 적어 두었어요.` : '적어 둔 긴급 연락처가 없어요.'];
+    },
+  });
+}
+
 export function createFamilyService({ repository, sources = {}, now = () => Date.now(), randomBytes = secureRandomBytes }) {
   const read = () => repository.load();
   const actorOf = (state) => (state.group ? { role: 'OWNER', userId: state.group.ownerUserId } : { role: 'OWNER', userId: '' });
@@ -263,53 +317,7 @@ export function createFamilyService({ repository, sources = {}, now = () => Date
 
   /* ───────── family view: the SharingSnapshot one member is shown ───────── */
 
-  const READERS = {
-    CHECK_IN: (level, date) => {
-      const ci = sources.checkIn ? sources.checkIn.get(date) : null;
-      if (!ci || !ci.status) return ['오늘은 아직 안부를 남기지 않았어요.'];
-      return level === 'DETAIL' ? ['오늘 안부를 남겼어요.', `오늘 고른 기분: ${labelOf(CHECKIN_STATUSES, ci.status)}`] : ['오늘 안부를 남겼어요.'];
-    },
-    SCHEDULE: (level, date) => {
-      const events = (sources.schedule ? sources.schedule.listForDate(date) : []).filter((e) => !isHealthEvent(e));
-      if (!events.length) return ['오늘 적어 둔 일정이 없어요.'];
-      return level === 'DETAIL' ? events.map((e) => (e.time ? `${formatTime(e.time)} ${e.title}` : e.title)) : [`오늘 일정 ${events.length}개`];
-    },
-    MEDICATION: (level, date) => {
-      const meds = sources.medication ? sources.medication.listForDate(date) : [];
-      return meds.length ? [`오늘 먹을 약 ${meds.length}개 가운데 ${meds.filter((m) => m.taken).length}개를 먹었다고 표시했어요.`] : ['오늘 먹을 약으로 적어 둔 것이 없어요.'];
-    },
-    HEALTH: (level, date) => {
-      const ci = sources.checkIn ? sources.checkIn.get(date) : null;
-      return [ci && (ci.body || ci.energy || ci.pain) ? '오늘 몸 상태를 적었어요.' : '오늘은 몸 상태를 적지 않았어요.'];
-    },
-    CHECKUP: (level, date) => {
-      const events = sources.schedule ? HEALTH_EVENT_KINDS.flatMap((kind) => sources.schedule.listUpcoming(kind, date)) : [];
-      if (!events.length) return ['다가오는 병원·검진 일정이 없어요.'];
-      if (level !== 'DETAIL') return [`다가오는 병원·검진 일정 ${events.length}개`];
-      return events.sort((a, b) => a.date.localeCompare(b.date)).slice(0, 10).map((e) => `${formatDateKey(e.date)} ${eventKindLabel(eventKind(e))}`);
-    },
-    ACTIVITY: (level, date) => {
-      const d = sources.dailyLife ? sources.dailyLife.get(date) : null;
-      if (!d || !d.exercise) return ['오늘은 운동을 적지 않았어요.'];
-      if (level !== 'DETAIL') return ['오늘 운동을 적었어요.'];
-      return [`오늘 운동: ${[labelOf(EXERCISE_TYPES, d.exerciseType), d.exerciseMinutes ? `${d.exerciseMinutes}분` : ''].filter(Boolean).join(' ') || '했어요'}`];
-    },
-    MEAL: (level, date) => {
-      const d = sources.dailyLife ? sources.dailyLife.get(date) : null;
-      if (!d || !d.meals) return ['오늘은 식사를 적지 않았어요.'];
-      return [level === 'DETAIL' ? `오늘 식사 ${d.meals}끼를 적었어요.` : '오늘 식사를 적었어요.'];
-    },
-    SLEEP: (level, date) => {
-      const s = sources.sleep ? sources.sleep.get(date) : null;
-      if (!s) return ['어젯밤 잠을 적지 않았어요.'];
-      if (level !== 'DETAIL') return ['어젯밤 잠을 적었어요.'];
-      return [[s.bedTime ? `잠든 시각 ${formatTime(s.bedTime)}` : '', s.wakeTime ? `일어난 시각 ${formatTime(s.wakeTime)}` : ''].filter(Boolean).join(' · ') || '어젯밤 잠을 적었어요.'];
-    },
-    EMERGENCY_INFO: () => {
-      const n = sources.emergencyContacts ? sources.emergencyContacts.count() : 0;
-      return [n ? `긴급 연락처 ${n}명을 적어 두었어요.` : '적어 둔 긴급 연락처가 없어요.'];
-    },
-  };
+  const READERS = createSnapshotReaders(sources);
   const publicRequest = (r) => ({ id: r.id, memberId: r.memberId, kind: r.kind, kindLabel: labelOf(FAMILY_HELP_KINDS, r.kind), message: r.message, status: r.status, createdAt: r.createdAt, updatedAt: r.updatedAt });
   /*
    * familyView(memberId) → { ok, snapshot } — only categories this member may see are read at all; a category that

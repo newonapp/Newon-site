@@ -26,8 +26,11 @@ const levelLabel = (id) => (SHARE_LEVELS.find((l) => l.id === id) || { label: ''
 
 /* connect (Family Connection V1): the family service. With it the screen can connect family on this device, decide what
    each member is shown, stop, disconnect, ask for help and show the activity log. Without it the screen is as before. */
-export function createFamilyView({ host, sharing, help, profile, familyConnection, onChange, connect = null }) {
+/* remote (Family Connection V2): the account card (family-remote-view.js). It draws itself only for a signed-in page;
+   without a Newon+ sign-in nothing is added and the screen is exactly V1. */
+export function createFamilyView({ host, sharing, help, profile, familyConnection, onChange, connect = null, remote = null }) {
   let cards = null;
+  let grid = null;
   let connectView = null;
   let pendingSensitive = null; /* { category, level } waiting for the user's second "yes" */
   let helpList = null;
@@ -237,9 +240,10 @@ export function createFamilyView({ host, sharing, help, profile, familyConnectio
         el('p', { class: 'og-label', lang: 'en', text: 'FAMILY' }),
         el('h2', { class: 'og-h', id: 'og-family-section-title', tabindex: '-1', text: '가족' }),
         el('p', { class: 'og-lead', text: '내가 고른 것만, 내가 정한 만큼만 가족과 나누는 곳입니다.' }),
-        el('div', { class: 'og-family-grid' }, Object.values(cards).map((c) => c.root))
+        grid = el('div', { class: 'og-family-grid' }, Object.values(cards).map((c) => c.root))
       )
     );
+    if (remote) remote.mount(grid);
     if (connect) connectView = createFamilyConnectView({ service: connect, cards: { connect: cards.connection, members: cards.members, help: cards.familyHelp, activity: cards.activity }, onChange: () => { syncLegacy(); changed(); } });
     renderConnection();
     renderSharing();
@@ -269,6 +273,7 @@ export function createFamilyView({ host, sharing, help, profile, familyConnectio
     renderSharing();
     renderPreview();
     helpList.reset();
+    if (remote) remote.refresh();
   }
 
   build();

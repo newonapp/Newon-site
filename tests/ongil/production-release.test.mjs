@@ -138,7 +138,7 @@ test('PR-10 admin boundary: the operations view is not in the menu, search, site
 
 test('PR-11 / PR-12 network and analytics: one module talks to the network (GET to the data route); analytics stays on the device', () => {
   const withFetch = JS_FILES.filter((f) => /\bfetch\(|fetcher\(/.test(CODE[f]));
-  assert.deepEqual(withFetch, ['app.js', 'data-source.js']);
+  assert.deepEqual(withFetch, ['app.js', 'data-source.js', 'family-remote.js']); // Family Connection V2: + family-remote.js (the account family route, only for a signed-in page). BEFORE: two modules.
   assert.match(CODE['app.js'], /fetcher: typeof win\.fetch === 'function' \? \(url, init\) => win\.fetch\(url, init\) : null/);
   assert.doesNotMatch(ALL, /XMLHttpRequest|sendBeacon|WebSocket|EventSource|navigator\.share|postMessage\(/);
   assert.deepEqual({ ...TRANSMISSION }, { remote: false, endpoint: null, batch: false, beacon: false });

@@ -48,7 +48,9 @@ import { createEmergencyContactStore, createEmergencyContacts } from './emergenc
 import { createFamilySharingStore, createHelpRequestStore } from './family.js';
 import { createFamilyView } from './family-view.js';
 import { selectFamilyRepository } from './family-repository.js';
-import { createFamilyService } from './family-service.js';
+import { createFamilyService, createSnapshotReaders } from './family-service.js';
+import { createFamilyRemote } from './family-remote.js';
+import { createFamilyRemoteView } from './family-remote-view.js';
 import { createCareView, resolveCareSection } from './care-view.js';
 import { createEnjoyView, resolveEnjoySection } from './enjoy-view.js';
 import { createPostStore, createGroupStore, createMeetupStore } from './community.js';
@@ -214,6 +216,16 @@ const familyView = createFamilyView({
   profile,
   familyConnection: onboarding.familyConnection,
   connect: familyConnect,
+  /*
+   * Family Connection V2 — the account side (CODE READY). It is used only when this page has a Newon+ sign-in
+   * (window.NewonAuth) AND /api/ongil/family says it is ready; ONGIL does not load Newon+ auth yet, so today this stays
+   * ANONYMOUS_LOCAL and adds nothing. Same API base and the same injected fetch as the data sources.
+   */
+  remote: createFamilyRemoteView({
+    remote: createFamilyRemote({ auth: win.NewonAuth || null, apiUrl: dataApi.apiUrl, fetcher: dataApi.fetcher }),
+    readers: createSnapshotReaders({ checkIn, schedule, medication, dailyLife, sleep, emergencyContacts }),
+    today: () => dateKey(),
+  }),
 });
 
 /*

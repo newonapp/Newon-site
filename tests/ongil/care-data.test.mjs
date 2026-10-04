@@ -338,7 +338,8 @@ test('OG-FC-10 regression: shells, routes, Home layout, sync list, network bound
   // its load() and its answers are unchanged. BEFORE: createLifelongClassSource(dataApi). AFTER: observeSource(createLifelongClassSource(dataApi), …).
   assert.match(APP, /const nearbySource = observeSource\(createLifelongClassSource\(dataApi\), \{ id: 'lifelong-class'/);
   assert.match(APP, /facility: observeSource\(createFacilitySource\(dataApi\), /); // Phase 9: observed, as above
-  for (const f of fs.readdirSync(path.join(ROOT, 'ongil-start', 'js')).filter((x) => x.endsWith('.js') && x !== 'data-source.js')) assert.equal(/fetcher\(/.test(strip(read('js', f))), false, f);
+  /* Family Connection V2: family-remote.js is the second module handed the injected fetch (its own route /api/ongil/family). BEFORE: data-source.js only. */
+  for (const f of fs.readdirSync(path.join(ROOT, 'ongil-start', 'js')).filter((x) => x.endsWith('.js') && x !== 'data-source.js' && x !== 'family-remote.js')) assert.equal(/fetcher\(/.test(strip(read('js', f))), false, f);
   assert.match(INDEX, /<section class="og-band" data-og-modules="family"/);
   assert.match(INDEX, /<section class="og-band" data-og-modules="care"/);
   assert.match(AREAS.find((a) => a.id === 'family').notice, /가족 연결은 아직 할 수 없습니다/);

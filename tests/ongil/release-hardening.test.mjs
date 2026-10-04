@@ -297,7 +297,9 @@ test('RH-05 privacy leak matrix: no personal text reaches search, saved, sync, f
   for (const flags of [w.help.delivery, w.posts.delivery, w.checkIn.delivery]) assert.equal(Object.values(flags).every((v) => v === false || v === 0), true, JSON.stringify(flags));
   assert.equal(/fetch\(|XMLHttpRequest|sendBeacon|WebSocket/.test(code(['family.js', 'family-view.js', 'community.js', 'community-view.js', 'checkin.js', 'medication.js', 'symptoms.js', 'health-notes.js', 'journal.js', 'expenses.js', 'assistant-tools.js', 'analytics.js'].map((f) => JS[f]).join('\n'))), false, 'the modules that hold personal records have no network code');
   /* the only modules that can make a request are the public-data source and nothing personal is passed to it */
-  assert.deepEqual(JS_FILES.filter((f) => /\bfetch\(|fetcher\(/.test(code(JS[f]))), ['app.js', 'data-source.js'], 'app.js only hands the browser\'s fetch to the data source');
+  /* Family Connection V2: + family-remote.js (BEFORE ['app.js', 'data-source.js']). It sends only what the owner chose for a member, never a record. */
+  assert.deepEqual(JS_FILES.filter((f) => /\bfetch\(|fetcher\(/.test(code(JS[f]))), ['app.js', 'data-source.js', 'family-remote.js'], 'app.js hands the browser\'s fetch to the data source and to the family account client');
+  assert.equal(/journal|expense|symptom|healthNote|storage\./i.test(code(JS['family-remote.js'])), false, 'the family client reads no record store');
   assert.equal(/journal|expense|symptom|medication|checkin|healthNote|helpRequest|nickname/i.test(code(JS['data-source.js'])), false);
 });
 
@@ -1184,7 +1186,7 @@ test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', ()
   assert.deepEqual([...VIEWS], ['home', 'life', 'health', 'family', 'care', 'enjoy', 'community', 'store', 'saved', 'account']);
   assert.deepEqual([...INTERNAL_VIEWS], ['admin']);
   /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ assert.equal(COLLECTIONS.length, 27); // Completion V3: + emergencyContacts
-  /* Family Connection V1: + 5 family modules (BEFORE 71, AFTER 76) */ assert.equal(JS_FILES.length, 76, 'no module was added or removed in Phase 11; Completion V1 added health-measures; Completion V2 added health-appointments; Completion V3 added emergency-contacts');
+  /* Family Connection V1: + 5 family modules (BEFORE 71, AFTER 76) */ /* Family Connection V2: + family-remote, family-remote-view (BEFORE 76, AFTER 78) */ assert.equal(JS_FILES.length, 78, 'no module was added or removed in Phase 11; Completion V1 added health-measures; Completion V2 added health-appointments; Completion V3 added emergency-contacts');
   assert.equal(CSS_FILES.length, 6);
   assert.deepEqual([A.EVENT_NAMES.length, C.SAVED_TYPES.length, C.NOTIFICATION_TYPES.length, R.CONTENT_TYPE_IDS.length], [22, 7, 9, 7]);
   const w = world();
@@ -1194,9 +1196,11 @@ test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', ()
   const tests = fs.readdirSync(path.join(ROOT, 'tests/ongil')).filter((f) => f.endsWith('.test.mjs'));
   // Phase 12: production-release.test.mjs was added (BEFORE 21, AFTER 22). API connection: production-api.test.mjs (BEFORE 22, AFTER 23). Completion V1: health-measures.test.mjs (AFTER 24).
   /* Family Connection V1: + family-connection.test.mjs (BEFORE 27, AFTER 28). WHY: the new feature brought its own test file. */
-  assert.equal(tests.length, 28); // Completion V2: + health-calendar.test.mjs · Completion V3: + emergency-contacts.test.mjs · Product Completion Audit V1: + product-completion.test.mjs (BEFORE 26, AFTER 27)
+  /* Family Connection V2: + family-v2.test.mjs (BEFORE 28, AFTER 29) */
+  assert.equal(tests.length, 29); // Completion V2: + health-calendar.test.mjs · Completion V3: + emergency-contacts.test.mjs · Product Completion Audit V1: + product-completion.test.mjs (BEFORE 26, AFTER 27)
   for (const f of ['livon', 'server/livon', 'tests/livon']) assert.ok(fs.existsSync(path.join(ROOT, f)), `${f} is still there, untouched by ONGIL`);
-  assert.equal(fs.existsSync(path.join(ROOT, 'server/ongil')), false);
+  /* Family Connection V2: server/ongil/family is the one ONGIL backend (BEFORE: no server/ongil) */
+  assert.deepEqual(fs.readdirSync(path.join(ROOT, 'server/ongil')), ['family']);
   const doc = read('docs/ongil/PHASE_11_RELEASE_HARDENING_V1.md');
   for (const h of ['OBJECTIVE', 'BASELINE', 'INVENTORY', 'ISSUES FOUND', 'ISSUES FIXED', 'REMAINING ISSUES', 'DATA INTEGRITY', 'MEDICATION HISTORY', 'STORAGE MIGRATION', 'PRIVACY MATRIX', 'SECURITY', 'URL SAFETY', 'SECRETS', 'ACCESSIBILITY', 'CONTRAST', 'KEYBOARD', 'SCREEN READER', 'RESPONSIVE', 'PERFORMANCE', 'STORAGE LIMIT', 'OFFLINE', 'ROUTING', 'SEO', 'COPY AUDIT', 'DATES', 'ANALYTICS', 'AI', 'ADMIN', 'RELEASE CONFIG', 'CACHE', 'DEPENDENCIES', 'TEST COVERAGE', 'BROWSER QA', 'KNOWN LIMITATIONS', 'RELEASE BLOCKERS', 'PHASE 12 HANDOFF']) assert.match(doc, new RegExp(`^## (\\d+\\. )?${h}$`, 'm'), h);
   assert.equal(/WCAG CERTIFIED|SECURITY CERTIFIED|HIPAA COMPLIANT|MEDICAL DEVICE COMPLIANT|PRODUCTION SECURE/.test(doc.replace(/(no|not|never|금지)[^\n]*/gi, '')), false, 'no certification is claimed');
