@@ -1,4 +1,5 @@
-import { ChatError, LIMITS, normalizeInput, checkRateLimit, generateReply, isProduction } from './chat.mjs';
+import { randomUUID } from 'node:crypto';
+import { ChatError, LIMITS, normalizeInput, checkRateLimit, generateReply, isProduction, emergencyCheck, EMERGENCY_REPLY, modelFor } from './chat.mjs';
 import { applyCors, CorsError } from './cors.mjs';
 import { groundingRefs } from './ai/tools.mjs';
 
@@ -38,8 +39,16 @@ export async function withServerRefs(input, env, grounder = groundingRefs) {
     return Array.isArray(refs) ? { ...input, refs: refs.slice(0, LIMITS.refs) } : input;
   } catch { return input; }
 }
-export function createChatHandler({ env = process.env, fetcher = fetch, limiter = checkRateLimit, grounder = groundingRefs } = {}) {
+/*
+ * Operational log — one line per request, metadata only: request id, latency, model, tool names, rounds, status code.
+ * Never the question, the answer, saved/My Life data, an IP, a key or an upstream body.
+ */
+export function logMeta(meta, log = console.info) {
+  try { log('[LIVON AI] ' + JSON.stringify({ rid: meta.rid, ms: Date.now() - meta.t0, model: meta.model || null, rounds: meta.rounds || 0, tools: meta.tools || [], code: meta.code || 'OK' })); } catch {}
+}
+export function createChatHandler({ env = process.env, fetcher = fetch, limiter = checkRateLimit, grounder = groundingRefs, log = console.info, dataCall } = {}) {
   return async (req, res) => {
+    const meta = { rid: randomUUID().slice(0, 8), t0: Date.now(), tools: [], rounds: 0 };
     const controller = new AbortController();
     const cancel = () => { if (!res.writableEnded) controller.abort(); };
     res.on('close', cancel);
@@ -51,7 +60,10 @@ export function createChatHandler({ env = process.env, fetcher = fetch, limiter 
       if (req.method !== 'POST') { res.setHeader('Allow', 'POST, OPTIONS'); throw new ChatError(405, 'METHOD_NOT_ALLOWED'); }
       if (!(req.headers['content-type'] || '').toLowerCase().startsWith('application/json')) throw new ChatError(415, 'UNSUPPORTED_MEDIA_TYPE');
       const input = normalizeInput(await readBody(req));
+      /* emergency first: fixed safety guidance, no model call, also when the AI is not configured */
+      if (emergencyCheck(input.message)) { meta.code = 'SAFETY_EMERGENCY'; return json(res, 200, { success: true, safety: 'emergency', message: EMERGENCY_REPLY, sources: [], actions: [], toolStatus: [] }); }
       if (!env.OPENAI_API_KEY?.trim()) throw new ChatError(503, 'AI_NOT_CONFIGURED');
+      meta.model = modelFor(env);
       // Only trust Vercel's overwritten IP header on Vercel. Never trust a client userId or generic X-Forwarded-For.
       const ip = env.VERCEL ? String(req.headers['x-vercel-forwarded-for'] || '').split(',')[0].trim() : req.socket?.remoteAddress;
       if (!ip) throw new ChatError(503, 'CLIENT_ID_UNAVAILABLE');
@@ -59,14 +71,15 @@ export function createChatHandler({ env = process.env, fetcher = fetch, limiter 
       if (controller.signal.aborted) return;
       const grounded = await withServerRefs(input, env, grounder);
       if (controller.signal.aborted) return;
-      const reply = await generateReply(grounded, { env, fetcher, signal: controller.signal });
+      const reply = await generateReply(grounded, { env, fetcher, signal: controller.signal, ip, meta, dataCall });
       if (!res.destroyed) json(res, 200, reply);
     } catch (error) {
       const safe = error instanceof ChatError ? error : new ChatError(500, 'SERVER_ERROR');
+      meta.code = safe.code;
       if (safe.retryAfter) res.setHeader('Retry-After', String(safe.retryAfter));
       // Only fixed codes/status are logged in development; never body, IP, key or upstream detail.
       if (!isProduction(env)) console.warn('[LIVON AI]', safe.code, safe.status);
       if (!res.destroyed) json(res, safe.status, { success: false, error: safe.message, code: safe.code, ...(safe.retryAfter ? { retryAfter: safe.retryAfter } : {}) });
-    } finally { res.removeListener('close', cancel); }
+    } finally { res.removeListener('close', cancel); if (isProduction(env)) logMeta(meta, log); }
   };
 }

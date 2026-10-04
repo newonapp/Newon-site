@@ -1270,6 +1270,11 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
 #livon-ai #ai-settings .lv-ai-field:nth-child(5) { grid-column: 1 / -1; }
 #livon-ai #ai-settings .lv-ai-check { grid-column: 1 / -1; margin: 0; align-items: center; }
 #livon-ai #ai-settings .lv-ai-check input { accent-color: #0a0a0a; flex: 0 0 auto; }
+/* AI consent (personal records): same row style as the other settings; off by default */
+#livon-ai #ai-settings .lv-ai-consent { grid-column: 1 / -1; margin: 0; padding: 0.75rem 0 0; border: 0; border-top: 1px solid rgba(10, 10, 10, 0.12); min-width: 0; }
+#livon-ai #ai-settings .lv-ai-consent legend { padding: 0; font-weight: 600; font-size: 0.92rem; color: #222; }
+#livon-ai #ai-settings .lv-ai-consent .lv-ai-check { margin: 0.25rem 0 0; overflow-wrap: anywhere; }
+#livon-ai #ai-settings .lv-ai-consent .lv-ai-note { margin: 0.25rem 0 0; }
 #livon-ai #ai-settings .lv-ai-actions { grid-column: 1 / -1; margin: .25rem 0 0; justify-content: flex-end; }
 #livon-ai #ai-settings .lv-ai-note { grid-column: 1 / -1; margin: 0; }
 @media (max-width: 800px) {

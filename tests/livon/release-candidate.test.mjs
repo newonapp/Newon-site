@@ -72,6 +72,13 @@ export const PRODUCTION_INTEGRATION = {
     'tests/livon/completion.test.mjs', 'tests/livon/live-backend.test.mjs', 'tests/livon/release-candidate.test.mjs', 'tests/livon/api-routing-cors.test.mjs']
 };
 
+/* LIVON AI LIVE V1 (branch livon-ai-live-v1): AI orchestration, tools and consent-scoped context. Accepted only on a line
+   whose history contains this commit, and only these files. */
+export const AI_LIVE = { subject: 'Implement LIVON AI live foundation',
+  files: ['livon/ai-page.js', 'livon/ai-page.css', 'livon/index.html', 'server/livon/chat.mjs', 'server/livon/http.mjs', 'server/livon/ai/agent.mjs',
+    'docs/livon/LIVON_AI_LIVE.md', 'tests/livon/ai-live.test.mjs', 'tests/livon/completion.test.mjs', 'tests/livon/release-candidate.test.mjs'] };
+const aiLiveIn = () => git('log', '--format=%s', 'HEAD').stdout.split('\n').includes(AI_LIVE.subject);
+
 /* main e0436c916: ONGIL (another product on the same site) integrated for production. Its files are not LIVON product files;
    they are accepted only under its own directory and only on a line that contains that integration commit. */
 export const ONGIL_PRODUCT = { subject: 'Integrate ONGIL production frontend', dir: 'ongil-start/' };
@@ -128,7 +135,8 @@ test('RC-1 ancestry: every V1 phase commit is an ancestor of the RC; the RC star
     for (const [name, hash] of PHASES) assert.equal(git('merge-base', '--is-ancestor', hash, I.source).status, 0, name + ' ' + hash + ' is included in ' + I.source);
     const d = git('diff', '--name-only', I.source, 'HEAD', '--', ...I.paths);
     assert.equal(d.status, 0);
-    assert.deepEqual(d.stdout.split('\n').filter(Boolean).filter(f => !I.aligned.includes(f)), [], 'LIVON tree = ' + I.source + ' except the alignment files');
+    const aiLive = aiLiveIn() ? AI_LIVE.files : [];
+    assert.deepEqual(d.stdout.split('\n').filter(Boolean).filter(f => !I.aligned.includes(f) && !aiLive.includes(f)), [], 'LIVON tree = ' + I.source + ' except the alignment files');
     /* main's production routing/CORS fix is part of this line */
     assert.ok(history.includes(ROUTING_CORS_FIX.subject), 'main routing/CORS fix is an ancestor');
     assert.ok(history.includes(BACKEND_HARDENING.subject), 'backend hardening is an ancestor');
@@ -481,7 +489,7 @@ test('RC-26 accessibility (static): the build gate still reports 0 errors on the
 test('RC-41 visual regression by construction: the RC ships the Performance V1 product files unchanged (or only listed RC fixes)', { skip: noGit || (!hasCommit(RC_BASE) && 'base commit missing') }, () => {
   const changed = git('diff', '--name-only', RC_BASE, 'HEAD').stdout.split('\n').filter(Boolean);
   const product = changed.filter(f => !/^(docs\/|tests\/)/.test(f));
-  const allowed = new Set([...RC_FIXES, ...BACKEND_HARDENING.files, ...ROUTING_CORS_FIX.files, ...COMPLETION_FIXES]);
+  const allowed = new Set([...RC_FIXES, ...BACKEND_HARDENING.files, ...ROUTING_CORS_FIX.files, ...COMPLETION_FIXES, ...(aiLiveIn() ? AI_LIVE.files : [])]);
   /* ONGIL is its own product in its own directory: accepted only where its production integration is part of the history,
      and then only inside that directory — a LIVON, shared or any other file still needs an entry above */
   const ongilIntegrated = git('log', '--format=%s', 'HEAD').stdout.split('\n').includes(ONGIL_PRODUCT.subject);

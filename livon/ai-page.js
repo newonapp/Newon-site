@@ -74,7 +74,7 @@
 
   /* ───────── Store (local-first; swap point for Newon+ sync) ───────── */
   function emptyStore() {
-    return { threads: [], settings: { stage: "", interests: "", region: "", goal: "", answerLength: "balanced", personalize: true, shareLifeData: false } };
+    return { threads: [], settings: { stage: "", interests: "", region: "", goal: "", answerLength: "balanced", personalize: true, shareLifeData: false, shareSaved: false, shareMyLife: false } };
   }
   function loadStore() {
     var s = readJSON(STORE_KEY, null);
@@ -321,6 +321,7 @@
     var page = pageContext(thread.page);
     if (page) context.page = page;
     if (refs && refs.length) context.refs = refs;
+    scopedPersonalData(context, settings, q);
     return { message: q, conversation: conversation, context: context };
   }
   function errorFor(status, code, retryAfter, fallback) {
@@ -334,6 +335,44 @@
     if (status === 404 || status === 405) return { kind: "unavailable", msg: "LIVON AI 서버에 연결되어 있지 않습니다. (AI API가 이 주소에서 실행되지 않음)" };
     if (status >= 500) return { kind: "server", msg: "LIVON AI 서버에서 오류가 발생했습니다. 잠시 후 다시 시도해 주세요." };
     return { kind: "server", msg: fallback || "LIVON AI에 일시적으로 연결할 수 없습니다. 잠시 후 다시 시도해 주세요." };
+  }
+  /*
+   * Personal data for one question, only with the matching setting ON (default OFF) and only when the question asks
+   * for it. Saved: titles/kinds/links of the saves that match the question (or the latest few). My Life: open to-dos,
+   * goals and the next two weeks of schedule — titles and dates only; notes, health, diary, money, family and location
+   * are never read here.
+   */
+  var ASKS_SAVED = /저장/, ASKS_MY_LIFE = /할\s*일|투두|todo|일정|스케줄|목표|내\s*생활|계획/i;
+  function scopedPersonalData(context, settings, q) {
+    var consent = {};
+    if (settings.shareSaved === true && ASKS_SAVED.test(q)) {
+      var P = window.LivonPlatform, saves = [];
+      try { saves = P && P.listSaves ? P.listSaves("all") : []; } catch (e) { saves = []; }
+      var words = keywords(q).filter(function (w) { return !/저장/.test(w); });
+      var hit = saves.filter(function (x) { var hay = String(x.label || x.title || "").toLowerCase(); return words.some(function (w) { return hay.indexOf(w) >= 0; }); });
+      var pick = (hit.length ? hit : saves).slice(0, 10).map(function (x) {
+        var href = String(x.href || "");
+        return { title: String(x.label || x.title || "").slice(0, 200), kind: String(x.source || x.type || "저장").slice(0, 40), href: /^#[\w\/?=&%.-]+$/.test(href) && href.length <= 200 ? href : "" };
+      }).filter(function (x) { return x.title; });
+      consent.saved = true; context.saved = pick;
+    }
+    if (settings.shareMyLife === true && ASKS_MY_LIFE.test(q)) {
+      var ml = null;
+      try { ml = window.LivonMyLife && window.LivonMyLife.api && window.LivonMyLife.api.snapshot ? window.LivonMyLife.api.snapshot() : null; } catch (e) { ml = null; }
+      var today = new Date(), d2 = new Date(today.getTime() + 14 * 864e5);
+      var ymd = function (d) { return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); };
+      var t0 = ymd(today), t1 = ymd(d2), s120 = function (v) { return String(v || "").slice(0, 120); }, s20 = function (v) { return String(v || "").slice(0, 20); };
+      var my = {
+        todos: (ml && Array.isArray(ml.todos) ? ml.todos : []).filter(function (t) { return t && t.title && !t.done; }).slice(0, 10)
+          .map(function (t) { var o = { title: s120(t.title) }; if (t.due) o.due = s20(t.due); if (t.priority) o.priority = s20(t.priority); return o; }),
+        goals: (ml && Array.isArray(ml.goals) ? ml.goals : []).filter(function (g) { return g && g.title; }).slice(0, 10)
+          .map(function (g) { var o = { title: s120(g.title) }; if (g.status) o.status = s20(g.status); if (g.due) o.due = s20(g.due); return o; }),
+        schedule: (ml && Array.isArray(ml.events) ? ml.events : []).filter(function (e) { return e && e.title && e.date >= t0 && e.date <= t1; }).slice(0, 10)
+          .map(function (e) { var o = { title: s120(e.title), date: s20(e.date) }; if (e.start) o.start = s20(e.start); return o; })
+      };
+      consent.myLife = true; context.myLife = my;
+    }
+    if (consent.saved || consent.myLife) context.consent = consent;
   }
   function chatRequest(payload, signal) {
     return fetch(CHAT_URL, {
@@ -432,7 +471,8 @@
       var th = Threads.get(requestThreadId);
       if (!th) return;
       var c = candidateItems(res.message);
-      th.messages.push({ role: "assistant", content: res.message, at: Date.now(), refs: refs, truncated: !!res.truncated });
+      refs = mergeSources(refs, res.sources);
+      th.messages.push({ role: "assistant", content: res.message, at: Date.now(), refs: refs, truncated: !!res.truncated, safety: res.safety === "emergency" ? "emergency" : undefined });
       th.updatedAt = Date.now();
       Threads.put(th);
       /* the side panel is opened automatically only where it sits beside the chat (it overlays on small screens) */
@@ -488,6 +528,19 @@
     }).join("") + "</ul>";
   }
 
+  /* sources the server's tools really used (LIVON routes or https official pages) join the items shown under the answer */
+  function mergeSources(refs, sources) {
+    var out = (refs || []).slice(), seen = {};
+    out.forEach(function (r) { seen[r.href] = true; });
+    (Array.isArray(sources) ? sources : []).slice(0, 8).forEach(function (x) {
+      if (!x || typeof x.href !== "string" || typeof x.title !== "string" || !x.title.trim() || seen[x.href]) return;
+      if (!/^#[\w\/?=&%.-]+$/.test(x.href) && !/^https:\/\/[a-z0-9.-]+(\/[^\s"'<>]*)?$/i.test(x.href)) return;
+      seen[x.href] = true;
+      var kind = String(x.source || "출처").slice(0, 40) + (x.live ? " · 실시간 조회" : "");
+      out.push({ kind: kind, title: x.title.slice(0, 120), href: x.href });
+    });
+    return out.slice(0, 12);
+  }
   function refsHtml(refs) {
     if (!refs || !refs.length) return "";
     return '<div class="lv-ai-related"><p class="lv-ai-eyebrow">참고한 LIVON 항목</p>' + refs.map(function (l) {
@@ -756,7 +809,8 @@
     form.goal.value = s.goal || "";
     form.answerLength.value = s.answerLength || "balanced";
     form.personalize.checked = !!s.personalize;
-    form.shareLifeData.checked = !!s.shareLifeData;
+    if (form.shareSaved) form.shareSaved.checked = s.shareSaved === true;
+    if (form.shareMyLife) form.shareMyLife.checked = s.shareMyLife === true;
   }
 
   function bindFilm() {
@@ -941,7 +995,8 @@
         var st = loadStore();
         st.settings = {
           stage: f.stage.value, interests: f.interests.value.trim(), region: f.region.value.trim(), goal: f.goal.value.trim(),
-          answerLength: f.answerLength.value, personalize: !!f.personalize.checked, shareLifeData: !!f.shareLifeData.checked
+          answerLength: f.answerLength.value, personalize: !!f.personalize.checked, shareLifeData: false,
+          shareSaved: !!(f.shareSaved && f.shareSaved.checked), shareMyLife: !!(f.shareMyLife && f.shareMyLife.checked)
         };
         saveStore(st);
         var ns = f.querySelector("[data-lv-ai-settings-status]");

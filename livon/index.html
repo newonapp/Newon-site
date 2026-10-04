@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="/livon/community-page.css?v=20261002perf1" />
     <link rel="stylesheet" href="/livon/help-page.css?v=20261002hf1" />
     <link rel="stylesheet" href="/livon/today-page.css?v=20261002perf1" />
-    <link rel="stylesheet" href="/livon/ai-page.css?v=20260929qa1" />
+    <link rel="stylesheet" href="/livon/ai-page.css?v=20261004c4" />
     <link rel="stylesheet" href="/livon/home-page.css?v=20260929hm1" />
     <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
     <link rel="stylesheet" href="/site-dark.css?v=20260924foot1" />
@@ -2758,7 +2758,12 @@
                   </select>
                 </label>
                 <label class="lv-ai-check"><input type="checkbox" name="personalize" checked /> 개인화 사용</label>
-                <label class="lv-ai-check"><input type="checkbox" name="shareLifeData" /> 내 생활 전체 데이터 참조 (사용하지 않음 · 내 생활 화면에서 직접 고른 내용만 전달)</label>
+                <fieldset class="lv-ai-consent">
+                  <legend>AI가 참고해도 되는 내 기록 (기본 꺼짐)</legend>
+                  <label class="lv-ai-check"><input type="checkbox" name="shareSaved" /> 저장한 항목 — 질문에 ‘저장’이 들어갈 때만, 관련 항목의 제목·종류만 보냅니다</label>
+                  <label class="lv-ai-check"><input type="checkbox" name="shareMyLife" /> 내 생활 할 일·목표·일정 — 질문에 할 일·일정·목표가 들어갈 때만 보냅니다</label>
+                  <p class="lv-ai-note">건강·일기·지출·가족·위치 기록은 AI에 보내지 않습니다. 보낸 내용은 답변에만 쓰이고 저장되지 않습니다.</p>
+                </fieldset>
                 <div class="lv-ai-actions">
                   <button type="submit" class="lv-ai-btn lv-ai-btn--dark">설정 저장</button>
                   <span class="lv-ai-note" data-lv-ai-settings-status role="status"></span>
@@ -3344,7 +3349,7 @@
     <script src="/livon/today-data.js?v=20260928td1"></script>
     <script src="/livon/today-feed.js?v=20261002perf1"></script>
     <script src="/livon/today-page.js?v=20261002perf1"></script>
-    <script src="/livon/ai-page.js?v=20261004c3"></script>
+    <script src="/livon/ai-page.js?v=20261004c4"></script>
     <script src="/livon/connected-menus.js?v=20261002perf1"></script>
     <script src="/livon/home-page.js?v=20261002perf1"></script>
     <script src="/livon/livon-account-ui.js?v=20260930anon1"></script>
