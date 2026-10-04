@@ -1,0 +1,137 @@
+/*
+ * My Life V1 (Phase 2B). Tokens only; the cards, picks, lists and forms are the Home components.
+ * Added here: the four-tab bar, the month grid, the summary tiles and long personal text.
+ */
+
+/* four tabs — large, always visible, no horizontal scrolling on a phone */
+.og-tabs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.5rem; margin: 0 0 1.5rem; max-width: 48rem; } /* [P3] five tabs: 건강 added */
+.og-tab { position: relative; min-height: 3.25rem; padding: 0.6rem 0.4rem; border: 1.5px solid var(--og-line-strong); border-radius: var(--og-radius-card); background: transparent; color: var(--og-ink); font-family: inherit; font-size: 1.15rem; font-weight: var(--og-weight-body); cursor: pointer; scroll-margin-top: calc(var(--gnav-h, 74px) + 1rem); }
+.og-tab[aria-selected="true"] { border-color: var(--og-ink); background: var(--og-surface); font-weight: 700; }
+.og-tab[aria-selected="true"]::after { content: ""; position: absolute; left: 25%; right: 25%; bottom: 0.45rem; height: 3px; border-radius: 3px; background: var(--og-ink); } /* the chosen tab is marked by a bar, not by colour alone */
+.og-tabs { scroll-margin-top: calc(var(--gnav-h, 74px) + 1rem); }
+
+.og-life-panel { display: grid; gap: 1rem; max-width: 60rem; }
+.og-life-panel[hidden] { display: none; }
+.og-life-panel:focus { outline: none; }
+
+/* summary tiles */
+.og-life-tiles { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; }
+.og-life-tile { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.2rem 0.8rem; align-items: center; padding: 1rem 1.1rem; border-radius: var(--og-radius-card); background: var(--og-surface); }
+.og-band .og-life-tile__title { grid-column: 1; margin: 0; font-size: 1rem; font-weight: var(--og-weight-body); color: var(--og-ink-soft); }
+.og-band .og-life-tile__value { grid-column: 1; margin: 0; font-size: 1.3rem; font-weight: 700; color: var(--og-ink); overflow-wrap: anywhere; }
+.og-band .og-life-tile__detail { grid-column: 1; margin: 0; font-size: 1rem; color: var(--og-muted); overflow-wrap: anywhere; }
+.og-life-tile .og-btn { grid-column: 2; grid-row: 1 / span 3; }
+
+.og-band .og-life-value { margin: 0; font-size: 1.3rem; font-weight: 700; color: var(--og-ink); }
+.og-life-sub { margin: 0.4rem 0 0; font-size: 1.1rem; font-weight: 700; color: var(--og-ink); }
+.og-life-days { margin: 0; padding: 0; list-style: none; display: grid; }
+.og-life-days li { display: flex; justify-content: space-between; gap: 1rem; min-height: 2.6rem; align-items: center; padding: 0.3rem 0; border-top: 1px solid var(--og-line); font-size: var(--og-size-body); color: var(--og-ink); }
+.og-life-days li:first-child { border-top: 0; }
+.og-life-days__date { color: var(--og-ink-soft); }
+
+/* [P2C] one date bar for 식사 · 물 · 운동 · 수면: 이전 날 · 날짜 · 다음 날 · 오늘 */
+.og-daynav { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; gap: 0.5rem; align-items: center; padding: 0.8rem; border: 1.5px solid var(--og-line-strong); border-radius: var(--og-radius-card); scroll-margin-top: calc(var(--gnav-h, 74px) + 1rem); }
+.og-band .og-daynav__date { margin: 0; text-align: center; font-size: 1.25rem; font-weight: 700; color: var(--og-ink); overflow-wrap: anywhere; }
+.og-daynav__date:focus { outline: none; }
+.og-daynav__date:focus-visible { outline: 2px solid var(--og-ink); outline-offset: 4px; border-radius: 0.4rem; }
+.og-daynav__state { color: var(--og-ink-soft); font-weight: var(--og-weight-body); white-space: pre; }
+.og-daynav__btn { min-height: 3rem; }
+.og-daynav__btn:disabled { opacity: 0.4; cursor: default; }
+
+/* [P2C] the last seven days: each date is a button that opens that day in the cards above */
+.og-life-days--pick li { flex-wrap: wrap; gap: 0.2rem 1rem; padding: 0.35rem 0; }
+.og-life-days__pick { min-height: var(--og-control); padding: 0.3rem 0.9rem; margin-left: -0.9rem; border: 1.5px solid transparent; border-radius: var(--og-radius-pill); background: transparent; color: var(--og-ink); font-family: inherit; font-size: var(--og-size-body); font-weight: 700; text-align: left; text-decoration: underline; text-underline-offset: 0.25em; cursor: pointer; }
+.og-life-days__pick:hover { border-color: var(--og-line-strong); }
+.og-life-days__pick[aria-pressed="true"] { border-color: var(--og-ink); text-decoration: none; }
+.og-life-days__pick[aria-pressed="true"]::after { content: " ✓"; white-space: pre; } /* the chosen day carries a tick, not only a ring */
+.og-life-days__text { color: var(--og-ink-soft); overflow-wrap: anywhere; }
+
+/* month navigation and grid */
+.og-cal { display: grid; gap: 0.8rem; }
+.og-cal__nav { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.og-band .og-cal__month { margin: 0; font-size: 1.3rem; font-weight: 700; color: var(--og-ink); text-align: center; }
+.og-cal__grid { width: 100%; border-collapse: separate; border-spacing: 2px; table-layout: fixed; }
+.og-cal__grid th { padding: 0.3rem 0; font-size: 1rem; font-weight: var(--og-weight-body); color: var(--og-ink-soft); text-align: center; }
+.og-cal__cell { padding: 0; text-align: center; }
+.og-cal__day { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; min-height: 3rem; padding: 0.15rem 0; border: 1.5px solid transparent; border-radius: 0.8rem; background: transparent; color: var(--og-ink); font-family: inherit; font-size: 1.1rem; line-height: 1.1; cursor: pointer; }
+.og-cal__day:hover { border-color: var(--og-line-strong); }
+.og-cal__day[aria-current="date"] { border-color: var(--og-ink); border-style: dashed; } /* today: dashed ring */
+.og-cal__day[aria-pressed="true"] { background: var(--og-ink); color: var(--og-accent-ink); border-color: var(--og-ink); border-style: solid; font-weight: 700; } /* chosen day: filled */
+.og-cal__mark { height: 0.8rem; font-size: 1.2rem; line-height: 0.7; }
+.og-cal__selected { margin: 0.4rem 0 0; font-size: 1.25rem; font-weight: 700; color: var(--og-ink); }
+/* [V2] 월 · 주 · 일: the three choices are the same pressed buttons (✓ + filled) as every other choice */
+.og-cal__views { display: flex; justify-content: center; }
+.og-cal__view-picks { flex-wrap: nowrap; width: 100%; max-width: 24rem; }
+.og-cal__view-picks .og-pick { flex: 1 1 0; min-width: 2.75rem; padding-inline: 0.5rem; justify-content: center; } /* three equal buttons that share the card's width */
+/* [V2] week: one row per day — a 44px+ day button, then that day's events and tasks in words */
+.og-cal-week { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.og-cal-week__day { display: grid; grid-template-columns: 3.6rem minmax(0, 1fr); gap: 0.7rem; align-items: start; padding: 0.45rem 0; border-top: 1px solid var(--og-line); }
+.og-cal-week__day:first-child { border-top: 0; }
+.og-cal-week__head { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 2.75rem; min-height: 3.4rem; padding: 0.2rem; border: 1.5px solid transparent; border-radius: 0.8rem; background: transparent; color: var(--og-ink); font-family: inherit; line-height: 1.1; cursor: pointer; }
+.og-cal-week__head:hover { border-color: var(--og-line-strong); }
+.og-cal-week__head[aria-current="date"] { border-color: var(--og-ink); border-style: dashed; }
+.og-cal-week__head[aria-pressed="true"] { background: var(--og-ink); color: var(--og-accent-ink); border-color: var(--og-ink); border-style: solid; font-weight: 700; }
+.og-cal-week__wd { font-size: 1rem; }
+.og-cal-week__num { font-size: 1.2rem; font-weight: 700; }
+.og-cal-week__today { font-size: 1rem; }
+.og-cal-week__pick { position: absolute; top: 0.1rem; right: 0.3rem; font-size: 1rem; line-height: 1; }
+.og-cal-week__lines { display: grid; gap: 0.25rem; margin: 0; padding: 0.55rem 0 0; list-style: none; font-size: 1.05rem; color: var(--og-ink); overflow-wrap: anywhere; min-width: 0; }
+.og-cal-week__line--task, .og-cal-week__line--routine { color: var(--og-ink-soft); }
+.og-cal-week__empty { margin: 0; padding-top: 0.9rem; color: var(--og-ink-soft); }
+/* [V2] day: tasks due and that weekday's routines under the chosen date (the events are the list below) */
+.og-cal-day { display: grid; gap: 0.8rem; }
+.og-cal-day__title { margin: 0; font-size: 1.1rem; font-weight: 700; color: var(--og-ink); }
+.og-cal-day__list { margin: 0.3rem 0 0; padding-left: 1.2rem; overflow-wrap: anywhere; }
+.og-cal-day__empty { margin: 0.3rem 0 0; color: var(--og-ink-soft); }
+/* [V2] 건강·안부 › 병원 일정 · 건강검진: two cards under the screen's notice, the same card style as My Life */
+.og-health-schedule { display: grid; gap: 1rem; margin-top: 1rem; }
+
+/* plain (uncheckable) rows and long personal text */
+.og-home-item__main--plain { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: 0.2rem; }
+.og-band .og-home-item__text { grid-column: 1 / -1; margin: 0.3rem 0 0; color: var(--og-ink-soft); font-size: var(--og-size-body); line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
+.og-home-item__check ~ .og-home-item__text { grid-column: 2; }
+.og-input--area { min-height: 9rem; max-width: none; padding: 0.8rem 0.9rem; line-height: 1.7; resize: vertical; }
+.og-input[type="date"] { max-width: 14rem; color-scheme: dark; }
+.og-choice--day { padding: 0.5rem 0.8rem 0.5rem 0.65rem; }
+.og-private-note { margin-top: 0.8rem; }
+
+/* [P3] 건강 tab: questions with large single choices, the shared date bar's place, one safety note */
+.og-health-q { display: grid; gap: 0.5rem; }
+.og-health-q + .og-health-q { margin-top: 0.4rem; }
+.og-daynav-slot:empty { display: none; }
+.og-health-intro { margin: 0; }
+.og-health-delete .og-confirm[hidden] { display: none; }
+.og-health-delete .og-confirm { margin-top: 0.4rem; }
+.og-home-card__body > * { min-width: 0; }
+
+@media (max-width: 700px) {
+  .og-life-tiles { grid-template-columns: 1fr; }
+  /* phone: the date on its own line, the three buttons under it */
+  .og-daynav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .og-daynav__date { grid-column: 1 / -1; grid-row: 1; padding: 0.2rem 0; }
+  .og-daynav__btn { padding-inline: 0.4rem; }
+  .og-tab { font-size: 1.1rem; padding-inline: 0.2rem; }
+  .og-cal__nav .og-btn { padding-inline: 0.7rem; }
+}
+@media (max-width: 480px) {
+  .og-cal__grid { border-spacing: 1px; }
+  .og-cal__day { min-height: 2.9rem; font-size: 1.05rem; border-radius: 0.65rem; }
+}
+
+/* [P11 → V2] small phones: the calendar card takes 12px of the page gutter on each side (4px are kept), the month grid
+   uses the card's side padding, and the cells sit edge to edge — so every day is at least 44 × 44 px at 320px, the
+   grid stays inside the card, and the page itself does not widen. */
+@media (max-width: 380px) {
+  .og-home-card[data-og-slot="life.calendar"] { margin-inline: calc(-1rem + 4px); }
+  .og-cal__grid { width: calc(100% + 2.2rem); margin-inline: -1.1rem; border-spacing: 0; }
+  .og-cal__day { min-height: 2.9rem; }
+}
+
+/* [V3] 건강·안부 › 긴급 연락망: a row's buttons wrap on a phone (전화하기 · 위로 · 아래로 · 주 연락처로 · 고치기 · 지우기),
+   the public numbers sit under the list, and the call dialog shows the number large */
+[data-og-slot="health.contacts-list"] .og-home-item__actions { flex-wrap: wrap; width: 100%; }
+[data-og-slot="health.contacts-list"] .og-home-item__actions .og-btn { flex: 1 1 auto; }
+.og-call-public { display: grid; gap: 0.6rem; margin-top: 0.5rem; padding-top: 1rem; border-top: 1px solid var(--og-line); }
+.og-band .og-call-public__title, .og-call-public__title { margin: 0; font-size: 1.15rem; font-weight: 700; color: var(--og-ink); }
+.og-call-public .og-form__actions { flex-wrap: wrap; }
+.og-call-number, .og-dialog .og-call-number { margin: 0; font-size: 1.6rem; font-weight: 700; color: var(--og-ink); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
