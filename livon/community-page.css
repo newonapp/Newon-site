@@ -1213,3 +1213,17 @@ html[data-lv-view="community"] main > #community {
   #community .lv-cm-replies { margin-left: 0.35rem; padding-left: 0.6rem; }
   #community .lv-cm-comment__body, #community .lv-cm-detail__body { overflow-wrap: anywhere; }
 }
+
+/* ───────── Community V2: delivery state, factual sort / saved filter, 내 활동 search (no motion) ───────── */
+#community .lv-cm-delivery { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.78rem; color: #444; border: 1px solid #d6d6d6; border-radius: 999px; padding: 0.05rem 0.55rem; }
+#community .lv-cm-delivery::before { content: "●"; font-size: 0.55rem; color: #8a8a8a; }
+#community .lv-cm-delivery[data-lv-cm-delivery="DRAFT"]::before { content: "○"; }
+#community .lv-cm-delivery-note { margin: 0.4rem 0 1rem; padding: 0.6rem 0.75rem; background: #f6f6f6; border-radius: 0.5rem; font-size: 0.88rem; line-height: 1.55; color: #333; overflow-wrap: anywhere; }
+#community .lv-cm-check { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 44px; font-size: 0.85rem; align-self: end; cursor: pointer; }
+#community .lv-cm-check input { width: 1.15rem; height: 1.15rem; margin: 0; }
+#community .lv-cm-check input:focus-visible { outline: 2px solid #0a0a0a; outline-offset: 2px; }
+#community .lv-cm-mine-search { display: flex; flex-wrap: wrap; align-items: end; gap: 0.5rem; margin: 1rem 0 0.25rem; }
+#community .lv-cm-mine-search .lv-cm-field--inline { flex: 1 1 14rem; }
+#community .lv-cm-mine-search input { width: 100%; }
+#community .lv-cm-mine-results { margin: 0.25rem 0 1rem; padding: 0 0 0 1.1rem; display: grid; gap: 0.15rem; overflow-wrap: anywhere; }
+#community .lv-cm-mine-results a, #community .lv-cm-mine-results .lv-cm-text-btn { display: inline-flex; align-items: center; min-height: 44px; text-align: left; }
