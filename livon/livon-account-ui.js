@@ -22,19 +22,38 @@
   function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
   function A() { return root.NewonAuth; }
   function S() { return root.LivonSync; }
-  function time(t) { if (!t) return ""; var d = new Date(t); return ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2); }
+  /* today → 14:05, another day → 10월 3일 14:05 */
+  function time(t) {
+    if (!t) return "";
+    var d = new Date(t), n = new Date(), hm = ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
+    var same = d.getFullYear() === n.getFullYear() && d.getMonth() === n.getMonth() && d.getDate() === n.getDate();
+    return same ? hm : (d.getMonth() + 1) + "월 " + d.getDate() + "일 " + hm;
+  }
+  function lastLine(st) { return st && st.lastSyncAt ? " 마지막 동기화 " + time(st.lastSyncAt) + "." : ""; }
 
   function syncLine(st) {
     if (!st) return "";
+    var r = st.retry || {};
     switch (st.status) {
       case "syncing": return "동기화 중…";
       case "synced": return "동기화됨" + (st.lastSyncAt ? " · 마지막 " + time(st.lastSyncAt) : "");
-      case "offline": return "오프라인입니다. 연결되면 다시 동기화합니다. 이 기기의 기록은 그대로 사용할 수 있습니다.";
-      case "error": return "동기화하지 못했습니다. 이 기기의 기록은 그대로 있습니다.";
+      case "offline": return "오프라인입니다. 연결되면 다시 동기화합니다. 이 기기의 기록은 그대로 사용할 수 있습니다." + lastLine(st);
+      case "error":
+        if (st.needsSignIn) return "로그인이 만료되었습니다. 다시 로그인하면 이어서 동기화합니다. 기록은 이 기기에 안전하게 저장되어 있습니다.";
+        return "지금은 동기화하지 못했습니다. 기록은 이 기기에 안전하게 저장되어 있습니다." +
+          (r.exhausted ? " 자동으로 다시 시도하지 않으니 ‘다시 동기화’를 눌러 주세요." : r.nextAt ? " 잠시 후 자동으로 다시 시도합니다." : "") + lastLine(st);
       case "unavailable": return "계정 동기화를 아직 사용할 수 없습니다. 데이터는 이 기기에 그대로 있습니다.";
       case "waiting-consent": return "이 기기의 데이터를 계정에 저장할지 아직 선택하지 않았습니다.";
       default: return "";
     }
+  }
+  /* what is still waiting and what was kept twice — counts only, in plain words */
+  function detailLine(st, q) {
+    if (!st || !q || st.status === "syncing" || st.status === "waiting-consent" || st.status === "unavailable") return "";
+    var out = [], waiting = (q.PENDING || 0) + (q.FAILED || 0);
+    if (waiting) out.push("아직 계정에 저장되지 않은 변경 " + waiting + "개가 이 기기에 있습니다.");
+    if (q.CONFLICT) out.push("두 기기에서 함께 고친 항목 " + q.CONFLICT + "개는 두 버전을 모두 남겼습니다. 내 생활에서 확인해 주세요.");
+    return out.join(" ");
   }
   /* public anonymous mode: account UI stays hidden until Newon+ account sync is launched (see livon-auth-bridge.js) */
   function syncPublic() { return root.LIVON_ACCOUNT_SYNC_PUBLIC === true; }
@@ -44,8 +63,11 @@
     if (!s || !s.configured || s.status === "loading") return "";
     var h = '<div class="lv-ml-block-label"><p class="lv-ml-kicker">Account</p><h3 class="lv-ml-title lv-ml-title--md">Newon+ 계정</h3></div>';
     if (s.status === "authenticated") {
-      var st = S() ? S().status() : null;
-      h += '<ul class="lv-ml-manage-list"><li><div><strong>Newon+ 계정으로 로그인됨</strong><p role="status" data-livon-sync-line>' + esc(syncLine(st)) + "</p></div>" +
+      var st = S() ? S().status() : null, q = null;
+      try { q = S() && typeof S().queue === "function" ? S().queue() : null; } catch (e) { q = null; }
+      var detail = detailLine(st, q);
+      h += '<ul class="lv-ml-manage-list"><li><div><strong>Newon+ 계정으로 로그인됨</strong><p role="status" data-livon-sync-line>' + esc(syncLine(st)) + "</p>" +
+        (detail ? '<p data-livon-sync-detail>' + esc(detail) + "</p>" : "") + "</div>" +
         '<div class="lv-ml-row-acts">' +
           (st && (st.status === "error" || st.status === "offline" || st.status === "synced") ? '<button type="button" class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" data-livon-sync-now>다시 동기화</button>' : "") +
           (st && st.status === "waiting-consent" ? '<button type="button" class="lv-ml-btn lv-ml-btn--dark lv-ml-btn--sm" data-livon-consent-open>가져오기 선택</button>' : "") +
@@ -91,7 +113,7 @@
       '<button type="button" class="lv-life-modal__close" data-livon-consent-close aria-label="닫기">×</button>' +
       '<h2 id="livon-consent-title">이 기기의 데이터를 계정에 저장할까요?</h2>' +
       "<p>선택한 항목만 Newon+ 계정에 저장되고 다른 기기에서도 보입니다. 선택하지 않으면 이 기기에만 남습니다. AI 대화·최근 활동·커뮤니티 글·위치는 저장하지 않습니다.</p>" +
-      '<ul class="lv-ml-manage-list">' + rows.join("") + "</ul>" +
+      '<ul class="lv-ml-manage-list" style="list-style:none;padding:0;margin:0">' + rows.join("") + "</ul>" +
       '<div style="margin-top:1.25rem;display:flex;gap:.5rem;flex-wrap:wrap">' +
       '<button type="button" class="lv-life-btn lv-life-btn--dark" data-livon-consent-approve>선택한 항목 계정에 저장</button>' +
       '<button type="button" class="lv-life-btn lv-life-btn--dark" data-livon-consent-decline>이 기기에만 두기</button></div>' +

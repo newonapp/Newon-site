@@ -23,6 +23,17 @@
  * meanwhile applies, saves and uploads nothing; the remote refuses to send a token whose iss/sub differ from its identity.
  * Results are applied only over records that are still exactly what the pass read (edits made meanwhile are never lost).
  * No token, record content or account id is logged or put in a URL.
+ *
+ * Retry (Account + Sync V1): a failed pass is retried by itself a bounded number of times with growing waits
+ * (RETRY_DELAYS_MS). After the last one the engine stops trying on its own; it resumes when the person asks ("다시 동기화"),
+ * the connection comes back, or the page becomes visible again. A session that is no longer valid, a refused request or a
+ * changed identity is never retried automatically. The periodic pull does not run while the last pass has failed.
+ *
+ * Item states (queue()): what the account panel shows about each record — content is never part of it.
+ *   LOCAL     stays on this device (not signed in, or a sensitive collection the person has not turned on)
+ *   PENDING   changed here, not yet confirmed by the server        SYNCING   the pass that carries it is running
+ *   SYNCED    the server holds exactly this version                FAILED    the last pass failed; the change waits here
+ *   CONFLICT  a second version kept because two devices changed the same record (data.conflictOf)
  */
 (function (root) {
   "use strict";
@@ -33,6 +44,11 @@
   var STATUSES = ["idle", "unavailable", "waiting-consent", "syncing", "synced", "offline", "error"];
   var PUSH_BATCH = 200, MAX_PULL_PAGES = 20, MAX_ROUNDS = 3, DEBOUNCE_MS = 4000, PERIODIC_MS = 60000;
   var SESSION_VAULT = "livon.sessionVault.";
+  /* automatic retries after a failed pass: 5 s, 30 s, 2 min, 10 min, 30 min — then none until something changes */
+  var RETRY_DELAYS_MS = [5000, 30000, 120000, 600000, 1800000];
+  /* failures another attempt cannot fix: the session ended, the request was refused, or the identity changed */
+  var NO_RETRY = { NO_SESSION: 1, FORBIDDEN: 1, SESSION_CHANGED: 1, INVALID_PAYLOAD: 1, REMOTE_REJECTED: 1, STORAGE_WRITE_FAILED: 1 };
+  var SYNC_STATES = ["LOCAL", "PENDING", "SYNCING", "SYNCED", "FAILED", "CONFLICT"];
 
   function UD() { return root.LivonUserData; }
   function storage() { try { return root.localStorage || null; } catch (e) { return null; } }
@@ -57,7 +73,8 @@
 
   function createEngine(opts) {
     opts = opts || {};
-    var st = { status: "idle", accountKey: null, lastSyncAt: null, errorCode: null, pending: null, changedSinceLoad: 0 };
+    var st = { status: "idle", accountKey: null, lastSyncAt: null, errorCode: null, pending: null, changedSinceLoad: 0,
+      retryAttempt: 0, nextRetryAt: null, retriesExhausted: false, needsSignIn: false, conflicts: 0 };
     var remote = null, listeners = [], timer = null, running = null, session = null, stopWrite = null;
     /* generation: bumped whenever the signed-in identity or the live profile changes. A sync started under an older
        generation never applies, saves or uploads anything afterwards (its results belong to another account). */
@@ -73,7 +90,9 @@
     function set(patch, type) { Object.keys(patch).forEach(function (k) { st[k] = patch[k]; }); emit(type || "status"); }
     function status() {
       return { status: st.status, signedIn: !!st.accountKey, lastSyncAt: st.lastSyncAt, errorCode: st.errorCode, changedSinceLoad: st.changedSinceLoad,
-        pending: st.pending ? { counts: st.pending.counts, sensitiveCounts: st.pending.sensitiveCounts } : null, active: active().kind };
+        pending: st.pending ? { counts: st.pending.counts, sensitiveCounts: st.pending.sensitiveCounts } : null, active: active().kind,
+        retry: { attempt: st.retryAttempt, nextAt: st.nextRetryAt, exhausted: st.retriesExhausted, max: RETRY_DELAYS_MS.length },
+        needsSignIn: st.needsSignIn, conflicts: st.conflicts };
     }
     function active() { var a = readJSON(ACTIVE_KEY); return isPlain(a) && a.kind === "account" && typeof a.key === "string" ? a : { kind: "anon" }; }
     function syncState(k) { var s = readJSON(stateKey(k)); return isPlain(s) ? s : { v: 1, lastServerRev: 0, lastSyncAt: 0, index: {}, importDecision: null, sensitive: false }; }
@@ -210,15 +229,17 @@
         return rem.device({ deviceId: deviceId(), lastServerRev: pulledRev, conflicts: conflicts, importDecided: decided }).catch(function () {});
       }).then(function () {
         if (myGen !== gen) return status();
-        set({ status: "synced", lastSyncAt: s.lastSyncAt, errorCode: null, changedSinceLoad: st.changedSinceLoad + applied }, applied ? "data-changed" : "synced");
+        set({ status: "synced", lastSyncAt: s.lastSyncAt, errorCode: null, changedSinceLoad: st.changedSinceLoad + applied,
+          retryAttempt: 0, nextRetryAt: null, retriesExhausted: false, needsSignIn: false, conflicts: conflicts }, applied ? "data-changed" : "synced");
         return status();
       }, function (e) {
         /* a pass that lost its account (sign-out / switch) or its session writes nothing and reports nothing */
         if (myGen !== gen || (e && e.code === "SYNC_ABORTED")) return status();
-        if (e && e.code === "SESSION_CHANGED") { set({ status: "error", errorCode: "SESSION_CHANGED" }); return status(); }
+        if (e && e.code === "SESSION_CHANGED") { set(Object.assign({ status: "error", errorCode: "SESSION_CHANGED" }, planRetry("SESSION_CHANGED"))); return status(); }
         saveSyncState(k, s);    /* whatever was confirmed stays confirmed; local data is untouched by a failure */
         var off = (root.navigator && root.navigator.onLine === false) || (e && e.name === "TypeError");
-        set({ status: off ? "offline" : "error", errorCode: (e && (e.serverCode || e.code)) || "SYNC_FAILED" });
+        var kind = (e && e.code) || "SYNC_FAILED";
+        set(Object.assign({ status: off ? "offline" : "error", errorCode: (e && (e.serverCode || e.code)) || "SYNC_FAILED", needsSignIn: kind === "NO_SESSION" }, planRetry(kind)));
         return status();
       }).then(function (x) { if (running === p) running = null; return x; });
       running = p; runningGen = myGen;
@@ -286,6 +307,48 @@
       if (timer) clearTimeout(timer);
       timer = setTimeout(function () { timer = null; syncOnce(); }, ms == null ? DEBOUNCE_MS : ms);
     }
+    /* what happens after a failed pass: wait longer each time, a bounded number of times; some failures are never retried */
+    function planRetry(kind) {
+      if (timer) { clearTimeout(timer); timer = null; }
+      if (NO_RETRY[kind]) return { nextRetryAt: null, retriesExhausted: false };
+      var attempt = st.retryAttempt + 1;
+      if (attempt > RETRY_DELAYS_MS.length) return { retryAttempt: RETRY_DELAYS_MS.length, nextRetryAt: null, retriesExhausted: true };
+      var wait = RETRY_DELAYS_MS[attempt - 1];
+      schedule(wait);
+      return { retryAttempt: attempt, nextRetryAt: now() + wait, retriesExhausted: false };
+    }
+    /* the person, a restored connection or a page that is looked at again starts a fresh series */
+    function resume(ms) {
+      st.retryAttempt = 0; st.nextRetryAt = null; st.retriesExhausted = false;
+      if (ms == null) { if (timer) { clearTimeout(timer); timer = null; } return syncOnce(); }
+      schedule(ms); return null;
+    }
+    /* a local write while the last pass has failed does not shorten the wait (typing never hammers a server that is down) */
+    function onLocalWrite() {
+      if (active().kind !== "account") return;
+      if ((st.status === "error" || st.status === "offline") && (st.nextRetryAt || st.retriesExhausted || st.needsSignIn)) { emit("status"); return; }
+      schedule();
+    }
+    /* per-record states for the account panel: ids, collection, state and times only — never content */
+    function queue() {
+      var out = { LOCAL: 0, PENDING: 0, SYNCING: 0, SYNCED: 0, FAILED: 0, CONFLICT: 0, items: [] };
+      var U = UD(); if (!U) return out;
+      var a = active(), signed = !!st.accountKey && a.kind === "account" && a.key === st.accountKey;
+      var s = signed ? syncState(st.accountKey) : null, recs;
+      try { recs = U.collectAccountRecords({ includeSensitive: true }).records; } catch (e) { return out; }
+      recs.forEach(function (r) {
+        var key = keyOf(r), i = s && s.index[key], state;
+        if (!signed || (U.SENSITIVE_COLLECTIONS.indexOf(r.collection) >= 0 && !s.sensitive)) state = "LOCAL";
+        else if (!r.deletedAt && r.data && r.data.conflictOf) state = "CONFLICT";
+        else if (i && i.h === U.recordHash(r)) state = "SYNCED";
+        else state = st.status === "syncing" ? "SYNCING" : (st.status === "error" || st.status === "offline") ? "FAILED" : "PENDING";
+        if (r.deletedAt && state === "LOCAL") return;          /* a deletion that never left the device is not an item */
+        out[state]++;
+        out.items.push({ collection: r.collection, id: r.id, state: state, deleted: !!r.deletedAt, localUpdatedAt: r.updatedAt || null, serverRev: i ? i.rev : null });
+      });
+      out.lastSyncedAt = s ? (s.lastSyncAt || null) : null;
+      return out;
+    }
 
     /* ───────── lifecycle ───────── */
     function onSignedIn(sess) {
@@ -295,7 +358,7 @@
       session = sess;
       st.accountKey = k;
       remote = makeRemote(sess);
-      if (!stopWrite) stopWrite = UD().onWrite(function () { if (active().kind === "account") schedule(); });
+      if (!stopWrite) stopWrite = UD().onWrite(onLocalWrite);
       if (a.kind === "account" && a.key === k) return syncOnce();          /* already this account's data (reload / reconnect) */
       if (a.kind === "account") { leaveAccount(a.key); onProfileChanged("switched"); }
       return serverReady().then(function (ready) {
@@ -347,7 +410,7 @@
         if (timer) { clearTimeout(timer); timer = null; }
         if (stopWrite) { stopWrite(); stopWrite = null; }
         remote = null; session = null; gen++;
-        set({ status: "idle", accountKey: null, pending: null, errorCode: null });
+        set({ status: "idle", accountKey: null, pending: null, errorCode: null, retryAttempt: 0, nextRetryAt: null, retriesExhausted: false, needsSignIn: false, conflicts: 0 });
         if (!k) return { status: "SIGNED_OUT" };
         try { leaveAccount(k); }
         catch (e) { set({ status: "error", errorCode: (e && e.code) || "STORAGE_WRITE_FAILED" }); return { status: "SIGN_OUT_STORAGE_FAILED" }; }
@@ -363,12 +426,15 @@
     return {
       STATUSES: STATUSES, status: status, subscribe: function (fn) { if (typeof fn !== "function") return function () {}; listeners.push(fn); return function () { listeners = listeners.filter(function (x) { return x !== fn; }); }; },
       onSignedIn: onSignedIn, onSignedOut: onSignedOut, approveImport: approveImport, declineImport: declineImport,
-      syncNow: function () { return syncOnce(); }, forgetAccount: forgetAccount, setSensitive: setSensitive,
-      activeProfile: active, accountKey: accountKey, _schedule: schedule,
+      /* asked for by the person: starts a fresh retry series */
+      syncNow: function () { return resume(); }, forgetAccount: forgetAccount, setSensitive: setSensitive,
+      activeProfile: active, accountKey: accountKey, _schedule: schedule, _resume: resume,
+      SYNC_STATES: SYNC_STATES, RETRY_DELAYS_MS: RETRY_DELAYS_MS, queue: queue,
       /* periodic pull (other devices' changes arrive without a local edit): only while signed in, visible and online */
       _tick: function () {
         var d = root.document;
         if (!st.accountKey || !remote || st.status === "syncing" || st.status === "waiting-consent" || st.status === "unavailable") return false;
+        if (st.status === "error" || st.status === "offline") return false;      /* a failed pass is retried by planRetry only */
         if (d && d.visibilityState && d.visibilityState !== "visible") return false;
         if (root.navigator && root.navigator.onLine === false) return false;
         syncOnce(); return true;
@@ -382,10 +448,13 @@
 
   if (typeof root.setInterval === "function") { var tick = root.setInterval(function () { engine._tick(); }, PERIODIC_MS); if (tick && tick.unref) tick.unref(); }
   if (root.addEventListener) {
-    root.addEventListener("online", function () { if (engine.status().signedIn) engine._schedule(500); });
+    root.addEventListener("online", function () { if (engine.status().signedIn) engine._resume(500); });
     if (root.document && root.document.addEventListener) root.document.addEventListener("visibilitychange", function () {
       var s = engine.status();
-      if (root.document.visibilityState === "visible" && s.signedIn && (!s.lastSyncAt || Date.now() - s.lastSyncAt > 60000)) engine._schedule(0);
+      if (root.document.visibilityState !== "visible" || !s.signedIn) return;
+      /* looked at again: after a failure only when the automatic series has ended (a pending wait is left alone) */
+      if (s.status === "error" || s.status === "offline") { if (s.retry.exhausted && !s.needsSignIn) engine._resume(0); return; }
+      if (!s.lastSyncAt || Date.now() - s.lastSyncAt > 60000) engine._schedule(0);
     });
   }
 })(typeof window !== "undefined" ? window : globalThis);
