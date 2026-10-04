@@ -248,8 +248,9 @@ test('LC-16 separate API origin: every browser URL is the canonical route withou
   assert.match(ai, /return fetch\(CHAT_URL, \{/);
   assert.doesNotMatch(ai, /API_BASE \+/, 'no URL is glued together after the config has built it');
   assert.equal(read('livon/livon-api-config.js'), livonApiConfigScript(''), 'committed file = generated default');
-  assert.match(INDEX, /\/livon\/livon-api-config\.js\?v=20261004c3"/); assert.match(INDEX, /\/livon\/ai-page\.js\?v=20261004c3"/);
-  assert.equal((INDEX.match(/\?v=20261004c3/g) || []).length, 2, 'production routing alignment: livon-api-config, ai-page');
+  /* production routing alignment bumped livon-api-config and ai-page to c3; LIVON AI LIVE V1 bumped ai-page again (c4) */
+  assert.match(INDEX, /\/livon\/livon-api-config\.js\?v=20261004c3"/); assert.match(INDEX, /\/livon\/ai-page\.js\?v=20261004c[3-9]"/);
+  assert.equal((INDEX.match(/\?v=20261004c3/g) || []).length + (INDEX.match(/ai-page\.js\?v=20261004c[4-9]/g) || []).length, 2, 'production routing alignment: livon-api-config, ai-page');
 });
 
 /* ───────── browser (skipped when no local Chromium) ───────── */
