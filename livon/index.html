@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="/home-lifestage.css?v=20260924livon1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=20260922loop1" />
     <link rel="stylesheet" href="/livon/life-page.css?v=20261002ob1" />
-    <link rel="stylesheet" href="/livon/life-now-page.css?v=20260929qa1" />
+    <link rel="stylesheet" href="/livon/life-now-page.css?v=20261004c5" />
     <link rel="stylesheet" href="/livon/explore-page.css?v=20261002perf1" />
     <link rel="stylesheet" href="/livon/community-page.css?v=20261002perf1" />
     <link rel="stylesheet" href="/livon/help-page.css?v=20261002hf1" />
@@ -1637,7 +1637,9 @@
                   <a href="#ml-calendar" data-lv-ml-goto="calendar">일정</a>
                   <a href="#ml-todos" data-lv-ml-goto="todos">할 일</a>
                   <a href="#ml-goals" data-lv-ml-goto="goals">목표</a>
+                  <a href="#ml-routines" data-lv-ml-goto="routines">루틴</a>
                   <a href="#ml-journal" data-lv-ml-goto="journal">기록</a>
+                  <a href="#ml-records" data-lv-ml-goto="records">전체 기록</a>
                   <a href="#ml-saved" data-lv-ml-goto="saved">저장</a>
                   <a href="#ml-bookings" data-lv-ml-goto="bookings">예약</a>
                   <a href="#ml-interests" data-lv-ml-goto="interests">관심사</a>
@@ -1658,7 +1660,7 @@
                 <header class="lv-ml-head">
                   <p class="lv-ml-kicker" lang="en">Today</p>
                   <h2 class="lv-ml-title" data-lv-ml-today-label>오늘의 나</h2>
-                  <p class="lv-ml-lead">실제 저장한 일정·할 일·목표만 표시합니다. 데이터가 없으면 빈 상태로 안내합니다.</p>
+                  <p class="lv-ml-lead" data-lv-ml-greeting>실제 저장한 일정·할 일·목표만 표시합니다. 데이터가 없으면 빈 상태로 안내합니다.</p>
                 </header>
 
                 <div class="lv-ml-stats" data-lv-ml-stats></div>
@@ -1670,15 +1672,20 @@
                 <div class="lv-ml-quick" aria-label="빠른 실행">
                   <p class="lv-ml-kicker" lang="en">Quick actions</p>
                   <div class="lv-ml-quick__row">
-                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="event">일정 추가</button>
-                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="todo">할 일 추가</button>
-                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="goal">목표 만들기</button>
-                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="habit">습관 추가</button>
-                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="tx">지출 기록</button>
-                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="journal">생활 기록</button>
-                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="experience">경험 계획</button>
+                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="event"><span aria-hidden="true">+ </span>일정 추가</button>
+                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="todo"><span aria-hidden="true">+ </span>할 일 추가</button>
+                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="goal"><span aria-hidden="true">+ </span>목표 만들기</button>
+                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="journal"><span aria-hidden="true">+ </span>생활 기록</button>
+                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="habit"><span aria-hidden="true">+ </span>루틴 추가</button>
+                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="tx"><span aria-hidden="true">+ </span>지출 기록</button>
+                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="experience"><span aria-hidden="true">+ </span>경험 계획</button>
                   </div>
                   <p class="lv-ml-note">선택값은 이 기기에만 저장됩니다. 계정 동기화·클라우드 백업은 아직 연결되지 않았습니다.</p>
+                  <form class="lv-ml-inline-form" data-lv-ml-search-form role="search" aria-label="내 생활 검색">
+                    <label class="lv-ml-field" for="ml-search-q"><span>내 생활에서 찾기</span><input id="ml-search-q" name="q" type="search" maxlength="60" autocomplete="off" placeholder="예: 병원, 이력서" /></label>
+                    <button type="submit" class="lv-ml-btn lv-ml-btn--dark lv-ml-btn--sm">검색</button>
+                  </form>
+                  <p class="lv-ml-note">이 기기의 내 생활 항목만 찾아요. LIVON 통합 검색과는 따로이며 검색어를 저장하지 않아요.</p>
                 </div>
 
                 <div class="lv-ml-split-dash">
@@ -1689,6 +1696,17 @@
                   <div>
                     <div class="lv-ml-block-label"><p class="lv-ml-kicker" lang="en">Tasks</p><h3 class="lv-ml-title lv-ml-title--md">오늘의 할 일</h3></div>
                     <div data-lv-ml-today-todos></div>
+                  </div>
+                </div>
+
+                <div class="lv-ml-split-dash">
+                  <div>
+                    <div class="lv-ml-block-label"><p class="lv-ml-kicker" lang="en">Routines</p><h3 class="lv-ml-title lv-ml-title--md">오늘의 루틴</h3></div>
+                    <div data-lv-ml-today-habits></div>
+                  </div>
+                  <div>
+                    <div class="lv-ml-block-label"><p class="lv-ml-kicker" lang="en">Upcoming</p><h3 class="lv-ml-title lv-ml-title--md">다가오는 7일</h3></div>
+                    <div data-lv-ml-upcoming></div>
                   </div>
                 </div>
 
@@ -3336,15 +3354,16 @@
         <div style="margin-top:1.25rem"><button type="button" class="lv-ml-btn" data-lv-ml-modal-close>확인</button></div>
       </div>
     </div>
-    <script src="/livon/life-now-data.js?v=20260928ml1"></script>
-    <script src="/livon/life-now-page.js?v=20261002perf1"></script>
+    <script src="/livon/life-now-data.js?v=20261004c5"></script>
+    <script src="/livon/life-now-hub.js?v=20261004c5"></script>
+    <script src="/livon/life-now-page.js?v=20261004c5"></script>
     <script src="/livon/explore-data.js?v=20260926img1"></script>
     <script src="/livon/explore-search.js?v=20261001dm1"></script>
     <script src="/livon/explore-page.js?v=20261002perf1"></script>
     <script src="/livon/community-data.js?v=20260928cm1"></script>
     <script src="/livon/community-service.js?v=20261002cu1"></script>
     <script src="/livon/community-page.js?v=20261002perf1"></script>
-    <script src="/livon/help-data.js?v=20261004c2"></script>
+    <script src="/livon/help-data.js?v=20261004c5"></script>
     <script src="/livon/help-page.js?v=20261004c2"></script>
     <script src="/livon/today-data.js?v=20260928td1"></script>
     <script src="/livon/today-feed.js?v=20261002perf1"></script>

@@ -2122,3 +2122,14 @@ html[data-lv-view="life-now"] main > #life-now {
 
 /* Contrast: list titles inside empty-state cards. */
 #life-now .lv-ml-empty .lv-ml-manage-list strong { color: #0a0a0a; }
+
+/* ——— My Life V2: routines, records, search, data (existing tokens and components only) ——— */
+#life-now .lv-ml-cal__cell span .lv-ml-cal__task { font-style: normal; font-weight: 400; text-decoration: underline; text-underline-offset: 2px; }
+.lv-ml-days { grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr)); gap: 0 0.5rem; }
+.lv-ml-days legend { grid-column: 1 / -1; }
+#life-now .lv-ml-btn--danger-outline { color: #b3261e; border-color: #b3261e; }
+#life-now .lv-ml-btn[disabled] { opacity: 0.45; cursor: not-allowed; }
+#life-now .lv-ml-cal-head .lv-ml-btn[disabled] { pointer-events: none; }
+#life-now [data-lv-ml-search-form] input[type="search"],
+#life-now [data-lv-ml-record-search] input[type="search"] { width: 100%; min-width: 0; }
+#life-now .lv-ml-task__title { overflow-wrap: anywhere; }

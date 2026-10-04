@@ -190,8 +190,10 @@ test('route state: #ml-{view}?params round-trips; unknown values fall back', () 
   assert.equal(T.viewHash('journal'), '#ml-journal?cat=%EA%B1%B4%EA%B0%95');
   T.applyParams('saved', { type: 'policy' });
   assert.equal(T.viewHash('saved'), '#ml-saved?type=policy');
-  T.applyParams('calendar', { mode: 'week', date: '2026-10-05' });
-  assert.equal(T.viewHash('calendar'), '#ml-calendar?mode=week&date=2026-10-05');
+  /* a date that is never today (today's date is left out of the URL by design) */
+  const notToday = today() === '2026-10-05' ? '2026-10-06' : '2026-10-05';
+  T.applyParams('calendar', { mode: 'week', date: notToday });
+  assert.equal(T.viewHash('calendar'), '#ml-calendar?mode=week&date=' + notToday);
   assert.equal(T.viewHash('home'), '#ml-home');
 });
 
