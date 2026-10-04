@@ -96,6 +96,13 @@ export const AI_LIVE = { subject: 'Implement LIVON AI live foundation',
     'docs/livon/LIVON_AI_LIVE.md', 'tests/livon/ai-live.test.mjs', 'tests/livon/completion.test.mjs', 'tests/livon/release-candidate.test.mjs'] };
 const aiLiveIn = () => git('log', '--format=%s', 'HEAD').stdout.split('\n').includes(AI_LIVE.subject);
 
+/* LIVON Community V2 (branch livon-community-v2, merged into production): the local-first Community completion. Accepted
+   only on a line whose history contains this commit, and only these files — each of which that commit actually changed. */
+export const COMMUNITY_V2 = { subject: 'Complete LIVON Community V2',
+  files: ['livon/community-page.js', 'livon/community-page.css', 'livon/community-service.js', 'livon/community-remote.js', 'livon/index.html',
+    'docs/livon/LIVON_COMMUNITY_V2.md', 'tests/livon/community-v2.test.mjs', 'tests/livon/performance.test.mjs'] };
+const communityV2Commit = () => (git('log', '--no-merges', '--format=%H%x09%s', 'HEAD').stdout.split('\n').find(l => l.split('\t')[1] === COMMUNITY_V2.subject) || '').split('\t')[0] || null;
+
 /* main e0436c916: ONGIL (another product on the same site) integrated for production. Its files are not LIVON product files;
    they are accepted only under its own directory and only on a line that contains that integration commit. */
 export const ONGIL_PRODUCT = { subject: 'Integrate ONGIL production frontend', dir: 'ongil-start/' };
@@ -176,7 +183,13 @@ test('RC-1 ancestry: every V1 phase commit is an ancestor of the RC; the RC star
     const d = git('diff', '--name-only', integ, 'HEAD', '--', ...I.paths);
     assert.equal(d.status, 0);
     const aiLive = aiLiveIn() ? AI_LIVE.files : [];
-    assert.deepEqual(d.stdout.split('\n').filter(Boolean).filter(f => !I.aligned.includes(f) && !aiLive.includes(f)), [], 'LIVON tree = integration commit except the alignment / AI LIVE files');
+    const cv2 = communityV2Commit();
+    const community = cv2 ? COMMUNITY_V2.files : [];
+    if (cv2) {
+      const touched = git('diff-tree', '--no-commit-id', '--name-only', '-r', cv2 + '^', cv2).stdout.split('\n').filter(Boolean);
+      assert.deepEqual(COMMUNITY_V2.files.filter(f => !touched.includes(f)), [], 'every accepted Community V2 file was changed by that commit');
+    }
+    assert.deepEqual(d.stdout.split('\n').filter(Boolean).filter(f => !I.aligned.includes(f) && !aiLive.includes(f) && !community.includes(f)), [], 'LIVON tree = integration commit except the alignment / AI LIVE / Community V2 files');
     /* main's production routing/CORS fix is part of this line */
     assert.ok(history.includes(ROUTING_CORS_FIX.subject), 'main routing/CORS fix is an ancestor');
     assert.ok(history.includes(BACKEND_HARDENING.subject), 'backend hardening is an ancestor');
