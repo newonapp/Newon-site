@@ -99,6 +99,11 @@ const aiLiveIn = () => git('log', '--format=%s', 'HEAD').stdout.split('\n').incl
 /* main e0436c916: ONGIL (another product on the same site) integrated for production. Its files are not LIVON product files;
    they are accepted only under its own directory and only on a line that contains that integration commit. */
 export const ONGIL_PRODUCT = { subject: 'Integrate ONGIL production frontend', dir: 'ongil-start/' };
+/* ONGIL Family Connection V2 (production integration merge): ONGIL's own family route and store — not LIVON product files.
+   Accepted file by file, and only on a line that contains that merge; any other server / api file still needs its own entry. */
+export const ONGIL_FAMILY_V2 = { subject: 'Integrate ONGIL Family V2 with production', files: ['api/ongil/family.mjs', 'server/ongil/family/http.mjs', 'server/ongil/family/store.mjs',
+  'server/ongil/family/migrations/001_family.sql', 'server/ongil/family/migrations/002_family_limits.sql'] };
+const familyV2In = () => git('log', '--format=%s', 'HEAD').stdout.split('\n').includes(ONGIL_FAMILY_V2.subject);
 
 /* ───────── static SEO roots: the same generator the build runs, closed and open ───────── */
 function makeRoot(env) {
@@ -524,7 +529,7 @@ test('RC-26 accessibility (static): the build gate still reports 0 errors on the
 test('RC-41 visual regression by construction: the RC ships the Performance V1 product files unchanged (or only listed RC fixes)', { skip: noGit || (!hasCommit(RC_BASE) && 'base commit missing') }, () => {
   const changed = git('diff', '--name-only', RC_BASE, 'HEAD').stdout.split('\n').filter(Boolean);
   const product = changed.filter(f => !/^(docs\/|tests\/)/.test(f));
-  const allowed = new Set([...RC_FIXES, ...BACKEND_HARDENING.files, ...ROUTING_CORS_FIX.files, ...COMPLETION_FIXES, ...(aiLiveIn() ? AI_LIVE.files : [])]);
+  const allowed = new Set([...RC_FIXES, ...BACKEND_HARDENING.files, ...ROUTING_CORS_FIX.files, ...COMPLETION_FIXES, ...(aiLiveIn() ? AI_LIVE.files : []), ...(familyV2In() ? ONGIL_FAMILY_V2.files : [])]);
   /* ONGIL is its own product in its own directory: accepted only where its production integration is part of the history,
      and then only inside that directory — a LIVON, shared or any other file still needs an entry above */
   const ongilIntegrated = git('log', '--format=%s', 'HEAD').stdout.split('\n').includes(ONGIL_PRODUCT.subject);

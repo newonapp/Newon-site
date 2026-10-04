@@ -6,7 +6,7 @@ or production switch is turned on, so no two real devices are connected today.
 
 ```
 AUTH LIVE          = NO   (ONGIL does not load Newon+ auth; NEWON_AUTH_VERIFY_ENABLED / project id not set for this route)
-DATABASE LIVE      = NO   (LIVON_DATABASE_URL not set in production; migration 001_family.sql not applied)
+DATABASE LIVE      = NO   (LIVON_DATABASE_URL not set in production; migrations 001_family.sql / 002_family_limits.sql not applied)
 CROSS DEVICE LIVE  = NO
 FAMILY V1 LOCAL    = LIVE (unchanged)
 FAMILY V2          = CODE READY
@@ -107,6 +107,17 @@ Atomicity: every change touching more than one table is **one SQL statement** (d
 consumed + membership + audit), disconnect / leave (membership ended + permissions, consents, snapshots removed + open
 requests cancelled + audit), sharing changes (permissions + consents + snapshots + audit), invitation create (pending
 limit + insert + audit).
+
+`server/ongil/family/migrations/002_family_limits.sql` — apply AFTER `001_family.sql` (production integration). The two
+limits are exact under concurrency: a `BEFORE INSERT` trigger on `ongil_family_members` (ACTIVE rows) and on
+`ongil_family_invitations` (PENDING rows) takes a transaction-scoped advisory lock for the family group
+(`pg_advisory_xact_lock(hashtextextended('ongil_family_group:' || group_id, 0))`) and counts again with a fresh snapshot.
+A refused write raises `OGF01` (10 connected members) or `OGF02` (5 waiting invitations); the whole statement rolls back
+(the invitation stays unused, no audit row) and the API answers `409 LIMIT_MEMBERS` / `409 LIMIT_INVITATIONS`. Only
+requests of the same family wait for each other. No table, column or stored value changes; idempotent (`CREATE OR REPLACE
+FUNCTION`, `DROP TRIGGER IF EXISTS` + `CREATE TRIGGER`, one transaction). Without 002 the statements still count first, but
+requests overlapping in time could pass a limit (measured on PostgreSQL 16 before the fix: 14 members, 6 waiting
+invitations).
 
 ## 6. INVITATIONS
 
@@ -245,9 +256,10 @@ Note on caching: `app.js` changed but its `?v=` address was not moved (as with F
 
 ## 15. TESTS
 
-`tests/ongil/family-v2.test.mjs` — FV2-01 … FV2-50 (production handler + memory twin + real verifier with a throwaway
-key) and FV2-PG-01 … 06 on a REAL PostgreSQL server when `LIVON_TEST_PG` is set (migration twice, full cross-account flow,
-two concurrency races, the pending-limit race, cascade deletion). Structural pins in earlier ONGIL test files were updated
+`tests/ongil/family-v2.test.mjs` — FV2-01 … FV2-53 (production handler + memory twin + real verifier with a throwaway
+key) and FV2-PG-01 … 10 on a REAL PostgreSQL server when `LIVON_TEST_PG` is set (both migrations twice, full cross-account
+flow, two concurrency races, the pending-limit race, cascade deletion; production integration: the 11th member and the
+6th invitation raced through the API and through overlapping held transactions — exact limits, OGF01 / OGF02). Structural pins in earlier ONGIL test files were updated
 by value only, each with a BEFORE / AFTER comment (module count 76 → 78, test files 28 → 29, server/ongil now `family/`,
 `family-remote.js` as the second module handed the injected fetch, the one `Bearer` / `NewonAuth` reference).
 
@@ -259,7 +271,7 @@ by value only, each with a BEFORE / AFTER comment (module count 76 → 78, test 
 | Server route, schema, permission enforcement, client, card | CODE READY |
 | `ONGIL_FAMILY_REMOTE_ENABLED=true` on the API project | CONFIG REQUIRED |
 | Newon+ auth loaded on the ONGIL page; Firebase project for Newon+ | CONFIG REQUIRED · ACCOUNT REQUIRED |
-| `LIVON_DATABASE_URL` + both migrations applied | DATABASE REQUIRED |
+| `LIVON_DATABASE_URL` + the account migration and both family migrations (001, 002) applied | DATABASE REQUIRED |
 | Upstash + `LIVON_RATE_LIMIT_SECRET` (already set for LIVON in production) | LIVE for LIVON, reused |
 | Invite link, push / SMS delivery, background refresh, retention job | FUTURE |
 
@@ -271,7 +283,9 @@ CROSS DEVICE LIVE = NO. Nothing here was tested on two real devices with real ac
 2. On the API project set `NEWON_AUTH_VERIFY_ENABLED=true` and `NEWON_PLUS_FIREBASE_PROJECT_ID` (no secret: public id).
 3. Provision PostgreSQL (TLS required in production) and set `LIVON_DATABASE_URL` as an encrypted env var.
 4. Apply `server/livon/userdata/migrations/001_account_backend.sql` (if not yet applied).
-5. Apply `server/ongil/family/migrations/001_family.sql`; verify the eight `ongil_family_*` tables exist.
+5. Apply `server/ongil/family/migrations/001_family.sql`, then `002_family_limits.sql`; verify the eight `ongil_family_*`
+   tables and the two triggers (`ongil_family_member_limit`, `ongil_family_invitation_limit`) exist. Take a database backup
+   first; both files are idempotent and transactional.
 6. Confirm Upstash + `LIVON_RATE_LIMIT_SECRET` are present for the API project (`/api/health` shows `shared`).
 7. Deploy with `ONGIL_FAMILY_REMOTE_ENABLED` still unset; check `GET /api/ongil/family?op=status` → `ready:false`, `enabled:false`.
 8. Load Newon+ auth on the ONGIL page (`newon-auth-config.js`, `newon-auth.js`, adapter) — updating the ONGIL structural
@@ -289,11 +303,11 @@ CROSS DEVICE LIVE = NO. Nothing here was tested on two real devices with real ac
 - No invite link yet; the code is typed in.
 - Snapshot lines are published when the owner presses "지금 내용 보내기"; there is no automatic refresh.
 - No push / SMS / e-mail delivery of help requests.
-- The member limit (10) and the pending-invitation limit (5) are checked inside the same single statement that writes,
-  under READ COMMITTED. Requests racing at the very same instant may each count before the others commit, so a limit can
-  be passed by at most the number of racing requests (for invitations, the per-account invite rate limit — 5 per 10
-  minutes — caps such a burst; for members, by the pending invitations, ≤ 5). Right after a race the limit is closed again
-  (tested on PostgreSQL). A strict cap would need a transaction-scoped lock (FUTURE, with a client that runs transactions).
+- The member limit (10) and the pending-invitation limit (5) are exact once migration 002 is applied (FV2-PG-07 … 10).
+  If the API were deployed against a database that has 001 but not 002, the earlier behaviour returns: overlapping
+  requests could pass a limit by at most the number of racing requests (members: ≤ the pending invitations, so ≤ 14 in
+  total; invitations: bounded by the invite rate limit, 5 per 10 minutes). Only the owner's own invitations and the people
+  holding them can cause it; it is not reachable by a stranger. Apply 002 before turning the route on.
 - The account card uses the existing ONGIL parts; its keyboard and screen-reader behaviour follow those parts but were not
   verified with a real screen reader.
 - V1 LOCAL connections and V2 account connections are separate by design; there is no import.

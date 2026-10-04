@@ -44,7 +44,13 @@ export function createFamilyRemoteView({ remote, readers, today }) {
     if (!r.ok) { card.say(textOf(r)); return r; }
     card.say(okText);
     await load();
+    keepFocus();
     return r;
+  }
+  /* a redraw removes the control that was used: focus goes to the card title instead of being lost on the page */
+  function keepFocus() {
+    const a = typeof document !== 'undefined' ? document.activeElement : null;
+    if (card && (!a || a === document.body || !a.isConnected)) card.focusTitle();
   }
 
   async function load() {
@@ -70,6 +76,9 @@ export function createFamilyRemoteView({ remote, readers, today }) {
       ui.code = { name: r.invitation.displayName, code: r.formattedCode, until: r.invitation.expiresAt };
       card.say('초대 코드를 만들었어요. 가족에게 직접 알려 주세요.');
       await load();
+      /* the code is shown once: move focus to it so a screen reader reads it right away */
+      const shown = card && card.body.querySelector('.og-family-code');
+      if (shown) shown.focus(); else keepFocus();
     });
     queueMicrotask(() => name.input.focus());
     return form;

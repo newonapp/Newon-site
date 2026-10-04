@@ -51,6 +51,8 @@ export const FAMILY_RATE = Object.freeze({
   help: Object.freeze([[10, 600], [50, 86400]]),
 });
 export const HELP_OPEN_LIMIT = 50;
+/* SQLSTATEs raised by migrations/002_family_limits.sql when a limit is reached by requests that overlapped in time */
+export const LIMIT_SQLSTATE = Object.freeze({ members: 'OGF01', invitations: 'OGF02' });
 const SNAPSHOT_LINE_MAX = 200;
 const SNAPSHOT_BYTES_MAX = 4096;
 const SUBJECT_RE = /^[A-Za-z0-9_-]{6,128}$/;
@@ -254,7 +256,10 @@ export function createFamilyHandler({ env = process.env, store, accounts, verifi
       if (raw.members.filter((m) => m.status === 'ACTIVE').length >= FAMILY_LIMITS.members) fail(409, 'LIMIT_MEMBERS');
       const code = makeInvitationCode();
       const id = makeId('fi');
-      const r = await fam.createInvitation({ id, groupId: g.id, createdBy: acct, tokenHash: invitationHash(code), displayName, relationship: p.relationship, role: p.role, expiresAt: t + expiry.ms, pendingLimit: FAMILY_LIMITS.pendingInvitations, now: t });
+      let r;
+      /* OGF02: migration 002 refused the insert after an overlapping create took the last place (the count above ran first) */
+      try { r = await fam.createInvitation({ id, groupId: g.id, createdBy: acct, tokenHash: invitationHash(code), displayName, relationship: p.relationship, role: p.role, expiresAt: t + expiry.ms, pendingLimit: FAMILY_LIMITS.pendingInvitations, now: t }); }
+      catch (e) { if (e && e.sqlState === LIMIT_SQLSTATE.invitations) fail(409, 'LIMIT_INVITATIONS'); throw e; }
       if (!r.ok) fail(409, 'LIMIT_INVITATIONS');
       /* the code is in this one answer and nowhere else: not stored, not logged, not readable again */
       return { invitation: { id, displayName, relationship: p.relationship, role: p.role, status: 'PENDING', createdAt: t, expiresAt: t + expiry.ms }, code, formattedCode: formatInvitationCode(code) };
@@ -285,10 +290,17 @@ export function createFamilyHandler({ env = process.env, store, accounts, verifi
       if (raw.members.filter((m) => m.status === 'ACTIVE').length >= FAMILY_LIMITS.members) fail(409, 'LIMIT_MEMBERS');
       let m;
       try { m = await fam.acceptInvitation({ hash: invitationHash(code), accountId: acct, memberId: makeId('fm'), ownerLabel, now: now(), memberLimit: FAMILY_LIMITS.members }); }
-      catch (e) { if (e && e.sqlState === '23505') fail(409, 'ALREADY_CONNECTED'); throw e; }
+      catch (e) {
+        if (e && e.sqlState === '23505') fail(409, 'ALREADY_CONNECTED');
+        /* OGF01: migration 002 refused the membership after an overlapping accept took the 10th place */
+        if (e && e.sqlState === LIMIT_SQLSTATE.members) fail(409, 'LIMIT_MEMBERS');
+        throw e;
+      }
       if (!m) {
-        /* lost a race: say what the invitation is now (used by someone else, revoked, expired), never guess */
+        /* lost a race: say what the invitation is now (used by someone else, revoked, expired) or that the family is full */
         await invitationFor(fam, acct, code);
+        const now2 = await fam.groupState(inv.group_id);
+        if (now2 && now2.members.filter((x) => x.status === 'ACTIVE').length >= FAMILY_LIMITS.members) fail(409, 'LIMIT_MEMBERS');
         fail(409, 'CONFLICT');
       }
       return { membership: { memberId: m.id, ownerLabel: m.owner_label, relationship: m.relationship, role: m.role, joinedAt: m.joined_at }, sharesNothingYet: true };
@@ -511,7 +523,12 @@ export function createFamilyHandler({ env = process.env, store, accounts, verifi
     let outcome;
     try { outcome = await handle(req, res, ctx); }
     catch (error) {
-      const safe = error instanceof FamilyError ? error : (error && error.sqlState === '23505' ? new FamilyError(409, 'CONFLICT') : new FamilyError(503, 'STORE_UNAVAILABLE'));
+      const st = error && error.sqlState;
+      const safe = error instanceof FamilyError ? error
+        : st === '23505' ? new FamilyError(409, 'CONFLICT')
+        : st === LIMIT_SQLSTATE.members ? new FamilyError(409, 'LIMIT_MEMBERS')
+        : st === LIMIT_SQLSTATE.invitations ? new FamilyError(409, 'LIMIT_INVITATIONS')
+        : new FamilyError(503, 'STORE_UNAVAILABLE');
       if (safe.retryAfter) res.setHeader('Retry-After', String(safe.retryAfter));
       if (safe.status === 401) res.setHeader('WWW-Authenticate', 'Bearer');
       const extra = safe.extra && Array.isArray(safe.extra.categories) ? { categories: safe.extra.categories } : safe.extra && safe.extra.category ? { category: safe.extra.category } : {};

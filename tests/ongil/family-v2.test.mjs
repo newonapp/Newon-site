@@ -862,6 +862,7 @@ async function pgDatabase(name) {
   await psqlAsync('postgres', ['-c', `CREATE DATABASE ${name}`]);
   await psqlAsync(name, ['-f', '-'], read('server/livon/userdata/migrations/001_account_backend.sql'));
   await psqlAsync(name, ['-f', '-'], read('server/ongil/family/migrations/001_family.sql'));
+  await psqlAsync(name, ['-f', '-'], read('server/ongil/family/migrations/002_family_limits.sql'));
   const query = async (text, params = []) => parseCsv(await psqlAsync(name, ['--csv', '-P', 'null=__NULL__', '-c', text.replace(/\$(\d+)/g, (_, n) => lit(params[Number(n) - 1]))]));
   return { name, query, drop: () => psqlAsync('postgres', ['-c', `DROP DATABASE IF EXISTS ${name}`]) };
 }
@@ -873,6 +874,9 @@ test('FV2-PG-01 migration applies twice (idempotent) after the LIVON account mig
   const db = await pgDatabase('ongil_family_pg1');
   try {
     await psqlAsync(db.name, ['-f', '-'], read('server/ongil/family/migrations/001_family.sql'));
+    await psqlAsync(db.name, ['-f', '-'], read('server/ongil/family/migrations/002_family_limits.sql'));
+    const trg = await db.query("SELECT count(*)::int AS n FROM pg_trigger WHERE tgname IN ('ongil_family_member_limit','ongil_family_invitation_limit')");
+    assert.equal(Number(trg[0].n), 2, 'migration 002 applied twice leaves exactly two triggers');
     const t = await db.query("SELECT count(*)::int AS n FROM information_schema.tables WHERE table_name LIKE 'ongil_family_%'");
     assert.equal(Number(t[0].n), 8);
     await assert.rejects(db.query("INSERT INTO ongil_family_groups (id, owner_account_id, created_at, updated_at) VALUES ('fg_abcdefabcdef12', 'acct_missing', 1, 1)"), (e) => e.sqlState === '23503');
@@ -945,7 +949,7 @@ test('FV2-PG-04 concurrency: one account accepts two codes of the same family at
   } finally { await db.drop(); }
 });
 
-test('FV2-PG-05 racing invitation creates: every code is unique and valid, the limit closes right after, and the burst is bounded', { skip: PG_SKIP }, async () => {
+test('FV2-PG-05 racing invitation creates: every code is unique and valid, and exactly five stay pending', { skip: PG_SKIP }, async () => {
   const db = await pgDatabase('ongil_family_pg5');
   try {
     const srv = pgServer(db);
@@ -957,10 +961,8 @@ test('FV2-PG-05 racing invitation creates: every code is unique and valid, the l
     assert.equal(new Set(made.map((r) => r.json.code)).size, made.length, 'no two invitations share a code');
     const rows = await db.query("SELECT token_hash FROM ongil_family_invitations WHERE status = 'PENDING'");
     assert.equal(new Set(rows.map((r) => r.token_hash)).size, rows.length);
-    /* READ COMMITTED: requests racing at the same instant may each count before the others commit, so the limit can be passed
-       by at most the racing requests (production: the per-account invite limit, 5 per 10 minutes, caps such a burst). What
-       always holds: at least five are pending afterwards, so the very next create is refused. */
-    assert.ok(rows.length >= 5 && rows.length <= 9, `pending ${rows.length}`);
+    /* migration 002 serialises creates per family (advisory lock + fresh count in a trigger): the limit is exact under a burst */
+    assert.equal(rows.length, 5, `pending ${rows.length}`);
     const next = await op(srv, A, 'createInvitation', INVITE);
     assert.deepEqual([next.status, next.json.code], [409, 'LIMIT_INVITATIONS']);
   } finally { await db.drop(); }
@@ -980,4 +982,142 @@ test('FV2-PG-06 deletion: removing a Newon+ account removes its family group, me
     assert.deepEqual(Object.values(left[0]).map(Number), [0, 0, 0, 0, 0]);
     assert.equal((await overview(srv, B)).json.memberships.length, 0);
   } finally { await db.drop(); }
+});
+
+/* ═════════════ 8. production integration: limits hold under concurrency (migration 002) ═════════════ */
+const PG_SUBJECTS = Array.from({ length: 16 }, (_, i) => 'raceMember' + String(i).padStart(2, '0'));
+async function connectMany(srv, n) {
+  for (let i = 0; i < n; i++) await connect(srv, A, PG_SUBJECTS[i], { ...INVITE, displayName: '가족' + i });
+}
+
+test('FV2-PG-07 concurrency: five different accounts race for the 11th place → the family never exceeds 10 connected members', { skip: PG_SKIP }, async () => {
+  const db = await pgDatabase('ongil_family_pg7');
+  try {
+    const srv = pgServer(db);
+    await connectMany(srv, 9);
+    const racers = PG_SUBJECTS.slice(9, 14);
+    for (const s of racers) await overview(srv, s);
+    const codes = [];
+    for (let i = 0; i < racers.length; i++) codes.push((await op(srv, A, 'createInvitation', { ...INVITE, displayName: '대기' + i })).json.code);
+    const results = await Promise.all(racers.map((s, i) => op(srv, s, 'acceptInvitation', { code: codes[i], ownerLabel: '엄마' })));
+    assert.equal(results.filter((r) => r.status === 200).length, 1, JSON.stringify(results.map((r) => r.json.code)));
+    for (const r of results.filter((x) => x.status !== 200)) assert.deepEqual([r.status, r.json.code], [409, 'LIMIT_MEMBERS']);
+    const n = await db.query("SELECT count(*)::int AS n FROM ongil_family_members WHERE status = 'ACTIVE'");
+    assert.equal(Number(n[0].n), 10);
+    const inv = await db.query("SELECT status, count(*)::int AS n FROM ongil_family_invitations GROUP BY status ORDER BY status");
+    assert.deepEqual(inv.map((r) => [r.status, Number(r.n)]), [['ACCEPTED', 10], ['PENDING', 4]], 'a refused accept leaves its invitation unused (the statement rolled back whole)');
+  } finally { await db.drop(); }
+});
+
+test('FV2-PG-08 concurrency: with four invitations waiting, six creates at once → exactly five pending (the 6th is refused)', { skip: PG_SKIP }, async () => {
+  const db = await pgDatabase('ongil_family_pg8');
+  try {
+    const srv = pgServer(db);
+    for (let i = 0; i < 4; i++) assert.equal((await op(srv, A, 'createInvitation', { ...INVITE, displayName: '대기' + i })).status, 200);
+    const results = await Promise.all(Array.from({ length: 6 }, (_, i) => op(srv, A, 'createInvitation', { ...INVITE, displayName: '동시' + i })));
+    assert.equal(results.filter((r) => r.status === 200).length, 1, JSON.stringify(results.map((r) => r.json.code)));
+    for (const r of results.filter((x) => x.status !== 200)) assert.deepEqual([r.status, r.json.code], [409, 'LIMIT_INVITATIONS']);
+    const rows = await db.query("SELECT count(*)::int AS n FROM ongil_family_invitations WHERE status = 'PENDING'");
+    assert.equal(Number(rows[0].n), 5);
+    const acts = await db.query("SELECT count(*)::int AS n FROM ongil_family_activity WHERE action = 'INVITE_CREATED'");
+    assert.equal(Number(acts[0].n), 5, 'a refused create writes no audit row either');
+  } finally { await db.drop(); }
+});
+
+/* The same statements the store sends, each held open in its own transaction for a moment: a deterministic race. Before
+   migration 002 every racer counted before the others committed and all of them were written; now they wait for each other. */
+async function heldStatement(build) {
+  const cap = [];
+  const st = createFamilyPostgresStore({ query: async (text, params) => { cap.push([text, params]); return [{ id: 'x', group_id: 'g', ok: 1 }]; } });
+  await build(st);
+  const [text, params] = cap[0];
+  return 'BEGIN;\n' + text.replace(/\$(\d+)/g, (_, n) => lit(params[Number(n) - 1])) + ';\nSELECT pg_sleep(0.6);\nCOMMIT;\n';
+}
+const pgId = (p) => p + '_' + crypto.randomBytes(8).toString('hex');
+
+test('FV2-PG-09 held transactions: six invitation creates that overlap in time leave exactly five pending (limit errors are OGF02)', { skip: PG_SKIP }, async () => {
+  const db = await pgDatabase('ongil_family_pg9');
+  try {
+    const srv = pgServer(db);
+    await op(srv, A, 'createInvitation', INVITE);
+    await db.query("UPDATE ongil_family_invitations SET status = 'REVOKED'");
+    const g = (await db.query('SELECT id, owner_account_id FROM ongil_family_groups'))[0];
+    const t = Date.now();
+    const scripts = await Promise.all(Array.from({ length: 6 }, (_, i) => heldStatement((st) => st.createInvitation({ id: pgId('fi'), groupId: g.id, createdBy: g.owner_account_id, tokenHash: crypto.randomBytes(32).toString('hex'), displayName: '동시' + i, relationship: 'child', role: 'FAMILY', expiresAt: t + 864e5, pendingLimit: 5, now: t }))));
+    const results = await Promise.allSettled(scripts.map((s) => psqlAsync(db.name, ['-f', '-'], s)));
+    const refused = results.filter((r) => r.status === 'rejected');
+    for (const r of refused) assert.equal(r.reason.sqlState, 'OGF02', r.reason.stderr);
+    const n = await db.query("SELECT count(*)::int AS n FROM ongil_family_invitations WHERE status = 'PENDING'");
+    assert.equal(Number(n[0].n), 5, 'pending invitations after the overlapping creates');
+  } finally { await db.drop(); }
+});
+
+test('FV2-PG-10 held transactions: five accepts of different codes that overlap in time never pass 10 members (limit errors are OGF01)', { skip: PG_SKIP }, async () => {
+  const db = await pgDatabase('ongil_family_pg10');
+  try {
+    const srv = pgServer(db);
+    await connectMany(srv, 9);
+    const racers = PG_SUBJECTS.slice(9, 14);
+    const accts = [];
+    for (const s of racers) { await overview(srv, s); accts.push((await srv.accounts.findAccount({ issuer: ISS, subject: s })).accountId); }
+    const codes = [];
+    for (let i = 0; i < racers.length; i++) codes.push((await op(srv, A, 'createInvitation', { ...INVITE, displayName: '대기' + i })).json.code);
+    const t = Date.now();
+    const scripts = await Promise.all(racers.map((_, i) => heldStatement((st) => st.acceptInvitation({ hash: invitationHash(codes[i]), accountId: accts[i], memberId: pgId('fm'), ownerLabel: '엄마', now: t, memberLimit: 10 }))));
+    const results = await Promise.allSettled(scripts.map((s) => psqlAsync(db.name, ['-f', '-'], s)));
+    for (const r of results.filter((x) => x.status === 'rejected')) assert.equal(r.reason.sqlState, 'OGF01', r.reason.stderr);
+    const n = await db.query("SELECT count(*)::int AS n FROM ongil_family_members WHERE status = 'ACTIVE'");
+    assert.equal(Number(n[0].n), 10, 'connected members after the overlapping accepts');
+    const pend = await db.query("SELECT count(*)::int AS n FROM ongil_family_invitations WHERE status = 'PENDING'");
+    assert.equal(Number(pend[0].n), 4, 'refused accepts consumed no invitation');
+  } finally { await db.drop(); }
+});
+
+test('FV2-51 migration 002: limits in the database equal FAMILY_LIMITS; per-family advisory lock; fixed SQLSTATEs; idempotent; nothing stored', async () => {
+  const { FAMILY_LIMITS } = await import('../../ongil-start/js/family-domain.js');
+  const sql = read('server/ongil/family/migrations/002_family_limits.sql');
+  assert.match(sql, new RegExp("status = 'ACTIVE';\\s*if n >= " + FAMILY_LIMITS.members + " then\\s*raise exception 'family member limit' using errcode = 'OGF01'"));
+  assert.match(sql, new RegExp("expires_at > new\\.created_at;\\s*if n >= " + FAMILY_LIMITS.pendingInvitations + " then\\s*raise exception 'family invitation limit' using errcode = 'OGF02'"));
+  assert.equal((sql.match(/pg_advisory_xact_lock\(hashtextextended\('ongil_family_group:' \|\| new\.group_id, 0\)\)/g) || []).length, 2, 'one lock key per family, shared by both limits');
+  assert.match(sql, /^begin;$/m); assert.match(sql, /^commit;$/m);
+  for (const t of ['ongil_family_member_limit', 'ongil_family_invitation_limit']) {
+    assert.match(sql, new RegExp('create or replace function ' + t + '\\(\\)'));
+    assert.match(sql, new RegExp('drop trigger if exists ' + t + ' on '));
+  }
+  assert.doesNotMatch(sql, /alter table|create table|drop table|truncate|delete from|update /i, 'no schema or data change beyond the two triggers');
+  assert.match(sql, /Apply AFTER 001_family\.sql/);
+  const { LIMIT_SQLSTATE } = await import('../../server/ongil/family/http.mjs');
+  assert.deepEqual({ ...LIMIT_SQLSTATE }, { members: 'OGF01', invitations: 'OGF02' });
+});
+
+test('FV2-52 a limit refused by the database (OGF01 / OGF02) answers 409 with the limit message, never 503 or a generic conflict', async () => {
+  const store = createFamilyMemoryStore();
+  const raced = (code) => Object.assign(new Error('STORE_UNAVAILABLE'), { code: 'STORE_UNAVAILABLE', sqlState: code });
+  const real = { createInvitation: store.createInvitation, acceptInvitation: store.acceptInvitation };
+  const srv = server({ store });
+  const made = await op(srv, A, 'createInvitation', INVITE);
+  store.createInvitation = async () => { throw raced('OGF02'); };
+  let r = await op(srv, A, 'createInvitation', INVITE);
+  assert.deepEqual([r.status, r.json.code], [409, 'LIMIT_INVITATIONS']);
+  assert.equal(r.json.code in { LIMIT_INVITATIONS: 1 } && !('code' in (r.json.invitation || {})), true, 'no code is returned for a refused invitation');
+  store.createInvitation = real.createInvitation;
+  store.acceptInvitation = async () => { throw raced('OGF01'); };
+  r = await op(srv, B, 'acceptInvitation', { code: made.json.code, ownerLabel: '엄마' });
+  assert.deepEqual([r.status, r.json.code], [409, 'LIMIT_MEMBERS']);
+  store.acceptInvitation = real.acceptInvitation;
+  assert.equal((await op(srv, B, 'acceptInvitation', { code: made.json.code, ownerLabel: '엄마' })).status, 200, 'the refused accept left the invitation usable');
+  /* any other operation that meets these SQLSTATEs still answers the limit, not "store unavailable" */
+  store.publishSnapshot = async () => { throw raced('OGF01'); };
+  const memberId = (await overview(srv, A)).json.owner.members[0].id;
+  r = await op(srv, A, 'publishSnapshot', { memberId, items: [] });
+  assert.deepEqual([r.status, r.json.code], [409, 'LIMIT_MEMBERS']);
+});
+
+test('FV2-53 account card focus: the one-time invitation code receives focus; after any server action focus is never left on the page body', () => {
+  const v = read('ongil-start/js/family-remote-view.js');
+  assert.match(v, /const shown = card && card\.body\.querySelector\('\.og-family-code'\);\s*if \(shown\) shown\.focus\(\); else keepFocus\(\);/);
+  assert.match(v, /card\.say\(okText\);\s*await load\(\);\s*keepFocus\(\);/);
+  assert.match(v, /function keepFocus\(\) \{[\s\S]*?a === document\.body \|\| !a\.isConnected\)\) card\.focusTitle\(\);/);
+  assert.match(v, /el\('p', \{ class: 'og-family-code', tabindex: '-1'/, 'the code element can take focus');
+  assert.match(read('ongil-start/js/home-ui.js'), /focusTitle: \(\) => titleNode\.focus\(\)/);
 });
