@@ -900,10 +900,12 @@ test('OG-IN8-65 regression: no new collection, backend, network, dependency or f
   /* Phase 11 moved the version on: hardening-v1 / ?v=20261003r11 (BEFORE: assistant-v1 / 20261003b10) — release hardening changed app.js and two stylesheets. */
   assert.match(JS['app.js'], /const APP_VERSION = 'hardening-v1';/);
   assert.match(INDEX, /app\.js\?v=20261004v13/); // Completion V2 (v12) and V3 (v13): app.js changed
-  assert.equal(/firebase|supabase|openai|anthropic|api[_-]?key|Bearer /i.test(PRODUCTION), false);
+  /* Family Connection V2: the one "Bearer " is family-remote.js's Authorization header (an ID token asked at call time). BEFORE: none. */
+  assert.equal(/firebase|supabase|openai|anthropic|api[_-]?key/i.test(PRODUCTION), false);
+  assert.deepEqual(Object.keys(CODE).filter((f) => /Bearer /.test(CODE[f])), ['family-remote.js']);
   assert.equal(/\bfetch\(|XMLHttpRequest|WebSocket|EventSource|sendBeacon/.test(CODE['routes.js'] + CODE['search.js'] + CODE['saved.js'] + CODE['saved-view.js'] + CODE['notifications.js'] + CODE['panels.js']), false);
   assert.equal(/TEST FIXTURE|example\.test|fixture/i.test(PRODUCTION), false, 'no QA data in production source');
   for (const f of ['routes.js', 'search.js', 'saved-view.js', 'notifications.js', 'panels.js']) for (const m of JS[f].matchAll(/from '([^']+)'/g)) assert.ok(fs.existsSync(path.join(JS_DIR, m[1])), `${f} → ${m[1]}`);
   // Phase 9: + analytics.js, instrument.js, source-status.js, admin.js, admin-view.js
-  /* Family Connection V1: + 5 family modules (BEFORE 71, AFTER 76) */ assert.equal(fs.readdirSync(JS_DIR).filter((f) => f.endsWith('.js')).length, 76, '60 modules + the five Phase 9 modules + the three Phase 10 modules (assistant-intents, assistant-tools, assistant-view) + health-measures (Completion V1) + health-appointments (Completion V2) + emergency-contacts (Completion V3)');
+  /* Family Connection V1: + 5 family modules (BEFORE 71, AFTER 76) */ /* Family Connection V2: + family-remote, family-remote-view (BEFORE 76, AFTER 78) */ assert.equal(fs.readdirSync(JS_DIR).filter((f) => f.endsWith('.js')).length, 78, '60 modules + the five Phase 9 modules + the three Phase 10 modules (assistant-intents, assistant-tools, assistant-view) + health-measures (Completion V1) + health-appointments (Completion V2) + emergency-contacts (Completion V3)');
 });

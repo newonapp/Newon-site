@@ -305,7 +305,12 @@ test('OG-NF-4 account is local mode and says so; no sign-in is wired', () => {
   assert.match(JS['account-view.js'], /이 기기에서만 사용 중/);
   assert.match(JS['account-view.js'], /Newon\+ 계정 연결은 아직 제공되지 않습니다/);
   assert.equal(/newon-auth|firebase|NewonAuth/i.test(INDEX), false);
-  for (const f of JS_FILES) assert.equal(/firebase|NewonAuth|signIn\(|signInWith|Bearer/i.test(CODE[f]), false, f);
+  /* Family Connection V2: app.js READS an existing window.NewonAuth (none is loaded on this page) and family-remote.js sends its
+     ID token as "Bearer". BEFORE: neither name anywhere. Still true: the page loads no Newon+ auth, nothing signs in. */
+  for (const f of JS_FILES) assert.equal(/firebase|signIn\(|signInWith/i.test(CODE[f]), false, f);
+  assert.deepEqual(JS_FILES.filter((f) => /NewonAuth/.test(CODE[f])), ['app.js']);
+  assert.deepEqual(JS_FILES.filter((f) => /Bearer/.test(CODE[f])), ['family-remote.js']);
+  assert.equal((CODE['app.js'].match(/NewonAuth/g) || []).length, 1);
 });
 
 /* ───────── code hygiene and security ───────── */
@@ -326,7 +331,9 @@ test('OG-SEC-2 only storage.js touches browser storage; the network is reachable
   }
   assert.equal((CODE['app.js'].match(/\bfetch\(/g) || []).length, 1, 'app.js injects fetch once');
   assert.match(CODE['app.js'], /fetcher: typeof win\.fetch === 'function' \? \(url, init\) => win\.fetch\(url, init\) : null/);
-  for (const f of JS_FILES) if (f !== 'data-source.js') assert.equal(/fetcher\(/.test(CODE[f]), false, f);
+  /* Family Connection V2: family-remote.js is handed the same injected fetch for /api/ongil/family (BEFORE: data-source.js only) */
+  for (const f of JS_FILES) if (f !== 'data-source.js' && f !== 'family-remote.js') assert.equal(/fetcher\(/.test(CODE[f]), false, f);
+  assert.match(CODE['family-remote.js'], /credentials: 'omit'/);
   assert.match(CODE['data-source.js'], /credentials: 'omit'/);
 });
 
@@ -352,7 +359,10 @@ test('OG-SEC-4 the page loads only same-site files (plus the fonts it already us
   const sheets = [...INDEX.matchAll(/<link[^>]*rel="stylesheet"[^>]*href="([^"]+)"|<link href="([^"]+)" rel="stylesheet"/g)].map((m) => m[1] || m[2]);
   for (const s of sheets) assert.ok(s.startsWith('/') || s.startsWith('https://fonts.googleapis.com/'), s);
   for (const s of [...scripts, ...sheets].filter((x) => x.startsWith('/'))) assert.ok(fs.existsSync(path.join(ROOT, s.split('?')[0])), `missing file ${s}`);
-  assert.equal(/api[_-]?key|secret|[a-z]token|token\s*[:=]|passw(or)?d\s*[:=]/i.test(Object.values(CODE).join('\n')), false);
+  /* Family Connection V2: family-remote.js asks auth.getIdToken() at call time and holds the answer in a local variable (never
+     stored). It is checked for key/secret/password names and for any literal token value; BEFORE every module had no token word. */
+  assert.equal(/api[_-]?key|secret|[a-z]token|token\s*[:=]|passw(or)?d\s*[:=]/i.test(Object.entries(CODE).filter(([f]) => f !== 'family-remote.js').map(([, c]) => c).join('\n')), false);
+  assert.equal(/api[_-]?key|secret|passw(or)?d\s*[:=]|eyJ[A-Za-z0-9_-]{10,}/i.test(CODE['family-remote.js']), false);
   assert.match(INDEX, /<meta name="robots" content="noindex, nofollow" \/>/);
 });
 

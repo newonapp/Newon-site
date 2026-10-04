@@ -899,7 +899,8 @@ test('OG-AQ-12 no new network surface: Phase 9 adds no request, endpoint, backen
   for (const f of P9) assert.equal(/fetch\(|XMLHttpRequest|firebase|firestore|openai|anthropic|supabase|\/api\/|https?:\/\//i.test(code(js(f))), false, f);
   const hosts = new Set(allJs().flatMap((f) => [...code(js(f)).matchAll(/https?:\/\/([a-z0-9.-]+)/gi)].map((m) => m[1])));
   for (const h of hosts) assert.equal(/analytics|telemetry|track|metrics|collect|stats/i.test(h), false, h);
-  assert.equal(fs.existsSync(path.join(ROOT, 'server/ongil')), false, 'no ONGIL backend was added');
+  /* Family Connection V2 added the one ONGIL backend: server/ongil/family (BEFORE: no server/ongil · AFTER: family/ only). Phase 9 modules above still make no request. */
+  assert.deepEqual(fs.readdirSync(path.join(ROOT, 'server/ongil')), ['family'], 'the only ONGIL backend is the V2 family route');
   assert.equal(/<script[^>]+src="https?:/.test(HTML), false, 'no third-party script');
 });
 
@@ -908,7 +909,8 @@ test('OG-AQ-13 no dependency: every import is a relative ONGIL module; LIVON and
   for (const f of P9) assert.equal(/livon|\.\.\/|newon-app|shared\//i.test(code(js(f))), false, f);
   // Phase 10: + assistant-intents.js, assistant-tools.js, assistant-view.js. BEFORE: 65. AFTER: 68.
   /* Family Connection V1: + family-domain, family-permissions, family-repository, family-service, family-connect-view (BEFORE 71, AFTER 76) */
-  assert.equal(allJs().length, 76, 'sixty modules + the five of Phase 9 + the three of Phase 10 + health-measures (Completion V1) + health-appointments (Completion V2) + emergency-contacts (Completion V3)');
+  /* Family Connection V2: + family-remote, family-remote-view (BEFORE 76, AFTER 78) */
+  assert.equal(allJs().length, 78, 'sixty modules + the five of Phase 9 + the three of Phase 10 + health-measures (Completion V1) + health-appointments (Completion V2) + emergency-contacts (Completion V3)');
   for (const f of P9) assert.ok(fs.existsSync(path.join(JS_DIR, f)), f);
 });
 
@@ -989,5 +991,5 @@ test('OG-AQ-20 documentation and suite: the Phase 9 document has every required 
   for (const name of A.EVENT_NAMES.filter((n) => !n.startsWith('ai_'))) assert.ok(doc.includes(`\`${name}\``), `${name} is documented`);
   assert.equal(/LIVE VERIFIED(?!")|screen reader: VERIFIED/.test(doc.replace(/never[^\n]*LIVE VERIFIED|no[^\n]*LIVE VERIFIED|not[^\n]*LIVE VERIFIED/gi, '')), false);
   const tests = fs.readdirSync(path.join(ROOT, 'tests/ongil')).filter((f) => f.endsWith('.test.mjs')).sort();
-  assert.deepEqual(tests, ['admin-analytics', 'assistant', 'care-data', 'community-data', 'cross-product', 'emergency-contacts', 'enjoy-data', /* Family Connection V1: + family-connection (new test file; BEFORE absent, AFTER listed) */ 'family-connection', 'family-data', 'foundation-data', 'foundation-flows', 'health-calendar', 'health-data', 'health-measures', 'health-view', 'home-data', 'home-view', 'integration-data', 'integration-view', 'life-data', 'life-privacy', 'life-view', 'product-completion', 'production-api', 'production-release', 'release-hardening', 'shell', 'store-data'].map((n) => `${n}.test.mjs`)); // Phase 11: + release-hardening · Phase 12: + production-release · API connection: + production-api · Completion V1: + health-measures · Completion V2: + health-calendar · Completion V3: + emergency-contacts · Product Completion Audit V1: + product-completion
+  assert.deepEqual(tests, ['admin-analytics', 'assistant', 'care-data', 'community-data', 'cross-product', 'emergency-contacts', 'enjoy-data', /* Family Connection V1: + family-connection (new test file; BEFORE absent, AFTER listed) */ 'family-connection', 'family-data', /* Family Connection V2: + family-v2 (new test file) */ 'family-v2', 'foundation-data', 'foundation-flows', 'health-calendar', 'health-data', 'health-measures', 'health-view', 'home-data', 'home-view', 'integration-data', 'integration-view', 'life-data', 'life-privacy', 'life-view', 'product-completion', 'production-api', 'production-release', 'release-hardening', 'shell', 'store-data'].map((n) => `${n}.test.mjs`)); // Phase 11: + release-hardening · Phase 12: + production-release · API connection: + production-api · Completion V1: + health-measures · Completion V2: + health-calendar · Completion V3: + emergency-contacts · Product Completion Audit V1: + product-completion
 });
