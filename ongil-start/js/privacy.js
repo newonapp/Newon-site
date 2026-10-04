@@ -46,6 +46,8 @@ export const CLASSIFICATION = Object.freeze({
   healthMeasures: 'HEALTH_ADJACENT',
   familySharing: 'PRIVATE',
   helpRequests: 'PRIVATE',
+  /* Family Connection V1: who is connected, what each member may see, requests and the activity log — never synced, searched, saved or counted by content */
+  family: 'PRIVATE',
   communityPosts: 'PRIVATE',
   groupDrafts: 'PRIVATE',
   meetupDrafts: 'PRIVATE',

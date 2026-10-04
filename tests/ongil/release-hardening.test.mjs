@@ -220,7 +220,7 @@ test('RH-03 old storage migration: data written by earlier phases is read withou
 });
 
 test('RH-04 account erase inventory: every ONGIL key goes — known collections and stray ones — and nothing else', () => {
-  assert.equal(COLLECTIONS.length, 26); // Completion V3: + emergencyContacts
+  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ assert.equal(COLLECTIONS.length, 27); // Completion V3: + emergencyContacts
   assert.deepEqual(Object.keys(CLASSIFICATION).sort(), [...COLLECTIONS].sort(), 'every collection is classified');
   assert.deepEqual(unclassified(), []);
   /* every collection a module reads or writes is a declared collection */
@@ -235,7 +235,8 @@ test('RH-04 account erase inventory: every ONGIL key goes — known collections 
   for (const c of COLLECTIONS) w.storage.set(c, { items: [] });
   fillPrivate(w);
   w.analytics.track('app_open');
-  assert.equal(w.storage.list().length, 26); // Completion V3: + emergencyContacts
+  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */
+  assert.equal(w.storage.list().length, 27); // Completion V3: + emergencyContacts
   assert.equal(w.storage.clear(), true);
   assert.deepEqual(w.backend.keys().sort(), ['livon.keep', 'newon-app-theme', 'ongil', 'ongilx.v1.tasks'], 'Phase 11: a stray key under ONGIL\'s prefix is erased too; other products are untouched');
   assert.equal(w.storage.clear(), true, 'erasing twice is harmless');
@@ -1182,8 +1183,8 @@ test('RH-44 external dependencies: fonts and seven film files — no package, CD
 test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', () => {
   assert.deepEqual([...VIEWS], ['home', 'life', 'health', 'family', 'care', 'enjoy', 'community', 'store', 'saved', 'account']);
   assert.deepEqual([...INTERNAL_VIEWS], ['admin']);
-  assert.equal(COLLECTIONS.length, 26); // Completion V3: + emergencyContacts
-  assert.equal(JS_FILES.length, 71, 'no module was added or removed in Phase 11; Completion V1 added health-measures; Completion V2 added health-appointments; Completion V3 added emergency-contacts');
+  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ assert.equal(COLLECTIONS.length, 27); // Completion V3: + emergencyContacts
+  /* Family Connection V1: + 5 family modules (BEFORE 71, AFTER 76) */ assert.equal(JS_FILES.length, 76, 'no module was added or removed in Phase 11; Completion V1 added health-measures; Completion V2 added health-appointments; Completion V3 added emergency-contacts');
   assert.equal(CSS_FILES.length, 6);
   assert.deepEqual([A.EVENT_NAMES.length, C.SAVED_TYPES.length, C.NOTIFICATION_TYPES.length, R.CONTENT_TYPE_IDS.length], [22, 7, 9, 7]);
   const w = world();
@@ -1192,7 +1193,8 @@ test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', ()
   assert.equal(assistant.tools.ids().length, 22);
   const tests = fs.readdirSync(path.join(ROOT, 'tests/ongil')).filter((f) => f.endsWith('.test.mjs'));
   // Phase 12: production-release.test.mjs was added (BEFORE 21, AFTER 22). API connection: production-api.test.mjs (BEFORE 22, AFTER 23). Completion V1: health-measures.test.mjs (AFTER 24).
-  assert.equal(tests.length, 27); // Completion V2: + health-calendar.test.mjs · Completion V3: + emergency-contacts.test.mjs · Product Completion Audit V1: + product-completion.test.mjs (BEFORE 26, AFTER 27)
+  /* Family Connection V1: + family-connection.test.mjs (BEFORE 27, AFTER 28). WHY: the new feature brought its own test file. */
+  assert.equal(tests.length, 28); // Completion V2: + health-calendar.test.mjs · Completion V3: + emergency-contacts.test.mjs · Product Completion Audit V1: + product-completion.test.mjs (BEFORE 26, AFTER 27)
   for (const f of ['livon', 'server/livon', 'tests/livon']) assert.ok(fs.existsSync(path.join(ROOT, f)), `${f} is still there, untouched by ONGIL`);
   assert.equal(fs.existsSync(path.join(ROOT, 'server/ongil')), false);
   const doc = read('docs/ongil/PHASE_11_RELEASE_HARDENING_V1.md');

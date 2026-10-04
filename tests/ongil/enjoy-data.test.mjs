@@ -479,7 +479,7 @@ test('OG-EN-47 no page errors: null children skipped, no markup strings, no geol
 test('OG-EN-48 account delete safety: no new collection; saved and calendar entries go with the ONGIL erase', () => {
   // Phase 5 added no collection (20). Phase 6 then added three community collections (23) — none of them for 즐길거리.
   // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
-  assert.equal(COLLECTIONS.length, 26, 'Phase 5 added no collection; Phase 6 added three community ones; Phase 9 added analytics; Completion V1 added healthMeasures; Completion V3 added emergencyContacts');
+  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ assert.equal(COLLECTIONS.length, 27, 'Phase 5 added no collection; Phase 6 added three community ones; Phase 9 added analytics; Completion V1 added healthMeasures; Completion V3 added emergencyContacts');
   const w = world();
   w.saved.toggle(E.savedInputFor(cls()));
   w.schedule.add(E.calendarDraft(cls()));

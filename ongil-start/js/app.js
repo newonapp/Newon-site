@@ -47,6 +47,8 @@ import { createHealthSchedule } from './health-appointments.js';
 import { createEmergencyContactStore, createEmergencyContacts } from './emergency-contacts.js';
 import { createFamilySharingStore, createHelpRequestStore } from './family.js';
 import { createFamilyView } from './family-view.js';
+import { selectFamilyRepository } from './family-repository.js';
+import { createFamilyService } from './family-service.js';
 import { createCareView, resolveCareSection } from './care-view.js';
 import { createEnjoyView, resolveEnjoySection } from './enjoy-view.js';
 import { createPostStore, createGroupStore, createMeetupStore } from './community.js';
@@ -143,6 +145,12 @@ for (const area of PRIMARY_AREAS) {
 const healthSchedule = createHealthSchedule({ host: doc.querySelector('[data-og-extra="health"]'), schedule });
 /* Completion V3 — 건강·안부 › 긴급 연락망: this device only; ONGIL never calls — a confirmed tel: link opens the phone app */
 const emergencyContacts = createEmergencyContactStore(storage);
+/*
+ * Family Connection V1 — connections, per-member sharing, help requests and the activity log, on this device (mode LOCAL).
+ * The service reads the stores below only through the permission engine, and only for a category a member was allowed.
+ * It is not instrumented (nothing about family is counted) and is not put on window.Ongil.
+ */
+const familyConnect = createFamilyService({ repository: selectFamilyRepository({ storage }), sources: { checkIn, schedule, medication, dailyLife, sleep, emergencyContacts } });
 const emergencyView = createEmergencyContacts({ host: null, store: emergencyContacts, doc });
 {
   const extraHost = doc.querySelector('[data-og-extra="health"]');
@@ -173,7 +181,7 @@ const home = createHomeView({
   stores: { profile, checkIn, schedule, medication, dailyLife, tasks, routines, saved, familyConnection: onboarding.familyConnection },
   source: nearbySource,
   /* the 가족 card states only local facts: sharing choices made, help requests written (not sent) */
-  family: { sharing: familySharing, help: helpRequests },
+  family: { sharing: familySharing, help: helpRequests, connect: familyConnect },
   /* 오늘 뭐 하지?: what the user found on 즐길거리 this visit (set once that screen exists, below) */
   enjoyLoaded: () => (enjoyView ? enjoyView.items() : []),
   /* Home has no task form of its own: "할 일 추가" opens the one in 내 생활 › 할 일 */
@@ -205,6 +213,7 @@ const familyView = createFamilyView({
   help: helpRequests,
   profile,
   familyConnection: onboarding.familyConnection,
+  connect: familyConnect,
 });
 
 /*

@@ -470,7 +470,9 @@ test('OG-HL-26 Family exclusion: nothing about health is shared; the family swit
   assert.deepEqual(seen, ['checkins', 'symptoms'], 'one local write each and nothing else — no alert, no family record');
   // Phase 4: 'familySharing' holds only the user's OWN choices (default none). There is still no collection for family
   // members, connections, permissions or anything received from family.
-  assert.deepEqual(COLLECTIONS.filter((c) => /family/i.test(c)), ['familySharing']);
+  /* Family Connection V1 — WHY: family connection now exists on this device, in ONE private document. BEFORE: ['familySharing'].
+     AFTER: + 'family'. There is still no separate collection per member, permission or consent, and no health record in it. */
+  assert.deepEqual(COLLECTIONS.filter((c) => /family/i.test(c)), ['familySharing', 'family']);
   assert.equal(COLLECTIONS.some((c) => /familyConnections|familyPermissions|familyMembers|sharedItems|consents/i.test(c)), false);
 });
 

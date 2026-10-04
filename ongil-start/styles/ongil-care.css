@@ -60,3 +60,7 @@
   .og-store-compare__values dt, .og-store-compare__values dd { grid-row: auto; }
   .og-store-compare__values dd { margin-bottom: 0.5rem; }
 }
+
+/* Family Connection V1 — the invitation code (the only new rule: existing cards, lists, choices and confirm boxes are reused) */
+.og-band .og-family-code { margin: 0; font-size: 1.15rem; letter-spacing: 0.04em; overflow-wrap: anywhere; }
+.og-family-code strong { font-weight: 700; }

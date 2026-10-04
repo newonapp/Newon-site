@@ -59,7 +59,10 @@ test('OG-FM-2 no fake family: no code creates a connection, member, invitation, 
   const files = fs.readdirSync(path.join(ROOT, 'ongil-start', 'js')).filter((f) => f.endsWith('.js'));
   for (const f of files) {
     const code = strip(read('js', f));
-    if (f === 'family-contracts.js') continue;
+    /* Family Connection V1 — WHY: connections, members, invitations and consents are now made ON THIS DEVICE by the family service
+       (mode LOCAL). BEFORE: no file but the contracts named them. AFTER: the three family-connection modules do; nothing
+       is sent, no one is "online", and FAMILY_DELIVERY below is unchanged. Cross-device connection stays ACCOUNT REQUIRED. */
+    if (f === 'family-contracts.js' || f === 'family-domain.js' || f === 'family-service.js') continue;
     assert.equal(/normalizeFamilyConnection\(|normalizeConsent\(|normalizeSharedItem\(|normalizeAuditEntry\(|status: 'active'|inviteCode|online: true|isOnline/.test(code), false, f);
   }
   assert.deepEqual({ ...FAMILY_DELIVERY }, { connected: false, sendsAnything: false, recipients: 0 });
@@ -232,7 +235,8 @@ test('OG-FM-17 home integration: the 가족 card states local facts only — no 
   assert.match(ex, /공유하도록 고른 항목 \$\{chosen\}개 \(연결 전이라 아무에게도 보이지 않아요\)/);
   assert.match(ex, /적어 둔 도움 요청 \$\{open\}개 \(보내지 않음\)/);
   assert.equal(/확인했어요|답장|읽었어요|접속|온라인/.test(strip(ex)), false, 'no invented family activity');
-  assert.match(read('js', 'app.js'), /family: \{ sharing: familySharing, help: helpRequests \}/);
+  /* Family Connection V1: Home also receives the family service, to say how many members are connected on this device */
+  assert.match(read('js', 'app.js'), /family: \{ sharing: familySharing, help: helpRequests, connect: familyConnect \}/);
   assert.match(read('js', 'home-view.js'), /'family-update': createFamilyCard\(\{ familyConnection, family \}\)/);
 });
 

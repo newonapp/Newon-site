@@ -188,7 +188,9 @@ test('OG-EC-8 privacy: PRIVATE — never synced, searched, saved, shared, indexe
   assert.equal(SYNCABLE_COLLECTIONS.includes('emergencyContacts'), false);
   /* no other module reads the contacts: search, saved, family, community, notifications, analytics, instrumentation, the assistant */
   for (const [f, src] of Object.entries(JS)) {
-    if (f === 'emergency-contacts.js' || f === 'app.js' || f === 'storage.js' || f === 'privacy.js' || f === 'assistant-tools.js') continue;
+    /* Family Connection V1: family-service.js may read HOW MANY contacts exist (count() only) for a member the owner gave the
+       sensitive '비상 연락 정보' consent to. Names and numbers are never read — checked right below. */
+    if (f === 'emergency-contacts.js' || f === 'app.js' || f === 'storage.js' || f === 'privacy.js' || f === 'assistant-tools.js' || f === 'family-service.js') continue;
     assert.equal(/emergencyContacts|EmergencyContact|createEmergencyContact/.test(code(src)), false, f);
   }
   assert.equal(/track\(|instrument|analytics|fetch\(|XMLHttpRequest|sendBeacon|localStorage|saved\.|search\./.test(CODE), false, 'the module counts, sends and saves nothing elsewhere');

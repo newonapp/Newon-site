@@ -31,6 +31,8 @@ export const KEY_PREFIX = `${NAMESPACE}.${STORAGE_VERSION}.`;
  *   Completion V1 : healthMeasures   (numbers the user writes down: 체중 · 혈압 · 혈당 · 맥박 — health-measures.js)
  *   Completion V3 : emergencyContacts   (긴급 연락망: names and phone numbers the user writes down — emergency-contacts.js)
  *   Phase 9  : analytics   (daily usage counters for the local operations view — counts only, 14 days, never sent; analytics.js)
+ *   Family Connection V1 : family   (group · members · invitations · connections · permissions · consents · help requests · activity,
+ *              one document, this device only — family-repository.js)
  *   Phase 4  : familySharing · helpRequests   (the user's own sharing choices and help-request notes; no family record —
  *              connections, permissions, consents and shared items have contracts only, see family-contracts.js) Every name here has a privacy class in privacy.js.
  */
@@ -39,7 +41,7 @@ export const COLLECTIONS = Object.freeze([
   'checkins', 'events', 'medications', 'medicationLogs', 'dailyLife',
   'tasks', 'routines', 'routineLogs', 'sleepRecords', 'expenses', 'journal',
   'symptoms', 'healthNotes', 'healthMeasures',
-  'familySharing', 'helpRequests',
+  'familySharing', 'helpRequests', 'family',
   'communityPosts', 'groupDrafts', 'meetupDrafts',
   'emergencyContacts',
   'analytics',

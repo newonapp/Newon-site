@@ -261,7 +261,7 @@ test('OG-FC-1 delete ONGIL data: the two new collections are erased with everyth
   assert.deepEqual(storage.list(), []);
   // Phase 6 added communityPosts, groupDrafts and meetupDrafts (20 → 23); the family collections are still erased with the rest
   // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
-  assert.equal(COLLECTIONS.length, 26); // Completion V3: + emergencyContacts
+  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ assert.equal(COLLECTIONS.length, 27); // Completion V3: + emergencyContacts
   assert.match(read('js', 'account-view.js'), /가족 공유 설정과 도움 요청도 함께 지웁니다/);
 });
 

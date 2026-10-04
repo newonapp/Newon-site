@@ -40,11 +40,12 @@ test('OG-ST-1 every key lives in the ongil.v1 namespace', () => {
 // Phase 6 added the user's own community posts and group/meetup drafts (PRIVATE, this device only).
 test('OG-ST-2 unknown collections are refused (family data and health records have no collection)', () => {
   const { storage } = world();
-  for (const c of ['health', 'family', 'checkin', 'medication', '__proto__', '', 'livon.platform.v1']) {
+  /* Family Connection V1: 'family' became a real (PRIVATE) collection, so it left this list; names nobody defined are still refused */
+  for (const c of ['health', 'familyMembers', 'familyPermissions', 'checkin', 'medication', '__proto__', '', 'livon.platform.v1']) {
     assert.throws(() => storage.get(c), /UNKNOWN_COLLECTION/);
     assert.throws(() => storage.set(c, {}), /UNKNOWN_COLLECTION/);
   }
-  assert.deepEqual([...COLLECTIONS], ['profile', 'preferences', 'onboarding', 'saved', 'notifications', 'checkins', 'events', 'medications', 'medicationLogs', 'dailyLife', 'tasks', 'routines', 'routineLogs', 'sleepRecords', 'expenses', 'journal', 'symptoms', 'healthNotes', 'healthMeasures', 'familySharing', 'helpRequests', 'communityPosts', 'groupDrafts', 'meetupDrafts', 'emergencyContacts', 'analytics']); // Completion V3: + emergencyContacts (before analytics, which stays last) · Phase 9: + analytics (usage counters, numbers only)
+  assert.deepEqual([...COLLECTIONS], ['profile', 'preferences', 'onboarding', 'saved', 'notifications', 'checkins', 'events', 'medications', 'medicationLogs', 'dailyLife', 'tasks', 'routines', 'routineLogs', 'sleepRecords', 'expenses', 'journal', 'symptoms', 'healthNotes', 'healthMeasures', 'familySharing', 'helpRequests', 'family', 'communityPosts', 'groupDrafts', 'meetupDrafts', 'emergencyContacts', 'analytics']); // Family Connection V1: + family (BEFORE 26 names, AFTER 27) · Completion V3: + emergencyContacts (before analytics, which stays last) · Phase 9: + analytics (usage counters, numbers only)
   for (const c of ['familyConnections', 'familyPermissions', 'healthRecords', 'devices']) assert.equal(COLLECTIONS.includes(c), false, c);
 });
 

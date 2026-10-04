@@ -21,14 +21,16 @@ export function createFamilyCard({ familyConnection, family = null }) {
     const state = familyConnection();
     const chosen = family ? family.sharing.count() : 0;
     const open = family ? family.help.openCount() : 0;
+    /* Family Connection V1: members connected on this device (never a count of anything they were shown) */
+    const connected = family && family.connect ? family.connect.connectedCount() : 0;
     clear(card.body);
     card.root.dataset.ogState = 'empty';
     /* append() from dom.js skips an absent line; the native Node.append would print the word "null" */
     append(card.body, [
-      el('p', { class: 'og-home-empty', 'data-og-family-status': state.status, text: '아직 연결된 가족이 없어요.' }),
-      chosen ? el('p', { class: 'og-home-count', 'data-og-family-chosen': String(chosen), text: `공유하도록 고른 항목 ${chosen}개 (연결 전이라 아무에게도 보이지 않아요)` }) : null,
+      el('p', { class: 'og-home-empty', 'data-og-family-status': state.status, 'data-og-family-connected': String(connected), text: connected ? `이 기기에서 연결한 가족 ${connected}명` : '아직 연결된 가족이 없어요.' }),
+      chosen && !connected ? el('p', { class: 'og-home-count', 'data-og-family-chosen': String(chosen), text: `공유하도록 고른 항목 ${chosen}개 (연결 전이라 아무에게도 보이지 않아요)` }) : null,
       open ? el('p', { class: 'og-home-count', 'data-og-family-help': String(open), text: `적어 둔 도움 요청 ${open}개 (보내지 않음)` }) : null,
-      el('p', { class: 'og-home-note', text: '가족 연결은 준비 중입니다. 연결하기 전에는 어떤 내용도 가족에게 전달되지 않습니다.' }),
+      el('p', { class: 'og-home-note', text: connected ? '가족에게 보이는 정보는 가족 화면에서 내가 고른 것뿐이에요. 다른 기기의 가족에게는 아직 전달되지 않습니다.' : '가족 연결은 준비 중입니다. 연결하기 전에는 어떤 내용도 가족에게 전달되지 않습니다.' }),
       el('div', { class: 'og-form__actions' }, el('a', { class: 'og-btn og-btn--ghost', href: '#family', text: '가족 화면 보기' })),
     ]);
   }

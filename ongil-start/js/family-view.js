@@ -20,11 +20,15 @@ import { createListCard } from './home-list.js';
 import { SHARE_CATEGORIES, SHARE_LEVELS, NEVER_SHARED, RELATIONSHIPS, HELP_CATEGORIES, helpCategoryOf, HELP_LIMITS } from './family-contracts.js';
 import { buildSharePreview } from './family.js';
 import { formatDay } from './dates.js';
+import { createFamilyConnectView } from './family-connect-view.js';
 
 const levelLabel = (id) => (SHARE_LEVELS.find((l) => l.id === id) || { label: '' }).label;
 
-export function createFamilyView({ host, sharing, help, profile, familyConnection, onChange }) {
+/* connect (Family Connection V1): the family service. With it the screen can connect family on this device, decide what
+   each member is shown, stop, disconnect, ask for help and show the activity log. Without it the screen is as before. */
+export function createFamilyView({ host, sharing, help, profile, familyConnection, onChange, connect = null }) {
   let cards = null;
+  let connectView = null;
   let pendingSensitive = null; /* { category, level } waiting for the user's second "yes" */
   let helpList = null;
   const changed = () => typeof onChange === 'function' && onChange();
@@ -32,6 +36,7 @@ export function createFamilyView({ host, sharing, help, profile, familyConnectio
   /* ───────── 연결 상태 ───────── */
 
   function renderConnection() {
+    if (connectView) return; /* the connection card is drawn by family-connect-view.js */
     const card = cards.connection;
     const state = familyConnection();
     const intent = profile.getProfile().familyIntent;
@@ -203,9 +208,10 @@ export function createFamilyView({ host, sharing, help, profile, familyConnectio
         'ul',
         { class: 'og-family-points' },
         el('li', { text: '기본은 공유 안 함이에요. 가족과 연결만 해서는 아무것도 보이지 않아요.' }),
-        el('li', { text: '공유를 켤 때는 가족마다, 항목마다 한 번 더 확인하도록 만들 거예요.' }),
-        el('li', { text: '고른 내용은 지금도 언제든 끌 수 있어요. 연결한 뒤에는 끄면 바로 보이지 않게 만들 거예요.' }),
-        el('li', { text: '가족이 무엇을 언제 봤는지 내가 확인할 수 있게 만들 거예요.' }),
+        /* with the family service these two are what the screen does today; without it they stay promises */
+        connect ? el('li', { text: '보여줄 정보는 가족마다, 항목마다 따로 골라요. 건강·비상 정보는 한 번 더 동의를 받아요.' }) : el('li', { text: '공유를 켤 때는 가족마다, 항목마다 한 번 더 확인하도록 만들 거예요.' }),
+        connect ? el('li', { text: '언제든 공유를 멈추거나 연결을 해제할 수 있어요. 그 뒤로는 그 가족에게 보이지 않아요.' }) : el('li', { text: '고른 내용은 지금도 언제든 끌 수 있어요. 연결한 뒤에는 끄면 바로 보이지 않게 만들 거예요.' }),
+        connect ? el('li', { text: '연결과 공유를 바꾼 일은 ‘가족 활동 기록’에 남아요. 가족이 언제 봤는지는 계정 연결이 열리면 남길 수 있어요.' }) : el('li', { text: '가족이 무엇을 언제 봤는지 내가 확인할 수 있게 만들 거예요.' }),
         el('li', { text: '건강 메모, 증상 내용, 일기, 생활비는 공유 대상이 아니에요.' })
       )
     );
@@ -215,10 +221,13 @@ export function createFamilyView({ host, sharing, help, profile, familyConnectio
     clear(host);
     cards = {
       connection: createCard({ area: 'family', slot: 'connect', title: '연결 상태', level: 1 }),
+      ...(connect ? { members: createCard({ area: 'family', slot: 'members', title: '이 가족에게 보여줄 정보', level: 1, lead: '가족마다 따로 정해요. 기본은 모두 공유 안 함이에요.' }) } : {}),
       sharing: createCard({ area: 'family', slot: 'sharing', title: '내가 공유할 내용', level: 1, lead: '가족이 연결되면 무엇을 얼마나 보여 줄지 미리 정해 두세요. 기본은 공유 안 함이에요.' }),
       preview: createCard({ area: 'family', slot: 'preview', title: '가족에게 보일 내용 미리 보기', level: 2 }),
+      ...(connect ? { familyHelp: createCard({ area: 'family', slot: 'family-help', title: '가족에게 도움 요청', level: 2, lead: '연결한 가족에게 부탁할 일을 남겨요.' }) } : {}),
       help: createCard({ area: 'family', slot: 'requests', title: '도움 요청', level: 2, lead: '가족에게 부탁하고 싶은 일을 적어 두세요.' }),
       received: createCard({ area: 'family', slot: 'received', title: '가족이 보내준 것', level: 3 }),
+      ...(connect ? { activity: createCard({ area: 'family', slot: 'activity', title: '가족 활동 기록', level: 3 }) } : {}),
       promise: createCard({ area: 'family', slot: 'promise', title: '가족 공유 약속', level: 3 }),
     };
     host.append(
@@ -231,18 +240,31 @@ export function createFamilyView({ host, sharing, help, profile, familyConnectio
         el('div', { class: 'og-family-grid' }, Object.values(cards).map((c) => c.root))
       )
     );
+    if (connect) connectView = createFamilyConnectView({ service: connect, cards: { connect: cards.connection, members: cards.members, help: cards.familyHelp, activity: cards.activity }, onChange: () => { syncLegacy(); changed(); } });
     renderConnection();
     renderSharing();
     renderPreview();
     buildHelp();
     renderReceived();
     renderPromise();
+    syncLegacy();
     host.dataset.ogRendered = 'true';
+  }
+
+  /* "내가 공유할 내용" is what the user would share BEFORE anyone is connected. Once a family member is connected,
+     sharing is decided per member, so the two earlier cards step aside (their stored choice is kept, and never applied
+     to a member automatically). */
+  function syncLegacy() {
+    const connected = connectView ? connectView.connectedCount() > 0 : false;
+    cards.sharing.root.hidden = connected;
+    cards.preview.root.hidden = connected;
   }
 
   function refresh() {
     pendingSensitive = null;
     for (const c of Object.values(cards)) c.status.textContent = '';
+    if (connectView) connectView.reset();
+    syncLegacy();
     renderConnection();
     renderSharing();
     renderPreview();
