@@ -168,6 +168,20 @@ for every changed module, including the new `memos.js` and `life-today.js`. Beca
 on from `20261005h14` to `20261006m15`, following the Health · Safety V2 precedent. No CSS changed. No service worker
 was added.
 
+Cache window (production integration). GitHub Pages serves every file with `max-age=600` and ignores the query string,
+so for up to 10 minutes after a deploy a browser can run a mix of old and new files. Both mixes were tested in Chromium,
+with My Life V2 data (a pinned memo, a task with 시간 and 메모, a 기록 with a kind) already in storage:
+
+- **New page + old modules** (new `index.html`, the 04ee2649c modules): the app starts with no error and shows the
+  previous 내 생활. The `memos` key stays in storage untouched: the old code neither reads nor removes it.
+- **Old page + new modules** (the 04ee2649c `index.html`, new modules): the app starts with no error and shows My Life V2.
+  `memos.js` and `life-today.js` are not in the old map and load at their plain address.
+- **Back on the new version:** every record is there.
+
+One effect of the window: if a task or record is edited by pre-V2 code during those minutes, that code writes it back
+without the fields it does not know (a task's 시간 and 메모, a record's 어떤 기록). The record itself is kept, and nothing is
+deleted.
+
 ## 19. TESTS
 
 `tests/ongil/my-life-v2.test.mjs` (OML2-01 … OML2-50) covers:
@@ -186,3 +200,5 @@ Earlier suites changed only where they count collections or modules or pin the e
 - 오늘 할 것 marks a routine or task for today only. Past days are corrected in 루틴 and 할 일 as before.
 - 관심 활동 shows saved programmes and places. A plan to attend is a calendar entry the person writes.
 - No real Safari, iPhone or Android device testing was done in this pass (Chromium only).
+- During the 10-minute cache window after a deploy, an edit made by a still-cached pre-V2 page drops a task's 시간 and 메모
+  and a record's 어떤 기록 (see 18). The record itself is kept.
