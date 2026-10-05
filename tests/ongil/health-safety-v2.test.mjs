@@ -402,7 +402,8 @@ test('OHS2-30 search privacy: health collections are never searched; the global 
 
 /* ═════════════ 9. 경계: 내 생활 · 커뮤니티 · AI · LIVON ═════════════ */
 test('OHS2-31 My Life boundary: the home uses the same stores (no new collection, no second copy of any record)', () => {
-  assert.equal(COLLECTIONS.length, 27, 'Health · Safety V2 adds no collection');
+  /* My Life V2: + memos (BEFORE 27, AFTER 28) — still none of them from Health · Safety V2 */ assert.equal(COLLECTIONS.length, 28, 'Health · Safety V2 adds no collection');
+  assert.equal(COLLECTIONS.filter((c) => c !== 'memos').length, 27, 'the one new collection is My Life V2\'s memos, not a health one');
   const app = code(JS['app.js']);
   assert.match(app, /const healthHome = createHealthSafetyHome\(\{\s*host: doc\.querySelector\('\[data-og-extra="health"\]'\),\s*checkIn, medication, schedule, symptoms, healthNotes, healthMeasures, sleep, dailyLife,\s*familyConnect,/);
   assert.doesNotMatch(code(VIEW), /storage\.(get|set)|createStorage|localStorage/);

@@ -733,7 +733,7 @@ test('OG-IN8-51 privacy matrix: what each class of data may do — search, saved
   const allowed = (c) => ({ search: maySearchGlobally(c), sync: isSyncable(c), family: familySharingAllowed(), community: false });
   const by = (cls) => COLLECTIONS.filter((c) => classOf(c) === cls).sort();
   /* Family Connection V1: the family document (connections, per-member sharing, requests, activity) is PRIVATE. BEFORE: 8 PRIVATE collections. AFTER: 9. */
-  assert.deepEqual(by('PRIVATE'), ['communityPosts', 'emergencyContacts', 'expenses', 'family', 'familySharing', 'groupDrafts', 'helpRequests', 'journal', 'meetupDrafts']);
+  assert.deepEqual(by('PRIVATE'), ['communityPosts', 'emergencyContacts', 'expenses', 'family', 'familySharing', 'groupDrafts', 'helpRequests', 'journal', 'meetupDrafts', /* My Life V2: + memos */ 'memos']);
   assert.deepEqual(by('HEALTH_ADJACENT'), ['checkins', 'healthMeasures', 'healthNotes', 'medicationLogs', 'medications', 'symptoms']);
   assert.deepEqual(by('STANDARD'), ['dailyLife', 'events', 'routineLogs', 'routines', 'sleepRecords', 'tasks']);
   assert.deepEqual(by('APP'), ['notifications', 'onboarding', 'preferences', 'profile', 'saved']);
@@ -741,7 +741,7 @@ test('OG-IN8-51 privacy matrix: what each class of data may do — search, saved
   assert.deepEqual(allowed('saved'), { search: true, sync: true, family: false, community: false }, 'saved: public items only, item by item');
   assert.deepEqual(allowed('notifications'), { search: false, sync: false, family: false, community: false });
   // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
-  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ assert.equal(COLLECTIONS.length, 27, 'Phase 8 added no collection; Phase 9 added analytics; Completion V1 added healthMeasures; Completion V3 added emergencyContacts');
+  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ /* My Life V2: + memos (BEFORE 27, AFTER 28) */ assert.equal(COLLECTIONS.length, 28, 'Phase 8 added no collection; Phase 9 added analytics; Completion V1 added healthMeasures; Completion V3 added emergencyContacts');
   assert.deepEqual(by('OPERATIONAL'), ['analytics']);
   assert.deepEqual(allowed('analytics'), { search: false, sync: false, family: false, community: false });
   assert.deepEqual(Object.keys(CLASSIFICATION).sort(), [...COLLECTIONS].sort(), 'every collection is classified');
@@ -894,12 +894,12 @@ test('OG-IN8-64 no page error sources: missing nodes, empty lists and unknown ty
 
 test('OG-IN8-65 regression: no new collection, backend, network, dependency or fixture in production; version moved on', () => {
   // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
-  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ assert.equal(COLLECTIONS.length, 27); // Completion V3: + emergencyContacts
+  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ /* My Life V2: + memos (BEFORE 27, AFTER 28) */ assert.equal(COLLECTIONS.length, 28); // Completion V3: + emergencyContacts
   /* Phase 9 moved the version on: admin-v1 / ?v=20261003a9 (BEFORE: integration-v2 / 20261003i8). The version now lives in APP_VERSION. */
   /* Phase 10 moved the version on: assistant-v1 / ?v=20261003b10 (BEFORE: admin-v1 / 20261003a9) — ONGIL 도우미 was added. */
   /* Phase 11 moved the version on: hardening-v1 / ?v=20261003r11 (BEFORE: assistant-v1 / 20261003b10) — release hardening changed app.js and two stylesheets. */
   assert.match(JS['app.js'], /const APP_VERSION = 'hardening-v1';/);
-  assert.match(INDEX, /app\.js\?v=20261005h14/); // Health · Safety V2 production integration: app.js changed → entry moved on (BEFORE v13, AFTER 20261005h14) so a new page never runs a cached old entry
+  assert.match(INDEX, /app\.js\?v=20261006m15/); // Health · Safety V2 production integration: app.js changed → entry moved on (BEFORE v13, AFTER 20261005h14) so a new page never runs a cached old entry /* My Life V2: app.js changed → entry moved on (BEFORE 20261005h14, AFTER 20261006m15) */
   /* Family Connection V2: the one "Bearer " is family-remote.js's Authorization header (an ID token asked at call time). BEFORE: none. */
   assert.equal(/firebase|supabase|openai|anthropic|api[_-]?key/i.test(PRODUCTION), false);
   assert.deepEqual(Object.keys(CODE).filter((f) => /Bearer /.test(CODE[f])), ['family-remote.js']);
@@ -907,5 +907,5 @@ test('OG-IN8-65 regression: no new collection, backend, network, dependency or f
   assert.equal(/TEST FIXTURE|example\.test|fixture/i.test(PRODUCTION), false, 'no QA data in production source');
   for (const f of ['routes.js', 'search.js', 'saved-view.js', 'notifications.js', 'panels.js']) for (const m of JS[f].matchAll(/from '([^']+)'/g)) assert.ok(fs.existsSync(path.join(JS_DIR, m[1])), `${f} → ${m[1]}`);
   // Phase 9: + analytics.js, instrument.js, source-status.js, admin.js, admin-view.js
-  /* Family Connection V1: + 5 family modules (BEFORE 71, AFTER 76) */ /* Family Connection V2: + family-remote, family-remote-view (BEFORE 76, AFTER 78) */ /* Health · Safety V2: + health-changes, health-safety-view (BEFORE 78, AFTER 80) */ assert.equal(fs.readdirSync(JS_DIR).filter((f) => f.endsWith('.js')).length, 80, '60 modules + the five Phase 9 modules + the three Phase 10 modules (assistant-intents, assistant-tools, assistant-view) + health-measures (Completion V1) + health-appointments (Completion V2) + emergency-contacts (Completion V3)');
+  /* My Life V2: + memos, life-today (BEFORE 80, AFTER 82) */  /* Family Connection V1: + 5 family modules (BEFORE 71, AFTER 76) */ /* Family Connection V2: + family-remote, family-remote-view (BEFORE 76, AFTER 78) */ /* Health · Safety V2: + health-changes, health-safety-view (BEFORE 78, AFTER 80) */ assert.equal(fs.readdirSync(JS_DIR).filter((f) => f.endsWith('.js')).length, 82, '60 modules + the five Phase 9 modules + the three Phase 10 modules (assistant-intents, assistant-tools, assistant-view) + health-measures (Completion V1) + health-appointments (Completion V2) + emergency-contacts (Completion V3)');
 });

@@ -82,5 +82,10 @@ export function makeField(spec, value) {
     const amount = type === 'amount';
     input = el('input', { class: 'og-input', id, name, type: amount ? 'text' : type, inputmode: amount ? 'numeric' : type === 'tel' ? 'tel' : null, value: value === undefined || value === null ? '' : String(value), maxlength: maxlength || (amount ? 12 : null), required, 'aria-describedby': hintId, autocomplete: 'off' });
   }
-  return { input, get: () => input.value, node: el('div', { class: 'og-field' }, el('label', { class: 'og-field__label', for: id }, label, optional), input, hintNode) };
+  /* My Life V2: spec.suggestions — example words shown as buttons under a text field. Pressing one only writes the word into
+     the field; nothing is saved until the person presses 저장, and no example is ever made into a record by itself. */
+  const examples = Array.isArray(spec.suggestions) && spec.suggestions.length && type === 'text'
+    ? el('div', { class: 'og-picks og-field__examples', role: 'group', 'aria-label': `${label} 예시 (누르면 칸에 적혀요)` }, spec.suggestions.map((word) => el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'data-og-example': word, text: word, onclick: () => { input.value = word; input.focus(); } })))
+    : null;
+  return { input, get: () => input.value, node: el('div', { class: 'og-field' }, el('label', { class: 'og-field__label', for: id }, label, optional), input, hintNode, examples) };
 }

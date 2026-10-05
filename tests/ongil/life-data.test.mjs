@@ -74,7 +74,8 @@ test('OG-TK-1 task: create, update, complete, delete', () => {
   const { tasks } = world();
   const a = tasks.add({ title: '  약국 들르기 ', dueDate: '2026-10-05', priority: 'important' });
   assert.equal(a.ok, true);
-  assert.deepEqual(Object.keys(a.task).sort(), ['completed', 'createdAt', 'dueDate', 'id', 'priority', 'schemaVersion', 'title', 'updatedAt']);
+  /* My Life V2: + time, memo (optional, '' when not written) */
+  assert.deepEqual(Object.keys(a.task).sort(), ['completed', 'createdAt', 'dueDate', 'id', 'memo', 'priority', 'schemaVersion', 'time', 'title', 'updatedAt']);
   assert.deepEqual([a.task.title, a.task.dueDate, a.task.priority, a.task.completed], ['약국 들르기', '2026-10-05', 'important', false]);
   const plain = tasks.add({ title: '전화하기' }).task;
   assert.deepEqual([plain.dueDate, plain.priority], ['', 'normal']);
@@ -225,7 +226,8 @@ test('OG-JN-1 journal: create, update, delete, by date; line breaks are kept, ma
   assert.equal(journal.hasEntry(), false);
   const a = journal.add({ text: '  오늘은 날이 좋았다.\r\n\r\n\r\n\r\n오래 걸었다.\u0000 ', mood: 'good' });
   assert.equal(a.ok, true);
-  assert.deepEqual(Object.keys(a.entry).sort(), ['createdAt', 'date', 'id', 'mood', 'schemaVersion', 'text', 'updatedAt']);
+  /* My Life V2: + kind (optional, '' when not chosen) */
+  assert.deepEqual(Object.keys(a.entry).sort(), ['createdAt', 'date', 'id', 'kind', 'mood', 'schemaVersion', 'text', 'updatedAt']);
   assert.equal(a.entry.text, '오늘은 날이 좋았다.\n\n오래 걸었다.');
   assert.equal(journal.add({ text: '   \n ' }).reason, 'INVALID_TEXT');
   assert.equal(journal.add({ text: 'x', date: 'yesterday' }).reason, 'INVALID_DATE');

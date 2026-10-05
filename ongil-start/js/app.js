@@ -40,6 +40,7 @@ import { createRoutineStore } from './routines.js';
 import { createSleepStore } from './sleep.js';
 import { createExpenseStore } from './expenses.js';
 import { createJournalStore } from './journal.js';
+import { createMemoStore } from './memos.js';
 import { createSymptomStore } from './symptoms.js';
 import { createHealthNoteStore } from './health-notes.js';
 import { createHealthMeasureStore } from './health-measures.js';
@@ -117,6 +118,8 @@ const routines = instrument.routines(createRoutineStore(storage));
 const sleep = createSleepStore(storage);
 const expenses = createExpenseStore(storage);
 const journal = createJournalStore(storage);
+/* My Life V2: 메모 — PRIVATE, this device only; given to 내 생활 alone (not to search, family, community or the assistant) */
+const memos = createMemoStore(storage);
 const symptoms = createSymptomStore(storage);
 const healthNotes = createHealthNoteStore(storage);
 const healthMeasures = createHealthMeasureStore(storage);
@@ -216,9 +219,11 @@ const films = createFilms({
 /* My Life reads the same schedule and daily-life stores as Home: one set of records, two screens */
 const life = createLifeView({
   host: doc.querySelector('[data-og-modules="life"]'),
-  stores: { schedule, tasks, routines, dailyLife, sleep, expenses, journal },
+  stores: { schedule, tasks, routines, dailyLife, sleep, expenses, journal, memos },
   /* 건강 (Phase 3): check-in and medication are the very objects Home uses; all of them stay on this device (Completion V1: + 건강 수치) */
   health: { checkIn, symptoms, medication, healthNotes, healthMeasures },
+  /* My Life V2: 관심 활동 lists the programmes and places the person saved (read only) */
+  saved,
 });
 
 /* Phase 4 — 가족: the user's own sharing choices and help-request notes. No family is connected; nothing is sent. */
@@ -553,4 +558,4 @@ resetTabStart(doc);
 win.addEventListener('load', () => win.setTimeout(() => resetTabStart(doc), 0));
 
 /* one stable handle for later phases and for manual checks; no secrets, nothing privileged */
-win.Ongil = Object.freeze({ version: APP_VERSION, assistant, assistantView, analytics, sources: sourceStatus, storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, symptoms, healthNotes, healthMeasures, familySharing, helpRequests, care, enjoy: enjoyView, communityPosts, groupDrafts, meetupDrafts, store: storeView });
+win.Ongil = Object.freeze({ version: APP_VERSION, assistant, assistantView, analytics, sources: sourceStatus, storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, memos, symptoms, healthNotes, healthMeasures, familySharing, helpRequests, care, enjoy: enjoyView, communityPosts, groupDrafts, meetupDrafts, store: storeView });

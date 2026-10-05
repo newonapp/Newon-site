@@ -910,12 +910,12 @@ test('OG-AQ-13 no dependency: every import is a relative ONGIL module; LIVON and
   // Phase 10: + assistant-intents.js, assistant-tools.js, assistant-view.js. BEFORE: 65. AFTER: 68.
   /* Family Connection V1: + family-domain, family-permissions, family-repository, family-service, family-connect-view (BEFORE 71, AFTER 76) */
   /* Family Connection V2: + family-remote, family-remote-view (BEFORE 76, AFTER 78) */
-  /* Health · Safety V2: + health-changes, health-safety-view (BEFORE 78, AFTER 80) */ assert.equal(allJs().length, 80, 'sixty modules + the five of Phase 9 + the three of Phase 10 + health-measures (Completion V1) + health-appointments (Completion V2) + emergency-contacts (Completion V3)');
+  /* Health · Safety V2: + health-changes, health-safety-view (BEFORE 78, AFTER 80) · My Life V2: + memos, life-today (BEFORE 80, AFTER 82) */ assert.equal(allJs().length, 82, 'sixty modules + the five of Phase 9 + the three of Phase 10 + health-measures (Completion V1) + health-appointments (Completion V2) + emergency-contacts (Completion V3)');
   for (const f of P9) assert.ok(fs.existsSync(path.join(JS_DIR, f)), f);
 });
 
 test('OG-AQ-14 storage: exactly one new collection ("analytics"), classified, and nothing personal moved', () => {
-  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ assert.equal(COLLECTIONS.length, 27); // Completion V3: + emergencyContacts
+  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ /* My Life V2: + memos (BEFORE 27, AFTER 28) */ assert.equal(COLLECTIONS.length, 28); // Completion V3: + emergencyContacts
   assert.equal(COLLECTIONS[COLLECTIONS.length - 1], 'analytics');
   assert.deepEqual(Object.keys(CLASSIFICATION).sort(), [...COLLECTIONS].sort());
   assert.deepEqual(COLLECTIONS.filter((c) => CLASSIFICATION[c] === 'OPERATIONAL'), ['analytics']);
@@ -941,7 +941,7 @@ test('OG-AQ-16 version and cache: the app states its version and the changed fil
   assert.match(HTML, /ongil-shell\.css\?v=20261003r11/);
   assert.match(HTML, /ongil-app\.css\?v=20261003r11/);
   // Completion V2 moved app.js and ongil-life.css on (BEFORE ?v=20261003r11, AFTER ?v=20261004v12); Completion V3 changed the same two files again (AFTER ?v=20261004v13).
-  assert.match(HTML, /js\/app\.js\?v=20261005h14/); // Health · Safety V2 changed app.js again (AFTER ?v=20261005h14)
+  assert.match(HTML, /js\/app\.js\?v=20261006m15/); // Health · Safety V2 changed app.js again (AFTER ?v=20261005h14) /* My Life V2: app.js changed → entry moved on (BEFORE 20261005h14, AFTER 20261006m15) */
   assert.match(HTML, /ongil-life\.css\?v=20261004v13/);
 });
 
@@ -991,5 +991,5 @@ test('OG-AQ-20 documentation and suite: the Phase 9 document has every required 
   for (const name of A.EVENT_NAMES.filter((n) => !n.startsWith('ai_'))) assert.ok(doc.includes(`\`${name}\``), `${name} is documented`);
   assert.equal(/LIVE VERIFIED(?!")|screen reader: VERIFIED/.test(doc.replace(/never[^\n]*LIVE VERIFIED|no[^\n]*LIVE VERIFIED|not[^\n]*LIVE VERIFIED/gi, '')), false);
   const tests = fs.readdirSync(path.join(ROOT, 'tests/ongil')).filter((f) => f.endsWith('.test.mjs')).sort();
-  assert.deepEqual(tests, ['admin-analytics', 'assistant', 'care-data', 'community-data', /* Community V2: + community-v2 (new test file) */ 'community-v2', 'cross-product', 'emergency-contacts', 'enjoy-data', /* Family Connection V1: + family-connection (new test file; BEFORE absent, AFTER listed) */ 'family-connection', 'family-data', /* Family Connection V2: + family-v2 (new test file) */ 'family-v2', 'foundation-data', 'foundation-flows', 'health-calendar', 'health-data', 'health-measures', /* Health · Safety V2: + health-safety-v2 (new test file) */ 'health-safety-v2', 'health-view', 'home-data', 'home-view', 'integration-data', 'integration-view', 'life-data', 'life-privacy', 'life-view', 'product-completion', 'production-api', 'production-release', 'release-hardening', 'shell', 'store-data'].map((n) => `${n}.test.mjs`)); // Phase 11: + release-hardening · Phase 12: + production-release · API connection: + production-api · Completion V1: + health-measures · Completion V2: + health-calendar · Completion V3: + emergency-contacts · Product Completion Audit V1: + product-completion
+  assert.deepEqual(tests, ['admin-analytics', 'assistant', 'care-data', 'community-data', /* Community V2: + community-v2 (new test file) */ 'community-v2', 'cross-product', 'emergency-contacts', 'enjoy-data', /* Family Connection V1: + family-connection (new test file; BEFORE absent, AFTER listed) */ 'family-connection', 'family-data', /* Family Connection V2: + family-v2 (new test file) */ 'family-v2', 'foundation-data', 'foundation-flows', 'health-calendar', 'health-data', 'health-measures', /* Health · Safety V2: + health-safety-v2 (new test file) */ 'health-safety-v2', 'health-view', 'home-data', 'home-view', 'integration-data', 'integration-view', 'life-data', 'life-privacy', 'life-view', /* My Life V2: + my-life-v2 (new test file) */ 'my-life-v2', 'product-completion', 'production-api', 'production-release', 'release-hardening', 'shell', 'store-data'].map((n) => `${n}.test.mjs`)); // Phase 11: + release-hardening · Phase 12: + production-release · API connection: + production-api · Completion V1: + health-measures · Completion V2: + health-calendar · Completion V3: + emergency-contacts · Product Completion Audit V1: + product-completion
 });

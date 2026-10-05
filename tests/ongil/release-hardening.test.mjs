@@ -220,7 +220,7 @@ test('RH-03 old storage migration: data written by earlier phases is read withou
 });
 
 test('RH-04 account erase inventory: every ONGIL key goes — known collections and stray ones — and nothing else', () => {
-  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ assert.equal(COLLECTIONS.length, 27); // Completion V3: + emergencyContacts
+  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ /* My Life V2: + memos (BEFORE 27, AFTER 28) */ assert.equal(COLLECTIONS.length, 28); // Completion V3: + emergencyContacts
   assert.deepEqual(Object.keys(CLASSIFICATION).sort(), [...COLLECTIONS].sort(), 'every collection is classified');
   assert.deepEqual(unclassified(), []);
   /* every collection a module reads or writes is a declared collection */
@@ -236,7 +236,7 @@ test('RH-04 account erase inventory: every ONGIL key goes — known collections 
   fillPrivate(w);
   w.analytics.track('app_open');
   /* Family Connection V1: + family (BEFORE 26, AFTER 27) */
-  assert.equal(w.storage.list().length, 27); // Completion V3: + emergencyContacts
+  assert.equal(w.storage.list().length, 28); // Completion V3: + emergencyContacts · My Life V2: + memos (BEFORE 27, AFTER 28)
   assert.equal(w.storage.clear(), true);
   assert.deepEqual(w.backend.keys().sort(), ['livon.keep', 'newon-app-theme', 'ongil', 'ongilx.v1.tasks'], 'Phase 11: a stray key under ONGIL\'s prefix is erased too; other products are untouched');
   assert.equal(w.storage.clear(), true, 'erasing twice is harmless');
@@ -1157,7 +1157,7 @@ test('RH-43 cache / version consistency: every local file the page loads carries
   for (const f of ['ongil-shell.css', 'ongil-app.css', 'ongil-tokens.css', 'ongil-home.css']) assert.equal(ongil[f], '20261003r11', `${f} changed in Phase 11 and has the release's version`);
   /* Completion V2 changed app.js (and the modules it imports) and ongil-life.css: those two, and only those, moved on */
   assert.equal(ongil['ongil-life.css'], '20261004v13', 'ongil-life.css changed in Completion V2 (v12) and again in V3 (v13)');
-  assert.equal(ongil['app.js'], '20261005h14', 'app.js changed in Completion V2 (v12), V3 (v13) and Health · Safety V2 (20261005h14)');
+  assert.equal(ongil['app.js'], '20261006m15', 'app.js changed in Completion V2 (v12), V3 (v13) Health · Safety V2 (20261005h14) and My Life V2 (20261006m15)'); /* My Life V2: app.js changed → entry moved on (BEFORE 20261005h14, AFTER 20261006m15) */
   assert.match(APP, /const APP_VERSION = 'hardening-v1';/);
   /* modules are imported by relative path with no version of their own: they are revalidated by the host's default
      caching (no immutable / long max-age rule exists for /ongil-start in the deployment config) */
@@ -1186,8 +1186,8 @@ test('RH-44 external dependencies: fonts and seven film files — no package, CD
 test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', () => {
   assert.deepEqual([...VIEWS], ['home', 'life', 'health', 'family', 'care', 'enjoy', 'community', 'store', 'saved', 'account']);
   assert.deepEqual([...INTERNAL_VIEWS], ['admin']);
-  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ assert.equal(COLLECTIONS.length, 27); // Completion V3: + emergencyContacts
-  /* Family Connection V1: + 5 family modules (BEFORE 71, AFTER 76) */ /* Family Connection V2: + family-remote, family-remote-view (BEFORE 76, AFTER 78) */ /* Health · Safety V2: + health-changes, health-safety-view (BEFORE 78, AFTER 80) */ assert.equal(JS_FILES.length, 80, 'no module was added or removed in Phase 11; Completion V1 added health-measures; Completion V2 added health-appointments; Completion V3 added emergency-contacts');
+  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ /* My Life V2: + memos (BEFORE 27, AFTER 28) */ assert.equal(COLLECTIONS.length, 28); // Completion V3: + emergencyContacts
+  /* My Life V2: + memos, life-today (BEFORE 80, AFTER 82) */  /* Family Connection V1: + 5 family modules (BEFORE 71, AFTER 76) */ /* Family Connection V2: + family-remote, family-remote-view (BEFORE 76, AFTER 78) */ /* Health · Safety V2: + health-changes, health-safety-view (BEFORE 78, AFTER 80) */ assert.equal(JS_FILES.length, 82, 'no module was added or removed in Phase 11; Completion V1 added health-measures; Completion V2 added health-appointments; Completion V3 added emergency-contacts');
   assert.equal(CSS_FILES.length, 6);
   assert.deepEqual([A.EVENT_NAMES.length, C.SAVED_TYPES.length, C.NOTIFICATION_TYPES.length, R.CONTENT_TYPE_IDS.length], [22, 7, 9, 7]);
   const w = world();
@@ -1199,7 +1199,7 @@ test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', ()
   /* Family Connection V1: + family-connection.test.mjs (BEFORE 27, AFTER 28). WHY: the new feature brought its own test file. */
   /* Family Connection V2: + family-v2.test.mjs (BEFORE 28, AFTER 29) */
   /* Community V2: + community-v2.test.mjs (BEFORE 29, AFTER 30) */
-  assert.equal(tests.length, 31); // Health · Safety V2: + health-safety-v2.test.mjs (BEFORE 30, AFTER 31) · Completion V2: + health-calendar.test.mjs · Completion V3: + emergency-contacts.test.mjs · Product Completion Audit V1: + product-completion.test.mjs (BEFORE 26, AFTER 27)
+  /* My Life V2: + my-life-v2.test.mjs (BEFORE 31, AFTER 32) */ assert.equal(tests.length, 32); // Health · Safety V2: + health-safety-v2.test.mjs (BEFORE 30, AFTER 31) · Completion V2: + health-calendar.test.mjs · Completion V3: + emergency-contacts.test.mjs · Product Completion Audit V1: + product-completion.test.mjs (BEFORE 26, AFTER 27)
   for (const f of ['livon', 'server/livon', 'tests/livon']) assert.ok(fs.existsSync(path.join(ROOT, f)), `${f} is still there, untouched by ONGIL`);
   /* Family Connection V2: server/ongil/family is the one ONGIL backend (BEFORE: no server/ongil) */
   assert.deepEqual(fs.readdirSync(path.join(ROOT, 'server/ongil')), ['family']);

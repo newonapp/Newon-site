@@ -63,10 +63,10 @@ test('OG-PV-1 every collection has a class; private and health-adjacent data may
   // Phase 4: familySharing and helpRequests are PRIVATE (contracts FamilySharingPreference, HelpRequest)
   // Phase 6: communityPosts, groupDrafts, meetupDrafts are PRIVATE (contracts CommunityPost, GroupDraft, MeetupDraft)
   /* Family Connection V1: the family document (connections, per-member sharing, requests, activity) is PRIVATE. BEFORE: 8 PRIVATE collections. AFTER: 9. */
-  assert.deepEqual(by('PRIVATE'), ['communityPosts', 'emergencyContacts', 'expenses', 'family', 'familySharing', 'groupDrafts', 'helpRequests', 'journal', 'meetupDrafts']);
+  assert.deepEqual(by('PRIVATE'), ['communityPosts', 'emergencyContacts', 'expenses', 'family', 'familySharing', 'groupDrafts', 'helpRequests', 'journal', 'meetupDrafts', /* My Life V2: + memos */ 'memos']);
   assert.deepEqual(by('HEALTH_ADJACENT'), ['checkins', 'healthMeasures', 'healthNotes', 'medicationLogs', 'medications', 'symptoms']);
   assert.deepEqual(by('STANDARD'), ['dailyLife', 'events', 'routineLogs', 'routines', 'sleepRecords', 'tasks']);
-  assert.deepEqual({ ...CONTRACT_CLASSES }, { CalendarEvent: 'STANDARD', Task: 'STANDARD', Routine: 'STANDARD', RoutineLog: 'STANDARD', DailyLife: 'STANDARD', SleepRecord: 'STANDARD', ExpenseRecord: 'PRIVATE', JournalEntry: 'PRIVATE', Medication: 'HEALTH_ADJACENT', MedicationLog: 'HEALTH_ADJACENT', CheckIn: 'HEALTH_ADJACENT', SymptomRecord: 'HEALTH_ADJACENT', HealthNote: 'HEALTH_ADJACENT', HealthMeasure: 'HEALTH_ADJACENT', FamilySharingPreference: 'PRIVATE', HelpRequest: 'PRIVATE', CommunityPost: 'PRIVATE', GroupDraft: 'PRIVATE', MeetupDraft: 'PRIVATE', EmergencyContact: 'PRIVATE' }); // Completion V3: + EmergencyContact
+  assert.deepEqual({ ...CONTRACT_CLASSES }, { CalendarEvent: 'STANDARD', Task: 'STANDARD', Routine: 'STANDARD', RoutineLog: 'STANDARD', DailyLife: 'STANDARD', SleepRecord: 'STANDARD', ExpenseRecord: 'PRIVATE', JournalEntry: 'PRIVATE', Medication: 'HEALTH_ADJACENT', MedicationLog: 'HEALTH_ADJACENT', CheckIn: 'HEALTH_ADJACENT', SymptomRecord: 'HEALTH_ADJACENT', HealthNote: 'HEALTH_ADJACENT', HealthMeasure: 'HEALTH_ADJACENT', FamilySharingPreference: 'PRIVATE', HelpRequest: 'PRIVATE', CommunityPost: 'PRIVATE', GroupDraft: 'PRIVATE', MeetupDraft: 'PRIVATE', EmergencyContact: 'PRIVATE', /* My Life V2 */ Memo: 'PRIVATE' }); // Completion V3: + EmergencyContact
   for (const c of COLLECTIONS) {
     if (classOf(c) === 'APP') continue;
     assert.equal(maySync(c), false, c);
@@ -179,7 +179,8 @@ test('OG-LF-7 tabs, calendar and forms are operable without a mouse and state is
   assert.equal(/lv-|livon|--nls-/i.test(CSS.replace(/\/\*[\s\S]*?\*\//g, '')), false);
   assert.equal(/#[0-9a-f]{3,6}\b/i.test(CSS.replace(/\/\*[\s\S]*?\*\//g, '')), false, 'colours come from tokens');
   /* every list that can delete goes through the shared confirmation */
-  assert.equal((ALL.match(/createListCard\(\{/g) || []).length, 7);
+  /* My Life V2: + 오늘 할 것 and 메모 (BEFORE 7, AFTER 9) */
+  assert.equal((ALL.match(/createListCard\(\{/g) || []).length, 9);
   assert.equal(/window\.confirm|[^.\w]confirm\(/.test(CODE), false);
 });
 
