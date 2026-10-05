@@ -103,6 +103,14 @@ export const COMMUNITY_V2 = { subject: 'Complete LIVON Community V2',
     'docs/livon/LIVON_COMMUNITY_V2.md', 'tests/livon/community-v2.test.mjs', 'tests/livon/performance.test.mjs'] };
 const communityV2Commit = () => (git('log', '--no-merges', '--format=%H%x09%s', 'HEAD').stdout.split('\n').find(l => l.split('\t')[1] === COMMUNITY_V2.subject) || '').split('\t')[0] || null;
 
+/* LIVON My Life V2 (branch livon-my-life-v2): Personal Life Hub on the existing My Life store. Accepted only on a line whose
+   history contains this commit, and only these files (frontend, Help, tests, document — no server, API or ONGIL file). */
+export const MY_LIFE_V2 = { subject: 'Complete LIVON My Life V2',
+  files: ['livon/life-now-page.js', 'livon/life-now-hub.js', 'livon/life-now-page.css', 'livon/life-now-data.js', 'livon/index.html', 'livon/help-data.js',
+    'docs/livon/LIVON_MY_LIFE_V2.md', 'tests/livon/my-life-v2.test.mjs', 'tests/livon/mylife.test.mjs', 'tests/livon/help.test.mjs',
+    'tests/livon/completion.test.mjs', 'tests/livon/release-candidate.test.mjs'] };
+const myLifeV2In = () => git('log', '--format=%s', 'HEAD').stdout.split('\n').includes(MY_LIFE_V2.subject);
+
 /* main e0436c916: ONGIL (another product on the same site) integrated for production. Its files are not LIVON product files;
    they are accepted only under its own directory and only on a line that contains that integration commit. */
 export const ONGIL_PRODUCT = { subject: 'Integrate ONGIL production frontend', dir: 'ongil-start/' };
@@ -189,7 +197,8 @@ test('RC-1 ancestry: every V1 phase commit is an ancestor of the RC; the RC star
       const touched = git('diff-tree', '--no-commit-id', '--name-only', '-r', cv2 + '^', cv2).stdout.split('\n').filter(Boolean);
       assert.deepEqual(COMMUNITY_V2.files.filter(f => !touched.includes(f)), [], 'every accepted Community V2 file was changed by that commit');
     }
-    assert.deepEqual(d.stdout.split('\n').filter(Boolean).filter(f => !I.aligned.includes(f) && !aiLive.includes(f) && !community.includes(f)), [], 'LIVON tree = integration commit except the alignment / AI LIVE / Community V2 files');
+    const myLife = myLifeV2In() ? MY_LIFE_V2.files : [];
+    assert.deepEqual(d.stdout.split('\n').filter(Boolean).filter(f => !I.aligned.includes(f) && !aiLive.includes(f) && !community.includes(f) && !myLife.includes(f)), [], 'LIVON tree = integration commit except the alignment / AI LIVE / Community V2 / My Life V2 files');
     /* main's production routing/CORS fix is part of this line */
     assert.ok(history.includes(ROUTING_CORS_FIX.subject), 'main routing/CORS fix is an ancestor');
     assert.ok(history.includes(BACKEND_HARDENING.subject), 'backend hardening is an ancestor');
@@ -333,12 +342,21 @@ test('RC-24 Help vs runtime: what Help says is off is off in the code that ships
   assert.equal(F.support, 'NOT_CONNECTED');
   const st = Object.fromEntries(HELP.status.map(s => [s.id, s.state]));
   assert.deepEqual(st, { core: 'available', personalization: 'local', storage: 'local', community: 'local', follow: 'off', reports: 'local', ai: 'off', 'live-data': 'off', account: 'off', support: 'off' });
-  /* My Life: Help says there is no bulk delete / export button — and none is rendered (the handlers are unreachable) */
-  assert.match(JSON.stringify(HELP.articles), /한꺼번에 지우는 버튼은 없어요/);
-  for (const f of fs.readdirSync(path.join(ROOT, 'livon')).filter(n => /\.(js|html)$/.test(n))) {
-    const s = src('livon/' + f).replace(/closest\("\[data-lv-ml-(export|clear)\]"\)/g, '');
-    assert.doesNotMatch(s, /data-lv-ml-(export|clear)/, f + ' renders a My Life export/clear-all control');
+  /* My Life V2: Help describes the export and the delete-all of My Life data — and exactly those two controls exist, rendered
+     only by the My Life settings panel (no other LIVON file renders them). Before V2 Help said there was no such button. */
+  const helpText = JSON.stringify(HELP.articles);
+  assert.doesNotMatch(helpText, /한꺼번에 지우는 버튼은 없어요/);
+  assert.match(helpText, /내 생활 데이터 전체 삭제: 내 생활 › 설정에서/);
+  assert.match(helpText, /‘내 생활 데이터 내보내기’로 일정·할 일·목표·루틴·기록을 JSON 파일로 내려받아/);
+  for (const f of fs.readdirSync(path.join(ROOT, 'livon')).filter(n => /\.(js|html)$/.test(n) && n !== 'life-now-page.js' && n !== 'life-now-hub.js')) {
+    assert.doesNotMatch(src('livon/' + f), /data-lv-ml-(export|clear)/, f + ' renders a My Life export/clear-all control');
   }
+  const ml = src('livon/life-now-page.js'), hub = src('livon/life-now-hub.js');
+  assert.doesNotMatch(ml, /<button[^']*data-lv-ml-(export|clear)/, 'the page only handles the clicks');
+  const renderer = hub.slice(hub.indexOf('function myLifeDataHtml('), hub.indexOf('function downloadExport('));
+  assert.match(renderer, /<button type="button"[^']*data-lv-ml-export/); assert.match(renderer, /<button type="button"[^']*data-lv-ml-clear/);
+  assert.equal((hub.match(/<button[^']*data-lv-ml-(export|clear)/g) || []).length, 2, 'rendered once each, in the settings data block');
+  assert.match(ml.slice(ml.indexOf('function viewSettings('), ml.indexOf('function refreshDashboard(')), /V2\.myLifeDataHtml\(store\)/);
 });
 
 test('RC-42 production configuration inventory: every LIVON setting is named in the release manifest with its class', () => {
@@ -542,7 +560,7 @@ test('RC-26 accessibility (static): the build gate still reports 0 errors on the
 test('RC-41 visual regression by construction: the RC ships the Performance V1 product files unchanged (or only listed RC fixes)', { skip: noGit || (!hasCommit(RC_BASE) && 'base commit missing') }, () => {
   const changed = git('diff', '--name-only', RC_BASE, 'HEAD').stdout.split('\n').filter(Boolean);
   const product = changed.filter(f => !/^(docs\/|tests\/)/.test(f));
-  const allowed = new Set([...RC_FIXES, ...BACKEND_HARDENING.files, ...ROUTING_CORS_FIX.files, ...COMPLETION_FIXES, ...(aiLiveIn() ? AI_LIVE.files : []), ...(familyV2In() ? ONGIL_FAMILY_V2.files : [])]);
+  const allowed = new Set([...RC_FIXES, ...BACKEND_HARDENING.files, ...ROUTING_CORS_FIX.files, ...COMPLETION_FIXES, ...(aiLiveIn() ? AI_LIVE.files : []), ...(familyV2In() ? ONGIL_FAMILY_V2.files : []), ...(myLifeV2In() ? MY_LIFE_V2.files : [])]);
   /* ONGIL is its own product in its own directory: accepted only where its production integration is part of the history,
      and then only inside that directory — a LIVON, shared or any other file still needs an entry above */
   const ongilIntegrated = git('log', '--format=%s', 'HEAD').stdout.split('\n').includes(ONGIL_PRODUCT.subject);
@@ -812,10 +830,14 @@ test('RC-19 Explore: search, filters, detail and save; source labels shown; no i
   await pg.context().close();
 });
 
-test('RC-20 My Life: saved, to-dos, goals, records and settings panels render; export/clear-all stay unreachable (POST-V1)', { skip }, async () => {
+test('RC-20 My Life: saved, to-dos, goals, records and settings panels render; export/clear-all only in My Life settings (My Life V2)', { skip }, async () => {
   const pg = await open('/livon/#life-now');
-  for (const h of ['#ml-saved', '#ml-todos', '#ml-settings', '#ml-home']) { await go(pg, h, 600); assert.ok((await shown(pg)).text > 100, h); }
-  assert.equal(await pg.evaluate(() => document.querySelectorAll('[data-lv-ml-export],[data-lv-ml-clear]').length), 0);
+  for (const h of ['#ml-saved', '#ml-todos', '#ml-routines', '#ml-records', '#ml-home']) {
+    await go(pg, h, 600); assert.ok((await shown(pg)).text > 100, h);
+    assert.equal(await pg.evaluate(() => document.querySelectorAll('[data-lv-ml-export],[data-lv-ml-clear]').length), 0, h);
+  }
+  await go(pg, '#ml-settings', 600); assert.ok((await shown(pg)).text > 100, '#ml-settings');
+  assert.equal(await pg.evaluate(() => document.querySelectorAll('#ml-panel [data-lv-ml-export], #ml-panel [data-lv-ml-clear]').length), 2);
   assert.deepEqual(pg._errors, []);
   await pg.context().close();
 });

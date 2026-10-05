@@ -21,13 +21,29 @@
     { id: "class", label: "클래스" }, { id: "event", label: "행사" }, { id: "expert", label: "전문가" }, { id: "community", label: "커뮤니티" }, { id: "other", label: "기타" }
   ];
   var PRIO_RANK = { "높음": 0, "보통": 1, "낮음": 2 };
+  var TODO_SORTS = [{ id: "due", label: "마감일순" }, { id: "created", label: "최근 만든 순" }, { id: "priority", label: "우선순위순" }];
+  var WEEKDAYS = ["일", "월", "화", "수", "목", "금", "토"];
+  var HABIT_FREQS = { daily: "매일", days: "요일 지정", weekly: "매주 1회 이상" };
+  /* 전체 기록: the record types My Life already stores (no new collection) */
+  var RECORD_TYPES = [{ id: "all", label: "전체" }, { id: "journal", label: "일기·기록" }, { id: "tx", label: "수입·지출" }, { id: "health", label: "건강" }, { id: "experience", label: "경험" }];
+  var RECORD_RANGES = [{ id: "all", label: "전체 기간" }, { id: "7d", label: "최근 7일" }, { id: "month", label: "이번 달" }];
+  /* collections that belong to My Life (livon.mlStore.v1) — export and 전체 삭제 use exactly this list */
+  var ML_COLLECTIONS = ["events", "todos", "goals", "habits", "habitLogs", "checklists", "projects", "journal", "transactions", "budgets", "health", "experiences"];
 
   var state = {
     savedFolder: "all",
     savedType: "all",
     todoFilter: "all",
     todoSource: "all",
+    todoSort: "due",
     journalCat: "all",
+    recordType: "all",
+    recordRange: "all",
+    recordQ: "",
+    recordLimit: 30,
+    searchQ: "",
+    reviewOffset: 0,
+    moneyOffset: 0,
     view: "home",
     calMonth: null,
     calMode: "month",
@@ -210,17 +226,39 @@
       settings: { weekStartsOn: 0, currency: "KRW", fontScale: "md" }
     };
   }
+  var LIST_FIELDS = ["events", "todos", "checklists", "goals", "habits", "transactions", "health", "experiences", "journal", "projects"];
+  function isObj(v) { return !!v && typeof v === "object" && !Array.isArray(v); }
+  /* Damaged storage must never break the screen: a store that is not an object reads as empty (and is not written back
+     until the user saves something), entries that are not records are skipped, and a record without an id — or with an
+     id another record already uses — gets a fresh id so edit/delete act on exactly one record. Nothing valid is dropped. */
+  function sanitize(s) {
+    var changed = false;
+    LIST_FIELDS.forEach(function (k) {
+      if (!Array.isArray(s[k])) { if (s[k] != null) changed = true; s[k] = []; return; }
+      var seen = {}, out = [];
+      s[k].forEach(function (x) {
+        if (!isObj(x)) { changed = true; return; }
+        if (typeof x.id !== "string" && typeof x.id !== "number") { x.id = uid(k.replace(/s$/, "")); changed = true; }
+        if (seen[x.id]) { x.id = uid(k.replace(/s$/, "")); changed = true; }
+        seen[x.id] = 1;
+        out.push(x);
+      });
+      s[k] = out;
+    });
+    if (!isObj(s.habitLogs)) { if (s.habitLogs != null) changed = true; s.habitLogs = {}; }
+    if (!isObj(s.budgets)) { if (s.budgets != null) changed = true; s.budgets = { monthly: 0, categories: {} }; }
+    if (!isObj(s.settings)) { if (s.settings != null) changed = true; s.settings = emptyStore().settings; }
+    return changed;
+  }
   function loadStore() {
     var raw = readJSON(STORE_KEY, null);
-    var s = raw && typeof raw === "object" ? raw : emptyStore();
+    var s = isObj(raw) ? raw : emptyStore();
     var base = emptyStore();
     Object.keys(base).forEach(function (k) {
       if (s[k] == null) s[k] = base[k];
     });
-    ["events", "todos", "checklists", "goals", "habits", "transactions", "health", "experiences", "journal", "projects"].forEach(function (k) {
-      if (!Array.isArray(s[k])) s[k] = [];
-    });
-    if (raw && migrate(s)) saveStore(s);
+    var fixed = sanitize(s);
+    if (isObj(raw) && (migrate(s) || fixed)) saveStore(s);
     return s;
   }
   function saveStore(s) { writeJSON(STORE_KEY, s); }
@@ -344,6 +382,9 @@
       status: GOAL_STATUSES.indexOf(input.status) >= 0 ? input.status : ((prev && prev.status) || "진행 중"),
       updatedAt: now, createdAt: (prev && prev.createdAt) || now
     });
+    /* when the goal was completed (weekly review counts real completions only) */
+    if (next.status === "완료") { if (!prev || prev.status !== "완료" || !next.doneAt) next.doneAt = (prev && prev.status === "완료" && prev.doneAt) || now; }
+    else delete next.doneAt;
     upsert(store.goals, next);
     saveStore(store);
     return { status: "ok", item: next, created: !prev };
@@ -395,6 +436,77 @@
     saveStore(store);
     return true;
   }
+
+  /* ——— Routines (habits): which days, today's check, streak from the real log only ——— */
+  function habitDays(h) {
+    if (!h || h.freq !== "days" || !Array.isArray(h.days)) return null;
+    var d = h.days.map(Number).filter(function (n) { return n >= 0 && n <= 6; });
+    return d.length ? uniqNum(d) : null;
+  }
+  function uniqNum(list) { var seen = {}; return list.filter(function (n) { if (seen[n]) return false; seen[n] = 1; return true; }).sort(); }
+  function habitScheduledOn(h, date) {
+    var days = habitDays(h);
+    return days ? days.indexOf(date.getDay()) >= 0 : true;
+  }
+  function saveHabit(input) {
+    var store = loadStore();
+    var title = String(input.title || "").trim();
+    if (!title) return invalid("title", "습관을 입력해 주세요.");
+    var freq = HABIT_FREQS[input.freq] ? input.freq : "daily";
+    var days = Array.isArray(input.days) ? uniqNum(input.days.map(Number).filter(function (n) { return n >= 0 && n <= 6 && n === Math.floor(n); })) : [];
+    if (freq === "days" && !days.length) return invalid("days", "실천할 요일을 하나 이상 골라 주세요.");
+    if (freq === "days" && days.length === 7) freq = "daily";
+    var prev = input.id ? store.habits.find(function (h) { return h.id === input.id; }) : null;
+    var now = Date.now();
+    var next = Object.assign({}, prev || {}, { id: prev ? prev.id : (input.id || uid("habit")), title: title, freq: freq, updatedAt: now, createdAt: (prev && prev.createdAt) || now });
+    if (freq === "days") next.days = days; else delete next.days;
+    upsert(store.habits, next);
+    saveStore(store);
+    return { status: "ok", item: next, created: !prev };
+  }
+  function setHabitDone(id, day, done) {
+    var store = loadStore();
+    if (!store.habits.some(function (h) { return h.id === id; })) return false;
+    if (!isObj(store.habitLogs[id])) store.habitLogs[id] = {};
+    if (done) store.habitLogs[id][day] = true; else delete store.habitLogs[id][day];
+    saveStore(store);
+    return true;
+  }
+
+  /* ——— Money: amounts the user typed, per month ——— */
+  function saveTx(input) {
+    var store = loadStore();
+    var amount = Number(input.amount);
+    if (input.amount === "" || input.amount == null || !isFinite(amount) || amount < 0) return invalid("amount", "금액을 0 이상의 숫자로 입력해 주세요.");
+    if (!parseDate(input.date)) return invalid("date", "날짜를 입력해 주세요.");
+    var prev = input.id ? store.transactions.find(function (x) { return x.id === input.id; }) : null;
+    var now = Date.now();
+    var next = Object.assign({}, prev || {}, {
+      id: prev ? prev.id : (input.id || uid("tx")), kind: input.kind === "income" ? "income" : "expense", amount: Math.round(amount), date: input.date,
+      category: String(input.category || "기타"), note: String(input.note || ""), updatedAt: now, createdAt: (prev && prev.createdAt) || now
+    });
+    upsert(store.transactions, next);
+    saveStore(store);
+    return { status: "ok", item: next, created: !prev };
+  }
+  function ymOf(d) { return d.getFullYear() + "-" + (d.getMonth() + 1 < 10 ? "0" : "") + (d.getMonth() + 1); }
+  function moneySummary(store, ym) {
+    var monthTx = store.transactions.filter(function (x) { return String(x.date || "").indexOf(ym) === 0; });
+    var amt = function (x) { var n = Number(x.amount); return isFinite(n) && n > 0 ? n : 0; };
+    var income = 0, expense = 0, byCat = {};
+    monthTx.forEach(function (x) {
+      if (x.kind === "income") { income += amt(x); return; }
+      expense += amt(x);
+      var c = x.category || "기타";
+      byCat[c] = (byCat[c] || 0) + amt(x);
+    });
+    var budget = Number(store.budgets && store.budgets.monthly) || 0;
+    return { ym: ym, count: monthTx.length, income: income, expense: expense, byCat: byCat, budget: budget,
+      remain: budget ? budget - expense : null, usedPct: budget ? Math.round(expense / budget * 100) : null };
+  }
+
+
+
 
   /* ——— Today dashboard: priority from real deadlines, times and user-set priority only ——— */
   function priorityItems(store, now) {
@@ -635,7 +747,14 @@
     if (type === "habit") {
       return field("습관", '<input name="title" required list="lv-ml-habit-list" value="' + esc(item.title || "") + '" />' +
         '<datalist id="lv-ml-habit-list">' + (DATA.habitPresets || []).map(function (h) { return "<option value=\"" + esc(h) + "\">"; }).join("") + "</datalist>") +
-        field("주기", '<select name="freq"><option value="daily"' + (item.freq !== "weekly" ? " selected" : "") + '>매일</option><option value="weekly"' + (item.freq === "weekly" ? " selected" : "") + '>매주</option></select>');
+        field("주기", '<select name="freq">' + Object.keys(HABIT_FREQS).map(function (k) {
+          return '<option value="' + k + '"' + ((item.freq || "daily") === k ? " selected" : "") + ">" + HABIT_FREQS[k] + "</option>";
+        }).join("") + "</select>") +
+        '<fieldset class="lv-ml-fieldset lv-ml-days"><legend>실천 요일 (주기가 ‘요일 지정’일 때)</legend>' + WEEKDAYS.map(function (w, i) {
+          var on = Array.isArray(item.days) ? item.days.map(Number).indexOf(i) >= 0 : false;
+          return '<label class="lv-ml-check-row"><input type="checkbox" name="days" value="' + i + '"' + (on ? " checked" : "") + " /> <span>" + w + "요일</span></label>";
+        }).join("") + "</fieldset>" +
+        '<p class="lv-ml-note">연속 기록은 실제로 체크한 날만 셉니다. 실천하지 않는 요일은 연속 기록을 끊지 않습니다.</p>';
     }
     if (type === "tx") {
       return field("유형", '<select name="kind"><option value="expense"' + (item.kind !== "income" ? " selected" : "") + '>지출</option><option value="income"' + (item.kind === "income" ? " selected" : "") + '>수입</option></select>') +
@@ -749,20 +868,13 @@
     var now = Date.now();
     var id = editId || uid(type);
     if (type === "habit") {
-      if (!data.title) return formError(form, "title", "습관을 입력해 주세요.");
-      upsert(store.habits, {
-        id: id, title: data.title, freq: data.freq || "daily",
-        updatedAt: now, createdAt: (state.editing && state.editing.createdAt) || now
-      });
-    } else if (type === "tx") {
-      var amount = Number(data.amount);
-      if (!data.date || !(amount >= 0)) return formError(form, "amount", "금액과 날짜를 확인해 주세요.");
-      upsert(store.transactions, {
-        id: id, kind: data.kind || "expense", amount: amount, date: data.date,
-        category: data.category || "기타", note: data.note || "",
-        updatedAt: now, createdAt: (state.editing && state.editing.createdAt) || now
-      });
-    } else if (type === "experience") {
+      var days = $$('input[name="days"]:checked', form).map(function (x) { return Number(x.value); });
+      return handleResult(form, saveHabit({ id: editId, title: data.title, freq: data.freq, days: days }), type, retry);
+    }
+    if (type === "tx") {
+      return handleResult(form, saveTx({ id: editId, kind: data.kind, amount: data.amount, date: data.date, category: data.category, note: data.note }), type, retry);
+    }
+    if (type === "experience") {
       if (!data.title) return formError(form, "title", "활동명을 입력해 주세요.");
       upsert(store.experiences, {
         id: id, title: data.title, status: data.status || "관심 있음", date: data.date || "",
@@ -823,12 +935,21 @@
     var todosOpen = store.todos.filter(function (x) { return !x.done && x.due && x.due <= t; });
     var goals = store.goals.filter(function (g) { return g.status === "진행 중"; });
     var habits = store.habits || [];
-    var pendingHabits = habits.filter(function (h) { return !(store.habitLogs[h.id] || {})[t]; }).length;
+    var pendingHabits = habits.filter(function (h) { return habitScheduledOn(h, d) && !(store.habitLogs[h.id] || {})[t]; }).length;
     var reservations = events.filter(function (e) { return e.category === "예약"; }).length +
       (store.experiences || []).filter(function (x) { return x.date === t && (x.status === "참여 예정" || x.status === "계획 중"); }).length;
     var anniversaries = store.events.filter(function (e) { return e.category === "기념일" && e.date === t; }).length;
     var overdue = store.todos.filter(function (x) { return !x.done && x.due && x.due < t; }).length;
     var alerts = overdue + pendingHabits;
+    var greet = $("[data-lv-ml-greeting]");
+    if (greet) {
+      var h = d.getHours();
+      var hello = h < 5 ? "늦은 밤이에요." : h < 11 ? "좋은 아침이에요." : h < 17 ? "좋은 오후예요." : "편안한 저녁이에요.";
+      var openToday = store.todos.filter(function (x) { return !x.done && x.due === t; }).length;
+      greet.textContent = hello + " " + (events.length || openToday || overdue
+        ? "오늘 일정 " + events.length + "개, 오늘 마감 할 일 " + openToday + "개" + (overdue ? ", 기한 지난 할 일 " + overdue + "개" : "") + "가 있어요."
+        : "오늘 등록된 일정과 마감 할 일이 없어요.");
+    }
     host.innerHTML =
       '<div class="lv-ml-stat lv-ml-stat--hero"><p>일정</p><strong>' + events.length + "</strong><span>오늘</span></div>" +
       '<div class="lv-ml-stat"><p>할 일</p><strong>' + todosOpen.length + "</strong><span>오늘까지 마감</span></div>" +
@@ -966,6 +1087,7 @@
       '<p class="lv-ml-inline-acts"><a class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" href="#ml-todos?filter=today">오늘 할 일 전체</a></p>';
   }
 
+
   function goalProgressHtml(store, g) {
     var p = goalProgress(store, g);
     var money = g.target > 0 ? '<p class="lv-ml-note">저축 기록 ' + esc(fmtMoney(g.current || 0)) + " / " + esc(fmtMoney(g.target)) + "</p>" : "";
@@ -1072,7 +1194,7 @@
   function renderModules() {
     var host = $("[data-lv-ml-modules]");
     if (!host) return;
-    host.innerHTML = (DATA.modules || []).map(function (m) {
+    host.innerHTML = (DATA.modules || []).filter(function (m) { return !m.hidden; }).map(function (m) {
       return '<a class="lv-ml-module" href="#ml-' + esc(m.id) + '">' +
         '<em aria-hidden="true">' + esc(m.kicker) + "</em><strong>" + esc(m.title) + "</strong><span>" + esc(m.desc) + "</span>" +
       "</a>";
@@ -1108,6 +1230,11 @@
     if (view === "todos") {
       state.todoFilter = TODO_FILTERS.some(function (f) { return f.id === p.filter; }) ? p.filter : "all";
       state.todoSource = TODO_SOURCES[p.source] ? p.source : "all";
+      state.todoSort = TODO_SORTS.some(function (x) { return x.id === p.sort; }) ? p.sort : "due";
+    } else if (view === "records") {
+      state.recordType = RECORD_TYPES.some(function (x) { return x.id === p.type; }) ? p.type : "all";
+      state.recordRange = RECORD_RANGES.some(function (x) { return x.id === p.range; }) ? p.range : "all";
+      state.recordLimit = 30;
     } else if (view === "journal") {
       state.journalCat = JOURNAL_CATS.indexOf(p.cat) >= 0 ? p.cat : "all";
     } else if (view === "saved") {
@@ -1127,6 +1254,10 @@
     if (view === "todos") {
       if (state.todoFilter && state.todoFilter !== "all") add("filter", state.todoFilter);
       if (state.todoSource && state.todoSource !== "all") add("source", state.todoSource);
+      if (state.todoSort && state.todoSort !== "due") add("sort", state.todoSort);
+    } else if (view === "records") {
+      if (state.recordType && state.recordType !== "all") add("type", state.recordType);
+      if (state.recordRange && state.recordRange !== "all") add("range", state.recordRange);
     } else if (view === "journal") {
       if (state.journalCat && state.journalCat !== "all") add("cat", state.journalCat);
     } else if (view === "saved") {
@@ -1178,8 +1309,8 @@
     if (sec) sec.hidden = false;
     if (title) title.textContent = panelTitle(view);
     if (actions) {
-      var addMap = { calendar: "event", todos: "todo", goals: "goal", money: "tx", health: "health", experiences: "experience", journal: "journal", projects: "project" };
-      var addLabel = { calendar: "일정 추가", todos: "할 일 추가", goals: "목표 추가", money: "거래 추가", health: "기록 추가", experiences: "경험 추가", journal: "기록 추가", projects: "프로젝트 추가" };
+      var addMap = { calendar: "event", todos: "todo", goals: "goal", routines: "habit", money: "tx", health: "health", experiences: "experience", journal: "journal", projects: "project" };
+      var addLabel = { calendar: "일정 추가", todos: "할 일 추가", goals: "목표 추가", routines: "루틴 추가", money: "거래 추가", health: "기록 추가", experiences: "경험 추가", journal: "기록 추가", projects: "프로젝트 추가" };
       actions.innerHTML = addMap[view]
         ? '<button type="button" class="lv-ml-btn lv-ml-btn--dark lv-ml-btn--sm" data-lv-ml-add="' + addMap[view] + '">' + addLabel[view] + "</button>"
         : "";
@@ -1188,7 +1319,8 @@
     if (view === "calendar") panel.innerHTML = viewCalendar(store);
     else if (view === "todos") panel.innerHTML = viewTodos(store);
     else if (view === "goals") panel.innerHTML = viewGoals(store);
-    else if (view === "money") panel.innerHTML = viewMoney(store);
+    else if (V2 && V2.views[view]) panel.innerHTML = V2.views[view](store);   /* routines · records · search · money (life-now-hub.js) */
+    else if (view === "routines" || view === "records" || view === "search" || view === "money") panel.innerHTML = emptyBox("내 생활 V2 화면을 불러오지 못했어요. 새로고침해 주세요.");
     else if (view === "health") panel.innerHTML = viewHealth(store);
     else if (view === "saved") panel.innerHTML = viewSaved();
     else if (view === "bookings") panel.innerHTML = viewBookings(store);
@@ -1248,8 +1380,9 @@
       for (var d = 1; d <= daysInMonth; d++) {
         var ds = y + "-" + (m + 1 < 10 ? "0" : "") + (m + 1) + "-" + (d < 10 ? "0" : "") + d;
         var count = store.events.filter(function (e) { return e.date === ds; }).length;
-        cells.push('<button type="button" class="lv-ml-cal__cell' + (ds === t ? " is-today" : "") + (ds === selected ? " is-selected" : "") + '" data-lv-ml-cal-day="' + ds + '" aria-pressed="' + (ds === selected) + '" aria-label="' + esc(fmtDay(ds) + (ds === t ? ", 오늘" : "") + (count ? ", 일정 " + count + "개" : ", 일정 없음")) + '"><strong aria-hidden="true">' + d + "</strong>" +
-          (count ? '<span aria-hidden="true">' + count + "</span>" : "") + "</button>");
+        var tcount = store.todos.filter(function (x) { return x.due === ds && !x.done; }).length;
+        cells.push('<button type="button" class="lv-ml-cal__cell' + (ds === t ? " is-today" : "") + (ds === selected ? " is-selected" : "") + '" data-lv-ml-cal-day="' + ds + '" aria-pressed="' + (ds === selected) + '" aria-label="' + esc(fmtDay(ds) + (ds === t ? ", 오늘" : "") + (count ? ", 일정 " + count + "개" : ", 일정 없음") + (tcount ? ", 마감 할 일 " + tcount + "개" : "")) + '"><strong aria-hidden="true">' + d + "</strong>" +
+          (count || tcount ? '<span aria-hidden="true">' + (count ? count : "") + (tcount ? '<i class="lv-ml-cal__task">' + (count ? "+" : "") + tcount + "</i>" : "") + "</span>" : "") + "</button>");
       }
       body = '<div class="lv-ml-cal">' + cells.join("") + "</div>";
     } else if (mode === "week") {
@@ -1295,9 +1428,20 @@
     (mode === "day" ? "" : (
       '<div class="lv-ml-block-label"><h3 class="lv-ml-title lv-ml-title--md">' + esc(fmtDay(selected)) + " 일정</h3></div>" +
       eventListHtml(dayEvents)
-    ));
+    )) + (V2 ? V2.dayExtrasHtml(store, selected) : "");
   }
 
+  /* open tasks first; then the chosen order. 마감일순: no date last. 우선순위순: 높음 → 낮음, then deadline. */
+  function sortTodos(list, sort) {
+    var dueKey = function (t) { return t.due || "9999-99-99"; };
+    return list.sort(function (a, b) {
+      if (!!a.done !== !!b.done) return a.done ? 1 : -1;
+      if (sort === "created") return ((b.createdAt || 0) - (a.createdAt || 0)) || String(a.id).localeCompare(String(b.id));
+      if (sort === "priority") return (PRIO_RANK[prio(a)] - PRIO_RANK[prio(b)]) || dueKey(a).localeCompare(dueKey(b)) || ((b.createdAt || 0) - (a.createdAt || 0));
+      if (a.done) return (b.updatedAt || 0) - (a.updatedAt || 0);
+      return dueKey(a).localeCompare(dueKey(b)) || (PRIO_RANK[prio(a)] - PRIO_RANK[prio(b)]) || ((b.createdAt || 0) - (a.createdAt || 0));
+    });
+  }
   function viewTodos(store) {
     var today = todayStr();
     var f = state.todoFilter || "all", src = state.todoSource || "all";
@@ -1305,12 +1449,7 @@
     var counts = { all: bySrc.length, today: 0, upcoming: 0, done: 0 };
     bySrc.forEach(function (t) { counts[todoBucket(t, today)]++; });
     var list = bySrc.filter(function (t) { return f === "all" || todoBucket(t, today) === f; });
-    list.sort(function (a, b) {
-      if (a.done !== b.done) return a.done ? 1 : -1;
-      if (a.done) return (b.updatedAt || 0) - (a.updatedAt || 0);
-      var ad = a.due || "9999-99-99", bd = b.due || "9999-99-99";
-      return ad.localeCompare(bd) || (PRIO_RANK[prio(a)] - PRIO_RANK[prio(b)]) || ((b.createdAt || 0) - (a.createdAt || 0));
-    });
+    sortTodos(list, state.todoSort);
     var srcCounts = {};
     store.todos.forEach(function (t) { var k = todoSource(t); srcCounts[k] = (srcCounts[k] || 0) + 1; });
     var srcOpts = [{ id: "all", label: "모든 출처 (" + store.todos.length + ")" }].concat(Object.keys(TODO_SOURCES).filter(function (k) { return srcCounts[k] || k === src; }).map(function (k) {
@@ -1334,6 +1473,9 @@
         '<label class="lv-ml-field lv-ml-field--inline"><span>출처</span><select data-lv-ml-todo-source>' + srcOpts.map(function (o) {
           return '<option value="' + esc(o.id) + '"' + (o.id === src ? " selected" : "") + ">" + esc(o.label) + "</option>";
         }).join("") + "</select></label>" +
+        '<label class="lv-ml-field lv-ml-field--inline"><span>정렬</span><select data-lv-ml-todo-sort>' + TODO_SORTS.map(function (o) {
+          return '<option value="' + o.id + '"' + (o.id === (state.todoSort || "due") ? " selected" : "") + ">" + o.label + "</option>";
+        }).join("") + "</select></label>" +
       "</div>" +
       '<p class="lv-ml-note">' + esc(filterLabel) + " " + list.length + "개 표시 · ‘오늘’은 오늘까지 마감(기한 지남 포함), ‘예정’은 이후 마감 또는 날짜 미정입니다.</p>" +
       (list.length ? '<ul class="lv-ml-manage-list lv-ml-tasks">' + list.map(function (t) { return todoItemHtml(t, store); }).join("") + "</ul>" : empty) +
@@ -1351,18 +1493,6 @@
           }).join("") + "</ul></div>" +
           '<div class="lv-ml-row-acts"><button type="button" data-lv-ml-edit="checklist" data-id="' + esc(c.id) + '" aria-label="' + esc(c.title) + ' 수정">수정</button><button type="button" data-lv-ml-del="checklist" data-id="' + esc(c.id) + '" aria-label="' + esc(c.title) + ' 삭제">삭제</button></div></li>';
       }).join("") + "</ul>";
-  }
-
-  function streakFor(habitId, logs) {
-    var n = 0;
-    var d = new Date();
-    for (var i = 0; i < 60; i++) {
-      var key = todayStr(d);
-      if ((logs[habitId] || {})[key]) n += 1;
-      else break;
-      d.setDate(d.getDate() - 1);
-    }
-    return n;
   }
 
   function goalCardHtml(store, g) {
@@ -1384,6 +1514,7 @@
       '<div class="lv-ml-row-acts lv-ml-row-acts--wrap">' +
         '<button type="button" data-lv-ml-add="todo" data-goal="' + esc(g.id) + '" aria-label="' + esc(g.title) + '에 새 할 일 추가">할 일 추가</button>' +
         '<button type="button" data-lv-ml-link-goal="' + esc(g.id) + '" aria-label="' + esc(g.title) + '에 기존 할 일 연결">기존 할 일 연결</button>' +
+        '<button type="button" data-lv-ml-goal-done="' + esc(g.id) + '" aria-label="' + esc(g.title) + (g.status === "완료" ? ' 다시 진행 중으로' : ' 완료로 표시') + '">' + (g.status === "완료" ? "다시 진행" : "완료로 표시") + "</button>" +
         '<button type="button" data-lv-ml-edit="goal" data-id="' + esc(g.id) + '" aria-label="' + esc(g.title) + ' 수정">수정</button>' +
         '<button type="button" data-lv-ml-del="goal" data-id="' + esc(g.id) + '" aria-label="' + esc(g.title) + ' 삭제">삭제</button>' +
       "</div>" +
@@ -1392,7 +1523,6 @@
   }
 
   function viewGoals(store) {
-    var t = todayStr();
     var groups = GOAL_STATUSES.map(function (st) { return { status: st, list: store.goals.filter(function (g) { return g.status === st; }) }; });
     return '<p class="lv-ml-note">진행률은 목표에 연결한 할 일의 완료 수로만 계산합니다. 목표를 삭제해도 연결된 할 일은 남습니다.</p>' +
       (store.goals.length
@@ -1401,50 +1531,14 @@
               '<div class="lv-ml-goal-grid lv-ml-goal-grid--full">' + x.list.map(function (g) { return goalCardHtml(store, g); }).join("") + "</div>";
           }).join("")
         : emptyBox("목표가 없습니다. 목표를 만들고 할 일을 연결하면 실제 완료 수로 진행 상황을 볼 수 있어요.", '<button type="button" class="lv-ml-btn lv-ml-btn--dark lv-ml-btn--sm" data-lv-ml-add="goal">목표 만들기</button>')) +
-      '<div class="lv-ml-block-label"><h3 class="lv-ml-title lv-ml-title--md">습관</h3></div>' +
-      '<p class="lv-ml-note">하루 미실천이 전체 목표를 초기화하지 않습니다.</p>' +
-      (store.habits.length ? '<ul class="lv-ml-manage-list">' + store.habits.map(function (h) {
-        var on = !!(store.habitLogs[h.id] || {})[t];
-        return "<li><label><input type=\"checkbox\" data-lv-ml-habit=\"" + esc(h.id) + "\"" + (on ? " checked" : "") + " /> <strong>" + esc(h.title) + "</strong></label>" +
-          "<p>연속 " + streakFor(h.id, store.habitLogs) + "일 · " + esc(h.freq === "weekly" ? "매주" : "매일") + "</p>" +
-          '<div class="lv-ml-row-acts"><button type="button" data-lv-ml-edit="habit" data-id="' + esc(h.id) + '" aria-label="' + esc(h.title) + ' 수정">수정</button><button type="button" data-lv-ml-del="habit" data-id="' + esc(h.id) + '" aria-label="' + esc(h.title) + ' 삭제">삭제</button></div></li>';
-      }).join("") + "</ul>" : emptyBox("습관이 없습니다.", '<button type="button" class="lv-ml-btn lv-ml-btn--dark lv-ml-btn--sm" data-lv-ml-add="habit">습관 추가</button>'));
+      '<div class="lv-ml-block-label"><h3 class="lv-ml-title lv-ml-title--md">습관·루틴</h3></div>' +
+      '<p class="lv-ml-note">습관은 ‘루틴’에서 요일을 정하고 매일 체크합니다. 지금 ' + store.habits.length + '개가 있어요.</p>' +
+      '<p class="lv-ml-inline-acts"><a class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" href="#ml-routines">루틴 열기</a></p>';
   }
 
-  function viewMoney(store) {
-    var now = new Date();
-    var ym = now.getFullYear() + "-" + (now.getMonth() + 1 < 10 ? "0" : "") + (now.getMonth() + 1);
-    var monthTx = store.transactions.filter(function (x) { return String(x.date || "").indexOf(ym) === 0; });
-    var income = monthTx.filter(function (x) { return x.kind === "income"; }).reduce(function (a, b) { return a + (b.amount || 0); }, 0);
-    var expense = monthTx.filter(function (x) { return x.kind !== "income"; }).reduce(function (a, b) { return a + (b.amount || 0); }, 0);
-    var budget = Number(store.budgets.monthly) || 0;
-    var remain = budget ? budget - expense : null;
-    var byCat = {};
-    monthTx.filter(function (x) { return x.kind !== "income"; }).forEach(function (x) {
-      byCat[x.category || "기타"] = (byCat[x.category || "기타"] || 0) + (x.amount || 0);
-    });
-    return '<div class="lv-ml-stats">' +
-      '<div class="lv-ml-stat"><p>이번 달 수입</p><strong>' + fmtMoney(income) + "</strong></div>" +
-      '<div class="lv-ml-stat"><p>이번 달 지출</p><strong>' + fmtMoney(expense) + "</strong></div>" +
-      '<div class="lv-ml-stat"><p>예산</p><strong>' + (budget ? fmtMoney(budget) : "미설정") + "</strong></div>" +
-      '<div class="lv-ml-stat"><p>남은 예산</p><strong>' + (remain == null ? "—" : fmtMoney(remain)) + "</strong>" +
-        (remain != null && remain < 0 ? "<span>초과</span>" : "") + "</div>" +
-    "</div>" +
-    '<form class="lv-ml-inline-form" data-lv-ml-budget-form><label>월 예산 <input type="number" min="0" name="monthly" value="' + esc(budget || "") + '" /></label><button type="submit" class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm">예산 저장</button></form>' +
-    '<p class="lv-ml-note">계좌·카드 자동 수집은 연결되어 있지 않습니다. 직접 기록한 금액만 집계합니다.</p>' +
-    '<div class="lv-ml-block-label"><h3 class="lv-ml-title lv-ml-title--md">카테고리별 지출</h3></div>' +
-    (Object.keys(byCat).length
-      ? '<ul class="lv-ml-bar-list">' + Object.keys(byCat).map(function (k) {
-          var pct = expense ? Math.round(byCat[k] / expense * 100) : 0;
-          return "<li><span>" + esc(k) + "</span><div class=\"lv-ml-progress\"><span style=\"width:" + pct + '%"></span></div><em>' + fmtMoney(byCat[k]) + "</em></li>";
-        }).join("") + "</ul>"
-      : emptyBox("이번 달 지출 기록이 없습니다.")) +
-    '<div class="lv-ml-block-label"><h3 class="lv-ml-title lv-ml-title--md">최근 거래</h3></div>' +
-    '<ul class="lv-ml-manage-list">' + store.transactions.slice(0, 30).map(function (x) {
-      return "<li><div><strong>" + esc((x.kind === "income" ? "+" : "-") + fmtMoney(x.amount)) + "</strong><p>" + esc([x.date, x.category, x.note].filter(Boolean).join(" · ")) + "</p></div>" +
-        '<div class="lv-ml-row-acts"><button type="button" data-lv-ml-edit="tx" data-id="' + esc(x.id) + '">수정</button><button type="button" data-lv-ml-del="tx" data-id="' + esc(x.id) + '">삭제</button></div></li>';
-    }).join("") + "</ul>";
-  }
+
+
+
 
   function viewHealth(store) {
     return '<p class="lv-ml-note">건강 기록은 이 기기에만 저장되며 기본 비공개입니다. 의료 진단·예측을 제공하지 않습니다. FitOn 등 외부 연동은 준비되지 않았습니다.</p>' +
@@ -1632,27 +1726,27 @@
 
   function viewReport(store) {
     var t = todayStr();
-    var weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate() - 7);
-    var weekStart = todayStr(weekAgo);
-    var weekEvents = store.events.filter(function (e) { return e.date >= weekStart; }).length;
+    var wk = new Date(); wk.setDate(wk.getDate() - 6);
+    var weekStart = todayStr(wk);
+    var weekEvents = store.events.filter(function (e) { return e.date >= weekStart && e.date <= t; }).length;
     var todos = store.todos;
     var todoDone = todos.filter(function (x) { return x.done; }).length;
     var todoRate = todos.length ? Math.round(todoDone / todos.length * 100) : null;
     var goals = store.goals;
     var linkedGoals = goals.map(function (g) { return goalProgress(store, g); }).filter(Boolean);
     var avgGoal = linkedGoals.length ? Math.round(linkedGoals.reduce(function (a, p) { return a + p.pct; }, 0) / linkedGoals.length) : null;
-    var habitsDone = store.habits.filter(function (h) { return (store.habitLogs[h.id] || {})[t]; }).length;
-    var now = new Date();
-    var ym = now.getFullYear() + "-" + (now.getMonth() + 1 < 10 ? "0" : "") + (now.getMonth() + 1);
-    var monthTx = store.transactions.filter(function (x) { return String(x.date || "").indexOf(ym) === 0; });
-    var income = monthTx.filter(function (x) { return x.kind === "income"; }).reduce(function (a, b) { return a + b.amount; }, 0);
-    var expense = monthTx.filter(function (x) { return x.kind !== "income"; }).reduce(function (a, b) { return a + b.amount; }, 0);
-    return '<p class="lv-ml-note">통계는 이 기기에 저장된 실제 데이터만 사용합니다.</p>' +
+    var todaysHabits = store.habits.filter(function (h) { return habitScheduledOn(h, new Date()); });
+    var habitsDone = todaysHabits.filter(function (h) { return (store.habitLogs[h.id] || {})[t]; }).length;
+    var ms = moneySummary(store, ymOf(new Date()));
+    var income = ms.income, expense = ms.expense;
+    return (V2 ? V2.weeklyReviewHtml(store) : "") +
+      '<div class="lv-ml-block-label"><p class="lv-ml-kicker" lang="en">Overall</p><h3 class="lv-ml-title lv-ml-title--md">전체 요약</h3></div>' +
+      '<p class="lv-ml-note">통계는 이 기기에 저장된 실제 데이터만 사용합니다.</p>' +
       '<div class="lv-ml-stats">' +
         '<div class="lv-ml-stat"><p>최근 7일 일정</p><strong>' + weekEvents + "</strong></div>" +
         '<div class="lv-ml-stat"><p>할 일 완료율</p><strong>' + (todoRate == null ? "—" : todoRate + "%") + "</strong></div>" +
         '<div class="lv-ml-stat"><p>목표 진행 (연결된 할 일 기준)</p><strong>' + (avgGoal == null ? "—" : avgGoal + "%") + "</strong></div>" +
-        '<div class="lv-ml-stat"><p>오늘 습관</p><strong>' + habitsDone + "/" + store.habits.length + "</strong></div>" +
+        '<div class="lv-ml-stat"><p>오늘 루틴</p><strong>' + habitsDone + "/" + todaysHabits.length + "</strong></div>" +
         '<div class="lv-ml-stat"><p>이번 달 수입</p><strong>' + fmtMoney(income) + "</strong></div>" +
         '<div class="lv-ml-stat"><p>이번 달 지출</p><strong>' + fmtMoney(expense) + "</strong></div>" +
         '<div class="lv-ml-stat"><p>경험</p><strong>' + store.experiences.length + "</strong></div>" +
@@ -1699,7 +1793,8 @@
       '<p class="lv-ml-note">연령대·관심사·Life Event는 이 기기에서 홈, 라이프 스테이지, 오늘의 발견, 탐색, 커뮤니티의 순서를 맞추는 데만 사용돼요. 바꾸면 바로 반영돼요.</p>' +
       '<p class="lv-ml-inline-acts"><button type="button" class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" data-lv-onboard-reopen>맞춤 설정 다시 하기</button> ' +
         (PZ ? '<button type="button" class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" data-lv-ml-pz-reset>맞춤 설정 초기화</button>' : "") + "</p>" +
-      (window.LivonHelp ? '<p class="lv-ml-note">' + window.LivonHelp.link("personalization-reset", "초기화하면 무엇이 지워지나요?") + ' · <a class="lv-help-link" href="#help">도움말 전체 보기</a></p>' : "");
+      (window.LivonHelp ? '<p class="lv-ml-note">' + window.LivonHelp.link("personalization-reset", "초기화하면 무엇이 지워지나요?") + ' · <a class="lv-help-link" href="#help">도움말 전체 보기</a></p>' : "") +
+      (V2 ? V2.myLifeDataHtml(store) : "");
   }
 
 
@@ -1708,6 +1803,7 @@
     renderPriority();
     renderTimeline();
     renderTodayTodos();
+    if (V2) { V2.renderTodayHabits(); V2.renderUpcoming(); }
     renderActiveGoals();
     renderRecentSaved();
     renderRecentViewed();
@@ -1812,6 +1908,7 @@
     syncUrl(view);
     if (focusSel) focusAfterRender(focusSel);
   }
+
 
   function bind() {
     if (bound) return;
@@ -1955,7 +2052,7 @@
         e.preventDefault();
         var preset = {};
         if (add.getAttribute("data-goal")) preset.goalId = add.getAttribute("data-goal");
-        if (add.getAttribute("data-date")) preset.date = add.getAttribute("data-date");
+        if (add.getAttribute("data-date")) { preset.date = add.getAttribute("data-date"); if (add.getAttribute("data-lv-ml-add") === "todo") preset.due = preset.date; }
         if (add.getAttribute("data-category")) preset.category = add.getAttribute("data-category");
         openForm(add.getAttribute("data-lv-ml-add"), null, preset);
         return;
@@ -2094,17 +2191,84 @@
       }
       var exp = e.target.closest("[data-lv-ml-export]");
       if (exp) {
-        var blob = new Blob([JSON.stringify(loadStore(), null, 2)], { type: "application/json" });
-        var a = document.createElement("a");
-        a.href = URL.createObjectURL(blob);
-        a.download = "livon-my-life-" + todayStr() + ".json";
-        a.click();
+        e.preventDefault();
+        confirmDialog({ title: "내 생활 데이터 내보내기",
+          body: "일정·할 일·목표·루틴·기록·생활비·예산·건강 기록이 JSON 파일 하나로 이 기기에 내려받아져요. 일기·건강·돈 같은 개인 기록이 그대로 들어 있으니 파일을 보관하거나 보낼 때 주의해 주세요. 파일은 LIVON 서버나 다른 곳으로 보내지지 않아요.",
+          ok: "내려받기" }).then(function (ok) {
+          if (!ok) return;
+          var ok2 = V2 && V2.downloadExport();
+          announce(ok2 ? "내 생활 데이터를 파일로 내려받았어요." : "이 브라우저에서는 파일을 내려받을 수 없어요.");
+          restoreFocus(exp);
+        });
         return;
       }
       var clear = e.target.closest("[data-lv-ml-clear]");
       if (clear) {
-        confirmDialog({ title: "내 생활 데이터 전체 삭제", body: "이 기기에 저장된 내 생활 일정·할 일·목표·기록을 모두 삭제할까요? 되돌릴 수 없습니다.", ok: "모두 삭제", danger: true })
-          .then(function (ok) { if (!ok) return; saveStore(emptyStore()); refreshAll(); announce("내 생활 데이터를 삭제했습니다."); });
+        e.preventDefault();
+        if (!V2) return;
+        var cc = V2.exportCounts(loadStore()), sum = 0;
+        ML_COLLECTIONS.forEach(function (k) { sum += cc[k]; });
+        confirmDialog({ title: "내 생활 데이터를 모두 지울까요?",
+          body: "지워지는 것: 이 기기의 일정, 할 일, 목표, 루틴과 체크 기록, 체크리스트, 전환 준비, 기록(일기), 수입·지출, 월 예산, 건강 기록, 경험 (" + sum + "건). 남는 것: 저장한 항목, 커뮤니티 글·댓글, 맞춤 설정, 관심사, 최근 본 항목, LIVON AI 대화, ONGIL, Newon+ 계정. 먼저 내보내기로 파일을 받아 둘 수 있어요.",
+          ok: "계속", danger: true }).then(function (ok) {
+          if (!ok) return false;
+          if (document.contains(clear)) clear.focus();
+          return confirmDialog({ title: "정말 모두 지울까요?", body: "되돌릴 수 없어요. ‘모두 삭제’를 누르면 내 생활 데이터가 이 기기에서 바로 지워져요.", ok: "모두 삭제", danger: true });
+        }).then(function (ok) {
+          if (!ok) return;
+          V2.clearMyLifeData();
+          state.recordQ = ""; state.searchQ = ""; state.reviewOffset = 0; state.moneyOffset = 0;
+          refreshAll();
+          announce("내 생활 데이터를 지웠어요. 저장한 항목과 다른 데이터는 그대로예요.");
+          var head = $("#ml-data-title");
+          if (head) { head.setAttribute("tabindex", "-1"); head.focus(); } else restoreFocus(null);
+        });
+        return;
+      }
+      var gd = e.target.closest("[data-lv-ml-goal-done]");
+      if (gd) {
+        var goal = findItem("goal", gd.getAttribute("data-lv-ml-goal-done"));
+        if (goal) {
+          var toDone = goal.status !== "완료";
+          var gr = saveGoal(Object.assign({}, goal, { status: toDone ? "완료" : "진행 중" }));
+          if (gr.status === "ok") {
+            refreshAll();
+            announce("‘" + goal.title + "’ 목표를 " + (toDone ? "완료로 표시했어요." : "다시 진행 중으로 바꿨어요."));
+            var again = $('[data-lv-ml-goal-done="' + String(goal.id).replace(/["\\]/g, "") + '"]');
+            if (again) again.focus(); else restoreFocus(null);
+          }
+        }
+        return;
+      }
+      var rt = e.target.closest("[data-lv-ml-record-type]");
+      if (rt) {
+        state.recordType = rt.getAttribute("data-lv-ml-record-type") || "all"; state.recordLimit = 30;
+        rerenderView("records", '[data-lv-ml-record-type="' + state.recordType + '"]');
+        return;
+      }
+      if (e.target.closest("[data-lv-ml-record-more]")) {
+        state.recordLimit = (state.recordLimit || 30) + 30;
+        rerenderView("records", "[data-lv-ml-record-more], [data-lv-ml-record-count]");
+        announce("기록을 더 불러왔어요.");
+        return;
+      }
+      if (e.target.closest("[data-lv-ml-record-reset]")) {
+        state.recordType = "all"; state.recordRange = "all"; state.recordQ = ""; state.recordLimit = 30;
+        rerenderView("records", '[data-lv-ml-record-type="all"]');
+        return;
+      }
+      var mn = e.target.closest("[data-lv-ml-money-nav]");
+      if (mn) {
+        var mv = Number(mn.getAttribute("data-lv-ml-money-nav"));
+        state.moneyOffset = mv ? (Number(state.moneyOffset) || 0) + mv : 0;
+        rerenderView("money", '[data-lv-ml-money-nav="' + (mv || -1) + '"]');
+        return;
+      }
+      var rn = e.target.closest("[data-lv-ml-review-nav]");
+      if (rn && !rn.disabled) {
+        var rv = Number(rn.getAttribute("data-lv-ml-review-nav"));
+        state.reviewOffset = rv ? Math.min(0, (Number(state.reviewOffset) || 0) + rv) : 0;
+        rerenderView("report", '[data-lv-ml-review-nav="' + (rv === 1 && state.reviewOffset < 0 ? 1 : -1) + '"]');
         return;
       }
     });
@@ -2112,6 +2276,16 @@
     document.addEventListener("change", function (e) {
       var t = e.target;
       if (!t.closest || !t.closest("#life-now, #lv-ml-form-modal")) return;
+      if (t.matches("[data-lv-ml-todo-sort]")) {
+        state.todoSort = TODO_SORTS.some(function (x) { return x.id === t.value; }) ? t.value : "due";
+        rerenderView("todos", "[data-lv-ml-todo-sort]");
+        return;
+      }
+      if (t.matches("[data-lv-ml-record-range]")) {
+        state.recordRange = RECORD_RANGES.some(function (x) { return x.id === t.value; }) ? t.value : "all"; state.recordLimit = 30;
+        rerenderView("records", "[data-lv-ml-record-range]");
+        return;
+      }
       if (t.matches("[data-lv-ml-todo-source]")) {
         state.todoSource = TODO_SOURCES[t.value] ? t.value : "all";
         rerenderView("todos", "[data-lv-ml-todo-source]");
@@ -2141,12 +2315,15 @@
       }
       if (t.matches("[data-lv-ml-habit]")) {
         var hid = t.getAttribute("data-lv-ml-habit");
-        var st = loadStore();
-        if (!st.habitLogs[hid]) st.habitLogs[hid] = {};
-        var day = todayStr();
-        if (t.checked) st.habitLogs[hid][day] = true; else delete st.habitLogs[hid][day];
-        saveStore(st);
-        refreshAll();
+        var hb = findItem("habit", hid);
+        var keep = t.id;
+        if (hb && setHabitDone(hid, todayStr(), !!t.checked)) {
+          refreshAll();
+          announce("‘" + hb.title + "’ 오늘 " + (t.checked ? "완료로 표시했어요." : "완료를 취소했어요."));
+          var back = keep ? document.getElementById(keep) : null;
+          if (back) back.focus(); else restoreFocus(null);
+        }
+        return;
       }
       if (t.matches("[data-lv-ml-check-item]")) {
         var cid = t.getAttribute("data-lv-ml-check-item");
@@ -2190,11 +2367,32 @@
         announce(r.status === "ok" ? "‘" + String(val).trim() + "’ 관심사를 추가했습니다." : "이미 있는 관심사입니다.");
         return;
       }
+      var sf = e.target.closest("[data-lv-ml-search-form]");
+      if (sf) {
+        e.preventDefault();
+        var sq = sf.querySelector('[name="q"]');
+        state.searchQ = String((sq && sq.value) || "").replace(/\s+/g, " ").trim().slice(0, 60);
+        if (state.view === "search") { rerenderView("search", "#ml-search-q-panel"); }
+        else gotoView("search");
+        var res = V2 ? V2.searchMyLife(loadStore(), state.searchQ, 50) : { total: 0 };
+        announce(state.searchQ ? "내 생활 검색 결과 " + res.total + "개" : "찾을 단어를 입력해 주세요.");
+        return;
+      }
+      var rs = e.target.closest("[data-lv-ml-record-search]");
+      if (rs) {
+        e.preventDefault();
+        var rq = rs.querySelector('[name="q"]');
+        state.recordQ = String((rq && rq.value) || "").replace(/\s+/g, " ").trim().slice(0, 60); state.recordLimit = 30;
+        rerenderView("records", "[data-lv-ml-record-search] input");
+        if (V2) announce("기록 " + V2.recordsList(loadStore(), { type: state.recordType, range: state.recordRange, q: state.recordQ }).length + "개");
+        return;
+      }
       var budget = e.target.closest("[data-lv-ml-budget-form]");
       if (budget) {
         e.preventDefault();
         var store = loadStore();
-        store.budgets.monthly = Number(new FormData(budget).get("monthly")) || 0;
+        var bv = Number(new FormData(budget).get("monthly"));
+        store.budgets.monthly = isFinite(bv) && bv > 0 ? Math.round(bv) : 0;
         saveStore(store);
         renderPanel("money");
         announce("월 예산을 저장했습니다.");
@@ -2246,6 +2444,15 @@
 
   /* Public data API for other LIVON screens (LIVON AI approved saves). Same rules as the My Life UI:
      validation, duplicate detection (status "duplicate" — nothing is written) and source preservation. */
+  /* My Life V2 hub (livon/life-now-hub.js, loaded just before this file): routines, records, search, weekly review, money,
+     export and delete-all. It gets this file's helpers and store functions; without it the rest of My Life still works. */
+  var V2 = window.LivonMyLifeHub && window.LivonMyLifeHub.install ? window.LivonMyLifeHub.install({
+    $: $, esc: esc, todayStr: todayStr, parseDate: parseDate, fmtDay: fmtDay, fmtMoney: fmtMoney, idPart: idPart, isObj: isObj, normTitle: normTitle,
+    prio: prio, PRIO_RANK: PRIO_RANK, emptyBox: emptyBox, chipGroup: chipGroup, loadStore: loadStore, saveStore: saveStore, emptyStore: emptyStore,
+    STORE_VERSION: STORE_VERSION, readJSON: readJSON, state: state, todoItemHtml: todoItemHtml, habitDays: habitDays, habitScheduledOn: habitScheduledOn,
+    WEEKDAYS: WEEKDAYS, RECORD_TYPES: RECORD_TYPES, RECORD_RANGES: RECORD_RANGES, ML_COLLECTIONS: ML_COLLECTIONS, ymOf: ymOf, moneySummary: moneySummary
+  }) : null;
+
   var api = { saveTodo: saveTodo, saveGoal: saveGoal, findDuplicateTodo: function (title) { return findDuplicateTodo(loadStore(), title, ""); },
     /* read-only snapshots for the LIVON home preview (no separate task/calendar logic there) */
     snapshot: function () { return JSON.parse(JSON.stringify(loadStore())); },
@@ -2293,9 +2500,14 @@
       setGoalTodos: setGoalTodos, goalProgress: goalProgress, saveJournal: saveJournal, removeItem: removeItem, todoBucket: todoBucket,
       todoSource: todoSource, priorityItems: priorityItems, collectedSaved: collectedSaved, unsave: unsave, savedType: savedType,
       readInterests: readInterests, addInterest: addInterest, removeInterest: removeInterest, parseMlHash: parseMlHash,
-      applyParams: applyParams, viewHash: viewHash, state: state, safeHref: safeHref, recentViewed: recentViewed
+      applyParams: applyParams, viewHash: viewHash, state: state, safeHref: safeHref, recentViewed: recentViewed,
+      /* My Life V2 */
+      todayStr: todayStr, sortTodos: sortTodos, saveHabit: saveHabit, setHabitDone: setHabitDone, habitScheduledOn: habitScheduledOn,
+      saveTx: saveTx, moneySummary: moneySummary, ML_COLLECTIONS: ML_COLLECTIONS, v2: !!V2,
+      views: Object.assign({ todos: viewTodos, calendar: viewCalendar, report: viewReport, goals: viewGoals, settings: viewSettings }, V2 ? V2.views : {})
     }
   };
+  if (V2) Object.keys(V2.fns).forEach(function (k) { window.LivonMyLife._test[k] = V2.fns[k]; });
 
   var start = function () {
     init();

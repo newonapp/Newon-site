@@ -352,7 +352,8 @@ test('HF-21 My Life help: saves, to-dos, goals, records — and which reset clea
   has('save-items', /‘이 기기에 저장됩니다’/);
   assert.match(read('life-hub.js'), /이 기기에 저장됩니다/);
   // Help may only describe a My Life action whose button actually exists
-  const ml = read('life-now-page.js'), rendered = attr => new RegExp("['\"][^'\"\\n]*<button[^>]*" + attr).test(ml) || INDEX.includes(attr);
+  /* My Life V2 renders the settings data block (export / delete-all) from life-now-hub.js */
+  const ml = read('life-now-page.js') + read('life-now-hub.js'), rendered = attr => new RegExp("['\"][^'\"\\n]*<button[^>]*" + attr).test(ml) || INDEX.includes(attr);
   if (!rendered('data-lv-ml-export')) assert.doesNotMatch(HELP_TEXT, /내보내기’|내려받|파일로 받/, 'there is no export button, so Help must not promise one');
   if (!rendered('data-lv-ml-clear')) assert.doesNotMatch(HELP_TEXT, /내 생활 데이터 전체 삭제/, 'there is no clear-all button');
 });
