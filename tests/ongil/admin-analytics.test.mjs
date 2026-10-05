@@ -941,7 +941,7 @@ test('OG-AQ-16 version and cache: the app states its version and the changed fil
   assert.match(HTML, /ongil-shell\.css\?v=20261003r11/);
   assert.match(HTML, /ongil-app\.css\?v=20261003r11/);
   // Completion V2 moved app.js and ongil-life.css on (BEFORE ?v=20261003r11, AFTER ?v=20261004v12); Completion V3 changed the same two files again (AFTER ?v=20261004v13).
-  assert.match(HTML, /js\/app\.js\?v=20261004v13/);
+  assert.match(HTML, /js\/app\.js\?v=20261005h14/); // Health · Safety V2 changed app.js again (AFTER ?v=20261005h14)
   assert.match(HTML, /ongil-life\.css\?v=20261004v13/);
 });
 

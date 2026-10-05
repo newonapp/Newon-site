@@ -1156,7 +1156,8 @@ test('RH-43 cache / version consistency: every local file the page loads carries
   assert.deepEqual(Object.keys(ongil).sort(), ['app.js', 'ongil-app.css', 'ongil-care.css', 'ongil-home.css', 'ongil-life.css', 'ongil-shell.css', 'ongil-tokens.css']);
   for (const f of ['ongil-shell.css', 'ongil-app.css', 'ongil-tokens.css', 'ongil-home.css']) assert.equal(ongil[f], '20261003r11', `${f} changed in Phase 11 and has the release's version`);
   /* Completion V2 changed app.js (and the modules it imports) and ongil-life.css: those two, and only those, moved on */
-  for (const f of ['app.js', 'ongil-life.css']) assert.equal(ongil[f], '20261004v13', `${f} changed in Completion V2 (v12) and again in V3 (v13)`);
+  assert.equal(ongil['ongil-life.css'], '20261004v13', 'ongil-life.css changed in Completion V2 (v12) and again in V3 (v13)');
+  assert.equal(ongil['app.js'], '20261005h14', 'app.js changed in Completion V2 (v12), V3 (v13) and Health · Safety V2 (20261005h14)');
   assert.match(APP, /const APP_VERSION = 'hardening-v1';/);
   /* modules are imported by relative path with no version of their own: they are revalidated by the host's default
      caching (no immutable / long max-age rule exists for /ongil-start in the deployment config) */

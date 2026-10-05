@@ -148,3 +148,8 @@ cache versions, corrupt storage, and browser checks (5 widths, keyboard, focus, 
 - 건너뜀 is set on 건강·안부 or 내 생활 › 건강; Home's 복약 card shows it but only offers the 먹었어요 check.
 - Family help requests are local to this device (Family V1); cross-device delivery needs Family V2 activation.
 - No real Safari / iPhone / Android device testing was done in this pass (Chromium only).
+- Cache (production integration): GitHub Pages serves every file with max-age 600 and ignores the query string. The entry
+  `app.js?v=` moved on (v13 → 20261005h14) so a new page never runs a cached old entry (that combination booted but showed
+  the old screen for up to 10 minutes). The reverse — a cached old page with a fresh entry — still boots and shows the
+  home; a 건너뜀 press there fails with "저장하지 못했어요" (nothing saved) until the page refreshes. Tested in Chromium with
+  both mixed trees; no startup failure in either.
