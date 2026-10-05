@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="/livon/explore-page.css?v=20261002perf1" />
     <link rel="stylesheet" href="/livon/community-page.css?v=20261005cv2" />
     <link rel="stylesheet" href="/livon/help-page.css?v=20261002hf1" />
-    <link rel="stylesheet" href="/livon/today-page.css?v=20261002perf1" />
+    <link rel="stylesheet" href="/livon/today-page.css?v=20261004c6" />
     <link rel="stylesheet" href="/livon/ai-page.css?v=20261004c4" />
     <link rel="stylesheet" href="/livon/home-page.css?v=20260929hm1" />
     <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
@@ -1376,6 +1376,7 @@
             <div class="lv-td-inner lv-td-nav__inner">
               <p class="lv-td-nav__label">BROWSE</p>
               <div class="lv-td-nav__track">
+                <a href="#td-mytoday">내 오늘</a>
                 <a href="#td-pick">발견</a>
                 <a href="#td-foryou">맞춤</a>
                 <a href="#td-week">이번 주</a>
@@ -1393,7 +1394,19 @@
           </nav>
 
           <div class="lv-td-body">
-            <section class="lv-td-sec lv-td-sec--flush" id="td-pick" data-lv-td-reveal>
+            <section class="lv-td-sec lv-td-sec--flush lv-td-my" id="td-mytoday" aria-labelledby="td-my-title" data-lv-td-reveal>
+              <div class="lv-td-inner">
+                <header class="lv-td-head">
+                  <p class="lv-td-eyebrow" lang="en">My Today</p>
+                  <h2 class="lv-td-title lv-td-title--md" id="td-my-title">내 오늘</h2>
+                  <p class="lv-td-lead" data-td-my-date>내 생활에 기록한 오늘의 할 일·일정·루틴을 모아 봅니다.</p>
+                </header>
+                <p class="visually-hidden" role="status" aria-live="polite" data-td-my-status></p>
+                <div data-td-my><p class="lv-td-my__empty">내 생활에 기록한 오늘의 할 일·일정·루틴은 <a href="#ml-home">내 생활</a>에서 볼 수 있어요.</p></div>
+              </div>
+            </section>
+
+            <section class="lv-td-sec" id="td-pick" data-lv-td-reveal>
               <div class="lv-td-inner">
                 <header class="lv-td-head">
                   <p class="lv-td-eyebrow" lang="en">Discovery Feed</p>
@@ -3355,19 +3368,19 @@
       </div>
     </div>
     <script src="/livon/life-now-data.js?v=20261004c5"></script>
-    <script src="/livon/life-now-hub.js?v=20261004c5"></script>
-    <script src="/livon/life-now-page.js?v=20261004c5"></script>
+    <script src="/livon/life-now-hub.js?v=20261004c6"></script>
+    <script src="/livon/life-now-page.js?v=20261004c6"></script>
     <script src="/livon/explore-data.js?v=20260926img1"></script>
     <script src="/livon/explore-search.js?v=20261001dm1"></script>
     <script src="/livon/explore-page.js?v=20261002perf1"></script>
     <script src="/livon/community-data.js?v=20260928cm1"></script>
     <script src="/livon/community-service.js?v=20261005cv2"></script>
     <script src="/livon/community-page.js?v=20261005cv2"></script>
-    <script src="/livon/help-data.js?v=20261004c5"></script>
+    <script src="/livon/help-data.js?v=20261004c6"></script>
     <script src="/livon/help-page.js?v=20261004c2"></script>
     <script src="/livon/today-data.js?v=20260928td1"></script>
     <script src="/livon/today-feed.js?v=20261002perf1"></script>
-    <script src="/livon/today-page.js?v=20261002perf1"></script>
+    <script src="/livon/today-page.js?v=20261004c6"></script>
     <script src="/livon/ai-page.js?v=20261004c4"></script>
     <script src="/livon/connected-menus.js?v=20261002perf1"></script>
     <script src="/livon/home-page.js?v=20261002perf1"></script>

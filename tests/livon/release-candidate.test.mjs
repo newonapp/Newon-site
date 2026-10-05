@@ -111,6 +111,12 @@ export const MY_LIFE_V2 = { subject: 'Complete LIVON My Life V2',
     'tests/livon/completion.test.mjs', 'tests/livon/release-candidate.test.mjs'] };
 const myLifeV2In = () => git('log', '--format=%s', 'HEAD').stdout.split('\n').includes(MY_LIFE_V2.subject);
 
+/* LIVON Today V2 (branch livon-today-v2): 내 오늘 on the Today screen, reading My Life through LivonMyLife.api. Accepted only
+   on a line whose history contains this commit, and only these files — each of which that commit changed. */
+export const TODAY_V2 = { subject: 'Complete LIVON Today V2',
+  files: ['livon/today-page.js', 'livon/today-page.css', 'livon/life-now-page.js', 'livon/life-now-hub.js', 'livon/index.html', 'livon/help-data.js',
+    'docs/livon/LIVON_TODAY_V2.md', 'tests/livon/today-v2.test.mjs', 'tests/livon/my-life-v2.test.mjs', 'tests/livon/release-candidate.test.mjs'] };
+
 /* main e0436c916: ONGIL (another product on the same site) integrated for production. Its files are not LIVON product files;
    they are accepted only under its own directory and only on a line that contains that integration commit. */
 export const ONGIL_PRODUCT = { subject: 'Integrate ONGIL production frontend', dir: 'ongil-start/' };
@@ -211,7 +217,8 @@ test('RC-1 ancestry: every V1 phase commit is an ancestor of the RC; the RC star
       assert.deepEqual(COMMUNITY_V2.files.filter(f => !touched.includes(f)), [], 'every accepted Community V2 file was changed by that commit');
     }
     const myLife = myLifeV2In() ? MY_LIFE_V2.files : [];
-    assert.deepEqual(d.stdout.split('\n').filter(Boolean).filter(f => !I.aligned.includes(f) && !aiLive.includes(f) && !community.includes(f) && !myLife.includes(f)), [], 'LIVON tree = integration commit except the alignment / AI LIVE / Community V2 / My Life V2 files');
+    const todayV2 = namedCommitFiles(TODAY_V2);
+    assert.deepEqual(d.stdout.split('\n').filter(Boolean).filter(f => !I.aligned.includes(f) && !aiLive.includes(f) && !community.includes(f) && !myLife.includes(f) && !todayV2.includes(f)), [], 'LIVON tree = integration commit except the alignment / AI LIVE / Community V2 / My Life V2 / Today V2 files');
     /* main's production routing/CORS fix is part of this line */
     assert.ok(history.includes(ROUTING_CORS_FIX.subject), 'main routing/CORS fix is an ancestor');
     assert.ok(history.includes(BACKEND_HARDENING.subject), 'backend hardening is an ancestor');
@@ -575,7 +582,7 @@ test('RC-41 visual regression by construction: the RC ships the Performance V1 p
   const product = changed.filter(f => !/^(docs\/|tests\/)/.test(f));
   const allowed = new Set([...RC_FIXES, ...BACKEND_HARDENING.files, ...ROUTING_CORS_FIX.files, ...COMPLETION_FIXES, ...(aiLiveIn() ? AI_LIVE.files : []), ...(familyV2In() ? ONGIL_FAMILY_V2.files : []),
     /* later named commits on main: LIVON Community V2, the ONGIL module-version generator, LIVON My Life V2 */
-    ...namedCommitFiles(COMMUNITY_V2), ...namedCommitFiles(ONGIL_MODULE_VERSIONS), ...namedCommitFiles(MY_LIFE_V2)]);
+    ...namedCommitFiles(COMMUNITY_V2), ...namedCommitFiles(ONGIL_MODULE_VERSIONS), ...namedCommitFiles(MY_LIFE_V2), ...namedCommitFiles(TODAY_V2)]);
   /* ONGIL is its own product in its own directory: accepted only where its production integration is part of the history,
      and then only inside that directory — a LIVON, shared or any other file still needs an entry above */
   const ongilIntegrated = git('log', '--format=%s', 'HEAD').stdout.split('\n').includes(ONGIL_PRODUCT.subject);

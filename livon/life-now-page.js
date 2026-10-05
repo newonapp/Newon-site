@@ -112,6 +112,16 @@
     return list.filter(function (x) { if (typeof x !== "string" || !x || seen[x]) return false; seen[x] = 1; return true; });
   }
   function normTitle(s) { return String(s || "").replace(/\s+/g, " ").trim().toLowerCase(); }
+  /* Korean particle after a word: "을"/"를", "이"/"가", "과"/"와" by the last syllable's final consonant.
+     A word that does not end in a Hangul syllable keeps the neutral "을(를)" form. */
+  var JOSA = { "을를": ["을", "를"], "이가": ["이", "가"], "과와": ["과", "와"] };
+  function josa(word, pair) {
+    var w = String(word == null ? "" : word), c = w.charCodeAt(w.length - 1), p = JOSA[pair] || JOSA["을를"];
+    if (!(c >= 0xAC00 && c <= 0xD7A3)) return w + p[0] + "(" + p[1] + ")";
+    return w + ((c - 0xAC00) % 28 ? p[0] : p[1]);
+  }
+  /* ‘title’ + particle (the particle follows the closing quote) */
+  function quoted(word, pair) { var w = String(word == null ? "" : word); return w + "’" + josa(w, pair).slice(w.length); }
   /* Internal routes only (#life/…, #today/…, #ex-…) or https links — never javascript: or bare "#". */
   function safeHref(h) {
     h = String(h || "");
@@ -451,7 +461,7 @@
   function saveHabit(input) {
     var store = loadStore();
     var title = String(input.title || "").trim();
-    if (!title) return invalid("title", "습관을 입력해 주세요.");
+    if (!title) return invalid("title", "루틴 이름을 입력해 주세요.");
     var freq = HABIT_FREQS[input.freq] ? input.freq : "daily";
     var days = Array.isArray(input.days) ? uniqNum(input.days.map(Number).filter(function (n) { return n >= 0 && n <= 6 && n === Math.floor(n); })) : [];
     if (freq === "days" && !days.length) return invalid("days", "실천할 요일을 하나 이상 골라 주세요.");
@@ -635,7 +645,7 @@
     return m;
   }
   var FORM_LABELS = {
-    event: "일정", todo: "할 일", goal: "목표", habit: "습관", tx: "거래",
+    event: "일정", todo: "할 일", goal: "목표", habit: "루틴", tx: "거래",
     journal: "기록", experience: "경험", checklist: "체크리스트", project: "프로젝트", health: "건강 기록", link: "할 일 연결"
   };
   /* item = existing record being edited (has id); preset = defaults for a new record */
@@ -745,7 +755,7 @@
         field("메모", '<textarea name="note" rows="3">' + esc(item.note || "") + "</textarea>");
     }
     if (type === "habit") {
-      return field("습관", '<input name="title" required list="lv-ml-habit-list" value="' + esc(item.title || "") + '" />' +
+      return field("루틴 이름", '<input name="title" required list="lv-ml-habit-list" value="' + esc(item.title || "") + '" />' +
         '<datalist id="lv-ml-habit-list">' + (DATA.habitPresets || []).map(function (h) { return "<option value=\"" + esc(h) + "\">"; }).join("") + "</datalist>") +
         field("주기", '<select name="freq">' + Object.keys(HABIT_FREQS).map(function (k) {
           return '<option value="' + k + '"' + ((item.freq || "daily") === k ? " selected" : "") + ">" + HABIT_FREQS[k] + "</option>";
@@ -816,7 +826,7 @@
     if (!res) return false;
     if (res.status === "invalid") { formError(form, res.field, res.msg); return false; }
     if (res.status === "duplicate") {
-      confirmDialog({ title: "같은 할 일이 이미 있어요", body: "‘" + res.dup.title + "’이(가) 미완료 할 일에 있습니다. 그래도 추가할까요?", ok: "그래도 추가" })
+      confirmDialog({ title: "같은 할 일이 이미 있어요", body: "‘" + quoted(res.dup.title, "이가") + " 미완료 할 일에 있습니다. 그래도 추가할까요?", ok: "그래도 추가" })
         .then(function (ok) { if (ok) retry(); });
       return false;
     }
@@ -827,7 +837,7 @@
     }
     closeForm();
     refreshAll();
-    announce((FORM_LABELS[type] || "항목") + (res.created ? "을(를) 추가했습니다." : "을(를) 저장했습니다."));
+    announce(josa(FORM_LABELS[type] || "항목", "을를") + (res.created ? " 추가했습니다." : " 저장했습니다."));
     return true;
   }
 
@@ -914,7 +924,7 @@
     saveStore(store);
     closeForm();
     refreshAll();
-    announce((FORM_LABELS[type] || "항목") + "을(를) 저장했습니다.");
+    announce(josa(FORM_LABELS[type] || "항목", "을를") + " 저장했습니다.");
   }
 
   function emptyBox(msg, actionHtml) {
@@ -954,10 +964,10 @@
       '<div class="lv-ml-stat lv-ml-stat--hero"><p>일정</p><strong>' + events.length + "</strong><span>오늘</span></div>" +
       '<div class="lv-ml-stat"><p>할 일</p><strong>' + todosOpen.length + "</strong><span>오늘까지 마감</span></div>" +
       '<div class="lv-ml-stat"><p>목표</p><strong>' + goals.length + "</strong><span>진행 중</span></div>" +
-      '<div class="lv-ml-stat"><p>습관</p><strong>' + pendingHabits + "</strong><span>오늘 실천</span></div>" +
+      '<div class="lv-ml-stat"><p>루틴</p><strong>' + pendingHabits + "</strong><span>오늘 남음</span></div>" +
       '<div class="lv-ml-stat"><p>예약·활동</p><strong>' + reservations + "</strong><span>오늘</span></div>" +
       '<div class="lv-ml-stat"><p>기념일</p><strong>' + anniversaries + "</strong><span>오늘</span></div>" +
-      '<div class="lv-ml-stat' + (alerts ? " lv-ml-stat--alert" : "") + '"><p>확인 필요</p><strong>' + alerts + "</strong><span>기한·습관</span></div>";
+      '<div class="lv-ml-stat' + (alerts ? " lv-ml-stat--alert" : "") + '"><p>확인 필요</p><strong>' + alerts + "</strong><span>기한·루틴</span></div>";
   }
 
   function idPart(id) { return String(id || "").replace(/[^\w-]/g, "_"); }
@@ -1531,8 +1541,8 @@
               '<div class="lv-ml-goal-grid lv-ml-goal-grid--full">' + x.list.map(function (g) { return goalCardHtml(store, g); }).join("") + "</div>";
           }).join("")
         : emptyBox("목표가 없습니다. 목표를 만들고 할 일을 연결하면 실제 완료 수로 진행 상황을 볼 수 있어요.", '<button type="button" class="lv-ml-btn lv-ml-btn--dark lv-ml-btn--sm" data-lv-ml-add="goal">목표 만들기</button>')) +
-      '<div class="lv-ml-block-label"><h3 class="lv-ml-title lv-ml-title--md">습관·루틴</h3></div>' +
-      '<p class="lv-ml-note">습관은 ‘루틴’에서 요일을 정하고 매일 체크합니다. 지금 ' + store.habits.length + '개가 있어요.</p>' +
+      '<div class="lv-ml-block-label"><h3 class="lv-ml-title lv-ml-title--md">루틴</h3></div>' +
+      '<p class="lv-ml-note">루틴은 ‘루틴’ 화면에서 요일을 정하고 매일 체크합니다. 지금 ' + store.habits.length + '개가 있어요.</p>' +
       '<p class="lv-ml-inline-acts"><a class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" href="#ml-routines">루틴 열기</a></p>';
   }
 
@@ -1841,13 +1851,13 @@
     }
     confirmDialog({
       title: name + " 삭제",
-      body: "‘" + itemLabel(type, item) + "’을(를) 삭제할까요? 삭제하면 되돌릴 수 없습니다." + extra,
+      body: "‘" + quoted(itemLabel(type, item), "을를") + " 삭제할까요? 삭제하면 되돌릴 수 없습니다." + extra,
       ok: "삭제", danger: true
     }).then(function (ok) {
       if (!ok) return;
       if (removeItem(type, id)) {
         refreshAll();
-        announce(name + "을(를) 삭제했습니다.");
+        announce(josa(name, "을를") + " 삭제했습니다.");
         restoreFocus(null);
       }
     });
@@ -2450,12 +2460,47 @@
     $: $, esc: esc, todayStr: todayStr, parseDate: parseDate, fmtDay: fmtDay, fmtMoney: fmtMoney, idPart: idPart, isObj: isObj, normTitle: normTitle,
     prio: prio, PRIO_RANK: PRIO_RANK, emptyBox: emptyBox, chipGroup: chipGroup, loadStore: loadStore, saveStore: saveStore, emptyStore: emptyStore,
     STORE_VERSION: STORE_VERSION, readJSON: readJSON, state: state, todoItemHtml: todoItemHtml, habitDays: habitDays, habitScheduledOn: habitScheduledOn,
-    WEEKDAYS: WEEKDAYS, RECORD_TYPES: RECORD_TYPES, RECORD_RANGES: RECORD_RANGES, ML_COLLECTIONS: ML_COLLECTIONS, ymOf: ymOf, moneySummary: moneySummary
+    WEEKDAYS: WEEKDAYS, RECORD_TYPES: RECORD_TYPES, RECORD_RANGES: RECORD_RANGES, ML_COLLECTIONS: ML_COLLECTIONS, ymOf: ymOf, moneySummary: moneySummary,
+    quoted: quoted
   }) : null;
+
+  /* ——— Today V2 (오늘의 발견 › 내 오늘): the same store seen from today. Read-only model + the two mutations Today
+     offers (task done / routine done today). Today keeps no data of its own. ——— */
+  function todayModel(now) {
+    now = now || new Date();
+    var store = loadStore(), t = todayStr(now), plain = function (x) { return JSON.parse(JSON.stringify(x)); };
+    var byTime = function (a, b) { return (a.allDay ? 0 : 1) - (b.allDay ? 0 : 1) || String(a.start || "99:99").localeCompare(String(b.start || "99:99")); };
+    var dueToday = store.todos.filter(function (x) { return x.due === t; })
+      .sort(function (a, b) { return (a.done ? 1 : 0) - (b.done ? 1 : 0) || (PRIO_RANK[prio(a)] - PRIO_RANK[prio(b)]); });
+    var overdue = store.todos.filter(function (x) { return !x.done && x.due && x.due < t; })
+      .sort(function (a, b) { return String(a.due).localeCompare(String(b.due)); });
+    var routines = store.habits.filter(function (h) { return habitScheduledOn(h, now); }).map(function (h) {
+      return { id: h.id, title: h.title, done: !!(store.habitLogs[h.id] || {})[t], freq: h.freq || "daily" };
+    });
+    return plain({
+      date: t, weekday: weekdayKo(now), label: fmtDay(t),
+      todos: dueToday.map(function (x) { return { id: x.id, title: x.title, done: !!x.done, priority: prio(x), category: x.category || "" }; }),
+      overdue: overdue.map(function (x) { return { id: x.id, title: x.title, due: x.due, dueLabel: fmtDay(x.due), priority: prio(x) }; }),
+      events: store.events.filter(function (e) { return e.date === t; }).sort(byTime).map(function (e) {
+        return { id: e.id, title: e.title, allDay: !!e.allDay, start: e.allDay ? "" : (e.start || ""), end: e.allDay ? "" : (e.end || ""), place: e.place || "", done: !!e.done };
+      }),
+      routines: routines,
+      upcoming: (V2 ? V2.fns.upcomingItems(store, now, 7) : []).filter(function (x) { return x.kind !== "goal" || x.item.due; }).map(function (x) {
+        return { kind: x.kind, id: x.item.id, title: x.item.title, date: x.date, dateLabel: fmtDay(x.date), time: x.time || "" };
+      })
+    });
+  }
+  function todaySetTodo(id, done) { var t = setTodoDone(id, !!done); return t ? { id: t.id, title: t.title, done: !!t.done } : null; }
+  function todaySetRoutine(id, done, now) {
+    var h = findItem("habit", id);
+    if (!h || !habitScheduledOn(h, now || new Date())) return null;
+    return setHabitDone(id, todayStr(now), !!done) ? { id: id, title: h.title, done: !!done } : null;
+  }
 
   var api = { saveTodo: saveTodo, saveGoal: saveGoal, findDuplicateTodo: function (title) { return findDuplicateTodo(loadStore(), title, ""); },
     /* read-only snapshots for the LIVON home preview (no separate task/calendar logic there) */
     snapshot: function () { return JSON.parse(JSON.stringify(loadStore())); },
+    today: todayModel, setTodoDone: todaySetTodo, setRoutineDone: todaySetRoutine, josa: josa,
     saved: function () { return collectedSaved(); },
     recentViewed: function () { return recentViewed(); } };
 
