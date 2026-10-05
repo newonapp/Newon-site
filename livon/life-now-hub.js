@@ -56,17 +56,21 @@
     return { count: n, unit: "일" };
   }
 
-  /* checks and scheduled days inside one week (weekStart … +6) */
+  /* checks and scheduled days inside one week (weekStart … +6). Days before the routine was created are not
+     days it could have been done, so they are left out of both counts (a routine made on Thursday has Thu–Sat). */
   function habitWeek(h, logs, weekStart) {
     var log = (logs && isObj(logs[h.id])) ? logs[h.id] : {};
-    var done = 0, planned = 0;
+    var created = h.createdAt ? todayStr(new Date(h.createdAt)) : "";
+    var done = 0, planned = 0, open = false;
     for (var k = 0; k < 7; k++) {
-      var d = addDays(weekStart, k);
+      var d = addDays(weekStart, k), ds = todayStr(d);
+      if (created && ds < created) continue;
+      open = true;
       var sched = h.freq === "weekly" || habitScheduledOn(h, d);
-      if (log[todayStr(d)] && sched) done++;
+      if (log[ds] && sched) done++;
       if (h.freq !== "weekly" && sched) planned++;
     }
-    return { done: done, planned: h.freq === "weekly" ? 1 : planned };
+    return { done: done, planned: h.freq === "weekly" ? (open ? 1 : 0) : planned };
   }
 
   /* ——— One day / the next days / one week (real records only) ——— */
@@ -349,7 +353,7 @@
                 '<div class="lv-ml-row-acts">' + (editable ? '<button type="button" data-lv-ml-edit="' + x.type + '" data-id="' + esc(x.id) + '" aria-label="' + esc(x.title) + ' 열기">열기</button>' : "") +
                 '<a href="#ml-' + x.view + '">' + esc(x.label) + ' 화면<span class="visually-hidden">: ' + esc(x.title) + "</span></a></div></li>";
             }).join("") + "</ul>"
-          : emptyBox("‘" + r.q + "’와(과) 일치하는 내 생활 항목이 없어요."));
+          : emptyBox("‘" + (core.quoted ? core.quoted(r.q, "과와") : r.q + "’와(과)") + " 일치하는 내 생활 항목이 없어요."));
   }
 
   function searchFormHtml(id) {

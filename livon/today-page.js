@@ -580,7 +580,114 @@
       '<div class="lv-td-actions" style="margin-top:1rem"><a class="lv-td-btn" href="#life-now">내 생활에서 보기</a></div></div>';
   }
 
+  /* ———————— 내 오늘 (Today V2): My Life's own records seen from today ————————
+     Reads and changes the My Life store only through LivonMyLife.api (today / setTodoDone / setRoutineDone);
+     Today keeps no copy. Titles never go into URLs or attributes other than accessible labels. */
+  var myDay = "";
+  function myApi() { var M = window.LivonMyLife; return M && M.api && typeof M.api.today === "function" ? M.api : null; }
+  function myId(prefix, id) { return prefix + String(id || "").replace(/[^\w-]/g, "_"); }
+  function greeting(d) {
+    var h = d.getHours();
+    return h < 5 ? "늦은 밤이에요." : h < 11 ? "좋은 아침이에요." : h < 17 ? "좋은 오후예요." : "편안한 저녁이에요.";
+  }
+  function myBlock(id, title, body, more) {
+    return '<section class="lv-td-my__block" aria-labelledby="' + id + '"><h3 class="lv-td-my__title" id="' + id + '">' + esc(title) + "</h3>" + body +
+      (more ? '<p class="lv-td-my__more">' + more + "</p>" : "") + "</section>";
+  }
+  function myEmpty(text, href, label) {
+    return '<p class="lv-td-my__empty">' + esc(text) + "</p>" + (href ? '<a class="lv-td-btn lv-td-btn--ghost lv-td-btn--sm" href="' + href + '">' + esc(label) + "</a>" : "");
+  }
+  function myCheck(kind, x, meta) {
+    var id = myId("td-my-" + kind + "-", x.id);
+    return '<li class="lv-td-my__item' + (x.done ? " is-done" : "") + '"><input type="checkbox" id="' + id + '" data-td-my-' + kind + '="' + esc(x.id) + '"' + (x.done ? " checked" : "") + " />" +
+      '<label for="' + id + '"><span class="lv-td-my__name">' + esc(x.title) + (x.done ? '<span class="visually-hidden"> (완료)</span>' : "") + "</span>" +
+      (meta ? '<span class="lv-td-my__meta">' + esc(meta) + "</span>" : "") + "</label></li>";
+  }
+  function renderMyToday() {
+    var host = $("[data-td-my]");
+    if (!host) return;
+    var api = myApi(), now = new Date(), dateLine = $("[data-td-my-date]");
+    if (!api) { host.innerHTML = emptyHtml("내 생활 정보를 불러오지 못했어요. 새로고침해 주세요."); return; }
+    var m;
+    try { m = api.today(now); } catch (err) { host.innerHTML = emptyHtml("내 생활 정보를 읽지 못했어요. 내 생활에서 확인해 주세요."); return; }
+    myDay = m.date;
+    if (dateLine) dateLine.textContent = now.getFullYear() + "년 " + m.label + " · " + greeting(now) + " 이 기기에 저장한 내 생활 기록만 보여요.";
+    var tDone = m.todos.filter(function (x) { return x.done; }).length, rDone = m.routines.filter(function (x) { return x.done; }).length;
+    var sum = [
+      m.todos.length ? "오늘 할 일 " + m.todos.length + "개 중 " + tDone + "개 완료" : "오늘 마감인 할 일 없음",
+      m.events.length ? "오늘 일정 " + m.events.length + "개" : "오늘 일정 없음",
+      m.routines.length ? "오늘 루틴 " + m.routines.length + "개 중 " + rDone + "개 완료" : "오늘 루틴 없음"
+    ];
+    if (m.overdue.length) sum.push("기한 지난 할 일 " + m.overdue.length + "개");
+    var todos = (m.todos.length || m.overdue.length)
+      ? '<ul class="lv-td-my__list">' + m.todos.map(function (x) { return myCheck("todo", x, x.priority === "높음" ? "우선순위 높음" : ""); }).join("") +
+          m.overdue.map(function (x) { return myCheck("todo", x, "기한 지남 · " + x.dueLabel); }).join("") + "</ul>"
+      : myEmpty("오늘 할 일이 없어요.", "#ml-todos", "내 생활에서 할 일 추가");
+    var events = m.events.length
+      ? '<ul class="lv-td-my__list">' + m.events.map(function (e) {
+          var when = e.allDay ? "종일" : e.start ? e.start + (e.end ? "–" + e.end : "") : "시간 미정";
+          return '<li class="lv-td-my__item lv-td-my__item--event' + (e.done ? " is-done" : "") + '"><span class="lv-td-my__time">' + esc(when) + '</span><span class="lv-td-my__name">' + esc(e.title) +
+            (e.done ? '<span class="visually-hidden"> (완료)</span>' : "") + "</span>" + (e.place ? '<span class="lv-td-my__meta">' + esc(e.place) + "</span>" : "") + "</li>";
+        }).join("") + "</ul>"
+      : myEmpty("오늘 예정된 일정이 없어요.", "#ml-calendar", "내 생활에서 일정 추가");
+    var routines = m.routines.length
+      ? '<ul class="lv-td-my__list">' + m.routines.map(function (r) { return myCheck("routine", r, r.done ? "오늘 완료" : "오늘 할 차례"); }).join("") + "</ul>"
+      : myEmpty("오늘 할 루틴이 없어요.", "#ml-routines", "내 생활에서 루틴 추가");
+    var KIND = { event: "일정", todo: "할 일 마감", goal: "목표일" };
+    var up = m.upcoming.slice(0, 6);
+    var upcoming = up.length
+      ? '<ul class="lv-td-my__list">' + up.map(function (x) {
+          return '<li class="lv-td-my__item lv-td-my__item--event"><span class="lv-td-my__time">' + esc(x.dateLabel) + '</span><span class="lv-td-my__name">' + esc(x.title) + "</span>" +
+            '<span class="lv-td-my__meta">' + esc([KIND[x.kind], x.time].filter(Boolean).join(" · ")) + "</span></li>";
+        }).join("") + "</ul>" + (m.upcoming.length > up.length ? '<p class="lv-td-my__meta">외 ' + (m.upcoming.length - up.length) + "개</p>" : "")
+      : myEmpty("앞으로 7일 동안 예정된 일정·마감이 없어요.");
+    var P = window.LivonPlatform, saves = 0;
+    try { saves = P && P.listSaves ? P.listSaves("all").length : 0; } catch (e) { saves = 0; }
+    host.innerHTML = '<ul class="lv-td-my__sum" aria-label="오늘 요약">' + sum.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" +
+      '<div class="lv-td-my__grid">' +
+        myBlock("td-my-h-todo", "오늘 할 일", todos, '<a href="#ml-todos?filter=today">할 일 전체</a>') +
+        myBlock("td-my-h-event", "오늘 일정", events, '<a href="#ml-calendar">일정 보기</a>') +
+        myBlock("td-my-h-routine", "오늘 루틴", routines, '<a href="#ml-routines">루틴 전체</a>') +
+        myBlock("td-my-h-up", "다가오는 7일", upcoming, '<a href="#ml-home">내 생활 홈</a>') +
+      "</div>" +
+      '<p class="lv-td-note lv-td-my__foot">' + (saves ? '저장한 항목 ' + saves + '개는 <a href="#ml-saved">내 생활 › 저장</a>에서 다시 볼 수 있어요. ' : "") +
+        '오늘 둘러볼 정보는 아래 <a href="#td-pick">오늘의 발견</a>에 있어요. 이 영역의 내용은 이 기기에만 있고 어디에도 보내지 않아요.</p>';
+  }
+  function myStatus(msg) {
+    var n = $("[data-td-my-status]");
+    if (!n) return;
+    n.textContent = "";
+    setTimeout(function () { n.textContent = msg; }, 30);
+  }
+  function bindMyToday() {
+    document.addEventListener("change", function (e) {
+      var t = e.target;
+      if (!t || !t.closest || !t.closest("[data-td-my]")) return;
+      var api = myApi();
+      if (!api) return;
+      var keep = t.id, r = null, kind = "";
+      if (t.hasAttribute("data-td-my-todo")) { kind = "할 일"; r = api.setTodoDone(t.getAttribute("data-td-my-todo"), t.checked); }
+      else if (t.hasAttribute("data-td-my-routine")) { kind = "루틴"; r = api.setRoutineDone(t.getAttribute("data-td-my-routine"), t.checked); }
+      else return;
+      renderMyToday();
+      var again = keep ? document.getElementById(keep) : null;
+      if (again) again.focus();
+      myStatus(r ? "‘" + r.title + "’ " + kind + (r.done ? "을 완료로 표시했어요." : "의 완료를 취소했어요.") : "바꾸지 못했어요. 내 생활에서 확인해 주세요.");
+    });
+    /* a new day while the page stays open, or a change from another tab: show today's records again */
+    var refresh = function () {
+      if (document.documentElement.dataset.lvView !== "today") return;
+      var api = myApi(), d = new Date();
+      var ds = d.getFullYear() + "-" + (d.getMonth() + 1 < 10 ? "0" : "") + (d.getMonth() + 1) + "-" + (d.getDate() < 10 ? "0" : "") + d.getDate();
+      if (api && ds !== myDay) renderMyToday();
+    };
+    document.addEventListener("visibilitychange", function () { if (!document.hidden) refresh(); });
+    window.addEventListener("focus", refresh);
+    window.addEventListener("storage", function (e) { if (e.key === "livon.mlStore.v1" && document.documentElement.dataset.lvView === "today") renderMyToday(); });
+  }
+
   function renderAll() {
+    renderMyToday();
     renderHero();
     renderSetup();
     renderPriority();
@@ -791,6 +898,7 @@
     }
     hideDetail();
     renderSavedBox();
+    renderMyToday();
     if (window.LivonLifeHub && window.LivonLifeHub.saves) window.LivonLifeHub.saves.refresh();
     if (!hash || hash === "today" || hash === "td-hero") {
       window.scrollTo(0, 0);
@@ -807,12 +915,14 @@
     bindReveal();
     bindNav();
     bind();
+    bindMyToday();
     var hash = (location.hash || "").slice(1);
     if (document.documentElement.dataset.lvView === "today") onShow(hash || "today");
   }
 
   window.LivonToday = {
     onShow: onShow,
+    renderMyToday: renderMyToday,
     isTodayHash: function (hash) {
       return hash === "today" || hash.indexOf("today/") === 0 || hash.indexOf("td-") === 0;
     }

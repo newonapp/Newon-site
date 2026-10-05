@@ -491,8 +491,8 @@ test('ML2-35 route state: new views round-trip; unknown views fall back; the sea
   assert.match(PAGE, /\.filter\(function \(m\) \{ return !m\.hidden; \}\)/, 'hidden module is not listed as a card');
 });
 
-test('ML2-36 cache keys: the files changed for My Life V2 carry ?v=20261004c5', () => {
-  for (const f of ['life-now-page.js', 'life-now-hub.js', 'life-now-data.js', 'life-now-page.css', 'help-data.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace('.', '\\.') + '\\?v=20261004c5"'), f);
+test('ML2-36 cache keys: the files changed for My Life V2 carry ?v=20261004c5 or a later c version (Today V2: page and hub on c6)', () => {
+  for (const f of ['life-now-page.js', 'life-now-hub.js', 'life-now-data.js', 'life-now-page.css', 'help-data.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace('.', '\\.') + '\\?v=20261004c[5-9]"'), f);
 });
 
 test('ML2-37 Help matches the product: export and delete-all are described where the buttons are', () => {
@@ -612,7 +612,7 @@ test('ML2-01 dashboard: date, greeting and every tile is a real count from the s
   const d = new Date();
   assert.ok(r.label.startsWith(d.getFullYear() + '년 ' + (d.getMonth() + 1) + '월 ' + d.getDate() + '일'), r.label);
   assert.match(r.greet, /오늘 일정 2개, 오늘 마감 할 일 1개, 기한 지난 할 일 1개가 있어요\./);
-  assert.deepEqual(r.tiles.slice(0, 4), ['일정=2', '할 일=2', '목표=1', '습관=1'], '2 events today; 2 open due ≤ today; 1 goal; 1 routine open today');
+  assert.deepEqual(r.tiles.slice(0, 4), ['일정=2', '할 일=2', '목표=1', '루틴=1'], '2 events today; 2 open due ≤ today; 1 goal; 1 routine open today');
   assert.deepEqual(pg._errors, []);
   await pg.context().close();
 });
@@ -643,7 +643,7 @@ test('ML2-03 quick add: + 할 일 opens the form, saves, shows in Today and anno
   await pg.locator('#lv-ml-form-modal button[type="submit"]').click(); await pg.waitForTimeout(200);
   assert.ok((await store(pg)).todos.some(t => t.title === '빠른 추가 할 일' && t.due === today()));
   assert.match(await pg.locator('[data-lv-ml-today-todos]').innerText(), /빠른 추가 할 일/);
-  assert.match(await status(pg), /할 일을\(를\) 추가했습니다/);
+  assert.match(await status(pg), /^할 일을 추가했습니다\.$/, "Today V2: the particle follows the word");
   for (const t of ['event', 'goal', 'journal']) {
     await pg.locator('.lv-ml-quick [data-lv-ml-add="' + t + '"]').click();
     assert.equal(await pg.locator('#lv-ml-form-modal').isVisible(), true, t);

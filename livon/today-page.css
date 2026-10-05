@@ -1579,3 +1579,35 @@ html[data-lv-view="today"] main > #today {
 /* Fix: cover media kept its 16:10 ratio inside an absolutely positioned box, so the image
    overflowed the card to the right (cropped off-centre). Let it fill the card instead. */
 #today .lv-td-feature.is-cover .lv-td-feature__media { aspect-ratio: auto; }
+
+/* ——— 내 오늘 (Today V2): My Life records seen from today — existing Today tokens only ——— */
+#today .lv-td-my__sum {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin: 0 0 1.25rem; padding: 0; list-style: none;
+}
+#today .lv-td-my__sum li {
+  padding: 0.45rem 0.8rem; border: 1px solid #0a0a0a; background: #fff;
+  font-size: 0.875rem; font-weight: 650; color: #0a0a0a;
+}
+#today .lv-td-my__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+@media (min-width: 720px) { #today .lv-td-my__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { #today .lv-td-my__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+#today .lv-td-my__block { min-width: 0; padding: 1.1rem 1.1rem 1rem; border: 1px solid #e6e6e6; background: #fff; }
+#today .lv-td-my__title { margin: 0 0 0.6rem; font-size: 1.05rem; font-weight: 750; letter-spacing: -0.02em; color: #0a0a0a; }
+#today .lv-td-my__list { margin: 0; padding: 0; list-style: none; border-top: 1px solid #ececec; }
+#today .lv-td-my__item { display: flex; align-items: flex-start; gap: 0.6rem; min-height: 44px; padding: 0.55rem 0; border-bottom: 1px solid #ececec; }
+#today .lv-td-my__item input { flex: 0 0 auto; width: 20px; height: 20px; margin: 0.15rem 0 0; accent-color: #0a0a0a; }
+#today .lv-td-my__item label { display: grid; gap: 0.15rem; min-width: 0; flex: 1 1 auto; cursor: pointer; min-height: 32px; }
+#today .lv-td-my__item--event { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 0.75rem; }
+#today .lv-td-my__item--event .lv-td-my__meta { grid-column: 2; }
+#today .lv-td-my__name { font-size: 0.95rem; font-weight: 600; color: #0a0a0a; overflow-wrap: anywhere; }
+#today .lv-td-my__item.is-done .lv-td-my__name { text-decoration: line-through; color: #737373; }
+#today .lv-td-my__time { font-size: 0.85rem; font-weight: 700; color: #0a0a0a; white-space: nowrap; }
+#today .lv-td-my__meta { font-size: 0.8rem; color: #666; overflow-wrap: anywhere; }
+#today .lv-td-my__empty { margin: 0 0 0.75rem; font-size: 0.95rem; color: #555; }
+#today .lv-td-my__more { margin: 0.75rem 0 0; font-size: 0.875rem; font-weight: 650; }
+#today .lv-td-my__more a,
+#today .lv-td-my__foot a { display: inline-flex; align-items: center; min-height: 44px; color: #0a0a0a; text-underline-offset: 3px; }
+#today .lv-td-my .lv-td-btn--sm { min-height: 44px; }
+#today .lv-td-my__foot { margin-top: 1rem; }
+#today .lv-td-my__item input:focus-visible { outline: 2px solid #0a0a0a; outline-offset: 2px; }
