@@ -227,7 +227,7 @@ test('PC-10 건강·안부 lists what works apart from what does not — a worki
   assert.match(v, /if \(pending\.length\) \{[\s\S]{0,400}'아래 항목은 아직 사용할 수 없습니다\.'[\s\S]{0,200}pending\.map\(chip\)/);
   assert.doesNotMatch(v, /area\.modules\.map\(/, 'the two kinds are never drawn as one list');
   const health = AREAS.find((a) => a.id === 'health');
-  assert.deepEqual(health.modules.filter((m) => !m.available).map((m) => m.id), ['help']);
+  /* Health · Safety V2: 도움 요청 is built (BEFORE ['help'] unfinished · AFTER none) */ assert.deepEqual(health.modules.filter((m) => !m.available).map((m) => m.id), []);
   for (const id of ['contacts', 'medication', 'hospital', 'checkup', 'measures']) assert.equal(health.modules.find((m) => m.id === id).available, true, id);
   assert.doesNotMatch(health.empty, /이 화면에 따로 저장된 기록은 없습니다/, 'the screen that keeps 긴급 연락망 and 병원 일정 does not say it stores nothing');
   assert.match(health.empty, /긴급 연락망·병원 일정·건강검진/);

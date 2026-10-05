@@ -44,6 +44,7 @@ import { createSymptomStore } from './symptoms.js';
 import { createHealthNoteStore } from './health-notes.js';
 import { createHealthMeasureStore } from './health-measures.js';
 import { createHealthSchedule } from './health-appointments.js';
+import { createHealthSafetyHome } from './health-safety-view.js';
 import { createEmergencyContactStore, createEmergencyContacts } from './emergency-contacts.js';
 import { createFamilySharingStore, createHelpRequestStore } from './family.js';
 import { createFamilyView } from './family-view.js';
@@ -158,6 +159,18 @@ const emergencyView = createEmergencyContacts({ host: null, store: emergencyCont
   const extraHost = doc.querySelector('[data-og-extra="health"]');
   if (extraHost) extraHost.prepend(emergencyView.card.root);
 }
+/*
+ * Health · Safety V2 — 건강·안부 홈: today's check-in and medication marks, upcoming dates, the last 7 days, week-to-week
+ * changes of the person's own records, where to get help and what family can see. Same stores as 내 생활 › 건강; drawn
+ * again every time 건강·안부 is opened. Nothing is sent, searched, counted or given to the assistant.
+ */
+const healthHome = createHealthSafetyHome({
+  host: doc.querySelector('[data-og-extra="health"]'),
+  checkIn, medication, schedule, symptoms, healthNotes, healthMeasures, sleep, dailyLife,
+  familyConnect,
+  emergencyCard: emergencyView.card,
+  onChange: () => refreshHome(),
+});
 
 /*
  * The one external source Home can ask (내 주변). The API location comes from the site's existing API config
@@ -388,6 +401,7 @@ const accountView = createAccountView({
     life.refresh();
     healthSchedule.render();
     emergencyView.render();
+    healthHome.render();
     familyView.refresh();
     care.render();
     enjoyView.render();
@@ -446,6 +460,7 @@ const router = createRouter({
     if (view === 'health') {
       healthSchedule.render();
       emergencyView.render();
+      healthHome.render();
     }
     if (view === 'care') care.show(section);
     if (view === 'enjoy' && section) enjoyView.show(section);

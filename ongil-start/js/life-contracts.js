@@ -119,11 +119,22 @@ export function normalizeMedication(input, now = Date.now()) {
   const picked = Array.isArray(input.daysOfWeek) ? ALL_DAYS.filter((d) => input.daysOfWeek.includes(d)) : [];
   const daysOfWeek = picked.length ? picked : [...ALL_DAYS];
   const out = { schemaVersion: SCHEMA_VERSION, id: input.id, name, time, daysOfWeek, memo: safeText(input.memo, LIFE_LIMITS.memo), createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
+  /* Health · Safety V2: an optional period the user wrote (시작일 · 종료일). Absent = no limit, as before. */
+  const blank = (v) => v === undefined || v === null || v === '';
+  if (!blank(input.startDate) && !isDateKey(input.startDate)) throw new ContractError('INVALID_START_DATE');
+  if (!blank(input.endDate) && !isDateKey(input.endDate)) throw new ContractError('INVALID_END_DATE');
+  if (!blank(input.startDate) && !blank(input.endDate) && input.endDate < input.startDate) throw new ContractError('INVALID_DATE_RANGE');
+  if (!blank(input.startDate)) out.startDate = input.startDate;
+  if (!blank(input.endDate)) out.endDate = input.endDate;
   /* Phase 11: which days applied FROM which date, kept when the days are changed, so a past day is read with the
      days that were set then. Absent on entries that never changed (and on everything written before Phase 11). */
   const schedule = normalizeMedicationSchedule(input.schedule);
   if (schedule.length) out.schedule = schedule;
   return out;
+}
+/* Health · Safety V2: inside the period the user wrote (no period = always) */
+export function medicationActiveOn(medication, date) {
+  return !(medication.startDate && date < medication.startDate) && !(medication.endDate && date > medication.endDate);
 }
 export const MEDICATION_SCHEDULE_MAX = 24;
 export function normalizeMedicationSchedule(value) {
@@ -152,7 +163,9 @@ export function normalizeMedicationLog(input, now = Date.now()) {
   /* Phase 3: the name and time as they were when the mark was made, so editing the medication later does not rewrite the past */
   const name = safeText(input.name, LIFE_LIMITS.medicationName);
   const time = isTime(input.time) ? input.time : '';
-  return { medicationId: input.medicationId, date: input.date, taken: input.taken === true, ...(name ? { name, time } : {}), updatedAt: stamp(input.updatedAt, now) };
+  /* Health · Safety V2: 건너뜀 is the user's own mark too; a mark is never both taken and skipped (taken wins) */
+  const taken = input.taken === true;
+  return { medicationId: input.medicationId, date: input.date, taken, ...(!taken && input.skipped === true ? { skipped: true } : {}), ...(name ? { name, time } : {}), updatedAt: stamp(input.updatedAt, now) };
 }
 
 /*
@@ -335,6 +348,9 @@ export const MEASURE_TYPES = Object.freeze([
   measure('bloodPressure', '혈압', 'mmHg', 40, 300, 0, '높은 값/낮은 값, 예: 120/80'),
   measure('bloodSugar', '혈당', 'mg/dL', 10, 900, 0, '예: 105'),
   measure('pulse', '맥박', '회/분', 20, 250, 0, '예: 72'),
+  /* Health · Safety V2 */
+  measure('temperature', '체온', '°C', 34, 43, 1, '예: 36.5'),
+  measure('oxygen', '산소포화도', '%', 50, 100, 0, '예: 97'),
 ]);
 export const MEASURE_TIMINGS = Object.freeze([opt('morning', '아침에 일어나서'), opt('beforeMeal', '식사 전'), opt('afterMeal', '식사 후'), opt('bedtime', '자기 전'), opt('other', '그 밖의 때')]);
 export const measureType = (id) => MEASURE_TYPES.find((t) => t.id === id) || null;

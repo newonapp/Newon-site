@@ -35,6 +35,11 @@ export function daysText(days) {
   return list.map((d) => WEEKDAY_LABELS[d]).join(' · ');
 }
 
+/* "10월 1일부터 · 10월 31일까지" — the period the user wrote; '' when none */
+export function periodText(m) {
+  return [m && m.startDate ? `${formatDateKey(m.startDate)}부터` : '', m && m.endDate ? `${formatDateKey(m.endDate)}까지` : ''].filter(Boolean).join(' · ');
+}
+
 /* one line per kind for a day, from what was written — used by 최근 건강 기록. Counts and the user's own choices only. */
 export function describeHealthDay({ checkIn, symptoms, medication, healthNotes, healthMeasures }, date) {
   const parts = [];
@@ -46,7 +51,10 @@ export function describeHealthDay({ checkIn, symptoms, medication, healthNotes, 
   const s = symptoms.get(date);
   if (s) parts.push(s.symptoms.length ? `증상 ${s.symptoms.length}가지` : '증상 메모');
   const meds = medication.historyForDate(date);
-  if (meds.length) parts.push(`약 ${meds.length}개 중 ${meds.filter((m) => m.taken).length}개 먹음`);
+  if (meds.length) {
+    const skipped = meds.filter((m) => m.skipped).length;
+    parts.push(`약 ${meds.length}개 중 ${meds.filter((m) => m.taken).length}개 먹음${skipped ? ` · ${skipped}개 건너뜀` : ''}`);
+  }
   const notes = healthNotes.countForDate(date);
   if (notes) parts.push(`메모 ${notes}건`);
   /* how many numbers were written, never which numbers */
@@ -286,9 +294,27 @@ export function createMedicationDaySection({ medication, now = () => Date.now(),
       isDone: (item) => item.taken,
       describe: (item) => {
         const today = getDate() === dateKey(now());
-        const state = item.taken ? '' : item.removed ? '먹지 않음으로 표시' : today ? '아직 복용하지 않았어요' : '표시하지 않았어요';
+        const state = item.taken ? '' : item.skipped ? '건너뜀으로 표시했어요' : item.removed ? '먹지 않음으로 표시' : today ? '아직 복용하지 않았어요' : '표시하지 않았어요';
         return { title: item.name, meta: [item.time ? formatTime(item.time) : '', state, item.removed ? '목록에서 지운 약 · 기록만 남아 있어요' : ''].filter(Boolean) };
       },
+      /* Health · Safety V2: 건너뜀 is the user's own mark, like 먹었어요 (a reminder or a family view never marks anything) */
+      rowActions: (item) =>
+        item.removed || item.taken
+          ? null
+          : el('button', {
+              type: 'button',
+              class: 'og-btn og-btn--ghost og-btn--small',
+              'data-og-med-skip': item.id,
+              'aria-pressed': item.skipped ? 'true' : 'false',
+              'aria-label': item.skipped ? `‘${item.name}’ 건너뜀 표시 풀기` : `‘${item.name}’ 건너뜀으로 표시`,
+              text: item.skipped ? '건너뜀 풀기' : '건너뜀',
+              onclick: () => {
+                const r = medication.setStatus(item.id, item.skipped ? 'NONE' : 'SKIPPED', getDate());
+                card.say(r.ok ? (item.skipped ? `${word()} ‘${item.name}’ 건너뜀 표시를 풀었습니다.` : `${word()} ‘${item.name}’을(를) 건너뜀으로 표시했습니다.`) : STORAGE_ERROR_TEXT);
+                list.reset();
+                if (typeof onChange === 'function') onChange();
+              },
+            }),
       /* a mark of a medication since removed from 내 약 목록 is history: shown as it was, not changed */
       isLocked: (item) => item.removed === true,
       toggleText: (item, checked) => (checked ? `${word()} ‘${item.name}’을(를) 먹은 약으로 표시했습니다.` : `${word()} ‘${item.name}’ 표시를 풀었습니다.`),
@@ -304,7 +330,7 @@ export function createMedicationDaySection({ medication, now = () => Date.now(),
 
 export function createMedicationPlanSection({ medication, onChange }) {
   const card = createCard({ area: 'life', slot: 'medication-plan', title: '내 약 목록', level: 3, lead: '약 이름, 먹는 시간과 요일을 직접 적어 두세요.' });
-  const errors = { INVALID_NAME: '약 이름을 적어 주세요.', INVALID_TIME: '시간을 다시 골라 주세요.', LIMIT: '약 목록이 가득 찼습니다.' };
+  const errors = { INVALID_NAME: '약 이름을 적어 주세요.', INVALID_TIME: '시간을 다시 골라 주세요.', LIMIT: '약 목록이 가득 찼습니다.', INVALID_START_DATE: '시작일을 다시 골라 주세요.', INVALID_END_DATE: '종료일을 다시 골라 주세요.', INVALID_DATE_RANGE: '종료일은 시작일과 같거나 그 뒤여야 해요.' };
   const list = createListCard({
     card,
     config: {
@@ -318,10 +344,12 @@ export function createMedicationPlanSection({ medication, onChange }) {
         { name: 'name', label: '약 이름', type: 'text', required: true, maxlength: LIFE_LIMITS.medicationName, errors: ['INVALID_NAME'] },
         { name: 'time', label: '먹는 시간', type: 'time', required: false, errors: ['INVALID_TIME'] },
         { name: 'daysOfWeek', label: '먹는 요일', type: 'days', required: false, options: DAY_OPTIONS, hint: '고르지 않으면 매일로 적습니다.' },
+        { name: 'startDate', label: '시작일', type: 'date', required: false, errors: ['INVALID_START_DATE'], hint: '비워 두면 바로부터예요.' },
+        { name: 'endDate', label: '종료일', type: 'date', required: false, errors: ['INVALID_END_DATE', 'INVALID_DATE_RANGE'], hint: '비워 두면 끝나는 날 없이 적어 둡니다.' },
         { name: 'memo', label: '메모', type: 'text', required: false, maxlength: LIFE_LIMITS.memo },
       ],
       getItems: () => medication.list(),
-      describe: (item) => ({ title: item.name, meta: [item.time ? formatTime(item.time) : '시간 없음', daysText(item.daysOfWeek), item.memo].filter(Boolean) }),
+      describe: (item) => ({ title: item.name, meta: [item.time ? formatTime(item.time) : '시간 없음', daysText(item.daysOfWeek), periodText(item), item.memo].filter(Boolean) }),
       onAdd: (values) => medication.add(values),
       onUpdate: (id, values) => medication.update(id, values),
       onRemove: (id) => medication.remove(id),

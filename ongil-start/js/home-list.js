@@ -14,7 +14,8 @@
  *   canAdd / canEdit (default true): a list that only shows and checks, e.g. today's routines; canAdd may be a function
  *   afterChange(): called after any change so the owner can refresh what depends on the list
  *   before() / after(): extra nodes above the list and below its buttons (a heading, links to the full screen)
- *   rowActions(item) (Completion V3): extra buttons placed before 고치기 / 지우기 on a row (e.g. 전화하기, 위로)
+ *   rowActions(item) (Completion V3): extra buttons placed before 고치기 / 지우기 on a row (e.g. 전화하기, 위로);
+ *                    on a list without 고치기 / 지우기 they are the row's only buttons (Health · Safety V2: 건너뜀)
  *   A delete is announced only when the store says it was written; otherwise the row stays and the reason is shown.
  */
 import { el, clear } from './dom.js';
@@ -156,7 +157,9 @@ export function createListCard({ card, config }) {
           el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'data-og-focus': `edit:${item.id}`, 'aria-label': `‘${d.title}’ 고치기`, text: '고치기', onclick: () => setMode({ type: 'edit', id: item.id }, 'form') }),
           el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'data-og-focus': `delete:${item.id}`, 'aria-label': `‘${d.title}’ 지우기`, text: '지우기', onclick: () => setMode({ type: 'delete', id: item.id }, 'confirm') })
         )
-      : null;
+      : typeof config.rowActions === 'function'
+        ? el('div', { class: 'og-home-item__actions' }, config.rowActions(item)) /* Health · Safety V2: a read-only row can still carry its own buttons (복약 건너뜀) */
+        : null;
     return el('li', { class: done ? 'og-home-item is-done' : 'og-home-item', 'data-og-item': item.id }, main, actions);
   }
 

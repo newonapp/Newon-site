@@ -271,7 +271,7 @@ test('OG-EC-11 the screen: honest empty state, labelled fields (tel input), aler
   assert.match(read('styles', 'ongil-app.css'), /\.og-dialog \{ width: min\(34rem, calc\(100vw - 2rem\)\);/);
   assert.match(read('styles', 'ongil-tokens.css'), /--og-control: 2\.75rem;/);
   /* 건강·안부 lists it as built, and it is placed first among the screen's own cards */
-  assert.deepEqual(AREAS.find((a) => a.id === 'health').modules.filter((m) => !m.available).map((m) => m.id), ['help']);
+  /* Health · Safety V2: 도움 요청 is built (BEFORE ['help'] unfinished · AFTER none) */ assert.deepEqual(AREAS.find((a) => a.id === 'health').modules.filter((m) => !m.available).map((m) => m.id), []);
   assert.match(JS['app.js'], /if \(extraHost\) extraHost\.prepend\(emergencyView\.card\.root\);/);
   assert.match(JS['app.js'], /if \(view === 'health'\) \{\s*healthSchedule\.render\(\);\s*emergencyView\.render\(\);/);
 });

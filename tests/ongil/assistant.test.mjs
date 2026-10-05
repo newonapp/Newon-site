@@ -1089,7 +1089,7 @@ test('OG-AI-77 no page error: handle(), confirm() and cancel() never throw or re
 test('OG-AI-78 regression and documentation: areas, routes, collections and earlier suites are unchanged; the Phase 10 document is complete', () => {
   assert.deepEqual([...VIEWS], ['home', 'life', 'health', 'family', 'care', 'enjoy', 'community', 'store', 'saved', 'account']);
   /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ assert.equal(COLLECTIONS.length, 27); // Completion V3: + emergencyContacts
-  /* Family Connection V1: + 5 family modules (BEFORE 71, AFTER 76) */ assert.equal(fs.readdirSync(JS_DIR).filter((f) => f.endsWith('.js')).length, 78); /* Family Connection V2: + family-remote, family-remote-view (BEFORE 76, AFTER 78) */ // Completion V2: + health-appointments · Completion V3: + emergency-contacts
+  /* Family Connection V1: + 5 family modules (BEFORE 71, AFTER 76) */ assert.equal(fs.readdirSync(JS_DIR).filter((f) => f.endsWith('.js')).length, 80); /* Health · Safety V2: + health-changes, health-safety-view (BEFORE 78, AFTER 80) */ /* Family Connection V2: + family-remote, family-remote-view (BEFORE 76, AFTER 78) */ // Completion V2: + health-appointments · Completion V3: + emergency-contacts
   assert.deepEqual(createSearch().providerIds(), []);
   // Phase 11: the version moved on (BEFORE assistant-v1, AFTER hardening-v1) and one test file was added (BEFORE 20, AFTER 21).
   assert.match(APP, /const APP_VERSION = 'hardening-v1';/);
@@ -1100,7 +1100,7 @@ test('OG-AI-78 regression and documentation: areas, routes, collections and earl
   // Phase 12: production-release.test.mjs was added (BEFORE 21, AFTER 22). API connection: production-api.test.mjs (BEFORE 22, AFTER 23). Completion V1: health-measures.test.mjs (AFTER 24). Completion V2: health-calendar.test.mjs (AFTER 25). Completion V3: emergency-contacts.test.mjs (AFTER 26).
   // Product Completion Audit V1: product-completion.test.mjs was added (BEFORE 26, AFTER 27).
   // Family Connection V1: family-connection.test.mjs was added (BEFORE 27, AFTER 28). WHY: a new feature brought its own test file.
-  assert.equal(tests.length, 30); // Family Connection V2: + family-v2.test.mjs (BEFORE 28, AFTER 29) · Community V2: + community-v2.test.mjs (BEFORE 29, AFTER 30)
+  assert.equal(tests.length, 31); // Health · Safety V2: + health-safety-v2.test.mjs (BEFORE 30, AFTER 31) · Family Connection V2: + family-v2.test.mjs (BEFORE 28, AFTER 29) · Community V2: + community-v2.test.mjs (BEFORE 29, AFTER 30)
   const doc = read('docs/ongil/PHASE_10_ONGIL_AI_V1.md');
   for (const h of ['OBJECTIVE', 'POSITIONING', 'CURRENT MODE', 'ARCHITECTURE', 'INTENTS', 'MATCHER', 'TOOL REGISTRY', 'TOOL CONTRACT', 'READ TOOLS', 'NAVIGATION TOOLS', 'WRITE TOOLS', 'CONFIRMATION', 'DATE PARSING', 'RESULT CONTRACT', 'HEALTH SAFETY', 'FAMILY BOUNDARY', 'PRIVACY', 'ANALYTICS', 'ROUTE SAFETY', 'SECURITY', 'ACCESSIBILITY', 'RESPONSIVE', 'PERFORMANCE', 'TESTS', 'KNOWN LIMITATIONS', 'MODEL MIGRATION', 'BACKEND REQUIREMENTS', 'PHASE 11 HANDOFF']) assert.match(doc, new RegExp(`^## (\\d+\\. )?${h}$`, 'm'), h);
   for (const id of I.INTENT_IDS) assert.ok(doc.includes(`\`${id}\``), `${id} is documented`);
