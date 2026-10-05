@@ -53,8 +53,9 @@ test('OG-LF-1 My Life route: #life and #life/<section>; fourteen sections in fiv
   for (const s of LIFE_SECTIONS) assert.equal(resolveView(`#life/${s}`), 'life', s);
   assert.deepEqual([sectionOf('#life'), sectionOf('#life/calendar'), sectionOf('#life/journal'), sectionOf('#life/a/b'), sectionOf('#life/<x>'), sectionOf('')], ['', 'calendar', 'journal', '', '', '']);
   assert.equal(hashFor('life'), '#life');
-  assert.deepEqual([...LIFE_SECTIONS], ['overview', 'calendar', 'tasks', 'routines', 'meals', 'water', 'exercise', 'sleep', 'expenses', 'journal', 'checkin', 'symptoms', 'medication', 'health-notes', 'measures']);
-  assert.deepEqual(LIFE_GROUPS.map((g) => [g.label, [...g.sections]]), [['요약', ['overview']], ['일정', ['calendar', 'tasks', 'routines']], ['생활', ['meals', 'water', 'exercise', 'sleep']], ['기록', ['expenses', 'journal']], ['건강', ['checkin', 'symptoms', 'medication', 'health-notes', 'measures']]]);
+  /* My Life V2: + memos in 기록 (BEFORE fifteen, AFTER sixteen) */
+  assert.deepEqual([...LIFE_SECTIONS], ['overview', 'calendar', 'tasks', 'routines', 'meals', 'water', 'exercise', 'sleep', 'expenses', 'journal', 'memos', 'checkin', 'symptoms', 'medication', 'health-notes', 'measures']);
+  assert.deepEqual(LIFE_GROUPS.map((g) => [g.label, [...g.sections]]), [['요약', ['overview']], ['일정', ['calendar', 'tasks', 'routines']], ['생활', ['meals', 'water', 'exercise', 'sleep']], ['기록', ['expenses', 'journal', /* My Life V2: + 메모 */ 'memos']], ['건강', ['checkin', 'symptoms', 'medication', 'health-notes', 'measures']]]);
   assert.deepEqual(LIFE_GROUPS.flatMap((g) => g.sections), [...LIFE_SECTIONS], 'every section belongs to exactly one tab');
   assert.deepEqual([groupOf('tasks').id, groupOf('sleep').id, groupOf('journal').id, groupOf('nope').id], ['plan', 'daily', 'records', 'overview']);
   assert.deepEqual([lifeHash('overview'), lifeHash('calendar'), lifeHash('nope'), lifeHash('')], ['#life', '#life/calendar', '#life', '#life']);
@@ -140,7 +141,7 @@ test('OG-LF-4 calendar and Home share one schedule: create, update, complete, de
   assert.deepEqual(w.home.schedule.listForDate().map((e) => e.id), [other.id]);
   assert.deepEqual(w.backend.keys(), ['ongil.v1.events'], 'one collection — there is no second calendar');
   assert.match(SRC['life-plan.js'], /getItems: \(\) => schedule\.listForDate\(selected\)/);
-  assert.match(read('js', 'app.js'), /stores: \{ schedule, tasks, routines, dailyLife, sleep, expenses, journal \}/);
+  assert.match(read('js', 'app.js'), /stores: \{ schedule, tasks, routines, dailyLife, sleep, expenses, journal, memos \}/ /* My Life V2: + memos (BEFORE without, AFTER with) */);
 });
 
 test('OG-LF-5 meals and exercise are one record for Home and My Life, and Phase 2A records still read', () => {

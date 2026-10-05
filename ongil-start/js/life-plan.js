@@ -130,7 +130,7 @@ export function createCalendarSection({ schedule, tasks, routines = null, now = 
           const routineCount = routines ? routines.listForDate(key).length : 0;
           const lines = [
             ...events.map((e) => el('li', { class: 'og-cal-week__line', 'data-og-cal-kind': eventKind(e) }, [eventMeta(e).join(' · '), e.title].filter(Boolean).join(' '))),
-            ...due.map((t) => el('li', { class: 'og-cal-week__line og-cal-week__line--task' }, `할 일 · ${t.title}${t.completed ? ' (끝냄)' : ''}`)),
+            ...due.map((t) => el('li', { class: 'og-cal-week__line og-cal-week__line--task' }, `할 일 · ${t.time ? `${formatTime(t.time)} ` : ''}${t.title}${t.completed ? ' (끝냄)' : ''}`)),
           ];
           return el(
             'li',
@@ -161,7 +161,7 @@ export function createCalendarSection({ schedule, tasks, routines = null, now = 
     return el(
       'div',
       { class: 'og-cal-day', 'data-og-cal-day': selected },
-      block('이 날까지 할 일', due.map((t) => el('li', { text: `${t.title}${t.completed ? ' (끝냄)' : ''}` })), '이 날까지 할 일이 없어요.'),
+      block('이 날까지 할 일', due.map((t) => el('li', { text: `${t.time ? `${formatTime(t.time)} ` : ''}${t.title}${t.completed ? ' (끝냄)' : ''}` })), '이 날까지 할 일이 없어요.'),
       routines ? block('이 날 루틴', routineRows.map((r) => el('li', { text: [r.time ? formatTime(r.time) : '', r.title, r.completed ? '(했어요)' : ''].filter(Boolean).join(' ') })), '이 날 요일에 해당하는 루틴이 없어요.') : null
     );
   }
@@ -252,7 +252,7 @@ export function createCalendarSection({ schedule, tasks, routines = null, now = 
 export function createTasksSection({ tasks, onChange }) {
   const card = createCard({ area: 'life', slot: 'tasks', title: '할 일', level: 2 });
   let filter = 'all';
-  const errors = { INVALID_TITLE: '할 일을 적어 주세요.', INVALID_DATE: '날짜를 다시 골라 주세요.', LIMIT: '할 일이 너무 많습니다. 끝낸 일을 지워 주세요.' };
+  const errors = { INVALID_TITLE: '할 일을 적어 주세요.', INVALID_DATE: '날짜를 다시 골라 주세요.', INVALID_TIME: '시간을 다시 골라 주세요.', INVALID_TIME_WITHOUT_DATE: '시간을 정하려면 ‘언제까지’ 날짜도 골라 주세요.', LIMIT: '할 일이 너무 많습니다. 끝낸 일을 지워 주세요.' };
   const FILTERS = [['all', '전체'], ['open', '할 일'], ['done', '완료']];
   const EMPTY = { all: '적어 둔 할 일이 없어요.', open: '남은 할 일이 없어요.', done: '끝낸 할 일이 없어요.' };
 
@@ -281,16 +281,19 @@ export function createTasksSection({ tasks, onChange }) {
       },
       fields: [
         { name: 'title', label: '할 일', type: 'text', required: true, maxlength: LIFE_LIMITS.taskTitle, errors: ['INVALID_TITLE'] },
-        { name: 'dueDate', label: '언제까지', type: 'date', required: false, errors: ['INVALID_DATE'] },
+        { name: 'dueDate', label: '언제까지', type: 'date', required: false, errors: ['INVALID_DATE', 'INVALID_TIME_WITHOUT_DATE'] },
+        /* My Life V2: an optional time on that day and a short memo */
+        { name: 'time', label: '시간', type: 'time', required: false, errors: ['INVALID_TIME'] },
         { name: 'priority', label: '중요도', type: 'select', required: true, options: TASK_PRIORITIES, initial: 'normal' },
+        { name: 'memo', label: '메모', type: 'text', required: false, maxlength: LIFE_LIMITS.memo },
       ],
       getItems: () => tasks.list({ filter }),
       isDone: (item) => item.completed,
-      describe: (item) => ({ title: item.title, meta: [item.priority === 'important' ? '중요' : '', item.dueDate ? `${formatDateKey(item.dueDate)}까지` : ''].filter(Boolean) }),
+      describe: (item) => ({ title: item.title, meta: [item.priority === 'important' ? '중요' : '', item.dueDate ? `${formatDateKey(item.dueDate)}까지` : '', item.time ? formatTime(item.time) : ''].filter(Boolean), text: item.memo }),
       toggleText: (item, checked) => (checked ? `‘${item.title}’을(를) 끝낸 일로 표시했습니다.` : `‘${item.title}’ 표시를 풀었습니다.`),
       onToggle: (item, checked) => tasks.update(item.id, { completed: checked }),
       onAdd: (values) => tasks.add(values),
-      onUpdate: (id, values) => tasks.update(id, { title: values.title, dueDate: values.dueDate, priority: values.priority }),
+      onUpdate: (id, values) => tasks.update(id, { title: values.title, dueDate: values.dueDate, time: values.time, memo: values.memo, priority: values.priority }),
       onRemove: (id) => tasks.remove(id),
       errorText: (reason) => errors[reason] || '저장하지 못했습니다. 다시 시도해 주세요.',
     },
@@ -303,6 +306,8 @@ export function createTasksSection({ tasks, onChange }) {
 
 const DAY_OPTIONS = WEEKDAY_LABELS.map((label, id) => ({ id, label }));
 const ACTIVE_OPTIONS = [{ id: 'on', label: '하는 중' }, { id: 'off', label: '쉬는 중' }];
+/* My Life V2: example names offered under 루틴 이름. Words only — never created, never counted, nothing is claimed about them. */
+export const ROUTINE_EXAMPLES = Object.freeze(['산책', '독서', '물 마시기', '취미', '운동', '전화하기']);
 export const describeDays = (days) => (days.length === 7 ? '매일' : days.map((d) => WEEKDAY_LABELS[d]).join(' · '));
 
 export function createRoutinesSection({ routines }) {
@@ -339,7 +344,8 @@ export function createRoutinesSection({ routines }) {
       checkable: false,
       afterChange: () => todayList.reset(),
       fields: [
-        { name: 'title', label: '루틴 이름', type: 'text', required: true, maxlength: LIFE_LIMITS.routineTitle, errors: ['INVALID_TITLE'] },
+        /* My Life V2: examples are words to tap, not routines — nothing is made until 저장 */
+        { name: 'title', label: '루틴 이름', type: 'text', required: true, maxlength: LIFE_LIMITS.routineTitle, errors: ['INVALID_TITLE'], suggestions: ROUTINE_EXAMPLES },
         { name: 'daysOfWeek', label: '요일', type: 'days', required: true, options: DAY_OPTIONS, initial: () => [0, 1, 2, 3, 4, 5, 6], errors: ['INVALID_DAYS'] },
         { name: 'time', label: '시간', type: 'time', required: false, errors: ['INVALID_TIME'] },
         { name: 'active', label: '상태', type: 'select', required: true, options: ACTIVE_OPTIONS, initial: 'on', read: (item) => (item.active ? 'on' : 'off') },

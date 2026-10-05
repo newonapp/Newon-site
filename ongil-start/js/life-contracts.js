@@ -14,7 +14,7 @@ const opt = (id, label) => Object.freeze({ id, label });
 
 export const CHECKIN_STATUSES = Object.freeze([opt('good', '좋아요'), opt('okay', '괜찮아요'), opt('hard', '조금 힘들어요'), opt('help', '도움이 필요해요')]);
 
-export const LIFE_LIMITS = Object.freeze({ eventTitle: 80, medicationName: 40, memo: 100, meals: 3, water: 20, events: 1000, medications: 50, days: 366, logDays: 120, exerciseMinutes: 600, taskTitle: 80, tasks: 500, routineTitle: 40, routines: 30, expenses: 2000, amount: 100000000, journalText: 1000, journalEntries: 300, checkinMemo: 200, medicationLogDays: 366, symptomOther: 40, symptomNote: 200, healthNoteText: 300, healthNotes: 700, healthNotesPerDay: 10, eventMemo: 200, screeningType: 40 });
+export const LIFE_LIMITS = Object.freeze({ eventTitle: 80, medicationName: 40, memo: 100, meals: 3, water: 20, events: 1000, medications: 50, days: 366, logDays: 120, exerciseMinutes: 600, taskTitle: 80, tasks: 500, routineTitle: 40, routines: 30, expenses: 2000, amount: 100000000, journalText: 1000, journalEntries: 300, checkinMemo: 200, medicationLogDays: 366, symptomOther: 40, symptomNote: 200, healthNoteText: 300, healthNotes: 700, healthNotesPerDay: 10, eventMemo: 200, screeningType: 40, memoText: 1000, memos: 300 });
 
 const ID_RE = /^[a-z]{2,4}_[a-z0-9]{6,40}$/;
 const stamp = (value, fallback) => (Number.isSafeInteger(value) && value > 0 ? value : fallback);
@@ -225,6 +225,8 @@ export const TASK_PRIORITIES = Object.freeze([opt('normal', '보통'), opt('impo
 export const SLEEP_QUALITIES = Object.freeze([opt('good', '좋았어요'), opt('okay', '보통이에요'), opt('poor', '아쉬웠어요')]);
 export const EXPENSE_CATEGORIES = Object.freeze([opt('food', '식비'), opt('living', '생활'), opt('transport', '교통'), opt('health', '건강'), opt('hobby', '취미'), opt('other', '기타')]);
 export const JOURNAL_MOODS = Object.freeze([opt('good', '좋았어요'), opt('okay', '보통이에요'), opt('hard', '힘들었어요')]);
+/* My Life V2: what kind of record it is — the person's own choice, optional. A record written before V2 has none. */
+export const JOURNAL_KINDS = Object.freeze([opt('done', '오늘 한 일'), opt('place', '다녀온 곳'), opt('people', '만난 사람'), opt('hobby', '취미 활동'), opt('remember', '기억하고 싶은 일')]);
 
 const optionalTime = (value, code) => {
   if (value === undefined || value === null || value === '') return '';
@@ -239,7 +241,10 @@ export function normalizeTask(input, now = Date.now()) {
   if (!title) throw new ContractError('INVALID_TITLE');
   const dueDate = input.dueDate === undefined || input.dueDate === null || input.dueDate === '' ? '' : input.dueDate;
   if (dueDate !== '' && !isDateKey(dueDate)) throw new ContractError('INVALID_DATE');
-  return { schemaVersion: SCHEMA_VERSION, id: input.id, title, dueDate, priority: oneOf(input.priority, TASK_PRIORITIES, 'normal'), completed: input.completed === true, createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
+  /* My Life V2: an optional time on the due day and a short memo. A task written before V2 has neither and reads as before. */
+  const time = optionalTime(input.time, 'INVALID_TIME');
+  if (time && dueDate === '') throw new ContractError('INVALID_TIME_WITHOUT_DATE');
+  return { schemaVersion: SCHEMA_VERSION, id: input.id, title, dueDate, time, memo: safeText(input.memo, LIFE_LIMITS.memo), priority: oneOf(input.priority, TASK_PRIORITIES, 'normal'), completed: input.completed === true, createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
 }
 
 /* daysOfWeek: 0 = Sunday … 6 = Saturday, at least one */
@@ -303,7 +308,20 @@ export function normalizeJournal(input, now = Date.now()) {
   if (!isDateKey(input.date)) throw new ContractError('INVALID_DATE');
   const text = journalText(input.text);
   if (!text) throw new ContractError('INVALID_TEXT');
-  return { schemaVersion: SCHEMA_VERSION, id: input.id, date: input.date, text, mood: oneOf(input.mood, JOURNAL_MOODS), createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
+  return { schemaVersion: SCHEMA_VERSION, id: input.id, date: input.date, text, mood: oneOf(input.mood, JOURNAL_MOODS), kind: oneOf(input.kind, JOURNAL_KINDS), createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
+}
+
+/*
+ * Memo (My Life V2) — PRIVATE. A note the person keeps for themselves, with no date: something to remember, a list, a
+ * phone number to call back. Line breaks are kept. Never synced, shared with family, searched, read by the assistant or
+ * turned into a community post (privacy.js).
+ */
+export function normalizeMemo(input, now = Date.now()) {
+  if (!isPlainObject(input)) throw new ContractError('INVALID_MEMO');
+  if (!isId(input.id)) throw new ContractError('INVALID_ID');
+  const text = journalText(input.text).slice(0, LIFE_LIMITS.memoText);
+  if (!text) throw new ContractError('INVALID_TEXT');
+  return { schemaVersion: SCHEMA_VERSION, id: input.id, text, pinned: input.pinned === true, createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
 }
 
 /* ───────── Phase 3: SymptomRecord · HealthNote ───────── */

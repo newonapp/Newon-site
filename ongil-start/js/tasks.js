@@ -1,6 +1,7 @@
 /*
  * Tasks — things to do, separate from calendar events (a task may have a due date, an event has a day and time).
- * add · update · toggle · remove · list({ filter }) · dueOn(date) · openCount
+ * add · update · toggle · remove · list({ filter }) · dueOn(date) · openCount · overdue(date)
+ * My Life V2: optional time (on the due day) and memo.
  */
 import { normalizeTask, newId, LIFE_LIMITS } from './life-contracts.js';
 import { createRecordList } from './record-store.js';
@@ -18,14 +19,17 @@ export function createTaskStore(storage, { now = () => Date.now(), makeId = () =
       (a.priority === 'important' ? 0 : 1) - (b.priority === 'important' ? 0 : 1) ||
       (a.dueDate === '' ? 1 : 0) - (b.dueDate === '' ? 1 : 0) ||
       a.dueDate.localeCompare(b.dueDate) ||
+      /* My Life V2: on the same day a task with a time comes first, in time order */
+      (a.time === '' ? 1 : 0) - (b.time === '' ? 1 : 0) ||
+      a.time.localeCompare(b.time) ||
       a.createdAt - b.createdAt ||
       a.id.localeCompare(b.id)
     );
   }
 
   return Object.freeze({
-    add: (input) => wrap(list.insert({ id: makeId(), title: input && input.title, dueDate: input && input.dueDate, priority: input && input.priority, completed: false }, 'INVALID_TASK')),
-    update: (id, changes) => wrap(list.patch(id, changes, ['title', 'dueDate', 'priority', 'completed'], 'INVALID_TASK')),
+    add: (input) => wrap(list.insert({ id: makeId(), title: input && input.title, dueDate: input && input.dueDate, time: input && input.time, memo: input && input.memo, priority: input && input.priority, completed: false }, 'INVALID_TASK')),
+    update: (id, changes) => wrap(list.patch(id, changes, ['title', 'dueDate', 'time', 'memo', 'priority', 'completed'], 'INVALID_TASK')),
     toggle(id) {
       const current = list.get(id);
       return current ? wrap(list.patch(id, { completed: !current.completed }, ['completed'], 'INVALID_TASK')) : { ok: false, reason: 'NOT_FOUND' };
@@ -40,6 +44,8 @@ export function createTaskStore(storage, { now = () => Date.now(), makeId = () =
     },
     dueOn: (date) => list.read().filter((t) => t.dueDate === date).sort(order),
     openCount: () => list.read().filter((t) => !t.completed).length,
+    /* My Life V2: open tasks whose day has passed — shown on 내 생활 › 오늘 so nothing is silently dropped */
+    overdue: (date) => list.read().filter((t) => !t.completed && t.dueDate !== '' && t.dueDate < date).sort(order),
     /* { 'YYYY-MM-DD': number of open tasks due } for one month */
     dueCountsForMonth(month) {
       const out = {};

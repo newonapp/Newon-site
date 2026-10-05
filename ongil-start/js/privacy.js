@@ -4,7 +4,7 @@
  *
  *   APP              profile, preferences, onboarding, saved, notifications — settings and bookmarks
  *   STANDARD         everyday records: calendar events, tasks, routines (+ logs), daily life, sleep
- *   PRIVATE          living expenses, the journal, family-sharing choices and help-request notes — the user's money,
+ *   PRIVATE          living expenses, the journal, memos (My Life V2), family-sharing choices and help-request notes — the user's money,
  *                    the user's own writing, and decisions about other people; also (Phase 6) the user's own community
  *                    posts and group/meetup drafts — local writing that has not been, and cannot yet be, published
  *   HEALTH_ADJACENT  check-ins, medication (+ logs), symptoms, health notes and health measures — not medical records, but close enough
@@ -53,6 +53,8 @@ export const CLASSIFICATION = Object.freeze({
   meetupDrafts: 'PRIVATE',
   /* Completion V3: 긴급 연락망 — other people's names and phone numbers: never synced, searched, saved, shared or counted by content */
   emergencyContacts: 'PRIVATE',
+  /* My Life V2: 메모 — the person's own undated notes: never synced, searched, saved, shared, given to the assistant or counted by content */
+  memos: 'PRIVATE',
   /* Phase 9: usage counters (analytics.js). Counts of events only — no content, no identifier. Device only: never synced, searched or shared. */
   analytics: 'OPERATIONAL',
 });
@@ -78,6 +80,7 @@ export const CONTRACT_CLASSES = Object.freeze({
   GroupDraft: 'PRIVATE',
   MeetupDraft: 'PRIVATE',
   EmergencyContact: 'PRIVATE',
+  Memo: 'PRIVATE',
 });
 
 export function classOf(collection) {

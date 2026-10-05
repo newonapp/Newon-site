@@ -57,14 +57,14 @@ test('OG-IV-1 Home shows tasks and routines through My Life\'s stores and the sh
   assert.match(today, /href: '#life\/meals'/);
   /* the stores handed to Home are the very objects My Life uses */
   assert.match(APP, /stores: \{ profile, checkIn, schedule, medication, dailyLife, tasks, routines, saved, familyConnection: onboarding\.familyConnection \}/);
-  assert.match(APP, /stores: \{ schedule, tasks, routines, dailyLife, sleep, expenses, journal \}/);
+  assert.match(APP, /stores: \{ schedule, tasks, routines, dailyLife, sleep, expenses, journal, memos \}/ /* My Life V2: + memos (BEFORE without, AFTER with) */);
   for (const name of ['createTaskStore', 'createRoutineStore', 'createDailyLifeStore', 'createScheduleStore']) assert.equal((APP.match(new RegExp(`${name}\\(storage\\)`, 'g')) || []).length, 1, `${name} is created once`);
   assert.deepEqual([...COLLECTIONS].filter((c) => /home|water/i.test(c)), [], 'no Home-only or water-only collection');
   // Phase 3 added symptoms + healthNotes (16 → 18); still no Home-only collection (checked above)
   // Phase 4 added familySharing + helpRequests (18 → 20); still no Home-only collection
   // Phase 6 added communityPosts + groupDrafts + meetupDrafts (20 → 23); still no Home-only collection
   // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
-  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ assert.equal(COLLECTIONS.length, 27); // Completion V3: + emergencyContacts
+  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ /* My Life V2: + memos (BEFORE 27, AFTER 28) */ assert.equal(COLLECTIONS.length, 28); // Completion V3: + emergencyContacts
 });
 
 test('OG-IV-2 "할 일 추가" on Home continues in My Life\'s own task form', () => {
@@ -178,7 +178,7 @@ test('OG-IV-8 private and personal records are still not synced or shared: the c
   // Phase 4: the user's family-sharing choices and help-request notes are PRIVATE
   // Phase 6: the user's community posts and group/meetup drafts are PRIVATE too
   /* Family Connection V1: the family document (connections, per-member sharing, requests, activity) is PRIVATE. BEFORE: 8 PRIVATE collections. AFTER: 9. */
-  assert.deepEqual(by('PRIVATE'), ['communityPosts', 'emergencyContacts', 'expenses', 'family', 'familySharing', 'groupDrafts', 'helpRequests', 'journal', 'meetupDrafts']);
+  assert.deepEqual(by('PRIVATE'), ['communityPosts', 'emergencyContacts', 'expenses', 'family', 'familySharing', 'groupDrafts', 'helpRequests', 'journal', 'meetupDrafts', /* My Life V2: + memos */ 'memos']);
   assert.deepEqual(by('HEALTH_ADJACENT'), ['checkins', 'healthMeasures', 'healthNotes', 'medicationLogs', 'medications', 'symptoms']);
   assert.deepEqual(by('STANDARD'), ['dailyLife', 'events', 'routineLogs', 'routines', 'sleepRecords', 'tasks']);
   assert.deepEqual([...SYNCABLE_COLLECTIONS], ['profile', 'preferences', 'saved', 'onboarding']);

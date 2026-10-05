@@ -458,7 +458,7 @@ test('OG-STO-44 account delete: Store adds no collection; saved products go with
   storage.clear();
   assert.equal(saved.count(), 0);
   // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
-  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ assert.equal(COLLECTIONS.length, 27, 'no new collection in Phase 7; Phase 9 added analytics; Completion V1 added healthMeasures; Completion V3 added emergencyContacts');
+  /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ /* My Life V2: + memos (BEFORE 27, AFTER 28) */ assert.equal(COLLECTIONS.length, 28, 'no new collection in Phase 7; Phase 9 added analytics; Completion V1 added healthMeasures; Completion V3 added emergencyContacts');
   assert.match(APP_CODE, /storeView\.render\(\);/);
 });
 
@@ -556,7 +556,7 @@ test('OG-STO-56 regression: no new network, backend, key, commerce API or fixtur
   /* Phase 10 moved the version on: assistant-v1 / ?v=20261003b10 (BEFORE: admin-v1 / 20261003a9) — ONGIL 도우미 was added. */
   /* Phase 11 moved the version on: hardening-v1 / ?v=20261003r11 (BEFORE: assistant-v1 / 20261003b10) — release hardening changed app.js and two stylesheets. */
   assert.match(APP, /const APP_VERSION = 'hardening-v1';/);
-  assert.match(INDEX, /app\.js\?v=20261005h14/); // Health · Safety V2 production integration: app.js changed → entry moved on (BEFORE v13, AFTER 20261005h14) so a new page never runs a cached old entry
+  assert.match(INDEX, /app\.js\?v=20261006m15/); // Health · Safety V2 production integration: app.js changed → entry moved on (BEFORE v13, AFTER 20261005h14) so a new page never runs a cached old entry /* My Life V2: app.js changed → entry moved on (BEFORE 20261005h14, AFTER 20261006m15) */
   assert.match(INDEX, /ongil-care\.css\?v=20261003s7/);
   assert.match(SEARCH, /export function createStoreProvider\(getItems\)/);
   assert.match(AREAS.find((a) => a.id === 'store').notice, /결제, 주문, 배송 기능은 없습니다/);

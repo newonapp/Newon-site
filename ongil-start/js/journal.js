@@ -15,8 +15,8 @@ export function createJournalStore(storage, { now = () => Date.now(), today = ()
   const order = (a, b) => b.date.localeCompare(a.date) || b.createdAt - a.createdAt || a.id.localeCompare(b.id);
 
   return Object.freeze({
-    add: (input) => wrap(list.insert({ id: makeId(), date: input && input.date ? input.date : today(), text: input && input.text, mood: input && input.mood }, 'INVALID_JOURNAL')),
-    update: (id, changes) => wrap(list.patch(id, changes, ['date', 'text', 'mood'], 'INVALID_JOURNAL')),
+    add: (input) => wrap(list.insert({ id: makeId(), date: input && input.date ? input.date : today(), text: input && input.text, mood: input && input.mood, kind: input && input.kind }, 'INVALID_JOURNAL')),
+    update: (id, changes) => wrap(list.patch(id, changes, ['date', 'text', 'mood', 'kind'], 'INVALID_JOURNAL')),
     remove: (id) => list.remove(id),
     get: (id) => list.get(id),
     listForDate: (date = today()) => list.read().filter((e) => e.date === date).sort(order),
