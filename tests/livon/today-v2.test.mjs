@@ -179,7 +179,7 @@ test('TV2-33 no record title in any URL Today builds: every link is a fixed inte
     .concat([...MY_TODAY.matchAll(/myEmpty\("[^"]*", "([^"]+)"/g)].map(m => m[1]));
   assert.match(MY_TODAY, /function myEmpty\(text, href, label\)/); assert.equal((MY_TODAY.match(/myEmpty\(/g) || []).length, 5, 'four calls + the definition');
   assert.ok(hrefs.length >= 9, hrefs.join(' '));
-  for (const h of hrefs) assert.match(h, /^#(ml-[a-z]+(\?filter=today)?|td-pick)$/, h);
+  for (const h of hrefs) assert.match(h, /^#(ml-[a-z]+(\?filter=today)?|td-pick|life)$/, h);
   assert.doesNotMatch(MY_TODAY, /location\.(hash|href)\s*=|history\.(push|replace)State/, 'Today does not put anything into the address');
 });
 
@@ -235,8 +235,14 @@ test('TV2-51 cache window: a new page with an old Today script still shows a use
   assert.match(INDEX, /<div data-td-my><p class="lv-td-my__empty">[^<]*<a href="#ml-home">내 생활<\/a>/);
   assert.match(MY_TODAY, /var host = \$\("\[data-td-my\]"\);\s*if \(!host\) return;/);
   assert.match(MY_TODAY, /if \(!api\) \{ host\.innerHTML = emptyHtml\(/, 'without the My Life script, an honest message');
-  for (const f of ['today-page.js', 'today-page.css', 'life-now-page.js', 'life-now-hub.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261004c6"'), f);
+  for (const f of ['today-page.js', 'today-page.css', 'life-now-page.js', 'life-now-hub.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261004c[6-9]"'), f);
+  assert.match(INDEX, /\/livon\/today-page\.js\?v=20261004c7"/, 'production hardening (Life Stage pointer) moved the Today script to c7');
   assert.ok(INDEX.indexOf('/livon/life-now-page.js?') < INDEX.indexOf('/livon/today-page.js?'), 'My Life loads before Today');
+});
+
+test('TV2-57 Life Stage pointer: 내 오늘 links to 라이프 스테이지 and infers no stage', () => {
+  assert.match(MY_TODAY, /<a href="#life">라이프 스테이지<\/a>에서 직접 골라 볼 수 있어요/);
+  for (const bad of [/livon\.lifeStage/, /lifeInterests/, /lifeEvents/, /lifeBoost/, /LivonLifeEvents/]) assert.doesNotMatch(MY_TODAY, bad, String(bad));
 });
 
 /* ═════════ browser ═════════ */

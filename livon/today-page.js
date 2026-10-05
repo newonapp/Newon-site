@@ -651,7 +651,8 @@
         myBlock("td-my-h-up", "다가오는 7일", upcoming, '<a href="#ml-home">내 생활 홈</a>') +
       "</div>" +
       '<p class="lv-td-note lv-td-my__foot">' + (saves ? '저장한 항목 ' + saves + '개는 <a href="#ml-saved">내 생활 › 저장</a>에서 다시 볼 수 있어요. ' : "") +
-        '오늘 둘러볼 정보는 아래 <a href="#td-pick">오늘의 발견</a>에 있어요. 이 영역의 내용은 이 기기에만 있고 어디에도 보내지 않아요.</p>';
+        '오늘 둘러볼 정보는 아래 <a href="#td-pick">오늘의 발견</a>에 있어요. 내 상황에 맞는 정보는 <a href="#life">라이프 스테이지</a>에서 직접 골라 볼 수 있어요. ' +
+        '이 영역의 내용은 이 기기에만 있고 어디에도 보내지 않아요.</p>';
   }
   function myStatus(msg) {
     var n = $("[data-td-my-status]");

@@ -1,6 +1,7 @@
 # LIVON Today V2 — 내 오늘
 
-STATUS = CODE READY (feature branch `livon-today-v2`, base `96f74d7ec` = production main). Not deployed.
+STATUS = INTEGRATED, NOT DEPLOYED (feature `af3ef7307` on base `96f74d7ec`; merged into production main `32a8651d2` on branch
+`livon-today-v2-production` — see §10).
 
 ## 1. What changed
 
@@ -17,7 +18,7 @@ menu). Everything else on Today — hero, discovery feed, For You, this week, pl
 | 오늘 일정 | today's events, all-day first then by start time, place if recorded | read only |
 | 오늘 루틴 | routines scheduled today (existing weekday rule) | check / uncheck today |
 | 다가오는 7일 | tomorrow … +7: events not done, open task deadlines, goal target dates | real dates only |
-| Footer | link to My Life › 저장 when saves exist; pointer to 오늘의 발견 below; "이 기기에만 있고 어디에도 보내지 않아요" | |
+| Footer | link to My Life › 저장 when saves exist; pointer to 오늘의 발견 below; pointer to 라이프 스테이지 (`#life`); "이 기기에만 있고 어디에도 보내지 않아요" | no stage is inferred |
 
 Empty blocks say so ("오늘 할 일이 없어요." …) and link to the real My Life screen. Nothing is invented.
 
@@ -64,7 +65,8 @@ across midnight shows the new day when the tab regains focus.
 
 GitHub Pages caches HTML and scripts for up to 10 minutes and ignores `?v=`. Both mixes are safe:
 new page + old Today script → the section keeps its static line "내 생활에 기록한 오늘의 할 일·일정·루틴은 내 생활에서 볼 수
-있어요."; new script + old page → no `[data-td-my]` host, nothing renders. Changed files carry `?v=20261004c6`.
+있어요."; new script + old page → no `[data-td-my]` host, nothing renders. Changed files carry `?v=20261004c6`
+(`today-page.js` `?v=20261004c7` after the production hardening).
 
 ## 7. Tests
 
@@ -82,3 +84,14 @@ new page + old Today script → the section keeps its static line "내 생활에
 
 Nothing to configure: no environment variable, server, API or database. Needs only the normal production integration
 (merge into main, full LIVON/ONGIL regression) and a deploy.
+
+## 10. Production integration
+
+- `git merge --no-ff` of `livon-today-v2` into production main `32a8651d2` (ONGIL Health · Safety V2, `app.js?v=20261005h14`).
+  No path overlaps; no ONGIL file changes; the ONGIL import map is unchanged and current.
+- Hardening: 내 오늘 footer links to 라이프 스테이지 (`#life`) without reading any Life Stage data (TV2-57);
+  `today-page.js` moved to `?v=20261004c7`.
+- Checked in Chromium: both cache mixes (new page + old Today script/CSS; old page + new scripts) render without errors;
+  23:59:58 → 00:00 and 2028-02-28 → 29 in Asia/Seoul, UTC and America/Los_Angeles refresh 내 오늘 on focus; Space toggles
+  a task with focus kept and an announcement; no request carries a record title.
+- Real Safari / iPhone / Android: not verified.
