@@ -34,7 +34,8 @@ function world(seed, start = new Date(2026, 9, 2, 9, 0, 0)) {
 }
 
 test('OG-HM-1 contract: four kinds with a unit, typed numbers checked against a plausible input range, blood pressure as high/low', () => {
-  assert.deepEqual(MEASURE_TYPES.map((t) => [t.id, t.label, t.unit]), [['weight', '체중', 'kg'], ['bloodPressure', '혈압', 'mmHg'], ['bloodSugar', '혈당', 'mg/dL'], ['pulse', '맥박', '회/분']]);
+  /* Health · Safety V2: + 체온, 산소포화도 (BEFORE four kinds · AFTER six) */
+  assert.deepEqual(MEASURE_TYPES.map((t) => [t.id, t.label, t.unit]), [['weight', '체중', 'kg'], ['bloodPressure', '혈압', 'mmHg'], ['bloodSugar', '혈당', 'mg/dL'], ['pulse', '맥박', '회/분'], ['temperature', '체온', '°C'], ['oxygen', '산소포화도', '%']]);
   assert.deepEqual(MEASURE_TIMINGS.map((t) => t.id), ['morning', 'beforeMeal', 'afterMeal', 'bedtime', 'other']);
   assert.deepEqual(parseMeasureValue('weight', '62.5'), { value: 62.5, value2: null });
   assert.deepEqual(parseMeasureValue('weight', '62,5'), { value: 62.5, value2: null }, 'a comma is read as the decimal point');

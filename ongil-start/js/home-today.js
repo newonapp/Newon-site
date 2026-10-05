@@ -210,7 +210,8 @@ export function createMedicationCard({ medication, onChange }) {
       ],
       getItems: () => medication.listForDate(),
       isDone: (item) => item.taken,
-      describe: (item) => ({ title: item.name, meta: [item.time ? formatTime(item.time) : '', item.memo].filter(Boolean) }),
+      /* Health · Safety V2: a dose the person marked 건너뜀 (on 건강·안부 or 내 생활) says so here too */
+      describe: (item) => ({ title: item.name, meta: [item.time ? formatTime(item.time) : '', item.skipped ? '건너뜀으로 표시했어요' : '', item.memo].filter(Boolean) }),
       toggleText: (item, checked) => (checked ? `‘${item.name}’을(를) 먹은 약으로 표시했습니다.` : `‘${item.name}’ 표시를 풀었습니다.`),
       onToggle: (item, checked) => medication.setTaken(item.id, checked),
       onAdd: (values) => medication.add(values),
