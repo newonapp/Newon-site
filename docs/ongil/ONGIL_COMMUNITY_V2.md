@@ -233,3 +233,30 @@ leaving the address closes the post. An address of a post or group draft that is
 5. Notifications only for real server events.
 6. Group directory and join requests; meetups with public places only.
 7. Only then change the screen copy from LOCAL to the real state, feature by feature.
+
+## 34. Module cache versions (production integration)
+
+ONGIL loads one ES module entry (`app.js?v=…`). Every other module is reached through a relative import
+(`./router.js`) that had no version.
+
+**The risk.** GitHub Pages serves files with a 10-minute cache. Right after a deploy, a browser could keep an old
+`router.js` or `community.js` and run it next to new modules. When a new module imports an export the old module does
+not have, the whole app stops.
+
+**The fix.** `ongil-start/index.html` now carries an import map that points every module to
+`?v=<first 12 hex of its SHA-256>`.
+
+- A module's URL changes exactly when its content changes, so old and new modules are never mixed.
+- Unchanged modules keep their URL and stay cached.
+- The entry keeps its own `?v=`.
+- Browsers without import-map support ignore the block and behave as before.
+
+**Keeping it current.** After changing any module, run:
+
+```
+node scripts/ongil-module-versions.mjs --write   # update the map
+node scripts/ongil-module-versions.mjs           # check (exit 1 when stale)
+```
+
+`tests/ongil/release-hardening.test.mjs` (MC-1 … MC-7) fails when the map is stale, when a module is missing from it, or
+when a module is fetched without its version in Chromium.

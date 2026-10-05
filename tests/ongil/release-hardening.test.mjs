@@ -1253,3 +1253,107 @@ test('RH-47 storage blocked: every screen — not only 내 정보 — says once 
   assert.match(shell, /main > \.og-notice\[data-og-storage="memory"\] \{ position: fixed; top: var\(--gnav-h, 74px\);[^}]*z-index: 20;/);
   assert.equal(/저장(했|되었|됨)/.test(src), false);
 });
+
+/* ───────── Production integration (ONGIL Community V2): module cache versions (MC-1 … MC-7) ─────────
+   An import map in index.html gives every ES module a URL that changes exactly when its content changes
+   (scripts/ongil-module-versions.mjs). Kept in this file so the ONGIL test-file inventory stays as it is. */
+{
+  const http = (await import('node:http')).default;
+  const crypto = (await import('node:crypto')).default;
+  const { expectedMap, block, currentBlock, modules, moduleVersion, START, END } = await import('../../scripts/ongil-module-versions.mjs');
+  const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+  const JS = path.join(ROOT, 'ongil-start', 'js');
+  const INDEX = fs.readFileSync(path.join(ROOT, 'ongil-start', 'index.html'), 'utf8');
+  const mapJson = () => JSON.parse(/<script type="importmap">([\s\S]*?)<\/script>/.exec(INDEX)[1]);
+
+  test('MC-1 the import map in index.html is current (node scripts/ongil-module-versions.mjs --write after any module change)', () => {
+    assert.equal(currentBlock(INDEX), block(), 'run: node scripts/ongil-module-versions.mjs --write');
+  });
+
+  test('MC-2 every module except the entry is mapped to its own file with a version taken from its content', () => {
+    const map = mapJson().imports;
+    const files = fs.readdirSync(JS).filter(f => f.endsWith('.js'));
+    assert.ok(files.length > 50);
+    assert.deepEqual(Object.keys(map).sort(), files.filter(f => f !== 'app.js').map(f => '/ongil-start/js/' + f).sort());
+    for (const [k, v] of Object.entries(map)) {
+      const f = k.slice('/ongil-start/js/'.length);
+      assert.match(v, /^\/ongil-start\/js\/[a-z0-9-]+\.js\?v=[0-9a-f]{12}$/, k);
+      assert.equal(v.split('?')[0], k, 'a module is mapped only to itself');
+      const hash = crypto.createHash('sha256').update(fs.readFileSync(path.join(JS, f))).digest('hex').slice(0, 12);
+      assert.equal(v, k + '?v=' + hash, k + ' carries its content version');
+    }
+    assert.deepEqual(expectedMap(), { imports: map });
+  });
+
+  test('MC-3 one import map, placed before the module entry; the entry keeps its own ?v=; no other inline script is added', () => {
+    assert.equal((INDEX.match(/<script type="importmap">/g) || []).length, 1);
+    const mapAt = INDEX.indexOf('<script type="importmap">'), entryAt = INDEX.indexOf('<script type="module" src="/ongil-start/js/app.js?v=');
+    assert.ok(mapAt > 0 && entryAt > mapAt, 'the map must precede the first module script');
+    assert.equal((INDEX.match(/<script type="module"/g) || []).length, 1);
+    assert.equal([...INDEX.matchAll(/<script>([\s\S]*?)<\/script>/g)].length, 1, 'still one plain inline script (OG-SEC-5)');
+    assert.ok(INDEX.indexOf(START) < mapAt && INDEX.indexOf(END) > mapAt);
+  });
+
+  test('MC-4 a content change moves exactly that module\'s URL; identical content keeps it (unchanged modules stay cached)', () => {
+    const v = s => crypto.createHash('sha256').update(s).digest('hex').slice(0, 12);
+    const src = fs.readFileSync(path.join(JS, 'community.js'));
+    assert.equal(v(src), moduleVersion('community.js'));
+    assert.notEqual(v(Buffer.concat([src, Buffer.from('\n')])), moduleVersion('community.js'), 'one changed byte → a new URL');
+    const versions = modules().map(moduleVersion);
+    assert.equal(new Set(versions).size, versions.length, 'distinct files have distinct versions');
+  });
+
+  test('MC-5 every import between modules is a relative "./x.js" that the map covers; no dynamic or absolute imports bypass it', () => {
+    const map = mapJson().imports;
+    for (const f of fs.readdirSync(JS).filter(n => n.endsWith('.js'))) {
+      const s = fs.readFileSync(path.join(JS, f), 'utf8');
+      assert.doesNotMatch(s, /\bimport\s*\(/, f + ' dynamic import');
+      for (const m of s.matchAll(/^\s*(?:import|export)\b[^;'"]*?from\s*['"]([^'"]+)['"]|^\s*import\s*['"]([^'"]+)['"]/gm)) {
+        const spec = m[1] || m[2];
+        assert.match(spec, /^\.\/[a-z0-9-]+\.js$/, f + ' imports ' + spec);
+        assert.ok(map['/ongil-start/js/' + spec.slice(2)], f + ' → ' + spec + ' is mapped');
+      }
+    }
+  });
+
+  test('MC-6 the map holds same-origin module paths only (no hosts, no secrets)', () => {
+    const raw = /<script type="importmap">([\s\S]*?)<\/script>/.exec(INDEX)[1];
+    assert.doesNotMatch(raw, /https?:|\/\/[a-z]|key|token|secret/i);
+    assert.deepEqual(Object.keys(mapJson()), ['imports']);
+  });
+
+  /* ───────── browser: the real module graph loads through versioned URLs, once each ───────── */
+  const PW = process.env.PLAYWRIGHT_MODULE || '/home/claude/.npm-global/lib/node_modules/playwright/index.mjs';
+  const CHROME = process.env.CHROME_PATH || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+  const skip = !(fs.existsSync(PW) && fs.existsSync(CHROME)) && 'no local Chromium';
+  const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml' };
+  test('MC-7 Chromium: every ONGIL module is fetched with its content version, exactly once, and the app runs without errors', { skip }, async () => {
+    const { chromium } = await import(PW);
+    const server = http.createServer((req, res) => {
+      let f = path.join(ROOT, decodeURIComponent(req.url.split('?')[0]));
+      if (!f.startsWith(ROOT)) { res.writeHead(403); res.end(); return; }
+      if (fs.existsSync(f) && fs.statSync(f).isDirectory()) f = path.join(f, 'index.html');
+      if (fs.existsSync(f) && fs.statSync(f).isFile()) { res.writeHead(200, { 'Content-Type': MIME[path.extname(f)] || 'application/octet-stream' }); res.end(fs.readFileSync(f)); }
+      else { res.writeHead(404); res.end(); }
+    });
+    await new Promise(r => server.listen(0, '127.0.0.1', r));
+    const base = 'http://127.0.0.1:' + server.address().port;
+    const browser = await chromium.launch({ executablePath: CHROME, args: ['--no-sandbox'] });
+    try {
+      const ctx = await browser.newContext({ viewport: { width: 390, height: 900 } });
+      await ctx.route('**/*', r => (r.request().url().startsWith(base) ? r.continue() : r.abort()));
+      const p = await ctx.newPage();
+      const errors = [], reqs = [];
+      p.on('pageerror', e => errors.push(e.message));
+      p.on('request', r => { const u = r.url(); if (u.includes('/ongil-start/js/')) reqs.push(u.slice(base.length)); });
+      await p.goto(base + '/ongil-start/#community'); await p.waitForTimeout(2000);
+      const map = mapJson().imports;
+      assert.deepEqual(reqs.filter(u => !/\?v=/.test(u)), [], 'no module is fetched without a version');
+      assert.equal(new Set(reqs).size, reqs.length, 'no module is fetched twice');
+      for (const u of reqs) if (!u.startsWith('/ongil-start/js/app.js?')) assert.equal(map[u.split('?')[0]], u, u + ' uses the mapped URL');
+      assert.ok(reqs.length >= Object.keys(map).length * 0.5, 'the module graph was loaded');
+      assert.deepEqual(errors, []);
+      assert.match(await p.evaluate(() => document.querySelector('main').innerText), /커뮤니티/);
+    } finally { await browser.close(); server.close(); }
+  });
+}
