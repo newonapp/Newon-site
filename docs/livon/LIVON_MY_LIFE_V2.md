@@ -153,3 +153,19 @@ Results on this commit's tree:
 Build: `publish-site` OK (89 asset references on `livon/index.html`, 0 missing; `life-now-hub.js` published), API-only build OK,
 performance check 0 errors (the one warning, `theme-shell.js` in `<head>`, is older than this branch), no key or fixture
 content in the published output.
+
+## 13. Production integration (branch `livon-my-life-v2-production`)
+
+Merged `--no-ff` into production main `4b46d50f0` (with LIVON Community V2, ONGIL Family V2, ONGIL Community V2 and the
+ONGIL module-version map): "Integrate LIVON My Life V2 with production". Conflicts in `livon/index.html` (Community V2
+cache keys kept, `help-data.js` on `c5`) and `tests/livon/release-candidate.test.mjs` (COMMUNITY_V2, ONGIL_FAMILY_V2 and
+MY_LIFE_V2 entries all kept). No LIVON Community, LIVON AI, ONGIL, server or API file changed.
+
+Test-only hardening ("Harden LIVON My Life V2 production integration"): RC-41 failed on production main itself — Community
+V2's product files and `scripts/ongil-module-versions.mjs` (ONGIL cache hardening) had no RC-41 entry. RC-41 now accepts the
+files of named commits only when that commit is in HEAD's history and really changed each listed file (`namedCommitFiles`:
+COMMUNITY_V2, ONGIL_MODULE_VERSIONS, MY_LIFE_V2). Nothing else is accepted; no SHA is hard-coded.
+
+The My Life "route state" test failed on main whenever the device's local date was 2026-10-05 (its fixture date). The
+feature's fix (a date that is never today) was kept; checked with a fixed clock at four instants in Asia/Seoul and UTC:
+main fails exactly on the local day 2026-10-05, the integration passes at every instant.

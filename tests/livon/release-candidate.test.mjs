@@ -119,6 +119,19 @@ export const ONGIL_PRODUCT = { subject: 'Integrate ONGIL production frontend', d
 export const ONGIL_FAMILY_V2 = { subject: 'Integrate ONGIL Family V2 with production', files: ['api/ongil/family.mjs', 'server/ongil/family/http.mjs', 'server/ongil/family/store.mjs',
   'server/ongil/family/migrations/001_family.sql', 'server/ongil/family/migrations/002_family_limits.sql'] };
 const familyV2In = () => git('log', '--format=%s', 'HEAD').stdout.split('\n').includes(ONGIL_FAMILY_V2.subject);
+/* main 4b46d50f0: ONGIL module cache/version hardening. Its one file outside ongil-start/ is the generator of the ONGIL import
+   map (a build-time script, not a LIVON file). Accepted only on a line that contains that commit, which must have added it. */
+export const ONGIL_MODULE_VERSIONS = { subject: 'Harden ONGIL Community V2 production integration', files: ['scripts/ongil-module-versions.mjs'] };
+/* the non-merge commit with this subject in HEAD's history, or null */
+const commitInHistory = subject => (git('log', '--no-merges', '--format=%H%x09%s', 'HEAD').stdout.split('\n').find(l => l.split('\t')[1] === subject) || '').split('\t')[0] || null;
+/* the files a named commit may bring into RC-41 — only if that commit is in the history and really changed each of them */
+function namedCommitFiles(entry) {
+  const c = commitInHistory(entry.subject);
+  if (!c) return [];
+  const touched = git('diff-tree', '--no-commit-id', '--name-only', '-r', c + '^', c).stdout.split('\n').filter(Boolean);
+  assert.deepEqual(entry.files.filter(f => !touched.includes(f)), [], entry.subject + ': every accepted file was changed by that commit');
+  return entry.files;
+}
 
 /* ───────── static SEO roots: the same generator the build runs, closed and open ───────── */
 function makeRoot(env) {
@@ -560,7 +573,9 @@ test('RC-26 accessibility (static): the build gate still reports 0 errors on the
 test('RC-41 visual regression by construction: the RC ships the Performance V1 product files unchanged (or only listed RC fixes)', { skip: noGit || (!hasCommit(RC_BASE) && 'base commit missing') }, () => {
   const changed = git('diff', '--name-only', RC_BASE, 'HEAD').stdout.split('\n').filter(Boolean);
   const product = changed.filter(f => !/^(docs\/|tests\/)/.test(f));
-  const allowed = new Set([...RC_FIXES, ...BACKEND_HARDENING.files, ...ROUTING_CORS_FIX.files, ...COMPLETION_FIXES, ...(aiLiveIn() ? AI_LIVE.files : []), ...(familyV2In() ? ONGIL_FAMILY_V2.files : []), ...(myLifeV2In() ? MY_LIFE_V2.files : [])]);
+  const allowed = new Set([...RC_FIXES, ...BACKEND_HARDENING.files, ...ROUTING_CORS_FIX.files, ...COMPLETION_FIXES, ...(aiLiveIn() ? AI_LIVE.files : []), ...(familyV2In() ? ONGIL_FAMILY_V2.files : []),
+    /* later named commits on main: LIVON Community V2, the ONGIL module-version generator, LIVON My Life V2 */
+    ...namedCommitFiles(COMMUNITY_V2), ...namedCommitFiles(ONGIL_MODULE_VERSIONS), ...namedCommitFiles(MY_LIFE_V2)]);
   /* ONGIL is its own product in its own directory: accepted only where its production integration is part of the history,
      and then only inside that directory — a LIVON, shared or any other file still needs an entry above */
   const ongilIntegrated = git('log', '--format=%s', 'HEAD').stdout.split('\n').includes(ONGIL_PRODUCT.subject);
