@@ -10,19 +10,34 @@
  *
  * No other author, comment, reply, reaction, follower, view count, ranking or notification exists here.
  * 댓글 · 공감 · 신고 · 차단 need a community server with moderation; the screen says so once.
+ *
+ * Community V2 (same cards, same design):
+ *   내 글            + 상태 (이 기기에 저장 / 임시 저장 / 내가 저장한 글) and date order filters; search also finds 모임 초안
+ *   작성 중인 글      what is typed is kept on this device (posts.compose) and offered back after a reload; it is only
+ *                    thrown away on purpose (a confirmation), never silently
+ *   내 활동          counts of what is on this device, each a shortcut to the matching list
+ *   앞으로 열릴 기능  COMMUNITY_FEATURES: what needs Newon+ or a community server, said once, with no button that pretends
+ *   addresses        #community/activity · #community/post-<id> · #community/edit-<id> · #community/group-<id>;
+ *                    an address of something that is not on this device says so plainly
  */
 import { el, clear, append } from './dom.js';
 import { createCard, choiceButton, makeField, nextId } from './home-ui.js';
 import { formatDateKey, formatTime, dateKey } from './dates.js';
 import { formatDate } from './dom.js';
-import { POST_TYPES, POST_CATEGORIES, GROUP_CATEGORIES, MEETING_STYLES, COMMUNITY_LIMITS, filterPosts, summaryOf, privacyCheck, meetupCalendarDraft, isMeetupInCalendar } from './community-contracts.js';
+import { POST_TYPES, POST_CATEGORIES, GROUP_CATEGORIES, MEETING_STYLES, COMMUNITY_LIMITS, filterPosts, filterGroups, summaryOf, privacyCheck, meetupCalendarDraft, isMeetupInCalendar, POST_FILTER_STATES, POST_SORTS, deliveryState, COMMUNITY_FEATURES } from './community-contracts.js';
 import { REGIONS } from './contracts.js';
 
 /* append that skips null/false children (a plain Node.append would print "null") */
 const put = (node, ...kids) => append(node, kids);
 const labelOf = (list, id) => (list.find((o) => o.id === id) || { label: '' }).label;
-export const COMMUNITY_SECTIONS = Object.freeze(['write', 'groups']);
-export const resolveCommunitySection = (name) => (COMMUNITY_SECTIONS.includes(name) ? name : '');
+export const COMMUNITY_SECTIONS = Object.freeze(['write', 'groups', 'activity']);
+/* one post, its edit form, or one group draft on this device: "post-cp_…", "edit-cp_…", "group-gd_…" (Community V2) */
+export const COMMUNITY_ITEM_SECTION = /^(post|edit|group)-([a-z]{2,4}_[a-z0-9]{6,40})$/;
+export const resolveCommunitySection = (name) => (typeof name === 'string' && (COMMUNITY_SECTIONS.includes(name) || COMMUNITY_ITEM_SECTION.test(name)) ? name : '');
+export const communityItemSection = (kind, id) => (COMMUNITY_ITEM_SECTION.test(`${kind}-${id}`) ? `${kind}-${id}` : '');
+/* the address of one item on this device, or the community screen itself */
+export const communityHash = (kind, id) => (communityItemSection(kind, id) ? `#community/${communityItemSection(kind, id)}` : '#community');
+export const COMPOSE_AUTOSAVE_MS = 700;
 export const POST_PAGE = 20;
 const ERRORS = {
   INVALID_TYPE: '글의 종류를 골라 주세요.',
@@ -33,7 +48,7 @@ const ERRORS = {
   INVALID_STYLE: '만나는 방식을 골라 주세요.',
   INVALID_DATE: '날짜를 골라 주세요.',
   INVALID_TIME: '시간을 다시 골라 주세요.',
-  SENSITIVE_NUMBER: '주민등록번호처럼 보이는 숫자가 있어 저장하지 않았어요. 그 숫자를 지워 주세요.',
+  SENSITIVE_NUMBER: '주민등록번호나 카드번호처럼 보이는 숫자가 있어 저장하지 않았어요. 그 숫자를 지워 주세요.',
   LIMIT: '더 저장할 수 없어요. 지난 것을 지워 주세요.',
   STORAGE_FULL: '이 기기의 저장 공간이 부족해요. 오래된 글을 지우거나 내용을 줄여 주세요.',
 };
@@ -41,9 +56,16 @@ const errorText = (reason) => ERRORS[reason] || '저장하지 못했어요. 다�
 const FIELD_OF = { INVALID_TYPE: 'type', INVALID_CATEGORY: 'category', INVALID_TITLE: 'title', INVALID_BODY: 'body', SENSITIVE_NUMBER: 'body', INVALID_NAME: 'name', INVALID_STYLE: 'meetingStyle', INVALID_DATE: 'date', INVALID_TIME: 'time' };
 const LOCAL_NOTE = '지금은 이 기기에만 저장돼요. 다른 사람에게 보이지 않아요.';
 const PRIVACY_HINT = '주소, 전화번호, 주민등록번호, 자세한 건강 정보는 적지 마세요.';
+const SCAM_HINT = '계좌번호·카드번호·인증번호·비밀번호는 누구에게도 알려 주거나 묻지 마세요. 그런 요청은 사기일 수 있어요.';
+const HEALTH_BOUNDARY = '건강 생활 글은 한 사람의 경험이에요. ONGIL의 의료 조언이 아니며, 진료와 약은 의사·약사와 상의하세요.';
+/* what the user typed, in words: the post itself is never printed into a log or a counter */
+const afterSaveWarning = (check) => [
+  check && (check.phone || check.address) ? '전화번호나 자세한 주소처럼 보이는 내용이 있어요. 나중에 공개할 수 있게 되면 꼭 지워 주세요.' : '',
+  check && check.credential ? '계좌번호·인증번호·비밀번호에 관한 내용이 있어요. 그런 정보는 누구에게도 알려 주지 마세요.' : '',
+].filter(Boolean).join(' ');
 
 /* a form built from field specs, with one error line and focus on the field that needs fixing */
-function buildForm({ label, fields, values = {}, submits, onSubmit, onCancel }) {
+function buildForm({ label, fields, values = {}, submits, onSubmit, onCancel, onInput }) {
   const made = fields.map((f) => ({ spec: f, ...makeField(f, values[f.name]) }));
   const error = el('p', { class: 'og-form-error', role: 'alert' });
   const buttons = submits.map((s) => el('button', { type: s.primary ? 'submit' : 'button', class: s.primary ? 'og-btn og-btn--primary' : 'og-btn og-btn--ghost', 'data-og-submit': s.id, text: s.label, onclick: s.primary ? null : () => go(s.id) }));
@@ -64,22 +86,62 @@ function buildForm({ label, fields, values = {}, submits, onSubmit, onCancel }) 
     event.preventDefault();
     go(submits.find((s) => s.primary).id);
   });
-  return { form, first: made[0].input };
+  const readAll = () => Object.fromEntries(made.map((f) => [f.spec.name, f.get()]));
+  if (onInput) {
+    form.addEventListener('input', () => onInput(readAll()));
+    form.addEventListener('change', () => onInput(readAll()));
+  }
+  return { form, first: made[0].input, values: readAll };
 }
 
 export function createCommunityView({ host, doc, posts, groups, meetups, saved, schedule, now = () => Date.now() }) {
-  const state = { type: '', category: '', query: '', shown: POST_PAGE, compose: null, groupId: '', groupMode: 'list', groupEdit: false, meetupEdit: '', meetupCalendar: '' };
+  const state = { type: '', category: '', query: '', state: '', sort: '', shown: POST_PAGE, compose: null, composeAsk: false, draftAsk: false, missing: '', groupId: '', groupMode: 'list', groupEdit: false, meetupEdit: '', meetupCalendar: '' };
   let cards = null;
   let dialog = null;
   let opener = null;
+  /*
+   * Community V2: an open post is named in the address (#community/post-<id>) so it can be reloaded or kept as a link.
+   * The address is REPLACED, never pushed: history is not rewritten into a dialog trap, and leaving the address (Back,
+   * a menu, another link) closes the post.
+   */
+  const win = doc && doc.defaultView ? doc.defaultView : null;
+  let openId = '';
+  const hashNow = () => (win && win.location ? win.location.hash : '');
+  const nameInAddress = (hash) => {
+    if (!win || !win.history || typeof win.history.replaceState !== 'function' || hashNow() === hash) return;
+    win.history.replaceState(null, '', hash);
+  };
+  if (win && typeof win.addEventListener === 'function') win.addEventListener('hashchange', () => {
+    if (dialog && dialog.open && openId && hashNow() !== communityHash('post', openId)) dialog.close();
+    /* an item address typed again after its post was closed (the address was replaced, so the router sees no new
+       section): handle it here too — show() is safe to run twice for the same address */
+    const section = hashNow().startsWith('#community/') ? hashNow().slice('#community/'.length) : '';
+    if (cards && COMMUNITY_ITEM_SECTION.test(section)) setTimeout(() => { if (hashNow() === `#community/${section}`) show(section); }, 0);
+  });
+  const savedIds = () => new Set(saved.list({ type: 'POST' }).map((x) => x.id));
+  const composeDraft = () => (posts.compose ? posts.compose.get() : null);
+  let autosaveTimer = null;
 
   /* ───────── 내 글 ───────── */
 
   function postForm() {
     const editing = state.compose && state.compose.id ? posts.get(state.compose.id) : null;
-    const values = editing || state.compose.values || {};
-    const source = editing ? editing.source : state.compose.values && state.compose.values.source;
-    const { form, first } = buildForm({
+    const values = (state.compose && state.compose.values && Object.keys(state.compose.values).length ? state.compose.values : null) || editing || {};
+    const source = (state.compose.values && state.compose.values.source) || (editing ? editing.source : null);
+    const initial = JSON.stringify({ type: values.type || '', category: values.category || '', title: values.title || '', body: values.body || '' });
+    const kept = el('p', { class: 'og-home-note og-community-kept', 'data-og-compose-status': 'idle', text: '쓰는 동안 내용은 이 기기에 자동으로 보관돼요. 저장하거나 직접 버리기 전에는 사라지지 않아요.' });
+    let dirty = false;
+    let latest = null;
+    const keep = () => {
+      autosaveTimer = null;
+      if (!posts.compose || !latest) return;
+      const r = posts.compose.save(editing ? editing.id : '', { ...latest, ...(source ? { source } : {}) });
+      kept.dataset.ogComposeStatus = r.ok ? (r.empty ? 'empty' : 'kept') : r.reason;
+      kept.textContent = r.ok
+        ? r.empty ? '아직 보관할 내용이 없어요.' : `작성 중인 내용을 이 기기에 보관했어요 (${formatTime(new Date(r.draft.savedAt).toTimeString().slice(0, 5))}).`
+        : r.reason === 'SENSITIVE_NUMBER' ? '주민등록번호나 카드번호처럼 보이는 숫자가 있어 보관하지 않았어요. 그 숫자를 지워 주세요.' : '이 기기에 보관하지 못했어요. 저장 공간을 확인해 주세요.';
+    };
+    const { form, first, values: current } = buildForm({
       label: editing ? '글 고치기' : '글쓰기',
       fields: [
         { name: 'type', label: '어떤 글인가요?', type: 'select', required: true, options: POST_TYPES },
@@ -89,29 +151,74 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
       ],
       values,
       submits: [{ id: 'LOCAL', label: '저장', primary: true }, { id: 'DRAFT', label: '임시 저장' }],
+      onInput: (v) => {
+        latest = v;
+        dirty = JSON.stringify({ type: v.type || '', category: v.category || '', title: v.title || '', body: v.body || '' }) !== initial;
+        if (autosaveTimer) clearTimeout(autosaveTimer);
+        autosaveTimer = setTimeout(keep, COMPOSE_AUTOSAVE_MS);
+      },
       onSubmit: (status, v) => {
         const input = { ...v, status, source };
         const r = editing ? posts.update(editing.id, input) : posts.add(input);
         if (!r.ok) return r;
-        const warn = r.check && (r.check.phone || r.check.address) ? ' 전화번호나 자세한 주소처럼 보이는 내용이 있어요. 나중에 공개할 수 있게 되면 꼭 지워 주세요.' : '';
+        if (autosaveTimer) { clearTimeout(autosaveTimer); autosaveTimer = null; }
+        if (posts.compose) posts.compose.clear();
+        const warn = afterSaveWarning(r.check);
         state.compose = null;
         renderPosts();
-        cards.posts.say(`${status === 'DRAFT' ? '임시 저장했어요' : '이 기기에 저장했어요'}. 다른 사람에게는 보이지 않아요.${warn}`);
+        cards.posts.say(`${status === 'DRAFT' ? '임시 저장했어요' : '이 기기에 저장했어요'}. 다른 사람에게는 보이지 않아요.${warn ? ` ${warn}` : ''}`);
         const row = cards.posts.body.querySelector(`[data-og-post-open="${r.post.id}"]`);
         if (row) row.focus();
         return r;
       },
       onCancel: () => {
-        state.compose = null;
-        renderPosts();
-        const back = cards.posts.body.querySelector('[data-og-post-write]');
-        if (back) back.focus();
+        /* typed text is never thrown away without asking */
+        if (dirty || (latest === null && state.compose && state.compose.resumed)) { state.composeAsk = true; state.compose.values = { ...current(), ...(source ? { source } : {}) }; renderPosts(); return; }
+        closeCompose();
       },
     });
     form.dataset.ogPostForm = editing ? 'edit' : 'new';
-    const box = el('div', { class: 'og-community-compose' }, source ? el('p', { class: 'og-home-note', 'data-og-post-source': source.sourceId, text: `‘${source.sourceTitle}’에 대한 후기예요 (즐길거리에서 시작). 소개 글은 옮겨 오지 않았어요.` }) : null, form);
+    const box = el('div', { class: 'og-community-compose' }, source ? el('p', { class: 'og-home-note', 'data-og-post-source': source.sourceId, text: `‘${source.sourceTitle}’에 대한 후기예요 (즐길거리에서 시작). 소개 글은 옮겨 오지 않았어요.` }) : null, state.compose.missingEdit ? el('p', { class: 'og-notice', role: 'note', text: '고치던 글은 이 기기에 더 이상 없어요. 보관한 내용으로 새 글을 쓸 수 있어요.' }) : null, form, kept);
     queueMicrotask(() => first.focus());
     return box;
+  }
+
+  function closeCompose(discard = true) {
+    if (autosaveTimer) { clearTimeout(autosaveTimer); autosaveTimer = null; }
+    if (discard && posts.compose) posts.compose.clear();
+    state.compose = null;
+    state.composeAsk = false;
+    renderPosts();
+    const back = cards.posts.body.querySelector('[data-og-post-write]');
+    if (back) back.focus();
+  }
+
+  /* "작성 중인 내용을 버릴까요?" — shown in place of the form, with 계속 쓰기 first */
+  function composeConfirm() {
+    const keepWriting = el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-compose-keep': 'true', text: '계속 쓰기', onclick: () => { state.composeAsk = false; renderPosts(); } });
+    queueMicrotask(() => keepWriting.focus());
+    return el('div', { class: 'og-confirm', role: 'group', 'aria-label': '작성 중인 글 버리기 확인', 'data-og-compose-confirm': 'true', onkeydown: (event) => { if (event.key === 'Escape') { event.preventDefault(); state.composeAsk = false; renderPosts(); } } },
+      el('p', { text: '작성 중인 내용을 버릴까요? 버리면 되돌릴 수 없어요. 나중에 이어 쓰려면 ‘임시 저장’을 눌러 주세요.' }),
+      el('div', { class: 'og-form__actions' }, keepWriting, el('button', { type: 'button', class: 'og-btn og-btn--danger', 'data-og-compose-discard': 'true', text: '버리기', onclick: () => { closeCompose(true); cards.posts.say('작성 중인 내용을 버렸어요.'); } })));
+  }
+
+  /* a draft kept from an earlier visit (or before a reload): offered back, never opened or thrown away by itself */
+  function draftBanner(d) {
+    const editPost = d.editId ? posts.get(d.editId) : null;
+    const what = d.values.title ? `‘${d.values.title}’` : '제목 없는 글';
+    const at = formatDate(d.savedAt);
+    if (state.draftAsk) {
+      const keepIt = el('button', { type: 'button', class: 'og-btn og-btn--ghost', text: '남겨 두기', 'data-og-draft-keep': 'true', onclick: () => { state.draftAsk = false; renderPosts('[data-og-draft-resume]'); } });
+      queueMicrotask(() => keepIt.focus());
+      return el('div', { class: 'og-confirm', role: 'group', 'aria-label': '작성 중인 글 버리기 확인', 'data-og-draft-banner': 'confirm' },
+        el('p', { text: `작성 중이던 ${what}을(를) 버릴까요? 되돌릴 수 없어요.` }),
+        el('div', { class: 'og-form__actions' }, keepIt, el('button', { type: 'button', class: 'og-btn og-btn--danger', 'data-og-draft-discard-confirm': 'true', text: '버리기', onclick: () => { posts.compose.clear(); state.draftAsk = false; renderPosts(); cards.posts.say('작성 중이던 내용을 버렸어요.'); cards.posts.focusTitle(); } })));
+    }
+    return el('div', { class: 'og-notice og-community-draft', role: 'note', 'data-og-draft-banner': d.editId ? 'edit' : 'new' },
+      el('p', { text: `작성 중이던 ${what}이(가) 이 기기에 보관돼 있어요 (${at}).${d.editId && !editPost ? ' 고치던 글은 지워져서, 새 글로 이어 쓸 수 있어요.' : ''}` }),
+      el('div', { class: 'og-form__actions' },
+        el('button', { type: 'button', class: 'og-btn og-btn--primary', 'data-og-draft-resume': 'true', text: '이어서 쓰기', onclick: () => { state.compose = { id: editPost ? editPost.id : null, values: { ...d.values }, resumed: true, missingEdit: !!(d.editId && !editPost) }; renderPosts(); } }),
+        el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-draft-discard': 'true', text: '버리기', onclick: () => { state.draftAsk = true; renderPosts(); } })));
   }
 
   function filters(list) {
@@ -141,18 +248,37 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
     const cat = makeField({ name: 'category', label: '분류로 좁히기', type: 'select', required: false, options: cats, emptyLabel: '모든 분류' }, state.category);
     cat.input.dataset.ogPostCategory = 'filter';
     cat.input.addEventListener('change', () => { state.category = cat.get(); state.shown = POST_PAGE; renderPosts('[data-og-post-category="filter"]'); });
+    /* Community V2: what is stored, and in which date order — nothing ranked by people or counts */
+    const st = makeField({ name: 'state', label: '상태', type: 'select', required: true, options: POST_FILTER_STATES }, state.state);
+    st.input.dataset.ogPostState = 'filter';
+    st.input.addEventListener('change', () => { state.state = st.get(); state.shown = POST_PAGE; renderPosts('[data-og-post-state="filter"]'); });
+    const order = makeField({ name: 'sort', label: '순서', type: 'select', required: true, options: POST_SORTS }, state.sort);
+    order.input.dataset.ogPostSort = 'filter';
+    order.input.addEventListener('change', () => { state.sort = order.get(); state.shown = POST_PAGE; renderPosts('[data-og-post-sort="filter"]'); });
     const search = makeField({ name: 'q', label: '내 글에서 찾기', type: 'search', required: false, maxlength: 60, hint: '제목, 내용, 종류, 분류로 찾아요.' }, state.query);
     search.input.dataset.ogPostSearch = 'q';
     search.input.addEventListener('input', () => {
       state.query = search.get();
       state.shown = POST_PAGE;
-      const next = filterPosts(posts.list(), state);
+      const next = filterPosts(posts.list(), currentFilter());
       cards.posts.body.querySelector('[data-og-post-list]').replaceWith(postList(next));
+      cards.posts.body.querySelector('[data-og-group-matches]').replaceWith(groupMatches());
       const count = cards.posts.body.querySelector('[data-og-post-count]');
       count.textContent = `${next.length}개`;
       count.dataset.ogPostCount = String(next.length);
     });
-    return [typeGroup, cats.length > 1 ? cat.node : null, search.node];
+    return [typeGroup, cats.length > 1 ? cat.node : null, el('div', { class: 'og-community-filters' }, st.node, order.node), search.node];
+  }
+  const currentFilter = () => ({ ...state, savedIds: state.state === 'SAVED' ? savedIds() : null });
+
+  /* the same words also find 모임 초안 (at most five shown here; the full list is in 모임 준비) */
+  function groupMatches() {
+    const found = filterGroups(groups.list(), state.query);
+    const wrap = el('div', { 'data-og-group-matches': String(found.length) });
+    if (!state.query || !found.length) return wrap;
+    put(wrap, el('h4', { class: 'og-life-sub', text: `모임 초안에서 찾은 것 ${found.length}개` }),
+      el('ul', { class: 'og-home-items', 'aria-label': '찾은 모임 초안' }, found.slice(0, 5).map((g) => el('li', { class: 'og-home-item' }, el('div', { class: 'og-home-item__main og-home-item__main--plain' }, el('p', { class: 'og-home-item__title', text: g.name }), el('p', { class: 'og-home-item__meta', text: ['모임 초안', labelOf(GROUP_CATEGORIES, g.category), g.region].filter(Boolean).join(' · ') })), el('div', { class: 'og-home-item__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'data-og-group-match': g.id, 'aria-label': `‘${g.name}’ 초안 열기`, text: '열기', onclick: () => openGroup(g.id) }))))));
+    return wrap;
   }
 
   function postList(list) {
@@ -175,7 +301,7 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
               'div',
               { class: 'og-home-item__main og-home-item__main--plain' },
               el('p', { class: 'og-home-item__title', text: p.title }),
-              el('p', { class: 'og-home-item__meta', text: [labelOf(POST_TYPES, p.type), labelOf(POST_CATEGORIES, p.category), formatDate(p.updatedAt), p.status === 'DRAFT' ? '임시 저장' : '', isSaved ? '저장함' : ''].filter(Boolean).join(' · ') }),
+              el('p', { class: 'og-home-item__meta', 'data-og-post-delivery': deliveryState(p).id, text: [labelOf(POST_TYPES, p.type), labelOf(POST_CATEGORIES, p.category), formatDate(p.updatedAt), p.status === 'DRAFT' ? '임시 저장' : '이 기기에만', isSaved ? '저장함' : ''].filter(Boolean).join(' · ') }),
               el('p', { class: 'og-home-item__text', text: summaryOf(p.body) })
             ),
             el('div', { class: 'og-home-item__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'data-og-post-open': p.id, 'aria-haspopup': 'dialog', 'aria-label': `‘${p.title}’ 자세히 보기`, text: '자세히', onclick: (event) => openPost(p.id, event.currentTarget) }))
@@ -210,22 +336,29 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
     const drafts = all.filter((p) => p.status === 'DRAFT').length;
     const savedCount = saved.list({ type: 'POST' }).filter((s) => all.some((p) => p.id === s.id)).length;
     put(card.body, el('p', { class: 'og-notice og-community-local', role: 'note', 'data-og-community-mode': 'local' }, el('strong', { text: LOCAL_NOTE }), ' 커뮤니티 서버가 생기면 내가 고른 글만 공개할 수 있게 만들 예정이에요.'));
+    if (state.missing) put(card.body, el('p', { class: 'og-notice', role: 'note', 'data-og-community-missing': state.missing, text: state.missing === 'group' ? '찾을 수 없는 모임 초안이에요. 지웠거나 이 기기에 없는 초안이에요.' : '찾을 수 없는 글이에요. 지웠거나 이 기기에 없는 글이에요.' }));
     if (state.compose) {
-      put(card.body, postForm());
+      put(card.body, state.composeAsk ? composeConfirm() : postForm());
+      renderActivity();
       return;
     }
+    const kept = composeDraft();
+    if (kept) put(card.body, draftBanner(kept));
     put(card.body, el('div', { class: 'og-form__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--primary', 'data-og-post-write': 'true', text: '글쓰기', onclick: () => openCompose({}) })));
+    renderActivity();
     if (!all.length) {
-      put(card.body, el('p', { class: 'og-home-empty', 'data-og-community-empty': 'posts', text: '아직 쓴 글이 없어요.' }), el('p', { class: 'og-home-note', text: '궁금한 것, 해 본 경험, 알게 된 정보를 적어 두세요. 다른 사람의 글은 아직 볼 수 없어요.' }));
+      put(card.body, el('p', { class: 'og-home-empty', 'data-og-community-empty': 'posts', text: '아직 표시할 커뮤니티 글이 없어요. 아직 쓴 글이 없어요.' }), el('p', { class: 'og-home-note', text: '궁금한 것, 해 본 경험, 알게 된 정보를 적어 두세요. 다른 사람의 글은 아직 볼 수 없어요.' }));
+      if (focusSelector) { const t = card.body.querySelector(focusSelector); if (t) t.focus(); }
       return;
     }
-    const list = filterPosts(all, state);
+    const list = filterPosts(all, currentFilter());
     put(
       card.body,
       el('p', { class: 'og-home-note', 'data-og-community-facts': `${all.length}:${drafts}:${savedCount}`, text: `내 글 ${all.length}개${drafts ? ` (임시 저장 ${drafts}개)` : ''}${savedCount ? ` · 저장한 글 ${savedCount}개` : ''}` }),
       filters(all),
       el('p', { class: 'og-life-value', 'data-og-post-count': String(list.length), 'aria-live': 'polite', text: `${list.length}개` }),
-      postList(list)
+      postList(list),
+      groupMatches()
     );
     if (focusSelector) {
       const t = card.body.querySelector(focusSelector);
@@ -234,9 +367,44 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
   }
 
   function openCompose(values, id = null) {
+    /* a kept draft is never overwritten by a new form: offer it instead */
+    const kept = composeDraft();
+    if (kept && !id && !(values && values.source)) {
+      state.compose = null;
+      renderPosts('[data-og-draft-resume]');
+      cards.posts.say('작성 중이던 글이 있어요. 이어서 쓰거나 버린 뒤 새 글을 써 주세요.');
+      cards.posts.root.scrollIntoView({ block: 'start' });
+      return;
+    }
     state.compose = { id, values };
+    state.missing = '';
     renderPosts();
     cards.posts.root.scrollIntoView({ block: 'start' });
+  }
+
+  /* ───────── 내 활동 (counts of what is on this device; each opens the matching list) ───────── */
+
+  function renderActivity() {
+    const card = cards.activity;
+    if (!card) return;
+    clear(card.body);
+    const all = posts.list();
+    const drafts = all.filter((p) => p.status === 'DRAFT').length;
+    const ids = savedIds();
+    const savedCount = all.filter((p) => ids.has(p.id)).length;
+    const groupCount = groups.count();
+    const composing = composeDraft() ? 1 : 0;
+    const show = (stateId, label) => () => { state.compose = null; state.state = stateId; state.type = ''; state.category = ''; state.query = ''; state.shown = POST_PAGE; renderPosts('[data-og-post-state="filter"]'); cards.posts.root.scrollIntoView({ block: 'start' }); cards.posts.say(`${label}을(를) 보여 드려요.`); };
+    const row = (key, label, n, onclick) => el('li', { class: 'og-home-item', 'data-og-activity': key }, el('div', { class: 'og-home-item__main og-home-item__main--plain' }, el('p', { class: 'og-home-item__title', text: label }), el('p', { class: 'og-home-item__meta', text: `${n}개` })), n && onclick ? el('div', { class: 'og-home-item__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'aria-label': `${label} 보기`, text: '보기', onclick })) : null);
+    card.root.dataset.ogState = all.length || groupCount || composing ? 'filled' : 'empty';
+    put(card.body,
+      el('p', { class: 'og-home-note', text: '이 기기에 있는 것만 세어요. 다른 사람의 반응이나 방문 수는 없어요.' }),
+      el('ul', { class: 'og-home-items', 'aria-label': '내 활동' },
+        row('posts', '이 기기에 저장한 글', all.length - drafts, show('LOCAL', '이 기기에 저장한 글')),
+        row('drafts', '임시 저장한 글', drafts, show('DRAFT', '임시 저장한 글')),
+        row('composing', '작성 중인 글', composing, () => { renderPosts('[data-og-draft-resume]'); cards.posts.root.scrollIntoView({ block: 'start' }); }),
+        row('saved', '내가 저장한 글', savedCount, show('SAVED', '내가 저장한 글')),
+        row('groups', '모임 초안', groupCount, () => { state.groupId = ''; state.groupMode = 'list'; renderGroups('[data-og-group-new]'); cards.groups.root.scrollIntoView({ block: 'start' }); })));
   }
 
   /* ───────── 자세히 (one dialog) ───────── */
@@ -260,9 +428,13 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
     });
     dialog.addEventListener('close', () => {
       clear(dialog);
+      /* the address follows the dialog: it names the post only while the post is open */
+      if (openId && hashNow() === communityHash('post', openId)) nameInAddress('#community');
+      openId = '';
       const key = opener && opener.dataset ? opener.dataset.ogPostOpen : '';
       const back = opener && opener.isConnected ? opener : key ? host.querySelector(`[data-og-post-open="${key}"]`) : null;
       if (back && !state.compose) back.focus();
+      else if (!back && !state.compose && cards) cards.posts.focusTitle(); /* opened from an address: focus stays on this screen */
       opener = null;
     });
     doc.body.append(dialog);
@@ -273,7 +445,9 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
     const post = posts.get(id);
     if (!post) return;
     const d = ensureDialog();
+    openId = id;
     if (from) opener = from;
+    if (hashNow().startsWith('#community')) nameInAddress(communityHash('post', id));
     clear(d);
     const status = el('p', { class: 'og-live', role: 'status', 'aria-live': 'polite' });
     const body = el('div', { class: 'og-dialog__body' });
@@ -282,8 +456,10 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
       body,
       el('p', { class: 'og-dialog__progress', text: `${labelOf(POST_TYPES, post.type)} · ${labelOf(POST_CATEGORIES, post.category)}` }),
       el('h2', { class: 'og-dialog__title', id: 'og-post-detail-title', tabindex: '-1', text: post.title }),
-      el('p', { class: 'og-home-note', 'data-og-post-state': post.status, text: `${post.status === 'DRAFT' ? '임시 저장한 글' : '이 기기에 저장한 글'} · 다른 사람에게 보이지 않아요 · 쓴 날 ${formatDate(post.createdAt)}${post.updatedAt !== post.createdAt ? ` · 고친 날 ${formatDate(post.updatedAt)}` : ''}` }),
+      el('p', { class: 'og-home-note', 'data-og-post-state': post.status, 'data-og-post-delivery': deliveryState(post).id, text: `${post.status === 'DRAFT' ? '임시 저장한 글' : '이 기기에 저장한 글'} · 다른 사람에게 보이지 않아요 · 쓴 날 ${formatDate(post.createdAt)}${post.updatedAt !== post.createdAt ? ` · 고친 날 ${formatDate(post.updatedAt)}` : ''}` }),
+      el('p', { class: 'og-home-note', 'data-og-post-visibility': 'local', text: `공개 상태: ${deliveryState(post).label}` }),
       post.source ? el('p', { class: 'og-home-note', text: `‘${post.source.sourceTitle}’에 대한 후기 (즐길거리)` }) : null,
+      post.category === 'HEALTHY_LIVING' ? el('p', { class: 'og-home-note', 'data-og-health-boundary': 'true', text: HEALTH_BOUNDARY }) : null,
       el('p', { class: 'og-community-body', 'data-og-post-body': 'true', text: post.body })
     );
     if (confirm) {
@@ -299,6 +475,7 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
           return;
         }
         if (saved.isSaved('POST', id)) saved.unsave('POST', id);
+        /* a kept draft of changes to this post now belongs to nothing: it stays (offered as a new post), never silently lost */
         d.close();
         renderPosts();
         cards.posts.say(`‘${post.title}’을(를) 지웠어요.`);
@@ -313,7 +490,7 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
         'aria-pressed': isSaved ? 'true' : 'false',
         text: isSaved ? '✓ 저장함 (누르면 취소)' : '저장',
         onclick: () => {
-          const r = saved.toggle({ type: 'POST', id: post.id, title: post.title, description: `내 글 · ${labelOf(POST_TYPES, post.type)} · 이 기기에만 있어요`, href: '#community' });
+          const r = saved.toggle({ type: 'POST', id: post.id, title: post.title, description: `내 글 · ${labelOf(POST_TYPES, post.type)} · 이 기기에만 있어요`, href: communityHash('post', post.id) });
           status.textContent = r.ok ? (r.saved ? '저장했어요. ‘저장’ 화면에서 다시 볼 수 있어요. 공개되는 것은 아니에요.' : '저장을 취소했어요.') : '저장하지 못했어요.';
           saveBtn.setAttribute('aria-pressed', r.saved ? 'true' : 'false');
           saveBtn.textContent = r.saved ? '✓ 저장함 (누르면 취소)' : '저장';
@@ -322,7 +499,7 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
       });
       put(
         body,
-        el('div', { class: 'og-dialog__actions' }, saveBtn, el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-post-edit': 'true', text: '고치기', onclick: () => { d.close(); openCompose({}, id); } }), el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-post-delete': 'true', text: '지우기', onclick: () => openPost(id, null, true) }), el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-post-close': 'true', text: '닫기', onclick: () => d.close() })),
+        el('div', { class: 'og-dialog__actions' }, saveBtn, el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-post-edit': 'true', text: '고치기', onclick: () => { d.close(); editPost(id); } }), el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-post-delete': 'true', text: '지우기', onclick: () => openPost(id, null, true) }), el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-post-close': 'true', text: '닫기', onclick: () => d.close() })),
         el('p', { class: 'og-home-note', 'data-og-community-future': 'true', text: '댓글, 공감, 신고는 커뮤니티 서버와 운영 정책이 생기면 쓸 수 있어요.' })
       );
     }
@@ -330,6 +507,35 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
     d.append(body);
     if (!d.open && typeof d.showModal === 'function') d.showModal();
     if (!confirm) d.querySelector('#og-post-detail-title').focus();
+  }
+
+  /* An address change closes every open dialog (app.js, after the router has run): a post named by the address is opened
+     once that is done, so the address can open it (a link from 저장, a reload, a typed address). */
+  function openPostSoon(id) {
+    setTimeout(() => { if (posts.get(id) && hashNow() === communityHash('post', id) && !(dialog && dialog.open && openId === id)) openPost(id, null); }, 0);
+  }
+
+  /* 고치기: a kept draft of THIS post comes back into the form; a kept draft of something else is never overwritten */
+  function editPost(id) {
+    const kept = composeDraft();
+    if (kept && kept.editId !== id) {
+      state.compose = null;
+      renderPosts('[data-og-draft-resume]');
+      cards.posts.say('작성 중이던 다른 글이 있어요. 이어서 쓰거나 버린 뒤 고쳐 주세요.');
+      return;
+    }
+    state.compose = { id, values: kept ? { ...kept.values } : {}, resumed: !!kept };
+    state.missing = '';
+    renderPosts();
+    cards.posts.root.scrollIntoView({ block: 'start' });
+  }
+  function openGroup(id) {
+    state.groupId = id;
+    state.groupMode = 'list';
+    state.groupEdit = false;
+    renderGroups();
+    cards.groups.root.scrollIntoView({ block: 'start' });
+    cards.groups.focusTitle();
   }
 
   /* ───────── 모임 준비 ───────── */
@@ -530,12 +736,16 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
     clear(host);
     cards = {
       posts: createCard({ area: 'community', slot: 'mine', title: '내 글', level: 1 }),
+      activity: createCard({ area: 'community', slot: 'activity', title: '내 활동', level: 2 }),
       groups: createCard({ area: 'community', slot: 'groups', title: '모임 준비', level: 2, lead: '함께하고 싶은 모임을 초안으로 만들어 두세요. 아직 다른 사람이 보거나 가입할 수 없어요.' }),
+      features: createCard({ area: 'community', slot: 'features', title: '앞으로 열릴 기능', level: 3, lead: '아래 기능은 아직 없어요. 있는 것처럼 보이게 만들지 않아요.' }),
       discover: createCard({ area: 'community', slot: 'discover', title: '공개 모임 찾기', level: 3 }),
       safety: createCard({ area: 'community', slot: 'safety', title: '함께 지킬 것', level: 3 }),
     };
     put(cards.discover.body, el('p', { class: 'og-home-empty', 'data-og-community-empty': 'directory', text: '공개된 모임 목록은 아직 없어요.' }), el('p', { class: 'og-home-note', text: '커뮤니티 서버가 생기면 지역과 관심사로 모임을 찾고, 직접 확인한 뒤 함께할 수 있게 만들 예정이에요.' }));
-    put(cards.safety.body, el('ul', { class: 'og-family-points' }, el('li', { text: PRIVACY_HINT }), el('li', { text: '처음 만나는 모임은 사람이 많은 공공장소에서 만나요.' }), el('li', { text: '내 건강 기록이나 가족 공유 설정은 커뮤니티에 함께 올라가지 않아요.' }), el('li', { text: 'ONGIL은 아직 글을 자동으로 검사하거나 신고를 받지 않아요.' })));
+    put(cards.safety.body, el('ul', { class: 'og-family-points' }, el('li', { text: PRIVACY_HINT }), el('li', { text: SCAM_HINT }), el('li', { text: '처음 만나는 모임은 사람이 많은 공공장소에서 만나요. 집 주소는 알려 주지 마세요.' }), el('li', { text: HEALTH_BOUNDARY }), el('li', { text: '내 건강 기록이나 가족 공유 설정은 커뮤니티에 함께 올라가지 않아요.' }), el('li', { text: 'ONGIL은 아직 글을 자동으로 검사하거나 신고를 받지 않아요.' })));
+    const MODE_LABEL = { ACCOUNT_REQUIRED: 'Newon+ 연결 후 사용할 수 있어요', REMOTE_REQUIRED: 'Newon+ 계정과 커뮤니티 서버가 필요해요' };
+    put(cards.features.body, el('ul', { class: 'og-home-items', 'aria-label': '아직 없는 기능' }, COMMUNITY_FEATURES.filter((f) => f.mode !== 'LOCAL').map((f) => el('li', { class: 'og-home-item', 'data-og-feature': f.id, 'data-og-feature-mode': f.mode }, el('div', { class: 'og-home-item__main og-home-item__main--plain' }, el('p', { class: 'og-home-item__title', text: f.label }), el('p', { class: 'og-home-item__meta', text: `${MODE_LABEL[f.mode]} · ${f.note}` }))))));
     put(
       host,
       el(
@@ -544,7 +754,7 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
         el('p', { class: 'og-label', lang: 'en', text: 'COMMUNITY' }),
         el('h2', { class: 'og-h', id: 'og-community-section-title', tabindex: '-1', text: '커뮤니티' }),
         el('p', { class: 'og-lead', text: '묻고 싶은 것, 나누고 싶은 경험, 함께하고 싶은 모임을 적어 두는 곳입니다.' }),
-        el('div', { class: 'og-care-grid' }, cards.posts.root, cards.groups.root, cards.discover.root, cards.safety.root)
+        el('div', { class: 'og-care-grid' }, cards.posts.root, cards.activity.root, cards.groups.root, cards.discover.root, cards.features.root, cards.safety.root)
       )
     );
     renderPosts();
@@ -555,13 +765,36 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
   /* #community/write opens the form; #community/groups goes to 모임 준비 */
   function show(section) {
     for (const c of Object.values(cards)) c.status.textContent = '';
+    state.missing = '';
     if (section === 'write') {
       if (!state.compose) openCompose({});
       return;
     }
+    const item = COMMUNITY_ITEM_SECTION.exec(section || '');
+    if (item) {
+      const [, kind, id] = item;
+      if (kind === 'group') {
+        if (groups.get(id)) { renderPosts(); openGroup(id); return; }
+        state.missing = 'group';
+      } else if (posts.get(id)) {
+        if (kind === 'edit') { if (!state.compose || state.compose.id !== id) editPost(id); return; }
+        renderPosts();
+        renderGroups();
+        if (!(dialog && dialog.open && openId === id)) openPostSoon(id);
+        return;
+      } else state.missing = 'post';
+      renderPosts();
+      renderGroups();
+      cards.posts.root.scrollIntoView({ block: 'start' });
+      cards.posts.focusTitle();
+      return;
+    }
+    /* Back from an open post: the address no longer names it, so it closes */
+    if (dialog && dialog.open && !section) dialog.close();
     renderPosts();
     renderGroups();
     if (section === 'groups') cards.groups.root.scrollIntoView({ block: 'start' });
+    if (section === 'activity') { cards.activity.root.scrollIntoView({ block: 'start' }); cards.activity.focusTitle(); }
   }
 
   /* 즐길거리 › 후기 쓰기: opens the form with type/category/title filled in. Nothing is saved until the user saves. */

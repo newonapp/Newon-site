@@ -1197,7 +1197,8 @@ test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', ()
   // Phase 12: production-release.test.mjs was added (BEFORE 21, AFTER 22). API connection: production-api.test.mjs (BEFORE 22, AFTER 23). Completion V1: health-measures.test.mjs (AFTER 24).
   /* Family Connection V1: + family-connection.test.mjs (BEFORE 27, AFTER 28). WHY: the new feature brought its own test file. */
   /* Family Connection V2: + family-v2.test.mjs (BEFORE 28, AFTER 29) */
-  assert.equal(tests.length, 29); // Completion V2: + health-calendar.test.mjs · Completion V3: + emergency-contacts.test.mjs · Product Completion Audit V1: + product-completion.test.mjs (BEFORE 26, AFTER 27)
+  /* Community V2: + community-v2.test.mjs (BEFORE 29, AFTER 30) */
+  assert.equal(tests.length, 30); // Completion V2: + health-calendar.test.mjs · Completion V3: + emergency-contacts.test.mjs · Product Completion Audit V1: + product-completion.test.mjs (BEFORE 26, AFTER 27)
   for (const f of ['livon', 'server/livon', 'tests/livon']) assert.ok(fs.existsSync(path.join(ROOT, f)), `${f} is still there, untouched by ONGIL`);
   /* Family Connection V2: server/ongil/family is the one ONGIL backend (BEFORE: no server/ongil) */
   assert.deepEqual(fs.readdirSync(path.join(ROOT, 'server/ongil')), ['family']);

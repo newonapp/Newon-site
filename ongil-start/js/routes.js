@@ -11,12 +11,13 @@
  *   moduleRoute()     a menu entry → the section it names, when that section exists
  *   notificationRoute() a notification → its owner screen
  *
- * Pure: no DOM, no storage, no network. Nothing here opens a detail by id: the screens load public items only for
+ * Pure: no DOM, no storage, no network. Nothing here opens a PUBLIC item by id: the screens load public items only for
  * the visit, so an id cannot be promised to exist after a refresh. A route goes as far as the owner screen and,
- * where the item says so, its category.
+ * where the item says so, its category. The one exception (Community V2) is the user's own writing on this device —
+ * "#community/post-<id>" — which is still there after a refresh; the community screen says so when it is not.
  */
 import { SAVED_TYPES, SAVED_TYPE_LABELS, savedSyncPolicy, safeHref } from './contracts.js';
-import { resolveView, hashFor } from './router.js';
+import { resolveView, hashFor, SECTION_RE } from './router.js';
 import { resolveSection } from './life-view.js';
 import { resolveCareSection } from './care-view.js';
 import { resolveEnjoySection } from './enjoy-view.js';
@@ -101,7 +102,7 @@ export function safeRoute(value) {
   if (!view) return '';
   const base = hashFor(view);
   if (parts.length === 1) return base;
-  const section = parts.length === 2 && /^[a-z][a-z-]{0,30}$/.test(parts[1]) ? parts[1] : '';
+  const section = parts.length === 2 && SECTION_RE.test(parts[1]) ? parts[1] : '';
   return section && sectionValid(view, section) ? `#${view}/${section}` : base;
 }
 /* the corrected form of whatever is in the address bar: '' when it is not a route at all */
@@ -137,7 +138,7 @@ export function moduleRoute(area, moduleId) {
   const mapped = (MODULE_SECTIONS[view] || {})[moduleId];
   if (typeof mapped === 'string' && mapped[0] === '#') return safeRoute(mapped) || base;
   const section = mapped || moduleId;
-  return typeof section === 'string' && /^[a-z][a-z-]{0,30}$/.test(section) && Object.prototype.hasOwnProperty.call(SECTION_CHECK, view) && sectionValid(view, section) ? `#${view}/${section}` : base;
+  return typeof section === 'string' && SECTION_RE.test(section) && Object.prototype.hasOwnProperty.call(SECTION_CHECK, view) && sectionValid(view, section) ? `#${view}/${section}` : base;
 }
 
 /* a notification's owner screen, by type. Only routes inside ONGIL; a notification can never open an outside page. */

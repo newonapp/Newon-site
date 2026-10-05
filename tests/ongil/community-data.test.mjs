@@ -192,7 +192,9 @@ test('OG-CM-17 a post can be saved as Saved POST pointing back to #community', (
   assert.equal(r.ok, true);
   assert.equal(saved.isSaved('POST', p.id), true);
   assert.match(VIEW, /saved\.toggle\(\{ type: 'POST'/);
-  assert.match(VIEW, /href: '#community'/);
+  /* Community V2: the saved post points at its own address on this device (BEFORE href '#community', AFTER #community/post-<id>,
+     which is still the community screen; an address of a post that is gone says so there) */
+  assert.match(VIEW, /href: communityHash\('post', post\.id\)/);
 });
 
 test('OG-CM-18 deleting a post also removes it from Saved (view wiring)', () => {
@@ -492,7 +494,8 @@ test('OG-CG-9 the Enjoy button is labelled 후기 쓰기, closes the dialog and 
 });
 
 test('OG-CG-10 the router sends #community/write and #community/groups; anything else falls back', () => {
-  assert.deepEqual([...COMMUNITY_SECTIONS], ['write', 'groups']);
+  /* Community V2: + 'activity' (BEFORE ['write', 'groups']); one post / edit / group draft has an item address (OCV2 tests) */
+  assert.deepEqual([...COMMUNITY_SECTIONS], ['write', 'groups', 'activity']);
   assert.equal(resolveCommunitySection('write'), 'write');
   assert.ok(!resolveCommunitySection('feed'));
   assert.equal(resolveView('community'), 'community');
