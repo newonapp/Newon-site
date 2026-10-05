@@ -62,7 +62,7 @@ test('S-2 Explore: items come from the repository; ended programs and broken off
   for (const c of ctx.LivonExploreData.categories) assert.ok(SD.exploreItems().some(x => (x.categoryIds || []).includes(c.id)), c.id);
   const types = new Set(SD.repository().explore({ types: ['provider', 'service', 'program', 'class', 'place', 'policy'], limit: 999 }).items.map(e => e.type));
   for (const t of ['provider', 'service', 'program', 'class', 'place', 'policy']) assert.ok(types.has(t), t);
-  assert.match(src('livon/explore-page.js'), /function items\(\) \{ return window\.LivonScreenData \? window\.LivonScreenData\.exploreItems\(\)/);
+  assert.match(src('livon/explore-page.js'), /function items\(\) \{[\s\S]{0,300}window\.LivonScreenData \? window\.LivonScreenData\.exploreItems\(\)/, 'Explore V2 keeps the repository as the source and only skips malformed rows');
 });
 
 /* ───────── S-3 Life Stage ───────── */

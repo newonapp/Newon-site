@@ -150,7 +150,10 @@
         save: { type: saveType, id: ref, title: c.title, href: href, stage: "" }
       }));
     });
-    (E.items || []).forEach(function (i) {
+    /* Explore V2: a malformed Explore entry (null, no id/title, wrong field types) is skipped or normalised, never indexed broken */
+    (Array.isArray(E.items) ? E.items : []).forEach(function (i) {
+      if (!i || typeof i !== "object" || typeof i.id !== "string" || !i.id || typeof i.title !== "string" || !i.title.trim()) return;
+      if (!Array.isArray(i.tags) || !Array.isArray(i.categoryIds)) i = Object.assign({}, i, { tags: Array.isArray(i.tags) ? i.tags : [], categoryIds: Array.isArray(i.categoryIds) ? i.categoryIds.filter(function (x) { return typeof x === "string"; }) : [] });
       var type = { program: "class", place: "place", expert: "policy", service: "service", product: "service" }[i.type] || (i.type === "guide" && safeHttp(i.officialUrl) && (i.credentials || {}).status === "verified" ? "policy" : "content");
       var href = "#ex-item-" + i.id, saveType = i.type === "place" ? "place" : i.type === "program" ? "class" : "content";
       var exCats = i.categoryIds || [];
@@ -329,7 +332,7 @@
   function buildSuggest() {
     var out = [], seen = {};
     function add(label, kind) { var n = norm(label); if (!n || seen[n]) return; seen[n] = 1; out.push({ label: label, kind: kind, n: n }); }
-    RECOMMENDED.forEach(function (x) { add(x, "추천 검색어"); });
+    RECOMMENDED.forEach(function (x) { add(x, "검색어 예시"); });
     CATS.forEach(function (c) { add(c.label, "분야"); });
     Object.keys(SYN).forEach(function (x) { add(x, "검색어"); });
     getIndex().forEach(function (x) { add(x.title, x.typeLabel); });
@@ -342,7 +345,7 @@
     if (!suggestPool || suggestWithLife !== !!repo()) buildSuggest();
     var starts = [], contains = [];
     suggestPool.forEach(function (s) { if (s.n.indexOf(p) === 0) starts.push(s); else if (s.n.indexOf(p) > 0) contains.push(s); });
-    var rank = function (a, b) { return (a.kind === "추천 검색어" || a.kind === "분야" || a.kind === "검색어" ? 0 : 1) - (b.kind === "추천 검색어" || b.kind === "분야" || b.kind === "검색어" ? 0 : 1) || a.label.length - b.label.length; };
+    var rank = function (a, b) { return (a.kind === "검색어 예시" || a.kind === "분야" || a.kind === "검색어" ? 0 : 1) - (b.kind === "검색어 예시" || b.kind === "분야" || b.kind === "검색어" ? 0 : 1) || a.label.length - b.label.length; };
     return starts.sort(rank).concat(contains.sort(rank)).slice(0, limit || 8).map(function (s) { return { label: s.label, kind: s.kind }; });
   }
 
