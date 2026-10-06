@@ -374,7 +374,8 @@ test('TV2-30 Community and the public search show none of the Today records', { 
   assert.equal(/보고서 제출|어머니 생신|아침 산책/.test(await pg.evaluate(() => document.querySelector('#community').innerText)), false);
   await go(pg, '#ex-results?q=' + encodeURIComponent('보고서 제출'), 900);
   const ex = await pg.evaluate(() => document.querySelector('#explore').innerText);
-  assert.equal(ex.split('\n').filter(l => l.includes('보고서 제출') && !/검색 결과/.test(l)).length, 0);
+  /* the typed query itself is echoed in the heading and (Explore V2) in the removable "검색어 ‘…’" condition — no record */
+  assert.equal(ex.split('\n').filter(l => l.includes('보고서 제출') && !/검색 결과|^검색어 ‘보고서 제출’/.test(l)).length, 0);
   await pg.context().close();
 });
 

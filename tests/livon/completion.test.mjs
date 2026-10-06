@@ -208,8 +208,8 @@ test('LC-13 an unreachable film host: a retry that starts after a failure is cou
 
 test('LC-14 cache keys: the four changed scripts carry a new ?v= (other script versions are unchanged)', () => {
   assert.match(INDEX, /\/livon\/livon-media\.js\?v=20261004c1"/);
-  assert.match(INDEX, /\/livon\/livon-platform\.js\?v=20261004c1"/);
-  assert.equal((INDEX.match(/\?v=20261004c1/g) || []).length, 2, 'livon-media, livon-platform (livon-api-config and ai-page moved on to c3: LC-16)');
+  assert.match(INDEX, /\/livon\/livon-platform\.js\?v=(20261004c1|20261006ex\d)"/, 'livon-platform: c1, or a later Explore V2 version');
+  assert.equal((INDEX.match(/\?v=20261004c1/g) || []).length, 1, 'livon-media (livon-api-config and ai-page moved on to c3: LC-16; livon-platform to Explore V2 ex1)');
 });
 
 test('LC-15 a route change closes the open header panel and the mobile menu drawer (both were left open over the new screen)', () => {

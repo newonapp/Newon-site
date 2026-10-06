@@ -628,7 +628,11 @@
         /* Explore items */
         var EXPLORE_TYPE = { expert: "provider", program: "program", service: "service", place: "place", product: "content" };
         var providers = {};
-        (EX && EX.items || []).forEach(function (x) {
+        (EX && Array.isArray(EX.items) ? EX.items : []).forEach(function (x) {
+          /* Explore V2: one malformed Explore row (null, no id/title, wrong field types) is skipped or normalised here —
+             before, it threw inside this adapter and left the whole repository (Today, Life Stage, Explore) empty */
+          if (!x || typeof x !== "object" || typeof x.id !== "string" || !x.id || typeof x.title !== "string" || !x.title.trim()) return;
+          if (!Array.isArray(x.tags) || !Array.isArray(x.categoryIds)) x = Object.assign({}, x, { tags: Array.isArray(x.tags) ? x.tags : [], categoryIds: Array.isArray(x.categoryIds) ? x.categoryIds.filter(function (k) { return typeof k === "string"; }) : [] });
           var type = EXPLORE_TYPE[x.type] || "content";
           /* a site-relative link ("/ongil-start/…") is a Newon service of our own: internal source, never an "official" page */
           var internal = /^\/[\w\-./#]*$/.test(x.officialUrl || "") ? x.officialUrl : null;

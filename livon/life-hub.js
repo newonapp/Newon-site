@@ -168,7 +168,8 @@
       return false;
     }
     window.LivonPlatform.saveItem({ id: id, title: item.title, label: item.title, type: "life-" + item.type, href: item.href,
-      source: item.type === "community" ? "커뮤니티" : "라이프 스테이지", lifeStage: item.lifeStage || "", data: { kind: item.type, refId: item.id } });
+      /* the screen the item belongs to (Explore V2: an Explore or Today item saved here no longer shows as Life Stage) */
+      source: item.type === "community" ? "커뮤니티" : /^ex:/.test(String(item.id)) ? "탐색" : /^td:/.test(String(item.id)) ? "오늘의 발견" : "라이프 스테이지", lifeStage: item.lifeStage || "", data: { kind: item.type, refId: item.id } });
     /* TODO(API): Account.isSignedIn()이면 서버 저장 API 호출 후 동기화 상태를 표시한다. */
     status(SAVE_TYPES[item.type] + "을(를) 이 기기의 내 생활 › 저장함에 저장했습니다.");
     return true;

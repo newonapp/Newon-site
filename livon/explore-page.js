@@ -9,7 +9,6 @@
   var KEY_LIFE_INTERESTS = "livon.lifeInterests";
   var KEY_STAGE = "livon.lifeStage";
   var KEY_REGION = "livon.exPrefRegion";
-  var KEY_ML_SAVED = "livon.mlStore.v1";
 
   var TYPE_LABEL = {
     expert: "전문가",
@@ -79,7 +78,13 @@
     window.scrollTo({ top: Math.max(0, top), behavior: (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) ? "auto" : "smooth" });
   }
   /* list served by the LIVON Data Platform (visible rows only); the file's own array if the platform is unavailable */
-  function items() { return window.LivonScreenData ? window.LivonScreenData.exploreItems() : (Array.isArray(DATA.items) ? DATA.items : []); }
+  /* Explore V2: a malformed entry (null, no id or no title) is skipped instead of breaking a card or the whole page */
+  function items() {
+    var list;
+    try { list = window.LivonScreenData ? window.LivonScreenData.exploreItems() : DATA.items; } catch (e) { list = DATA.items; }
+    return (Array.isArray(list) ? list : []).filter(function (x) { return x && typeof x === "object" && typeof x.id === "string" && x.id && typeof x.title === "string" && x.title.trim(); })
+      .map(function (x) { return Array.isArray(x.tags) && Array.isArray(x.categoryIds) ? x : Object.assign({}, x, { tags: Array.isArray(x.tags) ? x.tags : [], categoryIds: Array.isArray(x.categoryIds) ? x.categoryIds : [] }); });
+  }
   function findItem(id) { return items().find(function (x) { return x.id === id; }); }
 
   function recentQueries() {
@@ -136,63 +141,16 @@
       if (old) P.removeSave(old.id);
     });
   }
+  /* Explore V2: one saved store. Saving goes through the shared Life Hub saves (life-hub:{type}:ex:{id}) only —
+     Explore never writes the My Life store, an interest list or an Explore-only saved list. */
   function toggleSaveItem(item) {
-    if (!item) return false;
-    var list = savedList();
-    var exists = list.some(function (x) { return x.id === item.id; });
-    var next = exists
-      ? list.filter(function (x) { return x.id !== item.id; })
-      : list.concat([{
-          id: item.id,
-          title: item.title,
-          type: item.type,
-          provider: item.provider,
-          at: Date.now(),
-          source: "explore"
-        }]).slice(0, 60);
-    writeJSON(KEY_SAVED, next);
-    syncToMyLife(item, !exists);
-    return !exists;
-  }
-  function syncToMyLife(item, adding) {
-    try {
-      if (window.LivonPlatform) {
-        if (adding && window.LivonPlatform.saveItem) {
-          window.LivonPlatform.saveItem({
-            id: "ex:" + item.id,
-            label: item.title,
-            type: item.type || "service",
-            href: "#ex-item-" + item.id,
-            source: "탐색",
-            folder: "나중에 보기"
-          });
-        } else if (!adding && window.LivonPlatform.removeSave) {
-          window.LivonPlatform.removeSave("ex:" + item.id);
-        }
-      }
-      var store = readJSON(KEY_ML_SAVED, null);
-      if (!store || typeof store !== "object") {
-        store = { events: [], todos: [], goals: [], habits: [], habitLogs: {}, transactions: [],
-          health: [], experiences: [], journal: [], projects: [], checklists: [], budget: {}, settings: {} };
-      }
-      if (!Array.isArray(store.savedExplore)) store.savedExplore = [];
-      if (adding) {
-        if (!store.savedExplore.some(function (x) { return x.id === item.id; })) {
-          store.savedExplore.unshift({
-            id: item.id, title: item.title, type: item.type, provider: item.provider,
-            at: Date.now(), href: "#ex-item-" + item.id
-          });
-        }
-      } else {
-        store.savedExplore = store.savedExplore.filter(function (x) { return x.id !== item.id; });
-      }
-      writeJSON(KEY_ML_SAVED, store);
-      var interests = readJSON(KEY_INTERESTS, []);
-      if (!Array.isArray(interests)) interests = [];
-      if (adding && interests.indexOf(item.title) < 0) {
-        writeJSON(KEY_INTERESTS, interests.concat([item.title]).slice(0, 40));
-      }
-    } catch (e) {}
+    var hs = hubSaves(), P = window.LivonPlatform;
+    if (!item || !findItem(item.id) || !hs || !P || !P.saveItem || !P.removeSave) return null;
+    var type = saveTypeOf(item), id = "life-hub:" + type + ":ex:" + item.id;
+    if (isSaved(item.id)) { P.removeSave(id); hs.refresh(); return false; }
+    P.saveItem({ id: id, title: item.title, label: item.title, type: "life-" + type, href: "#ex-item-" + item.id, source: "탐색", lifeStage: "", data: { kind: type, refId: "ex:" + item.id } });
+    hs.refresh();
+    return true;
   }
   var toastTimer = null;
   function toast(text) {
@@ -266,12 +224,7 @@
     var host = $("[data-lv-ex-suggest]");
     var ac = $("[data-lv-ex-ac]");
     var list = (S() && S().RECOMMENDED) || DATA.suggest || [];
-    var quick = $("[data-lv-ex-quick]");
-    if (quick && S()) {
-      var qc = ["housing", "money", "career", "health", "relation", "travel", "startup", "parenting", "care", "hobby"];
-      quick.innerHTML = qc.map(function (id) { return "<li><button type=\"button\" data-lv-ex-quick-cat=\"" + id + "\">" + esc(S().catLabel(id)) + "</button></li>"; }).join("") +
-        [["policy", "정책·지원"], ["class", "클래스"], ["place", "장소"]].map(function (t) { return "<li><button type=\"button\" data-lv-ex-quick-type=\"" + t[0] + "\">" + t[1] + "</button></li>"; }).join("");
-    }
+    renderTopics();
     ac = null; /* 자동완성은 아래 listbox(콤보박스)로 제공합니다 */
     if (host) {
       host.innerHTML = list.map(function (q) {
@@ -293,6 +246,67 @@
     }
   }
 
+  /* ───────── Explore V2 · 주제별 보기 ─────────
+     The topics are the search index's own fields (LivonSearch.CATS) and types; each count is the number of public items
+     in the index right now (Life Stage topics, Today contents, Explore items, public data entries). Community posts and
+     anything stored for one person are not part of the index, so they are never counted here. No popularity is implied. */
+  var TOPIC_ORDER = ["housing", "money", "career", "health", "relation", "parenting", "care", "learn", "hobby", "travel", "startup", "digital"];
+  var TOPIC_TYPES = [["policy", "정책·지원"], ["class", "클래스·교육"], ["place", "장소"]];
+  function topicCounts() {
+    var L = S(), cats = {}, types = {};
+    var idx = [];
+    try { idx = L && L.index ? L.index() : []; } catch (e) { idx = []; }
+    (Array.isArray(idx) ? idx : []).forEach(function (x) {
+      if (!x || typeof x !== "object") return;
+      (Array.isArray(x.cats) ? x.cats : []).forEach(function (c) { cats[c] = (cats[c] || 0) + 1; });
+      if (x.type) types[x.type] = (types[x.type] || 0) + 1;
+    });
+    return { cats: cats, types: types };
+  }
+  function renderTopics() {
+    var quick = $("[data-lv-ex-quick]"), L = S();
+    if (!quick || !L) return;
+    var n = topicCounts();
+    var known = TOPIC_ORDER.filter(function (id) { return L.CATS.some(function (c) { return c.id === id; }); });
+    function card(attr, val, label, count) {
+      return "<li><button type=\"button\" class=\"lv-ex-topic\" " + attr + "=\"" + esc(val) + "\"" + (count ? "" : " data-empty=\"1\"") + ">" +
+        "<span class=\"lv-ex-topic__name\">" + esc(label) + "</span><span class=\"lv-ex-topic__n\">" + (count ? "정보 " + count + "개" : "준비 중") + "</span></button></li>";
+    }
+    quick.innerHTML = known.map(function (id) { return card("data-lv-ex-quick-cat", id, L.catLabel(id), n.cats[id] || 0); }).join("") +
+      TOPIC_TYPES.map(function (t) { return card("data-lv-ex-quick-type", t[0], t[1], n.types[t[0]] || 0); }).join("");
+  }
+
+  /* ───────── Explore V2 · 공식 기관 정보 ─────────
+     Explore items that link to an official source and were checked by LIVON (credentials.status "verified").
+     The date is LIVON's own check date from the data (checkedAt), shown as such — never as "updated today". */
+  function safeHttps(url) { return /^https:\/\/[a-z0-9.-]+(\/|$)/i.test(String(url || "")) ? String(url) : ""; }
+  /* an item's official link: an https page of another site (new window, said so), or a page of this site such as ONGIL
+     ("/ongil-start/…", same window). Anything else (javascript:, http:, //host) is not linked. */
+  function officialLink(item, cls, label) {
+    var u = String(item && item.officialUrl || "");
+    if (safeHttps(u)) return "<a class=\"" + cls + "\" href=\"" + esc(u) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + esc(label) + "<span aria-hidden=\"true\"> ↗</span><span class=\"visually-hidden\"> (외부 사이트, 새 창)</span></a>";
+    if (/^\/(?!\/)[\w\-./#]*$/.test(u)) return "<a class=\"" + cls + "\" href=\"" + esc(u) + "\">" + esc(label) + "</a>";
+    return "";
+  }
+  function renderOfficial() {
+    var host = $("[data-lv-ex-official]");
+    if (!host) return;
+    var list = items().filter(function (it) { return it && it.id && it.title && safeHttps(it.officialUrl) && it.credentials && it.credentials.status === "verified"; });
+    if (!list.length) { host.innerHTML = ""; host.hidden = true; return; }
+    host.hidden = false;
+    var shown = list.slice(0, 6);
+    host.innerHTML =
+      "<div class=\"lv-ex-block-label\"><p class=\"lv-ex-eyebrow\" lang=\"en\">Official sources</p><h3 class=\"lv-ex-title lv-ex-title--sm\" id=\"lv-ex-official-title\">공식 기관 정보</h3></div>" +
+      "<p class=\"lv-ex-note\">공공기관·공식 포털로 연결되는 안내입니다. LIVON은 이 기관이 아니며, 신청·심사·상담은 각 기관에서 합니다. 확인일은 LIVON이 내용을 확인한 날이고, 기관 사정에 따라 바뀔 수 있습니다.</p>" +
+      "<ul class=\"lv-ex-official\" aria-labelledby=\"lv-ex-official-title\">" + shown.map(function (it) {
+        return "<li class=\"lv-ex-official__item\"><a class=\"lv-ex-official__main\" href=\"#ex-item-" + esc(it.id) + "\"><strong>" + esc(it.title) + "</strong>" +
+          "<span>" + esc([it.source || it.provider, it.subfield || ""].filter(Boolean).join(" · ")) + "</span>" +
+          (it.checkedAt ? "<small>LIVON 확인일 " + esc(it.checkedAt) + "</small>" : "") + "</a>" +
+          "<a class=\"lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm\" href=\"" + esc(safeHttps(it.officialUrl)) + "\" target=\"_blank\" rel=\"noopener noreferrer\">공식 사이트<span aria-hidden=\"true\"> ↗</span><span class=\"visually-hidden\">: " + esc(it.title) + " (외부 사이트, 새 창)</span></a></li>";
+      }).join("") + "</ul>" +
+      (list.length > shown.length ? "<div class=\"lv-ex-actions\"><button type=\"button\" class=\"lv-ex-btn lv-ex-btn--outline\" data-lv-ex-quick-type=\"policy\">정책·지원 · 공식 기관 모두 보기</button></div>" : "");
+  }
+
   /* ───────── autocomplete (current data only) ───────── */
   var acIndex = -1;
   function acList() { return $("#lv-ex-ac-list"); }
@@ -307,7 +321,7 @@
     if (!l || !input || !S()) return;
     var v = input.value.trim();
     var rows = v ? S().suggest(v, 8) : (trackingOn() ? recentQueries().slice(0, 6).map(function (q) { return { label: q, kind: "최근 검색" }; }) : []);
-    if (!v && !rows.length) rows = S().RECOMMENDED.slice(0, 6).map(function (q) { return { label: q, kind: "추천 검색어" }; });
+    if (!v && !rows.length) rows = S().RECOMMENDED.slice(0, 6).map(function (q) { return { label: q, kind: "검색어 예시" }; });
     if (!rows.length) { closeSuggest(); return; }
     acIndex = -1;
     l.innerHTML = rows.map(function (r, i) {
@@ -371,7 +385,7 @@
         "<em>" + esc(c.num) + "</em>" +
         "<strong>" + esc(c.title) + "</strong>" +
         "<span>" + esc(c.desc) + "</span>" +
-        "<b>" + count + "개 확인됨</b>" +
+        "<b>정보 " + count + "개</b>" +
       "</button>";
     }).join("");
   }
@@ -442,7 +456,8 @@
     var prefRegion = localStorage.getItem(KEY_REGION) || "";
     var rec = recommendItems();
     host.innerHTML =
-      "<div class=\"lv-ex-block-label\"><p class=\"lv-ex-eyebrow\">For you</p><h3 class=\"lv-ex-title lv-ex-title--sm\">맞춤 탐색</h3></div>" +
+      "<div class=\"lv-ex-block-label\"><p class=\"lv-ex-eyebrow\" lang=\"en\">Your picks</p><h3 class=\"lv-ex-title lv-ex-title--sm\">내가 고른 기준으로 보기</h3></div>" +
+      "<p class=\"lv-ex-note\">직접 고른 관심사·라이프 스테이지·선호 지역과, 켜 둔 경우 최근 본 항목만 기준으로 정해진 규칙에 따라 고릅니다. 내 생활의 할 일·일정·기록은 읽지 않고, AI가 고른 것이 아닙니다.</p>" +
       "<div class=\"lv-ex-pref\">" +
         "<label>선호 지역 <select data-lv-ex-pref-region>" +
           "<option value=\"\">전체</option>" +
@@ -450,8 +465,8 @@
             return "<option value=\"" + esc(r) + "\"" + (prefRegion === r ? " selected" : "") + ">" + esc(r) + "</option>";
           }).join("") +
         "</select></label>" +
-        "<a class=\"lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm\" href=\"#life-now\">관심사·스테이지 수정</a>" +
-        (interests.length ? "<p class=\"lv-ex-note\">관심: " + esc(interests.slice(0, 6).join(" · ")) + "</p>" : "<p class=\"lv-ex-note\">관심사가 없으면 확인된 대표 서비스를 보여 드립니다.</p>") +
+        "<a class=\"lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm\" href=\"#ml-interests\">관심사 수정</a><a class=\"lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm\" href=\"#life\">라이프 스테이지</a>" +
+        (interests.length ? "<p class=\"lv-ex-note\">관심: " + esc(interests.slice(0, 6).join(" · ")) + "</p>" : "<p class=\"lv-ex-note\">고른 관심사가 없어 공식 확인된 항목을 보여 드립니다.</p>") +
       "</div>" +
       "<div class=\"lv-ex-card-grid\">" + rec.map(function (row) {
         return cardHtml(row.item, row.reason);
@@ -468,11 +483,11 @@
       "<div class=\"lv-ex-block-label\"><p class=\"lv-ex-eyebrow\">Recent</p><h3 class=\"lv-ex-title lv-ex-title--sm\">최근 · 관심 · 비교</h3></div>" +
       "<div class=\"lv-ex-activity-grid\">" +
         sectionMini("최근 본 서비스", viewed, "아직 본 서비스가 없어요.") +
-        sectionMini("관심 저장", saved, "저장한 항목이 없어요.", true) +
+        sectionMini("저장한 탐색 정보", saved, "저장한 탐색 정보가 없어요. 카드의 ‘저장’을 누르면 내 생활 › 저장에 모입니다.", true) +
         sectionMini("비교 목록", compared, "비교할 항목을 결과에서 추가하세요.") +
       "</div>" +
       "<div class=\"lv-ex-actions\" style=\"margin-top:1rem\">" +
-        "<a class=\"lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm\" href=\"#life-now\">내 생활 저장함</a>" +
+        "<a class=\"lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm\" href=\"#ml-saved\">내 생활 › 저장" + (saved.length ? " (" + saved.length + ")" : "") + "</a>" +
         "<button type=\"button\" class=\"lv-ex-btn lv-ex-btn--ghost lv-ex-btn--sm\" data-lv-ex-toggle-track>" +
           (trackingOn() ? "최근 기록 끄기" : "최근 기록 켜기") +
         "</button>" +
@@ -504,7 +519,7 @@
     var saved = isSaved(item.id);
     var inCompare = compareIds().indexOf(item.id) >= 0;
     return "<article class=\"lv-ex-card lv-ex-card--" + esc(layout) + "\">" +
-      "<button type=\"button\" class=\"lv-ex-card__media\" data-lv-ex-open=\"" + esc(item.id) + "\" aria-label=\"" + esc(item.title) + " 상세\">" +
+      "<button type=\"button\" class=\"lv-ex-card__media\" data-lv-ex-open=\"" + esc(item.id) + "\" tabindex=\"-1\" aria-hidden=\"true\">" +
         (item.img ? "<img src=\"" + esc(item.img) + "\" alt=\"\" decoding=\"async\" loading=\"lazy\" width=\"640\" height=\"400\" />" : "") +
       "</button>" +
       "<div class=\"lv-ex-card__body\">" +
@@ -630,6 +645,41 @@
     if (tgl) tgl.setAttribute("data-count", String(activeFilterCount()));
   }
 
+  /* Explore V2: the conditions in force, each removable on its own, plus one "모두 지우기". */
+  function appliedBar() {
+    var L = S(), chips = [];
+    function chip(key, label) { chips.push("<li><button type=\"button\" class=\"lv-ex-applied__chip\" data-lv-ex-unset=\"" + key + "\" aria-label=\"" + esc(label) + " 조건 지우기\">" + esc(label) + "<span aria-hidden=\"true\"> ×</span></button></li>"); }
+    if (state.q) chip("q", "검색어 ‘" + state.q + "’");
+    if (state.type && state.type !== "all" && L) chip("type", "유형 · " + L.typeLabel(state.type));
+    if (state.cat && L) chip("cat", "분야 · " + L.catLabel(state.cat));
+    if (state.categoryId) chip("ex", "카테고리 · " + exCatTitle(state.categoryId));
+    if (state.age) chip("age", "연령대 · " + ageLabel(state.age));
+    if (state.region) chip("region", "지역 · " + state.region);
+    if (state.mode) chip("mode", "방식 · " + (state.mode === "online" ? "온라인" : "오프라인"));
+    if (state.visit) chip("visit", "방문 서비스");
+    if (!chips.length) return "";
+    return "<div class=\"lv-ex-applied\"><p class=\"lv-ex-applied__label\" id=\"lv-ex-applied-label\">적용된 조건</p><ul class=\"lv-ex-applied__list\" aria-labelledby=\"lv-ex-applied-label\">" + chips.join("") + "</ul>" +
+      (chips.length > 1 ? "<button type=\"button\" class=\"lv-ex-btn lv-ex-btn--ghost lv-ex-btn--sm\" data-lv-ex-unset=\"all\">모두 지우기</button>" : "") + "</div>";
+  }
+  /* Re-rendering the filters replaces the button that was just pressed: put focus back on its new copy. */
+  var FOCUS_ATTRS = ["data-lv-ex-filter-cat", "data-lv-ex-filter-age", "data-lv-ex-filter-region", "data-lv-ex-filter-mode", "data-lv-ex-filter-visit", "data-lv-ex-filter-type", "data-lv-ex-sort", "data-lv-ex-more"];
+  function focusKey() {
+    var a = document.activeElement;
+    if (!a || !a.getAttribute || !a.closest || !a.closest("#ex-results")) return null;
+    for (var i = 0; i < FOCUS_ATTRS.length; i++) if (a.hasAttribute(FOCUS_ATTRS[i])) return { attr: FOCUS_ATTRS[i], val: a.getAttribute(FOCUS_ATTRS[i]), tab: a.getAttribute("role") === "tab" };
+    if (a.hasAttribute("data-lv-ex-unset") || a.hasAttribute("data-lv-ex-reset") || a.hasAttribute("data-lv-ex-reset-all")) return { heading: true };
+    return null;
+  }
+  function restoreFocus(k) {
+    if (!k) return;
+    var el = null;
+    if (k.heading) el = $("[data-lv-ex-q]");
+    else if (k.tab) el = $("#lv-ex-tab-" + state.type);
+    else el = $("#ex-results [" + k.attr + "=\"" + String(k.val).replace(/["\\]/g, "") + "\"]");
+    if (!el) el = $("[data-lv-ex-q]");
+    if (el) { if (!el.hasAttribute("tabindex") && !/^(BUTTON|A|INPUT|SELECT)$/.test(el.tagName)) el.setAttribute("tabindex", "-1"); try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); } }
+  }
+
   function renderTabs(counts) {
     var host = $("[data-lv-ex-tabs]");
     var L = S();
@@ -688,6 +738,10 @@
   }
   function noResults() {
     var L = S();
+    if (!state.q && !activeFilterCount() && state.type === "all") {
+      return "<div class=\"lv-ex-empty lv-ex-idle\"><h3>검색어를 입력하거나 주제를 골라 보세요.</h3><p>아직 고른 조건이 없습니다. 아래 분야를 누르거나 위 검색창에 찾고 싶은 말을 적어 보세요.</p>" +
+        "<div class=\"lv-ex-chips\">" + (L ? L.CATS : []).map(function (c) { return "<button type=\"button\" data-lv-ex-quick-cat=\"" + c.id + "\">" + esc(c.label) + "</button>"; }).join("") + "</div></div>";
+    }
     return "<div class=\"lv-ex-empty lv-ex-noresult\" role=\"status\"><span class=\"lv-ex-badge lv-ex-badge--soon\">결과 없음</span>" +
       "<h3>" + (state.q ? "‘" + esc(state.q) + "’ 검색 결과가 없습니다." : "조건에 맞는 결과가 없습니다.") + "</h3>" +
       "<ul class=\"lv-ex-tips\"><li>맞춤법이나 띄어쓰기를 확인하거나 더 짧은 단어로 검색해 보세요.</li>" + (activeFilterCount() || state.type !== "all" ? "<li>선택한 필터를 줄이면 더 많은 결과를 볼 수 있습니다.</li>" : "") + "</ul>" +
@@ -703,6 +757,7 @@
     var countEl = $("[data-lv-ex-count]");
     var sortEl = $("[data-lv-ex-sort]");
     if (!panel || !listHost) return;
+    var keepFocus = focusKey();
     panel.hidden = false;
     panel.classList.add("is-open");
     var res = runSearch();
@@ -749,11 +804,12 @@
         (res.items.length > shown.length ? "<div class=\"lv-ex-more\"><button type=\"button\" class=\"lv-ex-btn lv-ex-btn--outline\" data-lv-ex-more>더 보기 (" + shown.length + " / " + res.items.length + ")</button></div>" : "");
     }
     var help = res.items.length ? "<div class=\"lv-ex-aihelp\"><p><strong>원하는 정보를 찾지 못했나요?</strong> 검색어와 조건을 LIVON AI에 초안으로 옮겨 드립니다. 보내기 전까지 전송되지 않습니다.</p>" + aiBtn("lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm") + "</div>" : "";
-    listHost.innerHTML = status + viewBar + "<div id=\"lv-ex-panel\" role=\"tabpanel\" aria-labelledby=\"lv-ex-tab-" + esc(state.type) + "\">" + (placeSearchOn() ? placeSearchShell() : "") + (tourSearchOn() ? tourShell() : "") + (jobSearchOn() ? jobShell() : "") + body + "</div>" + help;
+    listHost.innerHTML = appliedBar() + status + viewBar + "<div id=\"lv-ex-panel\" role=\"tabpanel\" aria-labelledby=\"lv-ex-tab-" + esc(state.type) + "\">" + (placeSearchOn() ? placeSearchShell() : "") + (tourSearchOn() ? tourShell() : "") + (jobSearchOn() ? jobShell() : "") + body + "</div>" + help;
     if (placeSearchOn()) runPlaceSearch(null, 1);
     if (tourSearchOn()) runTour(null, 1);
     if (jobSearchOn()) runJobs(1);
     var hs = hubSaves(); if (hs) hs.refresh();
+    restoreFocus(keepFocus);
   }
 
   /* ───────── Kakao Local place search (server route; shown only when the provider is connected) ─────────
@@ -1128,7 +1184,7 @@
       "</dl>" +
       "<p class=\"lv-ex-note\">확인해볼 만한 지원으로 안내합니다. 자동으로 신청·선정 가능하다고 표시하지 않습니다.</p>" +
       "<div class=\"lv-ex-actions\">" +
-        (item.officialUrl ? "<a class=\"lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm\" href=\"" + esc(item.officialUrl) + "\" target=\"_blank\" rel=\"noopener noreferrer\">공식 신청·조회</a>" : "") +
+        officialLink(item, "lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm", "공식 신청·조회") +
         "<button type=\"button\" class=\"lv-ex-btn lv-ex-btn--ghost lv-ex-btn--sm\" data-lv-ex-deadline-soon>마감 알림 · 준비 중</button>" +
         "<a class=\"lv-ex-btn lv-ex-btn--ghost lv-ex-btn--sm\" href=\"#life-now\">일정에 메모</a>" +
       "</div>";
@@ -1208,20 +1264,18 @@
               "<div><dt>방문</dt><dd>" + (item.visit ? "방문 가능" : "해당 없음/정보 확인 필요") + "</dd></div>" +
               (item.address ? "<div><dt>주소</dt><dd>" + esc(item.address) + "</dd></div>" : "") +
               "<div><dt>출처</dt><dd>" + esc(item.source || "") + "</dd></div>" +
-              "<div><dt>확인일</dt><dd>" + esc(item.checkedAt || "") + "</dd></div>" +
+              "<div><dt>LIVON 확인일</dt><dd>" + esc(item.checkedAt || "정보 없음") + "</dd></div>" +
             "</dl>" +
             "<div class=\"lv-ex-actions lv-ex-actions--stack\">" +
-              (item.officialUrl
-                ? "<a class=\"lv-ex-btn\" href=\"" + esc(item.officialUrl) + "\" target=\"_blank\" rel=\"noopener noreferrer\">공식 페이지 · 신청</a>"
-                : "<span class=\"lv-ex-badge lv-ex-badge--soon\">공식 링크 준비 중</span>") +
+              (officialLink(item, "lv-ex-btn", "공식 페이지 열기") || "<span class=\"lv-ex-badge lv-ex-badge--soon\">공식 링크 준비 중</span>") +
               (mapLink ? "<a class=\"lv-ex-btn lv-ex-btn--outline\" href=\"" + esc(mapLink) + "\" target=\"_blank\" rel=\"noopener noreferrer\">지도 · 길찾기</a>" : "") +
-              saveBtn(item, "lv-ex-btn lv-ex-btn--outline", "관심 저장") +
+              saveBtn(item, "lv-ex-btn lv-ex-btn--outline", "저장") +
               "<button type=\"button\" class=\"lv-ex-btn lv-ex-btn--ghost\" data-lv-ex-compare-id=\"" + esc(id) + "\">" + (inCompare ? "비교 목록에서 제거" : "비교하기") + "</button>" +
               "<a class=\"lv-ex-btn lv-ex-btn--ghost\" href=\"#community\">커뮤니티 경험담</a>" +
               "<button type=\"button\" class=\"lv-ex-btn lv-ex-btn--ghost\" data-lh-ai=\"" + esc(JSON.stringify({ source: "explore", q: "‘" + item.title + "’ 이용 조건과 준비할 것을 정리해 줘.", topicId: "explore:" + item.id, topicTitle: item.title, category: TYPE_LABEL[item.type] || "", url: "#ex-item-" + item.id, summary: item.blurb || "" })) + "\">LIVON AI로 조건 정리</button>" +
               "<a class=\"lv-ex-btn lv-ex-btn--ghost\" href=\"#ml-saved\">내 생활 저장함</a>" +
             "</div>" +
-            "<p class=\"lv-ex-note\">내부 문의·예약·결제는 파트너 수신 시스템이 없어 접수 완료로 표시하지 않습니다.</p>" +
+            "<p class=\"lv-ex-note\">출처: " + esc(item.provider || item.source || "정보 없음") + ". LIVON은 출처 기관이 아니며, 신청·상담은 공식 페이지에서 합니다. LIVON 안에서는 접수 완료로 표시하지 않습니다.</p>" +
           "</aside>" +
         "</div>" +
         (related.length
@@ -1399,6 +1453,22 @@
       var fa = e.target.closest("[data-lv-ex-filter-age]");
       if (fa) { e.preventDefault(); state.age = fa.getAttribute("data-lv-ex-filter-age") || ""; state.shown = PAGE; navigateResults(true); return; }
       if (e.target.closest("[data-lv-ex-filter-ex]")) { e.preventDefault(); state.categoryId = ""; state.shown = PAGE; navigateResults(true); return; }
+      var unset = e.target.closest("[data-lv-ex-unset]");
+      if (unset) {
+        e.preventDefault();
+        var k = unset.getAttribute("data-lv-ex-unset");
+        if (k === "q" || k === "all") { state.q = ""; var qi = $("[data-lv-ex-input]"); if (qi) qi.value = ""; var qc = $("[data-lv-ex-clear]"); if (qc) qc.hidden = true; }
+        if (k === "type" || k === "all") state.type = "all";
+        if (k === "cat" || k === "all") state.cat = "";
+        if (k === "ex" || k === "all") state.categoryId = "";
+        if (k === "age" || k === "all") state.age = "";
+        if (k === "region" || k === "all") state.region = "";
+        if (k === "mode" || k === "all") { state.mode = ""; state.visit = ""; }
+        if (k === "visit") state.visit = "";
+        state.shown = PAGE;
+        navigateResults(true);
+        return;
+      }
       var resetAll = e.target.closest("[data-lv-ex-reset],[data-lv-ex-reset-all]");
       if (resetAll) {
         e.preventDefault();
@@ -1447,20 +1517,17 @@
       var saveId = e.target.closest("[data-lv-ex-save-id]");
       if (saveId) {
         e.preventDefault();
-        var sid = saveId.getAttribute("data-lv-ex-save-id");
-        var on = toggleSaveItem(findItem(sid));
-        saveId.textContent = on ? "저장됨" : "관심 저장";
+        var on = toggleSaveItem(findItem(saveId.getAttribute("data-lv-ex-save-id")));
+        if (on !== null) { saveId.textContent = on ? "저장됨" : "저장"; saveId.setAttribute("aria-pressed", on ? "true" : "false"); }
         renderActivity();
         return;
       }
+      /* An older cached page can still have keyword "관심 저장" buttons. A keyword is not a saved item, so V2 opens the
+         matching public results instead of writing a second saved store. */
       var legacySave = e.target.closest("[data-lv-ex-save]");
       if (legacySave && !saveId) {
         e.preventDefault();
-        var title = legacySave.getAttribute("data-lv-ex-save") || "탐색 관심";
-        var fake = { id: "label:" + title, title: title, type: "guide", provider: "LIVON" };
-        var on2 = toggleSaveItem(fake);
-        legacySave.textContent = on2 ? "저장됨" : "관심 저장";
-        renderActivity();
+        openResults(legacySave.getAttribute("data-lv-ex-save") || "");
         return;
       }
       var viewBtn = e.target.closest("[data-lv-ex-view]");
@@ -1679,6 +1746,7 @@
     if (hub && hub.onChange) hub.onChange(function (st) {
       if (st !== "ready" && st !== "error") return;
       if (S()) S().rebuild();
+      renderTopics(); renderOfficial();
       if ($("#ex-results") && !$("#ex-results").hidden && /^#ex-results/.test(location.hash)) renderResults();
     });
     /* a data provider was switched on by the server status check (e.g. Kakao Local): show its search block */

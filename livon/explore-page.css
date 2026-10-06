@@ -1382,3 +1382,102 @@ html[data-lv-view="explore"] main > #explore {
 /* Only one clear control: hide the browser's own search cancel button next to the existing × */
 #explore .lv-ex-search__input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; display: none; }
 #explore #lv-ex-detail-title:focus { outline: none; }
+
+/* ───────── Explore V2 ───────── */
+/* 주제별 보기: real public-item counts per topic (no popularity) */
+#explore .lv-ex-topics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 720px) { #explore .lv-ex-topics { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { #explore .lv-ex-topics { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+#explore .lv-ex-topic {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.15rem;
+  width: 100%;
+  min-height: 56px;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid #0a0a0a;
+  border-radius: 2px;
+  background: #fff;
+  color: #0a0a0a;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+#explore .lv-ex-topic:hover { background: #0a0a0a; color: #fff; }
+#explore .lv-ex-topic__name { font-size: 0.95rem; font-weight: 750; }
+#explore .lv-ex-topic__n { font-size: 0.75rem; font-weight: 600; color: #666; }
+#explore .lv-ex-topic:hover .lv-ex-topic__n { color: #d4d4d4; }
+#explore .lv-ex-topic[data-empty] { border-color: #d4d4d4; color: #737373; }
+
+/* 공식 기관 정보 */
+#explore .lv-ex-official-wrap { margin-top: clamp(2rem, 4vw, 3rem); }
+#explore .lv-ex-official { display: grid; gap: 0.5rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+@media (min-width: 900px) { #explore .lv-ex-official { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+#explore .lv-ex-official__item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 0.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid #e8e8e8;
+  background: #fff;
+  min-width: 0;
+}
+#explore .lv-ex-official__main {
+  display: grid;
+  gap: 0.15rem;
+  flex: 1 1 14rem;
+  min-width: 0;
+  min-height: 44px;
+  align-content: center;
+  color: #0a0a0a;
+  text-decoration: none;
+}
+#explore .lv-ex-official__main strong { font-size: 0.98rem; font-weight: 750; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+#explore .lv-ex-official__main span { font-size: 0.82rem; color: #555; }
+#explore .lv-ex-official__main small { font-size: 0.75rem; color: #737373; }
+
+/* 적용된 조건: each removable, plus one "모두 지우기" */
+#explore .lv-ex-applied { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 0 0 1rem; }
+#explore .lv-ex-applied__label { margin: 0; font-size: 0.78rem; font-weight: 700; color: #555; }
+#explore .lv-ex-applied__list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; min-width: 0; }
+#explore .lv-ex-applied__chip {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid #0a0a0a;
+  border-radius: 999px;
+  background: #fff;
+  color: #0a0a0a;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+  text-align: left;
+  cursor: pointer;
+}
+#explore .lv-ex-applied__chip:hover { background: #0a0a0a; color: #fff; }
+#explore .lv-ex-idle .lv-ex-chips { margin-top: 0.75rem; }
+
+/* Touch targets: every Explore control is at least 44px tall (WCAG 2.5.5 target used across LIVON) */
+#explore :is(.lv-ex-btn, .lv-ex-btn--sm, .lv-ex-chips button, .lv-ex-pills button, .lv-ex-rchip button, .lv-ex-text-btn, .lv-ex-search__clear, .lv-ex-search__go, .lv-ex-cat, .lv-ex-card__acts a, .lv-ex-card__acts button, .lv-ex-official__item .lv-ex-btn) { min-height: 44px; }
+#explore :is(.lv-ex-chips button, .lv-ex-rchip button, .lv-ex-search__clear) { min-width: 44px; }
+#explore .lv-ex-nav a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; justify-content: center; }
+#explore .lv-ex-pref select, #explore .lv-ex-results__tools select { min-height: 44px; }
+#explore .lv-ex-mini ul { gap: 0; }
+#explore .lv-ex-mini button { min-height: 44px; display: flex; align-items: center; }
+#explore .lv-ex-card h3 button, #explore .lv-ex-card h4 a, #explore .lv-ex-card h4 button { display: inline-flex; align-items: center; min-height: 44px; }
+#explore .lv-ex-card__more summary { display: flex; align-items: center; min-height: 44px; cursor: pointer; }
+#explore :is(.lv-ex-topic, .lv-ex-official__main, .lv-ex-applied__chip, .lv-ex-nav a, .lv-ex-mini button, .lv-ex-cat, .lv-ex-card__media, .lv-ex-row, .lv-ex-stage, .lv-ex-tile, .lv-ex-pref select, .lv-ex-card__more summary):focus-visible { outline: 2px solid #0a0a0a; outline-offset: 3px; }
+#explore .lv-ex-sec--ink :is(.lv-ex-btn, a, button):focus-visible { outline-color: #fff; }

@@ -219,7 +219,7 @@
         ? "<p class=\"livon-panel__note\"><strong>최근 검색</strong></p><ul class=\"livon-panel__list\">" +
           recent.map(function (q) { return "<li><button type=\"button\" data-lv-plat-q=\"" + esc(q) + "\">" + esc(q) + "</button></li>"; }).join("") + "</ul>"
         : "") +
-      "<p class=\"livon-panel__note\"><strong>인기 · 추천 검색</strong></p><ul class=\"livon-panel__list\">" +
+      "<p class=\"livon-panel__note\"><strong>검색어 예시</strong></p><ul class=\"livon-panel__list\">" +
         popular.map(function (q) { return "<li><button type=\"button\" data-lv-plat-q=\"" + esc(q) + "\">" + esc(q) + "</button></li>"; }).join("") + "</ul>" +
       "<p class=\"livon-panel__note\"><strong>내 Life Stage 관련</strong></p><ul class=\"livon-panel__list\">" +
         suggested.map(function (q) { return "<li><button type=\"button\" data-lv-plat-q=\"" + esc(q) + "\">" + esc(q) + "</button></li>"; }).join("") + "</ul>";
