@@ -117,10 +117,14 @@ test('EV2-08 official sources: https only, external links say so, and the date i
   assert.match(PAGE, /function officialLink\(item, cls, label\)/);
 });
 
-test('EV2-09 cache keys: changed Explore/shared assets carry ?v=20261006ex1; Today keeps c7; ONGIL entry unchanged', () => {
+test('EV2-09 cache keys: changed Explore/shared assets carry ?v=20261006ex1; Today keeps c7; ONGIL keeps its own entry version', () => {
   for (const f of ['explore-page.js', 'explore-search.js', 'explore-page.css', 'life-hub.js', 'livon-platform.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261006ex1"'), f);
   assert.match(INDEX, /\/livon\/today-page\.js\?v=20261004c7"/);
-  assert.match(fs.readFileSync(path.join(ROOT, 'ongil-start/index.html'), 'utf8'), /app\.js\?v=20261005h14"/);
+  /* ONGIL is another product with its own release line (h14 at Explore V2's base, m15 after ONGIL My Life V2): Explore V2 never
+     sets it — the entry keeps a version of ONGIL's own and its import map stays current */
+  assert.match(fs.readFileSync(path.join(ROOT, 'ongil-start/index.html'), 'utf8'), /<script type="module" src="\/ongil-start\/js\/app\.js\?v=\d{8}[a-z]+\d+"><\/script>/);
+  assert.equal(spawnSync(process.execPath, [path.join(ROOT, 'scripts/ongil-module-versions.mjs')], { cwd: ROOT, encoding: 'utf8' }).status, 0, 'ONGIL module map current');
+  for (const src of [PAGE, SEARCH, CSS]) assert.doesNotMatch(src, /ongil-start\/js\//, 'Explore does not load ONGIL modules');
   assert.equal(fs.existsSync(path.join(ROOT, 'livon/sw.js')) || /serviceWorker\.register/.test(INDEX), false, 'no service worker');
 });
 

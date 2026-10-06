@@ -1,6 +1,7 @@
 # LIVON Explore V2
 
-STATUS = CODE READY (feature branch `livon-explore-v2`, base `04ee2649c` = production main). Not deployed.
+STATUS = INTEGRATED, NOT DEPLOYED (feature `b6f6500f1` on base `04ee2649c`; merged into production main `28b8a7b66` on branch
+`livon-explore-v2-production` — see §6).
 
 ## 1. Audit of Explore before V2 (base `04ee2649c`)
 
@@ -47,7 +48,7 @@ Not changed: the section structure and visual language, search scoring, real-dat
 
 ## 4. Cache
 
-Changed files carry `?v=20261006ex1`: `explore-page.js`, `explore-search.js`, `explore-page.css`, `life-hub.js`, `livon-platform.js`, `data/livon-data-platform.js`. Today stays `today-page.js?v=20261004c7`; ONGIL `app.js?v=20261005h14` is untouched. GitHub Pages caches HTML and scripts for up to 10 minutes and ignores `?v=`, so for a short window a page and a script from different versions can meet:
+Changed files carry `?v=20261006ex1`: `explore-page.js`, `explore-search.js`, `explore-page.css`, `life-hub.js`, `livon-platform.js`, `data/livon-data-platform.js`. Today stays `today-page.js?v=20261004c7`; ONGIL keeps its own entry version (`app.js?v=20261005h14` at this base, `20261006m15` after ONGIL My Life V2) — Explore V2 does not change it. GitHub Pages caches HTML and scripts for up to 10 minutes and ignores `?v=`, so for a short window a page and a script from different versions can meet:
 new page + old `explore-page.js` → works (old script still fills the topic host with plain chips; the official block stays hidden) — `EV2-27`;
 old page + new scripts → works (topics fill the old page's quick list; old keyword "관심 저장" buttons open results and write nothing) — `EV2-28`.
 
@@ -57,3 +58,10 @@ old page + new scripts → works (topics fill the old page's quick list; old key
 - Topic counts are counts of public LIVON items, not of real-world services.
 - Real Safari / iPhone / Android and a real screen reader were not used.
 - Pre-existing, not changed here: Life Stage "인기 질문" heading; Today single-line task rows (32px) and some My Life home row buttons (~23px) under the 44px target.
+
+## 6. Production integration
+
+- `git merge --no-ff` of `livon-explore-v2` into production main `28b8a7b66` (ONGIL My Life V2, `app.js?v=20261006m15`).
+  No path overlaps; no ONGIL file changes; the ONGIL module map stays current.
+- Hardening: EV2-09 no longer pins ONGIL's entry version (another product's release line moved on to m15); it checks that
+  ONGIL keeps a version of its own, that its module map is current and that Explore loads no ONGIL module.
