@@ -33,6 +33,9 @@
   var state = {
     savedFolder: "all",
     savedType: "all",
+    savedSource: "all",
+    savedSort: "recent",
+    savedQ: "",   /* Saved V2 search text: this screen only — never in the address, history or storage */
     todoFilter: "all",
     todoSource: "all",
     todoSort: "due",
@@ -581,12 +584,17 @@
       if (Array.isArray(life)) writeJSON(KEY_LIFE_SAVED, life.filter(function (x) { return (typeof x === "string" ? x : x && x.name) !== id.slice(5); }));
     }
     /* the same item may exist under its legacy id and its shared id */
-    P.listSaves("all").forEach(function (x) { if (x.id === id || savedRefKey(x.id) === ref) P.removeSave(x.id); });
+    try {
+      P.listSaves("all").forEach(function (x) { if (x && typeof x === "object" && (String(x.id) === id || savedRefKey(x.id) === ref)) P.removeSave(x.id); });
+    } catch (e) { return false; }
     if (window.LivonLifeHub && window.LivonLifeHub.saves && window.LivonLifeHub.saves.refresh) window.LivonLifeHub.saves.refresh();
     return true;
   }
 
   function collectedSaved() {
+    /* Saved V2 (life-now-hub.js) reads the shared store row by row; without it the list below works as before */
+    var v2 = V2 && V2.saved ? V2.saved.collect() : null;
+    if (v2) return v2;
     var out = [];
     if (window.LivonPlatform && window.LivonPlatform.listSaves) {
       var seen = {};
@@ -1136,6 +1144,7 @@
   }
 
   function savedRowHtml(x, withActions) {
+    if (V2 && V2.saved) return V2.saved.rowHtml(x, withActions);
     return "<li><div><strong>" + esc(x.label) + "</strong><p>" + esc(uniq([savedTypeLabel(x.type), x.source, x.at ? fmtWhen(x.at) + " 저장" : "", x.folder]).join(" · ")) + "</p></div>" +
       '<div class="lv-ml-row-acts"><a href="' + esc(x.href) + '"' + (/^https:/.test(x.href) ? ' target="_blank" rel="noopener noreferrer"' : "") + ">원본 보기<span class=\"visually-hidden\">: " + esc(x.label) + "</span></a>" +
       (withActions
@@ -1250,6 +1259,9 @@
     } else if (view === "saved") {
       state.savedType = SAVED_TYPES.some(function (t) { return t.id === p.type; }) ? p.type : "all";
       state.savedFolder = p.folder || "all";
+      state.savedSource = typeof p.source === "string" && p.source ? p.source.slice(0, 60) : "all";
+      state.savedSort = p.sort === "oldest" || p.sort === "title" ? p.sort : "recent";
+      state.savedQ = "";   /* never part of the address: opening the screen starts without a search */
     } else if (view === "calendar") {
       state.calMode = p.mode === "week" || p.mode === "day" ? p.mode : "month";
       var d = parseDate(p.date);
@@ -1273,6 +1285,8 @@
     } else if (view === "saved") {
       if (state.savedType && state.savedType !== "all") add("type", state.savedType);
       if (state.savedFolder && state.savedFolder !== "all") add("folder", state.savedFolder);
+      if (state.savedSource && state.savedSource !== "all") add("source", state.savedSource);
+      if (state.savedSort && state.savedSort !== "recent") add("sort", state.savedSort);
     } else if (view === "calendar") {
       if (state.calMode && state.calMode !== "month") add("mode", state.calMode);
       if (state.calSelected && state.calSelected !== todayStr()) add("date", state.calSelected);
@@ -1562,6 +1576,7 @@
   }
 
   function viewSaved() {
+    if (V2 && V2.saved) return V2.saved.view();
     var folders = (window.LivonPlatform && window.LivonPlatform.folders) ? window.LivonPlatform.folders() : ["나중에 보기"];
     var folder = state.savedFolder || "all";
     var type = state.savedType || "all";
@@ -1935,6 +1950,7 @@
         rerenderView("saved", '[data-lv-ml-saved-type="' + state.savedType + '"]');
         return;
       }
+      if (V2 && V2.saved && V2.saved.onClick(e)) return;
       if (e.target.closest("[data-lv-ml-saved-reset]")) {
         state.savedType = "all"; state.savedFolder = "all";
         rerenderView("saved", '[data-lv-ml-saved-type="all"]');
@@ -1949,7 +1965,7 @@
           rerenderView("saved");
           announce("‘" + (sItem ? sItem.label : "항목") + "’ 저장을 해제했습니다.");
           restoreFocus(null);
-        }
+        } else announce("저장을 해제하지 못했습니다. 새로고침 후 다시 시도해 주세요.");
         return;
       }
       var tf = e.target.closest("[data-lv-ml-todo-filter]");
@@ -2301,6 +2317,7 @@
         rerenderView("todos", "[data-lv-ml-todo-source]");
         return;
       }
+      if (V2 && V2.saved && V2.saved.onChange(t)) return;
       if (t.matches("[data-lv-ml-saved-folder-select]")) {
         state.savedFolder = t.value || "all";
         rerenderView("saved", "[data-lv-ml-saved-folder-select]");
@@ -2388,6 +2405,7 @@
         announce(state.searchQ ? "내 생활 검색 결과 " + res.total + "개" : "찾을 단어를 입력해 주세요.");
         return;
       }
+      if (V2 && V2.saved && V2.saved.onSubmit(e)) return;
       var rs = e.target.closest("[data-lv-ml-record-search]");
       if (rs) {
         e.preventDefault();
@@ -2461,7 +2479,10 @@
     prio: prio, PRIO_RANK: PRIO_RANK, emptyBox: emptyBox, chipGroup: chipGroup, loadStore: loadStore, saveStore: saveStore, emptyStore: emptyStore,
     STORE_VERSION: STORE_VERSION, readJSON: readJSON, state: state, todoItemHtml: todoItemHtml, habitDays: habitDays, habitScheduledOn: habitScheduledOn,
     WEEKDAYS: WEEKDAYS, RECORD_TYPES: RECORD_TYPES, RECORD_RANGES: RECORD_RANGES, ML_COLLECTIONS: ML_COLLECTIONS, ymOf: ymOf, moneySummary: moneySummary,
-    quoted: quoted
+    quoted: quoted,
+    saved: { SAVED_TYPES: SAVED_TYPES, LEGACY_KEYS: [KEY_TD_SAVED, KEY_LIFE_SAVED, KEY_EX_SAVED], savedType: savedType, savedTypeLabel: savedTypeLabel, savedRefKey: savedRefKey,
+      safeHref: safeHref, uniq: uniq, fmtWhen: fmtWhen, writeJSON: writeJSON, collectedSaved: collectedSaved, rerenderView: rerenderView, refreshDashboard: refreshDashboard,
+      announce: announce, restoreFocus: restoreFocus, confirmDialog: confirmDialog }
   }) : null;
 
   /* ——— Today V2 (오늘의 발견 › 내 오늘): the same store seen from today. Read-only model + the two mutations Today
@@ -2548,7 +2569,7 @@
       applyParams: applyParams, viewHash: viewHash, state: state, safeHref: safeHref, recentViewed: recentViewed,
       /* My Life V2 */
       todayStr: todayStr, sortTodos: sortTodos, saveHabit: saveHabit, setHabitDone: setHabitDone, habitScheduledOn: habitScheduledOn,
-      saveTx: saveTx, moneySummary: moneySummary, ML_COLLECTIONS: ML_COLLECTIONS, v2: !!V2,
+      saveTx: saveTx, moneySummary: moneySummary, ML_COLLECTIONS: ML_COLLECTIONS, v2: !!V2, savedV2: V2 ? V2.saved : null, viewSaved: viewSaved,
       views: Object.assign({ todos: viewTodos, calendar: viewCalendar, report: viewReport, goals: viewGoals, settings: viewSettings }, V2 ? V2.views : {})
     }
   };
