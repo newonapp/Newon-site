@@ -1156,7 +1156,8 @@ test('RH-43 cache / version consistency: every local file the page loads carries
   assert.deepEqual(Object.keys(ongil).sort(), ['app.js', 'ongil-app.css', 'ongil-care.css', 'ongil-home.css', 'ongil-life.css', 'ongil-shell.css', 'ongil-tokens.css']);
   for (const f of ['ongil-shell.css', 'ongil-app.css', 'ongil-tokens.css', 'ongil-home.css']) assert.equal(ongil[f], '20261003r11', `${f} changed in Phase 11 and has the release's version`);
   /* Completion V2 changed app.js (and the modules it imports) and ongil-life.css: those two, and only those, moved on */
-  assert.equal(ongil['ongil-life.css'], '20261004v13', 'ongil-life.css changed in Completion V2 (v12) and again in V3 (v13)');
+  /* Responsive Hardening V1: ongil-life.css changed (layout-only [RH1] block) → its address moved on (BEFORE ?v=20261004v13, AFTER ?v=20261007r14) */
+  assert.equal(ongil['ongil-life.css'], '20261007r14', 'ongil-life.css changed in Completion V2 (v12) and again in V3 (v13)');
   assert.equal(ongil['app.js'], '20261006m15', 'app.js changed in Completion V2 (v12), V3 (v13) Health · Safety V2 (20261005h14) and My Life V2 (20261006m15)'); /* My Life V2: app.js changed → entry moved on (BEFORE 20261005h14, AFTER 20261006m15) */
   assert.match(APP, /const APP_VERSION = 'hardening-v1';/);
   /* modules are imported by relative path with no version of their own: they are revalidated by the host's default
@@ -1199,7 +1200,7 @@ test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', ()
   /* Family Connection V1: + family-connection.test.mjs (BEFORE 27, AFTER 28). WHY: the new feature brought its own test file. */
   /* Family Connection V2: + family-v2.test.mjs (BEFORE 28, AFTER 29) */
   /* Community V2: + community-v2.test.mjs (BEFORE 29, AFTER 30) */
-  /* My Life V2: + my-life-v2.test.mjs (BEFORE 31, AFTER 32) */ assert.equal(tests.length, 32); // Health · Safety V2: + health-safety-v2.test.mjs (BEFORE 30, AFTER 31) · Completion V2: + health-calendar.test.mjs · Completion V3: + emergency-contacts.test.mjs · Product Completion Audit V1: + product-completion.test.mjs (BEFORE 26, AFTER 27)
+  /* My Life V2: + my-life-v2.test.mjs (BEFORE 31, AFTER 32) */ /* Responsive Hardening V1: + responsive-hardening.test.mjs (BEFORE 32, AFTER 33). WHY: the hardening brought its own test file. */ assert.equal(tests.length, 33); // Health · Safety V2: + health-safety-v2.test.mjs (BEFORE 30, AFTER 31) · Completion V2: + health-calendar.test.mjs · Completion V3: + emergency-contacts.test.mjs · Product Completion Audit V1: + product-completion.test.mjs (BEFORE 26, AFTER 27)
   for (const f of ['livon', 'server/livon', 'tests/livon']) assert.ok(fs.existsSync(path.join(ROOT, f)), `${f} is still there, untouched by ONGIL`);
   /* Family Connection V2: server/ongil/family is the one ONGIL backend (BEFORE: no server/ongil) */
   assert.deepEqual(fs.readdirSync(path.join(ROOT, 'server/ongil')), ['family']);
