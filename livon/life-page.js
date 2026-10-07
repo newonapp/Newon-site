@@ -4,7 +4,6 @@
   var KEY_INTERESTS = "livon.lifeInterests";
   var KEY_GOALS = "livon.lifeGoals";
   var KEY_EVENTS = "livon.lifeEvents";
-  var KEY_SAVED = "livon.lifeSavedLocal";
   var KEY_AIQ = "livon.aiPrompt";
   var DATA = window.LivonLifeData || { stages: [], situations: [], interests: [], goals: [], transitions: [], packages: [], statusLabel: {} };
   var EVENT_DATA = window.LivonLifeEvents || { events: [], statusLabel: {}, stageGuides: {} };
@@ -136,19 +135,22 @@
   }
   function textList(key) { return readJSON(key, []).filter(function (x) { return typeof x === "string"; }); }
 
-  function savedList() {
-    return readJSON(KEY_SAVED, []);
-  }
+  /* Life Stage V2: one saved store. This fallback card (shown only when the service module is missing) saves through the
+     shared LIVON saved list under the id older entries were migrated to ("life:" + name). Nothing is written to the old
+     Life Stage-only list any more; LivonPlatform still reads it once to carry old entries over. */
+  function saveKey(name) { return "life:" + name; }
   function isSaved(name) {
-    return savedList().indexOf(name) >= 0;
+    var P = window.LivonPlatform;
+    try { return !!(P && P.hasSave && P.hasSave(saveKey(name))); } catch (e) { return false; }
   }
   function toggleSave(name) {
-    var list = savedList();
-    var i = list.indexOf(name);
-    if (i >= 0) list.splice(i, 1);
-    else list.push(name);
-    writeJSON(KEY_SAVED, list);
-    return list.indexOf(name) >= 0;
+    var P = window.LivonPlatform;
+    if (!P || !P.saveItem || !P.removeSave) return false;
+    try {
+      if (isSaved(name)) { P.removeSave(saveKey(name)); return false; }
+      P.saveItem({ id: saveKey(name), title: name, label: name, type: "life", href: "#life", source: "라이프 스테이지" });
+    } catch (e) { return false; }
+    return isSaved(name);
   }
 
   function linkHtml(links) {
@@ -377,14 +379,15 @@
           "<div><p>FOCUS</p><strong>" + esc(s.focus) + "</strong></div>" +
           "<div><p>FIELDS</p><strong data-lh-count=\"" + esc(s.id) + "\">" + esc(String((s.fields || []).length)) + "개 생활 분야</strong></div>" +
         "</div>";
-      /* Life Stage hub: popular topics + interest categories come from life-topics.json (LivonLifeHub). */
+      /* Life Stage hub: the editor-picked topics (featuredTopicIds) + interest categories come from life-topics.json
+         (LivonLifeHub). They are LIVON's own selection in a fixed order — not a popularity or view-count ranking. */
       var fields = window.LivonLifeHub
-        ? '<div class="lv-life-block-label"><p class="lv-life-kicker">Popular Topics</p><h3 class="lv-life-title lv-life-title--md">지금 많이 찾는 주제</h3></div>' +
+        ? '<div class="lv-life-block-label"><p class="lv-life-kicker">Topics</p><h3 class="lv-life-title lv-life-title--md">먼저 살펴볼 주제</h3></div>' +
           '<div data-lh-hero="' + esc(s.id) + '"></div>' +
           '<div data-lh-featured="' + esc(s.id) + '"></div>' +
           '<div class="lv-life-block-label"><p class="lv-life-kicker">Interests</p><h3 class="lv-life-title lv-life-title--md">관심 분야</h3></div>' +
           '<div data-lh-categories="' + esc(s.id) + '"></div>' +
-          '<p class="lv-life-note"><a href="#life/search/">모든 연령대에서 주제·가이드·정책 검색하기</a></p>'
+          '<p class="lv-life-note"><a href="#life/search/">모든 생애 단계에서 주제·서비스 유형·공식 포털 검색하기</a></p>'
         : '<div class="lv-life-block-label"><p class="lv-life-kicker">Life Fields</p><h3 class="lv-life-title lv-life-title--md">생활 분야</h3></div>' +
           '<div class="lv-life-fields" data-lv-life-fields="' + esc(s.id) + '">' +
             (s.fields || []).map(function (f) {
@@ -408,7 +411,7 @@
       var guide = stageGuide(s.id);
       var stageEvs = lifeEvents().filter(function (ev) { return (ev.stages || []).indexOf(s.id) >= 0; }).slice(0, 6);
       var eventsBlock =
-        '<div class="lv-life-block-label"><p class="lv-life-kicker">Life Event</p><h3 class="lv-life-title lv-life-title--md">많이 겪는 Life Event</h3></div>' +
+        '<div class="lv-life-block-label"><p class="lv-life-kicker">Life Event</p><h3 class="lv-life-title lv-life-title--md">이 시기의 Life Event</h3></div>' +
         '<div class="lv-life-fields">' + stageEvs.map(function (ev) {
           return '<button type="button" data-lv-life-open-event="' + esc(ev.id) + '">' + esc(ev.title) + "</button>";
         }).join("") + "</div>" +
@@ -423,7 +426,7 @@
         }).join("") + "</ol>" +
         '<p class="lv-life-note"><a href="#life-now">내 생활에서 할 일로 관리</a> · 자동 완료 추적은 준비 중</p>';
       var contentBlock =
-        '<div class="lv-life-block-label"><p class="lv-life-kicker">Content</p><h3 class="lv-life-title lv-life-title--md">추천 콘텐츠</h3></div>' +
+        '<div class="lv-life-block-label"><p class="lv-life-kicker">Content</p><h3 class="lv-life-title lv-life-title--md">함께 볼 콘텐츠</h3></div>' +
         '<div class="lv-life-aiq">' + (guide.contents || []).map(function (c) {
           return '<a href="' + esc(c.href) + '">' + esc(c.label) + "</a>";
         }).join("") + "</div>";
@@ -436,7 +439,7 @@
         }).join("") + "</ul>" +
         '<p class="lv-life-note">자격·신청은 기관 공식 기준입니다.</p>';
       var ai =
-        '<div class="lv-life-block-label"><p class="lv-life-kicker">Popular</p><h3 class="lv-life-title lv-life-title--md">인기 질문</h3></div>' +
+        '<div class="lv-life-block-label"><p class="lv-life-kicker">Questions</p><h3 class="lv-life-title lv-life-title--md">LIVON AI에게 물어볼 질문 예시</h3></div>' +
         '<div class="lv-life-aiq">' +
           (s.ai || []).map(function (q) {
             return '<a href="#livon-ai" data-lv-life-aiq="' + esc(q) + '" data-stage="' + esc(s.id) + '">' + esc(q) + "</a>";

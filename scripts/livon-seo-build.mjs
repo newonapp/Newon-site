@@ -283,7 +283,7 @@ ${cta("/livon/#life", "LIVON에서 라이프 스테이지 보기", "회원가입
       const pols = [...new Set(topics.flatMap((t) => t.relatedPolicyIds || []))].map((id) => policyById[id]).filter(Boolean);
       const others = S.stages.filter((x) => x.id !== s.id);
       emit(p, `<header class="lv-seo-head"><p class="lv-seo-eyebrow">Life Stage · ${esc(s.label)}</p><h1>${esc(p.h1)}</h1><p class="lv-seo-lead">${esc(s.heroTitle)}. ${esc(s.heroLead)}</p>${copy.lead ? `<p>${esc(copy.lead)}</p>` : ""}</header>
-<section aria-labelledby="featured"><h2 id="featured">${esc(s.label)}에 많이 찾는 주제</h2><ul class="lv-seo-topics">${featured.map((t) => topicItem(t)).join("")}</ul></section>
+<section aria-labelledby="featured"><h2 id="featured">${esc(s.label)}에 먼저 살펴볼 주제</h2><ul class="lv-seo-topics">${featured.map((t) => topicItem(t)).join("")}</ul></section>
 <section aria-labelledby="all"><h2 id="all">분야별 주제 ${topics.length}개</h2>${cats.map((x) => `<h3>${esc(x.c.name)}</h3><ul class="lv-seo-inline">${x.list.map((t) => `<li><a href="${esc(topicHref(t))}">${esc(t.title)}</a></li>`).join("")}</ul>`).join("")}</section>
 ${events.length ? `<section aria-labelledby="events"><h2 id="events">${esc(s.label)}의 Life Event</h2><ul class="lv-seo-inline">${events.map((e) => (eventHref(e.id) ? `<li><a href="${eventHref(e.id)}">${esc(e.title)}</a></li>` : `<li>${esc(e.title)}</li>`)).join("")}</ul><p><a href="/livon/life-events/">Life Event 전체 보기</a></p></section>` : ""}
 ${pols.length ? `<section aria-labelledby="official"><h2 id="official">함께 확인할 공식 정보</h2><ul class="lv-seo-official">${pols.map(policyItem).join("")}</ul></section>` : ""}

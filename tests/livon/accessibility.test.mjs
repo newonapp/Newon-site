@@ -333,7 +333,9 @@ test('A11Y-30 filter chips: pressed state on every filter group', () => {
   for (const a of ['data-lv-ex-filter-cat', 'data-lv-ex-filter-age', 'data-lv-ex-filter-region', 'data-lv-ex-filter-mode']) assert.ok(JS['explore-page.js'].includes('chip("' + a + '"'), a);
   assert.match(JS['explore-page.js'], /function chip\([^)]*\) \{[\s\S]{0,300}aria-pressed/);
   assert.match(JS['community-page.js'], /data-lv-cm-cat[^>]*aria-pressed|aria-pressed[^>]*data-lv-cm-cat/);
-  assert.match(JS['life-hub.js'], /data-lh-filter-stage="' \+ s\.slug \+ '" aria-pressed="/);
+  /* Life Stage V2: every search filter group (생애 단계 · 정보 종류 · 분야) is built by one helper that sets the pressed state */
+  assert.match(JS['life-hub.js'], /'<button type="button" data-lh-filter-' \+ attr \+ '="' \+ esc\(o\.value\) \+ '" aria-pressed="' \+ on \+ '"'/);
+  for (const g of ['"생애 단계", "stage"', '"정보 종류", "type"', '"분야", "area"']) assert.ok(JS['life-hub.js'].includes('filterGroup(' + g), g);
   assert.match(JS['today-page.js'], /b\.setAttribute\("aria-pressed", b === week \? "true" : "false"\)/);
   assert.match(INDEX, /data-lv-td-week-filters role="group" aria-label="이번 주 발견 필터"/);
   assert.match(INDEX, /data-lv-td-lib-filters role="group" aria-label="발견 유형 필터"/);
@@ -343,7 +345,10 @@ test('A11Y-31 search: labelled inputs, search landmarks, result counts announced
   for (const id of ['lv-cm-q', 'lv-ex-q', 'lv-td-q', 'hm-ex-q', 'livon-search-input']) assert.ok(INDEX.includes('for="' + id + '"') || new RegExp('id="' + id + '"[^>]*aria-label').test(INDEX), id);
   assert.match(INDEX, /role="search" aria-label="커뮤니티 검색"/);
   assert.match(JS['help-page.js'], /role="search" aria-label="도움말 검색"/);
-  assert.match(JS['life-hub.js'], /<p class="lv-life-note" role="status">‘' \+ esc\(q\) \+ "’ 검색 결과 " \+ results\.length \+ "건<\/p>"/);
+  /* Life Stage V2: the count line is a polite live region that is always in the page; the empty result is a status block */
+  assert.match(JS['life-hub.js'], /<p class="lv-life-note lh-count" role="status" aria-live="polite" data-lh-count-line>/);
+  assert.match(JS['life-hub.js'], /var summary = \(st\.q \? "‘" \+ st\.q \+ "’ " : ""\) \+ "결과 " \+ res\.total \+ "건";/);
+  assert.match(JS['life-hub.js'], /UI\.EmptyState\("조건에 맞는 결과가 없습니다\."/);
   assert.match(JS['explore-page.js'], /lv-ex-noresult\\" role=\\"status\\"/);
   assert.match(ADMIN_JS, /id="ad-gq" type="search" role="combobox" aria-expanded="false" aria-controls="ad-gres" aria-autocomplete="list"/);
 });

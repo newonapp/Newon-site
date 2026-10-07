@@ -567,8 +567,8 @@ test('PERF-48 cache busting: every local script and style sheet carries a versio
 });
 
 test('PERF-49 the files changed in this phase carry a new version', () => {
-  /* a later phase may bump a file again (Product Completion Audit: ?v=20261004c1, Community V2: ?v=20261005cv2, Explore V2: ?v=20261006ex1) — never back to a pre-Performance version */
-  const V = '\\?v=(20261002perf\\d|20261004c\\d|20261005cv\\d|20261006ex\\d)';
+  /* a later phase may bump a file again (Product Completion Audit: ?v=20261004c1, Community V2: ?v=20261005cv2, Explore V2: ?v=20261006ex1, Life Stage V2: ?v=20261007ls1) — never back to a pre-Performance version */
+  const V = '\\?v=(20261002perf\\d|20261004c\\d|20261005cv\\d|20261006ex\\d|20261007ls\\d)';
   for (const f of ['livon-media.js', 'livon-boot.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace('.', '\\.') + V));
   for (const f of Object.keys(SCREEN_MODULES).concat(['livon-platform.js', 'life-hub.js', 'service-details.js', 'data/livon-data-platform.js', 'data/livon-data-schema.js', 'data/livon-data-core.js', 'livon-a11y.css', 'community-page.css', 'today-page.css', 'explore-page.css']))
     assert.match(INDEX, new RegExp('/livon/' + f.replace(/[./]/g, '\\$&') + V), f);
