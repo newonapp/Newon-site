@@ -172,8 +172,10 @@ test('PERF-9 film loader: in-page films and background photos wait until they ar
   assert.equal(b.style.backgroundImage, 'url("/x\\22 y.jpg")', 'a quote cannot end the url()');
   assert.equal(win.LivonMedia.bgAttr('/a"b<.jpg'), ' data-lv-bg="/a&quot;b&lt;.jpg"'); assert.equal(win.LivonMedia.bgAttr(''), '');
   assert.match(JS['community-page.js'], /'<div class="lv-cm-comm__media"' \+ bgPhoto\(c\.img\) \+ '><\/div>'/);
-  assert.equal((JS['home-page.js'].match(/bgPhoto\(/g) || []).length, 5);
-  for (const f of ['community-page.js', 'home-page.js']) assert.match(JS[f], /M && M\.bgAttr \? M\.bgAttr\(url, esc\) : /, f + ' keeps the plain style when the loader is missing');
+  /* WHY CHANGED (Home V2): the hub is text cards — the V1 photo mosaics (오늘의 발견 magazine, 나를 위한 추천) are gone.
+     BEFORE: five background photos drawn by Home through bgPhoto(). AFTER: Home draws no card photo at all. */
+  assert.equal((JS['home-page.js'].match(/bgPhoto\(|background-image:url/g) || []).length, 0);
+  for (const f of ['community-page.js']) assert.match(JS[f], /M && M\.bgAttr \? M\.bgAttr\(url, esc\) : /, f + ' keeps the plain style when the loader is missing');
 });
 
 /* ═════════ start-up ═════════ */
@@ -567,8 +569,8 @@ test('PERF-48 cache busting: every local script and style sheet carries a versio
 });
 
 test('PERF-49 the files changed in this phase carry a new version', () => {
-  /* a later phase may bump a file again (Product Completion Audit: ?v=20261004c1, Community V2: ?v=20261005cv2, Explore V2: ?v=20261006ex1, Life Stage V2: ?v=20261007ls1, Saved V2: ?v=20261007sv1) — never back to a pre-Performance version */
-  const V = '\\?v=(20261002perf\\d|20261004c\\d|20261005cv\\d|20261006ex\\d|20261007ls\\d|20261007sv\\d)';
+  /* a later phase may bump a file again (Product Completion Audit: ?v=20261004c1, Community V2: ?v=20261005cv2, Explore V2: ?v=20261006ex1, Life Stage V2: ?v=20261007ls1, Saved V2: ?v=20261007sv1, Home V2: ?v=20261008hv2) — never back to a pre-Performance version */
+  const V = '\\?v=(20261002perf\\d|20261004c\\d|20261005cv\\d|20261006ex\\d|20261007ls\\d|20261007sv\\d|20261008hv\\d)';
   for (const f of ['livon-media.js', 'livon-boot.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace('.', '\\.') + V));
   for (const f of Object.keys(SCREEN_MODULES).concat(['livon-platform.js', 'life-hub.js', 'service-details.js', 'data/livon-data-platform.js', 'data/livon-data-schema.js', 'data/livon-data-core.js', 'livon-a11y.css', 'community-page.css', 'today-page.css', 'explore-page.css']))
     assert.match(INDEX, new RegExp('/livon/' + f.replace(/[./]/g, '\\$&') + V), f);

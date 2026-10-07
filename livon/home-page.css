@@ -1704,3 +1704,76 @@
 #livon-home .lv-hm-guides { margin: 2rem auto 0; color: rgba(255,255,255,0.6); font-size: 0.88rem; line-height: 1.9; }
 #livon-home .lv-hm-guides a { display: inline-block; padding: 0.5rem 0.15rem; color: rgba(255,255,255,0.9); text-underline-offset: 3px; }
 #livon-home .lv-hm-guides a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+/* ───────── Home V2: the personal hub (오늘 · 내 생활 · 생애주기 · 발견 · 저장한 것) ─────────
+   Directly under the hero. Compact cards: one column on a phone, two from 720px, three from 1080px.
+   Sizes are in rem so the hub follows the reader's text size; nothing here scrolls sideways. */
+#livon-home .lv-hm-sec--hub { padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(2rem, 5vw, 3rem); border-bottom: 1px solid rgba(255,255,255,0.1); }
+#livon-home .lv-hm-sec--compact { padding: clamp(2rem, 5vw, 3rem) 0; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: left; }
+#livon-home .lv-hm-hub__head { margin: 0 0 1.5rem; }
+#livon-home .lv-hm-hub__head h2,
+#livon-home .lv-hm-hub__h2 { margin: 0; font-family: "Noto Sans KR", "Noto Sans", Kanit, sans-serif; font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 750; letter-spacing: -0.02em; line-height: 1.3; color: #fff; }
+#livon-home .lv-hm-hub__head .lv-hm-note { margin: 0.5rem 0 0; color: rgba(255,255,255,0.68); }
+#livon-home .lv-hm-hub { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+@media (min-width: 720px) { #livon-home .lv-hm-hub { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1080px) {
+  #livon-home .lv-hm-hub { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #livon-home .lv-hm-hub__card--wide { grid-column: span 2; }
+}
+#livon-home .lv-hm-hub__card { display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; padding: 1.25rem; border: 1px solid rgba(255,255,255,0.16); border-radius: 1.25rem; background: #141414; }
+#livon-home .lv-hm-hub__card > .lv-hm-eyebrow { margin: 0; color: rgba(255,255,255,0.68); }
+#livon-home .lv-hm-hub__card > h3 { margin: 0; font-size: 1.25rem; font-weight: 750; letter-spacing: -0.02em; line-height: 1.35; color: #fff; }
+#livon-home .lv-hm-hub__body { display: grid; gap: 0.75rem; min-width: 0; flex: 1 1 auto; align-content: start; }
+#livon-home .lv-hm-hub__body h4 { margin: 0.25rem 0 0; font-size: 0.875rem; font-weight: 700; color: rgba(255,255,255,0.78); }
+#livon-home .lv-hm-hub__body h4 small { font-weight: 500; color: rgba(255,255,255,0.68); }
+#livon-home .lv-hm-hub__body .lv-hm-note { margin: 0; color: rgba(255,255,255,0.68); }
+#livon-home .lv-hm-hub__date { margin: 0; font-size: 0.9rem; color: rgba(255,255,255,0.78); }
+#livon-home .lv-hm-hub__stage { margin: 0; font-size: 1rem; color: rgba(255,255,255,0.86); }
+#livon-home .lv-hm-hub__stage strong { font-size: 1.25rem; margin-right: 0.35rem; color: #fff; }
+#livon-home .lv-hm-hub__stats,
+#livon-home .lv-hm-hub__list { margin: 0; padding: 0; list-style: none; display: grid; gap: 0; border-top: 1px solid rgba(255,255,255,0.16); }
+#livon-home .lv-hm-hub__stats li,
+#livon-home .lv-hm-hub__list li { border-bottom: 1px solid rgba(255,255,255,0.16); min-width: 0; }
+#livon-home .lv-hm-hub__stat,
+#livon-home .lv-hm-hub__list a { display: grid; gap: 0.15rem; min-height: 2.75rem; padding: 0.6rem 0.1rem; align-content: center; text-decoration: none; color: #fff; min-width: 0; }
+#livon-home .lv-hm-hub__stat { grid-template-columns: minmax(0, 1fr) auto; column-gap: 0.75rem; }
+#livon-home .lv-hm-hub__stat span { font-size: 0.9rem; color: rgba(255,255,255,0.78); }
+#livon-home .lv-hm-hub__stat strong { font-size: 1rem; font-weight: 750; text-align: right; }
+#livon-home .lv-hm-hub__stat small { grid-column: 1 / -1; }
+#livon-home .lv-hm-hub__list strong { font-size: 1rem; font-weight: 650; letter-spacing: -0.01em; }
+#livon-home .lv-hm-hub__stat small,
+#livon-home .lv-hm-hub__list small { font-size: 0.85rem; color: rgba(255,255,255,0.68); overflow-wrap: anywhere; }
+#livon-home .lv-hm-hub__stat:hover strong,
+#livon-home .lv-hm-hub__list a:hover strong { text-decoration: underline; text-underline-offset: 0.2em; }
+#livon-home .lv-hm-hub__flag { margin: 0; font-size: 0.9rem; }
+#livon-home .lv-hm-hub__flag a { display: inline-flex; align-items: center; min-height: 2.75rem; color: #ffd9a8; }
+#livon-home .lv-hm-hub__cols { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+@media (min-width: 720px) { #livon-home .lv-hm-hub__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+#livon-home .lv-hm-hub__cols > div { display: grid; gap: 0.5rem; min-width: 0; align-content: start; }
+#livon-home .lv-hm-hub__links { margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; align-items: center; }
+#livon-home .lv-hm-hub__more { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0; border: 0; background: none; color: #fff; font: inherit; font-size: 0.9375rem; font-weight: 650; text-decoration: underline; text-underline-offset: 0.25em; cursor: pointer; }
+#livon-home .lv-hm-hub__more:hover { opacity: 0.85; }
+#livon-home .lv-hm-hub__card .lv-hm-search { margin: 0; flex-wrap: wrap; }
+#livon-home .lv-hm-hub__card .lv-hm-search input { min-width: 0; flex: 1 1 10rem; }
+#livon-home :is(.lv-hm-hub__stat, .lv-hm-hub__list a, .lv-hm-hub__more, .lv-hm-hub__flag a, .lv-hm-hub__card .lv-hm-btn):focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 0.25rem; }
+/* Community and AI under the hub: small ways in, not full sections */
+#livon-home .lv-hm-sec--compact .lv-hm-cm-block { margin-top: 0; }
+#livon-home .lv-hm-sec--compact .lv-hm-cm-rail a { grid-template-columns: minmax(0, 1fr); min-height: 2.75rem; }
+#livon-home .lv-hm-sec--compact .lv-hm-cm-rail small { color: rgba(255,255,255,0.68); }
+#livon-home .lv-hm-sec--compact .lv-hm-cm-feed .lv-hm-note { margin: 0 0 0.75rem; color: rgba(255,255,255,0.68); }
+#livon-home .lv-hm-sec--ai.lv-hm-sec--compact .lv-hm-ai,
+#livon-home .lv-hm-sec--ai.lv-hm-sec--compact .lv-hm-ai-prompts { margin-left: 0; margin-right: 0; justify-content: flex-start; }
+#livon-home .lv-hm-sec--ai.lv-hm-sec--compact .lv-hm-ai { margin-top: 1rem; }
+#livon-home .lv-hm-sec--ai.lv-hm-sec--compact .lv-hm-note { margin-left: 0; margin-right: 0; text-align: left; color: rgba(255,255,255,0.68); }
+#livon-home .lv-hm-sec--ai.lv-hm-sec--compact .lv-hm-ai input { min-width: 0; flex: 1 1 10rem; }
+#livon-home .lv-hm-sec--ai.lv-hm-sec--compact .lv-hm-ai-prompts button { min-height: 2.75rem; }
+/* long words and long labels wrap inside the card at any text size (keep-all alone would push the card wider) */
+#livon-home .lv-hm-hub__list a { grid-template-columns: minmax(0, 1fr); }
+#livon-home :is(.lv-hm-hub__card, .lv-hm-sec--compact) :is(strong, small, span, p, h3, h4, a, button) { overflow-wrap: anywhere; min-width: 0; }
+#livon-home :is(.lv-hm-hub__card, .lv-hm-sec--compact) .lv-hm-btn { max-width: 100%; height: auto; text-align: center; }
+@media (max-width: 899px) { #livon-home .lv-hm-sec--compact .lv-hm-cm-block { grid-template-columns: minmax(0, 1fr); } }
+#livon-home .lv-hm-sec--compact .lv-hm-cm-block > * { min-width: 0; }
+#livon-home .lv-hm-sec--compact .lv-hm-tags a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+#livon-home button.lv-hm-hub__more { min-width: 2.75rem; justify-content: center; }
+/* introduction below the hub: the service showcase keeps to the page width at large text sizes (its tab row scrolls inside itself, as before) */
+@media (max-width: 899px) { #livon-home .lv-hm-showcase { grid-template-columns: minmax(0, 1fr); } #livon-home .lv-hm-showcase > * { min-width: 0; } }

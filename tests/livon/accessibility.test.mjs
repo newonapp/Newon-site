@@ -216,7 +216,10 @@ test('A11Y-15 UI contrast: form-field boundaries reach 3:1', () => {
 });
 
 test('A11Y-16 colour is not the only signal: selected chips, filters and section links expose their state', () => {
-  assert.equal((JS['home-page.js'].match(/data-lv-chip aria-pressed=\\"true\\"/g) || []).length, 3);
+  /* WHY CHANGED (Home V2): Home no longer has its own settings form or Life Event chips.
+     BEFORE: three chip groups on Home (생활 상황, 관심사, Life Event) each exposed aria-pressed.
+     AFTER:  Home has no selectable chips at all — those choices are made in onboarding / Life Stage, which keep theirs. */
+  assert.equal((JS['home-page.js'].match(/data-lv-chip|aria-pressed/g) || []).length, 0);
   assert.equal((JS['life-page.js'].match(/data-lv-chip aria-pressed="true"/g) || []).length, 4);
   assert.match(JS['today-page.js'], /data-lv-chip aria-pressed="true"/); assert.match(JS['livon-platform.js'], /data-lv-chip aria-pressed=\\"true\\"/);
   assert.match(A11Y_JS, /function syncChips\(\)[\s\S]*?b\.classList\.contains\("is-on"\) \? "true" : "false"/);

@@ -538,14 +538,21 @@ test('ON-33 weights: a Life Event match ranks above stage, stage above interest'
   for (const x of r.items) assert.ok(x.score === w(x) || x.score === w(x) + 0.5, x.id + ' score ' + x.score);
 });
 
-test('ON-34 Home: "추천 주제" follows the profile and shows why', () => {
+/* WHY CHANGED (Home V2): the column keeps its logic (topics that match the Life Events chosen in onboarding, each with
+   its reason) but is no longer called a recommendation.
+   BEFORE: heading "추천 주제" inside the V1 내 라이프 스테이지 card.
+   AFTER:  heading "내가 고른 변화와 관련된 주제" inside the hub's 지금 내 생애주기 card; without Life Events the card
+           shows "이 단계의 주제" as the plain stage list. */
+test('ON-34 Home: topics that match the chosen Life Events follow the profile and show why', () => {
   const src = read('home-page.js');
   assert.match(src, /PZ\.recommend\(prof, \{ kinds: \["topic"\], limit: 3 \}\)/);
   const r = PZD.recommend({ lifeStage: '20', lifeEvents: ['independent'] }, { kinds: ['topic'], limit: 3 });
   assert.equal(r.items.length, 3);
   for (const x of r.items) { assert.match(x.id, /^topic:20s\./); assert.equal(x.why, '선택한 ‘독립’ 관련'); assert.match(x.href, /^#life\/20s\//); }
   // without Life Events the Home column is the one it always was
-  assert.match(src, /pzCol \|\| "<div class=\\"lv-hm-mystage__col\\"><p class=\\"lv-hm-eyebrow\\">추천 주제<\/p>"/);
+  assert.match(src, /mine\.length \? "<h4>내가 고른 변화와 관련된 주제<\/h4>"[\s\S]*?: topics\.length \? "<h4>이 단계의 주제<\/h4>"/);
+  assert.match(src, /row\(topicHref\(x\.t\), x\.t\.title, x\.why \|\| x\.t\.category \|\| ""\)/, 'the reason is shown');
+  assert.equal(src.includes('추천'), false);
 });
 
 test('ON-35 Today: the feed profile carries Life Events and they raise matching items', () => {
