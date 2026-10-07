@@ -2275,6 +2275,41 @@ html[data-lv-view="life"] main > #life {
 #life .lh-search input { flex: 1 1 auto; min-width: 0; min-height: 50px; padding: .7rem .9rem; border: 1px solid #0a0a0a; border-radius: 0; background: #fff; color: #171717; font: inherit; font-size: 1rem; }
 #life .lh-search .lv-life-btn { flex: 0 0 auto; min-height: 50px; }
 
+/* Life Stage V2 — search: clear button, labelled filter groups, applied conditions, results. Existing tokens only. */
+#life .lh-search__field { position: relative; flex: 1 1 auto; min-width: 0; display: flex; }
+#life .lh-search__field input { width: 100%; padding-right: 3.1rem; }
+#life .lh-search__field input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+#life .lh-search__clear { position: absolute; top: 3px; right: 3px; bottom: 3px; width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 0; border: 0; border-radius: 0; background: transparent; color: #171717; font: inherit; font-size: 1.35rem; line-height: 1; cursor: pointer; }
+#life .lh-search__clear[hidden] { display: none; }
+#life .lh-search__clear:hover { background: #f2f2f2; }
+#life .lh-filter { margin-top: 1.25rem; }
+#life .lh-filter__label { margin: 0; font-size: .8rem; font-weight: 700; letter-spacing: .02em; color: #444; }
+#life .lh-filter .lh-filters { margin-top: .5rem; }
+#life .lh-filters button { min-height: 44px; min-width: 44px; }
+#life .lh-filters button[aria-pressed="true"] { border-color: #0a0a0a; background: #0a0a0a; color: #fff; }
+#life .lh-filter__n { margin-left: .25rem; font-weight: 400; font-size: .78rem; opacity: .8; }
+#life .lh-applied { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid #e8e8e8; }
+#life .lh-applied ul { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; padding: 0; list-style: none; min-width: 0; }
+#life .lh-applied li { margin: 0; padding: 0; min-width: 0; }
+#life .lh-applied__chip, #life .lh-applied__reset { display: inline-flex; align-items: center; gap: .4rem; max-width: 100%; min-height: 44px; padding: .4rem .8rem; border: 1px solid #0a0a0a; border-radius: 2px; background: #fff; color: #0a0a0a; font: inherit; font-size: .875rem; font-weight: 600; line-height: 1.35; text-align: left; overflow-wrap: anywhere; cursor: pointer; }
+#life .lh-applied__chip span { font-size: 1.05rem; line-height: 1; }
+#life .lh-applied__reset { border-color: transparent; text-decoration: underline; text-underline-offset: 3px; }
+#life .lh-applied__chip:hover { background: #f2f2f2; }
+#life .lh-count { min-height: 1.5em; font-weight: 600; color: #171717; }
+#life .lh-count:empty { min-height: 0; margin: 0; }
+#life .lh-results { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin: 1rem 0 0; padding: 0; list-style: none; background: #e6e6e6; border: 1px solid #e6e6e6; }
+#life .lh-results > li { margin: 0; padding: 0; min-width: 0; background: #fff; display: flex; }
+#life .lh-results > li > .lv-life-svc { flex: 1 1 auto; min-width: 0; border: 0; }
+#life .lh-results h4, #life .lh-results p { overflow-wrap: anywhere; }
+#life .lh-result__src { margin-top: .5rem; font-size: .8rem; }
+#life .lh-source { max-width: 62ch; }
+#life .lh-home-search { margin: 1.5rem 0 0; }
+#life .lh-home-search__title { margin: 0; font-size: 1rem; font-weight: 700; color: #171717; }
+#life .lh-home-search .lh-search { margin-top: .75rem; }
+#life #life-hub-view :is(a, button, input, summary):focus-visible, #life .lh-home-search :is(a, button, input):focus-visible { outline: 2px solid #0a0a0a; outline-offset: 2px; }
+@media (max-width: 1000px) { #life .lh-results { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { #life .lh-results { grid-template-columns: minmax(0, 1fr); } }
+
 /* states */
 #life .lh-empty strong { display: block; color: #171717; font-size: 1rem; }
 #life .lh-empty p { margin: .35rem 0 0; font-size: .92rem; color: #666; }
@@ -2316,3 +2351,9 @@ html[data-lv-view="life"] main > #life {
 
 /* Contrast: kicker on the dark closing section. */
 #life .lv-life-close .lv-life-kicker { color: #8c8c8c; }
+
+/* Life Stage V2 — touch targets: every Life Stage control is at least 44px (links inside a sentence are text, not controls) */
+#life :is(.lv-life-btn, .lv-life-btn--sm, .lv-life-sticky__link, .lv-life-chips button, .lv-life-fields button, .lv-life-switch button, .lv-life-rail button, .lv-life-modal__list button, .lv-life-family__card, .lv-life-showcase__nav button) { min-height: 44px; }
+#life :is(.lv-life-sticky__link, .lv-life-aiq a, .lh-toc a, .lv-ls-breadcrumb a, .lh-crumbs a) { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
+#life :is(.lv-ls-breadcrumb, .lh-crumbs) a { justify-content: flex-start; }
+#life .lv-life-sticky__link { justify-content: center; }

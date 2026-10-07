@@ -29,7 +29,7 @@ function app() {
   ctx.window = ctx;
   ctx.LivonPlatform = { listSaves: () => [...saves.values()], saveItem: x => saves.set(x.id, x), removeSave: id => saves.delete(id) };
   vm.createContext(ctx);
-  for (const f of ['data/livon-user-data.js', 'life-data.js', 'service-details-data.js', 'service-details.js', 'explore-data.js', 'today-data.js', 'community-data.js', 'life-hub.js']) vm.runInContext(read(f), ctx);
+  for (const f of ['data/livon-user-data.js', 'life-data.js', 'service-details-data.js', 'service-details.js', 'explore-data.js', 'today-data.js', 'community-data.js', 'life-hub.js', 'explore-search.js']) vm.runInContext(read(f), ctx);   /* explore-search.js = the shared index Life Stage search runs on (V2) */
   const hub = ctx.LivonLifeHub;
   hub.repo.use(DATA);
   return { ctx, hub, saves };
@@ -141,13 +141,15 @@ test('AI hand-off passes page context as a draft (no auto-send, no fake answer)'
   assert.equal(hub._test.absUrl('https://evil.example/x'), '');
 });
 
-test('search finds topics, guides and policies and filters by stage', () => {
+test('search finds topics and official portals through the shared LIVON index and filters by stage', () => {
   const { hub } = app();
   const all = hub.search('독립', {});
   assert.ok(all.some(r => r.type === 'topic' && r.href === '#life/20s/first-independence'));
   const only10 = hub.search('독립', { stage: '10s' });
   assert.ok(only10.every(r => r.type !== 'topic' || r.href.startsWith('#life/10s/')));
   assert.equal(hub.search('   ', {}).length, 0);
+  assert.ok(hub.search('청년 정책', {}).some(r => r.type === 'policy' && r.external && r.href.startsWith('https://')), 'official portals are found');
+  assert.ok(all.every(r => ['topic', 'service', 'policy'].includes(r.type)), 'only Life Stage kinds');
 });
 
 test('static route stubs: one per stage/topic with canonical + redirect', () => {

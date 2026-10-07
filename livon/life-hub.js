@@ -7,7 +7,12 @@
    - Account   : Newon+ 계정 연결 지점. 로그인 API가 없으므로 isSignedIn()은 false이며, 저장은 이 기기(LivonPlatform)에만 된다.
    - UI        : 기존 Life Stage 컴포넌트 클래스(lv-life-*, lv-ls-*)만 사용한다.
    - Router    : #life/{stage}, #life/{stage}/c/{category}, #life/{stage}/{topic}, #life/{stage}/{topic}/services[/{service}],
-                 #life/services/{service}, #life/search/{query}
+                 #life/services/{service}, #life/search/{query}?stage=&type=&area=
+   - Search    : Life Stage V2 — one search system. Results come from the shared LIVON index (LivonSearch, explore-search.js),
+                 limited to what belongs here: 주제 · 서비스 유형 · 공식 포털. Community posts and private records are never read.
+                 The conditions live in the URL, so reload and Back/Forward restore them.
+   - Stage     : a stage is only ever chosen by the person. Nothing here reads age, birthday, My Life, Community or search
+                 history to guess it, and browsing or filtering by a stage never stores it as "mine".
    전문가·업체·후기·평점·예약 가능 시간은 만들지 않는다. 데이터가 없으면 EmptyState를 보여 준다. */
 (function () {
   "use strict";
@@ -38,10 +43,21 @@
   }
   function pad(n) { return String(n).padStart(2, "0"); }
   function safeHttp(url) { return /^https:\/\/[a-z0-9.-]+(\/|$)/i.test(String(url || "")) ? url : ""; }
+  /* row checks (Repo.use): plain values only */
+  function isObj(v) { return !!v && typeof v === "object" && !Array.isArray(v); }
+  function text(v) { return typeof v === "string" ? v.trim() : ""; }
+  function strings(v) { return (Array.isArray(v) ? v : []).filter(function (x) { return typeof x === "string" && x; }); }
+  function pairs(v) { return (Array.isArray(v) ? v : []).filter(function (x) { return isObj(x) && text(x.title) && typeof x.body === "string"; }); }
+  /* a real calendar day written as YYYY-MM-DD, not in the future */
+  function validDay(v) {
+    if (typeof v !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(v)) return false;
+    var d = new Date(v + "T00:00:00Z");
+    return !isNaN(d) && d.toISOString().slice(0, 10) === v && d.getTime() <= Date.now() + 864e5;
+  }
 
   /* ───────── Repo (data source) ───────── */
   var Repo = {
-    status: "idle", error: null, data: null, _promise: null, idx: null,
+    status: "idle", error: null, data: null, _promise: null, idx: null, issues: [],
     load: function (force) {
       if (Repo.status === "ready" && !force) return Promise.resolve(Repo.data);
       if (Repo._promise && !force) return Repo._promise;
@@ -63,17 +79,91 @@
       });
       return Repo._promise;
     },
-    /* Accepts already-loaded data (tests, future SSR/CMS injection). */
+    /* Accepts already-loaded data (tests, future SSR/CMS injection).
+       Life Stage V2: every row is checked on its own. A row that cannot be shown safely (no id, no title, unknown stage, a
+       source that is not https …) is left out and counted in Repo.issues; one bad row never takes the other rows with it.
+       Only a file that is not Life Stage data at all (no stage list, no topic list) is refused as a whole. */
     use: function (json) {
-      if (!json || !Array.isArray(json.stages) || !Array.isArray(json.topics)) throw new Error("invalid life-topics data");
-      var idx = { stageById: {}, stageBySlug: {}, topic: {}, cat: {}, svc: {}, pol: {}, expert: {} };
-      json.stages.forEach(function (s) { idx.stageById[s.id] = s; idx.stageBySlug[s.slug] = s; });
-      json.categories.forEach(function (c) { idx.cat[c.id] = c; });
-      json.topics.forEach(function (t) { idx.topic[t.id] = t; });
-      (json.serviceTypes || []).forEach(function (s) { idx.svc[s.id] = s; });
-      (json.policies || []).forEach(function (p) { idx.pol[p.id] = p; });
-      (json.experts || []).forEach(function (x) { idx.expert[x.id] = x; });
-      Repo.data = json; Repo.idx = idx; Repo.status = "ready";
+      if (!isObj(json) || !Array.isArray(json.stages) || !Array.isArray(json.topics)) throw new Error("invalid life-topics data");
+      var issues = [], idx = { stageById: {}, stageBySlug: {}, topic: {}, cat: {}, svc: {}, pol: {}, expert: {} };
+      function drop(kind, row, why) { issues.push({ kind: kind, id: isObj(row) && typeof row.id === "string" ? row.id.slice(0, 80) : "", reason: why }); return false; }
+      function rows(list, kind, check) {
+        var seen = {};
+        return (Array.isArray(list) ? list : []).filter(function (r) {
+          if (!isObj(r)) return drop(kind, r, "not-an-object");
+          if (!text(r.id)) return drop(kind, r, "missing-id");
+          if (seen[r.id]) return drop(kind, r, "duplicate-id");
+          var why = check(r);
+          if (why) return drop(kind, r, why);
+          seen[r.id] = 1; return true;
+        });
+      }
+      var stages = rows(json.stages, "stage", function (x) {
+        if (!/^[a-z0-9]{1,8}$/i.test(text(x.slug))) return "invalid-slug";
+        if (!text(x.label)) return "missing-label";
+        x.categoryIds = strings(x.categoryIds); x.featuredTopicIds = strings(x.featuredTopicIds);
+        ["title", "heroTitle", "heroLead"].forEach(function (k) { if (typeof x[k] !== "string") x[k] = ""; });
+        return "";
+      });
+      stages.forEach(function (x) { idx.stageById[x.id] = x; idx.stageBySlug[x.slug] = x; });
+      var topics = rows(json.topics, "topic", function (t) {
+        var st = idx.stageById[String(t.lifeStageId)];
+        if (!st) return "unknown-stage";
+        if (t.stageSlug !== st.slug) return "stage-mismatch";
+        if (!/^[a-z0-9-]{1,80}$/.test(text(t.slug))) return "invalid-slug";
+        if (t.id !== st.slug + "." + t.slug) return "id-route-mismatch";
+        if (!text(t.title)) return "missing-title";
+        if (!text(t.description)) return "missing-summary";
+        if (typeof t.category !== "string") t.category = "";
+        if (typeof t.categoryId !== "string") t.categoryId = "";
+        t.knowledge = pairs(t.knowledge); t.guide = pairs(t.guide);
+        t.checklist = (Array.isArray(t.checklist) ? t.checklist : []).filter(function (c) { return isObj(c) && text(c.id) && text(c.text); });
+        ["relatedTopicIds", "relatedContentIds", "relatedClassIds", "relatedPlaceIds", "relatedPolicyIds", "relatedServiceIds", "relatedToolIds", "relatedExpertIds", "aiPrompts"].forEach(function (k) { t[k] = strings(t[k]); });
+        if (typeof t.communityInterest !== "string") t.communityInterest = "";
+        return "";
+      });
+      topics.forEach(function (t) { idx.topic[t.id] = t; });
+      var categories = rows(json.categories, "category", function (c) {
+        if (!text(c.name)) return "missing-name";
+        if (!idx.stageById[String(c.stageId)]) return "unknown-stage";
+        if (typeof c.slug !== "string") c.slug = String(c.id).split(".")[1] || "";
+        c.topicIds = strings(c.topicIds);
+        return "";
+      });
+      categories.forEach(function (c) { idx.cat[c.id] = c; });
+      var services = rows(json.serviceTypes, "service", function (x) {
+        if (!text(x.name)) return "missing-title";
+        if (typeof x.description !== "string") x.description = "";
+        if (typeof x.group !== "string") x.group = "";
+        ["process", "prepare", "features", "relatedExploreIds", "relatedToolIds", "relatedContentIds"].forEach(function (k) { x[k] = strings(x[k]); });
+        return "";
+      });
+      services.forEach(function (x) { idx.svc[x.id] = x; });
+      var policies = rows(json.policies, "policy", function (x) {
+        if (!text(x.name)) return "missing-title";
+        if (!text(x.provider)) return "missing-source";
+        if (!safeHttp(x.sourceUrl)) return typeof x.sourceUrl === "string" && x.sourceUrl ? "non-https-source" : "missing-source";
+        ["summary", "target", "conditions", "period"].forEach(function (k) { if (typeof x[k] !== "string") x[k] = ""; });
+        /* a check date is shown only when the data really has one: never today's date, never a guess */
+        if (!validDay(x.checkedAt)) { if (x.checkedAt != null) issues.push({ kind: "policy", id: x.id, reason: "invalid-check-date" }); x.checkedAt = null; }
+        return "";
+      });
+      policies.forEach(function (x) { idx.pol[x.id] = x; });
+      var experts = rows(json.experts, "expert", function () { return ""; });
+      experts.forEach(function (x) { idx.expert[x.id] = x; });
+      /* references that point nowhere are counted (the screens already skip them) */
+      topics.forEach(function (t) {
+        t.relatedTopicIds.forEach(function (id) { if (!idx.topic[id]) issues.push({ kind: "topic", id: t.id, reason: "orphan-topic-reference" }); });
+        t.relatedPolicyIds.forEach(function (id) { if (!idx.pol[id]) issues.push({ kind: "topic", id: t.id, reason: "orphan-policy-reference" }); });
+        t.relatedServiceIds.forEach(function (id) { if (!idx.svc[id]) issues.push({ kind: "topic", id: t.id, reason: "orphan-service-reference" }); });
+        if (t.categoryId && !idx.cat[t.categoryId]) issues.push({ kind: "topic", id: t.id, reason: "orphan-category" });
+      });
+      var clean = stages.length === json.stages.length && topics.length === json.topics.length && categories.length === (json.categories || []).length &&
+        services.length === (json.serviceTypes || []).length && policies.length === (json.policies || []).length && experts.length === (json.experts || []).length;
+      /* untouched data keeps its own object; otherwise a shallow copy that holds only the rows that passed */
+      Repo.data = clean && Array.isArray(json.categories) && Array.isArray(json.serviceTypes) && Array.isArray(json.policies) && Array.isArray(json.experts) ? json
+        : Object.assign({}, json, { stages: stages, topics: topics, categories: categories, serviceTypes: services, policies: policies, experts: experts });
+      Repo.idx = idx; Repo.issues = issues; Repo.status = "ready";
       notify();
     },
     stage: function (key) { return Repo.idx ? (Repo.idx.stageBySlug[key] || Repo.idx.stageById[String(key)] || null) : null; },
@@ -186,9 +276,12 @@
   function parse(hash) {
     var h = String(hash || "").replace(/^#/, "");
     if (h.indexOf("life/") !== 0) return null;
+    /* search conditions: #life/search/{query}?stage=20&type=life&area=money */
+    var qi = h.indexOf("?"), query = qi < 0 ? "" : h.slice(qi + 1);
+    if (qi >= 0) h = h.slice(0, qi);
     var parts = h.split("/").slice(1).map(function (p) { try { return decodeURIComponent(p); } catch (e) { return p; } });
     if (!parts[0]) return { view: "stage", stage: null };
-    if (parts[0] === "search") return { view: "search", q: parts.slice(1).join("/") };
+    if (parts[0] === "search") return searchRoute(parts.slice(1).join("/"), query);
     if (parts[0] === "services") return parts[1] ? { view: "service", service: parts[1] } : null;
     var r = { stage: parts[0] };
     if (!parts[1]) { r.view = "stage"; return r; }
@@ -199,7 +292,13 @@
     return r;
   }
   function route(obj) {
-    if (obj.view === "search") return "#life/search/" + encodeURIComponent(obj.q || "");
+    if (obj.view === "search") {
+      var qs = [];
+      if (obj.stage) qs.push("stage=" + encodeURIComponent(obj.stage));
+      if (obj.type && obj.type !== "all") qs.push("type=" + encodeURIComponent(obj.type));
+      if (obj.area) qs.push("area=" + encodeURIComponent(obj.area));
+      return "#life/search/" + encodeURIComponent(String(obj.q || "").trim().slice(0, 60)) + (qs.length ? "?" + qs.join("&") : "");
+    }
     if (obj.view === "service" && !obj.topic) return "#life/services/" + obj.service;
     var base = "#life/" + obj.stage;
     if (obj.view === "category") return base + "/c/" + obj.category;
@@ -207,6 +306,18 @@
     if (obj.view === "services") return base + "/" + obj.topic + "/services";
     if (obj.view === "service") return base + "/" + obj.topic + "/services/" + obj.service;
     return base;
+  }
+  /* only known values survive: an unknown stage, type or area in a pasted URL is ignored, never shown or stored */
+  function searchRoute(q, query) {
+    var r = { view: "search", q: String(q || "").trim().slice(0, 60), stage: "", type: "all", area: "" };
+    String(query || "").split("&").forEach(function (kv) {
+      var i = kv.indexOf("="), k = i < 0 ? kv : kv.slice(0, i), v = i < 0 ? "" : kv.slice(i + 1);
+      try { v = decodeURIComponent(v); } catch (e) { v = ""; }
+      if (k === "stage") { var m = /^([1-7]0)s?$/.exec(v); if (m) r.stage = m[1]; }
+      else if (k === "type" && SCOPE_IDS.indexOf(v) >= 0) r.type = v;
+      else if (k === "area" && /^[a-z]{2,12}$/.test(v)) r.area = v;
+    });
+    return r;
   }
   function topicRoute(t) { return route({ view: "topic", stage: t.stageSlug, topic: t.slug }); }
   function stageRoute(s) { return "#life/" + s.slug; }
@@ -311,9 +422,14 @@
     h.hidden = false;
     h.innerHTML = html + '<p id="lh-status" class="lh-status" role="status" aria-live="polite"></p>';
     window.scrollTo(0, 0);
+    var keep = pendingFocus ? h.querySelector(pendingFocus) : null;
+    pendingFocus = "";
+    if (keep) { keep.focus({ preventScroll: true }); try { keep.scrollIntoView({ block: "nearest" }); } catch (e) {} return; }
     var title = h.querySelector("[data-lh-title-focus]");
     if (title) title.focus({ preventScroll: true });
   }
+  /* a CSS selector for the control that should hold focus after the next render (filters, clear, more) */
+  var pendingFocus = "";
   function hide() {
     var root = document.getElementById("life");
     if (root) root.classList.remove("has-hub-view");
@@ -473,6 +589,9 @@
       '<header class="lv-ls-heading lh-heading"><p class="lv-life-kicker">' + esc(t.category) + " · " + esc(s.label) + "</p>" +
         '<h2 class="lv-life-title" aria-level="1" tabindex="-1" data-lh-title-focus>' + esc(t.title) + "</h2>" +
         '<p class="lv-life-lead">' + esc(t.description) + "</p>" +
+        /* who wrote this, and when: LIVON's own general guide, dated with the data file's own date (never today's) */
+        '<p class="lv-life-note lh-source" data-lh-source>LIVON이 정리한 일반 생활 안내입니다. 공식 기관의 안내가 아니며, 자격·금액·기한은 각 기관의 공식 사이트에서 확인해 주세요.' +
+          (validDay(Repo.data.updatedAt) ? " 내용 정리일 " + esc(Repo.data.updatedAt) + "." : "") + "</p>" +
         '<div class="lv-life-svc__acts lh-actions">' + UI.SaveButton("topic", t.id, t.title, here, s.id, "주제 저장") +
           UI.btn("공유", 'data-lh-share="' + esc(t.id) + '"') + UI.AskLivonAIButton(aiPayload, "LIVON AI에게 물어보기", "dark") + "</div>" +
       "</header>" +
@@ -502,7 +621,7 @@
   }
   function policyCard(p, stageId) {
     return '<article class="lv-life-svc lh-policy"><p class="lv-life-svc__n">공식 포털 · ' + esc(p.provider) + "</p><h4>" + esc(p.name) + "</h4>" +
-      '<dl class="lh-dl"><div><dt>대상</dt><dd>' + esc(p.target) + "</dd></div><div><dt>주요 조건</dt><dd>" + esc(p.conditions) + "</dd></div><div><dt>신청기간</dt><dd>" + esc(p.period) + "</dd></div><div><dt>제공기관</dt><dd>" + esc(p.provider) + "</dd></div><div><dt>공식 출처</dt><dd>" + esc(p.sourceUrl.replace(/^https:\/\//, "").replace(/\/$/, "")) + (p.checkedAt ? " · 링크 확인 " + esc(p.checkedAt) : "") + "</dd></div></dl>" +
+      '<dl class="lh-dl"><div><dt>대상</dt><dd>' + esc(p.target) + "</dd></div><div><dt>주요 조건</dt><dd>" + esc(p.conditions) + "</dd></div><div><dt>신청기간</dt><dd>" + esc(p.period) + "</dd></div><div><dt>제공기관</dt><dd>" + esc(p.provider) + "</dd></div><div><dt>공식 출처</dt><dd>" + esc(p.sourceUrl.replace(/^https:\/\//, "").replace(/\/$/, "")) + (validDay(p.checkedAt) ? " · LIVON 링크 확인 " + esc(p.checkedAt) : "") + "</dd></div></dl>" +
       '<div class="lv-life-svc__acts">' + UI.external("공식 사이트에서 자세히 보기", p.sourceUrl) + UI.SaveButton("policy", p.id, p.name + " · " + p.provider, location.hash || "#life", stageId) + "</div></article>";
   }
   function serviceCard(svc, t) {
@@ -573,61 +692,144 @@
     setMeta({ title: s.label + " " + cat.name + " · 라이프 스테이지 | LivOn", description: s.label + " " + cat.name + " 분야의 생활 정보와 가이드", canonical: SITE_ORIGIN + "/livon/life/" + s.slug + "/" });
   }
 
-  /* ───────── search ───────── */
-  var SEARCH_TYPES = [{ id: "all", label: "전체" }, { id: "topic", label: "주제" }, { id: "guide", label: "가이드" }, { id: "service", label: "서비스" }, { id: "policy", label: "정책" }, { id: "content", label: "콘텐츠" }];
-  function norm(s) { return String(s || "").toLowerCase().replace(/\s+/g, ""); }
+  /* ───────── search (Life Stage V2: the shared LIVON index, limited to Life Stage's own kinds) ───────── */
+  /* 정보 종류 = the index's own types. Nothing else is searched here: places, classes, events and Community posts stay in 탐색. */
+  var SCOPE = [{ id: "all", label: "전체" }, { id: "life", label: "주제" }, { id: "service", label: "서비스 유형" }, { id: "policy", label: "공식 포털" }];
+  var SCOPE_IDS = SCOPE.map(function (x) { return x.id; });
+  var PAGE_SIZE = 24;
+  function shared() { var L = window.LivonSearch; return L && typeof L.search === "function" ? L : null; }
+  /* Life Stage's own rows in the shared index: its topics (lt:), service types (svc:) and official portals (pol:).
+     The index also holds 탐색 items of the same kinds and Community posts; those are not Life Stage data. */
+  function inScope(item) { return /^(lt|svc|pol):/.test(String(item.key || "")) && (item.type === "life" || item.type === "service" || item.type === "policy"); }
+  function areas() { var L = shared(); return L && Array.isArray(L.CATS) ? L.CATS.filter(function (c) { return c && c.id && c.label; }) : []; }
+  function areaLabel(id) { var a = areas().filter(function (c) { return c.id === id; })[0]; return a ? a.label : ""; }
+  function scopeLabel(id) { var x = SCOPE.filter(function (t) { return t.id === id; })[0]; return x ? x.label : ""; }
+  function stageLabelOf(id) { var st = Repo.stage(id); return st ? st.label : ""; }
+  /* run(state) → { items, counts, total, ready } — one call into the shared index, then the Life Stage scope */
+  function run(st) {
+    var L = shared();
+    if (!L || !Repo.data) return { items: [], counts: { all: 0 }, total: 0, ready: false };
+    var f = { type: "all", age: st.stage || "", cat: areaLabel(st.area) ? st.area : "" };
+    var hits = [];
+    try {
+      /* the shared index lists nothing for "no words, no condition"; a kind chosen on its own lists that scope kind by kind */
+      var bare = !String(st.q || "").trim() && !f.age && !f.cat && st.type && st.type !== "all";
+      var raw = bare ? ["life", "service", "policy"].reduce(function (acc, t) { return acc.concat(L.search("", { type: t }).items || []); }, []) : (L.search(st.q || "", f).items || []);
+      hits = raw.filter(function (h) { return h && h.item && inScope(h.item) && h.item.title && h.item.href; });
+    } catch (e) { hits = []; }
+    /* a stage is a property of topics only: with a stage chosen, kinds that have no stage (서비스 유형 · 공식 포털) are not listed */
+    var counts = { all: hits.length };
+    hits.forEach(function (h) { counts[h.item.type] = (counts[h.item.type] || 0) + 1; });
+    var list = st.type && st.type !== "all" ? hits.filter(function (h) { return h.item.type === st.type; }) : hits;
+    return { items: list, counts: counts, total: list.length, ready: true };
+  }
+  /* search(q, opts) — kept for other LIVON screens and tests: the same shared index in the older, flat shape */
   function search(q, opts) {
     opts = opts || {};
-    var terms = String(q || "").trim().split(/\s+/).map(norm).filter(Boolean);
-    if (!terms.length || !Repo.data) return [];
-    function hit(text) { var n = norm(text); return terms.every(function (w) { return n.indexOf(w) >= 0; }); }
-    var out = [];
-    Repo.data.topics.forEach(function (t) {
-      if (opts.stage && t.stageSlug !== opts.stage) return;
-      var s = Repo.stage(t.lifeStageId);
-      if (hit([t.title, t.description, t.category, s.label].join(" "))) out.push({ type: "topic", title: t.title, sub: s.label + " · " + t.category, body: t.description, href: topicRoute(t) });
-      t.guide.forEach(function (g, i) { if (hit(g.title + " " + g.body)) out.push({ type: "guide", title: g.title, sub: s.label + " · " + t.title + " · " + (i + 1) + "단계", body: g.body, href: topicRoute(t) }); });
+    var m = /^([1-7]0)s?$/.exec(String(opts.stage || ""));
+    var type = opts.type === "topic" ? "life" : SCOPE_IDS.indexOf(opts.type) >= 0 ? opts.type : "all";
+    if (!String(q || "").trim()) return [];
+    return run({ q: String(q), stage: m ? m[1] : "", type: type, area: "" }).items.map(function (h) {
+      var it = h.item;
+      return { type: it.type === "life" ? "topic" : it.type, title: it.title, sub: it.meta || "", body: it.desc || "", href: it.href, external: !!it.external };
     });
-    Repo.data.serviceTypes.forEach(function (x) { if (!opts.stage && hit([x.name, x.description, x.group].join(" "))) out.push({ type: "service", title: x.name, sub: x.group + " · 서비스 유형", body: x.description, href: route({ view: "service", service: x.id }) }); });
-    Repo.data.policies.forEach(function (p) { if (hit([p.name, p.provider, p.target].join(" "))) out.push({ type: "policy", title: p.name, sub: "공식 포털 · " + p.provider, body: p.target, href: p.sourceUrl, external: true }); });
-    var seen = {};
-    Repo.data.topics.forEach(function (t) { t.relatedContentIds.concat(t.relatedClassIds, t.relatedPlaceIds).forEach(function (ref) { if (seen[ref]) return; seen[ref] = 1; var c = Sources.ref(ref); if (c && hit(c.title + " " + c.body)) out.push({ type: "content", title: c.title, sub: c.source, body: c.body, href: c.href }); }); });
-    return opts.type && opts.type !== "all" ? out.filter(function (r) { return r.type === opts.type; }) : out;
   }
-  var searchState = { type: "all", stage: "" };
-  function renderSearch(q) {
-    var results = search(q, { type: searchState.type, stage: searchState.stage });
-    var label = { topic: "주제", guide: "가이드", service: "서비스", policy: "정책", content: "콘텐츠" };
-    var stages = Repo.data.stages;
+  function hasCondition(st) { return !!(st.q || st.stage || st.area || (st.type && st.type !== "all")); }
+  function conditionChips(st) {
+    var chips = [];
+    if (st.q) chips.push({ key: "q", label: "검색어 ‘" + st.q + "’" });
+    if (st.stage && stageLabelOf(st.stage)) chips.push({ key: "stage", label: "생애 단계 " + stageLabelOf(st.stage) });
+    if (st.type && st.type !== "all") chips.push({ key: "type", label: "정보 종류 " + scopeLabel(st.type) });
+    if (st.area && areaLabel(st.area)) chips.push({ key: "area", label: "분야 " + areaLabel(st.area) });
+    return chips;
+  }
+  function without(st, key) {
+    var n = { view: "search", q: st.q, stage: st.stage, type: st.type, area: st.area };
+    if (key === "q") n.q = ""; else if (key === "stage") n.stage = ""; else if (key === "type") n.type = "all"; else if (key === "area") n.area = "";
+    return n;
+  }
+  function filterGroup(label, attr, options, current, counts) {
+    return '<div class="lh-filter"><p class="lh-filter__label" id="lh-f-' + attr + '">' + esc(label) + '</p><div class="lv-life-chips lh-filters" role="group" aria-labelledby="lh-f-' + attr + '">' +
+      options.map(function (o) {
+        var on = String(current || "") === String(o.value);
+        var n = counts && o.count != null ? ' <span class="lh-filter__n">' + o.count + "</span>" : "";
+        return '<button type="button" data-lh-filter-' + attr + '="' + esc(o.value) + '" aria-pressed="' + on + '"' + (on ? ' class="is-on"' : "") + ">" + esc(o.label) + n + "</button>";
+      }).join("") + "</div></div>";
+  }
+  function resultCard(h, st) {
+    var it = h.item, sv = it.save || null;
+    var kind = it.type === "life" ? "주제" : it.type === "service" ? "서비스 유형" : "공식 포털";
+    /* a check date is the data's own (LIVON's link check); a card without one says nothing about dates */
+    var checked = it.type === "policy" && validDay(it.date) ? '<p class="lv-life-note lh-result__src">공식 출처 · ' + esc(it.category || "") + " · LIVON 링크 확인 " + esc(it.date) + "</p>" : "";
+    var acts = it.external ? UI.external("공식 사이트에서 보기", it.href) : UI.link("자세히 보기", it.href, "dark", "", it.title);
+    if (sv && sv.type && sv.id) acts += UI.SaveButton(sv.type, sv.id, sv.title || it.title, sv.href || it.href, sv.stage || "");
+    return '<li class="lh-result"><article class="lv-life-svc"' + (it.external ? "" : ' data-lh-card="' + esc(it.href) + '"') + '><p class="lv-life-svc__n">' + esc(kind + (it.meta ? " · " + String(it.meta).replace(/^(라이프 스테이지|서비스 유형|공식 포털) · /, "") : "")) + "</p>" +
+      "<h4>" + (it.external ? esc(it.title) : '<a href="' + esc(it.href) + '">' + esc(it.title) + "</a>") + "</h4>" +
+      (it.desc ? "<p>" + esc(it.desc) + "</p>" : "") + checked +
+      '<div class="lv-life-svc__acts">' + acts + "</div></article></li>";
+  }
+  var shownCount = PAGE_SIZE, shownFor = "";
+  function renderSearch(st) {
+    if (typeof st === "string" || st == null) st = searchRoute(st || "", "");
+    var res = run(st), key = route(st);
+    if (shownFor !== key) { shownFor = key; shownCount = PAGE_SIZE; }
+    var chips = conditionChips(st), active = hasCondition(st);
+    var stageOpts = [{ value: "", label: "전체 단계" }].concat(Repo.data.stages.map(function (x) { return { value: x.id, label: x.label }; }));
+    var typeOpts = SCOPE.map(function (t) { return { value: t.id, label: t.label, count: active ? (res.counts[t.id] || 0) : null }; });
+    var areaOpts = [{ value: "", label: "전체 분야" }].concat(areas().map(function (c) { return { value: c.id, label: c.label }; }));
+    var summary = (st.q ? "‘" + st.q + "’ " : "") + "결과 " + res.total + "건";
+    var body;
+    if (!res.ready) body = '<div class="lv-life-empty lh-empty" role="alert"><strong>검색을 불러오지 못했습니다.</strong><p>새로고침한 뒤 다시 시도해 주세요. 생애 단계별 주제는 그대로 볼 수 있습니다.</p><div class="lv-life-svc__acts">' + UI.link("라이프 스테이지 둘러보기", "#life", "dark") + "</div></div>";
+    else if (!active) body = UI.EmptyState("검색어를 입력하거나 조건을 골라 주세요.", "예: 독립, 취업, 연금, 건강검진, 부모 돌봄");
+    else if (!res.total) body = UI.EmptyState("조건에 맞는 결과가 없습니다.", "검색어를 줄이거나 조건을 하나씩 지워 보세요. 장소·클래스·행사는 탐색에서 찾을 수 있습니다.",
+      UI.btn("조건 모두 지우기", "data-lh-reset", "dark") + UI.link("탐색에서 검색", "#ex-results?q=" + encodeURIComponent(st.q || "")));
+    else body = '<h3 class="lh-sr">검색 결과</h3><ul class="lh-results">' + res.items.slice(0, shownCount).map(function (h) { return resultCard(h, st); }).join("") + "</ul>" +
+      (res.total > shownCount ? '<div class="lv-life-svc__acts lh-more">' + UI.btn("결과 더 보기 · " + shownCount + " / " + res.total, "data-lh-more", "outline") + "</div>" : "") +
+      '<p class="lv-life-note">장소·클래스·행사·커뮤니티 글은 <a href="#ex-results?q=' + esc(encodeURIComponent(st.q || "")) + '">탐색에서 함께 검색</a>할 수 있습니다.</p>';
     show(UI.Breadcrumb(ROOT_CRUMBS.concat([{ label: "검색" }])) +
-      '<header class="lv-ls-heading lh-heading"><p class="lv-life-kicker">라이프 스테이지 검색</p><h2 class="lv-life-title" aria-level="1" tabindex="-1" data-lh-title-focus>무엇을 준비하고 있나요?</h2></header>' +
-      searchForm(q) +
-      '<div class="lv-life-chips lh-filters" role="group" aria-label="검색 결과 종류">' + SEARCH_TYPES.map(function (t) {
-        return '<button type="button" data-lh-filter-type="' + t.id + '" aria-pressed="' + (searchState.type === t.id) + '"' + (searchState.type === t.id ? ' class="is-on"' : "") + ">" + esc(t.label) + "</button>";
-      }).join("") + "</div>" +
-      '<div class="lv-life-chips lh-filters" role="group" aria-label="라이프 스테이지"><button type="button" data-lh-filter-stage="" aria-pressed="' + (!searchState.stage) + '"' + (!searchState.stage ? ' class="is-on"' : "") + ">전체 연령</button>" +
-        stages.map(function (s) { var on = searchState.stage === s.slug; return '<button type="button" data-lh-filter-stage="' + s.slug + '" aria-pressed="' + on + '"' + (on ? ' class="is-on"' : "") + ">" + esc(s.label) + "</button>"; }).join("") + "</div>" +
-      (String(q || "").trim()
-        ? '<p class="lv-life-note" role="status">‘' + esc(q) + "’ 검색 결과 " + results.length + "건</p>" +
-          (results.length ? '<h3 class="lh-sr">검색 결과</h3><div class="lv-life-services is-trio">' + results.slice(0, 60).map(function (r) {
-            return '<article class="lv-life-svc"><p class="lv-life-svc__n">' + esc(label[r.type] + " · " + r.sub) + "</p><h4>" + (r.external ? esc(r.title) : '<a href="' + esc(r.href) + '">' + esc(r.title) + "</a>") + "</h4><p>" + esc(r.body) + '</p><div class="lv-life-svc__acts">' + (r.external ? UI.external("공식 사이트", r.href) : UI.link("자세히 보기", r.href, "dark", "", r.title)) + "</div></article>";
-          }).join("") + "</div>" : UI.EmptyState("검색 결과가 없습니다.", "다른 단어로 검색하거나 연령·종류 필터를 바꿔 보세요.", UI.link("라이프 스테이지 둘러보기", "#life")))
-        : UI.EmptyState("검색어를 입력해 주세요.", "예: 독립, 취업, 연금, 건강검진, 부모 돌봄")));
-    setMeta({ title: "라이프 스테이지 검색 | LivOn", description: "주제·가이드·서비스·정책·콘텐츠를 검색합니다.", canonical: SITE_ORIGIN + "/livon/life/" });
+      '<header class="lv-ls-heading lh-heading"><p class="lv-life-kicker">라이프 스테이지 검색</p><h2 class="lv-life-title" aria-level="1" tabindex="-1" data-lh-title-focus>무엇을 준비하고 있나요?</h2>' +
+      '<p class="lv-life-lead">생애 단계를 직접 고르고, 주제·서비스 유형·공식 포털을 찾아보세요. 고른 조건은 검색에만 쓰이고 나의 단계로 저장되지 않습니다.</p></header>' +
+      searchForm(st.q, st) +
+      filterGroup("생애 단계", "stage", stageOpts, st.stage) + filterGroup("정보 종류", "type", typeOpts, st.type || "all", active) + (areaOpts.length > 1 ? filterGroup("분야", "area", areaOpts, st.area) : "") +
+      (chips.length ? '<div class="lh-applied"><p class="lh-sr" id="lh-applied-label">적용한 조건</p><ul aria-labelledby="lh-applied-label">' + chips.map(function (c) {
+        return '<li><button type="button" class="lh-applied__chip" data-lh-remove="' + c.key + '" aria-label="' + esc(c.label) + ' 조건 지우기">' + esc(c.label) + ' <span aria-hidden="true">×</span></button></li>';
+      }).join("") + '</ul><button type="button" class="lh-applied__reset" data-lh-reset>모두 지우기</button></div>' : "") +
+      '<p class="lv-life-note lh-count" role="status" aria-live="polite" data-lh-count-line>' + (active && res.ready ? esc(summary) : "") + "</p>" + body);
+    setMeta({ title: "라이프 스테이지 검색 | LivOn", description: "생애 단계별 주제·서비스 유형·공식 포털을 검색합니다.", canonical: SITE_ORIGIN + "/livon/life/" });
   }
-  function searchForm(q) {
-    return '<form class="lh-search" role="search" data-lh-search-form><label for="lh-q-' + (++searchSeq) + '" class="lh-sr">라이프 스테이지 검색</label>' +
-      '<input id="lh-q-' + searchSeq + '" type="search" name="q" maxlength="60" placeholder="무엇을 준비하고 있나요? 예: 독립, 취업, 연금" value="' + esc(q || "") + '" autocomplete="off" />' +
+  function searchForm(q, st) {
+    var id = "lh-q-" + (++searchSeq);
+    return '<form class="lh-search" role="search" data-lh-search-form' + (st ? ' data-lh-stage="' + esc(st.stage || "") + '" data-lh-type="' + esc(st.type || "all") + '" data-lh-area="' + esc(st.area || "") + '"' : "") + '><label for="' + id + '" class="lh-sr">라이프 스테이지 검색</label>' +
+      '<div class="lh-search__field"><input id="' + id + '" type="search" name="q" maxlength="60" placeholder="무엇을 준비하고 있나요? 예: 독립, 취업, 연금" value="' + esc(q || "") + '" autocomplete="off" enterkeyhint="search" data-lh-q />' +
+      '<button type="button" class="lh-search__clear" data-lh-clear aria-label="검색어 지우기"' + (q ? "" : " hidden") + '><span aria-hidden="true">×</span></button></div>' +
       '<button type="submit" class="lv-life-btn lv-life-btn--dark">검색</button></form>';
   }
   var searchSeq = 0;
+  function currentSearch() { var r = parse(location.hash); return r && r.view === "search" ? r : { view: "search", q: "", stage: "", type: "all", area: "" }; }
+  function goSearch(st, focusSelector) {
+    var next = route(st);
+    pendingFocus = focusSelector || "";
+    if (location.hash === next) { renderSearch(st); return; }
+    location.hash = next.slice(1);
+  }
+  /* the Life Stage landing gets one search box (the same form); nothing else is added to the page */
+  function mountHomeSearch() {
+    var intro = document.getElementById("life-explore");
+    if (!intro || intro.querySelector("[data-lh-home-search]")) return;
+    var box = document.createElement("div");
+    box.className = "lh-home-search"; box.setAttribute("data-lh-home-search", "");
+    box.innerHTML = '<h3 class="lh-home-search__title">주제·서비스 유형·공식 포털 검색</h3>' + searchForm("") +
+      '<p class="lv-life-note">생애 단계는 직접 고릅니다. LIVON은 나이나 기록으로 단계를 추측하지 않습니다.</p>';
+    var rail = intro.querySelector("[data-lv-life-rail]");
+    if (rail && rail.parentNode === intro) intro.insertBefore(box, rail); else intro.appendChild(box);
+  }
 
   /* ───────── stage page blocks (inside existing stage view) ───────── */
   function renderStageBlocks() {
     $$("[data-lh-featured]").forEach(function (el) {
       var s = Repo.stage(el.getAttribute("data-lh-featured"));
-      if (Repo.status === "error") { el.innerHTML = UI.ErrorState("추천 주제를 불러오지 못했습니다."); return; }
-      if (Repo.status !== "ready" || !s) { el.innerHTML = UI.LoadingState("추천 주제를 불러오는 중입니다."); return; }
+      if (Repo.status === "error") { el.innerHTML = UI.ErrorState("주제를 불러오지 못했습니다."); return; }
+      if (Repo.status !== "ready" || !s) { el.innerHTML = UI.LoadingState("주제를 불러오는 중입니다."); return; }
       el.innerHTML = '<div class="lv-life-services is-trio lh-featured">' + s.featuredTopicIds.map(Repo.topic).filter(Boolean).map(function (t) { return UI.TopicCard(t); }).join("") + "</div>";
     });
     $$("[data-lh-categories]").forEach(function (el) {
@@ -771,7 +973,7 @@
       }
       return;
     }
-    var el = e.target.closest("[data-lh-save],[data-lh-share],[data-lh-ai],[data-lh-to-mylife],[data-lh-check-reset],[data-lh-expand],[data-lh-back],[data-lh-retry],[data-lh-modal-close],[data-lh-save-local],[data-lh-explore],[data-lh-compose],[data-lh-filter-type],[data-lh-filter-stage],[data-lh-card]");
+    var el = e.target.closest("[data-lh-save],[data-lh-share],[data-lh-ai],[data-lh-to-mylife],[data-lh-check-reset],[data-lh-expand],[data-lh-back],[data-lh-retry],[data-lh-modal-close],[data-lh-save-local],[data-lh-explore],[data-lh-compose],[data-lh-filter-type],[data-lh-filter-stage],[data-lh-filter-area],[data-lh-remove],[data-lh-reset],[data-lh-clear],[data-lh-more],[data-lh-card]");
     if (!el) return;
     if (el.hasAttribute("data-lh-card")) {
       if (e.target.closest("a,button,input,label,summary")) return;
@@ -820,13 +1022,49 @@
       setTimeout(function () { if (window.LivonCommunity && window.LivonCommunity.openCompose) window.LivonCommunity.openCompose(type2); }, 80);
       return;
     }
-    if (el.hasAttribute("data-lh-filter-type")) { searchState.type = el.getAttribute("data-lh-filter-type"); var r = parse(location.hash); if (r && r.view === "search") renderSearch(r.q); return; }
-    if (el.hasAttribute("data-lh-filter-stage")) { searchState.stage = el.getAttribute("data-lh-filter-stage"); var r2 = parse(location.hash); if (r2 && r2.view === "search") renderSearch(r2.q); return; }
+    /* search conditions: every change is a URL change, so Back/Forward and reload restore it; focus stays on the control */
+    if (el.hasAttribute("data-lh-filter-stage") || el.hasAttribute("data-lh-filter-type") || el.hasAttribute("data-lh-filter-area")) {
+      var cur = currentSearch(), key = el.hasAttribute("data-lh-filter-stage") ? "stage" : el.hasAttribute("data-lh-filter-type") ? "type" : "area";
+      var val = el.getAttribute("data-lh-filter-" + key), next = without(cur, "");
+      next[key] = key === "type" ? (val || "all") : (cur[key] === val ? "" : val);          /* pressing the chosen stage / area again clears it */
+      goSearch(next, '[data-lh-filter-' + key + '="' + (key === "type" ? next.type : val) + '"]');
+      return;
+    }
+    if (el.hasAttribute("data-lh-remove")) {
+      var after = without(currentSearch(), el.getAttribute("data-lh-remove"));
+      goSearch(after, hasCondition(after) ? "[data-lh-remove]" : "[data-lh-q]");
+      return;
+    }
+    if (el.hasAttribute("data-lh-reset")) { goSearch({ view: "search", q: "", stage: "", type: "all", area: "" }, "[data-lh-q]"); return; }
+    if (el.hasAttribute("data-lh-clear")) {
+      var form = el.closest("form"), input = form && form.querySelector("[data-lh-q]");
+      if (input) { input.value = ""; el.hidden = true; input.focus(); }
+      /* on the results screen the cleared query is also removed from the URL; the landing box just empties */
+      if (parse(location.hash) && currentSearch().q) goSearch(without(currentSearch(), "q"), "[data-lh-q]");
+      return;
+    }
+    if (el.hasAttribute("data-lh-more")) {
+      var before = shownCount; shownCount += PAGE_SIZE;
+      renderSearchKeepingScroll(before);
+      return;
+    }
+  }
+  function renderSearchKeepingScroll(firstNew) {
+    var y = window.pageYOffset;
+    pendingFocus = ".lh-results > li:nth-child(" + (firstNew + 1) + ") a, .lh-results > li:nth-child(" + (firstNew + 1) + ") button";
+    renderSearch(currentSearch());
+    window.scrollTo(0, y);
   }
   function updateProgress(topicId) {
     var t = Repo.topic(topicId), p = $("[data-lh-progress]"); if (!t || !p) return;
     var done = checks(topicId);
     p.textContent = t.checklist.filter(function (c) { return done[c.id]; }).length + " / " + t.checklist.length + " 완료 · 체크 상태는 이 기기에 저장됩니다.";
+  }
+  function onInput(e) {
+    var q = e.target && e.target.matches && e.target.matches("[data-lh-q]") ? e.target : null;
+    if (!q) return;
+    var clear = q.parentNode && q.parentNode.querySelector("[data-lh-clear]");
+    if (clear) clear.hidden = !q.value;
   }
   function onChange(e) {
     var c = e.target.closest("[data-lh-check]");
@@ -837,7 +1075,8 @@
     if (f.matches && f.matches("[data-lh-search-form]")) {
       e.preventDefault();
       var q = String(new FormData(f).get("q") || "").trim();
-      location.hash = route({ view: "search", q: q }).slice(1);
+      /* the form carries the conditions it was rendered with; the landing box has none */
+      goSearch({ view: "search", q: q, stage: f.getAttribute("data-lh-stage") || "", type: f.getAttribute("data-lh-type") || "all", area: f.getAttribute("data-lh-area") || "" }, "[data-lh-q]");
       return;
     }
     if (f.matches && f.matches("[data-lh-mylife-form], [data-lh-todos-form]")) {
@@ -875,7 +1114,7 @@
       return true;
     };
     try {
-      if (r.view === "search") { renderSearch(r.q); remember(hash); return true; }
+      if (r.view === "search") { renderSearch(r); remember(hash); return true; }
       if (r.view === "service" && !r.topic) { var sv = Repo.service(r.service); if (!sv) return notFound("서비스를"); renderService(sv, null); remember(hash); return true; }
       var s = Repo.stage(r.stage);
       if (!s) return notFound("라이프 스테이지를");
@@ -905,13 +1144,17 @@
     document.addEventListener("click", onClick);
     document.addEventListener("change", onChange);
     document.addEventListener("submit", onSubmit);
+    document.addEventListener("input", onInput);
     document.addEventListener("keydown", onKey);
+    mountHomeSearch();
     Repo.load().catch(function () {});
   }
 
   window.LivonLifeHub = {
     open: handle, hide: hide, parse: parse, route: route, search: search, stageIdFromHash: stageIdFromHash,
     renderStageBlocks: renderStageBlocks, searchForm: function (q) { return searchForm(q); },
+    /* Life Stage V2 */
+    SCOPE: SCOPE, searchState: function (hash) { var r = parse(hash == null ? location.hash : hash); return r && r.view === "search" ? r : null; }, runSearch: run, mountHomeSearch: mountHomeSearch,
     repo: Repo, account: Account, sources: Sources, ui: UI,
     /* Shared platform hooks (오늘의 발견 등 다른 화면에서 재사용) */
     saves: { isSaved: isSaved, refresh: refreshSaveButtons },
