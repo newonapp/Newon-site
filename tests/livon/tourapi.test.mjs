@@ -484,3 +484,16 @@ test('29 content types are unchanged: places only (12, 14, 28, 32, 38, 39); 행�
   for (const t of ['15', '25']) assert.equal((await call(h, Q('region=' + enc('제주') + '&type=' + t))).statusCode, 400, 'type ' + t);
   assert.equal(up.calls.length, 0);
 });
+
+test('30 LIVON client: its TourAPI regions are all names the route answers; 광주 alone sends no region, 광주·전남 reaches code 12', async () => {
+  const { D, up } = await loaded();
+  assert.deepEqual([...D.tour.REGIONS], ['서울', '부산', '대구', '인천', '광주·전남', '대전', '경기']);
+  for (const r of D.tour.REGIONS) assert.ok(Object.prototype.hasOwnProperty.call(tour.REGION_CODES, r), r + ' is in the route table');
+  await D.tour.search({ region: '광주·전남', type: '12' });
+  const sent = tourCalls(up);
+  assert.equal(sent[sent.length - 1].url.searchParams.get('lDongRegnCd'), '12');
+  /* "광주" is not a TourAPI region for LIVON any more: with nothing else to search by, nothing is sent (no 400, no empty list) */
+  const before = tourCalls(up).length;
+  await assert.rejects(D.tour.search({ region: '광주', type: '12' }), e => e.code === 'NEEDS_INPUT');
+  assert.equal(tourCalls(up).length, before);
+});

@@ -230,7 +230,7 @@
    */
   var TOUR_ID = "kr-tourapi";
   var TOUR_TYPES = { 12: "관광지", 14: "문화시설", 28: "레포츠", 32: "숙박" };           /* offered by LIVON screens */
-  var TOUR_REGIONS = ["서울", "부산", "대구", "인천", "광주", "대전", "경기"];
+  var TOUR_REGIONS = ["서울", "부산", "대구", "인천", "광주·전남", "대전", "경기"];   /* 광주 + 전남 are one TourAPI region (code 12): "광주" alone is not a region the route answers */
   var TOUR_TOPIC_PLANS = { "여행": { type: "12" }, "취미/문화": { type: "14" } };
   var TOUR_CONTENT_PLANS = { "미술관": { query: "미술관" }, "문화 행사": { type: "14" }, "지역별 하루 여행": { type: "12" } };
   function tourPlan(p) {
