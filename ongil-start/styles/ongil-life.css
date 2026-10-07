@@ -135,3 +135,59 @@
 .og-band .og-call-public__title, .og-call-public__title { margin: 0; font-size: 1.15rem; font-weight: 700; color: var(--og-ink); }
 .og-call-public .og-form__actions { flex-wrap: wrap; }
 .og-call-number, .og-dialog .og-call-number { margin: 0; font-size: 1.6rem; font-weight: 700; color: var(--og-ink); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+
+/* [RH1] Responsive + accessibility hardening — large text (200%) on a narrow phone (320 / 390px).
+   Before: the 월·주·일 picker and the 이전/다음 row could not wrap, a date field kept the width its control asked for, and
+   a list row's buttons could not wrap — each pushed its card wider than the page. The page clips sideways
+   (overflow-x: clip), so the controls on the right and the last columns of the month grid could not be reached at all.
+   Layout only: no markup, data or behaviour changes. At ordinary text sizes nothing below changes what is drawn —
+   each rule either applies only when a card is narrow for its text size (rem-based container queries), or only lets
+   a row wrap or a box shrink when it would otherwise leave its card. */
+
+/* calendar and 생활비: the card's own width, measured in text size */
+.og-cal { container-type: inline-size; }
+@container (max-width: 14rem) {
+  /* 이전 · 2026년 10월 · 다음 → the month on its own line, then the two buttons: side by side while each has room for
+     its label on one line, otherwise one under the other */
+  .og-cal__nav { flex-wrap: wrap; }
+  .og-band .og-cal__month { order: -1; flex: 1 1 100%; }
+  .og-cal__nav .og-btn { flex: 1 1 5rem; }
+  /* 월 · 주 · 일: still equal buttons; none is narrower than its own label, so they take a second row when they must */
+  .og-cal__view-picks { flex-wrap: wrap; }
+  .og-cal__view-picks .og-pick { min-width: min-content; }
+  /* the month grid uses the card's side padding (1.1rem on a phone): each day stays a 44px target and no two-digit
+     date leaves its cell */
+  .og-cal__grid { width: calc(100% + 2.2rem); margin-inline: -1.1rem; }
+}
+.og-band .og-cal__month, .og-band .og-cal__selected, .og-band .og-life-value { word-break: keep-all; overflow-wrap: anywhere; } /* lines break between words; a word is cut only when it alone is wider than the card */
+
+/* a field is as wide as its card, not as wide as its control would like (a date field's own minimum is wider than a phone at 200%) */
+.og-field { grid-template-columns: minmax(0, 1fr); }
+.og-input { min-width: 0; }
+
+/* rows of buttons that could not wrap */
+.og-home-item__actions { flex-wrap: wrap; max-width: 100%; }
+.og-stepper { flex-wrap: wrap; max-width: 100%; }
+
+/* the five tabs keep one row while each has room for its two-letter label; with larger text they take a second and third row */
+.og-tabs { grid-template-columns: repeat(auto-fit, minmax(2.9rem, 1fr)); }
+
+/* the date bar (생활 · 건강) on a phone: the date, then three equal buttons in a row while each has room for its label —
+   otherwise one under another. “(오늘)” may go under the date instead of running over the next button. */
+@media (max-width: 700px) {
+  .og-daynav { display: flex; flex-wrap: wrap; }
+  .og-daynav__date { order: -1; flex: 1 1 100%; }
+  .og-daynav__btn { flex: 1 1 0; min-width: min-content; }
+}
+.og-daynav__state { white-space: pre-wrap; }
+.og-band .og-daynav__date { word-break: keep-all; }
+
+/* summary tiles: when a tile is too narrow for text beside its button, the button goes under the text */
+.og-life-tiles { container-type: inline-size; }
+@container (max-width: 14rem) {
+  .og-life-tile { grid-template-columns: minmax(0, 1fr); }
+  .og-life-tile .og-btn { grid-column: 1; grid-row: auto; justify-self: start; }
+}
+
+/* a screen's own “살펴보기” button may take two lines instead of leaving the page */
+.og-film__actions .og-film__more { max-width: 100%; white-space: normal; text-align: center; }

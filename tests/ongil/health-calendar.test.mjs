@@ -298,7 +298,8 @@ test('OG-HC-10 Store hero: the film and the copy match the other screens (same c
 
 test('OG-HC-11 cache: the files this change touched have a new address, the others keep theirs', () => {
   assert.match(INDEX, /ongil-start\/js\/app\.js\?v=20261006m15/); /* Health · Safety V2: app.js moved on again (v13 → 20261005h14); ongil-life.css did not change */ /* My Life V2: app.js changed → entry moved on (BEFORE 20261005h14, AFTER 20261006m15) */
-  assert.match(INDEX, /ongil-start\/styles\/ongil-life\.css\?v=20261004v13/);
+  /* Responsive Hardening V1: ongil-life.css changed (layout-only [RH1] block) → its address moved on (BEFORE ?v=20261004v13, AFTER ?v=20261007r14) */
+  assert.match(INDEX, /ongil-start\/styles\/ongil-life\.css\?v=20261007r14/);
   for (const f of ['ongil-tokens.css', 'ongil-shell.css', 'ongil-app.css', 'ongil-home.css']) assert.match(INDEX, new RegExp(`ongil-start/styles/${f.replace('.', '\\.')}\\?v=20261003r11`), f);
-  assert.equal((INDEX.match(/\?v=20261004v13/g) || []).length, 1, 'moved once per change, only where something changed (V3: v12 → v13; Health · Safety V2: only app.js moved on)');
+  assert.equal((INDEX.match(/\?v=20261007r14/g) || []).length, 1, 'moved once per change, only where something changed (V3: v12 → v13; Health · Safety V2: only app.js moved on)');
 });
