@@ -235,7 +235,7 @@ test('TV2-51 cache window: a new page with an old Today script still shows a use
   assert.match(INDEX, /<div data-td-my><p class="lv-td-my__empty">[^<]*<a href="#ml-home">내 생활<\/a>/);
   assert.match(MY_TODAY, /var host = \$\("\[data-td-my\]"\);\s*if \(!host\) return;/);
   assert.match(MY_TODAY, /if \(!api\) \{ host\.innerHTML = emptyHtml\(/, 'without the My Life script, an honest message');
-  for (const f of ['today-page.js', 'today-page.css', 'life-now-page.js', 'life-now-hub.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261004c[6-9]"'), f);
+  for (const f of ['today-page.js', 'today-page.css', 'life-now-page.js', 'life-now-hub.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=(20261004c[6-9]|20261007sv\\d)"'), f);   /* Saved V2 moved the My Life page and hub to sv1 */
   assert.match(INDEX, /\/livon\/today-page\.js\?v=20261004c7"/, 'production hardening (Life Stage pointer) moved the Today script to c7');
   assert.ok(INDEX.indexOf('/livon/life-now-page.js?') < INDEX.indexOf('/livon/today-page.js?'), 'My Life loads before Today');
 });

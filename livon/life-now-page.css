@@ -2133,3 +2133,40 @@ html[data-lv-view="life-now"] main > #life-now {
 #life-now [data-lv-ml-search-form] input[type="search"],
 #life-now [data-lv-ml-record-search] input[type="search"] { width: 100%; min-width: 0; }
 #life-now .lv-ml-task__title { overflow-wrap: anywhere; }
+
+/* ——— Saved V2 (#ml-saved): search, folder move, missing originals, 저장함 비우기 (existing tokens only) ——— */
+#life-now [data-lv-ml-saved-search] input[type="search"] { width: 100%; min-width: 0; }
+#life-now .lv-ml-saved-search { margin-top: 0.4rem; margin-bottom: 1rem; }
+#life-now .lv-ml-saved-acts { align-items: flex-end; min-width: 0; }
+#life-now .lv-ml-saved-acts > * { max-width: 100%; }
+#life-now .lv-ml-saved-acts button,
+#life-now .lv-ml-saved-acts a { white-space: normal; text-align: left; }
+#life-now .lv-ml-saved-move { display: flex; flex-wrap: wrap; align-items: center; gap: 0.15rem 0.35rem; min-width: 0; font-size: 0.78rem; color: #555; }
+#life-now .lv-ml-saved-move select {
+  flex: 1 1 7rem;
+  min-width: 0;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.3rem 0.25rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  background: #fff;
+  font: inherit;
+  font-size: 0.82rem;
+  color: #0a0a0a;
+}
+#life-now .lv-ml-saved-move select:focus-visible,
+#life-now .lv-ml-field--inline select:focus-visible,
+#life-now [data-lv-ml-saved-search] input:focus-visible { outline: 2px solid #0a0a0a; outline-offset: 2px; }
+#life-now .lv-ml-manage-list .lv-ml-saved-desc { color: #737373; }
+#life-now .lv-ml-manage-list .lv-ml-saved-missing { color: #0a0a0a; font-weight: 700; }
+/* buttons in the empty and no-result boxes and at the foot may take two lines instead of leaving the card */
+#life-now .lv-ml-saved .lv-ml-empty .lv-ml-btn,
+#life-now .lv-ml-saved .lv-ml-saved-foot .lv-ml-btn,
+#life-now .lv-ml-saved .lv-ml-inline-form .lv-ml-btn { max-width: 100%; white-space: normal; }
+#life-now .lv-ml-saved-foot { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #e8e8e8; }
+/* narrow screens and large text: the row's actions go under its text and wrap; nothing is hidden */
+@media (max-width: 700px) {
+  #life-now .lv-ml-manage-list > li[data-lv-ml-saved-row] { grid-template-columns: minmax(0, 1fr); }
+}
+#life-now .lv-ml-manage-list > li[data-lv-ml-saved-row] > div { min-width: 0; overflow-wrap: anywhere; }

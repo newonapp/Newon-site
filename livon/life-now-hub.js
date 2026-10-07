@@ -1,4 +1,5 @@
-/* LIVON My Life V2 — Personal Life Hub (routines, 전체 기록, 내 생활 검색, 다가오는 7일, 주간 리뷰, 생활비, 내보내기, 전체 삭제).
+/* LIVON My Life V2 — Personal Life Hub (routines, 전체 기록, 내 생활 검색, 다가오는 7일, 주간 리뷰, 생활비, 내보내기, 전체 삭제)
+   and Saved V2 (저장함: 찾기 · 출처/폴더 필터 · 정렬 · 폴더 옮기기 · 원본 확인 · 저장함 비우기).
    Installed by life-now-page.js with its helpers and store functions (one store: livon.mlStore.v1). Data functions take a
    store and return plain values; renderers return HTML strings. Nothing here makes a request or logs content. */
 (function () {
@@ -473,11 +474,297 @@
       "</div>");
   }
 
+  /* ───────── Saved V2 (#ml-saved) ─────────
+     The one full Saved screen. It reads and changes the shared saves (livon.platform.v1 → saves) through LivonPlatform
+     and keeps nothing of its own: search text, filters and sorting live in memory and are worked out on this device.
+     The search text is never written to the address, history, storage or any request. */
+  var Saved = core.saved ? (function (S) {
+    var SORTS = [{ id: "recent", label: "최근 저장" }, { id: "oldest", label: "오래된 저장" }, { id: "title", label: "제목" }];
+    var LIMIT = 200, NEAR_LIMIT = 180;   /* LivonPlatform.saveItem keeps the first 200 rows */
+    var MISSING_HTML = '<p class="lv-ml-saved-missing" data-lv-ml-saved-missing>원본을 찾을 수 없습니다. 저장한 기록은 그대로 남아 있어요.</p>';
+    var skipped = 0;
+    function all$(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+    function text(v) { return typeof v === "string" ? v.replace(/\s+/g, " ").trim() : typeof v === "number" && isFinite(v) ? String(v) : ""; }
+    function platform() { return window.LivonPlatform || null; }
+
+    /* One stored row → one row on screen. A row that is not an object or has no id cannot be shown: it is counted and
+       skipped here and left untouched in storage. Nothing below may throw because of one row. */
+    function row(x) {
+      if (!x || typeof x !== "object" || Array.isArray(x)) return null;
+      var id = text(x.id);
+      if (!id) return null;
+      var data = x.data && typeof x.data === "object" ? x.data : null;
+      var snap = data && data.snapshot && typeof data.snapshot === "object" ? data.snapshot : null;
+      var at = Number(x.savedAt || x.at);
+      return {
+        id: id, label: text(x.title) || text(x.label) || "저장 항목", source: text(x.source) || "저장", type: S.savedType({ id: id, data: data }),
+        href: S.safeHref(x.href), at: isFinite(at) && at > 0 ? at : 0, folder: text(x.folder),
+        /* a description exists only for items saved with a snapshot (real-data saves); none is made up for the others */
+        desc: snap ? text(snap.summary).slice(0, 200) : ""
+      };
+    }
+    /* Rows without a saved date (older saves) keep their stored order and go after the dated ones. */
+    function sort(list, mode) {
+      var ord = function (a, b) { return (a.order || 0) - (b.order || 0); };
+      return list.map(function (x, i) { if (x.order == null) x.order = i; return x; }).sort(function (a, b) {
+        if (mode === "title") return String(a.label).localeCompare(String(b.label), "ko") || ord(a, b);
+        if (!a.at || !b.at) return (a.at ? 0 : 1) - (b.at ? 0 : 1) || ord(a, b);
+        return (mode === "oldest" ? a.at - b.at : b.at - a.at) || ord(a, b);
+      });
+    }
+    /* Same identity rule as before: the same item under its old id and its shared id is one row. Returns null when the
+       shared store has nothing to show, so that the caller's older lists are used as they always were. */
+    function collect() {
+      var out = [], rows = [], P = platform(), seen = {};
+      skipped = 0;
+      try { rows = P && P.listSaves ? P.listSaves("all") : []; } catch (e) { rows = []; }
+      if (!Array.isArray(rows) || !rows.length) return null;
+      rows.forEach(function (x, i) {
+        var r = null;
+        try { r = row(x); } catch (e) { r = null; }
+        if (!r) { skipped++; return; }
+        var ref = S.savedRefKey(r.id);
+        if (seen[ref]) return;
+        seen[ref] = 1; r.order = i; out.push(r);
+      });
+      return out.length || skipped ? sort(out, "recent") : null;
+    }
+    /* Is the original still in the data this page already has? "ok" / "missing" / "unknown" (cannot be told here → the
+       link stays). No request is made: an outside address is judged by its form only. */
+    function original(x) {
+      if (!x.href) return "missing";
+      if (/^https:/.test(x.href)) return "ok";
+      var m = /^life-hub:(\w+):(.+)$/.exec(x.id);
+      if (!m) return "unknown";
+      var kind = m[1], ref = m[2], SD = window.LivonScreenData;
+      try {
+        if (/^ex:/.test(ref)) {
+          var ex = SD && SD.exploreItems ? SD.exploreItems() : window.LivonExploreData && window.LivonExploreData.items;
+          return !Array.isArray(ex) ? "unknown" : ex.some(function (i) { return i && i.id === ref.slice(3); }) ? "ok" : "missing";
+        }
+        if (/^td:/.test(ref)) {
+          var td = SD && SD.todayContents ? SD.todayContents() : window.LivonTodayData && window.LivonTodayData.contents;
+          return !Array.isArray(td) ? "unknown" : td.some(function (c) { return c && c.id === ref.slice(3); }) ? "ok" : "missing";
+        }
+        if (/^cm:/.test(ref)) {
+          var CR = window.LivonCommunityRepo;
+          return !CR || typeof CR.get !== "function" ? "unknown" : CR.get(ref.slice(3)) ? "ok" : "missing";
+        }
+        var R = window.LivonLifeHub && window.LivonLifeHub.repo;
+        if (!R || !R.idx) return "unknown";
+        if (kind === "topic" || kind === "guide" || kind === "checklist") return R.topic(ref) ? "ok" : "missing";
+        if (kind === "service") return R.service(ref) ? "ok" : "missing";
+        if (kind === "policy") return R.policy(ref) ? "ok" : "missing";
+      } catch (e) {}
+      return "unknown";
+    }
+    /* Life Stage topics load on demand. When saved Life Stage rows are on screen and the topics are not loaded yet, load
+       them (the same public file Life Stage reads) and mark the rows whose original is gone — without re-drawing the
+       list, so focus and scroll stay where they are. */
+    function checkOriginals(rows) {
+      var R = window.LivonLifeHub && window.LivonLifeHub.repo;
+      if (!R || R.idx || typeof R.load !== "function") return;
+      if (!rows.some(function (x) { return /^life-hub:(topic|guide|checklist|service|policy):(?!ex:|td:|cm:)/.test(x.id); })) return;
+      var done = function () {
+        if (state.view !== "saved" || !R.idx) return;
+        var byId = {};
+        S.collectedSaved().forEach(function (x) { byId[x.id] = x; });
+        all$("#life-now [data-lv-ml-saved-row]").forEach(function (li) {
+          var x = byId[li.getAttribute("data-lv-ml-saved-row")], a = li.querySelector("[data-lv-ml-saved-open]");
+          if (!x || !a || original(x) !== "missing") return;
+          var had = document.activeElement === a;
+          a.parentNode.removeChild(a);
+          if (!li.querySelector("[data-lv-ml-saved-missing]")) li.firstElementChild.insertAdjacentHTML("beforeend", MISSING_HTML);
+          if (had) { var next = li.querySelector("button, select"); if (next) next.focus(); }
+        });
+      };
+      try { var pr = R.load(); if (pr && typeof pr.then === "function") pr.then(done, function () {}); } catch (e) {}
+    }
+    function folders() {
+      var P = platform(), f = [];
+      try { f = P && P.folders ? P.folders() : []; } catch (e) { f = []; }
+      f = (Array.isArray(f) ? f : []).filter(function (x) { return typeof x === "string" && x; });
+      return f.length ? f : ["나중에 보기"];
+    }
+    function matches(x, words) {
+      if (!words.length) return true;
+      var hay = [x.label, x.source, S.savedTypeLabel(x.type), x.folder || "나중에 보기", x.desc].join(" ").toLowerCase();
+      return words.every(function (w) { return hay.indexOf(w) >= 0; });
+    }
+    function model() {
+      var all = S.collectedSaved(), fl = folders();
+      var sources = S.uniq(all.map(function (x) { return x.source; }));
+      if (state.savedSource !== "all" && sources.indexOf(state.savedSource) < 0) state.savedSource = "all";
+      if (!SORTS.some(function (o) { return o.id === state.savedSort; })) state.savedSort = "recent";
+      var folder = state.savedFolder || "all", type = state.savedType || "all", source = state.savedSource, q = state.savedQ || "";
+      var words = q.toLowerCase().split(" ").filter(Boolean);
+      var base = all.filter(function (x) {
+        return (folder === "all" || x.folder === folder || (folder === "나중에 보기" && !x.folder)) && (source === "all" || x.source === source) && matches(x, words);
+      });
+      var counts = { all: base.length };
+      base.forEach(function (x) { counts[x.type] = (counts[x.type] || 0) + 1; });
+      return { all: all, skipped: skipped, folders: fl, sources: sources, counts: counts, list: sort(type === "all" ? base : base.filter(function (x) { return x.type === type; }), state.savedSort),
+        filtered: !!(q || type !== "all" || source !== "all" || folder !== "all") };
+    }
+    function rowHtml(x, withActions, fl) {
+      var orig = original(x), cur = x.folder || "나중에 보기";
+      var opts = withActions ? ((fl = fl || folders()).indexOf(cur) < 0 ? [cur] : []).concat(fl) : [];
+      return '<li data-lv-ml-saved-row="' + esc(x.id) + '"><div><strong>' + esc(x.label) + "</strong><p>" +
+          esc(S.uniq([S.savedTypeLabel(x.type), x.source, x.at ? S.fmtWhen(x.at) + " 저장" : (withActions ? "저장 날짜 없음" : ""), x.folder]).join(" · ")) + "</p>" +
+          (withActions && x.desc ? '<p class="lv-ml-saved-desc">' + esc(x.desc) + "</p>" : "") +
+          (orig === "missing" ? MISSING_HTML : "") + "</div>" +
+        '<div class="lv-ml-row-acts' + (withActions ? " lv-ml-saved-acts" : "") + '">' +
+        (orig === "missing" ? "" : '<a data-lv-ml-saved-open href="' + esc(x.href) + '"' + (/^https:/.test(x.href) ? ' target="_blank" rel="noopener noreferrer"' : "") + '>원본 보기<span class="visually-hidden">: ' + esc(x.label) + "</span></a>") +
+        (withActions
+          ? '<button type="button" data-lv-ml-add-event-from-saved="' + esc(x.id) + '" aria-label="' + esc(x.label) + ' 일정에 추가">일정에 추가</button>' +
+            '<label class="lv-ml-saved-move"><span>폴더</span><select data-lv-ml-saved-move="' + esc(x.id) + '" aria-label="' + esc(x.label) + ' 폴더 옮기기">' +
+              opts.map(function (f) { return '<option value="' + esc(f) + '"' + (f === cur ? " selected" : "") + ">" + esc(f) + "</option>"; }).join("") + "</select></label>" +
+            '<button type="button" data-lv-ml-unsave="' + esc(x.id) + '" aria-label="' + esc(x.label) + ' 저장 해제">저장 해제</button>'
+          : "") +
+        "</div></li>";
+    }
+    function view() {
+      var v = model(), all = v.all, list = v.list, counts = v.counts;
+      var folder = state.savedFolder || "all", type = state.savedType || "all", q = state.savedQ || "";
+      var stored = all.length + v.skipped;
+      var types = S.SAVED_TYPES.filter(function (t) { return t.id === "all" || counts[t.id] || t.id === type; }).map(function (t) { return { id: t.id, label: t.label, count: counts[t.id] || 0 }; });
+      var sel = function (label, attr, opts, cur) {
+        return '<label class="lv-ml-field lv-ml-field--inline"><span>' + label + "</span><select " + attr + ">" + opts.map(function (o) {
+          return '<option value="' + esc(o.id) + '"' + (o.id === cur ? " selected" : "") + ">" + esc(o.label) + "</option>";
+        }).join("") + "</select></label>";
+      };
+      setTimeout(function () { checkOriginals(list); }, 0);
+      return '<div class="lv-ml-saved"><p class="lv-ml-note">라이프 스테이지·오늘의 발견·탐색에서 저장한 항목이 한 저장소에 모입니다. 여기서 저장을 해제하면 원래 화면에도 바로 반영됩니다. 저장한 항목은 이 기기에만 보관됩니다.</p>' +
+        (all.length
+          ? '<form class="lv-ml-inline-form lv-ml-saved-search" data-lv-ml-saved-search role="search"><label class="lv-ml-field"><span>저장함에서 찾기</span><input name="q" type="search" maxlength="60" autocomplete="off" value="' + esc(q) + '" /></label>' +
+              '<button type="submit" class="lv-ml-btn lv-ml-btn--dark lv-ml-btn--sm">찾기</button>' +
+              (q ? '<button type="button" class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" data-lv-ml-saved-q-reset>지우기</button>' : "") + "</form>"
+          : "") +
+        '<div class="lv-ml-filterbar">' +
+          chipGroup("저장 종류", types, "data-lv-ml-saved-type", type) +
+          (v.sources.length > 1 || state.savedSource !== "all"
+            ? sel("출처", "data-lv-ml-saved-source-select", [{ id: "all", label: "모든 출처" }].concat(v.sources.map(function (s) { return { id: s, label: s }; })), state.savedSource) : "") +
+          '<label class="lv-ml-field lv-ml-field--inline"><span>폴더</span><select data-lv-ml-saved-folder-select><option value="all"' + (folder === "all" ? " selected" : "") + ">모든 폴더</option>" +
+            v.folders.map(function (f) { return '<option value="' + esc(f) + '"' + (folder === f ? " selected" : "") + ">" + esc(f) + "</option>"; }).join("") + "</select></label>" +
+          (all.length > 1 ? sel("정렬", "data-lv-ml-saved-sort", SORTS, state.savedSort) : "") +
+        "</div>" +
+        (all.length ? '<p class="lv-ml-note" data-lv-ml-saved-count>' + (v.filtered ? "저장 " + all.length + "개 중 " + list.length + "개" : "저장 " + all.length + "개") + "</p>" : "") +
+        (list.length
+          ? '<ul class="lv-ml-manage-list">' + list.map(function (x) { return rowHtml(x, true, v.folders); }).join("") + "</ul>"
+          : all.length
+            ? emptyBox(q ? "‘" + q + "’에 맞는 저장 항목이 없습니다. 검색어나 조건을 바꿔 보세요." : "이 조건에 맞는 저장 항목이 없습니다.", '<button type="button" class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" data-lv-ml-saved-reset>' + (q ? "검색·필터 초기화" : "필터 초기화") + "</button>")
+            : emptyBox("저장한 항목이 없습니다. 관심 있는 주제·콘텐츠·장소를 저장하면 여기에서 모아 볼 수 있어요.", '<a class="lv-ml-btn lv-ml-btn--dark lv-ml-btn--sm" href="#life">라이프 스테이지</a> <a class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" href="#today">오늘의 발견</a> <a class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" href="#explore">탐색</a>')) +
+        (v.skipped ? '<p class="lv-ml-note" data-lv-ml-saved-skipped>형식이 맞지 않아 표시하지 못한 저장 기록이 ' + v.skipped + "개 있습니다. 지우지 않고 그대로 두었어요.</p>" : "") +
+        (stored >= NEAR_LIMIT ? '<p class="lv-ml-note" data-lv-ml-saved-limit>저장은 이 기기에 최대 ' + LIMIT + "개까지 보관됩니다(지금 " + stored + "개). " + LIMIT + "개를 넘으면 목록의 맨 뒤에 있는 오래된 저장부터 빠집니다.</p>" : "") +
+        (stored ? '<p class="lv-ml-inline-acts lv-ml-saved-foot"><button type="button" class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm lv-ml-btn--danger-outline" data-lv-ml-saved-clear>저장함 비우기</button>' +
+          '<span class="lv-ml-note">저장한 항목만 지웁니다. 할 일·일정·기록, 커뮤니티 글, 원본 정보는 그대로 남아요.</span></p>' : "") + "</div>";
+    }
+    /* 저장함 비우기: the shared saves and the older saved lists that are imported back into them — nothing else.
+       The older lists go first so that nothing can be imported again. */
+    function clearAll() {
+      var P = platform();
+      if (!P || typeof P.load !== "function" || typeof P.save !== "function") return false;
+      try {
+        S.LEGACY_KEYS.forEach(function (k) {
+          var v = readJSON(k, null);
+          if (v != null && !(Array.isArray(v) && !v.length)) S.writeJSON(k, []);
+        });
+        var s = P.load();
+        s.saves = [];
+        P.save(s);
+      } catch (e) { return false; }
+      if (window.LivonLifeHub && window.LivonLifeHub.saves && window.LivonLifeHub.saves.refresh) window.LivonLifeHub.saves.refresh();
+      return true;
+    }
+    /* only the folder field changes (id, type, href and data stay); the same item under its old and its shared id moves together */
+    function move(id, folder) {
+      var P = platform();
+      if (!P || !P.setSaveFolder || !P.listSaves || folders().indexOf(folder) < 0) return false;
+      var ref = S.savedRefKey(id), n = 0;
+      try {
+        P.listSaves("all").forEach(function (x) { if (x && typeof x === "object" && (String(x.id) === id || S.savedRefKey(x.id) === ref)) { P.setSaveFolder(x.id, folder); n++; } });
+      } catch (e) { return false; }
+      return n > 0;
+    }
+    function resetFilters() { state.savedType = "all"; state.savedFolder = "all"; state.savedSource = "all"; state.savedQ = ""; }
+    function shown() { return model().list.length; }
+
+    /* events: each returns true when it handled the event */
+    function onClick(e) {
+      var t = e.target;
+      if (t.closest("[data-lv-ml-saved-reset]")) {
+        resetFilters();
+        S.rerenderView("saved", '[data-lv-ml-saved-type="all"]');
+        S.announce("저장 " + shown() + "개");
+        return true;
+      }
+      if (t.closest("[data-lv-ml-saved-q-reset]")) {
+        state.savedQ = "";
+        S.rerenderView("saved", "[data-lv-ml-saved-search] input");
+        S.announce("검색어를 지웠습니다. 저장 " + shown() + "개");
+        return true;
+      }
+      if (t.closest("[data-lv-ml-saved-clear]")) {
+        var n = S.collectedSaved().length + skipped;
+        S.confirmDialog({ title: "저장함을 비울까요?", body: "저장한 항목 " + n + "개가 이 기기에서 모두 지워지고 되돌릴 수 없어요. 할 일·일정·기록, 커뮤니티 글, 원본 정보는 지워지지 않아요.", ok: "저장함 비우기", danger: true }).then(function (ok) {
+          if (!ok) return;
+          if (!clearAll()) { S.announce("저장함을 비우지 못했습니다. 새로고침 후 다시 시도해 주세요."); return; }
+          resetFilters();
+          S.refreshDashboard();
+          S.rerenderView("saved");
+          S.announce("저장함을 비웠습니다. 다른 데이터는 그대로예요.");
+          S.restoreFocus(null);
+        });
+        return true;
+      }
+      return false;
+    }
+    function onChange(t) {
+      if (t.matches("[data-lv-ml-saved-source-select]")) {
+        state.savedSource = t.value || "all";
+        S.rerenderView("saved", "[data-lv-ml-saved-source-select]");
+        if (!$("[data-lv-ml-saved-source-select]")) S.restoreFocus(null);
+        S.announce("저장 " + shown() + "개");
+        return true;
+      }
+      if (t.matches("[data-lv-ml-saved-sort]")) {
+        state.savedSort = SORTS.some(function (o) { return o.id === t.value; }) ? t.value : "recent";
+        S.rerenderView("saved", "[data-lv-ml-saved-sort]");
+        S.announce((SORTS.filter(function (o) { return o.id === state.savedSort; })[0] || SORTS[0]).label + " 순으로 정렬했습니다.");
+        return true;
+      }
+      if (t.matches("[data-lv-ml-saved-move]")) {
+        var id = t.getAttribute("data-lv-ml-saved-move"), to = t.value;
+        var item = S.collectedSaved().filter(function (x) { return x.id === id; })[0];
+        var ok = move(id, to);
+        S.refreshDashboard();
+        S.rerenderView("saved");
+        var again = all$("#life-now [data-lv-ml-saved-move]").filter(function (n) { return n.getAttribute("data-lv-ml-saved-move") === id; })[0];
+        if (again) again.focus(); else S.restoreFocus(null);
+        S.announce(ok ? "‘" + (item ? item.label : "항목") + "’을(를) ‘" + to + "’ 폴더로 옮겼습니다." : "폴더를 옮기지 못했습니다. 새로고침 후 다시 시도해 주세요.");
+        return true;
+      }
+      return false;
+    }
+    function onSubmit(e) {
+      var f = e.target.closest("[data-lv-ml-saved-search]");
+      if (!f) return false;
+      e.preventDefault();
+      var q = f.querySelector('[name="q"]');
+      state.savedQ = String((q && q.value) || "").replace(/\s+/g, " ").trim().slice(0, 60);
+      S.rerenderView("saved", "[data-lv-ml-saved-search] input");
+      S.announce(state.savedQ ? "저장함 검색 결과 " + shown() + "개" : "저장 " + shown() + "개");
+      return true;
+    }
+    return { SORTS: SORTS, LIMIT: LIMIT, collect: collect, view: view, rowHtml: rowHtml, onClick: onClick, onChange: onChange, onSubmit: onSubmit,
+      fns: { row: row, sort: sort, original: original, matches: matches, model: model, clearAll: clearAll, move: move, folders: folders, skipped: function () { return skipped; } } };
+  })(core.saved) : null;
+
   return {
     views: { routines: viewRoutines, records: viewRecords, search: viewSearch, money: viewMoney },
     renderTodayHabits: renderTodayHabits, renderUpcoming: renderUpcoming, dayExtrasHtml: dayExtrasHtml, weeklyReviewHtml: weeklyReviewHtml,
     myLifeDataHtml: myLifeDataHtml, downloadExport: downloadExport, exportCounts: exportCounts, clearMyLifeData: clearMyLifeData,
-    searchMyLife: searchMyLife, recordsList: recordsList,
+    searchMyLife: searchMyLife, recordsList: recordsList, saved: Saved,
     fns: { habitStreak: habitStreak, habitWeek: habitWeek, startOfWeek: startOfWeek, dayItems: dayItems, upcomingItems: upcomingItems, weeklyReview: weeklyReview,
       recordsList: recordsList, searchMyLife: searchMyLife, exportPayload: exportPayload, exportCounts: exportCounts, clearMyLifeData: clearMyLifeData }
   };

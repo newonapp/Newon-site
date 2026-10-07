@@ -492,7 +492,7 @@ test('ML2-35 route state: new views round-trip; unknown views fall back; the sea
 });
 
 test('ML2-36 cache keys: the files changed for My Life V2 carry ?v=20261004c5 or a later c version (Today V2: page and hub on c6)', () => {
-  for (const f of ['life-now-page.js', 'life-now-hub.js', 'life-now-data.js', 'life-now-page.css', 'help-data.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace('.', '\\.') + '\\?v=20261004c[5-9]"'), f);
+  for (const f of ['life-now-page.js', 'life-now-hub.js', 'life-now-data.js', 'life-now-page.css', 'help-data.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace('.', '\\.') + '\\?v=(20261004c[5-9]|20261007sv\\d)"'), f);   /* Saved V2 moved the page, hub and style sheet to sv1 */
 });
 
 test('ML2-37 Help matches the product: export and delete-all are described where the buttons are', () => {
