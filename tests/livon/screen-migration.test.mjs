@@ -87,10 +87,14 @@ test('S-3 Life Stage: all seven stages and their topics stay; relations resolve 
 /* ───────── S-4 Home ───────── */
 test('S-4 Home: Today / Explore / Life Event data on Home come from the repository; no direct file reads remain', () => {
   const home = src('livon/home-page.js');
-  assert.match(home, /var EVENTS = SD \? SD\.lifeEvents\(\)/);
+  /* WHY CHANGED (Home V2): Home no longer shows Life Event chips, so it reads no Life Event list.
+     BEFORE: var EVENTS = SD ? SD.lifeEvents() …; 3 Today reads + 2 Explore reads on Home.
+     AFTER:  no Life Event read on Home; one Today read and one Explore read (the 발견 card), both through the repository. */
+  assert.equal(/lifeEvents\(\)|LivonLifeEvents/.test(home), false);
   const code = home.replace(/function (tdList|exList)\(\) \{[^\n]*\n/g, '');
   assert.doesNotMatch(code, /LivonTodayData\.contents|LivonExploreData\.items|data\.items/, 'every Home list goes through tdList()/exList()');
-  assert.ok((home.match(/tdList\(\)/g) || []).length >= 4 && (home.match(/exList\(\)/g) || []).length >= 3, 'Home lists: 3 Today reads + 2 Explore reads (+ helper definitions)');
+  assert.ok((home.match(/tdList\(\)/g) || []).length === 2 && (home.match(/exList\(\)/g) || []).length === 2, 'Home lists: one Today read + one Explore read (+ helper definitions)');
+  assert.match(home, /function tdList\(\) \{ var l = SD \? SD\.todayContents\(\) : /); assert.match(home, /function exList\(\) \{ var l = SD \? SD\.exploreItems\(\) : /);
 });
 
 /* ───────── S-5 Search ───────── */
