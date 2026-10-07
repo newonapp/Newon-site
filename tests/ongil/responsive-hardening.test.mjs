@@ -185,7 +185,7 @@ test('RH1-10 only the stylesheet moved on: one cache version changed, no script,
   /* WHY: ongil-life.css changed, so its address in index.html moves on (BEFORE ?v=20261004v13, AFTER ?v=20261007r14). */
   assert.match(INDEX, /ongil-start\/styles\/ongil-life\.css\?v=20261007r14/);
   assert.equal((INDEX.match(/\?v=20261007r14/g) || []).length, 1);
-  assert.match(INDEX, /ongil-start\/js\/app\.js\?v=20261006m15/, 'no script changed');
+  assert.match(INDEX, /ongil-start\/js\/app\.js\?v=20261007e16/, 'the entry moved on with Enjoy V2; Responsive Hardening itself changed no script'); /* Enjoy V2: app.js changed (tasks + own posts handed to 즐길거리, refresh on entry) → entry moved on (BEFORE 20261006m15, AFTER 20261007e16) */
   for (const f of ['ongil-tokens.css', 'ongil-shell.css', 'ongil-app.css', 'ongil-home.css']) assert.match(INDEX, new RegExp(`${f.replace('.', '\\.')}\\?v=20261003r11`), f);
   /* container queries are the only new CSS feature; they are used for layout only and the page works without them
      (an old browser simply shows the layout it had before) */

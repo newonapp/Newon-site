@@ -14,7 +14,7 @@
  * Nothing here holds or invents content. A field the source does not give stays empty and is never shown.
  * There is no booking, application or payment field, and no "recommended" ranking.
  */
-import { ContractError, isPlainObject, safeText, safeHref, REGIONS } from './contracts.js';
+import { ContractError, isPlainObject, safeText, safeHref, REGIONS, INTERESTS } from './contracts.js';
 import { isDateKey, isTime } from './dates.js';
 import { officialUrl, mapUrl, cleanPhone } from './care-contracts.js';
 
@@ -331,6 +331,8 @@ export function detailRows(item) {
  * Only a small snapshot is kept — never the provider payload.
  */
 export function savedInputFor(item) {
+  /* [V2] an item opened from the saved list is the saved entry itself: toggling it must name exactly that entry */
+  if (item && item.snapshot && isPlainObject(item.saved)) return { type: item.saved.type, id: item.saved.id, title: item.saved.title, description: item.saved.description, href: item.saved.href, source: item.saved.source };
   return {
     type: item.type === 'PLACE' ? 'PLACE' : 'PROGRAM',
     id: item.id,
@@ -355,4 +357,91 @@ export function isAlreadyInCalendar(draft, eventsOnDay) {
 export function familySendPreview(item) {
   const fields = [['이름', item.title], ['종류', typeLabel(item.type)], ['운영 기관', item.organization], ['장소', item.location || item.address], ['기간', item.startDate], ['자료 출처', item.sourceName]].filter(([, v]) => v).map(([label, value]) => ({ label, value }));
   return { fields, sendable: false, reason: 'NO_FAMILY_CONNECTION', personalDataIncluded: false };
+}
+
+/* ═════════ Enjoy + Local Discovery V2 (Phase A) ═════════
+ * Everything below reads only what the person chose or saved themselves. Nothing is inferred, ranked or recommended,
+ * and nothing new is stored: interests and region come from 내 정보, saved items from the existing Saved store, and a
+ * calendar entry or task is written by the existing My Life stores after a preview. */
+
+/*
+ * 오늘 뭐 하지? — shortcuts from the interests the person ticked in 내 정보 to the 즐길거리 category of the same name.
+ * Five of the eight interests have a category; 건강, 모임·이웃 and 가족 have none and get no shortcut (they are not
+ * turned into a guess about what the person might like).
+ */
+export const INTEREST_CATEGORIES = Object.freeze({ exercise: Object.freeze(['EXERCISE']), hobby: Object.freeze(['HOBBY']), learning: Object.freeze(['LEARNING']), culture: Object.freeze(['CULTURE']), outing: Object.freeze(['OUTING', 'TRAVEL']) });
+export function interestShortcuts(interests) {
+  const chosen = Array.isArray(interests) ? interests : [];
+  const out = [];
+  for (const i of INTERESTS) {
+    if (!chosen.includes(i.id)) continue;
+    for (const c of INTEREST_CATEGORIES[i.id] || []) out.push({ interest: i.id, interestLabel: i.label, category: c, label: enjoyCategoryById(c).label, hash: `#enjoy/${c.toLowerCase()}` });
+  }
+  return out;
+}
+/* the labels of the chosen interests, in the order 내 정보 lists them (unknown values are dropped) */
+export function interestLabels(interests) {
+  const chosen = Array.isArray(interests) ? interests : [];
+  return INTERESTS.filter((i) => chosen.includes(i.id)).map((i) => i.label);
+}
+
+/* a calendar entry for a place (or anything without a start date): the day is the one the person picked */
+export function pickedCalendarDraft(item, date, time, today) {
+  if (!item || typeof item.title !== 'string' || !item.title.trim() || !isDateKey(date)) return null;
+  if (isDateKey(today) && date < today) return null;
+  return { title: item.title.slice(0, 80), date, time: isTime(time) ? time : '', picked: true };
+}
+
+/* a task for the existing task list: a title only — no due date is made up */
+export function taskDraft(item) {
+  if (!item || typeof item.title !== 'string' || !item.title.trim()) return null;
+  const verb = item.type === 'PLACE' ? '가 보기' : '알아보기';
+  return { title: `${item.title.trim().slice(0, 80 - verb.length - 1)} ${verb}` };
+}
+/* the same title still open in the task list counts as added (a finished one may be added again) */
+export function isAlreadyInTasks(draft, tasks) {
+  return !!draft && (Array.isArray(tasks) ? tasks : []).some((t) => t && !t.completed && t.title === draft.title);
+}
+
+/* 저장한 활동: the PROGRAM and PLACE entries of the existing Saved store, newest first as the store gives them */
+export function savedActivities(list) {
+  return (Array.isArray(list) ? list : []).filter((s) => isPlainObject(s) && (s.type === 'PROGRAM' || s.type === 'PLACE') && typeof s.id === 'string' && typeof s.title === 'string');
+}
+/* a saved entry as something the detail dialog can show: only what was written down when it was saved */
+export function itemFromSaved(entry) {
+  if (!isPlainObject(entry) || (entry.type !== 'PROGRAM' && entry.type !== 'PLACE') || typeof entry.id !== 'string' || !ID.test(entry.id) || typeof entry.title !== 'string' || !entry.title.trim()) return null;
+  const href = typeof entry.href === 'string' && /^https:\/\//i.test(entry.href) ? safeHref(entry.href) : '';
+  return { type: entry.type, id: entry.id, title: entry.title, category: '', snapshot: true, summary: typeof entry.description === 'string' ? entry.description : '', sourceName: typeof entry.source === 'string' ? entry.source : '', sourceUrl: href || '', linkKind: href ? 'saved' : '', saved: entry };
+}
+export function savedDetailRows(item) {
+  if (!item || !item.snapshot) return [];
+  return [['종류', typeLabel(item.type)], ['저장할 때 적어 둔 내용', item.summary], ['자료 출처', item.sourceName]].filter(([, v]) => typeof v === 'string' && v.trim() !== '').map(([label, value]) => ({ label, value }));
+}
+export const SAVED_LINK_LABEL = '저장해 둔 링크 열기 (새 창)';
+
+/* 내가 쓴 관련 글: the person's own posts that were started from a 즐길거리 item (후기 쓰기) — never anyone else's */
+export function relatedPosts(posts) {
+  return (Array.isArray(posts) ? posts : [])
+    .filter((p) => isPlainObject(p) && typeof p.id === 'string' && typeof p.title === 'string' && isPlainObject(p.source) && ENJOY_TYPE_IDS.includes(p.source.sourceType))
+    .map((p) => ({ id: p.id, title: p.title, about: typeof p.source.sourceTitle === 'string' ? p.source.sourceTitle : '', href: `#community/post-${p.id}` }));
+}
+
+/* one line per source for the whole visit, from what each search target last answered — never a fixed verdict */
+export const SOURCE_GROUPS = Object.freeze([
+  Object.freeze({ id: 'tour', label: '관광 정보 (한국관광공사)' }),
+  Object.freeze({ id: 'lifelong', label: '평생학습 강좌' }),
+  Object.freeze({ id: 'place', label: '장소 (지도 검색)' }),
+]);
+export function sourceSummary(targets, statuses) {
+  const all = Array.isArray(targets) ? targets : [];
+  const seen = isPlainObject(statuses) ? statuses : {};
+  return SOURCE_GROUPS.map((g) => {
+    const mine = all.filter((t) => t.source === g.id).map((t) => seen[t.id]).filter(Boolean);
+    const pick = (state) => mine.find((s) => s.state === state);
+    if (pick('loading')) return { ...g, state: 'loading', text: '찾고 있어요…' };
+    if (pick('ready')) return { ...g, state: 'ready', text: '이번 방문에서 자료를 받아왔어요.' };
+    if (pick('unavailable')) return { ...g, state: 'unavailable', text: pick('unavailable').text };
+    if (pick('empty')) return { ...g, state: 'empty', text: '응답은 왔지만 찾은 것이 없었어요.' };
+    return { ...g, state: 'idle', text: '아직 찾아보지 않았어요.' };
+  });
 }

@@ -276,6 +276,9 @@ enjoyView = createEnjoyView({
   saved,
   profile,
   schedule,
+  /* Enjoy V2: the existing task list (할 일로 추가) and the person's own community posts on this device (내가 쓴 관련 글) */
+  tasks,
+  posts: () => communityPosts.list(),
   sources: {
     lifelong: nearbySource,
     tour: observeSource(createTourPlaceSource(dataApi), { id: 'tour-place', label: '관광 정보', provider: 'kr-tourapi', purpose: '관광지·문화시설·레포츠 정보 찾기', features: ['즐길거리'] }, sourceStatus),
@@ -468,6 +471,8 @@ const router = createRouter({
       healthHome.render();
     }
     if (view === 'care') care.show(section);
+    /* Enjoy V2: 내 관심사 · 내 지역 · 저장한 활동 · 내 글 are read again on every visit to the screen */
+    if (view === 'enjoy') enjoyView.refresh();
     if (view === 'enjoy' && section) enjoyView.show(section);
     /* Phase 8: 즐길거리 keeps the category (and what was found) from earlier in the visit; the address says so too */
     if (view === 'enjoy' && !section && enjoyView.category()) win.history.replaceState(null, '', `#enjoy/${enjoyView.category().toLowerCase()}`);
