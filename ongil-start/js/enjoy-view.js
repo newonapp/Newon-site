@@ -12,6 +12,16 @@
  *                     저장 (existing Saved), 내 일정에 추가 (preview first; real start date only; no duplicate),
  *                     가족에게 보내기 (preview only — no family is connected, nothing is sent).
  *
+ * Enjoy V2 (Phase A) — the same screen, in this order:
+ *   오늘 뭐 하지?      shortcuts from the interests the person ticked in 내 정보 to the category of the same name.
+ *                     Not a recommendation: nothing is ranked, scored or guessed from any record.
+ *   내 관심사 · 내 지역  what 내 정보 holds, with the way to change it. The region is the one the person chose.
+ *   무엇을 해볼까요? · 지역에서 찾아보기 · 찾은 즐길거리   (V1, kept) + one line per source for this visit.
+ *   저장한 활동        the PROGRAM / PLACE entries of the existing Saved store as a list.
+ *   내가 쓴 관련 글     the person's own posts that were started from a 즐길거리 item (this device only).
+ *   자세히            + 날짜 골라 일정에 추가 (a place: the person picks the day; preview first; no duplicate)
+ *                     + 할 일로 추가 (existing task list; preview first; no duplicate).
+ *
  * ONGIL does not run these programmes, take applications, book, or charge. Loaded results live in memory for the
  * visit only; browsing is not recorded. No location permission is ever asked for.
  */
@@ -19,8 +29,8 @@ import { el, clear, append } from './dom.js';
 import { createCard, choiceButton, makeField, nextId } from './home-ui.js';
 import { setRegionState } from './views.js';
 import { REGIONS } from './contracts.js';
-import { formatDateKey, formatTime } from './dates.js';
-import { ENJOY_CATEGORIES, ENJOY_TYPES, enjoyCategoryById, typeLabel, TOUR_TYPES, fromKakaoPlace, fromTourPlace, sanitizeEnjoyItems, filterEnjoy, availableEnjoyFilters, sortOptions, sortEnjoy, detailRows, savedInputFor, calendarDraft, isAlreadyInCalendar, familySendPreview, LINK_LABELS } from './enjoy-contracts.js';
+import { formatDateKey, formatTime, dateKey } from './dates.js';
+import { ENJOY_CATEGORIES, ENJOY_TYPES, enjoyCategoryById, typeLabel, TOUR_TYPES, fromKakaoPlace, fromTourPlace, sanitizeEnjoyItems, filterEnjoy, availableEnjoyFilters, sortOptions, sortEnjoy, detailRows, savedInputFor, calendarDraft, isAlreadyInCalendar, familySendPreview, LINK_LABELS, interestShortcuts, interestLabels, pickedCalendarDraft, taskDraft, isAlreadyInTasks, savedActivities, itemFromSaved, savedDetailRows, SAVED_LINK_LABEL, relatedPosts, sourceSummary } from './enjoy-contracts.js';
 
 /* append that skips null/false children (a plain Node.append would print "null") */
 const put = (node, ...kids) => append(node, kids);
@@ -66,12 +76,72 @@ const MESSAGES = {
 };
 
 /* onReview (Phase 6): optional; the review button hands the item to whoever owns writing (nothing is written here) */
-export function createEnjoyView({ host, doc, saved, profile, schedule, sources, onReview = null, onOpen = null, now = () => Date.now() }) {
+/* tasks (V2): the existing My Life task store. posts (V2): () → the person's own community posts on this device. */
+export function createEnjoyView({ host, doc, saved, profile, schedule, sources, tasks = null, posts = null, onReview = null, onOpen = null, now = () => Date.now() }) {
   const state = { category: '', type: '', filterCategory: '', region: '', query: '', sort: 'title', shown: PAGE_SIZE, items: [], sourceStatus: {} };
   let ticket = 0;
   let cards = null;
   let dialog = null;
   let opener = null;
+  let openerSelector = '';
+
+  /* ───────── [V2] 오늘 뭐 하지? · 내 관심사 · 내 지역 ───────── */
+
+  function renderToday() {
+    const card = cards.today;
+    clear(card.body);
+    const shortcuts = interestShortcuts(profile.getProfile().interests);
+    if (!shortcuts.length) {
+      put(
+        card.body,
+        el('p', { class: 'og-home-empty', 'data-og-enjoy-today': 'empty', text: '내 정보에서 운동, 취미, 배움, 문화, 나들이·여행 가운데 관심 있는 것을 고르면 여기에 바로가기가 생겨요.' }),
+        el('div', { class: 'og-form__actions' }, el('a', { class: 'og-btn og-btn--ghost', href: '#account', 'data-og-enjoy-edit': 'interests', text: '내 정보에서 관심사 고르기' }))
+      );
+      return;
+    }
+    put(
+      card.body,
+      el(
+        'div',
+        { class: 'og-picks og-enjoy-today', role: 'group', 'aria-label': '내 관심사에서 찾아보기', 'data-og-enjoy-today': String(shortcuts.length) },
+        shortcuts.map((sc) =>
+          el('button', {
+            type: 'button',
+            class: 'og-btn og-btn--ghost',
+            'data-og-enjoy-shortcut': sc.category,
+            'aria-label': `내 관심사 ‘${sc.interestLabel}’에서 ${sc.label} 찾아보기`,
+            text: `${sc.label} 찾아보기`,
+            onclick: () => {
+              choose(sc.category, true);
+              cards.search.focusTitle();
+              cards.search.say(`${sc.label} 분류를 골랐어요. 지역을 확인하고 ‘찾기’를 눌러 주세요.`);
+            },
+          })
+        )
+      ),
+      el('p', { class: 'og-home-note', text: '내 정보에서 직접 고른 관심사로 가는 바로가기예요. 추천이나 순위가 아니고, 건강·가족·생활 기록은 쓰지 않아요.' })
+    );
+  }
+
+  function renderMine() {
+    const card = cards.mine;
+    clear(card.body);
+    const p = profile.getProfile();
+    const labels = interestLabels(p.interests);
+    put(
+      card.body,
+      el(
+        'dl',
+        { class: 'og-care-rows', 'aria-label': '내 정보에 적어 둔 것', 'data-og-enjoy-mine': 'true' },
+        el('dt', { text: '내 관심사' }),
+        el('dd', { 'data-og-enjoy-interests': String(labels.length), text: labels.length ? labels.join(', ') : '아직 고르지 않았어요.' }),
+        el('dt', { text: '내 지역' }),
+        el('dd', { 'data-og-enjoy-region': p.region || 'none', text: p.region || '아직 정하지 않았어요.' })
+      ),
+      el('p', { class: 'og-home-note', text: '지역은 직접 고른 시·도만 써요. 내 위치는 묻지 않고, 따라가지도 않아요.' }),
+      el('div', { class: 'og-form__actions' }, el('a', { class: 'og-btn og-btn--ghost', href: '#account', 'data-og-enjoy-edit': 'profile', text: '내 정보에서 고치기' }))
+    );
+  }
 
   /* ───────── 무엇을 해볼까요? ───────── */
 
@@ -156,8 +226,25 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
       card.body,
       el('p', { class: 'og-home-note', text: '지역 이름과 찾을 것만 보내며, ‘찾기’를 눌렀을 때만 찾습니다. 내 위치는 묻지 않아요. 찾은 결과는 이 화면을 보는 동안만 보여요.' }),
       form,
-      statusList()
+      statusList(),
+      summaryList()
     );
+  }
+
+  /* [V2] one line per source for this visit — what each really answered, never a fixed verdict */
+  function summaryList() {
+    const rows = sourceSummary(SEARCH_TARGETS, state.sourceStatus);
+    return el(
+      'div',
+      { class: 'og-health-q', 'data-og-enjoy-summary': 'true' },
+      el('h4', { class: 'og-life-sub', text: '자료 연결 상태 (이번 방문)' }),
+      el('ul', { class: 'og-life-days', 'aria-label': '자료 연결 상태' }, rows.map((r) => el('li', { 'data-og-enjoy-source-group': r.id, 'data-og-state': r.state }, el('span', { class: 'og-life-days__date', text: r.label }), el('span', { class: 'og-life-days__text', text: r.text })))),
+      el('p', { class: 'og-home-note', text: '자료마다 따로 받아와요. 한 자료가 응답하지 않아도 다른 자료에서 찾은 것은 그대로 보여요.' })
+    );
+  }
+  function refreshSummary() {
+    const old = cards.search.body.querySelector('[data-og-enjoy-summary]');
+    if (old) old.replaceWith(summaryList());
   }
 
   /* each source keeps its own last state — one failing never hides what another found */
@@ -184,6 +271,7 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
     const fresh = statusList();
     setRegionState(fresh, 'loading', '찾고 있습니다.');
     zone.replaceWith(fresh);
+    refreshSummary();
     const category = target.category || state.category || (target.source === 'lifelong' ? 'LEARNING' : '');
     let result;
     try {
@@ -207,6 +295,7 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
     const text = result.state === 'ready' && items.length ? `${region}에서 ${items.length}건 찾았어요.` : result.state === 'empty' || result.state === 'ready' ? `${region}에서 찾지 못했어요.` : MESSAGES[result.reason] || MESSAGES.NOT_CONNECTED;
     state.sourceStatus[target.id] = { state: items.length ? 'ready' : result.state === 'unavailable' ? 'unavailable' : 'empty', text };
     cards.search.body.querySelector('[data-og-region="enjoy-sources"]').replaceWith(statusList());
+    refreshSummary();
     cards.search.say(text);
     renderResults();
   }
@@ -358,19 +447,25 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
     dialog.addEventListener('close', () => {
       clear(dialog);
       const key = opener && opener.dataset ? opener.dataset.ogEnjoyOpen : '';
-      const back = opener && opener.isConnected ? opener : key ? host.querySelector(`[data-og-enjoy-open="${key}"]`) : null;
+      /* [V2] a row of the saved list may have been redrawn (or removed) while the dialog was open */
+      const back = opener && opener.isConnected ? opener : openerSelector ? host.querySelector(openerSelector) : key ? host.querySelector(`[data-og-enjoy-open="${key}"]`) : null;
       if (back) back.focus();
+      else if (openerSelector && openerSelector.includes('saved-open')) cards.saved.focusTitle();
       opener = null;
+      openerSelector = '';
     });
     doc.body.append(dialog);
     return dialog;
   }
 
-  function openDetail(item, from, mode = 'detail') {
+  function openDetail(item, from, mode = 'detail', extra = null) {
     /* [P9] a detail opened from a row (not a re-render inside the dialog): the owner is told, with the item only */
     if (from && mode === 'detail' && typeof onOpen === 'function') onOpen(item);
     const d = ensureDialog();
-    if (from) opener = from;
+    if (from) {
+      opener = from;
+      openerSelector = from.dataset && from.dataset.ogEnjoySavedOpen ? `[data-og-enjoy-saved-open="${from.dataset.ogEnjoySavedOpen}"]` : '';
+    }
     clear(d);
     const status = el('p', { class: 'og-live', role: 'status', 'aria-live': 'polite' });
     const close = el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-close': 'true', text: '닫기', onclick: () => d.close() });
@@ -387,7 +482,7 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
         el('div', { class: 'og-dialog__actions' }, back, close)
       );
     } else if (mode === 'calendar') {
-      const draft = calendarDraft(item);
+      const draft = (extra && extra.draft) || calendarDraft(item);
       const already = isAlreadyInCalendar(draft, schedule.listForDate(draft.date));
       const add = el('button', {
         type: 'button',
@@ -412,12 +507,65 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
       put(
         body,
         el('p', { text: '아래 내용으로 내 일정에 추가할까요? 신청이나 예약이 되는 것은 아니에요.' }),
-        el('dl', { class: 'og-care-rows', 'aria-label': '추가될 일정', 'data-og-enjoy-calendar': 'preview' }, el('dt', { text: '일정 이름' }), el('dd', { text: draft.title }), el('dt', { text: '날짜' }), el('dd', { text: `${formatDateKey(draft.date)} (시작일)` }), draft.time ? el('dt', { text: '시간' }) : null, draft.time ? el('dd', { text: formatTime(draft.time) }) : null),
+        el('dl', { class: 'og-care-rows', 'aria-label': '추가될 일정', 'data-og-enjoy-calendar': 'preview' }, el('dt', { text: '일정 이름' }), el('dd', { text: draft.title }), el('dt', { text: '날짜' }), el('dd', { text: `${formatDateKey(draft.date)} ${draft.picked ? '(내가 고른 날)' : '(시작일)'}` }), draft.time ? el('dt', { text: '시간' }) : null, draft.time ? el('dd', { text: formatTime(draft.time) }) : null),
+        el('div', { class: 'og-dialog__actions' }, add, back, close)
+      );
+    } else if (mode === 'pick') {
+      /* [V2] a place has no date of its own: the person picks the day, sees the entry, then adds it */
+      const today = dateKey(now());
+      const date = makeField({ name: 'date', label: '가는 날', type: 'date', required: true, hint: '오늘이나 앞으로의 날짜를 골라 주세요.' }, (extra && extra.date) || '');
+      date.input.min = today;
+      const time = makeField({ name: 'time', label: '시간', type: 'time', required: false }, (extra && extra.time) || '');
+      const error = el('p', { class: 'og-form-error', role: 'alert', id: nextId('err') });
+      const form = el('form', { class: 'og-form', novalidate: true, 'aria-label': '일정에 넣을 날짜 고르기', 'data-og-enjoy-pick': 'form' }, date.node, time.node, error, el('div', { class: 'og-dialog__actions' }, el('button', { type: 'submit', class: 'og-btn og-btn--primary', 'data-og-enjoy-pick-next': 'true', text: '미리보기' }), back, close));
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const draft = pickedCalendarDraft(item, date.get(), time.get(), today);
+        if (!draft) {
+          date.input.setAttribute('aria-invalid', 'true');
+          date.input.setAttribute('aria-describedby', [date.input.getAttribute('aria-describedby'), error.id].filter(Boolean).filter((v, i, a) => a.indexOf(v) === i).join(' '));
+          error.textContent = '오늘이나 앞으로의 날짜를 골라 주세요.';
+          date.input.focus();
+          return;
+        }
+        openDetail(item, null, 'calendar', { draft });
+      });
+      put(body, el('p', { text: '언제 갈지 골라 주세요. 다음 화면에서 내용을 확인한 뒤에 추가돼요. 신청이나 예약이 되는 것은 아니에요.' }), form);
+    } else if (mode === 'task') {
+      /* [V2] a task in the existing list: a title only, shown first, added once */
+      const draft = taskDraft(item);
+      const already = isAlreadyInTasks(draft, tasks.list({ filter: 'open' }));
+      const add = el('button', {
+        type: 'button',
+        class: 'og-btn og-btn--primary',
+        'data-og-enjoy-task-add': 'true',
+        disabled: already,
+        text: already ? '이미 할 일에 있어요' : '할 일로 추가',
+        onclick: () => {
+          if (isAlreadyInTasks(draft, tasks.list({ filter: 'open' }))) {
+            status.textContent = '이미 할 일에 있어요. 다시 추가하지 않았어요.';
+            return;
+          }
+          const r = tasks.add({ title: draft.title });
+          status.textContent = r.ok ? '할 일에 추가했어요. 내 생활 › 할 일에서 볼 수 있어요.' : '추가하지 못했어요.';
+          if (r.ok) {
+            add.disabled = true;
+            add.textContent = '할 일에 추가했어요';
+            back.focus();
+          }
+        },
+      });
+      put(
+        body,
+        el('p', { text: '아래 내용으로 할 일에 추가할까요? 신청이나 예약이 되는 것은 아니에요.' }),
+        el('dl', { class: 'og-care-rows', 'aria-label': '추가될 할 일', 'data-og-enjoy-task': 'preview' }, el('dt', { text: '할 일' }), el('dd', { text: draft.title }), el('dt', { text: '기한' }), el('dd', { text: '정하지 않음 (내 생활 › 할 일에서 정할 수 있어요)' })),
         el('div', { class: 'og-dialog__actions' }, add, back, close)
       );
     } else {
-      const rows = detailRows(item);
+      const rows = item.snapshot ? savedDetailRows(item) : detailRows(item);
       put(body, el('dl', { class: 'og-care-rows', 'aria-label': '자세한 정보' }, rows.flatMap((r) => [el('dt', { text: r.label }), el('dd', { text: r.value })])));
+      if (item.snapshot) put(body, el('p', { class: 'og-home-note', 'data-og-enjoy-snapshot': 'true', text: '저장할 때 적어 둔 내용이에요. 지금 정보는 다시 찾아보거나 운영 기관에서 확인해 주세요.' }));
+      if (item.snapshot && item.sourceUrl) put(body, el('div', { class: 'og-dialog__actions' }, el('a', { class: 'og-btn og-btn--ghost', href: item.sourceUrl, target: '_blank', rel: 'noopener noreferrer', 'data-og-enjoy-link': 'saved', text: SAVED_LINK_LABEL })));
       if (item.sourceUrl && LINK_LABELS[item.linkKind]) put(body, el('div', { class: 'og-dialog__actions' }, el('a', { class: 'og-btn og-btn--ghost', href: item.sourceUrl, target: '_blank', rel: 'noopener noreferrer', 'data-og-enjoy-link': item.linkKind, text: LINK_LABELS[item.linkKind] })));
       const isSaved = saved.isSaved(savedInputFor(item).type, item.id);
       const saveBtn = el('button', {
@@ -437,7 +585,7 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
       });
       put(
         body,
-        el('div', { class: 'og-dialog__actions' }, saveBtn, calendarDraft(item) ? el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-calendar-open': 'true', text: '내 일정에 추가', onclick: () => openDetail(item, null, 'calendar') }) : null, el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-family-open': 'true', text: '가족에게 보여주기', onclick: () => openDetail(item, null, 'family') }), typeof onReview === 'function' ? el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-review': 'true', text: '후기 쓰기', onclick: () => { opener = null; d.close(); onReview({ type: item.type, id: item.id, title: item.title, category: item.category }); } }) : null, close),
+        el('div', { class: 'og-dialog__actions' }, saveBtn, calendarDraft(item) ? el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-calendar-open': 'true', text: '내 일정에 추가', onclick: () => openDetail(item, null, 'calendar') }) : el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-pick-open': 'true', text: '날짜 골라 일정에 추가', onclick: () => openDetail(item, null, 'pick') }), tasks ? el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-task-open': 'true', text: '할 일로 추가', onclick: () => openDetail(item, null, 'task') }) : null, el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-family-open': 'true', text: '가족에게 보여주기', onclick: () => openDetail(item, null, 'family') }), typeof onReview === 'function' ? el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-review': 'true', text: '후기 쓰기', onclick: () => { opener = null; d.close(); onReview({ type: item.type, id: item.id, title: item.title, category: item.category }); } }) : null, close),
         el('p', { class: 'og-home-note', text: 'ONGIL이 운영하는 프로그램이 아니에요. 신청, 예약, 결제는 운영 기관이나 공식 페이지에서 직접 확인하세요.' })
       );
     }
@@ -453,10 +601,13 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
   function build() {
     clear(host);
     cards = {
+      today: createCard({ area: 'enjoy', slot: 'today', title: '오늘 뭐 하지?', level: 1, lead: '내 관심사에서 찾아보기 — 내가 고른 관심사의 분류로 바로 가요.' }),
+      mine: createCard({ area: 'enjoy', slot: 'mine', title: '내 관심사 · 내 지역', level: 3 }),
       categories: createCard({ area: 'enjoy', slot: 'categories', title: '무엇을 해볼까요?', level: 1, lead: '해 보고 싶은 것을 고르면 찾을 수 있는 자료를 알려 드려요.' }),
-      search: createCard({ area: 'enjoy', slot: 'search', title: '지역에서 찾아보기', level: 2, lead: '평생학습 강좌, 관광 정보, 가까운 장소를 지역별로 찾아요.' }),
+      search: createCard({ area: 'enjoy', slot: 'search', title: '지역에서 찾아보기', level: 2, lead: '평생학습 강좌, 관광 정보, 장소를 고른 지역에서 찾아요.' }),
       results: createCard({ area: 'enjoy', slot: 'results', title: '찾은 즐길거리', level: 2 }),
-      saved: createCard({ area: 'enjoy', slot: 'saved', title: '저장한 즐길거리', level: 3 }),
+      saved: createCard({ area: 'enjoy', slot: 'saved', title: '저장한 즐길거리', level: 3, lead: '저장한 활동 — 강좌, 프로그램, 장소를 다시 볼 수 있어요.' }),
+      posts: createCard({ area: 'enjoy', slot: 'posts', title: '내가 쓴 관련 글', level: 3, lead: '즐길거리에서 ‘후기 쓰기’로 시작해 이 기기에 적어 둔 글이에요.' }),
     };
     put(
       host,
@@ -467,13 +618,16 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
         el('h2', { class: 'og-h', id: 'og-enjoy-section-title', tabindex: '-1', text: '즐길거리' }),
         el('p', { class: 'og-lead', text: '오늘은 무엇을 해볼까요? 배우고, 움직이고, 둘러볼 거리를 지역에서 찾아보세요.' }),
         el('p', { class: 'og-notice', role: 'note' }, el('strong', { text: '알려 드립니다. ' }), 'ONGIL이 운영하는 프로그램이 아니에요. 공공기관과 지도 서비스가 공개한 정보를 찾아 보여 드려요. 신청, 예약, 결제는 각 기관에서 직접 해요.'),
-        el('div', { class: 'og-care-grid' }, cards.categories.root, cards.search.root, cards.results.root, cards.saved.root)
+        el('div', { class: 'og-care-grid' }, cards.today.root, cards.mine.root, cards.categories.root, cards.search.root, cards.results.root, cards.saved.root, cards.posts.root)
       )
     );
+    renderToday();
+    renderMine();
     renderCategories();
     renderSearch();
     renderResults();
     renderSaved();
+    renderPosts();
     host.dataset.ogRendered = 'true';
   }
 
@@ -481,17 +635,96 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
     const card = cards.saved;
     const n = saved.list({ type: 'PROGRAM' }).length + saved.list({ type: 'PLACE' }).length;
     clear(card.body);
-    put(card.body, el('p', { class: n ? 'og-life-value' : 'og-home-empty', 'data-og-enjoy-saved': String(n), text: n ? `저장한 강좌·프로그램·장소 ${n}개` : '아직 저장한 즐길거리가 없어요.' }), el('div', { class: 'og-form__actions' }, el('a', { class: 'og-btn og-btn--ghost', href: '#saved', text: '저장 화면에서 보기' })));
+    put(card.body, el('p', { class: n ? 'og-life-value' : 'og-home-empty', 'data-og-enjoy-saved': String(n), text: n ? `저장한 강좌·프로그램·장소 ${n}개` : '아직 저장한 즐길거리가 없어요.' }));
+    /* [V2] the same entries as a list — read from the existing Saved store every time, nothing is copied */
+    const entries = savedActivities(saved.list());
+    if (entries.length) {
+      put(
+        card.body,
+        el(
+          'ul',
+          { class: 'og-home-items', 'aria-label': '저장한 활동', 'data-og-enjoy-saved-list': String(entries.length) },
+          entries.map((s) =>
+            el(
+              'li',
+              { class: 'og-home-item', 'data-og-enjoy-saved-item': `${s.type}:${s.id}` },
+              el('div', { class: 'og-home-item__main og-home-item__main--plain' }, el('p', { class: 'og-home-item__title', text: s.title }), s.description ? el('p', { class: 'og-home-item__meta', text: s.description }) : null, s.source ? el('p', { class: 'og-home-item__text', text: `자료 출처: ${s.source}` }) : null),
+              el(
+                'div',
+                { class: 'og-home-item__actions' },
+                el('button', {
+                  type: 'button',
+                  class: 'og-btn og-btn--ghost og-btn--small',
+                  'data-og-enjoy-saved-open': s.id,
+                  'aria-haspopup': 'dialog',
+                  'aria-label': `저장한 ‘${s.title}’ 자세히 보기`,
+                  text: '자세히',
+                  onclick: (event) => {
+                    /* what was found this visit has the full detail; otherwise only what was written down when saving */
+                    const loaded = state.items.find((i) => i.id === s.id && savedInputFor(i).type === s.type);
+                    const item = loaded || itemFromSaved(s);
+                    if (item) openDetail(item, event.currentTarget);
+                  },
+                }),
+                el('button', {
+                  type: 'button',
+                  class: 'og-btn og-btn--ghost og-btn--small',
+                  'data-og-enjoy-unsave': s.id,
+                  'aria-label': `‘${s.title}’ 저장 취소`,
+                  text: '저장 취소',
+                  onclick: () => {
+                    const ok = saved.unsave(s.type, s.id);
+                    renderResults();
+                    renderSaved();
+                    card.say(ok ? `‘${s.title}’ 저장을 취소했습니다.` : '저장을 취소하지 못했습니다.');
+                    card.focusTitle();
+                  },
+                })
+              )
+            )
+          )
+        )
+      );
+    }
+    put(card.body, el('div', { class: 'og-form__actions' }, el('a', { class: 'og-btn og-btn--ghost', href: '#saved', text: '저장 화면에서 보기' })));
+  }
+
+  /* [V2] 내가 쓴 관련 글 — only the person's own posts on this device that were started from a 즐길거리 item */
+  function renderPosts() {
+    const card = cards.posts;
+    clear(card.body);
+    const mine = relatedPosts(typeof posts === 'function' ? posts() : []);
+    if (!mine.length) {
+      put(card.body, el('p', { class: 'og-home-empty', 'data-og-enjoy-posts': '0', text: '아직 쓴 글이 없어요. 찾은 것을 ‘자세히’에서 열고 ‘후기 쓰기’를 누르면 시작할 수 있어요.' }));
+    } else {
+      put(
+        card.body,
+        el('ul', { class: 'og-home-items', 'aria-label': '내가 쓴 관련 글', 'data-og-enjoy-posts': String(mine.length) }, mine.map((p) => el('li', { class: 'og-home-item', 'data-og-enjoy-post': p.id }, el('div', { class: 'og-home-item__main og-home-item__main--plain' }, el('p', { class: 'og-home-item__title', text: p.title }), p.about ? el('p', { class: 'og-home-item__meta', text: `‘${p.about}’에 대한 글` }) : null), el('div', { class: 'og-home-item__actions' }, el('a', { class: 'og-btn og-btn--ghost og-btn--small', href: p.href, 'aria-label': `내가 쓴 ‘${p.title}’ 열기`, text: '글 열기' })))))
+      );
+    }
+    put(card.body, el('p', { class: 'og-home-note', text: '이 기기에만 있는 내 글이에요. 다른 사람의 글이나 참여 인원은 보여 드리지 않아요.' }));
   }
 
   /* #enjoy/<category> opens that category */
   function show(section) {
     const c = resolveEnjoySection(section);
     if (c !== state.category) choose(c, false);
+    renderToday();
+    renderMine();
     renderSaved();
+    renderPosts();
     for (const card of Object.values(cards)) card.status.textContent = '';
   }
 
+  /* [V2] coming back to the screen: what 내 정보, Saved and my posts hold now (the category and what was found stay) */
+  function refresh() {
+    renderToday();
+    renderMine();
+    if (!state.region) renderSearch(); /* the region set in 내 정보 since the last visit becomes the default again */
+    renderSaved();
+    renderPosts();
+  }
+
   build();
-  return Object.freeze({ show, items: () => state.items.map(({ _target, ...rest }) => rest), category: () => state.category, render: () => { renderCategories(); renderSearch(); renderResults(); renderSaved(); } });
+  return Object.freeze({ show, refresh, items: () => state.items.map(({ _target, ...rest }) => rest), category: () => state.category, render: () => { renderToday(); renderMine(); renderCategories(); renderSearch(); renderResults(); renderSaved(); renderPosts(); } });
 }

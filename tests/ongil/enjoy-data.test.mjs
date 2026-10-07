@@ -362,7 +362,12 @@ test('OG-EN-33 Care semantic separation: different types, categories and screens
 });
 
 test('OG-EN-34 Community no auto-post: nothing in 즐길거리 writes to community or creates a group', () => {
-  assert.equal(/community|post\(|createGroup|joinGroup|meetup/i.test(VIEW + CONTRACTS), false);
+  /* Enjoy V2 — WHY: 즐길거리 now LISTS the person's own posts that were started from a 즐길거리 item (내가 쓴 관련 글), read-only.
+     BEFORE: the words "community" / "post" could not appear in the view at all.
+     AFTER: reading is allowed; every way of writing, publishing or joining is still refused (and the next lines still hold). */
+  assert.equal(/post\(|createGroup|joinGroup|meetup/i.test(VIEW + CONTRACTS), false);
+  assert.equal(/posts\.(add|update|remove|save|compose)|posts\(\)\.(push|splice)/.test(VIEW + CONTRACTS), false, 'the list of own posts is only read');
+  assert.deepEqual((VIEW + CONTRACTS).match(/#community[^'"`]*/g).filter((h) => !h.startsWith('#community/post-')), [], 'the only community address is the person\'s own post');
   assert.deepEqual([...E.FUTURE_ENJOY_TYPES], ['TRIP', 'GROUP']);
   assert.equal(AREAS.find((a) => a.id === 'enjoy').modules.find((m) => m.id === 'groups').available, false);
   // Phase 6: 커뮤니티 owns communityPosts/groupDrafts/meetupDrafts. 즐길거리 still never touches them: its review button only
@@ -441,7 +446,8 @@ test('OG-EN-41 390 responsive rules: dialog rows stack, long titles and addresse
 });
 
 test('OG-EN-42 820 responsive rules: one card column with a readable width', () => {
-  assert.match(VIEW, /el\('div', \{ class: 'og-care-grid' \}, cards\.categories\.root/);
+  /* Enjoy V2 — WHY: two cards were added before the V1 cards. BEFORE: the grid started with cards.categories. AFTER: today, mine, then the V1 cards in their order. */
+  assert.match(VIEW, /el\('div', \{ class: 'og-care-grid' \}, cards\.today\.root, cards\.mine\.root, cards\.categories\.root, cards\.search\.root, cards\.results\.root, cards\.saved\.root, cards\.posts\.root\)/);
   assert.match(CSS, /\.og-family-grid, \.og-care-grid \{ display: grid; gap: 1rem; max-width: 60rem; \}/);
 });
 

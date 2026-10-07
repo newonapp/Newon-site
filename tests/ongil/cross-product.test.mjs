@@ -899,7 +899,7 @@ test('OG-IN8-65 regression: no new collection, backend, network, dependency or f
   /* Phase 10 moved the version on: assistant-v1 / ?v=20261003b10 (BEFORE: admin-v1 / 20261003a9) — ONGIL 도우미 was added. */
   /* Phase 11 moved the version on: hardening-v1 / ?v=20261003r11 (BEFORE: assistant-v1 / 20261003b10) — release hardening changed app.js and two stylesheets. */
   assert.match(JS['app.js'], /const APP_VERSION = 'hardening-v1';/);
-  assert.match(INDEX, /app\.js\?v=20261006m15/); // Health · Safety V2 production integration: app.js changed → entry moved on (BEFORE v13, AFTER 20261005h14) so a new page never runs a cached old entry /* My Life V2: app.js changed → entry moved on (BEFORE 20261005h14, AFTER 20261006m15) */
+  assert.match(INDEX, /app\.js\?v=20261007e16/); // Health · Safety V2 production integration: app.js changed → entry moved on (BEFORE v13, AFTER 20261005h14) so a new page never runs a cached old entry /* My Life V2: app.js changed → entry moved on (BEFORE 20261005h14, AFTER 20261006m15) */ /* Enjoy V2: app.js changed (tasks + own posts handed to 즐길거리, refresh on entry) → entry moved on (BEFORE 20261006m15, AFTER 20261007e16) */
   /* Family Connection V2: the one "Bearer " is family-remote.js's Authorization header (an ID token asked at call time). BEFORE: none. */
   assert.equal(/firebase|supabase|openai|anthropic|api[_-]?key/i.test(PRODUCTION), false);
   assert.deepEqual(Object.keys(CODE).filter((f) => /Bearer /.test(CODE[f])), ['family-remote.js']);
