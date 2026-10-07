@@ -45,10 +45,19 @@ export const LIVON_TYPES = Object.freeze(['12', '14', '28', '32']);
 export const LIVON_CATEGORY = Object.freeze({ 12: '여행', 14: '취미', 32: '여행' });
 export const COPYRIGHT = Object.freeze({ Type1: '공공누리 제1유형(출처표시)', Type3: '공공누리 제3유형(출처표시·변경금지)' });
 /*
- * LIVON region names → 법정동 시도코드 (lDongRegnCd). Values follow the national 법정동 code standard;
- * the TourAPI 명세 points to ldongCode2 for the list — re-check with ldongCode2 once a key is issued (문서 확인 필요).
+ * Region names → 법정동 시도코드 (lDongRegnCd), as the live service answers them (checked 2026-10-07 through the
+ * production route; every code below returned data or is the code the service itself puts on that region's items):
+ *   - 광주 and 전남 are one upstream region, 전남광주통합특별시 = 12. The old 광주 code 29 and 전남 code 46 return
+ *     nothing, so the only honest name for this choice is '광주·전남' — a request for '광주' alone is refused.
+ *   - 강원특별자치도 = 51 (old 42 returns nothing), 전북특별자치도 = 52 (old 45 returns nothing).
+ *   - 세종특별자치시 = 36110: the service uses the five-digit code as the 시도 code on 세종 items (36 returns nothing).
+ * Codes that return nothing (29, 36, 42, 45, 46) are not in this table and are refused as `area` values too.
  */
-export const REGION_CODES = Object.freeze({ 서울: '11', 부산: '26', 대구: '27', 인천: '28', 광주: '29', 대전: '30', 경기: '41' });
+export const REGION_CODES = Object.freeze({
+  서울: '11', 부산: '26', 대구: '27', 인천: '28', '광주·전남': '12', 대전: '30', 울산: '31', 세종: '36110',
+  경기: '41', 강원: '51', 충북: '43', 충남: '44', 전북: '52', 경북: '47', 경남: '48', 제주: '50'
+});
+const ACTIVE_CODES = Object.freeze(Object.values(REGION_CODES));
 
 export const LIMITS = Object.freeze({ maxPage: 50, maxRows: 20, maxRadius: 20000, maxImages: 20 });
 export const RADII = Object.freeze([500, 1000, 3000, 5000, 10000, 20000]);
@@ -87,7 +96,7 @@ export function parseParams({ query, region, area, sigungu, type, lat, lng, radi
   if (q.length > QUERY_MAX || /[\u0000-\u001f\u007f<>]/.test(q)) throw bad();
   let regn = '';
   if (region != null && region !== '') { if (!Object.prototype.hasOwnProperty.call(REGION_CODES, region)) throw bad(); regn = REGION_CODES[region]; }
-  if (area != null && area !== '') { if (!/^\d{2}$/.test(String(area)) || (regn && regn !== String(area))) throw bad(); regn = String(area); }
+  if (area != null && area !== '') { if (!ACTIVE_CODES.includes(String(area)) || (regn && regn !== String(area))) throw bad(); regn = String(area); }
   let sgg = '';
   if (sigungu != null && sigungu !== '') { if (!regn || !/^\d{3,5}$/.test(String(sigungu))) throw bad(); sgg = String(sigungu); }
   const la = num(lat), ln = num(lng);

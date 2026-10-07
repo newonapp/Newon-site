@@ -209,6 +209,28 @@ export function fromTourPlace(raw, category) {
  * ONGIL's regions are the short names; a full name is read as its short name, anything else stays empty.
  */
 const LONG_REGION = Object.freeze({ 서울특별시: '서울', 부산광역시: '부산', 대구광역시: '대구', 인천광역시: '인천', 광주광역시: '광주', 대전광역시: '대전', 울산광역시: '울산', 세종특별자치시: '세종', 경기도: '경기', 강원도: '강원', 강원특별자치도: '강원', 충청북도: '충북', 충청남도: '충남', 전라북도: '전북', 전북특별자치도: '전북', 전라남도: '전남', 경상북도: '경북', 경상남도: '경남', 제주특별자치도: '제주', 제주도: '제주' });
+/*
+ * [Phase B] The regions 즐길거리 can look in. They are the 시·도 of 내 정보, except that 광주 and 전남 are one choice:
+ * the tourism data files both under one region (전남광주통합특별시), so a list named '광주' alone would either be
+ * empty or quietly include 전남. 내 정보 keeps its own 17 names; nothing stored changes.
+ */
+const MERGED_REGIONS = Object.freeze({ '광주·전남': Object.freeze(['광주', '전남']) });
+const ENJOY_REGION_ORDER = ['서울', '부산', '대구', '인천', '광주·전남', '대전', '울산', '세종', '경기', '강원', '충북', '충남', '전북', '경북', '경남', '제주'];
+export const ENJOY_REGIONS = Object.freeze(ENJOY_REGION_ORDER.map((name) => Object.freeze({ id: name, label: name })));
+/* the 내 정보 regions one Enjoy region stands for (one name, or 광주 + 전남) */
+export function enjoyRegionParts(id) {
+  const v = str(id);
+  if (Object.prototype.hasOwnProperty.call(MERGED_REGIONS, v)) return [...MERGED_REGIONS[v]];
+  return ENJOY_REGIONS.some((r) => r.id === v) ? [v] : [];
+}
+/* 내 정보 region → the Enjoy region that contains it ('' when there is none) */
+export function enjoyRegionFor(profileRegion) {
+  const v = str(profileRegion);
+  if (!v) return '';
+  const hit = ENJOY_REGIONS.find((r) => enjoyRegionParts(r.id).includes(v));
+  return hit ? hit.id : '';
+}
+
 export function regionName(value) {
   const v = str(value);
   if (REGIONS.some((r) => r.id === v)) return v;

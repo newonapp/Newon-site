@@ -178,8 +178,20 @@ test('OG-EN-14 unavailable state: unconfigured, unsupported or failing sources a
   const off = api({ configured: { [LIFELONG_PROVIDER]: false, [KAKAO_PLACE_PROVIDER]: false, [TOUR_PROVIDER]: false } });
   assert.equal((await createEnjoyPlaceSource(off.opts).load({ region: '서울', word: '공원' })).reason, 'NOT_CONFIGURED');
   assert.equal(off.calls.length, 1, 'status first; no search without a key');
-  assert.equal((await createTourPlaceSource(api().opts).load({ region: '제주', contentType: '12' })).reason, 'REGION_NOT_SUPPORTED');
-  assert.deepEqual([...TOUR_REGIONS], ['서울', '부산', '대구', '인천', '광주', '대전', '경기']);
+  /*
+   * WHY CHANGED (Enjoy Phase B): the tourism source now covers the whole country, and 광주 + 전남 are one region.
+   * BEFORE: 제주 → REGION_NOT_SUPPORTED; TOUR_REGIONS = the seven regions 서울 부산 대구 인천 광주 대전 경기.
+   * AFTER:  제주 is asked for; '광주' or '전남' alone → REGION_NOT_SUPPORTED (no request); sixteen regions.
+   */
+  const jeju = api({ items: { [TOUR_PROVIDER]: [tour(1)] } });
+  assert.equal((await createTourPlaceSource(jeju.opts).load({ region: '제주', contentType: '12' })).state, 'ready');
+  for (const alone of ['광주', '전남']) {
+    const a = api();
+    assert.equal((await createTourPlaceSource(a.opts).load({ region: alone, contentType: '12' })).reason, 'REGION_NOT_SUPPORTED', alone);
+    assert.equal(a.calls.length, 0, 'nothing is sent for a name the tourism data does not have');
+  }
+  assert.equal((await createTourPlaceSource(api().opts).load({ region: '화성', contentType: '12' })).reason, 'REGION_REQUIRED');
+  assert.deepEqual([...TOUR_REGIONS], ['서울', '부산', '대구', '인천', '광주·전남', '대전', '울산', '세종', '경기', '강원', '충북', '충남', '전북', '경북', '경남', '제주']);
   assert.equal((await createTourPlaceSource(api().opts).load({ region: '서울', contentType: '32' })).reason, 'TYPE_REQUIRED', '숙박 is never asked for');
   assert.equal((await createEnjoyPlaceSource({}).load({ region: '서울', word: '공원' })).state, 'unavailable');
   assert.equal((await createEnjoyPlaceSource(api().opts).load({ region: '서울', word: '<script>' })).reason, 'WORD_REQUIRED');
@@ -515,4 +527,46 @@ test('OG-EN-50 regression: fetch injected once, sources only in data-source.js, 
   assert.deepEqual(TARGETS_BY_CATEGORY.TRAVEL, ['tour-12'], 'travel = tourist information only (no lodging, no transport)');
   assert.equal(SEARCH_TARGETS.length, 12);
   assert.equal(/server\/|KAKAO_REST_API_KEY|TOURAPI_SERVICE_KEY|PUBLIC_DATA_SERVICE_KEY/.test(strip(read('js', 'data-source.js'))), false);
+});
+
+/* ───────── Phase B: the regions 즐길거리 looks in ───────── */
+
+test('OG-EN-B1 Enjoy regions: sixteen choices in a natural order; 광주 and 전남 are one choice, 내 정보 keeps its own names', async () => {
+  const { REGIONS } = await import('../../ongil-start/js/contracts.js');
+  assert.deepEqual(E.ENJOY_REGIONS.map((r) => r.label), ['서울', '부산', '대구', '인천', '광주·전남', '대전', '울산', '세종', '경기', '강원', '충북', '충남', '전북', '경북', '경남', '제주']);
+  assert.deepEqual(E.ENJOY_REGIONS.map((r) => r.id), E.ENJOY_REGIONS.map((r) => r.label), 'the label is the name that is sent');
+  assert.equal(E.ENJOY_REGIONS.some((r) => r.id === '광주' || r.id === '전남'), false, 'no 광주-only or 전남-only choice');
+  assert.equal(REGIONS.length, 17, 'the profile regions are not changed');
+  assert.ok(REGIONS.some((r) => r.id === '광주') && REGIONS.some((r) => r.id === '전남'), 'a stored 내 정보 region stays valid');
+  /* every profile region belongs to exactly one Enjoy region, and nothing else does */
+  for (const r of REGIONS) assert.equal(E.ENJOY_REGIONS.filter((x) => E.enjoyRegionParts(x.id).includes(r.id)).length, 1, r.id);
+  assert.deepEqual([E.enjoyRegionFor('광주'), E.enjoyRegionFor('전남'), E.enjoyRegionFor('세종'), E.enjoyRegionFor('강원'), E.enjoyRegionFor(''), E.enjoyRegionFor('화성')], ['광주·전남', '광주·전남', '세종', '강원', '', '']);
+  assert.deepEqual([E.enjoyRegionParts('광주·전남'), E.enjoyRegionParts('제주'), E.enjoyRegionParts('광주'), E.enjoyRegionParts('x')], [['광주', '전남'], ['제주'], [], []]);
+});
+
+test('OG-EN-B2 the tourism request carries the chosen region name and one of 12 / 14 / 28 only — nothing about the person', async () => {
+  for (const region of TOUR_REGIONS) {
+    const a = api({ items: { [TOUR_PROVIDER]: [tour(1)] } });
+    assert.equal((await createTourPlaceSource(a.opts).load({ region, contentType: '14' })).state, 'ready', region);
+    const url = a.calls[a.calls.length - 1].url;
+    assert.equal(new URLSearchParams(url.slice(url.indexOf('?'))).get('region'), region);
+    assert.deepEqual([...new URLSearchParams(url.slice(url.indexOf('?'))).keys()].sort(), ['limit', 'page', 'provider', 'region', 'type']);
+  }
+  for (const type of ['15', '25', '32', '38', '39']) assert.equal((await createTourPlaceSource(api().opts).load({ region: '서울', contentType: type })).reason, 'TYPE_REQUIRED', type);
+  const zero = api({ items: { [TOUR_PROVIDER]: [] } });
+  assert.deepEqual(await createTourPlaceSource(zero.opts).load({ region: '세종', contentType: '12' }), { state: 'empty', items: [], attribution: '' }, 'nothing found stays nothing — no other region is shown instead');
+});
+
+test('OG-EN-B3 the screen: the region list is the Enjoy list, the default follows 내 정보, and a merged region is asked part by part', () => {
+  assert.match(VIEW, /options: ENJOY_REGIONS, hint \}, state\.region \|\| mine\)/);
+  assert.match(VIEW, /const mine = enjoyRegionFor\(myRegion\);/);
+  assert.match(VIEW, /if \(!ENJOY_REGIONS\.some\(\(x\) => x\.id === r\)\)/);
+  assert.doesNotMatch(VIEW, /options: REGIONS/);
+  assert.doesNotMatch(VIEW, /서울, 부산, 대구, 인천, 광주, 대전, 경기만/, 'the seven-region sentence is gone');
+  assert.match(VIEW, /sources\.tour\.load\(\{ region, contentType: target\.params\.contentType \}\)/, 'tourism: one request with the merged name');
+  assert.match(VIEW, /loadParts\(region, \(part\) => sources\.lifelong\.load\(\{ region: part,/);
+  assert.match(VIEW, /loadParts\(region, \(part\) => sources\.place\.load\(\{ region: part,/);
+  assert.match(VIEW, /partial: failed\.length > 0/, 'a part that could not be read is said, not hidden');
+  assert.match(VIEW, /return failed\[0\] \|\| answers\[0\];/, 'no part answered → unavailable before empty');
+  assert.doesNotMatch(VIEW, /geolocation|getCurrentPosition/);
 });

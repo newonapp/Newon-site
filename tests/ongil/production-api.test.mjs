@@ -95,9 +95,16 @@ test('API-03 query validation: oversized or markup queries and unknown parameter
   assert.equal(s.up.calls.length, 0);
 });
 
-test('API-04 region validation: TourAPI accepts only its seven regions, lifelong only real 시·도 names', async () => {
+/*
+ * WHY CHANGED (Enjoy Phase B): the route's region table follows what the live tourism service answers.
+ * BEFORE: seven regions; 제주 → 400; 광주 → code 29 (which returns nothing upstream).
+ * AFTER:  sixteen regions nationwide; 제주 → 200; 광주 / 전남 alone → 400; '광주·전남' → 200 (code 12).
+ */
+test('API-04 region validation: TourAPI accepts only the regions it has a live code for, lifelong only real 시·도 names', async () => {
   const s = stack();
-  assert.equal((await s.raw(`?provider=${TOUR_PROVIDER}&region=${encodeURIComponent('제주')}&type=12`)).status, 400);
+  assert.equal((await s.raw(`?provider=${TOUR_PROVIDER}&region=${encodeURIComponent('제주')}&type=12`)).status, 200);
+  assert.equal((await s.raw(`?provider=${TOUR_PROVIDER}&region=${encodeURIComponent('광주·전남')}&type=12`)).status, 200);
+  for (const alone of ['광주', '전남', '제주도']) assert.equal((await s.raw(`?provider=${TOUR_PROVIDER}&region=${encodeURIComponent(alone)}&type=12`)).status, 400, alone);
   assert.equal((await s.raw(`?provider=${LIFELONG_PROVIDER}&region=${encodeURIComponent('화성시청')}`)).status, 400);
   assert.equal((await s.raw(`?provider=${TOUR_PROVIDER}&region=${encodeURIComponent('서울')}&type=32`)).status, 200, 'lodging is a valid route type …');
   assert.doesNotMatch(read('ongil-start/js/data-source.js'), /TOUR_TYPE_IDS = Object\.freeze\(\[[^\]]*'32'/, '… but ONGIL never asks for lodging (12, 14, 28 only)');
@@ -357,4 +364,24 @@ test('API-32 "not connected" and "could not load" are told apart: no route (404)
   assert.match(home, /result\.reason === 'NO_ANSWER'/);
   assert.match(home, /지금은 강좌 정보를 받아오지 못했어요/);
   assert.match(home, /주변 정보는 아직 연결되지 않았어요/);
+});
+
+/* ───────── Enjoy Phase B: region name → live upstream code, end to end (ONGIL source → route → adapter) ───────── */
+test('API-B1 every Enjoy region reaches the tourism service with its live code; 세종 = 36110, 광주·전남 = 12; dead codes never leave', async () => {
+  const want = { 서울: '11', 부산: '26', 대구: '27', 인천: '28', '광주·전남': '12', 대전: '30', 울산: '31', 세종: '36110', 경기: '41', 강원: '51', 충북: '43', 충남: '44', 전북: '52', 경북: '47', 경남: '48', 제주: '50' };
+  const s = stack();
+  const src = createTourPlaceSource({ apiUrl: s.apiUrl, fetcher: s.fetcher });
+  for (const [region, code] of Object.entries(want)) {
+    const before = s.up.calls.length;
+    assert.equal((await src.load({ region, contentType: '12' })).state, 'ready', region);
+    const sent = s.up.calls.slice(before).filter((u) => u.pathname.endsWith('areaBasedList2'));
+    assert.equal(sent.length, 1, region + ': one upstream request');
+    assert.equal(sent[0].searchParams.get('lDongRegnCd'), code, region);
+    assert.equal(sent[0].searchParams.get('contentTypeId'), '12');
+  }
+  const codes = s.up.calls.map((u) => u.searchParams.get('lDongRegnCd')).filter(Boolean);
+  for (const dead of ['29', '36', '42', '45', '46']) assert.equal(codes.includes(dead), false, dead);
+  const before = s.up.calls.length;
+  for (const alone of ['광주', '전남']) assert.equal((await src.load({ region: alone, contentType: '12' })).state, 'unavailable');
+  assert.equal(s.up.calls.length, before, '광주 or 전남 alone sends nothing');
 });

@@ -28,9 +28,8 @@
 import { el, clear, append } from './dom.js';
 import { createCard, choiceButton, makeField, nextId } from './home-ui.js';
 import { setRegionState } from './views.js';
-import { REGIONS } from './contracts.js';
 import { formatDateKey, formatTime, dateKey } from './dates.js';
-import { ENJOY_CATEGORIES, ENJOY_TYPES, enjoyCategoryById, typeLabel, TOUR_TYPES, fromKakaoPlace, fromTourPlace, sanitizeEnjoyItems, filterEnjoy, availableEnjoyFilters, sortOptions, sortEnjoy, detailRows, savedInputFor, calendarDraft, isAlreadyInCalendar, familySendPreview, LINK_LABELS, interestShortcuts, interestLabels, pickedCalendarDraft, taskDraft, isAlreadyInTasks, savedActivities, itemFromSaved, savedDetailRows, SAVED_LINK_LABEL, relatedPosts, sourceSummary } from './enjoy-contracts.js';
+import { ENJOY_CATEGORIES, ENJOY_TYPES, enjoyCategoryById, typeLabel, TOUR_TYPES, fromKakaoPlace, fromTourPlace, sanitizeEnjoyItems, filterEnjoy, availableEnjoyFilters, sortOptions, sortEnjoy, detailRows, savedInputFor, calendarDraft, isAlreadyInCalendar, familySendPreview, LINK_LABELS, interestShortcuts, interestLabels, pickedCalendarDraft, taskDraft, isAlreadyInTasks, savedActivities, itemFromSaved, savedDetailRows, SAVED_LINK_LABEL, relatedPosts, sourceSummary, ENJOY_REGIONS, enjoyRegionFor, enjoyRegionParts } from './enjoy-contracts.js';
 
 /* append that skips null/false children (a plain Node.append would print "null") */
 const put = (node, ...kids) => append(node, kids);
@@ -72,7 +71,7 @@ const MESSAGES = {
   NOT_CONNECTED: '이 자료는 아직 연결되지 않았어요.',
   NO_ANSWER: '지금은 자료를 받아오지 못했어요. 잠시 뒤 다시 찾아 주세요.',
   REGION_REQUIRED: '지역을 골라 주세요.',
-  REGION_NOT_SUPPORTED: '관광 정보는 아직 서울, 부산, 대구, 인천, 광주, 대전, 경기만 찾을 수 있어요.',
+  REGION_NOT_SUPPORTED: '관광 정보는 이 지역 이름으로는 찾을 수 없어요. 지역을 다시 골라 주세요.',
 };
 
 /* onReview (Phase 6): optional; the review button hands the item to whoever owns writing (nothing is written here) */
@@ -196,8 +195,11 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
     const card = cards.search;
     clear(card.body);
     const myRegion = profile.getProfile().region;
-    const region = makeField({ name: 'region', label: '지역', type: 'select', required: true, options: REGIONS, hint: myRegion ? `기본값은 내 정보에 설정한 지역(${myRegion})이에요.` : '내 정보에 지역을 정해 두면 기본으로 골라 둘게요.' }, state.region || myRegion);
-    if (!state.region && !myRegion) region.input.prepend(el('option', { value: '', text: '지역 고르기', selected: true }));
+    /* [Phase B] 광주 and 전남 are one choice here (the tourism data files them together); 내 정보 is not changed */
+    const mine = enjoyRegionFor(myRegion);
+    const hint = !myRegion ? '내 정보에 지역을 정해 두면 기본으로 골라 둘게요.' : mine && mine !== myRegion ? `내 정보의 지역(${myRegion})은 여기서 ‘${mine}’으로 함께 찾아요. 자료가 두 지역을 하나로 묶어 제공해요.` : `기본값은 내 정보에 설정한 지역(${myRegion})이에요.`;
+    const region = makeField({ name: 'region', label: '지역', type: 'select', required: true, options: ENJOY_REGIONS, hint }, state.region || mine);
+    if (!state.region && !mine) region.input.prepend(el('option', { value: '', text: '지역 고르기', selected: true }));
     const targets = targetsNow();
     const what = makeField({ name: 'target', label: '무엇을 찾을까요?', type: 'select', required: true, options: targets.map((t) => ({ id: t.id, label: t.label })) }, targets[0] ? targets[0].id : '');
     const word = makeField({ name: 'word', label: '강좌 이름에 들어갈 말', type: 'text', required: false, maxlength: 30, hint: state.category ? `예: ${enjoyCategoryById(state.category).subs.slice(0, 3).join(', ')}` : '예: 스마트폰, 서예, 요가' });
@@ -211,7 +213,7 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
       event.preventDefault();
       const r = region.get();
       const t = targetById(what.get());
-      if (!REGIONS.some((x) => x.id === r)) {
+      if (!ENJOY_REGIONS.some((x) => x.id === r)) {
         region.input.setAttribute('aria-invalid', 'true');
         error.textContent = MESSAGES.REGION_REQUIRED;
         region.input.focus();
@@ -263,6 +265,24 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
     return zone;
   }
 
+  /*
+   * [Phase B] 강좌 and 장소 are asked per 시·도. A merged choice (광주·전남) asks each of its regions in turn and puts
+   * the answers together; when one of them could not be read the result says so instead of passing as complete, and
+   * when none could be read the answer is 'unavailable', never 'nothing found'.
+   */
+  async function loadParts(region, ask) {
+    const parts = enjoyRegionParts(region);
+    if (parts.length <= 1) return ask(parts[0] || region);
+    const answers = [];
+    for (const part of parts) {
+      try { answers.push(await ask(part)); } catch { answers.push({ state: 'unavailable', reason: 'NO_ANSWER', items: [] }); }
+    }
+    const failed = answers.filter((a) => a.state === 'unavailable');
+    const ready = answers.filter((a) => a.state === 'ready');
+    if (ready.length) return { state: 'ready', items: ready.flatMap((a) => a.items), attribution: ready[0].attribution, partial: failed.length > 0 };
+    return failed[0] || answers[0];
+  }
+
   async function runSearch(target, region, word, button) {
     const mine = ++ticket;
     button.disabled = true;
@@ -275,9 +295,9 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
     const category = target.category || state.category || (target.source === 'lifelong' ? 'LEARNING' : '');
     let result;
     try {
-      if (target.source === 'lifelong') result = await sources.lifelong.load({ region, query: word, limit: 20, category: category || 'LEARNING' });
+      if (target.source === 'lifelong') result = await loadParts(region, (part) => sources.lifelong.load({ region: part, query: word, limit: 20, category: category || 'LEARNING' }));
       else if (target.source === 'tour') result = await sources.tour.load({ region, contentType: target.params.contentType });
-      else result = await sources.place.load({ region, word: target.params.word });
+      else result = await loadParts(region, (part) => sources.place.load({ region: part, word: target.params.word }));
     } catch {
       result = { state: 'unavailable', reason: 'NO_ANSWER', items: [] };
     }
@@ -292,7 +312,7 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
     const tag = (i) => `${target.id}`;
     state.items = [...state.items.filter((i) => i._target !== target.id), ...items.map((i) => ({ ...i, _target: tag(i) }))];
     state.shown = PAGE_SIZE;
-    const text = result.state === 'ready' && items.length ? `${region}에서 ${items.length}건 찾았어요.` : result.state === 'empty' || result.state === 'ready' ? `${region}에서 찾지 못했어요.` : MESSAGES[result.reason] || MESSAGES.NOT_CONNECTED;
+    const text = result.state === 'ready' && items.length ? `${region}에서 ${items.length}건 찾았어요.${result.partial ? ' 일부 지역 자료는 받아오지 못했어요.' : ''}` : result.state === 'empty' || result.state === 'ready' ? `${region}에서 찾지 못했어요.` : MESSAGES[result.reason] || MESSAGES.NOT_CONNECTED;
     state.sourceStatus[target.id] = { state: items.length ? 'ready' : result.state === 'unavailable' ? 'unavailable' : 'empty', text };
     cards.search.body.querySelector('[data-og-region="enjoy-sources"]').replaceWith(statusList());
     refreshSummary();
