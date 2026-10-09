@@ -1159,7 +1159,7 @@ test('RH-43 cache / version consistency: every local file the page loads carries
   /* Home V2 — WHY: the Home V2 section frame and the smaller mobile hero are a new stylesheet, so ongil-home.css keeps its
      release version. BEFORE 7 ONGIL files · AFTER + ongil-home-v2.css (?v=20261009hv2) */
   assert.deepEqual(Object.keys(ongil).sort(), ['app.js', 'ongil-app.css', 'ongil-care.css', 'ongil-home-v2.css', 'ongil-home.css', 'ongil-life.css', 'ongil-shell.css', 'ongil-tokens.css']);
-  assert.equal(ongil['ongil-home-v2.css'], '20261009hv2');
+  assert.equal(ongil['ongil-home-v2.css'], '20261009hv3'); /* Home V2 large-text patch — WHY: ongil-home-v2.css changed ([HV2-A11Y]) → its address moved on (BEFORE 20261009hv2, AFTER 20261009hv3) */
   for (const f of ['ongil-shell.css', 'ongil-app.css', 'ongil-tokens.css', 'ongil-home.css']) assert.equal(ongil[f], '20261003r11', `${f} changed in Phase 11 and has the release's version`);
   /* Completion V2 changed app.js (and the modules it imports) and ongil-life.css: those two, and only those, moved on */
   /* Responsive Hardening V1: ongil-life.css changed (layout-only [RH1] block) → its address moved on (BEFORE ?v=20261004v13, AFTER ?v=20261007r14) */

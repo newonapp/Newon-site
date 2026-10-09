@@ -45,3 +45,18 @@ and never changes the address (browser test HV2-B10).
 `ongil-start/js/home-view.js` · `home-today.js` · `home-explore.js` · `areas.js` · `app.js` · `life-plan.js` (calendar
 `openAdd`) · `life-view.js` · `ongil-start/styles/ongil-home-v2.css` (new; `ongil-home.css` unchanged) · `index.html`
 (new stylesheet, `app.js?v=20261009hv2`, import map, family film sentence) · `tests/ongil/home-v2.test.mjs` (new).
+
+## Large-text accessibility patch
+
+Commit "Fix ONGIL Home V2 large-text accessibility" (on top of 4ca2647f). Layout only, in `ongil-home-v2.css`
+(`[HV2-A11Y]` block, address `?v=20261009hv2` → `?v=20261009hv3`); no script, markup or data change.
+
+- Before: at 200% text on a 320px phone four list rows had labels under 44px (checkbox and label shared a column a few
+  letters wide), and at 320 / 390px the two hero buttons ran off both edges of the screen.
+- After: when Home is narrower than 12rem (measured in text size) the card and row paddings give way and a checkbox sits
+  above its label; at ≤600px the hero buttons wrap. At ordinary text sizes nothing changes (same page length at 100%).
+- Browser tests HV2-B11…B15: 320 / 390 / 768 / 1024 / 1440px × 100% / 200%, empty and filled — overflow 0, cut text 0,
+  controls off screen 0, every target ≥ 44 × 44. HV2-B16: keyboard at 200% (Space, Enter, focus-visible) and the helper
+  panel opens by keyboard and by pointer and is still open 500ms later.
+- Known: pressing 도우미 열기 while the panel is already open closes it (the panel's own outside-click rule); unchanged here.
+- NOT VERIFIED: real phones and tablets, screen readers, the browser's own zoom menu, Safari / Firefox.
