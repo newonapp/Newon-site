@@ -231,13 +231,20 @@ test('OG-FM-16 help request not sent: no status says sent, nothing leaves the de
 
 test('OG-FM-17 home integration: the 가족 card states local facts only — no family activity', () => {
   const ex = read('js', 'home-explore.js');
-  assert.match(ex, /export function createFamilyCard\(\{ familyConnection, family = null \}\)/);
-  assert.match(ex, /공유하도록 고른 항목 \$\{chosen\}개 \(연결 전이라 아무에게도 보이지 않아요\)/);
+  /* Home V2 — WHY: the card now says what really works (connecting on this device) instead of "가족 연결은 준비 중", and it
+     shows connection facts only. BEFORE createFamilyCard({ familyConnection, family }) with a count of sharing choices ·
+     AFTER createFamilyCard({ family }) with connected members, waiting invitations and unsent help notes, plus the
+     sentences that nothing is shared automatically and that other-device connection is not open. */
+  assert.match(ex, /export function createFamilyCard\(\{ family = null \}\)/);
+  assert.match(ex, /기다리는 초대 \$\{pending\}개/);
   assert.match(ex, /적어 둔 도움 요청 \$\{open\}개 \(보내지 않음\)/);
+  assert.match(ex, /건강·안부·위치·연락처는 자동으로 공유되지 않아요/);
+  assert.match(ex, /다른 휴대폰이나 컴퓨터의 가족과 연결하는 기능은 아직 열리지 않았어요/);
+  assert.equal(/checkIn|medication|snapshot|previewFor|familyView\(/.test(strip(ex).slice(strip(ex).indexOf('createFamilyCard'), strip(ex).indexOf('ENJOY_CATEGORIES'))), false, 'the card never reads a record');
   assert.equal(/확인했어요|답장|읽었어요|접속|온라인/.test(strip(ex)), false, 'no invented family activity');
   /* Family Connection V1: Home also receives the family service, to say how many members are connected on this device */
   assert.match(read('js', 'app.js'), /family: \{ sharing: familySharing, help: helpRequests, connect: familyConnect \}/);
-  assert.match(read('js', 'home-view.js'), /'family-update': createFamilyCard\(\{ familyConnection, family \}\)/);
+  assert.match(read('js', 'home-view.js'), /made\.family = guard\('family', '가족', \(\) => createFamilyCard\(\{ family \}\)\);/); /* Home V2: BEFORE 'family-update' slot · AFTER 'family' section, built inside its guard */
 });
 
 test('OG-FM-18 search exclusion: sharing choices and help requests are never search results', async () => {

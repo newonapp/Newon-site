@@ -306,8 +306,11 @@ test('OG-EN-28 calendar duplicate protection: the same title on the same day and
 
 test('OG-EN-29 Home integration: six categories to #enjoy/<id>; only items found this visit, never called a recommendation', () => {
   assert.match(HOME, /href: `#enjoy\/\$\{ENJOY_LINKS\[name\]\}`/);
-  assert.match(HOME, /const items = typeof loaded === 'function' \? loaded\(\)\.slice\(0, 3\) : \[\];/);
-  assert.match(HOME, /추천이 아니라 즐길거리 화면에서 찾아 본 것 가운데 몇 가지예요/);
+  /* Home V2 — WHY: 오늘 뭐 하지? became the 즐길거리 section, and every read on Home is guarded so one failing source cannot
+     blank Home. BEFORE loaded().slice(0, 3) and '추천이 아니라 즐길거리 화면에서 …' · AFTER the same three items through read(),
+     and the note says '이번에' (this visit) explicitly. Still never a recommendation. */
+  assert.match(HOME, /const items = typeof loaded === 'function' \? read\(\(\) => loaded\(\), \[\]\)\.slice\(0, 3\) : \[\];/);
+  assert.match(HOME, /추천이 아니라 이번에 즐길거리 화면에서 찾아 본 것 가운데 몇 가지예요/);
   assert.equal(/추천 프로그램|오늘의 추천|맞춤 추천|인기/.test(HOME), false);
   assert.match(APP, /enjoyLoaded: \(\) => \(enjoyView \? enjoyView\.items\(\) : \[\]\),/);
 });

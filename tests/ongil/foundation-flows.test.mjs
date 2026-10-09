@@ -212,7 +212,8 @@ test('OG-SE-2 area and saved providers return real local data', async () => {
   assert.ok(med.results.every((r) => r.providerId === 'areas'));
   /* Phase 2A: Home's 복약 works now. Phase 3: 복약 also works in 내 생활 › 건강 and the 건강·안부 entry that points there,
      so those no longer say 준비 중; a section that is still unfinished (긴급 연락망) does. Completion V2 built 병원 일정, which no longer does. */
-  assert.equal(med.results.find((r) => r.id === 'home.medication').description.includes('준비 중'), false);
+  /* Home V2 — WHY: Home's 복약 now lives in the 건강·안부 section (home.health). BEFORE home.medication · AFTER home.health */
+  assert.equal(med.results.find((r) => r.id === 'home.health').description.includes('준비 중'), false);
   for (const id of ['life.medication', 'health.medication']) assert.equal(med.results.find((r) => r.id === id).description.includes('준비 중'), false, id);
   /* Completion V3 built 긴급 연락망 too; 도움 요청 (health.help) is still unfinished */
   /* Health · Safety V2 built 도움 요청 (health.help): BEFORE it said 준비 중 · AFTER it is listed as working */

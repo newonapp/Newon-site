@@ -668,7 +668,10 @@ test('RH-21 loading states: a wait is said in words and marked busy — never a 
   /* every list has words for "nothing yet" */
   const empties = ALL_CODE.split('\n').filter((line) => /^\s*emptyText: /.test(line));
   assert.ok(empties.length >= 10, String(empties.length));
-  for (const line of empties) assert.match(line, /[가-힣]|EMPTY\[/, line.trim());
+  /* Home V2 — WHY: the four 오늘 할 것 lists take their words from PLAN_GROUPS. BEFORE every emptyText line held Korean ·
+     AFTER `g.empty` is accepted, and each PLAN_GROUPS entry is checked to have Korean words below */
+  for (const line of empties) assert.match(line, /[가-힣]|EMPTY\[|g\.empty/, line.trim());
+  for (const m of JS['home-today.js'].matchAll(/empty: '([^']*)'/g)) assert.match(m[1], /[가-힣]/);
   for (const m of ALL_CODE.matchAll(/const EMPTY = \{([^}]*)\}/g)) assert.match(m[1], /[가-힣]/);
   /* requests that take too long stop by themselves */
   assert.match(JS['data-source.js'], /const TIMEOUT_MS = 8000;/);
@@ -1067,7 +1070,7 @@ const never = (phrases, where = COPY) => { for (const p of phrases) assert.equal
 test('RH-36 truthful family copy: nothing says something was sent, shared, or that family is connected', () => {
   never(['가족에게 보냈', '가족에게 전달했', '가족에게 알렸', '가족과 공유했', '공유되었습니다', '전송되었습니다', '전송했습니다', '가족 연결 완료', '가족과 연결되었', '연결되었습니다', '초대를 보냈', '초대장을 보냈', '가족이 확인했', '가족이 볼 수 있습니다', '안부를 전했']);
   assert.deepEqual(familyConnection(), { available: false, status: 'NOT_AVAILABLE' });
-  for (const sentence of ['가족 연결 기능은 준비 중이에요. 연결하기 전에는 어떤 내용도 가족에게 가지 않아요.', '가족 연결은 준비 중입니다. 연결하기 전에는 어떤 내용도 가족에게 전달되지 않습니다.', '지금은 가족과 연결되어 있지 않아서 보낼 수 없어요.']) assert.ok(COPY.includes(sentence), sentence);
+  for (const sentence of ['가족 연결 기능은 준비 중이에요. 연결하기 전에는 어떤 내용도 가족에게 가지 않아요.', '지금은 이 기기 안에서만 가족과 연결돼요. 다른 휴대폰이나 컴퓨터의 가족과 연결하는 기능은 아직 열리지 않았어요.' /* Home V2 — WHY: Home's 가족 card now says what works on this device. BEFORE '가족 연결은 준비 중입니다. 연결하기 전에는 …' · AFTER this sentence */, '지금은 가족과 연결되어 있지 않아서 보낼 수 없어요.']) assert.ok(COPY.includes(sentence), sentence);
   assert.match(JS['family-view.js'], /연결된 가족이 없어 지금은 아/);
   assert.match(JS['areas.js'], /가족에게 부탁하고 싶은 일을 적어 둡니다\. 아직 보내지는 않습니다\./);
   assert.equal(/sendsAnything: true|connected: true|recipients: [1-9]/.test(code(JS['family.js']) + code(JS['family-view.js']) + code(JS['onboarding.js'])), false);
@@ -1153,12 +1156,15 @@ test('RH-43 cache / version consistency: every local file the page loads carries
   /* the one unversioned file is the site's shared API config (a LIVON file ONGIL does not own) */
   assert.deepEqual(local.filter((u) => !/\?v=[0-9a-z]+$/.test(u)), ['/livon/livon-api-config.js']);
   const ongil = Object.fromEntries(local.filter((u) => u.startsWith('/ongil-start/')).map((u) => [u.replace(/^\/ongil-start\/(styles|js)\//, '').replace(/\?v=.*/, ''), u.split('?v=')[1]]));
-  assert.deepEqual(Object.keys(ongil).sort(), ['app.js', 'ongil-app.css', 'ongil-care.css', 'ongil-home.css', 'ongil-life.css', 'ongil-shell.css', 'ongil-tokens.css']);
+  /* Home V2 — WHY: the Home V2 section frame and the smaller mobile hero are a new stylesheet, so ongil-home.css keeps its
+     release version. BEFORE 7 ONGIL files · AFTER + ongil-home-v2.css (?v=20261009hv2) */
+  assert.deepEqual(Object.keys(ongil).sort(), ['app.js', 'ongil-app.css', 'ongil-care.css', 'ongil-home-v2.css', 'ongil-home.css', 'ongil-life.css', 'ongil-shell.css', 'ongil-tokens.css']);
+  assert.equal(ongil['ongil-home-v2.css'], '20261009hv2');
   for (const f of ['ongil-shell.css', 'ongil-app.css', 'ongil-tokens.css', 'ongil-home.css']) assert.equal(ongil[f], '20261003r11', `${f} changed in Phase 11 and has the release's version`);
   /* Completion V2 changed app.js (and the modules it imports) and ongil-life.css: those two, and only those, moved on */
   /* Responsive Hardening V1: ongil-life.css changed (layout-only [RH1] block) → its address moved on (BEFORE ?v=20261004v13, AFTER ?v=20261007r14) */
   assert.equal(ongil['ongil-life.css'], '20261007r14', 'ongil-life.css changed in Completion V2 (v12) and again in V3 (v13)');
-  assert.equal(ongil['app.js'], '20261007e16', 'app.js changed in Completion V2 (v12), V3 (v13) Health · Safety V2 (20261005h14) and My Life V2 (20261006m15)'); /* My Life V2: app.js changed → entry moved on (BEFORE 20261005h14, AFTER 20261006m15) */ /* Enjoy V2: app.js changed (tasks + own posts handed to 즐길거리, refresh on entry) → entry moved on (BEFORE 20261006m15, AFTER 20261007e16) */
+  assert.equal(ongil['app.js'], '20261009hv2', 'app.js changed in Completion V2 (v12), V3 (v13) Health · Safety V2 (20261005h14) and My Life V2 (20261006m15)'); /* My Life V2: app.js changed → entry moved on (BEFORE 20261005h14, AFTER 20261006m15) */ /* Enjoy V2: app.js changed (tasks + own posts handed to 즐길거리, refresh on entry) → entry moved on (BEFORE 20261006m15, AFTER 20261007e16) */ /* Home V2: app.js changed (the Home V2 sections; community counts, the helper button and the 내 생활 add forms handed to Home) → entry moved on (WHY: a new page must never run a cached old entry; BEFORE 20261007e16, AFTER 20261009hv2) */
   assert.match(APP, /const APP_VERSION = 'hardening-v1';/);
   /* modules are imported by relative path with no version of their own: they are revalidated by the host's default
      caching (no immutable / long max-age rule exists for /ongil-start in the deployment config) */
@@ -1189,7 +1195,7 @@ test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', ()
   assert.deepEqual([...INTERNAL_VIEWS], ['admin']);
   /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ /* My Life V2: + memos (BEFORE 27, AFTER 28) */ assert.equal(COLLECTIONS.length, 28); // Completion V3: + emergencyContacts
   /* My Life V2: + memos, life-today (BEFORE 80, AFTER 82) */  /* Family Connection V1: + 5 family modules (BEFORE 71, AFTER 76) */ /* Family Connection V2: + family-remote, family-remote-view (BEFORE 76, AFTER 78) */ /* Health · Safety V2: + health-changes, health-safety-view (BEFORE 78, AFTER 80) */ assert.equal(JS_FILES.length, 82, 'no module was added or removed in Phase 11; Completion V1 added health-measures; Completion V2 added health-appointments; Completion V3 added emergency-contacts');
-  assert.equal(CSS_FILES.length, 6);
+  /* Home V2: + ongil-home-v2.css (BEFORE 6, AFTER 7). WHY: Home V2's section frame is its own file; ongil-home.css is unchanged */ assert.equal(CSS_FILES.length, 7);
   assert.deepEqual([A.EVENT_NAMES.length, C.SAVED_TYPES.length, C.NOTIFICATION_TYPES.length, R.CONTENT_TYPE_IDS.length], [22, 7, 9, 7]);
   const w = world();
   const search = createSearch();
@@ -1200,7 +1206,7 @@ test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', ()
   /* Family Connection V1: + family-connection.test.mjs (BEFORE 27, AFTER 28). WHY: the new feature brought its own test file. */
   /* Family Connection V2: + family-v2.test.mjs (BEFORE 28, AFTER 29) */
   /* Community V2: + community-v2.test.mjs (BEFORE 29, AFTER 30) */
-  /* My Life V2: + my-life-v2.test.mjs (BEFORE 31, AFTER 32) */ /* Responsive Hardening V1: + responsive-hardening.test.mjs (BEFORE 32, AFTER 33). WHY: the hardening brought its own test file. */ /* Enjoy V2: + enjoy-v2.test.mjs (BEFORE 33, AFTER 34). WHY: the feature brought its own test file. */ assert.equal(tests.length, 34); // Health · Safety V2: + health-safety-v2.test.mjs (BEFORE 30, AFTER 31) · Completion V2: + health-calendar.test.mjs · Completion V3: + emergency-contacts.test.mjs · Product Completion Audit V1: + product-completion.test.mjs (BEFORE 26, AFTER 27)
+  /* My Life V2: + my-life-v2.test.mjs (BEFORE 31, AFTER 32) */ /* Responsive Hardening V1: + responsive-hardening.test.mjs (BEFORE 32, AFTER 33). WHY: the hardening brought its own test file. */ /* Enjoy V2: + enjoy-v2.test.mjs (BEFORE 33, AFTER 34). WHY: the feature brought its own test file. */ /* Home V2: + home-v2.test.mjs (BEFORE 34, AFTER 35). WHY: the feature brought its own test file. */ assert.equal(tests.length, 35); // Health · Safety V2: + health-safety-v2.test.mjs (BEFORE 30, AFTER 31) · Completion V2: + health-calendar.test.mjs · Completion V3: + emergency-contacts.test.mjs · Product Completion Audit V1: + product-completion.test.mjs (BEFORE 26, AFTER 27)
   for (const f of ['livon', 'server/livon', 'tests/livon']) assert.ok(fs.existsSync(path.join(ROOT, f)), `${f} is still there, untouched by ONGIL`);
   /* Family Connection V2: server/ongil/family is the one ONGIL backend (BEFORE: no server/ongil) */
   assert.deepEqual(fs.readdirSync(path.join(ROOT, 'server/ongil')), ['family']);

@@ -196,16 +196,24 @@ let pendingReview = null;
 const home = createHomeView({
   host: doc.querySelector('[data-og-modules="home"]'),
   doc,
-  stores: { profile, checkIn, schedule, medication, dailyLife, tasks, routines, saved, familyConnection: onboarding.familyConnection },
+  stores: { profile, checkIn, schedule, medication, dailyLife, tasks, routines, saved },
   source: nearbySource,
-  /* the 가족 card states only local facts: sharing choices made, help requests written (not sent) */
+  /* the 가족 card states only connection facts on this device and the user's own unsent help notes — never a record */
   family: { sharing: familySharing, help: helpRequests, connect: familyConnect },
-  /* 오늘 뭐 하지?: what the user found on 즐길거리 this visit (set once that screen exists, below) */
+  /* Home V2 › 커뮤니티: counts of the user's own posts and group drafts on this device (never their words) */
+  community: { posts: communityPosts, groups: groupDrafts },
+  /* 즐길거리: what the user found on that screen this visit (set once that screen exists, below) */
   enjoyLoaded: () => (enjoyView ? enjoyView.items() : []),
-  /* Home has no task form of its own: "할 일 추가" opens the one in 내 생활 › 할 일 */
-  onAddTask: () => {
-    pendingLifeAdd = 'tasks';
-    win.location.hash = lifeHash('tasks');
+  /* Home has no forms of its own: 일정 추가 · 할 일 추가 · 약 추가 open the one form in 내 생활 (calendar · tasks · medication) */
+  onAdd: (section) => {
+    pendingLifeAdd = section;
+    win.location.hash = lifeHash(section);
+  },
+  /* ONGIL 도우미: the same header panel (its own button opens it, so focus and closing work as everywhere else). It is
+     opened after the press has finished, so the panel's own "a click outside closes me" rule does not close it again. */
+  onHelper: () => {
+    const button = doc.querySelector('[data-og-tool="assistant"]');
+    if (button && button.getAttribute('aria-expanded') !== 'true') win.setTimeout(() => button.click(), 0);
   },
 });
 

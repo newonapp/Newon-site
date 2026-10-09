@@ -244,7 +244,12 @@ export function createCalendarSection({ schedule, tasks, routines = null, now = 
     },
   });
   list.render();
-  return { card, render: list.reset, select, selected: () => selected, month: () => month, view: () => view, setView };
+  /* Home V2: "일정 추가" on Home opens this very form, for today (the one place events are written) */
+  const openAdd = () => {
+    select(today(now));
+    list.openAdd();
+  };
+  return { card, render: list.reset, select, selected: () => selected, month: () => month, view: () => view, setView, openAdd };
 }
 
 /* ───────── 할 일 ───────── */

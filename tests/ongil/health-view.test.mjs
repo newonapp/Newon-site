@@ -8,8 +8,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { LIFE_SECTIONS, LIFE_GROUPS, DATED_GROUPS, resolveSection, groupOf } from '../../ongil-start/js/life-view.js';
-import { QUICK_ACTIONS } from '../../ongil-start/js/home-explore.js';
-import { HOME_LEVELS } from '../../ongil-start/js/home-view.js';
+/* Home V2: HOME_LEVELS → HOME_SECTIONS; 빠른 실행 (QUICK_ACTIONS) was removed */
+import { HOME_SECTIONS } from '../../ongil-start/js/home-view.js';
 import { AREAS } from '../../ongil-start/js/areas.js';
 import { LIFE_LIMITS } from '../../ongil-start/js/life-contracts.js';
 import { HEALTH_SAFETY_NOTE } from '../../ongil-start/js/life-health.js';
@@ -90,7 +90,9 @@ test('OG-HL-36 empty states: each health card says plainly that nothing is writt
   assert.match(SCREEN, /'data-og-health-empty': 'symptoms'/);
   /* no store or screen seeds a record: every add/save in the health files is driven by a user action or argument */
   assert.equal(/\.(add|save|setTaken)\(\{ ?(name|text|symptoms|status): ?'[가-힣]/.test(HEALTH_CODE + strip(APP)), false, 'no sample data');
-  assert.match(JS['home-today.js'], /emptyText: \(\) => \(medication\.count\(\) \? '오늘 먹을 약으로 적어 둔 것이 없어요\.' : '적어 둔 약이 없어요\.'\)/);
+  /* Home V2 — WHY: Home's 복약 is no longer an editable list (it marks only), so its empty words sit in a plain line.
+     BEFORE emptyText: () => (medication.count() ? … : …) · AFTER the same two sentences, read through the guard */
+  assert.match(JS['home-today.js'], /text: read\(\(\) => medication\.count\(\), 0\) \? '오늘 먹을 약으로 적어 둔 것이 없어요\.' : '적어 둔 약이 없어요\.'/);
 });
 
 test('OG-HL-37 long text: every free text is bounded and wraps', () => {
@@ -140,13 +142,14 @@ test('OG-HL-40 regression: wiring, routes, Home layout, quick actions, search, s
   /* one store object per kind, shared by Home and 내 생활 */
   for (const name of ['createCheckInStore', 'createMedicationStore', 'createSymptomStore', 'createHealthNoteStore']) assert.equal((APP.match(new RegExp(`${name}\\(storage\\)`, 'g')) || []).length, 1, name);
   assert.match(APP, /health: \{ checkIn, symptoms, medication, healthNotes, healthMeasures \}/);
-  assert.match(APP, /stores: \{ profile, checkIn, schedule, medication, dailyLife, tasks, routines, saved, familyConnection: onboarding\.familyConnection \}/);
-  /* Home: same rows, same six shortcuts, check-in and medication link into 건강 */
-  assert.deepEqual(HOME_LEVELS.map((r) => r.slots.join(',')), ['check-in,schedule', 'tasks,routines', 'medication,life-check', 'family-update,today', 'nearby,quick-actions']);
-  assert.equal(QUICK_ACTIONS.length, 6);
+  /* Home V2 — WHY: Home no longer receives the unused familyConnection() stub, and its health cards sit in the 건강·안부
+     section. BEFORE five rows of two (… medication,life-check …) and six shortcuts · AFTER the 건강·안부 section holds
+     check-in · medication · life-check, there are no shortcuts, and check-in and medication still link into 건강 */
+  assert.match(APP, /stores: \{ profile, checkIn, schedule, medication, dailyLife, tasks, routines, saved \}/);
+  assert.deepEqual([...HOME_SECTIONS.find((s) => s.id === 'health').cards], ['check-in', 'medication', 'life-check']);
   assert.match(JS['home-today.js'], /moreLinks\(\[\{ label: '몸 상태·증상도 적기', href: '#life\/checkin' \}\]\)/);
   assert.match(JS['home-today.js'], /href: '#life\/medication'/);
-  assert.match(JS['home-view.js'], /'check-in': createCheckInCard\(\{ checkIn, onChange: renderSummary \}\)/);
+  assert.match(JS['home-view.js'], /made\['check-in'\] = guard\('check-in', '오늘의 안부', \(\) => createCheckInCard\(\{ checkIn, onChange: renderSummary \}\)\);/);
   /* search still has two providers; no health provider was registered */
   // Phase 4: + public care provider (3); no health provider
   // Phase 5: + public 즐길거리 provider (4); still no health provider

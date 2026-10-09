@@ -249,7 +249,7 @@ export function createLifeView({ host, stores, health, saved = null, now = () =>
     });
     sections = {
       overview: { cards: [overviewCards.today, agenda.card, overviewCards.health, overviewCards.upcoming, overviewCards.week, overviewCards.memo, overviewCards.activities].filter(Boolean), render: renderOverview },
-      calendar: { cards: [calendar.card], render: calendar.render, api: calendar },
+      calendar: { cards: [calendar.card], render: calendar.render, api: calendar, openAdd: calendar.openAdd },
       tasks: { cards: [tasks.card], render: tasks.render, openAdd: tasks.openAdd },
       routines: { cards: routines.cards, render: routines.render },
       /* the four 생활 cards share one date bar, so the group renders as a whole (once, from its first section) */
@@ -346,7 +346,7 @@ export function createLifeView({ host, stores, health, saved = null, now = () =>
 
   build();
   show('overview');
-  /* open the "add" form of a section that has one (used by Home's "할 일 추가") */
+  /* open the "add" form of a section that has one (used by Home's "일정 추가" · "할 일 추가" · "약 추가") */
   function openAdd(section) {
     const target = sections[resolveSection(section)];
     if (!target || typeof target.openAdd !== 'function') return false;

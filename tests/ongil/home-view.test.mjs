@@ -7,8 +7,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { AREAS } from '../../ongil-start/js/areas.js';
 import { resolveView } from '../../ongil-start/js/router.js';
-import { HOME_LEVELS } from '../../ongil-start/js/home-view.js';
-import { ENJOY_CATEGORIES, QUICK_ACTIONS } from '../../ongil-start/js/home-explore.js';
+/* Home V2: HOME_LEVELS → HOME_SECTIONS; 빠른 실행 (QUICK_ACTIONS) was removed */
+import { HOME_SECTIONS } from '../../ongil-start/js/home-view.js';
+import { ENJOY_CATEGORIES } from '../../ongil-start/js/home-explore.js';
 import { createSearch, createAreaProvider, createSavedProvider } from '../../ongil-start/js/search.js';
 import { createStorage, createMemoryBackend } from '../../ongil-start/js/storage.js';
 import { createSavedStore } from '../../ongil-start/js/saved.js';
@@ -25,91 +26,100 @@ const ALL = HOME_FILES.map((f) => SRC[f]).join('\n');
 const strip = (s) => s.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
 const CODE = strip(ALL);
 const CSS = read('styles', 'ongil-home.css');
+/* Home V2: the section frame and the smaller mobile hero are in their own stylesheet (ongil-home.css is unchanged) */
+const CSS2 = read('styles', 'ongil-home-v2.css');
 const home = AREAS.find((a) => a.id === 'home');
 
-// Phase 2C: Home gained two modules — 오늘 할 일 (tasks) and 오늘 루틴 (routines), showing My Life's own records.
-// The list is now eleven; every other check of this test is unchanged.
-test('OG-HM-1 all eleven Home modules exist and are marked available', () => {
-  assert.deepEqual(home.modules.map((m) => m.id), ['greeting', 'check-in', 'schedule', 'tasks', 'routines', 'medication', 'life-check', 'family-update', 'today', 'nearby', 'quick-actions']);
+// Home V2 — WHY: Home became nine sections in the approved order (오늘 · 오늘 할 것 · 건강·안부 · 가족 · 즐길거리 ·
+// 돌봄·서비스 · 커뮤니티 · ONGIL 도우미 · 서비스 안내). BEFORE eleven modules in five rows of two (… nearby · quick-actions)
+// · AFTER greeting + eight sections whose cards are listed in HOME_SECTIONS; every slot still has its card.
+test('OG-HM-1 all Home V2 sections exist and are marked available', () => {
+  assert.deepEqual(home.modules.map((m) => m.id), ['greeting', 'plan', 'health', 'family', 'enjoy', 'care', 'community', 'helper', 'guide']);
   assert.ok(home.modules.every((m) => m.available === true));
   assert.match(INDEX, /<p class="og-greeting" data-og-greeting data-og-slot="home\.greeting">/);
-  const slots = HOME_LEVELS.flatMap((r) => r.slots);
-  assert.deepEqual(slots, home.modules.map((m) => m.id).filter((id) => id !== 'greeting'));
-  for (const slot of slots) assert.match(ALL, new RegExp(`createCard\\(\\{ slot: '${slot}'`), slot);
+  assert.deepEqual(HOME_SECTIONS.map((s) => s.id), home.modules.map((m) => m.id).filter((id) => id !== 'greeting'));
+  for (const slot of HOME_SECTIONS.flatMap((s) => s.cards)) assert.ok(new RegExp(`slot: '${slot}'|slot: g\\.slot`).test(ALL), slot);
+  assert.deepEqual(HOME_SECTIONS.flatMap((s) => s.cards).filter((c) => c.startsWith('plan-')), ['plan-events', 'plan-tasks', 'plan-routines', 'plan-overdue', 'plan-upcoming']);
   assert.match(INDEX, /<section class="og-band" data-og-modules="home" aria-labelledby="og-home-section-title">/);
   assert.match(SRC['home-view.js'], /id: 'og-home-section-title'/);
   assert.match(SRC['home-view.js'], /'data-og-extra': 'home'/);
 });
 
-// Phase 2C: a fifth row (오늘 할 일 · 오늘 루틴) sits between today's cards and the care cards, and rows are named.
-// Still four visual levels, two modules a row, most important first — and the row names are now asserted too.
-test('OG-HM-2 Home has a hierarchy: four levels, two modules each, most important first', () => {
-  assert.deepEqual(HOME_LEVELS.map((r) => [r.level, [...r.slots]]), [[1, ['check-in', 'schedule']], [2, ['tasks', 'routines']], [2, ['medication', 'life-check']], [3, ['family-update', 'today']], [4, ['nearby', 'quick-actions']]]);
-  assert.deepEqual(HOME_LEVELS.map((r) => r.group), ['today', 'plan', 'care', 'connection', 'discovery']);
-  assert.ok(HOME_LEVELS.every((r, i) => i === 0 || r.level >= HOME_LEVELS[i - 1].level), 'weight never rises further down the page');
-  const level = (slot) => Number(new RegExp(`createCard\\(\\{ slot: '${slot}', title: '[^']+', level: (\\d)`).exec(ALL)[1]);
-  for (const row of HOME_LEVELS) for (const slot of row.slots) assert.equal(level(slot), row.level, slot);
+// Home V2 — WHY: the hierarchy is now the section order itself. BEFORE four visual levels in rows of two · AFTER the two
+// grouped sections (오늘 할 것, 건강·안부) have an h3 and h4 cards, the single-card sections follow two to a row in order.
+test('OG-HM-2 Home has a hierarchy: the day first, then the rest of ONGIL', () => {
+  assert.deepEqual(HOME_SECTIONS.map((s) => s.title), ['오늘 할 것', '건강·안부', '가족', '즐길거리', '돌봄·서비스', '커뮤니티', 'ONGIL 도우미', '서비스 안내']);
+  assert.match(SRC['home-view.js'], /const GROUPED = Object\.freeze\(\['plan', 'health'\]\);/);
+  assert.match(SRC['home-view.js'], /el\('h3', \{ class: 'og-home-section__title', id: titleId, tabindex: '-1', text: s\.title \}\)/);
   for (const n of [1, 2, 3, 4]) assert.match(CSS, new RegExp(`\\.og-home-card--l${n} \\{`));
-  assert.match(CSS, /\.og-home-card--l1 \.og-home-card__title \{ font-size: 1\.75rem; \}/);
+  assert.match(CSS2, /\.og-home-section__title \{/);
+  assert.match(CSS2, /@media \(max-width: 860px\) \{\n\s+\.og-home-row--sections \{ grid-template-columns: 1fr; \}/);
 });
 
 test('OG-HM-3 hero greeting: time of day and date, nickname optional, poster can be added later', () => {
-  assert.match(SRC['home-view.js'], /greeting\(hour, profile\.getProfile\(\)\.nickname\)/);
+  /* Home V2 — WHY: the nickname is read inside a guard so a damaged profile cannot stop Home. BEFORE greeting(hour, profile.getProfile().nickname) · AFTER the same value through a try */
+  assert.match(SRC['home-view.js'], /nickname = profile\.getProfile\(\)\.nickname;/);
+  assert.match(SRC['home-view.js'], /greeting\(hour, nickname\)/);
   assert.match(SRC['home-view.js'], /formatDay\(now\(\)\)/);
   assert.match(read('js', 'film.js'), /getAttribute\('poster'\)/);
   assert.equal(/poster="/.test(INDEX), false, 'no poster asset exists yet, so none is referenced');
   assert.equal((INDEX.match(/<video/g) || []).length, 8); // Completion V2: + the Store film
 });
 
-test('OG-HM-4 family card shows the real state: not connected, nothing sent, link to the family view', () => {
+// Home V2 — WHY: the 가족 card now says what really works (connecting on this device) and what does not (other devices),
+// instead of "준비 중". BEFORE '아직 연결된 가족이 없어요.' + the unavailable status · AFTER connection facts only.
+test('OG-HM-4 family card shows the real state: this device only, nothing shared automatically, link to the family view', () => {
   const src = SRC['home-explore.js'];
-  assert.match(src, /아직 연결된 가족이 없어요\./);
-  assert.match(src, /'data-og-family-status': state\.status/);
-  assert.match(src, /연결하기 전에는 어떤 내용도 가족에게 전달되지 않습니다/);
-  assert.match(src, /href: '#family', text: '가족 화면 보기'/);
+  assert.match(src, /아직 연결한 가족이 없어요\./);
+  assert.match(src, /이 기기에서 연결한 가족 \$\{connected\}명/);
+  assert.match(src, /지금은 이 기기 안에서만 가족과 연결돼요/);
+  assert.match(src, /건강·안부·위치·연락처는 자동으로 공유되지 않아요/);
+  assert.match(src, /link\('#family', connected \? '가족 화면 보기' : '가족 화면에서 연결 살펴보기'\)/);
   for (const fake of ['딸', '아들', '손주', '며느리', '사위', '님이 보냈', '새 메시지', '읽지 않은 메시지', '가족 소식 1']) assert.equal(ALL.includes(fake), false, fake);
 });
 
-// Phase 5: 즐길거리 exists, so the card offers its six categories (여행 added), each opening that category, and may list
-// a few items the user actually found there this visit — explicitly "not a recommendation". The invented-content check
-// below is unchanged.
-test('OG-HM-5 "오늘 뭐 하지?" offers the six categories and leads to 즐길거리 — no invented programme', () => {
+// Home V2 — WHY: 오늘 뭐 하지? became the 즐길거리 section: the six categories, what the person saved (only when something
+// was saved) and what was found this visit. BEFORE createEnjoyCard({ loaded }) · AFTER createEnjoyCard({ loaded, saved, profile, source }).
+test('OG-HM-5 즐길거리 offers the six categories and leads to 즐길거리 — no invented programme', () => {
   assert.deepEqual([...ENJOY_CATEGORIES], ['취미', '배움', '운동', '문화', '나들이', '여행']);
   assert.match(SRC['home-explore.js'], /class: 'og-linkchip', href: `#enjoy\/\$\{ENJOY_LINKS\[name\]\}`/);
-  assert.match(SRC['home-explore.js'], /createEnjoyCard\(\{ loaded = null \} = \{\}\)/);
-  assert.match(SRC['home-view.js'], /today: createEnjoyCard\(\{ loaded: enjoyLoaded \}\)/, 'only what was loaded on 즐길거리; no recommendation source');
-  assert.match(SRC['home-explore.js'], /추천이 아니라 즐길거리 화면에서 찾아 본 것 가운데 몇 가지예요/);
+  assert.match(SRC['home-explore.js'], /export function createEnjoyCard\(\{ loaded = null, saved = null, profile = null, source = null \} = \{\}\)/);
+  assert.match(SRC['home-view.js'], /createEnjoyCard\(\{ loaded: enjoyLoaded, saved, profile, source \}\)/, 'only what was loaded or saved; no recommendation source');
+  assert.match(SRC['home-explore.js'], /추천이 아니라 이번에 즐길거리 화면에서 찾아 본 것 가운데 몇 가지예요/);
+  assert.match(SRC['home-explore.js'], /mine\.total\n\s+\? \[/, 'saved activities only when something was saved');
   for (const fake of ['교실 모집', '특강', '축제', '무료 체험', '선착순', '오늘의 추천:', '인기 프로그램']) assert.equal(ALL.includes(fake), false, fake);
 });
 
+// Home V2 — WHY: 내 주변 joined the 즐길거리 card. BEFORE its own card · AFTER a part of 즐길거리 with the same button-only
+// rule; an unusable source now points to 즐길거리 ('주변 강좌 정보는 지금 쓸 수 없어요').
 test('OG-HM-6 nearby: asked only on a button press; unavailable and empty are plain states, not errors', () => {
   const src = SRC['home-explore.js'];
   assert.match(src, /onclick: async \(\) => \{[\s\S]*?source\.load\(\{ region \}\)/);
   assert.equal((src.match(/source\.load\(/g) || []).length, 1, 'never loaded on render');
   assert.match(src, /setRegionState\(zone, 'loading'/);
   assert.match(src, /setRegionState\(zone, 'empty', '지금 모집 중인 강좌를 찾지 못했어요\.'\)/);
-  assert.match(src, /setRegionState\(zone, 'empty', '주변 정보는 아직 연결되지 않았어요\./);
+  assert.match(src, /setRegionState\(zone, 'empty', '주변 강좌 정보는 지금 쓸 수 없어요\./);
   assert.equal(/setRegionState\(zone, 'error'/.test(src), false);
   assert.match(src, /사는 지역을 정하면/);
-  assert.match(src, /href: '#account', text: '내 정보에서 지역 정하기'/);
+  assert.match(src, /link\('#account', '내 정보에서 지역 정하기'\)/);
   assert.match(src, /지역 이름만 보내며, 버튼을 눌렀을 때만 찾습니다/);
   assert.match(src, /`자료: \$\{result\.attribution\}`/);
   assert.match(src, /rel: 'noopener noreferrer'/);
   assert.match(read('js', 'app.js'), /source: nearbySource/);
 });
 
-// Phase 2C: "할 일 추가" became a real action (it opens My Life's task form) and "가족 보기" left the shortcuts —
-// the 가족 card right above already links to the family view. Still six shortcuts; each action must be wired.
-test('OG-HM-7 quick actions: three real actions, three real routes, no assistant', () => {
-  assert.deepEqual(QUICK_ACTIONS.map((a) => [a.id, a.label, a.kind]), [['add-event', '일정 추가', 'action'], ['add-task', '할 일 추가', 'action'], ['add-medication', '약 추가', 'action'], ['life', '내 생활 보기', 'route'], ['enjoy', '즐길거리 찾기', 'route'], ['care', '돌봄·서비스 찾기', 'route']]);
-  for (const a of QUICK_ACTIONS.filter((x) => x.kind === 'action')) assert.ok(SRC['home-view.js'].includes(`'${a.id}': () =>`), `${a.id} is wired`);
-  assert.match(SRC['home-view.js'], /'add-task': \(\) => onAddTask && onAddTask\(\)/);
-  assert.match(read('js', 'app.js'), /pendingLifeAdd = 'tasks';\s*win\.location\.hash = lifeHash\('tasks'\);/);
-  for (const a of QUICK_ACTIONS.filter((x) => x.kind === 'route')) assert.equal(resolveView(a.href), a.id);
-  assert.match(SRC['home-view.js'], /'add-event': \(\) => reveal\(scheduleCard\.card, scheduleCard\.openAdd\)/);
-  assert.match(SRC['home-view.js'], /'add-medication': \(\) => reveal\(medicationCard\.card, medicationCard\.openAdd\)/);
-  assert.equal(/AI|assistant|물어보기/.test(QUICK_ACTIONS.map((a) => a.label + a.id).join(' ')), false);
-  assert.equal(/ONGIL AI|AI에게/.test(ALL + INDEX), false);
+// Home V2 — WHY: 빠른 실행 repeated the menu and the cards, so it was removed (approved decision 3). The three add actions sit
+// on their own cards and open the one form in 내 생활. BEFORE six shortcuts and Home's own event / medication forms ·
+// AFTER no shortcut section, onAdd(section) → life.openAdd, and the helper is the rule-based ONGIL 도우미 (never "AI").
+test('OG-HM-7 add actions open My Life\'s own forms; no shortcut section; the helper is not called an AI', () => {
+  assert.equal(/QUICK_ACTIONS|createQuickActionsCard|빠른 실행/.test(ALL), false);
+  assert.match(SRC['home-today.js'], /add\('calendar', '일정 추가'\)/);
+  assert.match(SRC['home-today.js'], /add\('tasks', '할 일 추가'\)/);
+  assert.match(SRC['home-today.js'], /'data-og-home-add': 'medication', text: '약 추가', onclick: \(\) => onAdd && onAdd\('medication'\)/);
+  assert.match(read('js', 'app.js'), /pendingLifeAdd = section;\s*win\.location\.hash = lifeHash\(section\);/);
+  assert.equal(/schedule\.add\(|schedule\.remove\(|medication\.add\(|medication\.update\(|medication\.remove\(/.test(CODE), false, 'Home never makes, edits or deletes an event or a medication');
+  assert.equal(/ONGIL AI|AI에게|AI 비서|인공지능 상담/.test(ALL + INDEX), false);
+  assert.match(SRC['home-explore.js'], /자유로운 대화를 하거나 글을 지어내는 AI는 아니에요/);
 });
 
 test('OG-HM-8 accessibility: named groups, labelled fields, status lines, confirm before delete, no colour-only state', () => {
@@ -118,7 +128,8 @@ test('OG-HM-8 accessibility: named groups, labelled fields, status lines, confir
   assert.match(SRC['home-ui.js'], /el\('label', \{ class: 'og-field__label', for: id \}/);
   assert.match(SRC['home-ui.js'], /'aria-pressed': pressed \? 'true' : 'false'/);
   assert.match(SRC['home-ui.js'], /text: pressed \? '✓' : ''/, 'the chosen option carries a tick, not only a colour');
-  for (const label of ['오늘의 안부 고르기', '오늘 식사 횟수', '오늘 마신 물', '오늘 걷기·운동', '물 한 잔 빼기', '물 한 잔 더하기', '즐길거리 종류', '빠른 실행']) assert.ok(ALL.includes(`'${label}'`), label);
+  /* Home V2: BEFORE … '빠른 실행' · AFTER '오늘 먹을 약' and '돌봄·서비스 종류' (빠른 실행 was removed) */
+  for (const label of ['오늘의 안부 고르기', '오늘 식사 횟수', '오늘 마신 물', '오늘 걷기·운동', '물 한 잔 빼기', '물 한 잔 더하기', '즐길거리 종류', '오늘 먹을 약', '돌봄·서비스 종류']) assert.ok(ALL.includes(`'${label}'`), label);
   const list = SRC['home-list.js'];
   assert.match(list, /role: 'alert'/);
   assert.match(list, /setAttribute\('aria-invalid', 'true'\)/);
@@ -176,5 +187,6 @@ test('OG-HM-11 private Home data is not searchable: only menus and saved items a
   // Phase 4: a third provider, 돌봄·서비스, searches only PUBLIC care items loaded on that screen (never a personal record).
   assert.match(app, /search\.registerProvider\(createCareProvider\(\(\) => care\.items\(\)\)\);/);
   const hit = await search.query('오늘 일정');
-  assert.deepEqual([hit.results[0].id, hit.results[0].href], ['home.schedule', '#ongil-home']);
+  /* Home V2 — WHY: 오늘 일정 is part of the 오늘 할 것 section. BEFORE home.schedule · AFTER home.plan (still on Home) */
+  assert.deepEqual([hit.results[0].id, hit.results[0].href], ['home.plan', '#ongil-home']);
 });

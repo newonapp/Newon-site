@@ -113,7 +113,9 @@ test('PR-06 community boundary on the published page: stored on this device only
 });
 
 test('PR-07 family boundary: connection is not available and nothing is sent', () => {
-  assert.match(HTML, /가족 연결은 아직 준비 중입니다/);
+  /* Home V2 — WHY: connecting on this device works (Family Connection V1, LOCAL); only other-device connection is not open.
+     BEFORE '가족 연결은 아직 준비 중입니다' · AFTER '지금은 이 기기 안에서만 가족과 연결할 수 있어요' */
+  assert.match(HTML, /지금은 이 기기 안에서만 가족과 연결할 수 있어요/);
   assert.match(AREAS.find((a) => a.id === 'family').notice, /가족 연결은 아직 할 수 없습니다/);
   for (const f of ['family-view.js', 'store-view.js', 'enjoy-view.js', 'care-view.js']) assert.doesNotMatch(CODE[f], /보냈어요|전송했|공유됐어요|전달됐어요|공유했어요/, f);
 });
