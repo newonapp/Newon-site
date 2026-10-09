@@ -29,3 +29,24 @@
 @media (max-width: 480px) {
   .og-home-section__title { font-size: 1.4rem; }
 }
+
+/* [HV2-A11Y] Large text on a narrow phone (200% at 320 / 390px). Before: the Home cards kept their full side padding, so
+   a list row's checkbox and label shared a column only a few letters wide (labels under 44px), and the two hero buttons
+   did not wrap and ran off both edges of the screen. Layout only — no markup, data or behaviour changes. At ordinary
+   text sizes nothing here changes what is drawn: the container rule applies only when Home is narrower than 12rem
+   (measured in text size), and the hero rule only lets the buttons wrap when they would leave the screen. */
+.og-home--v2 { container-type: inline-size; container-name: og-home; }
+@container og-home (max-width: 12rem) {
+  .og-home-card, .og-home-card--l1 { padding: 1rem 0.6rem; }
+  .og-home-item { padding: 0.6rem 0.5rem; }
+  /* the checkbox sits above its label, so the label (the 44px target) takes the row's full width */
+  .og-home-item__main { grid-template-columns: minmax(0, 1fr); }
+  .og-home-item__check ~ p { grid-column: 1; }
+  .og-home-item__actions { width: 100%; }
+  .og-home-item__actions .og-btn { flex: 1 1 auto; }
+}
+@media (max-width: 600px) {
+  /* the hero buttons wrap and may take two lines instead of leaving the screen */
+  #home .og-hero__actions { flex-wrap: wrap; justify-content: center; max-width: 100%; }
+  #home .og-hero__primary, #home .og-hero__secondary { white-space: normal; text-align: center; max-width: 100%; }
+}

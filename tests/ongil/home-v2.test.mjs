@@ -266,7 +266,8 @@ test('HV2-15 Privacy (static): Home sends nothing, stores nothing of its own and
 });
 
 test('HV2-16 Cache references: the entry and the new stylesheet have new addresses; the import map is current; the mobile hero is smaller', () => {
-  assert.match(INDEX, /<link rel="stylesheet" href="\/ongil-start\/styles\/ongil-home-v2\.css\?v=20261009hv2" \/>/);
+  /* Home V2 large-text patch — WHY: ongil-home-v2.css changed ([HV2-A11Y] block) → its address moved on. BEFORE ?v=20261009hv2, AFTER ?v=20261009hv3 */
+  assert.match(INDEX, /<link rel="stylesheet" href="\/ongil-start\/styles\/ongil-home-v2\.css\?v=20261009hv3" \/>/);
   assert.match(INDEX, /<script type="module" src="\/ongil-start\/js\/app\.js\?v=20261009hv2"><\/script>/);
   assert.ok(INDEX.indexOf('ongil-home.css?v=') < INDEX.indexOf('ongil-home-v2.css?v='), 'V2 rules come after the Home rules');
   const r = spawnSync(process.execPath, ['scripts/ongil-module-versions.mjs', '--check'], { cwd: ROOT, encoding: 'utf8' });
@@ -471,4 +472,65 @@ test('HV2-B10 browser privacy: drawing and refreshing Home writes nothing, sends
   assert.deepEqual(r, { writes: 0, same: true });
   assert.deepEqual(api, [], 'no API call while drawing Home');
   await ctx.close();
+});
+
+/* ═════════════ large text (200%) — accessibility patch ═════════════ */
+
+/* the controls of Home that leave the screen, are smaller than 44 × 44 CSS px, or cut their text — plus the hero buttons */
+const fit = (pg) => pg.evaluate((scope) => {
+  const vis = (e) => { const s = getComputedStyle(e); const b = e.getBoundingClientRect(); return s.display !== 'none' && s.visibility !== 'hidden' && b.width > 0 && b.height > 0 && !e.closest('[hidden]'); };
+  const vw = document.documentElement.clientWidth;
+  const root = document.querySelector(scope);
+  const inter = [...root.querySelectorAll('a[href],button,input,select,textarea')].filter(vis);
+  const target = (e) => (e.type === 'checkbox' ? (e.id && document.querySelector(`label[for="${e.id}"]`)) || e.closest('label') || e : e);
+  const small = inter.filter((e) => { const b = target(e).getBoundingClientRect(); return b.height < 44 || b.width < 44; }).map((e) => e.outerHTML.slice(0, 80));
+  const outside = inter.filter((e) => { const b = e.getBoundingClientRect(); return b.left < -1 || b.right > vw + 1; }).map((e) => e.outerHTML.slice(0, 80));
+  const clipped = [...root.querySelectorAll('p,li,h2,h3,h4,h5,button,a,span')].filter(vis).filter((e) => !e.closest('.visually-hidden')).filter((e) => (e.scrollWidth > e.clientWidth + 2 && getComputedStyle(e).overflowX === 'hidden') || e.getBoundingClientRect().right > vw + 1).map((e) => e.textContent.slice(0, 30));
+  const hero = [...document.querySelectorAll('#home .og-hero__actions a')].filter((a) => { const b = a.getBoundingClientRect(); return b.left < -1 || b.right > vw + 1 || b.height < 44; }).map((a) => a.textContent);
+  return { over: document.documentElement.scrollWidth - vw, small, outside, clipped, hero };
+}, HOME_SEL);
+
+for (const [id, w] of [['HV2-B11', 320], ['HV2-B12', 390], ['HV2-B13', 768], ['HV2-B14', 1024], ['HV2-B15', 1440]]) {
+  test(`${id} browser ${w}px at 100% and 200% text, empty and filled: no overflow, no cut text, nothing off screen, every target ≥ 44 × 44`, { skip }, async () => {
+    const pg = await page(w);
+    for (const step of ['empty', 'filled']) {
+      if (step === 'filled') await fill(pg);
+      for (const size of ['100%', '200%']) {
+        await pg.evaluate((s) => { document.documentElement.style.fontSize = s; }, size);
+        await pg.waitForTimeout(150);
+        const r = await fit(pg);
+        assert.equal(r.over, 0, `${w} ${step} ${size}: page overflow ${r.over}px`);
+        assert.deepEqual(r.small, [], `${w} ${step} ${size}: targets under 44px`);
+        assert.deepEqual(r.outside, [], `${w} ${step} ${size}: a control off screen`);
+        assert.deepEqual(r.clipped, [], `${w} ${step} ${size}: cut text`);
+        assert.deepEqual(r.hero, [], `${w} ${step} ${size}: hero buttons`);
+      }
+      await pg.evaluate(() => { document.documentElement.style.fontSize = ''; });
+    }
+    assert.deepEqual(pg._errors, []);
+    await pg.context().close();
+  });
+}
+
+test('HV2-B16 browser 200% text at 390px: keyboard still works — Space marks a row, 건너뜀 by Enter, the helper panel opens and stays open', { skip }, async () => {
+  const pg = await page(390);
+  await fill(pg);
+  await pg.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
+  await pg.waitForTimeout(150);
+  const box = pg.locator(`${HOME_SEL} [data-og-slot="home.plan-routines"] .og-home-item__check`).first();
+  await box.focus(); await pg.keyboard.press('Space'); await pg.waitForTimeout(200);
+  assert.equal(await pg.evaluate(() => window.Ongil.routines.listForDate()[0].completed), true);
+  assert.equal(await pg.evaluate(() => document.activeElement.classList.contains('og-home-item__check') && document.activeElement.matches(':focus-visible')), true, 'focus stays on the row, visibly');
+  await pg.locator(`${HOME_SEL} [data-og-slot="home.medication"] [data-og-med-mark="SKIPPED"]`).first().focus();
+  await pg.keyboard.press('Enter'); await pg.waitForTimeout(200);
+  assert.equal(await pg.evaluate(() => window.Ongil.medication.listForDate()[0].skipped), true);
+  const open = pg.locator(`${HOME_SEL} [data-og-home-helper="open"]`);
+  await open.focus(); await pg.keyboard.press('Enter'); await pg.waitForTimeout(500);
+  assert.deepEqual(await pg.evaluate(() => [document.querySelector('[data-og-tool="assistant"]').getAttribute('aria-expanded'), document.querySelector('#og-panel-assistant').hidden]), ['true', false], 'opened by keyboard and still open 500ms later');
+  await pg.keyboard.press('Escape'); await pg.waitForTimeout(200);
+  assert.equal(await pg.evaluate(() => document.querySelector('#og-panel-assistant').hidden), true, 'Escape closes it');
+  await pg.locator(`${HOME_SEL} [data-og-home-helper="open"]`).click(); await pg.waitForTimeout(500);
+  assert.equal(await pg.evaluate(() => document.querySelector('#og-panel-assistant').hidden), false, 'opened by a pointer and still open 500ms later');
+  assert.deepEqual(pg._errors, []);
+  await pg.context().close();
 });
