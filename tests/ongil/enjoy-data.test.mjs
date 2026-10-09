@@ -573,3 +573,52 @@ test('OG-EN-B3 the screen: the region list is the Enjoy list, the default follow
   assert.match(VIEW, /return failed\[0\] \|\| answers\[0\];/, 'no part answered → unavailable before empty');
   assert.doesNotMatch(VIEW, /geolocation|getCurrentPosition/);
 });
+
+/* ───────── Phase B integration: region of a tourism result, failure vs. nothing found ───────── */
+
+test('OG-EN-B4 a 광주·전남 result is labelled 광주·전남 (read from its address); the address itself is kept as the source wrote it', () => {
+  const raw = (address, region = null) => ({ type: 'place', providerId: '1001', title: '순천만습지', metadata: { contentTypeId: '12' }, location: { region, address }, contact: {}, source: { attribution: '한국관광공사' } });
+  const merged = E.fromTourPlace(raw('전남광주통합특별시 순천시 순천만길 513'), 'OUTING');
+  assert.deepEqual([merged.region, merged.address], ['광주·전남', '전남광주통합특별시 순천시 순천만길 513'], 'region shown, address unchanged');
+  assert.equal(E.normalizePlace(merged).region, '광주·전남', 'the merged region survives normalisation');
+  /* a region the route did name, and the 17 names of 내 정보, are read as before */
+  assert.equal(E.fromTourPlace(raw('세종특별자치시 조치원읍 1', '세종특별자치시'), 'OUTING').region, '세종');
+  assert.equal(E.fromTourPlace(raw('강원특별자치도 춘천시 1'), 'OUTING').region, '강원');
+  assert.equal(E.fromTourPlace(raw('광주광역시 북구 1', '광주광역시'), 'OUTING').region, '광주');
+  assert.equal(E.fromTourPlace(raw('어딘가 1'), 'OUTING').region, '', 'an unknown first word gives no region — nothing is guessed');
+  assert.deepEqual([E.regionFromAddress('전남광주통합특별시 목포시'), E.regionFromAddress('서울특별시 종로구'), E.regionFromAddress(''), E.regionFromAddress(null)], ['광주·전남', '서울', '', '']);
+  /* the result filter offers 광주·전남 only when a result carries it; other regions are not affected */
+  assert.deepEqual(E.availableEnjoyFilters([E.normalizePlace(merged), place()]).regions, ['서울', '광주·전남']);
+  assert.deepEqual(E.filterEnjoy([E.normalizePlace(merged), place()], { region: '광주·전남' }).map((i) => i.id), ['tour-1001']);
+  assert.equal(E.normalizePlace({ ...merged, region: '광주전남' }).region, '', 'only the one merged name is accepted');
+});
+
+test('OG-EN-B5 tourism: a failed answer is never shown as "nothing found"; only a real empty list is empty; 세종 is sent by name', async () => {
+  const run = async (respond, region = '세종') => {
+    const calls = [];
+    const fetcher = async (url) => {
+      calls.push(url);
+      if (/action=status/.test(url)) return { ok: true, json: async () => ({ ok: true, providers: { [TOUR_PROVIDER]: { configured: true } } }) };
+      return respond();
+    };
+    const r = await createTourPlaceSource({ apiUrl: (p) => p, fetcher }).load({ region, contentType: '12' });
+    return { r, calls };
+  };
+  const ok = (body) => async () => ({ ok: true, json: async () => body });
+  const empty = await run(ok({ ok: true, items: [] }));
+  assert.equal(empty.r.state, 'empty');
+  assert.match(empty.calls[1], /provider=kr-tourapi&region=%EC%84%B8%EC%A2%85&type=12&page=1&limit=20$/, '세종 is sent as its name; the server maps it to 36110');
+  for (const [label, respond] of [['HTTP 500', async () => ({ ok: false, status: 500, json: async () => ({}) })], ['HTTP 400', async () => ({ ok: false, status: 400, json: async () => ({}) })], ['ok:false', ok({ ok: false, items: [] })], ['no list', ok({ ok: true })], ['network', async () => { throw new Error('down'); }]]) {
+    const { r } = await run(respond);
+    assert.equal(r.state, 'unavailable', label);
+    assert.notEqual(r.state, 'empty', `${label} is not "nothing found"`);
+  }
+  const ready = await run(ok({ ok: true, items: [{ type: 'place', providerId: '7', title: '베어트리파크', metadata: { contentTypeId: '12' }, location: { address: '세종특별자치시 전동면' } }] }));
+  assert.equal(ready.r.state, 'ready');
+  /* every region of the list is sent by its name, and 광주 / 전남 alone are refused before any request */
+  for (const region of E.ENJOY_REGIONS.map((x) => x.id)) assert.match((await run(ok({ ok: true, items: [] }), region)).calls[1], new RegExp(`region=${encodeURIComponent(region).replace(/%/g, '%')}&type=12`), region);
+  for (const region of ['광주', '전남']) {
+    const { r, calls } = await run(ok({ ok: true, items: [] }), region);
+    assert.deepEqual([r.state, r.reason, calls.length], ['unavailable', 'REGION_NOT_SUPPORTED', 0], region);
+  }
+});

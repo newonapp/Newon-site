@@ -44,7 +44,8 @@ export const FUTURE_ENJOY_TYPES = Object.freeze(['TRIP', 'GROUP']);
 export const typeLabel = (id) => (ENJOY_TYPES.find((t) => t.id === id) || { label: '' }).label;
 
 const ID = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,120}$/;
-const regionOf = (v) => (REGIONS.some((r) => r.id === v) ? v : '');
+/* a 시·도 of 내 정보, or — [Phase B] — the one merged tourism region '광주·전남' (a result can only be placed there) */
+const regionOf = (v) => (REGIONS.some((r) => r.id === v) || v === '광주·전남' ? v : '');
 const day = (v) => (isDateKey(v) ? v : '');
 const dateText = (v) => (typeof v === 'string' && /^\d{4}-\d{2}-\d{2}/.test(v) && isDateKey(v.slice(0, 10)) ? v.slice(0, 10) : '');
 const coord = (v, lo, hi) => (typeof v === 'number' && Number.isFinite(v) && v >= lo && v <= hi ? v : null);
@@ -193,7 +194,8 @@ export function fromTourPlace(raw, category) {
     category: enjoyCategoryById(category) ? category : tour.category,
     placeType: tour.label,
     summary: str(raw.summary),
-    region: regionName(loc.region),
+    /* [Phase B] the route names no 시·도 for an address it does not know (전남광주통합특별시): it is read from the address */
+    region: regionName(loc.region) || regionFromAddress(loc.address),
     address: [str(loc.address), str(loc.detailAddress)].filter(Boolean).join(' '),
     phone: str(contact.phone),
     latitude: loc.latitude,
@@ -229,6 +231,18 @@ export function enjoyRegionFor(profileRegion) {
   if (!v) return '';
   const hit = ENJOY_REGIONS.find((r) => enjoyRegionParts(r.id).includes(v));
   return hit ? hit.id : '';
+}
+
+/*
+ * [Phase B] 시·도 names the tourism data writes that are not one of the 17 of 내 정보. 전남광주통합특별시 is how TourAPI
+ * files 광주 and 전남 together (code 12): shown as '광주·전남'. The address itself is never changed.
+ */
+const MERGED_ADDRESS_REGIONS = Object.freeze({ 전남광주통합특별시: '광주·전남', 광주전남통합특별시: '광주·전남' });
+/* the 시·도 an address starts with, as ONGIL names it ('' when it is not one we know) */
+export function regionFromAddress(address) {
+  const first = str(address).split(/\s+/)[0] || '';
+  if (Object.prototype.hasOwnProperty.call(MERGED_ADDRESS_REGIONS, first)) return MERGED_ADDRESS_REGIONS[first];
+  return regionName(first);
 }
 
 export function regionName(value) {
@@ -303,7 +317,8 @@ export function availableEnjoyFilters(items) {
   return {
     types: ENJOY_TYPE_IDS.filter((t) => list.some((i) => i.type === t)),
     categories: ENJOY_CATEGORY_IDS.filter((c) => list.some((i) => i.category === c)),
-    regions: REGIONS.map((r) => r.id).filter((r) => list.some((i) => i.region === r)),
+    /* [Phase B] + 광주·전남, the merged tourism region, when a result carries it */
+    regions: [...REGIONS.map((r) => r.id), '광주·전남'].filter((r) => list.some((i) => i.region === r)),
   };
 }
 

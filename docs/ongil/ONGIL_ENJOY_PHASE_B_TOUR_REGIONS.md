@@ -68,3 +68,16 @@ the six categories, search targets, filters, sort, pagination, detail, styleshee
   checked here. LIVON needs its own follow-up (offer 광주·전남, or drop 광주).
 - Items from 광주·전남 carry no short region label on the result row (the address line shows 전남광주통합특별시 …).
 - 강좌 / 장소 for 광주·전남 make two requests (one per 시·도).
+
+## Integration with main (Home V2) — 2026-10-09
+
+- Merged into the line of main 70a816aa (ONGIL Home V2 + large-text patch). One conflict, `tests/livon/release-candidate.test.mjs`,
+  resolved as the union of the named allowlist entries (SAVED_V2, HOME_V2, ONGIL_ENJOY_PHASE_B, LIVON_TOUR_REGION_LABEL).
+- 광주·전남 results: TourAPI writes their address as `전남광주통합특별시 …`, a 시·도 name the route does not know, so a result had
+  no region. ONGIL now reads the region from the address (`regionFromAddress`) and shows `광주·전남`; the address is kept as written.
+  The result filter offers 광주·전남 only when a result carries it (OG-EN-B4).
+- A failed answer (HTTP error, `ok:false`, no list, network) is `unavailable`, never "nothing found"; only an empty list is `empty`
+  (OG-EN-B5).
+- LIVON: the 광주 chip of Explore asks TourAPI for `광주·전남` (and says so); every other list keeps 광주 and nothing stored changes.
+  `explore-page.js` and `livon-data-providers.js` (changed in b316e5e0 without a new address) move to `?v=20261009eb1`.
+- 세종 (36110) and the `region=` path of the other regions: live response still **NOT VERIFIED** (no reachable preview with the key).
