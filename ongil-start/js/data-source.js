@@ -22,7 +22,7 @@
  * lifelong-learning answer is normalised once (enjoy-contracts fromLifelong) for both Home and 즐길거리.
  */
 import { safeText, REGIONS } from './contracts.js';
-import { fromLifelong, normalizeProgram } from './enjoy-contracts.js';
+import { fromLifelong, normalizeProgram, ENJOY_REGIONS } from './enjoy-contracts.js';
 
 export const SOURCE_STATES = Object.freeze(['ready', 'empty', 'unavailable']);
 export const LIFELONG_PROVIDER = 'kr-lifelong-class';
@@ -196,19 +196,20 @@ export function createEnjoyPlaceSource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS
 }
 
 /*
- * 관광지 · 문화시설 · 레포츠 through kr-tourapi (한국관광공사). The route accepts a region only for the 시·도 its
- * adapter has a code for (server/livon/data/providers/tourapi.mjs REGION_CODES); other regions are answered here as
- * 'unavailable' instead of sending a request the route would refuse. 숙박·쇼핑·음식점 are never asked for.
+ * 관광지 · 문화시설 · 레포츠 through kr-tourapi (한국관광공사). The route accepts exactly the region names its
+ * adapter has a live code for (server/livon/data/providers/tourapi.mjs REGION_CODES) — the whole country, with 광주
+ * and 전남 as the one region the tourism data files them under ('광주·전남'). Any other name ('광주' or '전남' alone
+ * included) is answered here as 'unavailable' instead of sending a request the route would refuse.
+ * 숙박·쇼핑·음식점 are never asked for.
  */
-export const TOUR_REGIONS = Object.freeze(['서울', '부산', '대구', '인천', '광주', '대전', '경기']);
+export const TOUR_REGIONS = Object.freeze(ENJOY_REGIONS.map((r) => r.id));
 const TOUR_TYPE_IDS = Object.freeze(['12', '14', '28']);
 const TOUR_LIMIT = 20;
 export function createTourPlaceSource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS } = {}) {
   const api = dataClient({ apiUrl, fetcher, timeoutMs });
   async function load({ region, contentType } = {}) {
     if (!api.usable) return unavailable('NOT_CONNECTED');
-    if (!REGIONS.some((r) => r.id === region)) return unavailable('REGION_REQUIRED');
-    if (!TOUR_REGIONS.includes(region)) return unavailable('REGION_NOT_SUPPORTED');
+    if (!TOUR_REGIONS.includes(region)) return unavailable(REGIONS.some((r) => r.id === region) ? 'REGION_NOT_SUPPORTED' : 'REGION_REQUIRED');
     if (!TOUR_TYPE_IDS.includes(contentType)) return unavailable('TYPE_REQUIRED');
     const ready = await api.configured(TOUR_PROVIDER);
     if (ready !== 'yes') return unavailable(api.notReady(ready));

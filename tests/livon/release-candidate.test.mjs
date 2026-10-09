@@ -162,6 +162,25 @@ const familyV2In = () => git('log', '--format=%s', 'HEAD').stdout.split('\n').in
 /* main 4b46d50f0: ONGIL module cache/version hardening. Its one file outside ongil-start/ is the generator of the ONGIL import
    map (a build-time script, not a LIVON file). Accepted only on a line that contains that commit, which must have added it. */
 export const ONGIL_MODULE_VERSIONS = { subject: 'Harden ONGIL Community V2 production integration', files: ['scripts/ongil-module-versions.mjs'] };
+/*
+ * ONGIL Enjoy Phase B: the TourAPI region table follows the codes the live service answers (nationwide; 광주·전남 = 12,
+ * 세종 = 36110; the dead codes 29 / 36 / 42 / 45 / 46 are refused).
+ * WHY CHANGED: the shared TourAPI adapter and its test are LIVON-side files, so this guard has to name the commit.
+ * BEFORE: any change to server/livon/data/providers/tourapi.mjs or tests/livon/tourapi.test.mjs failed RC-1 / RC-41.
+ * AFTER:  exactly these files are accepted, only on a line whose history contains this commit, which must have changed
+ *         each of them. No LIVON product file (livon/) is in the list.
+ */
+export const ONGIL_ENJOY_PHASE_B = { subject: 'Expand ONGIL Enjoy TourAPI regions nationwide',
+  files: ['server/livon/data/providers/tourapi.mjs', 'tests/livon/tourapi.test.mjs', 'tests/livon/release-candidate.test.mjs'] };
+/*
+ * LIVON side of ONGIL Enjoy Phase B (approved LIVON product change, one line): the TourAPI region list in
+ * livon/data/livon-data-providers.js names 광주·전남 instead of 광주, to match the route's region table (code 12).
+ * WHY CHANGED: with the old name LIVON would send region=광주, which the route now refuses (400).
+ * BEFORE: TOUR_REGIONS had "광주" → code 29 upstream → an empty list presented as "no tourism information".
+ * AFTER:  TOUR_REGIONS has "광주·전남"; LIVON's own 지역 filter has no such chip, so 광주 sends no tourism request.
+ */
+export const LIVON_TOUR_REGION_LABEL = { subject: 'Align LIVON TourAPI region list with 광주·전남',
+  files: ['livon/data/livon-data-providers.js', 'tests/livon/tourapi.test.mjs', 'tests/livon/release-candidate.test.mjs'] };
 /* the non-merge commit with this subject in HEAD's history, or null */
 const commitInHistory = subject => (git('log', '--no-merges', '--format=%H%x09%s', 'HEAD').stdout.split('\n').find(l => l.split('\t')[1] === subject) || '').split('\t')[0] || null;
 /* the files a named commit may bring into RC-41 — only if that commit is in the history and really changed each of them */
@@ -251,8 +270,8 @@ test('RC-1 ancestry: every V1 phase commit is an ancestor of the RC; the RC star
       assert.deepEqual(COMMUNITY_V2.files.filter(f => !touched.includes(f)), [], 'every accepted Community V2 file was changed by that commit');
     }
     const myLife = myLifeV2In() ? MY_LIFE_V2.files : [];
-    const todayV2 = namedCommitFiles(TODAY_V2), exploreV2 = namedCommitFiles(EXPLORE_V2), lifeStageV2 = namedCommitFiles(LIFE_STAGE_V2), savedV2 = namedCommitFiles(SAVED_V2), homeV2 = namedCommitFiles(HOME_V2);
-    assert.deepEqual(d.stdout.split('\n').filter(Boolean).filter(f => !I.aligned.includes(f) && !aiLive.includes(f) && !community.includes(f) && !myLife.includes(f) && !todayV2.includes(f) && !exploreV2.includes(f) && !lifeStageV2.includes(f) && !savedV2.includes(f) && !homeV2.includes(f)), [], 'LIVON tree = integration commit except the alignment / AI LIVE / Community V2 / My Life V2 / Today V2 / Explore V2 / Life Stage V2 / Saved V2 files');
+    const todayV2 = namedCommitFiles(TODAY_V2), exploreV2 = namedCommitFiles(EXPLORE_V2), lifeStageV2 = namedCommitFiles(LIFE_STAGE_V2), savedV2 = namedCommitFiles(SAVED_V2), homeV2 = namedCommitFiles(HOME_V2), enjoyB = namedCommitFiles(ONGIL_ENJOY_PHASE_B).concat(namedCommitFiles(LIVON_TOUR_REGION_LABEL));
+    assert.deepEqual(d.stdout.split('\n').filter(Boolean).filter(f => !I.aligned.includes(f) && !aiLive.includes(f) && !community.includes(f) && !myLife.includes(f) && !todayV2.includes(f) && !exploreV2.includes(f) && !lifeStageV2.includes(f) && !savedV2.includes(f) && !homeV2.includes(f) && !enjoyB.includes(f)), [], 'LIVON tree = integration commit except the alignment / AI LIVE / Community V2 / My Life V2 / Today V2 / Explore V2 / Life Stage V2 / Saved V2 / Home V2 / Enjoy Phase B files');
     /* main's production routing/CORS fix is part of this line */
     assert.ok(history.includes(ROUTING_CORS_FIX.subject), 'main routing/CORS fix is an ancestor');
     assert.ok(history.includes(BACKEND_HARDENING.subject), 'backend hardening is an ancestor');
@@ -616,7 +635,7 @@ test('RC-41 visual regression by construction: the RC ships the Performance V1 p
   const product = changed.filter(f => !/^(docs\/|tests\/)/.test(f));
   const allowed = new Set([...RC_FIXES, ...BACKEND_HARDENING.files, ...ROUTING_CORS_FIX.files, ...COMPLETION_FIXES, ...(aiLiveIn() ? AI_LIVE.files : []), ...(familyV2In() ? ONGIL_FAMILY_V2.files : []),
     /* later named commits on main: LIVON Community V2, the ONGIL module-version generator, LIVON My Life V2 */
-    ...namedCommitFiles(COMMUNITY_V2), ...namedCommitFiles(ONGIL_MODULE_VERSIONS), ...namedCommitFiles(MY_LIFE_V2), ...namedCommitFiles(TODAY_V2), ...namedCommitFiles(EXPLORE_V2), ...namedCommitFiles(LIFE_STAGE_V2), ...namedCommitFiles(SAVED_V2), ...namedCommitFiles(HOME_V2)]);
+    ...namedCommitFiles(COMMUNITY_V2), ...namedCommitFiles(ONGIL_MODULE_VERSIONS), ...namedCommitFiles(MY_LIFE_V2), ...namedCommitFiles(TODAY_V2), ...namedCommitFiles(EXPLORE_V2), ...namedCommitFiles(LIFE_STAGE_V2), ...namedCommitFiles(SAVED_V2), ...namedCommitFiles(HOME_V2), ...namedCommitFiles(ONGIL_ENJOY_PHASE_B), ...namedCommitFiles(LIVON_TOUR_REGION_LABEL)]);
   /* ONGIL is its own product in its own directory: accepted only where its production integration is part of the history,
      and then only inside that directory — a LIVON, shared or any other file still needs an entry above */
   const ongilIntegrated = git('log', '--format=%s', 'HEAD').stdout.split('\n').includes(ONGIL_PRODUCT.subject);
