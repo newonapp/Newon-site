@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /card-n7x4k9
+Disallow: /card-n7x4k9/
+Disallow: /ir/
+Disallow: /admin/
+Disallow: /admin/growth/
+
+Sitemap: https://www.newon.app/sitemap.xml

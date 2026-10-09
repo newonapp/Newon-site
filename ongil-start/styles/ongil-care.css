@@ -1,0 +1,66 @@
+/*
+ * Family V1 + Care V1 (Phase 4). Tokens only; cards, picks, lists, fields and dialogs are the existing components.
+ * Added here: the two screens' card stacks, the sharing radios, the detail rows and short point lists.
+ */
+
+.og-family-grid, .og-care-grid { display: grid; gap: 1rem; max-width: 60rem; }
+
+/* 내가 공유할 내용: one fieldset per category, each choice a full-width row (the label is the touch target) */
+.og-share { margin: 0; padding: 0.9rem 0 0; border: 0; border-top: 1px solid var(--og-line); min-width: 0; }
+.og-share:first-child { border-top: 0; padding-top: 0; }
+.og-share .og-choices__list { display: grid; gap: 0.4rem; }
+.og-share__opt { display: flex; align-items: center; gap: 0.7rem; min-height: var(--og-control); padding: 0.5rem 0.9rem; border: 1.5px solid var(--og-line-strong); border-radius: var(--og-radius-card); color: var(--og-ink); font-size: var(--og-size-body); cursor: pointer; overflow-wrap: anywhere; }
+.og-share__opt input { flex: none; width: 1.4rem; height: 1.4rem; margin: 0; accent-color: var(--og-ink); }
+.og-share__opt:has(input:checked) { border-color: var(--og-ink); background: var(--og-surface); font-weight: 700; } /* the native radio dot carries the state; the frame repeats it */
+.og-share .og-confirm { margin-top: 0.6rem; }
+
+.og-family-points { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.4rem; color: var(--og-ink); font-size: var(--og-size-body); }
+
+/* 돌봄·서비스 */
+.og-care-cats .og-pick { flex: 0 1 auto; }
+.og-care-about { margin-top: 1rem; }
+.og-care-about p, .og-care-unconnected p { margin: 0.3rem 0 0; overflow-wrap: anywhere; }
+.og-care-unconnected { margin-top: 0.6rem; padding: 0.9rem 1rem; border: 1px dashed var(--og-line-strong); border-radius: var(--og-radius-card); }
+
+/* detail: label / value rows that wrap on a phone */
+.og-care-rows { margin: 0; display: grid; grid-template-columns: minmax(6rem, auto) minmax(0, 1fr); gap: 0.5rem 1rem; }
+.og-care-rows dt { color: var(--og-ink-soft); font-size: var(--og-size-body); }
+.og-care-rows dd { margin: 0; color: var(--og-ink); font-size: var(--og-size-body); overflow-wrap: anywhere; }
+.og-care-dialog .og-dialog__actions .og-btn { min-height: var(--og-control); }
+.og-care-dialog .og-dialog__body > * { min-width: 0; }
+.og-care-dialog .og-dialog__title { overflow-wrap: anywhere; }
+
+@media (max-width: 480px) {
+  .og-care-rows { grid-template-columns: minmax(0, 1fr); gap: 0.1rem; }
+  .og-care-rows dd { margin-bottom: 0.5rem; }
+}
+
+/* [P6] 커뮤니티: long personal text keeps its line breaks and wraps */
+.og-community-body { margin: 0; color: var(--og-ink); font-size: var(--og-size-body); line-height: 1.75; white-space: pre-wrap; overflow-wrap: anywhere; }
+.og-community-name { overflow-wrap: anywhere; }
+.og-community-local { margin: 0 0 0.6rem; }
+.og-community-actions { flex-wrap: wrap; }
+
+/* [P7] 스토어: text-first product rows, a real image only when the source gave one, stacked comparison */
+.og-store-cats .og-pick { flex: 0 1 auto; }
+.og-store-name, .og-store-text { overflow-wrap: anywhere; min-width: 0; }
+.og-store-item .og-home-item__main { min-width: 0; }
+.og-store-actions { flex-wrap: wrap; }
+.og-store-figure { margin: 0 0 1rem; }
+.og-store-image { display: block; width: 100%; max-height: 16rem; object-fit: contain; border-radius: var(--og-radius-card); background: var(--og-surface); }
+.og-store-features { margin: 0.3rem 0 0.8rem; padding-left: 1.2rem; display: grid; gap: 0.3rem; color: var(--og-ink); font-size: var(--og-size-body); }
+.og-store-compare { display: grid; gap: 1rem; }
+.og-store-compare__row { min-width: 0; padding-top: 0.6rem; border-top: 1px solid var(--og-line); }
+.og-store-compare__values { margin: 0.3rem 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 0.2rem 1rem; }
+.og-store-compare__values dt { color: var(--og-ink-soft); font-size: var(--og-size-body); grid-row: 1; }
+.og-store-compare__values dd { margin: 0; color: var(--og-ink); font-size: var(--og-size-body); grid-row: 2; }
+.og-store-missing { color: var(--og-ink-soft); font-style: italic; }
+@media (max-width: 640px) {
+  .og-store-compare__values { grid-template-columns: minmax(0, 1fr); }
+  .og-store-compare__values dt, .og-store-compare__values dd { grid-row: auto; }
+  .og-store-compare__values dd { margin-bottom: 0.5rem; }
+}
+
+/* Family Connection V1 — the invitation code (the only new rule: existing cards, lists, choices and confirm boxes are reused) */
+.og-band .og-family-code { margin: 0; font-size: 1.15rem; letter-spacing: 0.04em; overflow-wrap: anywhere; }
+.og-family-code strong { font-weight: 700; }

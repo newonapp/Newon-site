@@ -1,0 +1,62 @@
+{
+  "ko": {
+    "developerLabel": "개발사",
+    "developerName": "Newon",
+    "emailLabel": "이메일",
+    "email": "newon@newon.app",
+    "supportedLanguagesLabel": "지원 언어",
+    "supportedLanguages": "한국어, 영어, 일본어, 스페인어, 포르투갈어(브라질)",
+    "releasePlatformsLabel": "출시 플랫폼",
+    "releasePlatforms": "iOS, Android",
+    "privacyPolicyLabel": "개인정보 처리방침",
+    "termsOfServiceLabel": "이용약관"
+  },
+  "en": {
+    "developerLabel": "Developer",
+    "developerName": "Newon",
+    "emailLabel": "Contact",
+    "email": "newon@newon.app",
+    "supportedLanguagesLabel": "Languages",
+    "supportedLanguages": "Korean, English, Japanese, Spanish, Portuguese (Brazil)",
+    "releasePlatformsLabel": "Available on",
+    "releasePlatforms": "iOS and Android",
+    "privacyPolicyLabel": "Privacy Policy",
+    "termsOfServiceLabel": "Terms of Service"
+  },
+  "ja": {
+    "developerLabel": "開発元",
+    "developerName": "Newon",
+    "emailLabel": "お問い合わせ",
+    "email": "newon@newon.app",
+    "supportedLanguagesLabel": "対応言語",
+    "supportedLanguages": "韓国語、英語、日本語、スペイン語、ポルトガル語（ブラジル）",
+    "releasePlatformsLabel": "提供プラットフォーム",
+    "releasePlatforms": "iOS / Android",
+    "privacyPolicyLabel": "プライバシーポリシー",
+    "termsOfServiceLabel": "利用規約"
+  },
+  "es": {
+    "developerLabel": "Desarrollador",
+    "developerName": "Newon",
+    "emailLabel": "Contacto",
+    "email": "newon@newon.app",
+    "supportedLanguagesLabel": "Idiomas disponibles",
+    "supportedLanguages": "coreano, inglés, japonés, español y portugués (Brasil)",
+    "releasePlatformsLabel": "Plataformas",
+    "releasePlatforms": "iOS y Android",
+    "privacyPolicyLabel": "Política de privacidad",
+    "termsOfServiceLabel": "Términos de uso"
+  },
+  "pt-BR": {
+    "developerLabel": "Desenvolvedor",
+    "developerName": "Newon",
+    "emailLabel": "Contato",
+    "email": "newon@newon.app",
+    "supportedLanguagesLabel": "Idiomas compatíveis",
+    "supportedLanguages": "coreano, inglês, japonês, espanhol e português (Brasil)",
+    "releasePlatformsLabel": "Plataformas",
+    "releasePlatforms": "iOS e Android",
+    "privacyPolicyLabel": "Política de Privacidade",
+    "termsOfServiceLabel": "Termos de Uso"
+  }
+}
