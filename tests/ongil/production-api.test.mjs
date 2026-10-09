@@ -356,5 +356,7 @@ test('API-32 "not connected" and "could not load" are told apart: no route (404)
   const home = strip(read('ongil-start/js/home-explore.js'));
   assert.match(home, /result\.reason === 'NO_ANSWER'/);
   assert.match(home, /지금은 강좌 정보를 받아오지 못했어요/);
-  assert.match(home, /주변 정보는 아직 연결되지 않았어요/);
+  /* Home V2 — WHY: 내 주변 is part of 즐길거리 now, so an unusable source points there. BEFORE '주변 정보는 아직 연결되지 않았어요'
+     · AFTER '주변 강좌 정보는 지금 쓸 수 없어요' — still told apart from NO_ANSWER (try again) */
+  assert.match(home, /주변 강좌 정보는 지금 쓸 수 없어요/);
 });

@@ -350,7 +350,7 @@ test('EV2-21 responsive: built from existing ONGIL parts only — no stylesheet 
 });
 
 test('EV2-22 cache: the entry and the two changed modules moved on; nothing else did', () => {
-  assert.match(INDEX, /<script type="module" src="\/ongil-start\/js\/app\.js\?v=20261007e16"><\/script>/);
+  assert.match(INDEX, /<script type="module" src="\/ongil-start\/js\/app\.js\?v=20261009hv2"><\/script>/); /* Home V2: app.js changed (the Home V2 sections; community counts, the helper button and the 내 생활 add forms handed to Home) → entry moved on (WHY: a new page must never run a cached old entry; BEFORE 20261007e16, AFTER 20261009hv2) */
   assert.equal((INDEX.match(/20261006m15/g) || []).length, 0);
   assert.match(INDEX, /"\/ongil-start\/js\/enjoy-view\.js": "\/ongil-start\/js\/enjoy-view\.js\?v=[0-9a-f]{12}"/);
   assert.match(INDEX, /"\/ongil-start\/js\/enjoy-contracts\.js": "\/ongil-start\/js\/enjoy-contracts\.js\?v=[0-9a-f]{12}"/);

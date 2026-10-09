@@ -143,7 +143,10 @@ test('OG-VW-1 every primary area has a description, an empty state and module sl
   assert.equal(AREAS.find((a) => a.id === 'health').link.href, '#life/checkin');
   assert.deepEqual(AREAS.find((a) => a.id === 'family').modules.filter((m) => !m.available).map((m) => m.id), ['connect', 'schedule', 'messages']);
   const ids = (id) => AREAS.find((a) => a.id === id).modules.map((m) => m.id);
-  assert.deepEqual(ids('home'), ['greeting', 'check-in', 'schedule', 'tasks', 'routines', 'medication', 'life-check', 'family-update', 'today', 'nearby', 'quick-actions']);
+  /* Home V2 — WHY: Home is now nine sections in the approved order; 빠른 실행 was removed and 내 주변 joined 즐길거리.
+     BEFORE greeting · check-in · schedule · tasks · routines · medication · life-check · family-update · today · nearby · quick-actions
+     AFTER greeting · plan · health · family · enjoy · care · community · helper · guide */
+  assert.deepEqual(ids('home'), ['greeting', 'plan', 'health', 'family', 'enjoy', 'care', 'community', 'helper', 'guide']);
   assert.deepEqual(ids('life'), ['calendar', 'tasks', 'routine', 'meals', 'water', 'exercise', 'sleep', 'expenses', 'journal', 'checkin', 'symptoms', 'medication', 'health-notes', 'measures']); // Completion V1: + 건강 수치
   assert.equal(ids('store').length, 10);
 });

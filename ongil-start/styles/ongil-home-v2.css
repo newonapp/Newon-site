@@ -1,0 +1,31 @@
+/*
+ * Home V2 — the senior's day first, then the rest of ONGIL. Added on top of ongil-home.css (which is unchanged):
+ * the same tokens, card levels and controls; only the section frame and the smaller mobile hero are new.
+ *   오늘 할 것 · 건강·안부   a section with an h3 and its cards (h4) two to a row
+ *   가족 · 즐길거리 · 돌봄·서비스 · 커뮤니티 · ONGIL 도우미 · 서비스 안내   one card each, two to a row, in this order
+ */
+.og-home-section { min-width: 0; }
+.og-home-section--group { margin: 0 0 2.25rem; }
+.og-home-section__title { margin: 0 0 0.4rem; font-size: 1.6rem; font-weight: 700; line-height: 1.3; color: var(--og-ink); scroll-margin-top: calc(var(--gnav-h, 74px) + 1rem); }
+.og-band .og-home-section__lead { margin: 0 0 1rem; max-width: 46rem; color: var(--og-ink-soft); font-size: 1.05rem; line-height: 1.55; }
+.og-home-grid { margin: 0; }
+.og-home-row--sections { margin: 0 0 1rem; }
+.og-home-section--single > .og-home-card { height: 100%; }
+.og-home-card[hidden] { display: none; }
+
+/* 즐길거리: categories and saved things, then 내 주변 강좌 under a thin line */
+.og-home-enjoy { display: grid; gap: 1rem; min-width: 0; }
+.og-home-nearby { display: grid; gap: 0.8rem; min-width: 0; padding-top: 1.25rem; border-top: 1px solid var(--og-line); }
+
+/* a section that could not be drawn: a quiet card, no colour-only signal */
+.og-home-card[data-og-state="error"] { border: 1.5px dashed var(--og-line-strong); }
+
+@media (max-width: 860px) {
+  .og-home-row--sections { grid-template-columns: 1fr; }
+  /* Home V2: on phones and tablets the film no longer fills the whole first screen, so 오늘 starts sooner;
+     min-height keeps room for the title, greeting and the two hero buttons */
+  .og-hero { height: 72svh; min-height: 32rem; }
+}
+@media (max-width: 480px) {
+  .og-home-section__title { font-size: 1.4rem; }
+}

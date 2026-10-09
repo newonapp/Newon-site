@@ -177,7 +177,9 @@ test('PC-07 no screen prints the word "null": a native append() never receives a
   }
   const home = JS['home-explore.js'];
   assert.match(home, /import \{ el, clear, append \} from '\.\/dom\.js';/);
-  assert.match(home, /append\(card\.body, \[\n\s+el\('p', \{ class: 'og-home-empty', 'data-og-family-status'/, 'the Home 가족 card skips its two optional lines');
+  /* Home V2 — WHY: the 가족 card's first line changed (connected count, not the unavailable status). BEFORE 'data-og-family-status'
+     · AFTER 'data-og-family-connected'; still drawn through append() so its optional lines are skipped, never printed */
+  assert.match(home, /append\(card\.body, \[\n\s+el\('p', \{ class: connected \? 'og-life-value' : 'og-home-empty', 'data-og-family-connected'/, 'the Home 가족 card skips its optional lines');
   assert.match(JS['dom.js'], /if \(child === null \|\| child === undefined \|\| child === false\) continue;/);
 });
 

@@ -562,7 +562,7 @@ test('OML2-35 cache: the official generator reports the import map current, the 
   const r = spawnSync(process.execPath, [path.join(ROOT, 'scripts/ongil-module-versions.mjs')], { encoding: 'utf8' });
   assert.equal(r.status, 0, r.stdout + r.stderr);
   for (const f of NEW_MODULES) assert.match(INDEX, new RegExp(`"/ongil-start/js/${f.replace('.', '\\.')}": "/ongil-start/js/${f.replace('.', '\\.')}\\?v=[0-9a-f]{12}"`), f);
-  assert.match(INDEX, /<script type="module" src="\/ongil-start\/js\/app\.js\?v=20261007e16"><\/script>/, 'app.js changed: BEFORE 20261005h14, AFTER 20261006m15'); /* Enjoy V2: app.js changed (tasks + own posts handed to 즐길거리, refresh on entry) → entry moved on (BEFORE 20261006m15, AFTER 20261007e16) */
+  assert.match(INDEX, /<script type="module" src="\/ongil-start\/js\/app\.js\?v=20261009hv2"><\/script>/, 'app.js changed: BEFORE 20261005h14, AFTER 20261006m15'); /* Enjoy V2: app.js changed (tasks + own posts handed to 즐길거리, refresh on entry) → entry moved on (BEFORE 20261006m15, AFTER 20261007e16) */ /* Home V2: app.js changed (the Home V2 sections; community counts, the helper button and the 내 생활 add forms handed to Home) → entry moved on (WHY: a new page must never run a cached old entry; BEFORE 20261007e16, AFTER 20261009hv2) */
   assert.equal(/serviceWorker|caches\.open/.test(V2_MODULES.map((f) => code(JS[f])).join('\n') + INDEX), false, 'no service worker');
 });
 

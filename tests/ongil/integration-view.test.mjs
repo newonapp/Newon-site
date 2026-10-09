@@ -10,8 +10,8 @@ import { createStorage, createMemoryBackend, COLLECTIONS } from '../../ongil-sta
 import { AREAS } from '../../ongil-start/js/areas.js';
 import { resolveView, sectionOf } from '../../ongil-start/js/router.js';
 import { LIFE_SECTIONS, LIFE_GROUPS, SECTION_ALIASES, resolveSection, groupOf, lifeHash } from '../../ongil-start/js/life-view.js';
-import { HOME_LEVELS } from '../../ongil-start/js/home-view.js';
-import { QUICK_ACTIONS } from '../../ongil-start/js/home-explore.js';
+/* Home V2: HOME_LEVELS → HOME_SECTIONS; 빠른 실행 (QUICK_ACTIONS) was removed */
+import { HOME_SECTIONS } from '../../ongil-start/js/home-view.js';
 import { createTaskStore } from '../../ongil-start/js/tasks.js';
 import { createRoutineStore } from '../../ongil-start/js/routines.js';
 import { createDailyLifeStore } from '../../ongil-start/js/daily-life.js';
@@ -36,27 +36,28 @@ const APP = JS['app.js'];
 
 /* ───────── Home cards for My Life records ───────── */
 
+/* Home V2 — WHY: 오늘 일정 · 오늘 할 일 · 오늘 루틴 · 기한 지난 할 일 are now four lists cut from ONE buildToday() result (My Life
+   V2), so Home and 내 생활 › 요약 count the same records. BEFORE createHomeTasksCard / createHomeRoutinesCard with their own
+   getItems (tasks.dueOn · routines.listForDate) · AFTER createPlanCards reading splitToday(buildToday(...)); the lists still
+   only show and check (no form, no add, no edit, no delete) and the marks are the stores' own calls */
 test('OG-IV-1 Home shows tasks and routines through My Life\'s stores and the shared list — no second task UI', () => {
   const today = JS['home-today.js'];
-  assert.match(today, /export function createHomeTasksCard\(\{ tasks, now = \(\) => Date\.now\(\), onChange, onAdd \}\)/);
-  assert.match(today, /getItems: \(\) => tasks\.dueOn\(dateKey\(now\(\)\)\)/, 'tasks due on the local day');
-  assert.match(today, /onToggle: \(item, checked\) => tasks\.update\(item\.id, \{ completed: checked \}\)/);
-  assert.match(today, /export function createHomeRoutinesCard\(\{ routines, onChange \}\)/);
-  assert.match(today, /getItems: \(\) => routines\.listForDate\(\)/);
-  assert.match(today, /onToggle: \(item, checked\) => routines\.setCompleted\(item\.id, checked\)/);
-  /* both Home cards only show and check: no form fields, no add, no edit, no delete */
-  for (const fn of ['createHomeTasksCard', 'createHomeRoutinesCard']) {
-    const body = today.slice(today.indexOf(`export function ${fn}`), today.indexOf('/* ─────────', today.indexOf(`export function ${fn}`)));
-    assert.match(body, /canAdd: false,\s*canEdit: false,\s*fields: \[\],/, fn);
-    assert.equal(/onAdd: \(|onUpdate: \(|onRemove: \(/.test(body), false, `${fn} has no form of its own`);
-    assert.match(body, /doneWord: '[^']+',\s*checkWord: '[^']+'/, `${fn} says the state in words`);
-  }
-  assert.match(today, /href: '#life\/tasks', text: '할 일 모두 보기'/);
-  assert.match(today, /href: '#life\/routines'/);
-  assert.match(today, /href: '#life\/calendar'/);
+  assert.match(today, /export function createPlanCards\(\{ stores, now = \(\) => Date\.now\(\), onChange, onAdd \}\)/);
+  assert.match(today, /const today = \(\) => splitToday\(buildToday\(\{ schedule, tasks, routines \}, now\)\);/, 'one buildToday result');
+  assert.match(today, /getItems: \(\) => today\(\)\[g\.id\]/);
+  assert.match(today, /if \(item\.kind === 'event'\) return schedule\.update\(item\.id, \{ completed: checked \}\);/);
+  assert.match(today, /if \(item\.kind === 'routine'\) return routines\.setCompleted\(item\.id, checked\);/);
+  assert.match(today, /return tasks\.update\(item\.id, \{ completed: checked \}\);/);
+  const body = today.slice(today.indexOf('export function createPlanCards'), today.indexOf('/* ─────────', today.indexOf('export function createPlanCards')));
+  assert.match(body, /canAdd: false,\s*canEdit: false,\s*fields: \[\],/);
+  assert.equal(/onAdd: \(|onUpdate: \(|onRemove: \(/.test(body), false, 'the lists have no form of their own');
+  assert.match(body, /doneWord: g\.doneWord,\s*checkWord: g\.checkWord/, 'the state is said in words');
+  assert.match(today, /link\('#life\/tasks', '할 일 모두 보기'\)/);
+  assert.match(today, /'#life\/routines'/);
+  assert.match(today, /link\('#life\/calendar', '캘린더 열기'\)/);
   assert.match(today, /href: '#life\/meals'/);
   /* the stores handed to Home are the very objects My Life uses */
-  assert.match(APP, /stores: \{ profile, checkIn, schedule, medication, dailyLife, tasks, routines, saved, familyConnection: onboarding\.familyConnection \}/);
+  assert.match(APP, /stores: \{ profile, checkIn, schedule, medication, dailyLife, tasks, routines, saved \}/ /* Home V2: BEFORE + familyConnection (an unused stub) · AFTER without; WHY: the 가족 card reads the family service only */);
   assert.match(APP, /stores: \{ schedule, tasks, routines, dailyLife, sleep, expenses, journal, memos \}/ /* My Life V2: + memos (BEFORE without, AFTER with) */);
   for (const name of ['createTaskStore', 'createRoutineStore', 'createDailyLifeStore', 'createScheduleStore']) assert.equal((APP.match(new RegExp(`${name}\\(storage\\)`, 'g')) || []).length, 1, `${name} is created once`);
   assert.deepEqual([...COLLECTIONS].filter((c) => /home|water/i.test(c)), [], 'no Home-only or water-only collection');
@@ -67,13 +68,20 @@ test('OG-IV-1 Home shows tasks and routines through My Life\'s stores and the sh
   /* Family Connection V1: + family (BEFORE 26, AFTER 27) */ /* My Life V2: + memos (BEFORE 27, AFTER 28) */ assert.equal(COLLECTIONS.length, 28); // Completion V3: + emergencyContacts
 });
 
-test('OG-IV-2 "할 일 추가" on Home continues in My Life\'s own task form', () => {
-  assert.deepEqual(QUICK_ACTIONS.filter((a) => a.kind === 'action').map((a) => a.id), ['add-event', 'add-task', 'add-medication']);
-  assert.ok(QUICK_ACTIONS.length <= 6, 'a short list of shortcuts');
-  for (const a of QUICK_ACTIONS.filter((x) => x.kind === 'route')) assert.equal(resolveView(a.href), a.id);
+/* Home V2 — WHY: 빠른 실행 was removed (it repeated the menu and the cards) and Home lost its own event and medication forms.
+   BEFORE three quick actions (add-event · add-task · add-medication) and three routes · AFTER 일정 추가 · 할 일 추가 · 약 추가
+   sit on their own cards and open the one form in 내 생활 (calendar · tasks · medication) through life.openAdd */
+test('OG-IV-2 "일정 추가 · 할 일 추가 · 약 추가" on Home continue in My Life\'s own forms', () => {
+  assert.equal(/QUICK_ACTIONS|quick-actions|빠른 실행/.test(strip(JS['home-explore.js']) + strip(JS['home-view.js'])), false, 'no shortcut section');
+  for (const section of ['calendar', 'tasks', 'medication']) assert.match(JS['home-today.js'], new RegExp(`'data-og-home-add': ${section === 'medication' ? "'medication'" : 'section'}`), section);
+  assert.match(JS['home-today.js'], /add\('calendar', '일정 추가'\)/);
+  assert.match(JS['home-today.js'], /add\('tasks', '할 일 추가'\)/);
   assert.match(JS['life-view.js'], /tasks: \{ cards: \[tasks\.card\], render: tasks\.render, openAdd: tasks\.openAdd \}/);
+  assert.match(JS['life-view.js'], /calendar: \{ cards: \[calendar\.card\], render: calendar\.render, api: calendar, openAdd: calendar\.openAdd \}/);
+  assert.match(JS['life-view.js'], /medication: \{ cards: \[healthGroup\.medication\.card, healthGroup\.plan\.card\], render: \(\) => \{\}, openAdd: healthGroup\.plan\.openAdd \}/);
+  assert.match(APP, /onAdd: \(section\) => \{\s*pendingLifeAdd = section;\s*win\.location\.hash = lifeHash\(section\);/);
   assert.match(APP, /if \(pendingLifeAdd\) \{\s*const target = pendingLifeAdd;\s*pendingLifeAdd = null;\s*life\.openAdd\(target\);/);
-  assert.equal(/준비 중|coming soon/i.test(strip(JS['home-explore.js']).slice(strip(JS['home-explore.js']).indexOf('QUICK_ACTIONS'))), false, 'no dead shortcut');
+  for (const s of ['calendar', 'tasks', 'medication']) assert.equal(resolveView(`#life/${s}`), 'life', s);
 });
 
 /* ───────── cross-view refresh ───────── */
@@ -81,7 +89,10 @@ test('OG-IV-2 "할 일 추가" on Home continues in My Life\'s own task form', (
 test('OG-IV-3 SPA cross-view refresh: entering Home or My Life re-reads storage; nothing is cached between screens', () => {
   assert.match(APP, /if \(view === 'home'\) refreshHome\(\);/);
   assert.match(APP, /if \(view === 'life'\) showLife\(section, \{ focus: userInitiated && !!section, entered: true \}\);/);
-  assert.match(JS['home-view.js'], /for \(const key of Object\.keys\(cards\)\) \{[^}]*cards\[key\]\.card\.status\.textContent = '';\s*cards\[key\]\.render\(\);\s*\}\s*renderSummary\(\);/, 'every Home card and the summary re-render on entry, and stale status lines are cleared');
+  /* Home V2 — WHY: each card is redrawn inside its own guard (draw), so one failing card cannot stop the others.
+     BEFORE a plain loop over cards · AFTER the loop calls draw(slot), which clears the status line and re-renders */
+  assert.match(JS['home-view.js'], /for \(const slot of Object\.keys\(cards\)\) draw\(slot\);\n\s+renderSummary\(\);/, 'every Home card and the summary re-render on entry');
+  assert.match(JS['home-view.js'], /function draw\(slot\) \{\n\s+const c = cards\[slot\];\n\s+try \{\n\s+c\.card\.status\.textContent = '';\n\s+c\.render\(\);/, 'stale status lines are cleared');
   assert.match(JS['life-view.js'], /for \(const s of group\.sections\) for \(const card of sections\[s\]\.cards\) card\.status\.textContent = '';/);
   assert.match(JS['life-view.js'], /for \(const s of group\.sections\) sections\[s\]\.render\(\);/, 'the visible tab re-renders on entry and on every tab change');
   /* stores keep no copy of the data: two store objects over one storage always agree */
@@ -245,7 +256,8 @@ test('OG-IV-9 touch targets: every control of Home and My Life is at least 44px 
   /* new controls use the shared button and choice components, not bare elements */
   assert.match(JS['life-daily.js'], /class: 'og-btn og-btn--ghost og-daynav__btn'/);
   assert.match(JS['life-daily.js'], /class: 'og-stepper__btn', 'data-og-life-water': 'minus'/);
-  assert.match(JS['home-today.js'], /class: 'og-btn og-btn--ghost', 'data-og-home-add': 'task'/);
+  /* Home V2: BEFORE one 할 일 추가 button ('data-og-home-add': 'task') · AFTER 일정 · 할 일 · 약 추가 share one shared-button helper */
+  assert.match(JS['home-today.js'], /el\('button', \{ type: 'button', class: 'og-btn og-btn--ghost', 'data-og-home-add': section,/);
 });
 
 test('OG-IV-10 body text size: nothing people read in ONGIL is under 16px (1rem)', () => {
@@ -302,7 +314,7 @@ test('OG-IV-11 screen-reader review (static): names, live regions and states sai
   assert.match(JS['life-view.js'], /tabs\[g\.id\]\.setAttribute\('aria-selected', on \? 'true' : 'false'\);/);
   for (const text of ['끝낸 일로 표시했습니다', '오늘 한 루틴으로 표시했습니다', '표시를 풀었습니다', '마신 물을 ${value}잔으로 적었습니다']) assert.ok(SCREENS.includes(text), text);
   /* named groups and buttons */
-  for (const label of ["'오늘 남은 것'", "'기록할 날짜'", "'이전 날로'", "'다음 날로'", "'오늘로 돌아가기'", "'물 한 잔 빼기'", "'물 한 잔 더하기'", "'최근 7일 기록'", "'오늘까지 할 일'", "'오늘 루틴'"]) assert.ok(SCREENS.includes(label), label);
+  for (const label of ["'오늘 남은 것'", "'기록할 날짜'", "'이전 날로'", "'다음 날로'", "'오늘로 돌아가기'", "'물 한 잔 빼기'", "'물 한 잔 더하기'", "'최근 7일 기록'", "'오늘 할 일'" /* Home V2: BEFORE '오늘까지 할 일' · AFTER the group title is the list name */, "'오늘 루틴'"]) assert.ok(SCREENS.includes(label), label);
   /* a button that becomes unavailable hands focus to the date instead of dropping it */
   assert.match(JS['life-daily.js'], /if \(target && !target\.disabled\) target\.focus\(\);\s*else label\.focus\(\);/);
   /* dialogs: a native modal dialog (focus is trapped by the browser), named, and focus returns */
@@ -325,5 +337,5 @@ test('OG-IV-12 no false health or safety claim, no fixed amount to drink, no sco
   /* nothing is created for the user, on Home or in My Life */
   assert.equal(/\.(add|save|set|update|setCompleted|setTaken)\(/.test(strip(JS['home-view.js'])), false, 'Home view only reads');
   assert.equal(/tasks\.add\(|routines\.add\(|routines\.update\(|tasks\.remove\(|routines\.remove\(/.test(strip(JS['home-today.js'])), false, 'Home never makes, edits or deletes a task or routine');
-  assert.deepEqual(HOME_LEVELS.flatMap((r) => r.slots).filter((s) => /score|rank|badge/.test(s)), []);
+  assert.deepEqual(HOME_SECTIONS.flatMap((s) => s.cards).filter((s) => /score|rank|badge/.test(s)), []); /* Home V2: HOME_LEVELS → HOME_SECTIONS */
 });
