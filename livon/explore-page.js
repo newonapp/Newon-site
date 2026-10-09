@@ -892,13 +892,17 @@
      Kakao = 어디에 있는지·거리 / TourAPI = 무엇인지(개요·이용 정보·공공누리 사진). Detail and photos load only when opened. */
   var tourRun = 0, tourMemo = {};
   function TRC() { var D = window.LivonData; return D && D.tour && D.tour.configured() ? D.tour : null; }
-  function tourRegion() { var T = TRC(); return T && T.REGIONS.indexOf(state.region) >= 0 ? state.region : ""; }
+  /* ONGIL Enjoy Phase B: the tourism data files 광주 and 전남 as one region (전남광주통합특별시, code 12), so the 광주 chip asks
+     TourAPI for "광주·전남" — only here; every other list keeps its own 광주, and nothing stored changes */
+  var TOUR_REGION_ALIAS = { "광주": "광주·전남" };
+  function tourRegion() { var T = TRC(); if (!T) return ""; var r = TOUR_REGION_ALIAS[state.region] || state.region; return T.REGIONS.indexOf(r) >= 0 ? r : ""; }
   function tourSearchOn() { return state.viewMode !== "map" && state.type === "place" && !!TRC() && !!(state.q || state.tt || tourRegion()); }
   function tourShell() {
     var T = TRC();
     var what = state.q ? "‘" + state.q + "’" : state.tt ? T.TYPES[state.tt] : tourRegion();
     return "<section class=\"lv-ex-group\" data-lv-ex-tour aria-labelledby=\"lv-ex-g-tour\"><div class=\"lv-ex-group__head\"><h3 id=\"lv-ex-g-tour\">" + esc(what) + " 관광정보</h3></div>" +
       "<p class=\"lv-ex-hint\">관광지·문화시설·레포츠·숙박의 소개와 이용 정보 · 출처: ⓒ한국관광공사 · 가격·예약 가능 여부·평점은 제공되지 않습니다.</p>" +
+      (!state.q && TOUR_REGION_ALIAS[state.region] && tourRegion() ? "<p class=\"lv-ex-hint\" data-lv-ex-tour-alias>한국관광공사 자료는 광주와 전남을 ‘광주·전남’ 한 지역으로 묶어 제공해서, 관광정보는 광주·전남 전체에서 찾습니다.</p>" : "") +
       "<div class=\"lv-ex-actions\" role=\"group\" aria-label=\"관광정보 위치 기준 검색\"><button type=\"button\" class=\"lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm\" data-lv-ex-tour-near>내 위치 기준 관광정보</button></div>" +
       "<p class=\"lv-ex-hint\">위치는 이 검색에만 쓰이고 저장되지 않습니다. 약 100m 단위로 줄여서 주소창이 아닌 요청 본문으로 보냅니다.</p>" +
       "<div data-lv-ex-tour-list></div></section>";

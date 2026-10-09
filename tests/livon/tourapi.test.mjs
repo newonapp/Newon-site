@@ -497,3 +497,18 @@ test('30 LIVON client: its TourAPI regions are all names the route answers; 광�
   await assert.rejects(D.tour.search({ region: '광주', type: '12' }), e => e.code === 'NEEDS_INPUT');
   assert.equal(tourCalls(up).length, before);
 });
+
+test('31 LIVON Explore: the 광주 chip asks TourAPI for 광주·전남 and says so; other chips and lists are unchanged; new addresses', () => {
+  const src = read('explore-page.js');
+  assert.match(src, /var TOUR_REGION_ALIAS = \{ "광주": "광주·전남" \};/);
+  assert.match(src, /function tourRegion\(\) \{ var T = TRC\(\); if \(!T\) return ""; var r = TOUR_REGION_ALIAS\[state\.region\] \|\| state\.region; return T\.REGIONS\.indexOf\(r\) >= 0 \? r : ""; \}/);
+  assert.match(src, /data-lv-ex-tour-alias>한국관광공사 자료는 광주와 전남을 ‘광주·전남’ 한 지역으로 묶어 제공해서, 관광정보는 광주·전남 전체에서 찾습니다\./);
+  /* the alias is applied at the TourAPI boundary only: the chip list and every other region use stay as they were */
+  const tourRegion = new Function('state', 'TRC', 'var TOUR_REGION_ALIAS = { "광주": "광주·전남" }; ' + src.match(/function tourRegion\(\) \{[^\n]*\}/)[0] + ' return tourRegion();');
+  const T = () => ({ REGIONS: ['서울', '부산', '대구', '인천', '광주·전남', '대전', '경기'] });
+  assert.deepEqual(['광주', '서울', '전남', '온라인', '', '전국'].map((r) => tourRegion({ region: r }, T)), ['광주·전남', '서울', '', '', '', '']);
+  assert.equal(tourRegion({ region: '광주' }, () => null), '', 'no TourAPI client: nothing');
+  assert.match(read('explore-data.js'), /regions: \["전국", "서울", "경기", "인천", "부산", "대구", "광주", "대전", "온라인"\]/, 'the chip list keeps 광주 (curated items and jobs use it)');
+  assert.match(src, /jobRegion\(\) === "광주" \? "<p class=\\"lv-ex-hint\\">고용24 지역 구분상 광주는 ‘전남광주’로 조회됩니다\./, 'the jobs hint is unchanged');
+  for (const f of ['explore-page.js', 'data/livon-data-providers.js']) assert.match(read('index.html'), new RegExp('/livon/' + f.replace(/[./]/g, '\\$&') + '\\?v=20261009eb1"'), f + ' has a new address');
+});

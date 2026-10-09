@@ -535,5 +535,6 @@ test('OPS-20 V1 boot: enabling server providers never bypasses the browser cache
   const start = src.slice(src.indexOf('function start()'), src.indexOf('function start()') + 700);
   assert.ok(start.includes('probeServer()'), 'start probes the server');
   assert.doesNotMatch(start, /refresh\(\{\s*force:\s*true\s*\}\)/, 'boot refresh must honour the TTL cache');
-  assert.match(read('index.html'), /livon-data-providers\.js\?v=20260929rc1/, 'cache-busting version bumped with the change');
+  /* ONGIL Enjoy Phase B — WHY: livon-data-providers.js changed (TOUR_REGIONS 광주 → 광주·전남) → its address moved on. BEFORE ?v=20260929rc1, AFTER ?v=20261009eb1 */
+  assert.match(read('index.html'), /livon-data-providers\.js\?v=20261009eb1/, 'cache-busting version bumped with the change');
 });

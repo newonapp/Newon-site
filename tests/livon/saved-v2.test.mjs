@@ -347,7 +347,7 @@ test('SV2-20 cache keys: the three changed My Life files move to sv1 together; n
     assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261007sv1"'), f);
     assert.equal((INDEX.match(new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=', 'g')) || []).length, 1, f + ' is referenced once');
   }
-  for (const [f, v] of [['life-hub.js', '20261007ls1'], ['life-page.js', '20261007ls1'], ['life-page.css', '20261007ls1'], ['explore-page.js', '20261006ex1'], ['explore-search.js', '20261006ex1'], ['explore-page.css', '20261006ex1'],
+  for (const [f, v] of [['life-hub.js', '20261007ls1'], ['life-page.js', '20261007ls1'], ['life-page.css', '20261007ls1'], ['explore-page.js', '20261009eb1' /* LIVON TourAPI region alias: BEFORE 20261006ex1, AFTER 20261009eb1 */], ['explore-search.js', '20261006ex1'], ['explore-page.css', '20261006ex1'],
     ['today-page.js', '20261004c7'], ['today-page.css', '20261004c6'], ['livon-platform.js', '20261006ex1'], ['life-now-data.js', '20261004c5'], ['community-page.js', '20261005cv2'], ['ai-page.js', '20261004c4']])
     assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=' + v + '"'), f);
   assert.match(fs.readFileSync(path.join(ROOT, 'ongil-start/index.html'), 'utf8'), /ongil-life\.css\?v=20261007r14/);

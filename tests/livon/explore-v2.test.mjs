@@ -118,7 +118,8 @@ test('EV2-08 official sources: https only, external links say so, and the date i
 });
 
 test('EV2-09 cache keys: changed Explore/shared assets carry ?v=20261006ex1; Today keeps c7; ONGIL keeps its own entry version', () => {
-  for (const f of ['explore-page.js', 'explore-search.js', 'explore-page.css', 'livon-platform.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261006ex1"'), f);
+  for (const f of ['explore-search.js', 'explore-page.css', 'livon-platform.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261006ex1"'), f);
+  assert.match(INDEX, /\/livon\/explore-page\.js\?v=20261009eb1"/); /* LIVON TourAPI region alias (ONGIL Enjoy Phase B follow-up) — WHY: explore-page.js changed → its address moved on. BEFORE ?v=20261006ex1, AFTER ?v=20261009eb1 */
   /* life-hub.js was bumped here and again by Life Stage V2 (?v=20261007ls1): a later Life Stage version is fine, an older one is not */
   assert.match(INDEX, /\/livon\/life-hub\.js\?v=(20261006ex1|20261007ls\d)"/);
   assert.match(INDEX, /\/livon\/today-page\.js\?v=20261004c7"/);

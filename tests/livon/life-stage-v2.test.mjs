@@ -282,7 +282,8 @@ test('LS2-12 AI and account: Life Stage calls no AI endpoint and turns on no syn
 test('LS2-13 cache keys: only the changed Life Stage assets move to ?v=20261007ls1; Explore keeps ex1, Today keeps c7, the data file keeps its key', () => {
   for (const f of ['life-hub.js', 'life-page.js', 'life-page.css']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261007ls1"'), f);
   assert.equal((INDEX.match(/\?v=20261007ls1/g) || []).length, 3);
-  for (const f of ['explore-page.js', 'explore-search.js', 'explore-page.css', 'livon-platform.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261006ex1"'), f);
+  for (const f of ['explore-search.js', 'explore-page.css', 'livon-platform.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261006ex1"'), f);
+  assert.match(INDEX, /\/livon\/explore-page\.js\?v=20261009eb1"/); /* LIVON TourAPI region alias (ONGIL Enjoy Phase B follow-up) — WHY: explore-page.js changed → its address moved on. BEFORE ?v=20261006ex1, AFTER ?v=20261009eb1 */
   assert.match(INDEX, /\/livon\/today-page\.js\?v=20261004c7"/);
   for (const f of ['life-data.js', 'life-events-data.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261001cq1"'), f + ' unchanged');
   const base = f => spawnSync('git', ['show', BASE_COMMIT + ':livon/' + f], { cwd: ROOT, encoding: 'utf8', maxBuffer: 64 << 20 });
