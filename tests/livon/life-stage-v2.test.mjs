@@ -287,7 +287,16 @@ test('LS2-13 cache keys: only the changed Life Stage assets move to ?v=20261007l
   assert.match(INDEX, /\/livon\/today-page\.js\?v=20261004c7"/);
   for (const f of ['life-data.js', 'life-events-data.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261001cq1"'), f + ' unchanged');
   const base = f => spawnSync('git', ['show', BASE_COMMIT + ':livon/' + f], { cwd: ROOT, encoding: 'utf8', maxBuffer: 64 << 20 });
-  for (const f of ['explore-search.js', 'explore-page.js', 'today-page.js', 'livon-platform.js', 'life-topics.json', 'life-data.js']) { const b = base(f); if (b.status === 0) assert.equal(b.stdout, read(f), f + ' is byte-identical to the base'); }
+  for (const f of ['explore-search.js', 'today-page.js', 'livon-platform.js', 'life-topics.json', 'life-data.js']) { const b = base(f); if (b.status === 0) assert.equal(b.stdout, read(f), f + ' is byte-identical to the base'); }
+  /* LIVON TourAPI region alias (ONGIL Enjoy Phase B follow-up) — WHY: explore-page.js gained the 광주 → 광주·전남 TourAPI alias.
+     BEFORE: byte-identical to the base. AFTER: identical except one replaced line (tourRegion) and four added lines, all about the alias. */
+  { const b = base('explore-page.js'); if (b.status === 0) {
+    const was = b.stdout.split('\n'), now = read('explore-page.js').split('\n');
+    const removed = was.filter((l) => !now.includes(l)), added = now.filter((l) => !was.includes(l));
+    assert.deepEqual(removed.map((l) => l.trim()), ['function tourRegion() { var T = TRC(); return T && T.REGIONS.indexOf(state.region) >= 0 ? state.region : ""; }'], 'only tourRegion is replaced');
+    assert.equal(added.length, 5, 'four alias lines and the new tourRegion');
+    for (const l of added) assert.match(l, /TOUR_REGION_ALIAS|광주·전남|ONGIL Enjoy Phase B/, l.trim());
+  } }
   assert.ok(INDEX.indexOf('/livon/life-hub.js') < INDEX.indexOf('/livon/explore-search.js'), 'the hub loads before the shared index (the index reads the hub\'s data lazily)');
 });
 
