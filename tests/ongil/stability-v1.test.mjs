@@ -1,4 +1,4 @@
-// ONGIL Stability V1 (OST-01 … OST-14): what a failed public-data request looks like to the person — loading, empty and
+// ONGIL Stability V1 (OST-01 … OST-12, OST-B1 … OST-B3): what a failed public-data request looks like to the person — loading, empty and
 // error told apart, the kind of failure in plain words, one quiet retry after a 502 / 504 from the shared data route, and
 // 다시 찾기. The data sources run against a stub fetcher that answers like /api/livon/data; nothing is contacted.
 import test from 'node:test';
@@ -147,4 +147,137 @@ test('OST-11 no new module: the failure words live in views.js next to setRegion
 test('OST-12 document: docs/ongil/ONGIL_STABILITY_V1.md separates what was observed from what was NOT VERIFIED', () => {
   const d = read('docs/ongil/ONGIL_STABILITY_V1.md');
   for (const re of [/NOT VERIFIED/, /UPSTREAM_ERROR/, /kr-kakao-place/, /kr-lifelong-class/, /kr-tourapi/, /PUSH = NO/, /DEPLOY = NO/]) assert.match(d, re);
+});
+
+/* ═════════ browser (Chromium): the real ONGIL app, the data route answered by a stub ═════════ */
+import http from 'node:http';
+const PW = process.env.PLAYWRIGHT_MODULE || '/home/claude/.npm-global/lib/node_modules/playwright/index.mjs';
+const CHROME = process.env.CHROME_PATH || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+const skip = !(fs.existsSync(PW) && fs.existsSync(CHROME)) && 'no local Chromium';
+const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp' };
+let B = null, SERVER = null, BASE = '';
+async function boot() {
+  if (B) return;
+  const { chromium } = await import(PW);
+  SERVER = await new Promise((resolve) => {
+    const s = http.createServer((req, res) => {
+      let f = path.join(ROOT, decodeURIComponent(req.url.split('?')[0]));
+      if (!f.startsWith(ROOT)) { res.writeHead(403); return res.end(); }
+      if (fs.existsSync(f) && fs.statSync(f).isDirectory()) f = path.join(f, 'index.html');
+      if (fs.existsSync(f) && fs.statSync(f).isFile()) { res.writeHead(200, { 'Content-Type': TYPES[path.extname(f)] || 'application/octet-stream' }); return res.end(fs.readFileSync(f)); }
+      res.writeHead(404); res.end();
+    });
+    s.listen(0, '127.0.0.1', () => resolve(s));
+  });
+  BASE = `http://127.0.0.1:${SERVER.address().port}`;
+  B = await chromium.launch({ executablePath: CHROME, args: ['--no-sandbox'] });
+}
+test.after(async () => { if (B) await B.close(); if (SERVER) SERVER.close(); });
+
+/* plan: the answers for the lifelong data requests in order (the last one repeats); each { status, body, delay } */
+async function homeWithRoute(plan) {
+  await boot();
+  const ctx = await B.newContext({ viewport: { width: 390, height: 900 }, reducedMotion: 'reduce' });
+  const data = [];
+  await ctx.route('**/*', async (r) => {
+    const url = r.request().url();
+    if (/\/api\/livon\/data/.test(url)) {
+      if (/action=status/.test(url)) return r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(STATUS) });
+      const a = plan[Math.min(data.length, plan.length - 1)];
+      data.push(url);
+      if (a.delay) await new Promise((res) => setTimeout(res, a.delay));
+      return r.fulfill({ status: a.status, contentType: 'application/json', body: JSON.stringify(a.body) });
+    }
+    return url.startsWith(BASE) ? r.continue() : r.abort();
+  });
+  const pg = await ctx.newPage();
+  pg._errors = []; pg.on('pageerror', (e) => pg._errors.push(e.message));
+  await pg.goto(`${BASE}/ongil-start/#ongil-home`, { waitUntil: 'domcontentloaded' }); await pg.waitForTimeout(800);
+  /* the region is the person's own setting (내 정보); Home reads it when it is drawn */
+  await pg.evaluate(() => window.Ongil.profile.updateProfile({ region: '서울' }));
+  await pg.reload({ waitUntil: 'domcontentloaded' }); await pg.waitForTimeout(800);
+  return { pg, ctx, data };
+}
+const nearby = (pg) => pg.evaluate(() => {
+  const part = document.querySelector('[data-og-home-part="nearby"]');
+  const zone = part && part.querySelector('[data-og-region="nearby"]');
+  const st = zone && zone.querySelector('[data-og-region-status]');
+  const retry = part && part.querySelector('[data-og-home-retry]');
+  const rb = retry && retry.getBoundingClientRect();
+  return { part: part ? part.dataset.ogState : null, zone: zone ? zone.dataset.ogState : null, busy: zone ? zone.getAttribute('aria-busy') : null,
+    role: st ? st.getAttribute('role') : null, text: st ? st.textContent : '', retry: !!retry, retrySize: rb ? [Math.round(rb.width), Math.round(rb.height)] : null };
+});
+const press = (pg) => pg.evaluate(() => { const b = [...document.querySelectorAll('[data-og-home-part="nearby"] button')].find((x) => /지역 강좌 찾아보기/.test(x.textContent)); b.click(); });
+
+test('OST-B1 browser: loading → error (two 502s, one quiet retry) with 다시 찾기 → the same search again → empty, three states told apart', { skip }, async () => {
+  const { pg, ctx, data } = await homeWithRoute([{ status: 502, body: { ok: false, code: 'UPSTREAM_ERROR' }, delay: 400 }]);
+  await press(pg); await pg.waitForTimeout(150);
+  const loading = await nearby(pg);
+  assert.equal(loading.zone, 'loading'); assert.equal(loading.busy, 'true'); assert.equal(loading.role, 'status');
+  await pg.waitForTimeout(2200);
+  const err = await nearby(pg);
+  assert.equal(err.zone, 'error'); assert.equal(err.busy, 'false'); assert.equal(err.role, 'alert');
+  assert.match(err.text, /강좌 정보를 주는 곳이 지금 응답하지 않아요\. 잠시 뒤 다시 찾아 주세요\./);
+  assert.equal(data.length, 2, 'one request and one quiet retry — never a third');
+  assert.ok(err.retry && err.retrySize[0] >= 44 && err.retrySize[1] >= 44, '다시 찾기 is a 44px target');
+  /* recovery: the provider answers again (no class open now) */
+  await ctx.unroute('**/*');
+  const again = [];
+  await ctx.route('**/*', (r) => {
+    const url = r.request().url();
+    if (/\/api\/livon\/data/.test(url)) {
+      if (/action=status/.test(url)) return r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(STATUS) });
+      again.push(url); return r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ ok: true, items: [] }) });
+    }
+    return url.startsWith(BASE) ? r.continue() : r.abort();
+  });
+  await pg.evaluate(() => document.querySelector('[data-og-home-retry]').click());
+  await pg.waitForTimeout(800);
+  const empty = await nearby(pg);
+  assert.equal(empty.zone, 'empty'); assert.equal(empty.role, 'status'); assert.equal(empty.retry, false);
+  assert.match(empty.text, /지금 모집 중인 강좌를 찾지 못했어요\./);
+  assert.equal(again.length, 1); assert.equal(again[0].replace(/^.*\?/, ''), data[0].replace(/^.*\?/, ''), '다시 찾기 sends the same search');
+  assert.deepEqual(pg._errors, []);
+  await ctx.close();
+});
+
+test('OST-B2 browser: a single 502 is retried quietly and the second answer is used (no error shown)', { skip }, async () => {
+  const { pg, ctx, data } = await homeWithRoute([{ status: 502, body: { ok: false, code: 'UPSTREAM_ERROR' } }, { status: 200, body: { ok: true, items: [] } }]);
+  await press(pg); await pg.waitForTimeout(2000);
+  const r = await nearby(pg);
+  assert.equal(data.length, 2); assert.equal(r.zone, 'empty'); assert.notEqual(r.role, 'alert'); assert.equal(r.retry, false);
+  assert.deepEqual(pg._errors, []);
+  await ctx.close();
+});
+
+test('OST-B3 browser: 504 twice → "응답이 늦어요" error; 503 → not retried, "요청이 많아"; not configured → plain sentence, no 다시 찾기', { skip }, async () => {
+  let { pg, ctx, data } = await homeWithRoute([{ status: 504, body: { ok: false, code: 'TIMEOUT' } }]);
+  await press(pg); await pg.waitForTimeout(2200);
+  let r = await nearby(pg);
+  assert.equal(data.length, 2); assert.equal(r.zone, 'error'); assert.match(r.text, /강좌 정보를 주는 곳의 응답이 늦어요/); assert.ok(r.retry);
+  await ctx.close();
+  ({ pg, ctx, data } = await homeWithRoute([{ status: 503, body: { ok: false, code: 'UPSTREAM_LIMIT' } }]));
+  await press(pg); await pg.waitForTimeout(1500);
+  r = await nearby(pg);
+  assert.equal(data.length, 1, '503 is never retried'); assert.equal(r.zone, 'error'); assert.match(r.text, /요청이 많아/);
+  await ctx.close();
+  /* the route says the provider is not configured: not a temporary failure */
+  await boot();
+  ctx = await B.newContext({ viewport: { width: 390, height: 900 } });
+  const calls = [];
+  await ctx.route('**/*', (q) => {
+    const url = q.request().url();
+    if (/\/api\/livon\/data/.test(url)) { calls.push(url); return q.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ ok: true, providers: { 'kr-lifelong-class': { configured: false } } }) }); }
+    return url.startsWith(BASE) ? q.continue() : q.abort();
+  });
+  pg = await ctx.newPage();
+  await pg.goto(`${BASE}/ongil-start/#ongil-home`, { waitUntil: 'domcontentloaded' }); await pg.waitForTimeout(800);
+  await pg.evaluate(() => window.Ongil.profile.updateProfile({ region: '서울' }));
+  await pg.reload({ waitUntil: 'domcontentloaded' }); await pg.waitForTimeout(800);
+  await press(pg); await pg.waitForTimeout(1200);
+  r = await nearby(pg);
+  assert.equal(r.zone, 'empty'); assert.notEqual(r.role, 'alert'); assert.equal(r.retry, false);
+  assert.match(r.text, /주변 강좌 정보는 지금 쓸 수 없어요/);
+  assert.equal(calls.filter((c) => !/action=status/.test(c)).length, 0, 'no data request when the provider is not configured');
+  await ctx.close();
 });

@@ -1,6 +1,6 @@
 # ONGIL Stability V1
 
-STATUS = LOCAL COMMIT ON `ongil-stability-v1` (base main `70a816aa9`, separate worktree from LIVON). PUSH = NO. DEPLOY = NO.
+STATUS = LOCAL COMMITS ON `ongil-stability-v1-final` (from `ongil-stability-v1` `8d7e83fb4`) (base main `70a816aa9`, separate worktree from LIVON). PUSH = NO. DEPLOY = NO.
 
 ## 1. 502 analysis
 
@@ -74,6 +74,32 @@ fix the Kakao REST key; resultCode 30 → the data.go.kr key is not registered f
 `tests/ongil/stability-v1.test.mjs` OST-01 … OST-12. `API-32` (production-api) and `OG-HM-6` (home-view) carry BEFORE/AFTER
 notes: Home's 내 주변 강좌 now has exactly one error state (a temporary failure, with 다시 찾기).
 Full ONGIL suite on this branch (2026-10-10): 1106 tests, 1096 pass, 0 fail, 10 skipped (main `70a816aa9`: 1094 / 1084 / 0 / 10).
+
+### Browser (added on `ongil-stability-v1-final`)
+
+`OST-B1 … OST-B3` run the real ONGIL app in Chromium (390 px) with the data route answered by a stub:
+loading (`aria-busy="true"`, polite status) → two 502s (exactly one quiet retry, never a third request) → error
+(`role="alert"`, "강좌 정보를 주는 곳이 지금 응답하지 않아요…") with 다시 찾기 (44 × 44 px) → 다시 찾기 sends the same
+search → empty ("지금 모집 중인 강좌를 찾지 못했어요", no alert, no retry button). A single 502 followed by an answer shows
+no error. 504 ×2 → "응답이 늦어요"; 503 → not retried, "요청이 많아"; a provider that is not configured → the plain
+"쓸 수 없어요" sentence, no 다시 찾기 and no data request.
+
+## 4a. Enjoy Phase B (`ongil-enjoy-phase-b-production` `f1bc14574`, not deployed)
+
+Files both branches change: `ongil-start/index.html` (import map), `ongil-start/js/data-source.js`,
+`ongil-start/js/enjoy-view.js`, `tests/ongil/production-api.test.mjs`. A trial merge of this branch into Phase B
+(`ongil-stability-v1-phase-b-trial`, cloud only, not for release) gave two textual conflicts:
+
+| File | Conflict | Resolution |
+|---|---|---|
+| `ongil-start/index.html` | import-map hashes of `data-source.js`, `enjoy-contracts.js`, `enjoy-view.js` | regenerate with `node scripts/ongil-module-versions.mjs --write` (never hand-edit) |
+| `ongil-start/js/enjoy-view.js` | the `views.js` import line; the source-status sentence | import `setRegionState, failureText, isRetryable` (Phase B dropped `REGIONS`); keep Phase B's "일부 지역 자료는 받아오지 못했어요" for a partial answer and Stability's error state + `failureText` for a failed one |
+
+`data-source.js` merges cleanly: Phase B's tour regions and Stability's retry/`detail` touch different lines; Phase B's
+merged-region loader returns the first failed part as is, so its `detail` reaches `failureText`.
+Phase B also changes LIVON files (`livon/data/livon-data-providers.js`, `livon/explore-page.js`, `livon/index.html`)
+that LIVON Next V1 changes too — that is a LIVON ↔ Phase B question, not part of this branch.
+Order when Phase B is verified: Phase B first, then this branch with the resolution above, then Phase C.
 
 ## 5. Not done
 
