@@ -478,5 +478,7 @@ test('HOME-V2-20 cache: only the two Home assets moved to a new version; every o
   assert.match(INDEX, /<script src="\/livon\/home-page\.js\?v=20261008hv2"><\/script>/);
   assert.equal(/home-page\.(css\?v=20260929hm1|js\?v=20261002perf1)/.test(INDEX), false, 'OLD CACHE REFERENCES = 0');
   assert.equal((INDEX.match(/20261008hv2/g) || []).length, 2, 'MIXED ASSETS = 0');
-  for (const kept of ['20261007sv1', '20261007ls1', '20261006ex1', '20261004c7', '20261002perf1']) assert.ok(INDEX.includes(kept), kept + ' is unchanged');
+  for (const kept of ['20261007sv1', '20261007ls1', '20261006ex1', '20261002perf1']) assert.ok(INDEX.includes(kept), kept + ' is unchanged');
+  /* today-page.js (c7) moved on later in LIVON Next V1 (?v=20261010nx1) — a later version, never an older one */
+  assert.match(INDEX, /today-page\.js\?v=(20261004c7|20261010nx\d)"/);
 });

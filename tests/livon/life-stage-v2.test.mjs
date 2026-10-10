@@ -282,11 +282,13 @@ test('LS2-12 AI and account: Life Stage calls no AI endpoint and turns on no syn
 test('LS2-13 cache keys: only the changed Life Stage assets move to ?v=20261007ls1; Explore keeps ex1, Today keeps c7, the data file keeps its key', () => {
   for (const f of ['life-hub.js', 'life-page.js', 'life-page.css']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261007ls1"'), f);
   assert.equal((INDEX.match(/\?v=20261007ls1/g) || []).length, 3);
-  for (const f of ['explore-page.js', 'explore-search.js', 'explore-page.css', 'livon-platform.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261006ex1"'), f);
+  /* explore-page.js moved on later in LIVON Next V1 (?v=20261010nx1) */
+  for (const f of ['explore-page.js', 'explore-search.js', 'explore-page.css', 'livon-platform.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261006ex1' + (f === 'explore-page.js' ? '|/livon/explore-page\\.js\\?v=20261010nx\\d' : '') + '"'), f);
   assert.match(INDEX, /\/livon\/today-page\.js\?v=(20261004c7|20261010nx\d)"/); /* LIVON Next V1 bumped Today (typed sections stay honest when empty) */
   for (const f of ['life-data.js', 'life-events-data.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261001cq1"'), f + ' unchanged');
   const base = f => spawnSync('git', ['show', BASE_COMMIT + ':livon/' + f], { cwd: ROOT, encoding: 'utf8', maxBuffer: 64 << 20 });
-  for (const f of ['explore-search.js', 'explore-page.js', 'today-page.js', 'livon-platform.js', 'life-topics.json', 'life-data.js']) { const b = base(f); if (b.status === 0) assert.equal(b.stdout, read(f), f + ' is byte-identical to the base'); }
+  /* explore-page.js and today-page.js were changed later by LIVON Next V1 — the Life Stage phase itself left them alone */
+  for (const f of ['explore-search.js', 'livon-platform.js', 'life-topics.json', 'life-data.js']) { const b = base(f); if (b.status === 0) assert.equal(b.stdout, read(f), f + ' is byte-identical to the base'); }
   assert.ok(INDEX.indexOf('/livon/life-hub.js') < INDEX.indexOf('/livon/explore-search.js'), 'the hub loads before the shared index (the index reads the hub\'s data lazily)');
 });
 

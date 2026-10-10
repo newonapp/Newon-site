@@ -173,7 +173,12 @@ export const NEXT_V1_DATA_PROTECT = { subject: 'Add LIVON data backup, restore a
   files: ['livon/data/livon-data-protect.js', 'livon/index.html', 'tests/livon/livon-next.test.mjs'] };
 export const NEXT_V1_DOCS = { subject: 'Document LIVON Next V1',
   files: ['docs/livon/LIVON_NEXT_V1.md', 'tests/livon/release-candidate.test.mjs'] };
-const nextV1Files = () => [...namedCommitFiles(NEXT_V1_CONTENT), ...namedCommitFiles(NEXT_V1_PUBLIC_DATA), ...namedCommitFiles(NEXT_V1_DATA_PROTECT), ...namedCommitFiles(NEXT_V1_DOCS)];
+/* follow-up: the server route goes back to main's bytes (it is a production routing file); a mocked response without text()
+   is classified as before; later-phase version checks accept the Next V1 versions */
+export const NEXT_V1_FOLLOWUP = { subject: 'Keep the LIVON data route identical to main',
+  files: ['server/livon/data/http.mjs', 'livon/data/livon-data-providers.js', 'docs/livon/LIVON_NEXT_V1.md', 'tests/livon/livon-next.test.mjs', 'tests/livon/integration-ops.test.mjs',
+    'tests/livon/home.test.mjs', 'tests/livon/life-stage-v2.test.mjs', 'tests/livon/real-data.test.mjs', 'tests/livon/today-v2.test.mjs', 'tests/livon/release-candidate.test.mjs'] };
+const nextV1Files = () => [...namedCommitFiles(NEXT_V1_CONTENT), ...namedCommitFiles(NEXT_V1_PUBLIC_DATA), ...namedCommitFiles(NEXT_V1_DATA_PROTECT), ...namedCommitFiles(NEXT_V1_DOCS), ...namedCommitFiles(NEXT_V1_FOLLOWUP)];
 
 /* main e0436c916: ONGIL (another product on the same site) integrated for production. Its files are not LIVON product files;
    they are accepted only under its own directory and only on a line that contains that integration commit. */

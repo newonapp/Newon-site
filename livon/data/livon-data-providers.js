@@ -53,7 +53,8 @@
   var UPSTREAM_SERVER_CODES = { UPSTREAM_ERROR: 1, TIMEOUT: 1, UPSTREAM_LIMIT: 1 };
   function failure(r) {
     var status = r.status;
-    return r.text().then(function (t) { var b = null; try { b = JSON.parse(t); } catch (e) {} return b; }, function () { return null; }).then(function (b) {
+    var body = typeof r.text === "function" ? Promise.resolve().then(function () { return r.text(); }) : Promise.resolve("");
+    return body.then(function (t) { var b = null; try { b = JSON.parse(t); } catch (e) {} return b; }, function () { return null; }).then(function (b) {
       var code = b && b.ok === false && typeof b.code === "string" && /^[A-Z_]{2,40}$/.test(b.code) ? b.code : null;
       var e = new Error("http"); e.status = status; e.serverCode = code;
       e.origin = !code ? "gateway" : UPSTREAM_SERVER_CODES[code] ? "upstream" : code === "NOT_CONFIGURED" ? "not_configured" : "livon";

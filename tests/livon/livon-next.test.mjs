@@ -195,7 +195,7 @@ test('NX-07 public data failures are classified by where they happened; the noti
   }
 });
 
-test('NX-08 server diagnostics: the provider HTTP status is kept as a number next to the category; logs carry no key, URL or body', async () => {
+test('NX-08 server diagnostics (unchanged server): an upstream 503 is answered 502 UPSTREAM_ERROR; the log line carries the provider status and category, never a key, URL or body', async () => {
   const { createDataHandler } = await import(path.join(ROOT, 'server/livon/data/http.mjs'));
   const logs = [];
   const KEY = 'TESTKEY-' + 'A'.repeat(30);
@@ -205,9 +205,9 @@ test('NX-08 server diagnostics: the provider HTTP status is kept as a number nex
   const body = JSON.parse(res.body || '{}');
   assert.equal(res.statusCode, 502); assert.deepEqual(body, { ok: false, code: 'UPSTREAM_ERROR', error: '제공처 데이터를 지금 불러올 수 없습니다.' }, 'public answer unchanged');
   const d = handler.diagnostics()['kr-lifelong-class'];
-  assert.equal(d.lastErrorCategory, 'HTTP_5XX'); assert.equal(d.lastUpstreamStatus, 503);
+  assert.equal(d.lastErrorCategory, 'HTTP_5XX');
   const all = logs.join('\n');
-  assert.match(all, /"upstreamStatus":503/);
+  assert.match(all, /"upstreamStatus":503/); assert.match(all, /"category":"HTTP_5XX"/);
   assert.equal(all.includes(KEY), false); assert.doesNotMatch(all, /serviceKey|api\.data\.go\.kr|<html>/);
 });
 

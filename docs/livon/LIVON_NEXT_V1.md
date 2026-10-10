@@ -32,9 +32,12 @@ Before: on main, RC-14 reported `stale = 13` and DM-11 failed — 13 curated rec
 
 ## 2. Public data errors (평생학습 강좌 · 마을세무사 502)
 
-- Server (`server/livon/data/http.mjs`): already answered provider failures with fixed codes (`UPSTREAM_ERROR`,
-  `TIMEOUT`, `UPSTREAM_LIMIT`) and logged one fixed-field line (provider, stage, category, upstream HTTP status, provider
-  result code). `diagnostics()` now also keeps `lastUpstreamStatus` (a number) next to `lastErrorCategory`.
+- Server (`server/livon/data/http.mjs`, unchanged — it is one of main's byte-identical production routing files): it
+  already separates the provider's failure from its own — a provider failure is answered `502 UPSTREAM_ERROR` (or
+  `TIMEOUT` / `UPSTREAM_LIMIT`) and logged as one fixed-field line (provider, stage, error category, upstream HTTP
+  status, provider result code, error class), never a key, URL, query or body. `diagnostics()` keeps
+  `lastErrorCategory`. (A first version also stored `lastUpstreamStatus` there; it was reverted to keep the route
+  identical to main — the status is in the log line.)
 - Browser (`livon-data-providers.js`, `livon-data-core.js`): a failed load is classified by where it failed —
   `upstream` (LIVON answered with an upstream code), `livon` (LIVON's own error code), `gateway` (no LIVON JSON at all,
   e.g. a hosting 502 page), `network` (no answer), `not_configured`. Only fixed codes are read — never a body, URL or key.
@@ -68,5 +71,5 @@ Shown in My Life › 설정 under "내 생활 데이터" as "LIVON 데이터 백
 ## 5. Tests
 
 `tests/livon/livon-next.test.mjs` NX-01 … NX-17; updated count / version expectations in content-quality, data-manager,
-data-platform, screen-migration, release-candidate, explore-v2, today-v2, life-stage-v2, saved-v2, integration-ops,
-performance. Cache keys: changed files carry `?v=20261010nx1`.
+data-platform, screen-migration, release-candidate, explore-v2, today-v2 (TV2-51), life-stage-v2, saved-v2, home, real-data,
+integration-ops, performance. Cache keys: changed files carry `?v=20261010nx1`.

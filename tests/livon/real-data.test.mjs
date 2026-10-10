@@ -208,7 +208,8 @@ test('RD-9 failure isolation: one provider down (network, 500, auth) never hides
   assert.equal(repo.getLifeStages().length, 7); assert.ok(repo.size() > 530);
   /* browser real-data layer: each provider resolves on its own (no all-or-nothing) */
   const core = src('livon/data/livon-data-core.js');
-  assert.match(core, /\.catch\(function \(err\) \{\s*monitor\.failure\(p\.id, errorCode\(err\)\);[\s\S]{0,120}return \[\];/);
+  /* LIVON Next V1 passes where the failure happened (fixed values) as a third argument */
+  assert.match(core, /\.catch\(function \(err\) \{\s*monitor\.failure\(p\.id, errorCode\(err\)(, \{[^}]*\})?\);[\s\S]{0,120}return \[\];/);
 });
 
 /* ───────── RD-10 pagination ───────── */

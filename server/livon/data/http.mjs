@@ -22,7 +22,7 @@
  *     429 RATE_LIMIT / 503 UPSTREAM_LIMIT with Retry-After; cache hits are never counted or refused
  *   - a response whose rows ALL fail the shared schema is an invalid response (never cached, never "0 results")
  *
- * Operations: createDataHandler(...).diagnostics() → per provider { configured, status, lastErrorCategory, lastUpstreamStatus, lastAt,
+ * Operations: createDataHandler(...).diagnostics() → per provider { configured, status, lastErrorCategory, lastAt,
  *   requests, cacheHits, cacheMisses, upstreamLoads } — ids, counters and fixed codes only (no keys, URLs, queries,
  *   bodies, coordinates). Over HTTP (?action=diagnostics) only when LIVON_DATA_DIAGNOSTICS=1 outside production.
  */
@@ -234,22 +234,19 @@ export function createDataHandler({ env = process.env, fetcher = fetch, cache = 
     const rc = err && typeof err.upstreamCode === 'string' && /^\d{1,4}$/.test(err.upstreamCode) ? err.upstreamCode : null;
     const cls = category === 'UNKNOWN' && err && typeof err.name === 'string' && /^[A-Za-z]{1,40}$/.test(err.name) ? err.name : null;
     diagLog('[LIVON DATA] upstream ' + JSON.stringify({ provider: p.id, stage, category, upstreamStatus: st, resultCode: rc, errorClass: cls, timeout: category === 'TIMEOUT' }));
-    lastUpstream = st;   /* LIVON Next V1: kept for diagnostics() (a number or null — the status the provider answered with) */
     return category;
   }
   /* diagnostics: counters + fixed codes per provider id — nothing request-specific is kept */
   const diag = new Map();
-  let lastUpstream = null;
-  const rec = id => { if (!diag.has(id)) diag.set(id, { requests: 0, cacheHits: 0, cacheMisses: 0, upstreamLoads: 0, status: null, lastErrorCategory: null, lastUpstreamStatus: null, lastAt: null }); return diag.get(id); };
+  const rec = id => { if (!diag.has(id)) diag.set(id, { requests: 0, cacheHits: 0, cacheMisses: 0, upstreamLoads: 0, status: null, lastErrorCategory: null, lastAt: null }); return diag.get(id); };
   function track(id, what) { const d = rec(id); if (what === 'hit') d.cacheHits++; else if (what === 'miss') d.cacheMisses++; else if (what === 'load') d.upstreamLoads++; }
-  /* an upstream failure records its category and the provider's HTTP status; a success clears both */
-  function outcome(id, status, category = null) { const d = rec(id); d.status = status; d.lastErrorCategory = category; d.lastUpstreamStatus = category ? lastUpstream : null; lastUpstream = null; d.lastAt = new Date(now()).toISOString(); }
+  function outcome(id, status, category = null) { const d = rec(id); d.status = status; d.lastErrorCategory = category; d.lastAt = new Date(now()).toISOString(); }
   function diagnostics() {
     const out = {};
     for (const p of Object.values(PROVIDERS)) {
       const d = diag.get(p.id) || rec(p.id);
       const configured = !!p.configured(env);
-      out[p.id] = { configured, status: configured ? d.status || 'configured' : 'unconfigured', lastErrorCategory: d.lastErrorCategory, lastUpstreamStatus: d.lastUpstreamStatus, lastAt: d.lastAt,
+      out[p.id] = { configured, status: configured ? d.status || 'configured' : 'unconfigured', lastErrorCategory: d.lastErrorCategory, lastAt: d.lastAt,
         requests: d.requests, cacheHits: d.cacheHits, cacheMisses: d.cacheMisses, upstreamLoads: d.upstreamLoads };
     }
     return out;
