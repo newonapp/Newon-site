@@ -33,7 +33,7 @@ import { createCheckInStore } from './checkin.js';
 import { createScheduleStore } from './schedule.js';
 import { createMedicationStore } from './medication.js';
 import { createDailyLifeStore } from './daily-life.js';
-import { createLifelongClassSource, createFacilitySource, createUnconnectedSource, createEnjoyPlaceSource, createTourPlaceSource } from './data-source.js';
+import { createLifelongClassSource, createFacilitySource, createUnconnectedSource, createEnjoyPlaceSource, createTourPlaceSource, createTourFestivalSource } from './data-source.js';
 import { createHomeView } from './home-view.js';
 import { createTaskStore } from './tasks.js';
 import { createRoutineStore } from './routines.js';
@@ -290,6 +290,7 @@ enjoyView = createEnjoyView({
   sources: {
     lifelong: nearbySource,
     tour: observeSource(createTourPlaceSource(dataApi), { id: 'tour-place', label: '관광 정보', provider: 'kr-tourapi', purpose: '관광지·문화시설·레포츠 정보 찾기', features: ['즐길거리'] }, sourceStatus),
+    event: observeSource(createTourFestivalSource(dataApi), { id: 'tour-event', label: '축제·공연·행사', provider: 'kr-tourapi', purpose: '전국 축제·공연·행사 찾기', features: ['즐길거리'] }, sourceStatus),
     place: observeSource(createEnjoyPlaceSource(dataApi), { id: 'enjoy-place', label: '장소', provider: 'kr-kakao-place', purpose: '공원·박물관 같은 장소 찾기', features: ['즐길거리'] }, sourceStatus),
   },
   onOpen: instrument.enjoyOpened,

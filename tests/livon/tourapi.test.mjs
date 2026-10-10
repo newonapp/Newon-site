@@ -47,7 +47,8 @@ const op = c => c.url.pathname.split('/').pop();
 /* ───────── server ───────── */
 test('1 official contract: KorService2 base, current operation names, required params, decoded key sent once, no deprecated params', async () => {
   assert.equal(tour.BASE, 'https://apis.data.go.kr/B551011/KorService2');
-  assert.deepEqual(Object.values(tour.OPS), ['searchKeyword2', 'areaBasedList2', 'locationBasedList2', 'detailCommon2', 'detailIntro2', 'detailImage2']);
+  /* ONGIL Enjoy Phase C: + searchFestival2 (축제·공연·행사 lists, type 15 only). BEFORE: the six operations without it. */
+  assert.deepEqual(Object.values(tour.OPS), ['searchKeyword2', 'areaBasedList2', 'locationBasedList2', 'detailCommon2', 'detailIntro2', 'detailImage2', 'searchFestival2']);
   assert.deepEqual(Object.keys(tour.CONTENT_TYPES), ['12', '14', '15', '25', '28', '32', '38', '39']);
   const up = upstream(() => reply(ok([item()])));
   await call(handler({ TOURAPI_SERVICE_KEY: enc(KEY) }, up), Q('query=' + enc('경복궁')));
@@ -475,13 +476,16 @@ test('28 codes that return nothing upstream (29, 36, 42, 45, 46) are in no mappi
   assert.equal((await call(h, Q('region=' + enc('세종') + '&area=36'))).statusCode, 400);
 });
 
-test('29 content types are unchanged: places only (12, 14, 28, 32, 38, 39); 행사 15 and 여행코스 25 stay refused', async () => {
+/* ONGIL Enjoy Phase C: 행사 15 is now answered as a festival list (searchFestival2) — see tests/ongil/enjoy-phase-c.test.mjs.
+   BEFORE: 15 and 25 were both refused and no festival operation existed. Places are unchanged; 25 stays refused. */
+test('29 content types: places unchanged (12, 14, 28, 32, 38, 39); 여행코스 25 stays refused; 행사 15 only as a festival list', async () => {
   assert.deepEqual([...tour.PLACE_TYPES], ['12', '14', '28', '32', '38', '39']);
   assert.deepEqual([...tour.LIVON_TYPES], ['12', '14', '28', '32']);
-  assert.equal(Object.values(tour.OPS).some(o => /festival/i.test(o)), false, 'no festival operation');
+  assert.deepEqual(Object.values(tour.OPS).filter(o => /festival/i.test(o)), ['searchFestival2'], 'one festival operation');
   const up = upstream(() => reply(ok([item()])));
   const h = handler(ENV, up);
-  for (const t of ['15', '25']) assert.equal((await call(h, Q('region=' + enc('제주') + '&type=' + t))).statusCode, 400, 'type ' + t);
+  assert.equal((await call(h, Q('region=' + enc('제주') + '&type=25'))).statusCode, 400, 'type 25');
+  for (const q of ['query=a&type=15', 'type=15&lat=37.5&lng=127', 'type=15&sigungu=110&region=' + enc('서울')]) assert.equal((await call(h, Q(q))).statusCode, 400, q);
   assert.equal(up.calls.length, 0);
 });
 

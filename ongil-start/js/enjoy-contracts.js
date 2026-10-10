@@ -7,7 +7,7 @@
  * Content types (kept apart in meaning, one shape where the meaning is the same):
  *   PROGRAM  a programme someone runs over a period (지역 프로그램)
  *   CLASS    a course with sessions (강좌) — same shape as PROGRAM; the regional lifelong-learning data is CLASS
- *   EVENT    a dated happening (공연·행사) — no source is connected yet
+ *   EVENT    a dated happening (축제·공연·행사) — [Phase C] 한국관광공사 TourAPI festivals (fromTourEvent)
  *   PLACE    somewhere to go (공원, 박물관, 관광지 …)
  *   (TRIP, GROUP: reserved for later phases; no code produces them)
  *
@@ -15,7 +15,7 @@
  * There is no booking, application or payment field, and no "recommended" ranking.
  */
 import { ContractError, isPlainObject, safeText, safeHref, REGIONS, INTERESTS } from './contracts.js';
-import { isDateKey, isTime } from './dates.js';
+import { isDateKey, isTime, addDays } from './dates.js';
 import { officialUrl, mapUrl, cleanPhone } from './care-contracts.js';
 
 const sub = (...labels) => Object.freeze(labels);
@@ -97,6 +97,8 @@ export function normalizeProgram(input) {
     sourceName: safeText(input.sourceName, 120),
     ...linkOf(input),
     updatedAt: dateText(input.updatedAt),
+    /* [Phase C] the provider's content id, kept only so a person's 자세히 can ask for that festival's own page */
+    ...(isEvent && /^\d{1,12}$/.test(String(input.contentId || '')) ? { contentId: String(input.contentId) } : {}),
   };
 }
 
@@ -205,6 +207,79 @@ export function fromTourPlace(raw, category) {
     updatedAt: str(source.updatedAt),
   };
 }
+
+/*
+ * [Enjoy Phase C] kr-tourapi festival (tourapi.mjs toEvent) → EVENT. Dates are the source's own (the route sends them as
+ * Korean midnight in UTC; read back as the Korean day). The festival's site comes only from its detail (contact.website)
+ * and is shown as the organiser's site — the list row's source link is the dataset page, never called "official".
+ * Fee, place, organiser: only as the source states them (detail); nothing is filled in.
+ */
+/* the route sends a Korean day as an instant (YYYY-MM-DDT15:00Z the day before); read it back in Asia/Seoul, never from UTC */
+const SEOUL_DAY = (() => { try { return new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }); } catch { return null; } })();
+const kstDay = (iso) => {
+  const v = str(iso);
+  if (isDateKey(v)) return v;
+  const t = Date.parse(v);
+  if (!Number.isFinite(t) || !SEOUL_DAY) return '';
+  const parts = Object.fromEntries(SEOUL_DAY.formatToParts(t).map((x) => [x.type, x.value]));
+  const key = `${parts.year}-${parts.month}-${parts.day}`;
+  return isDateKey(key) ? key : '';
+};
+export function fromTourEvent(raw, category = 'OUTING') {
+  if (!raw || typeof raw !== 'object' || raw.type !== 'event') return null;
+  const id = str(raw.providerId);
+  if (!/^\d{1,12}$/.test(id)) return null;
+  const sch = obj(raw.schedule);
+  const start = kstDay(sch.startAt);
+  if (!start) return null;
+  const loc = obj(raw.location);
+  const contact = obj(raw.contact);
+  const source = obj(raw.source);
+  const meta = obj(raw.metadata);
+  return {
+    type: 'EVENT',
+    id: `tourev-${id}`,
+    title: str(raw.title),
+    category: enjoyCategoryById(category) ? category : 'OUTING',
+    summary: str(raw.summary),
+    organization: str(raw.organizer),
+    region: regionName(loc.region) || regionFromAddress(loc.address),
+    location: [str(raw.venue), [str(loc.address), str(loc.detailAddress)].filter(Boolean).join(' ')].filter(Boolean).join(' · '),
+    startDate: start,
+    endDate: kstDay(sch.endAt),
+    startTime: '',
+    costText: str(meta.usetimefestival).slice(0, 60),
+    sourceName: str(source.attribution) || str(source.providerName),
+    homepageUrl: str(contact.website),
+    updatedAt: str(source.updatedAt),
+    contentId: id,
+  };
+}
+
+/*
+ * [Phase C] date filter for dated items (EVENT). Periods are read against today's date in Korea, from the item's own
+ * start / end; an item without a date never matches a period (it is not "this week" by default).
+ */
+export const EVENT_PERIODS = Object.freeze([
+  Object.freeze({ id: 'now', label: '지금 열리는 중' }),
+  Object.freeze({ id: 'week', label: '7일 안에' }),
+  Object.freeze({ id: 'month', label: '이번 달' }),
+  Object.freeze({ id: 'later', label: '다음 달부터' }),
+]);
+export function inEventPeriod(item, period, today) {
+  if (!period) return true;
+  if (!item || !item.startDate || !isDateKey(today)) return false;
+  const start = item.startDate, end = item.endDate || item.startDate;
+  if (end < today) return false; /* ended */
+  if (period === 'now') return start <= today && today <= end;
+  if (period === 'week') return start <= addDays(today, 7);
+  const monthEnd = addDays(`${today.slice(0, 7)}-01`, 40).slice(0, 7) + '-01';
+  if (period === 'month') return start < monthEnd;
+  if (period === 'later') return start >= monthEnd;
+  return true;
+}
+/* an EVENT whose last day has passed is not shown as something to go to */
+export const isEnded = (item, today) => !!(item && item.type === 'EVENT' && item.startDate && (item.endDate || item.startDate) < today);
 
 /*
  * The live route names a 시·도 in full for TourAPI ("서울특별시", "경기도") and short for Kakao ("서울").

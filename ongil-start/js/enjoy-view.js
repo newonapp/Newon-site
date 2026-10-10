@@ -29,7 +29,7 @@ import { el, clear, append } from './dom.js';
 import { createCard, choiceButton, makeField, nextId } from './home-ui.js';
 import { setRegionState, failureText, isRetryable } from './views.js';
 import { formatDateKey, formatTime, dateKey } from './dates.js';
-import { ENJOY_CATEGORIES, ENJOY_TYPES, enjoyCategoryById, typeLabel, TOUR_TYPES, fromKakaoPlace, fromTourPlace, sanitizeEnjoyItems, filterEnjoy, availableEnjoyFilters, sortOptions, sortEnjoy, detailRows, savedInputFor, calendarDraft, isAlreadyInCalendar, familySendPreview, LINK_LABELS, interestShortcuts, interestLabels, pickedCalendarDraft, taskDraft, isAlreadyInTasks, savedActivities, itemFromSaved, savedDetailRows, SAVED_LINK_LABEL, relatedPosts, sourceSummary, ENJOY_REGIONS, enjoyRegionFor, enjoyRegionParts } from './enjoy-contracts.js';
+import { ENJOY_CATEGORIES, ENJOY_TYPES, enjoyCategoryById, typeLabel, TOUR_TYPES, fromKakaoPlace, fromTourPlace, sanitizeEnjoyItems, filterEnjoy, availableEnjoyFilters, sortOptions, sortEnjoy, detailRows, savedInputFor, calendarDraft, isAlreadyInCalendar, familySendPreview, LINK_LABELS, interestShortcuts, interestLabels, pickedCalendarDraft, taskDraft, isAlreadyInTasks, savedActivities, itemFromSaved, savedDetailRows, SAVED_LINK_LABEL, relatedPosts, sourceSummary, ENJOY_REGIONS, enjoyRegionFor, enjoyRegionParts, fromTourEvent, EVENT_PERIODS, inEventPeriod, isEnded } from './enjoy-contracts.js';
 
 /* append that skips null/false children (a plain Node.append would print "null") */
 const put = (node, ...kids) => append(node, kids);
@@ -48,6 +48,8 @@ export const SEARCH_TARGETS = Object.freeze([
   T('tour-12', '관광지 (한국관광공사)', 'tour', { contentType: '12' }, 'OUTING'),
   T('tour-14', '문화시설 (한국관광공사)', 'tour', { contentType: '14' }, 'CULTURE'),
   T('tour-28', '레포츠 장소 (한국관광공사)', 'tour', { contentType: '28' }, 'EXERCISE'),
+  /* [Enjoy Phase C] 축제·공연·행사 from today on — a region, or the whole country (전국) */
+  T('tour-15', '축제·공연·행사 (한국관광공사)', 'event', {}, 'OUTING'),
   T('kakao-park', '공원 (지도 검색)', 'place', { word: '공원' }, 'OUTING'),
   T('kakao-museum', '박물관 (지도 검색)', 'place', { word: '박물관' }, 'CULTURE'),
   T('kakao-gallery', '미술관 (지도 검색)', 'place', { word: '미술관' }, 'CULTURE'),
@@ -61,8 +63,8 @@ export const TARGETS_BY_CATEGORY = Object.freeze({
   HOBBY: ['lifelong'],
   LEARNING: ['lifelong', 'kakao-library'],
   EXERCISE: ['lifelong', 'tour-28', 'kakao-pool', 'kakao-gym'],
-  CULTURE: ['tour-14', 'kakao-museum', 'kakao-gallery', 'kakao-theater', 'kakao-cinema'],
-  OUTING: ['tour-12', 'kakao-park'],
+  CULTURE: ['tour-14', 'tour-15', 'kakao-museum', 'kakao-gallery', 'kakao-theater', 'kakao-cinema'],
+  OUTING: ['tour-12', 'tour-15', 'kakao-park'],
   TRAVEL: ['tour-12'],
 });
 const targetById = (id) => SEARCH_TARGETS.find((t) => t.id === id) || null;
@@ -72,12 +74,18 @@ const MESSAGES = {
   NO_ANSWER: '지금은 자료를 받아오지 못했어요. 잠시 뒤 다시 찾아 주세요.',
   REGION_REQUIRED: '지역을 골라 주세요.',
   REGION_NOT_SUPPORTED: '관광 정보는 이 지역 이름으로는 찾을 수 없어요. 지역을 다시 골라 주세요.',
+  NATIONWIDE_EVENTS_ONLY: '‘전국’은 축제·공연·행사를 찾을 때만 고를 수 있어요. 지역을 골라 주세요.',
 };
+/* [Phase C] the whole country — offered for 축제·공연·행사 only (every other source is asked per region) */
+export const NATIONWIDE = '전국';
 
 /* onReview (Phase 6): optional; the review button hands the item to whoever owns writing (nothing is written here) */
 /* tasks (V2): the existing My Life task store. posts (V2): () → the person's own community posts on this device. */
 export function createEnjoyView({ host, doc, saved, profile, schedule, sources, tasks = null, posts = null, onReview = null, onOpen = null, now = () => Date.now() }) {
-  const state = { category: '', type: '', filterCategory: '', region: '', query: '', sort: 'title', shown: PAGE_SIZE, items: [], sourceStatus: {} };
+  const state = { category: '', type: '', filterCategory: '', region: '', query: '', sort: 'title', shown: PAGE_SIZE, items: [], sourceStatus: {}, period: '' };
+  /* [Phase C] festival details asked for this visit (contentId → 'loading' | item | failed result) — never stored */
+  const eventDetails = new Map();
+  const today = () => dateKey(now());
   let ticket = 0;
   let cards = null;
   let dialog = null;
@@ -198,7 +206,7 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
     /* [Phase B] 광주 and 전남 are one choice here (the tourism data files them together); 내 정보 is not changed */
     const mine = enjoyRegionFor(myRegion);
     const hint = !myRegion ? '내 정보에 지역을 정해 두면 기본으로 골라 둘게요.' : mine && mine !== myRegion ? `내 정보의 지역(${myRegion})은 여기서 ‘${mine}’으로 함께 찾아요. 자료가 두 지역을 하나로 묶어 제공해요.` : `기본값은 내 정보에 설정한 지역(${myRegion})이에요.`;
-    const region = makeField({ name: 'region', label: '지역', type: 'select', required: true, options: ENJOY_REGIONS, hint }, state.region || mine);
+    const region = makeField({ name: 'region', label: '지역', type: 'select', required: true, options: [...ENJOY_REGIONS, { id: NATIONWIDE, label: '전국 (축제·공연·행사만)' }], hint }, state.region || mine);
     if (!state.region && !mine) region.input.prepend(el('option', { value: '', text: '지역 고르기', selected: true }));
     const targets = targetsNow();
     const what = makeField({ name: 'target', label: '무엇을 찾을까요?', type: 'select', required: true, options: targets.map((t) => ({ id: t.id, label: t.label })) }, targets[0] ? targets[0].id : '');
@@ -213,9 +221,9 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
       event.preventDefault();
       const r = region.get();
       const t = targetById(what.get());
-      if (!ENJOY_REGIONS.some((x) => x.id === r)) {
+      if (!ENJOY_REGIONS.some((x) => x.id === r) && !(r === NATIONWIDE && t && t.source === 'event')) {
         region.input.setAttribute('aria-invalid', 'true');
-        error.textContent = MESSAGES.REGION_REQUIRED;
+        error.textContent = r === NATIONWIDE ? MESSAGES.NATIONWIDE_EVENTS_ONLY : MESSAGES.REGION_REQUIRED;
         region.input.focus();
         return;
       }
@@ -297,6 +305,7 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
     try {
       if (target.source === 'lifelong') result = await loadParts(region, (part) => sources.lifelong.load({ region: part, query: word, limit: 20, category: category || 'LEARNING' }));
       else if (target.source === 'tour') result = await sources.tour.load({ region, contentType: target.params.contentType });
+      else if (target.source === 'event') result = sources.event ? await sources.event.load({ region: region === NATIONWIDE ? '' : region }) : { state: 'unavailable', reason: 'NOT_CONNECTED', items: [] };
       else result = await loadParts(region, (part) => sources.place.load({ region: part, word: target.params.word }));
     } catch {
       result = { state: 'unavailable', reason: 'NO_ANSWER', items: [] };
@@ -305,17 +314,20 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
     button.disabled = false;
     let items = [];
     if (result.state === 'ready') {
-      const inputs = target.source === 'lifelong' ? result.items : target.source === 'tour' ? result.items.map((raw) => fromTourPlace(raw, category)) : result.items.map((raw) => fromKakaoPlace(raw, category));
-      items = sanitizeEnjoyItems(inputs.filter(Boolean));
+      const inputs = target.source === 'lifelong' ? result.items : target.source === 'tour' ? result.items.map((raw) => fromTourPlace(raw, category)) : target.source === 'event' ? result.items.map((raw) => fromTourEvent(raw, category || 'OUTING')) : result.items.map((raw) => fromKakaoPlace(raw, category));
+      /* [Phase C] a festival whose last day has passed is not offered as something to go to */
+      items = sanitizeEnjoyItems(inputs.filter(Boolean)).filter((i) => !isEnded(i, today()));
     }
     /* replace only what this same target found before; everything else stays */
     const tag = (i) => `${target.id}`;
     state.items = [...state.items.filter((i) => i._target !== target.id), ...items.map((i) => ({ ...i, _target: tag(i) }))];
     state.shown = PAGE_SIZE;
+    /* [Phase C] festivals are read by date: the earliest first, unless the person already chose another order */
+    if (target.source === 'event' && items.length && state.sort === 'title') state.sort = 'start';
     /* Stability V1: a temporary failure says what kind (failureText) and is marked as an error, distinct from a source that is not connected;
        Phase B: a merged region (e.g. 광주·전남) that answered only in part says so */
     const failed = isRetryable(result);
-    const text = result.state === 'ready' && items.length ? `${region}에서 ${items.length}건 찾았어요.${result.partial ? ' 일부 지역 자료는 받아오지 못했어요.' : ''}` : result.state === 'empty' || result.state === 'ready' ? `${region}에서 찾지 못했어요.` : failed ? failureText(result, '자료') : MESSAGES[result.reason] || MESSAGES.NOT_CONNECTED;
+    const text = result.state === 'ready' && items.length ? `${region}에서 ${items.length}건 찾았어요.${result.partial ? (target.source === 'event' ? ' 일부 자료는 받아오지 못했어요.' : ' 일부 지역 자료는 받아오지 못했어요.') : ''}` : result.state === 'empty' || result.state === 'ready' ? `${region}에서 찾지 못했어요.` : failed ? failureText(result, '자료') : MESSAGES[result.reason] || MESSAGES.NOT_CONNECTED;
     state.sourceStatus[target.id] = { state: items.length ? 'ready' : failed ? 'error' : result.state === 'unavailable' ? 'unavailable' : 'empty', text };
     cards.search.body.querySelector('[data-og-region="enjoy-sources"]').replaceWith(statusList());
     refreshSummary();
@@ -326,7 +338,9 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
   /* ───────── 찾은 것 ───────── */
 
   function visible() {
-    return sortEnjoy(filterEnjoy(state.items, { type: state.type, category: state.filterCategory, region: state.resultRegion || '', query: state.query }), state.sort);
+    const list = filterEnjoy(state.items, { type: state.type, category: state.filterCategory, region: state.resultRegion || '', query: state.query });
+    /* [Phase C] a period keeps only dated 축제·행사 inside it (from their own start / end dates) */
+    return sortEnjoy(state.period ? list.filter((i) => i.type === 'EVENT' && inEventPeriod(i, state.period, today())) : list, state.sort);
   }
 
   function filterGroup(title, key, options, current, onPick, available) {
@@ -371,6 +385,12 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
       filterGroup('종류', 'type', ENJOY_TYPES, state.type, (id) => { state.type = id; rerender(`[data-og-enjoy-filter="type:${id || 'all'}"]`); }, avail.types),
       filterGroup('분류', 'category', ENJOY_CATEGORIES, state.filterCategory, (id) => { state.filterCategory = id; rerender(`[data-og-enjoy-filter="category:${id || 'all'}"]`); }, avail.categories)
     );
+    /* [Phase C] a period choice only when 축제·행사 were found */
+    if (state.items.some((i) => i.type === 'EVENT')) {
+      const withPeriod = EVENT_PERIODS.map((p) => p.id).filter((id) => state.items.some((i) => i.type === 'EVENT' && inEventPeriod(i, id, today())));
+      if (state.period && !withPeriod.includes(state.period)) state.period = '';
+      put(card.body, filterGroup('기간 (축제·행사)', 'period', EVENT_PERIODS, state.period, (id) => { state.period = id; rerender(`[data-og-enjoy-filter="period:${id || 'all'}"]`); }, withPeriod));
+    }
     /* a region choice only when the results really span more than one region */
     if (avail.regions.length > 1) {
       const region = makeField({ name: 'resultRegion', label: '지역으로 좁히기', type: 'select', required: false, options: avail.regions.map((r) => ({ id: r, label: r })), emptyLabel: '모든 지역' }, state.resultRegion || '');
@@ -440,7 +460,7 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
         'div',
         { class: 'og-home-item__main og-home-item__main--plain' },
         el('p', { class: 'og-home-item__title', text: item.title }),
-        el('p', { class: 'og-home-item__meta', text: [typeLabel(item.type), (enjoyCategoryById(item.category) || { label: '' }).label, item.region, item.startDate ? `시작 ${formatDateKey(item.startDate)}` : '', isSaved ? '저장함' : ''].filter(Boolean).join(' · ') }),
+        el('p', { class: 'og-home-item__meta', text: [typeLabel(item.type), (enjoyCategoryById(item.category) || { label: '' }).label, item.region, item.type === 'EVENT' && item.startDate ? `기간 ${formatDateKey(item.startDate)}${item.endDate && item.endDate !== item.startDate ? ` ~ ${formatDateKey(item.endDate)}` : ''}` : item.startDate ? `시작 ${formatDateKey(item.startDate)}` : '', isSaved ? '저장함' : ''].filter(Boolean).join(' · ') }),
         where ? el('p', { class: 'og-home-item__text', text: where }) : null
       ),
       el('div', { class: 'og-home-item__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'data-og-enjoy-open': item.id, 'aria-haspopup': 'dialog', 'aria-label': `‘${item.title}’ 자세히 보기`, text: '자세히', onclick: (event) => openDetail(item, event.currentTarget) }))
@@ -585,6 +605,8 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
         el('div', { class: 'og-dialog__actions' }, add, back, close)
       );
     } else {
+      /* [Phase C] a festival's own page (homepage, overview, place, fee) is asked for only when a person opens it */
+      if (item.type === 'EVENT' && item.contentId && !item.snapshot && sources.event && typeof sources.event.detail === 'function') put(body, eventDetailNote(item));
       const rows = item.snapshot ? savedDetailRows(item) : detailRows(item);
       put(body, el('dl', { class: 'og-care-rows', 'aria-label': '자세한 정보' }, rows.flatMap((r) => [el('dt', { text: r.label }), el('dd', { text: r.value })])));
       if (item.snapshot) put(body, el('p', { class: 'og-home-note', 'data-og-enjoy-snapshot': 'true', text: '저장할 때 적어 둔 내용이에요. 지금 정보는 다시 찾아보거나 운영 기관에서 확인해 주세요.' }));
@@ -619,6 +641,50 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
     if (title) title.focus();
   }
 
+  /* [Phase C] the state of one festival's detail for this visit, and the line that says it */
+  function eventDetailNote(item) {
+    const key = item.contentId;
+    const got = eventDetails.get(key);
+    const note = el('div', { class: 'og-region og-home-region', 'data-og-enjoy-event-detail': got === undefined || got === 'loading' ? 'loading' : got.ok ? 'ready' : 'error', role: 'region', 'aria-label': '행사 자세한 정보' });
+    if (got === undefined) loadEventDetail(item);
+    if (got === undefined || got === 'loading') {
+      setRegionState(note, 'loading', '행사의 자세한 정보(누리집, 장소, 요금)를 불러오고 있어요.');
+      return note;
+    }
+    if (got.ok) {
+      note.append(el('p', { class: 'og-home-note', text: got.found ? '한국관광공사 자료의 행사 정보를 함께 보여 드려요.' : '이 행사의 자세한 정보는 자료에 없어요.' }));
+      return note;
+    }
+    setRegionState(note, 'error');
+    note.append(
+      el('p', { class: 'og-form-error', role: 'alert', text: `오류: ${failureText(got.result, '행사 정보')}` }),
+      el('div', { class: 'og-form__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-event-retry': key, text: '다시 불러오기', onclick: () => { eventDetails.delete(key); openDetail(item, null); } }))
+    );
+    return note;
+  }
+  async function loadEventDetail(item) {
+    const key = item.contentId;
+    eventDetails.set(key, 'loading');
+    let result;
+    try { result = await sources.event.detail(key); } catch { result = { state: 'unavailable', reason: 'NO_ANSWER', items: [] }; }
+    let found = false;
+    if (result && result.state === 'ready') {
+      const fresh = sanitizeEnjoyItems([fromTourEvent(result.items[0], item.category)])[0];
+      if (fresh) {
+        found = true;
+        /* only fields the detail adds or states more fully; the dates stay those of the list (same source) */
+        for (const k of ['summary', 'organization', 'location', 'costText', 'sourceUrl', 'linkKind']) if (fresh[k]) item[k] = fresh[k];
+      }
+      eventDetails.set(key, { ok: true, found });
+    } else if (result && result.state === 'empty') {
+      eventDetails.set(key, { ok: true, found: false });
+    } else {
+      eventDetails.set(key, { ok: false, result: result || { state: 'unavailable', reason: 'NO_ANSWER', items: [] } });
+    }
+    /* redraw only if this festival's dialog is still the one open */
+    if (dialog && dialog.open && dialog.querySelector('[data-og-enjoy-event-detail]') && dialog.querySelector('#og-enjoy-detail-title') && dialog.querySelector('#og-enjoy-detail-title').textContent === item.title) openDetail(item, null);
+  }
+
   /* ───────── build ───────── */
 
   function build() {
@@ -627,7 +693,7 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
       today: createCard({ area: 'enjoy', slot: 'today', title: '오늘 뭐 하지?', level: 1, lead: '내 관심사에서 찾아보기 — 내가 고른 관심사의 분류로 바로 가요.' }),
       mine: createCard({ area: 'enjoy', slot: 'mine', title: '내 관심사 · 내 지역', level: 3 }),
       categories: createCard({ area: 'enjoy', slot: 'categories', title: '무엇을 해볼까요?', level: 1, lead: '해 보고 싶은 것을 고르면 찾을 수 있는 자료를 알려 드려요.' }),
-      search: createCard({ area: 'enjoy', slot: 'search', title: '지역에서 찾아보기', level: 2, lead: '평생학습 강좌, 관광 정보, 장소를 고른 지역에서 찾아요.' }),
+      search: createCard({ area: 'enjoy', slot: 'search', title: '지역에서 찾아보기', level: 2, lead: '평생학습 강좌, 관광 정보, 장소, 축제·공연·행사를 고른 지역에서 찾아요.' }),
       results: createCard({ area: 'enjoy', slot: 'results', title: '찾은 즐길거리', level: 2 }),
       saved: createCard({ area: 'enjoy', slot: 'saved', title: '저장한 즐길거리', level: 3, lead: '저장한 활동 — 강좌, 프로그램, 장소를 다시 볼 수 있어요.' }),
       posts: createCard({ area: 'enjoy', slot: 'posts', title: '내가 쓴 관련 글', level: 3, lead: '즐길거리에서 ‘후기 쓰기’로 시작해 이 기기에 적어 둔 글이에요.' }),

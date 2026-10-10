@@ -38,7 +38,7 @@ const CLASS = E.normalizeProgram({ type: 'CLASS', id: 'c-1', title: '스마트�
 
 test('EV2-01 V1 is kept: six categories, twelve search targets, the same route sections and page size', () => {
   assert.deepEqual(E.ENJOY_CATEGORIES.map((c) => c.label), ['취미', '배움', '운동', '문화', '나들이', '여행']);
-  assert.equal(SEARCH_TARGETS.length, 12);
+  assert.equal(SEARCH_TARGETS.length, 13); // Enjoy Phase C: + tour-15 축제·공연·행사 (BEFORE 12)
   assert.deepEqual(ENJOY_SECTIONS, ['hobby', 'learning', 'exercise', 'culture', 'outing', 'travel']);
   assert.equal(PAGE_SIZE, 30);
   assert.deepEqual(Object.keys(TARGETS_BY_CATEGORY), E.ENJOY_CATEGORY_IDS);
@@ -310,8 +310,9 @@ test('EV2-19 server boundary: the same three sources through the same route — 
   const ds = strip(read('js', 'data-source.js'));
   assert.equal((ds.match(/const DATA_PATH = '\/api\/livon\/data';/g) || []).length, 1);
   assert.deepEqual([...new Set(ds.match(/kr-[a-z-]+/g))].sort(), ['kr-kakao-place', 'kr-lifelong-class', 'kr-tourapi']);
-  assert.deepEqual([...new Set(SEARCH_TARGETS.map((t) => t.source))].sort(), ['lifelong', 'place', 'tour']);
-  assert.deepEqual(SEARCH_TARGETS.filter((t) => t.source === 'tour').map((t) => t.params.contentType), ['12', '14', '28'], 'no festival / event type is asked for');
+  /* Enjoy Phase C: + 'event' (TourAPI 15 through the same route and provider; no new API, provider or parameter). BEFORE: ['lifelong', 'place', 'tour'] */
+  assert.deepEqual([...new Set(SEARCH_TARGETS.map((t) => t.source))].sort(), ['event', 'lifelong', 'place', 'tour']);
+  assert.deepEqual(SEARCH_TARGETS.filter((t) => t.source === 'tour').map((t) => t.params.contentType), ['12', '14', '28'], 'the place targets ask for no festival / event type');
   assert.doesNotMatch(VIEW + CONTRACTS, /\/api\/|vercel|newon-api/);
 });
 

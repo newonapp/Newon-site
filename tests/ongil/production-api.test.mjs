@@ -321,7 +321,7 @@ test('API-28 / API-29 / API-30 only region names, public search words and fixed 
   const DS = strip(read('ongil-start/js/data-source.js'));
   const queries = [...DS.matchAll(/getJson\(`([^`]+)`\)|getJson\('([^']+)'\)/g)].map((m) => m[1] || m[2]);
   assert.ok(queries.length >= 3);
-  for (const q of queries) for (const name of [...q.matchAll(/[?&]([a-z]+)=/g)].map((m) => m[1])) assert.ok(['action', 'provider', 'region', 'query', 'status', 'limit', 'page', 'type'].includes(name), `${name} in ${q}`);
+  for (const q of queries) for (const name of [...q.matchAll(/[?&]([a-z]+)=/g)].map((m) => m[1])) assert.ok(['action', 'provider', 'region', 'query', 'status', 'limit', 'page', 'type', 'id'].includes(name), `${name} in ${q}`); // Enjoy Phase C: + id — a public TourAPI content id taken from a festival result (BEFORE: no id)
   const importers = fs.readdirSync(path.join(ROOT, 'ongil-start/js')).filter((f) => f.endsWith('.js') && /from '\.\/data-source\.js'/.test(read(`ongil-start/js/${f}`)));
   assert.ok(importers.length >= 1);
   for (const f of importers) assert.doesNotMatch(f, /family|health|symptom|medication|journal|expense|community|assistant|checkin/, f);

@@ -82,10 +82,11 @@ test('OG-EN-3 class model: same shape as PROGRAM, its own type and label', () =>
   assert.deepEqual(Object.keys(c).sort(), Object.keys(E.normalizeProgram({ type: 'PROGRAM', id: 'a', title: 'a', category: 'HOBBY' })).sort());
 });
 
-test('OG-EN-4 event model: no recruitment, capacity or target; no booking flag; no source yet', async () => {
+test('OG-EN-4 event model: no recruitment, capacity or target; no booking flag; one event source (Phase C)', async () => {
   const e = E.normalizeProgram({ type: 'EVENT', id: 'ev-1', title: '음악회', category: 'CULTURE', recruitmentText: '선착순', capacityText: '100명', targetText: '누구나', scheduleText: '매일', bookingAvailable: true });
   assert.deepEqual([e.recruitmentText, e.capacityText, e.targetText, e.scheduleText, 'bookingAvailable' in e], ['', '', '', '', false]);
-  assert.equal(SEARCH_TARGETS.some((t) => t.source === 'event'), false, 'no event source is connected');
+  /* Enjoy Phase C: 축제·공연·행사 (TourAPI type 15) is the one event target. BEFORE: no event source was connected. */
+  assert.deepEqual(SEARCH_TARGETS.filter((t) => t.source === 'event').map((t) => t.id), ['tour-15']);
   assert.deepEqual((await createUnconnectedSource('events', '행사').load()).reason, 'NOT_CONNECTED');
 });
 
@@ -337,7 +338,7 @@ test('OG-EN-30 Nearby shared normalization: Home 내 주변 items are the same n
   assert.match(b.calls[1].url, /&query=%EC%84%9C%EC%98%88&status=open&limit=20$/);
   // Phase 9: the tour and place sources are wrapped by observeSource; the lifelong source is still the one object Home uses.
   // BEFORE: sources: { lifelong: nearbySource, tour: createTourPlaceSource(dataApi), place: createEnjoyPlaceSource(dataApi) } on one line.
-  assert.match(APP, /sources: \{\s*lifelong: nearbySource,\s*tour: observeSource\(createTourPlaceSource\(dataApi\), [^\n]*\),\s*place: observeSource\(createEnjoyPlaceSource\(dataApi\), [^\n]*\),\s*\}/, 'one lifelong source object for both screens');
+  assert.match(APP, /sources: \{\s*lifelong: nearbySource,\s*tour: observeSource\(createTourPlaceSource\(dataApi\), [^\n]*\),\s*event: observeSource\(createTourFestivalSource\(dataApi\), [^\n]*\),\s*place: observeSource\(createEnjoyPlaceSource\(dataApi\), [^\n]*\),\s*\}/, 'one lifelong source object for both screens');
 });
 
 test('OG-EN-31 Global Search: loaded public enjoy items are findable, with a clear type label', async () => {
@@ -528,7 +529,7 @@ test('OG-EN-50 regression: fetch injected once, sources only in data-source.js, 
   assert.equal((APP.match(/createLifelongClassSource\(/g) || []).length, 1);
   assert.match(APP, /facility: observeSource\(createFacilitySource\(dataApi\), /); // Phase 9: observed, as above
   assert.deepEqual(TARGETS_BY_CATEGORY.TRAVEL, ['tour-12'], 'travel = tourist information only (no lodging, no transport)');
-  assert.equal(SEARCH_TARGETS.length, 12);
+  assert.equal(SEARCH_TARGETS.length, 13); // Enjoy Phase C: + tour-15 (BEFORE: 12)
   assert.equal(/server\/|KAKAO_REST_API_KEY|TOURAPI_SERVICE_KEY|PUBLIC_DATA_SERVICE_KEY/.test(strip(read('js', 'data-source.js'))), false);
 });
 
@@ -561,9 +562,10 @@ test('OG-EN-B2 the tourism request carries the chosen region name and one of 12 
 });
 
 test('OG-EN-B3 the screen: the region list is the Enjoy list, the default follows 내 정보, and a merged region is asked part by part', () => {
-  assert.match(VIEW, /options: ENJOY_REGIONS, hint \}, state\.region \|\| mine\)/);
+  /* Enjoy Phase C: + one 전국 choice, accepted only for 축제·공연·행사. BEFORE: options: ENJOY_REGIONS, hint } */
+  assert.match(VIEW, /options: \[\.\.\.ENJOY_REGIONS, \{ id: NATIONWIDE, label: '전국 \(축제·공연·행사만\)' \}\], hint \}, state\.region \|\| mine\)/);
   assert.match(VIEW, /const mine = enjoyRegionFor\(myRegion\);/);
-  assert.match(VIEW, /if \(!ENJOY_REGIONS\.some\(\(x\) => x\.id === r\)\)/);
+  assert.match(VIEW, /if \(!ENJOY_REGIONS\.some\(\(x\) => x\.id === r\) && !\(r === NATIONWIDE && t && t\.source === 'event'\)\)/);
   assert.doesNotMatch(VIEW, /options: REGIONS/);
   assert.doesNotMatch(VIEW, /서울, 부산, 대구, 인천, 광주, 대전, 경기만/, 'the seven-region sentence is gone');
   assert.match(VIEW, /sources\.tour\.load\(\{ region, contentType: target\.params\.contentType \}\)/, 'tourism: one request with the merged name');

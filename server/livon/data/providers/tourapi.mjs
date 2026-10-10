@@ -29,11 +29,15 @@ export const PROVIDER_ID = 'kr-tourapi';
 export const PROVIDER_NAME = '한국관광공사 TourAPI';
 export const ENV_KEY = 'TOURAPI_SERVICE_KEY';
 export const BASE = 'https://apis.data.go.kr/B551011/KorService2';     // fixed; clients can never choose it
-export const OPS = Object.freeze({ keyword: 'searchKeyword2', area: 'areaBasedList2', location: 'locationBasedList2', common: 'detailCommon2', intro: 'detailIntro2', images: 'detailImage2' });
+export const OPS = Object.freeze({ keyword: 'searchKeyword2', area: 'areaBasedList2', location: 'locationBasedList2', common: 'detailCommon2', intro: 'detailIntro2', images: 'detailImage2', festival: 'searchFestival2' });
 export const MOBILE_APP = 'LIVON';
 export const LICENSE = '한국관광공사 국문 관광정보 서비스 (공공데이터포털)';
 export const POLICY_URL = 'https://api.visitkorea.or.kr/#/useServiceGuide/2';
 export const ATTRIBUTION = '출처: ⓒ한국관광공사';
+/* [ONGIL Enjoy Phase C] the public page of the dataset itself. A festival list row has no page of its own; an event entity
+   needs a source link, and this is the true one (the dataset the row came from) — never presented as the festival's site. */
+export const DATASET_URL = 'https://www.data.go.kr/data/15101578/openapi.do';
+export const FESTIVAL_TYPE = '15';
 export const PHOTO_CREDIT = '사진 데이터 제공: ⓒ한국관광콘텐츠랩';
 
 export const CONTENT_TYPES = Object.freeze({ 12: '관광지', 14: '문화시설', 15: '축제공연행사', 25: '여행코스', 28: '레포츠', 32: '숙박', 38: '쇼핑', 39: '음식점' });
@@ -83,7 +87,8 @@ export function parseParams({ query, region, area, sigungu, type, lat, lng, radi
   if (!Number.isInteger(pg) || pg < 1 || pg > LIMITS.maxPage) throw bad();
   const rows = Math.min(Math.max(1, Number(limit) || LIMITS.maxRows), LIMITS.maxRows);
   const t = type == null || type === '' ? '' : String(type);
-  if (t && !PLACE_TYPES.includes(t)) throw bad();
+  /* [Phase C] 15 축제공연행사: only as a festival list (region optional, no query / coordinates) or a detail */
+  if (t && !PLACE_TYPES.includes(t) && t !== FESTIVAL_TYPE) throw bad();
   const v = view == null || view === '' ? '' : String(view);
   if (v && v !== 'detail' && v !== 'images') throw bad();
   if (id != null && id !== '') {
@@ -101,6 +106,10 @@ export function parseParams({ query, region, area, sigungu, type, lat, lng, radi
   if (sigungu != null && sigungu !== '') { if (!regn || !/^\d{3,5}$/.test(String(sigungu))) throw bad(); sgg = String(sigungu); }
   const la = num(lat), ln = num(lng);
   if ((la == null) !== (ln == null)) throw bad();
+  if (t === FESTIVAL_TYPE) {
+    if (q || la != null || sgg || (radius != null && radius !== '')) throw bad();
+    return { mode: 'festival', type: t, area: regn, page: pg, rows, nearby: false };
+  }
   if (la != null) {
     if (la < -90 || la > 90 || ln < -180 || ln > 180) throw bad();
     if (q || regn) throw bad();
@@ -122,7 +131,7 @@ export function requestUrl(op, p, key) {
   u.searchParams.set('MobileOS', 'WEB');
   u.searchParams.set('MobileApp', MOBILE_APP);
   u.searchParams.set('_type', 'json');
-  if (op === 'keyword' || op === 'area' || op === 'location') {
+  if (op === 'keyword' || op === 'area' || op === 'location' || op === 'festival') {
     u.searchParams.set('numOfRows', String(p.rows));
     u.searchParams.set('pageNo', String(p.page));
   }
@@ -132,6 +141,12 @@ export function requestUrl(op, p, key) {
     if (p.sigungu) u.searchParams.set('lDongSignguCd', p.sigungu);
   }
   if (op === 'area') { u.searchParams.set('arrange', 'A'); if (p.type) u.searchParams.set('contentTypeId', p.type); }
+  /* [Phase C] searchFestival2: eventStartDate (필수, YYYYMMDD) = today in Korea, set by search(); lDongRegnCd when a region is chosen */
+  if (op === 'festival') {
+    u.searchParams.set('arrange', 'A');
+    u.searchParams.set('eventStartDate', p.from);
+    if (p.area) u.searchParams.set('lDongRegnCd', p.area);
+  }
   if (op === 'location') {
     u.searchParams.set('mapX', String(p.lng));     /* mapX = WGS84 경도 (longitude) */
     u.searchParams.set('mapY', String(p.lat));     /* mapY = WGS84 위도 (latitude) */
@@ -264,6 +279,52 @@ export function toEntity(raw, fetchedAt, { nearby = false } = {}) {
   };
 }
 
+/*
+ * [Phase C] 축제공연행사 (contentTypeId 15) → an `event` entity. Dates come only from the source (eventstartdate /
+ * eventenddate, YYYYMMDD); a row without a valid start date is dropped, never given one. The festival's own homepage
+ * comes from the detail (detailCommon2 homepage / detailIntro2 eventhomepage) — never invented for a list row.
+ */
+function ymd(v) { const m = /^(\d{4})(\d{2})(\d{2})$/.exec(str(v)); if (!m) return null; const d = new Date(`${m[1]}-${m[2]}-${m[3]}T00:00:00Z`); return isNaN(d) || d.getUTCFullYear() < 1990 || d.toISOString().slice(0, 10) !== `${m[1]}-${m[2]}-${m[3]}` ? null : `${m[1]}-${m[2]}-${m[3]}`; }
+export const FESTIVAL_FIELDS = Object.freeze([['eventplace', '행사 장소'], ['playtime', '공연 시간'], ['usetimefestival', '이용 요금'], ['agelimit', '관람 가능 연령'], ['spendtimefestival', '관람 소요 시간'], ['bookingplace', '예매처'], ['sponsor1', '주최'], ['sponsor2', '주관'], ['program', '행사 프로그램']]);
+export function toEvent(raw, fetchedAt, intro = null) {
+  if (!raw || typeof raw !== 'object') return null;
+  const id = str(raw.contentid), title = plain(raw.title, 200);
+  if (!/^\d{1,12}$/.test(id) || !title || str(raw.contenttypeid || FESTIVAL_TYPE) !== FESTIVAL_TYPE) return null;
+  const dates = intro && typeof intro === 'object' ? intro : raw;
+  const start = ymd(dates.eventstartdate) || ymd(raw.eventstartdate), end = ymd(dates.eventenddate) || ymd(raw.eventenddate);
+  if (!start) return null;
+  const lat = coord(raw.mapy, -90, 90), lng = coord(raw.mapx, -180, 180);
+  const both = lat != null && lng != null;
+  const a1 = plain(raw.addr1, 300), a2 = plain(raw.addr2, 300);
+  const cover = photo(raw.firstimage, raw.firstimage2, '', raw.cpyrhtDivCd);
+  const it = intro && typeof intro === 'object' ? intro : {};
+  const meta = { contentId: id, contentTypeId: FESTIVAL_TYPE, contentTypeName: CONTENT_TYPES[FESTIVAL_TYPE], lDongRegnCd: str(raw.lDongRegnCd), lDongSignguCd: str(raw.lDongSignguCd), modifiedtime: str(raw.modifiedtime), policyUrl: POLICY_URL, datasetUrl: DATASET_URL };
+  for (const [k] of FESTIVAL_FIELDS) { const v = plain(it[k], 200); if (v) meta[k] = v; }
+  if (cover && cover.license) { meta.imageUrl = cover.url; meta.imageLicense = cover.license; }
+  const site = homepageUrl(raw.homepage) || homepageUrl(it.eventhomepage);
+  return {
+    type: 'event',
+    provider: PROVIDER_ID,
+    providerId: id,
+    title,
+    summary: null,
+    category: null,
+    tags: [CONTENT_TYPES[FESTIVAL_TYPE]],
+    interests: [],
+    lifeStages: [],
+    eventType: CONTENT_TYPES[FESTIVAL_TYPE],
+    eventStatus: 'unknown',                                  /* the API states no cancellation / postponement */
+    organizer: plain(it.sponsor1, 120) || null,
+    venue: plain(it.eventplace, 200) || null,
+    schedule: { startAt: start, endAt: end && end >= start ? end : null, timezone: 'Asia/Seoul' },
+    location: { country: 'KR', region: regionOf(a1), address: a1 || null, detailAddress: a2 || null, latitude: both ? lat : null, longitude: both ? lng : null },
+    contact: str(raw.tel) || str(it.sponsor1tel) || site ? { phone: plain(str(raw.tel) || str(it.sponsor1tel), 40) || null, website: site || null } : null,
+    media: cover && cover.license ? { thumbnail: cover.thumb, images: [] } : null,
+    source: { providerName: PROVIDER_NAME, sourceUrl: DATASET_URL, fetchedAt, updatedAt: tsIso(raw.modifiedtime), license: LICENSE, attribution: ATTRIBUTION },
+    metadata: meta
+  };
+}
+
 /* detailIntro2 fields per contentTypeId with the 명세 labels — shown only when the value exists */
 export const INTRO_FIELDS = Object.freeze({
   12: [['usetime', '이용시간'], ['restdate', '쉬는날'], ['useseason', '이용시기'], ['opendate', '개장일'], ['parking', '주차시설'], ['infocenter', '문의및안내'],
@@ -310,6 +371,25 @@ export async function search({ key, fetcher, params: p, timeoutMs = 8000, now = 
   if (p.mode === 'images') {
     const r = await get(fetcher, requestUrl('images', p, key), timeoutMs);
     return { items: [], photos: photosFrom(r.rows), hasMore: false, total: null, fetchedAt };
+  }
+  if (p.mode === 'festival') {
+    /* today in Korea (UTC+9) as YYYYMMDD — the API's required start; past festivals are not asked for */
+    const from = new Date(now + 9 * 3600e3).toISOString().slice(0, 10).replace(/-/g, '');
+    const r = await get(fetcher, requestUrl('festival', { ...p, from }, key), timeoutMs);
+    const items = r.rows.map(x => toEvent(x, fetchedAt)).filter(Boolean);
+    const hasMore = r.total != null ? p.page * p.rows < r.total && p.page < LIMITS.maxPage : r.rows.length === p.rows && p.page < LIMITS.maxPage;
+    return { items, hasMore, total: r.total, fetchedAt };
+  }
+  if (p.mode === 'detail' && p.type === FESTIVAL_TYPE) {
+    const common = await get(fetcher, requestUrl('common', p, key), timeoutMs);
+    const raw = common.rows[0];
+    if (!raw || str(raw.contenttypeid) !== FESTIVAL_TYPE) return { items: [], hasMore: false, total: 0, fetchedAt };
+    const intro = await get(fetcher, requestUrl('intro', p, key), timeoutMs);
+    const e = toEvent(raw, fetchedAt, intro.rows[0] || null);
+    if (!e) return { items: [], hasMore: false, total: 0, fetchedAt };
+    e.description = plain(raw.overview, 5000) || null;
+    e.summary = e.description ? e.description.slice(0, 180) + (e.description.length > 180 ? '…' : '') : null;
+    return { items: [e], hasMore: false, total: 1, fetchedAt };
   }
   if (p.mode === 'detail') {
     const common = await get(fetcher, requestUrl('common', p, key), timeoutMs);

@@ -16,7 +16,8 @@
  *   createFacilitySource        kr-kakao-place      기관·시설          돌봄·서비스 (Phase 4)
  *   createEnjoyPlaceSource      kr-kakao-place      공원·박물관 …      즐길거리 (Phase 5)
  *   createTourPlaceSource       kr-tourapi          관광지·문화시설·레포츠  즐길거리 (Phase 5)
- *   createUnconnectedSource     —                   no source yet (care services, benefits, events)
+ *   createTourFestivalSource       kr-tourapi          축제·공연·행사       즐길거리 (Enjoy Phase C)
+ *   createUnconnectedSource     —                   no source yet (care services, benefits)
  *
  * Normalisation of what comes back lives in the contracts files (care-contracts.js, enjoy-contracts.js); the
  * lifelong-learning answer is normalised once (enjoy-contracts fromLifelong) for both Home and 즐길거리.
@@ -245,7 +246,48 @@ export function createTourPlaceSource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS,
   return Object.freeze({ id: 'tour-place', label: '관광 정보', kind: 'place', load });
 }
 
-/* services, benefits and events: no source exists yet. Real objects, so a screen has one way to ask and one answer. */
+/*
+ * [Enjoy Phase C] 축제·공연·행사 (TourAPI contentTypeId 15, searchFestival2) through the same route. The route asks only for
+ * festivals from today on (the API's required start date is today in Korea); a region is one of the 16 Enjoy regions or
+ * '' for the whole country. Up to three pages are read so that the nearest dates are not cut off by the API's title order.
+ * detail(id) asks for one festival's own page (homepage, overview, place, fee …) only when a person opens it.
+ */
+const EVENT_PAGES = 3;
+export const TOUR_EVENT_TYPE = '15';
+export function createTourFestivalSource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS, retryDelayMs = RETRY_DELAY_MS } = {}) {
+  const api = dataClient({ apiUrl, fetcher, timeoutMs, retryDelayMs });
+  async function load({ region = '' } = {}) {
+    if (!api.usable) return unavailable('NOT_CONNECTED');
+    if (region && !TOUR_REGIONS.includes(region)) return unavailable(REGIONS.some((r) => r.id === region) ? 'REGION_NOT_SUPPORTED' : 'REGION_REQUIRED');
+    const ready = await api.configured(TOUR_PROVIDER);
+    if (ready !== 'yes') return api.notReadyResult(ready);
+    const items = [];
+    let partial = false;
+    for (let page = 1; page <= EVENT_PAGES; page++) {
+      const data = await api.getJson(`?provider=${TOUR_PROVIDER}&type=${TOUR_EVENT_TYPE}${region ? `&region=${encodeURIComponent(region)}` : ''}&page=${page}&limit=${TOUR_LIMIT}`);
+      if (!data || !Array.isArray(data.items)) {
+        if (page === 1) return api.noAnswer();
+        partial = true; /* the first page(s) arrived: show them and say that the rest could not be read */
+        break;
+      }
+      items.push(...data.items.filter((x) => x && typeof x === 'object' && x.type === 'event'));
+      if (!data.hasMore) break;
+    }
+    if (items.length === 0) return { state: 'empty', items: [], attribution: '' };
+    return { state: 'ready', items, attribution: '행사 정보 출처: 한국관광공사 (TourAPI)', partial };
+  }
+  async function detail(contentId) {
+    if (!api.usable) return unavailable('NOT_CONNECTED');
+    if (!/^\d{1,12}$/.test(String(contentId || ''))) return unavailable('NOT_FOUND');
+    const data = await api.getJson(`?provider=${TOUR_PROVIDER}&id=${contentId}&type=${TOUR_EVENT_TYPE}`);
+    if (!data || !Array.isArray(data.items)) return api.noAnswer();
+    const item = data.items.find((x) => x && typeof x === 'object' && x.type === 'event');
+    return item ? { state: 'ready', items: [item], attribution: '행사 정보 출처: 한국관광공사 (TourAPI)' } : { state: 'empty', items: [], attribution: '' };
+  }
+  return Object.freeze({ id: 'tour-event', label: '축제·행사', kind: 'event', load, detail });
+}
+
+/* services and benefits: no source exists yet (events come from createTourFestivalSource). Real objects, so a screen has one way to ask and one answer. */
 export function createUnconnectedSource(id, label) {
   return Object.freeze({ id, label, kind: id, connected: false, load: async () => unavailable('NOT_CONNECTED') });
 }
