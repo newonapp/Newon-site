@@ -260,3 +260,23 @@ node scripts/ongil-module-versions.mjs           # check (exit 1 when stale)
 
 `tests/ongil/release-hardening.test.mjs` (MC-1 … MC-7) fails when the map is stale, when a module is missing from it, or
 when a module is fetched without its version in Chromium.
+
+## 35. ONGIL Next hardening (local only, no new feature)
+
+An audit at 320 / 390 / 1440 px and 200 % text found no target under 44 px, no unlabelled field, no unnamed button, no
+duplicate id, no heading skip and no horizontal scroll on `#community`, `/write`, `/groups`, `/activity`. Three
+behaviours were not truthful or left a person stuck; they are fixed:
+
+- **A delete is said only when it happened.** Deleting a 모임 초안 or an 일정 초안 said "지웠어요" without looking at the
+  store's answer. When the browser refuses the write (storage full or blocked), the draft stays, the screen says
+  "지우지 못했어요. 브라우저의 저장 공간을 확인한 뒤 다시 해 주세요." and focus returns to the delete button. (Posts already
+  did this.)
+- **No hidden leftovers.** If a group draft was removed but its meetup drafts could not be, they stayed stored —
+  never shown, yet counted toward the meetup limit. `groups.remove()` now reports `{ ok: true, leftover: true }`, and
+  `groups.tidy()` (run before the group list is drawn) removes meetup drafts whose group id is no longer stored. It
+  reads the stored ids as they are, so a damaged group entry or an unreadable list never makes its meetups look
+  orphaned.
+- **One step out of an empty filter.** "조건에 맞는 글이 없어요." now offers **조건 모두 지우기**: 종류, 분류, 상태 and the search
+  words go back to 전체 (the order stays), the result is announced and focus moves to the search field.
+
+Tests: `tests/ongil/community-v2.test.mjs` OCV2-H1 … H4. Still LOCAL only; nothing here is shown as published.

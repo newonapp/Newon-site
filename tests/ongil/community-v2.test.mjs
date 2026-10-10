@@ -589,3 +589,65 @@ test('OCV2-75 the documentation covers every required part', () => {
   for (const h of ['Existing audit', 'Product purpose', 'Senior UX', 'Local mode', 'Remote mode', 'Post model', 'Drafts', 'Comments and replies', 'Reactions', 'Profile', 'Follow', 'Block', 'Report', 'Moderation', 'Scam safety', 'Medical-content boundary', 'Groups', 'Meeting safety', 'Region privacy', 'Family boundary', 'Health boundary', 'My Life boundary', 'Search', 'Saved', 'Notifications', 'Newon+ boundary', 'AI boundary', 'Analytics and log privacy', 'Remote contract', 'Authorization', 'Known limitations', 'Activation roadmap'])
     assert.match(DOC, new RegExp(`^## .*${h.replace(/[+]/g, '\\+')}`, 'mi'), h);
 });
+
+/* ───────── Community hardening (ONGIL Next): deletes are said only when they happened; no hidden leftovers ───────── */
+
+function flakyEnv() {
+  let t = NOW;
+  const now = () => (t += 1000);
+  const base = createMemoryBackend();
+  const fail = new Set();
+  const backend = { ...base, setItem: (k, v) => { if ([...fail].some((c) => k.endsWith(c))) throw new Error('QuotaExceededError'); return base.setItem(k, v); } };
+  const storage = createStorage({ backend });
+  const meetups = createMeetupStore(storage, { now });
+  return { storage, base, fail, meetups, groups: createGroupStore(storage, { now, meetups }) };
+}
+
+test('OCV2-H1 a group draft whose write fails is not removed and says so; its meetup drafts stay with it', () => {
+  const e = flakyEnv();
+  const g = e.groups.add(GROUP).group;
+  e.meetups.add(g.id, { title: '첫 산책', date: '2026-10-10' });
+  e.fail.add('groupDrafts');
+  assert.deepEqual(e.groups.remove(g.id), { ok: false, reason: 'STORAGE_FULL' });
+  assert.equal(e.groups.count(), 1);
+  assert.equal(e.meetups.listFor(g.id).length, 1, 'nothing of the group is lost when it could not be removed');
+});
+
+test('OCV2-H2 meetup drafts left behind by a removed group are cleaned by tidy() — and only those', () => {
+  const e = flakyEnv();
+  const keep = e.groups.add(GROUP).group;
+  const gone = e.groups.add({ ...GROUP, name: '다른 모임' }).group;
+  e.meetups.add(keep.id, { title: 'a', date: '2026-10-10' });
+  e.meetups.add(gone.id, { title: 'b', date: '2026-10-11' });
+  e.fail.add('meetupDrafts');
+  assert.deepEqual(e.groups.remove(gone.id), { ok: true, leftover: true }, 'the group is gone; the leftover is reported');
+  assert.equal(e.meetups.count(), 2, 'the meetup draft is still stored (invisible, and counted toward the limit)');
+  e.fail.clear();
+  assert.equal(e.groups.tidy(), true);
+  assert.deepEqual([e.meetups.count(), e.meetups.listFor(keep.id).length], [1, 1], 'only the meetup of the missing group went');
+});
+
+test('OCV2-H3 tidy() never treats a damaged or unreadable group list as "no groups"', () => {
+  const e = flakyEnv();
+  const g = e.groups.add(GROUP).group;
+  e.meetups.add(g.id, { title: 'a', date: '2026-10-10' });
+  const raw = e.storage.get('groupDrafts', null);
+  /* the group entry is damaged (its name is gone): it is not listed, but its id is still stored → its meetups stay */
+  e.storage.set('groupDrafts', { ...raw, items: raw.items.map((x) => ({ ...x, name: '' })) });
+  assert.equal(e.groups.count(), 0);
+  e.groups.tidy();
+  assert.equal(e.meetups.count(), 1);
+  /* the whole list is unreadable: nothing is removed */
+  e.base.setItem(e.base.keys().find((k) => k.endsWith('groupDrafts')), '{not json');
+  e.groups.tidy();
+  assert.equal(e.meetups.count(), 1);
+});
+
+test('OCV2-H4 the screen: delete messages follow the store answer; tidy before the group list; one step out of an empty filter', () => {
+  assert.match(VIEW, /const r = groups\.remove\(group\.id\);\s*if \(!r \|\| !r\.ok\) \{[^}]*초안을 지우지 못했어요/);
+  assert.match(VIEW, /const r = meetups\.remove\(m\.id\);[\s\S]{0,120}if \(!r \|\| !r\.ok\) \{[\s\S]{0,120}일정 초안을 지우지 못했어요/);
+  assert.doesNotMatch(VIEW, /groups\.remove\(group\.id\); state\.groupId/, 'no "지웠어요" without looking at the answer');
+  assert.match(VIEW, /groups\.tidy\(\);\s*const list = groups\.list\(\);/);
+  assert.match(VIEW, /'data-og-post-filters-clear': 'true', text: '조건 모두 지우기'/);
+  assert.match(VIEW, /state\.type = ''; state\.category = ''; state\.state = ''; state\.query = '';/);
+});

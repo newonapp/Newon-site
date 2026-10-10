@@ -137,11 +137,22 @@ export function createGroupStore(storage, { now = () => Date.now(), makeId = () 
     const next = items.filter((g) => g.id !== id);
     if (next.length === items.length) return { ok: false, reason: 'NOT_FOUND' };
     const ok = s.write(next);
-    if (ok && meetups) meetups.removeForGroup(id);
-    return { ok };
+    if (!ok) return { ok: false, reason: 'STORAGE_FULL' };
+    /* the group is gone; if its meetup drafts could not be removed now, tidy() removes them on the next look */
+    const cleaned = meetups ? meetups.removeForGroup(id) : true;
+    return { ok: true, ...(cleaned ? {} : { leftover: true }) };
   }
+  /* meetup drafts whose group draft no longer exists (a cleanup that failed before) — removed, never shown */
+  /* Only when the stored list itself is readable; ids are taken from the stored entries as they are, so a meetup of a
+     damaged (unreadable) group entry, or of an unreadable list, is never treated as left behind. */
+  const tidy = () => {
+    if (!meetups) return true;
+    const raw = storage.get('groupDrafts', null);
+    if (!isPlainObject(raw) || !Array.isArray(raw.items)) return true;
+    return meetups.removeOrphans(raw.items.map((g) => (isPlainObject(g) ? g.id : null)).filter((id) => typeof id === 'string' && id));
+  };
 
-  return Object.freeze({ list, get: (id) => s.read().find((g) => g.id === id) || null, add: (input) => save(input), update: (id, input) => save(input, id), remove, count: () => s.read().length });
+  return Object.freeze({ list, get: (id) => s.read().find((g) => g.id === id) || null, add: (input) => save(input), update: (id, input) => save(input, id), remove, tidy, count: () => s.read().length });
 }
 
 export function createMeetupStore(storage, { now = () => Date.now(), makeId = () => newId('mt', now()) } = {}) {
@@ -179,6 +190,12 @@ export function createMeetupStore(storage, { now = () => Date.now(), makeId = ()
     const next = items.filter((m) => m.groupId !== groupId);
     return next.length === items.length ? true : s.write(next);
   }
+  function removeOrphans(groupIds) {
+    const keep = new Set(Array.isArray(groupIds) ? groupIds : []);
+    const items = s.read();
+    const next = items.filter((m) => keep.has(m.groupId));
+    return next.length === items.length ? true : s.write(next);
+  }
 
   /* Phase 11: { groupId: number of meetup drafts } from ONE read — the group list used to read the collection once per group */
   function countsByGroup() {
@@ -187,7 +204,7 @@ export function createMeetupStore(storage, { now = () => Date.now(), makeId = ()
     return out;
   }
 
-  return Object.freeze({ listFor, countsByGroup, add: (groupId, input) => save(groupId, input), update: (id, input) => save(null, input, id), remove, removeForGroup, count: () => s.read().length });
+  return Object.freeze({ listFor, countsByGroup, add: (groupId, input) => save(groupId, input), update: (id, input) => save(null, input, id), remove, removeForGroup, removeOrphans, count: () => s.read().length });
 }
 
 /*

@@ -285,6 +285,14 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
     const wrap = el('div', { 'data-og-post-list': list.length ? 'list' : 'empty' });
     if (!list.length) {
       wrap.append(el('p', { class: 'og-home-empty', text: '조건에 맞는 글이 없어요.' }));
+      /* Community hardening: a way out of an empty result in one step — every narrowing choice back to 전체 (the order stays) */
+      if (state.type || state.category || state.state || state.query) {
+        wrap.append(el('div', { class: 'og-form__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-post-filters-clear': 'true', text: '조건 모두 지우기', onclick: () => {
+          state.type = ''; state.category = ''; state.state = ''; state.query = ''; state.shown = POST_PAGE;
+          renderPosts('[data-og-post-search="q"]');
+          cards.posts.say('조건을 지웠어요. 내 글을 모두 보여 드려요.');
+        } })));
+      }
       return wrap;
     }
     const page = list.slice(0, state.shown);
@@ -553,6 +561,8 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
   function renderGroups(focusSelector) {
     const card = cards.groups;
     clear(card.body);
+    /* Community hardening: meetup drafts left behind by a group draft that is gone are dropped (they were invisible and still counted toward the limit) */
+    groups.tidy();
     const list = groups.list();
     const meetupCounts = meetups.countsByGroup();
     card.root.dataset.ogState = list.length ? 'filled' : 'empty';
@@ -632,7 +642,12 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
     );
     if (state.groupEdit === 'delete') {
       const cancel = el('button', { type: 'button', class: 'og-btn og-btn--ghost', text: '취소', onclick: () => { state.groupEdit = false; renderGroups('[data-og-group-delete]'); } });
-      put(card.body, el('div', { class: 'og-confirm', role: 'group', 'aria-label': '지우기 확인' }, el('p', { text: `‘${group.name}’ 초안과 그 안의 일정 초안 ${meetups.listFor(group.id).length}개를 지울까요? 되돌릴 수 없어요.` }), el('div', { class: 'og-form__actions' }, cancel, el('button', { type: 'button', class: 'og-btn og-btn--danger', 'data-og-group-delete-confirm': 'true', text: '지우기', onclick: () => { groups.remove(group.id); state.groupId = ''; state.groupEdit = false; renderGroups('[data-og-group-new]'); card.say(`‘${group.name}’ 초안을 지웠어요.`); } }))));
+      put(card.body, el('div', { class: 'og-confirm', role: 'group', 'aria-label': '지우기 확인' }, el('p', { text: `‘${group.name}’ 초안과 그 안의 일정 초안 ${meetups.listFor(group.id).length}개를 지울까요? 되돌릴 수 없어요.` }), el('div', { class: 'og-form__actions' }, cancel, el('button', { type: 'button', class: 'og-btn og-btn--danger', 'data-og-group-delete-confirm': 'true', text: '지우기', onclick: () => {
+        /* Community hardening: the draft is said to be gone only when the device really dropped it */
+        const r = groups.remove(group.id);
+        if (!r || !r.ok) { state.groupEdit = false; renderGroups('[data-og-group-delete]'); card.say(r && r.reason === 'NOT_FOUND' ? '이미 지워진 초안이에요.' : '초안을 지우지 못했어요. 브라우저의 저장 공간을 확인한 뒤 다시 해 주세요.'); return; }
+        state.groupId = ''; state.groupEdit = false; renderGroups('[data-og-group-new]'); card.say(`‘${group.name}’ 초안을 지웠어요.`);
+      } }))));
       queueMicrotask(() => cancel.focus());
     } else {
       put(card.body, el('div', { class: 'og-form__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-group-edit': 'true', text: '초안 고치기', onclick: () => { state.groupEdit = true; renderGroups(); } }), el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-group-delete': 'true', text: '초안 지우기', onclick: () => { state.groupEdit = 'delete'; renderGroups(); } })));
@@ -669,7 +684,12 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
             if (state.meetupCalendar === m.id) parts.push(calendarPreview(m));
             else if (state.meetupEdit === `delete:${m.id}`) {
               const cancel = el('button', { type: 'button', class: 'og-btn og-btn--ghost', text: '취소', onclick: () => { state.meetupEdit = ''; renderGroups(`[data-og-meetup-delete="${m.id}"]`); } });
-              parts.push(el('div', { class: 'og-confirm', role: 'group', 'aria-label': '지우기 확인' }, el('p', { text: `‘${m.title}’ 일정 초안을 지울까요?` }), el('div', { class: 'og-form__actions' }, cancel, el('button', { type: 'button', class: 'og-btn og-btn--danger', 'data-og-meetup-delete-confirm': m.id, text: '지우기', onclick: () => { meetups.remove(m.id); state.meetupEdit = ''; renderGroups('[data-og-meetup-new]'); card.say('일정 초안을 지웠어요.'); } }))));
+              parts.push(el('div', { class: 'og-confirm', role: 'group', 'aria-label': '지우기 확인' }, el('p', { text: `‘${m.title}’ 일정 초안을 지울까요?` }), el('div', { class: 'og-form__actions' }, cancel, el('button', { type: 'button', class: 'og-btn og-btn--danger', 'data-og-meetup-delete-confirm': m.id, text: '지우기', onclick: () => {
+                const r = meetups.remove(m.id);
+                state.meetupEdit = '';
+                if (!r || !r.ok) { renderGroups(`[data-og-meetup-delete="${m.id}"]`); card.say('일정 초안을 지우지 못했어요. 브라우저의 저장 공간을 확인한 뒤 다시 해 주세요.'); return; }
+                renderGroups('[data-og-meetup-new]'); card.say('일정 초안을 지웠어요.');
+              } }))));
               queueMicrotask(() => cancel.focus());
             } else
               parts.push(el('div', { class: 'og-home-item__actions og-community-actions' }, el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'data-og-meetup-calendar': m.id, text: '내 일정에 추가', onclick: () => { state.meetupCalendar = m.id; renderGroups(`[data-og-meetup-calendar-add="${m.id}"]`); } }), el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'data-og-meetup-edit': m.id, 'aria-label': `‘${m.title}’ 고치기`, text: '고치기', onclick: () => { state.meetupEdit = m.id; renderGroups(); } }), el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'data-og-meetup-delete': m.id, 'aria-label': `‘${m.title}’ 지우기`, text: '지우기', onclick: () => { state.meetupEdit = `delete:${m.id}`; renderGroups(); } })));
