@@ -389,14 +389,16 @@ test('NX-16 layout: the data section at 320/390/768/1024/1440 and 200% text — 
   }
 });
 
-test('NX-17 Today: a typed section whose records are all on review hold says so honestly — never fills 배움 / 체험 with other types', { skip }, async () => {
+test('NX-17 Today 체험 / 배움: own type first, then only records the data assigns to that section — never unrelated types, never held records, never unsourced prices', { skip }, async () => {
   const pg = await open('#today', { width: 1280 });
-  for (const sel of ['[data-lv-td-learn]', '[data-lv-td-hobby]']) {
-    const t = await pg.locator(sel).innerText();
-    assert.match(t, /지금 이 영역에 보여 드릴 콘텐츠가 없습니다/, sel);
-    assert.doesNotMatch(t, /한강공원|국립현대미술관/, sel + ' shows no record of another type');
-  }
+  const learn = await pg.locator('[data-lv-td-learn]').innerText(), hobby = await pg.locator('[data-lv-td-hobby]').innerText();
+  assert.match(learn, /국립중앙도서관에서 하루 공부·독서/, '배움: the library the data assigns to 배움 (official source)');
+  assert.doesNotMatch(learn, /한강공원|남산|국립현대미술관|K-MOOC|생활 금융|키오스크/, '배움: no park / museum, no held record');
+  assert.match(hobby, /새 취미, 장비가 아니라 루틴으로 시작하기/, '체험: the guide the data assigns to 체험');
+  assert.doesNotMatch(hobby, /한강공원|도자기|베이킹|요가|거리 사진|단풍·캠핑|겨울 실내 취미/, '체험: no unrelated record, no held record, no unsourced budget');
   assert.ok((await pg.locator('#td-places').innerText()).length > 100, 'other sections keep their content');
+  const src = read('livon/today-page.js');
+  assert.match(src, /var amount = \/\\d\/\.test\(String\(c\.price \|\| ""\) \+ String\(c\.budget \|\| ""\)\);\s*return !amount \|\| !!c\.officialUrl;/);
   assert.deepEqual(pg._errors, []);
   await pg.context().close();
 });

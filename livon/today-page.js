@@ -451,10 +451,19 @@
     if (sectionKey === "everyday") list = visibleContents().filter(function (c) { return c.type === "life"; });
     if (sectionKey === "editorial") list = visibleContents().filter(function (c) { return c.type === "editorial"; });
 
-    list = list.slice(0, limit || 4);
-    /* LIVON Next V1: a section with its own content type (체험, 배움, …) is never filled with other types — an empty 배움 showed
-       a park under "배움". Records on a review hold leave the section honestly empty instead. */
+    /* LIVON Next V1: a typed section (체험, 배움, …) is never filled with unrelated records (an empty 배움 showed a park).
+       After its own type it may show records the data itself assigns to that section (`sections`), but only those that do not
+       state a price or budget without an official source to check it. Records on a review hold are never here (visibleContents). */
     var TYPED = { place: 1, hobby: 1, learn: 1, together: 1, everyday: 1, editorial: 1 };
+    if (TYPED[sectionKey] && list.length < (limit || 4)) {
+      var tagged = visibleContents().filter(function (c) {
+        if (list.indexOf(c) >= 0 || !inSection(c, sectionKey)) return false;
+        var amount = /\d/.test(String(c.price || "") + String(c.budget || ""));
+        return !amount || !!c.officialUrl;
+      });
+      list = list.concat(tagged);
+    }
+    list = list.slice(0, limit || 4);
     if (!list.length && !TYPED[sectionKey]) {
       list = visibleContents().filter(function (c) { return c.evergreen || c.featured; }).slice(0, limit || 4);
     }

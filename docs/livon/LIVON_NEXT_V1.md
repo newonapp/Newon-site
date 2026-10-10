@@ -24,9 +24,18 @@ Before: on main, RC-14 reported `stale = 13` and DM-11 failed — 13 curated rec
 - The Data Platform hides `review` records from every screen (Today, Explore, search, Life Stage). Inventory and QA
   tools ask for them with `includeHeld` and flag them `REVIEW_HOLD`; `livon-data-quality` reports `checks.held`.
 - RC-14 now reads: 530 records in the inventory, 520 shown, 10 held, `stale = 0`. DM-11 passes.
-- Consequence (visible): all Today 체험 and 배움 guides are held, so those two sections are empty until the guides are
-  re-checked. Today no longer fills a typed section with records of another type (an empty 배움 used to show a park);
-  it says "지금 이 영역에 보여 드릴 콘텐츠가 없습니다." Search for "요리" became a weak result for the same reason.
+- Consequence (visible): every Today 체험 (experience) and 배움 (learn) record is held. Today no longer fills a typed
+  section with unrelated records (an empty 배움 used to show a park). After its own type, a section shows only records
+  the data itself assigns to it (`sections`) that do not state a price or budget without an official source:
+  배움 → 국립중앙도서관에서 하루 공부·독서 (official nl.go.kr, site checked 2026-10-10), 체험 → 새 취미, 장비가 아니라 루틴으로
+  시작하기 (LIVON editorial, no price or factual claim). The season guides tagged 체험 stay out of it (unsourced budgets).
+  If a section has nothing left it says "지금 이 영역에 보여 드릴 콘텐츠가 없습니다." Search for "요리" is a weak result.
+- Recovery re-check (2026-10-10, second pass): learn-kmooc — kmooc.kr confirms university / institution open courses
+  and per-course 이수증, but the price line "대부분 무료 (일부 유료)" is not stated on the pages checked → stays held.
+  The six LIVON-written guides have no external source to check their prices and claims against → stay held.
+  ex-worknet-job — 고용24 does offer 직업심리검사 (menu present 2026-10-10), but the record's "free" price type is not
+  stated there → stays held. ex-allilearn — lifelongedu.go.kr again did not load → stays held. ex-hrdkorea — hrd.go.kr
+  leads to 고용24; the HRD-Net wording needs an editorial decision → stays held.
 - To release a record: re-check its source, set `publishStatus` back to `"published"` (or remove it) and set `checkedAt`
   to the real check date.
 

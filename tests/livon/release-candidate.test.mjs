@@ -178,7 +178,10 @@ export const NEXT_V1_DOCS = { subject: 'Document LIVON Next V1',
 export const NEXT_V1_FOLLOWUP = { subject: 'Keep the LIVON data route identical to main',
   files: ['server/livon/data/http.mjs', 'livon/data/livon-data-providers.js', 'docs/livon/LIVON_NEXT_V1.md', 'tests/livon/livon-next.test.mjs', 'tests/livon/integration-ops.test.mjs',
     'tests/livon/home.test.mjs', 'tests/livon/life-stage-v2.test.mjs', 'tests/livon/real-data.test.mjs', 'tests/livon/today-v2.test.mjs', 'tests/livon/release-candidate.test.mjs'] };
-const nextV1Files = () => [...namedCommitFiles(NEXT_V1_CONTENT), ...namedCommitFiles(NEXT_V1_PUBLIC_DATA), ...namedCommitFiles(NEXT_V1_DATA_PROTECT), ...namedCommitFiles(NEXT_V1_DOCS), ...namedCommitFiles(NEXT_V1_FOLLOWUP)];
+/* recovery: Today 체험 / 배움 show records the data assigns to them (official or claim-free); second source re-check */
+export const NEXT_V1_RECOVERY = { subject: 'Recover Today 체험 and 배움 without unverified content',
+  files: ['livon/today-page.js', 'docs/livon/LIVON_NEXT_V1.md', 'tests/livon/livon-next.test.mjs', 'tests/livon/release-candidate.test.mjs'] };
+const nextV1Files = () => [...namedCommitFiles(NEXT_V1_CONTENT), ...namedCommitFiles(NEXT_V1_PUBLIC_DATA), ...namedCommitFiles(NEXT_V1_DATA_PROTECT), ...namedCommitFiles(NEXT_V1_DOCS), ...namedCommitFiles(NEXT_V1_FOLLOWUP), ...namedCommitFiles(NEXT_V1_RECOVERY)];
 
 /* main e0436c916: ONGIL (another product on the same site) integrated for production. Its files are not LIVON product files;
    they are accepted only under its own directory and only on a line that contains that integration commit. */
