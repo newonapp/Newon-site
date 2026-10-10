@@ -145,7 +145,11 @@ test('recent history: ids only, deduplicated, capped', () => {
 test('static Today routes: one per content with canonical + redirect', () => {
   const contents = loadTodayContents();
   const routes = buildTodayRoutes(contents);
-  assert.equal(routes.length, contents.length + 1);
+  /* BEFORE: one per content. AFTER (LIVON Next V1 integration): one per content not on review hold — a held record gets no page */
+  const held = contents.filter(c => c.publishStatus && c.publishStatus !== 'published').map(c => c.id);
+  assert.deepEqual([...held].sort(), ['exp-baking', 'exp-photo', 'exp-pottery', 'exp-yoga', 'learn-digital-senior', 'learn-finance', 'learn-kmooc']);
+  assert.equal(routes.length, contents.length - held.length + 1);
+  for (const id of held) assert.ok(!routes.some(x => x.dir === 'today/' + id), id + ' has no static page');
   const r = routes.find(x => x.dir === 'today/td-indep-missed');
   assert.equal(r.pathName, '/livon/today/td-indep-missed/'); assert.equal(r.hash, '#today/td-indep-missed');
 });

@@ -612,7 +612,8 @@
           var official = c.officialUrl || null;
           out.push({ id: "td:" + c.id, type: type, title: c.title, summary: c.blurb, description: c.body, category: c.category, tags: c.tags,
             region: c.region || null, online: /온라인/.test(c.onlineOffline || c.region || "") ? true : (/오프라인/.test(c.onlineOffline || "") ? false : null),
-            priceType: c.free === true ? "free" : priceTypeFromText(c.budget === "무료" ? "무료" : c.price), price: c.price ? { label: c.price } : null,
+            /* Next V1 integration: "free" / a price only from a record with an official source; a LIVON guide's own budget is not a price */
+            priceType: !/^https:\/\//.test(String(c.officialUrl || "")) ? "unknown" : priceTypeFromText(c.price), price: c.price && /^https:\/\//.test(String(c.officialUrl || "")) ? { label: c.price } : null,
             image: c.img, location: c.address ? { address: c.address } : null, openingHours: c.hours, indoorOutdoor: c.indoorOutdoor, address: c.address,
             difficulty: c.difficulty, duration: c.duration, format: c.onlineOffline, contentKind: c.type === "editorial" ? "editorial" : "guide",
             body: c.body, points: c.points, checklist: c.checklist,
@@ -641,7 +642,10 @@
           var srcType = internal ? "internal" : official ? "official" : "editorial";
           var cred = x.credentials && x.credentials.status;
           var provId = x.provider && x.provider !== "LIVON" && x.provider !== "LIVON 생활 가이드" ? "prov:" + norm(x.provider) : null;
-          if (provId && !providers[provId] && type !== "provider") providers[provId] = { id: provId, type: "provider", title: x.provider, providerKind: "institution",
+          /* Next V1: an explicit providerRef names the Explore provider record that runs this service (no derived copy) */
+          var refd = typeof x.providerRef === "string" && x.providerRef && EX.items.some(function (y) { return y && y.id === x.providerRef && EXPLORE_TYPE[y.type] === "provider"; });
+          if (refd) provId = "ex:" + x.providerRef;
+          if (provId && !refd && !providers[provId] && type !== "provider") providers[provId] = { id: provId, type: "provider", title: x.provider, providerKind: "institution",
             summary: "LIVON 탐색의 ‘" + x.title + "’ 안내를 제공하는 기관입니다. 이용·신청은 기관 공식 채널에서 확인하세요.", category: x.subfield || null, tags: (x.tags || []).slice(0, 6),
             domains: (x.categoryIds || []).map(function (k) { return EXPLORE_CATEGORY_DOMAIN[k]; }).filter(Boolean),
             sourceName: x.source || x.provider, sourceType: srcType, officialUrl: official, sourceUrl: official, meta: internal ? { internalUrl: internal } : undefined,

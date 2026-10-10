@@ -304,7 +304,8 @@ test('HF-16 local data guide: what is kept here, what is not on a server, cleari
   has('what-is-stored', /서버에 저장되지 않는 것: 위의 모든 내용/);
   has('clear-browser-data', /사이트 데이터.*지우면.*함께 지워져요.*되돌릴 수 없어요/);
   has('storage-blocked', /창을 닫으면 사라져요/);
-  has('move-device', /아직 옮길 수 없어요/);
+  /* BEFORE: /아직 옮길 수 없어요/. AFTER (LIVON Next V1): a backup file moves the data by hand (livon-data-protect.js); nothing moves automatically */
+  has('move-device', /백업 파일로 직접 옮길 수 있어요.*자동으로 옮기는 기능은 아직 없어요/);
   has('future-account', /정해진 일정은 없어요.*동의 없이 서버로 올라가지 않아요/);
   const all = D.articles.filter(a => a.cat === 'data').map(allText).join(' ');
   assert.ok((all.match(/localStorage/g) || []).length === 0, 'no developer term in the guide');

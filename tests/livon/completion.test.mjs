@@ -508,8 +508,9 @@ test('LC-19 Help articles stay true with and without a data server: live-data an
 
 test('LC-20 cache keys for this step: help-data.js and help-page.js carry a new ?v=', () => {
   /* help-data.js moved on to c5 with My Life V2 (export / delete-all Help, LIVON_MY_LIFE_V2.md); help-page.js stays at c2 */
-  assert.match(INDEX, /\/livon\/help-data\.js\?v=20261004c[2-9]"/); assert.match(INDEX, /\/livon\/help-page\.js\?v=20261004c2"/);
-  assert.equal((INDEX.match(/\?v=20261004c2/g) || []).length + (INDEX.match(/help-data\.js\?v=20261004c[3-9]/g) || []).length, 2);
+  /* LIVON Next V1 integration: help-data.js moved on to nx2 (Help describes the backup / restore) */
+  assert.match(INDEX, /\/livon\/help-data\.js\?v=(20261004c[2-9]|20261010nx\d)"/); assert.match(INDEX, /\/livon\/help-page\.js\?v=20261004c2"/);
+  assert.equal((INDEX.match(/\?v=20261004c2/g) || []).length + (INDEX.match(/help-data\.js\?v=(20261004c[3-9]|20261010nx\d)/g) || []).length, 2);
 });
 
 /* the real API handlers (server/livon) with fixture upstreams: four providers configured, AI not configured — production's shape */

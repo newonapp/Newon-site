@@ -492,7 +492,7 @@ test('ML2-35 route state: new views round-trip; unknown views fall back; the sea
 });
 
 test('ML2-36 cache keys: the files changed for My Life V2 carry ?v=20261004c5 or a later c version (Today V2: page and hub on c6)', () => {
-  for (const f of ['life-now-page.js', 'life-now-hub.js', 'life-now-data.js', 'life-now-page.css', 'help-data.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace('.', '\\.') + '\\?v=(20261004c[5-9]|20261007sv\\d)"'), f);   /* Saved V2 moved the page, hub and style sheet to sv1 */
+  for (const f of ['life-now-page.js', 'life-now-hub.js', 'life-now-data.js', 'life-now-page.css', 'help-data.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace('.', '\\.') + '\\?v=(20261004c[5-9]|20261007sv\\d|20261010nx\\d)"'), f);   /* Saved V2 moved the page, hub and style sheet to sv1; LIVON Next V1 moved Help to nx2 */
 });
 
 test('ML2-37 Help matches the product: export and delete-all are described where the buttons are', () => {
@@ -500,8 +500,10 @@ test('ML2-37 Help matches the product: export and delete-all are described where
   const by = Object.fromEntries(ctx.LivonHelpData.articles.map(a => [a.id, a]));
   const scope = by['my-life-reset-scope'].body.join(' ');
   assert.match(scope, /내 생활 데이터 전체 삭제: 내 생활 › 설정에서/); assert.match(scope, /저장한 항목, 커뮤니티 글, 맞춤 설정, 관심사, LIVON AI 대화는 남아요/);
-  assert.match(by['move-device'].short, /아직 옮길 수 없어요/); assert.match(by['move-device'].body[0], /JSON 파일로 내려받아/);
-  assert.match(by['move-device'].body[0], /다시 불러오는 기능은 아직 없어요/);
+  /* BEFORE (My Life V2): "아직 옮길 수 없어요 … 다시 불러오는 기능은 아직 없어요". AFTER (LIVON Next V1): the LIVON backup in
+     My Life › 설정 (livon/data/livon-data-protect.js) restores on another device; automatic moving still does not exist. */
+  assert.match(by['move-device'].short, /백업 파일로 직접 옮길 수 있어요\. 자동으로 옮기는 기능은 아직 없어요/); assert.match(by['move-device'].body[0], /JSON 파일 하나로 내려받아져요/);
+  assert.match(by['move-device'].body[1], /기본은 그 기기에 없는 항목만 더하고/);
   assert.equal(by['my-life-reset-scope'].feature[1], '#ml-settings');
   assert.match(HUB, /내 생활 데이터 내보내기 \(JSON\)/); assert.match(HUB, />내 생활 데이터 전체 삭제</);
 });

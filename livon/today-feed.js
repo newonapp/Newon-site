@@ -499,7 +499,8 @@
     var facts = [];
     if (c.address) facts.push(["주소", c.address]);
     if (c.hours) facts.push(["운영 시간", c.hours]);
-    if (c.price) facts.push(["가격", c.price]);
+    /* LIVON Next V1 integration: a price is shown only with an official source (same rule as today-page.js) */
+    if (c.price && /^https:\/\//.test(String(c.officialUrl || ""))) facts.push(["가격", c.price]);
     if (c.difficulty) facts.push(["난이도", c.difficulty]);
     if (c.duration) facts.push(["소요 시간", c.duration]);
     if (c.region) facts.push(["지역", c.region]);

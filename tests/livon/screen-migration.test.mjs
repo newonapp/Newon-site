@@ -167,7 +167,7 @@ test('S-8 data quality: no duplicates, no unsourced or invalid links, no danglin
   assert.deepEqual(rep.invalidUrls, []); assert.deepEqual(rep.dangling, []);
   /* Today 체험 / 배움 are empty only because all their guides are on review hold (LIVON Next V1) — never because rows were lost */
   assert.deepEqual(J(rep.emptyCategories), { explore: [], today: ['experience', 'learn'], lifeStages: [] });
-  assert.equal(rep.checks.held.count, 10);
+  assert.equal(rep.checks.held.count, 9); /* BEFORE 10: ex-hrdkorea released (Next V1 integration) */
   for (const k of Object.keys(rep.screens)) { const [a, b] = rep.screens[k].split('/'); assert.equal(a, b, k + ' lost rows'); }
   const q = qualityReport(withQaRows());
   assert.ok(q.counts.expired >= 3 && q.counts.unsourced >= 1, 'QA rows are counted as hidden, not shown');

@@ -142,6 +142,18 @@
     return new Date(c.endDate + "T23:59:59") >= new Date();
   }
 
+  /* LIVON Next V1 integration: a price, a budget or "무료" is shown only for a record with an official source to check it
+     against, and a budget only when that source's price wording supports it. LIVON-written guides keep their budget in the
+     data (it is not deleted) but it is not shown, used as a stated reason or used by the "무료" filter. */
+  function priceSourced(c) { return !!(c && typeof c.officialUrl === "string" && /^https:\/\/[^\s/]+\.[^\s/]+/.test(c.officialUrl)); }
+  /* the budget LIVON wrote is shown only when the source's own price wording supports it: "무료" needs "무료" in the price,
+     an amount needs an amount in the price (e.g. 국립현대미술관 "전시·프로그램별 상이" does not support "1만~3만 원") */
+  function shownBudget(c) {
+    if (!priceSourced(c) || !c.budget) return "";
+    var price = String(c.price || "");
+    if (c.budget === "무료") return /무료/.test(price) ? c.budget : "";
+    return /\d/.test(c.budget) && /\d/.test(price) ? c.budget : "";
+  }
   function visibleContents() {
     var hid = hidden();
     return contents().filter(function (c) {
@@ -190,7 +202,7 @@
       if ((c.region || "") === r || r === "전국" || r === "온라인") { score += 2; reasons.push("지역: " + r); }
     });
     (p.budgets || []).forEach(function (b) {
-      if ((c.budget || "") === b) { score += 2; reasons.push("예산: " + b); }
+      if (shownBudget(c) === b) { score += 2; reasons.push("예산: " + b); }
     });
     (p.companions || []).forEach(function (co) {
       if ((c.companion || []).indexOf(co) >= 0) { score += 2; reasons.push("동행: " + co); }
@@ -253,7 +265,7 @@
     if (c.region) meta.push(c.region);
     if (c.duration) meta.push(c.duration);
     if (c.difficulty) meta.push(c.difficulty);
-    if (c.budget) meta.push(c.budget);
+    if (shownBudget(c)) meta.push(shownBudget(c));
     if (variant === "feature") {
       return (
         '<article class="lv-td-feature is-cover" data-lv-td-open="' + esc(c.id) + '">' +
@@ -415,7 +427,7 @@
     var host = $("[data-lv-td-week-list]");
     if (!host) return;
     var list = visibleContents().filter(function (c) { return inSection(c, "week") || c.type === "event"; });
-    if (state.weekFilter === "free") list = list.filter(function (c) { return c.budget === "무료" || c.free === true; });
+    if (state.weekFilter === "free") list = list.filter(function (c) { return shownBudget(c) === "무료" || (priceSourced(c) && c.free === true && /무료/.test(String(c.price || ""))); });
     // today/weekend without fake dated events: keep evergreen week guides
     if (state.weekFilter === "today" || state.weekFilter === "weekend") {
       list = list.filter(function (c) { return c.evergreen || c.type === "event"; });
@@ -526,7 +538,7 @@
     var facts = [];
     if (c.address) facts.push(["주소", c.address]);
     if (c.hours) facts.push(["운영 시간", c.hours]);
-    if (c.price) facts.push(["가격", c.price]);
+    if (c.price && priceSourced(c)) facts.push(["가격", c.price]);
     if (c.difficulty) facts.push(["난이도", c.difficulty]);
     if (c.duration) facts.push(["소요 시간", c.duration]);
     if (c.region) facts.push(["지역", c.region]);

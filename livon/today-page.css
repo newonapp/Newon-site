@@ -1611,3 +1611,15 @@ html[data-lv-view="today"] main > #today {
 #today .lv-td-my .lv-td-btn--sm { min-height: 44px; }
 #today .lv-td-my__foot { margin-top: 1rem; }
 #today .lv-td-my__item input:focus-visible { outline: 2px solid #0a0a0a; outline-offset: 2px; }
+
+/* LIVON Next V1 integration — touch targets on Today: every button, tab, chip and card link is at least 44 × 44 px
+   (WCAG 2.5.5 / LIVON A11Y rule). Card title links keep their layout: the extra height is padding with a matching
+   negative margin, so the hit area grows without moving the text. */
+#today .lv-td-btn--sm,
+#today .lv-td-actions .lv-td-btn,
+#today .lv-td-chips button,
+#today .lv-td-setup .lv-td-chips button,
+#today .lv-td-filters button,
+#today .lv-td-setup__tabs button,
+#today .lv-td-nav__track a { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; }
+#today h4 > a { display: inline-block; min-height: 44px; padding-block: 12px; margin-block: -12px; }

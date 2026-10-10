@@ -60,7 +60,8 @@ test('DM-3 dashboard counts are computed from the data (not hard-coded) and add 
   assert.equal(d.flags.DATE_VERIFICATION_REQUIRED, 30);
   assert.equal(d.flags.UNSOURCED_SPECIFIC, 8);
   assert.equal(d.flags.MISSING_RELATION, 4);
-  assert.equal(d.flags.DUPLICATE_CANDIDATE, 97);
+  /* BEFORE 97 → AFTER 96 (Next V1 integration): ex-hrdkorea now links 고용24, so pol:pol-hrd no longer shares its hrd.go.kr link with another record */ 
+  assert.equal(d.flags.DUPLICATE_CANDIDATE, 96);
   deq(d.dates, { dateVerificationRequired: 30, staleReviewRequired: 0, expired: 0, undatedTimeSensitive: 30 });
   deq(d.relations, { related: d.relations.related, missingRelation: 0, contentGap: 4, orphan: 0, broken: 0 });
   assert.ok(d.lifeStages['70대'] > 0 && Object.keys(d.lifeEvents).length === 34);
@@ -89,7 +90,7 @@ test('DM-6 age filter: general content is its own bucket; stage filters use life
   assert.ok(DM.query(M, { filters: { lifeEvent: 'enroll' } }).total >= 3);
 });
 test('DM-7 flag filter', () => {
-  for (const [f, n] of [['UNSOURCED_SPECIFIC', 8], ['DATE_VERIFICATION_REQUIRED', 30], ['MISSING_RELATION', 4], ['DUPLICATE_CANDIDATE', 97]]) assert.equal(DM.query(M, { filters: { flag: f } }).total, n, f);
+  for (const [f, n] of [['UNSOURCED_SPECIFIC', 8], ['DATE_VERIFICATION_REQUIRED', 30], ['MISSING_RELATION', 4], ['DUPLICATE_CANDIDATE', 96 /* BEFORE 97: see DM-3 */]]) assert.equal(DM.query(M, { filters: { flag: f } }).total, n, f);
   assert.equal(DM.query(M, { filters: { dateVerification: 'yes' } }).total, 30);
   assert.equal(DM.query(M, { filters: { hasOfficialUrl: 'yes' } }).total + DM.query(M, { filters: { hasOfficialUrl: 'no' } }).total, 530);
   assert.equal(DM.query(M, { filters: { hasRelations: 'yes' } }).total + DM.query(M, { filters: { hasRelations: 'no' } }).total, 530);
@@ -135,7 +136,7 @@ test('DM-11 review queue: deterministic priorities; P0 = 0 when nothing is block
   assert.equal(Q.byRule['P1 FIELD_CONFLICT'], 2);
   assert.equal(Q.byRule['P2 DATE_VERIFICATION_REQUIRED'], 30);
   assert.equal(Q.byRule['P3 CONTENT_GAP'], 4);
-  assert.equal(Q.byRule['P4 DUPLICATE_CANDIDATE'], 97);
+  assert.equal(Q.byRule['P4 DUPLICATE_CANDIDATE'], 96); /* BEFORE 97: see DM-3 */
   assert.equal(Q.byRule['P4 CTA_REVIEW'], 47);
   assert.ok(Q.byRule['P4 TAXONOMY_REVIEW'] > 0);
   /* same clock as M: the queue is compared for determinism, not for what became stale since the fixed date (LIVON Next V1) */
@@ -153,7 +154,7 @@ test('DM-11 review queue: deterministic priorities; P0 = 0 when nothing is block
 test('DM-12 duplicate groups: every candidate shown with members, basis and the kept reason; nothing merged', () => {
   const G = DM.duplicateGroups(M);
   const members = new Set(G.flatMap(g => g.members.map(m => m.id)));
-  assert.equal(members.size, 97);
+  assert.equal(members.size, 96); /* BEFORE 97: see DM-3 */
   for (const g of G) { assert.ok(g.members.length >= 2); assert.match(g.basis, /same title|same official URL/); assert.match(g.reason, /^[A-Z_]+ — /); assert.equal(g.decision, 'keep'); for (const m of g.members) assert.ok('title' in m && 'type' in m && 'age' in m && 'category' in m && 'url' in m); }
   assert.ok(G.some(g => g.reasonCode === 'AGE_VARIANT'));
   assert.equal(M.records.length, 530);
@@ -266,7 +267,7 @@ test('DM-22 screen coverage matrix and coverage filters', () => {
   const C = DM.coverage(M);
   deq(C.screens, ['HOME', 'TODAY', 'LIFE STAGE', 'EXPLORE', 'SEARCH', 'MY LIFE', 'DETAIL', 'COMMUNITY']);
   /* LIVON Next V1: 7 Today and 3 Explore records are on review hold (kept in the files, not shown) */
-  assert.equal(C.totals.TODAY, 27); assert.equal(C.totals.EXPLORE, 25);
+  assert.equal(C.totals.TODAY, 27); assert.equal(C.totals.EXPLORE, 26); /* BEFORE 25 → AFTER 26 (Next V1 integration): ex-hrdkorea re-checked against 고용24, corrected and released from the review hold */
   assert.equal(DM.query(M, { filters: { coverage: 'only-one' } }).total, C.onlyOne);
   assert.equal(DM.query(M, { filters: { coverage: 'not-searchable' } }).total, C.notSearchable);
   assert.equal(DM.query(M, { filters: { coverage: 'no-detail' } }).total, C.noDetail);

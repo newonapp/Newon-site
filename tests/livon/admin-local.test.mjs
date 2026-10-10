@@ -231,7 +231,8 @@ test('AD-17 data quality: grades and every flag from the shared evaluator (new f
   const Q = svc.quality();
   deq(Q.grades, { Excellent: 529, Good: 1, 'Needs Review': 0, Poor: 0 });
   const c = Object.fromEntries(Q.flags.map(f => [f.flag, f.count]));
-  assert.equal(c.DUPLICATE_CANDIDATE, 97); assert.equal(c.DATE_VERIFICATION_REQUIRED, 30); assert.equal(c.UNSOURCED_SPECIFIC, 8); assert.equal(c.MISSING_RELATION, 4); assert.equal(c.FIELD_CONFLICT, 2);
+  /* BEFORE 97 → AFTER 96 (Next V1 integration): ex-hrdkorea now links 고용24, so pol:pol-hrd no longer shares its hrd.go.kr link with another record */ 
+  assert.equal(c.DUPLICATE_CANDIDATE, 96); assert.equal(c.DATE_VERIFICATION_REQUIRED, 30); assert.equal(c.UNSOURCED_SPECIFIC, 8); assert.equal(c.MISSING_RELATION, 4); assert.equal(c.FIELD_CONFLICT, 2);
   deq(Q.flags.map(f => f.flag), Object.keys(ctx.LivonContentQuality.FLAGS));
   const x = boot({ patch: c2 => {} }); x.ctx.LivonContentQuality.FLAGS.NEW_TEST_FLAG = 'a future flag';
   assert.ok(x.svc.quality().flags.some(f => f.flag === 'NEW_TEST_FLAG' && f.count === 0));
@@ -239,7 +240,7 @@ test('AD-17 data quality: grades and every flag from the shared evaluator (new f
 test('AD-18 review queue: P0–P4 with local states OPEN / REVIEWED / NEEDS_ACTION / RESOLVED_LOCAL, each issue links to its record', async () => {
   const { svc: s } = boot();
   const Q = s.reviewQueue(await s.reviewStates());
-  deq(Q.counts, { P0: 0, P1: 10, P2: 30, P3: 4, P4: 183 });
+  deq(Q.counts, { P0: 0, P1: 10, P2: 30, P3: 4, P4: 182 }); /* P4 BEFORE 183 → AFTER 182: one duplicate candidate fewer (AD-17) */
   assert.ok(Q.items.every(i => i.state === 'OPEN'));
   const i = Q.items.find(x => x.rule === 'FIELD_CONFLICT' && x.recordId === 'td:place-mmca');
   assert.equal(i.recordId, 'td:place-mmca');
@@ -284,8 +285,8 @@ test('AD-21 provider detail: facts from the manifest and docs; env variable NAME
 test('AD-22 reports: the 10 reports are generated from current data', () => {
   deq(svc.REPORTS.map(r => r.title), ['Content Inventory', 'Quality Report', 'Review Queue', 'Content Gaps', 'Source Report', 'Date Verification', 'Duplicate Candidates', 'Taxonomy Review', 'CTA Review', 'Provider Status']);
   const n = id => svc.report(id).rows.length;
-  assert.equal(n('inventory'), 530); assert.equal(n('quality'), 530); assert.equal(n('review'), 227); assert.equal(n('gaps'), DM.contentGaps(svc.model).length);
-  assert.equal(n('sources'), 5); assert.equal(n('dates'), 30); assert.equal(new Set(svc.report('duplicates').rows.map(r => r.id)).size, 97);
+  assert.equal(n('inventory'), 530); assert.equal(n('quality'), 530); assert.equal(n('review'), 226) /* BEFORE 227 (AD-18) */; assert.equal(n('gaps'), DM.contentGaps(svc.model).length);
+  assert.equal(n('sources'), 5); assert.equal(n('dates'), 30); assert.equal(new Set(svc.report('duplicates').rows.map(r => r.id)).size, 96) /* BEFORE 97 (AD-17) */;
   assert.equal(n('taxonomy'), DM.taxonomy(svc.model).nearDuplicates.length); assert.equal(n('providers'), 8);
   assert.equal(svc.report('nope'), null);
 });

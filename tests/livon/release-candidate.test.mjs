@@ -181,7 +181,15 @@ export const NEXT_V1_FOLLOWUP = { subject: 'Keep the LIVON data route identical 
 /* recovery: Today 체험 / 배움 show records the data assigns to them (official or claim-free); second source re-check */
 export const NEXT_V1_RECOVERY = { subject: 'Recover Today 체험 and 배움 without unverified content',
   files: ['livon/today-page.js', 'docs/livon/LIVON_NEXT_V1.md', 'tests/livon/livon-next.test.mjs', 'tests/livon/release-candidate.test.mjs'] };
-const nextV1Files = () => [...namedCommitFiles(NEXT_V1_CONTENT), ...namedCommitFiles(NEXT_V1_PUBLIC_DATA), ...namedCommitFiles(NEXT_V1_DATA_PROTECT), ...namedCommitFiles(NEXT_V1_DOCS), ...namedCommitFiles(NEXT_V1_FOLLOWUP), ...namedCommitFiles(NEXT_V1_RECOVERY)];
+/* LIVON Next V1 integration (branch livon-next-v1-final): ex-hrdkorea corrected and released, static pages skip held records,
+   Help describes the backup, Today prices only with an official source, Today 44px targets (docs/livon/LIVON_NEXT_V1.md §6) */
+export const NEXT_V1_INTEGRATION = { subject: 'Integrate LIVON Next V1: correct HRD-Net, keep review holds, show prices only with a source, 44px Today targets',
+  files: ['docs/livon/LIVON_NEXT_V1.md', 'livon/data/livon-data-platform.js', 'livon/explore-data.js', 'livon/help-data.js', 'livon/index.html', 'livon/today-feed.js',
+    'livon/today-page.css', 'livon/today-page.js', 'scripts/livon-seo-build.mjs', 'tests/livon/admin-local.test.mjs', 'tests/livon/content-quality.test.mjs',
+    'tests/livon/data-manager.test.mjs', 'tests/livon/help.test.mjs', 'tests/livon/livon-next.test.mjs', 'tests/livon/my-life-v2.test.mjs',
+    'tests/livon/release-candidate.test.mjs', 'tests/livon/screen-migration.test.mjs', 'tests/livon/saved-v2.test.mjs', 'tests/livon/completion.test.mjs',
+    'tests/livon/onboarding.test.mjs', 'scripts/render-livon-today-routes.mjs', 'tests/livon/today.test.mjs'] };
+const nextV1Files = () => [...namedCommitFiles(NEXT_V1_CONTENT), ...namedCommitFiles(NEXT_V1_PUBLIC_DATA), ...namedCommitFiles(NEXT_V1_DATA_PROTECT), ...namedCommitFiles(NEXT_V1_DOCS), ...namedCommitFiles(NEXT_V1_FOLLOWUP), ...namedCommitFiles(NEXT_V1_RECOVERY), ...namedCommitFiles(NEXT_V1_INTEGRATION)];
 
 /* main e0436c916: ONGIL (another product on the same site) integrated for production. Its files are not LIVON product files;
    they are accepted only under its own directory and only on a line that contains that integration commit. */
@@ -382,7 +390,8 @@ test('RC-14 curated inventory: 530 records, no duplicate, broken relation, inval
   const c = DQ.counts;
   /* LIVON Next V1: 10 records whose review was overdue and whose source could not be re-checked are on review hold —
      still in the files and the inventory (530), not shown (520), never deleted */
-  assert.equal(c.total, 530); assert.equal(c.visible, 520); assert.equal(c.held, 10); assert.equal(DQ.checks.held.count, 10);
+  /* BEFORE 520 shown / 10 held → AFTER (Next V1 integration) 521 / 9: ex-hrdkorea re-checked, corrected and released */
+  assert.equal(c.total, 530); assert.equal(c.visible, 521); assert.equal(c.held, 9); assert.equal(DQ.checks.held.count, 9);
   for (const k of ['sample', 'expired', 'unsourced', 'draft', 'duplicates']) assert.equal(c[k], 0, k);
   assert.deepEqual(DQ.invalidUrls, []); assert.deepEqual(DQ.dangling, []);
   for (const k of ['missingId', 'duplicateId', 'duplicateSourceId', 'invalidUrl', 'missingSource', 'invalidDate', 'endBeforeStart', 'expired', 'stale', 'invalidEntityType', 'missingTitle', 'rejected']) assert.equal(DQ.checks[k], 0, k);
@@ -405,7 +414,7 @@ test('RC-16 topics: 228 topics, every one reachable on its screen; 34 Life Event
 
 test('RC-18 Today: 34 items, every one placed; Explore 28/28; no empty category', () => {
   /* shown / shippable: the 7 Today and 3 Explore records on review hold (LIVON Next V1) are not expected on a screen */
-  assert.equal(DQ.screens.today, '27/27'); assert.equal(DQ.screens.explore, '25/25');
+  assert.equal(DQ.screens.today, '27/27'); assert.equal(DQ.screens.explore, '26/26'); /* BEFORE 25/25: ex-hrdkorea released (RC-14) */
   /* Today 체험 / 배움 are empty only because every guide in them is on review hold */
   for (const [k, v] of Object.entries(DQ.emptyCategories)) assert.deepEqual(v, k === 'today' ? ['experience', 'learn'] : [], k);
 });

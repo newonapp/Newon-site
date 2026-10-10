@@ -561,7 +561,9 @@ test('ON-35 Today: the feed profile carries Life Events and they raise matching 
   assert.deepEqual([...p.events], ['first-trip']);
   const item = { title: '첫 해외여행 준비', desc: '', category: '', tags: [], stageIds: [], cats: [] };
   const withEv = T._test.score(item, p), without = T._test.score(item, Object.assign({}, p, { events: [] }));
-  assert.equal(withEv - without, 2);
+  /* BEFORE: exact 2. The score adds a day-seeded jitter (today-feed.js jitter(item.key, daySeed())), so on some days the
+     difference is 1.9999999999999998 in floating point (fails on main 70a816aa9 on 2026-10-11 too). Same rule, float tolerance. */
+  assert.ok(Math.abs(withEv - without - 2) < 1e-9, String(withEv - without));
   assert.equal(a.PZ.eventBoost('관계없는 글', ['first-trip']), null);
   assert.match(read('today-feed.js'), /document\.addEventListener\("livon:personalization", function \(\) \{ try \{ refresh\(\); \}/);
 });

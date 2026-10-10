@@ -77,15 +77,16 @@ window.LivonExploreData = {
     },
     {
       id: "ex-hrdkorea",
-      /* LIVON Next V1 (2026-10-10): review overdue (checked 2026-09-25, review every 14 days); hrd.go.kr now redirects to 고용24 (checked 2026-10-10) — the "HRD-Net" title/description needs an editorial update before it is shown again — hidden from screens, not deleted; set publishStatus back to "published" with a new checkedAt after re-checking. */
-      publishStatus: "review", reviewReason: "stale-unverified",
+      /* LIVON Next V1 (checked 2026-10-10): HRD-Net was merged into 고용24 (고용24 site introduction; hrd.go.kr answers 302 → work24.go.kr;
+         footer: 고용노동부 · 한국고용정보원). Title, provider, link and body corrected and released from the review hold; no price is stated. */
       type: "program",
       categoryIds: ["education", "career"],
       subfield: "직업교육",
-      title: "직업훈련 · HRD-Net",
-      provider: "한국산업인력공단",
+      title: "직업훈련 · 고용24 (구 HRD-Net)",
+      provider: "고용노동부 · 한국고용정보원 (고용24)",
+      providerRef: "ex-career24",
       blurb: "국민내일배움카드·직업훈련 과정을 공식 포털에서 검색합니다.",
-      body: "훈련 과정·수강료·지원 조건은 과정별로 다릅니다. 허위 수강료나 임의 일정을 표시하지 않으며, 신청은 HRD-Net에서 진행합니다.",
+      body: "HRD-Net은 고용24로 통합되었습니다(옛 주소 hrd.go.kr은 고용24로 연결됩니다). 훈련 과정·수강료·지원 조건은 과정별로 다릅니다. 허위 수강료나 임의 일정을 표시하지 않으며, 검색과 신청은 고용24에서 진행합니다.",
       img: "/livon/assets/topics/students.jpg",
       region: "전국",
       mode: "both",
@@ -94,12 +95,12 @@ window.LivonExploreData = {
       priceLabel: "과정·지원 대상별 상이",
       audience: "구직·재직·경력 전환",
       credentials: { status: "verified", note: "공공 직업훈련 포털" },
-      officialUrl: "https://www.hrd.go.kr/",
-      source: "HRD-Net",
-      checkedAt: "2026-09-25",
+      officialUrl: "https://www.work24.go.kr/",
+      source: "고용24",
+      checkedAt: "2026-10-10",
       tags: ["직업교육", "내일배움카드", "경력 전환"],
       layout: "program",
-      compare: { field: "직업훈련", range: "전국", mode: "온·오프라인", price: "지원 가능", cred: "공공" }
+      compare: { field: "직업훈련", range: "전국", mode: "온·오프라인", price: "과정·대상별 상이", cred: "공공" }
     },
     {
       id: "ex-nts",

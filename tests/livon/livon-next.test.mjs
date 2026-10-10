@@ -212,7 +212,8 @@ test('NX-08 server diagnostics (unchanged server): an upstream 503 is answered 5
 });
 
 /* ───────── content hold ───────── */
-const HELD = ['td:exp-pottery', 'td:exp-baking', 'td:exp-yoga', 'td:exp-photo', 'td:learn-kmooc', 'td:learn-finance', 'td:learn-digital-senior', 'ex:ex-hrdkorea', 'ex:ex-allilearn', 'ex:ex-worknet-job'];
+/* BEFORE 10 held → AFTER (Next V1 integration) 9: ex-hrdkorea was re-checked against 고용24, corrected and released */
+const HELD = ['td:exp-pottery', 'td:exp-baking', 'td:exp-yoga', 'td:exp-photo', 'td:learn-kmooc', 'td:learn-finance', 'td:learn-digital-senior', 'ex:ex-allilearn', 'ex:ex-worknet-job'];
 test('NX-09 content review hold: overdue records that could not be re-checked are hidden (not deleted); re-checked ones carry the real check date', async () => {
   const { loadLivon, qualityReport } = await import(path.join(ROOT, 'scripts/livon-data-quality.mjs'));
   const ctx = loadLivon();
@@ -224,8 +225,8 @@ test('NX-09 content review hold: overdue records that could not be re-checked ar
   }
   const td = read('livon/today-data.js'), ex = read('livon/explore-data.js');
   assert.equal((td.match(/publishStatus: "review", reviewReason: "stale-unverified"/g) || []).length, 7);
-  assert.equal((ex.match(/publishStatus: "review", reviewReason: "stale-unverified"/g) || []).length, 3);
-  for (const id of ['ex-qnet', 'ex-lifelong', 'ex-senior-job']) assert.match(ex.slice(ex.indexOf('id: "' + id + '"'), ex.indexOf('id: "' + id + '"') + 1600), /checkedAt: "2026-10-10"/, id + ' re-checked on its official site');
+  assert.equal((ex.match(/publishStatus: "review", reviewReason: "stale-unverified"/g) || []).length, 2);
+  for (const id of ['ex-qnet', 'ex-lifelong', 'ex-senior-job', 'ex-hrdkorea']) assert.match(ex.slice(ex.indexOf('id: "' + id + '"'), ex.indexOf('id: "' + id + '"') + 1600), /checkedAt: "2026-10-10"/, id + ' re-checked on its official site');
   assert.doesNotMatch(td + ex, /checkedAt: "2026-10-1[1-9]"|checkedAt: "2026-1[1-2]/, 'no date in the future');
   const r = qualityReport(ctx);
   assert.equal(r.checks.stale, 0, 'nothing stale is shown'); assert.equal(r.blocking, 0);
@@ -242,7 +243,8 @@ test('NX-10 Account Sync V1 merged but off: no public flag, no login UI shown, n
 });
 
 test('NX-11 cache keys: new and changed files carry ?v=20261010nx1; the protect module loads before the platform', () => {
-  for (const f of ['data/livon-data-protect.js', 'data/livon-data-core.js', 'data/livon-data-providers.js', 'data/livon-data-platform.js', 'data/livon-screen-data.js', 'explore-page.js', 'today-page.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/[./]/g, '\\$&') + '\\?v=20261010nx1"'), f);
+  /* data-platform and today-page moved on to nx2 in the integration (NX-24) */
+  for (const f of ['data/livon-data-protect.js', 'data/livon-data-core.js', 'data/livon-data-providers.js', 'data/livon-data-platform.js', 'data/livon-screen-data.js', 'explore-page.js', 'today-page.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/[./]/g, '\\$&') + '\\?v=20261010nx[12]"'), f);
   assert.ok(INDEX.indexOf('livon-data-protect.js') < INDEX.indexOf('livon-platform.js'));
   assert.ok(INDEX.indexOf('livon-storage-guard.js') < INDEX.indexOf('livon-data-protect.js'));
 });
@@ -401,4 +403,48 @@ test('NX-17 Today 체험 / 배움: own type first, then only records the data as
   assert.match(src, /var amount = \/\\d\/\.test\(String\(c\.price \|\| ""\) \+ String\(c\.budget \|\| ""\)\);\s*return !amount \|\| !!c\.officialUrl;/);
   assert.deepEqual(pg._errors, []);
   await pg.context().close();
+});
+
+/* ═════════ integration (livon-next-v1-final) ═════════ */
+test('NX-24 integration: ex-hrdkorea corrected to 고용24 and shown via its provider record; 9 holds stay; 530 records', async () => {
+  const ex = read('livon/explore-data.js');
+  const rec = id => ex.slice(ex.indexOf('id: "' + id + '"'), ex.indexOf('compare:', ex.indexOf('id: "' + id + '"')) + 140);
+  const hrd = rec('ex-hrdkorea');
+  assert.match(hrd, /title: "직업훈련 · 고용24 \(구 HRD-Net\)"/); assert.match(hrd, /provider: "고용노동부 · 한국고용정보원 \(고용24\)"/);
+  assert.match(hrd, /providerRef: "ex-career24"/); assert.match(hrd, /officialUrl: "https:\/\/www\.work24\.go\.kr\/"/);
+  assert.doesNotMatch(hrd, /한국산업인력공단|publishStatus|지원 가능/);
+  const { loadLivon, qualityReport } = await import(path.join(ROOT, 'scripts/livon-data-quality.mjs'));
+  const ctx = loadLivon(); const SD = ctx.LivonScreenData, repo = SD.repository();
+  assert.equal(repo.getById('ex:ex-hrdkorea').providerId, 'ex:ex-career24');
+  const r = qualityReport(ctx);
+  assert.equal(r.counts.total, 530); assert.equal(r.counts.visible, 521); assert.equal(r.checks.held.count, 9);
+  assert.equal(r.checks.stale, 0); assert.equal(r.blocking, 0); assert.deepEqual(r.dangling, []);
+  /* static Life Stage pages never link a held record */
+  assert.match(read('scripts/livon-seo-build.mjs'), /!repo\.hiddenReason\(key\)/);
+});
+
+test('NX-25 prices: Today shows a price, a budget or 무료 only for a record with an official source', async () => {
+  const page = read('livon/today-page.js');
+  assert.match(page, /function priceSourced\(c\)/);
+  assert.match(page, /if \(shownBudget\(c\)\) meta\.push\(shownBudget\(c\)\);/);
+  assert.match(page, /shownBudget\(c\) === "무료" \|\| \(priceSourced\(c\) && c\.free === true && \/무료\/\.test\(String\(c\.price \|\| ""\)\)\)/);
+  /* a budget the source's price does not support is not shown (국립현대미술관: price varies, budget 1만~3만 원 → hidden) */
+  assert.match(page, /if \(c\.budget === "무료"\) return \/무료\/\.test\(price\) \? c\.budget : "";/);
+  assert.match(page, /if \(c\.price && priceSourced\(c\)\) facts\.push\(\["가격", c\.price\]\);/);
+  assert.match(read('livon/today-feed.js'), /if \(c\.price && \/\^https:\\\/\\\/\/\.test\(String\(c\.officialUrl \|\| ""\)\)\) facts\.push/);
+  const { loadLivon } = await import(path.join(ROOT, 'scripts/livon-data-quality.mjs'));
+  const ctx = loadLivon(); const repo = ctx.LivonScreenData.repository();
+  for (const c of ctx.LivonScreenData.todayContents()) {
+    const e = repo.getById('td:' + c.id);
+    if (!/^https:\/\//.test(String(c.officialUrl || ''))) { assert.equal(e.priceType, 'unknown', c.id); assert.equal(e.price, null, c.id); }
+  }
+});
+
+test('NX-26 Today touch targets: buttons, chips, tabs, nav links and card title links are at least 44px', () => {
+  const css = read('livon/today-page.css');
+  const block = css.slice(css.indexOf('LIVON Next V1 integration — touch targets'));
+  for (const sel of ['#today .lv-td-btn--sm', '#today .lv-td-actions .lv-td-btn', '#today .lv-td-chips button', '#today .lv-td-setup .lv-td-chips button', '#today .lv-td-filters button', '#today .lv-td-setup__tabs button', '#today .lv-td-nav__track a']) assert.ok(block.includes(sel), sel);
+  assert.match(block, /min-height: 44px; min-width: 44px;/);
+  assert.match(block, /#today h4 > a \{ display: inline-block; min-height: 44px; padding-block: 12px; margin-block: -12px; \}/);
+  assert.match(INDEX, /\/livon\/today-page\.css\?v=20261010nx2"/);
 });

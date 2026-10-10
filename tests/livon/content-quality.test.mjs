@@ -39,7 +39,8 @@ test('CQ-3 screen usage is tracked and nothing is an orphan (derived provider ro
   for (const s of ['HOME', 'TODAY', 'LIFE STAGE', 'EXPLORE', 'SEARCH', 'MY LIFE', 'DETAIL', 'COMMUNITY']) assert.ok(rep.screens[s] > 0, s);
   /* LIVON Next V1: 7 Today and 3 Explore records are on review hold (kept in the files, not shown) */
   assert.equal(rep.screens.TODAY, 27);
-  assert.equal(rep.screens.EXPLORE, 25);
+  /* BEFORE 25 → AFTER 26 (Next V1 integration): ex-hrdkorea re-checked against 고용24, corrected and released from the review hold */ 
+  assert.equal(rep.screens.EXPLORE, 26);
   deq(rep.orphans, []);
   const prov = rep.records.filter(r => r.id.startsWith('prov:'));
   assert.ok(prov.length && prov.every(r => r.incoming > 0));

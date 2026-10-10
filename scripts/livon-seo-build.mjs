@@ -89,8 +89,10 @@ export function loadSources() {
   repo.all().filter((e) => /^topic:/.test(String(e.id))).forEach((e) => (e.lifeEvents || []).forEach((id) => { (topicsByEvent[id] = topicsByEvent[id] || []).push(String(e.id).slice(6)); }));
   const records = {};
   for (const t of life.topics) for (const id of [...(t.relatedContentIds || []), ...(t.relatedClassIds || [])]) {
-    const e = repo.getById(/^(ex|td):/.test(id) ? id : "ex:" + id, { any: true });
-    if (e && e.title) records[id] = { title: String(e.title), href: String(e.href || "") };
+    const key = /^(ex|td):/.test(id) ? id : "ex:" + id;
+    const e = repo.getById(key, { any: true });
+    /* Next V1: a record the app hides (on review hold) is not linked from the static pages either */
+    if (e && e.title && !repo.hiddenReason(key)) records[id] = { title: String(e.title), href: String(e.href || "") };
   }
   return {
     updatedAt: /^\d{4}-\d{2}-\d{2}$/.test(String(life.updatedAt)) ? life.updatedAt : null,

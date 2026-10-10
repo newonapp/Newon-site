@@ -23,7 +23,9 @@ export function loadTodayContents() {
 export function buildTodayRoutes(contents) {
   return [
     { dir: "today", title: "오늘의 발견 | LivOn", description: "생활 정보·라이프 스테이지·장소·클래스·공식 지원 정보를 매일 새롭게 발견하세요.", pathName: "/livon/today/", hash: "#today" },
-    ...contents.map((c) => ({ dir: `today/${c.id}`, title: `${c.title} · 오늘의 발견 | LivOn`, description: c.blurb, pathName: `/livon/today/${c.id}/`, hash: `#today/${c.id}` })),
+    /* LIVON Next V1 integration: a record on review hold (publishStatus other than "published") gets no static page —
+       its title and description are not published until it is re-checked */
+    ...contents.filter((c) => !c.publishStatus || c.publishStatus === "published").map((c) => ({ dir: `today/${c.id}`, title: `${c.title} · 오늘의 발견 | LivOn`, description: c.blurb, pathName: `/livon/today/${c.id}/`, hash: `#today/${c.id}` })),
   ];
 }
 
