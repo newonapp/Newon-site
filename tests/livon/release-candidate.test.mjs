@@ -159,6 +159,22 @@ export const ACCOUNT_SYNC_V1 = { subject: 'Implement LIVON account sync foundati
   files: ['livon/data/livon-sync.js', 'livon/livon-account-ui.js', 'livon/index.html',
     'docs/livon/LIVON_ACCOUNT_SYNC_V1.md', 'tests/livon/account-sync.test.mjs', 'tests/livon/release-candidate.test.mjs'] };
 
+/* LIVON Next V1 (branch livon-next-v1), four named commits — each accepted only on a line whose history contains it, and only
+   these files, each of which that commit changed (see docs/livon/LIVON_NEXT_V1.md) */
+export const NEXT_V1_CONTENT = { subject: 'Hold overdue LIVON content until it is re-checked',
+  files: ['livon/explore-data.js', 'livon/today-data.js', 'livon/today-page.js', 'livon/data/livon-data-platform.js', 'livon/data/livon-screen-data.js',
+    'livon/data/livon-content-quality.js', 'scripts/livon-data-quality.mjs', 'livon/index.html',
+    'tests/livon/content-quality.test.mjs', 'tests/livon/data-manager.test.mjs', 'tests/livon/data-platform.test.mjs', 'tests/livon/screen-migration.test.mjs',
+    'tests/livon/explore-v2.test.mjs', 'tests/livon/today-v2.test.mjs', 'tests/livon/life-stage-v2.test.mjs', 'tests/livon/saved-v2.test.mjs', 'tests/livon/performance.test.mjs'] };
+export const NEXT_V1_PUBLIC_DATA = { subject: 'Classify LIVON public data failures',
+  files: ['livon/data/livon-data-core.js', 'livon/data/livon-data-providers.js', 'livon/explore-page.js', 'server/livon/data/http.mjs', 'livon/index.html',
+    'tests/livon/integration-ops.test.mjs'] };
+export const NEXT_V1_DATA_PROTECT = { subject: 'Add LIVON data backup, restore and delete',
+  files: ['livon/data/livon-data-protect.js', 'livon/index.html', 'tests/livon/livon-next.test.mjs'] };
+export const NEXT_V1_DOCS = { subject: 'Document LIVON Next V1',
+  files: ['docs/livon/LIVON_NEXT_V1.md', 'tests/livon/release-candidate.test.mjs'] };
+const nextV1Files = () => [...namedCommitFiles(NEXT_V1_CONTENT), ...namedCommitFiles(NEXT_V1_PUBLIC_DATA), ...namedCommitFiles(NEXT_V1_DATA_PROTECT), ...namedCommitFiles(NEXT_V1_DOCS)];
+
 /* main e0436c916: ONGIL (another product on the same site) integrated for production. Its files are not LIVON product files;
    they are accepted only under its own directory and only on a line that contains that integration commit. */
 export const ONGIL_PRODUCT = { subject: 'Integrate ONGIL production frontend', dir: 'ongil-start/' };
@@ -259,8 +275,8 @@ test('RC-1 ancestry: every V1 phase commit is an ancestor of the RC; the RC star
       assert.deepEqual(COMMUNITY_V2.files.filter(f => !touched.includes(f)), [], 'every accepted Community V2 file was changed by that commit');
     }
     const myLife = myLifeV2In() ? MY_LIFE_V2.files : [];
-    const todayV2 = namedCommitFiles(TODAY_V2), exploreV2 = namedCommitFiles(EXPLORE_V2), lifeStageV2 = namedCommitFiles(LIFE_STAGE_V2), savedV2 = namedCommitFiles(SAVED_V2), homeV2 = namedCommitFiles(HOME_V2), accountSync = namedCommitFiles(ACCOUNT_SYNC_V1);
-    assert.deepEqual(d.stdout.split('\n').filter(Boolean).filter(f => !I.aligned.includes(f) && !aiLive.includes(f) && !community.includes(f) && !myLife.includes(f) && !todayV2.includes(f) && !exploreV2.includes(f) && !lifeStageV2.includes(f) && !savedV2.includes(f) && !homeV2.includes(f) && !accountSync.includes(f)), [], 'LIVON tree = integration commit except the alignment / AI LIVE / Community V2 / My Life V2 / Today V2 / Explore V2 / Life Stage V2 / Saved V2 / Home V2 / Account Sync V1 files');
+    const todayV2 = namedCommitFiles(TODAY_V2), exploreV2 = namedCommitFiles(EXPLORE_V2), lifeStageV2 = namedCommitFiles(LIFE_STAGE_V2), savedV2 = namedCommitFiles(SAVED_V2), homeV2 = namedCommitFiles(HOME_V2), accountSync = namedCommitFiles(ACCOUNT_SYNC_V1), nextV1 = nextV1Files();
+    assert.deepEqual(d.stdout.split('\n').filter(Boolean).filter(f => !I.aligned.includes(f) && !aiLive.includes(f) && !community.includes(f) && !myLife.includes(f) && !todayV2.includes(f) && !exploreV2.includes(f) && !lifeStageV2.includes(f) && !savedV2.includes(f) && !homeV2.includes(f) && !accountSync.includes(f) && !nextV1.includes(f)), [], 'LIVON tree = integration commit except the alignment / AI LIVE / Community V2 / My Life V2 / Today V2 / Explore V2 / Life Stage V2 / Saved V2 / Home V2 / Account Sync V1 files');
     /* main's production routing/CORS fix is part of this line */
     assert.ok(history.includes(ROUTING_CORS_FIX.subject), 'main routing/CORS fix is an ancestor');
     assert.ok(history.includes(BACKEND_HARDENING.subject), 'backend hardening is an ancestor');
@@ -356,7 +372,9 @@ test('RC-5 publish exclusions: Admin/Data Manager removed and verified; source-o
 /* ───────── RC-14 … RC-18, RC-23: data and content inventory ───────── */
 test('RC-14 curated inventory: 530 records, no duplicate, broken relation, invalid URL, expired, sample or draft', () => {
   const c = DQ.counts;
-  assert.equal(c.total, 530); assert.equal(c.visible, 530);
+  /* LIVON Next V1: 10 records whose review was overdue and whose source could not be re-checked are on review hold —
+     still in the files and the inventory (530), not shown (520), never deleted */
+  assert.equal(c.total, 530); assert.equal(c.visible, 520); assert.equal(c.held, 10); assert.equal(DQ.checks.held.count, 10);
   for (const k of ['sample', 'expired', 'unsourced', 'draft', 'duplicates']) assert.equal(c[k], 0, k);
   assert.deepEqual(DQ.invalidUrls, []); assert.deepEqual(DQ.dangling, []);
   for (const k of ['missingId', 'duplicateId', 'duplicateSourceId', 'invalidUrl', 'missingSource', 'invalidDate', 'endBeforeStart', 'expired', 'stale', 'invalidEntityType', 'missingTitle', 'rejected']) assert.equal(DQ.checks[k], 0, k);
@@ -378,8 +396,10 @@ test('RC-16 topics: 228 topics, every one reachable on its screen; 34 Life Event
 });
 
 test('RC-18 Today: 34 items, every one placed; Explore 28/28; no empty category', () => {
-  assert.equal(DQ.screens.today, '34/34'); assert.equal(DQ.screens.explore, '28/28');
-  for (const [k, v] of Object.entries(DQ.emptyCategories)) assert.deepEqual(v, [], k);
+  /* shown / shippable: the 7 Today and 3 Explore records on review hold (LIVON Next V1) are not expected on a screen */
+  assert.equal(DQ.screens.today, '27/27'); assert.equal(DQ.screens.explore, '25/25');
+  /* Today 체험 / 배움 are empty only because every guide in them is on review hold */
+  for (const [k, v] of Object.entries(DQ.emptyCategories)) assert.deepEqual(v, k === 'today' ? ['experience', 'learn'] : [], k);
 });
 
 test('RC-23 Help: 68 articles in 10 categories; 39 static Help pages; facts match the product', () => {
@@ -624,7 +644,7 @@ test('RC-41 visual regression by construction: the RC ships the Performance V1 p
   const product = changed.filter(f => !/^(docs\/|tests\/)/.test(f));
   const allowed = new Set([...RC_FIXES, ...BACKEND_HARDENING.files, ...ROUTING_CORS_FIX.files, ...COMPLETION_FIXES, ...(aiLiveIn() ? AI_LIVE.files : []), ...(familyV2In() ? ONGIL_FAMILY_V2.files : []),
     /* later named commits on main: LIVON Community V2, the ONGIL module-version generator, LIVON My Life V2 */
-    ...namedCommitFiles(COMMUNITY_V2), ...namedCommitFiles(ONGIL_MODULE_VERSIONS), ...namedCommitFiles(MY_LIFE_V2), ...namedCommitFiles(TODAY_V2), ...namedCommitFiles(EXPLORE_V2), ...namedCommitFiles(LIFE_STAGE_V2), ...namedCommitFiles(SAVED_V2), ...namedCommitFiles(HOME_V2), ...namedCommitFiles(ACCOUNT_SYNC_V1)]);
+    ...namedCommitFiles(COMMUNITY_V2), ...namedCommitFiles(ONGIL_MODULE_VERSIONS), ...namedCommitFiles(MY_LIFE_V2), ...namedCommitFiles(TODAY_V2), ...namedCommitFiles(EXPLORE_V2), ...namedCommitFiles(LIFE_STAGE_V2), ...namedCommitFiles(SAVED_V2), ...namedCommitFiles(HOME_V2), ...namedCommitFiles(ACCOUNT_SYNC_V1), ...nextV1Files()]);
   /* ONGIL is its own product in its own directory: accepted only where its production integration is part of the history,
      and then only inside that directory — a LIVON, shared or any other file still needs an entry above */
   const ongilIntegrated = git('log', '--format=%s', 'HEAD').stdout.split('\n').includes(ONGIL_PRODUCT.subject);
