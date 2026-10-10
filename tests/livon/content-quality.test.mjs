@@ -37,8 +37,9 @@ test('CQ-2 ids are unchanged (saved My Life items keep working) — same 530 ids
 
 test('CQ-3 screen usage is tracked and nothing is an orphan (derived provider rows are referenced by providerId)', () => {
   for (const s of ['HOME', 'TODAY', 'LIFE STAGE', 'EXPLORE', 'SEARCH', 'MY LIFE', 'DETAIL', 'COMMUNITY']) assert.ok(rep.screens[s] > 0, s);
-  assert.equal(rep.screens.TODAY, 34);
-  assert.equal(rep.screens.EXPLORE, 28);
+  /* LIVON Next V1: 7 Today and 3 Explore records are on review hold (kept in the files, not shown) */
+  assert.equal(rep.screens.TODAY, 27);
+  assert.equal(rep.screens.EXPLORE, 25);
   deq(rep.orphans, []);
   const prov = rep.records.filter(r => r.id.startsWith('prov:'));
   assert.ok(prov.length && prov.every(r => r.incoming > 0));
@@ -206,7 +207,8 @@ test('CQ-21 search test set (66 queries): no query comes back empty; at least 4 
   assert.ok(SEARCH_SET.length >= 50);
   deq(rep.searchSummary.zeroResults, []);
   assert.ok(rep.searchSummary.relevantTop5Avg >= 4, String(rep.searchSummary.relevantTop5Avg));
-  deq(rep.searchSummary.weak, ['프리랜서'], 'only a real content gap stays weak');
+  /* '요리' became a content gap when the baking / pottery guides went on review hold (LIVON Next V1) */
+  deq(rep.searchSummary.weak, ['요리', '프리랜서'], 'only a real content gap stays weak');
 });
 
 test('CQ-22 two-way synonyms: 취업/구직 · 창업/사업 · 집/주거 · 육아/양육 · 노후/은퇴 find each other', () => {

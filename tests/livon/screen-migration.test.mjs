@@ -32,14 +32,18 @@ function withQaRows() {
 test('S-1 Today: contents come from the repository — same records, same order; ended rows are filtered; detail lookup follows', () => {
   const ctx = loadLivon(), SD = ctx.LivonScreenData;
   const list = SD.todayContents();
-  assert.equal(list.length, ctx.LivonTodayData.contents.length);
-  list.forEach((c, i) => assert.strictEqual(c, ctx.LivonTodayData.contents[i], 'the original record object is handed to the screen'));
+  /* records on a LIVON Next V1 review hold (publishStatus "review") stay in the file but are not handed to the screen */
+  const shown = ctx.LivonTodayData.contents.filter(c => c.publishStatus !== 'review');
+  assert.equal(list.length, shown.length);
+  list.forEach((c, i) => assert.strictEqual(c, shown[i], 'the original record object is handed to the screen'));
   const q = withQaRows().LivonScreenData;
   assert.equal(q.todayContents().some(c => c.id === 'qa-ended-show'), false);
   assert.equal(q.todayById('qa-ended-show'), null, 'detail of an ended item is not shown as current');
   assert.ok(q.todayById('place-hangang'));
   /* all eight Today sections keep their content */
-  for (const k of ['place', 'experience', 'learn', 'together', 'season', 'life', 'editorial', 'event']) assert.ok(list.some(c => c.type === k), k);
+  /* 체험 (experience) and 배움 (learn) are empty while all their guides are on review hold (LIVON Next V1) */
+  for (const k of ['place', 'together', 'season', 'life', 'editorial', 'event']) assert.ok(list.some(c => c.type === k), k);
+  assert.equal(list.some(c => c.publishStatus === 'review'), false);
   /* rule-based feed (not "AI") over the same records */
   const f = SD.todayFeed({ region: '서울', interests: ['여행'], date: '2026-10-03' });
   assert.equal(f.method, 'rule-based'); assert.ok(f.items.length && f.items.every(x => x.record && x.record.id));
@@ -51,7 +55,7 @@ test('S-1 Today: contents come from the repository — same records, same order;
 /* ───────── S-2 Explore ───────── */
 test('S-2 Explore: items come from the repository; ended programs and broken official links never appear; detail lookup follows', () => {
   const ctx = loadLivon(), SD = ctx.LivonScreenData;
-  assert.equal(SD.exploreItems().length, ctx.LivonExploreData.items.length);
+  assert.equal(SD.exploreItems().length, ctx.LivonExploreData.items.filter(x => x.publishStatus !== 'review').length, 'every item but those on review hold');
   const q = withQaRows(), QS = q.LivonScreenData;
   const ids = QS.exploreItems().map(x => x.id);
   assert.equal(ids.includes('qa-ended-class'), false); assert.equal(ids.includes('qa-broken-link'), false);
@@ -61,7 +65,8 @@ test('S-2 Explore: items come from the repository; ended programs and broken off
   /* every Explore category still has items; experts/services/policies/programs/classes/places come from one model */
   for (const c of ctx.LivonExploreData.categories) assert.ok(SD.exploreItems().some(x => (x.categoryIds || []).includes(c.id)), c.id);
   const types = new Set(SD.repository().explore({ types: ['provider', 'service', 'program', 'class', 'place', 'policy'], limit: 999 }).items.map(e => e.type));
-  for (const t of ['provider', 'service', 'program', 'class', 'place', 'policy']) assert.ok(types.has(t), t);
+  /* class: the only curated classes (Today 체험 guides) are on review hold (LIVON Next V1) */
+  for (const t of ['provider', 'service', 'program', 'place', 'policy']) assert.ok(types.has(t), t);
   assert.match(src('livon/explore-page.js'), /function items\(\) \{[\s\S]{0,300}window\.LivonScreenData \? window\.LivonScreenData\.exploreItems\(\)/, 'Explore V2 keeps the repository as the source and only skips malformed rows');
 });
 
@@ -160,7 +165,9 @@ test('S-8 data quality: no duplicates, no unsourced or invalid links, no danglin
   assert.equal(rep.blocking, 0, JSON.stringify(rep));
   assert.equal(rep.counts.duplicates, 0); assert.equal(rep.counts.unsourced, 0); assert.equal(rep.counts.sample, 0);
   assert.deepEqual(rep.invalidUrls, []); assert.deepEqual(rep.dangling, []);
-  assert.deepEqual(J(rep.emptyCategories), { explore: [], today: [], lifeStages: [] });
+  /* Today 체험 / 배움 are empty only because all their guides are on review hold (LIVON Next V1) — never because rows were lost */
+  assert.deepEqual(J(rep.emptyCategories), { explore: [], today: ['experience', 'learn'], lifeStages: [] });
+  assert.equal(rep.checks.held.count, 10);
   for (const k of Object.keys(rep.screens)) { const [a, b] = rep.screens[k].split('/'); assert.equal(a, b, k + ' lost rows'); }
   const q = qualityReport(withQaRows());
   assert.ok(q.counts.expired >= 3 && q.counts.unsourced >= 1, 'QA rows are counted as hidden, not shown');

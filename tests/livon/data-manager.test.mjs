@@ -138,7 +138,8 @@ test('DM-11 review queue: deterministic priorities; P0 = 0 when nothing is block
   assert.equal(Q.byRule['P4 DUPLICATE_CANDIDATE'], 97);
   assert.equal(Q.byRule['P4 CTA_REVIEW'], 47);
   assert.ok(Q.byRule['P4 TAXONOMY_REVIEW'] > 0);
-  const again = DM.reviewQueue(DM.createModel(ctx));
+  /* same clock as M: the queue is compared for determinism, not for what became stale since the fixed date (LIVON Next V1) */
+  const again = DM.reviewQueue(DM.createModel(ctx, { now: Date.parse('2026-10-01T00:00:00Z') }));
   deq(again.items.map(i => i.priority + i.rule + i.recordId), Q.items.map(i => i.priority + i.rule + i.recordId));
   const order = Q.items.map(i => i.priority); deq(order, [...order].sort());
   /* a broken relation goes to P0 */
@@ -217,7 +218,8 @@ test('DM-17 search tester: live ranking with matched fields; the 66-query set re
   deq(J(DM.searchTest(M, '이사').items.map(i => i.key)), J(ctx.LivonSearch.search('이사', {}).items.map(h => h.item.key)), 'same ranking as the site search');
   const S = DM.runSearchSet(M);
   assert.equal(S.length, 66);
-  deq(S.filter(s => s.status !== 'PASS').map(s => s.q + ' ' + s.status), ['프리랜서 WEAK']);
+  /* '요리' is a content gap while the baking / pottery guides are on review hold (LIVON Next V1) */
+  deq(S.filter(s => s.status !== 'PASS').map(s => s.q + ' ' + s.status), ['요리 WEAK', '프리랜서 WEAK']);
 });
 
 test('DM-18 recommendation tester: age → stage, life event, interests; rank, score and reasons', () => {
@@ -263,7 +265,8 @@ test('DM-21 CTA inspector: every CTA counted; generic 정보 보기 21 / 둘러�
 test('DM-22 screen coverage matrix and coverage filters', () => {
   const C = DM.coverage(M);
   deq(C.screens, ['HOME', 'TODAY', 'LIFE STAGE', 'EXPLORE', 'SEARCH', 'MY LIFE', 'DETAIL', 'COMMUNITY']);
-  assert.equal(C.totals.TODAY, 34); assert.equal(C.totals.EXPLORE, 28);
+  /* LIVON Next V1: 7 Today and 3 Explore records are on review hold (kept in the files, not shown) */
+  assert.equal(C.totals.TODAY, 27); assert.equal(C.totals.EXPLORE, 25);
   assert.equal(DM.query(M, { filters: { coverage: 'only-one' } }).total, C.onlyOne);
   assert.equal(DM.query(M, { filters: { coverage: 'not-searchable' } }).total, C.notSearchable);
   assert.equal(DM.query(M, { filters: { coverage: 'no-detail' } }).total, C.noDetail);

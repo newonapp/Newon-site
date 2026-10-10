@@ -63,7 +63,8 @@ test('D-1 static catalog: every curated LIVON record becomes a valid canonical e
   const { repo } = await repoWith();
   const r = repo.report()[0];
   assert.equal(r.rejected, 0, JSON.stringify(r.errors)); assert.equal(r.duplicates, 0); assert.equal(r.warnings, 0);
-  const all = repo.all({ includeSamples: true, includeUnsourced: true });
+  /* includeHeld: records on a LIVON Next V1 review hold are still valid catalog entities (kept in the files, not shown) */
+  const all = repo.all({ includeSamples: true, includeUnsourced: true, includeHeld: true });
   const types = new Set(all.map(e => e.type));
   for (const t of ['lifeStage', 'lifeEvent', 'content', 'policy', 'service', 'place', 'class', 'program', 'provider', 'communityContent']) assert.ok(types.has(t), t);
   assert.equal(repo.getLifeStages().length, 7);
@@ -206,7 +207,9 @@ test('D-7 Today feed: rule-based ranking by region, interests, life stage, seaso
   assert.equal(f.method, 'rule-based'); assert.equal(f.season, 'autumn');
   assert.deepEqual(J(Object.keys(f.byCategory)), J(P.TODAY_CATEGORIES.map(c => c.id)));
   assert.deepEqual(J(P.TODAY_CATEGORIES.map(c => c.label)), ['장소', '체험', '배움', '함께', '계절', '일상', '이야기', '행사']);
-  for (const c of Object.keys(f.byCategory)) assert.ok(f.byCategory[c].length >= 1, c);
+  /* 체험 (experience): its four LIVON guides are on review hold in LIVON Next V1, so that section is empty until they are re-checked */
+  for (const c of Object.keys(f.byCategory)) if (c !== 'experience') assert.ok(f.byCategory[c].length >= 1, c);
+  assert.equal(f.byCategory.experience.length, 0, 'held records never reach the feed');
   for (let i = 1; i < f.items.length; i++) assert.ok(f.items[i - 1].score >= f.items[i].score);
   assert.ok(f.items.every(r => Array.isArray(r.reasons)));
   assert.ok(f.items.slice(0, 5).every(r => !r.entity.region || ['서울', '전국', '온라인'].includes(r.entity.region)), 'other regions do not lead a Seoul feed');
@@ -227,7 +230,9 @@ test('D-8 Explore: nine domains and one filter system across experts/providers/s
   for (const d of P.DOMAINS) assert.ok(repo.explore({ category: d.id }).total >= 1, d.id);
   const types = ['provider', 'service', 'program', 'class', 'place', 'policy', 'expert'];
   const all = repo.explore({ types, limit: 500 });
-  for (const t of types) assert.ok(all.facets.type[t] >= 1, t);
+  /* class: the curated classes (Today 체험 guides) are on review hold in LIVON Next V1 — none is shown */
+  for (const t of types) if (t !== 'class') assert.ok(all.facets.type[t] >= 1, t);
+  assert.equal(all.items.some(e => e.status === 'review'), false);
   const free = repo.explore({ priceType: 'free' }); assert.ok(free.total >= 1 && free.items.every(e => e.priceType === 'free'));
   const online = repo.explore({ online: true }); assert.ok(online.total >= 1 && online.items.every(e => e.online === true));
   const offline = repo.explore({ online: false }); assert.ok(offline.items.every(e => e.online === false));

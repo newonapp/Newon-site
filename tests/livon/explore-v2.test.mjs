@@ -118,10 +118,12 @@ test('EV2-08 official sources: https only, external links say so, and the date i
 });
 
 test('EV2-09 cache keys: changed Explore/shared assets carry ?v=20261006ex1; Today keeps c7; ONGIL keeps its own entry version', () => {
-  for (const f of ['explore-page.js', 'explore-search.js', 'explore-page.css', 'livon-platform.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261006ex1"'), f);
+  for (const f of ['explore-search.js', 'explore-page.css', 'livon-platform.js']) assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=20261006ex1"'), f);
+  /* explore-page.js changed again in LIVON Next V1 (public-data notice, ?v=20261010nx1): that later version is fine, an older one is not */
+  assert.match(INDEX, /\/livon\/explore-page\.js\?v=(20261006ex1|20261010nx\d)"/);
   /* life-hub.js was bumped here and again by Life Stage V2 (?v=20261007ls1): a later Life Stage version is fine, an older one is not */
   assert.match(INDEX, /\/livon\/life-hub\.js\?v=(20261006ex1|20261007ls\d)"/);
-  assert.match(INDEX, /\/livon\/today-page\.js\?v=20261004c7"/);
+  assert.match(INDEX, /\/livon\/today-page\.js\?v=(20261004c7|20261010nx\d)"/); /* LIVON Next V1 bumped Today (typed sections stay honest when empty) */
   /* ONGIL is another product with its own release line (h14 at Explore V2's base, m15 after ONGIL My Life V2): Explore V2 never
      sets it — the entry keeps a version of ONGIL's own and its import map stays current */
   assert.match(fs.readFileSync(path.join(ROOT, 'ongil-start/index.html'), 'utf8'), /<script type="module" src="\/ongil-start\/js\/app\.js\?v=\d{8}[a-z]+\d+"><\/script>/);

@@ -85,7 +85,9 @@ export function qualityReport(ctx) {
   /* ── extended checks (Real Data Integration V1) ── */
   const reps = repo.report();
   const sum = (key, codes) => reps.reduce((n, r) => n + codes.reduce((m, c) => m + ((r[key] || {})[c] || 0), 0), 0);
-  const all = repo.all({ includeSamples: true, includeUnsourced: true, includeExpired: true, includeDuplicates: true });
+  /* held records (review hold, LIVON Next V1) stay in the inventory: they exist, are not shown, and relations to them are not broken */
+  const all = repo.all({ includeSamples: true, includeUnsourced: true, includeExpired: true, includeDuplicates: true, includeHeld: true });
+  const heldIds = all.filter(e => repo.hiddenReason(e.id) === 'review').map(e => e.id);
   const idCount = {}, srcCount = {};
   all.forEach(e => { idCount[e.id] = (idCount[e.id] || 0) + 1; if (e.sourceId && e.sourceType !== 'editorial' && e.sourceType !== 'internal') srcCount[e.sourceId] = (srcCount[e.sourceId] || 0) + 1; });
   const orphanRelations = [];
@@ -108,7 +110,8 @@ export function qualityReport(ctx) {
     invalidDate: sum('warningCodes', ['startDate:invalid', 'endDate:invalid', 'applicationStart:invalid', 'applicationEnd:invalid', 'expiresAt:invalid', 'updatedAt:invalid', 'retrievedAt:invalid', 'publishedAt:invalid', 'sourceUpdatedAt:invalid', 'lastCheckedAt:invalid']) + sum('errorCodes', ['event:startDate']),
     endBeforeStart: sum('warningCodes', ['endDate:before-start', 'applicationEnd:before-start']),
     expired: all.filter(e => repo.hiddenReason(e.id) === 'expired').length,
-    stale: all.filter(e => repo.freshness(e) === 'stale').length,
+    stale: all.filter(e => !repo.hiddenReason(e.id) && repo.freshness(e) === 'stale').length,   /* shown and stale */
+    held: { count: heldIds.length, note: 'review overdue and the source could not be re-checked — kept in the files, not shown, nothing deleted', ids: heldIds },
     orphanRelations,
     invalidEntityType: sum('errorCodes', ['type']),
     unsupportedCategory,
@@ -120,8 +123,9 @@ export function qualityReport(ctx) {
   const blocking = q.duplicates + q.unsourced + invalidUrls.length + dangling.length + badHref.size
     + checks.missingId + checks.duplicateId + checks.invalidEntityType + checks.missingTitle + orphanRelations.length + unsupportedCategory.length;
   return {
-    counts: { total: q.total, visible: q.visible, sample: q.sample, expired: q.expired, unsourced: q.unsourced, draft: q.draft, comingSoon: q.comingSoon, duplicates: q.duplicates, sameTitleVariants: q.sameTitleVariants, bySourceType: q.bySourceType, byType: q.byType },
-    screens: { today: SD.todayContents().length + '/' + ctx.LivonTodayData.contents.length, explore: SD.exploreItems().length + '/' + ctx.LivonExploreData.items.length,
+    counts: { total: q.total, visible: q.visible, sample: q.sample, expired: q.expired, unsourced: q.unsourced, draft: q.draft, held: q.held, comingSoon: q.comingSoon, duplicates: q.duplicates, sameTitleVariants: q.sameTitleVariants, bySourceType: q.bySourceType, byType: q.byType },
+    /* placed / shippable: a record on review hold is not expected on a screen (counted under checks.held) */
+    screens: { today: SD.todayContents().length + '/' + ctx.LivonTodayData.contents.filter(c => c.publishStatus !== 'review').length, explore: SD.exploreItems().length + '/' + ctx.LivonExploreData.items.filter(x => x.publishStatus !== 'review').length,
       lifeEvents: SD.lifeEvents().length + '/' + ctx.LivonLifeEvents.events.length, topics: SD.topics().length + '/' + LT.topics.length,
       policies: SD.policies().length + '/' + LT.policies.length, serviceTypes: SD.serviceTypes().length + '/' + LT.serviceTypes.length },
     invalidUrls, dangling, unresolvedTools,

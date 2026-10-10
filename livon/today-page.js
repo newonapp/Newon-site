@@ -452,11 +452,14 @@
     if (sectionKey === "editorial") list = visibleContents().filter(function (c) { return c.type === "editorial"; });
 
     list = list.slice(0, limit || 4);
-    if (!list.length) {
+    /* LIVON Next V1: a section with its own content type (체험, 배움, …) is never filled with other types — an empty 배움 showed
+       a park under "배움". Records on a review hold leave the section honestly empty instead. */
+    var TYPED = { place: 1, hobby: 1, learn: 1, together: 1, everyday: 1, editorial: 1 };
+    if (!list.length && !TYPED[sectionKey]) {
       list = visibleContents().filter(function (c) { return c.evergreen || c.featured; }).slice(0, limit || 4);
     }
     if (!list.length) {
-      host.innerHTML = emptyHtml("이 영역의 콘텐츠가 아직 없습니다. 검색에서 다른 카테고리를 살펴보세요.");
+      host.innerHTML = emptyHtml(TYPED[sectionKey] ? "지금 이 영역에 보여 드릴 콘텐츠가 없습니다. 다른 영역이나 검색에서 살펴보세요." : "이 영역의 콘텐츠가 아직 없습니다. 검색에서 다른 카테고리를 살펴보세요.");
       return;
     }
     if (variant === "rail") {

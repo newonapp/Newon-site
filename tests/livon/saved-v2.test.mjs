@@ -349,7 +349,8 @@ test('SV2-20 cache keys: the three changed My Life files move to sv1 together; n
   }
   for (const [f, v] of [['life-hub.js', '20261007ls1'], ['life-page.js', '20261007ls1'], ['life-page.css', '20261007ls1'], ['explore-page.js', '20261006ex1'], ['explore-search.js', '20261006ex1'], ['explore-page.css', '20261006ex1'],
     ['today-page.js', '20261004c7'], ['today-page.css', '20261004c6'], ['livon-platform.js', '20261006ex1'], ['life-now-data.js', '20261004c5'], ['community-page.js', '20261005cv2'], ['ai-page.js', '20261004c4']])
-    assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=' + v + '"'), f);
+    /* a later phase may move an asset again (LIVON Next V1: explore-page.js, today-page.js → 20261010nx1) — never back */
+    assert.match(INDEX, new RegExp('/livon/' + f.replace(/\./g, '\\.') + '\\?v=(' + v + (['explore-page.js', 'today-page.js'].includes(f) ? '|20261010nx\\d' : '') + ')"'), f);
   assert.match(fs.readFileSync(path.join(ROOT, 'ongil-start/index.html'), 'utf8'), /ongil-life\.css\?v=20261007r14/);
   assert.ok(INDEX.indexOf('/livon/life-now-hub.js?') < INDEX.indexOf('/livon/life-now-page.js?'), 'the hub loads before the page');
 });

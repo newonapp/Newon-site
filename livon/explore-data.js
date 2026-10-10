@@ -70,13 +70,15 @@ window.LivonExploreData = {
       credentials: { status: "verified", note: "국가기술자격 공식" },
       officialUrl: "https://www.q-net.or.kr/",
       source: "큐넷",
-      checkedAt: "2026-09-25",
+      checkedAt: "2026-10-10",
       tags: ["자격증", "직업교육", "취업"],
       layout: "program",
       compare: { field: "자격 시험", range: "전국", mode: "온·오프라인", price: "종목별", cred: "국가자격" }
     },
     {
       id: "ex-hrdkorea",
+      /* LIVON Next V1 (2026-10-10): review overdue (checked 2026-09-25, review every 14 days); hrd.go.kr now redirects to 고용24 (checked 2026-10-10) — the "HRD-Net" title/description needs an editorial update before it is shown again — hidden from screens, not deleted; set publishStatus back to "published" with a new checkedAt after re-checking. */
+      publishStatus: "review", reviewReason: "stale-unverified",
       type: "program",
       categoryIds: ["education", "career"],
       subfield: "직업교육",
@@ -351,13 +353,15 @@ window.LivonExploreData = {
       credentials: { status: "verified", note: "공공 평생교육" },
       officialUrl: "https://www.nile.or.kr/",
       source: "국가평생교육진흥원",
-      checkedAt: "2026-09-25",
+      checkedAt: "2026-10-10",
       tags: ["평생교육", "시니어", "취미", "디지털 교육"],
       layout: "program",
       compare: { field: "평생교육", range: "전국", mode: "온·오프라인", price: "과정별", cred: "공공" }
     },
     {
       id: "ex-allilearn",
+      /* LIVON Next V1 (2026-10-10): review overdue (checked 2026-09-25, review every 14 days); www.lifelongedu.go.kr did not load when re-checked on 2026-10-10 — hidden from screens, not deleted; set publishStatus back to "published" with a new checkedAt after re-checking. */
+      publishStatus: "review", reviewReason: "stale-unverified",
       type: "program",
       categoryIds: ["education", "leisure"],
       subfield: "평생교육",
@@ -557,6 +561,8 @@ window.LivonExploreData = {
     },
     {
       id: "ex-worknet-job",
+      /* LIVON Next V1 (2026-10-10): review overdue (checked 2026-09-25, review every 14 days); 고용24 is live (2026-10-10) but the 직업심리검사 claim could not be confirmed on the page — hidden from screens, not deleted; set publishStatus back to "published" with a new checkedAt after re-checking. */
+      publishStatus: "review", reviewReason: "stale-unverified",
       type: "program",
       categoryIds: ["career", "education"],
       subfield: "재취업",
@@ -694,7 +700,7 @@ window.LivonExploreData = {
       credentials: { status: "verified", note: "공공 시니어 일자리 안내" },
       officialUrl: "https://www.kordi.or.kr/",
       source: "한국노인인력개발원",
-      checkedAt: "2026-09-25",
+      checkedAt: "2026-10-10",
       tags: ["시니어", "재취업", "일자리"],
       layout: "program",
       compare: { field: "시니어 일자리", range: "전국", mode: "온·오프라인", price: "공공", cred: "공공" }

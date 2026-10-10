@@ -119,6 +119,8 @@ window.LivonTodayData = {
     },
     {
       id: "exp-pottery",
+      /* LIVON Next V1 (2026-10-10): review overdue (checked 2026-09-25, review every 14 days) a LIVON-written guide with no external source to re-check against — hidden from screens, not deleted; set publishStatus back to "published" with a new checkedAt after re-checking. */
+      publishStatus: "review", reviewReason: "stale-unverified",
       type: "experience",
       category: "도자기",
       title: "도자기 원데이, 손으로 만드는 첫 취미",
@@ -146,6 +148,8 @@ window.LivonTodayData = {
     },
     {
       id: "exp-baking",
+      /* LIVON Next V1 (2026-10-10): review overdue (checked 2026-09-25, review every 14 days) a LIVON-written guide with no external source to re-check against — hidden from screens, not deleted; set publishStatus back to "published" with a new checkedAt after re-checking. */
+      publishStatus: "review", reviewReason: "stale-unverified",
       type: "experience",
       category: "베이킹",
       title: "집에서도, 클래스에서도 — 베이킹 입문",
@@ -170,6 +174,8 @@ window.LivonTodayData = {
     },
     {
       id: "exp-yoga",
+      /* LIVON Next V1 (2026-10-10): review overdue (checked 2026-09-25, review every 14 days) a LIVON-written guide with no external source to re-check against — hidden from screens, not deleted; set publishStatus back to "published" with a new checkedAt after re-checking. */
+      publishStatus: "review", reviewReason: "stale-unverified",
       type: "experience",
       category: "요가",
       title: "가벼운 요가·스트레칭으로 몸 풀기",
@@ -194,6 +200,8 @@ window.LivonTodayData = {
     },
     {
       id: "exp-photo",
+      /* LIVON Next V1 (2026-10-10): review overdue (checked 2026-09-25, review every 14 days) a LIVON-written guide with no external source to re-check against — hidden from screens, not deleted; set publishStatus back to "published" with a new checkedAt after re-checking. */
+      publishStatus: "review", reviewReason: "stale-unverified",
       type: "experience",
       category: "사진",
       title: "스마트폰으로 시작하는 거리 사진",
@@ -217,6 +225,8 @@ window.LivonTodayData = {
     },
     {
       id: "learn-kmooc",
+      /* LIVON Next V1 (2026-10-10): review overdue (checked 2026-09-25, review every 14 days); kmooc.kr is live but the price line "대부분 무료 (일부 유료)" could not be confirmed — hidden from screens, not deleted; set publishStatus back to "published" with a new checkedAt after re-checking. */
+      publishStatus: "review", reviewReason: "stale-unverified",
       type: "learn",
       category: "무료 온라인 강의",
       title: "K-MOOC에서 관심 강의 찾아보기",
@@ -244,6 +254,8 @@ window.LivonTodayData = {
     },
     {
       id: "learn-finance",
+      /* LIVON Next V1 (2026-10-10): review overdue (checked 2026-09-25, review every 14 days) a LIVON-written guide with no external source to re-check against — hidden from screens, not deleted; set publishStatus back to "published" with a new checkedAt after re-checking. */
+      publishStatus: "review", reviewReason: "stale-unverified",
       type: "learn",
       category: "금융 기초",
       title: "생활 금융 기초, 먼저 알아둘 개념",
@@ -266,6 +278,8 @@ window.LivonTodayData = {
     },
     {
       id: "learn-digital-senior",
+      /* LIVON Next V1 (2026-10-10): review overdue (checked 2026-09-25, review every 14 days) a LIVON-written guide with no external source to re-check against — hidden from screens, not deleted; set publishStatus back to "published" with a new checkedAt after re-checking. */
+      publishStatus: "review", reviewReason: "stale-unverified",
       type: "learn",
       category: "시니어 디지털 교육",
       title: "스마트폰·키오스크, 천천히 익히기",

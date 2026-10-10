@@ -348,7 +348,8 @@
   }
   function isVisible(e, at, o) {
     o = o || {};
-    if (lifecycleStatus(e, at) !== "published" && !(o.includeExpired && lifecycleStatus(e, at) === "expired")) return false;
+    /* includeHeld (LIVON Next V1): QA/inventory tools may list records on a review hold (status "review"); screens never ask for them */
+    if (lifecycleStatus(e, at) !== "published" && !(o.includeExpired && lifecycleStatus(e, at) === "expired") && !(o.includeHeld && e.status === "review")) return false;
     if (e.sample && !o.includeSamples) return false;
     if (e.provenanceMissing && !o.includeUnsourced) return false;
     if (e.duplicateOf && !o.includeDuplicates) return false;

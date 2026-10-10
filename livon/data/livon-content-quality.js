@@ -26,7 +26,8 @@
     UNSOURCED_SPECIFIC: 'states a price/budget/amount without an official link to verify it',
     TIME_SENSITIVE_CLAIM: 'names a specific year or "현재 운영/모집/신청" as a fact',
     FIELD_CONFLICT: 'two fields of the same record disagree (e.g. a budget amount next to "프로그램별 상이") — never auto-corrected',
-    ORPHAN: 'not shown on any screen and not referenced by any other record'
+    ORPHAN: 'not shown on any screen and not referenced by any other record',
+    REVIEW_HOLD: 'kept in the files but not shown: review overdue and its source could not be re-checked (never deleted)'
   };
   const TIME_BOUND = { event: 1, program: 1, policy: 1, class: 1 };
   const FACTUAL = { place: 1, event: 1, program: 1, policy: 1, expert: 1, provider: 1, class: 1 };
@@ -87,7 +88,8 @@
     opts = opts || {};
     const now = opts.now == null ? Date.now() : opts.now;
     const SD = ctx.LivonScreenData, repo = SD.repository(), S = ctx.LivonSearch;
-    const all = repo.all({ includeSamples: true, includeUnsourced: true, includeExpired: true, includeDuplicates: true });
+    /* records on a review hold (LIVON Next V1) stay in the inventory: they exist, so relations to them are not broken; they are flagged REVIEW_HOLD */
+    const all = repo.all({ includeSamples: true, includeUnsourced: true, includeExpired: true, includeDuplicates: true, includeHeld: true });
     const byId = new Map(all.map(e => [e.id, e]));
     const tools = new Set((ctx.LivonLifeData.stages || []).flatMap(s => (s.services || []).map(x => 'tool:' + x.id)));
   
@@ -168,7 +170,8 @@
       const dated = e.startDate || e.endDate || e.applicationStart || e.applicationEnd || e.expiresAt;
       if (TIME_BOUND[e.type] && !dated) flags.add('DATE_VERIFICATION_REQUIRED');
       const checked = Date.parse(e.lastCheckedAt || '');
-      if (freshDays[e.type] && e.sourceType !== 'editorial' && checked && now - checked > freshDays[e.type] * 864e5) flags.add('STALE_REVIEW_REQUIRED');
+      /* a record on review hold is already out of every screen until it is re-checked — REVIEW_HOLD says it */
+      if (freshDays[e.type] && e.sourceType !== 'editorial' && checked && now - checked > freshDays[e.type] * 864e5 && repo.hiddenReason(e.id) !== 'review') flags.add('STALE_REVIEW_REQUIRED');
       if (dupCandidate.has(e.id)) flags.add('DUPLICATE_CANDIDATE');
       if (!e.category && !(e.tags || []).length) flags.add('WEAK_SEARCH_METADATA');
       /* specifics without a source */
@@ -184,7 +187,9 @@
       if (/20(2[5-9])년|현재 (운영|모집|신청|접수) ?중/.test(visibleText)) flags.add('TIME_SENSITIVE_CLAIM');
       /* usage */
       const used = [...screens.get(e.id)];
-      if (!used.length && !incoming.get(e.id)) flags.add('ORPHAN');
+      const held = repo.hiddenReason(e.id) === 'review';
+      if (held) flags.add('REVIEW_HOLD');
+      else if (!used.length && !incoming.get(e.id)) flags.add('ORPHAN');
   
       /* ── deterministic score (100) ── */
       let score = 0;

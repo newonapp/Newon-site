@@ -199,8 +199,9 @@
     quality: function () {
       var r = get();
       if (!r) return { available: false, error: lastError ? String(lastError.message || lastError) : "platform missing" };
-      var all = r.all({ includeSamples: true, includeUnsourced: true, includeExpired: true, includeDuplicates: true });
-      var q = { available: true, builds: builds, withTopics: builtWithTopics, total: all.length, visible: 0, sample: 0, expired: 0, unsourced: 0, draft: 0, comingSoon: 0,
+      var all = r.all({ includeSamples: true, includeUnsourced: true, includeExpired: true, includeDuplicates: true, includeHeld: true });
+      /* held: curated records kept in the files but not shown while their source is re-checked (LIVON Next V1 review hold) */
+      var q = { available: true, builds: builds, withTopics: builtWithTopics, total: all.length, visible: 0, sample: 0, expired: 0, unsourced: 0, draft: 0, held: 0, heldIds: [], comingSoon: 0,
         bySourceType: {}, byType: {}, duplicates: 0, sameTitleVariants: 0, freshness: {}, external: 0, hiddenDuplicates: 0 };
       var titles = {}, variants = {};
       all.forEach(function (e) {
@@ -212,7 +213,8 @@
         else if (why === "expired") q.expired++;
         else if (why === "unsourced") q.unsourced++;
         else if (why === "sample") q.sample++;
-        else if (why === "draft" || why === "review" || why === "archived") q.draft++;
+        else if (why === "review") { q.held++; q.heldIds.push(e.id); }
+        else if (why === "draft" || why === "archived") q.draft++;
         if (e.meta && e.meta.comingSoon) q.comingSoon++;
         q.bySourceType[e.sourceType] = (q.bySourceType[e.sourceType] || 0) + 1;
         q.byType[e.type] = (q.byType[e.type] || 0) + 1;
