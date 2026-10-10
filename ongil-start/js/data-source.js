@@ -32,30 +32,50 @@ const DATA_PATH = '/api/livon/data';
 const TIMEOUT_MS = 8000;
 const MAX_ITEMS = 6;
 
-const unavailable = (reason) => ({ state: 'unavailable', reason, items: [], attribution: '' });
+/* reason: what kind of 'unavailable' (unchanged list); detail (Stability V1, NO_ANSWER only): what the browser saw — see
+   failureText in views.js. Nothing in either is taken from the provider's answer. */
+const unavailable = (reason, detail = '') => (detail ? { state: 'unavailable', reason, detail, items: [], attribution: '' } : { state: 'unavailable', reason, items: [], attribution: '' });
+const RETRY_DELAY_MS = 800;
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 /* one small client for the route: GET only, no credentials, a timeout, and null for anything that is not { ok: true } */
-function dataClient({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS }) {
+function dataClient({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS, retryDelayMs = RETRY_DELAY_MS, online = () => !(typeof navigator !== 'undefined' && navigator && navigator.onLine === false) }) {
   const usable = typeof apiUrl === 'function' && typeof fetcher === 'function';
   /* why the last request gave nothing: 'absent' = no data route at this address (404/405, e.g. GitHub Pages with no API
      origin set) · 'down' = the route did not answer usefully (offline, timeout, 5xx, not JSON, not { ok: true }) */
   let lastFailure = '';
-  async function getJson(query) {
+  /* Stability V1: the kind of 'down' (OFFLINE · NETWORK · TIMEOUT · UPSTREAM · UPSTREAM_SLOW · LIMIT · SERVER) */
+  let lastDetail = '';
+  async function getJson(query, retried = false) {
+    const body = await getOnce(query);
+    /* a 502 / 504 from the route means the provider behind it failed or was slow: one quiet second try (GET, idempotent) */
+    if (body === null && !retried && (lastDetail === 'UPSTREAM' || lastDetail === 'UPSTREAM_SLOW')) {
+      if (retryDelayMs > 0) await wait(retryDelayMs);
+      return getJson(query, true);
+    }
+    return body;
+  }
+  async function getOnce(query) {
     lastFailure = '';
+    lastDetail = '';
     const controller = typeof AbortController === 'function' ? new AbortController() : null;
     const timer = controller ? setTimeout(() => controller.abort(), timeoutMs) : null;
     try {
       const response = await fetcher(apiUrl(DATA_PATH) + query, { method: 'GET', headers: { accept: 'application/json' }, credentials: 'omit', signal: controller ? controller.signal : undefined });
       if (!response || !response.ok) {
         lastFailure = response && (response.status === 404 || response.status === 405) ? 'absent' : 'down';
+        const st = response ? response.status : 0;
+        lastDetail = st === 502 ? 'UPSTREAM' : st === 504 ? 'UPSTREAM_SLOW' : st === 503 || st === 429 ? 'LIMIT' : 'SERVER';
         return null;
       }
       const body = await response.json();
       if (body && typeof body === 'object' && body.ok === true) return body;
       lastFailure = 'down';
+      lastDetail = 'SERVER';
       return null;
-    } catch {
+    } catch (err) {
       lastFailure = 'down';
+      lastDetail = !online() ? 'OFFLINE' : err && err.name === 'AbortError' ? 'TIMEOUT' : err instanceof SyntaxError ? 'SERVER' : 'NETWORK';
       return null;
     } finally {
       if (timer) clearTimeout(timer);
@@ -73,7 +93,10 @@ function dataClient({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS }) {
     return p && p.configured === true ? 'yes' : 'no';
   }
   const notReady = (state) => (state === 'down' ? 'NO_ANSWER' : 'NOT_CONFIGURED');
-  return { usable, getJson, configured, notReady };
+  /* the 'unavailable' answer for the last failed request: NO_ANSWER with what the browser saw */
+  const noAnswer = () => unavailable('NO_ANSWER', lastDetail || 'SERVER');
+  const notReadyResult = (state) => (state === 'down' ? noAnswer() : unavailable('NOT_CONFIGURED'));
+  return { usable, getJson, configured, notReady, noAnswer, notReadyResult };
 }
 
 /* ───────── 평생학습 강좌 (kr-lifelong-class) ───────── */
@@ -84,8 +107,8 @@ function dataClient({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS }) {
  * normalised item, so Home and 즐길거리 never normalise the provider differently.
  * Only the region name (and an optional search word) is sent, and only after the user presses a button.
  */
-export function createLifelongClassSource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS } = {}) {
-  const api = dataClient({ apiUrl, fetcher, timeoutMs });
+export function createLifelongClassSource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS, retryDelayMs = RETRY_DELAY_MS } = {}) {
+  const api = dataClient({ apiUrl, fetcher, timeoutMs, retryDelayMs });
 
   async function load({ region, query = '', limit = MAX_ITEMS, category = 'LEARNING' } = {}) {
     if (!api.usable) return unavailable('NOT_CONNECTED');
@@ -93,9 +116,9 @@ export function createLifelongClassSource({ apiUrl, fetcher, timeoutMs = TIMEOUT
     const q = safeText(query, 30);
     const max = Number.isInteger(limit) && limit >= 1 && limit <= 50 ? limit : MAX_ITEMS;
     const ready = await api.configured(LIFELONG_PROVIDER);
-    if (ready !== 'yes') return unavailable(api.notReady(ready));
+    if (ready !== 'yes') return api.notReadyResult(ready);
     const data = await api.getJson(`?provider=${LIFELONG_PROVIDER}&region=${encodeURIComponent(region)}${q ? `&query=${encodeURIComponent(q)}` : ''}&status=open&limit=${max}`);
-    if (!data || !Array.isArray(data.items)) return unavailable('NO_ANSWER');
+    if (!data || !Array.isArray(data.items)) return api.noAnswer();
     const items = [];
     for (const raw of data.items) {
       const input = fromLifelong(raw, category);
@@ -151,21 +174,21 @@ function cleanFacility(raw, kind) {
 
 async function kakaoSearch(api, words, limit) {
   const ready = await api.configured(KAKAO_PLACE_PROVIDER);
-  if (ready !== 'yes') return { error: api.notReady(ready) };
+  if (ready !== 'yes') return { error: api.notReadyResult(ready) };
   const data = await api.getJson(`?provider=${KAKAO_PLACE_PROVIDER}&query=${encodeURIComponent(words)}&page=1&limit=${limit}`);
-  if (!data || !Array.isArray(data.items)) return { error: 'NO_ANSWER' };
+  if (!data || !Array.isArray(data.items)) return { error: api.noAnswer() };
   return { items: data.items };
 }
 
-export function createFacilitySource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS } = {}) {
-  const api = dataClient({ apiUrl, fetcher, timeoutMs });
+export function createFacilitySource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS, retryDelayMs = RETRY_DELAY_MS } = {}) {
+  const api = dataClient({ apiUrl, fetcher, timeoutMs, retryDelayMs });
   /* load({ region, kind: { id, query } }) → { state, items (raw Facility input — care-contracts sanitises), attribution } */
   async function load({ region, kind } = {}) {
     if (!api.usable) return unavailable('NOT_CONNECTED');
     if (!REGIONS.some((r) => r.id === region)) return unavailable('REGION_REQUIRED');
     if (!kind || typeof kind.query !== 'string' || !/^[가-힣 ()]{2,20}$/.test(kind.query)) return unavailable('KIND_REQUIRED');
     const r = await kakaoSearch(api, `${region} ${kind.query}`, FACILITY_LIMIT);
-    if (r.error) return unavailable(r.error);
+    if (r.error) return r.error;
     const items = r.items.map((raw) => cleanFacility(raw, kind.id)).filter(Boolean).slice(0, FACILITY_LIMIT);
     if (items.length === 0) return { state: 'empty', items: [], attribution: '' };
     return { state: 'ready', items, attribution: '장소 정보 출처: Kakao Local (민간 지도 서비스, 공식 기관 자료 아님)' };
@@ -180,14 +203,14 @@ export function createFacilitySource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS }
  * 즐길거리 screen normalises them with enjoy-contracts fromKakaoPlace (same model as every other Enjoy place).
  */
 const PLACE_LIMIT = 15;
-export function createEnjoyPlaceSource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS } = {}) {
-  const api = dataClient({ apiUrl, fetcher, timeoutMs });
+export function createEnjoyPlaceSource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS, retryDelayMs = RETRY_DELAY_MS } = {}) {
+  const api = dataClient({ apiUrl, fetcher, timeoutMs, retryDelayMs });
   async function load({ region, word } = {}) {
     if (!api.usable) return unavailable('NOT_CONNECTED');
     if (!REGIONS.some((r) => r.id === region)) return unavailable('REGION_REQUIRED');
     if (typeof word !== 'string' || !/^[가-힣]{2,10}$/.test(word)) return unavailable('WORD_REQUIRED');
     const r = await kakaoSearch(api, `${region} ${word}`, PLACE_LIMIT);
-    if (r.error) return unavailable(r.error);
+    if (r.error) return r.error;
     const items = r.items.filter((x) => x && typeof x === 'object' && x.type === 'place').slice(0, PLACE_LIMIT);
     if (items.length === 0) return { state: 'empty', items: [], attribution: '' };
     return { state: 'ready', items, attribution: '장소 정보 출처: Kakao Local (민간 지도 서비스)' };
@@ -203,17 +226,17 @@ export function createEnjoyPlaceSource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS
 export const TOUR_REGIONS = Object.freeze(['서울', '부산', '대구', '인천', '광주', '대전', '경기']);
 const TOUR_TYPE_IDS = Object.freeze(['12', '14', '28']);
 const TOUR_LIMIT = 20;
-export function createTourPlaceSource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS } = {}) {
-  const api = dataClient({ apiUrl, fetcher, timeoutMs });
+export function createTourPlaceSource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS, retryDelayMs = RETRY_DELAY_MS } = {}) {
+  const api = dataClient({ apiUrl, fetcher, timeoutMs, retryDelayMs });
   async function load({ region, contentType } = {}) {
     if (!api.usable) return unavailable('NOT_CONNECTED');
     if (!REGIONS.some((r) => r.id === region)) return unavailable('REGION_REQUIRED');
     if (!TOUR_REGIONS.includes(region)) return unavailable('REGION_NOT_SUPPORTED');
     if (!TOUR_TYPE_IDS.includes(contentType)) return unavailable('TYPE_REQUIRED');
     const ready = await api.configured(TOUR_PROVIDER);
-    if (ready !== 'yes') return unavailable(api.notReady(ready));
+    if (ready !== 'yes') return api.notReadyResult(ready);
     const data = await api.getJson(`?provider=${TOUR_PROVIDER}&region=${encodeURIComponent(region)}&type=${contentType}&page=1&limit=${TOUR_LIMIT}`);
-    if (!data || !Array.isArray(data.items)) return unavailable('NO_ANSWER');
+    if (!data || !Array.isArray(data.items)) return api.noAnswer();
     const items = data.items.filter((x) => x && typeof x === 'object' && x.type === 'place').slice(0, TOUR_LIMIT);
     if (items.length === 0) return { state: 'empty', items: [], attribution: '' };
     return { state: 'ready', items, attribution: '관광 정보 출처: 한국관광공사 (TourAPI)' };

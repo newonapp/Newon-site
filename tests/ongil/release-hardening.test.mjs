@@ -755,7 +755,10 @@ test('RH-24 offline local flows: every personal feature works with no network at
     globalThis.fetch = realFetch;
   }
   /* the page needs no service worker, manifest or remote script to start; fonts and the film are the only outside files and both are optional */
-  assert.equal(/serviceWorker|navigator\.onLine|manifest\.json/.test(`${ALL_CODE}\n${HTML}`), false);
+  /* Stability V1 — BEFORE: navigator.onLine appeared nowhere. AFTER: data-source.js reads it only to word a failed request
+     ("인터넷이 연결되어 있지 않아…"); nothing waits for it, and still no service worker or manifest */
+  assert.equal(/serviceWorker|manifest\.json/.test(`${ALL_CODE}\n${HTML}`), false);
+  assert.equal(/navigator\.onLine/.test(`${JS_FILES.filter((f) => f !== 'data-source.js').map((f) => code(JS[f])).join('\n')}\n${HTML}`), false);
   assert.match(HTML, /<noscript><p class="og-noscript">ONGIL을 사용하려면 브라우저에서 자바스크립트를 켜 주세요\.<\/p><\/noscript>/);
 });
 
@@ -1206,7 +1209,7 @@ test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', ()
   /* Family Connection V1: + family-connection.test.mjs (BEFORE 27, AFTER 28). WHY: the new feature brought its own test file. */
   /* Family Connection V2: + family-v2.test.mjs (BEFORE 28, AFTER 29) */
   /* Community V2: + community-v2.test.mjs (BEFORE 29, AFTER 30) */
-  /* My Life V2: + my-life-v2.test.mjs (BEFORE 31, AFTER 32) */ /* Responsive Hardening V1: + responsive-hardening.test.mjs (BEFORE 32, AFTER 33). WHY: the hardening brought its own test file. */ /* Enjoy V2: + enjoy-v2.test.mjs (BEFORE 33, AFTER 34). WHY: the feature brought its own test file. */ /* Home V2: + home-v2.test.mjs (BEFORE 34, AFTER 35). WHY: the feature brought its own test file. */ assert.equal(tests.length, 35); // Health · Safety V2: + health-safety-v2.test.mjs (BEFORE 30, AFTER 31) · Completion V2: + health-calendar.test.mjs · Completion V3: + emergency-contacts.test.mjs · Product Completion Audit V1: + product-completion.test.mjs (BEFORE 26, AFTER 27)
+  /* My Life V2: + my-life-v2.test.mjs (BEFORE 31, AFTER 32) */ /* Responsive Hardening V1: + responsive-hardening.test.mjs (BEFORE 32, AFTER 33). WHY: the hardening brought its own test file. */ /* Enjoy V2: + enjoy-v2.test.mjs (BEFORE 33, AFTER 34). WHY: the feature brought its own test file. */ /* Home V2: + home-v2.test.mjs (BEFORE 34, AFTER 35). WHY: the feature brought its own test file. */ /* Stability V1: + stability-v1.test.mjs (BEFORE 35, AFTER 36). WHY: the work brought its own test file. */ assert.equal(tests.length, 36); // Health · Safety V2: + health-safety-v2.test.mjs (BEFORE 30, AFTER 31) · Completion V2: + health-calendar.test.mjs · Completion V3: + emergency-contacts.test.mjs · Product Completion Audit V1: + product-completion.test.mjs (BEFORE 26, AFTER 27)
   for (const f of ['livon', 'server/livon', 'tests/livon']) assert.ok(fs.existsSync(path.join(ROOT, f)), `${f} is still there, untouched by ONGIL`);
   /* Family Connection V2: server/ongil/family is the one ONGIL backend (BEFORE: no server/ongil) */
   assert.deepEqual(fs.readdirSync(path.join(ROOT, 'server/ongil')), ['family']);

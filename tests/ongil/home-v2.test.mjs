@@ -218,7 +218,9 @@ test('HV2-10 내 주변 inside 즐길거리: button only, region only; a 502 or 
   assert.equal((src.match(/source\.load\(/g) || []).length, 1);
   assert.match(src, /try \{\n\s+result = await source\.load\(\{ region \}\);\n\s+\} catch \{\n\s+result = \{ state: 'unavailable', items: \[\] \};/);
   assert.match(src, /result && result\.reason === 'NO_ANSWER'/);
-  assert.match(src, /지금은 강좌 정보를 받아오지 못했어요\. 잠시 뒤 다시 눌러 주세요\./);
+  /* ONGIL Stability V1 — BEFORE: one sentence '지금은 강좌 정보를 받아오지 못했어요. 잠시 뒤 다시 눌러 주세요.' shown as 'empty'.
+     AFTER: an 'error' (alert) with words for the kind of failure (views.js failureText) and a 다시 찾기 button (OST-08 / OST-09) */
+  assert.match(src, /setRegionState\(zone, 'error', failureText\(result, '강좌 정보'\)\)/);
   assert.match(src, /const nearby = profile && source && saved \? createNearbyPart/);
 });
 

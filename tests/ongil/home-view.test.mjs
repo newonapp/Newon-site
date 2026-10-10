@@ -99,7 +99,12 @@ test('OG-HM-6 nearby: asked only on a button press; unavailable and empty are pl
   assert.match(src, /setRegionState\(zone, 'loading'/);
   assert.match(src, /setRegionState\(zone, 'empty', '지금 모집 중인 강좌를 찾지 못했어요\.'\)/);
   assert.match(src, /setRegionState\(zone, 'empty', '주변 강좌 정보는 지금 쓸 수 없어요\./);
-  assert.equal(/setRegionState\(zone, 'error'/.test(src), false);
+  /* BEFORE (Home V2): no error state at all — a failed answer read like "not available".
+     AFTER (Stability V1): only a temporary failure (the route did not answer: offline, network, timeout, 502/504) is an
+     error with 다시 찾기; "not connected" and "nothing found" stay plain states (asserted above). */
+  assert.equal((src.match(/setRegionState\(zone, 'error'/g) || []).length, 1);
+  assert.match(src, /setRegionState\(zone, 'error', failureText\(result, '강좌 정보'\)\)/);
+  assert.match(src, /'data-og-home-retry': 'lifelong', text: '다시 찾기'/);
   assert.match(src, /사는 지역을 정하면/);
   assert.match(src, /link\('#account', '내 정보에서 지역 정하기'\)/);
   assert.match(src, /지역 이름만 보내며, 버튼을 눌렀을 때만 찾습니다/);
