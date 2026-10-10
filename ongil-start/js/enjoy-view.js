@@ -27,7 +27,7 @@
  */
 import { el, clear, append } from './dom.js';
 import { createCard, choiceButton, makeField, nextId } from './home-ui.js';
-import { setRegionState } from './views.js';
+import { setRegionState, failureText, isRetryable } from './views.js';
 import { formatDateKey, formatTime, dateKey } from './dates.js';
 import { ENJOY_CATEGORIES, ENJOY_TYPES, enjoyCategoryById, typeLabel, TOUR_TYPES, fromKakaoPlace, fromTourPlace, sanitizeEnjoyItems, filterEnjoy, availableEnjoyFilters, sortOptions, sortEnjoy, detailRows, savedInputFor, calendarDraft, isAlreadyInCalendar, familySendPreview, LINK_LABELS, interestShortcuts, interestLabels, pickedCalendarDraft, taskDraft, isAlreadyInTasks, savedActivities, itemFromSaved, savedDetailRows, SAVED_LINK_LABEL, relatedPosts, sourceSummary, ENJOY_REGIONS, enjoyRegionFor, enjoyRegionParts } from './enjoy-contracts.js';
 
@@ -312,8 +312,11 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
     const tag = (i) => `${target.id}`;
     state.items = [...state.items.filter((i) => i._target !== target.id), ...items.map((i) => ({ ...i, _target: tag(i) }))];
     state.shown = PAGE_SIZE;
-    const text = result.state === 'ready' && items.length ? `${region}에서 ${items.length}건 찾았어요.${result.partial ? ' 일부 지역 자료는 받아오지 못했어요.' : ''}` : result.state === 'empty' || result.state === 'ready' ? `${region}에서 찾지 못했어요.` : MESSAGES[result.reason] || MESSAGES.NOT_CONNECTED;
-    state.sourceStatus[target.id] = { state: items.length ? 'ready' : result.state === 'unavailable' ? 'unavailable' : 'empty', text };
+    /* Stability V1: a temporary failure says what kind (failureText) and is marked as an error, distinct from a source that is not connected;
+       Phase B: a merged region (e.g. 광주·전남) that answered only in part says so */
+    const failed = isRetryable(result);
+    const text = result.state === 'ready' && items.length ? `${region}에서 ${items.length}건 찾았어요.${result.partial ? ' 일부 지역 자료는 받아오지 못했어요.' : ''}` : result.state === 'empty' || result.state === 'ready' ? `${region}에서 찾지 못했어요.` : failed ? failureText(result, '자료') : MESSAGES[result.reason] || MESSAGES.NOT_CONNECTED;
+    state.sourceStatus[target.id] = { state: items.length ? 'ready' : failed ? 'error' : result.state === 'unavailable' ? 'unavailable' : 'empty', text };
     cards.search.body.querySelector('[data-og-region="enjoy-sources"]').replaceWith(statusList());
     refreshSummary();
     cards.search.say(text);

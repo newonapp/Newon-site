@@ -17,7 +17,7 @@ import { el, clear, append } from './dom.js';
 /* append that skips null/false children (a plain Node.append would print "null") */
 const put = (node, ...kids) => append(node, kids);
 import { createCard, choiceButton, makeField, nextId } from './home-ui.js';
-import { setRegionState } from './views.js';
+import { setRegionState, failureText, isRetryable } from './views.js';
 import { REGIONS } from './contracts.js';
 import { CARE_CATEGORIES, CARE_TYPES, FACILITY_KINDS, careCategoryById, facilityKindById, sanitizeCareItems, filterCare, availableFilters, detailRows, savedInputFor, familySendPreview } from './care-contracts.js';
 
@@ -124,7 +124,7 @@ export function createCareView({ host, doc, saved, profile, sources, onFamily, o
       }
       if (mine !== ticket) return;
       button.disabled = false;
-      state.lastLoad = { region: r, kind: k.id, state: result.state, reason: result.reason || '' };
+      state.lastLoad = { region: r, kind: k.id, state: result.state, reason: result.reason || '', detail: result.detail || '' };
       const items = result.state === 'ready' ? sanitizeCareItems(result.items) : [];
       /* a new search replaces the facilities found before; nothing is kept after the visit */
       state.items = [...state.items.filter((i) => i.type !== 'FACILITY'), ...items];
@@ -149,6 +149,11 @@ export function createCareView({ host, doc, saved, profile, sources, onFamily, o
       cards.search.say(`${count}곳을 찾았습니다.`);
     } else if (status === 'empty' || (status === 'ready' && !count)) {
       setRegionState(zone, 'empty', `${region}에서 ${kind.label}을(를) 찾지 못했어요.`);
+    } else if (isRetryable(state.lastLoad)) {
+      /* Stability V1: a temporary failure is an error (role=alert), says what kind, and offers 다시 찾기 — the same search */
+      setRegionState(zone, 'error', failureText(state.lastLoad, '기관 정보'));
+      const form = zone.closest('form') || (zone.parentNode && zone.parentNode.querySelector('form'));
+      zone.append(el('div', { class: 'og-form__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-care-retry': 'facility', text: '다시 찾기', onclick: () => { if (form && typeof form.requestSubmit === 'function') form.requestSubmit(); else if (form) form.dispatchEvent(new Event('submit', { cancelable: true })); } })));
     } else {
       setRegionState(zone, 'empty', MESSAGES[(state.lastLoad && state.lastLoad.reason) || 'NOT_CONNECTED'] || MESSAGES.NOT_CONNECTED);
     }

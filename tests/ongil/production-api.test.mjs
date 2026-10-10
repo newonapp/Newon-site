@@ -362,7 +362,11 @@ test('API-32 "not connected" and "could not load" are told apart: no route (404)
   }
   const home = strip(read('ongil-start/js/home-explore.js'));
   assert.match(home, /result\.reason === 'NO_ANSWER'/);
-  assert.match(home, /지금은 강좌 정보를 받아오지 못했어요/);
+  /* ONGIL Stability V1 — BEFORE: one fixed sentence '지금은 강좌 정보를 받아오지 못했어요' for every kind of NO_ANSWER, shown as
+     'empty'. AFTER: failureText(result, '강좌 정보') says which kind (offline · network · timeout · provider 502/504 · limit),
+     shown as 'error' with 다시 찾기; the generic case is still that sentence (views.js). */
+  assert.match(home, /setRegionState\(zone, 'error', failureText\(result, '강좌 정보'\)\)/);
+  assert.match(read('ongil-start/js/views.js'), /지금은 \$\{s\} 받아오지 못했어요/);
   /* Home V2 — WHY: 내 주변 is part of 즐길거리 now, so an unusable source points there. BEFORE '주변 정보는 아직 연결되지 않았어요'
      · AFTER '주변 강좌 정보는 지금 쓸 수 없어요' — still told apart from NO_ANSWER (try again) */
   assert.match(home, /주변 강좌 정보는 지금 쓸 수 없어요/);

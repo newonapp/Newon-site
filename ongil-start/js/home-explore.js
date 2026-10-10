@@ -8,7 +8,7 @@
  */
 import { el, clear, append } from './dom.js';
 import { createCard } from './home-ui.js';
-import { setRegionState } from './views.js';
+import { setRegionState, failureText } from './views.js';
 import { buildActivities } from './life-today.js';
 
 const actions = (...nodes) => el('div', { class: 'og-form__actions' }, nodes.filter(Boolean));
@@ -143,8 +143,10 @@ function createNearbyPart({ card, profile, source, saved }) {
         } else if (result && result.state === 'empty') {
           setRegionState(zone, 'empty', '지금 모집 중인 강좌를 찾지 못했어요.');
         } else if (result && result.reason === 'NO_ANSWER') {
-          /* the route exists but did not answer (offline, slow, a provider error): say so, and that trying again may work */
-          setRegionState(zone, 'empty', '지금은 강좌 정보를 받아오지 못했어요. 잠시 뒤 다시 눌러 주세요.');
+          /* the route exists but did not answer (offline, slow, a provider error): say which, as an error, with 다시 찾기
+             (Stability V1; before: one sentence for every kind, shown like an empty result) */
+          setRegionState(zone, 'error', failureText(result, '강좌 정보'));
+          zone.append(el('div', { class: 'og-form__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-home-retry': 'lifelong', text: '다시 찾기', onclick: () => button.click() })));
         } else {
           setRegionState(zone, 'empty', '주변 강좌 정보는 지금 쓸 수 없어요. 즐길거리 화면에서 다른 정보를 찾아볼 수 있어요.');
         }

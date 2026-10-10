@@ -21,6 +21,48 @@ export function setRegionState(region, state, message = '') {
   region.append(el('p', { class: state === 'error' ? 'og-state og-state--error' : 'og-state', 'data-og-region-status': state, role: state === 'error' ? 'alert' : 'status', text }));
 }
 
+/*
+ * ONGIL Stability V1 — plain words for a source that did not give a usable answer.
+ *
+ * data-source.js keeps the existing reasons (NOT_CONNECTED · NOT_CONFIGURED · NO_ANSWER · REGION_REQUIRED …) and adds
+ * a `detail` for NO_ANSWER saying what kind of failure it was, read only from what the browser saw:
+ *   OFFLINE        the browser says it is offline
+ *   NETWORK        the request did not reach the data route (connection, DNS, blocked)
+ *   TIMEOUT        no answer within the time limit
+ *   UPSTREAM       the route answered 502: the provider behind it did not give a usable answer
+ *   UPSTREAM_SLOW  the route answered 504: the provider behind it was too slow
+ *   LIMIT          the route answered 503 / 429: too many requests for now
+ *   SERVER         any other failure of the route (5xx, an answer that is not { ok: true })
+ * No cause is guessed beyond that: the words say what happened, never why a provider failed.
+ * NO_ANSWER and the details are temporary, so the screen offers 다시 찾기; NOT_CONFIGURED / NOT_CONNECTED are not.
+ */
+export const FAILURE_DETAILS = Object.freeze(['OFFLINE', 'NETWORK', 'TIMEOUT', 'UPSTREAM', 'UPSTREAM_SLOW', 'LIMIT', 'SERVER']);
+
+/* 을/를 by the last syllable */
+const obj = (w) => {
+  const c = w.charCodeAt(w.length - 1);
+  return w + (c >= 0xac00 && c <= 0xd7a3 && (c - 0xac00) % 28 ? '을' : '를');
+};
+
+/* a failure the person can fix by trying again later */
+export function isRetryable(result) {
+  return !!result && result.state === 'unavailable' && result.reason === 'NO_ANSWER';
+}
+
+/* subject: what was being looked for, e.g. '기관 정보', '강좌 정보', '자료' */
+export function failureText(result, subject = '자료') {
+  const s = obj(subject);
+  switch (result && result.detail) {
+    case 'OFFLINE': return `인터넷이 연결되어 있지 않아 ${s} 받아오지 못했어요. 연결을 확인한 뒤 다시 찾아 주세요.`;
+    case 'NETWORK': return `네트워크 문제로 ${s} 받아오지 못했어요. 잠시 뒤 다시 찾아 주세요.`;
+    case 'TIMEOUT': return `응답이 늦어 ${s} 받아오지 못했어요. 잠시 뒤 다시 찾아 주세요.`;
+    case 'UPSTREAM': return `${s} 주는 곳이 지금 응답하지 않아요. 잠시 뒤 다시 찾아 주세요.`;
+    case 'UPSTREAM_SLOW': return `${s} 주는 곳의 응답이 늦어요. 잠시 뒤 다시 찾아 주세요.`;
+    case 'LIMIT': return `지금은 찾는 요청이 많아 ${s} 받아오지 못했어요. 잠시 뒤 다시 찾아 주세요.`;
+    default: return `지금은 ${s} 받아오지 못했어요. 잠시 뒤 다시 찾아 주세요.`;
+  }
+}
+
 export function renderArea(area, host) {
   clear(host);
   const headingId = `og-${area.id}-section-title`;
