@@ -44,6 +44,23 @@
    * Registered disabled; it is switched on only when the server's ?action=status says it is configured.
    */
   var PAGE_LIMIT = 100, MAX_PAGES = 10;
+  /*
+   * LIVON Next V1 — who failed? LIVON's data route answers a provider failure with a fixed JSON code
+   * (UPSTREAM_ERROR / TIMEOUT / UPSTREAM_LIMIT: the provider did not answer usefully), its own failures with
+   * SERVER_ERROR / RATE_LIMIT / NOT_CONFIGURED, and a response that is not LIVON JSON at all (e.g. a hosting 502 page)
+   * means the request never got a LIVON answer. Only these fixed codes are read — never a body text, URL or key.
+   */
+  var UPSTREAM_SERVER_CODES = { UPSTREAM_ERROR: 1, TIMEOUT: 1, UPSTREAM_LIMIT: 1 };
+  function failure(r) {
+    var status = r.status;
+    return r.text().then(function (t) { var b = null; try { b = JSON.parse(t); } catch (e) {} return b; }, function () { return null; }).then(function (b) {
+      var code = b && b.ok === false && typeof b.code === "string" && /^[A-Z_]{2,40}$/.test(b.code) ? b.code : null;
+      var e = new Error("http"); e.status = status; e.serverCode = code;
+      e.origin = !code ? "gateway" : UPSTREAM_SERVER_CODES[code] ? "upstream" : code === "NOT_CONFIGURED" ? "not_configured" : "livon";
+      if (code === "TIMEOUT") e.code = "TIMEOUT";
+      throw e;
+    });
+  }
   function serverProvider(spec) {
     return defineProvider(Object.assign({
       requiresServer: true,
@@ -56,8 +73,12 @@
           return ctx.fetchImpl(ctx.serverEndpoint + "?provider=" + encodeURIComponent(spec.id) + "&page=" + n + "&limit=" + PAGE_LIMIT, { headers: { accept: "application/json" }, credentials: "same-origin", signal: ctrl ? ctrl.signal : undefined })
             .then(function (r) {
               if (timer) clearTimeout(timer);
-              if (!r.ok) { var e = new Error("http"); e.status = r.status; throw e; }
+              if (!r.ok) return failure(r);
               return r.json();
+            }, function (err) {
+              if (timer) clearTimeout(timer);
+              /* no answer at all: the browser could not reach LIVON's server (offline, blocked) or the request timed out */
+              var e = new Error("network"); e.code = err && err.name === "AbortError" ? "TIMEOUT" : "NETWORK"; e.origin = "network"; throw e;
             })
             .then(function (body) {
               if (!body || body.ok !== true || !Array.isArray(body.items)) { var e = new Error("invalid"); e.code = "INVALID_DATA"; throw e; }

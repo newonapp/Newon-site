@@ -65,12 +65,22 @@
 
   /* ───────── Observability: counts and codes only — never tokens, URLs with keys or response bodies ───────── */
   var ERROR_CODES = ["NOT_CONFIGURED", "DISABLED", "NETWORK", "TIMEOUT", "HTTP_4XX", "HTTP_5XX", "PARSE", "INVALID_DATA", "UNKNOWN"];
+  /* upstream = the public provider did not answer usefully (LIVON's server said so) · livon = LIVON's own server failed ·
+     gateway = no LIVON answer came back (hosting error page) · network = the browser got no answer · not_configured */
+  var ORIGINS = ["upstream", "livon", "gateway", "network", "not_configured"];
   function Monitor() {
     var st = {};
-    function rec(id) { return st[id] || (st[id] = { provider: id, lastSuccessAt: null, lastFailureAt: null, itemCount: 0, rejectedCount: 0, errorCode: null, fromCache: false }); }
+    function rec(id) { return st[id] || (st[id] = { provider: id, lastSuccessAt: null, lastFailureAt: null, itemCount: 0, rejectedCount: 0, errorCode: null, fromCache: false, origin: null, serverCode: null, httpStatus: null }); }
     return {
-      success: function (id, count, rejected, fromCache) { var r = rec(id); r.lastSuccessAt = now(); r.itemCount = count; r.rejectedCount = rejected || 0; r.errorCode = null; r.fromCache = !!fromCache; },
-      failure: function (id, code) { var r = rec(id); r.lastFailureAt = now(); r.errorCode = ERROR_CODES.indexOf(code) >= 0 ? code : "UNKNOWN"; },
+      success: function (id, count, rejected, fromCache) { var r = rec(id); r.lastSuccessAt = now(); r.itemCount = count; r.rejectedCount = rejected || 0; r.errorCode = null; r.fromCache = !!fromCache; r.origin = null; r.serverCode = null; r.httpStatus = null; },
+      /* detail: where the failure happened (LIVON Next V1) — fixed values only */
+      failure: function (id, code, detail) {
+        var r = rec(id); r.lastFailureAt = now(); r.errorCode = ERROR_CODES.indexOf(code) >= 0 ? code : "UNKNOWN";
+        var d = detail || {};
+        r.origin = ORIGINS.indexOf(d.origin) >= 0 ? d.origin : null;
+        r.serverCode = typeof d.serverCode === "string" && /^[A-Z_]{2,40}$/.test(d.serverCode) ? d.serverCode : null;
+        r.httpStatus = typeof d.status === "number" && d.status >= 100 && d.status <= 599 ? d.status : null;
+      },
       get: function (id) { return id ? Object.assign({}, rec(id)) : Object.keys(st).map(function (k) { return Object.assign({}, st[k]); }); }
     };
   }
@@ -295,7 +305,7 @@
         if (p.status === "error" || p.status === "configured") registry.setStatus(p.id, "active");
         return ok;
       }).catch(function (err) {
-        monitor.failure(p.id, errorCode(err));
+        monitor.failure(p.id, errorCode(err), { origin: err && err.origin, serverCode: err && err.serverCode, status: err && err.status });
         if (p.status === "active") registry.setStatus(p.id, "error");
         return [];
       });
@@ -648,6 +658,26 @@
     attribution: attribution,
     dedupe: function (list) { return dedupe(list, function (id) { var p = registry.get(id); return p ? p.priority : 0; }); },
     status: function () { return { providers: registry.list(), monitor: repo.monitor.get(), size: repo.size() }; },
+    /* LIVON Next V1: a plain-language notice for providers whose last load failed (null when there is nothing to say).
+       The wording names where it failed and never guesses why a public provider failed. */
+    providerNotice: function (ids) {
+      var NOTICE_NAMES = { "kr-lifelong-class": "평생학습 강좌(공공데이터포털)", "kr-public-tax-expert": "마을세무사 상담 정보(공공데이터포털)" };
+      var out = [];
+      (ids || []).forEach(function (id) {
+        var p = registry.get(id); if (!p || !p.enabled || !p.serverConfigured) return;
+        var m = repo.monitor.get(id);
+        if (!m || !m.errorCode || (m.lastSuccessAt && m.lastSuccessAt > m.lastFailureAt)) return;
+        var name = NOTICE_NAMES[id] || p.name || id, text;
+        if (m.origin === "upstream") text = m.serverCode === "UPSTREAM_LIMIT" ? name + " 제공처의 호출 한도에 도달해 지금은 새 정보를 받을 수 없어요." : m.serverCode === "TIMEOUT" ? name + " 제공처의 응답이 늦어 정보를 받지 못했어요." : name + " 제공처에서 지금 정보를 받지 못했어요. LIVON 서버는 응답했지만 제공처 쪽 응답이 정상이 아니었어요.";
+        else if (m.origin === "livon" || m.origin === "gateway") text = "LIVON 데이터 서버에 일시적인 문제가 있어 " + name + " 정보를 불러오지 못했어요.";
+        else if (m.origin === "network" || m.errorCode === "NETWORK" || m.errorCode === "TIMEOUT") text = "네트워크 연결이 원활하지 않아 " + name + " 정보를 불러오지 못했어요.";
+        else if (m.origin === "not_configured") return;
+        else text = name + " 정보를 지금 불러오지 못했어요.";
+        out.push({ id: id, name: name, origin: m.origin || "unknown", text: text + " 다른 정보는 그대로 볼 수 있어요." });
+      });
+      return out;
+    },
+    retryProviders: function () { return repo.refresh({ force: true }); },
     /* external (non-builtin) providers only — builtin data is already indexed by the existing screens */
     /* external rows also pass the LIVON Data Platform gate (expired / unsourced / lower-priority duplicate → not shown) */
     external: function (list) { var gate = root.LivonDataGate; return (list || []).filter(function (e) { var p = registry.get(e.provider); return p && !p.builtin && (typeof gate !== "function" || gate(e.id)); }); },

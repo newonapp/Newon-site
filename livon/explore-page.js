@@ -662,6 +662,19 @@
       (chips.length > 1 ? "<button type=\"button\" class=\"lv-ex-btn lv-ex-btn--ghost lv-ex-btn--sm\" data-lv-ex-unset=\"all\">모두 지우기</button>" : "") + "</div>";
   }
   /* Re-rendering the filters replaces the button that was just pressed: put focus back on its new copy. */
+  /* LIVON Next V1: a public-data provider that failed to load (평생학습 강좌 · 마을세무사) is named on the results that would
+     show its items; the rest of Explore keeps working. Wording comes from LivonData.providerNotice (no guessed cause). */
+  var NOTICE_PROVIDERS = { "class": ["kr-lifelong-class"], expert: ["kr-public-tax-expert"], all: ["kr-lifelong-class", "kr-public-tax-expert"] };
+  function dataNotice() {
+    var D = window.LivonData, ids = NOTICE_PROVIDERS[state.type];
+    if (!ids || !D || typeof D.providerNotice !== "function") return "";
+    var list = [];
+    try { list = D.providerNotice(ids); } catch (e) { list = []; }
+    if (!list.length) return "";
+    return "<div class=\"lv-ex-empty lv-ex-error\" role=\"status\" data-lv-ex-data-notice><span class=\"lv-ex-badge\">일부 공공데이터 연결 지연</span>" +
+      list.map(function (n) { return "<p>" + esc(n.text) + "</p>"; }).join("") +
+      "<div class=\"lv-ex-actions\"><button type=\"button\" class=\"lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm\" data-lv-ex-data-retry>공공데이터 다시 불러오기</button></div></div>";
+  }
   var FOCUS_ATTRS = ["data-lv-ex-filter-cat", "data-lv-ex-filter-age", "data-lv-ex-filter-region", "data-lv-ex-filter-mode", "data-lv-ex-filter-visit", "data-lv-ex-filter-type", "data-lv-ex-sort", "data-lv-ex-more"];
   function focusKey() {
     var a = document.activeElement;
@@ -771,6 +784,7 @@
     var status = res.lifeStatus === "ready" ? "" : res.lifeStatus === "error"
       ? "<div class=\"lv-ex-empty lv-ex-error\" role=\"alert\"><span class=\"lv-ex-badge\">불러오기 실패</span><h3>라이프 스테이지 주제를 불러오지 못했습니다.</h3><p>지금은 오늘의 발견·탐색 항목만 검색됩니다. 네트워크를 확인한 뒤 다시 시도해 주세요.</p><div class=\"lv-ex-actions\"><button type=\"button\" class=\"lv-ex-btn lv-ex-btn--sm\" data-lv-ex-retry>다시 시도</button></div></div>"
       : "<p class=\"lv-ex-note lv-ex-loading\" role=\"status\"><span class=\"lv-ex-spinner\" aria-hidden=\"true\"></span>라이프 스테이지 주제를 불러오는 중입니다. 잠시 후 결과가 더해집니다.</p>";
+    status += dataNotice();
     var viewBar = "<div class=\"lv-ex-actions lv-ex-viewbar\">" +
       "<button type=\"button\" class=\"lv-ex-btn lv-ex-btn--sm" + (state.viewMode !== "map" ? "" : " lv-ex-btn--ghost") + "\" data-lv-ex-view=\"list\" aria-pressed=\"" + (state.viewMode !== "map") + "\">목록</button>" +
       "<button type=\"button\" class=\"lv-ex-btn lv-ex-btn--sm" + (state.viewMode === "map" ? "" : " lv-ex-btn--ghost") + "\" data-lv-ex-view=\"map\" aria-pressed=\"" + (state.viewMode === "map") + "\">지도</button>" +
@@ -1475,6 +1489,14 @@
         state.cat = ""; state.age = ""; state.categoryId = ""; state.region = ""; state.mode = ""; state.visit = ""; state.shown = PAGE;
         if (resetAll.hasAttribute("data-lv-ex-reset-all")) state.type = "all";
         navigateResults(true); toast("필터를 초기화했습니다.");
+        return;
+      }
+      if (e.target.closest("[data-lv-ex-data-retry]")) {
+        e.preventDefault();
+        var DR = window.LivonData, rb = e.target.closest("[data-lv-ex-data-retry]");
+        if (!DR || typeof DR.retryProviders !== "function") return;
+        rb.disabled = true; rb.textContent = "다시 불러오는 중…";
+        Promise.resolve(DR.retryProviders()).catch(function () {}).then(function () { try { renderResults(); var again = document.querySelector("[data-lv-ex-data-retry]"); var cnt = document.querySelector("[data-lv-ex-count]"); (again || cnt || document.body).focus && (again || cnt).focus(); } catch (er) {} });
         return;
       }
       if (e.target.closest("[data-lv-ex-more]")) { e.preventDefault(); state.shown = (state.shown || PAGE) + PAGE; renderResults(); return; }

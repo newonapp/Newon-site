@@ -466,8 +466,9 @@ test('OPS-17 diagnostics: ids/counters/codes only; HTTP opt-in outside productio
   for (const id of IDS) await call(h, REQ[id]);
   const d = h.diagnostics();
   assert.deepEqual(Object.keys(d), IDS);
-  for (const id of IDS) assert.deepEqual(Object.keys(d[id]), ['configured', 'status', 'lastErrorCategory', 'lastAt', 'requests', 'cacheHits', 'cacheMisses', 'upstreamLoads']);
+  for (const id of IDS) assert.deepEqual(Object.keys(d[id]), ['configured', 'status', 'lastErrorCategory', 'lastUpstreamStatus', 'lastAt', 'requests', 'cacheHits', 'cacheMisses', 'upstreamLoads']);
   assert.equal(d['kr-tourapi'].status, 'temporarily_failed'); assert.equal(d['kr-tourapi'].lastErrorCategory, 'HTTP_5XX');
+  assert.ok(d['kr-tourapi'].lastUpstreamStatus === null || (d['kr-tourapi'].lastUpstreamStatus >= 500 && d['kr-tourapi'].lastUpstreamStatus <= 599), 'the provider\'s own HTTP status (LIVON Next V1)');
   assert.equal(d['kr-job-training'].status, 'available'); assert.equal(d['kr-job-training'].lastErrorCategory, null);
   assert.doesNotMatch(JSON.stringify(d), new RegExp(MARK + '|https?://|웹|도서관|경복궁|lat|lng'));
   assert.equal((await call(h, '/api/livon/data?action=diagnostics')).statusCode, 400, 'off by default');
