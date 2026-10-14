@@ -879,7 +879,7 @@
     "publishing": "Publishing",
     "publishingMenuDesc": "Guides · workbooks · reports",
     "studioMenuLabel": "STUDIO",
-    "studioMenuLead": "Brand · UI/UX · digital production",
+    "studioMenuLead": "Partnerships · Digital Products · Projects · Contact",
     "studioExploreCta": "Explore Studio →",
     "studioBrand": "BRAND",
     "studioDigital": "DIGITAL DESIGN",
@@ -950,7 +950,15 @@
     "market": "Market",
     "megaMarketDesc": "Market notes and signals",
     "ecosystem": "Newon Ecosystem",
-    "megaEcosystemDesc": "Apps, AI, life, and business — one Newon connection"
+    "megaEcosystemDesc": "Apps, AI, life, and business — one Newon connection",
+    "studioPartnerships": "Partnerships",
+    "studioDigitalProducts": "Digital Products",
+    "studioProjects": "Projects",
+    "studioContact": "Contact",
+    "megaStudioPartnershipsDesc": "Long-term design partnerships with brands",
+    "megaStudioDigitalProductsDesc": "Web and app design, plus digital goods",
+    "megaStudioProjectsDesc": "Products Newon builds and runs",
+    "megaStudioContactDesc": "Project and partnership inquiries"
   },
   "home": {
     "heroLogoAlt": "Newon",

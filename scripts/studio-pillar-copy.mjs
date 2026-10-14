@@ -5,7 +5,7 @@
 import { applyStudioPillarPricing } from "./studio-pricing.mjs";
 import { deepMerge, loadPackOverlay, resolveCopyLang } from "./i18n/copy-lang.mjs";
 
-export const STUDIO_PILLAR_SLUGS = ["brand", "digital", "content", "ip", "care"];
+export const STUDIO_PILLAR_SLUGS = ["brand", "digital", "content", "care"];
 
 const SHARED = {
   ko: {

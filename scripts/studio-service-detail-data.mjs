@@ -6827,7 +6827,7 @@ const DETAIL = {
         { t: "CAMPAIGN", d: "목표·Idea·Creative를 하나의 캠페인으로 연결합니다.", href: "../campaign/" },
         { t: "VISUAL", d: "현재 서비스 — 메시지를 Visual Asset으로 변환합니다.", current: true },
         { t: "LANDING", d: "전환 중심 Landing Page를 설계합니다.", href: "../../digital/landing/" },
-        { t: "IP", d: "캐릭터·IP 실험으로 확장합니다.", href: "../../ip/character-lab/" },
+        { t: "MONTHLY", d: "정기 디자인 운영으로 이어갑니다.", href: "../../care/monthly-design/" },
         { t: "STUDIO", d: "Studio 전체 서비스를 살펴봅니다.", href: "../../" },
       ],
       en: [
@@ -6835,13 +6835,9 @@ const DETAIL = {
         { t: "CAMPAIGN", d: "Connect goal, idea, and creative into one campaign.", href: "../campaign/" },
         { t: "VISUAL", d: "Current service — turn messages into visual assets.", current: true },
         { t: "LANDING", d: "Design a conversion-focused landing page.", href: "../../digital/landing/" },
-        { t: "IP", d: "Extend into character / IP experiments.", href: "../../ip/character-lab/" },
+        { t: "MONTHLY", d: "Continue with ongoing monthly design.", href: "../../care/monthly-design/" },
         { t: "STUDIO", d: "Explore Studio services.", href: "../../" },
       ],
-    },
-    adjacentNext: {
-      href: "../../ip/character-lab/",
-      name: { ko: "CHARACTER LAB", en: "CHARACTER LAB" },
     },
     noticesLabel: {
       ko: "IMPORTANT NOTICE",

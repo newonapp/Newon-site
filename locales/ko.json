@@ -880,7 +880,7 @@
     "publishing": "퍼블리싱",
     "publishingMenuDesc": "가이드 · 워크북 · 리포트",
     "studioMenuLabel": "스튜디오",
-    "studioMenuLead": "브랜드 · UI/UX · 디지털 제작",
+    "studioMenuLead": "Partnerships · Digital Products · Projects · Contact",
     "studioExploreCta": "스튜디오 둘러보기 →",
     "studioBrand": "브랜드",
     "studioDigital": "디지털 디자인",
@@ -953,7 +953,15 @@
     "market": "마켓",
     "megaMarketDesc": "시장 관찰과 시그널",
     "ecosystem": "Newon 생태계",
-    "megaEcosystemDesc": "앱과 AI, 생활과 비즈니스를 잇는 Newon 연결"
+    "megaEcosystemDesc": "앱과 AI, 생활과 비즈니스를 잇는 Newon 연결",
+    "studioPartnerships": "Partnerships",
+    "studioDigitalProducts": "Digital Products",
+    "studioProjects": "Projects",
+    "studioContact": "Contact",
+    "megaStudioPartnershipsDesc": "브랜드·기업과 장기적으로 함께합니다",
+    "megaStudioDigitalProductsDesc": "웹·앱 화면과 디지털 상품을 설계합니다",
+    "megaStudioProjectsDesc": "Newon이 직접 만들고 운영하는 제품",
+    "megaStudioContactDesc": "프로젝트·파트너십 문의"
   },
   "home": {
     "heroLogoAlt": "Newon",

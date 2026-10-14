@@ -1,8 +1,10 @@
 /**
- * Studio hub — Brand / Digital / Content / IP pillars (Business hub layout).
+ * Studio hub — Partnerships / Digital Products / Projects / Contact pillars (Business hub layout).
+ * Legacy STUDIO_IA pillar helpers below are kept for reference; the hub renders studio-areas.mjs.
  */
 import { escapeHtml, pick, studioStatusBadge } from "./hub-utils.mjs";
 import { STUDIO_IA } from "./venture-studio-data.mjs";
+import { AREA_NAMES, STUDIO_AREA_IDS, studioHubCopy, studioHubPillarsHtml } from "./studio-areas.mjs";
 
 const PILLAR_NUM = {
   brand: "01",
@@ -73,30 +75,11 @@ function pillarBlock(col, flat, flatEn, lang) {
 
 export function studioServicesHtml(flat, flatEn, lang = "en") {
   const label = escapeHtml(t(flat, flatEn, "studioHub.servicesLabel", "STUDIO"));
-  const title = escapeHtml(
-    t(flat, flatEn, "studioHub.pillarsTitle", lang === "ko" ? "다섯 가지 영역으로 설계합니다" : "Five areas of craft")
-  );
-  const lead = escapeHtml(
-    t(
-      flat,
-      flatEn,
-      "studioHub.pillarsLead",
-      lang === "ko"
-        ? "Brand · Digital Design · Content & Campaign · Creative Lab · Design Care"
-        : "Brand · Digital Design · Content & Campaign · Creative Lab · Design Care"
-    )
-  );
-  const flow = escapeHtml(
-    t(
-      flat,
-      flatEn,
-      "studioHub.flowNote",
-      lang === "ko"
-        ? "가능한 흐름이며 모든 프로젝트의 필수는 아닙니다. 브랜드 기획 → 브랜드·디지털 디자인 → 출시용 콘텐츠 → 지속적인 디자인 운영."
-        : "A possible path — not required for every project. Brand planning → brand and digital design → launch content → ongoing design care."
-    )
-  );
-  const blocks = STUDIO_IA.map((col) => pillarBlock(col, flat, flatEn, lang)).join("\n");
+  const hub = studioHubCopy(lang);
+  const title = escapeHtml(hub.title);
+  const lead = escapeHtml(STUDIO_AREA_IDS.map((id) => AREA_NAMES[id]).join(" · "));
+  const flow = escapeHtml(hub.flow);
+  const blocks = studioHubPillarsHtml(lang);
 
   return `<div class="ns-studio-menu bz-page">
   <section id="areas" class="bz-section bz-services bz-pillars-sec" aria-labelledby="ns-services-title">

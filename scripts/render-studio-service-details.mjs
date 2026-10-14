@@ -36,11 +36,12 @@ function localeFlat(lang) {
   return { flat: flatten(loc), flatEn: flatten(en) };
 }
 
+/** Relative base from /{lang}/{pagePath}/ back to /{lang}/ (e.g. studio/brand/strategy → ../../../). */
 function chromeBaseForPath(pagePath) {
   const depth = String(pagePath || "")
     .split("/")
     .filter(Boolean).length;
-  return "../".repeat(depth + 1);
+  return "../".repeat(depth);
 }
 
 function renderPage(lang, pagePath, opts) {

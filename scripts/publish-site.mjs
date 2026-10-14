@@ -181,6 +181,9 @@ const PUBLISH_COPY_DIRS = [
   /** Newon+ consumer auth foundation (shared by Newon web services; anonymous until a Newon+ project is configured). */
   { from: "newon-auth", to: "newon-auth", required: true },
   { from: "ongil-start", to: "ongil-start", required: true },
+  /** Root /ongil/ and /lifestage/ → /{lang}/… language redirects (same pattern as /studio/, /business/). */
+  { from: "ongil", to: "ongil", required: true },
+  { from: "lifestage", to: "lifestage", required: true },
   { from: "assets", to: "assets", required: true },
   { from: "vendor/three", to: "vendor/three", required: true },
   { from: "vendor/hls", to: "vendor/hls", required: false },
@@ -361,10 +364,12 @@ function verifySitemap(sitemapPath, publishRoot) {
     "https://www.newon.app/ko/business/automation/workflow/",
     "https://www.newon.app/ko/studio/",
     "https://www.newon.app/ko/studio/digital/app-ui-ux/",
-    "https://www.newon.app/ko/studio/ip/digital-stickers/",
-    "https://www.newon.app/ko/studio/ip/newon-character/",
-    "https://www.newon.app/en/studio/ip/digital-stickers/",
-    "https://www.newon.app/en/studio/ip/newon-character/",
+    "https://www.newon.app/ko/studio/partnerships/",
+    "https://www.newon.app/ko/studio/projects/",
+    "https://www.newon.app/ko/studio/contact/",
+    "https://www.newon.app/en/studio/partnerships/",
+    "https://www.newon.app/en/studio/projects/",
+    "https://www.newon.app/en/studio/contact/",
     "https://www.newon.app/ko/resources/blog/",
     "https://www.newon.app/ko/portfolio/",
   ];
@@ -520,6 +525,8 @@ function verify() {
   required.push(path.join(OUT, "livon", "assets", "topics", "hangang.jpg"));
   required.push(path.join(OUT, "livon", "assets", "topics", "pottery.jpg"));
   required.push(path.join(OUT, "ongil-start", "index.html"));
+  required.push(path.join(OUT, "ongil", "index.html"));
+  required.push(path.join(OUT, "lifestage", "index.html"));
   required.push(path.join(OUT, "assets", "livon-mark.jpg"));
   required.push(path.join(OUT, "assets", "livon-mark-icon.jpg"));
   required.push(path.join(OUT, "assets", "livon-mark-icon-120.jpg"));

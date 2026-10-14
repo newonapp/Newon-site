@@ -2,21 +2,13 @@
  * Studio explore hub — footer: pillar nav + FAQ + black CTA (build-page quality).
  */
 import { escapeHtml, pick } from "./hub-utils.mjs";
-import { STUDIO_PILLAR_SLUGS, getStudioPillarCopy } from "./studio-pillar-copy.mjs";
-
-const LABELS = {
-  brand: "BRAND",
-  digital: "DIGITAL DESIGN",
-  content: "CONTENT & CAMPAIGN",
-  ip: "CREATIVE LAB",
-  care: "DESIGN CARE",
-};
+import { studioAreasSectionHtml } from "./studio-areas.mjs";
 
 const FAQ = {
   ko: [
     {
       q: "Studio와 Business의 차이는 무엇인가요?",
-      a: "Studio는 Brand · Digital Design · Content & Campaign · Creative Lab · Design Care 등 전략·디자인·크리에이티브를 담당합니다. Business는 Build · Automation · Solutions · Care로 개발·구축·자동화·기술 유지보수를 담당합니다.",
+      a: "Studio는 Partnerships · Digital Products · Projects 등 브랜드·디자인·크리에이티브를 담당합니다. Business는 Build · Automation · Solutions · Care로 개발·구축·자동화·기술 유지보수를 담당합니다.",
     },
     {
       q: "웹 디자인을 한 뒤 개발도 맡길 수 있나요?",
@@ -31,10 +23,6 @@ const FAQ = {
       a: "가능합니다. 서비스별 시작가·별도 견적 안내를 참고한 뒤, 문의 폼에 목적·대략 일정·예산 감만 남겨 주시면 됩니다. 정확한 범위와 금액은 상담 후 견적으로 안내합니다.",
     },
     {
-      q: "IP·캐릭터도 지금 의뢰할 수 있나요?",
-      a: "Character Lab은 실험적으로 진행할 수 있습니다. Digital Stickers 등은 Coming Soon이며, Newon Character는 내부 프로젝트입니다.",
-    },
-    {
       q: "월간 디자인 운영은 바로 구독인가요?",
       a: "아니요. 구성 예시일 뿐 확정 월 구독 상품이 아닙니다. 범위 상담 후 별도 견적합니다. 소스 수정은 Business Care입니다.",
     },
@@ -46,7 +34,7 @@ const FAQ = {
   en: [
     {
       q: "How is Studio different from Business?",
-      a: "Studio covers Brand, Digital Design, Content & Campaign, Creative Lab, and Design Care — strategy, design, and creative. Business covers Build, Automation, Solutions, and Care — development, systems, and technical maintenance.",
+      a: "Studio covers Partnerships, Digital Products, and Projects — brand, design, and creative. Business covers Build, Automation, Solutions, and Care — development, systems, and technical maintenance.",
     },
     {
       q: "Can design continue into development?",
@@ -59,10 +47,6 @@ const FAQ = {
     {
       q: "Can we inquire if the final price is not listed?",
       a: "Yes. Use the starting-price or custom-quote guidance on each service page, then leave your goal, rough timeline, and budget range in the inquiry form. Exact scope and pricing are confirmed after a short consultation.",
-    },
-    {
-      q: "Can we start IP or character work now?",
-      a: "Character Lab can run experimentally. Digital Stickers are Coming Soon, and Newon Character is an internal project.",
     },
     {
       q: "Is Monthly Design Support a live subscription?",
@@ -129,28 +113,7 @@ function pad2(n) {
 }
 
 function pillarNav(flat, flatEn, lang) {
-  const pageLang = lang === "ko" ? "ko" : "en";
-  const title = escapeHtml(t(flat, flatEn, "studioHub.exploreNavTitle", "OTHER STUDIO AREAS"));
-  const cards = STUDIO_PILLAR_SLUGS.map((slug, i) => {
-    const copy = getStudioPillarCopy(slug, pageLang);
-    return `<a class="bp-other__card" href="${slug}/">
-      <span class="bp-other__top">
-        <span class="bp-other__n">${pad2(i + 1)}</span>
-        <span class="bp-other__arrow" aria-hidden="true">→</span>
-      </span>
-      <span class="bp-other__t">${LABELS[slug]}</span>
-      <span class="bp-other__lead">${escapeHtml(copy?.headline || "")}</span>
-    </a>`;
-  }).join("");
-
-  return `<section class="bp-sec bp-other bz-explore-nav" data-bp-reveal aria-labelledby="ns-explore-nav-label">
-  <div class="bp-inner">
-    <header class="bp-sec__head">
-      <p class="bp-label" id="ns-explore-nav-label">${title}</p>
-    </header>
-    <nav class="bp-other__grid" aria-label="${title}">${cards}</nav>
-  </div>
-</section>`;
+  return studioAreasSectionHtml(lang, 1, null, "bz-explore-nav", "ns-explore-nav-label");
 }
 
 function faqSection(flat, flatEn, lang) {

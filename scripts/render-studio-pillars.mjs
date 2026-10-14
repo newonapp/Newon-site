@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
- * Render /{lang}/studio/{brand|digital|content|ip}/ pillar detail pages.
+ * Render /{lang}/studio/{brand|digital|content|care}/ pillar detail pages,
+ * then the Studio area pages (Partnerships / Projects / Contact) and retired IP redirects.
  */
 import fs from "fs";
 import path from "path";
@@ -10,16 +11,40 @@ import { injectSiteChrome } from "./inject-chrome.mjs";
 import { buildPillarPageBody } from "./render-business-pillars.mjs";
 import { STUDIO_PILLAR_SLUGS, getStudioPillarCopy } from "./studio-pillar-copy.mjs";
 import { renderStudioServiceDetails } from "./render-studio-service-details.mjs";
+import {
+  AREA_NAMES,
+  AREA_CARD,
+  STUDIO_AREA_IDS,
+  renderStudioAreaPages,
+  studioDigitalGoodsHtml,
+  studioDigitalHeadline,
+} from "./studio-areas.mjs";
 
 const template = fs.readFileSync(path.join(ROOT, "templates", "business-pillar.html"), "utf8");
 
 const STUDIO_LABELS = {
   brand: "BRAND",
-  digital: "DIGITAL DESIGN",
+  digital: "DIGITAL PRODUCTS",
   content: "CONTENT & CAMPAIGN",
-  ip: "CREATIVE LAB",
   care: "DESIGN CARE",
 };
+
+/** "STUDIO AREAS" cards at the bottom of each pillar page (Partnerships · Digital Products · Projects · Contact). */
+const AREA_LABELS = Object.fromEntries(STUDIO_AREA_IDS.map((id) => [id, AREA_NAMES[id].toUpperCase()]));
+const areaCardCopy = (id, lang) => ({ headline: AREA_CARD[lang === "ko" ? "ko" : "en"][id] });
+
+/** Digital pillar is presented as "Digital Products". */
+function digitalProductsCopy(copy, lang) {
+  const swap = (v) =>
+    typeof v === "string"
+      ? v.split("DIGITAL DESIGN").join("DIGITAL PRODUCTS").split("Digital Design").join("Digital Products")
+      : Array.isArray(v)
+        ? v.map(swap)
+        : v && typeof v === "object"
+          ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, swap(x)]))
+          : v;
+  return { ...swap(copy), headline: studioDigitalHeadline(lang).replace(/<br \/>/g, "\n") };
+}
 
 function loadJson(file) {
   return JSON.parse(fs.readFileSync(path.join(ROOT, "locales", file), "utf8"));
@@ -98,9 +123,10 @@ export function renderStudioPillars() {
     const lang = dir;
 
     for (const slug of STUDIO_PILLAR_SLUGS) {
-      const copy = getStudioPillarCopy(slug, lang);
-      if (!copy) continue;
-      const body = buildPillarPageBody(slug, copy, lang, {
+      const baseCopy = getStudioPillarCopy(slug, lang);
+      if (!baseCopy) continue;
+      const copy = { ...(slug === "digital" ? digitalProductsCopy(baseCopy, lang) : baseCopy), otherTitle: "STUDIO AREAS" };
+      let body = buildPillarPageBody(slug, copy, lang, {
         inquiryHref,
         crumb: {
           hubLabel: copy.crumbStudio || "Studio",
@@ -108,11 +134,14 @@ export function renderStudioPillars() {
           slugLabel: STUDIO_LABELS[slug] || slug.toUpperCase(),
         },
         other: {
-          slugs: STUDIO_PILLAR_SLUGS,
-          labels: STUDIO_LABELS,
-          getCopy: getStudioPillarCopy,
+          slugs: STUDIO_AREA_IDS,
+          labels: AREA_LABELS,
+          getCopy: areaCardCopy,
         },
       });
+      if (slug === "digital") {
+        body = body.replace('<section id="process"', () => `${studioDigitalGoodsHtml(lang)}\n\n<section id="process"`);
+      }
 
       let html = template;
       html = html.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
@@ -157,6 +186,7 @@ export function renderStudioPillars() {
 
   console.log(`render-studio-pillars: wrote ${LANGS.length * STUDIO_PILLAR_SLUGS.length} pages`);
   renderStudioServiceDetails();
+  renderStudioAreaPages();
 }
 
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);

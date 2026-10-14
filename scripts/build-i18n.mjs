@@ -33,6 +33,7 @@ import {
   STUDIO_PILLAR_SERVICE_SLUGS,
   studioServicePagePath,
 } from "./studio-pricing.mjs";
+import { STUDIO_AREA_PAGES } from "./studio-areas.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -630,6 +631,10 @@ function writeSitemap() {
     const pagePath = studioServicePagePath(slug);
     if (!pagePath) continue;
     addAllLocales(pagePath, "0.6", "monthly");
+  }
+  // Studio areas (Partnerships · Projects · Contact; Digital Products = studio/digital above)
+  for (const area of STUDIO_AREA_PAGES) {
+    addAllLocales(`studio/${area}`, "0.65", "monthly");
   }
 
   // Resources (canonical paths only — not /store /blog /labs aliases)
