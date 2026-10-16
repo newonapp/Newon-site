@@ -156,3 +156,37 @@
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+/* Dark theme (Phase 03): intro / Business Hub pages previously rendered light cards with light text. */
+html[data-newon-shell-theme="dark"] .bp-page {
+  --bp-bg: #000000;
+  --bp-hover: rgba(255, 255, 255, 0.06);
+  --bp-ink: #f5f5f5;
+  --bp-muted: #b4b4b8;
+  --bp-faint: #a0a0a5;
+  --bp-line: rgba(255, 255, 255, 0.16);
+}
+html[data-newon-shell-theme="dark"] .bp-page .bi-card,
+html[data-newon-shell-theme="dark"] .bp-page .bp-other__card {
+  background: #0b0b0c;
+}
+html[data-newon-shell-theme="dark"] .bp-page .bp-btn--ghost {
+  color: var(--bp-ink);
+  border-color: var(--bp-line);
+  background: transparent;
+}
+html[data-newon-shell-theme="dark"] .bp-page .bp-btn--primary {
+  background: #f5f5f5;
+  color: #000;
+}
+html[data-newon-shell-theme="dark"] .bp-page .bp-cta {
+  background: #141416;
+  color: #fff;
+}
+html[data-newon-shell-theme="dark"] .bp-page .bp-cta .bp-label {
+  color: rgba(255, 255, 255, 0.72);
+}
+html[data-newon-shell-theme="dark"] .bp-page .bp-cta .bp-btn--primary {
+  background: #fff;
+  color: #000;
+}

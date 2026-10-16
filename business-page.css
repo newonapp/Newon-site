@@ -5,7 +5,7 @@
   --bz-paper: #fff;
   --bz-line: #e6e6e6;
   --bz-mute: #5a5a5a;
-  --bz-soft: #8a8a8a;
+  --bz-soft: #6e6e73;
   --bz-ease: cubic-bezier(0.22, 1, 0.36, 1);
   background: var(--bz-paper);
 }

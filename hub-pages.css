@@ -47,7 +47,7 @@
   object-fit: cover;
 }
 .site-foot__url {
-  color: #8d8d8d;
+  color: #6e6e73;
   font-size: 0.92rem;
   text-decoration: none;
 }
@@ -55,7 +55,7 @@
 .site-foot__tagline {
   margin: 0;
   max-width: 36rem;
-  color: #9a9a9a;
+  color: #6e6e73;
   font-size: 0.92rem;
   line-height: 1.65;
 }
@@ -109,7 +109,7 @@
 .site-foot__svg { display: block; }
 .site-foot__copy {
   margin: 0.35rem 0 0;
-  color: #b0b0b0;
+  color: #6e6e73;
   font-size: 0.82rem;
 }
 
@@ -401,3 +401,5 @@ html[data-newon-shell-theme="dark"] .co-switch__link.is-active {
 @media (prefers-reduced-motion: reduce) {
   .hub-card, .home-what-card { transition: none; }
 }
+
+/* a11y (Phase 03): footer text raised to 4.5:1 on its white footer surface (also in dark theme, where the footer stays white) */
