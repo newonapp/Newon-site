@@ -1251,13 +1251,13 @@ body.gnav-mega-open { overflow: visible; }
   scroll-margin-top: calc(var(--gnav-h, 74px) + 1.25rem);
 }
 
-@media (min-width: 901px) {
+@media (min-width: 1280px) {
   .gnav.site-header .gnav__nav { display: flex; }
   .gnav__menu-btn { display: none; }
   .gnav__cta { display: inline-flex; }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1279px) {
   .gnav__inner {
     grid-template-columns: 1fr auto;
     padding: 0 1.25rem;
@@ -1282,30 +1282,26 @@ body.gnav-mega-open { overflow: visible; }
   .gnav__menu-icon span { transition: none; }
 }
 
-/* Eleven top-level menus (Apps · AI · six businesses · Business · Studio · Company):
-   tighter type and gaps so the bar keeps fitting before the nav scroller has to scroll. */
+/* Ten top-level menus (Apps · AI · six businesses · Business Hub · Company).
+   Desktop bar is used from 1280px up; below that the drawer menu is used (see site-chrome.js desktopMq),
+   because a horizontally scrolling bar hides items. Fixed compact type so the longest locale still fits. */
 .gnav.site-header.gnav--many .gnav__nav-scroller {
-  gap: clamp(0.35rem, 0.7vw, 0.8rem);
+  gap: 0.5rem;
 }
 .gnav.site-header.gnav--many .gnav__link {
-  font-size: clamp(0.8125rem, 0.92vw, 0.9375rem);
-  letter-spacing: -0.015em;
-  gap: 0.12rem;
+  font-size: 0.8125rem;
+  letter-spacing: -0.01em;
+  gap: 0.1rem;
 }
-@media (min-width: 1180px) {
+@media (min-width: 1440px) {
+  .gnav.site-header.gnav--many .gnav__inner {
+    max-width: 1440px;
+  }
   .gnav.site-header.gnav--many .gnav__nav-scroller {
-    gap: clamp(0.45rem, 0.85vw, 0.95rem);
+    gap: 0.7rem;
   }
   .gnav.site-header.gnav--many .gnav__link {
-    font-size: clamp(0.875rem, 0.98vw, 1rem);
-  }
-}
-@media (min-width: 1500px) {
-  .gnav.site-header.gnav--many .gnav__nav-scroller {
-    gap: clamp(0.7rem, 1.1vw, 1.2rem);
-  }
-  .gnav.site-header.gnav--many .gnav__link {
-    font-size: 1.0625rem;
+    font-size: 0.875rem;
   }
 }
 

@@ -230,7 +230,7 @@ function editorialMega(flat, flatEn, base, menuId, langDir = "") {
       const title = escapeHtml(t(flat, flatEn, item.titleKey, item.titleFb));
       const desc = escapeHtml(t(flat, flatEn, item.descKey));
       const n = String(i + 1).padStart(2, "0");
-      return `<a class="gnav-mega__row" href="${href(base, item.href, langDir)}" role="menuitem">
+      return `<a class="gnav-mega__row" href="${href(base, item.href, langDir)}">
       <span class="gnav-mega__row-n" aria-hidden="true">${n}</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">${title}</span>
@@ -258,7 +258,7 @@ function bizhubMega(flat, flatEn, base, langDir = "") {
       .map((item, i) => {
         const title = escapeHtml(t(flat, flatEn, item.titleKey, item.titleFb));
         const desc = escapeHtml(t(flat, flatEn, item.descKey));
-        return `<a class="gnav-mega__row" href="${href(base, item.href, langDir)}" role="menuitem">
+        return `<a class="gnav-mega__row" href="${href(base, item.href, langDir)}">
           <span class="gnav-mega__row-n" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
           <span class="gnav-mega__row-main">
             <span class="gnav-mega__row-title">${title}</span>
@@ -269,7 +269,7 @@ function bizhubMega(flat, flatEn, base, langDir = "") {
       })
       .join("");
     return `<div class="gnav-mega__group" role="group" aria-labelledby="${gid}">
-        <p class="gnav-mega__group-head"><a id="${gid}" class="gnav-mega__group-link" href="${href(base, g.href, langDir)}" role="menuitem">${label}<span aria-hidden="true"> →</span></a></p>
+        <p class="gnav-mega__group-head"><a id="${gid}" class="gnav-mega__group-link" href="${href(base, g.href, langDir)}">${label}<span aria-hidden="true"> →</span></a></p>
         <p class="gnav-mega__group-lead">${escapeHtml(t(flat, flatEn, g.leadKey, ""))}</p>
         <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--group" role="none">${rows}</div>
       </div>`;
@@ -300,17 +300,18 @@ function navMegaItem(flat, flatEn, base, activeNav, id, langDir = "") {
   const label = navTopLabel(flat, flatEn, id);
   const active = activeNav === id ? " gnav-dd--active" : "";
   const openAttr = activeNav === id ? ' aria-current="page"' : "";
+  const sub = `${label} ${escapeHtml(t(flat, flatEn, "nav.submenuSuffix", "submenu"))}`;
   if (SIX_IDS.includes(id) || id === "bizhub") {
     const dest = href(base, id === "bizhub" ? BIZHUB_PATH : `${SIX_SLUG[id]}/`, langDir);
     return `<div class="gnav-dd${active}" data-gnav-dd data-gnav-menu="${id}">
     <a class="gnav__link gnav-dd__label" href="${dest}"${openAttr}>${label}</a>
-    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-label="${label}">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-controls="gnav-mega-${id}" aria-label="${sub}">
       ${CHEVRON_SVG}
     </button>
   </div>`;
   }
   return `<div class="gnav-dd${active}" data-gnav-dd data-gnav-menu="${id}">
-    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true"${openAttr}>
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-controls="gnav-mega-${id}" aria-label="${sub}"${openAttr}>
       ${label}${CHEVRON_SVG}
     </button>
   </div>`;
@@ -318,7 +319,7 @@ function navMegaItem(flat, flatEn, base, activeNav, id, langDir = "") {
 
 function navMegaPanel(flat, flatEn, base, id, langDir = "") {
   const body = MEGA_RENDERERS[id](flat, flatEn, base, langDir);
-  return `<div class="gnav-mega" data-gnav-mega="${id}" role="menu" hidden>
+  return `<div class="gnav-mega" id="gnav-mega-${id}" data-gnav-mega="${id}" role="region" aria-label="${navTopLabel(flat, flatEn, id)}" hidden>
       <div class="gnav-mega__panel">
         <div class="gnav-mega__inner">${body}</div>
       </div>

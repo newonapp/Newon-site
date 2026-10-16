@@ -97,7 +97,7 @@ function head({ langMeta, copy, title, description, canonical, suffix, image }) 
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     ${fontLinksHtml(langMeta.dir)}
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/gnav-mega.css?v=20261017bh1" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20261017nav8" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260830filt1" />
     <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260903pfcs1" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
@@ -130,7 +130,7 @@ function foot(lang, { base = "../", hub = false } = {}) {
     <script src="/portfolio/portfolio.js"></script>
     <script src="/analytics.js?v=20260904sec1" defer></script>
     <script src="/search.js?v=20260904a11y1" defer></script>
-    <script src="/site-chrome.js?v=20260826gnav5" defer></script>
+    <script src="/site-chrome.js?v=20261017nav8" defer></script>
   </body>
 </html>
 `;

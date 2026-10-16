@@ -340,7 +340,8 @@
     "bhToolsDesc": "Free web tools that need no install",
     "bhEnterpriseDesc": "Custom AI and work automation for companies",
     "bhInsightsDesc": "Product, consumer and market observations",
-    "bhPartnersDesc": "Partnerships with businesses, sellers and institutions"
+    "bhPartnersDesc": "Partnerships with businesses, sellers and institutions",
+    "submenuSuffix": "Untermenü"
   },
   "home": {
     "heroLogoAlt": "Newon logo",

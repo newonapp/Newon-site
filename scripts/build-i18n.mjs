@@ -701,6 +701,7 @@ runScript("render-business-hub.mjs");
 runScript("render-studio-hubs.mjs");
 runScript("render-business-intro.mjs");
 runScript("render-bizhub.mjs");
+runScript("business-model-sanitize.mjs");
 runScript("render-lifestage.mjs");
 runScript("render-ongil.mjs");
 runScript("render-ox-month-web.mjs");

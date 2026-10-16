@@ -996,7 +996,8 @@
     "bhToolsDesc": "설치 없이 쓰는 무료 웹 도구",
     "bhEnterpriseDesc": "기업 맞춤형 AI와 업무 자동화",
     "bhInsightsDesc": "제품·소비자·시장 관찰",
-    "bhPartnersDesc": "기업·판매자·기관 제휴 안내"
+    "bhPartnersDesc": "기업·판매자·기관 제휴 안내",
+    "submenuSuffix": "하위 메뉴"
   },
   "home": {
     "heroLogoAlt": "Newon",
