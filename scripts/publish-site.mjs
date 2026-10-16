@@ -186,6 +186,8 @@ const PUBLISH_COPY_DIRS = [
   { from: "ongil", to: "ongil", required: true },
   { from: "lifestage", to: "lifestage", required: true },
   /** Information-only business intro pages (BabyLog · PetLog · My World · ShareOn). */
+  /** Business Hub landing (business/seller-center and business/partners ride along with the business dir). */
+  { from: "business-hub", to: "business-hub", required: true },
   { from: "babylog", to: "babylog", required: true },
   { from: "petlog", to: "petlog", required: true },
   { from: "myworld", to: "myworld", required: true },
@@ -533,7 +535,7 @@ function verify() {
   required.push(path.join(OUT, "ongil-start", "index.html"));
   required.push(path.join(OUT, "ongil", "index.html"));
   required.push(path.join(OUT, "lifestage", "index.html"));
-  for (const s of ["babylog", "petlog", "myworld", "shareon"]) required.push(path.join(OUT, s, "index.html"));
+  for (const s of ["babylog", "petlog", "myworld", "shareon", "business-hub", "business/seller-center", "business/partners"]) required.push(path.join(OUT, s, "index.html"));
   required.push(path.join(OUT, "assets", "livon-mark.jpg"));
   required.push(path.join(OUT, "assets", "livon-mark-icon.jpg"));
   required.push(path.join(OUT, "assets", "livon-mark-icon-120.jpg"));

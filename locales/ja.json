@@ -327,7 +327,20 @@
     "megaBuildDesc": "Products Newon builds itself",
     "megaAutomationDesc": "Work into systems — Newon automation solutions",
     "megaSolutionsDesc": "Partnerships with companies and institutions",
-    "megaCareDesc": "Running and improving our products"
+    "megaCareDesc": "Running and improving our products",
+    "topBizHub": "Business Hub",
+    "bizHubMenuLabel": "BUSINESS HUB",
+    "bizHubMenuLead": "Business and seller solutions, plus our own digital products and brand partnerships",
+    "bizHubExploreCta": "Explore Business Hub →",
+    "bhBusinessLead": "Automation and solutions for businesses and sellers",
+    "bhStudioLead": "Our own digital products and brand partnerships",
+    "bhAutomation": "Automation",
+    "bhAutomationDesc": "Turn repetitive work into systems",
+    "bhSellerCenterDesc": "Guidance and partnerships for sellers",
+    "bhToolsDesc": "Free web tools that need no install",
+    "bhEnterpriseDesc": "Custom AI and work automation for companies",
+    "bhInsightsDesc": "Product, consumer and market observations",
+    "bhPartnersDesc": "Partnerships with businesses, sellers and institutions"
   },
   "home": {
     "heroLogoAlt": "0ロゴ",

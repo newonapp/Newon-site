@@ -983,7 +983,20 @@
     "megaStudioPartnershipsDesc": "브랜드·기업과 장기적으로 함께합니다",
     "megaStudioDigitalProductsDesc": "웹·앱 화면과 디지털 상품을 설계합니다",
     "megaStudioProjectsDesc": "Newon이 직접 만들고 운영하는 제품",
-    "megaStudioContactDesc": "프로젝트·파트너십 문의"
+    "megaStudioContactDesc": "프로젝트·파트너십 문의",
+    "topBizHub": "Business Hub",
+    "bizHubMenuLabel": "BUSINESS HUB",
+    "bizHubMenuLead": "기업·판매자 솔루션과 자체 디지털 상품·브랜드 파트너십",
+    "bizHubExploreCta": "Business Hub 둘러보기 →",
+    "bhBusinessLead": "기업·판매자 자동화 및 솔루션",
+    "bhStudioLead": "자체 디지털 상품·브랜드 파트너십",
+    "bhAutomation": "Automation",
+    "bhAutomationDesc": "반복 업무를 시스템으로 — 자동화 솔루션",
+    "bhSellerCenterDesc": "판매자를 위한 안내와 제휴",
+    "bhToolsDesc": "설치 없이 쓰는 무료 웹 도구",
+    "bhEnterpriseDesc": "기업 맞춤형 AI와 업무 자동화",
+    "bhInsightsDesc": "제품·소비자·시장 관찰",
+    "bhPartnersDesc": "기업·판매자·기관 제휴 안내"
   },
   "home": {
     "heroLogoAlt": "Newon",

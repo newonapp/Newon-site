@@ -50,9 +50,30 @@ export const TOP_NAV = [
   "shareon",
   "lifestage",
   "ongil",
-  "business",
-  "studio",
+  "bizhub",
   "company",
+];
+
+/**
+ * "Business Hub" is one top-level menu that groups the existing Business and Studio areas.
+ * Business and Studio themselves are not removed: their pages and URLs stay as they are.
+ */
+export const BIZHUB_PATH = "business-hub/";
+export const BIZHUB_GROUPS = [
+  {
+    id: "business",
+    labelKey: "nav.businessMenuLabel",
+    labelFb: "Business",
+    leadKey: "nav.bhBusinessLead",
+    href: "business/",
+  },
+  {
+    id: "studio",
+    labelKey: "nav.studioMenuLabel",
+    labelFb: "Studio",
+    leadKey: "nav.bhStudioLead",
+    href: "studio/",
+  },
 ];
 
 /** Mega rows for a business with a full intro page: overview · key features · partnerships · app download. */
@@ -108,6 +129,22 @@ export const MEGA_DESTINATIONS = {
     { titleKey: "nav.sixPartners", descKey: "nav.sixPartnersDesc", href: "ongil/#bi-partners", titleFb: "Partnerships" },
     { titleKey: "nav.sixComingDownload", descKey: "nav.sixComingDownloadDesc", href: "ongil/#bi-download", titleFb: "App launch info" },
     { titleKey: "nav.ongilStart", descKey: "nav.ongilStartDesc", href: "/ongil-start/", titleFb: "Start Ongil" },
+  ],
+  /** Business Hub → Business group (Automation · Seller Center · Business Tools · Enterprise · Insights · Partners). */
+  bizhubBusiness: [
+    { titleKey: "nav.bhAutomation", descKey: "nav.bhAutomationDesc", href: "business/automation/", titleFb: "Automation" },
+    { titleKey: "nav.bhSellerCenter", descKey: "nav.bhSellerCenterDesc", href: "business/seller-center/", titleFb: "Seller Center" },
+    { titleKey: "nav.bhTools", descKey: "nav.bhToolsDesc", href: "tools/", titleFb: "Business Tools" },
+    { titleKey: "nav.bhEnterprise", descKey: "nav.bhEnterpriseDesc", href: "ai/enterprise/", titleFb: "Enterprise" },
+    { titleKey: "nav.bhInsights", descKey: "nav.bhInsightsDesc", href: "resources/insights/", titleFb: "Insights" },
+    { titleKey: "nav.bhPartners", descKey: "nav.bhPartnersDesc", href: "business/partners/", titleFb: "Partners" },
+  ],
+  /** Business Hub → Studio group (the finalized four Studio areas). */
+  bizhubStudio: [
+    { titleKey: "nav.studioPartnerships", descKey: "nav.megaStudioPartnershipsDesc", href: "studio/partnerships/", titleFb: "Partnerships" },
+    { titleKey: "nav.studioDigitalProducts", descKey: "nav.megaStudioDigitalProductsDesc", href: "studio/digital/", titleFb: "Digital Products" },
+    { titleKey: "nav.studioProjects", descKey: "nav.megaStudioProjectsDesc", href: "studio/projects/", titleFb: "Projects" },
+    { titleKey: "nav.studioContact", descKey: "nav.megaStudioContactDesc", href: "studio/contact/", titleFb: "Contact" },
   ],
   business: [
     { titleKey: "nav.bizColBuild", descKey: "nav.megaBuildDesc", href: "business/build/", titleFb: "BUILD" },

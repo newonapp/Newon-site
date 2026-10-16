@@ -4,7 +4,7 @@
  * (the six business menus are information-only; see six-businesses.mjs)
  */
 import { escapeHtml, pick } from "./hub-utils.mjs";
-import { MEGA_DESTINATIONS, TOP_NAV } from "./venture-studio-data.mjs";
+import { MEGA_DESTINATIONS, TOP_NAV, BIZHUB_GROUPS, BIZHUB_PATH } from "./venture-studio-data.mjs";
 import { SIX_IDS, SLUG as SIX_SLUG } from "./six-businesses.mjs";
 
 const LANG_OPTIONS = [
@@ -28,6 +28,7 @@ const NAV_LABEL_KEYS = {
   shareon: "nav.topShareon",
   lifestage: "nav.topLifeStage",
   ongil: "nav.topOngil",
+  bizhub: "nav.topBizHub",
   business: "nav.topBusiness",
   studio: "nav.topStudio",
   company: "nav.topCompany",
@@ -42,6 +43,7 @@ const NAV_LABEL_FB = {
   shareon: "ShareOn",
   lifestage: "LivOn",
   ongil: "Ongil",
+  bizhub: "Business Hub",
   business: "Business",
   studio: "Studio",
   company: "Company",
@@ -108,6 +110,13 @@ const MENU_META = {
     footKey: "nav.ongilExploreCta",
     footFb: "View Ongil →",
   },
+  bizhub: {
+    kicker: "nav.bizHubMenuLabel",
+    lead: "nav.bizHubMenuLead",
+    footHref: BIZHUB_PATH,
+    footKey: "nav.bizHubExploreCta",
+    footFb: "Explore Business Hub →",
+  },
   business: {
     kicker: "nav.businessMenuLabel",
     lead: "nav.businessMenuLead",
@@ -165,15 +174,13 @@ export function resolveActiveNav(pathname = "") {
   if (seg === "lifestage") return "lifestage";
   if (seg === "ongil") return "ongil";
   if (["products", "apps", "saas", "games", "ecosystem"].includes(seg)) return "consumer";
-  if (seg === "tools") return "business";
-  if (seg === "business") {
-    if (parts[1] === "creative" || parts[1] === "design") return "studio";
-    return "business";
-  }
-  if (seg === "studio") return "studio";
-  if (seg === "store" || (seg === "resources" && parts[1] === "store")) return "studio";
-  if (seg === "labs" || (seg === "resources" && parts[1] === "labs")) return "studio";
-  if (seg === "insights" || (seg === "resources" && parts[1] === "insights")) return "business";
+  if (seg === "business-hub") return "bizhub";
+  if (seg === "tools") return "bizhub";
+  if (seg === "business") return "bizhub";
+  if (seg === "studio") return "bizhub";
+  if (seg === "store" || (seg === "resources" && parts[1] === "store")) return "bizhub";
+  if (seg === "labs" || (seg === "resources" && parts[1] === "labs")) return "bizhub";
+  if (seg === "insights" || (seg === "resources" && parts[1] === "insights")) return "bizhub";
   if (seg === "media" || (seg === "resources" && parts[1] === "media")) return "company";
   if (
     seg === "resources" ||
@@ -240,7 +247,42 @@ function editorialMega(flat, flatEn, base, menuId, langDir = "") {
     ${megaFoot(flat, flatEn, base, menuId, langDir)}`;
 }
 
+/** Business Hub panel: two labelled groups (Business · Studio), each with its own submenu rows. */
+function bizhubMega(flat, flatEn, base, langDir = "") {
+  const dest = { business: "bizhubBusiness", studio: "bizhubStudio" };
+  const groups = BIZHUB_GROUPS.map((g) => {
+    const items = MEGA_DESTINATIONS[dest[g.id]] || [];
+    const gid = `gnav-bh-${g.id}`;
+    const label = escapeHtml(t(flat, flatEn, g.labelKey, g.labelFb));
+    const rows = items
+      .map((item, i) => {
+        const title = escapeHtml(t(flat, flatEn, item.titleKey, item.titleFb));
+        const desc = escapeHtml(t(flat, flatEn, item.descKey));
+        return `<a class="gnav-mega__row" href="${href(base, item.href, langDir)}" role="menuitem">
+          <span class="gnav-mega__row-n" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
+          <span class="gnav-mega__row-main">
+            <span class="gnav-mega__row-title">${title}</span>
+            <span class="gnav-mega__row-desc">${desc}</span>
+          </span>
+          <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+        </a>`;
+      })
+      .join("");
+    return `<div class="gnav-mega__group" role="group" aria-labelledby="${gid}">
+        <p class="gnav-mega__group-head"><a id="${gid}" class="gnav-mega__group-link" href="${href(base, g.href, langDir)}" role="menuitem">${label}<span aria-hidden="true"> →</span></a></p>
+        <p class="gnav-mega__group-lead">${escapeHtml(t(flat, flatEn, g.leadKey, ""))}</p>
+        <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--group" role="none">${rows}</div>
+      </div>`;
+  }).join("\n      ");
+  return `${megaHead(flat, flatEn, "bizhub")}
+    <div class="gnav-mega__groups" role="none">
+      ${groups}
+    </div>
+    ${megaFoot(flat, flatEn, base, "bizhub", langDir)}`;
+}
+
 const MEGA_RENDERERS = {
+  bizhub: (f, fe, b, ld) => bizhubMega(f, fe, b, ld),
   consumer: (f, fe, b, ld) => editorialMega(f, fe, b, "consumer", ld),
   ai: (f, fe, b, ld) => editorialMega(f, fe, b, "ai", ld),
   babylog: (f, fe, b, ld) => editorialMega(f, fe, b, "babylog", ld),
@@ -258,8 +300,8 @@ function navMegaItem(flat, flatEn, base, activeNav, id, langDir = "") {
   const label = navTopLabel(flat, flatEn, id);
   const active = activeNav === id ? " gnav-dd--active" : "";
   const openAttr = activeNav === id ? ' aria-current="page"' : "";
-  if (SIX_IDS.includes(id)) {
-    const dest = href(base, `${SIX_SLUG[id]}/`, langDir);
+  if (SIX_IDS.includes(id) || id === "bizhub") {
+    const dest = href(base, id === "bizhub" ? BIZHUB_PATH : `${SIX_SLUG[id]}/`, langDir);
     return `<div class="gnav-dd${active}" data-gnav-dd data-gnav-menu="${id}">
     <a class="gnav__link gnav-dd__label" href="${dest}"${openAttr}>${label}</a>
     <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-label="${label}">
@@ -305,6 +347,21 @@ function langSelect(flat, flatEn, id) {
   </div>`;
 }
 
+/** Business Hub on mobile: Business and Studio groups, each with a heading link and its submenu rows. */
+function bizhubMobileLinks(flat, flatEn, base, langDir) {
+  const dest = { business: "bizhubBusiness", studio: "bizhubStudio" };
+  return BIZHUB_GROUPS.map((g) => {
+    const label = escapeHtml(t(flat, flatEn, g.labelKey, g.labelFb));
+    const links = (MEGA_DESTINATIONS[dest[g.id]] || [])
+      .map(
+        (item) =>
+          `<a class="gnav-mobile__sublink gnav-mobile__sublink--nested" href="${href(base, item.href, langDir)}">${escapeHtml(t(flat, flatEn, item.titleKey, item.titleFb))}</a>`
+      )
+      .join("");
+    return `<div class="gnav-mobile__group" role="group" aria-label="${label}"><a class="gnav-mobile__sublink gnav-mobile__sublink--group" href="${href(base, g.href, langDir)}">${label}</a>${links}</div>`;
+  }).join("");
+}
+
 function flattenMobileItems(menuId) {
   return (MEGA_DESTINATIONS[menuId] || []).slice(0, megaItemLimit(menuId)).map((d) => ({
     labelKey: d.titleKey,
@@ -321,8 +378,8 @@ function mobileNav(flat, flatEn, base, suffix, langDir = "") {
   const sections = TOP_NAV.map((id) => {
     const label = navTopLabel(flat, flatEn, id);
     const hubHref = href(base, MENU_META[id].footHref, langDir);
-    const items = flattenMobileItems(id);
-    const links = items
+    const items = id === "bizhub" ? [] : flattenMobileItems(id);
+    const links = id === "bizhub" ? bizhubMobileLinks(flat, flatEn, base, langDir) : items
       .map((item) => {
         const labelText = escapeHtml(
           ko && item.titleKo ? item.titleKo : t(flat, flatEn, item.labelKey, item.titleFb || "")
@@ -357,6 +414,8 @@ function mobileNav(flat, flatEn, base, suffix, langDir = "") {
 }
 
 export function renderGlobalHeader(flat, flatEn, { activeNav = "", base = "../", idSuffix = "hub", langDir = "" } = {}) {
+  // Business and Studio pages are shown under the single "Business Hub" top menu.
+  if (activeNav === "business" || activeNav === "studio") activeNav = "bizhub";
   const brand = escapeHtml(t(flat, flatEn, "nav.brandName", "Newon"));
   const brandHref = langDir && (!base || base === "./") ? `/${langDir}/` : base || "./";
   const langId = `lang-select-gnav-${idSuffix}`;
@@ -415,8 +474,7 @@ const FOOTER_MENUS = [
   ["shareon", "shareon/"],
   ["lifestage", "lifestage/"],
   ["ongil", "ongil/"],
-  ["business", "business/"],
-  ["studio", "studio/"],
+  ["bizhub", BIZHUB_PATH],
   ["company", "about/"],
 ];
 

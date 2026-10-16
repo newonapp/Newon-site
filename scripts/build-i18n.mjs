@@ -595,7 +595,7 @@ function writeSitemap() {
   }
 
   // Product hubs
-  for (const page of ["products", "apps", "ecosystem", "ai", "ai/enterprise", "babylog", "petlog", "myworld", "shareon", "lifestage", "ongil", "saas", "games", "tools", "market", "contact", "media"]) {
+  for (const page of ["products", "apps", "ecosystem", "ai", "ai/enterprise", "business-hub", "business/seller-center", "business/partners", "babylog", "petlog", "myworld", "shareon", "lifestage", "ongil", "saas", "games", "tools", "market", "contact", "media"]) {
     addAllLocales(page, "0.65", "monthly");
   }
 
@@ -700,6 +700,7 @@ runScript("render-ideas.mjs");
 runScript("render-business-hub.mjs");
 runScript("render-studio-hubs.mjs");
 runScript("render-business-intro.mjs");
+runScript("render-bizhub.mjs");
 runScript("render-lifestage.mjs");
 runScript("render-ongil.mjs");
 runScript("render-ox-month-web.mjs");
