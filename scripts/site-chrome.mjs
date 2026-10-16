@@ -1,9 +1,11 @@
 /**
  * Shared site chrome — Global Navigation with editorial mega menus.
- * Top-level: Consumer · AI · LivOn · Ongil · Business · Studio · Company
+ * Top-level: Apps · AI · BabyLog · PetLog · My World · ShareOn · LivOn · Ongil · Business · Studio · Company
+ * (the six business menus are information-only; see six-businesses.mjs)
  */
 import { escapeHtml, pick } from "./hub-utils.mjs";
 import { MEGA_DESTINATIONS, TOP_NAV } from "./venture-studio-data.mjs";
+import { SIX_IDS, SLUG as SIX_SLUG } from "./six-businesses.mjs";
 
 const LANG_OPTIONS = [
   { dir: "ko", labelKey: "ui.langKo", short: "KO" },
@@ -20,6 +22,10 @@ const LANG_OPTIONS = [
 const NAV_LABEL_KEYS = {
   consumer: "nav.topConsumer",
   ai: "nav.topAi",
+  babylog: "nav.topBabylog",
+  petlog: "nav.topPetlog",
+  myworld: "nav.topMyworld",
+  shareon: "nav.topShareon",
   lifestage: "nav.topLifeStage",
   ongil: "nav.topOngil",
   business: "nav.topBusiness",
@@ -30,6 +36,10 @@ const NAV_LABEL_KEYS = {
 const NAV_LABEL_FB = {
   consumer: "Apps",
   ai: "AI",
+  babylog: "BabyLog",
+  petlog: "PetLog",
+  myworld: "My World",
+  shareon: "ShareOn",
   lifestage: "LivOn",
   ongil: "Ongil",
   business: "Business",
@@ -55,6 +65,34 @@ const MENU_META = {
     footHref: "ai/",
     footKey: "nav.aiExploreCta",
     footFb: "Explore Newon AI →",
+  },
+  babylog: {
+    kicker: "nav.babylogMenuLabel",
+    lead: "nav.babylogMenuLead",
+    footHref: "babylog/",
+    footKey: "nav.babylogExploreCta",
+    footFb: "View BabyLog →",
+  },
+  petlog: {
+    kicker: "nav.petlogMenuLabel",
+    lead: "nav.petlogMenuLead",
+    footHref: "petlog/",
+    footKey: "nav.petlogExploreCta",
+    footFb: "View PetLog →",
+  },
+  myworld: {
+    kicker: "nav.myworldMenuLabel",
+    lead: "nav.myworldMenuLead",
+    footHref: "myworld/",
+    footKey: "nav.myworldExploreCta",
+    footFb: "View My World →",
+  },
+  shareon: {
+    kicker: "nav.shareonMenuLabel",
+    lead: "nav.shareonMenuLead",
+    footHref: "shareon/",
+    footKey: "nav.shareonExploreCta",
+    footFb: "View ShareOn →",
   },
   lifestage: {
     kicker: "nav.lifeStageMenuLabel",
@@ -123,6 +161,7 @@ export function resolveActiveNav(pathname = "") {
   const parts = p.split("/").filter(Boolean);
   const seg = parts[0] || "";
   if (seg === "ai") return "ai";
+  if (["babylog", "petlog", "myworld", "shareon"].includes(seg)) return seg;
   if (seg === "lifestage") return "lifestage";
   if (seg === "ongil") return "ongil";
   if (["products", "apps", "saas", "games", "ecosystem"].includes(seg)) return "consumer";
@@ -204,6 +243,10 @@ function editorialMega(flat, flatEn, base, menuId, langDir = "") {
 const MEGA_RENDERERS = {
   consumer: (f, fe, b, ld) => editorialMega(f, fe, b, "consumer", ld),
   ai: (f, fe, b, ld) => editorialMega(f, fe, b, "ai", ld),
+  babylog: (f, fe, b, ld) => editorialMega(f, fe, b, "babylog", ld),
+  petlog: (f, fe, b, ld) => editorialMega(f, fe, b, "petlog", ld),
+  myworld: (f, fe, b, ld) => editorialMega(f, fe, b, "myworld", ld),
+  shareon: (f, fe, b, ld) => editorialMega(f, fe, b, "shareon", ld),
   lifestage: (f, fe, b, ld) => editorialMega(f, fe, b, "lifestage", ld),
   ongil: (f, fe, b, ld) => editorialMega(f, fe, b, "ongil", ld),
   business: (f, fe, b, ld) => editorialMega(f, fe, b, "business", ld),
@@ -215,8 +258,8 @@ function navMegaItem(flat, flatEn, base, activeNav, id, langDir = "") {
   const label = navTopLabel(flat, flatEn, id);
   const active = activeNav === id ? " gnav-dd--active" : "";
   const openAttr = activeNav === id ? ' aria-current="page"' : "";
-  if (id === "lifestage" || id === "ongil") {
-    const dest = href(base, id === "lifestage" ? "lifestage/" : "ongil/", langDir);
+  if (SIX_IDS.includes(id)) {
+    const dest = href(base, `${SIX_SLUG[id]}/`, langDir);
     return `<div class="gnav-dd${active}" data-gnav-dd data-gnav-menu="${id}">
     <a class="gnav__link gnav-dd__label" href="${dest}"${openAttr}>${label}</a>
     <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-label="${label}">
@@ -322,7 +365,7 @@ export function renderGlobalHeader(flat, flatEn, { activeNav = "", base = "../",
   const themeLabel = escapeHtml(t(flat, flatEn, "common.themeToDark", "Toggle theme"));
   const themeTitle = escapeHtml(t(flat, flatEn, "common.themeToggle", "Theme"));
 
-  return `<header class="gnav site-header gnav--five" data-gnav>
+  return `<header class="gnav site-header gnav--five gnav--many" data-gnav>
       <div class="gnav__bar">
         <div class="gnav__inner">
           <a class="gnav__brand" href="${brandHref}" aria-label="${brand}">
@@ -366,6 +409,10 @@ const FOOTER_TIKTOK_URL = "https://www.tiktok.com/@newon.app?_r=1&_t=ZS-95LGrSuO
 const FOOTER_MENUS = [
   ["consumer", "products/"],
   ["ai", "ai/"],
+  ["babylog", "babylog/"],
+  ["petlog", "petlog/"],
+  ["myworld", "myworld/"],
+  ["shareon", "shareon/"],
   ["lifestage", "lifestage/"],
   ["ongil", "ongil/"],
   ["business", "business/"],

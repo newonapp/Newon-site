@@ -3,12 +3,7 @@
  */
 import { escapeHtml, pick } from "./hub-utils.mjs";
 import { PILLAR_SLUGS, getPillarCopy } from "./business-pillar-copy.mjs";
-import {
-  businessProductMatrixHtml,
-  paymentPolicyBrief,
-  revisionPolicyBrief,
-  externalCostDisclaimer,
-} from "./business-pricing.mjs";
+
 
 const LABELS = {
   build: "BUILD",
@@ -20,56 +15,20 @@ const LABELS = {
 
 const FAQ = {
   ko: [
-    {
-      q: "프로젝트 기간은 얼마나 걸리나요?",
-      a: "요구사항 확정·착수 이후 기준으로 랜딩 3–5일, 웹 5–10일, 앱 프로토타입 3–7일, MVP Starter 1–2주가 일반적입니다. 고객 피드백 지연·외부 심사·스토어 심사 기간은 별도일 수 있습니다.",
-    },
-    {
-      q: "수정은 몇 회 가능한가요?",
-      a: revisionPolicyBrief("ko"),
-    },
-    {
-      q: "결제는 어떻게 진행되나요?",
-      a: `${paymentPolicyBrief("ko")} ${externalCostDisclaimer("ko")}`,
-    },
-    {
-      q: "기존 프로젝트 개선도 가능한가요?",
-      a: "가능합니다. 현재 상태와 목표를 확인한 뒤 개선 범위와 우선순위를 제안합니다.",
-    },
-    {
-      q: "유지보수도 가능한가요?",
-      a: "납품 이후 계약 범위 내 오류 수정 기간을 안내할 수 있습니다. 장기 유지보수는 별도 계약이며, 프로젝트 문의로 연결해 주세요.",
-    },
-    {
-      q: "최종 결과물은 어떻게 전달되나요?",
-      a: "배포된 URL, 소스/에셋, 운영에 필요한 간단한 가이드를 전달합니다.",
-    },
+    { q: "Business에서는 무엇을 소개하나요?", a: "Newon이 직접 만들고 운영하는 제품, 반복 업무를 줄이는 자동화 솔루션, 기업·판매자·기관과의 파트너십을 소개합니다." },
+    { q: "서비스를 웹사이트에서 이용할 수 있나요?", a: "아니요. 이 웹사이트는 소개, 앱 다운로드 안내, 제휴·문의만 제공합니다. 실제 서비스는 각 제품의 앱에서 이용합니다." },
+    { q: "어떤 곳과 제휴할 수 있나요?", a: "기업, 판매자, 공공·지역 기관과 제휴할 수 있습니다. 범위와 조건은 문의 후 개별 협의합니다." },
+    { q: "자동화 솔루션을 도입하고 싶습니다.", a: "현재 업무 흐름과 목표를 알려주세요. 적합한 도입 방식을 함께 검토합니다." },
+    { q: "비용은 어떻게 정해지나요?", a: "고정된 가격표를 두지 않고, 문의 내용을 확인한 뒤 개별 협의합니다." },
+    { q: "각 사업은 어디서 확인하나요?", a: "BabyLog, PetLog, My World, ShareOn, LivOn, Ongil 메뉴에서 각 사업을 소개합니다." },
   ],
   en: [
-    {
-      q: "How long does a project take?",
-      a: "After requirements lock and kickoff: landing 3–5 days, web 5–10 days, app prototype 3–7 days, MVP Starter 1–2 weeks are typical. Feedback delays and store review time may be separate.",
-    },
-    {
-      q: "How many revision rounds are included?",
-      a: revisionPolicyBrief("en"),
-    },
-    {
-      q: "How does payment work?",
-      a: `${paymentPolicyBrief("en")} ${externalCostDisclaimer("en")}`,
-    },
-    {
-      q: "Can you improve an existing product?",
-      a: "Yes. We review current state and goals, then propose improvement scope and priorities.",
-    },
-    {
-      q: "Do you offer maintenance?",
-      a: "We can cover in-scope defect fixes after delivery. Longer maintenance is a separate agreement — start via project inquiry.",
-    },
-    {
-      q: "What do we receive at the end?",
-      a: "Deployed URLs, source/assets, and a concise guide for operating the deliverable.",
-    },
+    { q: "What does Business cover?", a: "The products Newon builds and runs itself, automation solutions that reduce repetitive work, and partnerships with businesses, sellers and institutions." },
+    { q: "Can I use the services on this website?", a: "No. This website provides information, app download guidance, partnerships and inquiries only. You use each service in its own app." },
+    { q: "Who can partner with Newon?", a: "Businesses, sellers, and public or local institutions. Scope and terms are agreed individually after an inquiry." },
+    { q: "I want to adopt an automation solution.", a: "Tell us about your current workflow and goals. We will review the right way to adopt it together." },
+    { q: "How is pricing decided?", a: "There is no fixed price list. Terms are discussed individually after we review your inquiry." },
+    { q: "Where can I see each business?", a: "BabyLog, PetLog, My World, ShareOn, LivOn and Ongil each have their own menu." },
   ],
 };
 
@@ -85,7 +44,7 @@ function pad2(n) {
 function pillarNav(flat, flatEn, lang) {
   const pageLang = lang === "ko" ? "ko" : "en";
   const title = escapeHtml(
-    t(flat, flatEn, "business.exploreNavTitle", pageLang === "ko" ? "OTHER BUSINESS SERVICES" : "OTHER BUSINESS SERVICES")
+    pageLang === "ko" ? "BUSINESS 영역" : "BUSINESS AREAS"
   );
   const cards = PILLAR_SLUGS.map((slug, i) => {
     const copy = getPillarCopy(slug, pageLang);
@@ -137,32 +96,18 @@ function faqSection(flat, flatEn, lang) {
 
 function finalCta(flat, flatEn, lang) {
   const ko = lang === "ko";
-  const eyebrow = escapeHtml(t(flat, flatEn, "business.exploreCtaEyebrow", "HAVE A PROJECT?"));
-  const title = escapeHtml(
-    t(
-      flat,
-      flatEn,
-      "business.exploreCtaTitle",
-      ko ? "만들고 싶은 것이 있다면 이야기해주세요." : "If you have something to build, tell us."
-    )
-  );
-  const lead = escapeHtml(
-    t(
-      flat,
-      flatEn,
-      "business.exploreCtaLead",
-      ko
-        ? "아이디어 단계여도 괜찮습니다. 필요한 범위부터 함께 정리합니다."
-        : "Even at the idea stage. We start by clarifying the scope you need."
-    )
-  );
-  const btn = escapeHtml(t(flat, flatEn, "business.exploreCtaBtn", ko ? "프로젝트 문의 →" : "Project inquiry →"));
+  const eyebrow = "PARTNERSHIP";
+  const title = ko ? "함께하고 싶다면 이야기해주세요." : "If you want to work with us, tell us.";
+  const lead = ko
+    ? "기업·판매자·기관과의 제휴, 자동화 솔루션 도입 문의를 받습니다. 조건은 문의 후 개별 협의합니다."
+    : "We welcome partnership and automation-solution inquiries from businesses, sellers and institutions. Terms are agreed individually.";
+  const btn = ko ? "제휴·도입 문의 →" : "Partnership inquiry →";
   return `<section class="bp-cta bz-explore-cta" data-bp-reveal>
   <div class="bp-inner bp-cta__inner">
-    <p class="bp-label">${eyebrow}</p>
-    <h2 class="bp-cta__title">${title}</h2>
-    <p class="bp-cta__lead">${lead}</p>
-    <a class="bp-btn bp-btn--primary" href="inquiry/#inquiry" data-analytics="business_explore_cta">${btn}</a>
+    <p class="bp-label">${escapeHtml(eyebrow)}</p>
+    <h2 class="bp-cta__title">${escapeHtml(title)}</h2>
+    <p class="bp-cta__lead">${escapeHtml(lead)}</p>
+    <a class="bp-btn bp-btn--primary" href="inquiry/?category=Partnership#inquiry" data-analytics="business_explore_cta">${escapeHtml(btn)}</a>
   </div>
 </section>`;
 }
@@ -170,7 +115,7 @@ function finalCta(flat, flatEn, lang) {
 function portfolioStrip(lang = "en") {
   const ko = lang === "ko";
   const label = ko ? "BUILT BY NEWON" : "BUILT BY NEWON";
-  const title = ko ? "직접 출시한 제품으로 신뢰를 쌓습니다." : "Trust built on products we ship ourselves.";
+  const title = ko ? "Newon이 직접 만들고 운영하는 제품입니다." : "Products Newon builds and runs itself.";
   const btn = ko ? "Portfolio 보기 →" : "See portfolio →";
   return `<section class="bp-sec bz-built-by" data-bp-reveal aria-labelledby="bz-built-by-label">
   <div class="bp-inner" style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.25rem">
@@ -187,22 +132,22 @@ function processStrip(lang = "en") {
   const ko = lang === "ko";
   const steps = ko
     ? [
-        { n: "01", t: "DISCOVER", d: "요구사항과 목표 확인" },
-        { n: "02", t: "DEFINE", d: "범위 · 일정 · 견적 확정" },
-        { n: "03", t: "BUILD", d: "디자인 · 개발 · 검증" },
-        { n: "04", t: "REVIEW", d: "피드백 및 수정" },
-        { n: "05", t: "LAUNCH", d: "배포 · 출시 · 납품" },
+        { n: "01", t: "INQUIRY", d: "제휴·도입 문의 접수" },
+        { n: "02", t: "REVIEW", d: "목표와 현재 상황 확인" },
+        { n: "03", t: "DISCUSS", d: "협력 범위와 방식 협의" },
+        { n: "04", t: "AGREE", d: "조건 확정" },
+        { n: "05", t: "START", d: "협력 시작" },
       ]
     : [
-        { n: "01", t: "DISCOVER", d: "Align on goals and requirements" },
-        { n: "02", t: "DEFINE", d: "Lock scope, timeline, and quote" },
-        { n: "03", t: "BUILD", d: "Design, develop, and validate" },
-        { n: "04", t: "REVIEW", d: "Feedback and revisions" },
-        { n: "05", t: "LAUNCH", d: "Deploy, ship, and hand off" },
+        { n: "01", t: "INQUIRY", d: "Send a partnership or adoption inquiry" },
+        { n: "02", t: "REVIEW", d: "We review goals and context" },
+        { n: "03", t: "DISCUSS", d: "Agree on scope and how to work together" },
+        { n: "04", t: "AGREE", d: "Confirm terms" },
+        { n: "05", t: "START", d: "Begin the collaboration" },
       ];
   const note = ko
-    ? "소규모 프로젝트는 불필요하게 복잡한 절차 없이 빠르게 진행할 수 있습니다."
-    : "Smaller projects move quickly without unnecessary process overhead.";
+    ? "조건은 문의 후 개별 협의합니다."
+    : "Terms are agreed individually after an inquiry.";
   const items = steps
     .map(
       (s) => `<article class="bp-other__card" style="pointer-events:none">
@@ -215,7 +160,7 @@ function processStrip(lang = "en") {
   return `<section class="bp-sec bp-other bz-process-strip" data-bp-reveal aria-labelledby="bz-process-strip-label">
   <div class="bp-inner">
     <header class="bp-sec__head">
-      <p class="bp-label" id="bz-process-strip-label">${ko ? "PROCESS" : "PROCESS"}</p>
+      <p class="bp-label" id="bz-process-strip-label">${ko ? "PARTNERSHIP FLOW" : "PARTNERSHIP FLOW"}</p>
     </header>
     <div class="bp-other__grid">${items}</div>
     <p class="bp-note" style="margin-top:1.25rem">${escapeHtml(note)}</p>
@@ -226,7 +171,6 @@ function processStrip(lang = "en") {
 export function businessExploreCloseHtml(flat, flatEn, lang = "en") {
   const pageLang = lang === "ko" ? "ko" : "en";
   return `<div class="bp-page bz-explore-foot">
-${businessProductMatrixHtml(pageLang)}
 ${processStrip(pageLang)}
 ${portfolioStrip(pageLang)}
 ${pillarNav(flat, flatEn, lang)}

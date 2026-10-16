@@ -37,8 +37,38 @@ export const LEGACY_STATUS_MAP = {
   exploring: "EXPLORING",
 };
 
-/** Top-level nav order — 7 business menus */
-export const TOP_NAV = ["consumer", "ai", "lifestage", "ongil", "business", "studio", "company"];
+/**
+ * Top-level menus. The six representative businesses (BabyLog · PetLog · My World · ShareOn · LivOn · Ongil)
+ * are independent top-level menus; each has an information-only page (see six-businesses.mjs).
+ */
+export const TOP_NAV = [
+  "consumer",
+  "ai",
+  "babylog",
+  "petlog",
+  "myworld",
+  "shareon",
+  "lifestage",
+  "ongil",
+  "business",
+  "studio",
+  "company",
+];
+
+/** Mega rows for a business with a full intro page: overview · key features · partnerships · app download. */
+function businessRows(slug) {
+  return [
+    { titleKey: "nav.sixIntro", descKey: "nav.sixIntroDesc", href: `${slug}/`, titleFb: "Overview" },
+    { titleKey: "nav.sixFeatures", descKey: "nav.sixFeaturesDesc", href: `${slug}/#features`, titleFb: "Key features" },
+    { titleKey: "nav.sixPartners", descKey: "nav.sixPartnersDesc", href: `${slug}/#partners`, titleFb: "Partnerships" },
+    {
+      titleKey: slug === "shareon" ? "nav.sixComingDownload" : "nav.sixDownload",
+      descKey: slug === "shareon" ? "nav.sixComingDownloadDesc" : "nav.sixDownloadDesc",
+      href: `${slug}/#download`,
+      titleFb: slug === "shareon" ? "App launch info" : "App download",
+    },
+  ];
+}
 
 /**
  * Mega menu destinations per top menu.
@@ -61,33 +91,23 @@ export const MEGA_DESTINATIONS = {
       titleFb: "Enterprise AI",
     },
   ],
+  babylog: businessRows("babylog"),
+  petlog: businessRows("petlog"),
+  myworld: businessRows("myworld"),
+  shareon: businessRows("shareon"),
+  // LivOn / Ongil keep their editorial pages; the web '시작하기' row stays only as a transition
+  // until the app is released and the move is verified (see six-businesses.mjs `webStart`, docs/web-closure/).
   lifestage: [
-    {
-      titleKey: "nav.lifeStageIntro",
-      descKey: "nav.lifeStageIntroDesc",
-      href: "lifestage/",
-      titleFb: "LivOn",
-    },
-    {
-      titleKey: "nav.lifeStageStart",
-      descKey: "nav.lifeStageStartDesc",
-      href: "/livon/",
-      titleFb: "Start LivOn",
-    },
+    { titleKey: "nav.lifeStageIntro", descKey: "nav.lifeStageIntroDesc", href: "lifestage/", titleFb: "LivOn" },
+    { titleKey: "nav.sixPartners", descKey: "nav.sixPartnersDesc", href: "lifestage/#bi-partners", titleFb: "Partnerships" },
+    { titleKey: "nav.sixComingDownload", descKey: "nav.sixComingDownloadDesc", href: "lifestage/#bi-download", titleFb: "App launch info" },
+    { titleKey: "nav.lifeStageStart", descKey: "nav.lifeStageStartDesc", href: "/livon/", titleFb: "Start LivOn" },
   ],
   ongil: [
-    {
-      titleKey: "nav.ongilIntro",
-      descKey: "nav.ongilIntroDesc",
-      href: "ongil/",
-      titleFb: "Ongil",
-    },
-    {
-      titleKey: "nav.ongilStart",
-      descKey: "nav.ongilStartDesc",
-      href: "/ongil-start/",
-      titleFb: "Start Ongil",
-    },
+    { titleKey: "nav.ongilIntro", descKey: "nav.ongilIntroDesc", href: "ongil/", titleFb: "Ongil" },
+    { titleKey: "nav.sixPartners", descKey: "nav.sixPartnersDesc", href: "ongil/#bi-partners", titleFb: "Partnerships" },
+    { titleKey: "nav.sixComingDownload", descKey: "nav.sixComingDownloadDesc", href: "ongil/#bi-download", titleFb: "App launch info" },
+    { titleKey: "nav.ongilStart", descKey: "nav.ongilStartDesc", href: "/ongil-start/", titleFb: "Start Ongil" },
   ],
   business: [
     { titleKey: "nav.bizColBuild", descKey: "nav.megaBuildDesc", href: "business/build/", titleFb: "BUILD" },

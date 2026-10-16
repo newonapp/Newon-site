@@ -1281,3 +1281,30 @@ body.gnav-mega-open { overflow: visible; }
   .gnav__cta,
   .gnav__menu-icon span { transition: none; }
 }
+
+/* Eleven top-level menus (Apps · AI · six businesses · Business · Studio · Company):
+   tighter type and gaps so the bar keeps fitting before the nav scroller has to scroll. */
+.gnav.site-header.gnav--many .gnav__nav-scroller {
+  gap: clamp(0.35rem, 0.7vw, 0.8rem);
+}
+.gnav.site-header.gnav--many .gnav__link {
+  font-size: clamp(0.8125rem, 0.92vw, 0.9375rem);
+  letter-spacing: -0.015em;
+  gap: 0.12rem;
+}
+@media (min-width: 1180px) {
+  .gnav.site-header.gnav--many .gnav__nav-scroller {
+    gap: clamp(0.45rem, 0.85vw, 0.95rem);
+  }
+  .gnav.site-header.gnav--many .gnav__link {
+    font-size: clamp(0.875rem, 0.98vw, 1rem);
+  }
+}
+@media (min-width: 1500px) {
+  .gnav.site-header.gnav--many .gnav__nav-scroller {
+    gap: clamp(0.7rem, 1.1vw, 1.2rem);
+  }
+  .gnav.site-header.gnav--many .gnav__link {
+    font-size: 1.0625rem;
+  }
+}

@@ -72,6 +72,7 @@ const PUBLISH_ROOT_CORE = [
   "business-type.css",
   "data-reporting.css",
   "business-pillar.css",
+  "business-intro.css",
   "business-pillar.js",
   "pillar-service.css",
   "pillar-service.js",
@@ -184,6 +185,11 @@ const PUBLISH_COPY_DIRS = [
   /** Root /ongil/ and /lifestage/ → /{lang}/… language redirects (same pattern as /studio/, /business/). */
   { from: "ongil", to: "ongil", required: true },
   { from: "lifestage", to: "lifestage", required: true },
+  /** Information-only business intro pages (BabyLog · PetLog · My World · ShareOn). */
+  { from: "babylog", to: "babylog", required: true },
+  { from: "petlog", to: "petlog", required: true },
+  { from: "myworld", to: "myworld", required: true },
+  { from: "shareon", to: "shareon", required: true },
   { from: "assets", to: "assets", required: true },
   { from: "vendor/three", to: "vendor/three", required: true },
   { from: "vendor/hls", to: "vendor/hls", required: false },
@@ -527,6 +533,7 @@ function verify() {
   required.push(path.join(OUT, "ongil-start", "index.html"));
   required.push(path.join(OUT, "ongil", "index.html"));
   required.push(path.join(OUT, "lifestage", "index.html"));
+  for (const s of ["babylog", "petlog", "myworld", "shareon"]) required.push(path.join(OUT, s, "index.html"));
   required.push(path.join(OUT, "assets", "livon-mark.jpg"));
   required.push(path.join(OUT, "assets", "livon-mark-icon.jpg"));
   required.push(path.join(OUT, "assets", "livon-mark-icon-120.jpg"));

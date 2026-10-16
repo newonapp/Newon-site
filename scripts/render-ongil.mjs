@@ -26,6 +26,7 @@ import { renderStudioHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { renderOngilSection } from "./home-ongil-body.mjs";
 import { getOngilCopy } from "./home-ongil-copy.mjs";
 
+import { lifeExtraHtml, LIFE_EXTRA_CSS } from "./render-business-intro.mjs";
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const NOG_VER = "20260922loop2";
 const SKIP_DIRS = new Set(["node_modules", "_publish", ".git", "docs", "app-icons"]);
@@ -70,9 +71,10 @@ function renderPage(lang) {
     HREFLANG_BLOCK: hreflangBlock("ongil"),
     SKIP_LABEL: pick(flat, flatEn, "common.skipToContent") || "Skip to content",
     CHROME_HEADER: header,
-    MAIN_CONTENT: renderOngilSection(lang.dir, { detail: true }),
+    MAIN_CONTENT: renderOngilSection(lang.dir, { detail: true }) + lifeExtraHtml(lang.dir, "ongil"),
     CHROME_FOOTER: footer,
-    EXTRA_CSS: `<link rel="stylesheet" href="/home-ongil.css?v=${NOG_VER}" />
+    EXTRA_CSS: `${LIFE_EXTRA_CSS}
+    <link rel="stylesheet" href="/home-ongil.css?v=${NOG_VER}" />
     <link rel="stylesheet" href="/home-ongil-layout.css?v=${NOG_VER}" />`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-ongil.js?v=${NOG_VER}" defer></script>`,
