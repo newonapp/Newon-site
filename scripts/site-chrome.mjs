@@ -41,6 +41,26 @@ function navTopLabel(flat, flatEn, id) {
   return escapeHtml(t(flat, flatEn, NAV_LABEL_KEYS[id], NAV_LABEL_FB[id]));
 }
 
+/**
+ * Second row: Newon's six flagship businesses, equal weight, each linking to its own page.
+ * Brand names are not translated. LIVON / ONGIL keep their existing mega menus.
+ */
+export const VENTURE_NAV = [
+  { id: "babylog", label: "BABYLOG", path: "portfolio/babylog/" },
+  { id: "petlog", label: "PETLOG", path: "portfolio/petlog/" },
+  { id: "myworld", label: "MY WORLD", path: "portfolio/myworld/" },
+  { id: "shareon", label: "SHAREON", path: "shareon/" },
+  { id: "lifestage", label: "LIVON", path: "lifestage/", mega: true },
+  { id: "ongil", label: "ONGIL", path: "ongil/", mega: true },
+];
+const VENTURE_IDS = new Set(VENTURE_NAV.map((v) => v.id));
+/** First row keeps every existing menu except the two that moved to the business row. */
+const PRIMARY_NAV = TOP_NAV.filter((id) => !VENTURE_IDS.has(id));
+
+function venturesAria(flat, flatEn) {
+  return escapeHtml(t(flat, flatEn, "nav.venturesAria", "Flagship businesses"));
+}
+
 const MENU_META = {
   consumer: {
     kicker: "nav.consumerMenuLabel",
@@ -125,6 +145,7 @@ export function resolveActiveNav(pathname = "") {
   if (seg === "ai") return "ai";
   if (seg === "lifestage") return "lifestage";
   if (seg === "ongil") return "ongil";
+  if (seg === "shareon") return "shareon";
   if (["products", "apps", "saas", "games", "ecosystem"].includes(seg)) return "consumer";
   if (seg === "tools") return "business";
   if (seg === "business") {
@@ -211,8 +232,8 @@ const MEGA_RENDERERS = {
   company: (f, fe, b, ld) => editorialMega(f, fe, b, "company", ld),
 };
 
-function navMegaItem(flat, flatEn, base, activeNav, id, langDir = "") {
-  const label = navTopLabel(flat, flatEn, id);
+function navMegaItem(flat, flatEn, base, activeNav, id, langDir = "", labelOverride = "") {
+  const label = labelOverride ? escapeHtml(labelOverride) : navTopLabel(flat, flatEn, id);
   const active = activeNav === id ? " gnav-dd--active" : "";
   const openAttr = activeNav === id ? ' aria-current="page"' : "";
   if (id === "lifestage" || id === "ongil") {
@@ -241,12 +262,30 @@ function navMegaPanel(flat, flatEn, base, id, langDir = "") {
 }
 
 function desktopNav(flat, flatEn, base, activeNav, langDir = "") {
-  const triggers = TOP_NAV.map((id) => navMegaItem(flat, flatEn, base, activeNav, id, langDir)).join("\n            ");
+  const triggers = PRIMARY_NAV.map((id) => navMegaItem(flat, flatEn, base, activeNav, id, langDir)).join("\n            ");
   const panels = TOP_NAV.map((id) => navMegaPanel(flat, flatEn, base, id, langDir)).join("\n          ");
   return `<div class="gnav__nav-scroller">
             ${triggers}
           </div>
           ${panels}`;
+}
+
+/** Business row (desktop): six flagship businesses with equal weight. */
+function venturesNav(flat, flatEn, base, activeNav, activeVenture, langDir = "") {
+  const items = VENTURE_NAV.map((v) => {
+    const isActive = activeVenture === v.id || activeNav === v.id;
+    if (v.mega) {
+      return navMegaItem(flat, flatEn, base, isActive ? v.id : "", v.id, langDir, v.label);
+    }
+    const cur = isActive ? ' aria-current="page"' : "";
+    const cls = isActive ? " gnav-ventures__link--active" : "";
+    return `<a class="gnav__link gnav-ventures__link${cls}" href="${href(base, v.path, langDir)}" data-gnav-venture="${v.id}"${cur}>${escapeHtml(v.label)}</a>`;
+  }).join("\n            ");
+  return `<nav class="gnav__ventures" aria-label="${venturesAria(flat, flatEn)}">
+          <div class="gnav__ventures-inner">
+            ${items}
+          </div>
+        </nav>`;
 }
 
 function langSelect(flat, flatEn, id) {
@@ -275,8 +314,8 @@ function mobileNav(flat, flatEn, base, suffix, langDir = "") {
   const themeLabel = escapeHtml(t(flat, flatEn, "common.themeToggle", "Theme"));
   const ko = isKoLocale(langDir);
 
-  const sections = TOP_NAV.map((id) => {
-    const label = navTopLabel(flat, flatEn, id);
+  const accordion = (id, labelOverride = "") => {
+    const label = labelOverride ? escapeHtml(labelOverride) : navTopLabel(flat, flatEn, id);
     const hubHref = href(base, MENU_META[id].footHref, langDir);
     const items = flattenMobileItems(id);
     const links = items
@@ -294,7 +333,22 @@ function mobileNav(flat, flatEn, base, suffix, langDir = "") {
         </div>
         <div class="gnav-mobile__acc-panel" hidden>${links}</div>
       </div>`;
+  };
+  // Six flagship businesses first, each its own item (LIVON / ONGIL keep their sub-menus).
+  const ventures = VENTURE_NAV.map((v) => {
+    if (v.mega) return accordion(v.id, v.label);
+    return `<div class="gnav-mobile__acc gnav-mobile__acc--solo">
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="${href(base, v.path, langDir)}" data-gnav-venture="${v.id}">${escapeHtml(v.label)}</a>
+        </div>
+      </div>`;
   }).join("\n        ");
+  const primary = PRIMARY_NAV.map((id) => accordion(id)).join("\n        ");
+  const sections = `<div class="gnav-mobile__ventures" role="group" aria-label="${venturesAria(flat, flatEn)}">
+        ${ventures}
+        </div>
+          <div class="gnav-mobile__divider" aria-hidden="true"></div>
+          ${primary}`;
 
   return `<div id="gnav-mobile-${suffix}" class="gnav-mobile" hidden aria-hidden="true">
       <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="${escapeHtml(t(flat, flatEn, "common.close", "Close"))}"></button>
@@ -313,7 +367,11 @@ function mobileNav(flat, flatEn, base, suffix, langDir = "") {
     </div>`;
 }
 
-export function renderGlobalHeader(flat, flatEn, { activeNav = "", base = "../", idSuffix = "hub", langDir = "" } = {}) {
+export function renderGlobalHeader(
+  flat,
+  flatEn,
+  { activeNav = "", activeVenture = "", base = "../", idSuffix = "hub", langDir = "" } = {}
+) {
   const brand = escapeHtml(t(flat, flatEn, "nav.brandName", "Newon"));
   const brandHref = langDir && (!base || base === "./") ? `/${langDir}/` : base || "./";
   const langId = `lang-select-gnav-${idSuffix}`;
@@ -322,7 +380,7 @@ export function renderGlobalHeader(flat, flatEn, { activeNav = "", base = "../",
   const themeLabel = escapeHtml(t(flat, flatEn, "common.themeToDark", "Toggle theme"));
   const themeTitle = escapeHtml(t(flat, flatEn, "common.themeToggle", "Theme"));
 
-  return `<header class="gnav site-header gnav--five" data-gnav>
+  return `<header class="gnav site-header gnav--five gnav--ventures" data-gnav>
       <div class="gnav__bar">
         <div class="gnav__inner">
           <a class="gnav__brand" href="${brandHref}" aria-label="${brand}">
@@ -341,6 +399,7 @@ export function renderGlobalHeader(flat, flatEn, { activeNav = "", base = "../",
             </button>
           </div>
         </div>
+        ${venturesNav(flat, flatEn, base, activeNav, activeVenture, langDir)}
       </div>
       ${mobileNav(flat, flatEn, base, idSuffix, langDir)}
     </header>`;

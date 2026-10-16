@@ -97,7 +97,7 @@ function head({ langMeta, copy, title, description, canonical, suffix, image }) 
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     ${fontLinksHtml(langMeta.dir)}
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/gnav-mega.css?v=20260831menu1" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20261017ventures1" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260830filt1" />
     <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260903pfcs1" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
@@ -111,9 +111,9 @@ function localeFlats(lang) {
   return { flat: flatten(data), flatEn: flatten(en) };
 }
 
-function chromeNav(lang, { base = "../", idSuffix = "portfolio" } = {}) {
+function chromeNav(lang, { base = "../", idSuffix = "portfolio", activeVenture = "" } = {}) {
   const { flat, flatEn } = localeFlats(lang);
-  const header = renderGlobalHeader(flat, flatEn, { activeNav: "company", base, idSuffix, langDir: lang });
+  const header = renderGlobalHeader(flat, flatEn, { activeNav: "company", activeVenture, base, idSuffix, langDir: lang });
   const switcher = renderCompanySwitcher(flat, flatEn, { active: "portfolio", base });
   return `
     <a class="skip-link" href="#pf-main">${esc(portfolioCopy(lang).skip)}</a>
@@ -925,7 +925,7 @@ function projectPage(langMeta, copy, app, apps) {
     image: app.icon || app.logo || null,
   })}
   <body class="pf-page">
-    ${chromeNav(lang, { base: "../../", idSuffix: `pf-${app.slug}` })}
+    ${chromeNav(lang, { base: "../../", idSuffix: `pf-${app.slug}`, activeVenture: app.slug })}
     <main id="pf-main">
       <section class="pf-project-hero">
         <div class="pf-wrap pf-wrap--narrow">

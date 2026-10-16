@@ -1281,3 +1281,102 @@ body.gnav-mega-open { overflow: visible; }
   .gnav__cta,
   .gnav__menu-icon span { transition: none; }
 }
+
+/* ── Flagship-business row (second tier, desktop) ──────────────────────────────
+   BABYLOG · PETLOG · MY WORLD · SHAREON · LIVON · ONGIL with equal weight.
+   Only headers marked .gnav--ventures get the taller bar, so pages that still carry the
+   one-row header keep their 74px offset. --gnav-h stays the total bar height, so every
+   page offset that already uses it (padding, sticky tops, scroll margins) follows. */
+:root {
+  --gnav-row-h: 74px;
+  --gnav-ventures-h: 48px;
+}
+
+.gnav__ventures { display: none; }
+
+@media (min-width: 901px) {
+  :root:has(header.gnav--ventures) {
+    --gnav-h: calc(var(--gnav-row-h) + var(--gnav-ventures-h));
+  }
+
+  .gnav.site-header.gnav--ventures .gnav__inner {
+    min-height: var(--gnav-row-h);
+  }
+
+  .gnav.site-header.gnav--ventures .gnav__ventures {
+    display: block;
+    box-sizing: border-box;
+    height: var(--gnav-ventures-h);
+    border-top: 1px solid var(--gnav-border);
+  }
+
+  .gnav__ventures-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.5rem, 3.4vw, 3.25rem);
+    max-width: var(--gnav-max);
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .gnav__ventures-inner > .gnav-dd {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .gnav.site-header .gnav__ventures .gnav__link {
+    font-size: 0.875rem;
+    font-weight: 680;
+    letter-spacing: 0.06em;
+    padding: 0.4rem 0;
+  }
+
+  .gnav.site-header .gnav__ventures .gnav-dd__trigger {
+    padding-left: 0.15rem;
+  }
+
+  .gnav-ventures__link--active {
+    color: var(--gnav-text-strong);
+  }
+
+  .gnav-ventures__link--active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.3rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.85;
+  }
+
+  .gnav.site-header .gnav__ventures .gnav-dd--active > .gnav__link::after,
+  .gnav.site-header .gnav__ventures .gnav-dd--open > .gnav__link::after {
+    bottom: -0.3rem;
+  }
+
+  /* First-row menus open right under the first row (covering the business row while open),
+     so moving the pointer from a first-row menu to its panel never crosses the business row.
+     LIVON / ONGIL open under the business row. */
+  .gnav.site-header.gnav--ventures .gnav-mega {
+    top: var(--gnav-row-h);
+  }
+
+  .gnav.site-header.gnav--ventures .gnav-mega[data-gnav-mega="lifestage"],
+  .gnav.site-header.gnav--ventures .gnav-mega[data-gnav-mega="ongil"] {
+    top: var(--gnav-h);
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1100px) {
+  .gnav__ventures-inner {
+    gap: clamp(1rem, 2.6vw, 1.75rem);
+    padding: 0 20px;
+  }
+}
+
+.gnav-mobile__ventures .gnav-mobile__acc-link {
+  letter-spacing: 0.02em;
+}
