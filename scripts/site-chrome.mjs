@@ -1,6 +1,6 @@
 /**
  * Shared site chrome — Global Navigation with editorial mega menus.
- * Top-level: Consumer · AI · LivOn · Ongil · Business · Studio · Company
+ * Top-level: Consumer · AI · LivOn · Ongil · SHAREON · Business · Studio · Company
  */
 import { escapeHtml, pick } from "./hub-utils.mjs";
 import { MEGA_DESTINATIONS, TOP_NAV } from "./venture-studio-data.mjs";
@@ -22,6 +22,7 @@ const NAV_LABEL_KEYS = {
   ai: "nav.topAi",
   lifestage: "nav.topLifeStage",
   ongil: "nav.topOngil",
+  shareon: "nav.topShareon",
   business: "nav.topBusiness",
   studio: "nav.topStudio",
   company: "nav.topCompany",
@@ -32,6 +33,7 @@ const NAV_LABEL_FB = {
   ai: "AI",
   lifestage: "LivOn",
   ongil: "Ongil",
+  shareon: "SHAREON",
   business: "Business",
   studio: "Studio",
   company: "Company",
@@ -69,6 +71,13 @@ const MENU_META = {
     footHref: "ongil/",
     footKey: "nav.ongilExploreCta",
     footFb: "View Ongil →",
+  },
+  shareon: {
+    kicker: "nav.shareonMenuLabel",
+    lead: "nav.shareonMenuLead",
+    footHref: "shareon/",
+    footKey: "nav.shareonExploreCta",
+    footFb: "View SHAREON →",
   },
   business: {
     kicker: "nav.businessMenuLabel",
@@ -125,6 +134,7 @@ export function resolveActiveNav(pathname = "") {
   if (seg === "ai") return "ai";
   if (seg === "lifestage") return "lifestage";
   if (seg === "ongil") return "ongil";
+  if (seg === "shareon") return "shareon";
   if (["products", "apps", "saas", "games", "ecosystem"].includes(seg)) return "consumer";
   if (seg === "tools") return "business";
   if (seg === "business") {
@@ -152,6 +162,7 @@ const MOON_SVG = `<svg class="gnav__theme-icon" width="20" height="20" viewBox="
 
 function megaItemLimit(menuId) {
   if (menuId === "company") return 12;
+  if (menuId === "shareon") return 5;
   if (menuId === "consumer" || menuId === "ai" || menuId === "business" || menuId === "studio") return 8;
   return 4;
 }
@@ -206,6 +217,7 @@ const MEGA_RENDERERS = {
   ai: (f, fe, b, ld) => editorialMega(f, fe, b, "ai", ld),
   lifestage: (f, fe, b, ld) => editorialMega(f, fe, b, "lifestage", ld),
   ongil: (f, fe, b, ld) => editorialMega(f, fe, b, "ongil", ld),
+  shareon: (f, fe, b, ld) => editorialMega(f, fe, b, "shareon", ld),
   business: (f, fe, b, ld) => editorialMega(f, fe, b, "business", ld),
   studio: (f, fe, b, ld) => editorialMega(f, fe, b, "studio", ld),
   company: (f, fe, b, ld) => editorialMega(f, fe, b, "company", ld),
@@ -215,8 +227,8 @@ function navMegaItem(flat, flatEn, base, activeNav, id, langDir = "") {
   const label = navTopLabel(flat, flatEn, id);
   const active = activeNav === id ? " gnav-dd--active" : "";
   const openAttr = activeNav === id ? ' aria-current="page"' : "";
-  if (id === "lifestage" || id === "ongil") {
-    const dest = href(base, id === "lifestage" ? "lifestage/" : "ongil/", langDir);
+  if (id === "lifestage" || id === "ongil" || id === "shareon") {
+    const dest = href(base, `${id}/`, langDir);
     return `<div class="gnav-dd${active}" data-gnav-dd data-gnav-menu="${id}">
     <a class="gnav__link gnav-dd__label" href="${dest}"${openAttr}>${label}</a>
     <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-label="${label}">
@@ -368,6 +380,7 @@ const FOOTER_MENUS = [
   ["ai", "ai/"],
   ["lifestage", "lifestage/"],
   ["ongil", "ongil/"],
+  ["shareon", "shareon/"],
   ["business", "business/"],
   ["studio", "studio/"],
   ["company", "about/"],

@@ -38,7 +38,7 @@ export const LEGACY_STATUS_MAP = {
 };
 
 /** Top-level nav order — 7 business menus */
-export const TOP_NAV = ["consumer", "ai", "lifestage", "ongil", "business", "studio", "company"];
+export const TOP_NAV = ["consumer", "ai", "lifestage", "ongil", "shareon", "business", "studio", "company"];
 
 /**
  * Mega menu destinations per top menu.
@@ -88,6 +88,14 @@ export const MEGA_DESTINATIONS = {
       href: "/ongil-start/",
       titleFb: "Start Ongil",
     },
+  ],
+  /* SHAREON — sharing & rental platform: exactly five menus (Overview · Platform · Business · Partnerships · Contact) */
+  shareon: [
+    { titleKey: "nav.shareonOverview", descKey: "nav.shareonOverviewDesc", href: "shareon/", titleFb: "Overview" },
+    { titleKey: "nav.shareonPlatform", descKey: "nav.shareonPlatformDesc", href: "shareon/platform/", titleFb: "Platform" },
+    { titleKey: "nav.shareonBusiness", descKey: "nav.shareonBusinessDesc", href: "shareon/business/", titleFb: "Business" },
+    { titleKey: "nav.shareonPartnerships", descKey: "nav.shareonPartnershipsDesc", href: "shareon/partnerships/", titleFb: "Partnerships" },
+    { titleKey: "nav.shareonContact", descKey: "nav.shareonContactDesc", href: "shareon/contact/", titleFb: "Contact" },
   ],
   business: [
     { titleKey: "nav.bizColBuild", descKey: "nav.megaBuildDesc", href: "business/build/", titleFb: "BUILD" },
