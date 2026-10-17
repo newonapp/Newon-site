@@ -341,7 +341,20 @@
     "ptStrategic": "Parcerias estratégicas",
     "ptStrategicDesc": "Longo prazo, tecnologia, global",
     "ptInquiry": "Contato de parceria",
-    "ptInquiryDesc": "Um único formulário de parceria"
+    "ptInquiryDesc": "Um único formulário de parceria",
+    "petlogMenuLabel": "PETLOG",
+    "petlogMenuLead": "Plataforma completa para a vida com pets",
+    "petlogExploreCta": "Ver PETLOG →",
+    "petlogMenuOverview": "Overview",
+    "petlogMenuOverviewDesc": "Cada momento com seu pet, conectado",
+    "petlogMenuPlatform": "Platform",
+    "petlogMenuPlatformDesc": "16 áreas, dos registros às compras e cuidados",
+    "petlogMenuBusiness": "Business",
+    "petlogMenuBusinessDesc": "16 linhas de negócio do setor pet",
+    "petlogMenuPartnerships": "Partnerships",
+    "petlogMenuPartnershipsDesc": "12 tipos de parceiros",
+    "petlogMenuContact": "Contact",
+    "petlogMenuContactDesc": "Fale com o PETLOG"
   },
   "home": {
     "heroLogoAlt": "Newon logo",

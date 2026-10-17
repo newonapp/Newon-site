@@ -230,8 +230,17 @@ function formCss() {
   return FORM_CSS;
 }
 
-function formBlock(lang, depth) {
-  const F = FORM[bodyLang(lang)];
+/**
+ * Partnership inquiry form (existing Newon inquiry system: business/inquiry.js → FormSubmit, honeypot,
+ * validation, e-mail fallback). `o` lets another page reuse it with its own copy / types:
+ *   o.copy (overrides FORM keys: label, title, lead, subject, types), o.category, o.interest (fixed area).
+ */
+export function inquiryFormHtml(lang, depth, o = {}) {
+  return formBlock(lang, depth, o);
+}
+
+function formBlock(lang, depth, o = {}) {
+  const F = { ...FORM[bodyLang(lang)], ...(o.copy || {}) };
   const opts = (list) => list.map(([v, l]) => `<option value="${esc(v)}">${esc(l)}</option>`).join("\n                ");
   return `<link rel="stylesheet" href="/business-page.css?v=20260923pad1" />
 <style>
@@ -246,7 +255,7 @@ ${formCss()}
     </header>
     <div class="bz-form-wrap">
       <form class="bz-form" id="bz-inquiry-form" novalidate data-analytics="partnership_inquiry" data-submit="${esc(F.submit)}" data-submitting="${esc(F.submitting)}" data-subject="${esc(F.subject)}" aria-describedby="pt-form-lead">
-        <input type="hidden" name="category" value="Partnership" />
+        <input type="hidden" name="category" value="${esc(o.category || "Partnership")}" />${o.interest ? `\n        <input type="hidden" name="interest" value="${esc(o.interest)}" />` : ""}
         <div class="bz-field">
           <label for="pt-participant">${esc(F.participant)}<span class="bz-req" aria-hidden="true">*</span></label>
           <select id="pt-participant" name="participant" required>
@@ -274,14 +283,14 @@ ${formCss()}
                 ${opts(F.types)}
           </select>
         </div>
-        <div class="bz-field">
+${o.interest ? "" : `        <div class="bz-field">
           <label for="pt-interest">${esc(F.interest)} <span class="bz-opt">(${esc(F.optional)})</span></label>
           <select id="pt-interest" name="interest">
                 <option value="">${esc(F.choose)}</option>
                 ${opts(F.interests)}
           </select>
         </div>
-        <div class="bz-field">
+`}        <div class="bz-field">
           <label for="bz-message">${esc(F.message)}<span class="bz-req" aria-hidden="true">*</span></label>
           <textarea id="bz-message" name="message" required maxlength="4000" placeholder="${esc(F.messagePh)}"></textarea>
         </div>

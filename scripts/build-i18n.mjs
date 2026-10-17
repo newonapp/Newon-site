@@ -35,6 +35,7 @@ import {
 } from "./studio-pricing.mjs";
 import { STUDIO_AREA_PAGES } from "./studio-areas.mjs";
 import { BSP_SITEMAP_PATHS } from "./render-bsp.mjs";
+import { PETLOG_SITE_PATHS } from "./render-petlog-site.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -643,6 +644,11 @@ function writeSitemap() {
     addAllLocales(p, p.startsWith("business") ? "0.7" : "0.65", "monthly");
   }
 
+  // PETLOG business site (render-petlog-site.mjs)
+  for (const p of PETLOG_SITE_PATHS) {
+    addAllLocales(p, p === "petlog" ? "0.7" : "0.6", "monthly");
+  }
+
   // Resources (canonical paths only — not /store /blog /labs aliases)
   for (const page of [
     "resources",
@@ -709,6 +715,7 @@ runScript("render-lifestage.mjs");
 runScript("render-ongil.mjs");
 runScript("render-shareon.mjs");
 runScript("render-bsp.mjs");
+runScript("render-petlog-site.mjs");
 runScript("render-ox-month-web.mjs");
 runScript("render-company.mjs");
 runScript("render-blog.mjs");

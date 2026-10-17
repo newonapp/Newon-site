@@ -994,7 +994,20 @@
     "ptStrategic": "Strategic Partnerships",
     "ptStrategicDesc": "Long-term, technology, global",
     "ptInquiry": "Partnership Inquiry",
-    "ptInquiryDesc": "One partnership inquiry form"
+    "ptInquiryDesc": "One partnership inquiry form",
+    "petlogMenuLabel": "PETLOG",
+    "petlogMenuLead": "All-in-one pet life platform",
+    "petlogExploreCta": "Explore PETLOG →",
+    "petlogMenuOverview": "Overview",
+    "petlogMenuOverviewDesc": "Every moment with your pet, connected",
+    "petlogMenuPlatform": "Platform",
+    "petlogMenuPlatformDesc": "16 areas from records to shopping and care",
+    "petlogMenuBusiness": "Business",
+    "petlogMenuBusinessDesc": "16 lines across the pet industry",
+    "petlogMenuPartnerships": "Partnerships",
+    "petlogMenuPartnershipsDesc": "12 kinds of partners",
+    "petlogMenuContact": "Contact",
+    "petlogMenuContactDesc": "Talk to PETLOG"
   },
   "home": {
     "heroLogoAlt": "Newon",

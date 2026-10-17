@@ -1359,13 +1359,14 @@ body.gnav-mega-open { overflow: visible; }
 
   /* First-row menus open right under the first row (covering the business row while open),
      so moving the pointer from a first-row menu to its panel never crosses the business row.
-     LIVON / ONGIL open under the business row. */
+     LIVON / ONGIL / PETLOG open under the business row. */
   .gnav.site-header.gnav--ventures .gnav-mega {
     top: var(--gnav-row-h);
   }
 
   .gnav.site-header.gnav--ventures .gnav-mega[data-gnav-mega="lifestage"],
-  .gnav.site-header.gnav--ventures .gnav-mega[data-gnav-mega="ongil"] {
+  .gnav.site-header.gnav--ventures .gnav-mega[data-gnav-mega="ongil"],
+  .gnav.site-header.gnav--ventures .gnav-mega[data-gnav-mega="petlog"] {
     top: var(--gnav-h);
   }
 }

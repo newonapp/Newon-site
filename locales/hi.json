@@ -341,7 +341,20 @@
     "ptStrategic": "रणनीतिक साझेदारी",
     "ptStrategicDesc": "दीर्घकालिक, तकनीक, वैश्विक",
     "ptInquiry": "साझेदारी पूछताछ",
-    "ptInquiryDesc": "साझेदारी का एक ही फ़ॉर्म"
+    "ptInquiryDesc": "साझेदारी का एक ही फ़ॉर्म",
+    "petlogMenuLabel": "PETLOG",
+    "petlogMenuLead": "पालतू जीवन का संपूर्ण प्लेटफ़ॉर्म",
+    "petlogExploreCta": "PETLOG देखें →",
+    "petlogMenuOverview": "Overview",
+    "petlogMenuOverviewDesc": "पालतू के साथ हर पल, एक जुड़ाव में",
+    "petlogMenuPlatform": "Platform",
+    "petlogMenuPlatformDesc": "रिकॉर्ड से खरीदारी और देखभाल तक 16 क्षेत्र",
+    "petlogMenuBusiness": "Business",
+    "petlogMenuBusinessDesc": "पालतू उद्योग की 16 व्यवसाय शाखाएँ",
+    "petlogMenuPartnerships": "Partnerships",
+    "petlogMenuPartnershipsDesc": "12 प्रकार के साझेदार",
+    "petlogMenuContact": "Contact",
+    "petlogMenuContactDesc": "PETLOG से संपर्क करें"
   },
   "home": {
     "heroLogoAlt": "Newon logo",

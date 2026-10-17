@@ -341,7 +341,20 @@
     "ptStrategic": "Kemitraan strategis",
     "ptStrategicDesc": "Jangka panjang, teknologi, global",
     "ptInquiry": "Pertanyaan kemitraan",
-    "ptInquiryDesc": "Satu formulir kemitraan"
+    "ptInquiryDesc": "Satu formulir kemitraan",
+    "petlogMenuLabel": "PETLOG",
+    "petlogMenuLead": "Platform lengkap kehidupan hewan peliharaan",
+    "petlogExploreCta": "Lihat PETLOG →",
+    "petlogMenuOverview": "Overview",
+    "petlogMenuOverviewDesc": "Setiap momen bersama hewan peliharaan, terhubung",
+    "petlogMenuPlatform": "Platform",
+    "petlogMenuPlatformDesc": "16 area dari catatan hingga belanja dan perawatan",
+    "petlogMenuBusiness": "Business",
+    "petlogMenuBusinessDesc": "16 lini bisnis industri hewan peliharaan",
+    "petlogMenuPartnerships": "Partnerships",
+    "petlogMenuPartnershipsDesc": "12 jenis mitra",
+    "petlogMenuContact": "Contact",
+    "petlogMenuContactDesc": "Hubungi PETLOG"
   },
   "home": {
     "heroLogoAlt": "Newon logo",

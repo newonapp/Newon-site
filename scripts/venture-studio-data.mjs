@@ -38,7 +38,7 @@ export const LEGACY_STATUS_MAP = {
 };
 
 /** Top-level nav order — Partnerships (Oct 2026) sits after Studio */
-export const TOP_NAV = ["consumer", "ai", "lifestage", "ongil", "business", "studio", "partnerships", "company"];
+export const TOP_NAV = ["consumer", "ai", "lifestage", "ongil", "petlog", "business", "studio", "partnerships", "company"];
 
 /**
  * Mega menu destinations per top menu.
@@ -88,6 +88,14 @@ export const MEGA_DESTINATIONS = {
       href: "/ongil-start/",
       titleFb: "Start Ongil",
     },
+  ],
+  // PETLOG business site (Oct 2026): Overview · Platform · Business · Partnerships · Contact (business row mega).
+  petlog: [
+    { titleKey: "nav.petlogMenuOverview", descKey: "nav.petlogMenuOverviewDesc", href: "petlog/", titleFb: "Overview" },
+    { titleKey: "nav.petlogMenuPlatform", descKey: "nav.petlogMenuPlatformDesc", href: "petlog/platform/", titleFb: "Platform" },
+    { titleKey: "nav.petlogMenuBusiness", descKey: "nav.petlogMenuBusinessDesc", href: "petlog/business/", titleFb: "Business" },
+    { titleKey: "nav.petlogMenuPartnerships", descKey: "nav.petlogMenuPartnershipsDesc", href: "petlog/partnerships/", titleFb: "Partnerships" },
+    { titleKey: "nav.petlogMenuContact", descKey: "nav.petlogMenuContactDesc", href: "petlog/contact/", titleFb: "Contact" },
   ],
   // Business · Studio · Partnerships (Oct 2026): own products and platforms, not client outsourcing.
   business: [

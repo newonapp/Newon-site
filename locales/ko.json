@@ -997,7 +997,20 @@
     "ptStrategic": "전략적 파트너십",
     "ptStrategicDesc": "장기 제휴·기술·글로벌",
     "ptInquiry": "제휴 문의",
-    "ptInquiryDesc": "통합 제휴 문의 양식"
+    "ptInquiryDesc": "통합 제휴 문의 양식",
+    "petlogMenuLabel": "PETLOG",
+    "petlogMenuLead": "종합 반려생활 플랫폼",
+    "petlogExploreCta": "PETLOG 알아보기 →",
+    "petlogMenuOverview": "소개",
+    "petlogMenuOverviewDesc": "반려동물의 모든 순간을, 하나의 연결로",
+    "petlogMenuPlatform": "서비스",
+    "petlogMenuPlatformDesc": "기록부터 쇼핑과 돌봄까지 16개 영역",
+    "petlogMenuBusiness": "비즈니스",
+    "petlogMenuBusinessDesc": "반려생활 산업을 잇는 16개 사업군",
+    "petlogMenuPartnerships": "파트너십",
+    "petlogMenuPartnershipsDesc": "함께할 12개 파트너 유형",
+    "petlogMenuContact": "문의",
+    "petlogMenuContactDesc": "PETLOG와 함께할 가능성"
   },
   "home": {
     "heroLogoAlt": "Newon",

@@ -49,13 +49,15 @@ function navTopLabel(flat, flatEn, id) {
  */
 export const VENTURE_NAV = [
   { id: "babylog", label: "BABYLOG", path: "portfolio/babylog/" },
-  { id: "petlog", label: "PETLOG", path: "portfolio/petlog/" },
+  { id: "petlog", label: "PETLOG", path: "petlog/", mega: true },
   { id: "myworld", label: "MY WORLD", path: "portfolio/myworld/" },
   { id: "shareon", label: "SHAREON", path: "shareon/" },
   { id: "lifestage", label: "LIVON", path: "lifestage/", mega: true },
   { id: "ongil", label: "ONGIL", path: "ongil/", mega: true },
 ];
 const VENTURE_IDS = new Set(VENTURE_NAV.map((v) => v.id));
+/** Business-row items with their own mega menu: the label links to the business page, the chevron opens the menu. */
+const VENTURE_MEGA_PATH = Object.fromEntries(VENTURE_NAV.filter((v) => v.mega).map((v) => [v.id, v.path]));
 /** First row keeps every existing menu except the two that moved to the business row. */
 const PRIMARY_NAV = TOP_NAV.filter((id) => !VENTURE_IDS.has(id));
 
@@ -91,6 +93,13 @@ const MENU_META = {
     footHref: "ongil/",
     footKey: "nav.ongilExploreCta",
     footFb: "View Ongil →",
+  },
+  petlog: {
+    kicker: "nav.petlogMenuLabel",
+    lead: "nav.petlogMenuLead",
+    footHref: "petlog/",
+    footKey: "nav.petlogExploreCta",
+    footFb: "View PETLOG →",
   },
   business: {
     kicker: "nav.businessMenuLabel",
@@ -155,6 +164,7 @@ export function resolveActiveNav(pathname = "") {
   if (seg === "lifestage") return "lifestage";
   if (seg === "ongil") return "ongil";
   if (seg === "shareon") return "shareon";
+  if (seg === "petlog") return "petlog";
   if (["products", "apps", "saas", "games", "ecosystem"].includes(seg)) return "consumer";
   if (seg === "tools") return "business";
   if (seg === "business") {
@@ -183,7 +193,7 @@ const MOON_SVG = `<svg class="gnav__theme-icon" width="20" height="20" viewBox="
 
 function megaItemLimit(menuId) {
   if (menuId === "company") return 12;
-  if (["consumer", "ai", "business", "studio", "partnerships"].includes(menuId)) return 8;
+  if (["consumer", "ai", "business", "studio", "partnerships", "petlog"].includes(menuId)) return 8;
   return 4;
 }
 
@@ -237,6 +247,7 @@ const MEGA_RENDERERS = {
   ai: (f, fe, b, ld) => editorialMega(f, fe, b, "ai", ld),
   lifestage: (f, fe, b, ld) => editorialMega(f, fe, b, "lifestage", ld),
   ongil: (f, fe, b, ld) => editorialMega(f, fe, b, "ongil", ld),
+  petlog: (f, fe, b, ld) => editorialMega(f, fe, b, "petlog", ld),
   business: (f, fe, b, ld) => editorialMega(f, fe, b, "business", ld),
   studio: (f, fe, b, ld) => editorialMega(f, fe, b, "studio", ld),
   partnerships: (f, fe, b, ld) => editorialMega(f, fe, b, "partnerships", ld),
@@ -247,8 +258,8 @@ function navMegaItem(flat, flatEn, base, activeNav, id, langDir = "", labelOverr
   const label = labelOverride ? escapeHtml(labelOverride) : navTopLabel(flat, flatEn, id);
   const active = activeNav === id ? " gnav-dd--active" : "";
   const openAttr = activeNav === id ? ' aria-current="page"' : "";
-  if (id === "lifestage" || id === "ongil") {
-    const dest = href(base, id === "lifestage" ? "lifestage/" : "ongil/", langDir);
+  if (VENTURE_MEGA_PATH[id]) {
+    const dest = href(base, VENTURE_MEGA_PATH[id], langDir);
     return `<div class="gnav-dd${active}" data-gnav-dd data-gnav-menu="${id}">
     <a class="gnav__link gnav-dd__label" href="${dest}"${openAttr}>${label}</a>
     <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-label="${label}">

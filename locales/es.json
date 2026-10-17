@@ -341,7 +341,20 @@
     "ptStrategic": "Alianzas estratégicas",
     "ptStrategicDesc": "Largo plazo, tecnología, global",
     "ptInquiry": "Consulta de alianza",
-    "ptInquiryDesc": "Un único formulario de alianzas"
+    "ptInquiryDesc": "Un único formulario de alianzas",
+    "petlogMenuLabel": "PETLOG",
+    "petlogMenuLead": "Plataforma integral para la vida con mascotas",
+    "petlogExploreCta": "Ver PETLOG →",
+    "petlogMenuOverview": "Overview",
+    "petlogMenuOverviewDesc": "Cada momento con tu mascota, conectado",
+    "petlogMenuPlatform": "Platform",
+    "petlogMenuPlatformDesc": "16 áreas, de los registros a las compras y el cuidado",
+    "petlogMenuBusiness": "Business",
+    "petlogMenuBusinessDesc": "16 líneas de negocio del sector mascotas",
+    "petlogMenuPartnerships": "Partnerships",
+    "petlogMenuPartnershipsDesc": "12 tipos de socios",
+    "petlogMenuContact": "Contact",
+    "petlogMenuContactDesc": "Habla con PETLOG"
   },
   "home": {
     "heroLogoAlt": "0 logo",

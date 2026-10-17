@@ -341,7 +341,20 @@
     "ptStrategic": "Strategische Partnerschaften",
     "ptStrategicDesc": "Langfristig, Technologie, global",
     "ptInquiry": "Partnerschaftsanfrage",
-    "ptInquiryDesc": "Ein Formular für alle Partnerschaften"
+    "ptInquiryDesc": "Ein Formular für alle Partnerschaften",
+    "petlogMenuLabel": "PETLOG",
+    "petlogMenuLead": "Komplettplattform für das Leben mit Haustieren",
+    "petlogExploreCta": "PETLOG ansehen →",
+    "petlogMenuOverview": "Overview",
+    "petlogMenuOverviewDesc": "Jeder Moment mit Ihrem Tier, verbunden",
+    "petlogMenuPlatform": "Platform",
+    "petlogMenuPlatformDesc": "16 Bereiche von Aufzeichnungen bis Einkauf und Pflege",
+    "petlogMenuBusiness": "Business",
+    "petlogMenuBusinessDesc": "16 Geschäftsfelder der Heimtierbranche",
+    "petlogMenuPartnerships": "Partnerships",
+    "petlogMenuPartnershipsDesc": "12 Arten von Partnern",
+    "petlogMenuContact": "Contact",
+    "petlogMenuContactDesc": "PETLOG kontaktieren"
   },
   "home": {
     "heroLogoAlt": "Newon logo",

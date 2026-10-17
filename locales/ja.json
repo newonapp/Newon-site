@@ -341,7 +341,20 @@
     "ptStrategic": "戦略的パートナーシップ",
     "ptStrategicDesc": "長期提携・技術・グローバル",
     "ptInquiry": "提携のお問い合わせ",
-    "ptInquiryDesc": "総合提携お問い合わせフォーム"
+    "ptInquiryDesc": "総合提携お問い合わせフォーム",
+    "petlogMenuLabel": "PETLOG",
+    "petlogMenuLead": "総合ペットライフプラットフォーム",
+    "petlogExploreCta": "PETLOGを見る →",
+    "petlogMenuOverview": "Overview",
+    "petlogMenuOverviewDesc": "ペットとのすべての瞬間を、ひとつのつながりに",
+    "petlogMenuPlatform": "Platform",
+    "petlogMenuPlatformDesc": "記録からショッピング、ケアまで16の領域",
+    "petlogMenuBusiness": "Business",
+    "petlogMenuBusinessDesc": "ペット産業をつなぐ16の事業",
+    "petlogMenuPartnerships": "Partnerships",
+    "petlogMenuPartnershipsDesc": "12タイプのパートナー",
+    "petlogMenuContact": "Contact",
+    "petlogMenuContactDesc": "PETLOGへのお問い合わせ"
   },
   "home": {
     "heroLogoAlt": "0ロゴ",
