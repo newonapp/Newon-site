@@ -55,6 +55,7 @@ const PUBLISH_ROOT_CORE = [
   "home-ongil-layout.css",
   "home-ongil.js",
   "shareon.css",
+  "shareon.js",
   "ecosystem.css",
   "ecosystem.js",
   "apps-hub.css",

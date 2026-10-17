@@ -33,7 +33,7 @@ import { renderShareonPage, getShareonCopy } from "./shareon-body.mjs";
 import { SHAREON_PAGES } from "./shareon-copy.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const CSS_VER = "20261018v4";
+const CSS_VER = "20261018v5";
 
 function localeFlat(lang) {
   const en = loadJson("en.json");
@@ -64,7 +64,7 @@ function renderPage(lang, page) {
     MAIN_CONTENT: renderShareonPage(lang.dir, page.id),
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/shareon.css?v=${CSS_VER}" />`,
-    EXTRA_SCRIPTS: "",
+    EXTRA_SCRIPTS: `<script src="/shareon.js?v=${CSS_VER}" defer></script>`,
   });
   const out = path.join(ROOT, lang.dir, page.path, "index.html");
   ensureDir(out);
