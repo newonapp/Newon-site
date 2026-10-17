@@ -54,6 +54,7 @@ const PUBLISH_ROOT_CORE = [
   "home-ongil.css",
   "home-ongil-layout.css",
   "home-ongil.js",
+  "shareon.css",
   "ecosystem.css",
   "ecosystem.js",
   "apps-hub.css",
@@ -181,6 +182,8 @@ const PUBLISH_COPY_DIRS = [
   /** Newon+ consumer auth foundation (shared by Newon web services; anonymous until a Newon+ project is configured). */
   { from: "newon-auth", to: "newon-auth", required: true },
   { from: "ongil-start", to: "ongil-start", required: true },
+  /** /shareon/… language redirects (the pages themselves live in the language dirs). */
+  { from: "shareon", to: "shareon", required: false },
   { from: "assets", to: "assets", required: true },
   { from: "vendor/three", to: "vendor/three", required: true },
   { from: "vendor/hls", to: "vendor/hls", required: false },
