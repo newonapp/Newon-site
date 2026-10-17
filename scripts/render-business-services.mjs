@@ -1352,10 +1352,10 @@ function flowStageGridHtml(steps, opts = {}) {
             .map((e) => `<li>${escapeHtml(e)}</li>`)
             .join("")}</ul>`
         : "";
-      return `<article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n" aria-hidden="true">${escapeHtml(s.n)}</span><div class="bs-flow-stage-grid__copy"><h3>${escapeHtml(s.title)}</h3><p>${flowBodyHtml(s.body)}</p>${chips}</div></article>`;
+      return `<article class="bs-flow-stage-grid__item" role="listitem"><span class="bs-flow-stage-grid__n" aria-hidden="true">${escapeHtml(s.n)}</span><div class="bs-flow-stage-grid__copy"><h3>${escapeHtml(s.title)}</h3><p>${flowBodyHtml(s.body)}</p>${chips}</div></article>`;
     })
     .join("");
-  return `<div class="bs-flow-stage-grid bs-flow-stage-grid--${variant}" data-cols="${cols}" data-variant="${escapeHtml(variant)}">${cards}</div>`;
+  return `<div class="bs-flow-stage-grid bs-flow-stage-grid--${variant}" role="list" data-cols="${cols}" data-variant="${escapeHtml(variant)}">${cards}</div>`;
 }
 
 function dataReportingFlowHtml(flowDetail) {

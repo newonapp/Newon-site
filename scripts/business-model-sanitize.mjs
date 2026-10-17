@@ -21,7 +21,10 @@ const LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
 
 /** Labels (any language) of "price" / "starting at" / "timeline" rows. */
 const ROW_LABEL_RE =
-  /^(price|starting at|timeline|estimated timeline|geschätzter zeitplan|예상 기간|시작가|prix|preis|precio|preço|価格|価格目安|harga|कीमत|मूल्य|प्रीमियम|prezzo|plazo(?: estimado)?|prazo(?: estimado)?|délai(?: estimé)?|durée estimée|geschätzte dauer|예상 일정|目安期間|想定期間|estimasi(?: waktu)?|अनुमानित समय(?:-सीमा)?|अनुमानित अवधि)$/i;
+  /^(price|starting at|timeline|estimated timeline|geschätzter zeitplan|예상 기간|시작가|prix|preis|precio|preço|価格|価格目安|harga|कीमत|मूल्य|प्रीमियम|prezzo|plazo(?: estimado)?|prazo(?: estimado)?|délai(?: estimé)?|durée estimée|geschätzte dauer|예상 일정|目安期間|想定期間|estimasi(?: waktu)?|अनुमानित समय(?:-सीमा)?|अनुमानित अवधि|अनुमानित समयरेखा|推定スケジュール|calendario estimado|cronograma estimado|calendrier prévu|perkiraan waktu)$/i;
+
+/** A bare duration such as "1–2주" / "3–7 days" / "1–2 Wochen". */
+const DURATION_RE = /^\d+\s*[–\-~]\s*\d+\s*(?:주|일|개월|days?|weeks?|months?|日|週間|週|か月|dias?|semanas?|meses|jours?|semaines?|mois|Tage|Wochen|Monate|दिन|हफ़?्ते|सप्ताह|महीने|hari|minggu|bulan)$/i;
 
 /** CTA label neutralization: quote / production-request → plain inquiry. */
 const CTA_MAP = {
@@ -195,8 +198,18 @@ export function processText(text, lang) {
 
 /** Apply processText to every text node, and to description-like attributes / JSON-LD descriptions. */
 function processAllText(html, lang) {
-  const out = html.replace(/(<script\b(?![^>]*ld\+json)[\s\S]*?<\/script>|<style[\s\S]*?<\/style>)|(<[^>]*>)|([^<]+)/gi, (all, keep, tag, text) => {
+  const out = html.replace(/(<script\b(?![^>]*ld\+json)[\s\S]*?<\/script>|<style[\s\S]*?<\/style>)|(<script\b[^>]*ld\+json[^>]*>[\s\S]*?<\/script>)|(<[^>]*>)|([^<]+)/gi, (all, keep, ld, tag, text) => {
     if (keep) return keep;
+    // JSON-LD: only the "description" string values are processed, as JSON strings. Running the sentence filter over the
+    // raw JSON text cut closing quotes and left unparseable blocks (8 pages on 6be1475).
+    if (ld) {
+      return ld.replace(/("description"\s*:\s*")((?:[^"\\]|\\.)*)(")/g, (m, a, v, c) => {
+        let raw;
+        try { raw = JSON.parse(`"${v}"`); } catch { return m; }
+        const nv = processText(raw, lang);
+        return a + JSON.stringify(nv).slice(1, -1) + c;
+      });
+    }
     if (tag) {
       return tag.replace(/((?:name|property)="(?:description|og:description|twitter:description)" content=")([^"]*)(")/g, (m, a, v, c) => {
         const raw = v.replace(/&amp;/g, "&");
@@ -222,6 +235,9 @@ export function dropEmptyElements(html) {
 export const txt = (s) => s.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
 
 export function sanitizeBusinessHtml(html, lang = "ko") {
+  // Already reframed (carries a notice): the reframe step owns this text now. Re-running the sentence
+  // filters here would cut the notice and the meta/JSON-LD descriptions (build runs sanitize -> reframe on fresh pages).
+  if (/data-bm-notice="/.test(html)) return html;
   let h = html;
   // 1) price / pricing / quote sections (whole section)
   h = removeSectionsContaining(h, ['class="bs-price', 'class="bp-pricing', 'class="bp-sec bp-pricing', "bs-collab-pricing", 'class="bp-quote', 'aria-labelledby="bs-dr-engage-title']);
@@ -237,6 +253,14 @@ export function sanitizeBusinessHtml(html, lang = "ko") {
   h = removeByClass(h, "div", "bs-dr-meta__row", (block) => {
     const k = /class="bs-dr-meta__k">([^<]*)</.exec(block);
     return !!k && ROW_LABEL_RE.test(txt(k[1]));
+  });
+  // 4a) research snapshot grid: a price/timeline cell, a label whose value was removed, or a bare duration value
+  h = removeByClass(h, "article", "bs-rd-snap__cell", (block) => {
+    const k = /class="bs-rd-snap__k">([^<]*)</.exec(block);
+    const v = /class="bs-rd-snap__v">([^<]*)</.exec(block);
+    if (k && ROW_LABEL_RE.test(txt(k[1]))) return true;
+    if (k && !v) return true;
+    return !k && !!v && DURATION_RE.test(txt(v[1]));
   });
   // 4b) FAQ items about price / quote / ordering
   h = removeByClass(h, "div", "bs-faq-item", (block) => FAQ_DROP_RE.test(txt(block)));

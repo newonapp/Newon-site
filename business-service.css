@@ -10629,7 +10629,7 @@ html[data-newon-shell-theme="dark"] .bs-flow-stage-grid__item.is-on {
   color: #111;
 }
 html[data-newon-shell-theme="dark"] .bs-flow-stage-grid__item.is-on .bs-flow-stage-grid__n {
-  color: rgba(17, 17, 17, 0.55);
+  color: rgba(17, 17, 17, 0.68);
 }
 html[data-newon-shell-theme="dark"] .bs-flow-stage-grid__item.is-on p {
   color: rgba(17, 17, 17, 0.72);
@@ -10654,7 +10654,7 @@ html[data-newon-shell-theme="dark"] .bs-flow-stage-grid__item:hover {
   color: rgba(255, 255, 255, 0.55);
 }
 html[data-newon-shell-theme="dark"] .bs-flow-stage-grid__item:hover .bs-flow-stage-grid__n {
-  color: rgba(17, 17, 17, 0.55);
+  color: rgba(17, 17, 17, 0.68);
 }
 .bs-flow-stage-grid__item h3 {
   margin: 0 0 0.55rem;

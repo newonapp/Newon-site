@@ -1,0 +1,2 @@
+dark pages with fails: 87 of 236
+[('bs-use-board__n', 352), ('bs-flow-stage-grid__n', 228), ('bp-proc__n', 139), ('bp-mark__line', 42), ('bp-lflow__n', 24), ('bs-sv-biz-app__btn', 4)]

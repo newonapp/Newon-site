@@ -36,3 +36,10 @@ Status: **analysis only. No JSON-LD was modified in P4.**
 | P-5 | Add a QA step that fails if Service `description` matches the outsourcing term list used in `qa-business-i18n`. | scripts/ci | Low |
 
 Decision needed from the owner: P-1 versus P-2, and the C/D timing for finding 1.
+
+## P5 update (applied, local commit only)
+
+- **Finding 1 fixed for `business/build` and `business/solutions`, all 9 languages:** the Service `description` (and meta / og / twitter description) is now the localized capability notice ("This page describes Newon's technology, design and operations capabilities. Newon does not take on custom development or production projects…"). `name`, `@type: Service`, provider and URL are unchanged. SEO effect: snippet text of these two pages changes in search results once re-crawled; titles do not change. Rich-result eligibility is unchanged (no Offer/price was or is present). NOT VERIFIED: how Google currently displays these pages (no Search Console access).
+- **New defect found and fixed:** the sanitizer ran its sentence filter over the raw JSON text of the `ld+json` blocks and cut closing quotes, leaving 8 unparseable blocks on `6be1475` (`ko/business/care` and the `business/inquiry` page in 7 languages). It now processes only `"description"` values, as JSON strings. All 504 JSON-LD blocks in the 9 languages now parse (`qa-artifacts/phase03-p5/jsonld-validate.mjs`: 504 blocks, 108 Service, 0 unparseable; 8 before). `ko/business/care` had also been left un-reframed because the broken block swallowed part of the page; it is now reframed like its siblings.
+- Remaining Service descriptions that match outsourcing terms: 2, both are the new notice sentence ("does not take on custom development…"), a negation. No other Service block matched the term list.
+- Proposals P-1, P-3, P-5 are still open (owner decision).

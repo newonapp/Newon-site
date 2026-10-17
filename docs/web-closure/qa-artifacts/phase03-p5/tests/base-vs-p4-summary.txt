@@ -1,0 +1,11 @@
+BASE community-v2 rc=1 secs=80
+BASE data-manager rc=1 secs=12
+BASE onboarding rc=1 secs=6
+BASE release-candidate rc=1 secs=222
+BASE accessibility rc=0 secs=181
+HEADP5 community-v2 rc=1 secs=75
+HEADP5 data-manager rc=1 secs=11
+HEADP5 onboarding rc=1 secs=6
+HEADP5 release-candidate rc=1 secs=217
+HEADP5 accessibility rc=0 secs=178
+DONE

@@ -1,0 +1,26 @@
+not ok 35 - ON-35 Today: the feed profile carries Life Events and they raise matching items
+  ---
+  duration_ms: 138.895707
+  type: 'test'
+  location: '/home/claude/newonapp/newon-site/tests/livon/onboarding.test.mjs:558:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 1.9999999999999998
+    - 2
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 1.9999999999999998
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/newonapp/newon-site/tests/livon/onboarding.test.mjs:564:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)

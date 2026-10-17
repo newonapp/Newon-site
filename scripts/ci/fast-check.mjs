@@ -123,6 +123,19 @@ function main() {
     console.log(`fast-check: ${line || "business i18n OK"}`);
   }
 
+  // 3d) Business / Studio pages x 9 languages: every page present, <html lang> matches (English-in-other-language text is reported, not failed)
+  const langMix = spawnSync(process.execPath, [path.join(ROOT, "scripts", "qa-lang-mix.mjs"), "--strict"], {
+    cwd: ROOT,
+    encoding: "utf8",
+  });
+  if (langMix.status !== 0) {
+    errors.push("qa-lang-mix failed (a Business/Studio page is missing or has the wrong <html lang>)");
+    if (langMix.stdout) console.log(langMix.stdout.trim());
+    if (langMix.stderr) console.error(langMix.stderr.trim());
+  } else {
+    console.log(`fast-check: ${(langMix.stdout || "").trim().split("\n")[0] || "lang-mix OK"}`);
+  }
+
   // 4) Core SoT modules load
   for (const mod of ["scripts/business-pricing.mjs", "scripts/studio-pricing.mjs", "scripts/seo-meta.mjs"]) {
     const r = spawnSync(process.execPath, ["--check", path.join(ROOT, mod)], {

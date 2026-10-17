@@ -16,6 +16,7 @@
     "check:fast": "node scripts/ci/fast-check.mjs",
     "test:ox-month-web": "node --test apps/ox-month/ox-month-web.test.mjs",
     "check:fast:publish": "node scripts/ci/fast-check.mjs --publish-root _publish",
+    "check:build-drift": "node scripts/qa-build-drift.mjs",
     "test:ingest": "node --test ingest/test/*.test.mjs",
     "check:ingest": "npm --prefix ingest run check",
     "sync:archive:fixture": "npm --prefix ingest run sync:archive:fixture",

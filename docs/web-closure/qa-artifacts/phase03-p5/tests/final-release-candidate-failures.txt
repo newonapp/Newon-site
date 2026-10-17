@@ -1,0 +1,53 @@
+not ok 1 - RC-1 ancestry: every V1 phase commit is an ancestor of the RC; the RC starts at Performance V1
+  ---
+  duration_ms: 15.942996
+  type: 'test'
+  location: '/home/claude/newonapp/newon-site/tests/livon/release-candidate.test.mjs:208:1'
+  failureType: 'testCodeFailure'
+  error: 'ANONYMOUS FREE MODE commit 12c1b4a6f is in this repository'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/newonapp/newon-site/tests/livon/release-candidate.test.mjs:214:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: RC-2 source integrity: no env file, key, debug dump, screenshot, report or temp bundle in the LIVON tree
+ok 2 - RC-2 source integrity: no env file, key, debug dump, screenshot, report or temp bundle in the LIVON tree
+  ---
+  duration_ms: 8.475805
+  type: 'test'
+  ...
+# Subtest: RC-3 secret scan: no real key, token or private key in the source or in the generated pages
+--
+not ok 6 - RC-14 curated inventory: 530 records, no duplicate, broken relation, invalid URL, expired, sample or draft
+  ---
+  duration_ms: 0.804317
+  type: 'test'
+  location: '/home/claude/newonapp/newon-site/tests/livon/release-candidate.test.mjs:349:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    stale
+    
+    13 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 13
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/newonapp/newon-site/tests/livon/release-candidate.test.mjs:354:210)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: RC-15 Life Stage: 7 stages, 10대 … 70대+
