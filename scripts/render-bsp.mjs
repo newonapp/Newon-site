@@ -410,6 +410,52 @@ function hero(section, name, b, depth) {
 </section>`;
 }
 
+/**
+ * Full-screen film hero — the existing Newon Studio first screen (#studio-film, studio-film.css/js),
+ * reused as-is. `film.src` is the moving background (Partnerships uses the LIVON Community film).
+ */
+function filmHero(page, b, depth) {
+  const f = page.film;
+  return `<link rel="stylesheet" href="/studio-film.css?v=20260922fade2" />
+<style>
+  /* Same film hero as Newon Studio; only the wordmark is scaled so the longer "Partnerships" fits the screen. */
+  #studio-film.st-film--${esc(page.section)} .st-film__wordmark { font-size: clamp(3.1rem, 14vw, 11rem); }
+  @media (max-height: 720px) { #studio-film.st-film--${esc(page.section)} .st-film__wordmark { font-size: clamp(3rem, 11vw, 8rem); } }
+</style>
+<section id="studio-film" class="st-film st-film--${esc(page.section)}" data-st-film data-lockup-reveal aria-labelledby="bp-hero-title">
+  <div class="st-film__stage">
+    <div class="st-film__fallback" aria-hidden="true"></div>
+    <video
+      class="st-film__video"
+      src="${esc(f.src)}"
+      autoplay
+      muted
+      loop
+      playsinline
+      webkit-playsinline
+      preload="auto"
+      disablepictureinpicture
+      controlslist="nodownload nofullscreen noremoteplayback"
+      aria-hidden="true"
+    >
+      <source src="${esc(f.src)}" type="video/mp4" />
+    </video>
+    <div class="st-film__lockup">
+      <div class="st-film__veil" aria-hidden="true"></div>
+      <p class="st-film__wordmark" lang="en">${esc(f.wordmark)}</p>
+      <h1 class="st-film__slogan" id="bp-hero-title">${b.h1}</h1>
+      <p class="st-film__lead">${b.filmLead || esc(b.lead)}</p>
+      <div class="st-film__actions">
+        <a class="btn btn-ghost" href="${esc(rel(depth, b.ghost[1]))}">${esc(b.ghost[0])}</a>
+        <a class="btn btn-primary" href="${esc(rel(depth, b.primary[1]))}">${esc(b.primary[0])}</a>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/film-keep.js?v=20260924play2"></script>
+<script src="/studio-film.js?v=20260922fade2" defer></script>`;
+}
+
 function pageBody(page, lang) {
   const b = page[bodyLang(lang)];
   const depth = depthOf(page.slug);
@@ -431,8 +477,9 @@ function pageBody(page, lang) {
       throw new Error(`render-bsp: unknown block ${blk.type}`);
     })
     .join("\n");
-  return `${crumbs(page.section, name, depth, page.parent)}
-${hero(page.section, name, b, depth)}
+  const top = page.film ? filmHero(page, b, depth) : `${crumbs(page.section, name, depth, page.parent)}
+${hero(page.section, name, b, depth)}`;
+  return `${top}
 ${blocks}
 ${sectionCards(page.section, lang, depth, page.menu)}
 ${ctaBlock(b.cta, depth)}`;

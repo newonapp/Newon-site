@@ -596,14 +596,20 @@ export const PAGES = [
     section: "partnerships",
     slug: "partnerships",
     menu: "overview",
+    // First screen: the Newon Studio film hero, with the LIVON Community film as the moving background.
+    film: {
+      wordmark: "Newon Partnerships",
+      src: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4",
+    },
     ko: {
       title: "Partnerships | Newon",
       desc: "개인, 판매자, 기업, 기관, 파트너가 Newon의 모든 사업과 협력하는 통합 창구. 협력 대상, 방식, 6개 플랫폼 분야, 진행 절차를 안내합니다.",
       eyebrowName: "OVERVIEW",
       markName: "OVERVIEW",
-      h1: "Newon과 함께<br />사업을 넓혀 갑니다.",
+      h1: "함께할 때,<br />사업은 더 멀리 갑니다.",
+      filmLead: "개인과 판매자, 기업과 기관이<br>Newon의 제품과 플랫폼 위에서 함께 성장합니다.",
       lead: "Newon Partnerships는 개인, 판매자, 기업, 기관이 Newon의 제품과 플랫폼을 바탕으로 협력하는 통합 창구입니다.",
-      primary: ["제휴 문의 →", "partnerships/inquiry/#inquiry"],
+      primary: ["제휴 문의 ↗", "partnerships/inquiry/#inquiry"],
       ghost: ["협력 대상 보기 ↓", "#who"],
       blocks: [
         {
@@ -638,9 +644,10 @@ export const PAGES = [
       desc: "One front door for individuals, sellers, companies, institutions and partners to work with every Newon business: who we partner with, how, the six platform fields and the process.",
       eyebrowName: "OVERVIEW",
       markName: "OVERVIEW",
-      h1: "Grow your business<br />with Newon.",
+      h1: "Together,<br />business goes further.",
+      filmLead: "Individuals, sellers, companies and institutions<br>growing together on Newon's products and platforms.",
       lead: "Newon Partnerships is one front door for individuals, sellers, companies and institutions to partner on Newon's products and platforms.",
-      primary: ["Partnership inquiry →", "partnerships/inquiry/#inquiry"],
+      primary: ["Partnership inquiry ↗", "partnerships/inquiry/#inquiry"],
       ghost: ["Who we partner with ↓", "#who"],
       blocks: [
         {
