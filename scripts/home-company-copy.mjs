@@ -1,43 +1,43 @@
 /**
- * Homepage company-story copy (below hero, around the existing 6 businesses).
+ * Homepage company-story copy (below hero): about, life connected, vision, partnerships & contact.
  * Brand strings stay English in every locale.
  */
 
 const CTA_I18N = {
   ja: {
     ecoCta: "Newon Ecosystem を見る ↗",
-    aboutCta: "会社概要を見る ↗",
-    inquiryCta: "事業に関するお問い合わせ ↗",
+    aboutCta: "パートナーシップのお問い合わせ ↗",
+    inquiryCta: "お問い合わせ ↗",
   },
   es: {
     ecoCta: "Explorar Newon Ecosystem ↗",
-    aboutCta: "Ver la empresa ↗",
-    inquiryCta: "Consulta de negocio ↗",
+    aboutCta: "Consulta de alianzas ↗",
+    inquiryCta: "Contacto ↗",
   },
   "pt-br": {
     ecoCta: "Explorar Newon Ecosystem ↗",
-    aboutCta: "Ver a empresa ↗",
-    inquiryCta: "Falar sobre negócios ↗",
+    aboutCta: "Falar sobre parcerias ↗",
+    inquiryCta: "Fale conosco ↗",
   },
   fr: {
     ecoCta: "Découvrir Newon Ecosystem ↗",
-    aboutCta: "Voir l’entreprise ↗",
-    inquiryCta: "Demande professionnelle ↗",
+    aboutCta: "Demande de partenariat ↗",
+    inquiryCta: "Nous contacter ↗",
   },
   de: {
     ecoCta: "Newon Ecosystem entdecken ↗",
-    aboutCta: "Unternehmen ansehen ↗",
-    inquiryCta: "Geschäftsanfrage ↗",
+    aboutCta: "Partnerschaftsanfrage ↗",
+    inquiryCta: "Kontakt ↗",
   },
   hi: {
     ecoCta: "Newon Ecosystem देखें ↗",
-    aboutCta: "कंपनी देखें ↗",
-    inquiryCta: "व्यवसाय पूछताछ ↗",
+    aboutCta: "साझेदारी पूछताछ ↗",
+    inquiryCta: "संपर्क करें ↗",
   },
   id: {
     ecoCta: "Jelajahi Newon Ecosystem ↗",
-    aboutCta: "Lihat perusahaan ↗",
-    inquiryCta: "Pertanyaan bisnis ↗",
+    aboutCta: "Ajukan kemitraan ↗",
+    inquiryCta: "Hubungi kami ↗",
   },
 };
 
@@ -46,69 +46,70 @@ const KO = {
     kicker: "01 / THE MEANING OF NEWON",
     formula: "New + On",
     wordmark: "Newon",
-    slogan: "새로운 아이디어를 켜다.",
+    slogan: "서로 다른 일상과 산업을, 하나의 생태계로.",
     intro:
-      "Newon은 새로운 생각을 현실로 연결하고, 삶과 일의 다양한 순간에 필요한 아이디어를 열어가는 소프트웨어 브랜드입니다.",
+      "Newon은 생활 속 불편함과 산업의 비효율을 새로운 디지털 경험으로 해결하고자 합니다. 개인의 일상에서 가족과 기업, 지역사회까지 다양한 분야를 연결하는 플랫폼과 제품을 개발합니다.",
     newLabel: "NEW",
-    newTitle: "새로운 생각과 아이디어.",
+    newTitle: "사람에게서 출발한 새로운 경험.",
     newBody:
-      "익숙한 일상과 업무 속에서 새로운 관점과 해결 방법을 발견하고, 더 나은 경험을 만들어갑니다.",
+      "사람들의 실제 생활과 필요에서 출발해, 기술과 자동화로 복잡한 경험을 더 편리하게 만듭니다.",
     onLabel: "ON",
-    onTitle: "아이디어를 켜고, 연결하다.",
-    onBody: "아이디어를 실제 서비스로 구현하고, 사람과 기술, 일상과 비즈니스를 연결합니다.",
+    onTitle: "필요한 것을 켜고, 연결하다.",
+    onBody: "서로 다른 서비스와 사람, 기업과 기회를 연결합니다.",
     closeEq: "New + On = Newon",
-    closeLead: "새로운 아이디어를 켜고,\n더 나은 경험으로 연결합니다.",
+    closeLead: "사람을 중심으로, 필요한 것을 연결하고,\n기술로 더 나은 경험을 만듭니다.",
   },
   vision: {
-    kicker: "02 / OUR VISION",
-    title: "삶의 모든 순간을,\n더 나은 방향으로.",
+    kicker: "02 / LIFE CONNECTED",
+    title: "삶의 시작부터,\n새로운 내일까지.",
     lead:
-      "Newon은 일상에 필요한 작은 소프트웨어에서 시작해 개인과 가족, 기업을 위한 다양한 디지털 서비스를 만들어갑니다.",
+      "아이의 성장, 반려동물과의 일상, 새로운 여행, 필요한 자원의 공유, 인생의 중요한 변화와 시니어 돌봄까지. Newon의 플랫폼은 서로 다른 삶의 영역을 담당합니다.",
     lead2:
-      "서로 다른 서비스가 하나의 생태계 안에서 연결되고, 사용자가 필요한 순간에 더 편리한 경험을 만날 수 있는 미래를 지향합니다.",
+      "각 플랫폼은 고유한 전문성을 유지하면서, 사람과 기업, 지역사회가 함께 참여하는 더 넓은 디지털 생태계를 지향합니다.",
     pillars: [
       {
         n: "01",
-        en: "NEW POSSIBILITIES",
-        title: "새로운 아이디어",
-        body: "일상과 업무에서 발견한 문제를 새로운 디지털 경험으로 연결합니다.",
+        en: "FOR INDIVIDUALS",
+        title: "개인을 위해",
+        body: "일상, 가족, 여행, 공유, 돌봄을 위한 디지털 서비스.",
       },
       {
         n: "02",
-        en: "CONNECTED SERVICES",
-        title: "서비스의 연결",
-        body: "서로 다른 목적의 서비스가 하나의 브랜드 안에서 자연스럽게 이어지는 생태계를 만들어갑니다.",
+        en: "FOR BUSINESSES",
+        title: "기업을 위해",
+        body: "플랫폼 입점, 거래, 예약, 운영을 위한 자체 제품과 솔루션.",
       },
       {
         n: "03",
-        en: "CONTINUOUS EXPANSION",
-        title: "지속적인 확장",
-        body: "개인의 생활에서 가족과 기업까지, 다양한 분야로 서비스의 아이디어를 넓혀갑니다.",
+        en: "FOR INSTITUTIONS",
+        title: "기관과 지역사회를 위해",
+        body: "복지, 관광, 아동, 시니어, 지역사회와 연결되는 협력 모델.",
       },
     ],
   },
   eco: {
-    kicker: "03 / NEWON ECOSYSTEM",
-    brand: "Newon Ecosystem",
-    title: "각각의 서비스가,\n하나의 경험으로.",
+    kicker: "03 / OUR VISION",
+    brand: "ONE NEWON. MORE POSSIBILITIES.",
+    title: "하나의 앱을 넘어,\n하나의 생태계로.",
     lead:
-      "Newon은 일상과 AI, 생애주기와 비즈니스에 필요한 다양한 서비스를 만들어갑니다.",
+      "Newon은 서로 다른 서비스가 각자의 전문성을 유지하면서도, 사람과 기업이 필요한 순간에 자연스럽게 연결될 수 있는 디지털 생태계를 만들어갑니다.",
     lead2:
-      "서로 다른 목적을 가진 서비스들이 하나의 브랜드 안에서 연결되어, 사용자가 필요한 순간에 더 편리한 경험을 제공하는 생태계를 지향합니다.",
+      "플랫폼 간 통합 생태계는 장기적인 비전입니다. 지금은 각 플랫폼과 제품이 독립적으로 운영·구축되고 있습니다.",
     cta: "Newon 생태계 살펴보기 ↗",
     ctaHref: "ecosystem/",
-    names: ["Apps", "AI", "LivOn", "Ongil", "Business", "Studio", "Games"],
+    names: ["BABYLOG", "PETLOG", "MY WORLD", "SHAREON", "LIVON", "ONGIL", "Apps", "AI", "Business", "Studio", "Games"],
   },
   about: {
-    kicker: "04 / ABOUT NEWON",
-    title: "새로운 아이디어를,\n함께 만들어갑니다.",
+    kicker: "04 / PARTNERSHIPS & CONTACT",
+    title: "새로운 연결은,\n더 큰 가능성이 됩니다.",
     lead:
-      "Newon은 일상과 기술, 사람과 서비스를 연결하며 더 나은 디지털 경험을 만들어갑니다.",
-    lead2: "Newon의 이야기와 사업 방향을 살펴보고, 협업과 비즈니스에 관한 문의를 남겨주세요.",
-    aboutCta: "회사 소개 보기 ↗",
-    aboutHref: "about/",
-    inquiryCta: "사업 문의 ↗",
-    inquiryHref: "business/inquiry/",
+      "Newon은 육아, 반려동물, 여행, 공유, 생활정보, 시니어 케어 등 다양한 분야에서 기업과 기관, 브랜드, 기술 파트너와의 협력을 지향합니다.",
+    lead2:
+      "플랫폼 입점, 기업 솔루션, 브랜드·콘텐츠, 공공기관 협력, 기술 제휴에 관한 문의를 기다립니다. newon@newon.app",
+    aboutCta: "파트너십 문의하기 ↗",
+    aboutHref: "business/collaboration/partnership/",
+    inquiryCta: "문의하기 ↗",
+    inquiryHref: "contact/",
   },
 };
 
@@ -117,70 +118,70 @@ const EN = {
     kicker: "01 / THE MEANING OF NEWON",
     formula: "New + On",
     wordmark: "Newon",
-    slogan: "Turn new possibility on.",
+    slogan: "Different lives and industries, one ecosystem.",
     intro:
-      "Newon is a software brand that connects new ideas to reality, and opens possibility in the many moments of life and work.",
+      "Newon sets out to solve everyday inconvenience and industry inefficiency with new digital experiences. We build platforms and products that connect personal life, families, companies, and communities.",
     newLabel: "NEW",
-    newTitle: "New thinking, new possibility.",
+    newTitle: "New experiences, starting from people.",
     newBody:
-      "We find new points of view and better ways through familiar days and work — and shape a better experience.",
+      "We start from people’s real lives and needs, and use technology and automation to make complex experiences simpler.",
     onLabel: "ON",
-    onTitle: "Turn possibility on, and connect.",
-    onBody:
-      "We turn ideas into living services, and connect people and technology, daily life and business.",
+    onTitle: "Turn on what is needed, and connect.",
+    onBody: "We connect different services and people, companies and opportunities.",
     closeEq: "New + On = Newon",
-    closeLead: "We turn new possibility on,\nand connect it to a better experience.",
+    closeLead: "Centered on people, connecting what is needed,\nbuilding better experiences with technology.",
   },
   vision: {
-    kicker: "02 / OUR VISION",
-    title: "Every moment of life,\nin a better direction.",
+    kicker: "02 / LIFE CONNECTED",
+    title: "From the start of life,\nto a new tomorrow.",
     lead:
-      "Newon starts with the small software daily life needs, and builds digital services for people, families, and companies.",
+      "A child growing up, daily life with a pet, a new journey, sharing what is needed, life’s big changes, and senior care — each Newon platform takes care of a different part of life.",
     lead2:
-      "We aim for a future where different services connect inside one ecosystem, and a more convenient experience is there at the moment it is needed.",
+      "Each platform keeps its own expertise while aiming for a wider digital ecosystem where people, companies, and communities take part.",
     pillars: [
       {
         n: "01",
-        en: "NEW POSSIBILITIES",
-        title: "New possibility",
-        body: "We connect problems found in daily life and work to new digital experiences.",
+        en: "FOR INDIVIDUALS",
+        title: "For individuals",
+        body: "Digital services for daily life, family, travel, sharing, and care.",
       },
       {
         n: "02",
-        en: "CONNECTED SERVICES",
-        title: "Connected services",
-        body: "We build an ecosystem where services with different purposes continue naturally inside one brand.",
+        en: "FOR BUSINESSES",
+        title: "For businesses",
+        body: "Our own products and software for listing, transactions, bookings, and operations.",
       },
       {
         n: "03",
-        en: "CONTINUOUS EXPANSION",
-        title: "Continuous expansion",
-        body: "We widen what services can do — from personal life to families and companies.",
+        en: "FOR INSTITUTIONS",
+        title: "For institutions",
+        body: "Partnership models with welfare, tourism, children, senior, and local communities.",
       },
     ],
   },
   eco: {
-    kicker: "03 / NEWON ECOSYSTEM",
-    brand: "Newon Ecosystem",
-    title: "Each service,\none experience.",
-    lead: "Newon builds the services daily life, AI, life stages, and business need.",
+    kicker: "03 / OUR VISION",
+    brand: "ONE NEWON. MORE POSSIBILITIES.",
+    title: "Beyond one app,\ntoward one ecosystem.",
+    lead:
+      "Newon is building a digital ecosystem where different services keep their own expertise, yet people and companies connect naturally at the moment it is needed.",
     lead2:
-      "We aim for an ecosystem where services with different purposes connect inside one brand, and a more convenient experience is there when it is needed.",
+      "A fully connected ecosystem is our long-term vision. Today, each platform and product runs or is being built on its own.",
     cta: "Explore Newon Ecosystem ↗",
     ctaHref: "ecosystem/",
-    names: ["Apps", "AI", "LivOn", "Ongil", "Business", "Studio", "Games"],
+    names: ["BABYLOG", "PETLOG", "MY WORLD", "SHAREON", "LIVON", "ONGIL", "Apps", "AI", "Business", "Studio", "Games"],
   },
   about: {
-    kicker: "04 / ABOUT NEWON",
-    title: "Let’s make new possibility\ntogether.",
+    kicker: "04 / PARTNERSHIPS & CONTACT",
+    title: "New connections\nopen bigger possibilities.",
     lead:
-      "Newon connects daily life and technology, people and services, and builds a better digital experience.",
+      "Newon looks for partners among companies, institutions, brands, and technology teams — across parenting, pets, travel, sharing, life information, and senior care.",
     lead2:
-      "Read Newon’s story and direction, and leave an inquiry about collaboration or business.",
-    aboutCta: "About Newon ↗",
-    aboutHref: "about/",
-    inquiryCta: "Business inquiry ↗",
-    inquiryHref: "business/inquiry/",
+      "We welcome inquiries about platform listing, business solutions, brands and content, public partnerships, and technology. newon@newon.app",
+    aboutCta: "Partnership inquiry ↗",
+    aboutHref: "business/collaboration/partnership/",
+    inquiryCta: "Contact us ↗",
+    inquiryHref: "contact/",
   },
 };
 
