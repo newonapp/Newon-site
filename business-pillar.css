@@ -2141,3 +2141,15 @@ html[data-newon-shell-theme="dark"] .bp-page {
   --bp-bg: #000000;
 }
 html[data-newon-shell-theme="dark"] .bp-btn--primary { color: #000; }
+
+/* P4 contrast fixes (WCAG AA) — ink-filled surfaces flip to a light fill in dark mode */
+.bp-shift__panel--before .bp-shift__k { color: rgba(255, 255, 255, 0.62); }
+.bp-shift__panel--before .bp-shift__n { color: rgba(255, 255, 255, 0.62); }
+html[data-newon-shell-theme="dark"] .bp-page .bp-cta { background: #141416; color: #fff; }
+html[data-newon-shell-theme="dark"] .bp-page .bp-cta .bp-label { color: rgba(255, 255, 255, 0.72); }
+html[data-newon-shell-theme="dark"] .bp-page .bp-cta__lead { color: rgba(255, 255, 255, 0.78); }
+html[data-newon-shell-theme="dark"] .bp-page .bp-cta .bp-btn--primary { background: #fff; color: #000; }
+html[data-newon-shell-theme="dark"] .bp-other__card.is-active { color: #111; }
+html[data-newon-shell-theme="dark"] .bp-other__card.is-active .bp-other__n,
+html[data-newon-shell-theme="dark"] .bp-other__card.is-active .bp-other__arrow { color: rgba(17, 17, 17, 0.64); }
+html[data-newon-shell-theme="dark"] .bp-other__card.is-active .bp-other__lead { color: rgba(17, 17, 17, 0.74); }

@@ -162,7 +162,7 @@ function jsonLd(lang, id, P) {
 
 
 /** Stylesheets needed by the appended blocks on the LivOn / Ongil pages. */
-export const LIFE_EXTRA_CSS = `<link rel="stylesheet" href="/business-pillar.css?v=20261017dark1" />
+export const LIFE_EXTRA_CSS = `<link rel="stylesheet" href="/business-pillar.css?v=20261017p4a" />
     <link rel="stylesheet" href="/business-intro.css?v=${CSS_VER}" />`;
 
 /**

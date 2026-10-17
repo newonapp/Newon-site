@@ -187,7 +187,7 @@ function studioBody(flat, flatEn, lang = "en") {
   };
   const close = studioExploreCloseHtml(flat, flatEn, lang);
   const film = getStudioFilmCopy(lang);
-  const cssV = "20261017dark1";
+  const cssV = "20261017p4a";
   const filmV = "20260922fade2";
   const oldTitle = t(
     "studioHub.heroTitle",

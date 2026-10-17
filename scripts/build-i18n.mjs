@@ -23,7 +23,7 @@ import { publishedArticles } from "./news-data.mjs";
 import { buildHomeStudioBody } from "./home-page-body.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { businessServicesHtml } from "./business-services-html.mjs";
-import { renderGlobalHeader, renderStudioFooter } from "./site-chrome.mjs";
+import { renderGlobalHeader, renderStudioFooter, renderFooterNavLinks } from "./site-chrome.mjs";
 import { fontLinksHtml } from "./hub-utils.mjs";
 import { clampSeoDescription, isSeoDescriptionKey } from "./seo-meta.mjs";
 import { STORE_PRODUCTS, LABS_EXPERIMENTS } from "./resources-data.mjs";
@@ -334,9 +334,13 @@ function hreflangBlockPrivacyRoot() {
   return lines.join("\n");
 }
 
+const BRAND_FOOTER_RE = /<footer class="site-footer site-footer--brand[^"]*"[^>]*>[\s\S]*?<\/footer>/;
+
 function ensureBrandFooter(html, flat, flatEn, base, langDir) {
-  if (String(html).includes("site-footer--brand")) return html;
   const footer = renderStudioFooter(flat, flatEn, { base, langDir });
+  // A page that already carried the brand footer used to be skipped, so it kept the link set it was first
+  // written with when FOOTER_MENUS changed. Refresh it in place so the footer always follows renderStudioFooter().
+  if (BRAND_FOOTER_RE.test(String(html))) return String(html).replace(BRAND_FOOTER_RE, () => footer);
   let out = html;
   if (!out.includes("hub-pages.css")) {
     out = out.replace(
@@ -398,6 +402,7 @@ for (const { dir, file, htmlLang } of LANGS) {
   tpl = tpl.replace(/\{\{HOME_STUDIO_BODY\}\}/g, buildHomeStudioBody(copyLang));
 
   tpl = tpl.replace(/\{\{GLOBAL_HEADER\}\}/g, renderGlobalHeader(flat, flatEn, { activeNav: "", base: "", idSuffix: "home", langDir: dir }));
+  tpl = tpl.replace(/\{\{FOOTER_NAV_LINKS\}\}/g, renderFooterNavLinks(flat, flatEn, { base: "", langDir: dir }));
 
   const outDir = path.join(ROOT, dir);
   fs.mkdirSync(outDir, { recursive: true });

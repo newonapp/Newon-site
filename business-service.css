@@ -21308,3 +21308,11 @@ html[data-newon-shell-theme="dark"] .bs-sv-biz-app__screen .bs-sv__k {
 html[data-newon-shell-theme="dark"] .bs-sv-biz-ux__row.is-p1 span {
   color: #ff7a6e;
 }
+
+/* P4 contrast fix: the step number circle must not take the row fill (white-on-white / dark-on-dark) */
+.bs-wf-case-steps__item.is-on .bs-wf-case-steps__n,
+.bs-wf-cases--landing .bs-wf-cases__item:hover .bs-wf-case-steps__n {
+  background: transparent;
+}
+.bs-wf-case-steps__item.is-on .bs-wf-case-steps__n { color: rgba(255, 255, 255, 0.78); }
+html[data-newon-shell-theme="dark"] .bs-wf-case-steps__item.is-on .bs-wf-case-steps__n { color: rgba(17, 17, 17, 0.78); }

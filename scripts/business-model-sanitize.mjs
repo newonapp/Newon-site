@@ -51,7 +51,7 @@ function matchEnd(html, start, tag) {
 }
 
 /** Remove every `<tag ...class="...cls...">…</tag>` block (balanced). */
-function removeByClass(html, tag, clsRe, pred = () => true) {
+export function removeByClass(html, tag, clsRe, pred = () => true) {
   const open = new RegExp(`<${tag}\\b[^>]*class="[^"]*${clsRe}[^"]*"[^>]*>`, "gi");
   let out = "";
   let last = 0;
@@ -210,7 +210,7 @@ function processAllText(html, lang) {
 }
 
 /** Drop elements whose text became empty after text processing. */
-function dropEmptyElements(html) {
+export function dropEmptyElements(html) {
   let h = html;
   for (let i = 0; i < 3; i += 1) {
     h = h.replace(/<(h[1-6]|p|li|dt|dd|summary)(\s[^>]*)?>\s*<\/\1>\s*/gi, "");
@@ -219,7 +219,7 @@ function dropEmptyElements(html) {
   return h;
 }
 
-const txt = (s) => s.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
+export const txt = (s) => s.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
 
 export function sanitizeBusinessHtml(html, lang = "ko") {
   let h = html;

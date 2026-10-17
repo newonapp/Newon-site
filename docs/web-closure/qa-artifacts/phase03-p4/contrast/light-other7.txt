@@ -1,0 +1,2 @@
+light pages with fails: 160 of 413
+[('bp-mark__line', 136), ('bs-flow-stage-grid__n', 121), ('bp-proc__n', 78), ('SPAN', 35), ('bz-process__n', 35), ('EM', 28), ('bz-inq-explore__n', 21), ('bs-sv__k', 20), ('bp-custom__k', 20), ('bp-lflow__n', 18), ('bs-get__n', 16), ('bp-mark', 11), ('bs-sv-app__kicker', 7), ('bp-custom__brief-k', 5), ('bs-it-ext-grid__live', 2)]

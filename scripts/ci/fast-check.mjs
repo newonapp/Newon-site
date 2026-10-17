@@ -95,6 +95,34 @@ function main() {
     console.log(`fast-check: ${line || "pricing QA OK"}`);
   }
 
+  // 3b) Footer link set drift (renderStudioFooter → committed/generated HTML)
+  const footer = spawnSync(process.execPath, [path.join(ROOT, "scripts", "qa-footer-sync.mjs")], {
+    cwd: ROOT,
+    encoding: "utf8",
+  });
+  if (footer.status !== 0) {
+    errors.push("qa-footer-sync failed (footer links differ from renderStudioFooter)");
+    if (footer.stdout) console.log(footer.stdout.trim());
+    if (footer.stderr) console.error(footer.stderr.trim());
+  } else {
+    const line = (footer.stdout || "").trim().split("\n").pop();
+    console.log(`fast-check: ${line || "footer sync OK"}`);
+  }
+
+  // 3c) Business / Studio pages × 9 languages: menu, notice, CTA, link consistency
+  const bizI18n = spawnSync(process.execPath, [path.join(ROOT, "scripts", "qa-business-i18n.mjs")], {
+    cwd: ROOT,
+    encoding: "utf8",
+  });
+  if (bizI18n.status !== 0) {
+    errors.push("qa-business-i18n failed (Business/Studio pages differ across languages)");
+    if (bizI18n.stdout) console.log(bizI18n.stdout.trim());
+    if (bizI18n.stderr) console.error(bizI18n.stderr.trim());
+  } else {
+    const line = (bizI18n.stdout || "").trim().split("\n").pop();
+    console.log(`fast-check: ${line || "business i18n OK"}`);
+  }
+
   // 4) Core SoT modules load
   for (const mod of ["scripts/business-pricing.mjs", "scripts/studio-pricing.mjs", "scripts/seo-meta.mjs"]) {
     const r = spawnSync(process.execPath, ["--check", path.join(ROOT, mod)], {

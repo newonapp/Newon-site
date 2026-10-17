@@ -466,7 +466,7 @@ const FOOTER_THREADS_URL = "https://www.threads.com/@newon.app.dev?invite=0";
 const FOOTER_BLOG_URL = "https://m.blog.naver.com/newonapp";
 const FOOTER_TIKTOK_URL = "https://www.tiktok.com/@newon.app?_r=1&_t=ZS-95LGrSuOcfF";
 
-const FOOTER_MENUS = [
+export const FOOTER_MENUS = [
   ["consumer", "products/"],
   ["ai", "ai/"],
   ["babylog", "babylog/"],
@@ -486,14 +486,21 @@ function footIcon(url, label, inner, { external = true } = {}) {
   return `<a class="site-foot__icon" href="${escapeHtml(url)}" aria-label="${escapeHtml(label)}"${extra}>${FOOT_SVG_OPEN}${inner}</svg></a>`;
 }
 
+/** Footer link row (menus + privacy + terms) — single source for every generated footer, including the home template. */
+export function renderFooterNavLinks(flat, flatEn, { base = "../", langDir = "" } = {}) {
+  const resolve = (p) => href(base, p, langDir);
+  const menuLinks = FOOTER_MENUS.map(([id, path]) => `<a href="${resolve(path)}">${navTopLabel(flat, flatEn, id)}</a>`).join("");
+  const privacy = `<a href="${resolve("privacy/")}">${escapeHtml(t(flat, flatEn, "footer.privacy", "Privacy Policy"))}</a>`;
+  const terms = `<a href="${resolve("terms/")}">${escapeHtml(t(flat, flatEn, "footer.terms", "Terms of Service"))}</a>`;
+  return `${menuLinks}${privacy}${terms}`;
+}
+
 export function renderStudioFooter(flat, flatEn, { base = "../", langDir = "" } = {}) {
   const brand = escapeHtml(t(flat, flatEn, "nav.brandName", "Newon"));
   const tagline = escapeHtml(t(flat, flatEn, "footer.tagline", "Connecting ideas to reality—and making everyday life easier as a global life platform."));
   const rights = escapeHtml(t(flat, flatEn, "footer.rights", "All rights reserved."));
   const resolve = (p) => href(base, p, langDir);
-  const menuLinks = FOOTER_MENUS.map(([id, path]) => `<a href="${resolve(path)}">${navTopLabel(flat, flatEn, id)}</a>`).join("");
-  const privacy = `<a href="${resolve("privacy/")}">${escapeHtml(t(flat, flatEn, "footer.privacy", "Privacy Policy"))}</a>`;
-  const terms = `<a href="${resolve("terms/")}">${escapeHtml(t(flat, flatEn, "footer.terms", "Terms of Service"))}</a>`;
+  const navLinks = renderFooterNavLinks(flat, flatEn, { base, langDir });
   const icons = [
     footIcon(
       "mailto:newon@newon.app",
@@ -535,7 +542,7 @@ export function renderStudioFooter(flat, flatEn, { base = "../", langDir = "" } 
       </a>
       <a class="site-foot__url" href="https://newon.app">https://newon.app</a>
       <p class="site-foot__tagline">${tagline}</p>
-      <nav class="site-foot__nav" aria-label="Footer">${menuLinks}${privacy}${terms}</nav>
+      <nav class="site-foot__nav" aria-label="Footer">${navLinks}</nav>
       <div class="site-foot__icons" role="group" aria-label="${escapeHtml(t(flat, flatEn, "footer.socialAria", "Contact and social"))}">${icons}</div>
       <p class="site-foot__copy">© 2026 ${brand}. ${rights}</p>
     </div>
