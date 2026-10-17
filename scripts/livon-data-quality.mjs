@@ -14,7 +14,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = f => fs.readFileSync(path.join(ROOT, 'livon', f), 'utf8');
 
-export function loadLivon({ lifeTopics, patch } = {}) {
+export function loadLivon({ lifeTopics, patch, now } = {}) {
   const mem = () => { const m = new Map(); return { getItem: k => (m.has(k) ? m.get(k) : null), setItem: (k, v) => m.set(k, String(v)), removeItem: k => m.delete(k), key: i => [...m.keys()][i] ?? null, get length() { return m.size; } }; };
   const ctx = {
     console: { log() {}, warn() {}, error() {} }, URL, Promise, setTimeout, clearTimeout, AbortController,
@@ -25,6 +25,13 @@ export function loadLivon({ lifeTopics, patch } = {}) {
   };
   ctx.window = ctx; ctx.globalThis = ctx;
   vm.createContext(ctx);
+  /* Optional fixed clock for the VM only (tests and --now=): Date.now() and new Date() return `now`; everything else is the real Date. */
+  if (now != null) {
+    vm.runInContext(`(function (RealDate) { var fixed = ${Number(now)};
+      function FixedDate() { if (!(this instanceof FixedDate)) return new RealDate(fixed).toString(); return arguments.length ? new (Function.prototype.bind.apply(RealDate, [null].concat([].slice.call(arguments))))() : new RealDate(fixed); }
+      FixedDate.prototype = RealDate.prototype; FixedDate.now = function () { return fixed; }; FixedDate.parse = RealDate.parse; FixedDate.UTC = RealDate.UTC;
+      globalThis.Date = FixedDate; })(Date);`, ctx);
+  }
   for (const f of ['life-data.js', 'life-events-data.js', 'explore-data.js', 'community-data.js', 'today-data.js']) vm.runInContext(read(f), ctx, { filename: f });
   if (patch) patch(ctx);
   for (const f of ['data/livon-data-config.js', 'data/livon-data-schema.js', 'data/livon-data-platform.js', 'data/livon-screen-data.js', 'life-hub.js', 'explore-search.js', 'data/livon-content-quality.js', 'livon-personalization.js']) vm.runInContext(read(f), ctx, { filename: f });
@@ -98,7 +105,7 @@ export function qualityReport(ctx) {
   const timeBound = { event: 1, program: 1, policy: 1, class: 1 };
   const undatedTimeBound = all.filter(e => timeBound[e.type] && (e.sourceType === 'editorial' || e.sourceType === 'official' || e.sourceType === 'internal')
     && !e.startDate && !e.endDate && !e.applicationEnd && !e.expiresAt).map(e => e.id);
-  const now = Date.now();
+  const now = ctx.Date && ctx.Date.now ? ctx.Date.now() : Date.now();
   const checks = {
     missingId: sum('errorCodes', ['id']),
     duplicateId: reps.reduce((n, r) => n + r.duplicates, 0) + Object.values(idCount).filter(n => n > 1).length,
@@ -133,7 +140,10 @@ export function qualityReport(ctx) {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const rep = qualityReport(loadLivon());
+  const nowArg = process.argv.find(a => a.startsWith('--now='));
+  const fixedNow = nowArg ? Date.parse(nowArg.slice(6)) : (process.env.LIVON_NOW ? Date.parse(process.env.LIVON_NOW) : null);
+  if (nowArg && Number.isNaN(fixedNow)) { console.error('livon-data-quality: --now must be an ISO date'); process.exit(2); }
+  const rep = qualityReport(loadLivon({ now: fixedNow }));
   console.log(JSON.stringify(rep, null, 2));
   process.exit(rep.blocking ? 1 : 0);
 }

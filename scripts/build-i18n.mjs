@@ -35,6 +35,9 @@ import {
 } from "./studio-pricing.mjs";
 import { STUDIO_AREA_PAGES } from "./studio-areas.mjs";
 
+/** Build timestamp. SOURCE_DATE_EPOCH (seconds, reproducible-builds convention) pins it; unset = the current time, as before. */
+const buildDate = () => (process.env.SOURCE_DATE_EPOCH && /^\d+$/.test(process.env.SOURCE_DATE_EPOCH) ? new Date(Number(process.env.SOURCE_DATE_EPOCH) * 1000) : new Date());
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 
@@ -559,7 +562,7 @@ function writeRobotsTxt() {
  * Uses catalog routePath / studio paths; skips redirects, admin, success, delete-account.
  */
 function writeSitemap() {
-  const today = new Date().toISOString().slice(0, 10);
+  const today = buildDate().toISOString().slice(0, 10);
   /** @type {Map<string, { changefreq: string, priority: string }>} */
   const entries = new Map();
 

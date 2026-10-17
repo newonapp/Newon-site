@@ -15,6 +15,9 @@ import { fileURLToPath } from "url";
 import { spawnSync } from "child_process";
 import { publishedArticles } from "./news-data.mjs";
 
+/** Build timestamp. SOURCE_DATE_EPOCH (seconds, reproducible-builds convention) pins it; unset = the current time, as before. */
+const buildDate = () => (process.env.SOURCE_DATE_EPOCH && /^\d+$/.test(process.env.SOURCE_DATE_EPOCH) ? new Date(Number(process.env.SOURCE_DATE_EPOCH) * 1000) : new Date());
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 const OUT = path.join(ROOT, "_publish");
@@ -232,7 +235,7 @@ function stageHuman404Play() {
   fs.rmSync(dest, { recursive: true, force: true });
   copyDir(src, dest);
   const marker = [
-    new Date().toISOString(),
+    buildDate().toISOString(),
     process.env.GITHUB_SHA || "local",
     process.env.GITHUB_RUN_ID || "",
   ].join("\n");

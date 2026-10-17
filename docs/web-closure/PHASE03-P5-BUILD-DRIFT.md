@@ -40,3 +40,6 @@ Committed non-English text was **not** overwritten with English or Korean: which
 - `scripts/qa-build-drift.mjs` (`npm run check:build-drift`) plus `docs/web-closure/build-drift-baseline.json`: after one clean build, **fails** on a drifted file not in the baseline, a drifted file whose content hash changed, or an unexpected new untracked file. Whitespace and the timestamps above are ignored. Baseline: 189 files (91 portfolio, 84 delete-account, 7 home, 7 `_sp` locale).
 - Verified: clean build then check = PASS (189/189). A tampered `ko/index.html` and `ja/portfolio/index.html` = FAIL. A second build in the same tree = FAIL, as predicted (non-idempotent patchers); the guard is for a build from a clean checkout.
 - The guard is **not** wired into `publish-site.mjs` or CI, because it needs a git work tree and a freshly built tree. Wiring it into the workflow is a deploy-side step (NOT DONE).
+
+## P6 정정 (2026-10-18)
+P5의 "커밋된 비영어 문구는 어떤 추적 소스에서도 도출되지 않는다"는 표현은 과했습니다. 비교 가능한 문구의 약 절반은 `locales/_sp.<lang>.json`에 있으며, `apply-delete-account-locales.mjs`가 이를 설계상 영어로 덮어씁니다. 자세한 내용은 `PHASE03-P6-TRANSLATION-SOURCE.md` 참고.

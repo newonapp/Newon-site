@@ -49,7 +49,11 @@
     "ship": "node scripts/publish-site.mjs && bash scripts/push-to-github.sh",
     "push:first": "bash first-time-push.sh",
     "dev:livon": "node scripts/publish-site.mjs && node --env-file=.env scripts/serve-publish.mjs",
-    "test:livon": "node --test tests/livon/*.test.mjs"
+    "test:livon": "node --test tests/livon/*.test.mjs",
+    "check:jsonld": "node scripts/qa-jsonld.mjs",
+    "check:ci-workflows": "node scripts/qa-ci-workflows.mjs",
+    "check:translation-candidates": "node scripts/extract-translation-candidates.mjs --built . --verify",
+    "extract:translation-candidates": "node scripts/extract-translation-candidates.mjs --built ."
   },
   "dependencies": {
     "pg": "^8.13.0"

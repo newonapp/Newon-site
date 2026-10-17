@@ -14,9 +14,11 @@ import { SERVICE_PRICING, QUOTE_PACKAGES } from "./business-pricing.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "admin");
+/** Build timestamp. SOURCE_DATE_EPOCH (seconds, reproducible-builds convention) pins it; unset = the current time, as before. */
+const buildDate = () => (process.env.SOURCE_DATE_EPOCH && /^\d+$/.test(process.env.SOURCE_DATE_EPOCH) ? new Date(Number(process.env.SOURCE_DATE_EPOCH) * 1000) : new Date());
 
 const snapshot = {
-  generatedAt: new Date().toISOString(),
+  generatedAt: buildDate().toISOString(),
   note: "Business leads, waitlist, and newsletter submissions are collected via FormSubmit to newon@newon.app. Activate the inbox at formsubmit.co if not done yet.",
   products: allProducts("ko"),
   labs: LABS_EXPERIMENTS,

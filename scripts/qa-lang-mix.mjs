@@ -53,7 +53,7 @@ function englishScore(line) {
   return line.toLowerCase().split(/[^a-z']+/).filter((w) => EN_WORDS.has(w)).length;
 }
 
-const report = { missing: [], badLang: [], mixed: {}, marked: {} };
+const report = { missing: [], badLang: [], mixed: {}, marked: {}, perPage: {} };
 let pages = 0;
 for (const lang of LANGS) {
   report.mixed[lang] = { pages: 0, lines: 0 };
@@ -71,7 +71,7 @@ for (const lang of LANGS) {
     const markedText = [...marked].join(" ");
     const mixed = lines.filter((l) => looksEnglish(l, lang) && !markedText.includes(l.slice(0, 40)));
     report.marked[lang] += lines.filter((l) => markedText.includes(l.slice(0, 40))).length;
-    if (mixed.length) { report.mixed[lang].pages += 1; report.mixed[lang].lines += mixed.length; }
+    if (mixed.length) { report.mixed[lang].pages += 1; report.mixed[lang].lines += mixed.length; report.perPage[`${lang}/${key}`] = mixed.length; }
   }
 }
 if (jsonOut) fs.writeFileSync(jsonOut, `${JSON.stringify(report, null, 1)}\n`);

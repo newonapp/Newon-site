@@ -138,7 +138,7 @@ test('DM-11 review queue: deterministic priorities; P0 = 0 when nothing is block
   assert.equal(Q.byRule['P4 DUPLICATE_CANDIDATE'], 97);
   assert.equal(Q.byRule['P4 CTA_REVIEW'], 47);
   assert.ok(Q.byRule['P4 TAXONOMY_REVIEW'] > 0);
-  const again = DM.reviewQueue(DM.createModel(ctx));
+  const again = DM.reviewQueue(DM.createModel(ctx, { now: Date.parse('2026-10-01T00:00:00Z') })); /* same fixed clock as M: determinism is tested, not today's date */
   deq(again.items.map(i => i.priority + i.rule + i.recordId), Q.items.map(i => i.priority + i.rule + i.recordId));
   const order = Q.items.map(i => i.priority); deq(order, [...order].sort());
   /* a broken relation goes to P0 */

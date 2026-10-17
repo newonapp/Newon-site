@@ -17487,7 +17487,7 @@ html[data-newon-shell-theme="dark"] .bs-page[data-bs-analytics^="store_"] .bs-se
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.72);
   border: 1px solid rgba(0, 0, 0, 0.14);
   padding: 0.28rem 0.5rem;
   background: rgba(255, 255, 255, 0.8);
@@ -17564,7 +17564,7 @@ html[data-newon-shell-theme="dark"] .bs-page[data-bs-analytics^="store_"] .bs-se
 
 .bs-use-board__item.is-ink .bs-use-board__tag,
 .bs-use-board__item.is-paper .bs-use-board__tag {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.72);
   opacity: 1;
 }
 

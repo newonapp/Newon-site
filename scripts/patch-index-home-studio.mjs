@@ -24,7 +24,9 @@ function patchIndex(html, block) {
     if (mainIdx === -1) throw new Error("main#main not found");
     const heroEnd = before.indexOf(START);
     const prefix = before.slice(0, mainIdx + '<main id="main">'.length) + "\n";
-    return prefix + block.trim() + "\n\n" + after;
+    // Re-seat the block with the same separator the first-run branch uses; keeping the old leading whitespace of `after`
+    // added two blank lines on every run (P6: non-idempotent build input).
+    return prefix + block.trim() + "\n\n      " + after.replace(/^\s+/, "");
   }
 
   const mainIdx = html.indexOf('<main id="main">');
