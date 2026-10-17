@@ -57,6 +57,7 @@
     "extract:translation-candidates": "node scripts/extract-translation-candidates.mjs --built .",
     "check:determinism": "node scripts/qa-build-determinism.mjs",
     "check:approved-translations": "node scripts/apply-approved-translations.mjs --check",
+    "check:babylog-site": "node scripts/qa-babylog-site.mjs",
     "scan:business-wording": "node scripts/qa-business-wording-scan.mjs",
     "classify:english-remainder": "node scripts/classify-english-remainder.mjs",
     "report:livon-expired": "node scripts/qa-livon-expired-records.mjs"

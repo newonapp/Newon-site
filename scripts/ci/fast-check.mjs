@@ -137,7 +137,7 @@ function main() {
   }
 
   // 3e) JSON-LD blocks parse in all 9 languages; CI workflows cannot deploy from the guard workflow
-  for (const [label, script, extra] of [["jsonld", "qa-jsonld.mjs", []], ["ci-workflows", "qa-ci-workflows.mjs", []], ["approved-translations", "apply-approved-translations.mjs", ["--check"]]]) {
+  for (const [label, script, extra] of [["jsonld", "qa-jsonld.mjs", []], ["ci-workflows", "qa-ci-workflows.mjs", []], ["approved-translations", "apply-approved-translations.mjs", ["--check"]], ["babylog-site", "qa-babylog-site.mjs", []]]) {
     const r = spawnSync(process.execPath, [path.join(ROOT, "scripts", script), ...extra], { cwd: ROOT, encoding: "utf8" });
     if (r.status !== 0) {
       errors.push(`${script} failed`);

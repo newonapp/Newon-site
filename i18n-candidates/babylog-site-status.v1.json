@@ -1,0 +1,107 @@
+{
+ "schema": "babylog-site-status/v1",
+ "generatedFor": "work/babylog-corporate-site",
+ "policy": "docs/web-closure/PHASE03-P7-TRANSLATION-POLICY.md",
+ "note": "Approved translation first, otherwise English fallback. Nothing here is auto-promoted; approved text goes into i18n-approved/<lang>.json via scripts/approve-translation-candidates.mjs after human review.",
+ "pages": [
+  {
+   "id": "overview",
+   "path": "/<lang>/babylog/"
+  },
+  {
+   "id": "platform",
+   "path": "/<lang>/babylog/platform/"
+  },
+  {
+   "id": "business",
+   "path": "/<lang>/babylog/business/"
+  },
+  {
+   "id": "partnerships",
+   "path": "/<lang>/babylog/partnerships/"
+  },
+  {
+   "id": "contact",
+   "path": "/<lang>/babylog/contact/"
+  }
+ ],
+ "stringsPerPage": {
+  "overview": {
+   "ko": 121,
+   "en": 121
+  },
+  "platform": {
+   "ko": 102,
+   "en": 102
+  },
+  "business": {
+   "ko": 114,
+   "en": 114
+  },
+  "partnerships": {
+   "ko": 94,
+   "en": 94
+  },
+  "contact": {
+   "ko": 56,
+   "en": 56
+  }
+ },
+ "languages": {
+  "ko": {
+   "status": "draft-unreviewed",
+   "source": "ko",
+   "renderedAs": "ko",
+   "detail": "owner-specified headings and sentences, plus connecting text drafted by Claude — not yet reviewed by the owner"
+  },
+  "en": {
+   "status": "draft-unreviewed",
+   "source": "en",
+   "renderedAs": "en (lang=\"en\" on the BABYLOG section)",
+   "detail": "draft translation of ko — not reviewed by a native speaker or the owner"
+  },
+  "ja": {
+   "status": "english-fallback",
+   "source": "en",
+   "renderedAs": "en (lang=\"en\" on the BABYLOG section)",
+   "detail": "No approved translation exists. The English draft is rendered inside lang=\"en\" and counted as English remainder by qa-lang-mix. Header, footer and menu labels come from the existing locale files."
+  },
+  "es": {
+   "status": "english-fallback",
+   "source": "en",
+   "renderedAs": "en (lang=\"en\" on the BABYLOG section)",
+   "detail": "No approved translation exists. The English draft is rendered inside lang=\"en\" and counted as English remainder by qa-lang-mix. Header, footer and menu labels come from the existing locale files."
+  },
+  "pt-br": {
+   "status": "english-fallback",
+   "source": "en",
+   "renderedAs": "en (lang=\"en\" on the BABYLOG section)",
+   "detail": "No approved translation exists. The English draft is rendered inside lang=\"en\" and counted as English remainder by qa-lang-mix. Header, footer and menu labels come from the existing locale files."
+  },
+  "fr": {
+   "status": "english-fallback",
+   "source": "en",
+   "renderedAs": "en (lang=\"en\" on the BABYLOG section)",
+   "detail": "No approved translation exists. The English draft is rendered inside lang=\"en\" and counted as English remainder by qa-lang-mix. Header, footer and menu labels come from the existing locale files."
+  },
+  "de": {
+   "status": "english-fallback",
+   "source": "en",
+   "renderedAs": "en (lang=\"en\" on the BABYLOG section)",
+   "detail": "No approved translation exists. The English draft is rendered inside lang=\"en\" and counted as English remainder by qa-lang-mix. Header, footer and menu labels come from the existing locale files."
+  },
+  "hi": {
+   "status": "english-fallback",
+   "source": "en",
+   "renderedAs": "en (lang=\"en\" on the BABYLOG section)",
+   "detail": "No approved translation exists. The English draft is rendered inside lang=\"en\" and counted as English remainder by qa-lang-mix. Header, footer and menu labels come from the existing locale files."
+  },
+  "id": {
+   "status": "english-fallback",
+   "source": "en",
+   "renderedAs": "en (lang=\"en\" on the BABYLOG section)",
+   "detail": "No approved translation exists. The English draft is rendered inside lang=\"en\" and counted as English remainder by qa-lang-mix. Header, footer and menu labels come from the existing locale files."
+  }
+ },
+ "approvedEntries": 0
+}
