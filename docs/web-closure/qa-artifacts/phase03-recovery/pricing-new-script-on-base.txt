@@ -1,0 +1,2 @@
+Service pages: 207 price-shown (full checks), 0 no-public-price (residue check).
+Pricing QA: 0 error(s), 0 warning(s).

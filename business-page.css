@@ -1422,3 +1422,33 @@ html[data-newon-shell-theme="dark"] .bz-explore-foot {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 }
+
+/* ── Light theme: raise small-text contrast on the inquiry page to WCAG AA 4.5:1 (Phase 03 contrast recovery) ── */
+html:not([data-newon-shell-theme="dark"]) .bz-page .bz-ind-n,
+html:not([data-newon-shell-theme="dark"]) .bz-page .bz-ind-en,
+html:not([data-newon-shell-theme="dark"]) .bz-page .bz-inq-explore__eyebrow {
+  color: #6e6e73;
+}
+html:not([data-newon-shell-theme="dark"]) .bz-page .bz-cap-item__n,
+html:not([data-newon-shell-theme="dark"]) .bz-page .bz-num,
+html:not([data-newon-shell-theme="dark"]) .bz-page .bz-sv__meta,
+html:not([data-newon-shell-theme="dark"]) .bz-ok-page .bz-ok-kicker {
+  color: rgba(10, 10, 10, 0.64);
+}
+html:not([data-newon-shell-theme="dark"]) .bz-page .bz-hero__crumb a,
+html:not([data-newon-shell-theme="dark"]) .bz-page .bz-hero__crumb span,
+html:not([data-newon-shell-theme="dark"]) .bz-page .bz-hero__eyebrow,
+html:not([data-newon-shell-theme="dark"]) .bz-page .bz-hero__eyebrow-role,
+html:not([data-newon-shell-theme="dark"]) .bz-page .bz-sv__hint {
+  color: rgba(10, 10, 10, 0.68);
+}
+html:not([data-newon-shell-theme="dark"]) .bz-page .bz-flow-track__n,
+html:not([data-newon-shell-theme="dark"]) .bz-page .bz-proof .bz-label {
+  color: rgba(255, 255, 255, 0.66);
+}
+html:not([data-newon-shell-theme="dark"]) .bz-page .bz-hero.bz-hero--hq .bz-hero__eyebrow {
+  color: rgba(10, 10, 10, 0.68) !important;
+}
+html:not([data-newon-shell-theme="dark"]) .bz-page .bz-band .bz-label {
+  color: rgba(255, 255, 255, 0.66) !important;
+}

@@ -2091,3 +2091,53 @@ html[data-newon-shell-theme="dark"] .bp-board {
   color: #f5f5f5 !important;
   border-color: rgba(255, 255, 255, 0.14) !important;
 }
+
+/* ── Dark theme: sections that hard-code a white surface (Phase 03 contrast recovery) ── */
+html[data-newon-shell-theme="dark"] .bp-process,
+html[data-newon-shell-theme="dark"] .bp-proc,
+html[data-newon-shell-theme="dark"] .bp-usecases,
+html[data-newon-shell-theme="dark"] .bp-ba,
+html[data-newon-shell-theme="dark"] .bp-output,
+html[data-newon-shell-theme="dark"] .bp-out,
+html[data-newon-shell-theme="dark"] .bp-out__banner,
+html[data-newon-shell-theme="dark"] .bp-launch,
+html[data-newon-shell-theme="dark"] .bp-lflow,
+html[data-newon-shell-theme="dark"] .bp-when,
+html[data-newon-shell-theme="dark"] .bp-explore__stage,
+html[data-newon-shell-theme="dark"] .bp-pricing,
+html[data-newon-shell-theme="dark"] .bp-quote,
+html[data-newon-shell-theme="dark"] .bp-proc__step::after,
+html[data-newon-shell-theme="dark"] .bp-proc__step:hover::after,
+html[data-newon-shell-theme="dark"] .bp-lflow__step::after,
+html[data-newon-shell-theme="dark"] .bp-lflow__step:hover::after,
+html[data-newon-shell-theme="dark"] .bp-uc__item:hover::before,
+html[data-newon-shell-theme="dark"] .bp-when__item::before,
+html[data-newon-shell-theme="dark"] .bp-shift__arrow {
+  background: var(--bp-bg);
+}
+html[data-newon-shell-theme="dark"] .bp-shift__panel--after {
+  background: #1c1c1e;
+}
+html[data-newon-shell-theme="dark"] .bp-proc__n,
+html[data-newon-shell-theme="dark"] .bp-lflow__n,
+html[data-newon-shell-theme="dark"] .bp-when__ghost {
+  color: rgba(255, 255, 255, 0.07);
+}
+html[data-newon-shell-theme="dark"] .bp-explore__tab-n,
+html[data-newon-shell-theme="dark"] .bp-explore__tab-t {
+  color: var(--bp-muted);
+}
+html[data-newon-shell-theme="dark"] .bp-explore__tab.is-active .bp-explore__tab-n,
+html[data-newon-shell-theme="dark"] .bp-explore__tab.is-active .bp-explore__tab-t {
+  color: var(--bp-ink);
+}
+/* Root cause: --bp-* tokens had dark values only on .rs-page, so .bp-page kept light-theme ink on dark surfaces. */
+html[data-newon-shell-theme="dark"] .bp-page {
+  --bp-ink: #f5f5f5;
+  --bp-muted: #a8a8a8;
+  --bp-faint: #8a8a8a;
+  --bp-line: rgba(255, 255, 255, 0.12);
+  --bp-hover: rgba(255, 255, 255, 0.06);
+  --bp-bg: #000000;
+}
+html[data-newon-shell-theme="dark"] .bp-btn--primary { color: #000; }

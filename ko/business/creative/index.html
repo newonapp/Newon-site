@@ -54,7 +54,8 @@
   <script src="/analytics.js?v=20260904sec1" defer></script>
     <link rel="stylesheet" href="/site-dark.css?v=20260924foot1" />
     <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
-  </head>
+  <link rel="stylesheet" href="/business-model-notice.css?v=1" />
+</head>
 <body class="hub-page cr-page">
   <header class="gnav site-header gnav--five gnav--many" data-gnav>
       <div class="gnav__bar">
@@ -695,13 +696,15 @@
     </div>
     </header>
   <main id="main">
+<aside class="bm-notice bm-notice--legacy" role="note" data-bm-notice="legacy"><strong class="bm-notice__label">안내</strong><p>이 페이지는 사업 방향에 맞춰 정비 중입니다. Newon은 개별 고객의 맞춤 제작·외주·납품을 제공하지 않으며, 아래 내용은 기술·운영 역량을 설명하는 참고 자료입니다. 협업은 제휴·도입 문의를 통해 검토합니다.</p></aside>
+
     <section class="cr-hero">
       <div class="cr-inner">
         <p class="cr-kicker">NEWON CREATIVE <span class="studio-status studio-status--building">Internal · Building</span></p>
         <h1 class="cr-title">브랜드가 세상에 보이는 방식을 설계합니다.</h1>
         <p class="cr-lead">브랜드의 이름과 정체성부터 웹, 앱과 콘텐츠까지 하나의 경험으로 연결합니다.</p>
         <div class="cr-actions">
-          <a class="btn btn-primary" href="#inquiry" data-analytics="creative_inquiry">프로젝트 문의하기</a>
+          <a class="btn btn-primary" href="#inquiry" data-analytics="creative_inquiry">제휴·협업 문의하기</a>
           <a class="btn btn-ghost" href="#services">서비스 보기 ↓</a>
         </div>
       </div>
@@ -760,7 +763,7 @@
       <div class="cr-inner cr-inquiry">
         <header class="cr-sec-head">
           <p class="cr-label">INQUIRY</p>
-          <h2 class="cr-h2">Creative 프로젝트 문의</h2>
+          <h2 class="cr-h2">Creative 제휴·협업 문의</h2>
           <p class="cr-form-lead">브랜드·웹·앱·콘텐츠 프로젝트를 남겨 주세요. Building 단계의 서비스도 문의 가능합니다.</p>
         </header>
         <form class="cr-form" id="cr-inquiry-form" novalidate data-analytics-form="creative_inquiry">
@@ -784,7 +787,7 @@
               <span>예산 범위</span>
               <select name="budget">
                 <option value="">—</option>
-                <option value="미정">미정</option><option value="₩100만 이하">₩100만 이하</option><option value="₩100–300만">₩100–300만</option><option value="₩300–500만">₩300–500만</option><option value="₩500만 이상">₩500만 이상</option><option value="별도 협의">별도 협의</option>
+                <option value="미정">미정</option><option value="₩100만 이하"></option><option value="₩100–300만"></option><option value="₩300–500만"></option><option value="₩500만 이상"></option><option value="별도 협의">별도 협의</option>
               </select>
             </label>
             <label class="cr-field">
@@ -808,8 +811,7 @@
             </label>
           </div>
           <button type="submit" class="btn btn-primary" data-analytics="creative_inquiry_submit">문의 보내기</button>
-          <p class="cr-form__note" id="cr-form-status" hidden></p>
-        </form>
+          </form>
         <div class="cr-success" id="cr-success" hidden>
           <h3>문의가 접수되었습니다</h3>
           <p>확인 후 입력하신 이메일로 연락드립니다.</p>

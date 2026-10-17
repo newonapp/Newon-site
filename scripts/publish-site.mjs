@@ -73,6 +73,7 @@ const PUBLISH_ROOT_CORE = [
   "data-reporting.css",
   "business-pillar.css",
   "business-intro.css",
+  "business-model-notice.css",
   "business-pillar.js",
   "pillar-service.css",
   "pillar-service.js",

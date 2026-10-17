@@ -1,0 +1,1580 @@
+{
+ "tot": 666,
+ "pagesWithLostLinks": 0,
+ "formDiff": 262,
+ "missingFile": 0,
+ "detail": [
+  {
+   "f": "ko/business/booking/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/business/build/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/business/mvp/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/business/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/business/app/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/business/website-renewal/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/business/maintenance/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/business/solutions/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/business/custom-product/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/business/internal-system/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/business/product-launch/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/business/design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/business/collaboration/development/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/partnerships/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/digital/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/digital/web-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/digital/app-ui-ux/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/digital/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/digital/product-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/brand/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/brand/identity/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/brand/logo/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/brand/strategy/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/content/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/content/campaign/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/content/social/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/content/visual/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/care/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/care/monthly-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ko/studio/care/design-improvement/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/business/automation/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/business/booking/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/business/build/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/business/mvp/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/business/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/business/app/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/business/website-renewal/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/business/maintenance/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/business/product-launch/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/business/collaboration/development/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/partnerships/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/digital/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/digital/web-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/digital/app-ui-ux/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/digital/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/digital/product-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/brand/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/brand/identity/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/brand/logo/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/brand/strategy/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/content/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/content/campaign/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/content/social/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/content/visual/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/care/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/care/monthly-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "en/studio/care/design-improvement/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/business/automation/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/business/booking/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/business/build/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/business/mvp/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/business/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/business/app/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/business/website-renewal/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/business/maintenance/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/business/product-launch/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/business/collaboration/development/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/partnerships/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/digital/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/digital/web-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/digital/app-ui-ux/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/digital/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/digital/product-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/brand/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/brand/identity/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/brand/logo/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/brand/strategy/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/content/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/content/campaign/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/content/social/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/content/visual/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/care/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/care/monthly-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "ja/studio/care/design-improvement/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/business/booking/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/business/build/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/business/mvp/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/business/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/business/app/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/business/website-renewal/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/business/maintenance/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/business/solutions/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/business/custom-product/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/business/internal-system/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/business/product-launch/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/business/competitor-analysis/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/business/collaboration/promotion/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/business/collaboration/development/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/partnerships/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/digital/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/digital/web-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/digital/app-ui-ux/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/digital/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/digital/product-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/brand/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/brand/identity/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/brand/logo/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/brand/strategy/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/content/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/content/campaign/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/content/social/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/content/visual/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/care/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/care/monthly-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "es/studio/care/design-improvement/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/business/booking/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/business/build/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/business/mvp/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/business/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/business/app/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/business/website-renewal/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/business/maintenance/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/business/solutions/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/business/custom-product/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/business/internal-system/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/business/product-launch/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/business/competitor-analysis/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/business/collaboration/promotion/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/business/collaboration/development/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/partnerships/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/digital/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/digital/web-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/digital/app-ui-ux/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/digital/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/digital/product-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/brand/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/brand/identity/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/brand/logo/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/brand/strategy/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/content/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/content/campaign/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/content/social/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/content/visual/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/care/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/care/monthly-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "pt-br/studio/care/design-improvement/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/business/booking/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/business/mvp/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/business/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/business/app/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/business/website-renewal/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/business/maintenance/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/business/solutions/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/business/custom-product/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/business/internal-system/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/business/product-launch/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/business/competitor-analysis/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/business/collaboration/development/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/partnerships/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/digital/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/digital/web-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/digital/app-ui-ux/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/digital/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/digital/product-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/brand/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/brand/identity/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/brand/logo/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/brand/strategy/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/content/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/content/campaign/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/content/social/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/content/visual/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/care/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/care/monthly-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "fr/studio/care/design-improvement/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/business/booking/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/business/mvp/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/business/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/business/app/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/business/website-renewal/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/business/maintenance/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/business/solutions/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/business/custom-product/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/business/internal-system/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/business/product-launch/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/business/competitor-analysis/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/business/collaboration/promotion/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/business/collaboration/development/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/partnerships/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/digital/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/digital/web-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/digital/app-ui-ux/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/digital/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/digital/product-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/brand/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/brand/identity/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/brand/logo/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/brand/strategy/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/content/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/content/campaign/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/content/social/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/content/visual/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/care/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/care/monthly-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "de/studio/care/design-improvement/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/business/booking/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/business/build/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/business/mvp/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/business/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/business/app/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/business/website-renewal/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/business/maintenance/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/business/product-launch/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/business/collaboration/development/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/studio/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/studio/partnerships/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/studio/digital/web-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/studio/digital/app-ui-ux/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/studio/digital/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/studio/digital/product-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/studio/brand/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/studio/brand/identity/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/studio/brand/logo/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/studio/brand/strategy/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/studio/content/campaign/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/studio/content/social/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/studio/content/visual/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/studio/care/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/studio/care/monthly-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "hi/studio/care/design-improvement/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/business/booking/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/business/build/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/business/mvp/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/business/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/business/app/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/business/website-renewal/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/business/maintenance/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/business/product-launch/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/business/competitor-analysis/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/studio/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/studio/partnerships/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/studio/digital/web-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/studio/digital/app-ui-ux/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/studio/digital/landing/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/studio/digital/product-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/studio/brand/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/studio/brand/identity/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/studio/brand/logo/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/studio/brand/strategy/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/studio/content/campaign/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/studio/content/social/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/studio/content/visual/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/studio/care/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/studio/care/monthly-design/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  },
+  {
+   "f": "id/studio/care/design-improvement/index.html",
+   "lost": [],
+   "added": [],
+   "formDiff": true
+  }
+ ]
+}

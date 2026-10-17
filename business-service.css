@@ -21218,3 +21218,93 @@ html[data-newon-shell-theme="dark"] .bs-sv-renew .is-old li {
   .bs-sv-renew { grid-template-columns: 1fr; }
   .bs-sv-renew__out { grid-column: auto; }
 }
+
+/* ── Dark theme: text inside ink-filled active (.is-on) demo items — ink flips to light, so hard-coded white text must flip too (Phase 03 contrast recovery) ── */
+html[data-newon-shell-theme="dark"] .bs-sv-strategy__list li.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-improve__scope li.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-mvp__steps li.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-mvp__rows div.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-web__map li.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-ai__grid article.is-on .bs-sv__k,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-ai__grid article.is-on em,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-data__kpis div.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-wf__node.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-tools__ticket.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-tools__ticket.is-on em,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-mr__out div.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-tr__row.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-cp__modules li.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-cp__modules li.is-on em,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-is__row.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-is__row.is-on em,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-wl__layer.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-wl__row.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-part__terms div.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-promo__card.is-on .bs-sv__k,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-promo__card.is-on em,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-dev__steps li.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-dev__panel div.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-sx-web__qa li.is-on span {
+  color: rgba(17, 17, 17, 0.72);
+}
+html[data-newon-shell-theme="dark"] .bs-sv-month__list li.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-month__list li.is-on em,
+html[data-newon-shell-theme="dark"] .bs-sv-naming__cands li.is-on em {
+  color: rgba(17, 17, 17, 0.72);
+}
+html[data-newon-shell-theme="dark"] .bs-sv-assets__wall .is-on,
+html[data-newon-shell-theme="dark"] .bs-sv-store-flow__step.is-on,
+html[data-newon-shell-theme="dark"] .bs-sv-store-dash__week li.is-on,
+html[data-newon-shell-theme="dark"] .bs-sv-store-cmd__rail span.is-on,
+html[data-newon-shell-theme="dark"] .bs-sv-store-canvas__notes span.is-on,
+html[data-newon-shell-theme="dark"] .bs-sv-store-wb__sheet span.is-on,
+html[data-newon-shell-theme="dark"] .bs-rd-flowchip.is-on,
+html[data-newon-shell-theme="dark"] .bs-sv-lx-game__hud .is-on,
+html[data-newon-shell-theme="dark"] .bs-sv-sx-aibuild__log .is-on,
+html[data-newon-shell-theme="dark"] .bs-sv-sx-road__col.is-on li {
+  color: #111111;
+}
+html[data-newon-shell-theme="dark"] .bs-sv-biz-lp__page section.is-on em,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-cr__lane.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-cr__lane.is-on em {
+  color: rgba(17, 17, 17, 0.65);
+}
+html[data-newon-shell-theme="dark"] .bs-sv-lab-board__cards article.is-on .bs-sv__k,
+html[data-newon-shell-theme="dark"] .bs-sv-lab-game div.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-lx-review__inbox li.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-lx-form__field.is-on > span:first-child,
+html[data-newon-shell-theme="dark"] .bs-sv-lx-form__field.is-on em,
+html[data-newon-shell-theme="dark"] .bs-sv-lx-form__side li.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-lx-ai__side li.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-lx-game__side li.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-lx-char__side li.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-sx-mvp__cols > div.is-on .bs-sv__k,
+html[data-newon-shell-theme="dark"] .bs-sv-sx-mvp__flow li.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-sx-prompt__phases li.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-sx-prompt__fields div.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-sx-aibuild__grid article.is-on .bs-sv__k,
+html[data-newon-shell-theme="dark"] .bs-sv-sx-biz__grid > div.is-on .bs-sv__k,
+html[data-newon-shell-theme="dark"] .bs-sv-sx-research__cards article.is-on .bs-sv__k,
+html[data-newon-shell-theme="dark"] .bs-sv-sx-dash__metrics div.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-sx-dash__week li.is-on span {
+  color: rgba(17, 17, 17, 0.45);
+}
+html[data-newon-shell-theme="dark"] .bs-sv-lx-review__signals article.is-on span,
+html[data-newon-shell-theme="dark"] .bs-sv-lx-review__signals article.is-on em,
+html[data-newon-shell-theme="dark"] .bs-sv-lx-qr__funnel li.is-on > span:first-child,
+html[data-newon-shell-theme="dark"] .bs-sv-lx-qr__funnel li.is-on em,
+html[data-newon-shell-theme="dark"] .bs-sv-sx-launch__list article.is-on > span:first-child,
+html[data-newon-shell-theme="dark"] .bs-sv-sx-launch__list article.is-on em {
+  color: rgba(17, 17, 17, 0.5);
+}
+html[data-newon-shell-theme="dark"] .bs-sv-sx-mvp__cols > div.is-on .bs-sv-sx-mvp__tags span {
+  color: rgba(17, 17, 17, 0.7);
+}
+html[data-newon-shell-theme="dark"] .bs-sv-biz-mvp__screen .bs-sv__k,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-app__screen span,
+html[data-newon-shell-theme="dark"] .bs-sv-biz-app__screen .bs-sv__k {
+  color: #55555a;
+}
+html[data-newon-shell-theme="dark"] .bs-sv-biz-ux__row.is-p1 span {
+  color: #ff7a6e;
+}

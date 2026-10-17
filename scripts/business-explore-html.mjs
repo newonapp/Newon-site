@@ -6,7 +6,7 @@ import { businessServicesHtml } from "./business-services-html.mjs";
 import { businessExploreCloseHtml } from "./business-explore-close.mjs";
 import { BIZ_FILM_SRC, getBusinessFilmCopy } from "./business-film-copy.mjs";
 
-const CSS_V = "20260923pad1";
+const CSS_V = "20261017dark1";
 const FILM_V = "20260922fade2";
 
 function t(flat, flatEn, key, fb = "") {

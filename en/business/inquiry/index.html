@@ -1630,12 +1630,13 @@
       .bz-hero.bz-hero--hq .bz-sv__foot span:first-child { border-right: 1px solid rgba(10, 10, 10, 0.1); }
 
     </style>
-    <link rel="stylesheet" href="/business-page.css?v=20260828btn1" />
+    <link rel="stylesheet" href="/business-page.css?v=20261017dark1" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
     <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
     <link rel="stylesheet" href="/site-dark.css?v=20260924foot1" />
     <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
-  </head>
+  <link rel="stylesheet" href="/business-model-notice.css?v=1" />
+</head>
   <body>
     <a class="skip-link" href="#business-main">Skip to content</a>
     <header class="gnav site-header gnav--five gnav--many" data-gnav>
@@ -2278,6 +2279,8 @@
     </header>
 
     <main id="business-main" class="bz-page">
+<aside class="bm-notice bm-notice--inquiry" role="note" data-bm-notice="inquiry"><strong class="bm-notice__label">Notice</strong><p>Inquiries are accepted for partnerships, adoption and collaboration. Newon does not take on custom development or production projects for individual clients.</p></aside>
+
       <section class="bz-hero bz-hero--hq bz-reveal is-visible" aria-labelledby="bz-hero-title">
         <div class="bz-hero__stage">
           <div class="bz-inner bz-hero__grid">
@@ -2298,7 +2301,7 @@
                 <li>AI</li>
               </ul>
               <div class="bz-hero-actions bz-hero-enter" style="--d: 6">
-                <a class="btn btn-primary" href="#inquiry">Start a project<span class="bz-hero__cta-go" aria-hidden="true">→</span></a>
+                <a class="btn btn-primary" href="#inquiry">Partnership inquiry<span class="bz-hero__cta-go" aria-hidden="true">→</span></a>
                 <a class="btn btn-ghost" href="../">Explore Business →</a>
               </div>
             </div>
@@ -2792,8 +2795,7 @@
               <p class="bz-label">PACKAGES</p>
               <h2 class="bz-title" id="bz-packages-title">Project packages</h2>
             </div>
-            <p class="bz-lead bz-sec-head__lead">Final scope depend on project scope and requirements.</p>
-          </header>
+            </header>
           <div class="bz-pkg-grid">
             <article class="bz-pkg">
               <span class="bz-pkg__idx" aria-hidden="true">01</span>
@@ -2828,15 +2830,15 @@
       </section>
 
       <section id="inquiry" class="bz-section bz-reveal" aria-labelledby="bz-form-title"
-        data-form-title="Project inquiry"
+        data-form-title="Partnership inquiry"
         data-form-lead="Share a few details and we will follow up by email."
-        data-studio-title="Studio project inquiry"
+        data-studio-title="Studio partnership inquiry"
         data-studio-lead="Tell us about your brand, digital product, content, or creative project. We will review scope, timeline, and budget, then follow up."
         data-studio-ph="Share the Studio service you need, project goals, current stage, and any references."
         data-studio-selected="Selected service"
         data-studio-type-hint="Studio service"
         data-studio-select-ph="Select a service"
-        data-business-title="Business project inquiry"
+        data-business-title="Business partnership inquiry"
         data-business-lead="Tell us about a project that needs implementation, development, integration, or deployment. We will review scope, timeline, and budget, then follow up."
         data-business-ph="Share the Business service you need, project goals, current stage, and any references."
         data-business-selected="Selected service"
@@ -2852,10 +2854,9 @@
         data-default-ph="Briefly describe the project, goals, and context."
       >
         <div class="bz-inner bz-form-wrap">
-          <h2 class="bz-title" id="bz-form-title">Project inquiry</h2>
+          <h2 class="bz-title" id="bz-form-title">Partnership inquiry</h2>
           <p class="bz-lead" id="bz-form-lead">Share a few details and we will follow up by email.</p>
           <p class="visually-hidden" id="bz-form-req">Required fields are marked with an asterisk.</p>
-          <p class="bz-lead bz-studio-selected" id="bz-studio-selected" hidden></p>
           <form
             class="bz-form"
             id="bz-inquiry-form"
@@ -2951,16 +2952,15 @@
               <label for="bz-budget">Budget</label>
               <select id="bz-budget" name="budget" aria-describedby="bz-budget-hint">
                 <option value="">Please select</option>
-                <option value="Under ₩500K">Under ₩500K</option>
-                <option value="₩500K–1M">₩500K–1M</option>
-                <option value="₩1M–3M">₩1M–3M</option>
-                <option value="₩3M–5M">₩3M–5M</option>
-                <option value="Over ₩5M">Over ₩5M</option>
+                <option value="Under ₩500K"></option>
+                <option value="₩500K–1M"></option>
+                <option value="₩1M–3M"></option>
+                <option value="₩3M–5M"></option>
+                <option value="Over ₩5M"></option>
                 <option value="To be discussed">To be discussed</option>
                 <option value="To be discussed">To be discussed</option>
               </select>
-              <p class="bz-field-hint" id="bz-budget-hint">Budget helps us understand project scope — it is not a final scope.</p>
-            </div>
+              </div>
             <div class="bz-field">
               <label for="bz-stage">Project stage <span class="bz-opt">(Optional)</span></label>
               <select id="bz-stage" name="stage">
