@@ -26,17 +26,25 @@ test("KO and EN copy share the same structure", () => {
   assert.deepEqual(shape(EN), shape(KO));
 });
 
-test("required counts: 6 journey steps, 20 services, 8 categories, 20 lines, 15 partner types, 5 steps, 10 inquiry types", () => {
+test("required counts: 6 journey steps, 5 pillars, 20 services in 6 groups, 8 groups/20 lines, 6 revenue axes, 14 partner types, 5 steps, 13 inquiry types", () => {
   for (const c of [KO, EN]) {
     assert.equal(c.overview.journey.items.length, 6);
     assert.equal(c.platform.items.length, 20);
-    assert.equal(c.business.categories.length, 8);
+    assert.equal(c.overview.pillars.items.length, 5);
+    assert.equal(c.overview.roadmap.items.length, 5);
+    assert.equal(c.business.groups.length, 8);
     assert.equal(c.business.lines.length, 20);
-    assert.equal(c.partnerships.items.length, 15);
+    assert.equal(c.business.revenue.items.length, 6);
+    assert.equal(c.partnerships.items.length, 14);
     assert.equal(c.partnerships.process.steps.length, 5);
-    assert.equal(c.contact.items.length, 10);
-    const covered = c.business.categories.flatMap((x) => x.lines).sort((a, b) => a - b);
-    assert.deepEqual(covered, Array.from({ length: 20 }, (_, i) => i + 1));
+    assert.equal(c.contact.items.length, 13);
+    const seq = (n) => Array.from({ length: n }, (_, i) => i + 1);
+    const cover = (groups, key) => groups.flatMap((x) => x[key]).sort((a, b) => a - b);
+    assert.deepEqual(cover(c.business.groups, "lines"), seq(20));
+    assert.deepEqual(cover(c.platform.groups, "items"), seq(20));
+    assert.deepEqual(cover(c.partnerships.groups, "items"), seq(14));
+    assert.deepEqual(cover(c.contact.groups, "items"), seq(13));
+    assert.deepEqual(c.platform.items.filter((s) => s.status === "live").length, 3);
     for (const s of c.platform.items) assert.ok(s.features.length >= 3 && s.features.length <= 5, s.name);
   }
 });
@@ -48,6 +56,7 @@ test("every page exists in every language with canonical, 10 hreflang links and 
       assert.match(html, new RegExp(`<link rel="canonical" href="https://www.newon.app/${l}/${p}" />`));
       assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 10, `${l}/${p}`);
       assert.equal((main(html).match(/<h1[\s>]/g) || []).length, 1, `${l}/${p}`);
+      assert.match(html, /myworld-site\.js/);
       assert.match(html, /<meta property="og:title"/);
     }
   }

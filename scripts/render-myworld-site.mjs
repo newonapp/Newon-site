@@ -27,7 +27,7 @@ import { getMyWorldSiteCopy, MYWORLD_PAGES, myworldPagePath } from "./myworld-si
 import { renderMyWorldSitePage } from "./myworld-site-body.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const MWS_VER = "20261018mws1";
+const MWS_VER = "20261018mws2";
 const LASTMOD = "2026-10-18";
 
 function localeFlat(lang) {
@@ -41,7 +41,7 @@ function renderPage(lang, page) {
   const site = getMyWorldSiteCopy(lang.dir);
   const seo = site.copy.seo[page];
   const rel = myworldPagePath(page).replace(/\/$/, "");
-  const header = renderStudioHeader(flat, flatEn, { activeNav: "consumer", base: "./", langDir: lang.dir });
+  const header = renderStudioHeader(flat, flatEn, { activeNav: "", base: "./", langDir: lang.dir });
   const footer = renderStudioFooter(flat, flatEn, { base: "./", langDir: lang.dir });
   const html = applyTemplate(SHELL, flat, flatEn, {
     HTML_LANG: lang.htmlLang,
@@ -57,7 +57,7 @@ function renderPage(lang, page) {
     MAIN_CONTENT: renderMyWorldSitePage(lang.dir, page, site),
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/myworld-site.css?v=${MWS_VER}" />`,
-    EXTRA_SCRIPTS: "",
+    EXTRA_SCRIPTS: `<script src="/myworld-site.js?v=${MWS_VER}" defer></script>`,
   });
   const out = path.join(ROOT, lang.dir, rel, "index.html");
   ensureDir(out);
