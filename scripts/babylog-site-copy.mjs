@@ -15,6 +15,8 @@
  * qa-babylog-site.mjs fails the check if one appears in the rendered pages.
  */
 
+import { getExpansionCopy } from "./babylog-expansion-copy.mjs";
+
 export const BL_SLUG = "babylog";
 
 /** The five top-level items. Overview is the page root; the others are sub-routes. */
@@ -379,7 +381,7 @@ const KO = {
   partnerships: {
     hero: {
       titleHtml: "가족의 더 나은 일상을 함께<br />만들어갈 파트너를 찾습니다.",
-      lead: "BABYLOG가 협력을 찾는 여덟 유형의 파트너와 협력 절차를 안내합니다.",
+      lead: "BABYLOG가 협력을 찾는 핵심 여덟 유형에 더해 육아 산업과 아동 보호·공익 분야의 파트너 유형, 협력 절차를 안내합니다.",
       ctaMain: "파트너 유형 보기",
       ctaSub: "사업 문의",
     },
@@ -397,7 +399,7 @@ const KO = {
     },
     types: {
       kicker: "02 · Partner Types",
-      title: "여덟 유형의 파트너.",
+      title: "핵심 여덟 유형의 파트너.",
       lead: "파트너 유형은 소개를 위한 분류입니다. 유형을 선택해도 계정이나 계약이 만들어지지 않습니다.",
       railLabel: "파트너 유형 바로가기",
       fields: {
@@ -507,7 +509,7 @@ const KO = {
     },
     closeKicker: "BABYLOG",
     closeTitleHtml: "먼저, 이야기부터<br />시작해 주세요.",
-    closeLead: "여덟 가지 유형 중 가까운 것을 골라 문의해 주세요.",
+    closeLead: "가까운 유형을 골라 문의해 주세요.",
   },
 };
 
@@ -837,7 +839,7 @@ const EN = {
   partnerships: {
     hero: {
       titleHtml: "We are looking for partners to build<br />a better everyday life for families.",
-      lead: "Eight types of partners BABYLOG is looking for, and how we work together.",
+      lead: "Eight core partner types BABYLOG is looking for, plus parenting-industry and child protection partner types, and how we work together.",
       ctaMain: "See partner types",
       ctaSub: "Business inquiry",
     },
@@ -855,7 +857,7 @@ const EN = {
     },
     types: {
       kicker: "02 · Partner Types",
-      title: "Eight types of partners.",
+      title: "Eight core partner types.",
       lead: "Partner types are for introduction only. Choosing one does not create an account or a contract.",
       railLabel: "Jump to a partner type",
       fields: {
@@ -917,13 +919,27 @@ const EN = {
     },
     closeKicker: "BABYLOG",
     closeTitleHtml: "Start with<br />a conversation.",
-    closeLead: "Pick the closest of the eight types and send us your inquiry.",
+    closeLead: "Pick the closest type and send us your inquiry.",
   },
 };
 
-/** ko and en have copy; every other locale falls back to the English draft (P7 translation policy). */
+const MERGED = {};
+/** ko and en have copy; every other locale falls back to the English draft (P7 translation policy).
+ *  The expansion copy (24 groups + child safety) is merged over the base copy. */
 export function getBabylogCopy(lang) {
-  return lang === "ko" ? KO : EN;
+  const key = lang === "ko" ? "ko" : "en";
+  if (!MERGED[key]) {
+    const base = key === "ko" ? KO : EN;
+    const x = getExpansionCopy(key);
+    MERGED[key] = {
+      ...base,
+      status: { ...base.status, ...x.status },
+      ui: { ...base.ui, ...x.ui },
+      seo: Object.fromEntries(Object.entries(base.seo).map(([k, v]) => [k, { ...v, ...(x.seo[k] || {}) }])),
+      x,
+    };
+  }
+  return MERGED[key];
 }
 
 export function copyLangFor(lang) {

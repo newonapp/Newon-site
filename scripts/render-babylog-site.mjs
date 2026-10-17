@@ -42,7 +42,7 @@ import { renderBabylogSection } from "./babylog-site-body.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const NLS_VER = "20260924livon1"; // Life Stage assets are reused as-is
-const BL_VER = "20261018bl1";
+const BL_VER = "20261018bl2";
 
 function localeFlat(lang) {
   const en = loadJson("en.json");

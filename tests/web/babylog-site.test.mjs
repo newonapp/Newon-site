@@ -102,3 +102,45 @@ test("BL-6 the copy module carries no price or internal revenue figure", () => {
     assert.ok(!re.test(body), `copy module matches ${re}`);
   }
 });
+
+test("BL-7 a link to an unverified external site inside the child-safety area fails the check", () => {
+  const d = scratch();
+  try {
+    mutate(d, "ko/babylog/platform/index.html", (h) => h.replace('id="bl-cs-missing"', 'id="bl-cs-missing"').replace("공식 신고 경로", '<a href="https://example.org/report">공식 신고 경로</a>'));
+    const r = run(d);
+    assert.notEqual(r.status, 0);
+    assert.match(r.stdout, /FAIL child-safety ko\/platform/);
+  } finally {
+    fs.rmSync(d, { recursive: true, force: true });
+  }
+});
+
+test("BL-8 removing the emergency routing note from a child-safety page fails the check", () => {
+  const d = scratch();
+  try {
+    mutate(d, "en/babylog/contact/index.html", (h) => h.replace(/bl-emergency/g, "bl-removed"));
+    const r = run(d);
+    assert.notEqual(r.status, 0);
+    assert.match(r.stdout, /FAIL (child-safety|sections) en\/contact/);
+  } finally {
+    fs.rmSync(d, { recursive: true, force: true });
+  }
+});
+
+test("BL-9 the expansion copy has 32 groups, 12 + 14 partner types and no price or internal figure", async () => {
+  const m = await import("../../scripts/babylog-expansion-copy.mjs");
+  for (const lang of ["ko", "en"]) {
+    const c = m.getExpansionCopy(lang);
+    assert.equal(c.business.groups.items.length + c.csGroups.length, 32);
+    assert.equal(c.csGroups.length, 8);
+    assert.equal(c.partnerships.cs.items.length, 12);
+    assert.equal(c.partnerships.industry.items.length, 14);
+    assert.equal(c.platform.screens.groups.reduce((n, g) => n + g.items.length, 0), 20);
+    assert.equal(c.business.groups.cats.reduce((n, x) => n + x.groups.length, 0), 32);
+  }
+  const src = fs.readFileSync(path.join(ROOT, "scripts", "babylog-expansion-copy.mjs"), "utf8");
+  const body = src.slice(src.indexOf("const KO ="));
+  for (const re of [/₩\s?\d/, /\d[\d,]*\s?원(?!칙)/, /\d+\s?%/, /19,?900/, /169,?000/, /179,?000/]) {
+    assert.ok(!re.test(body), `expansion copy matches ${re}`);
+  }
+});

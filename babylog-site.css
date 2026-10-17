@@ -499,3 +499,253 @@ html[data-newon-shell-theme="dark"] #lifestage-detail.nls[data-story="babylog"] 
 #lifestage-detail.nls[data-story="babylog"] .bl-subnav__ko {
   white-space: nowrap;
 }
+
+/* ======================================================================================
+ * Expansion (24 business groups, 20 service screens, CHILD SAFETY & SOCIAL IMPACT)
+ * Same vocabulary as above: thin rules, small English labels, no colour fills.
+ * ==================================================================================== */
+#lifestage-detail.nls[data-story="babylog"] .bl-status--plan {
+  border: 3px double var(--bl-ink);
+  padding: 0.12rem 0.5rem;
+  color: var(--bl-ink);
+}
+
+/* small label / sub heading */
+#lifestage-detail.nls[data-story="babylog"] .bl-sub {
+  margin: 1.8rem 0 0.6rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bl-faint);
+}
+#lifestage-detail.nls[data-story="babylog"] h3.bl-sub {
+  margin-top: 3.2rem;
+  font-size: clamp(1.25rem, 2.6vw, 1.7rem);
+  letter-spacing: -0.03em;
+  text-transform: none;
+  color: var(--bl-ink);
+}
+
+/* 20 screens: grouped boards */
+#lifestage-detail.nls[data-story="babylog"] .bl-group {
+  margin-top: 2.4rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-group__t {
+  margin: 0 0 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--bl-ink);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bl-faint);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-screen .nls-board__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-screen__n {
+  font-size: 0.95rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-screen .nls-kicker {
+  margin: 0.9rem 0 0.15rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .nls-board__item h4 {
+  margin: 0 0 0.45rem;
+  font-size: 1.15rem;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+}
+
+/* business categories and group cards */
+#lifestage-detail.nls[data-story="babylog"] .bl-cat {
+  margin-top: 3.2rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--bl-ink);
+  scroll-margin-top: calc(var(--gnav-h, 74px) + 4.6rem);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cat--cs {
+  border-top-width: 3px;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cat__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cat__head > div {
+  flex: 1;
+  min-width: 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cat__count {
+  flex: none;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--bl-faint);
+  padding-top: 0.4rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-grp__list,
+#lifestage-detail.nls[data-story="babylog"] .bl-biz__list--compact {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-grp__list,
+  #lifestage-detail.nls[data-story="babylog"] .bl-biz__list--compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-grp {
+  padding: clamp(1.1rem, 2.6vw, 1.6rem);
+  border: 1px solid var(--bl-line);
+  background: var(--bl-paper);
+  scroll-margin-top: calc(var(--gnav-h, 74px) + 4.6rem);
+  display: flex;
+  flex-direction: column;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-grp .bl-biz__title,
+#lifestage-detail.nls[data-story="babylog"] .bl-biz--compact .bl-biz__title {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-grp .bl-dl__row,
+#lifestage-detail.nls[data-story="babylog"] .bl-biz--compact .bl-dl__row {
+  grid-template-columns: minmax(6.5rem, 8.5rem) minmax(0, 1fr);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-grp .bl-dl dd,
+#lifestage-detail.nls[data-story="babylog"] .bl-biz--compact .bl-dl dd {
+  font-size: 0.92rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-grp .bl-biz__cta {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-biz--compact {
+  display: flex;
+  flex-direction: column;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-biz--compact .bl-biz__cta {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+@media (max-width: 640px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-grp .bl-dl__row,
+  #lifestage-detail.nls[data-story="babylog"] .bl-biz--compact .bl-dl__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* child-safety notices: rule on the left, no fill */
+#lifestage-detail.nls[data-story="babylog"] .bl-notice {
+  margin: 1.4rem 0 0;
+  padding: 0.2rem 0 0.2rem 1.1rem;
+  border-left: 3px solid var(--bl-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-emergency {
+  margin-top: 1rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--bl-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-emergency p {
+  margin: 0.4rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-emergency .bl-emergency__t {
+  margin: 0;
+  font-weight: 750;
+  font-size: 1.02rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cat--cs .bl-notice {
+  margin-bottom: 1.2rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cs-sec .nls-chips {
+  margin-top: 0.4rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cs-end {
+  padding-block: 1.6rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-impact .nls-note {
+  max-width: 62ch;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cards--cs {
+  margin-top: 1.6rem;
+}
+
+/* jump lists without grey filler cells (counts of 9, 12, 14 do not divide evenly) */
+#lifestage-detail.nls[data-story="babylog"] .bl-rail__list {
+  gap: 0;
+  border: 0;
+  border-top: 1px solid var(--bl-line);
+  border-left: 1px solid var(--bl-line);
+  background: none;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-rail__list li {
+  border-right: 1px solid var(--bl-line);
+  border-bottom: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-rail__list li:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-rail__list li:last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-rail.bl-rail--cats .bl-rail__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* dark mode */
+html[data-theme="dark"] #lifestage-detail.nls[data-story="babylog"] .bl-grp,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls[data-story="babylog"] .bl-grp {
+  background: #111;
+  border-color: #2a2a2a;
+}
+
+/* actions on the dark impact band */
+#lifestage-detail.nls[data-story="babylog"] .bl-impact .nls-btn:not(.nls-btn--ghost) {
+  background: #f2f2f2;
+  color: #0a0a0a;
+  border-color: #f2f2f2;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-impact .nls-btn--ghost {
+  background: transparent;
+  color: #f2f2f2;
+  border-color: #bdbdbd;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-impact .nls-btn:focus-visible {
+  outline: 2px solid #f2f2f2;
+  outline-offset: 3px;
+}
+
+/* screen groups: item counts of 4 and 5 must not leave grey filler cells */
+#lifestage-detail.nls[data-story="babylog"] .bl-group .nls-board {
+  gap: 0;
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--bl-line);
+  border-left: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-group .nls-board__item {
+  border-right: 1px solid var(--bl-line);
+  border-bottom: 1px solid var(--bl-line);
+}
+
+/* dark impact band: list text sized for light backgrounds elsewhere needs lighter greys here */
+#lifestage-detail.nls[data-story="babylog"] .bl-impact .nls-dir li span {
+  color: #c4c4c4;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-impact .nls-dir li p {
+  color: #d6d6d6;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-impact .nls-dir li strong {
+  color: #fff;
+}
