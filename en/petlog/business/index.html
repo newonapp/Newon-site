@@ -3,20 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PETLOG Business | Connecting the pet industry</title>
-    <meta name="description" content="PETLOG's 8 business categories and 16 business lines, with customers, value, revenue model type, partners and status. Prices and fees are not decided." />
+    <title>PETLOG Business | 20 business lines and revenue model</title>
+    <meta name="description" content="PETLOG's 20 business lines in 8 groups — overview, customers, value, revenue model type, partners and status — plus 6 revenue axes and a 5-stage plan." />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://www.newon.app/en/petlog/business/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.newon.app/en/petlog/business/" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content="PETLOG Business | Connecting the pet industry" />
-    <meta property="og:description" content="PETLOG's 8 business categories and 16 business lines, with customers, value, revenue model type, partners and status. Prices and fees are not decided." />
+    <meta property="og:title" content="PETLOG Business | 20 business lines and revenue model" />
+    <meta property="og:description" content="PETLOG's 20 business lines in 8 groups — overview, customers, value, revenue model type, partners and status — plus 6 revenue axes and a 5-stage plan." />
     <meta property="og:site_name" content="Newon" />
     <meta property="og:image" content="https://www.newon.app/logo.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="PETLOG Business | Connecting the pet industry" />
-    <meta name="twitter:description" content="PETLOG's 8 business categories and 16 business lines, with customers, value, revenue model type, partners and status. Prices and fees are not decided." />
+    <meta name="twitter:title" content="PETLOG Business | 20 business lines and revenue model" />
+    <meta name="twitter:description" content="PETLOG's 20 business lines in 8 groups — overview, customers, value, revenue model type, partners and status — plus 6 revenue axes and a 5-stage plan." />
     <meta name="twitter:image" content="https://www.newon.app/logo.png" />
     <link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/petlog/business/" />
     <link rel="alternate" hreflang="en" href="https://www.newon.app/en/petlog/business/" />
@@ -28,7 +28,7 @@
     <link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/petlog/business/" />
     <link rel="alternate" hreflang="id" href="https://www.newon.app/id/petlog/business/" />
     <link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/petlog/business/" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"PETLOG Business | Connecting the pet industry","description":"PETLOG's 8 business categories and 16 business lines, with customers, value, revenue model type, partners and status. Prices and fees are not decided.","url":"https://www.newon.app/en/petlog/business/","inLanguage":"en"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"PETLOG Business | 20 business lines and revenue model","description":"PETLOG's 20 business lines in 8 groups — overview, customers, value, revenue model type, partners and status — plus 6 revenue axes and a 5-stage plan. Prices and fees are not decided.","url":"https://www.newon.app/en/petlog/business/","inLanguage":"en"}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Newon","item":"https://www.newon.app/en/"},{"@type":"ListItem","position":2,"name":"PETLOG","item":"https://www.newon.app/en/petlog/"},{"@type":"ListItem","position":3,"name":"Business","item":"https://www.newon.app/en/petlog/business/"}]}</script>
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/logo.png" />
@@ -47,9 +47,36 @@
   #lifestage-detail.nls--petlog .nls-status[data-status="app"] { background: #278a53; border-color: #278a53; color: #fff; }
   html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-kicker,
   html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-status { color: #6fcf97; border-color: #6fcf97; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-status[data-status="app"] { background: #1e6b41; border-color: #1e6b41; color: #fff; }
+  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-status[data-status="app"] { background: #1e6b41 !important; border-color: #1e6b41; color: #fff; }
   #lifestage-detail.nls--petlog .nls-link { display: inline-block; margin-top: 0.9rem; font-weight: 600; text-decoration: underline; text-underline-offset: 0.2em; color: inherit; }
   #lifestage-detail.nls--petlog .nls-board__item .nls-status { margin: 0 0 0.6rem; }
+  /* small additions built from the existing Life Stage tokens */
+  #lifestage-detail.nls--petlog .nls-card__label { margin: 0 0 0.35rem; font-size: 0.72rem; font-weight: 650; letter-spacing: 0.1em; text-transform: uppercase; color: var(--nls-faint); }
+  #lifestage-detail.nls--petlog article .nls-status { margin: 0 0 0.7rem; }
+  #lifestage-detail.nls--petlog article .nls-points { margin: 0.85rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.35rem; font-size: 0.86rem; line-height: 1.5; color: var(--nls-muted); }
+  #lifestage-detail.nls--petlog article .nls-points li { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 0.7rem; padding: 0.22rem 0; font-size: inherit; }
+  #lifestage-detail.nls--petlog article .nls-points li::before { content: none; }
+  #lifestage-detail.nls--petlog article .nls-points strong { min-width: 4.6rem; color: var(--nls-ink); font-weight: 650; }
+  html:not([lang="ko"]) #lifestage-detail.nls--petlog article .nls-points strong { min-width: 6.8rem; }
+  #lifestage-detail.nls--petlog article .nls-chips { margin-top: 0.85rem; }
+  @media (min-width: 900px) {
+    #lifestage-detail.nls--petlog .nls-signal--single { grid-template-columns: 1fr; }
+    #lifestage-detail.nls--petlog .nls-board--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail--petlog { grid-template-columns: repeat(var(--petlog-rail-n, 7), minmax(0, 1fr)); }
+  }
+  #lifestage-detail.nls--petlog .nls-status { width: fit-content; max-width: 100%; }
+  #lifestage-detail.nls--petlog .nls-board__item { padding: 1.25rem 1.25rem 1.35rem; }
+  #lifestage-detail.nls--petlog .nls-subhead { margin: 2.6rem 0 1.4rem; }
+  #lifestage-detail.nls--petlog .nls-subhead .nls-title { font-size: clamp(1.35rem, 2.4vw, 1.75rem); }
+  #lifestage-detail.nls--petlog .nls-pipe__item .nls-pipe__n { color: var(--nls-ink); }
+  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog article .nls-points strong { color: #f5f5f5; }
+  html[data-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on,
+  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on { background: #fff !important; border-color: #fff; color: rgba(17, 17, 17, 0.6); }
+  html[data-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on span,
+  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on span { color: #111; }
+  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on > * { color: #111 !important; }
+  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on > *,
+  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-status[data-status="app"] * { background: transparent !important; }
   /* the shared film fallback is the LIVON poster; PETLOG shows plain black until its film loads */
   #lifestage-detail.nls--petlog .nls-film__fallback { background: #050505; }
 </style>
@@ -649,210 +676,502 @@
       <div class="nls-film__lockup">
         <div class="nls-film__veil" aria-hidden="true"></div>
         <p class="nls-film__wordmark" lang="en">Business</p>
-        <h1 id="story-lifestage-title" class="nls-film__slogan">A business ecosystem connecting<br>every part of the pet industry.</h1>
-        <p class="nls-film__lead">PETLOG is designed to connect individual users with pet businesses and institutions. Most of the lines below are in preparation or review.</p>
+        <h1 id="story-lifestage-title" class="nls-film__slogan">Twenty businesses connecting<br>every part of pet life.</h1>
+        <p class="nls-film__lead">From daily life and health to commerce, booking and care, business SaaS, public and global: the 20 lines PETLOG will grow into step by step.</p>
         <div class="nls-film__actions">
-          <a class="nls-btn" href="#nls-units" data-nls-scroll>16 business lines ↓</a>
+          <a class="nls-btn" href="#nls-groups" data-nls-scroll>See 20 lines ↓</a>
           <a class="nls-btn nls-btn--ghost" href="../../petlog/contact/">Business inquiry</a>
         </div>
       </div>
     </div>
   </div>
   <div class="nls__wrap">
-    <div id="nls-categories" class="nls-block nls-block--band nls-changes-sec" data-hs-section>
-    <header class="nls-head">
-    <p class="nls-kicker">CATEGORIES</p>
-    <h2 class="nls-title">Main categories</h2>
-    
-  </header>
-    <ol class="nls-index"><li><span>01</span><strong>Pet Care &amp; Health</strong></li><li><span>02</span><strong>Shopping &amp; Resale</strong></li><li><span>03</span><strong>Group Buying</strong></li><li><span>04</span><strong>Booking &amp; Services</strong></li><li><span>05</span><strong>Community &amp; Content</strong></li><li><span>06</span><strong>Travel &amp; Lifestyle</strong></li><li><span>07</span><strong>Business Solutions</strong></li><li><span>08</span><strong>Institutions &amp; Global</strong></li></ol>
-  </div>
-    <div id="nls-units" class="nls-block nls-first-sec" data-hs-section>
-    <header class="nls-head">
-    <p class="nls-kicker">BUSINESS LINES</p>
-    <h2 class="nls-title">16 business lines</h2>
-    <p class="nls-lead">Only the type of revenue model is shown. Prices and fees are not decided and will be announced before launch.</p>
-  </header>
-    
-    <div class="nls-board"><article class="nls-board__item">
-        <div class="nls-board__meta">
-          <span class="nls-board__n">01</span>
-        </div>
-        <p class="nls-status" data-status="app">In the app today</p>
-        <h3>Records &amp; life management</h3>
-        <p>The core of PETLOG: a lifelong record of each pet.</p>
-        <ul class="nls-points"><li><strong>Customers</strong> · All owners</li><li><strong>Value</strong> · Scattered records in one place</li><li><strong>Revenue model</strong> · Free core + premium subscription (price not decided)</li></ul>
-        
-        <a class="nls-link" href="../../petlog/contact/?type=brand#inquiry">Business inquiry →</a>
-      </article><article class="nls-board__item">
-        <div class="nls-board__meta">
-          <span class="nls-board__n">02</span>
-        </div>
-        <p class="nls-status" data-status="legal">Decided after legal review</p>
-        <h3>Health &amp; medical information</h3>
-        <p>Linking health records with reliable information. It does not replace treatment.</p>
-        <ul class="nls-points"><li><strong>Customers</strong> · Owners</li><li><strong>Value</strong> · Noticing changes early</li><li><strong>Revenue model</strong> · Premium subscription · partnerships (after legal review)</li><li><strong>Partners</strong> · Vets</li></ul>
-        
-        <a class="nls-link" href="../../petlog/contact/?type=brand#inquiry">Business inquiry →</a>
-      </article><article class="nls-board__item">
-        <div class="nls-board__meta">
-          <span class="nls-board__n">03</span>
-        </div>
-        <p class="nls-status" data-status="prep">In preparation</p>
-        <h3>Pet shopping</h3>
-        <p>A shopping area for discovering suitable goods.</p>
-        <ul class="nls-points"><li><strong>Customers</strong> · Owners</li><li><strong>Value</strong> · The right products, easily</li><li><strong>Revenue model</strong> · Commission on brand sales (rate not decided)</li><li><strong>Partners</strong> · Pet brands</li></ul>
-        
-        <a class="nls-link" href="../../petlog/contact/?type=shopping#inquiry">Business inquiry →</a>
-      </article><article class="nls-board__item">
-        <div class="nls-board__meta">
-          <span class="nls-board__n">04</span>
-        </div>
-        <p class="nls-status" data-status="plan">Planned · under review</p>
-        <h3>Secondhand &amp; sharing</h3>
-        <p>Trading and giving away unused pet goods.</p>
-        <ul class="nls-points"><li><strong>Customers</strong> · Owners</li><li><strong>Value</strong> · Reuse and savings</li><li><strong>Revenue model</strong> · No fee at first (under review)</li><li><strong>Partners</strong> · SHAREON (planned link)</li></ul>
-        
-        <a class="nls-link" href="../../petlog/contact/?type=shopping#inquiry">Business inquiry →</a>
-      </article><article class="nls-board__item">
-        <div class="nls-board__meta">
-          <span class="nls-board__n">05</span>
-        </div>
-        <p class="nls-status" data-status="plan">Planned · under review</p>
-        <h3>Group buying</h3>
-        <p>Owners buying together on better terms.</p>
-        <ul class="nls-points"><li><strong>Customers</strong> · Owners and sellers</li><li><strong>Value</strong> · Better price and quality</li><li><strong>Revenue model</strong> · Seller commission (rate not decided)</li><li><strong>Partners</strong> · Brands and individual sellers</li></ul>
-        
-        <a class="nls-link" href="../../petlog/contact/?type=group-buying#inquiry">Business inquiry →</a>
-      </article><article class="nls-board__item">
-        <div class="nls-board__meta">
-          <span class="nls-board__n">06</span>
-        </div>
-        <p class="nls-status" data-status="legal">Decided after legal review</p>
-        <h3>Booking &amp; services</h3>
-        <p>Reviewing booking links for grooming, hotels, daycare, training and care.</p>
-        <ul class="nls-points"><li><strong>Customers</strong> · Owners and providers</li><li><strong>Value</strong> · Trusted providers, easily</li><li><strong>Revenue model</strong> · Booking fee by category (not decided)</li><li><strong>Partners</strong> · Grooming, hotels, daycare, trainers, carers</li></ul>
-        
-        <a class="nls-link" href="../../petlog/contact/?type=booking-provider#inquiry">Business inquiry →</a>
-      </article><article class="nls-board__item">
-        <div class="nls-board__meta">
-          <span class="nls-board__n">07</span>
-        </div>
-        <p class="nls-status" data-status="prep">In preparation</p>
-        <h3>Community &amp; social</h3>
-        <p>A space for owners to share experience.</p>
-        <ul class="nls-points"><li><strong>Customers</strong> · Owners</li><li><strong>Value</strong> · Not raising a pet alone</li><li><strong>Revenue model</strong> · Ads and sponsored content (after policy)</li><li><strong>Partners</strong> · Creators</li></ul>
-        
-        <a class="nls-link" href="../../petlog/contact/?type=brand#inquiry">Business inquiry →</a>
-      </article><article class="nls-board__item">
-        <div class="nls-board__meta">
-          <span class="nls-board__n">08</span>
-        </div>
-        <p class="nls-status" data-status="plan">Planned · under review</p>
-        <h3>Education &amp; training</h3>
-        <p>Training and care education content.</p>
-        <ul class="nls-points"><li><strong>Customers</strong> · Owners</li><li><strong>Value</strong> · Sound pet knowledge</li><li><strong>Revenue model</strong> · Education content commission (not decided)</li><li><strong>Partners</strong> · Trainers and schools</li></ul>
-        
-        <a class="nls-link" href="../../petlog/contact/?type=brand#inquiry">Business inquiry →</a>
-      </article><article class="nls-board__item">
-        <div class="nls-board__meta">
-          <span class="nls-board__n">09</span>
-        </div>
-        <p class="nls-status" data-status="plan">Planned · under review</p>
-        <h3>Travel &amp; outings</h3>
-        <p>Connecting travel and outing information with pets.</p>
-        <ul class="nls-points"><li><strong>Customers</strong> · Owners</li><li><strong>Value</strong> · Places to go together</li><li><strong>Revenue model</strong> · Partnership or booking fee (not decided)</li><li><strong>Partners</strong> · Lodging and tourism businesses</li></ul>
-        
-        <a class="nls-link" href="../../petlog/contact/?type=brand#inquiry">Business inquiry →</a>
-      </article><article class="nls-board__item">
-        <div class="nls-board__meta">
-          <span class="nls-board__n">10</span>
-        </div>
-        <p class="nls-status" data-status="prep">In preparation</p>
-        <h3>AI pet life</h3>
-        <p>Summarising patterns and flagging changes from records.</p>
-        <ul class="nls-points"><li><strong>Customers</strong> · Owners</li><li><strong>Value</strong> · From records to understanding</li><li><strong>Revenue model</strong> · Premium subscription (price not decided)</li><li><strong>Partners</strong> · Newon AI</li></ul>
-        
-        <a class="nls-link" href="../../petlog/contact/?type=brand#inquiry">Business inquiry →</a>
-      </article><article class="nls-board__item">
-        <div class="nls-board__meta">
-          <span class="nls-board__n">11</span>
-        </div>
-        <p class="nls-status" data-status="legal">Decided after legal review</p>
-        <h3>Insurance &amp; finance information</h3>
-        <p>Information on pet insurance and finance.</p>
-        <ul class="nls-points"><li><strong>Customers</strong> · Owners</li><li><strong>Value</strong> · Understanding cover</li><li><strong>Revenue model</strong> · Partnerships (after solicitation rules review)</li><li><strong>Partners</strong> · Insurers</li></ul>
-        
-        <a class="nls-link" href="../../petlog/contact/?type=brand#inquiry">Business inquiry →</a>
-      </article><article class="nls-board__item">
-        <div class="nls-board__meta">
-          <span class="nls-board__n">12</span>
-        </div>
-        <p class="nls-status" data-status="plan">Planned · under review</p>
-        <h3>Adoption, protection &amp; lost pets</h3>
-        <p>Connecting adoption, shelters and lost-pet support.</p>
-        <ul class="nls-points"><li><strong>Customers</strong> · Owners and shelters</li><li><strong>Value</strong> · Helping more animals find homes</li><li><strong>Revenue model</strong> · Public-interest partnership (not for profit)</li><li><strong>Partners</strong> · Shelters and local governments</li></ul>
-        
-        <a class="nls-link" href="../../petlog/contact/?type=public#inquiry">Business inquiry →</a>
-      </article><article class="nls-board__item">
-        <div class="nls-board__meta">
-          <span class="nls-board__n">13</span>
-        </div>
-        <p class="nls-status" data-status="plan">Planned · under review</p>
-        <h3>Senior, funeral &amp; memorial</h3>
-        <p>Senior care and remembrance after farewell.</p>
-        <ul class="nls-points"><li><strong>Customers</strong> · Owners</li><li><strong>Value</strong> · Together to the end</li><li><strong>Revenue model</strong> · Memorial records · partnerships (after legality review)</li><li><strong>Partners</strong> · Licensed funeral providers</li></ul>
-        
-        <a class="nls-link" href="../../petlog/contact/?type=brand#inquiry">Business inquiry →</a>
-      </article><article class="nls-board__item">
-        <div class="nls-board__meta">
-          <span class="nls-board__n">14</span>
-        </div>
-        <p class="nls-status" data-status="plan">Planned · under review</p>
-        <h3>Individual sellers &amp; creators</h3>
-        <p>Individual sellers and creators offering goods and content.</p>
-        <ul class="nls-points"><li><strong>Customers</strong> · Individual sellers and creators</li><li><strong>Value</strong> · Opportunity for small sellers</li><li><strong>Revenue model</strong> · Sales and digital goods commission (not decided)</li><li><strong>Partners</strong> · Individual sellers (eligibility checked)</li></ul>
-        
-        <a class="nls-link" href="../../petlog/contact/?type=brand#inquiry">Business inquiry →</a>
-      </article><article class="nls-board__item">
-        <div class="nls-board__meta">
-          <span class="nls-board__n">15</span>
-        </div>
-        <p class="nls-status" data-status="plan">Planned · under review</p>
-        <h3>Business SaaS &amp; automation</h3>
-        <p>Operations tools and automation for pet service providers.</p>
-        <ul class="nls-points"><li><strong>Customers</strong> · Pet service providers</li><li><strong>Value</strong> · Less booking and customer admin</li><li><strong>Revenue model</strong> · Provider SaaS subscription (price not decided)</li><li><strong>Partners</strong> · Newon Business</li></ul>
-        
-        <a class="nls-link" href="../../petlog/contact/?type=saas#inquiry">Business inquiry →</a>
-      </article><article class="nls-board__item">
-        <div class="nls-board__meta">
-          <span class="nls-board__n">16</span>
-        </div>
-        <p class="nls-status" data-status="plan">Planned · under review</p>
-        <h3>Institutions &amp; global</h3>
-        <p>Reviewing institutional licences and international partners.</p>
-        <ul class="nls-points"><li><strong>Customers</strong> · Institutions and international partners</li><li><strong>Value</strong> · A proven pet life platform</li><li><strong>Revenue model</strong> · Institutional and global licences (per contract)</li><li><strong>Partners</strong> · Institutions and international partners</li></ul>
-        
-        <a class="nls-link" href="../../petlog/contact/?type=global#inquiry">Business inquiry →</a>
-      </article></div>
-  </div>
-    <div id="nls-shareon" class="nls-block nls-why-sec" data-hs-section>
+    <div id="nls-structure" class="nls-block nls-related-sec" data-hs-section>
     <div class="nls-split">
-      <header class="nls-head">
-    <p class="nls-kicker">SHAREON</p>
-    <h2 class="nls-title">Discover in PETLOG,<br>trade on SHAREON.</h2>
+      <div><header class="nls-head">
+    <p class="nls-kicker">BUSINESS STRUCTURE</p>
+    <h2 class="nls-title">From the core product<br>to long-term growth.</h2>
     
-  </header>
-      <ol class="nls-roster"><li><span>01</span><p>PETLOG is where owners discover pet goods, secondhand items and group buys.</p></li><li><span>02</span><p>Trading, payment and settlement are planned to run on Newon's SHAREON infrastructure. SHAREON is in development and no integration exists today.</p></li><li><span>03</span><p>PETLOG and SHAREON will not both charge a fee on the same transaction.</p></li><li><span>04</span><p>Payment for bookings is a separate case, decided only after legal, PG contract and security review.</p></li></ol>
+  </header></div>
+      <ol class="nls-dir"><li><span>01</span><div><strong>Core product</strong><p>The pet life and health record app</p></div></li><li><span>02</span><div><strong>Consumer platform</strong><p>AI, family sharing, community, shopping, secondhand, group buying, booking, care, travel, education</p></div></li><li><span>03</span><div><strong>Business platform</strong><p>Booking, CRM and operations SaaS for vets, groomers, hotels, daycare and carers</p></div></li><li><span>04</span><div><strong>Long term</strong><p>Lawful insurance partnerships, adoption, memorial, public and global licensing</p></div></li></ol>
     </div>
   </div>
-    <div id="nls-trust" class="nls-block nls-block--band nls-changes-sec" data-hs-section>
+    <div id="nls-groups" class="nls-block nls-block--band nls-journey-sec" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">8 GROUPS</p>
+    <h2 class="nls-title">Twenty lines,<br>eight groups.</h2>
+    <p class="nls-lead">Choose a group to see the lines it includes.</p>
+  </header>
+    <div class="nls-rail nls-rail--petlog" style="--petlog-rail-n:8" role="group" aria-label="8 GROUPS"><button type="button" class="nls-rail__btn is-on" data-nls-decade="life" aria-pressed="true"><em>01</em><span>Pet</span></button><button type="button" class="nls-rail__btn" data-nls-decade="health" aria-pressed="false"><em>02</em><span>Health</span></button><button type="button" class="nls-rail__btn" data-nls-decade="community" aria-pressed="false"><em>03</em><span>Community</span></button><button type="button" class="nls-rail__btn" data-nls-decade="commerce" aria-pressed="false"><em>04</em><span>Commerce</span></button><button type="button" class="nls-rail__btn" data-nls-decade="booking" aria-pressed="false"><em>05</em><span>Booking</span></button><button type="button" class="nls-rail__btn" data-nls-decade="lifecycle" aria-pressed="false"><em>06</em><span>Insurance</span></button><button type="button" class="nls-rail__btn" data-nls-decade="saas" aria-pressed="false"><em>07</em><span>Business</span></button><button type="button" class="nls-rail__btn" data-nls-decade="public" aria-pressed="false"><em>08</em><span>Public</span></button></div>
+    <div class="nls-journey"><article class="nls-decade is-on" data-nls-decade-card="life" data-scene="life">
+        <div class="nls-decade__mark" aria-hidden="true"><b>02</b><em>01</em></div>
+        <div class="nls-decade__copy">
+          <p class="nls-decade__n">01</p>
+          <p class="nls-decade__age" lang="en">Pet Life Management</p>
+          <h3>Pet life management</h3>
+          <p class="nls-decade__lead">Records and family care — where PETLOG starts.</p>
+          <ul class="nls-chips"><li>01 Pet profile and life log</li><li>04 Family care</li></ul>
+        </div>
+      </article><article class="nls-decade" data-nls-decade-card="health" data-scene="health">
+        <div class="nls-decade__mark" aria-hidden="true"><b>02</b><em>02</em></div>
+        <div class="nls-decade__copy">
+          <p class="nls-decade__n">02</p>
+          <p class="nls-decade__age" lang="en">Health &amp; AI</p>
+          <h3>Health and AI</h3>
+          <p class="nls-decade__lead">Health history and AI to understand records.</p>
+          <ul class="nls-chips"><li>02 Health and medical records</li><li>03 AI pet assistant</li></ul>
+        </div>
+      </article><article class="nls-decade" data-nls-decade-card="community" data-scene="community">
+        <div class="nls-decade__mark" aria-hidden="true"><b>03</b><em>03</em></div>
+        <div class="nls-decade__copy">
+          <p class="nls-decade__n">03</p>
+          <p class="nls-decade__age" lang="en">Community &amp; Education</p>
+          <h3>Community and education</h3>
+          <p class="nls-decade__lead">Connecting owners, education and content.</p>
+          <ul class="nls-chips"><li>05 Pet community</li><li>06 Training and behaviour</li><li>07 Pet media and creators</li></ul>
+        </div>
+      </article><article class="nls-decade" data-nls-decade-card="commerce" data-scene="commerce">
+        <div class="nls-decade__mark" aria-hidden="true"><b>03</b><em>04</em></div>
+        <div class="nls-decade__copy">
+          <p class="nls-decade__n">04</p>
+          <p class="nls-decade__age" lang="en">Commerce &amp; Marketplace</p>
+          <h3>Commerce and marketplace</h3>
+          <p class="nls-decade__lead">Shopping, secondhand and group buying.</p>
+          <ul class="nls-chips"><li>08 Pet shopping</li><li>09 Secondhand and sharing</li><li>10 Group and repeat buying</li></ul>
+        </div>
+      </article><article class="nls-decade" data-nls-decade-card="booking" data-scene="booking">
+        <div class="nls-decade__mark" aria-hidden="true"><b>04</b><em>05</em></div>
+        <div class="nls-decade__copy">
+          <p class="nls-decade__n">05</p>
+          <p class="nls-decade__age" lang="en">Booking &amp; Care Services</p>
+          <h3>Booking and care</h3>
+          <p class="nls-decade__lead">Vets, grooming, hotels, care and travel.</p>
+          <ul class="nls-chips"><li>11 Vet information and booking</li><li>12 Grooming, hotels and daycare</li><li>13 Pet sitting, walking and home care</li><li>14 Pet travel and mobility</li></ul>
+        </div>
+      </article><article class="nls-decade" data-nls-decade-card="lifecycle" data-scene="lifecycle">
+        <div class="nls-decade__mark" aria-hidden="true"><b>03</b><em>06</em></div>
+        <div class="nls-decade__copy">
+          <p class="nls-decade__n">06</p>
+          <p class="nls-decade__age" lang="en">Insurance &amp; Life Cycle</p>
+          <h3>Insurance and life cycle</h3>
+          <p class="nls-decade__lead">Insurance, adoption and memorial.</p>
+          <ul class="nls-chips"><li>15 Pet insurance information</li><li>16 Adoption, protection and lost pets</li><li>17 Memorial and life archive</li></ul>
+        </div>
+      </article><article class="nls-decade" data-nls-decade-card="saas" data-scene="saas">
+        <div class="nls-decade__mark" aria-hidden="true"><b>01</b><em>07</em></div>
+        <div class="nls-decade__copy">
+          <p class="nls-decade__n">07</p>
+          <p class="nls-decade__age" lang="en">Business SaaS</p>
+          <h3>Business SaaS</h3>
+          <p class="nls-decade__lead">A standard suite for pet service providers.</p>
+          <ul class="nls-chips"><li>18 PETLOG Business</li></ul>
+        </div>
+      </article><article class="nls-decade" data-nls-decade-card="public" data-scene="public">
+        <div class="nls-decade__mark" aria-hidden="true"><b>02</b><em>08</em></div>
+        <div class="nls-decade__copy">
+          <p class="nls-decade__n">08</p>
+          <p class="nls-decade__age" lang="en">Public &amp; Global</p>
+          <h3>Public and global</h3>
+          <p class="nls-decade__lead">Animal welfare and global licensing.</p>
+          <ul class="nls-chips"><li>19 Public and animal welfare</li><li>20 Global and licensing</li></ul>
+        </div>
+      </article></div>
+    
+  </div>
+    <div id="nls-group-life" class="nls-block" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">01 · PET LIFE MANAGEMENT</p>
+    <h2 class="nls-title">Pet life management</h2>
+    <p class="nls-lead">Records and family care — where PETLOG starts.</p>
+  </header>
+    
+    <div class="nls-signal"><article class="nls-signal__item" id="line-01">
+        <span class="nls-signal__n">01</span>
+        <div class="nls-signal__copy"><p class="nls-card__label" lang="en">Pet Profile &amp; Life Log</p>
+        <p class="nls-status" data-status="app">In the app today</p>
+        <h3>Pet profile and life log</h3>
+        <p>PETLOG's starting point: name, breed, age, weight, growth, photos and a daily log in one place.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> All owners</li><li><strong>Value</strong> Scattered records in one place</li><li><strong>Revenue model</strong> Free core + premium subscription (price not decided)</li><li><strong>Stage</strong> Stage 1</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=app-support#inquiry">Business inquiry →</a></div>
+      </article><article class="nls-signal__item" id="line-04">
+        <span class="nls-signal__n">04</span>
+        <div class="nls-signal__copy"><p class="nls-card__label" lang="en">Family Sharing</p>
+        <p class="nls-status" data-status="app">In the app today</p>
+        <h3>Family care</h3>
+        <p>Sharing pet information and schedules among family, with roles, history and consent.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> Families</li><li><strong>Value</strong> Sharing the care</li><li><strong>Revenue model</strong> Premium subscription (price not decided)</li><li><strong>Stage</strong> Stage 1</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=app-support#inquiry">Business inquiry →</a></div>
+      </article></div>
+  </div>
+<div id="nls-group-health" class="nls-block nls-block--band" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">02 · HEALTH &amp; AI</p>
+    <h2 class="nls-title">Health and AI</h2>
+    <p class="nls-lead">Health history and AI to understand records.</p>
+  </header>
+    
+    <div class="nls-signal"><article class="nls-signal__item" id="line-02">
+        <span class="nls-signal__n">02</span>
+        <div class="nls-signal__copy"><p class="nls-card__label" lang="en">Health &amp; Medical Records</p>
+        <p class="nls-status" data-status="app">In the app today</p>
+        <h3>Health and medical records</h3>
+        <p>Owners keep vaccinations, visits, tests, medication, allergies and changes. No diagnosis.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> All owners</li><li><strong>Value</strong> Health history ready when needed</li><li><strong>Revenue model</strong> Premium subscription (price not decided)</li><li><strong>Partners</strong> Vets (under review)</li><li><strong>Stage</strong> Stage 1</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=app-support#inquiry">Business inquiry →</a></div>
+      </article><article class="nls-signal__item" id="line-03">
+        <span class="nls-signal__n">03</span>
+        <div class="nls-signal__copy"><p class="nls-card__label" lang="en">AI Pet Assistant</p>
+        <p class="nls-status" data-status="prep">In preparation</p>
+        <h3>AI pet assistant</h3>
+        <p>Summaries, care information and schedules; diagnosis and treatment go to vets.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> Owners</li><li><strong>Value</strong> From records to understanding</li><li><strong>Revenue model</strong> Premium subscription (price not decided)</li><li><strong>Partners</strong> Newon AI</li><li><strong>Stage</strong> Stage 1</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=app-support#inquiry">Business inquiry →</a></div>
+      </article></div>
+  </div>
+<div id="nls-group-community" class="nls-block" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">03 · COMMUNITY &amp; EDUCATION</p>
+    <h2 class="nls-title">Community and education</h2>
+    <p class="nls-lead">Connecting owners, education and content.</p>
+  </header>
+    
+    <div class="nls-board nls-board--3"><article class="nls-board__item" id="line-05">
+        <div class="nls-board__meta"><span class="nls-board__n">05</span></div>
+        <p class="nls-card__label" lang="en">Pet Community</p>
+        <p class="nls-status" data-status="prep">In preparation</p>
+        <h3>Pet community</h3>
+        <p>Owner talk, questions, reviews and local information by breed, age, area and interest.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> Owners</li><li><strong>Value</strong> Not raising a pet alone</li><li><strong>Revenue model</strong> Ads and partnerships (after user growth)</li><li><strong>Partners</strong> Creators and experts</li><li><strong>Stage</strong> Stage 4</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=content#inquiry">Business inquiry →</a>
+      </article><article class="nls-board__item" id="line-06">
+        <div class="nls-board__meta"><span class="nls-board__n">06</span></div>
+        <p class="nls-card__label" lang="en">Training &amp; Behavior</p>
+        <p class="nls-status" data-status="plan">Planned</p>
+        <h3>Training and behaviour</h3>
+        <p>Socialisation, basic training and behaviour, with lawful expert sessions.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> Owners</li><li><strong>Value</strong> Sound pet knowledge</li><li><strong>Revenue model</strong> Education content and expert fees (not decided)</li><li><strong>Partners</strong> Trainers and schools</li><li><strong>Stage</strong> Stage 4</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=content#inquiry">Business inquiry →</a>
+      </article><article class="nls-board__item" id="line-07">
+        <div class="nls-board__meta"><span class="nls-board__n">07</span></div>
+        <p class="nls-card__label" lang="en">Pet Media &amp; Creators</p>
+        <p class="nls-status" data-status="plan">Planned</p>
+        <h3>Pet media and creators</h3>
+        <p>Evidence-checked health content, education, owner stories and creator partnerships.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> Owners and brands</li><li><strong>Value</strong> Trustworthy pet content</li><li><strong>Revenue model</strong> Sponsorship, ads, brand campaigns (not decided)</li><li><strong>Partners</strong> Creators and brands</li><li><strong>Stage</strong> Stage 4</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=content#inquiry">Business inquiry →</a>
+      </article></div>
+  </div>
+<div id="nls-group-commerce" class="nls-block nls-block--band" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">04 · COMMERCE &amp; MARKETPLACE</p>
+    <h2 class="nls-title">Commerce and marketplace</h2>
+    <p class="nls-lead">Shopping, secondhand and group buying.</p>
+  </header>
+    
+    <div class="nls-board nls-board--3"><article class="nls-board__item" id="line-08">
+        <div class="nls-board__meta"><span class="nls-board__n">08</span></div>
+        <p class="nls-card__label" lang="en">Pet Commerce</p>
+        <p class="nls-status" data-status="plan">Planned</p>
+        <h3>Pet shopping</h3>
+        <p>Food, treats, toys, hygiene and home goods; direct sales and a seller marketplace as separate stages.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> Owners</li><li><strong>Value</strong> The right products, easily</li><li><strong>Revenue model</strong> Sales commission (rate not decided)</li><li><strong>Partners</strong> Makers, brands, individual sellers</li><li><strong>Stage</strong> Stage 4</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=brand#inquiry">Business inquiry →</a>
+      </article><article class="nls-board__item" id="line-09">
+        <div class="nls-board__meta"><span class="nls-board__n">09</span></div>
+        <p class="nls-card__label" lang="en">Secondhand &amp; Sharing</p>
+        <p class="nls-status" data-status="plan">Planned</p>
+        <h3>Secondhand and sharing</h3>
+        <p>Trading and giving away unused goods; unsafe items restricted, no live animals.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> Owners</li><li><strong>Value</strong> Reuse and savings</li><li><strong>Revenue model</strong> Fee policy under review (not decided)</li><li><strong>Stage</strong> Stage 4</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=group-buying#inquiry">Business inquiry →</a>
+      </article><article class="nls-board__item" id="line-10">
+        <div class="nls-board__meta"><span class="nls-board__n">10</span></div>
+        <p class="nls-card__label" lang="en">Group Buying &amp; Subscription</p>
+        <p class="nls-status" data-status="plan">Planned</p>
+        <h3>Group and repeat buying</h3>
+        <p>Group buys, subscriptions, bundles and brand promotions for repeat items — PETLOG commerce, separate from SHAREON's sharing and rental.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> Owners and sellers</li><li><strong>Value</strong> Better terms for repeat purchases</li><li><strong>Revenue model</strong> Sales commission (rate not decided)</li><li><strong>Partners</strong> Food and goods brands</li><li><strong>Stage</strong> Stage 4</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=brand#inquiry">Business inquiry →</a>
+      </article></div>
+  </div>
+<div id="nls-group-booking" class="nls-block" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">05 · BOOKING &amp; CARE SERVICES</p>
+    <h2 class="nls-title">Booking and care</h2>
+    <p class="nls-lead">Vets, grooming, hotels, care and travel.</p>
+  </header>
+    
+    <div class="nls-board"><article class="nls-board__item" id="line-11">
+        <div class="nls-board__meta"><span class="nls-board__n">11</span></div>
+        <p class="nls-card__label" lang="en">Veterinary Network</p>
+        <p class="nls-status" data-status="legal">After legal review</p>
+        <h3>Vet information and booking</h3>
+        <p>Finding clinics, specialties and booking routes; integration needs partnership and technical checks.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> Owners and clinics</li><li><strong>Value</strong> Finding the right clinic</li><li><strong>Revenue model</strong> Decided after legal review</li><li><strong>Partners</strong> Vet clinics</li><li><strong>Stage</strong> Stage 2</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=vet#inquiry">Business inquiry →</a>
+      </article><article class="nls-board__item" id="line-12">
+        <div class="nls-board__meta"><span class="nls-board__n">12</span></div>
+        <p class="nls-card__label" lang="en">Grooming, Hotel &amp; Daycare</p>
+        <p class="nls-status" data-status="plan">Planned</p>
+        <h3>Grooming, hotels and daycare</h3>
+        <p>Finding and booking grooming, boarding and daycare, with prices, scope, conditions, refunds and reviews.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> Owners and providers</li><li><strong>Value</strong> Trusted providers, easily</li><li><strong>Revenue model</strong> Booking fee (rate not decided)</li><li><strong>Partners</strong> Groomers, hotels, daycare</li><li><strong>Stage</strong> Stage 2</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=booking-provider#inquiry">Business inquiry →</a>
+      </article><article class="nls-board__item" id="line-13">
+        <div class="nls-board__meta"><span class="nls-board__n">13</span></div>
+        <p class="nls-card__label" lang="en">Pet Sitting &amp; Walking</p>
+        <p class="nls-status" data-status="legal">After legal review</p>
+        <h3>Pet sitting, walking and home care</h3>
+        <p>Home visits, walks and short-term care, with provider checks, liability, safety and insurance.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> Owners and carers</li><li><strong>Value</strong> Peace of mind while away</li><li><strong>Revenue model</strong> Booking fee (rate not decided)</li><li><strong>Partners</strong> Sitting and walking businesses</li><li><strong>Stage</strong> Stage 2</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=sitting#inquiry">Business inquiry →</a>
+      </article><article class="nls-board__item" id="line-14">
+        <div class="nls-board__meta"><span class="nls-board__n">14</span></div>
+        <p class="nls-card__label" lang="en">Pet Travel &amp; Mobility</p>
+        <p class="nls-status" data-status="plan">Planned</p>
+        <h3>Pet travel and mobility</h3>
+        <p>Pet-friendly stays, places, travel and transport; linked with MY WORLD while PETLOG focuses on pet conditions.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> Owners</li><li><strong>Value</strong> Places to go together</li><li><strong>Revenue model</strong> Partnerships and booking (not decided)</li><li><strong>Partners</strong> Lodging and travel businesses</li><li><strong>Stage</strong> Stage 4</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=app-support#inquiry">Business inquiry →</a>
+      </article></div>
+  </div>
+<div id="nls-group-lifecycle" class="nls-block nls-block--band" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">06 · INSURANCE &amp; LIFE CYCLE</p>
+    <h2 class="nls-title">Insurance and life cycle</h2>
+    <p class="nls-lead">Insurance, adoption and memorial.</p>
+  </header>
+    
+    <div class="nls-board nls-board--3"><article class="nls-board__item" id="line-15">
+        <div class="nls-board__meta"><span class="nls-board__n">15</span></div>
+        <p class="nls-card__label" lang="en">Pet Insurance</p>
+        <p class="nls-status" data-status="legal">After legal review</p>
+        <h3>Pet insurance information</h3>
+        <p>Explaining cover, deductibles, exclusions, renewal and claims; solicitation and comparison only after licences and contracts.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> Owners</li><li><strong>Value</strong> Understanding cover</li><li><strong>Revenue model</strong> Decided after regulatory review</li><li><strong>Partners</strong> Licensed insurers</li><li><strong>Stage</strong> Stage 5</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=insurance-adoption#inquiry">Business inquiry →</a>
+      </article><article class="nls-board__item" id="line-16">
+        <div class="nls-board__meta"><span class="nls-board__n">16</span></div>
+        <p class="nls-card__label" lang="en">Adoption &amp; Protection</p>
+        <p class="nls-status" data-status="plan">Planned</p>
+        <h3>Adoption, protection and lost pets</h3>
+        <p>Official shelter information, responsible adoption, registration, lost-pet prevention and found-animal information.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> Owners and adopters</li><li><strong>Value</strong> Helping more animals find homes</li><li><strong>Revenue model</strong> Public interest (not for profit)</li><li><strong>Partners</strong> Shelters and welfare bodies</li><li><strong>Stage</strong> Stage 5</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=insurance-adoption#inquiry">Business inquiry →</a>
+      </article><article class="nls-board__item" id="line-17">
+        <div class="nls-board__meta"><span class="nls-board__n">17</span></div>
+        <p class="nls-card__label" lang="en">Memorial &amp; Life Archive</p>
+        <p class="nls-status" data-status="plan">Planned</p>
+        <h3>Memorial and life archive</h3>
+        <p>Keeping photos, video and memories; a memorial space and licensed funeral information after farewell.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> Owners</li><li><strong>Value</strong> Remembering, for long</li><li><strong>Revenue model</strong> Archive subscription and partnerships (not decided)</li><li><strong>Partners</strong> Licensed funeral providers</li><li><strong>Stage</strong> Stage 5</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=app-support#inquiry">Business inquiry →</a>
+      </article></div>
+  </div>
+<div id="nls-group-saas" class="nls-block" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">07 · BUSINESS SAAS</p>
+    <h2 class="nls-title">Business SaaS</h2>
+    <p class="nls-lead">A standard suite for pet service providers.</p>
+  </header>
+    
+    <div class="nls-signal nls-signal--single"><article class="nls-signal__item" id="line-18">
+        <span class="nls-signal__n">18</span>
+        <div class="nls-signal__copy"><p class="nls-card__label" lang="en">PETLOG Business SaaS</p>
+        <p class="nls-status" data-status="plan">Planned</p>
+        <h3>PETLOG Business</h3>
+        <p>Booking, customer, pet and operations SaaS for vets, groomers, hotels, daycare and sitters — a shared product, not custom builds.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> Pet service businesses</li><li><strong>Value</strong> Less booking and customer admin</li><li><strong>Revenue model</strong> Provider SaaS subscription (price not decided)</li><li><strong>Partners</strong> Newon Business</li><li><strong>Stage</strong> Stage 3</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=saas#inquiry">Business inquiry →</a></div>
+      </article></div>
+    <div class="nls-subhead"><header class="nls-head">
+    <p class="nls-kicker">PETLOG BUSINESS · SAAS</p>
+    <h2 class="nls-title">A standard operations suite<br>shared by many businesses.</h2>
+    <p class="nls-lead">Not custom app or web builds for clients: an own SaaS product that pet service businesses use in common. These products are under review.</p>
+  </header></div>
+    <div class="nls-board nls-board--3"><article class="nls-board__item">
+        <div class="nls-board__meta"><span class="nls-board__n">01</span></div>
+        
+        <p class="nls-status" data-status="plan">Planned</p>
+        <h3>PETLOG Booking</h3>
+        <p>Bookings and schedules</p>
+        
+        
+        
+      </article><article class="nls-board__item">
+        <div class="nls-board__meta"><span class="nls-board__n">02</span></div>
+        
+        <p class="nls-status" data-status="plan">Planned</p>
+        <h3>PETLOG CRM</h3>
+        <p>Customer and pet information</p>
+        
+        
+        
+      </article><article class="nls-board__item">
+        <div class="nls-board__meta"><span class="nls-board__n">03</span></div>
+        
+        <p class="nls-status" data-status="plan">Planned</p>
+        <h3>PETLOG Care</h3>
+        <p>Care schedules and service records</p>
+        
+        
+        
+      </article></div>
+    <div class="nls-signal"><article class="nls-signal__item">
+        <span class="nls-signal__n">04</span>
+        <div class="nls-signal__copy">
+        <p class="nls-status" data-status="plan">Planned</p>
+        <h3>PETLOG Business</h3>
+        <p>Operations and sales overview</p>
+        
+        
+        </div>
+      </article><article class="nls-signal__item">
+        <span class="nls-signal__n">05</span>
+        <div class="nls-signal__copy">
+        <p class="nls-status" data-status="plan">Planned</p>
+        <h3>PETLOG Automation</h3>
+        <p>Booking reminders and repeat-task automation</p>
+        
+        
+        </div>
+      </article></div>
+  </div>
+<div id="nls-group-public" class="nls-block nls-block--band" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">08 · PUBLIC &amp; GLOBAL</p>
+    <h2 class="nls-title">Public and global</h2>
+    <p class="nls-lead">Animal welfare and global licensing.</p>
+  </header>
+    
+    <div class="nls-signal"><article class="nls-signal__item" id="line-19">
+        <span class="nls-signal__n">19</span>
+        <div class="nls-signal__copy"><p class="nls-card__label" lang="en">Public &amp; Animal Welfare</p>
+        <p class="nls-status" data-status="plan">Planned</p>
+        <h3>Public and animal welfare</h3>
+        <p>Working with local government, welfare bodies and schools on registration, responsible pet culture, shelters and local programmes.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> Local and public bodies</li><li><strong>Value</strong> Spreading responsible pet culture</li><li><strong>Revenue model</strong> Institution contracts (per contract)</li><li><strong>Partners</strong> Local government, welfare bodies</li><li><strong>Stage</strong> Stage 5</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=public#inquiry">Business inquiry →</a></div>
+      </article><article class="nls-signal__item" id="line-20">
+        <span class="nls-signal__n">20</span>
+        <div class="nls-signal__copy"><p class="nls-card__label" lang="en">Global &amp; Licensing</p>
+        <p class="nls-status" data-status="plan">Planned</p>
+        <h3>Global and licensing</h3>
+        <p>Multilingual information, localisation, solution licensing and international partners in the long term.</p>
+        <ul class="nls-points"><li><strong>Customers</strong> International businesses and bodies</li><li><strong>Value</strong> A proven pet life platform</li><li><strong>Revenue model</strong> Solution licence (per contract)</li><li><strong>Partners</strong> Global and technology partners</li><li><strong>Stage</strong> Stage 5</li></ul>
+        
+        <a class="nls-link" href="../../petlog/contact/?type=global#inquiry">Business inquiry →</a></div>
+      </article></div>
+  </div>
+    <div id="nls-revenue" class="nls-block nls-block--band" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">REVENUE MODEL</p>
+    <h2 class="nls-title">Six revenue axes.</h2>
+    <p class="nls-lead">Commission rates, ad prices and SaaS fees are not final. They will be set after reviewing partner margins, payment and refund costs, acquisition costs and legal limits.</p>
+  </header>
+    
+    <div class="nls-board nls-board--3"><article class="nls-board__item">
+        <div class="nls-board__meta"><span class="nls-board__n">01</span></div>
+        
+        
+        <h3>B2C subscription</h3>
+        <p>Premium records, family care and AI features</p>
+        
+        <ul class="nls-chips"><li>Core</li></ul>
+        
+      </article><article class="nls-board__item">
+        <div class="nls-board__meta"><span class="nls-board__n">02</span></div>
+        
+        
+        <h3>Commerce</h3>
+        <p>Sales commission, group buying, subscriptions</p>
+        
+        <ul class="nls-chips"><li>Expansion</li></ul>
+        
+      </article><article class="nls-board__item">
+        <div class="nls-board__meta"><span class="nls-board__n">03</span></div>
+        
+        
+        <h3>Booking platform</h3>
+        <p>Booking links for grooming, hotels, daycare and care</p>
+        
+        <ul class="nls-chips"><li>Expansion</li></ul>
+        
+      </article><article class="nls-board__item">
+        <div class="nls-board__meta"><span class="nls-board__n">04</span></div>
+        
+        
+        <h3>B2B SaaS</h3>
+        <p>Booking, CRM, operations and automation for providers</p>
+        
+        <ul class="nls-chips"><li>Business</li></ul>
+        
+      </article><article class="nls-board__item">
+        <div class="nls-board__meta"><span class="nls-board__n">05</span></div>
+        
+        
+        <h3>Ads and content</h3>
+        <p>Brand campaigns, paid placement, content</p>
+        
+        <ul class="nls-chips"><li>After user growth</li></ul>
+        
+      </article><article class="nls-board__item">
+        <div class="nls-board__meta"><span class="nls-board__n">06</span></div>
+        
+        
+        <h3>Public and global</h3>
+        <p>Institution contracts and solution licensing</p>
+        
+        <ul class="nls-chips"><li>Long term</li></ul>
+        
+      </article></div>
+  </div>
+    <div id="nls-priority" class="nls-block nls-related-sec" data-hs-section>
+    <div class="nls-split">
+      <div><header class="nls-head">
+    <p class="nls-kicker">PRIORITY</p>
+    <h2 class="nls-title">Revenue<br>priorities.</h2>
+    
+  </header></div>
+      <ol class="nls-dir"><li><span>01</span><div><strong>Subscription</strong><p>Recurring revenue built on PETLOG's existing record and care features.</p></div></li><li><span>02</span><div><strong>Provider booking and partnerships</strong><p>Validating real demand with groomers, hotels and daycare.</p></div></li><li><span>03</span><div><strong>Business SaaS</strong><p>Booking, customer and pet management tools as a standard product.</p></div></li><li><span>04</span><div><strong>Commerce</strong><p>Growing sales and group buys from categories with proven demand.</p></div></li><li><span>05</span><div><strong>Ads, public and global</strong><p>Expanding once there are enough users and operating results.</p></div></li></ol>
+    </div>
+  </div>
+    <div id="nls-roadmap" class="nls-block" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">ROADMAP</p>
+    <h2 class="nls-title">Step by step,<br>following real demand.</h2>
+    
+  </header>
+    <p class="nls-note">This is the plan, not current operations. No unconfirmed partnership, revenue or user number is shown.</p>
+    <div class="nls-lane"><article class="nls-lane__item"><span class="nls-lane__n">01</span><div class="nls-lane__copy"><h3>Stage 1 — Complete PETLOG (top priority)</h3><p>Stability of records, health and family care; app quality; user growth; validating subscriptions.</p></div></article><article class="nls-lane__item"><span class="nls-lane__n">02</span><div class="nls-lane__copy"><h3>Stage 2 — Service booking</h3><p>Vet information, demand research for grooming, hotels and daycare, first partners.</p></div></article><article class="nls-lane__item"><span class="nls-lane__n">03</span><div class="nls-lane__copy"><h3>Stage 3 — PETLOG Business</h3><p>A small pilot of booking, CRM and pet management SaaS.</p></div></article><article class="nls-lane__item"><span class="nls-lane__n">04</span><div class="nls-lane__copy"><h3>Stage 4 — Commerce and community</h3><p>Popular categories, group buying, community and education content.</p></div></article><article class="nls-lane__item"><span class="nls-lane__n">05</span><div class="nls-lane__copy"><h3>Stage 5 — Scale</h3><p>Lawful insurance partnerships, public bodies and local government, global licensing.</p></div></article></div>
+  </div>
+    <div id="nls-trust" class="nls-block nls-block--band" data-hs-section>
     <header class="nls-head">
     <p class="nls-kicker">TRUST</p>
     <h2 class="nls-title">Legal and trust principles</h2>
     
   </header>
-    <ol class="nls-index"><li><span>01</span><strong>Vet treatment, advertising and brokerage models are decided only after legal review.</strong></li><li><span>02</span><strong>Insurance information is offered only within reviewed rules on solicitation, referral and fees.</strong></li><li><span>03</span><strong>Adoption and protection follow animal-protection law.</strong></li><li><span>04</span><strong>Care, hotel and grooming providers are checked for eligibility before being connected.</strong></li><li><span>05</span><strong>Funeral providers are listed only after a legality review.</strong></li><li><span>06</span><strong>Personal and location data are collected minimally and protected.</strong></li><li><span>07</span><strong>The community runs a report-and-block policy.</strong></li><li><span>08</span><strong>No unsecured partner, track record or revenue is ever shown.</strong></li></ol>
+    
+    <ol class="nls-index"><li><span>01</span><strong>PETLOG does not diagnose disease or replace a vet's judgment.</strong></li><li><span>02</span><strong>Vet booking, advertising and brokerage models follow legal review.</strong></li><li><span>03</span><strong>Insurance solicitation, brokerage and comparison only with proper licences and contracts.</strong></li><li><span>04</span><strong>No general trading of live animals, and no illegal breeding or sales.</strong></li><li><span>05</span><strong>Provider checks, liability, safety and insurance are built into care services.</strong></li><li><span>06</span><strong>Only licensed pet funeral providers are listed.</strong></li><li><span>07</span><strong>Showing official public information is not the same as being an official partner.</strong></li><li><span>08</span><strong>Owners' records, personal and location data are never shared without consent.</strong></li></ol>
   </div>
     <div id="nls-petlog-menu" class="nls-block nls-related-sec" data-hs-section>
     <div class="nls-split">
@@ -861,13 +1180,13 @@
     <h2 class="nls-title">PETLOG MENU</h2>
     
   </header></div>
-      <nav aria-label="PETLOG MENU"><ol class="nls-dir"><li><span>01</span><div><strong><a href="../../petlog/">Overview · About PETLOG</a></strong></div></li><li><span>02</span><div><strong><a href="../../petlog/platform/">Platform · Services</a></strong></div></li><li><span>03</span><div><strong><a href="../../petlog/business/" aria-current="page">Business · Business ·</a></strong></div></li><li><span>04</span><div><strong><a href="../../petlog/partnerships/">Partnerships · Partnerships</a></strong></div></li><li><span>05</span><div><strong><a href="../../petlog/contact/">Contact · Contact</a></strong></div></li></ol></nav>
+      <nav aria-label="PETLOG MENU"><ol class="nls-dir"><li><span>01</span><div><strong><a href="../../petlog/">Overview · About PETLOG</a></strong><p>Brand, vision and the pet life platform</p></div></li><li><span>02</span><div><strong><a href="../../petlog/platform/">Platform · Services</a></strong><p>18 services from records to booking</p></div></li><li><span>03</span><div><strong><a href="../../petlog/business/" aria-current="page">Business · Business</a></strong><p>20 business lines, revenue model and roadmap</p></div></li><li><span>04</span><div><strong><a href="../../petlog/partnerships/">Partnerships · Partnerships</a></strong><p>14 kinds of partners</p></div></li><li><span>05</span><div><strong><a href="../../petlog/contact/">Contact · Contact</a></strong><p>App, service, business and public inquiries</p></div></li></ol></nav>
     </div>
   </div>
     <div id="nls-close" class="nls-block nls-close nls-block--ink" data-hs-section>
     <p class="nls-kicker">NEXT STEP</p>
-    <h2 class="nls-hero__title">Let's make pet life<br>better together.</h2>
-    <p class="nls-lead">Try the PETLOG app, or propose a partnership.</p>
+    <h2 class="nls-hero__title">Every moment with your pet,<br>with PETLOG.</h2>
+    <p class="nls-lead">Start recording in the PETLOG app, or talk to us about services, business and partnerships.</p>
     <div class="nls-actions">
       <a class="nls-btn" href="../../petlog/contact/">Business inquiry →</a>
       <a class="nls-btn nls-btn--ghost" href="../../petlog/partnerships/">See partnerships</a>

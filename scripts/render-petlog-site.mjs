@@ -47,9 +47,36 @@ const PETLOG_CSS = `<style>
   #lifestage-detail.nls--petlog .nls-status[data-status="app"] { background: #278a53; border-color: #278a53; color: #fff; }
   html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-kicker,
   html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-status { color: #6fcf97; border-color: #6fcf97; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-status[data-status="app"] { background: #1e6b41; border-color: #1e6b41; color: #fff; }
+  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-status[data-status="app"] { background: #1e6b41 !important; border-color: #1e6b41; color: #fff; }
   #lifestage-detail.nls--petlog .nls-link { display: inline-block; margin-top: 0.9rem; font-weight: 600; text-decoration: underline; text-underline-offset: 0.2em; color: inherit; }
   #lifestage-detail.nls--petlog .nls-board__item .nls-status { margin: 0 0 0.6rem; }
+  /* small additions built from the existing Life Stage tokens */
+  #lifestage-detail.nls--petlog .nls-card__label { margin: 0 0 0.35rem; font-size: 0.72rem; font-weight: 650; letter-spacing: 0.1em; text-transform: uppercase; color: var(--nls-faint); }
+  #lifestage-detail.nls--petlog article .nls-status { margin: 0 0 0.7rem; }
+  #lifestage-detail.nls--petlog article .nls-points { margin: 0.85rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.35rem; font-size: 0.86rem; line-height: 1.5; color: var(--nls-muted); }
+  #lifestage-detail.nls--petlog article .nls-points li { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 0.7rem; padding: 0.22rem 0; font-size: inherit; }
+  #lifestage-detail.nls--petlog article .nls-points li::before { content: none; }
+  #lifestage-detail.nls--petlog article .nls-points strong { min-width: 4.6rem; color: var(--nls-ink); font-weight: 650; }
+  html:not([lang="ko"]) #lifestage-detail.nls--petlog article .nls-points strong { min-width: 6.8rem; }
+  #lifestage-detail.nls--petlog article .nls-chips { margin-top: 0.85rem; }
+  @media (min-width: 900px) {
+    #lifestage-detail.nls--petlog .nls-signal--single { grid-template-columns: 1fr; }
+    #lifestage-detail.nls--petlog .nls-board--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail--petlog { grid-template-columns: repeat(var(--petlog-rail-n, 7), minmax(0, 1fr)); }
+  }
+  #lifestage-detail.nls--petlog .nls-status { width: fit-content; max-width: 100%; }
+  #lifestage-detail.nls--petlog .nls-board__item { padding: 1.25rem 1.25rem 1.35rem; }
+  #lifestage-detail.nls--petlog .nls-subhead { margin: 2.6rem 0 1.4rem; }
+  #lifestage-detail.nls--petlog .nls-subhead .nls-title { font-size: clamp(1.35rem, 2.4vw, 1.75rem); }
+  #lifestage-detail.nls--petlog .nls-pipe__item .nls-pipe__n { color: var(--nls-ink); }
+  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog article .nls-points strong { color: #f5f5f5; }
+  html[data-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on,
+  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on { background: #fff !important; border-color: #fff; color: rgba(17, 17, 17, 0.6); }
+  html[data-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on span,
+  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on span { color: #111; }
+  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on > * { color: #111 !important; }
+  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on > *,
+  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-status[data-status="app"] * { background: transparent !important; }
   /* the shared film fallback is the LIVON poster; PETLOG shows plain black until its film loads */
   #lifestage-detail.nls--petlog .nls-film__fallback { background: #050505; }
 </style>`;
@@ -62,8 +89,10 @@ function head(kicker, title, lead) {
     ${lead ? `<p class="nls-lead">${esc(lead)}</p>` : ""}
   </header>`;
 }
-const chips = (items) => `<ul class="nls-chips">${(items || []).map((t) => `<li>${esc(t)}</li>`).join("")}</ul>`;
-const status = (lang, s) => `<p class="nls-status" data-status="${esc(s)}">${esc(STATUS[bl(lang)][s])}</p>`;
+const chips = (items) => (items && items.length ? `<ul class="nls-chips">${items.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>` : "");
+const status = (lang, s) => (s ? `<p class="nls-status" data-status="${esc(s)}">${esc(STATUS[bl(lang)][s])}</p>` : "");
+const note = (t) => (t ? `<p class="nls-note">${esc(t)}</p>` : "");
+const ext = (h) => /^https?:/.test(h);
 
 function hero({ wordmark, titleHtml, lead, main, sub }) {
   return `<div class="nls-film" data-nls-film data-hs-section>
@@ -79,10 +108,54 @@ function hero({ wordmark, titleHtml, lead, main, sub }) {
         <p class="nls-film__lead">${esc(lead)}</p>
         <div class="nls-film__actions">
           <a class="nls-btn" href="${esc(main[1])}"${main[1].startsWith("#") ? " data-nls-scroll" : ""}>${esc(main[0])}</a>
-          <a class="nls-btn nls-btn--ghost" href="${esc(sub[1])}">${esc(sub[0])}</a>
+          <a class="nls-btn nls-btn--ghost" href="${esc(sub[1])}"${ext(sub[1]) ? ' target="_blank" rel="noopener noreferrer"' : ""}>${esc(sub[0])}</a>
         </div>
       </div>
     </div>
+  </div>`;
+}
+
+/**
+ * Card grid using one of the Life Stage card components.
+ * kind: board (4 col) · flow (3 col) · signal (2 col) · proc (4 col, boxed numbers)
+ * card: { n, label?, name, lead, status?, points?: [k, v][], chips?, link?: [label, href] }
+ */
+function cardsHtml(kind, cards, lang, depth) {
+  const inner = (c) => `${c.label ? `<p class="nls-card__label" lang="en">${esc(c.label)}</p>` : ""}
+        ${status(lang, c.status)}
+        <h3>${esc(c.name)}</h3>
+        <p>${esc(c.lead)}</p>
+        ${c.points ? `<ul class="nls-points">${c.points.filter(([, v]) => v && v !== "—").map(([k, v]) => `<li><strong>${esc(k)}</strong> ${esc(v)}</li>`).join("")}</ul>` : ""}
+        ${chips(c.chips)}
+        ${c.link ? `<a class="nls-link" href="${esc(ext(c.link[1]) ? c.link[1] : rel(depth, c.link[1]))}"${ext(c.link[1]) ? ' target="_blank" rel="noopener noreferrer"' : ""}>${esc(c.link[0])} →</a>` : ""}`;
+  const id = (c) => (c.anchor ? ` id="${esc(c.anchor)}"` : "");
+  if (kind === "board")
+    return `<div class="nls-board">${cards.map((c) => `<article class="nls-board__item"${id(c)}>
+        <div class="nls-board__meta"><span class="nls-board__n">${esc(c.n)}</span></div>
+        ${inner(c)}
+      </article>`).join("")}</div>`;
+  // "flow" = the board card in three columns (the Life Stage flow grid is six narrow columns on desktop)
+  if (kind === "flow")
+    return `<div class="nls-board nls-board--3">${cards.map((c) => `<article class="nls-board__item"${id(c)}>
+        <div class="nls-board__meta"><span class="nls-board__n">${esc(c.n)}</span></div>
+        ${inner(c)}
+      </article>`).join("")}</div>`;
+  if (kind === "proc")
+    return `<div class="nls-proc">${cards.map((c) => `<article class="nls-proc__item"${id(c)}>
+        <span class="nls-proc__n">${esc(c.n)}</span>
+        ${inner(c)}
+      </article>`).join("")}</div>`;
+  return `<div class="nls-signal">${cards.map((c) => `<article class="nls-signal__item"${id(c)}>
+        <span class="nls-signal__n">${esc(c.n)}</span>
+        <div class="nls-signal__copy">${inner(c)}</div>
+      </article>`).join("")}</div>`;
+}
+
+function section(id, { kicker, title, lead, noteText, band, body }) {
+  return `<div id="${id}" class="nls-block${band ? " nls-block--band" : ""}" data-hs-section>
+    ${head(kicker, title, lead)}
+    ${note(noteText)}
+    ${body}
   </div>`;
 }
 
@@ -96,115 +169,63 @@ function rosterBlock(id, kicker, title, body) {
   </div>`;
 }
 
-function indexBlock(id, kicker, title, lead, items, band = true) {
-  const rows = items.map((t, i) => `<li><span>${pad2(i + 1)}</span><strong>${esc(t)}</strong></li>`).join("");
-  return `<div id="${id}" class="nls-block${band ? " nls-block--band" : ""} nls-changes-sec" data-hs-section>
-    ${head(kicker, title, lead)}
-    <ol class="nls-index">${rows}</ol>
-  </div>`;
+const indexList = (items) => `<ol class="nls-index">${items.map((t, i) => `<li><span>${pad2(i + 1)}</span><strong>${esc(t)}</strong></li>`).join("")}</ol>`;
+
+function dirList(items, depth) {
+  return `<ol class="nls-dir">${items
+    .map((s) => `<li><span>${esc(s.n)}</span><div><strong>${s.href ? `<a href="${esc(rel(depth, s.href))}"${s.on ? ' aria-current="page"' : ""}>${esc(s.name)}</a>` : esc(s.name)}</strong>${s.body ? `<p>${esc(s.body)}</p>` : ""}</div></li>`)
+    .join("")}</ol>`;
 }
 
-/** Board cards: { n, name, label?, lead, status?, points?: [k, v][], topics?, link?: [label, href] } */
-function boardBlock(id, kicker, title, lead, note, cards, lang, depth) {
-  const items = cards
-    .map(
-      (c) => `<article class="nls-board__item" id="${esc(c.anchor || "")}">
-        <div class="nls-board__meta">
-          <span class="nls-board__n">${esc(c.n)}${c.label ? ` · <span lang="en">${esc(c.label)}</span>` : ""}</span>
-        </div>
-        ${c.status ? status(lang, c.status) : ""}
-        <h3>${esc(c.name)}</h3>
-        <p>${esc(c.lead)}</p>
-        ${c.points ? `<ul class="nls-points">${c.points.filter(([, v]) => v && v !== "—").map(([k, v]) => `<li><strong>${esc(k)}</strong> · ${esc(v)}</li>`).join("")}</ul>` : ""}
-        ${c.topics ? chips(c.topics) : ""}
-        ${c.link ? `<a class="nls-link" href="${esc(rel(depth, c.link[1]))}"${/^https?:/.test(c.link[1]) ? ' target="_blank" rel="noopener noreferrer"' : ""}>${esc(c.link[0])} →</a>` : ""}
-      </article>`
-    )
-    .join("")
-    .replace(/ id=""/g, "");
-  return `<div id="${id}" class="nls-block nls-first-sec" data-hs-section>
-    ${head(kicker, title, lead)}
-    ${note ? `<p class="nls-note">${esc(note)}</p>` : ""}
-    <div class="nls-board">${items}</div>
-  </div>`;
-}
-
-function flowBlock(id, kicker, title, lead, items) {
-  const cards = items.map((it) => `<article class="nls-flow__item"><span class="nls-flow__n">${esc(it.n)}</span><h3>${esc(it.name)}</h3><p>${esc(it.lead)}</p></article>`).join("");
-  return `<div id="${id}" class="nls-block nls-pillars-sec" data-hs-section>
-    ${head(kicker, title, lead)}
-    <div class="nls-flow">${cards}</div>
-  </div>`;
-}
-
-function signalBlock(id, kicker, title, lead, items, extra = "") {
-  const cards = items
-    .map((it) => `<article class="nls-signal__item"><span class="nls-signal__n">${esc(it.n)}</span><div class="nls-signal__copy"><h3>${esc(it.name)}</h3><p>${esc(it.lead)}</p></div></article>`)
-    .join("");
-  return `<div id="${id}" class="nls-block nls-block--band nls-areas-sec" data-hs-section>
-    ${head(kicker, title, lead)}
-    <div class="nls-signal">${cards}</div>
-    ${extra}
-  </div>`;
-}
-
-function dirBlock(id, kicker, title, lead, items, depth) {
-  const rows = items
-    .map((s) => `<li><span>${esc(s.n)}</span><div><strong>${s.href ? `<a href="${esc(rel(depth, s.href))}">${esc(s.name)}</a>` : esc(s.name)}</strong><p>${esc(s.body)}</p></div></li>`)
-    .join("");
+function splitDir(id, { kicker, title, lead, noteText, items, depth }) {
   return `<div id="${id}" class="nls-block nls-related-sec" data-hs-section>
     <div class="nls-split">
-      <div>${head(kicker, title, lead)}</div>
-      <ol class="nls-dir">${rows}</ol>
+      <div>${head(kicker, title, lead)}${note(noteText)}</div>
+      ${dirList(items, depth)}
     </div>
   </div>`;
 }
 
-function pipeBlock(id, kicker, title, note, steps) {
-  const items = steps.map(([t, d], i) => `<article class="nls-pipe__item${i === 0 ? " is-on" : ""}"><p class="nls-pipe__n">${pad2(i + 1)}</p><h3>${esc(t)}</h3><p>${esc(d)}</p></article>`).join("");
-  return `<div id="${id}" class="nls-block nls-how-sec" data-hs-section>
-    ${head(kicker, title, "")}
-    <p class="nls-note">${esc(note)}</p>
-    <div class="nls-pipe">${items}</div>
-  </div>`;
-}
+/** Big-number rows (Life Stage "business expansion" lane). rows: [title, body][] */
+const laneList = (rows) => `<div class="nls-lane">${rows.map(([t, d], i) => `<article class="nls-lane__item"><span class="nls-lane__n">${pad2(i + 1)}</span><div class="nls-lane__copy"><h3>${esc(t)}</h3><p>${esc(d)}</p></div></article>`).join("")}</div>`;
 
-function journeyBlock(j) {
-  const rail = j.items
-    .map((it, i) => `<button type="button" class="nls-rail__btn${i === 0 ? " is-on" : ""}" data-nls-decade="${esc(it.id)}" aria-pressed="${i === 0}"><em>${esc(it.n)}</em><span>${esc(it.age)}</span></button>`)
+/** Big-number columns (Life Stage "how it works" pipe). cols: [big, title, body][] */
+const pipeList = (cols) => `<div class="nls-pipe">${cols.map(([n, t, d], i) => `<article class="nls-pipe__item${i === 0 ? " is-on" : ""}"><p class="nls-pipe__n">${esc(n)}</p><h3>${esc(t)}</h3><p>${esc(d)}</p></article>`).join("")}</div>`;
+
+/** Tab rail + cards (Life Stage "life journey"). One rail per page (home-lifestage.js). */
+function railBlock(id, { kicker, title, lead, noteText, items, ariaLabel }) {
+  const rail = items
+    .map((it, i) => `<button type="button" class="nls-rail__btn${i === 0 ? " is-on" : ""}" data-nls-decade="${esc(it.id)}" aria-pressed="${i === 0}"><em>${esc(it.n)}</em><span>${esc(it.tab)}</span></button>`)
     .join("");
-  const cards = j.items
+  const cards = items
     .map(
       (it, i) => `<article class="nls-decade${i === 0 ? " is-on" : ""}" data-nls-decade-card="${esc(it.id)}" data-scene="${esc(it.id)}">
-        <div class="nls-decade__mark" aria-hidden="true"><b>${esc(it.age)}</b><em>${esc(it.n)}</em></div>
+        <div class="nls-decade__mark" aria-hidden="true"><b>${esc(it.mark)}</b><em>${esc(it.n)}</em></div>
         <div class="nls-decade__copy">
           <p class="nls-decade__n">${esc(it.n)}</p>
-          <p class="nls-decade__age" lang="en">${esc(it.age)}</p>
+          <p class="nls-decade__age" lang="en">${esc(it.label)}</p>
           <h3>${esc(it.name)}</h3>
           <p class="nls-decade__lead">${esc(it.lead)}</p>
-          ${chips(it.topics)}
+          ${chips(it.chips)}
         </div>
       </article>`
     )
     .join("");
-  return `<div id="nls-journey" class="nls-block nls-block--band nls-journey-sec" data-hs-section>
-    ${head(j.kicker, j.title, j.lead)}
-    <div class="nls-rail" role="group" aria-label="${esc(j.kicker)}">${rail}</div>
+  return `<div id="${id}" class="nls-block nls-block--band nls-journey-sec" data-hs-section>
+    ${head(kicker, title, lead)}
+    <div class="nls-rail nls-rail--petlog" style="--petlog-rail-n:${items.length}" role="group" aria-label="${esc(ariaLabel || kicker)}">${rail}</div>
     <div class="nls-journey">${cards}</div>
-    <p class="nls-note">${esc(j.note)}</p>
+    ${note(noteText)}
   </div>`;
 }
 
 function menuBlock(lang, depth, active) {
-  const items = PETLOG_MENU.map((m) => ({ n: m.n, name: `${m.name} · ${m[bl(lang)]}`, href: m.href, on: m.id === active }));
+  const items = PETLOG_MENU.map((m) => ({ n: m.n, name: `${m.name} · ${m[bl(lang)]}`, body: bl(lang) === "ko" ? m.koLead : m.enLead, href: m.href, on: m.id === active }));
   const label = lang === "ko" ? "PETLOG 메뉴" : "PETLOG MENU";
-  const rows = items
-    .map((s) => `<li><span>${esc(s.n)}</span><div><strong><a href="${esc(rel(depth, s.href))}"${s.on ? ' aria-current="page"' : ""}>${esc(s.name)}${s.on ? " ·" : ""}</a></strong></div></li>`)
-    .join("");
   return `<div id="nls-petlog-menu" class="nls-block nls-related-sec" data-hs-section>
     <div class="nls-split">
       <div>${head("PETLOG", label, "")}</div>
-      <nav aria-label="${esc(label)}"><ol class="nls-dir">${rows}</ol></nav>
+      <nav aria-label="${esc(label)}">${dirList(items, depth)}</nav>
     </div>
   </div>`;
 }
@@ -216,28 +237,34 @@ function closeBlock(c, depth) {
     <p class="nls-lead">${esc(c.lead)}</p>
     <div class="nls-actions">
       <a class="nls-btn" href="${esc(rel(depth, c.main[1]))}">${esc(c.main[0])} →</a>
-      <a class="nls-btn nls-btn--ghost" href="${esc(c.sub[1].startsWith("http") ? c.sub[1] : rel(depth, c.sub[1]))}"${c.sub[1].startsWith("http") ? ' target="_blank" rel="noopener noreferrer"' : ""}>${esc(c.sub[0])}</a>
+      <a class="nls-btn nls-btn--ghost" href="${esc(ext(c.sub[1]) ? c.sub[1] : rel(depth, c.sub[1]))}"${ext(c.sub[1]) ? ' target="_blank" rel="noopener noreferrer"' : ""}>${esc(c.sub[0])}</a>
     </div>
   </div>`;
 }
 
 const wrap = (inner) => `<section id="lifestage-detail" class="nls nls--petlog" data-story="petlog" aria-labelledby="story-lifestage-title">${inner}</section>`;
+const CONTACT_HREF = (type) => `petlog/contact/?type=${type}#inquiry`;
+const defaultClose = (lang) => {
+  const c = OVERVIEW[bl(lang)].close;
+  return { ...c, main: [c.ctaMain, "petlog/contact/"], sub: [c.ctaSub, STORE.ios] };
+};
 
 /* ---------------------------------------------------------------- pages */
-const CONTACT_HREF = (type) => `petlog/contact/?type=${type}#inquiry`;
-
 function overviewPage(lang) {
   const c = OVERVIEW[bl(lang)];
   const D = 1;
+  const journey = c.journey.items.map((it) => ({ id: it.id, n: it.n, tab: it.age, mark: it.age, label: it.age, name: it.name, lead: it.lead, chips: it.topics }));
   return wrap(`${hero({ wordmark: "PETLOG", titleHtml: c.heroTitle, lead: c.heroLead, main: [`${c.ctaMain} →`, "#nls-vision"], sub: [c.ctaSub, rel(D, "petlog/contact/")] })}
   <div class="nls__wrap">
     <p class="nls-note">${esc(c.statusNote)}</p>
     ${rosterBlock("nls-vision", c.vision.kicker, c.vision.title, c.vision.body)}
-    ${journeyBlock(c.journey)}
-    ${flowBlock("nls-connect", c.connect.kicker, c.connect.title, c.connect.lead, c.connect.items)}
-    ${boardBlock("nls-ecosystem", c.ecosystem.kicker, c.ecosystem.title, c.ecosystem.lead, "", c.ecosystem.items, lang, D)}
-    ${signalBlock("nls-business", c.biz.kicker, c.biz.title, c.biz.lead, c.biz.items, `<p class="nls-note"><a class="nls-link" href="${rel(D, "petlog/business/")}">${esc(c.biz.cta)} →</a></p>`)}
-    ${dirBlock("nls-newon", c.newon.kicker, c.newon.title, c.newon.lead, c.newon.items, D)}
+    ${section("nls-glance", { kicker: c.statsKicker, title: c.statsTitle, noteText: c.statsNote, body: pipeList(c.stats) })}
+    ${railBlock("nls-journey", { kicker: c.journey.kicker, title: c.journey.title, lead: c.journey.lead, noteText: c.journey.note, items: journey })}
+    ${section("nls-daily", { kicker: c.daily.kicker, title: c.daily.title, lead: c.daily.lead, body: cardsHtml("proc", c.daily.items, lang, D) })}
+    ${section("nls-services", { kicker: c.services.kicker, title: c.services.title, lead: c.services.lead, noteText: c.services.note, band: true, body: cardsHtml("flow", c.services.items, lang, D) })}
+    ${section("nls-community", { kicker: c.community.kicker, title: c.community.title, lead: c.community.lead, body: cardsHtml("flow", c.community.items, lang, D) })}
+    ${section("nls-ecosystem", { kicker: c.ecosystem.kicker, title: c.ecosystem.title, lead: c.ecosystem.lead, band: true, body: `${cardsHtml("signal", c.ecosystem.items, lang, D)}<p class="nls-note"><a class="nls-link" href="${rel(D, "petlog/business/")}">${esc(c.ecosystem.cta)} →</a></p>` })}
+    ${splitDir("nls-newon", { kicker: c.newon.kicker, title: c.newon.title, lead: c.newon.lead, noteText: c.newon.note, items: c.newon.items, depth: D })}
     ${menuBlock(lang, D, "overview")}
     ${closeBlock({ ...c.close, main: [c.close.ctaMain, "petlog/contact/"], sub: [c.close.ctaSub, STORE.ios] }, D)}
   </div>`);
@@ -245,78 +272,98 @@ function overviewPage(lang) {
 
 function platformPage(lang) {
   const m = PLATFORM.meta[bl(lang)];
+  const L = bl(lang);
   const D = 2;
-  const cards = PLATFORM.items.map((it, i) => {
-    const link =
-      it.href === "app" ? [m.appCta, STORE.ios] : it.href === "partnerships" ? [m.cta, "petlog/partnerships/"] : [m.cta, CONTACT_HREF(i < 6 ? "app-support" : i < 7 ? "shopping" : i < 8 ? "shopping" : i < 9 ? "group-buying" : i < 10 ? "booking-provider" : i < 13 ? "content" : "public")];
-    return { n: pad2(i + 1), label: it.label, name: it.t[bl(lang)], lead: it.lead[bl(lang)], status: it.status, topics: it.f[bl(lang)], link, anchor: it.label.toLowerCase().replace(/[^a-z]+/g, "-") };
-  });
-  return wrap(`${hero({ wordmark: "Platform", titleHtml: m.heroTitle, lead: m.heroLead, main: [`${m.listTitle} ↓`, "#nls-platform-list"], sub: [lang === "ko" ? "PETLOG 소개" : "About PETLOG", rel(D, "petlog/")] })}
+  const card = (idx) => {
+    const it = PLATFORM.items[idx];
+    const link = it.cta === "app" ? [m.labels.app, STORE.ios] : [m.labels.cta, CONTACT_HREF(it.cta)];
+    return { n: pad2(idx + 1), label: it.label, name: it.name[L], lead: it.lead[L], status: it.status, points: [[m.labels.users, it.users[L]]], chips: it.f[L], link, anchor: it.label.toLowerCase().replace(/[^a-z]+/g, "-").replace(/^-|-$/g, "") };
+  };
+  const groups = m.groups
+    .map((g, gi) => section(`nls-${g.id}`, { kicker: g.kicker, title: g.title, lead: g.lead, band: gi % 2 === 1, body: cardsHtml(g.layout, g.items.map(card), lang, D) }))
+    .join("\n");
+  const legend = m.legend.map(([k, v], i) => ({ n: pad2(i + 1), name: k, body: v }));
+  return wrap(`${hero({ wordmark: "Platform", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "18개 서비스 보기 ↓" : "See 18 services ↓", "#nls-records"], sub: [lang === "ko" ? "PETLOG 소개" : "About PETLOG", rel(D, "petlog/")] })}
   <div class="nls__wrap">
-    ${boardBlock("nls-platform-list", m.kicker, m.listTitle, m.listLead, "", cards, lang, D)}
+    ${splitDir("nls-legend", { kicker: m.legendKicker, title: m.legendTitle, noteText: m.note, items: legend, depth: D })}
+    ${groups}
     ${menuBlock(lang, D, "platform")}
-    ${closeBlock({ ...OVERVIEW[bl(lang)].close, main: [OVERVIEW[bl(lang)].close.ctaMain, "petlog/contact/"], sub: [OVERVIEW[bl(lang)].close.ctaSub, STORE.ios] }, D)}
+    ${closeBlock(defaultClose(lang), D)}
   </div>`);
 }
 
 function businessPage(lang) {
   const m = BUSINESS.meta[bl(lang)];
+  const L = bl(lang);
   const D = 2;
-  const k = bl(lang) === "ko";
-  const cats = BUSINESS.categories.map(([en, ko, enLabel]) => (k ? `${en} · ${ko}` : `${en}`));
-  const units = BUSINESS.units.map((u, i) => {
-    const [koN, enN, koO, enO, koC, enC, koV, enV, koR, enR, koP, enP, st] = u;
+  const line = (no) => BUSINESS.lines.find((x) => x.no === no);
+  const rail = BUSINESS.groups.map((g, i) => ({ id: g.id, n: pad2(i + 1), tab: g.label.split(" ")[0], mark: String(g.lines.length).padStart(2, "0"), label: g.label, name: g[L], lead: L === "ko" ? g.koLead : g.enLead, chips: g.lines.map((no) => `${no} ${line(no).name[L]}`) }));
+  const lineCard = (no) => {
+    const x = line(no);
     return {
-      n: pad2(i + 1),
-      name: k ? koN : enN,
-      lead: k ? koO : enO,
-      status: st,
+      n: x.no,
+      label: x.label,
+      name: x.name[L],
+      lead: x.lead[L],
+      status: x.status,
       points: [
-        [m.labels.customers, k ? koC : enC],
-        [m.labels.value, k ? koV : enV],
-        [m.labels.revenue, k ? koR : enR],
-        [m.labels.partners, k ? koP : enP],
+        [m.labels.customers, x.customers[L]],
+        [m.labels.value, x.value[L]],
+        [m.labels.revenue, x.revenue[L]],
+        [m.labels.partners, x.partners[L]],
+        [m.labels.stage, m.stageLabel(x.stage)],
       ],
-      link: [m.cta, CONTACT_HREF(i === 14 ? "saas" : i === 15 ? "global" : i === 11 ? "public" : i === 4 ? "group-buying" : i === 5 ? "booking-provider" : i === 2 || i === 3 ? "shopping" : "brand")],
+      link: [m.labels.cta, CONTACT_HREF(x.no === "18" ? "saas" : ["19"].includes(x.no) ? "public" : x.no === "20" ? "global" : ["11"].includes(x.no) ? "vet" : ["12"].includes(x.no) ? "booking-provider" : x.no === "13" ? "sitting" : ["15", "16"].includes(x.no) ? "insurance-adoption" : ["08", "10"].includes(x.no) ? "brand" : x.no === "09" ? "group-buying" : ["05", "06", "07"].includes(x.no) ? "content" : "app-support")],
+      anchor: `line-${x.no}`,
     };
-  });
-  return wrap(`${hero({ wordmark: "Business", titleHtml: m.heroTitle, lead: m.heroLead, main: [`${m.unitTitle} ↓`, "#nls-units"], sub: [m.cta, rel(D, "petlog/contact/")] })}
+  };
+  const layoutFor = (n) => (n === 4 ? "board" : n === 3 ? "flow" : "signal");
+  const groupSections = BUSINESS.groups
+    .map((g, gi) => {
+      const body =
+        g.id === "saas"
+          ? `${cardsHtml("signal", [lineCard("18")], lang, D).replace('<div class="nls-signal">', '<div class="nls-signal nls-signal--single">')}
+    <div class="nls-subhead">${head(m.saasKicker, m.saasTitle, m.saasLead)}</div>
+    ${cardsHtml("flow", m.saas.slice(0, 3).map(([t, d], i) => ({ n: pad2(i + 1), name: t, lead: d, status: "plan" })), lang, D)}
+    ${cardsHtml("signal", m.saas.slice(3).map(([t, d], i) => ({ n: pad2(i + 4), name: t, lead: d, status: "plan" })), lang, D)}`
+          : cardsHtml(layoutFor(g.lines.length), g.lines.map(lineCard), lang, D);
+      return section(`nls-group-${g.id}`, { kicker: `${pad2(gi + 1)} · ${g.label.toUpperCase()}`, title: g[L], lead: L === "ko" ? g.koLead : g.enLead, band: gi % 2 === 1, body });
+    })
+    .join("\n");
+  const structure = m.structure.map(([k, v], i) => ({ n: pad2(i + 1), name: k, body: v }));
+  const revenue = m.revenue.map(([t, d, stage], i) => ({ n: pad2(i + 1), name: t, lead: d, chips: [stage] }));
+  return wrap(`${hero({ wordmark: "Business", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "20개 사업군 보기 ↓" : "See 20 lines ↓", "#nls-groups"], sub: [m.labels.cta, rel(D, "petlog/contact/")] })}
   <div class="nls__wrap">
-    ${indexBlock("nls-categories", m.catKicker, m.catTitle, "", cats)}
-    ${boardBlock("nls-units", m.unitKicker, m.unitTitle, m.unitLead, "", units, lang, D)}
-    ${rosterBlock("nls-shareon", m.shareon.kicker, m.shareon.title, m.shareon.body)}
-    ${indexBlock("nls-trust", m.trust.kicker, m.trust.title, "", m.trust.items)}
+    ${splitDir("nls-structure", { kicker: m.structureKicker, title: m.structureTitle, items: structure, depth: D })}
+    ${railBlock("nls-groups", { kicker: m.groupsKicker, title: m.groupsTitle, lead: m.groupsLead, items: rail })}
+    ${groupSections}
+    ${section("nls-revenue", { kicker: m.revenueKicker, title: m.revenueTitle, lead: m.revenueLead, band: true, body: cardsHtml("flow", revenue, lang, D) })}
+    ${splitDir("nls-priority", { kicker: m.priorityKicker, title: m.priorityTitle, items: m.priority.map(([t, d], i) => ({ n: pad2(i + 1), name: t, body: d })), depth: D })}
+    ${section("nls-roadmap", { kicker: m.roadmapKicker, title: m.roadmapTitle, noteText: m.roadmapNote, body: laneList(m.roadmap) })}
+    ${section("nls-trust", { kicker: m.trustKicker, title: m.trustTitle, band: true, body: indexList(m.trust) })}
     ${menuBlock(lang, D, "business")}
-    ${closeBlock({ ...OVERVIEW[bl(lang)].close, main: [m.cta, "petlog/contact/"], sub: [lang === "ko" ? "파트너십 보기" : "See partnerships", "petlog/partnerships/"] }, D)}
+    ${closeBlock({ ...defaultClose(lang), main: [m.labels.cta, "petlog/contact/"], sub: [lang === "ko" ? "파트너십 보기" : "See partnerships", "petlog/partnerships/"] }, D)}
   </div>`);
 }
 
 function partnershipsPage(lang) {
   const m = PARTNERS.meta[bl(lang)];
+  const L = bl(lang);
   const D = 2;
-  const k = bl(lang) === "ko";
-  const types = ["booking-provider", "booking-provider", "booking-provider", "booking-provider", "content", "booking-provider", "brand", "shopping", "content", "global", "public", "global"];
-  const cards = PARTNERS.items.map((p, i) => {
-    const [koN, enN, koW, enW, koV, enV, koH, enH, koR, enR, koT, enT] = p;
-    return {
-      n: pad2(i + 1),
-      name: k ? koN : enN,
-      lead: k ? koV : enV,
-      points: [
-        [m.labels.who, k ? koW : enW],
-        [m.labels.how, k ? koH : enH],
-        [m.labels.revenue, k ? koR : enR],
-        [m.labels.terms, k ? koT : enT],
-      ],
-      link: [m.cta, CONTACT_HREF(types[i])],
-    };
-  });
-  return wrap(`${hero({ wordmark: "Partnerships", titleHtml: m.heroTitle, lead: m.heroLead, main: [`${m.listTitle} ↓`, "#nls-partners"], sub: [m.cta, rel(D, "petlog/contact/")] })}
+  const card = (no) => {
+    const p = PARTNERS.items.find((x) => x.no === no);
+    return { n: p.no, name: p.name[L], lead: p.value[L], points: [[m.labels.scope, p.scope[L]], [m.labels.how, p.how[L]], [m.labels.terms, p.terms[L]]], link: [m.labels.cta, CONTACT_HREF(p.type)], anchor: `partner-${p.no}` };
+  };
+  const groups = m.groups.map((g, gi) => section(`nls-p-${g.id}`, { kicker: g.kicker, title: g.title, lead: g.lead, band: gi % 2 === 0, body: cardsHtml(g.layout, g.items.map(card), lang, D) })).join("\n");
+  const steps = m.steps.map(([t, d]) => [t, d]);
+  return wrap(`${hero({ wordmark: "Partnerships", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "14개 협력 유형 ↓" : "14 partner types ↓", "#nls-p-care"], sub: [m.labels.cta, rel(D, "petlog/contact/")] })}
   <div class="nls__wrap">
-    ${boardBlock("nls-partners", m.kicker, m.listTitle, "", "", cards, lang, D)}
-    ${pipeBlock("nls-process", m.processKicker, m.processTitle, m.processNote, m.steps)}
+    ${section("nls-offer", { kicker: m.offerKicker, title: m.offerTitle, body: cardsHtml("proc", m.offer, lang, D) })}
+    ${groups}
+    ${section("nls-principles", { kicker: m.principlesKicker, title: m.principlesTitle, body: indexList(m.principles) })}
+    ${section("nls-process", { kicker: m.processKicker, title: m.processTitle, noteText: m.processNote, band: true, body: laneList(steps) })}
     ${menuBlock(lang, D, "partnerships")}
-    ${closeBlock({ ...OVERVIEW[bl(lang)].close, main: [m.cta, "petlog/contact/"], sub: [lang === "ko" ? "Newon 파트너십 전체 보기" : "All Newon partnerships", "partnerships/"] }, D)}
+    ${closeBlock({ ...defaultClose(lang), main: [m.labels.cta, "petlog/contact/"], sub: [lang === "ko" ? "Newon 파트너십 전체 보기" : "All Newon partnerships", "partnerships/"] }, D)}
   </div>`);
 }
 
@@ -327,11 +374,12 @@ function contactPage(lang) {
   const form = inquiryFormHtml(lang, D, {
     category: "PETLOG",
     interest: "PETLOG",
-    copy: { label: "PETLOG", title: c.formTitle, subject: c.subject, types: c.types.map(([k, n]) => [k, n]), type: c.typeLabel, message: c.messageLabel, messagePh: c.messagePh },
+    copy: { label: "PETLOG", title: c.formTitle, subject: c.subject, types: c.types.map(([k, n]) => [k, n]), type: c.typeLabel, message: c.messageLabel, messagePh: c.messagePh, submit: lang === "ko" ? "문의 보내기" : "Send inquiry" },
   });
   return wrap(`${hero({ wordmark: "Contact", titleHtml: c.heroTitle, lead: c.heroLead, main: [lang === "ko" ? "문의하기 ↓" : "Send an inquiry ↓", "#inquiry"], sub: [lang === "ko" ? "PETLOG 소개" : "About PETLOG", rel(D, "petlog/")] })}
   <div class="nls__wrap">
-    ${dirBlock("nls-types", c.kicker, c.listTitle, "", items, D)}
+    ${splitDir("nls-types", { kicker: c.kicker, title: c.listTitle, lead: c.listLead, items, depth: D })}
+    ${section("nls-guide", { kicker: c.guideKicker, title: c.guideTitle, band: true, body: indexList(c.guide) })}
   </div>
   <div class="bp-page">${form}</div>
   <div class="nls__wrap">

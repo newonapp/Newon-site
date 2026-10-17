@@ -29,20 +29,21 @@ test("five PETLOG pages exist in all nine locales with SEO basics", () => {
   }
 });
 
-test("section counts: 6 journey stages, 16 platform areas, 8 + 16 business, 12 partner types, 9 inquiry types", () => {
+test("section counts follow the final plan: 6 journey stages, 18 services, 20 business lines in 8 groups, 14 partner types, 11 inquiry types", () => {
   const count = (html, re) => (main(html).match(re) || []).length;
-  assert.equal(count(read("ko/petlog/index.html"), /data-nls-decade-card=/g), 6);
-  assert.equal(count(read("ko/petlog/platform/index.html"), /class="nls-board__item"/g), 16);
-  const biz = read("ko/petlog/business/index.html");
-  assert.equal((biz.match(/<ol class="nls-index">[\s\S]*?<\/ol>/)[0].match(/<li>/g) || []).length, 8);
-  assert.equal(count(biz, /class="nls-board__item"/g), 16);
-  assert.equal(count(read("ko/petlog/partnerships/index.html"), /class="nls-board__item"/g), 12);
-  const contact = read("ko/petlog/contact/index.html");
-  const sel = contact.match(/<select id="bz-type"[\s\S]*?<\/select>/)[0];
-  assert.equal((sel.match(/<option value="[^"]+"/g) || []).length, 9);
+  for (const lang of ["ko", "en"]) {
+    assert.equal(count(read(`${lang}/petlog/index.html`), /data-nls-decade-card=/g), 6, `${lang} journey`);
+    assert.equal(count(read(`${lang}/petlog/platform/index.html`), /class="nls-status" data-status=/g), 18, `${lang} services`);
+    const biz = read(`${lang}/petlog/business/index.html`);
+    assert.equal(count(biz, /<article class="nls-(?:board|signal)__item" id="line-\d\d"/g), 20, `${lang} business lines`);
+    assert.equal(count(biz, /data-nls-decade-card=/g), 8, `${lang} business groups`);
+    assert.equal(count(read(`${lang}/petlog/partnerships/index.html`), /<article class="nls-board__item" id="partner-\d\d"/g), 14, `${lang} partners`);
+    const sel = read(`${lang}/petlog/contact/index.html`).match(/<select id="bz-type"[\s\S]*?<\/select>/)[0];
+    assert.equal((sel.match(/<option value="[^"]+"/g) || []).length, 11, `${lang} inquiry types`);
+  }
 });
 
-test("no unconfirmed price or fee is published; every service and business line carries a status", () => {
+test("no unconfirmed price or fee is published; services and business lines carry an honest status", () => {
   for (const lang of ["ko", "en"]) {
     for (const p of PETLOG_SITE_PATHS) {
       const text = main(read(`${lang}/${p}/index.html`)).replace(/<style[\s\S]*?<\/style>/g, " ").replace(/<[^>]+>/g, " ");
@@ -50,9 +51,11 @@ test("no unconfirmed price or fee is published; every service and business line 
       assert.doesNotMatch(text, /연동 완료|integration is complete|계약 체결 완료|official partner of/i, `${lang}/${p} overclaim`);
     }
     const plat = read(`${lang}/petlog/platform/index.html`);
-    assert.equal((plat.match(/class="nls-status" data-status=/g) || []).length, 16);
-    const biz = read(`${lang}/petlog/business/index.html`);
-    assert.equal((biz.match(/class="nls-status" data-status=/g) || []).length, 16);
+    const st = [...main(plat).matchAll(/class="nls-status" data-status="([a-z]+)"/g)].map((m) => m[1]);
+    assert.equal(st.filter((s) => s === "app").length, 6, `${lang} only the six shipped app features are marked as in the app`);
+    assert.ok(st.every((s) => ["app", "prep", "plan", "legal"].includes(s)));
+    const biz = main(read(`${lang}/petlog/business/index.html`));
+    for (const m of biz.matchAll(/<article class="nls-(?:board|signal)__item" id="line-\d\d"[\s\S]*?<\/article>/g)) assert.match(m[0], /class="nls-status" data-status=/);
   }
 });
 
