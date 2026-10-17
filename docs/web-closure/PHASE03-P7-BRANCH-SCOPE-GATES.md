@@ -17,7 +17,7 @@
 기존 LIVON 허용 목록(이름 붙은 커밋, `RC_FIXES` 등)은 그대로이며, 새 규칙은 OR 조건으로만 추가되었다. 테스트 삭제·SKIP·기대값 완화는 없다.
 
 ## 검증
-- 단위: `tests/livon/branch-scope-gate.test.mjs` BS-1~BS-6(웹 파일 면제, LIVON·배포 워크플로 비면제, 앵커 없는 라인 비면제, 공용 도구의 후손 조건) — 6/6 PASS.
+- 단위: `tests/web/branch-scope-gate.test.mjs` BS-1~BS-6(웹 파일 면제, LIVON·배포 워크플로 비면제, 앵커 없는 라인 비면제, 공용 도구의 후손 조건) — 6/6 PASS.
 - 통합(전체 히스토리 worktree): P7 트리에서 RC-1 PASS, RC-41 PASS.
 - 변조: 같은 worktree에서 `livon/today-feed.js`에 한 줄을 추가해 커밋하자 RC-1과 RC-41이 모두 FAIL(`+ 'livon/today-feed.js'`). 실제 LIVON 회귀는 여전히 걸린다. (이미 허용 목록에 있는 `livon/home-page.js`, `scripts/livon-seo-build.mjs`는 기존 설계상 허용되어 변조 대상에서 제외했다.)
 

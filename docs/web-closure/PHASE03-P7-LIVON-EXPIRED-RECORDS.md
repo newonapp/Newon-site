@@ -1,6 +1,6 @@
 # PHASE 03 P7 — LIVON 만료 기록 13건
 
-`node scripts/livon-expired-records.mjs --now=2026-10-18T00:00:00Z` (읽기 전용). 기계 판독본: `qa-artifacts/phase03-p7/livon-expired-records.json`.
+`node scripts/qa-livon-expired-records.mjs --now=2026-10-18T00:00:00Z` (읽기 전용). 기계 판독본: `qa-artifacts/phase03-p7/livon-expired-records.json`.
 
 **조치: 없음 (날짜 연장 없음, 데이터 수정 없음).** 13건 전부 `lastCheckedAt`을 그대로 두었고 만료(`stale`) 상태를 유지합니다.
 

@@ -40,7 +40,7 @@ export const isLivonProtected = (file) => LIVON_PROTECTED.some((re) => re.test(f
 export const isWebsiteOwned = (file) => !isLivonProtected(file);
 
 /**
- * Pure decision used by the gates and by tests/livon/branch-scope-gate.test.mjs.
+ * Pure decision used by the gates and by tests/web/branch-scope-gate.test.mjs.
  * ctx: { websiteLine: boolean, onlyWebsiteCommits: (file) => boolean }
  * Returns true when `file` may differ from the LIVON baseline on this line.
  */

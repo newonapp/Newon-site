@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * List the LIVON records that are past their freshness window on a given clock (read-only; never edits data).
- *   node scripts/livon-expired-records.mjs [--now=<ISO>] [--json out.json]
+ *   node scripts/qa-livon-expired-records.mjs [--now=<ISO>] [--json out.json]
  * Every record is reported as NOT VERIFIED here: this script cannot check a source, only a person (or a reviewed fetch) can.
  * A record leaves the list only when its lastCheckedAt is updated after a real re-check - see docs/web-closure/PHASE03-P7-LIVON-EXPIRED-RECORDS.md.
  */
