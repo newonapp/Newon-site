@@ -1,7 +1,7 @@
 {
   "note": "Files that a clean `node scripts/publish-site.mjs` changes beyond whitespace. Value = sha256 of the normalised built content.",
-  "baseCommit": "ab9b9db",
-  "count": 189,
+  "baseCommit": "23197fb38",
+  "count": 182,
   "files": {
     "de/babylog/delete-account/index.html": "5dab05f35b60a1ec78fa451bacfdd3e72c27193801f31786a6fef6129a2c599c",
     "de/countup/delete-account/index.html": "7f191a9a8a053e6c5edefcac216f2adb01627958213ffec006b302c908dc1e5b",
@@ -159,13 +159,6 @@
     "ja/portfolio/subping/index.html": "830b386e24da64800bf9eda8ed77694067be9302d6f15065d7958081d6d17c27",
     "ja/savy/delete-account/index.html": "608b98467d341623ebb27e5a291ce7ee3975ff433b19fd59226809ce0f88425e",
     "ja/subping/delete-account/index.html": "2ee84281adb55778551c8e8ce5d42dbb9521ab9585a9521717daa02f47c787d7",
-    "locales/_sp.de.json": "c216d3293292647b1647590fe04e2d53fb427d1c400051f9e832343fa4b4a631",
-    "locales/_sp.es.json": "94f02f558d5b52099ff0e639db3d1b0b0e5fd83631aa8a029be5fb17e23f929a",
-    "locales/_sp.fr.json": "6029e62d4a99c911c420f5ff444ec734834ef0812e36e3215149fd4f0514ad15",
-    "locales/_sp.hi.json": "4cecd056ffa308793bf0dcf05cc38ef745c5d09496965db9b28e4e1c0c7803c9",
-    "locales/_sp.id.json": "36a53a23329ba12405ea8f49a5050403feca947298c7c8e6ad2a289af609d907",
-    "locales/_sp.ja.json": "89a94f0a90582c9f56fa0058f5f6caf2ce33224ce23723ac5e761227b2d29c3d",
-    "locales/_sp.pt-br.json": "29fdb8a5d701f37b241e0cda08eb91ead9304ca2313d03a47ee61375898ae61d",
     "pt-br/babylog/delete-account/index.html": "ff6218029ff1f213bc92028897f7208a6602c1e894fcb45fcf47bfdabaaa0ade",
     "pt-br/countup/delete-account/index.html": "34bca0dd751b127dd79f772f012f3a5a2f9eb9e3ec5682b426716cdfbb502f4a",
     "pt-br/eaton/delete-account/index.html": "f330516beda4b4773cd5e5748e118d8818e5ba5a7743fb013d77a290a6dd7417",

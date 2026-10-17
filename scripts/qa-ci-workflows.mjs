@@ -39,6 +39,7 @@ else {
   const perms = (block(g, "permissions") || []).join("\n");
   if (!/contents:\s*read/.test(perms) || /write/.test(perms)) errors.push("build-guards.yml permissions must be contents: read only");
   const c = code(g);
+  for (const need of ["qa-build-determinism.mjs", "apply-approved-translations.mjs --check", "qa-build-drift.mjs"]) if (!c.includes(need)) errors.push(`build-guards.yml must keep the step: ${need}`);
   for (const bad of [/peaceiris/i, /gh-pages/i, /git\s+push/i, /force_orphan/i, /secrets\./i, /GITHUB_TOKEN/i, /\bcname\b/i]) if (bad.test(c)) errors.push(`build-guards.yml contains a publish/secret construct: ${bad}`);
 }
 if (!fs.existsSync(deployPath)) errors.push("github-pages.yml is missing");

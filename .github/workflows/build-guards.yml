@@ -41,5 +41,14 @@ jobs:
       - name: Translation candidates cover the drift
         run: node scripts/extract-translation-candidates.mjs --built . --verify
 
+      # Reviewed translations (i18n-approved/) must be complete and valid; nothing is ever approved automatically.
+      - name: Approved translations are valid
+        run: node scripts/apply-approved-translations.mjs --check
+
+      # Same input must give the same output: independent clean builds and a repeat build in the same tree are compared by
+      # file hash (fixed SOURCE_DATE_EPOCH), and the translation sources must be left untouched by the build.
+      - name: Build determinism
+        run: node scripts/qa-build-determinism.mjs
+
       - name: Workflow safety
         run: node scripts/qa-ci-workflows.mjs
