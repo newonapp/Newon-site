@@ -594,7 +594,7 @@ function writeSitemap() {
   }
 
   // Product hubs
-  for (const page of ["products", "apps", "ecosystem", "ai", "ai/enterprise", "lifestage", "ongil", "saas", "games", "tools", "market", "contact", "media"]) {
+  for (const page of ["products", "apps", "ecosystem", "ai", "ai/enterprise", "lifestage", "ongil", "ongil/platform", "ongil/business", "ongil/partnerships", "ongil/contact", "saas", "games", "tools", "market", "contact", "media"]) {
     addAllLocales(page, "0.65", "monthly");
   }
 
@@ -696,6 +696,8 @@ runScript("render-business-hub.mjs");
 runScript("render-studio-hubs.mjs");
 runScript("render-lifestage.mjs");
 runScript("render-ongil.mjs");
+// ONGIL corporate website (KO/EN five pages) — overwrites the KO/EN ONGIL overview written just above
+runScript("render-ongil-site.mjs");
 runScript("render-ox-month-web.mjs");
 runScript("render-company.mjs");
 runScript("render-blog.mjs");
