@@ -35,8 +35,7 @@ import { BUSINESS_PACKAGES, BUSINESS_SERVICES } from "./business-pricing.mjs";
 import { TOOLS } from "./tools-data.mjs";
 import { STORE_PRODUCTS } from "./store-data.mjs";
 import { renderResources } from "./render-resources.mjs";
-import { studioServicesHtml } from "./studio-services-html.mjs";
-import { studioExploreCloseHtml } from "./studio-explore-close.mjs";
+import { bspHubHtml, bspHubFilmCtas } from "./render-bsp.mjs";
 import { renderStudioPillars } from "./render-studio-pillars.mjs";
 import { STUDIO_FILM_SRC, getStudioFilmCopy } from "./studio-film-copy.mjs";
 
@@ -185,7 +184,7 @@ function studioBody(flat, flatEn, lang = "en") {
     const v = pick(flat, flatEn, k);
     return escapeHtml(v != null && v !== "" ? String(v) : fb);
   };
-  const close = studioExploreCloseHtml(flat, flatEn, lang);
+  const ctas = bspHubFilmCtas("studio", lang);
   const film = getStudioFilmCopy(lang);
   const cssV = "20260923pad1";
   const filmV = "20260922fade2";
@@ -225,14 +224,15 @@ function studioBody(flat, flatEn, lang = "en") {
       <p class="st-film__slogan">${film.sloganHtml}</p>
       <p class="st-film__lead">${film.leadHtml}</p>
       <div class="st-film__actions">
-        <a class="btn btn-ghost" href="#areas">${t("studioHub.ctaExplore", "Explore Studio ↓")}</a>
-        <a class="btn btn-primary" href="../business/inquiry/?category=Studio#inquiry">${t("studioHub.ctaProject", ko ? "프로젝트 문의 ↗" : "Project inquiry ↗")}</a>
+        <a class="btn btn-ghost" href="${ctas.explore[1]}">${escapeHtml(ctas.explore[0])}</a>
+        <a class="btn btn-primary" href="${ctas.primary[1]}">${escapeHtml(ctas.primary[0])}</a>
       </div>
     </div>
   </div>
 </section>
-${studioServicesHtml(flat, flatEn, lang)}
-${close}
+<div class="ns-studio-menu bz-page">
+${bspHubHtml("studio", lang)}
+</div>
 <script src="/film-keep.js?v=20260924play2"></script>
 <script src="/studio-film.js?v=${filmV}" defer></script>
 <script src="/business-pillar.js?v=${cssV}" defer></script>`;

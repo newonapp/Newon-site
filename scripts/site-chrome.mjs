@@ -1,6 +1,6 @@
 /**
  * Shared site chrome — Global Navigation with editorial mega menus.
- * Top-level: Consumer · AI · LivOn · Ongil · Business · Studio · Company
+ * Top-level: Consumer · AI · LivOn · Ongil · Business · Studio · Partnerships · Company
  */
 import { escapeHtml, pick } from "./hub-utils.mjs";
 import { MEGA_DESTINATIONS, TOP_NAV } from "./venture-studio-data.mjs";
@@ -24,6 +24,7 @@ const NAV_LABEL_KEYS = {
   ongil: "nav.topOngil",
   business: "nav.topBusiness",
   studio: "nav.topStudio",
+  partnerships: "nav.topPartnerships",
   company: "nav.topCompany",
 };
 
@@ -34,6 +35,7 @@ const NAV_LABEL_FB = {
   ongil: "Ongil",
   business: "Business",
   studio: "Studio",
+  partnerships: "Partnerships",
   company: "Company",
 };
 
@@ -104,6 +106,13 @@ const MENU_META = {
     footKey: "nav.studioExploreCta",
     footFb: "Explore Studio →",
   },
+  partnerships: {
+    kicker: "nav.partnershipsMenuLabel",
+    lead: "nav.partnershipsMenuLead",
+    footHref: "partnerships/",
+    footKey: "nav.partnershipsExploreCta",
+    footFb: "Explore Partnerships →",
+  },
   company: {
     kicker: "nav.companyMenuLabel",
     lead: "nav.companyMenuLead",
@@ -153,6 +162,7 @@ export function resolveActiveNav(pathname = "") {
     return "business";
   }
   if (seg === "studio") return "studio";
+  if (seg === "partnerships") return "partnerships";
   if (seg === "store" || (seg === "resources" && parts[1] === "store")) return "studio";
   if (seg === "labs" || (seg === "resources" && parts[1] === "labs")) return "studio";
   if (seg === "insights" || (seg === "resources" && parts[1] === "insights")) return "business";
@@ -173,7 +183,7 @@ const MOON_SVG = `<svg class="gnav__theme-icon" width="20" height="20" viewBox="
 
 function megaItemLimit(menuId) {
   if (menuId === "company") return 12;
-  if (menuId === "consumer" || menuId === "ai" || menuId === "business" || menuId === "studio") return 8;
+  if (["consumer", "ai", "business", "studio", "partnerships"].includes(menuId)) return 8;
   return 4;
 }
 
@@ -229,6 +239,7 @@ const MEGA_RENDERERS = {
   ongil: (f, fe, b, ld) => editorialMega(f, fe, b, "ongil", ld),
   business: (f, fe, b, ld) => editorialMega(f, fe, b, "business", ld),
   studio: (f, fe, b, ld) => editorialMega(f, fe, b, "studio", ld),
+  partnerships: (f, fe, b, ld) => editorialMega(f, fe, b, "partnerships", ld),
   company: (f, fe, b, ld) => editorialMega(f, fe, b, "company", ld),
 };
 

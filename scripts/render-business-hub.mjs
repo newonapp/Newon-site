@@ -23,6 +23,24 @@ import { renderPillarServices } from "./render-pillar-services.mjs";
 import { renderCreative } from "./render-creative.mjs";
 import { fontLinksHtml } from "./hub-utils.mjs";
 import { clampSeoDescription } from "./seo-meta.mjs";
+import { BIZ_INQUIRY_TYPES } from "./bsp-content.mjs";
+
+/** Product-business inquiry types (Oct 2026) — listed first in the type select. */
+function productInquiryOptionsHtml(dir) {
+  const lang = dir === "ko" ? "ko" : "en";
+  return BIZ_INQUIRY_TYPES.map(
+    (o) =>
+      `                <option value="${escapeHtml(o.value)}" data-biz-option="1" data-slug="${o.key}" data-area="PRODUCT">${escapeHtml(o[lang])}</option>`
+  ).join("\n");
+}
+function productInquiryServiceMap() {
+  const map = {};
+  for (const o of BIZ_INQUIRY_TYPES) {
+    map[o.key] = o.value;
+    map[o.value] = o.value;
+  }
+  return map;
+}
 import {
   businessInquirySelectOptionsHtml,
   businessInquiryServiceMap,
@@ -213,11 +231,11 @@ for (const { dir, file, htmlLang } of LANGS) {
   const pkgPrices = businessInquiryPackagePrices(dir === "ko" ? "ko" : "en");
   inquiry = inquiry.replace(
     /\{\{BUSINESS_SELECT_OPTIONS\}\}/g,
-    businessInquirySelectOptionsHtml((slug) => pick(flat, flatEn, `business.inqOpt.${slug}`))
+    `${productInquiryOptionsHtml(dir)}\n${businessInquirySelectOptionsHtml((slug) => pick(flat, flatEn, `business.inqOpt.${slug}`))}`
   );
   inquiry = inquiry.replace(
     /\{\{BUSINESS_SERVICE_MAP_JSON\}\}/g,
-    JSON.stringify(businessInquiryServiceMap())
+    JSON.stringify({ ...businessInquiryServiceMap(), ...productInquiryServiceMap() })
   );
   inquiry = inquiry.replace(/\{\{BUSINESS_PKG_LANDING_PRICE\}\}/g, escapeHtml(pkgPrices.landing));
   inquiry = inquiry.replace(/\{\{BUSINESS_PKG_WEB_PRICE\}\}/g, escapeHtml(pkgPrices.web));

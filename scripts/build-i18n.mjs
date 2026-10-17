@@ -34,6 +34,7 @@ import {
   studioServicePagePath,
 } from "./studio-pricing.mjs";
 import { STUDIO_AREA_PAGES } from "./studio-areas.mjs";
+import { BSP_SITEMAP_PATHS } from "./render-bsp.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -637,6 +638,11 @@ function writeSitemap() {
     addAllLocales(`studio/${area}`, "0.65", "monthly");
   }
 
+  // Business · Studio · Partnerships pages (render-bsp.mjs)
+  for (const p of BSP_SITEMAP_PATHS) {
+    addAllLocales(p, p.startsWith("business") ? "0.7" : "0.65", "monthly");
+  }
+
   // Resources (canonical paths only — not /store /blog /labs aliases)
   for (const page of [
     "resources",
@@ -702,6 +708,7 @@ runScript("render-studio-hubs.mjs");
 runScript("render-lifestage.mjs");
 runScript("render-ongil.mjs");
 runScript("render-shareon.mjs");
+runScript("render-bsp.mjs");
 runScript("render-ox-month-web.mjs");
 runScript("render-company.mjs");
 runScript("render-blog.mjs");

@@ -19,8 +19,11 @@ export const STUDIO_AREA_PATH = {
   projects: "studio/projects/",
   contact: "studio/contact/",
 };
-/** Area pages rendered by renderStudioAreaPages (Digital Products is the existing Digital pillar page). */
-export const STUDIO_AREA_PAGES = ["partnerships", "projects", "contact"];
+/**
+ * Area pages rendered by renderStudioAreaPages. Since the Oct 2026 restructure, Partnerships and Projects
+ * (and Digital Products, Design Systems) are written by render-bsp.mjs; only Contact is rendered here.
+ */
+export const STUDIO_AREA_PAGES = ["contact"];
 /** Retired Studio IP paths (under /{lang}/studio/) → redirect to the Studio hub. */
 export const RETIRED_STUDIO_PATHS = ["ip", "ip/character-lab", "ip/digital-stickers", "ip/newon-character", "ip/experimental-ip"];
 

@@ -37,8 +37,8 @@ export const LEGACY_STATUS_MAP = {
   exploring: "EXPLORING",
 };
 
-/** Top-level nav order — 7 business menus */
-export const TOP_NAV = ["consumer", "ai", "lifestage", "ongil", "business", "studio", "company"];
+/** Top-level nav order — Partnerships (Oct 2026) sits after Studio */
+export const TOP_NAV = ["consumer", "ai", "lifestage", "ongil", "business", "studio", "partnerships", "company"];
 
 /**
  * Mega menu destinations per top menu.
@@ -89,34 +89,30 @@ export const MEGA_DESTINATIONS = {
       titleFb: "Start Ongil",
     },
   ],
+  // Business · Studio · Partnerships (Oct 2026): own products and platforms, not client outsourcing.
   business: [
-    { titleKey: "nav.bizColBuild", descKey: "nav.megaBuildDesc", href: "business/build/", titleFb: "BUILD" },
-    {
-      titleKey: "nav.bizColAutomation",
-      descKey: "nav.megaAutomationDesc",
-      href: "business/automation/",
-      titleFb: "AUTOMATION",
-    },
-    {
-      titleKey: "nav.bizColSolutions",
-      descKey: "nav.megaSolutionsDesc",
-      href: "business/solutions/",
-      titleFb: "SOLUTIONS",
-    },
-    {
-      titleKey: "nav.bizColCare",
-      descKey: "nav.megaCareDesc",
-      href: "business/care/",
-      titleFb: "CARE",
-    },
-    { titleKey: "nav.insights", descKey: "nav.megaInsightsDesc", href: "resources/insights/", titleFb: "INSIGHTS" },
-    { titleKey: "nav.tools", descKey: "nav.megaToolsDesc", href: "tools/", titleFb: "Tools" },
+    { titleKey: "nav.bizMenuOverview", descKey: "nav.bizMenuOverviewDesc", href: "business/", titleFb: "Overview" },
+    { titleKey: "nav.bizMenuAutomation", descKey: "nav.bizMenuAutomationDesc", href: "business/automation/", titleFb: "Automation" },
+    { titleKey: "nav.bizMenuSolutions", descKey: "nav.bizMenuSolutionsDesc", href: "business/solutions/", titleFb: "Solutions" },
+    { titleKey: "nav.bizMenuDigital", descKey: "nav.bizMenuDigitalDesc", href: "business/digital-products/", titleFb: "Digital Products" },
+    { titleKey: "nav.bizMenuPlatforms", descKey: "nav.bizMenuPlatformsDesc", href: "business/platforms/", titleFb: "Platform Integration" },
+    { titleKey: "nav.bizMenuInquiry", descKey: "nav.bizMenuInquiryDesc", href: "business/inquiry/", titleFb: "Business Inquiry" },
   ],
   studio: [
-    { titleKey: "nav.studioPartnerships", descKey: "nav.megaStudioPartnershipsDesc", href: "studio/partnerships/", titleFb: "Partnerships" },
-    { titleKey: "nav.studioDigitalProducts", descKey: "nav.megaStudioDigitalProductsDesc", href: "studio/digital/", titleFb: "Digital Products" },
-    { titleKey: "nav.studioProjects", descKey: "nav.megaStudioProjectsDesc", href: "studio/projects/", titleFb: "Projects" },
-    { titleKey: "nav.studioContact", descKey: "nav.megaStudioContactDesc", href: "studio/contact/", titleFb: "Contact" },
+    { titleKey: "nav.studioMenuOverviewTitle", descKey: "nav.studioMenuOverviewDesc", href: "studio/", titleFb: "Overview" },
+    { titleKey: "nav.studioDigitalProducts", descKey: "nav.studioMenuDigitalDesc", href: "studio/digital/", titleFb: "Digital Products" },
+    { titleKey: "nav.studioMenuDesignSystemsTitle", descKey: "nav.studioMenuDesignSystemsDesc", href: "studio/design-systems/", titleFb: "Design Systems" },
+    { titleKey: "nav.studioProjects", descKey: "nav.studioMenuProjectsDesc", href: "studio/projects/", titleFb: "Projects" },
+    { titleKey: "nav.studioPartnerships", descKey: "nav.studioMenuPartnershipsDesc", href: "studio/partnerships/", titleFb: "Partnerships" },
+  ],
+  partnerships: [
+    { titleKey: "nav.ptOverview", descKey: "nav.ptOverviewDesc", href: "partnerships/", titleFb: "Partnership Overview" },
+    { titleKey: "nav.ptCorporate", descKey: "nav.ptCorporateDesc", href: "partnerships/corporate/", titleFb: "Corporate Partnerships" },
+    { titleKey: "nav.ptIndividuals", descKey: "nav.ptIndividualsDesc", href: "partnerships/individuals/", titleFb: "Individuals & Sellers" },
+    { titleKey: "nav.ptPublic", descKey: "nav.ptPublicDesc", href: "partnerships/public/", titleFb: "Public & Institutional" },
+    { titleKey: "nav.ptPlatforms", descKey: "nav.ptPlatformsDesc", href: "partnerships/platforms/", titleFb: "Platform Partnerships" },
+    { titleKey: "nav.ptStrategic", descKey: "nav.ptStrategicDesc", href: "partnerships/strategic/", titleFb: "Strategic Partnerships" },
+    { titleKey: "nav.ptInquiry", descKey: "nav.ptInquiryDesc", href: "partnerships/inquiry/", titleFb: "Partnership Inquiry" },
   ],
   company: [
     { titleKey: "nav.aboutNewon", descKey: "nav.megaAboutDesc", href: "about/", titleFb: "About" },

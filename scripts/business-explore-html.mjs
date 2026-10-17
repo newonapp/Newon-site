@@ -1,9 +1,10 @@
 /**
- * Business explore hub — Studio-style overview (hero + service pillars + close).
+ * Business explore hub — film hero + Business overview / menu (render-bsp.mjs, Oct 2026 restructure).
+ * The old service pillars (business-services-html.mjs) and close (business-explore-close.mjs) are no longer
+ * shown here: Newon Business is presented as its own products, not client build services.
  */
 import { escapeHtml, pick } from "./hub-utils.mjs";
-import { businessServicesHtml } from "./business-services-html.mjs";
-import { businessExploreCloseHtml } from "./business-explore-close.mjs";
+import { bspHubHtml, bspHubFilmCtas } from "./render-bsp.mjs";
 import { BIZ_FILM_SRC, getBusinessFilmCopy } from "./business-film-copy.mjs";
 
 const CSS_V = "20260923pad1";
@@ -17,8 +18,8 @@ function t(flat, flatEn, key, fb = "") {
 export function businessExploreHtml(flat, flatEn, lang = "en") {
   const ko = lang === "ko";
   const film = getBusinessFilmCopy(lang);
-  const services = businessServicesHtml(flat, flatEn, lang);
-  const close = businessExploreCloseHtml(flat, flatEn, lang);
+  const services = bspHubHtml("business", lang);
+  const ctas = bspHubFilmCtas("business", lang);
   const oldTitle = t(
     flat,
     flatEn,
@@ -57,8 +58,8 @@ export function businessExploreHtml(flat, flatEn, lang = "en") {
       <p class="bz-film__slogan">${film.sloganHtml}</p>
       <p class="bz-film__lead">${film.leadHtml}</p>
       <div class="bz-film__actions">
-        <a class="btn btn-ghost" href="#services">${t(flat, flatEn, "business.exploreCtaServices", ko ? "서비스 살펴보기 ↓" : "Explore services ↓")}</a>
-        <a class="btn btn-primary" href="inquiry/">${t(flat, flatEn, "business.ctaInquiry", ko ? "프로젝트 상담하기" : "Start a consultation")} ↗</a>
+        <a class="btn btn-ghost" href="${ctas.explore[1]}">${escapeHtml(ctas.explore[0])}</a>
+        <a class="btn btn-primary" href="${ctas.primary[1]}">${escapeHtml(ctas.primary[0])}</a>
       </div>
     </div>
   </div>
@@ -66,7 +67,6 @@ export function businessExploreHtml(flat, flatEn, lang = "en") {
 <div class="ns-studio-menu bz-page">
   ${services}
 </div>
-${close}
 <script src="/film-keep.js?v=20260924play2"></script>
 <script src="/business-film.js?v=${FILM_V}" defer></script>
 <script src="/business-pillar.js?v=${CSS_V}" defer></script>`;
