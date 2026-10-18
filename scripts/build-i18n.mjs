@@ -36,6 +36,7 @@ import {
 import { STUDIO_AREA_PAGES } from "./studio-areas.mjs";
 import { BSP_SITEMAP_PATHS } from "./render-bsp.mjs";
 import { PETLOG_SITE_PATHS } from "./render-petlog-site.mjs";
+import { BIZPART_PATHS, isLegacyBizpartPath } from "./render-bizpart.mjs";
 
 /** Build timestamp. SOURCE_DATE_EPOCH (seconds, reproducible-builds convention) pins it; unset = the current time, as before. */
 const buildDate = () => (process.env.SOURCE_DATE_EPOCH && /^\d+$/.test(process.env.SOURCE_DATE_EPOCH) ? new Date(Number(process.env.SOURCE_DATE_EPOCH) * 1000) : new Date());
@@ -572,6 +573,8 @@ function writeSitemap() {
     const clean = String(locPath || "").replace(/^\/+/, "").replace(/\/+$/, "");
     const loc = clean ? `${SITE_ORIGIN}/${clean}/` : `${SITE_ORIGIN}/`;
     if (entries.has(loc)) return;
+    // Retired Business / Partnerships URLs are redirect stubs now (render-bizpart.mjs): never listed.
+    if (isLegacyBizpartPath(clean)) return;
     // Soft existence check when locale HTML already exists from this/prior build
     if (clean) {
       const rel = clean.split("/").join(path.sep);
@@ -627,7 +630,10 @@ function writeSitemap() {
     addAllLocales(sub, sub === "shareon" ? "0.7" : "0.6", "monthly");
   }
 
-  // Business hub + pillars + inquiry (not success)
+  // Business & Partnerships — five screens (render-bizpart.mjs)
+  for (const p of BIZPART_PATHS) addAllLocales(p, p === "business" ? "0.75" : "0.7", "monthly");
+
+  // Business hub + pillars + inquiry (not success); retired pillars are filtered out in add()
   addAllLocales("business", "0.75", "monthly");
   for (const pillar of ["build", "automation", "research", "solutions", "care"]) {
     addAllLocales(`business/${pillar}`, "0.7", "monthly");
@@ -747,6 +753,8 @@ runScript("render-ongil-site.mjs");
 runScript("render-ox-month-web.mjs");
 runScript("render-company.mjs");
 runScript("render-blog.mjs");
+// NEWON Business & Partnerships five screens + redirect stubs for the retired Business / Partnerships URLs (runs last)
+runScript("render-bizpart.mjs");
 runScript("generate-search-index.mjs");
 runScript("generate-admin-data.mjs");
 writeRobotsTxt();

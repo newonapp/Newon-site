@@ -37,8 +37,11 @@ export const LEGACY_STATUS_MAP = {
   exploring: "EXPLORING",
 };
 
-/** Top-level nav order — Partnerships (Oct 2026) sits after Studio */
-export const TOP_NAV = ["consumer", "ai", "babylog", "petlog", "myworld", "shareon", "lifestage", "ongil", "business", "studio", "partnerships", "company"];
+/**
+ * Top-level nav order. Business and Partnerships are one menu since 2026-10-19 ("Business & Partnerships",
+ * id "business", where Business used to be); the separate Partnerships item is gone.
+ */
+export const TOP_NAV = ["consumer", "ai", "babylog", "petlog", "myworld", "shareon", "lifestage", "ongil", "business", "studio", "company"];
 
 /**
  * Mega menu destinations per top menu.
@@ -104,14 +107,13 @@ export const MEGA_DESTINATIONS = {
     { titleKey: "nav.petlogMenuPartnerships", descKey: "nav.petlogMenuPartnershipsDesc", href: "petlog/partnerships/", titleFb: "Partnerships" },
     { titleKey: "nav.petlogMenuContact", descKey: "nav.petlogMenuContactDesc", href: "petlog/contact/", titleFb: "Contact" },
   ],
-  // Business · Studio · Partnerships (Oct 2026): own products and platforms, not client outsourcing.
+  // Business & Partnerships (2026-10-19): five hub screens; each platform's own Business/Partnerships pages hold the detail.
   business: [
-    { titleKey: "nav.bizMenuOverview", descKey: "nav.bizMenuOverviewDesc", href: "business/", titleFb: "Overview" },
-    { titleKey: "nav.bizMenuAutomation", descKey: "nav.bizMenuAutomationDesc", href: "business/automation/", titleFb: "Automation" },
-    { titleKey: "nav.bizMenuSolutions", descKey: "nav.bizMenuSolutionsDesc", href: "business/solutions/", titleFb: "Solutions" },
-    { titleKey: "nav.bizMenuDigital", descKey: "nav.bizMenuDigitalDesc", href: "business/digital-products/", titleFb: "Digital Products" },
-    { titleKey: "nav.bizMenuPlatforms", descKey: "nav.bizMenuPlatformsDesc", href: "business/platforms/", titleFb: "Platform Integration" },
-    { titleKey: "nav.bizMenuInquiry", descKey: "nav.bizMenuInquiryDesc", href: "business/inquiry/", titleFb: "Business Inquiry" },
+    { titleKey: "nav.bpOverview", descKey: "nav.bpOverviewDesc", href: "business/", titleFb: "Overview" },
+    { titleKey: "nav.bpPlatforms", descKey: "nav.bpPlatformsDesc", href: "business/platforms/", titleFb: "Our Platforms" },
+    { titleKey: "nav.bpModels", descKey: "nav.bpModelsDesc", href: "business/models/", titleFb: "Business Models" },
+    { titleKey: "nav.bpPartnerships", descKey: "nav.bpPartnershipsDesc", href: "business/partnerships/", titleFb: "Partnerships" },
+    { titleKey: "nav.bpContact", descKey: "nav.bpContactDesc", href: "business/contact/", titleFb: "Contact" },
   ],
   studio: [
     { titleKey: "nav.studioMenuOverviewTitle", descKey: "nav.studioMenuOverviewDesc", href: "studio/", titleFb: "Overview" },
@@ -119,15 +121,6 @@ export const MEGA_DESTINATIONS = {
     { titleKey: "nav.studioMenuDesignSystemsTitle", descKey: "nav.studioMenuDesignSystemsDesc", href: "studio/design-systems/", titleFb: "Design Systems" },
     { titleKey: "nav.studioProjects", descKey: "nav.studioMenuProjectsDesc", href: "studio/projects/", titleFb: "Projects" },
     { titleKey: "nav.studioPartnerships", descKey: "nav.studioMenuPartnershipsDesc", href: "studio/partnerships/", titleFb: "Partnerships" },
-  ],
-  partnerships: [
-    { titleKey: "nav.ptOverview", descKey: "nav.ptOverviewDesc", href: "partnerships/", titleFb: "Partnership Overview" },
-    { titleKey: "nav.ptCorporate", descKey: "nav.ptCorporateDesc", href: "partnerships/corporate/", titleFb: "Corporate Partnerships" },
-    { titleKey: "nav.ptIndividuals", descKey: "nav.ptIndividualsDesc", href: "partnerships/individuals/", titleFb: "Individuals & Sellers" },
-    { titleKey: "nav.ptPublic", descKey: "nav.ptPublicDesc", href: "partnerships/public/", titleFb: "Public & Institutional" },
-    { titleKey: "nav.ptPlatforms", descKey: "nav.ptPlatformsDesc", href: "partnerships/platforms/", titleFb: "Platform Partnerships" },
-    { titleKey: "nav.ptStrategic", descKey: "nav.ptStrategicDesc", href: "partnerships/strategic/", titleFb: "Strategic Partnerships" },
-    { titleKey: "nav.ptInquiry", descKey: "nav.ptInquiryDesc", href: "partnerships/inquiry/", titleFb: "Partnership Inquiry" },
   ],
   bizhubBusiness: [
     { titleKey: "nav.bhAutomation", descKey: "nav.bhAutomationDesc", href: "business/automation/", titleFb: "Automation" },

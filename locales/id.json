@@ -448,7 +448,21 @@
     "ongilMenuPartnerships": "Partnerships",
     "ongilMenuPartnershipsDesc": "14 kinds of partners",
     "ongilMenuContact": "Contact",
-    "ongilMenuContactDesc": "Talk to ONGIL"
+    "ongilMenuContactDesc": "Talk to ONGIL",
+    "topBizPart": "Bisnis & Kemitraan",
+    "bizPartMenuLabel": "Bisnis & Kemitraan",
+    "bizPartMenuLead": "Pusat bisnis dan kemitraan untuk enam platform NEWON",
+    "bizPartExploreCta": "Lihat Bisnis & Kemitraan →",
+    "bpOverview": "Ikhtisar",
+    "bpOverviewDesc": "Pusat bisnis yang dibangun di atas enam platform",
+    "bpPlatforms": "Platform",
+    "bpPlatformsDesc": "Bidang bisnis dan kemitraan per platform",
+    "bpModels": "Model bisnis",
+    "bpModelsDesc": "Transaksi, SaaS, perusahaan, kemitraan, lisensi",
+    "bpPartnerships": "Kemitraan",
+    "bpPartnershipsDesc": "Jenis kemitraan dan alurnya",
+    "bpContact": "Kontak",
+    "bpContactDesc": "Pertanyaan bisnis dan kemitraan"
   },
   "home": {
     "heroLogoAlt": "Newon logo",

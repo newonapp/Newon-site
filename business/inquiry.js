@@ -48,6 +48,7 @@
   function mailtoHref(payload) {
     var order = [
       "company",
+      "platform",
       "name",
       "email",
       "phone",

@@ -448,7 +448,21 @@
     "ongilMenuPartnerships": "Partnerships",
     "ongilMenuPartnershipsDesc": "14 kinds of partners",
     "ongilMenuContact": "Contact",
-    "ongilMenuContactDesc": "Talk to ONGIL"
+    "ongilMenuContactDesc": "Talk to ONGIL",
+    "topBizPart": "Negócios e parcerias",
+    "bizPartMenuLabel": "Negócios e parcerias",
+    "bizPartMenuLead": "Central de negócios e parcerias das seis plataformas da NEWON",
+    "bizPartExploreCta": "Ver negócios e parcerias →",
+    "bpOverview": "Visão geral",
+    "bpOverviewDesc": "Uma central de negócios sobre seis plataformas",
+    "bpPlatforms": "Plataformas",
+    "bpPlatformsDesc": "Áreas de negócio e parceria por plataforma",
+    "bpModels": "Modelos de negócio",
+    "bpModelsDesc": "Transações, SaaS, empresas, parcerias, licenciamento",
+    "bpPartnerships": "Parcerias",
+    "bpPartnershipsDesc": "Formas de parceria e como funciona",
+    "bpContact": "Contato",
+    "bpContactDesc": "Consultas de negócios e parcerias"
   },
   "home": {
     "heroLogoAlt": "Newon logo",

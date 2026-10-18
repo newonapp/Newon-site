@@ -85,6 +85,7 @@ const PUBLISH_ROOT_CORE = [
   "business-pillar.css",
   "business-intro.css",
   "babylog-site.css",
+  "bizpart-site.css",
   "business-model-notice.css",
   "business-pillar.js",
   "pillar-service.css",
@@ -358,6 +359,12 @@ function verifySitemap(sitemapPath, publishRoot) {
     process.exit(1);
   }
   const banned = [
+    // retired Business / Partnerships URLs (redirect stubs since 2026-10-19)
+    "/business/build/",
+    "/business/mvp/",
+    "/business/web/",
+    "/business/maintenance/",
+    "/partnerships/inquiry/",
     "card-n7x4k9",
     "/ir/",
     "/admin/",
@@ -380,9 +387,11 @@ function verifySitemap(sitemapPath, publishRoot) {
     "https://www.newon.app/ko/",
     "https://www.newon.app/en/",
     "https://www.newon.app/ko/business/",
-    "https://www.newon.app/ko/business/build/",
-    "https://www.newon.app/ko/business/mvp/",
-    "https://www.newon.app/ko/business/automation/workflow/",
+    "https://www.newon.app/ko/business/platforms/",
+    "https://www.newon.app/ko/business/models/",
+    "https://www.newon.app/ko/business/partnerships/",
+    "https://www.newon.app/ko/business/contact/",
+    "https://www.newon.app/en/business/contact/",
     "https://www.newon.app/ko/studio/",
     "https://www.newon.app/ko/studio/digital/app-ui-ux/",
     "https://www.newon.app/ko/studio/partnerships/",

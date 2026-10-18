@@ -1104,7 +1104,21 @@
     "ongilMenuPartnerships": "파트너십",
     "ongilMenuPartnershipsDesc": "함께할 14개 파트너 유형",
     "ongilMenuContact": "문의",
-    "ongilMenuContactDesc": "ONGIL과 함께할 가능성"
+    "ongilMenuContactDesc": "ONGIL과 함께할 가능성",
+    "topBizPart": "비즈니스·파트너십",
+    "bizPartMenuLabel": "비즈니스·파트너십",
+    "bizPartMenuLead": "NEWON의 6개 플랫폼과 함께하는 사업·제휴 허브",
+    "bizPartExploreCta": "비즈니스·파트너십 알아보기 →",
+    "bpOverview": "개요",
+    "bpOverviewDesc": "여섯 플랫폼 기반의 사업 허브",
+    "bpPlatforms": "플랫폼",
+    "bpPlatformsDesc": "6개 플랫폼별 사업·협력 분야",
+    "bpModels": "비즈니스 모델",
+    "bpModelsDesc": "거래·SaaS·기업 계약·제휴·라이선싱",
+    "bpPartnerships": "파트너십",
+    "bpPartnershipsDesc": "협력 유형과 진행 흐름",
+    "bpContact": "문의",
+    "bpContactDesc": "사업·제휴 문의 접수"
   },
   "home": {
     "heroLogoAlt": "Newon",

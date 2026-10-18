@@ -448,7 +448,21 @@
     "ongilMenuPartnerships": "Partnerships",
     "ongilMenuPartnershipsDesc": "14 kinds of partners",
     "ongilMenuContact": "Contact",
-    "ongilMenuContactDesc": "Talk to ONGIL"
+    "ongilMenuContactDesc": "Talk to ONGIL",
+    "topBizPart": "व्यापार और साझेदारी",
+    "bizPartMenuLabel": "व्यापार और साझेदारी",
+    "bizPartMenuLead": "NEWON के छह प्लेटफ़ॉर्म के लिए व्यापार और साझेदारी केंद्र",
+    "bizPartExploreCta": "व्यापार और साझेदारी देखें →",
+    "bpOverview": "परिचय",
+    "bpOverviewDesc": "छह प्लेटफ़ॉर्म पर आधारित व्यापार केंद्र",
+    "bpPlatforms": "प्लेटफ़ॉर्म",
+    "bpPlatformsDesc": "प्लेटफ़ॉर्म के अनुसार व्यापार और साझेदारी क्षेत्र",
+    "bpModels": "बिज़नेस मॉडल",
+    "bpModelsDesc": "लेनदेन, SaaS, एंटरप्राइज़, साझेदारी, लाइसेंसिंग",
+    "bpPartnerships": "साझेदारी",
+    "bpPartnershipsDesc": "साझेदारी के प्रकार और प्रक्रिया",
+    "bpContact": "संपर्क",
+    "bpContactDesc": "व्यापार और साझेदारी पूछताछ"
   },
   "home": {
     "heroLogoAlt": "Newon logo",

@@ -1,0 +1,1040 @@
+/* NEWON Business & Partnerships (/{lang}/business/ five screens) — page additions only.
+ *
+ * The five screens reuse the BABYLOG corporate-site pattern unchanged: the Life Stage page shell
+ * (hub-shell + nls-* components + home-lifestage CSS/JS), the shared five-menu bar (flagship-subnav.css)
+ * and the BABYLOG black/white additions. This file is babylog-site.css with its scope switched to
+ * #lifestage-detail.nls[data-story="bizpart"] (class prefix bl- → bpt-), plus a short block at the end
+ * for the business screens (eyebrow, platform cards, inquiry form spacing). No new colours or fonts:
+ * black/white only, nothing here can reach the NEWON header/footer or any other page. */
+
+#lifestage-detail.nls[data-story="bizpart"] {
+  --bpt-ink: var(--nls-ink);
+  --bpt-line: var(--nls-line);
+  --bpt-line-strong: var(--nls-line-strong);
+  --bpt-faint: var(--nls-faint);
+  --bpt-paper: #fff;
+}
+
+/* ---- Hero: same dark film shell, no video, no poster image -------------------------------- */
+#lifestage-detail.nls[data-story="bizpart"] .nls-film__fallback {
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 42%, #262626 0%, #111 55%, #0a0a0a 100%);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-film--compact {
+  height: 34rem;
+  min-height: 34rem;
+  max-height: none;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-film--compact .nls-film__wordmark {
+  font-size: clamp(3.6rem, 11vw, 7.2rem);
+  margin-bottom: 1.4rem;
+}
+#lifestage-detail.nls[data-story="bizpart"] .nls-film__slogan {
+  max-width: 40rem;
+}
+@media (max-width: 760px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-film--compact {
+    height: 32rem;
+    min-height: 32rem;
+  }
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-film--compact .nls-film__wordmark {
+    font-size: clamp(3rem, 16vw, 4.6rem);
+    margin-bottom: 1.1rem;
+  }
+}
+
+/* ---- Breadcrumb ------------------------------------------------------------------------------ */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-crumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 1rem 0 0.25rem;
+  list-style: none;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bpt-faint);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-crumb li + li::before {
+  content: "/";
+  margin-right: 0.45rem;
+  color: var(--bpt-line-strong);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-crumb a {
+  color: inherit;
+  text-decoration: none;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-crumb a:hover {
+  color: var(--bpt-ink);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-crumb [aria-current="page"] {
+  color: var(--bpt-ink);
+}
+
+/* ---- Five-item menu (kept from the BABYLOG sheet) ---------------------------------------------------------------- */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-subnav {
+  position: sticky;
+  top: var(--gnav-h, 74px);
+  z-index: 20;
+  margin: 0.8rem 0 0;
+  background: var(--bpt-paper);
+  border-top: 1px solid var(--bpt-line);
+  border-bottom: 1px solid var(--bpt-line);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-subnav__list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-subnav__link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-height: 3.6rem;
+  padding: 0.7rem 0.9rem;
+  border-left: 1px solid var(--bpt-line);
+  color: var(--bpt-ink);
+  text-decoration: none;
+  position: relative;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-subnav__list li:first-child .bpt-subnav__link {
+  border-left: 0;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-subnav__n {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--bpt-faint);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-subnav__en {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-subnav__ko {
+  font-size: 0.78rem;
+  color: var(--bpt-faint);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-subnav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--bpt-ink);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.25s ease;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-subnav__link:hover::after,
+#lifestage-detail.nls[data-story="bizpart"] .bpt-subnav__link.is-current::after {
+  transform: scaleX(1);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-subnav__link:focus-visible,
+#lifestage-detail.nls[data-story="bizpart"] .bpt-link:focus-visible,
+#lifestage-detail.nls[data-story="bizpart"] .bpt-rail__link:focus-visible,
+#lifestage-detail.nls[data-story="bizpart"] .bpt-card:focus-visible {
+  outline: 2px solid var(--bpt-ink);
+  outline-offset: -2px;
+}
+@media (max-width: 720px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-subnav {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-subnav__list {
+    grid-template-columns: repeat(5, minmax(7.6rem, 1fr));
+    min-width: 38rem;
+  }
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-subnav__link {
+    padding: 0.6rem 0.7rem;
+  }
+}
+
+/* ---- Status labels (shape, not colour, carries meaning) ---------------------------------- */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-status {
+  display: inline-block;
+  padding: 0.22rem 0.55rem;
+  border: 1px solid var(--bpt-ink);
+  border-radius: var(--nls-radius);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  background: transparent;
+  color: var(--bpt-ink);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-status--released {
+  background: var(--bpt-ink);
+  color: var(--bpt-paper);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-status--direction {
+  border-style: dashed;
+  border-color: var(--bpt-faint);
+  color: var(--nls-muted);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-status--review {
+  border-color: var(--bpt-line-strong);
+  color: var(--nls-muted);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-legend {
+  margin-top: 2rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--bpt-line);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-legend__k {
+  margin: 0 0 0.6rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bpt-faint);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-legend__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---- Small shared bits --------------------------------------------------------------------- */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-link em {
+  font-style: normal;
+  color: var(--bpt-faint);
+  margin-left: 0.4rem;
+  font-weight: 450;
+}
+/* Boards with fewer than four cards: fill the row instead of leaving a grey empty cell */
+@media (min-width: 720px) {
+  #lifestage-detail.nls[data-story="bizpart"] .nls-board.bpt-cols-1 {
+    grid-template-columns: 1fr;
+  }
+  #lifestage-detail.nls[data-story="bizpart"] .nls-board.bpt-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="bizpart"] .nls-board.bpt-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  #lifestage-detail.nls[data-story="bizpart"] .nls-board.bpt-cols-1 {
+    grid-template-columns: 1fr;
+  }
+}
+#lifestage-detail.nls[data-story="bizpart"] .nls-board__item .bpt-status {
+  align-self: flex-start;
+}
+#lifestage-detail.nls[data-story="bizpart"] .nls-board__item h3 {
+  margin: 0.35rem 0 0;
+}
+#lifestage-detail.nls[data-story="bizpart"] .nls-index li strong a {
+  text-decoration: none;
+}
+#lifestage-detail.nls[data-story="bizpart"] .nls-index li strong a:hover {
+  text-decoration: underline;
+}
+
+/* ---- Business / partner detail cards ----------------------------------------------------- */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-biz__list {
+  display: grid;
+  gap: 1.2rem;
+  margin-top: 1.8rem;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-biz {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--bpt-line);
+  background: var(--bpt-paper);
+  scroll-margin-top: calc(var(--gnav-h, 74px) + 4.6rem);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-biz__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-biz__code {
+  flex: none;
+  min-width: 2.6rem;
+  padding: 0.3rem 0;
+  border: 1px solid var(--bpt-ink);
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-biz__title {
+  margin: 0.15rem 0 0;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-dl {
+  margin: 1.1rem 0 0;
+  border-top: 1px solid var(--bpt-line);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-dl__row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 12rem) minmax(0, 1fr);
+  gap: 0.4rem 1.4rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--bpt-line);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-dl dt {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--bpt-faint);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-dl dd {
+  margin: 0;
+  font-size: 0.97rem;
+  line-height: 1.6;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-biz__cta {
+  margin: 1.2rem 0 0;
+}
+@media (max-width: 640px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-dl__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Partner-type jump list (links only; no hidden tabs) ------------------------------- */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-rail {
+  margin-top: 1.5rem;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-rail__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--bpt-line);
+  background: var(--bpt-line);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-rail__link {
+  display: block;
+  padding: 0.8rem 1rem;
+  background: var(--bpt-paper);
+  color: var(--bpt-ink);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-rail__link span {
+  margin-right: 0.45rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--bpt-faint);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-rail__link:hover {
+  background: #0a0a0a;
+  color: #fff;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-rail__link:hover span {
+  color: #d4d4d4;
+}
+
+/* ---- Contact categories --------------------------------------------------------------------- */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  margin: 1.7rem 0 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--bpt-line);
+  background: var(--bpt-line);
+}
+@media (min-width: 720px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-cards {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  height: 100%;
+  min-height: 11.5rem;
+  padding: 1.05rem 1.1rem 1.15rem;
+  background: var(--bpt-paper);
+  color: var(--bpt-ink);
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-card__n {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--bpt-faint);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-card__t {
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-card__d {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--nls-muted);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-card__go {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-card:hover,
+#lifestage-detail.nls[data-story="bizpart"] .bpt-card:focus-visible {
+  background: #0a0a0a;
+  color: #fff;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-card:hover .bpt-card__n,
+#lifestage-detail.nls[data-story="bizpart"] .bpt-card:hover .bpt-card__d,
+#lifestage-detail.nls[data-story="bizpart"] .bpt-card:focus-visible .bpt-card__n,
+#lifestage-detail.nls[data-story="bizpart"] .bpt-card:focus-visible .bpt-card__d {
+  color: #d4d4d4;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-card:focus-visible {
+  outline-color: #fff;
+}
+
+/* ---- Dark mode (same tokens the Life Stage page uses) ------------------------------------ */
+html[data-theme="dark"] #lifestage-detail.nls[data-story="bizpart"],
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] {
+  --bpt-ink: #f2f2f2;
+  --bpt-line: #2a2a2a;
+  --bpt-line-strong: #3a3a3a;
+  --bpt-faint: #a3a3a3;
+  --bpt-paper: #111;
+}
+html[data-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-status--released,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-status--released {
+  background: #f2f2f2;
+  color: #0a0a0a;
+}
+html[data-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-rail__link:hover,
+html[data-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-card:hover,
+html[data-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-card:focus-visible,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-rail__link:hover,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-card:hover,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-card:focus-visible {
+  background: #f2f2f2;
+  color: #0a0a0a;
+}
+html[data-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-rail__link:hover span,
+html[data-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-card:hover .bpt-card__n,
+html[data-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-card:hover .bpt-card__d,
+html[data-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-card:focus-visible .bpt-card__n,
+html[data-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-card:focus-visible .bpt-card__d,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-rail__link:hover span,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-card:hover .bpt-card__n,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-card:hover .bpt-card__d {
+  color: #404040;
+}
+html[data-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-card:focus-visible,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-card:focus-visible {
+  outline-color: #0a0a0a;
+}
+html[data-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-biz,
+html[data-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-subnav,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-biz,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-subnav {
+  background: #111;
+  border-color: #2a2a2a;
+}
+
+/* ---- Six-stage journey rail / long stage labels / four-card flow ---------------------------- */
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="bizpart"] .nls-journey-sec .nls-rail {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="bizpart"] .nls-decade__mark b {
+  font-size: clamp(1.7rem, 3.4vw, 2.7rem);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+@media (min-width: 860px) {
+  #lifestage-detail.nls[data-story="bizpart"] .nls-flow.bpt-flow4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+#lifestage-detail.nls[data-story="bizpart"] .bpt-film--compact .nls-film__lockup {
+  top: calc(50% + 1.8rem);
+}
+@media (min-width: 860px) {
+  #lifestage-detail.nls[data-story="bizpart"] .nls-proc.bpt-proc3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-rail__list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  #lifestage-detail.nls[data-story="bizpart"] .nls-pipe.bpt-pipe5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+#lifestage-detail.nls[data-story="bizpart"] .bpt-subnav__en,
+#lifestage-detail.nls[data-story="bizpart"] .bpt-subnav__ko {
+  white-space: nowrap;
+}
+
+/* ======================================================================================
+ * Expansion (24 business groups, 20 service screens, CHILD SAFETY & SOCIAL IMPACT)
+ * Same vocabulary as above: thin rules, small English labels, no colour fills.
+ * ==================================================================================== */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-status--plan {
+  border: 3px double var(--bpt-ink);
+  padding: 0.12rem 0.5rem;
+  color: var(--bpt-ink);
+}
+
+/* small label / sub heading */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-sub {
+  margin: 1.8rem 0 0.6rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bpt-faint);
+}
+#lifestage-detail.nls[data-story="bizpart"] h3.bpt-sub {
+  margin-top: 3.2rem;
+  font-size: clamp(1.25rem, 2.6vw, 1.7rem);
+  letter-spacing: -0.03em;
+  text-transform: none;
+  color: var(--bpt-ink);
+}
+
+/* 20 screens: grouped boards */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-group {
+  margin-top: 2.4rem;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-group__t {
+  margin: 0 0 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--bpt-ink);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bpt-faint);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-screen .nls-board__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-screen__n {
+  font-size: 0.95rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-screen .nls-kicker {
+  margin: 0.9rem 0 0.15rem;
+}
+#lifestage-detail.nls[data-story="bizpart"] .nls-board__item h4 {
+  margin: 0 0 0.45rem;
+  font-size: 1.15rem;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+}
+
+/* business categories and group cards */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-cat {
+  margin-top: 3.2rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--bpt-ink);
+  scroll-margin-top: calc(var(--gnav-h, 74px) + 4.6rem);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-cat--cs {
+  border-top-width: 3px;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-cat__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-cat__head > div {
+  flex: 1;
+  min-width: 0;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-cat__count {
+  flex: none;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--bpt-faint);
+  padding-top: 0.4rem;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-grp__list,
+#lifestage-detail.nls[data-story="bizpart"] .bpt-biz__list--compact {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-grp__list,
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-biz__list--compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+  }
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-grp {
+  padding: clamp(1.1rem, 2.6vw, 1.6rem);
+  border: 1px solid var(--bpt-line);
+  background: var(--bpt-paper);
+  scroll-margin-top: calc(var(--gnav-h, 74px) + 4.6rem);
+  display: flex;
+  flex-direction: column;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-grp .bpt-biz__title,
+#lifestage-detail.nls[data-story="bizpart"] .bpt-biz--compact .bpt-biz__title {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-grp .bpt-dl__row,
+#lifestage-detail.nls[data-story="bizpart"] .bpt-biz--compact .bpt-dl__row {
+  grid-template-columns: minmax(6.5rem, 8.5rem) minmax(0, 1fr);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-grp .bpt-dl dd,
+#lifestage-detail.nls[data-story="bizpart"] .bpt-biz--compact .bpt-dl dd {
+  font-size: 0.92rem;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-grp .bpt-biz__cta {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-biz--compact {
+  display: flex;
+  flex-direction: column;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-biz--compact .bpt-biz__cta {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+@media (max-width: 640px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-grp .bpt-dl__row,
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-biz--compact .bpt-dl__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* child-safety notices: rule on the left, no fill */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-notice {
+  margin: 1.4rem 0 0;
+  padding: 0.2rem 0 0.2rem 1.1rem;
+  border-left: 3px solid var(--bpt-ink);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-emergency {
+  margin-top: 1rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--bpt-ink);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-emergency p {
+  margin: 0.4rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-emergency .bpt-emergency__t {
+  margin: 0;
+  font-weight: 750;
+  font-size: 1.02rem;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-cat--cs .bpt-notice {
+  margin-bottom: 1.2rem;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-cs-sec .nls-chips {
+  margin-top: 0.4rem;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-cs-end {
+  padding-block: 1.6rem;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-impact .nls-note {
+  max-width: 62ch;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-cards--cs {
+  margin-top: 1.6rem;
+}
+
+/* jump lists without grey filler cells (counts of 9, 12, 14 do not divide evenly) */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-rail__list {
+  gap: 0;
+  border: 0;
+  border-top: 1px solid var(--bpt-line);
+  border-left: 1px solid var(--bpt-line);
+  background: none;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-rail__list li {
+  border-right: 1px solid var(--bpt-line);
+  border-bottom: 1px solid var(--bpt-line);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-rail__list li:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-rail__list li:last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-rail.bpt-rail--cats .bpt-rail__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* dark mode */
+html[data-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-grp,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls[data-story="bizpart"] .bpt-grp {
+  background: #111;
+  border-color: #2a2a2a;
+}
+
+/* actions on the dark impact band */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-impact .nls-btn:not(.nls-btn--ghost) {
+  background: #f2f2f2;
+  color: #0a0a0a;
+  border-color: #f2f2f2;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-impact .nls-btn--ghost {
+  background: transparent;
+  color: #f2f2f2;
+  border-color: #bdbdbd;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-impact .nls-btn:focus-visible {
+  outline: 2px solid #f2f2f2;
+  outline-offset: 3px;
+}
+
+/* screen groups: item counts of 4 and 5 must not leave grey filler cells */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-group .nls-board {
+  gap: 0;
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--bpt-line);
+  border-left: 1px solid var(--bpt-line);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-group .nls-board__item {
+  border-right: 1px solid var(--bpt-line);
+  border-bottom: 1px solid var(--bpt-line);
+}
+
+/* dark impact band: list text sized for light backgrounds elsewhere needs lighter greys here */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-impact .nls-dir li span {
+  color: #c4c4c4;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-impact .nls-dir li p {
+  color: #d6d6d6;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-impact .nls-dir li strong {
+  color: #fff;
+}
+
+/* ======================================================================================
+ * Business & Partnerships screens — additions (same vocabulary: thin rules, small labels,
+ * black/white only).
+ * ==================================================================================== */
+/* Shared five-menu bar: NEWON keeps its black point (white in dark mode). */
+html[data-theme="dark"] .fsn[data-biz="bizpart"],
+html[data-newon-shell-theme="dark"] .fsn[data-biz="bizpart"] {
+  --fsn-point: #f2f2f2;
+}
+
+/* Film hero: small eyebrow above the wordmark; long English wordmarks scaled to fit. */
+#lifestage-detail.nls[data-story="bizpart"] .nls-film__eyebrow {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 0.9rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(12px);
+}
+#lifestage-detail.nls[data-story="bizpart"] .nls-film.is-ready .nls-film__eyebrow {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-film--compact .nls-film__wordmark {
+  font-size: clamp(3.2rem, 9.5vw, 7.2rem);
+}
+#lifestage-detail.nls[data-story="bizpart"] .nls-film__lead {
+  max-width: 36rem;
+}
+@media (max-width: 760px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-film--compact .nls-film__wordmark {
+    font-size: clamp(2.6rem, 13vw, 4.6rem);
+  }
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-film--compact {
+    height: 36rem;
+    min-height: 36rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #lifestage-detail.nls[data-story="bizpart"] .nls-film__eyebrow {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Body paragraphs and sub labels inside cards */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-biz__p {
+  margin: 0.55rem 0 0;
+  max-width: 68ch;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--nls-muted);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-biz .nls-note {
+  margin-top: 1rem;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-biz .bpt-sub {
+  margin-top: 1.2rem;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-dl dd .nls-chips {
+  margin: 0;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-biz__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* Two-column card lists (partnership types) */
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-biz__list--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Six platform cards (Overview) */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-plats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  margin-top: 1.8rem;
+}
+@media (min-width: 720px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-plats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1040px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-plats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-plat {
+  display: flex;
+  flex-direction: column;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-plat__headline {
+  margin: 0.2rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-plat__desc {
+  margin: 0.45rem 0 0.9rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--nls-muted);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-plat__go {
+  margin: auto 0 0;
+  padding: 1.1rem 0 0;
+  list-style: none;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-plat__go li {
+  margin: 0;
+  padding: 0;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-plat__go li::before {
+  content: none;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-plat__go a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.6rem 0.1rem;
+  border-top: 1px solid var(--bpt-line);
+  color: var(--bpt-ink);
+  font-size: 0.92rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-plat__go li:last-child a {
+  border-bottom: 1px solid var(--bpt-line);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-plat__go a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-plat__go a:focus-visible {
+  outline: 2px solid var(--bpt-ink);
+  outline-offset: 2px;
+}
+
+/* Card grids without grey filler cells: 2, 3 and 5 columns */
+@media (min-width: 720px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-cards--2,
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-cards--3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-cards--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-cards--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1100px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-cards--5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-cards li {
+  margin: 0;
+  padding: 0;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-cards li::before {
+  content: none;
+}
+
+/* Five-step process and three-item guide */
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="bizpart"] .nls-pipe.bpt-pipe5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+@media (min-width: 860px) {
+  #lifestage-detail.nls[data-story="bizpart"] .nls-flow.bpt-flow4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* One shared notice per page (Business Models, Partnerships) */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-scope {
+  margin-top: 2.2rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--bpt-ink);
+  max-width: 70ch;
+}
+
+/* Contact: form beside the heading, existing bz-form fields */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-form-sec {
+  scroll-margin-top: calc(var(--gnav-h, 74px) + 4rem);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-form {
+  max-width: none;
+  min-width: 0;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-form .bz-form {
+  margin-top: 0;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-form .bz-field label {
+  color: var(--bpt-ink);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-form .bz-field input:not([type="checkbox"]):not([type="radio"]),
+#lifestage-detail.nls[data-story="bizpart"] .bpt-form .bz-field select,
+#lifestage-detail.nls[data-story="bizpart"] .bpt-form .bz-field textarea {
+  border-radius: 0;
+  border-color: var(--bpt-line-strong);
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-form .bz-field input:focus-visible,
+#lifestage-detail.nls[data-story="bizpart"] .bpt-form .bz-field select:focus-visible,
+#lifestage-detail.nls[data-story="bizpart"] .bpt-form .bz-field textarea:focus-visible {
+  outline: 2px solid var(--bpt-ink);
+  outline-offset: 1px;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-form .bz-submit {
+  border-radius: 0;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-contact {
+  margin-top: 1.6rem;
+}
+#lifestage-detail.nls[data-story="bizpart"] .bpt-contact dd strong {
+  font-weight: 700;
+}
+
+/* The hub's brand ("BUSINESS & PARTNERSHIPS") and longer labels: two-line brand, slightly tighter items. */
+.fsn[data-biz="bizpart"] .fsn__brand {
+  max-width: 10.5rem;
+  white-space: normal;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  line-height: 1.25;
+}
+.fsn[data-biz="bizpart"] .fsn__dot {
+  flex: none;
+}
+.fsn[data-biz="bizpart"] .fsn__a {
+  padding-inline: 0.7rem;
+}
+
+/* Six-platform jump list: one row on desktop, three columns on tablets */
+@media (min-width: 600px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-rail__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-rail__list {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+@media (min-width: 600px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-rail__list li:last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+}
+
+/* Phones: inquiry-type cards in two short columns instead of ten tall rows */
+@media (max-width: 719px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-cards--5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-cards--5 .bpt-card,
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-cards--3 .bpt-card,
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-cards--2 .bpt-card {
+    min-height: 0;
+  }
+}
+@media (min-width: 720px) and (max-width: 1099px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-cards--5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="bizpart"] .nls-pipe + .nls-note,
+#lifestage-detail.nls[data-story="bizpart"] .nls-proc + .nls-note {
+  margin-top: 1.4rem;
+}

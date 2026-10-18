@@ -448,7 +448,21 @@
     "ongilMenuPartnerships": "Partnerships",
     "ongilMenuPartnershipsDesc": "14 kinds of partners",
     "ongilMenuContact": "Contact",
-    "ongilMenuContactDesc": "Talk to ONGIL"
+    "ongilMenuContactDesc": "Talk to ONGIL",
+    "topBizPart": "ビジネス・パートナーシップ",
+    "bizPartMenuLabel": "ビジネス・パートナーシップ",
+    "bizPartMenuLead": "NEWONの6つのプラットフォームと共に進める事業・提携の窓口",
+    "bizPartExploreCta": "ビジネス・パートナーシップを見る →",
+    "bpOverview": "概要",
+    "bpOverviewDesc": "6つのプラットフォームを基盤とする事業の窓口",
+    "bpPlatforms": "プラットフォーム",
+    "bpPlatformsDesc": "プラットフォーム別の事業・協業分野",
+    "bpModels": "ビジネスモデル",
+    "bpModelsDesc": "取引・SaaS・法人契約・提携・ライセンス",
+    "bpPartnerships": "パートナーシップ",
+    "bpPartnershipsDesc": "協業の種類と進め方",
+    "bpContact": "お問い合わせ",
+    "bpContactDesc": "事業・提携のお問い合わせ"
   },
   "home": {
     "heroLogoAlt": "0ロゴ",

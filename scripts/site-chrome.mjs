@@ -1,6 +1,6 @@
 /**
  * Shared site chrome — Global Navigation with editorial mega menus.
- * Top-level: Consumer · AI · LivOn · Ongil · Business · Studio · Partnerships · Company
+ * Top-level: Apps · AI · Business & Partnerships · Studio · Company (+ the six flagship businesses row)
  */
 import { escapeHtml, pick } from "./hub-utils.mjs";
 import { MEGA_DESTINATIONS, TOP_NAV } from "./venture-studio-data.mjs";
@@ -22,7 +22,7 @@ const NAV_LABEL_KEYS = {
   ai: "nav.topAi",
   lifestage: "nav.topLifeStage",
   ongil: "nav.topOngil",
-  business: "nav.topBusiness",
+  business: "nav.topBizPart",
   studio: "nav.topStudio",
   partnerships: "nav.topPartnerships",
   company: "nav.topCompany",
@@ -33,7 +33,7 @@ const NAV_LABEL_FB = {
   ai: "AI",
   lifestage: "LivOn",
   ongil: "Ongil",
-  business: "Business",
+  business: "Business & Partnerships",
   studio: "Studio",
   partnerships: "Partnerships",
   company: "Company",
@@ -125,11 +125,11 @@ const MENU_META = {
     footFb: "View PETLOG →",
   },
   business: {
-    kicker: "nav.businessMenuLabel",
-    lead: "nav.businessMenuLead",
+    kicker: "nav.bizPartMenuLabel",
+    lead: "nav.bizPartMenuLead",
     footHref: "business/",
-    footKey: "nav.businessExploreCta",
-    footFb: "Explore Business →",
+    footKey: "nav.bizPartExploreCta",
+    footFb: "Explore Business & Partnerships →",
   },
   studio: {
     kicker: "nav.studioMenuLabel",
@@ -195,7 +195,7 @@ export function resolveActiveNav(pathname = "") {
     return "business";
   }
   if (seg === "studio") return "studio";
-  if (seg === "partnerships") return "partnerships";
+  if (seg === "partnerships") return "business";
   if (seg === "store" || (seg === "resources" && parts[1] === "store")) return "studio";
   if (seg === "labs" || (seg === "resources" && parts[1] === "labs")) return "studio";
   if (seg === "insights" || (seg === "resources" && parts[1] === "insights")) return "business";
@@ -489,7 +489,6 @@ export const FOOTER_MENUS = [
   ["ongil", "ongil/"],
   ["business", "business/"],
   ["studio", "studio/"],
-  ["partnerships", "partnerships/"],
   ["company", "about/"],
 ];
 
