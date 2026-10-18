@@ -7,11 +7,13 @@
  * Checks (each prints PASS / FAIL; exit 1 on any FAIL):
  *   menu        5 menu links on every page, exact hrefs, one aria-current on the right item
  *   sections    every specified section/detail is present (counts + ids)
- *   seo         unique title/description per page, canonical, 9 hreflang + x-default, og:*, JSON-LD parses
+ *   seo         unique title/description per page, canonical, 9 hreflang + x-default, og:*, JSON-LD parses and
+ *               declares no Service/Offer/Product (future businesses are never declared as offered services)
  *   a11y        one h1, no heading level skips, labelled nav/landmarks, no empty links/buttons
  *   info-only   no form/input/select/textarea/password/payment controls
  *   revenue     no price, fee rate or internal revenue figure in the public pages
- *   status      released/direction/review labels present; fallback locales carry lang="en"
+ *   status      V2 policy: no per-card status badge or label legend; exactly one shared scope notice on Overview,
+ *               Platform and Business; fallback locales carry lang="en" and show no Korean text in the BABYLOG body
  *   links       internal links resolve to files; #anchors exist on the target page; inquiry links carry the source
  *   stores      only the two verified BabyLog store URLs; delete-account page still present
  *   scope       (with --against) other platform pages and the Life Stage originals are byte-identical to the ref
@@ -91,7 +93,7 @@ for (const p of pages) {
     return body.slice(i, j > 0 ? j : undefined);
   };
   if (p.nav.id === "overview") {
-    const need = ["bl-vision", "bl-journey", "bl-connect", "bl-daily", "bl-health", "bl-ecosystem", "bl-parent-eco", "bl-solutions", "bl-opportunities", "bl-impact", "bl-newon", "bl-platforms", "bl-close"];
+    const need = ["bl-vision", "bl-connect", "bl-journey", "bl-daily", "bl-health", "bl-ecosystem", "bl-parent-eco", "bl-trust", "bl-opportunities", "bl-impact", "bl-newon", "bl-platforms", "bl-close"];
     const lack = need.filter((i) => !ids.has(i));
     const stages = count(body, /data-nls-decade-card=/g);
     const eco = count(body, /nls-proc__item/g);
@@ -99,19 +101,22 @@ for (const p of pages) {
     const cats = count(body, /class="bl-link" href="[^"]*#cat-0[1-9]"/g);
     const ctas = count(body.slice(body.indexOf('id="bl-close"')), /class="nls-btn/g);
     const imp = sect("bl-impact");
-    const impOk = count(imp, /<li><span>0[1-4]<\/span>/g) === 4 && count(imp, /class="nls-btn/g) === 2 && /#cat-07/.test(imp) && /#bl-cs-partners/.test(imp) && /bl-status|nls-note/.test(imp);
-    const sol = count(sect("bl-solutions"), /nls-pipe__item/g);
+    const impOk = count(imp, /<li><span>0[1-4]<\/span>/g) === 4 && count(imp, /class="nls-btn/g) === 2 && /#cat-07/.test(imp) && /#bl-cs-partners/.test(imp) && /nls-note/.test(imp);
+    const sol = count(sect("bl-trust"), /<li><span>0[1-6]<\/span>/g);
+    const values = count(sect("bl-connect"), /nls-flow__item/g);
+    const core = count(sect("bl-daily"), /nls-flow__item/g);
     const pl = count(sect("bl-platforms"), /<li><span>0[1-6]<\/span>/g);
-    secOk = !lack.length && stages === 6 && eco === 4 && biz === 6 && cats === 8 && ctas === 3 && impOk && sol === 5 && pl === 6 && /story-babylog-title/.test(body);
-    secInfo = `missing ${lack.join(",") || "-"}, stages ${stages}, ecosystem ${eco}, business links ${biz}, category links ${cats}, impact ${impOk}, solutions ${sol}, platforms ${pl}, next-step CTAs ${ctas}`;
+    secOk = !lack.length && stages === 6 && eco === 4 && biz === 6 && cats === 8 && ctas === 2 && impOk && sol === 6 && values === 6 && core === 8 && pl === 6 && /story-babylog-title/.test(body);
+    secInfo = `missing ${lack.join(",") || "-"}, stages ${stages}, values ${values}/6, core experience ${core}/8, ecosystem ${eco}, business links ${biz}, category links ${cats}, impact ${impOk}, trust ${sol}/6, platforms ${pl}, closing CTAs ${ctas}`;
   } else if (p.nav.id === "platform") {
     const need = ["screens", "growth", "records", "family", "learning", "memories", "assist", "explore", "trust", "cs", ...CS_GROUP_CODES.map((c) => "cs-" + c)].map((x) => "bl-" + x).concat("bl-access", "bl-close");
     const lack = need.filter((i) => !ids.has(i));
     const screens = count(sect("bl-screens"), /class="nls-board__item bl-screen"/g);
     const csRail = count(sect("bl-cs"), /class="bl-rail__link"/g);
-    const csPlan = CS_GROUP_CODES.every((c) => /bl-status--plan/.test(sect("bl-cs-" + c)));
-    secOk = !lack.length && screens === 21 && csRail === 8 && csPlan && /story-babylog-title/.test(body);
-    secInfo = `missing ${lack.join(",") || "-"}, screens ${screens}/21, child-safety jump links ${csRail}/8, all 8 marked plan ${csPlan}`;
+    // each public-welfare / child-safety area keeps its official-source and "what we do not do" rows
+    const csGuard = CS_GROUP_CODES.every((c) => count(sect("bl-cs-" + c), /<dt>/g) === 2);
+    secOk = !lack.length && screens === 21 && csRail === 8 && csGuard && /bl-emergency/.test(sect("bl-cs")) && /story-babylog-title/.test(body);
+    secInfo = `missing ${lack.join(",") || "-"}, screens ${screens}/21, child-safety jump links ${csRail}/8, all 8 keep source+guard rows ${csGuard}`;
   } else if (p.nav.id === "business") {
     const arts = BIZ_CODES.map((c) => `biz-${c}`);
     const cats = Array.from({ length: 8 }, (_, i) => `cat-0${i + 1}`);
@@ -122,18 +127,20 @@ for (const p of pages) {
     const csCards = count(body, /class="bl-grp bl-grp--cs"/g);
     const cat7 = sect("cat-07");
     const cat8 = sect("cat-08");
-    const cat9Plan = count(cat7, /bl-status--plan/g) + count(cat8, /bl-status--plan/g) === 8 && /bl-emergency/.test(cat7) && /bl-emergency/.test(cat8);
+    const cat9Plan = /bl-emergency/.test(cat7) && /bl-emergency/.test(cat8) && count(cat7, /<li>/g) >= 3 && count(cat8, /<li>/g) >= 3;
     const phases = count(sect("bl-phases"), /nls-pipe__item/g);
-    secOk = !lack.length && dts === 7 * 6 && ctaLinks === 6 && csCards === 8 && cat9Plan && phases === 5 && count(body, /class="bl-grp(?: bl-grp--cs)?" aria-labelledby/g) === 32;
-    secInfo = `missing ${lack.join(",") || "-"}, six-model dt ${dts}/42, public-welfare/child-safety cards ${csCards}/8, categories 07-08 plan+emergency ${cat9Plan}, phases ${phases}`;
+    secOk = !lack.length && dts === 6 * 6 && ctaLinks === 6 && csCards === 8 && cat9Plan && phases === 5 && count(body, /class="bl-grp(?: bl-grp--cs)?" aria-labelledby/g) === 32;
+    secInfo = `missing ${lack.join(",") || "-"}, six-model dt ${dts}/36, public-welfare/child-safety cards ${csCards}/8, categories 07-08 emergency+forbidden ${cat9Plan}, phases ${phases}`;
   } else if (p.nav.id === "partnerships") {
     const arts = [...PARTNER_CODES, ...IND_PARTNER_CODES, ...CS_PARTNER_CODES].map((c) => `partner-${c}`);
     const lack = arts.filter((i) => !ids.has(i));
     const dts = count(body, /<dt>/g);
     const steps = count(body, /nls-pipe__item/g);
     const rail = count(body, /bl-rail__link/g);
-    secOk = !lack.length && dts === 5 * 8 + 3 * 15 + 4 * 12 && steps === 5 && rail === 8 + 15 + 12 && ids.has("bl-cs-partners") && ids.has("bl-industry");
-    secInfo = `missing ${lack.join(",") || "-"}, dt ${dts}/${5 * 8 + 3 * 15 + 4 * 12}, steps ${steps}, jump links ${rail}/35`;
+    const principles = count(sect("bl-process"), /<li>/g);
+    const models = count(sect("bl-types"), /<ul class="nls-chips">/g);
+    secOk = !lack.length && dts === 4 * 8 + 2 * 15 + 3 * 12 && steps === 5 && principles === 6 && models === 1 && rail === 8 + 15 + 12 && ids.has("bl-cs-partners") && ids.has("bl-industry");
+    secInfo = `missing ${lack.join(",") || "-"}, dt ${dts}/${4 * 8 + 2 * 15 + 3 * 12}, steps ${steps}, principles ${principles}/6, model chips ${models}, jump links ${rail}/35`;
   } else {
     const cards = [...body.matchAll(/class="bl-card" href="([^"]+)"/g)].map((m) => m[1]);
     const codes = cards.map((c) => (c.match(/source=babylog-contact-([a-z]+)/) || [])[1]);
@@ -155,7 +162,8 @@ for (const p of pages) {
   let ldOk = lds.length >= 2;
   for (const m of lds) {
     try {
-      JSON.parse(m[1]);
+      const j = JSON.stringify(JSON.parse(m[1]));
+      if (/"@type":"(Service|Offer|OfferCatalog|Product|SoftwareApplication|MobileApplication)"|"(makesOffer|hasOfferCatalog|offers)"/.test(j)) ldOk = false;
     } catch {
       ldOk = false;
     }
@@ -201,12 +209,14 @@ for (const p of pages) {
   ].filter((re) => re.test(t));
   rec(`revenue ${tag}`, bad.length === 0, bad.length ? `price/fee pattern: ${bad.map(String).join(" ")}` : "no price, rate or internal figure");
 
-  /* ---- status & translation ---- */
-  const labels = ["released", "direction", "review"].filter((k) => body.includes(`bl-status--${k}`));
-  const needLabels = p.nav.id === "platform" ? 3 : p.nav.id === "business" ? 2 : 0;
+  /* ---- status policy (V2) & translation ---- */
+  const badges = count(body, /class="bl-status\b/g) + count(body, /class="bl-legend\b/g);
+  const scope = count(body, /class="nls-note bl-scope"/g);
+  const needScope = ["overview", "platform", "business"].includes(p.nav.id) ? 1 : 0;
   const fb = !["ko", "en"].includes(p.lang);
   const langAttr = /id="lifestage-detail"[^>]*\slang="en"/.test(body);
-  rec(`status ${tag}`, labels.length >= needLabels && langAttr === fb, `labels ${labels.join(",") || "-"}, fallback lang=en ${langAttr} (expected ${fb})`);
+  const hangul = p.lang === "ko" ? 0 : count(text(body), /[\uac00-\ud7a3]/g);
+  rec(`status ${tag}`, badges === 0 && scope === needScope && langAttr === fb && hangul === 0, `per-card badges/legend ${badges} (expected 0), shared scope notice ${scope}/${needScope}, fallback lang=en ${langAttr} (expected ${fb}), Korean characters ${hangul}`);
 }
 
 for (const [lang, ts] of titles) {

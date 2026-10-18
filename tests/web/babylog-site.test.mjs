@@ -6,6 +6,9 @@
  * BL-4 a form control fails the check
  * BL-5 an unverified store URL fails the check
  * BL-6 the copy module carries no price or internal revenue figure
+ * BL-10 a per-card status badge (removed in V2) fails the check
+ * BL-11 Korean text leaking into a fallback-locale page fails the check
+ * BL-12 JSON-LD declaring an offered Service fails the check
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -50,7 +53,7 @@ test("BL-1 committed BABYLOG pages pass the full static check", () => {
 test("BL-2 a price in a public BABYLOG page fails the check", () => {
   const d = scratch();
   try {
-    mutate(d, "ko/babylog/business/index.html", (h) => h.replace("확정된 요금은 없습니다.", "월 ₩19,900 확정."));
+    mutate(d, "ko/babylog/business/index.html", (h) => h.replace("개인 프리미엄 구독", "월 ₩19,900 확정"));
     const r = run(d);
     assert.notEqual(r.status, 0);
     assert.match(r.stdout, /FAIL revenue ko\/business/);
@@ -142,5 +145,41 @@ test("BL-9 the expansion copy has 32 groups, 12 + 15 partner types and no price 
   const body = src.slice(src.indexOf("const KO ="));
   for (const re of [/₩\s?\d/, /\d[\d,]*\s?원(?!칙)/, /\d+\s?%/, /19,?900/, /169,?000/, /179,?000/]) {
     assert.ok(!re.test(body), `expansion copy matches ${re}`);
+  }
+});
+
+test("BL-10 a per-card status badge in a BABYLOG page fails the check (V2 policy)", () => {
+  const d = scratch();
+  try {
+    mutate(d, "ko/babylog/platform/index.html", (h) => h.replace('<span class="bl-screen__n"', '<span class="bl-status bl-status--direction">방향 · 출시 일정 미정</span><span class="bl-screen__n"'));
+    const r = run(d);
+    assert.notEqual(r.status, 0);
+    assert.match(r.stdout, /FAIL status ko\/platform/);
+  } finally {
+    fs.rmSync(d, { recursive: true, force: true });
+  }
+});
+
+test("BL-11 Korean text in a fallback-locale BABYLOG page fails the check", () => {
+  const d = scratch();
+  try {
+    mutate(d, "fr/babylog/business/index.html", (h) => h.replace("Thirty-two business lines", "서른두 개 사업 분야"));
+    const r = run(d);
+    assert.notEqual(r.status, 0);
+    assert.match(r.stdout, /FAIL status fr\/business/);
+  } finally {
+    fs.rmSync(d, { recursive: true, force: true });
+  }
+});
+
+test("BL-12 JSON-LD declaring an offered Service fails the check", () => {
+  const d = scratch();
+  try {
+    mutate(d, "en/babylog/business/index.html", (h) => h.replace('"@type":"WebPage"', '"@type":"WebPage","makesOffer":{"@type":"Offer","name":"Childcare SaaS"}'));
+    const r = run(d);
+    assert.notEqual(r.status, 0);
+    assert.match(r.stdout, /FAIL seo en\/business/);
+  } finally {
+    fs.rmSync(d, { recursive: true, force: true });
   }
 });

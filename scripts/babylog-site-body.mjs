@@ -4,7 +4,7 @@
  * Reuses the Life Stage (nls-*) component vocabulary and its stylesheet unchanged:
  *   nls-film hero, nls-head, nls-split/nls-roster, nls-rail + nls-decade (journey), nls-flow, nls-proc,
  *   nls-board, nls-index, nls-pipe, nls-dir, nls-close, nls-chips, nls-note, nls-btn.
- * BABYLOG-only additions (sub navigation, status labels, detail list) are bl-* classes in babylog-site.css,
+ * BABYLOG-only additions (sub navigation, detail list; per-card status labels removed in V2 — one shared scope note per page) are bl-* classes in babylog-site.css,
  * scoped to #lifestage-detail.nls[data-story="babylog"].
  *
  * Information only: no form, input, login or commerce control is rendered here.
@@ -39,8 +39,9 @@ function chips(items) {
   return `<ul class="nls-chips">${(items || []).map((t) => `<li>${esc(t)}</li>`).join("")}</ul>`;
 }
 
-function statusChip(C, key) {
-  return `<span class="bl-status bl-status--${esc(key)}">${esc(C.status[key])}</span>`;
+/** One shared scope notice per page (replaces the per-card status badges and the label legend, V2 2026-10-19). */
+function scopeNote(C) {
+  return `<p class="nls-note bl-scope">${esc(C.ui.scope)}</p>`;
 }
 
 function block(id, inner, band = false, cls = "") {
@@ -73,15 +74,15 @@ function hero(C, lang, page, h, compact) {
 
 function heroActions(lang, page, h) {
   const first = {
-    overview: `<a class="nls-btn" href="${pagePath(lang, "platform")}">${esc(h.ctaMain)} →</a>`,
+    overview: `<a class="nls-btn" href="#bl-vision" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
     platform: `<a class="nls-btn" href="#bl-access" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
     business: `<a class="nls-btn" href="#bl-biz" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
     partnerships: `<a class="nls-btn" href="#bl-types" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
     contact: `<a class="nls-btn" href="#bl-contact-list" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
   }[page];
   const second = {
-    overview: pagePath(lang, "partnerships"),
-    platform: pagePath(lang, "contact"),
+    overview: pagePath(lang, "platform"),
+    platform: pagePath(lang, "business"),
     business: pagePath(lang, "partnerships"),
     partnerships: pagePath(lang, "contact"),
     contact: pagePath(lang, "partnerships"),
@@ -102,20 +103,6 @@ function subnav(C, lang, active) {
       </a></li>`;
   }).join("");
   return `<nav class="bl-subnav" aria-label="${esc(C.ui.menuLabel)}"><ul class="bl-subnav__list">${items}</ul></nav>`;
-}
-
-function legend(C) {
-  return `<aside class="bl-legend" aria-label="${esc(C.status.legend)}">
-    <p class="bl-legend__k">${esc(C.status.legend)}</p>
-    <ul class="bl-legend__list">
-      <li>${statusChip(C, "released")}</li>
-      <li>${statusChip(C, "direction")}</li>
-      <li>${statusChip(C, "review")}</li>
-      <li>${statusChip(C, "plan")}</li>
-    </ul>
-    <p class="nls-note">${esc(C.status.legendBody)}</p>
-    <p class="nls-note">${esc(C.status.planLegend)}</p>
-  </aside>`;
 }
 
 function closeBlock(C, lang, page, c, ctas) {
@@ -215,8 +202,7 @@ function overviewBody(C, lang) {
     .map((s) => `<li><span>${esc(s.n)}</span><div><strong>${esc(s.name)}</strong><p>${esc(s.body)}</p></div></li>`)
     .join("");
   const ctas = `<a class="nls-btn" href="${pagePath(lang, "platform")}">${esc(C.ui.toPlatform)} →</a>
-      <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "business")}">${esc(C.ui.toBusiness)}</a>
-      <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "partnerships")}">${esc(C.ui.toPartnerships)}</a>`;
+      <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "partnerships")}">${esc(C.ui.toPartnershipsLearn)}</a>`;
   const X = C.x.overview;
   const cats = C.x.business.groups.cats;
   const catIndex = cats
@@ -227,8 +213,8 @@ function overviewBody(C, lang) {
   const platformList = X.platforms.items
     .map((s2) => `<li><span>${esc(s2.n)}</span><div><strong>${esc(s2.name)}</strong><p>${esc(s2.body)}</p></div></li>`)
     .join("");
-  const solutions = X.solutions.items
-    .map((it) => `<article class="nls-pipe__item"><p class="nls-pipe__n">${esc(it.n)}</p><h3>${esc(it.name)}</h3><p>${esc(it.body)}</p></article>`)
+  const trust = X.trust.items
+    .map((it) => `<li><span>${esc(it.n)}</span><div><strong>${esc(it.name)}</strong><p>${esc(it.lead)}</p></div></li>`)
     .join("");
   const impactItems = X.impact.items
     .map((it) => `<li><span>${esc(it.n)}</span><div><strong>${esc(it.name)}</strong><p>${esc(it.lead)}</p></div></li>`)
@@ -253,24 +239,26 @@ function overviewBody(C, lang) {
     main: [
       bands([
         { id: "bl-vision", inner: `<div class="nls-split">${titleBlock(o.vision.kicker, o.vision.title, "", 2, "bl-vision-title")}<ol class="nls-roster">${roster}</ol></div>` },
+        { id: "bl-connect", inner: `${titleBlock(o.connect.kicker, o.connect.title, o.connect.lead, 2, "bl-connect-title")}<div class="nls-flow${o.connect.items.length % 4 === 0 ? " bl-flow4" : ""}">${connect}</div>` },
         {
           id: "bl-journey",
           cls: "nls-journey-sec",
           inner: `${titleBlock(o.journey.kicker, o.journey.title, o.journey.lead, 2, "bl-journey-title")}
     <div class="nls-rail" role="group" aria-label="${esc(o.journey.kicker.replace(/^\d+ · /, ""))}">${rail}</div>
     <div class="nls-journey">${cards}</div>
-    <p class="nls-note">${esc(o.journey.note)}</p>`,
+    ${scopeNote(C)}`,
         },
-        { id: "bl-connect", inner: `${titleBlock(o.connect.kicker, o.connect.title, o.connect.lead, 2, "bl-connect-title")}<div class="nls-flow bl-flow4">${connect}</div>` },
         { id: "bl-daily", inner: `${titleBlock(X.daily.kicker, X.daily.title, X.daily.lead, 2, "bl-daily-title")}<div class="nls-flow bl-flow4">${flowItems(X.daily.items)}</div>` },
         { id: "bl-health", inner: `${titleBlock(X.health.kicker, X.health.title, X.health.lead, 2, "bl-health-title")}<div class="nls-flow bl-flow4">${flowItems(X.health.items)}</div>` },
         { id: "bl-ecosystem", inner: `${titleBlock(o.ecosystem.kicker, o.ecosystem.title, o.ecosystem.lead, 2, "bl-ecosystem-title")}<div class="nls-proc">${eco}</div>` },
         { id: "bl-parent-eco", inner: `${titleBlock(X.parentEco.kicker, X.parentEco.title, X.parentEco.lead, 2, "bl-parent-eco-title")}<div class="nls-flow bl-flow4">${flowItems(X.parentEco.items)}</div>` },
-        { id: "bl-solutions", inner: `${titleBlock(X.solutions.kicker, X.solutions.title, X.solutions.lead, 2, "bl-solutions-title")}<div class="nls-pipe bl-pipe5">${solutions}</div>` },
+        {
+          id: "bl-trust",
+          inner: `<div class="nls-split"><div>${titleBlock(X.trust.kicker, X.trust.title, X.trust.lead, 2, "bl-trust-title")}</div><ol class="nls-dir">${trust}</ol></div>`,
+        },
         {
           id: "bl-opportunities",
           inner: `${titleBlock(o.opportunities.kicker, o.opportunities.title, o.opportunities.lead, 2, "bl-opportunities-title")}
-    <p class="nls-note">${esc(o.opportunities.note)}</p>
     <ol class="nls-index">${opp}</ol>
     <h3 class="bl-sub">${esc(X.groupsIndex.kicker)} · ${esc(X.groupsIndex.title.replace(/\n/g, " "))}</h3>
     <p class="nls-lead">${esc(X.groupsIndex.lead)}</p>
@@ -283,8 +271,7 @@ function overviewBody(C, lang) {
         },
         {
           id: "bl-platforms",
-          inner: `<div class="nls-split"><div>${titleBlock(X.platforms.kicker, X.platforms.title, X.platforms.lead, 2, "bl-platforms-title")}<p class="nls-note">${esc(X.platforms.note)}</p></div><ol class="nls-dir">${platformList}</ol></div>
-    ${legend(C)}`,
+          inner: `<div class="nls-split"><div>${titleBlock(X.platforms.kicker, X.platforms.title, X.platforms.lead, 2, "bl-platforms-title")}<p class="nls-note">${esc(X.platforms.note)}</p></div><ol class="nls-dir">${platformList}</ol></div>`,
         },
       ]),
       closeBlock(C, lang, "overview", o, ctas),
@@ -301,7 +288,6 @@ function platformBody(C, lang) {
       const items = s.items
         .map(
           (it) => `<article class="nls-board__item">
-        <div class="nls-board__meta">${statusChip(C, it.status)}</div>
         <h3>${esc(it.name)}</h3>
         <p>${esc(it.lead)}</p>
       </article>`
@@ -324,7 +310,7 @@ function platformBody(C, lang) {
       <div class="nls-board bl-cols-3">${g.items
         .map(
           (it) => `<article class="nls-board__item bl-screen">
-        <div class="nls-board__meta"><span class="bl-screen__n" aria-hidden="true">${esc(it.n)}</span>${statusChip(C, it.status)}</div>
+        <div class="nls-board__meta"><span class="bl-screen__n" aria-hidden="true">${esc(it.n)}</span></div>
         <p class="nls-kicker">${esc(it.en)}</p>
         <h4>${esc(it.name)}</h4>
         <p>${esc(it.lead)}</p>
@@ -337,7 +323,7 @@ function platformBody(C, lang) {
   const screens = block(
     "bl-screens",
     `${titleBlock(sc.kicker, sc.title, sc.lead, 2, "bl-screens-title")}
-    <p class="nls-note">${esc(sc.note)}</p>
+    ${scopeNote(C)}
     ${screenGroups}`,
     false
   );
@@ -363,14 +349,13 @@ function platformBody(C, lang) {
     ${dl([
       [F2.sources, esc(g.sources)],
       [F2.guard, esc(g.guard)],
-      [F2.status, statusChip(C, "plan")],
     ])}`,
         i % 2 === 0,
         "bl-cs-sec"
       )
     )
     .join("\n");
-  const csNote = block("bl-cs-note", `<p class="nls-note">${esc(C.ui.sourcesNote)}</p><p class="nls-note">${esc(C.ui.csNote)}</p>`, false, "bl-cs-end");
+  const csNote = block("bl-cs-note", `<p class="nls-note">${esc(C.ui.sourcesNote)}</p>`, false, "bl-cs-end");
   const a = p.access;
   const b = BUSINESS.babylog;
   const access = block(
@@ -381,8 +366,7 @@ function platformBody(C, lang) {
       <a class="nls-btn" href="${esc(b.stores.googlePlay)}" target="_blank" rel="noopener" data-analytics="google_play_babylog">${esc(a.googlePlay)}</a>
       <a class="nls-btn nls-btn--ghost" href="/${lang}/${BL_SLUG}/delete-account/">${esc(a.deleteNote)}</a>
     </div>
-    <p class="nls-note">${esc(a.note)}</p>
-    ${legend(C)}`,
+    <p class="nls-note">${esc(a.note)}</p>`,
     true
   );
   const ctas = `<a class="nls-btn" href="${inquiryHref(lang, "platform", "app")}">${esc(C.ui.toInquiry)} →</a>
@@ -420,7 +404,6 @@ function businessBody(C, lang) {
         [F.value, esc(cat.value)],
         [F.revenue, esc(cat.revenue)],
         [F.partners, esc(cat.partners)],
-        [F.status, statusChip(C, cat.status)],
       ];
       return `<article id="biz-${cat.id}" class="bl-biz" aria-labelledby="biz-${cat.id}-title">
       <header class="bl-biz__head">
@@ -471,7 +454,6 @@ function businessBody(C, lang) {
             rows.push([GF.sources, esc(g.sources)]);
             rows.push([GF.revenue, esc(g.rev)]);
           }
-          rows.push([GF.status, statusChip(C, g.status)]);
           const target = g.cs ? `${pagePath(lang, "partnerships")}#bl-cs-partners` : `${pagePath(lang, "partnerships")}#bl-industry`;
           return `<article id="grp-${g.n}" class="bl-grp${g.cs ? " bl-grp--cs" : ""}" aria-labelledby="grp-${g.n}-title">
         <header class="bl-biz__head">
@@ -501,10 +483,10 @@ function businessBody(C, lang) {
   const groups = block(
     "bl-groups",
     `${titleBlock(G.kicker, G.title, G.lead, 2, "bl-groups-title")}
+    ${scopeNote(C)}
     <p class="nls-note">${esc(G.note)}</p>
     <nav class="bl-rail bl-rail--cats" aria-label="${esc(C.ui.cats)}"><ol class="bl-rail__list">${catRail}</ol></nav>
-    ${catHtml}
-    ${legend(C)}`,
+    ${catHtml}`,
     true
   );
   const ph = G ? C.x.business.phases : null;
@@ -541,9 +523,8 @@ function partnershipsBody(C, lang) {
       const rows = [
         [T.fields.who, esc(it.who)],
         [T.fields.areas, esc(it.areas)],
-        [T.fields.revenue, esc(it.revenue)],
+        [T.fields.model, esc(it.model)],
         [T.fields.terms, esc(it.terms)],
-        [T.fields.flow, esc(T.flowText)],
       ];
       return `<article id="partner-${it.code}" class="bl-biz" aria-labelledby="partner-${it.code}-title">
       <header class="bl-biz__head">
@@ -567,7 +548,6 @@ function partnershipsBody(C, lang) {
       const rows = [
         [ind.fields.purpose, esc(it[1])],
         [ind.fields.terms, esc(it[2])],
-        [ind.fields.flow, esc(T.flowText)],
       ];
       return `<article id="partner-${code}" class="bl-biz bl-biz--compact" aria-labelledby="partner-${code}-title">
       <header class="bl-biz__head"><span class="bl-biz__code" aria-hidden="true">${n}</span><div><h3 id="partner-${code}-title" class="bl-biz__title">${esc(it[0])}</h3></div></header>
@@ -587,7 +567,6 @@ function partnershipsBody(C, lang) {
       const rows = [
         [cs.fields.purpose, esc(it[1])],
         [cs.fields.value, esc(it[2])],
-        [cs.fields.flow, esc(cs.flowText)],
         [cs.fields.terms, esc(it[3])],
       ];
       return `<article id="partner-${code}" class="bl-biz bl-biz--compact bl-biz--cs" aria-labelledby="partner-${code}-title">
@@ -604,11 +583,14 @@ function partnershipsBody(C, lang) {
     main: [
       block(
         "bl-process",
-        `${titleBlock(p.process.kicker, p.process.title, p.process.lead, 2, "bl-process-title")}<div class="nls-pipe bl-pipe5">${steps}</div>`
+        `${titleBlock(p.process.kicker, p.process.title, p.process.lead, 2, "bl-process-title")}<div class="nls-pipe bl-pipe5">${steps}</div>
+    <h3 class="bl-sub">${esc(p.principles.title)}</h3>
+    ${chips(p.principles.items)}`
       ),
       block(
         "bl-types",
         `${titleBlock(T.kicker, T.title, T.lead, 2, "bl-types-title")}
+    ${chips(T.models)}
     <p class="nls-note">${esc(C.ui.noPartner)}</p>
     <nav class="bl-rail" aria-label="${esc(T.railLabel)}"><ol class="bl-rail__list">${rail}</ol></nav>
     <div class="bl-biz__list">${cards}</div>
@@ -625,10 +607,9 @@ function partnershipsBody(C, lang) {
         "bl-cs-partners",
         `${titleBlock(cs.kicker, cs.title, cs.lead, 2, "bl-cs-partners-title")}
     ${csNotices(C, true)}
-    <p class="nls-note">${esc(C.ui.csPartnerNote)}</p>
+    <p class="nls-note">${esc(C.ui.csPartnerNote)} ${esc(cs.fields.flow)}: ${esc(cs.flowText)}</p>
     <nav class="bl-rail" aria-label="${esc(cs.railLabel)}"><ol class="bl-rail__list">${csRail}</ol></nav>
-    <div class="bl-biz__list bl-biz__list--compact">${csCards}</div>
-    <p class="nls-note">${esc(C.ui.noPrice)}</p>`,
+    <div class="bl-biz__list bl-biz__list--compact">${csCards}</div>`,
         true
       ),
       closeBlock(C, lang, "partnerships", p, ctas),
