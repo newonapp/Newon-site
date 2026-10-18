@@ -42,6 +42,9 @@ import { EN, STATUS_EN } from "./ongil-site-en.mjs";
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 export const OGS_VER = "20261018ogs2";
 const NLS_VER = "20260924livon1"; // Life Stage assets are reused as-is
+/** ONGIL first-screen background film (owner-provided, 2026-10-18). */
+const ONGIL_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260323_071151_38c3924f-c312-48af-a196-3fbb80e4226f.mp4";
+
 export const SITE_LANGS = ["ko", "en"];
 export const PAGES = ["overview", "platform", "business", "partnerships", "contact"];
 const CONTENT = { ko: { c: KO, s: STATUS_KO }, en: { c: EN, s: STATUS_EN } };
@@ -97,6 +100,9 @@ function hero(c, h, { main, sub, compact }) {
   return `<div class="nls-film ogs-film${compact ? " ogs-film--compact" : ""}" data-nls-film data-hs-section>
     <div class="nls-film__stage">
       <div class="nls-film__fallback" aria-hidden="true"></div>
+      <video class="nls-film__video" src="${ONGIL_FILM}" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" aria-hidden="true">
+        <source src="${ONGIL_FILM}" type="video/mp4" />
+      </video>
       <div class="nls-film__lockup">
         <div class="nls-film__veil" aria-hidden="true"></div>
         <p class="nls-film__wordmark" lang="en">${e(c.brand)}</p>
@@ -574,7 +580,8 @@ function renderPage(lang, page) {
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
     <link rel="stylesheet" href="/ongil-site.css?v=${OGS_VER}" />`,
-    EXTRA_SCRIPTS: `<script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,
+    EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
+    <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,
   });
   const out = page === "overview" ? path.join(ROOT, lang, "ongil", "index.html") : path.join(ROOT, lang, "ongil", page, "index.html");
   ensureDir(out);
