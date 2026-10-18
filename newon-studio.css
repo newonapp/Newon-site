@@ -364,7 +364,7 @@ html[data-newon-shell-theme="dark"] .ns-board__row:focus-visible {
   --bz-paper: #fff;
   --bz-line: #e6e6e6;
   --bz-mute: #5a5a5a;
-  --bz-soft: #8a8a8a;
+  --bz-soft: #6e6e73;
   background: var(--bz-paper);
   color: var(--bz-ink);
 }

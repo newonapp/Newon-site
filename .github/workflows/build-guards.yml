@@ -1,0 +1,54 @@
+# Build guards (read-only). Builds the site and checks that the build output is reproducible and that no translation is lost.
+#
+# This workflow NEVER deploys: it runs on pull requests and by hand only (not on push), has read-only permissions, uses no
+# secrets and has no publish step. The production deploy stays in github-pages.yml (push to main) and is not touched here.
+
+name: Build guards
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-guards-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # One build from a clean checkout (the same command the deploy uses). Includes check:fast.
+      - name: Build (no publish)
+        run: node scripts/publish-site.mjs
+
+      # Fails if the build changed any tracked file beyond the committed baseline (docs/web-closure/build-drift-baseline.json).
+      - name: Build drift guard
+        run: node scripts/qa-build-drift.mjs --all
+
+      # Fails if a committed non-ko/en translation that the build would overwrite is not covered by a candidate record.
+      - name: Translation candidates cover the drift
+        run: node scripts/extract-translation-candidates.mjs --built . --verify
+
+      # Reviewed translations (i18n-approved/) must be complete and valid; nothing is ever approved automatically.
+      - name: Approved translations are valid
+        run: node scripts/apply-approved-translations.mjs --check
+
+      # Same input must give the same output: independent clean builds and a repeat build in the same tree are compared by
+      # file hash (fixed SOURCE_DATE_EPOCH), and the translation sources must be left untouched by the build.
+      - name: Build determinism
+        run: node scripts/qa-build-determinism.mjs
+
+      - name: Workflow safety
+        run: node scripts/qa-ci-workflows.mjs

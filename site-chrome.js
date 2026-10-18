@@ -7,7 +7,7 @@
   var COMPACT_LANG = { ko: "KO", en: "EN", ja: "JA", es: "ES", "pt-br": "PT", fr: "FR", de: "DE", hi: "HI", id: "ID" };
   var CLOSE_DELAY = 280;
   var closeTimer = null;
-  var desktopMq = window.matchMedia("(min-width: 901px)");
+  var desktopMq = window.matchMedia("(min-width: 1280px)");
 
   var MOON =
     '<svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -42,6 +42,7 @@
       var trigger = dd.querySelector(".gnav-dd__trigger");
       var panel = megaFor(dd);
       dd.classList.remove("gnav-dd--open");
+      dd.removeAttribute("data-gnav-mode");
       if (panel) {
         panel.hidden = true;
         panel.classList.remove("gnav-mega--open");
@@ -63,13 +64,16 @@
     }
   }
 
-  function openDropdown(dd) {
+  /* mode: "hover" (opened by pointer, closes when the pointer leaves) or "pinned"
+     (opened by click / tap / keyboard, stays open until Esc, outside click, focus leaving or the trigger is used again). */
+  function openDropdown(dd, mode) {
     cancelClose();
     closeDropdowns(dd);
     var trigger = dd.querySelector(".gnav-dd__trigger");
     var panel = megaFor(dd);
     if (!trigger || !panel) return;
     dd.classList.add("gnav-dd--open");
+    dd.setAttribute("data-gnav-mode", mode || "pinned");
     trigger.setAttribute("aria-expanded", "true");
     panel.hidden = false;
     panel.classList.add("gnav-mega--open");
@@ -192,13 +196,33 @@
       var panel = megaFor(dd);
       if (!trigger || !panel) return;
 
+      var pointerInside = false;
+      function isOpen() {
+        return trigger.getAttribute("aria-expanded") === "true";
+      }
+      function isPinned() {
+        return dd.getAttribute("data-gnav-mode") === "pinned";
+      }
+      function pin() {
+        dd.setAttribute("data-gnav-mode", "pinned");
+      }
+      function firstLink() {
+        return panel.querySelector("a[href]");
+      }
+
       dd.addEventListener("mouseenter", function () {
         if (!isDesktop()) return;
-        openDropdown(dd);
+        pointerInside = true;
+        if (isOpen() && isPinned()) {
+          cancelClose();
+          return;
+        }
+        openDropdown(dd, "hover");
       });
 
       dd.addEventListener("mouseleave", function (e) {
-        if (!isDesktop()) return;
+        pointerInside = false;
+        if (!isDesktop() || isPinned()) return;
         var to = e.relatedTarget;
         if (to && (dd.contains(to) || (panel && panel.contains(to)))) return;
         scheduleClose();
@@ -206,11 +230,13 @@
 
       panel.addEventListener("mouseenter", function () {
         if (!isDesktop()) return;
+        pointerInside = true;
         cancelClose();
       });
 
       panel.addEventListener("mouseleave", function (e) {
-        if (!isDesktop()) return;
+        pointerInside = false;
+        if (!isDesktop() || isPinned()) return;
         var to = e.relatedTarget;
         if (to && dd.contains(to)) return;
         scheduleClose();
@@ -229,45 +255,87 @@
         });
       });
 
+      /* Click / tap on the arrow: a menu that was only opened by hover (or by the tap's emulated hover)
+         is pinned open instead of being toggled shut; a pinned menu closes. */
       trigger.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
         if (!isDesktop()) return;
-        var open = trigger.getAttribute("aria-expanded") === "true";
-        if (open) closeDropdowns();
-        else openDropdown(dd);
+        if (isOpen() && !isPinned()) {
+          cancelClose();
+          pin();
+        } else if (isOpen()) {
+          closeDropdowns();
+        } else {
+          openDropdown(dd, "pinned");
+        }
       });
 
       trigger.addEventListener("keydown", function (e) {
-        if (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") {
+        if (e.key === "ArrowDown") {
           e.preventDefault();
-          openDropdown(dd);
-          var first = panel.querySelector("a");
+          openDropdown(dd, "pinned");
+          var first = firstLink();
           if (first) first.focus();
-        }
-        if (e.key === "Escape") {
+        } else if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          if (isOpen() && isPinned()) {
+            closeDropdowns();
+          } else {
+            openDropdown(dd, "pinned");
+            var f = firstLink();
+            if (f) f.focus();
+          }
+        } else if (e.key === "Tab" && !e.shiftKey && isOpen()) {
+          /* the panel sits after the whole bar in the DOM: move straight into it */
+          var t = firstLink();
+          if (t) {
+            e.preventDefault();
+            pin();
+            t.focus();
+          }
+        } else if (e.key === "Escape") {
           closeDropdowns();
           trigger.focus();
         }
       });
 
       panel.addEventListener("keydown", function (e) {
-        var links = Array.prototype.slice.call(panel.querySelectorAll("a"));
+        var links = Array.prototype.slice.call(panel.querySelectorAll("a[href]"));
         if (!links.length) return;
         var idx = links.indexOf(document.activeElement);
         if (e.key === "ArrowDown") {
           e.preventDefault();
           links[(idx + 1) % links.length].focus();
-        }
-        if (e.key === "ArrowUp") {
+        } else if (e.key === "ArrowUp") {
           e.preventDefault();
           links[(idx - 1 + links.length) % links.length].focus();
-        }
-        if (e.key === "Escape") {
+        } else if (e.key === "Home") {
+          e.preventDefault();
+          links[0].focus();
+        } else if (e.key === "End") {
+          e.preventDefault();
+          links[links.length - 1].focus();
+        } else if (e.key === "Tab" && e.shiftKey && idx === 0) {
+          e.preventDefault();
+          trigger.focus();
+        } else if (e.key === "Escape") {
           closeDropdowns();
           trigger.focus();
         }
       });
+
+      /* Keyboard focus leaving both the trigger and the panel closes a menu that is not being hovered. */
+      function onFocusOut() {
+        setTimeout(function () {
+          if (!isOpen() || pointerInside) return;
+          var a = document.activeElement;
+          if (dd.contains(a) || panel.contains(a)) return;
+          closeDropdowns();
+        }, 0);
+      }
+      dd.addEventListener("focusout", onFocusOut);
+      panel.addEventListener("focusout", onFocusOut);
     });
   }
 

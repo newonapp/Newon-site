@@ -1,0 +1,160 @@
+[ERROR] ko/business/mvp/index.html: expected canonical price "₩3,000,000부터"
+[ERROR] ko/business/web/index.html: expected canonical price "₩1,200,000부터"
+[ERROR] ko/business/landing/index.html: expected canonical price "₩700,000부터"
+[ERROR] ko/business/app/index.html: expected canonical price "₩1,000,000부터"
+[ERROR] ko/business/ai-automation/index.html: expected canonical price "₩2,000,000부터"
+[ERROR] ko/business/data-reporting/index.html: expected canonical price "₩700,000부터"
+[ERROR] ko/business/internal-tools/index.html: expected canonical price "₩1,500,000부터"
+[ERROR] ko/business/automation/workflow/index.html: expected canonical price "₩1,000,000부터"
+[ERROR] ko/business/market-research/index.html: expected canonical price "₩300,000부터"
+[ERROR] ko/business/competitor-analysis/index.html: expected canonical price "₩300,000부터"
+[ERROR] ko/business/consumer-research/index.html: expected canonical price "₩400,000부터"
+[ERROR] ko/business/ux-audit/index.html: expected canonical price "₩300,000부터"
+[ERROR] ko/business/trend-research/index.html: expected canonical price "₩300,000부터"
+[ERROR] ko/business/custom-product/index.html: expected custom quote label "맞춤 견적" or "Custom quote"
+[ERROR] ko/business/product-launch/index.html: expected canonical price "₩1,000,000부터"
+[ERROR] ko/business/internal-system/index.html: expected canonical price "₩4,000,000부터"
+[ERROR] ko/business/white-label/index.html: expected custom quote label "맞춤 견적" or "Custom quote"
+[ERROR] ko/business/design/index.html: expected canonical price "₩400,000부터"
+[ERROR] ko/business/website-renewal/index.html: expected custom quote label "맞춤 견적" or "Custom quote"
+[ERROR] ko/business/improvement/index.html: expected custom quote label "맞춤 견적" or "Custom quote"
+[ERROR] ko/business/booking/index.html: expected custom quote label "맞춤 견적" or "Custom quote"
+[ERROR] ko/business/maintenance/index.html: expected custom quote label "맞춤 견적" or "Custom quote"
+[ERROR] ko/business/post-launch/index.html: expected custom quote label "맞춤 견적" or "Custom quote"
+[ERROR] en/business/mvp/index.html: expected canonical price "From ₩3,000,000"
+[ERROR] en/business/web/index.html: expected canonical price "From ₩1,200,000"
+[ERROR] en/business/landing/index.html: expected canonical price "From ₩700,000"
+[ERROR] en/business/app/index.html: expected canonical price "From ₩1,000,000"
+[ERROR] en/business/ai-automation/index.html: expected canonical price "From ₩2,000,000"
+[ERROR] en/business/data-reporting/index.html: expected canonical price "From ₩700,000"
+[ERROR] en/business/internal-tools/index.html: expected canonical price "From ₩1,500,000"
+[ERROR] en/business/automation/workflow/index.html: expected canonical price "From ₩1,000,000"
+[ERROR] en/business/market-research/index.html: expected canonical price "From ₩300,000"
+[ERROR] en/business/competitor-analysis/index.html: expected canonical price "From ₩300,000"
+[ERROR] en/business/consumer-research/index.html: expected canonical price "From ₩400,000"
+[ERROR] en/business/ux-audit/index.html: expected canonical price "From ₩300,000"
+[ERROR] en/business/trend-research/index.html: expected canonical price "From ₩300,000"
+[ERROR] en/business/custom-product/index.html: expected custom quote label "맞춤 견적" or "Custom quote"
+[ERROR] en/business/product-launch/index.html: expected canonical price "From ₩1,000,000"
+[ERROR] en/business/internal-system/index.html: expected canonical price "From ₩4,000,000"
+[ERROR] en/business/white-label/index.html: expected custom quote label "맞춤 견적" or "Custom quote"
+[ERROR] en/business/design/index.html: expected canonical price "From ₩400,000"
+[ERROR] en/business/website-renewal/index.html: expected custom quote label "맞춤 견적" or "Custom quote"
+[ERROR] en/business/improvement/index.html: expected custom quote label "맞춤 견적" or "Custom quote"
+[ERROR] en/business/booking/index.html: expected custom quote label "맞춤 견적" or "Custom quote"
+[ERROR] en/business/maintenance/index.html: expected custom quote label "맞춤 견적" or "Custom quote"
+[ERROR] en/business/post-launch/index.html: expected custom quote label "맞춤 견적" or "Custom quote"
+[ERROR] ja/business/mvp/index.html: expected canonical amount ₩3,000,000
+[ERROR] ja/business/web/index.html: expected canonical amount ₩1,200,000
+[ERROR] ja/business/landing/index.html: expected canonical amount ₩700,000
+[ERROR] ja/business/app/index.html: expected canonical amount ₩1,000,000
+[ERROR] ja/business/ai-automation/index.html: expected canonical amount ₩2,000,000
+[ERROR] ja/business/data-reporting/index.html: expected canonical amount ₩700,000
+[ERROR] ja/business/internal-tools/index.html: expected canonical amount ₩1,500,000
+[ERROR] ja/business/automation/workflow/index.html: expected canonical amount ₩1,000,000
+[ERROR] ja/business/market-research/index.html: expected canonical amount ₩300,000
+[ERROR] ja/business/competitor-analysis/index.html: expected canonical amount ₩300,000
+[ERROR] ja/business/consumer-research/index.html: expected canonical amount ₩400,000
+[ERROR] ja/business/ux-audit/index.html: expected canonical amount ₩300,000
+[ERROR] ja/business/trend-research/index.html: expected canonical amount ₩300,000
+[ERROR] ja/business/product-launch/index.html: expected canonical amount ₩1,000,000
+[ERROR] ja/business/internal-system/index.html: expected canonical amount ₩4,000,000
+[ERROR] ja/business/design/index.html: expected canonical amount ₩400,000
+[ERROR] es/business/mvp/index.html: expected canonical amount ₩3,000,000
+[ERROR] es/business/web/index.html: expected canonical amount ₩1,200,000
+[ERROR] es/business/landing/index.html: expected canonical amount ₩700,000
+[ERROR] es/business/app/index.html: expected canonical amount ₩1,000,000
+[ERROR] es/business/ai-automation/index.html: expected canonical amount ₩2,000,000
+[ERROR] es/business/data-reporting/index.html: expected canonical amount ₩700,000
+[ERROR] es/business/internal-tools/index.html: expected canonical amount ₩1,500,000
+[ERROR] es/business/automation/workflow/index.html: expected canonical amount ₩1,000,000
+[ERROR] es/business/market-research/index.html: expected canonical amount ₩300,000
+[ERROR] es/business/competitor-analysis/index.html: expected canonical amount ₩300,000
+[ERROR] es/business/consumer-research/index.html: expected canonical amount ₩400,000
+[ERROR] es/business/ux-audit/index.html: expected canonical amount ₩300,000
+[ERROR] es/business/trend-research/index.html: expected canonical amount ₩300,000
+[ERROR] es/business/product-launch/index.html: expected canonical amount ₩1,000,000
+[ERROR] es/business/internal-system/index.html: expected canonical amount ₩4,000,000
+[ERROR] es/business/design/index.html: expected canonical amount ₩400,000
+[ERROR] pt-br/business/mvp/index.html: expected canonical amount ₩3,000,000
+[ERROR] pt-br/business/web/index.html: expected canonical amount ₩1,200,000
+[ERROR] pt-br/business/landing/index.html: expected canonical amount ₩700,000
+[ERROR] pt-br/business/app/index.html: expected canonical amount ₩1,000,000
+[ERROR] pt-br/business/ai-automation/index.html: expected canonical amount ₩2,000,000
+[ERROR] pt-br/business/data-reporting/index.html: expected canonical amount ₩700,000
+[ERROR] pt-br/business/internal-tools/index.html: expected canonical amount ₩1,500,000
+[ERROR] pt-br/business/automation/workflow/index.html: expected canonical amount ₩1,000,000
+[ERROR] pt-br/business/market-research/index.html: expected canonical amount ₩300,000
+[ERROR] pt-br/business/competitor-analysis/index.html: expected canonical amount ₩300,000
+[ERROR] pt-br/business/consumer-research/index.html: expected canonical amount ₩400,000
+[ERROR] pt-br/business/ux-audit/index.html: expected canonical amount ₩300,000
+[ERROR] pt-br/business/trend-research/index.html: expected canonical amount ₩300,000
+[ERROR] pt-br/business/product-launch/index.html: expected canonical amount ₩1,000,000
+[ERROR] pt-br/business/internal-system/index.html: expected canonical amount ₩4,000,000
+[ERROR] pt-br/business/design/index.html: expected canonical amount ₩400,000
+[ERROR] fr/business/mvp/index.html: expected canonical amount ₩3,000,000
+[ERROR] fr/business/web/index.html: expected canonical amount ₩1,200,000
+[ERROR] fr/business/landing/index.html: expected canonical amount ₩700,000
+[ERROR] fr/business/app/index.html: expected canonical amount ₩1,000,000
+[ERROR] fr/business/ai-automation/index.html: expected canonical amount ₩2,000,000
+[ERROR] fr/business/data-reporting/index.html: expected canonical amount ₩700,000
+[ERROR] fr/business/internal-tools/index.html: expected canonical amount ₩1,500,000
+[ERROR] fr/business/automation/workflow/index.html: expected canonical amount ₩1,000,000
+[ERROR] fr/business/market-research/index.html: expected canonical amount ₩300,000
+[ERROR] fr/business/competitor-analysis/index.html: expected canonical amount ₩300,000
+[ERROR] fr/business/consumer-research/index.html: expected canonical amount ₩400,000
+[ERROR] fr/business/ux-audit/index.html: expected canonical amount ₩300,000
+[ERROR] fr/business/trend-research/index.html: expected canonical amount ₩300,000
+[ERROR] fr/business/product-launch/index.html: expected canonical amount ₩1,000,000
+[ERROR] fr/business/internal-system/index.html: expected canonical amount ₩4,000,000
+[ERROR] fr/business/design/index.html: expected canonical amount ₩400,000
+[ERROR] de/business/mvp/index.html: expected canonical amount ₩3,000,000
+[ERROR] de/business/web/index.html: expected canonical amount ₩1,200,000
+[ERROR] de/business/landing/index.html: expected canonical amount ₩700,000
+[ERROR] de/business/app/index.html: expected canonical amount ₩1,000,000
+[ERROR] de/business/ai-automation/index.html: expected canonical amount ₩2,000,000
+[ERROR] de/business/data-reporting/index.html: expected canonical amount ₩700,000
+[ERROR] de/business/internal-tools/index.html: expected canonical amount ₩1,500,000
+[ERROR] de/business/automation/workflow/index.html: expected canonical amount ₩1,000,000
+[ERROR] de/business/market-research/index.html: expected canonical amount ₩300,000
+[ERROR] de/business/competitor-analysis/index.html: expected canonical amount ₩300,000
+[ERROR] de/business/consumer-research/index.html: expected canonical amount ₩400,000
+[ERROR] de/business/ux-audit/index.html: expected canonical amount ₩300,000
+[ERROR] de/business/trend-research/index.html: expected canonical amount ₩300,000
+[ERROR] de/business/product-launch/index.html: expected canonical amount ₩1,000,000
+[ERROR] de/business/internal-system/index.html: expected canonical amount ₩4,000,000
+[ERROR] de/business/design/index.html: expected canonical amount ₩400,000
+[ERROR] hi/business/mvp/index.html: expected canonical amount ₩3,000,000
+[ERROR] hi/business/web/index.html: expected canonical amount ₩1,200,000
+[ERROR] hi/business/landing/index.html: expected canonical amount ₩700,000
+[ERROR] hi/business/app/index.html: expected canonical amount ₩1,000,000
+[ERROR] hi/business/ai-automation/index.html: expected canonical amount ₩2,000,000
+[ERROR] hi/business/data-reporting/index.html: expected canonical amount ₩700,000
+[ERROR] hi/business/internal-tools/index.html: expected canonical amount ₩1,500,000
+[ERROR] hi/business/automation/workflow/index.html: expected canonical amount ₩1,000,000
+[ERROR] hi/business/market-research/index.html: expected canonical amount ₩300,000
+[ERROR] hi/business/competitor-analysis/index.html: expected canonical amount ₩300,000
+[ERROR] hi/business/consumer-research/index.html: expected canonical amount ₩400,000
+[ERROR] hi/business/ux-audit/index.html: expected canonical amount ₩300,000
+[ERROR] hi/business/trend-research/index.html: expected canonical amount ₩300,000
+[ERROR] hi/business/product-launch/index.html: expected canonical amount ₩1,000,000
+[ERROR] hi/business/internal-system/index.html: expected canonical amount ₩4,000,000
+[ERROR] hi/business/design/index.html: expected canonical amount ₩400,000
+[ERROR] id/business/mvp/index.html: expected canonical amount ₩3,000,000
+[ERROR] id/business/web/index.html: expected canonical amount ₩1,200,000
+[ERROR] id/business/landing/index.html: expected canonical amount ₩700,000
+[ERROR] id/business/app/index.html: expected canonical amount ₩1,000,000
+[ERROR] id/business/ai-automation/index.html: expected canonical amount ₩2,000,000
+[ERROR] id/business/data-reporting/index.html: expected canonical amount ₩700,000
+[ERROR] id/business/internal-tools/index.html: expected canonical amount ₩1,500,000
+[ERROR] id/business/automation/workflow/index.html: expected canonical amount ₩1,000,000
+[ERROR] id/business/market-research/index.html: expected canonical amount ₩300,000
+[ERROR] id/business/competitor-analysis/index.html: expected canonical amount ₩300,000
+[ERROR] id/business/consumer-research/index.html: expected canonical amount ₩400,000
+[ERROR] id/business/ux-audit/index.html: expected canonical amount ₩300,000
+[ERROR] id/business/trend-research/index.html: expected canonical amount ₩300,000
+[ERROR] id/business/product-launch/index.html: expected canonical amount ₩1,000,000
+[ERROR] id/business/internal-system/index.html: expected canonical amount ₩4,000,000
+[ERROR] id/business/design/index.html: expected canonical amount ₩400,000
+
+Pricing QA: 158 error(s), 0 warning(s).

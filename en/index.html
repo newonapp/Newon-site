@@ -69,7 +69,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css?v=20260904a11y1" />
-    <link rel="stylesheet" href="/gnav-mega.css?v=20261018petlog1" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20261017nav8" />
     <link rel="preload" as="image" type="image/webp" href="/newon-wordmark-chrome.webp" />
     <link rel="stylesheet" href="/ox-month.css?v=20260921plusq2" />
     <link rel="stylesheet" href="/app-landing-extras.css?v=20260916round1" />
@@ -84,7 +84,7 @@
     <script src="/lang-nav.js?v=20260825studio"></script>
     <script src="/analytics.js?v=20260904sec1" defer></script>
     <script src="/search.js?v=20260904a11y1" defer></script>
-    <script src="/site-chrome.js?v=20260920nav7b" defer></script>
+    <script src="/site-chrome.js?v=20261017nav8" defer></script>
     <script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-hero-3d.js?v=20260922loop2" defer></script>
     <script src="/home-studio.js?v=20260921nls1" defer></script>
@@ -97,7 +97,7 @@
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="gnav site-header gnav--five gnav--ventures" data-gnav>
+    <header class="gnav site-header gnav--five gnav--many" data-gnav>
       <div class="gnav__bar">
         <div class="gnav__inner">
           <a class="gnav__brand" href="/en/" aria-label="Newon">
@@ -107,72 +107,99 @@
           <nav class="gnav__nav" aria-label="Main navigation">
             <div class="gnav__nav-scroller">
             <div class="gnav-dd" data-gnav-dd data-gnav-menu="consumer">
-    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-controls="gnav-mega-consumer" aria-label="Apps submenu">
       Apps<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
             <div class="gnav-dd" data-gnav-dd data-gnav-menu="ai">
-    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-controls="gnav-mega-ai" aria-label="AI submenu">
       AI<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
-            <div class="gnav-dd" data-gnav-dd data-gnav-menu="business">
-    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
-      Business<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="babylog">
+    <a class="gnav__link gnav-dd__label" href="/en/babylog/">BabyLog</a>
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-controls="gnav-mega-babylog" aria-label="BabyLog submenu">
+      <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
-            <div class="gnav-dd" data-gnav-dd data-gnav-menu="studio">
-    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
-      Studio<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="petlog">
+    <a class="gnav__link gnav-dd__label" href="/en/petlog/">PetLog</a>
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-controls="gnav-mega-petlog" aria-label="PetLog submenu">
+      <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
-            <div class="gnav-dd" data-gnav-dd data-gnav-menu="partnerships">
-    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
-      Partnerships<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="myworld">
+    <a class="gnav__link gnav-dd__label" href="/en/myworld/">My World</a>
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-controls="gnav-mega-myworld" aria-label="My World submenu">
+      <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="shareon">
+    <a class="gnav__link gnav-dd__label" href="/en/shareon/">ShareOn</a>
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-controls="gnav-mega-shareon" aria-label="ShareOn submenu">
+      <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="lifestage">
+    <a class="gnav__link gnav-dd__label" href="/en/lifestage/">LivOn</a>
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-controls="gnav-mega-lifestage" aria-label="LivOn submenu">
+      <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="ongil">
+    <a class="gnav__link gnav-dd__label" href="/en/ongil/">Ongil</a>
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-controls="gnav-mega-ongil" aria-label="Ongil submenu">
+      <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="bizhub">
+    <a class="gnav__link gnav-dd__label" href="/en/business-hub/">Business Hub</a>
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-controls="gnav-mega-bizhub" aria-label="Business Hub submenu">
+      <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
             <div class="gnav-dd" data-gnav-dd data-gnav-menu="company">
-    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-controls="gnav-mega-company" aria-label="Company submenu">
       Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
           </div>
-          <div class="gnav-mega" data-gnav-mega="consumer" role="menu" hidden>
+          <div class="gnav-mega" id="gnav-mega-consumer" data-gnav-mega="consumer" role="region" aria-label="Apps" hidden>
       <div class="gnav-mega__panel">
         <div class="gnav-mega__inner"><div class="gnav-mega__head">
       <p class="gnav-mega__kicker">APPS</p>
       <p class="gnav-mega__lead">Everyday apps and digital products</p>
     </div>
     <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
-      <a class="gnav-mega__row" href="/en/ecosystem/" role="menuitem">
+      <a class="gnav-mega__row" href="/en/ecosystem/">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Newon Ecosystem</span>
         <span class="gnav-mega__row-desc">Apps, AI, life, and business — one Newon connection</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/apps/" role="menuitem">
+    </a><a class="gnav-mega__row" href="/en/apps/">
       <span class="gnav-mega__row-n" aria-hidden="true">02</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Apps</span>
         <span class="gnav-mega__row-desc">Apps Newon builds and runs</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/#newon-plus-app" role="menuitem">
+    </a><a class="gnav-mega__row" href="/en/#newon-plus-app">
       <span class="gnav-mega__row-n" aria-hidden="true">03</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Newon+</span>
         <span class="gnav-mega__row-desc">Newon product ecosystem</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/games/" role="menuitem">
+    </a><a class="gnav-mega__row" href="/en/games/">
       <span class="gnav-mega__row-n" aria-hidden="true">04</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Games</span>
         <span class="gnav-mega__row-desc">Games and interactive</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/saas/" role="menuitem">
+    </a><a class="gnav-mega__row" href="/en/saas/">
       <span class="gnav-mega__row-n" aria-hidden="true">05</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">SaaS</span>
@@ -184,21 +211,21 @@
     <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="/en/products/">View all products →</a></p></div>
       </div>
     </div>
-          <div class="gnav-mega" data-gnav-mega="ai" role="menu" hidden>
+          <div class="gnav-mega" id="gnav-mega-ai" data-gnav-mega="ai" role="region" aria-label="AI" hidden>
       <div class="gnav-mega__panel">
         <div class="gnav-mega__inner"><div class="gnav-mega__head">
       <p class="gnav-mega__kicker">AI</p>
       <p class="gnav-mega__lead">Personal and business AI services</p>
     </div>
     <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
-      <a class="gnav-mega__row" href="/en/ai/" role="menuitem">
+      <a class="gnav-mega__row" href="/en/ai/">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Personal AI</span>
         <span class="gnav-mega__row-desc">AI connected to everyday Newon services</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/ai/enterprise/" role="menuitem">
+    </a><a class="gnav-mega__row" href="/en/ai/enterprise/">
       <span class="gnav-mega__row-n" aria-hidden="true">02</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Enterprise AI</span>
@@ -210,25 +237,199 @@
     <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="/en/ai/">Explore Newon AI →</a></p></div>
       </div>
     </div>
-          <div class="gnav-mega" data-gnav-mega="lifestage" role="menu" hidden>
+          <div class="gnav-mega" id="gnav-mega-babylog" data-gnav-mega="babylog" role="region" aria-label="BabyLog" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">BABYLOG</p>
+      <p class="gnav-mega__lead">Baby-care records and family sharing</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
+      <a class="gnav-mega__row" href="/en/babylog/">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Overview</span>
+        <span class="gnav-mega__row-desc">The problem and who it is for</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="/en/babylog/#features">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Key features</span>
+        <span class="gnav-mega__row-desc">What the app offers</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="/en/babylog/#partners">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Partnerships</span>
+        <span class="gnav-mega__row-desc">Businesses, sellers and institutions</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="/en/babylog/#download">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">App download</span>
+        <span class="gnav-mega__row-desc">App Store · Google Play</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="/en/babylog/">View BabyLog →</a></p></div>
+      </div>
+    </div>
+          <div class="gnav-mega" id="gnav-mega-petlog" data-gnav-mega="petlog" role="region" aria-label="PetLog" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">PETLOG</p>
+      <p class="gnav-mega__lead">Pet records and health care</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
+      <a class="gnav-mega__row" href="/en/petlog/">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Overview</span>
+        <span class="gnav-mega__row-desc">The problem and who it is for</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="/en/petlog/#features">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Key features</span>
+        <span class="gnav-mega__row-desc">What the app offers</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="/en/petlog/#partners">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Partnerships</span>
+        <span class="gnav-mega__row-desc">Businesses, sellers and institutions</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="/en/petlog/#download">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">App download</span>
+        <span class="gnav-mega__row-desc">App Store · Google Play</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="/en/petlog/">View PetLog →</a></p></div>
+      </div>
+    </div>
+          <div class="gnav-mega" id="gnav-mega-myworld" data-gnav-mega="myworld" role="region" aria-label="My World" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">MY WORLD</p>
+      <p class="gnav-mega__lead">Map-based travel records</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
+      <a class="gnav-mega__row" href="/en/myworld/">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Overview</span>
+        <span class="gnav-mega__row-desc">The problem and who it is for</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="/en/myworld/#features">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Key features</span>
+        <span class="gnav-mega__row-desc">What the app offers</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="/en/myworld/#partners">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Partnerships</span>
+        <span class="gnav-mega__row-desc">Businesses, sellers and institutions</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="/en/myworld/#download">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">App download</span>
+        <span class="gnav-mega__row-desc">App Store · Google Play</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="/en/myworld/">View My World →</a></p></div>
+      </div>
+    </div>
+          <div class="gnav-mega" id="gnav-mega-shareon" data-gnav-mega="shareon" role="region" aria-label="ShareOn" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">SHAREON</p>
+      <p class="gnav-mega__lead">Share goods, spaces and services</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
+      <a class="gnav-mega__row" href="/en/shareon/">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Overview</span>
+        <span class="gnav-mega__row-desc">The problem and who it is for</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="/en/shareon/#features">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Key features</span>
+        <span class="gnav-mega__row-desc">What the app offers</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="/en/shareon/#partners">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Partnerships</span>
+        <span class="gnav-mega__row-desc">Businesses, sellers and institutions</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="/en/shareon/#download">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">App launch info</span>
+        <span class="gnav-mega__row-desc">Coming soon · announced in News</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="/en/shareon/">View ShareOn →</a></p></div>
+      </div>
+    </div>
+          <div class="gnav-mega" id="gnav-mega-lifestage" data-gnav-mega="lifestage" role="region" aria-label="LivOn" hidden>
       <div class="gnav-mega__panel">
         <div class="gnav-mega__inner"><div class="gnav-mega__head">
       <p class="gnav-mega__kicker">LivOn</p>
       <p class="gnav-mega__lead">Services across life stages</p>
     </div>
     <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
-      <a class="gnav-mega__row" href="/en/lifestage/" role="menuitem">
+      <a class="gnav-mega__row" href="/en/lifestage/">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">LivOn</span>
         <span class="gnav-mega__row-desc">Connect info and services for each stage of life</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/livon/" role="menuitem">
+    </a><a class="gnav-mega__row" href="/en/lifestage/#bi-partners">
       <span class="gnav-mega__row-n" aria-hidden="true">02</span>
       <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Partnerships</span>
+        <span class="gnav-mega__row-desc">Businesses, sellers and institutions</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="/en/lifestage/#bi-download">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">App launch info</span>
+        <span class="gnav-mega__row-desc">Coming soon · announced in News</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="/livon/">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Start LivOn</span>
-        <span class="gnav-mega__row-desc">LivOn web service</span>
+        <span class="gnav-mega__row-desc">Temporary until the app launches</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a>
@@ -236,25 +437,39 @@
     <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="/en/lifestage/">View LivOn →</a></p></div>
       </div>
     </div>
-          <div class="gnav-mega" data-gnav-mega="ongil" role="menu" hidden>
+          <div class="gnav-mega" id="gnav-mega-ongil" data-gnav-mega="ongil" role="region" aria-label="Ongil" hidden>
       <div class="gnav-mega__panel">
         <div class="gnav-mega__inner"><div class="gnav-mega__head">
       <p class="gnav-mega__kicker">ONGIL</p>
       <p class="gnav-mega__lead">Senior life and family connection</p>
     </div>
     <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
-      <a class="gnav-mega__row" href="/en/ongil/" role="menuitem">
+      <a class="gnav-mega__row" href="/en/ongil/">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Ongil</span>
         <span class="gnav-mega__row-desc">Senior living support and family connection</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/ongil-start/" role="menuitem">
+    </a><a class="gnav-mega__row" href="/en/ongil/#bi-partners">
       <span class="gnav-mega__row-n" aria-hidden="true">02</span>
       <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Partnerships</span>
+        <span class="gnav-mega__row-desc">Businesses, sellers and institutions</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="/en/ongil/#bi-download">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">App launch info</span>
+        <span class="gnav-mega__row-desc">Coming soon · announced in News</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="/ongil-start/">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Start Ongil</span>
-        <span class="gnav-mega__row-desc">Ongil web service</span>
+        <span class="gnav-mega__row-desc">Temporary until the app launches</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a>
@@ -262,265 +477,147 @@
     <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="/en/ongil/">View Ongil →</a></p></div>
       </div>
     </div>
-          <div class="gnav-mega" data-gnav-mega="petlog" role="menu" hidden>
+          <div class="gnav-mega" id="gnav-mega-bizhub" data-gnav-mega="bizhub" role="region" aria-label="Business Hub" hidden>
       <div class="gnav-mega__panel">
         <div class="gnav-mega__inner"><div class="gnav-mega__head">
-      <p class="gnav-mega__kicker">PETLOG</p>
-      <p class="gnav-mega__lead">All-in-one pet life platform</p>
+      <p class="gnav-mega__kicker">BUSINESS HUB</p>
+      <p class="gnav-mega__lead">Business and seller solutions, plus our own digital products and brand partnerships</p>
     </div>
-    <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
-      <a class="gnav-mega__row" href="/en/petlog/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Overview</span>
-        <span class="gnav-mega__row-desc">Every moment with your pet, connected</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/petlog/platform/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Platform</span>
-        <span class="gnav-mega__row-desc">16 areas from records to shopping and care</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/petlog/business/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Business</span>
-        <span class="gnav-mega__row-desc">16 lines across the pet industry</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/petlog/partnerships/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Partnerships</span>
-        <span class="gnav-mega__row-desc">12 kinds of partners</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/petlog/contact/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Contact</span>
-        <span class="gnav-mega__row-desc">Talk to PETLOG</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a>
-    </div>
-    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="/en/petlog/">Explore PETLOG →</a></p></div>
+    <div class="gnav-mega__groups" role="none">
+      <div class="gnav-mega__group" role="group" aria-labelledby="gnav-bh-business">
+        <p class="gnav-mega__group-head"><a id="gnav-bh-business" class="gnav-mega__group-link" href="/en/business/">BUSINESS<span aria-hidden="true"> →</span></a></p>
+        <p class="gnav-mega__group-lead">Automation and solutions for businesses and sellers</p>
+        <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--group" role="none"><a class="gnav-mega__row" href="/en/business/automation/">
+          <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+          <span class="gnav-mega__row-main">
+            <span class="gnav-mega__row-title">Automation</span>
+            <span class="gnav-mega__row-desc">Turn repetitive work into systems</span>
+          </span>
+          <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+        </a><a class="gnav-mega__row" href="/en/business/seller-center/">
+          <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+          <span class="gnav-mega__row-main">
+            <span class="gnav-mega__row-title">Seller Center</span>
+            <span class="gnav-mega__row-desc">Guidance and partnerships for sellers</span>
+          </span>
+          <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+        </a><a class="gnav-mega__row" href="/en/tools/">
+          <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+          <span class="gnav-mega__row-main">
+            <span class="gnav-mega__row-title">Business Tools</span>
+            <span class="gnav-mega__row-desc">Free web tools that need no install</span>
+          </span>
+          <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+        </a><a class="gnav-mega__row" href="/en/ai/enterprise/">
+          <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+          <span class="gnav-mega__row-main">
+            <span class="gnav-mega__row-title">Enterprise</span>
+            <span class="gnav-mega__row-desc">Custom AI and work automation for companies</span>
+          </span>
+          <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+        </a><a class="gnav-mega__row" href="/en/resources/insights/">
+          <span class="gnav-mega__row-n" aria-hidden="true">05</span>
+          <span class="gnav-mega__row-main">
+            <span class="gnav-mega__row-title">Insights</span>
+            <span class="gnav-mega__row-desc">Product, consumer and market observations</span>
+          </span>
+          <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+        </a><a class="gnav-mega__row" href="/en/business/partners/">
+          <span class="gnav-mega__row-n" aria-hidden="true">06</span>
+          <span class="gnav-mega__row-main">
+            <span class="gnav-mega__row-title">Partners</span>
+            <span class="gnav-mega__row-desc">Partnerships with businesses, sellers and institutions</span>
+          </span>
+          <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+        </a></div>
+      </div>
+      <div class="gnav-mega__group" role="group" aria-labelledby="gnav-bh-studio">
+        <p class="gnav-mega__group-head"><a id="gnav-bh-studio" class="gnav-mega__group-link" href="/en/studio/">STUDIO<span aria-hidden="true"> →</span></a></p>
+        <p class="gnav-mega__group-lead">Our own digital products and brand partnerships</p>
+        <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--group" role="none"><a class="gnav-mega__row" href="/en/studio/partnerships/">
+          <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+          <span class="gnav-mega__row-main">
+            <span class="gnav-mega__row-title">Partnerships</span>
+            <span class="gnav-mega__row-desc">Long-term design partnerships with brands</span>
+          </span>
+          <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+        </a><a class="gnav-mega__row" href="/en/studio/digital/">
+          <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+          <span class="gnav-mega__row-main">
+            <span class="gnav-mega__row-title">Digital Products</span>
+            <span class="gnav-mega__row-desc">Web and app design, plus digital goods</span>
+          </span>
+          <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+        </a><a class="gnav-mega__row" href="/en/studio/projects/">
+          <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+          <span class="gnav-mega__row-main">
+            <span class="gnav-mega__row-title">Projects</span>
+            <span class="gnav-mega__row-desc">Products Newon builds and runs</span>
+          </span>
+          <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+        </a><a class="gnav-mega__row" href="/en/studio/contact/">
+          <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+          <span class="gnav-mega__row-main">
+            <span class="gnav-mega__row-title">Contact</span>
+            <span class="gnav-mega__row-desc">Project and partnership inquiries</span>
+          </span>
+          <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+        </a></div>
       </div>
     </div>
-          <div class="gnav-mega" data-gnav-mega="business" role="menu" hidden>
-      <div class="gnav-mega__panel">
-        <div class="gnav-mega__inner"><div class="gnav-mega__head">
-      <p class="gnav-mega__kicker">BUSINESS</p>
-      <p class="gnav-mega__lead">Own software products and automation solutions</p>
-    </div>
-    <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
-      <a class="gnav-mega__row" href="/en/business/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Overview</span>
-        <span class="gnav-mega__row-desc">How the product business works</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/business/automation/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Automation</span>
-        <span class="gnav-mega__row-desc">Automation products for repeated work</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/business/solutions/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Solutions</span>
-        <span class="gnav-mega__row-desc">Solutions on shared products</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/business/digital-products/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Digital Products</span>
-        <span class="gnav-mega__row-desc">Software, tools and kits</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/business/platforms/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Platform Integration</span>
-        <span class="gnav-mega__row-desc">Opportunities across six platforms</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/business/inquiry/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">06</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Business Inquiry</span>
-        <span class="gnav-mega__row-desc">Adoption, licensing, distribution</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a>
-    </div>
-    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="/en/business/">Learn about Business →</a></p></div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="/en/business-hub/">Explore Business Hub →</a></p></div>
       </div>
     </div>
-          <div class="gnav-mega" data-gnav-mega="studio" role="menu" hidden>
-      <div class="gnav-mega__panel">
-        <div class="gnav-mega__inner"><div class="gnav-mega__head">
-      <p class="gnav-mega__kicker">STUDIO</p>
-      <p class="gnav-mega__lead">Own digital products and design assets</p>
-    </div>
-    <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
-      <a class="gnav-mega__row" href="/en/studio/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Overview</span>
-        <span class="gnav-mega__row-desc">Purpose and product philosophy</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/studio/digital/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Digital Products</span>
-        <span class="gnav-mega__row-desc">Own digital products and resources</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/studio/design-systems/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Design Systems</span>
-        <span class="gnav-mega__row-desc">Product design principles and systems</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/studio/projects/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Projects</span>
-        <span class="gnav-mega__row-desc">Projects we plan and build ourselves</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/studio/partnerships/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Partnerships</span>
-        <span class="gnav-mega__row-desc">Distribution and licensing partnerships</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a>
-    </div>
-    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="/en/studio/">Explore Studio →</a></p></div>
-      </div>
-    </div>
-          <div class="gnav-mega" data-gnav-mega="partnerships" role="menu" hidden>
-      <div class="gnav-mega__panel">
-        <div class="gnav-mega__inner"><div class="gnav-mega__head">
-      <p class="gnav-mega__kicker">Partnerships</p>
-      <p class="gnav-mega__lead">One front door for individuals, sellers, companies and institutions</p>
-    </div>
-    <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
-      <a class="gnav-mega__row" href="/en/partnerships/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Partnership Overview</span>
-        <span class="gnav-mega__row-desc">Who, how and the process</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/partnerships/corporate/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Corporate Partnerships</span>
-        <span class="gnav-mega__row-desc">Companies and brands</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/partnerships/individuals/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Individuals &amp; Sellers</span>
-        <span class="gnav-mega__row-desc">Individual sellers and creators</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/partnerships/public/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Public &amp; Institutional</span>
-        <span class="gnav-mega__row-desc">Public bodies, education, welfare</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/partnerships/platforms/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Platform Partnerships</span>
-        <span class="gnav-mega__row-desc">Partnering on each platform</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/partnerships/strategic/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">06</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Strategic Partnerships</span>
-        <span class="gnav-mega__row-desc">Long-term, technology, global</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/partnerships/inquiry/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">07</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Partnership Inquiry</span>
-        <span class="gnav-mega__row-desc">One partnership inquiry form</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a>
-    </div>
-    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="/en/partnerships/">Explore Partnerships →</a></p></div>
-      </div>
-    </div>
-          <div class="gnav-mega" data-gnav-mega="company" role="menu" hidden>
+          <div class="gnav-mega" id="gnav-mega-company" data-gnav-mega="company" role="region" aria-label="Company" hidden>
       <div class="gnav-mega__panel">
         <div class="gnav-mega__inner"><div class="gnav-mega__head">
       <p class="gnav-mega__kicker">COMPANY</p>
       <p class="gnav-mega__lead">About Newon itself</p>
     </div>
     <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
-      <a class="gnav-mega__row" href="/en/about/" role="menuitem">
+      <a class="gnav-mega__row" href="/en/about/">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">About Newon</span>
         <span class="gnav-mega__row-desc">About Newon</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/portfolio/" role="menuitem">
+    </a><a class="gnav-mega__row" href="/en/portfolio/">
       <span class="gnav-mega__row-n" aria-hidden="true">02</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Portfolio</span>
         <span class="gnav-mega__row-desc">Products and projects</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/news/" role="menuitem">
+    </a><a class="gnav-mega__row" href="/en/news/">
       <span class="gnav-mega__row-n" aria-hidden="true">03</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">News</span>
         <span class="gnav-mega__row-desc">Official updates</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/media/" role="menuitem">
+    </a><a class="gnav-mega__row" href="/en/media/">
       <span class="gnav-mega__row-n" aria-hidden="true">04</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Media</span>
         <span class="gnav-mega__row-desc">Video · product stories · visual</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/resources/blog/" role="menuitem">
+    </a><a class="gnav-mega__row" href="/en/resources/blog/">
       <span class="gnav-mega__row-n" aria-hidden="true">05</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Blog</span>
         <span class="gnav-mega__row-desc">Build logs and stories</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/market/" role="menuitem">
+    </a><a class="gnav-mega__row" href="/en/market/">
       <span class="gnav-mega__row-n" aria-hidden="true">06</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Market</span>
         <span class="gnav-mega__row-desc">Market notes and signals</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="/en/business/inquiry/" role="menuitem">
+    </a><a class="gnav-mega__row" href="/en/business/inquiry/">
       <span class="gnav-mega__row-n" aria-hidden="true">07</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Contact</span>
@@ -547,31 +644,6 @@
             </button>
           </div>
         </div>
-        <nav class="gnav__ventures" aria-label="Flagship businesses">
-          <div class="gnav__ventures-inner">
-            <a class="gnav__link gnav-ventures__link" href="/en/portfolio/babylog/" data-gnav-venture="babylog">BABYLOG</a>
-            <div class="gnav-dd" data-gnav-dd data-gnav-menu="petlog">
-    <a class="gnav__link gnav-dd__label" href="/en/petlog/">PETLOG</a>
-    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-label="PETLOG">
-      <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-  </div>
-            <a class="gnav__link gnav-ventures__link" href="/en/portfolio/myworld/" data-gnav-venture="myworld">MY WORLD</a>
-            <a class="gnav__link gnav-ventures__link" href="/en/shareon/" data-gnav-venture="shareon">SHAREON</a>
-            <div class="gnav-dd" data-gnav-dd data-gnav-menu="lifestage">
-    <a class="gnav__link gnav-dd__label" href="/en/lifestage/">LIVON</a>
-    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-label="LIVON">
-      <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-  </div>
-            <div class="gnav-dd" data-gnav-dd data-gnav-menu="ongil">
-    <a class="gnav__link gnav-dd__label" href="/en/ongil/">ONGIL</a>
-    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-label="ONGIL">
-      <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-  </div>
-          </div>
-        </nav>
       </div>
       <div id="gnav-mobile-home" class="gnav-mobile" hidden aria-hidden="true">
       <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
@@ -586,45 +658,6 @@
   </div>
             <button type="button" class="gnav__theme gnav__theme--mobile" data-theme-toggle data-label-light="Switch to light mode" data-label-dark="Switch to dark mode" title="Toggle theme" aria-label="Toggle theme"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           </div>
-          <div class="gnav-mobile__divider" aria-hidden="true"></div>
-          <div class="gnav-mobile__ventures" role="group" aria-label="Flagship businesses">
-        <div class="gnav-mobile__acc gnav-mobile__acc--solo">
-        <div class="gnav-mobile__acc-head">
-          <a class="gnav-mobile__acc-link" href="/en/portfolio/babylog/" data-gnav-venture="babylog">BABYLOG</a>
-        </div>
-      </div>
-        <div class="gnav-mobile__acc" data-gnav-acc>
-        <div class="gnav-mobile__acc-head">
-          <a class="gnav-mobile__acc-link" href="/en/petlog/">PETLOG</a>
-          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="PETLOG"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        </div>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="/en/petlog/">Overview</a><a class="gnav-mobile__sublink" href="/en/petlog/platform/">Platform</a><a class="gnav-mobile__sublink" href="/en/petlog/business/">Business</a><a class="gnav-mobile__sublink" href="/en/petlog/partnerships/">Partnerships</a><a class="gnav-mobile__sublink" href="/en/petlog/contact/">Contact</a></div>
-      </div>
-        <div class="gnav-mobile__acc gnav-mobile__acc--solo">
-        <div class="gnav-mobile__acc-head">
-          <a class="gnav-mobile__acc-link" href="/en/portfolio/myworld/" data-gnav-venture="myworld">MY WORLD</a>
-        </div>
-      </div>
-        <div class="gnav-mobile__acc gnav-mobile__acc--solo">
-        <div class="gnav-mobile__acc-head">
-          <a class="gnav-mobile__acc-link" href="/en/shareon/" data-gnav-venture="shareon">SHAREON</a>
-        </div>
-      </div>
-        <div class="gnav-mobile__acc" data-gnav-acc>
-        <div class="gnav-mobile__acc-head">
-          <a class="gnav-mobile__acc-link" href="/en/lifestage/">LIVON</a>
-          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="LIVON"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        </div>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="/en/lifestage/">LivOn</a><a class="gnav-mobile__sublink" href="/livon/">Start LivOn</a></div>
-      </div>
-        <div class="gnav-mobile__acc" data-gnav-acc>
-        <div class="gnav-mobile__acc-head">
-          <a class="gnav-mobile__acc-link" href="/en/ongil/">ONGIL</a>
-          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="ONGIL"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        </div>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="/en/ongil/">Ongil</a><a class="gnav-mobile__sublink" href="/ongil-start/">Start Ongil</a></div>
-      </div>
-        </div>
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
           <div class="gnav-mobile__acc" data-gnav-acc>
         <div class="gnav-mobile__acc-head">
@@ -642,24 +675,52 @@
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <div class="gnav-mobile__acc-head">
-          <a class="gnav-mobile__acc-link" href="/en/business/">Business</a>
-          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Business"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <a class="gnav-mobile__acc-link" href="/en/babylog/">BabyLog</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="BabyLog"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="/en/business/">Overview</a><a class="gnav-mobile__sublink" href="/en/business/automation/">Automation</a><a class="gnav-mobile__sublink" href="/en/business/solutions/">Solutions</a><a class="gnav-mobile__sublink" href="/en/business/digital-products/">Digital Products</a><a class="gnav-mobile__sublink" href="/en/business/platforms/">Platform Integration</a><a class="gnav-mobile__sublink" href="/en/business/inquiry/">Business Inquiry</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="/en/babylog/">Overview</a><a class="gnav-mobile__sublink" href="/en/babylog/#features">Key features</a><a class="gnav-mobile__sublink" href="/en/babylog/#partners">Partnerships</a><a class="gnav-mobile__sublink" href="/en/babylog/#download">App download</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <div class="gnav-mobile__acc-head">
-          <a class="gnav-mobile__acc-link" href="/en/studio/">Studio</a>
-          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Studio"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <a class="gnav-mobile__acc-link" href="/en/petlog/">PetLog</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="PetLog"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="/en/studio/">Overview</a><a class="gnav-mobile__sublink" href="/en/studio/digital/">Digital Products</a><a class="gnav-mobile__sublink" href="/en/studio/design-systems/">Design Systems</a><a class="gnav-mobile__sublink" href="/en/studio/projects/">Projects</a><a class="gnav-mobile__sublink" href="/en/studio/partnerships/">Partnerships</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="/en/petlog/">Overview</a><a class="gnav-mobile__sublink" href="/en/petlog/#features">Key features</a><a class="gnav-mobile__sublink" href="/en/petlog/#partners">Partnerships</a><a class="gnav-mobile__sublink" href="/en/petlog/#download">App download</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <div class="gnav-mobile__acc-head">
-          <a class="gnav-mobile__acc-link" href="/en/partnerships/">Partnerships</a>
-          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Partnerships"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <a class="gnav-mobile__acc-link" href="/en/myworld/">My World</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="My World"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="/en/partnerships/">Partnership Overview</a><a class="gnav-mobile__sublink" href="/en/partnerships/corporate/">Corporate Partnerships</a><a class="gnav-mobile__sublink" href="/en/partnerships/individuals/">Individuals &amp; Sellers</a><a class="gnav-mobile__sublink" href="/en/partnerships/public/">Public &amp; Institutional</a><a class="gnav-mobile__sublink" href="/en/partnerships/platforms/">Platform Partnerships</a><a class="gnav-mobile__sublink" href="/en/partnerships/strategic/">Strategic Partnerships</a><a class="gnav-mobile__sublink" href="/en/partnerships/inquiry/">Partnership Inquiry</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="/en/myworld/">Overview</a><a class="gnav-mobile__sublink" href="/en/myworld/#features">Key features</a><a class="gnav-mobile__sublink" href="/en/myworld/#partners">Partnerships</a><a class="gnav-mobile__sublink" href="/en/myworld/#download">App download</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="/en/shareon/">ShareOn</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="ShareOn"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="/en/shareon/">Overview</a><a class="gnav-mobile__sublink" href="/en/shareon/#features">Key features</a><a class="gnav-mobile__sublink" href="/en/shareon/#partners">Partnerships</a><a class="gnav-mobile__sublink" href="/en/shareon/#download">App launch info</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="/en/lifestage/">LivOn</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="LivOn"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="/en/lifestage/">LivOn</a><a class="gnav-mobile__sublink" href="/en/lifestage/#bi-partners">Partnerships</a><a class="gnav-mobile__sublink" href="/en/lifestage/#bi-download">App launch info</a><a class="gnav-mobile__sublink" href="/livon/">Start LivOn</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="/en/ongil/">Ongil</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Ongil"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="/en/ongil/">Ongil</a><a class="gnav-mobile__sublink" href="/en/ongil/#bi-partners">Partnerships</a><a class="gnav-mobile__sublink" href="/en/ongil/#bi-download">App launch info</a><a class="gnav-mobile__sublink" href="/ongil-start/">Start Ongil</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="/en/business-hub/">Business Hub</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Business Hub"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="gnav-mobile__acc-panel" hidden><div class="gnav-mobile__group" role="group" aria-label="BUSINESS"><a class="gnav-mobile__sublink gnav-mobile__sublink--group" href="/en/business/">BUSINESS</a><a class="gnav-mobile__sublink gnav-mobile__sublink--nested" href="/en/business/automation/">Automation</a><a class="gnav-mobile__sublink gnav-mobile__sublink--nested" href="/en/business/seller-center/">Seller Center</a><a class="gnav-mobile__sublink gnav-mobile__sublink--nested" href="/en/tools/">Business Tools</a><a class="gnav-mobile__sublink gnav-mobile__sublink--nested" href="/en/ai/enterprise/">Enterprise</a><a class="gnav-mobile__sublink gnav-mobile__sublink--nested" href="/en/resources/insights/">Insights</a><a class="gnav-mobile__sublink gnav-mobile__sublink--nested" href="/en/business/partners/">Partners</a></div><div class="gnav-mobile__group" role="group" aria-label="STUDIO"><a class="gnav-mobile__sublink gnav-mobile__sublink--group" href="/en/studio/">STUDIO</a><a class="gnav-mobile__sublink gnav-mobile__sublink--nested" href="/en/studio/partnerships/">Partnerships</a><a class="gnav-mobile__sublink gnav-mobile__sublink--nested" href="/en/studio/digital/">Digital Products</a><a class="gnav-mobile__sublink gnav-mobile__sublink--nested" href="/en/studio/projects/">Projects</a><a class="gnav-mobile__sublink gnav-mobile__sublink--nested" href="/en/studio/contact/">Contact</a></div></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <div class="gnav-mobile__acc-head">
@@ -669,7 +730,7 @@
         <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="/en/about/">About Newon</a><a class="gnav-mobile__sublink" href="/en/portfolio/">Portfolio</a><a class="gnav-mobile__sublink" href="/en/news/">News</a><a class="gnav-mobile__sublink" href="/en/media/">Media</a><a class="gnav-mobile__sublink" href="/en/resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="/en/market/">Market</a><a class="gnav-mobile__sublink" href="/en/business/inquiry/">Contact</a></div>
       </div>
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
-          <a class="gnav-mobile__cta btn btn-primary" href="/en/business/inquiry/">Project inquiry</a>
+          <a class="gnav-mobile__cta btn btn-primary" href="/en/business/inquiry/">Partnership inquiry</a>
         </div>
       </div>
     </div>
@@ -1508,15 +1569,7 @@ Software that connects life and work.</p>
           <a class="site-foot__url" href="https://newon.app">https://newon.app</a>
           <p class="site-foot__tagline">Connecting ideas to reality—and making everyday life easier as a global life platform.</p>
           <nav class="site-foot__nav" aria-label="Footer">
-            <a href="products/">Apps</a>
-            <a href="ai/">AI</a>
-            <a href="lifestage/">LivOn</a>
-            <a href="ongil/">Ongil</a>
-            <a href="business/">Business</a>
-            <a href="studio/">Studio</a>
-            <a href="about/">Company</a>
-            <a href="privacy/">Privacy Policy</a>
-            <a href="terms/">Terms of Service</a>
+            <a href="/en/products/">Apps</a><a href="/en/ai/">AI</a><a href="/en/babylog/">BabyLog</a><a href="/en/petlog/">PetLog</a><a href="/en/myworld/">My World</a><a href="/en/shareon/">ShareOn</a><a href="/en/lifestage/">LivOn</a><a href="/en/ongil/">Ongil</a><a href="/en/business-hub/">Business Hub</a><a href="/en/about/">Company</a><a href="/en/privacy/">Privacy Policy</a><a href="/en/terms/">Terms of Service</a>
           </nav>
           <div class="site-foot__icons" role="group" aria-label="Contact and social">
               <a

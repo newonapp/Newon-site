@@ -1,0 +1,545 @@
+{
+ "1440/en/business/automation": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUSINESS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "AUTOMATION",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/business/automation/workflow": [
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/business/build": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUSINESS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUILD",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/business/web": [
+  [
+   "bs-use-board__n",
+   3.57,
+   4.5,
+   "01",
+   "span.bs-use-board__n < div.bs-use-board__meta < article.bs-use-board__item < div.bs-use-board",
+   "rgba(255, 255, 255, 0.38)",
+   true
+  ],
+  [
+   "bs-use-board__n",
+   3.57,
+   4.5,
+   "02",
+   "span.bs-use-board__n < div.bs-use-board__meta < article.bs-use-board__item < div.bs-use-board",
+   "rgba(255, 255, 255, 0.38)",
+   true
+  ],
+  [
+   "bs-use-board__n",
+   3.57,
+   4.5,
+   "03",
+   "span.bs-use-board__n < div.bs-use-board__meta < article.bs-use-board__item < div.bs-use-board",
+   "rgba(255, 255, 255, 0.38)",
+   true
+  ],
+  [
+   "bs-use-board__n",
+   3.57,
+   4.5,
+   "04",
+   "span.bs-use-board__n < div.bs-use-board__meta < article.bs-use-board__item < div.bs-use-board",
+   "rgba(255, 255, 255, 0.38)",
+   true
+  ],
+  [
+   "bs-use-board__n",
+   3.57,
+   4.5,
+   "05",
+   "span.bs-use-board__n < div.bs-use-board__meta < article.bs-use-board__item < div.bs-use-board",
+   "rgba(255, 255, 255, 0.38)",
+   true
+  ],
+  [
+   "bs-use-board__n",
+   3.57,
+   4.5,
+   "06",
+   "span.bs-use-board__n < div.bs-use-board__meta < article.bs-use-board__item < div.bs-use-board",
+   "rgba(255, 255, 255, 0.38)",
+   true
+  ],
+  [
+   "bs-use-board__n",
+   3.57,
+   4.5,
+   "07",
+   "span.bs-use-board__n < div.bs-use-board__meta < article.bs-use-board__item < div.bs-use-board",
+   "rgba(255, 255, 255, 0.38)",
+   true
+  ],
+  [
+   "bs-use-board__n",
+   3.57,
+   4.5,
+   "08",
+   "span.bs-use-board__n < div.bs-use-board__meta < article.bs-use-board__item < div.bs-use-board",
+   "rgba(255, 255, 255, 0.38)",
+   true
+  ]
+ ],
+ "1440/en/business/app": [
+  [
+   "bs-sv-biz-app__btn",
+   2.67,
+   4.5,
+   "Continue",
+   "span.bs-sv-biz-app__btn < div.bs-sv-biz-app__screen < div.bs-sv-biz-app__phone.is-front < div.bs-sv-biz-app__phones",
+   "rgb(85, 85, 90)",
+   true
+  ]
+ ],
+ "1440/en/business/care": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUSINESS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "CARE",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/business/solutions": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUSINESS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "SOLUTIONS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-lflow__n",
+   1.12,
+   3,
+   "01",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ],
+  [
+   "bp-lflow__n",
+   1.12,
+   3,
+   "02",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ],
+  [
+   "bp-lflow__n",
+   1.12,
+   3,
+   "03",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ],
+  [
+   "bp-lflow__n",
+   1.12,
+   3,
+   "04",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ],
+  [
+   "bp-lflow__n",
+   1.12,
+   3,
+   "05",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ],
+  [
+   "bp-lflow__n",
+   1.12,
+   3,
+   "06",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ],
+  [
+   "bp-when__ghost",
+   1.12,
+   3,
+   "01",
+   "span.bp-when__ghost < li.bp-when__item < ol.bp-when__list < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ],
+  [
+   "bp-when__ghost",
+   1.12,
+   3,
+   "02",
+   "span.bp-when__ghost < li.bp-when__item < ol.bp-when__list < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ],
+  [
+   "bp-when__ghost",
+   1.12,
+   3,
+   "03",
+   "span.bp-when__ghost < li.bp-when__item < ol.bp-when__list < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ],
+  [
+   "bp-when__ghost",
+   1.12,
+   3,
+   "04",
+   "span.bp-when__ghost < li.bp-when__item < ol.bp-when__list < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ],
+  [
+   "bp-when__ghost",
+   1.12,
+   3,
+   "05",
+   "span.bp-when__ghost < li.bp-when__item < ol.bp-when__list < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ]
+ ],
+ "1440/en/business/research": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUSINESS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "PLANNING",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/studio/partnerships": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "PARTNERSHIPS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.12,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.12,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.12,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.12,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ]
+ ],
+ "1440/en/studio/projects": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "PROJECTS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/studio/contact": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "CONTACT",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.12,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.12,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.12,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.12,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(255, 255, 255, 0.07)",
+   true
+  ]
+ ],
+ "1440/en/studio/digital": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "DIGITAL PRODUCTS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/studio/brand": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BRAND",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/studio/content": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "CONTENT & CAMPAIGN",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/studio/care": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "DESIGN CARE",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ]
+}

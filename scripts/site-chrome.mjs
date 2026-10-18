@@ -40,6 +40,8 @@ const NAV_LABEL_FB = {
 };
 
 function navTopLabel(flat, flatEn, id) {
+  const venture = VENTURE_NAV.find((v) => v.id === id);
+  if (venture) return escapeHtml(venture.label);
   return escapeHtml(t(flat, flatEn, NAV_LABEL_KEYS[id], NAV_LABEL_FB[id]));
 }
 
@@ -48,11 +50,11 @@ function navTopLabel(flat, flatEn, id) {
  * Brand names are not translated. LIVON / ONGIL keep their existing mega menus.
  */
 export const VENTURE_NAV = [
-  { id: "babylog", label: "BABYLOG", path: "portfolio/babylog/" },
+  { id: "babylog", label: "BABYLOG", path: "babylog/", mega: true },
   { id: "petlog", label: "PETLOG", path: "petlog/", mega: true },
-  { id: "myworld", label: "MY WORLD", path: "portfolio/myworld/" },
-  { id: "shareon", label: "SHAREON", path: "shareon/" },
-  { id: "lifestage", label: "LIVON", path: "lifestage/", mega: true },
+  { id: "myworld", label: "MY WORLD", path: "myworld/", mega: true },
+  { id: "shareon", label: "SHAREON", path: "shareon/", mega: true },
+  { id: "lifestage", label: "LIVON", path: "livon/", mega: true },
   { id: "ongil", label: "ONGIL", path: "ongil/", mega: true },
 ];
 const VENTURE_IDS = new Set(VENTURE_NAV.map((v) => v.id));
@@ -83,7 +85,7 @@ const MENU_META = {
   lifestage: {
     kicker: "nav.lifeStageMenuLabel",
     lead: "nav.lifeStageMenuLead",
-    footHref: "lifestage/",
+    footHref: "livon/",
     footKey: "nav.lifeStageExploreCta",
     footFb: "View LivOn →",
   },
@@ -93,6 +95,27 @@ const MENU_META = {
     footHref: "ongil/",
     footKey: "nav.ongilExploreCta",
     footFb: "View Ongil →",
+  },
+  babylog: {
+    kicker: "nav.babylogMenuLabel",
+    lead: "nav.babylogMenuLead",
+    footHref: "babylog/",
+    footKey: "nav.babylogExploreCta",
+    footFb: "View BABYLOG →",
+  },
+  myworld: {
+    kicker: "nav.myworldMenuLabel",
+    lead: "nav.myworldMenuLead",
+    footHref: "myworld/",
+    footKey: "nav.myworldExploreCta",
+    footFb: "View MY WORLD →",
+  },
+  shareon: {
+    kicker: "nav.shareonMenuLabel",
+    lead: "nav.shareonMenuLead",
+    footHref: "shareon/",
+    footKey: "nav.shareonExploreCta",
+    footFb: "View SHAREON →",
   },
   petlog: {
     kicker: "nav.petlogMenuLabel",
@@ -191,9 +214,16 @@ const CHEVRON_SVG = `<svg class="gnav-dd__chev-svg" width="12" height="12" viewB
 
 const MOON_SVG = `<svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
+/** Menu rows for a language (rows with `langs` only appear where those pages exist). */
+function menuRows(menuId, langDir = "") {
+  return (MEGA_DESTINATIONS[menuId] || [])
+    .filter((d) => !d.langs || !langDir || d.langs.includes(langDir))
+    .slice(0, megaItemLimit(menuId));
+}
+
 function megaItemLimit(menuId) {
   if (menuId === "company") return 12;
-  if (["consumer", "ai", "business", "studio", "partnerships", "petlog"].includes(menuId)) return 8;
+  if (["consumer", "ai", "business", "studio", "partnerships", "petlog", "babylog", "myworld", "shareon", "lifestage", "ongil"].includes(menuId)) return 8;
   return 4;
 }
 
@@ -203,7 +233,8 @@ function isKoLocale(langDir = "") {
 
 function megaHead(flat, flatEn, menuId) {
   const meta = MENU_META[menuId];
-  const kicker = escapeHtml(t(flat, flatEn, meta.kicker, menuId.toUpperCase()));
+  const venture = VENTURE_NAV.find((v) => v.id === menuId);
+  const kicker = escapeHtml(venture ? venture.label : t(flat, flatEn, meta.kicker, menuId.toUpperCase()));
   const lead = escapeHtml(t(flat, flatEn, meta.lead));
   return `<div class="gnav-mega__head">
       <p class="gnav-mega__kicker">${kicker}</p>
@@ -218,7 +249,7 @@ function megaFoot(flat, flatEn, base, menuId, langDir = "") {
 }
 
 function editorialMega(flat, flatEn, base, menuId, langDir = "") {
-  const items = (MEGA_DESTINATIONS[menuId] || []).slice(0, megaItemLimit(menuId));
+  const items = menuRows(menuId, langDir);
   const many = items.length > 4 ? " gnav-mega__list--many" : "";
   const rows = items
     .map((item, i) => {
@@ -247,7 +278,10 @@ const MEGA_RENDERERS = {
   ai: (f, fe, b, ld) => editorialMega(f, fe, b, "ai", ld),
   lifestage: (f, fe, b, ld) => editorialMega(f, fe, b, "lifestage", ld),
   ongil: (f, fe, b, ld) => editorialMega(f, fe, b, "ongil", ld),
+  babylog: (f, fe, b, ld) => editorialMega(f, fe, b, "babylog", ld),
   petlog: (f, fe, b, ld) => editorialMega(f, fe, b, "petlog", ld),
+  myworld: (f, fe, b, ld) => editorialMega(f, fe, b, "myworld", ld),
+  shareon: (f, fe, b, ld) => editorialMega(f, fe, b, "shareon", ld),
   business: (f, fe, b, ld) => editorialMega(f, fe, b, "business", ld),
   studio: (f, fe, b, ld) => editorialMega(f, fe, b, "studio", ld),
   partnerships: (f, fe, b, ld) => editorialMega(f, fe, b, "partnerships", ld),
@@ -323,8 +357,8 @@ function langSelect(flat, flatEn, id) {
   </div>`;
 }
 
-function flattenMobileItems(menuId) {
-  return (MEGA_DESTINATIONS[menuId] || []).slice(0, megaItemLimit(menuId)).map((d) => ({
+function flattenMobileItems(menuId, langDir = "") {
+  return menuRows(menuId, langDir).map((d) => ({
     labelKey: d.titleKey,
     href: d.href,
     titleFb: d.titleFb,
@@ -339,7 +373,7 @@ function mobileNav(flat, flatEn, base, suffix, langDir = "") {
   const accordion = (id, labelOverride = "") => {
     const label = labelOverride ? escapeHtml(labelOverride) : navTopLabel(flat, flatEn, id);
     const hubHref = href(base, MENU_META[id].footHref, langDir);
-    const items = flattenMobileItems(id);
+    const items = flattenMobileItems(id, langDir);
     const links = items
       .map((item) => {
         const labelText = escapeHtml(
@@ -444,13 +478,18 @@ const FOOTER_THREADS_URL = "https://www.threads.com/@newon.app.dev?invite=0";
 const FOOTER_BLOG_URL = "https://m.blog.naver.com/newonapp";
 const FOOTER_TIKTOK_URL = "https://www.tiktok.com/@newon.app?_r=1&_t=ZS-95LGrSuOcfF";
 
-const FOOTER_MENUS = [
+export const FOOTER_MENUS = [
   ["consumer", "products/"],
   ["ai", "ai/"],
-  ["lifestage", "lifestage/"],
+  ["babylog", "babylog/"],
+  ["petlog", "petlog/"],
+  ["myworld", "myworld/"],
+  ["shareon", "shareon/"],
+  ["lifestage", "livon/"],
   ["ongil", "ongil/"],
   ["business", "business/"],
   ["studio", "studio/"],
+  ["partnerships", "partnerships/"],
   ["company", "about/"],
 ];
 
@@ -461,14 +500,21 @@ function footIcon(url, label, inner, { external = true } = {}) {
   return `<a class="site-foot__icon" href="${escapeHtml(url)}" aria-label="${escapeHtml(label)}"${extra}>${FOOT_SVG_OPEN}${inner}</svg></a>`;
 }
 
+/** Footer link row (menus + privacy + terms) — single source for every generated footer, including the home template. */
+export function renderFooterNavLinks(flat, flatEn, { base = "../", langDir = "" } = {}) {
+  const resolve = (p) => href(base, p, langDir);
+  const menuLinks = FOOTER_MENUS.map(([id, path]) => `<a href="${resolve(path)}">${navTopLabel(flat, flatEn, id)}</a>`).join("");
+  const privacy = `<a href="${resolve("privacy/")}">${escapeHtml(t(flat, flatEn, "footer.privacy", "Privacy Policy"))}</a>`;
+  const terms = `<a href="${resolve("terms/")}">${escapeHtml(t(flat, flatEn, "footer.terms", "Terms of Service"))}</a>`;
+  return `${menuLinks}${privacy}${terms}`;
+}
+
 export function renderStudioFooter(flat, flatEn, { base = "../", langDir = "" } = {}) {
   const brand = escapeHtml(t(flat, flatEn, "nav.brandName", "Newon"));
   const tagline = escapeHtml(t(flat, flatEn, "footer.tagline", "Connecting ideas to reality—and making everyday life easier as a global life platform."));
   const rights = escapeHtml(t(flat, flatEn, "footer.rights", "All rights reserved."));
   const resolve = (p) => href(base, p, langDir);
-  const menuLinks = FOOTER_MENUS.map(([id, path]) => `<a href="${resolve(path)}">${navTopLabel(flat, flatEn, id)}</a>`).join("");
-  const privacy = `<a href="${resolve("privacy/")}">${escapeHtml(t(flat, flatEn, "footer.privacy", "Privacy Policy"))}</a>`;
-  const terms = `<a href="${resolve("terms/")}">${escapeHtml(t(flat, flatEn, "footer.terms", "Terms of Service"))}</a>`;
+  const navLinks = renderFooterNavLinks(flat, flatEn, { base, langDir });
   const icons = [
     footIcon(
       "mailto:newon@newon.app",
@@ -510,7 +556,7 @@ export function renderStudioFooter(flat, flatEn, { base = "../", langDir = "" } 
       </a>
       <a class="site-foot__url" href="https://newon.app">https://newon.app</a>
       <p class="site-foot__tagline">${tagline}</p>
-      <nav class="site-foot__nav" aria-label="Footer">${menuLinks}${privacy}${terms}</nav>
+      <nav class="site-foot__nav" aria-label="Footer">${navLinks}</nav>
       <div class="site-foot__icons" role="group" aria-label="${escapeHtml(t(flat, flatEn, "footer.socialAria", "Contact and social"))}">${icons}</div>
       <p class="site-foot__copy">© 2026 ${brand}. ${rights}</p>
     </div>

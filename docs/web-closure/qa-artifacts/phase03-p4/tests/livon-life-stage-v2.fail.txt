@@ -1,0 +1,3 @@
+not ok 10 - LS2-10 source attribution and dates: LIVON is named as the author of its own guides, never as the official body; dates come from the data only
+# pass 30
+# fail 1

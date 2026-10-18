@@ -38,7 +38,7 @@ export const LEGACY_STATUS_MAP = {
 };
 
 /** Top-level nav order — Partnerships (Oct 2026) sits after Studio */
-export const TOP_NAV = ["consumer", "ai", "lifestage", "ongil", "petlog", "business", "studio", "partnerships", "company"];
+export const TOP_NAV = ["consumer", "ai", "babylog", "petlog", "myworld", "shareon", "lifestage", "ongil", "business", "studio", "partnerships", "company"];
 
 /**
  * Mega menu destinations per top menu.
@@ -62,32 +62,39 @@ export const MEGA_DESTINATIONS = {
     },
   ],
   lifestage: [
-    {
-      titleKey: "nav.lifeStageIntro",
-      descKey: "nav.lifeStageIntroDesc",
-      href: "lifestage/",
-      titleFb: "LivOn",
-    },
-    {
-      titleKey: "nav.lifeStageStart",
-      descKey: "nav.lifeStageStartDesc",
-      href: "/livon/",
-      titleFb: "Start LivOn",
-    },
+    { titleKey: "nav.site5Overview", descKey: "nav.site5OverviewDesc", href: "livon/", titleFb: "Overview" },
+    { titleKey: "nav.site5Platform", descKey: "nav.site5PlatformDesc", href: "livon/platform/", titleFb: "Platform" },
+    { titleKey: "nav.site5Business", descKey: "nav.site5BusinessDesc", href: "livon/business/", titleFb: "Business" },
+    { titleKey: "nav.site5Partnerships", descKey: "nav.site5PartnershipsDesc", href: "livon/partnerships/", titleFb: "Partnerships" },
+    { titleKey: "nav.site5Contact", descKey: "nav.site5ContactDesc", href: "livon/contact/", titleFb: "Contact" },
   ],
   ongil: [
-    {
-      titleKey: "nav.ongilIntro",
-      descKey: "nav.ongilIntroDesc",
-      href: "ongil/",
-      titleFb: "Ongil",
-    },
-    {
-      titleKey: "nav.ongilStart",
-      descKey: "nav.ongilStartDesc",
-      href: "/ongil-start/",
-      titleFb: "Start Ongil",
-    },
+    { titleKey: "nav.site5Overview", descKey: "nav.site5OverviewDesc", href: "ongil/", titleFb: "Overview" },
+    { titleKey: "nav.site5Platform", descKey: "nav.site5PlatformDesc", href: "ongil/platform/", titleFb: "Platform", langs: ["ko", "en"] },
+    { titleKey: "nav.site5Business", descKey: "nav.site5BusinessDesc", href: "ongil/business/", titleFb: "Business", langs: ["ko", "en"] },
+    { titleKey: "nav.site5Partnerships", descKey: "nav.site5PartnershipsDesc", href: "ongil/partnerships/", titleFb: "Partnerships", langs: ["ko", "en"] },
+    { titleKey: "nav.site5Contact", descKey: "nav.site5ContactDesc", href: "ongil/contact/", titleFb: "Contact", langs: ["ko", "en"] },
+  ],
+  babylog: [
+    { titleKey: "nav.site5Overview", descKey: "nav.site5OverviewDesc", href: "babylog/", titleFb: "Overview" },
+    { titleKey: "nav.site5Platform", descKey: "nav.site5PlatformDesc", href: "babylog/platform/", titleFb: "Platform" },
+    { titleKey: "nav.site5Business", descKey: "nav.site5BusinessDesc", href: "babylog/business/", titleFb: "Business" },
+    { titleKey: "nav.site5Partnerships", descKey: "nav.site5PartnershipsDesc", href: "babylog/partnerships/", titleFb: "Partnerships" },
+    { titleKey: "nav.site5Contact", descKey: "nav.site5ContactDesc", href: "babylog/contact/", titleFb: "Contact" },
+  ],
+  myworld: [
+    { titleKey: "nav.site5Overview", descKey: "nav.site5OverviewDesc", href: "myworld/", titleFb: "Overview" },
+    { titleKey: "nav.site5Platform", descKey: "nav.site5PlatformDesc", href: "myworld/platform/", titleFb: "Platform" },
+    { titleKey: "nav.site5Business", descKey: "nav.site5BusinessDesc", href: "myworld/business/", titleFb: "Business" },
+    { titleKey: "nav.site5Partnerships", descKey: "nav.site5PartnershipsDesc", href: "myworld/partnerships/", titleFb: "Partnerships" },
+    { titleKey: "nav.site5Contact", descKey: "nav.site5ContactDesc", href: "myworld/contact/", titleFb: "Contact" },
+  ],
+  shareon: [
+    { titleKey: "nav.site5Overview", descKey: "nav.site5OverviewDesc", href: "shareon/", titleFb: "Overview" },
+    { titleKey: "nav.site5Platform", descKey: "nav.site5PlatformDesc", href: "shareon/platform/", titleFb: "Platform" },
+    { titleKey: "nav.site5Business", descKey: "nav.site5BusinessDesc", href: "shareon/business/", titleFb: "Business" },
+    { titleKey: "nav.site5Partnerships", descKey: "nav.site5PartnershipsDesc", href: "shareon/partnerships/", titleFb: "Partnerships" },
+    { titleKey: "nav.site5Contact", descKey: "nav.site5ContactDesc", href: "shareon/contact/", titleFb: "Contact" },
   ],
   // PETLOG business site (Oct 2026): Overview · Platform · Business · Partnerships · Contact (business row mega).
   petlog: [
@@ -121,6 +128,20 @@ export const MEGA_DESTINATIONS = {
     { titleKey: "nav.ptPlatforms", descKey: "nav.ptPlatformsDesc", href: "partnerships/platforms/", titleFb: "Platform Partnerships" },
     { titleKey: "nav.ptStrategic", descKey: "nav.ptStrategicDesc", href: "partnerships/strategic/", titleFb: "Strategic Partnerships" },
     { titleKey: "nav.ptInquiry", descKey: "nav.ptInquiryDesc", href: "partnerships/inquiry/", titleFb: "Partnership Inquiry" },
+  ],
+  bizhubBusiness: [
+    { titleKey: "nav.bhAutomation", descKey: "nav.bhAutomationDesc", href: "business/automation/", titleFb: "Automation" },
+    { titleKey: "nav.bhSellerCenter", descKey: "nav.bhSellerCenterDesc", href: "business/seller-center/", titleFb: "Seller Center" },
+    { titleKey: "nav.bhTools", descKey: "nav.bhToolsDesc", href: "tools/", titleFb: "Business Tools" },
+    { titleKey: "nav.bhEnterprise", descKey: "nav.bhEnterpriseDesc", href: "ai/enterprise/", titleFb: "Enterprise" },
+    { titleKey: "nav.bhInsights", descKey: "nav.bhInsightsDesc", href: "resources/insights/", titleFb: "Insights" },
+    { titleKey: "nav.bhPartners", descKey: "nav.bhPartnersDesc", href: "business/partners/", titleFb: "Partners" },
+  ],
+  bizhubStudio: [
+    { titleKey: "nav.studioPartnerships", descKey: "nav.megaStudioPartnershipsDesc", href: "studio/partnerships/", titleFb: "Partnerships" },
+    { titleKey: "nav.studioDigitalProducts", descKey: "nav.megaStudioDigitalProductsDesc", href: "studio/digital/", titleFb: "Digital Products" },
+    { titleKey: "nav.studioProjects", descKey: "nav.megaStudioProjectsDesc", href: "studio/projects/", titleFb: "Projects" },
+    { titleKey: "nav.studioContact", descKey: "nav.megaStudioContactDesc", href: "studio/contact/", titleFb: "Contact" },
   ],
   company: [
     { titleKey: "nav.aboutNewon", descKey: "nav.megaAboutDesc", href: "about/", titleFb: "About" },
@@ -378,3 +399,22 @@ export function studioStatusClass(status) {
     .replace(/_/g, "-");
   return `studio-status studio-status--${key}`;
 }
+
+/** Business Hub page data (kept for the /business-hub/ page; not a top menu). */
+export const BIZHUB_PATH = "business-hub/";
+export const BIZHUB_GROUPS = [
+  {
+    id: "business",
+    labelKey: "nav.businessMenuLabel",
+    labelFb: "Business",
+    leadKey: "nav.bhBusinessLead",
+    href: "business/",
+  },
+  {
+    id: "studio",
+    labelKey: "nav.studioMenuLabel",
+    labelFb: "Studio",
+    leadKey: "nav.bhStudioLead",
+    href: "studio/",
+  },
+];

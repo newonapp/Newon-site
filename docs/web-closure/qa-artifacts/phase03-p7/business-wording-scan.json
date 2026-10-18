@@ -1,0 +1,4575 @@
+{
+ "terms": [
+  "white-label",
+  "custom-made",
+  "delivery-to-client",
+  "commission/outsourcing",
+  "quote/price menu",
+  "contract"
+ ],
+ "pages": {
+  "ko/business/build": [
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Newon의 웹·앱 제품 기획·디자인·구현 역량을 소개합니다. 개별 제작 의뢰는 받지 않습니다."
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "협업 가능 여부는 제휴·도입 문의를 통해 검토합니다. 개별 제작 의뢰는 받지 않습니다."
+   }
+  ],
+  "en/business/build": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Notice This page describes Newon's technology, design and operations capabilities. Newon does not take on custom development or production projects for individual clients; collaboration is reviewed through partnership an"
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "An overview of Newon's capabilities in planning, designing and building web and app products. Newon does not accept individual production commissions."
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Services & pricing"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Deploy and handoff"
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "ja/business/build": [
+   {
+    "families": [
+     "custom-made",
+     "commission/outsourcing"
+    ],
+    "text": "お知らせ このページでは、Newonの技術・デザイン・運用の対応力を紹介しています。Newonは個別のお客様向けのカスタム開発・制作案件の受託は行っておらず、協業はパートナーシップ・導入のお問い合わせを通じて検討します。"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline."
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "es/business/build": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Aviso Esta página describe las capacidades de tecnología, diseño y operaciones de Newon. Newon no asume proyectos de desarrollo o producción a medida para clientes individuales; las colaboraciones se estudian a través de"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline."
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "pt-br/business/build": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Aviso Esta página descreve as capacidades de tecnologia, design e operações da Newon. A Newon não aceita projetos de desenvolvimento ou produção sob medida para clientes individuais; as colaborações são avaliadas por mei"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline."
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "fr/business/build": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Information Cette page présente les capacités de Newon en matière de technologie, de design et d'exploitation. Newon n'accepte pas de projets de développement ou de production sur mesure pour des clients individuels ; le"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline."
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "de/business/build": [
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline."
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "hi/business/build": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "सूचना यह पृष्ठ Newon की प्रौद्योगिकी, डिज़ाइन और संचालन क्षमताओं का परिचय देता है। Newon व्यक्तिगत ग्राहकों के लिए कस्टम डेवलपमेंट या प्रोडक्शन प्रोजेक्ट स्वीकार नहीं करता; सहयोग पर विचार साझेदारी और अपनाने से जुड़ी पूछत"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "सेवाएँ और मूल्य निर्धारण"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "तैनाती और हैंडऑफ़"
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "id/business/build": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Pemberitahuan Halaman ini menjelaskan kapabilitas teknologi, desain, dan operasional Newon. Newon tidak menerima proyek pengembangan atau produksi khusus untuk klien perorangan; kolaborasi ditinjau melalui pertanyaan kem"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Menyebarkan dan handoff"
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "ko/business/solutions": [
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Newon이 파트너와 함께 검토하는 협업 주제를 정리한 안내 페이지입니다. 개별 제작 의뢰는 받지 않습니다."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "01 · WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "즉시 제공하는 기성 화이트라벨 제품이 아니라, 재사용 가능한 기반과 신규 맞춤 개발을 구분해 검토합니다."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "특정 업무나 문제를 해결하는 맞춤형 디지털 제품."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "문제 정의부터 맞춤 제품 설계·구축."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "조직의 여러 업무·권한·데이터를 연결하는 맞춤 시스템."
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "협업 가능 여부는 제휴·도입 문의를 통해 검토합니다. 개별 제작 의뢰는 받지 않습니다."
+   }
+  ],
+  "en/business/solutions": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Notice This page describes Newon's technology, design and operations capabilities. Newon does not take on custom development or production projects for individual clients; collaboration is reviewed through partnership an"
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "A guide to the collaboration topics Newon reviews with partners. Newon does not accept individual production commissions."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "01 · WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Not an off-the-shelf white-label product. We separate reusable foundations from new custom work."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Custom digital products for a specific problem."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "From problem framing to custom product build."
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "ja/business/solutions": [
+   {
+    "families": [
+     "custom-made",
+     "commission/outsourcing"
+    ],
+    "text": "お知らせ このページでは、Newonの技術・デザイン・運用の対応力を紹介しています。Newonは個別のお客様向けのカスタム開発・制作案件の受託は行っておらず、協業はパートナーシップ・導入のお問い合わせを通じて検討します。"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "01 · WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "ブランド、ドメイン、運用に合わせたホワイトラベルのセットアップ。"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "特定の問題に対するカスタムのデジタル製品。"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "問題の枠組みからカスタム製品の構築まで。"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline."
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "es/business/solutions": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Aviso Esta página describe las capacidades de tecnología, diseño y operaciones de Newon. Newon no asume proyectos de desarrollo o producción a medida para clientes individuales; las colaboraciones se estudian a través de"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "01 · WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Configuración de marca blanca alineada a marca, dominio y operaciones."
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline."
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "pt-br/business/solutions": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Aviso Esta página descreve as capacidades de tecnologia, design e operações da Newon. A Newon não aceita projetos de desenvolvimento ou produção sob medida para clientes individuais; as colaborações são avaliadas por mei"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "01 · WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Configuração de marca branca alinhada à marca, domínio e operações."
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline."
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "fr/business/solutions": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Information Cette page présente les capacités de Newon en matière de technologie, de design et d'exploitation. Newon n'accepte pas de projets de développement ou de production sur mesure pour des clients individuels ; le"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Configuration en marque blanche alignée sur la marque, le domaine et les opérations."
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline."
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "de/business/solutions": [
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "White-Label-Setup ausgerichtet auf Marke, Domain und Ops."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Kundenspezifische digitale Produkte für ein bestimmtes Problem."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Vom Problem Framing bis zum Custom Product Build."
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline."
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "hi/business/solutions": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "सूचना यह पृष्ठ Newon की प्रौद्योगिकी, डिज़ाइन और संचालन क्षमताओं का परिचय देता है। Newon व्यक्तिगत ग्राहकों के लिए कस्टम डेवलपमेंट या प्रोडक्शन प्रोजेक्ट स्वीकार नहीं करता; सहयोग पर विचार साझेदारी और अपनाने से जुड़ी पूछत"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "व्हाइट-लेबल"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "01 · व्हाइट-लेबल"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "व्हाइट-लेबल सेटअप ब्रांड, डोमेन और ऑप्स के अनुरूप है।"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "02 · कस्टम"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "कस्टम उत्पाद"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "किसी विशिष्ट समस्या के लिए कस्टम डिजिटल उत्पाद।"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "समस्या निर्धारण से लेकर कस्टम उत्पाद निर्माण तक।"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline."
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "id/business/solutions": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Pemberitahuan Halaman ini menjelaskan kapabilitas teknologi, desain, dan operasional Newon. Newon tidak menerima proyek pengembangan atau produksi khusus untuk klien perorangan; kolaborasi ditinjau melalui pertanyaan kem"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline."
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "ko/business/care": [
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "계약 범위의 정기 관리. 일회성 수정이 아닙니다."
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "금액·작업 시간·응답 시간은 계약 전 표시하지 않으며, 서버·호스팅·외부 이용료는 기본 유지보수에 포함되지 않습니다."
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "아닙니다. 월간 계약에 무제한 개발은 없고, 일회성 개선·리뉴얼도 월 구독이 아닙니다."
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "협업 가능 여부는 제휴·도입 문의를 통해 검토합니다. 개별 제작 의뢰는 받지 않습니다."
+   }
+  ],
+  "en/business/care": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Notice This page describes Newon's technology, design and operations capabilities. Newon does not take on custom development or production projects for individual clients; collaboration is reviewed through partnership an"
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "For teams already running a website or app: defects, partial improvements, ongoing care, and the first weeks after launch. One-time work and monthly contracts are discussed separately. Third-party products are reviewed f"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Services & pricing"
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "Ongoing care inside a contract. Not a one-off fix."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Early defects and the handoff into operations. Product Launch is before ship."
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "One-time work and monthly contracts are discussed separately. Prices, hours, and response times are not listed until agreed. Hosting and third-party fees are not included in basic care."
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "ja/business/care": [
+   {
+    "families": [
+     "custom-made",
+     "commission/outsourcing"
+    ],
+    "text": "お知らせ このページでは、Newonの技術・デザイン・運用の対応力を紹介しています。Newonは個別のお客様向けのカスタム開発・制作案件の受託は行っておらず、協業はパートナーシップ・導入のお問い合わせを通じて検討します。"
+   },
+   {
+    "families": [
+     "quote/price menu",
+     "contract"
+    ],
+    "text": "For teams already running a website or app: defects, partial improvements, ongoing care, and the first weeks after launch. One-time work and monthly contracts are quoted separately. Third-party products are reviewed for "
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Services & pricing"
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "Ongoing care inside a contract. Not a one-off fix."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Early defects and the handoff into operations. Product Launch is before ship."
+   },
+   {
+    "families": [
+     "quote/price menu",
+     "contract"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline. One-time work and monthly contracts are quoted separately. Prices, hours, and response times are not listed until agreed. Ho"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Quote, schedule, and what is excluded"
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "es/business/care": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Aviso Esta página describe las capacidades de tecnología, diseño y operaciones de Newon. Newon no asume proyectos de desarrollo o producción a medida para clientes individuales; las colaboraciones se estudian a través de"
+   },
+   {
+    "families": [
+     "quote/price menu",
+     "contract"
+    ],
+    "text": "For teams already running a website or app: defects, partial improvements, ongoing care, and the first weeks after launch. One-time work and monthly contracts are quoted separately. Third-party products are reviewed for "
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Services & pricing"
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "Ongoing care inside a contract. Not a one-off fix."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Early defects and the handoff into operations. Product Launch is before ship."
+   },
+   {
+    "families": [
+     "quote/price menu",
+     "contract"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline. One-time work and monthly contracts are quoted separately. Prices, hours, and response times are not listed until agreed. Ho"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Quote, schedule, and what is excluded"
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "pt-br/business/care": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Aviso Esta página descreve as capacidades de tecnologia, design e operações da Newon. A Newon não aceita projetos de desenvolvimento ou produção sob medida para clientes individuais; as colaborações são avaliadas por mei"
+   },
+   {
+    "families": [
+     "quote/price menu",
+     "contract"
+    ],
+    "text": "For teams already running a website or app: defects, partial improvements, ongoing care, and the first weeks after launch. One-time work and monthly contracts are quoted separately. Third-party products are reviewed for "
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Services & pricing"
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "Ongoing care inside a contract. Not a one-off fix."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Early defects and the handoff into operations. Product Launch is before ship."
+   },
+   {
+    "families": [
+     "quote/price menu",
+     "contract"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline. One-time work and monthly contracts are quoted separately. Prices, hours, and response times are not listed until agreed. Ho"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Quote, schedule, and what is excluded"
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "fr/business/care": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Information Cette page présente les capacités de Newon en matière de technologie, de design et d'exploitation. Newon n'accepte pas de projets de développement ou de production sur mesure pour des clients individuels ; le"
+   },
+   {
+    "families": [
+     "quote/price menu",
+     "contract"
+    ],
+    "text": "For teams already running a website or app: defects, partial improvements, ongoing care, and the first weeks after launch. One-time work and monthly contracts are quoted separately. Third-party products are reviewed for "
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Services & pricing"
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "Ongoing care inside a contract. Not a one-off fix."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Early defects and the handoff into operations. Product Launch is before ship."
+   },
+   {
+    "families": [
+     "quote/price menu",
+     "contract"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline. One-time work and monthly contracts are quoted separately. Prices, hours, and response times are not listed until agreed. Ho"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Quote, schedule, and what is excluded"
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "de/business/care": [
+   {
+    "families": [
+     "quote/price menu",
+     "contract"
+    ],
+    "text": "For teams already running a website or app: defects, partial improvements, ongoing care, and the first weeks after launch. One-time work and monthly contracts are quoted separately. Third-party products are reviewed for "
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Services & pricing"
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "Ongoing care inside a contract. Not a one-off fix."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Early defects and the handoff into operations. Product Launch is before ship."
+   },
+   {
+    "families": [
+     "quote/price menu",
+     "contract"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline. One-time work and monthly contracts are quoted separately. Prices, hours, and response times are not listed until agreed. Ho"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Quote, schedule, and what is excluded"
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "hi/business/care": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "सूचना यह पृष्ठ Newon की प्रौद्योगिकी, डिज़ाइन और संचालन क्षमताओं का परिचय देता है। Newon व्यक्तिगत ग्राहकों के लिए कस्टम डेवलपमेंट या प्रोडक्शन प्रोजेक्ट स्वीकार नहीं करता; सहयोग पर विचार साझेदारी और अपनाने से जुड़ी पूछत"
+   },
+   {
+    "families": [
+     "quote/price menu",
+     "contract"
+    ],
+    "text": "For teams already running a website or app: defects, partial improvements, ongoing care, and the first weeks after launch. One-time work and monthly contracts are quoted separately. Third-party products are reviewed for "
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Services & pricing"
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "Ongoing care inside a contract. Not a one-off fix."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Early defects and the handoff into operations. Product Launch is before ship."
+   },
+   {
+    "families": [
+     "quote/price menu",
+     "contract"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline. One-time work and monthly contracts are quoted separately. Prices, hours, and response times are not listed until agreed. Ho"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Quote, schedule, and what is excluded"
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "id/business/care": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Pemberitahuan Halaman ini menjelaskan kapabilitas teknologi, desain, dan operasional Newon. Newon tidak menerima proyek pengembangan atau produksi khusus untuk klien perorangan; kolaborasi ditinjau melalui pertanyaan kem"
+   },
+   {
+    "families": [
+     "quote/price menu",
+     "contract"
+    ],
+    "text": "For teams already running a website or app: defects, partial improvements, ongoing care, and the first weeks after launch. One-time work and monthly contracts are quoted separately. Third-party products are reviewed for "
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Services & pricing"
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "Ongoing care inside a contract. Not a one-off fix."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Early defects and the handoff into operations. Product Launch is before ship."
+   },
+   {
+    "families": [
+     "quote/price menu",
+     "contract"
+    ],
+    "text": "Final quotes may vary with collaboration scope, feature complexity, integrations, and timeline. One-time work and monthly contracts are quoted separately. Prices, hours, and response times are not listed until agreed. Ho"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "Quote, schedule, and what is excluded"
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Collaboration is reviewed through partnership and adoption inquiries. Newon does not accept individual production commissions."
+   }
+  ],
+  "ko/business/white-label": [
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL · 솔루션"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "기존 제품 구조를 기반으로 브랜드와 요구사항에 맞게 커스터마이징하여 더 빠르게 자체 디지털 제품을 구축합니다. 예약, 문의, CRM, 대시보드, AI 상담 — 검증된 Base System 위에 Brand, Features, Domains를 맞추는 화이트라벨 솔루션입니다."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL 문의 →"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL STACK"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL은 목적에 맞는 기반 제품을 선정하고, 브랜드 커스터마이징과 기능 구성을 진행합니다. 도메인·배포·관리자·권한까지 — 당신의 브랜드로 운영 가능한 시스템을 전달합니다."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "White-label"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "브랜드 맞춤 디지털 제품 론칭"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "브랜드 경험이 일반 SaaS 툴처럼 보이는 경우. 로고만 바꾸는 수준이 아닌 맞춤이 필요한 경우."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "처음부터 구축 vs Base + Brand 맞춤"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "화이트라벨 구축에 필요한 작업을"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "목적에 맞는 화이트라벨 베이스와 포함 기능을 정합니다. 예약·문의·CRM·대시보드 등 모듈 조합을 제안합니다."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 LAUNCH & HANDOFF"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "이런 화이트라벨 제품을 구성할 수 있습니다."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "예약·스케줄·알림이 핵심인 브랜드 맞춤 서비스. 관리자·고객 화면 포함."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "운영 지표·상태·알림 대시보드. 브랜드 맞춤 KPI 구성."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "현장·서비스 업종 맞춤 운영 도구. 예약·문의·리포트 연계."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "도메인 연결, 검수, 운영 인수인계를 진행합니다. 확장 포인트까지 연결합니다."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "White-label Spec"
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "화이트라벨 베이스에 AI 상담, 문의 분류, 초안 답변, 문서 요약 등을 선택적으로 연결할 수 있습니다. AI AUTOMATION 범위와 함께 설계하면 브랜드 맞춤 AI 경험까지 통합할 수 있습니다."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "콘텐츠·IA 맞춤"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "운영 가이드·인수인계를 진행합니다."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "03 브랜드·모듈·도메인을 맞춤 구성해야 하는 경우"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "완전 맞춤 개발과 무엇이 다른가요?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT와 어떻게 다른가요?"
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "White-label은 검증된 Base System 위에 Brand·모듈을 맞추는 방식입니다. CUSTOM PRODUCT는 문제에 맞게 처음부터 설계·구축하는 방식입니다."
+   }
+  ],
+  "en/business/white-label": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Notice This page describes Newon's technology, design and operations capabilities. Newon does not take on custom development or production projects for individual clients; collaboration is reviewed through partnership an"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL · SOLUTIONS"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Instead of building every foundation from zero, we reshape a proven product structure to your brand, domain, and features. Booking, inquiry, CRM, dashboards, AI support — white-label on a validated Base System with Brand"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "White-label inquiry →"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL STACK"
+   },
+   {
+    "families": [
+     "white-label",
+     "delivery-to-client"
+    ],
+    "text": "WHITE-LABEL selects the right foundation, then applies brand customization and feature configuration. Domain, deploy, admin, permissions — delivered as one system that operates under your brand."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "White-label"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "We run white-label build"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Choose the white-label foundation and included features. Propose module combinations — booking, inquiry, CRM, dashboard."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 LAUNCH & HANDOFF"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "White-label products we can configure."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Deliverables are a branded system and supporting docs."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL SPEC"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "You can optionally connect AI support, inquiry classification, reply drafts, and document summaries to the white-label base. Designed with AI AUTOMATION scope, it can integrate a brand-fit AI experience."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "From requirements to launch handoff."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "How is this different from full custom development?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "How is this different from CUSTOM PRODUCT?"
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "White-label adapts a validated Base System to your brand and modules. CUSTOM PRODUCT designs and builds for the problem from the start."
+   }
+  ],
+  "ja/business/white-label": [
+   {
+    "families": [
+     "custom-made",
+     "commission/outsourcing"
+    ],
+    "text": "お知らせ このページでは、Newonの技術・デザイン・運用の対応力を紹介しています。Newonは個別のお客様向けのカスタム開発・制作案件の受託は行っておらず、協業はパートナーシップ・導入のお問い合わせを通じて検討します。"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL · ソリューション"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "ゼロからあらゆる基礎を造るのではなく、あなたのブランド、ドメインおよび特徴に実績のある製品構造を再構築します。 予約、問い合わせ、CRM、ダッシュボード、AIサポート — ブランド、機能、ドメインが構成されている検証済みのベースシステムに関するホワイトラベル。"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "の特長 ホワイトラベルのお問い合わせ →"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL STACK"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "の特長 オフ・ザ・シェルフツールは高速ですが、汎用性を感じています。 完全なカスタムビルドは起動に時間がかかりすぎます。 あなたが必要とするものは、あなたのブランドの検証済みのベースシステムであり、上の特徴を区別しています。"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL適切な基盤を選択し、ブランドのカスタマイズと機能設定を適用します。 ドメイン、デプロイ、管理者、パーミッション、ブランドを運営するシステムとして提供"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "カスタムビルドタイムライン遅延起動。 の特長 市場問題へのスピード。"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "06 プリカスタムスター"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "完全なカスタムビルド前のベース製品が必要です。 後で拡張する部屋が必要です。"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "ゼロからビルドする 基礎+のブランドのカスタム化"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "ホワイトラベルビルドを実行"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "ホワイトラベルの基礎と含まれている機能を選択します。 Propose モジュールの組み合わせ — 予約、問い合わせ、CRM、ダッシュボード。"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "構成できるホワイトラベル製品。"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "適切な基礎およびモジュールの組合せを提案して下さい。 の特長 Agreeのカスタム化の規模。"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "納品可能は、ブランド化されたシステムであり、ドキュメントをサポートしています。"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL 仕様"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "の特長 モジュールの構成およびブランドのカスタム化の深さはプロジェクトの目的および予算によって変わります。"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "必要に応じてAIサポート、問い合わせ分類、返信草案、ドキュメントの要約をホワイトラベルベースに接続できます。 AI AUTOMATION スコープで設計されており、ブランドフィットの AI エクスペリエンスを統合できます。"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "カスタム機能の追加"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "基礎およびカスタム化の範囲を推薦して下さい。"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "の特長 完全なカスタム開発とはどのように異なっていますか?"
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "契約によります。 お問い合わせの際にオーナーシップと業務を明確にします。"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "これはどのように異なっていますかCUSTOM PRODUCT?"
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "の特長 White-labelは、検証済みのベースシステムをブランドやモジュールに適応させます。 CUSTOM PRODUCTは、スタートからの問題のために設計し、構築します。"
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "はい。 機能拡張、モジュールの追加、および運用サポートは、別途契約を継続できます。"
+   }
+  ],
+  "es/business/white-label": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Aviso Esta página describe las capacidades de tecnología, diseño y operaciones de Newon. Newon no asume proyectos de desarrollo o producción a medida para clientes individuales; las colaboraciones se estudian a través de"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL · SOLUCIONES"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Investigación de la marca blanca →"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL STACK"
+   },
+   {
+    "families": [
+     "white-label",
+     "delivery-to-client"
+    ],
+    "text": "WHITE-LABEL selecciona la base correcta, luego aplica la personalización de la marca y la configuración de características. Dominio, despliegue, administración, permisos — entregados como un sistema que opera bajo su mar"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "White-label"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 LAUNCH &amp; HANDOFF"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Productos de marca blanca que podemos configurar."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Puede conectar opcionalmente el soporte AI, clasificación de preguntas, borradores de respuesta y resúmenes de documentos a la base de marca blanca. Diseñado con el alcance de AUTOMATION AI, puede integrar una experienci"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Operaciones de documentos y entrega."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Entregamos los siguientes elementos según sea necesario para su alcance."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "¿Cómo es diferente de CUSTOM PRODUCT?"
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "White-label adapta un sistema de base validado a su marca y módulos. CUSTOM PRODUCT diseña y construye para el problema desde el principio."
+   }
+  ],
+  "pt-br/business/white-label": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Aviso Esta página descreve as capacidades de tecnologia, design e operações da Newon. A Newon não aceita projetos de desenvolvimento ou produção sob medida para clientes individuais; as colaborações são avaliadas por mei"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL · SOLUÇÕES"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Em vez de construir todas as fundações a partir de zero, reformulamos uma estrutura de produto comprovada para sua marca, domínio e recursos. Reserva, inquérito, CRM, painéis, suporte ao AI — white-label em um sistema ba"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL STACK"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL seleciona a fundação certa, então aplica a personalização da marca e configuração de recursos. Domínio, implantação, administração, permissões — entregues como um sistema que opera sob sua marca."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Marca branca"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 LUGAR E HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Deliverables são um sistema de marca e documentos de apoio."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL ESPEC"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Você pode opcionalmente conectar suporte AI, classificação de inquérito, rascunhos de resposta e resumos de documentos para a base de white-label. Projetado com escopo AI AUTOMATION, ele pode integrar uma experiência AI "
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Operações de documentos e entrega."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Nós entregamos os itens abaixo, conforme necessário para o seu escopo."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Como é que isto é diferente do CUSTOM PRODUCT?"
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "O White-label adapta um Sistema Base validado à sua marca e módulos. CUSTOM PRODUCT projeta e constrói para o problema desde o início."
+   }
+  ],
+  "fr/business/white-label": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Information Cette page présente les capacités de Newon en matière de technologie, de design et d'exploitation. Newon n'accepte pas de projets de développement ou de production sur mesure pour des clients individuels ; le"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL · SOLUTIONS"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL STACK"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Les outils off-the-shelf sont rapides mais se sentent génériques. La construction sur mesure prend trop de temps pour être lancée. Ce dont vous avez besoin, c'est d'un système de base validé avec votre marque et des fonc"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL sélectionne la fondation appropriée, puis applique la personnalisation de la marque et la configuration des fonctionnalités. Domain, deploy, admin, permissions — livré comme un système qui fonctionne sous vot"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Marque blanche"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Vous voulez un produit de base avant la construction complète sur mesure. Il vous faut de la place pour prolonger plus tard."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Nous effectuons la construction de la marque blanche"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Choisissez la fondation en marque blanche et les caractéristiques incluses. Proposer des combinaisons de modules — réservation, demande, CRM, tableau de bord."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Produits en marque blanche que nous pouvons configurer."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABELSPÉCIFICATIONS"
+   },
+   {
+    "families": [
+     "commission/outsourcing"
+    ],
+    "text": "Recommander base et gamme de personnalisation."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "En quoi est-ce différent du développement complet sur mesure?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "En quoi est-ce différent de CUSTOM PRODUCT ?"
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "La marque blanche adapte un système de base validé à votre marque et à vos modules. CUSTOM PRODUCT conçoit et construit le problème dès le début."
+   }
+  ],
+  "de/business/white-label": [
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL · LÖSUNGEN"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Anstatt jedes Fundament von Null zu bauen, gestalten wir eine bewährte Produktstruktur für Ihre Marke, Domain und Funktionen neu. Buchung, Anfrage, CRM, Dashboards, AI-Unterstützung - White-Label auf einem validierten Ba"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "White-Label-Anfrage"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL STACK"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL wählt die richtige Grundlage aus und wendet dann Markenanpassung und Funktionskonfiguration an. Domain, Deployment, Admin, Berechtigungen – als ein System bereitgestellt, das unter Ihrer Marke arbeitet."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Wir betreiben White-Label-Build"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Wählen Sie die White-Label-Stiftung und die enthaltenen Funktionen. Vorschlagsmodulkombinationen — Buchung, Anfrage, CRM, Dashboard."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 LAUNCH & HANDOFF"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "White-Label-Produkte können wir konfigurieren."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Deliverables sind ein Markensystem und unterstützende Dokumente."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABELSPEC"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Sie können optional AI-Unterstützung, Abfrageklassifizierung, Antwortentwürfe und Dokumentzusammenfassungen mit der White-Label-Basis verbinden. Entwickelt mit AI AUTOMATION Umfang, kann es eine markenkonforme AI Erfahru"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Wie unterscheidet sich das von Full Custom Development?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Wie unterscheidet sich das von CUSTOM PRODUCT?"
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "White-label passt ein validiertes Basissystem an Ihre Marke und Module an. CUSTOM PRODUCT entwirft und baut von Anfang an für das Problem."
+   }
+  ],
+  "hi/business/white-label": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "सूचना यह पृष्ठ Newon की प्रौद्योगिकी, डिज़ाइन और संचालन क्षमताओं का परिचय देता है। Newon व्यक्तिगत ग्राहकों के लिए कस्टम डेवलपमेंट या प्रोडक्शन प्रोजेक्ट स्वीकार नहीं करता; सहयोग पर विचार साझेदारी और अपनाने से जुड़ी पूछत"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL · समाधान"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "व्हाइट लेबल पूछताछ →"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL STACK"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "ऑफ-द-शेल्फ उपकरण तेजी से होते हैं लेकिन जेनेरिक महसूस करते हैं। पूर्ण कस्टम निर्माण बहुत लंबे समय तक शुरू होता है। आपको क्या ज़रूरत है आपके ब्रांड के साथ एक मान्य बेस सिस्टम है और शीर्ष पर अलग-अलग विशेषताएं हैं।"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL सही नींव का चयन करता है, फिर ब्रांड अनुकूलन और सुविधा विन्यास लागू करता है। डोमेन, परिनियोजित, व्यवस्थापक, अनुमतियां - एक ऐसी प्रणाली के रूप में वितरित की जाती हैं जो आपके ब्रांड के तहत काम करती हैं।"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "व्हाइट लेबल"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "कस्टम बिल्ड टाइमलाइन देरी लॉन्च। बाजार मामलों की गति।"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "आप पूर्ण कस्टम निर्माण से पहले एक आधार उत्पाद चाहते हैं। आपको बाद में विस्तार करने की आवश्यकता है।"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 लॉन्च और हैंडऑफ़"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "व्हाइट लेबल उत्पाद हम कॉन्फ़िगर कर सकते हैं।"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL युक्ति"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "कस्टम सुविधा जोड़"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 हैंडऑफ़"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "यह पूर्ण कस्टम विकास से कैसे अलग है?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "यह CUSTOM PRODUCT से कैसे अलग है?"
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "व्हाइट-लेबल आपके ब्रांड और मॉड्यूल के लिए एक मान्य बेस सिस्टम को अनुकूलित करता है। CUSTOM PRODUCT डिजाइन और शुरुआत से समस्या के लिए बनाता है।"
+   }
+  ],
+  "id/business/white-label": [
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Pemberitahuan Halaman ini menjelaskan kapabilitas teknologi, desain, dan operasional Newon. Newon tidak menerima proyek pengembangan atau produksi khusus untuk klien perorangan; kolaborasi ditinjau melalui pertanyaan kem"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL · SOLUSI"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL STACK"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL memilih fondasi yang benar, lalu menerapkan konfigurasi penyesuaian merek dan fitur. Domain, menyebarkan, admin, izin - disampaikan sebagai satu sistem yang beroperasi di bawah merek Anda."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 LUNCURKAN & HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Pengiriman adalah sistem bermerek dan mendukung dokumen."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABELSPEC"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Dari persyaratan untuk meluncurkan handoff."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Apa bedanya ini dengan CUSTOM PRODUCT?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "White- label adapts Base System memvalidasi ke merek dan modul Anda. CUSTOM PRODUCT merancang dan membangun untuk masalah dari awal."
+   }
+  ],
+  "ko/business/custom-product": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client",
+     "commission/outsourcing"
+    ],
+    "text": "안내 이 페이지는 사업 방향에 맞춰 정비 중입니다. Newon은 개별 고객의 맞춤 제작·외주·납품을 제공하지 않으며, 아래 내용은 기술·운영 역량을 설명하는 참고 자료입니다. 협업은 제휴·도입 문의를 통해 검토합니다."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT · 솔루션"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "특정 업무, 프로세스, 사용자군을 위한 맞춤형 웹·앱·내부 도구·포털·대시보드를 설계하고 구축합니다. 문제 정의, UX/UI, 아키텍처, 구현, 연동, 검수까지 — 표준 패키지로 담기지 않는 요구를 하나의 제품으로 완성합니다."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT 문의 →"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Off-the-shelf 툴을 억지로 맞추면 프로세스가 비틀리고, 처음부터 전부 새로 만들면 시간과 비용이 과도해집니다. 필요한 것은 문제에 맞게 설계된 맞춤 제품입니다."
+   },
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "CUSTOM PRODUCT는 먼저 해결해야 할 문제와 사용자·업무 맥락을 정의합니다. 그다음 UX/UI, 기능 범위, 데이터·연동 구조를 설계하고, 구현·검수·인수인계까지 하나의 제품으로 전달합니다."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Custom Product"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "맞춤 제품·시스템 구축"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "02 맞춤 UX/UI와 기능 범위 설계"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "맞춤 제품 구축에 필요한 작업을"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "해결할 문제, 사용자, 성공 기준을 정의합니다. 왜 맞춤 제품이 필요한지 명확히 합니다."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 QA & HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "기능·플로우·연동을 검수합니다. 운영·확장을 위한 문서와 인수인계를 제공합니다."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "특정 사용자군·업무를 위한 맞춤 SaaS. 구독·권한·관리 기능 포함."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "현장·모바일 중심 맞춤 앱·웹. 오프라인·동기화 고려."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "문제, 사용자, 성공 기준을 정의합니다. 왜 맞춤 제품이 필요한지 합의합니다."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "05 DELIVER"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "배포·검수·문서·인수인계를 진행합니다. 운영·확장 경로까지 연결합니다."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Handoff"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Product Spec UX / UI Build Handoff"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Custom Product Spec"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "05 운영·인수인계 문서 초안"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "맞춤 UX/UI 전체"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "문서·인수인계 포함"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "문서·운영 가이드·인수인계를 진행합니다."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "01 Custom Product (Web / App / Portal)"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 Handoff & Ops Guide"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "02 내부 운영·관리용 맞춤 시스템이 필요한 조직"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "패키지는 정의된 범위의 표준 서비스입니다. CUSTOM PRODUCT는 조직·업무·연동에 맞춘 설계가 필요한 맞춤 구축입니다."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "White-label과 어떻게 다른가요?"
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "White-label은 검증된 기반 위에 브랜드·모듈을 맞추는 방식입니다. CUSTOM PRODUCT는 문제에 맞게 처음부터 설계·구축하는 방식입니다."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "해결하려는 업무·문제, 사용자, 연동 요구가 있다면 알려주세요. 맞춤 제품 범위와 구축 방식을 함께 확인합니다."
+   }
+  ],
+  "en/business/custom-product": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client",
+     "commission/outsourcing"
+    ],
+    "text": "Notice This page is being reorganized to match our business direction. Newon does not offer custom production, outsourcing or delivery for individual clients; the content below is reference material on our technology and"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT · SOLUTIONS"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "We design and build custom web apps, internal tools, portals, and dashboards for specific workflows, users, and operations. From problem framing and UX/UI through architecture, implementation, integrations, and QA — when"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Custom product inquiry →"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "CUSTOM PRODUCT starts by defining the problem, users, and workflow context. Then we design UX/UI, feature scope, data and integration structure, and deliver implementation, QA, and handoff as one product."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Custom Product"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "We run custom product build"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Define problem, users, and success criteria. Clarify why a custom product is needed."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 QA & HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Verify features, flows, and integrations. Provide docs and handoff for operation and growth."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "From problem framing to product delivery"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Define problem, users, and success criteria. Agree why a custom product is needed."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "05 DELIVER"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Handoff"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Product Spec UX / UI Build Handoff"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Deliverables are an operable product and supporting docs."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT SPEC"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "05 Ops and handoff doc drafts"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Docs and handoff included"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "From problem framing to handoff."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "We deliver the items below as needed for your scope."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "01 Custom Product (Web / App / Portal)"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 Handoff & Ops Guide"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Packages are defined-scope standard services. CUSTOM PRODUCT is custom design and build for org, workflow, and integration needs."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "How is this different from white-label?"
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "White-label adapts a validated foundation to your brand and modules. CUSTOM PRODUCT designs and builds for the problem from the start."
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "How is pricing set?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "If you have a workflow problem, users, and integration needs, tell us what you are trying to solve. We will confirm custom product scope and build approach together."
+   }
+  ],
+  "ja/business/custom-product": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "お知らせ このページは事業方針に合わせて整理中です。Newonは個別のお客様向けのカスタム制作・外注・納品サービスは提供しておらず、以下の内容は当社の技術・運用力に関する参考情報です。協業はパートナーシップ・導入のお問い合わせを通じて検討します。"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT · ソリューション"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "私たちは、特定のワークフロー、ユーザー、および操作のためのカスタムWebアプリ、内部ツール、ポータル、およびダッシュボードを設計し、構築します。 問題のフラミングとUX/UIからアーキテクチャ、実装、統合、およびQAを通して、標準的なパッケージが十分でないと、私たちは1つの一貫性のある製品を提供します。"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "CUSTOM PRODUCTは、問題、ユーザー、ワークフローのコンテキストを定義することで始まります。 それから私達はUX/UI、特徴の規模、データおよび統合の構造を設計し、1つのプロダクトとして実装、QAおよびhandoffを渡す。"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "カスタム製品"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "MVP、Web、アプリ、または内部ツールパッケージは完全にフィットしません。 の特長 ワークフローはカスタム設計が必要です。"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "02 カスタムUX/UIと機能スコープの設計"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "カスタム製品ビルドを実行"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "問題、ユーザー、および成功基準を定義します。 カスタム製品が必要な理由を明確にします。"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 QA及びHANDOFF"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "カスタムサアス"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "フィールドファーストのカスタムアプリまたはウェブ。 の特長 オフラインと同期を考慮した。"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "問題、ユーザー、および成功基準を定義します。 カスタム製品が必要な理由に同意します。"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Product Spec UX / UI Build Handoff"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT 仕様"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "05 Ops および handoff の doc は"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "02 フルカスタムビルド"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "01 の特長 カスタム製品(Web / App / Portal)"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "の特長 パッケージは定義スコープ標準サービスです。 CUSTOM PRODUCTは、org、ワークフロー、および統合のニーズのためにカスタム設計およびビルドです。"
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "の特長 White-labelは、ブランドとモジュールに検証済みの基盤を適応させます。 CUSTOM PRODUCTは、スタートからの問題のために設計し、構築します。"
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "はい。 フェーズ2、機能拡張、運用サポートは、別途契約を継続できます。"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "ワークフローの問題、ユーザー、インテグレーションのニーズがあれば、解決しようとしていることを教えてください。 カスタム製品スコープを確認し、アプローチを共に構築します。"
+   }
+  ],
+  "es/business/custom-product": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client",
+     "contract"
+    ],
+    "text": "Aviso Esta página se está reorganizando para ajustarse a la orientación de nuestro negocio. Newon no ofrece producción a medida, subcontratación ni entrega de proyectos para clientes individuales; el contenido siguiente "
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT · SOLUCIONES"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Diseñamos y construimos aplicaciones web personalizadas, herramientas internas, portales y paneles para flujos de trabajo específicos, usuarios y operaciones. Desde el encuadre de problemas y UX/UI a través de arquitectu"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "CUSTOM PRODUCT comienza definiendo el problema, los usuarios y el contexto del flujo de trabajo. Luego diseñamos UX/UI, el alcance de la función, la estructura de datos e integración, y entregamos la implementación, QA, "
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 QA &amp; HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Verificar características, flujos e integraciones. Proveer docs y handoff para el funcionamiento y el crecimiento."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "De la definición de problema a la entrega de productos"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "05 ENTREGA"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Handoff"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Product Spec UX / UI Build Handoff"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Las entregas son un producto operable y docs de apoyo."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Docs y handoff incluidos"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "De la definición de problema a la entrega."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Entregamos los siguientes elementos según sea necesario para su alcance."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 Handoff &amp; Ops Guide"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Los paquetes son servicios estándar definidos. CUSTOM PRODUCT es diseño personalizado y construye para org, flujo de trabajo y necesidades de integración."
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "White-label adapta una base validada a tu marca y módulos. CUSTOM PRODUCT diseña y construye para el problema desde el principio."
+   }
+  ],
+  "pt-br/business/custom-product": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "Aviso Esta página está sendo reorganizada de acordo com a direção do nosso negócio. A Newon não oferece produção sob medida, terceirização nem entrega de projetos para clientes individuais; o conteúdo abaixo é material d"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT · SOLUÇÕES"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Nós projetamos e construímos aplicativos web personalizados, ferramentas internas, portais e painéis para fluxos de trabalho específicos, usuários e operações. Desde o enquadramento de problemas e UX/UI até arquitetura, "
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "CUSTOM PRODUCT começa definindo o problema, usuários e contexto de fluxo de trabalho. Em seguida, projetamos UX/UI, escopo de recursos, dados e estrutura de integração, e entregamos implementação, QA, e transferência com"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 QA & HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Verifique recursos, fluxos e integrações. Fornecer documentos e entrega para operação e crescimento."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Desde o enquadramento de problemas até a entrega do produto"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Implantar, verificar, documentar e entregar. Conectar o caminho de operação e expansão."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Product Spec UX / UI Build Handoff"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Entregas são um produto operável e documentos de apoio."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT ESPEC"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "De enquadramento de problemas para entrega."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Documento, guiar operações e entregar."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Nós entregamos os itens abaixo, conforme necessário para o seu escopo."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Os pacotes são serviços padrão definidos. CUSTOM PRODUCT é design personalizado e construir para org, fluxo de trabalho e necessidades de integração."
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "O White-label adapta uma fundação validada à sua marca e módulos. CUSTOM PRODUCT projeta e constrói para o problema desde o início."
+   }
+  ],
+  "fr/business/custom-product": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "Information Cette page est en cours de réorganisation pour refléter l'orientation de notre activité. Newon ne propose ni production sur mesure, ni sous-traitance, ni livraison de projets pour des clients individuels ; le"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT · SOLUTIONS"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT commence par définir le problème, les utilisateurs et le contexte de workflow. Ensuite, nous concevons UX/UI, la portée des fonctionnalités, les données et la structure d'intégration, et livrons l'implémen"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Du cadrage des problèmes à la livraison des produits"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Product Spec UX / UI Build Handoff"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCTSPÉCIFICATIONS"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Les forfaits sont des services standard définis. CUSTOM PRODUCT est la conception et la construction personnalisées pour les besoins d'org, de workflow et d'intégration."
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "La marque blanche adapte une fondation validée à votre marque et à vos modules. CUSTOM PRODUCT conçoit et construit le problème dès le début."
+   }
+  ],
+  "de/business/custom-product": [
+   {
+    "families": [
+     "delivery-to-client",
+     "commission/outsourcing"
+    ],
+    "text": "Hinweis Diese Seite wird an die Ausrichtung unseres Geschäfts angepasst. Newon bietet für Einzelkunden weder individuelle Produktion noch Outsourcing oder Auslieferung an; die folgenden Inhalte sind Referenzmaterial zu u"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT · LÖSUNGEN"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT beginnt mit der Definition des Problems, der Benutzer und des Workflow-Kontexts. Dann entwerfen wir UX/UI, Funktionsumfang, Daten- und Integrationsstruktur und liefern Implementierung, QA und Übergabe als "
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "unterstützen Wir führen kundenspezifische Produktentwicklung"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Definieren Sie Problem, Benutzer und Erfolgskriterien. Erklären Sie, warum ein kundenspezifisches Produkt benötigt wird."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 QA und HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Überprüfen Sie Features, Flows und Integrationen. Geben Sie Dokumente und Handoff für Betrieb und Wachstum."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Vom Problemrahmen bis zur Produktlieferung"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Definieren Sie Problem, Benutzer und Erfolgskriterien. Stimmen Sie zu, warum ein kundenspezifisches Produkt benötigt wird."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Bereitstellen, Verifizieren, Dokumentieren und Abgeben. Verbinden Sie den Betriebs- und Erweiterungspfad."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Product Spec UX / UI Build Handoff"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Deliverables sind ein funktionsfähiges Produkt und unterstützende Dokumente."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCTSPEC"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "05 Ops und Handoff Doc Drafts"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "01 Kundenspezifisches Produkt (Web / App / Portal)"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 Handoff & Ops Guide"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Pakete sind Standarddienste mit definiertem Umfang. CUSTOM PRODUCT ist benutzerdefiniertes Design und Build für Org, Workflow und Integrationsanforderungen."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "Wie unterscheidet sich das von White-Label?"
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "White-label passt eine validierte Grundlage an Ihre Marke und Module an. CUSTOM PRODUCT entwirft und baut von Anfang an für das Problem."
+   }
+  ],
+  "hi/business/custom-product": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "सूचना यह पृष्ठ हमारी व्यावसायिक दिशा के अनुरूप पुनर्गठित किया जा रहा है। Newon व्यक्तिगत ग्राहकों के लिए कस्टम प्रोडक्शन, आउटसोर्सिंग या डिलीवरी सेवाएँ नहीं देता; नीचे दी गई सामग्री हमारी प्रौद्योगिकी और संचालन क्षमताओं "
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT · समाधान"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "हम विशिष्ट वर्कफ़्लो, उपयोगकर्ताओं और संचालन के लिए कस्टम वेब ऐप, आंतरिक उपकरण, पोर्टल और डैशबोर्ड का डिजाइन और निर्माण करते हैं। वास्तुकला, कार्यान्वयन, एकीकरण और QA के माध्यम से समस्या फ़्रेमिंग और UX/UI से - जब मानक प"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "कस्टम उत्पाद पूछताछ →"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT समस्या, उपयोगकर्ताओं और वर्कफ़्लो संदर्भ को परिभाषित करके शुरू होता है। फिर हम UX/UI, फीचर गुंजाइश, डेटा और एकीकरण संरचना को डिजाइन करते हैं, और कार्यान्वयन को वितरित करते हैं, QA, और एक उत्पाद के रूप में "
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "कस्टम उत्पाद"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "MVP, वेब, ऐप, या आंतरिक उपकरण पैकेज पूरी तरह फिट नहीं हैं। आपके वर्कफ़्लो को कस्टम डिज़ाइन की आवश्यकता होती है।"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "02 कस्टम UX/UI और सुविधा क्षेत्र एक उत्पाद में"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "हम एक संरचित सगाई के रूप में कस्टम उत्पाद निर्माण"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "समस्या, उपयोगकर्ताओं और सफलता मानदंड को परिभाषित करें। क्यों एक कस्टम उत्पाद की जरूरत है?"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 क्यूए और हैंडऑफ़"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "कस्टम SAAS"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "फील्ड-पहली कस्टम ऐप या वेब। ऑफलाइन और सिंक पर विचार किया गया।"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "हैंडऑफ़"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Product Spec UX / UI Build Handoff"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Deliverables एक परिचालन उत्पाद है और डॉक्स का समर्थन करता है।"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT युक्ति"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "05 Ops and handoff doc ड्राफ्ट"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "01 अनुकूलित उत्पाद"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "02 पूर्ण कस्टम BUILD"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "पूर्ण कस्टम UX/UI"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Docs and handoff शामिल हैं"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 हैंडऑफ़"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "01 कस्टम उत्पाद (वेब / ऐप / पोर्टल)"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 हैंडऑफ़ एंड ओप्स गाइड"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "पैकेज परिभाषित-स्कोप मानक सेवाएं हैं। CUSTOM PRODUCT कस्टम डिजाइन है और ऑर्ग, वर्कफ़्लो और एकीकरण की जरूरतों के लिए निर्माण करता है।"
+   },
+   {
+    "families": [
+     "white-label",
+     "custom-made"
+    ],
+    "text": "व्हाइट-लेबल आपके ब्रांड और मॉड्यूल के लिए एक मान्य आधार को अनुकूलित करता है। CUSTOM PRODUCT डिजाइन और शुरुआत से समस्या के लिए बनाता है।"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "कैसे मूल्य निर्धारण सेट है?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "यदि आपके पास वर्कफ़्लो समस्या, उपयोगकर्ता और एकीकरण की जरूरत है, तो हमें बताएं कि आप क्या हल करने की कोशिश कर रहे हैं। हम कस्टम उत्पाद गुंजाइश की पुष्टि करेंगे और एक साथ दृष्टिकोण का निर्माण करेंगे।"
+   }
+  ],
+  "id/business/custom-product": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "Pemberitahuan Halaman ini sedang ditata ulang agar sesuai dengan arah bisnis kami. Newon tidak menyediakan produksi khusus, alih daya, maupun pengiriman hasil kerja untuk klien perorangan; konten di bawah ini adalah mate"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT · SOLUSI"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "CUSTOM PRODUCTdimulai dengan mendefinisikan masalah, pengguna, dan konteks alur kerja. Kemudian kami merancang UX / UI, fitur lingkup, struktur data dan integrasi, dan memberikan implementasi, QA, dan handoff sebagai sat"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 QA & HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Memverifikasi fitur, aliran, dan integrasi. Menyediakan dokumen dan handoff untuk operasi dan pertumbuhan."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Dari masalah penjebakan ke pengiriman produk"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Handoff"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Product Spec UX / UI Build Handoff"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Deliverables adalah produk yang dapat dioperasi dan mendukung docs."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCTSPEC"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "05 Ops dan handoff rancangan doc"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Docs dan handoff disertakan"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Dari masalah framing untuk handoff."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 Handoff & Panduan Operasi"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Paket ditentukan-lingkup layanan standar. CUSTOM PRODUCT adalah desain kustom dan membangun untuk org, alur kerja, dan kebutuhan integrasi."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "White- label adapts sebuah dasar validasi untuk merek Anda dan modul. CUSTOM PRODUCT merancang dan membangun untuk masalah dari awal."
+   }
+  ],
+  "ko/business/internal-system": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client",
+     "commission/outsourcing"
+    ],
+    "text": "안내 이 페이지는 사업 방향에 맞춰 정비 중입니다. Newon은 개별 고객의 맞춤 제작·외주·납품을 제공하지 않으며, 아래 내용은 기술·운영 역량을 설명하는 참고 자료입니다. 협업은 제휴·도입 문의를 통해 검토합니다."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "승인, 요청, 재고, 인사, 정산, 보고 — 여러 내부 업무와 사용자 권한, 데이터·운영 과정을 연결하는 조직 단위의 맞춤 시스템을 설계하고 구축합니다. 특정 업무용 화면인 Internal Tools와는 범위가 다릅니다."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 OPS HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "운영 가이드, 권한 매뉴얼, 인수인계를 제공합니다. 확장·유지보수 경로를 연결합니다."
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "프로젝트·고객·계약·정산 내부 관리. 팀 협업·상태·문서."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "운영 가이드, 권한 매뉴얼, 인수인계를 진행합니다. 확장·유지보수 경로를 연결합니다."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "05 운영·인수인계 문서 초안"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "배포·인수인계 포함"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "운영 가이드, 권한 매뉴얼, 교육·인수인계를 진행합니다."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "INTERNAL TOOLS는 정의된 자동화·운영 툴 패키지입니다. INTERNAL SYSTEM은 조직의 내부 업무·권한·연동에 맞춘 맞춤형 운영 시스템 구축입니다."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT와 어떻게 다른가요?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT는 더 넓은 맞춤 제품 구축입니다. INTERNAL SYSTEM은 내부 운영·관리·승인·Admin Console 중심의 조직용 시스템에 초점을 둡니다."
+   }
+  ],
+  "en/business/internal-system": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client",
+     "commission/outsourcing"
+    ],
+    "text": "Notice This page is being reorganized to match our business direction. Newon does not offer custom production, outsourcing or delivery for individual clients; the content below is reference material on our technology and"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "INTERNAL SYSTEM starts by defining internal work, users, and permission structure. Then we design workflows, Admin Console, data and integrations — and deliver implementation, deployment, and ops guides as one internal s"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 OPS HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Provide ops guide, permission manual, and handoff. Connect expansion and maintenance path."
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "Internal project, client, contract, settlement management. Team collaboration, status, documents."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Deliver ops guide, permission manual, handoff. Connect expansion and maintenance path."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Deliverables are an operable internal system and supporting docs."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "05 Ops and handoff doc drafts"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Deployment and handoff included"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "From requirements to ops handoff."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Ops guide, permission manual, training and handoff."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "We deliver the items below as needed for your scope."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "How is this different from CUSTOM PRODUCT?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT is broader custom product build. INTERNAL SYSTEM focuses on internal operations, management, approval, and Admin Console."
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "How is pricing set?"
+   }
+  ],
+  "ja/business/internal-system": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "お知らせ このページは事業方針に合わせて整理中です。Newonは個別のお客様向けのカスタム制作・外注・納品サービスは提供しておらず、以下の内容は当社の技術・運用力に関する参考情報です。協業はパートナーシップ・導入のお問い合わせを通じて検討します。"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "承認、要求、在庫、人事、決済、レポーティング、クライアント、プロジェクトオプス、カスタム社内Web、管理者、ポータルシステムの設計および構築 要件、権限、およびワークフローから、統合と管理者コンソールを介して、実際に使用する1つのシステムとして配信されます。"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "内部プロジェクト、クライアント、契約、決済管理。 の特長 チームコラボレーション、ステータス、ドキュメント。"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "05 Ops および handoff の doc は"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "INTERNAL TOOLS は、定義された自動化とオプスツールパッケージです。 INTERNAL SYSTEM は、org の内部作業、許可、統合のためのカスタムビルドです。"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "これはどのように異なっていますかCUSTOM PRODUCT?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCTはより広い注文のプロダクト造りです。 INTERNAL SYSTEMは内部操作、管理、承認およびAdmin Consoleに焦点を合わせます。"
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "はい。 機能拡張、メンテナンス、Opsサポートは、別途契約を継続できます。"
+   }
+  ],
+  "es/business/internal-system": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client",
+     "contract"
+    ],
+    "text": "Aviso Esta página se está reorganizando para ajustarse a la orientación de nuestro negocio. Newon no ofrece producción a medida, subcontratación ni entrega de proyectos para clientes individuales; el contenido siguiente "
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Aprobaciones, solicitudes, inventario, RRH, liquidación, presentación de informes, clientes y operaciones de proyectos — diseñamos y construimos sistemas de web, administración y portal internos personalizados. De requis"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "INTERNAL SYSTEM comienza definiendo el trabajo interno, los usuarios y la estructura de permisos. Luego diseñamos flujos de trabajo, Admin Console, datos e integraciones, y entregamos guías de implementación, implementac"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Proporcione guía de operaciones, manual de permisos y entrega. Conectar el camino de expansión y mantenimiento."
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "Proyecto interno, cliente, contrato, gestión de asentamientos. Colaboración en equipo, estado, documentos."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Únete a bordo, solicitud, aprobación de flujos internos. Entrega de permisos y acceso."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Entrega guía de operaciones, manual de permisos, entrega. Conectar el camino de expansión y mantenimiento."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Deployment y handoff incluidos"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "De los requisitos a la entrega de operaciones."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Guía de opciones, manual de permiso, entrenamiento y entrega."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Entregamos los siguientes elementos según sea necesario para su alcance."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "¿Cómo es diferente de CUSTOM PRODUCT?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT es un producto personalizado más amplio. INTERNAL SYSTEM se centra en operaciones internas, gestión, aprobación y Admin Console."
+   }
+  ],
+  "pt-br/business/internal-system": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "Aviso Esta página está sendo reorganizada de acordo com a direção do nosso negócio. A Newon não oferece produção sob medida, terceirização nem entrega de projetos para clientes individuais; o conteúdo abaixo é material d"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 OPS HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Fornecer guia de operações, manual de permissão e entrega. Conectar caminho de expansão e manutenção."
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "Projeto interno, cliente, contrato, gestão de liquidação. Colaboração da equipa, status, documentos."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Entregar guia de operações, manual de permissão, entrega. Guia Conectar caminho de expansão e manutenção."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Deliverables são um sistema interno operable e documentos de apoio."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Guia de operações, manual de permissão, treinamento e entrega."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Nós entregamos os itens abaixo, conforme necessário para o seu escopo."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Como é que isto é diferente do CUSTOM PRODUCT?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT é uma construção de produto personalizado mais ampla. INTERNAL SYSTEM se concentra em operações internas, gestão, aprovação e Admin Console."
+   }
+  ],
+  "fr/business/internal-system": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "Information Cette page est en cours de réorganisation pour refléter l'orientation de notre activité. Newon ne propose ni production sur mesure, ni sous-traitance, ni livraison de projets pour des clients individuels ; le"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "Projet interne, client, contrat, gestion des règlements. Collaboration de l'équipe, état, documents."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "En quoi est-ce différent de CUSTOM PRODUCT ?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT est plus large construction de produits personnalisés. INTERNAL SYSTEM se concentre sur les opérations internes, la gestion, l'approbation et Admin Console."
+   }
+  ],
+  "de/business/internal-system": [
+   {
+    "families": [
+     "delivery-to-client",
+     "commission/outsourcing"
+    ],
+    "text": "Hinweis Diese Seite wird an die Ausrichtung unseres Geschäfts angepasst. Newon bietet für Einzelkunden weder individuelle Produktion noch Outsourcing oder Auslieferung an; die folgenden Inhalte sind Referenzmaterial zu u"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 OPS-HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Geben Sie Ops Guide, Berechtigungshandbuch und Handoff. Verbinden Sie Erweiterungs- und Wartungspfad."
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "Internes Projekt, Kunde, Vertrag, Abwicklungsmanagement. Teamzusammenarbeit, Status, Dokumente."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Deliver ops guide, permission manual, handoff. Verbinden Sie Erweiterungs- und Wartungspfad."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Deliverables sind ein funktionsfähiges internes System und unterstützende Dokumente."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "05 Ops und Handoff Doc Drafts"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Von Anforderungen bis zur Ops Handoff."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Ops guide, permission manual, training und handoff."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Wie unterscheidet sich das von CUSTOM PRODUCT?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT ist eine breitere benutzerdefinierte Produktentwicklung. INTERNAL SYSTEM konzentriert sich auf interne Operationen, Verwaltung, Genehmigung und Admin Console."
+   }
+  ],
+  "hi/business/internal-system": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "सूचना यह पृष्ठ हमारी व्यावसायिक दिशा के अनुरूप पुनर्गठित किया जा रहा है। Newon व्यक्तिगत ग्राहकों के लिए कस्टम प्रोडक्शन, आउटसोर्सिंग या डिलीवरी सेवाएँ नहीं देता; नीचे दी गई सामग्री हमारी प्रौद्योगिकी और संचालन क्षमताओं "
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "अनुमोदन, अनुरोध, सूची, मानव संसाधन, निपटान, रिपोर्टिंग, ग्राहक और परियोजना ops - हम कस्टम आंतरिक वेब, व्यवस्थापक और पोर्टल सिस्टम डिजाइन और निर्माण करते हैं। आवश्यकताओं, अनुमतियों और कार्यप्रवाहों से एकीकरण और Admin Cons"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 OPS हैंडऑफ़"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "ओप्स गाइड, अनुमति मैनुअल और हैंडऑफ़ प्रदान करें। विस्तार और रखरखाव पथ कनेक्ट करें।"
+   },
+   {
+    "families": [
+     "contract"
+    ],
+    "text": "आंतरिक परियोजना, ग्राहक, अनुबंध, निपटान प्रबंधन। टीम सहयोग, स्थिति, दस्तावेज।"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "डिलिवर ओप्स गाइड, अनुमति मैनुअल, हैंडऑफ़। विस्तार और रखरखाव पथ कनेक्ट करें।"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "05 Ops and handoff doc ड्राफ्ट"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "डिप्लॉयमेंट और हैंडऑफ़ में शामिल हैं"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "आवश्यकताओं से ओप्स हैंडऑफ़ तक।"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 हैंडऑफ़"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "ओप्स गाइड, अनुमति मैनुअल, प्रशिक्षण और हैंडऑफ़।"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "INTERNAL TOOLS एक परिभाषित स्वचालन और ops उपकरण पैकेज है। INTERNAL SYSTEM आपके ऑर्ग के आंतरिक कार्य, अनुमतियों और एकीकरण के लिए कस्टम निर्माण है।"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "यह CUSTOM PRODUCT से कैसे अलग है?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT व्यापक कस्टम उत्पाद निर्माण है। INTERNAL SYSTEM आंतरिक संचालन, प्रबंधन, अनुमोदन और Admin Console पर केंद्रित है।"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "कैसे मूल्य निर्धारण सेट है?"
+   }
+  ],
+  "id/business/internal-system": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "Pemberitahuan Halaman ini sedang ditata ulang agar sesuai dengan arah bisnis kami. Newon tidak menyediakan produksi khusus, alih daya, maupun pengiriman hasil kerja untuk klien perorangan; konten di bawah ini adalah mate"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "08 OPS HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Menyediakan ops panduan, izin manual, dan handoff. Hubungkan ekspansi dan jalur pemeliharaan."
+   },
+   {
+    "families": [
+     "commission/outsourcing",
+     "contract"
+    ],
+    "text": "Proyek internal, klien, kontrak, manajemen penyelesaian. Kolaborasi tim, status, dokumen."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Kirim panduan ops, izin manual, handoff. Hubungkan ekspansi dan jalur pemeliharaan."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "05 Ops dan handoff rancangan doc"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Penyebaran dan handoff termasuk"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Dari persyaratan untuk ops handoff."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "07 HANDOFF"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Ops panduan, izin manual, pelatihan dan handoff."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Apa bedanya ini dengan CUSTOM PRODUCT?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT adalah pembuatan produk custom yang lebih luas. INTERNAL SYSTEM fokus pada operasi internal, manajemen, persetujuan, dan Admin Console."
+   }
+  ],
+  "ko/business/product-launch": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client",
+     "commission/outsourcing"
+    ],
+    "text": "안내 이 페이지는 사업 방향에 맞춰 정비 중입니다. Newon은 개별 고객의 맞춤 제작·외주·납품을 제공하지 않으며, 아래 내용은 기술·운영 역량을 설명하는 참고 자료입니다. 협업은 제휴·도입 문의를 통해 검토합니다."
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "데모·투자·행사 일정 맞춤"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "맞춤 체크리스트·Runbook"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "도메인, SEO, QA, 분석, 결제, 모니터링, 롤백 등 프로젝트에 필요한 항목을 맞춤 구성합니다."
+   }
+  ],
+  "en/business/product-launch": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client",
+     "commission/outsourcing"
+    ],
+    "text": "Notice This page is being reorganized to match our business direction. Newon does not offer custom production, outsourcing or delivery for individual clients; the content below is reference material on our technology and"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Deliverables are a shippable product and launch-ready state."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "We deliver the items below as needed for your scope."
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "How is pricing set?"
+   }
+  ],
+  "ja/business/product-launch": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "お知らせ このページは事業方針に合わせて整理中です。Newonは個別のお客様向けのカスタム制作・外注・納品サービスは提供しておらず、以下の内容は当社の技術・運用力に関する参考情報です。協業はパートナーシップ・導入のお問い合わせを通じて検討します。"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "03 カスタム起動"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "カスタムチェックリストとランブック"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   }
+  ],
+  "es/business/product-launch": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client",
+     "contract"
+    ],
+    "text": "Aviso Esta página se está reorganizando para ajustarse a la orientación de nuestro negocio. Newon no ofrece producción a medida, subcontratación ni entrega de proyectos para clientes individuales; el contenido siguiente "
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Las entregas son un producto naufragable y estado listo para el lanzamiento."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Entregamos los siguientes elementos según sea necesario para su alcance."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "¿Cómo es diferente de CUSTOM PRODUCT?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT es la construcción de un producto a medida. PRODUCT LAUNCH se centra en la preparación de publicación de un producto que ya existe, o cuyo desarrollo se cotiza aparte."
+   }
+  ],
+  "pt-br/business/product-launch": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "Aviso Esta página está sendo reorganizada de acordo com a direção do nosso negócio. A Newon não oferece produção sob medida, terceirização nem entrega de projetos para clientes individuais; o conteúdo abaixo é material d"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Entregables são um produto shippable e estado pronto para lançamento."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Nós entregamos os itens abaixo, conforme necessário para o seu escopo."
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Como é que isto é diferente do CUSTOM PRODUCT?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT é a construção de um produto sob medida. PRODUCT LAUNCH foca a preparação de publicação de um produto que já existe, ou cujo desenvolvimento é orçado à parte."
+   }
+  ],
+  "fr/business/product-launch": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "Information Cette page est en cours de réorganisation pour refléter l'orientation de notre activité. Newon ne propose ni production sur mesure, ni sous-traitance, ni livraison de projets pour des clients individuels ; le"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   }
+  ],
+  "de/business/product-launch": [
+   {
+    "families": [
+     "delivery-to-client",
+     "commission/outsourcing"
+    ],
+    "text": "Hinweis Diese Seite wird an die Ausrichtung unseres Geschäfts angepasst. Newon bietet für Einzelkunden weder individuelle Produktion noch Outsourcing oder Auslieferung an; die folgenden Inhalte sind Referenzmaterial zu u"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Bereitstellen, Checkliste ausführen und live gehen. Bestätigen Sie Überwachungs- und Rollback-Pfade."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "Deliverables sind ein versandfähiges Produkt und ein startbereiter Zustand."
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Wie unterscheidet sich das von CUSTOM PRODUCT?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT ist ein maßgeschneiderter Produktbau."
+   }
+  ],
+  "hi/business/product-launch": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "सूचना यह पृष्ठ हमारी व्यावसायिक दिशा के अनुरूप पुनर्गठित किया जा रहा है। Newon व्यक्तिगत ग्राहकों के लिए कस्टम प्रोडक्शन, आउटसोर्सिंग या डिलीवरी सेवाएँ नहीं देता; नीचे दी गई सामग्री हमारी प्रौद्योगिकी और संचालन क्षमताओं "
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "03 कस्टम लॉंच"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "कस्टम चेकलिस्ट और रनबुक"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "यह CUSTOM PRODUCT से कैसे अलग है?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT एक अनुकूलित उत्पाद निर्माण है। PRODUCT LAUNCH उस उत्पाद की रिलीज़ तैयारी पर केंद्रित है जो पहले से मौजूद है, या जिसका विकास अलग से कोट किया गया है।"
+   },
+   {
+    "families": [
+     "quote/price menu"
+    ],
+    "text": "कैसे मूल्य निर्धारण सेट है?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "डोमेन, SEO, QA, एनालिटिक्स, भुगतान, निगरानी, रोलबैक - आपकी परियोजना के लिए अनुकूलित।"
+   }
+  ],
+  "id/business/product-launch": [
+   {
+    "families": [
+     "custom-made",
+     "delivery-to-client"
+    ],
+    "text": "Pemberitahuan Halaman ini sedang ditata ulang agar sesuai dengan arah bisnis kami. Newon tidak menyediakan produksi khusus, alih daya, maupun pengiriman hasil kerja untuk klien perorangan; konten di bawah ini adalah mate"
+   },
+   {
+    "families": [
+     "white-label"
+    ],
+    "text": "WHITE-LABEL"
+   },
+   {
+    "families": [
+     "delivery-to-client"
+    ],
+    "text": "DELIVERABLES"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "Apa bedanya ini dengan CUSTOM PRODUCT?"
+   },
+   {
+    "families": [
+     "custom-made"
+    ],
+    "text": "CUSTOM PRODUCT adalah pembangunan produk yang disesuaikan. PRODUCT LAUNCH berfokus pada persiapan rilis untuk produk yang sudah ada, atau yang pengembangannya dikutip terpisah."
+   }
+  ]
+ }
+}

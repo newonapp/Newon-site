@@ -1,7 +1,14 @@
 #!/usr/bin/env node
 /**
- * QA — verify Business pages show canonical prices from business-pricing.mjs.
- * Compares rendered HTML against SERVICE_PRICING per service / pillar.
+ * QA — verify Business pages' public price display against business-pricing.mjs.
+ *
+ * Policy (PHASE 03 content alignment): the website is information-only and Newon does not take
+ * individual outsourcing projects, so service pages may show NO public price.
+ *   - A page that shows no price (no amounts, no price markup, no canonical label) PASSES as
+ *     "no-public-price" — but must also carry no price residue (starting-at wording, empty price shells).
+ *   - A page that DOES show a price keeps every original check: source (SERVICE_PRICING),
+ *     displayed value, currency (KRW only) and cross-page consistency.
+ * The check is never skipped: each page is classified `no-public-price` or `price-shown` and counted.
  */
 import fs from "fs";
 import path from "path";
@@ -20,6 +27,30 @@ const LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
 
 /** Match ₩1,000 / ₩300,000 style amounts in HTML. */
 const KRW_RE = /₩\d{1,3}(?:,\d{3})+/g;
+
+/** Markup that only exists to display a price / quote block. */
+const PRICE_MARKUP_RE = /class="[^"]*\b(?:bs-price|bp-pricing|bz-pkg__price|bp-explore__price|bs-collab-pricing|bp-quote)\b/;
+/** Wording that means a price is being advertised even without a currency amount. */
+const PRICE_RESIDUE_RE = /시작가|\bstarting (?:at|from|prices?)\b|\bfrom ₩|[$€¥£]\s?\d[\d,.]*/i;
+
+const STATS = { "price-shown": 0, "no-public-price": 0 };
+
+/** price-shown when any amount, price markup, or canonical price/label for this slug is on the page. */
+function priceVisibility(html, slug) {
+  if (findKrwTokens(html).size || PRICE_MARKUP_RE.test(html)) return "price-shown";
+  if (slug && SERVICE_PRICING[slug]) {
+    for (const l of ["ko", "en"]) {
+      if (html.includes(formatPriceDisplay(slug, l))) return "price-shown";
+    }
+  }
+  return "no-public-price";
+}
+
+function checkNoPublicPrice(rel, html, errors) {
+  STATS["no-public-price"]++;
+  const m = html.match(PRICE_RESIDUE_RE);
+  if (m) errors.push(`${rel}: no public price shown but price wording remains ("${m[0]}")`);
+}
 
 /** Related tier amounts may appear in notes (e.g. MVP Standard / App Development). */
 function relatedAmountTokensFromText(...texts) {
@@ -94,6 +125,12 @@ function checkServicePrice(rel, slug, errors) {
   const cfg = SERVICE_PRICING[slug];
   if (!cfg) return;
 
+  if (priceVisibility(html, slug) === "no-public-price") {
+    checkNoPublicPrice(rel, html, errors);
+    return;
+  }
+  STATS["price-shown"]++;
+
   if (cfg.custom) {
     const ko = formatPriceDisplay(slug, "ko");
     const en = formatPriceDisplay(slug, "en");
@@ -156,6 +193,11 @@ function main() {
         }
         const cfg = SERVICE_PRICING[page.slug];
         if (!cfg) continue;
+        if (priceVisibility(html, page.slug) === "no-public-price") {
+          checkNoPublicPrice(rel, html, errors);
+          continue;
+        }
+        STATS["price-shown"]++;
         if (cfg.custom) {
           checkKrwTokens(rel, html, new Set(), errors);
         } else {
@@ -171,7 +213,8 @@ function main() {
   if (warns.length) console.log("Warnings:", warns.length);
   warns.forEach((w) => console.log(`[WARN] ${w}`));
   errors.forEach((e) => console.log(`[ERROR] ${e}`));
-  console.log(`\nPricing QA: ${errors.length} error(s), ${warns.length} warning(s).`);
+  console.log(`\nService pages: ${STATS["price-shown"]} price-shown (full checks), ${STATS["no-public-price"]} no-public-price (residue check).`);
+  console.log(`Pricing QA: ${errors.length} error(s), ${warns.length} warning(s).`);
   process.exit(errors.length ? 1 : 0);
 }
 

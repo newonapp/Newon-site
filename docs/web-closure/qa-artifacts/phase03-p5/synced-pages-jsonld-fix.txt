@@ -1,0 +1,8 @@
+de/business/inquiry/index.html
+es/business/inquiry/index.html
+fr/business/inquiry/index.html
+hi/business/inquiry/index.html
+id/business/inquiry/index.html
+ja/business/inquiry/index.html
+ko/business/care/index.html
+pt-br/business/inquiry/index.html

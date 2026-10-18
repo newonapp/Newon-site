@@ -1,0 +1,5 @@
+/tmp/claude-0/-home-claude/6c729d68-f9d7-571d-9221-b0a50736d560/scratchpad/qa/test-logs-p4b/livon-accessibility.log:# pass 76
+/tmp/claude-0/-home-claude/6c729d68-f9d7-571d-9221-b0a50736d560/scratchpad/qa/test-logs-p4b/livon-accessibility.log:# fail 0
+/tmp/claude-0/-home-claude/6c729d68-f9d7-571d-9221-b0a50736d560/scratchpad/qa/test-logs-p4b/livon-release-candidate.log:not ok 6 - RC-14 curated inventory: 530 records, no duplicate, broken relation, invalid URL, expired, sample or draft
+/tmp/claude-0/-home-claude/6c729d68-f9d7-571d-9221-b0a50736d560/scratchpad/qa/test-logs-p4b/livon-release-candidate.log:# pass 59
+/tmp/claude-0/-home-claude/6c729d68-f9d7-571d-9221-b0a50736d560/scratchpad/qa/test-logs-p4b/livon-release-candidate.log:# fail 1

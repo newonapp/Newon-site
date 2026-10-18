@@ -1,0 +1,53 @@
+{
+ "missing": [],
+ "badLang": [],
+ "mixed": {
+  "ko": {
+   "pages": 2,
+   "lines": 2
+  },
+  "en": {
+   "pages": 0,
+   "lines": 0
+  },
+  "ja": {
+   "pages": 54,
+   "lines": 1077
+  },
+  "es": {
+   "pages": 55,
+   "lines": 788
+  },
+  "pt-br": {
+   "pages": 55,
+   "lines": 849
+  },
+  "fr": {
+   "pages": 46,
+   "lines": 728
+  },
+  "de": {
+   "pages": 48,
+   "lines": 734
+  },
+  "hi": {
+   "pages": 54,
+   "lines": 1077
+  },
+  "id": {
+   "pages": 47,
+   "lines": 729
+  }
+ },
+ "marked": {
+  "ko": 0,
+  "en": 0,
+  "ja": 18,
+  "es": 18,
+  "pt-br": 18,
+  "fr": 18,
+  "de": 18,
+  "hi": 18,
+  "id": 18
+ }
+}

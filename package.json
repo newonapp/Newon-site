@@ -16,6 +16,7 @@
     "check:fast": "node scripts/ci/fast-check.mjs",
     "test:ox-month-web": "node --test apps/ox-month/ox-month-web.test.mjs",
     "check:fast:publish": "node scripts/ci/fast-check.mjs --publish-root _publish",
+    "check:build-drift": "node scripts/qa-build-drift.mjs",
     "test:ingest": "node --test ingest/test/*.test.mjs",
     "check:ingest": "npm --prefix ingest run check",
     "sync:archive:fixture": "npm --prefix ingest run sync:archive:fixture",
@@ -48,7 +49,18 @@
     "ship": "node scripts/publish-site.mjs && bash scripts/push-to-github.sh",
     "push:first": "bash first-time-push.sh",
     "dev:livon": "node scripts/publish-site.mjs && node --env-file=.env scripts/serve-publish.mjs",
-    "test:livon": "node --test tests/livon/*.test.mjs"
+    "test:livon": "node --test tests/livon/*.test.mjs",
+    "test:web": "node --test tests/web/*.test.mjs",
+    "check:jsonld": "node scripts/qa-jsonld.mjs",
+    "check:ci-workflows": "node scripts/qa-ci-workflows.mjs",
+    "check:translation-candidates": "node scripts/extract-translation-candidates.mjs --built . --verify",
+    "extract:translation-candidates": "node scripts/extract-translation-candidates.mjs --built .",
+    "check:determinism": "node scripts/qa-build-determinism.mjs",
+    "check:approved-translations": "node scripts/apply-approved-translations.mjs --check",
+    "check:babylog-site": "node scripts/qa-babylog-site.mjs",
+    "scan:business-wording": "node scripts/qa-business-wording-scan.mjs",
+    "classify:english-remainder": "node scripts/classify-english-remainder.mjs",
+    "report:livon-expired": "node scripts/qa-livon-expired-records.mjs"
   },
   "dependencies": {
     "pg": "^8.13.0"

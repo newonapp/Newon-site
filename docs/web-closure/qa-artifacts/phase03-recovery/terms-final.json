@@ -1,0 +1,244 @@
+{
+ "ko": {
+  "ko/business/ai-automation/index.html": {
+   "시작가/starting price": 1
+  },
+  "ko/business/automation/index.html": {
+   "시작가/starting price": 1
+  },
+  "ko/business/automation/workflow/index.html": {
+   "시작가/starting price": 1
+  },
+  "ko/business/custom-product/index.html": {
+   "맞춤 제작/맞춤 앱": 1
+  },
+  "ko/business/inquiry/index.html": {
+   "홈페이지 제작": 1
+  },
+  "ko/business/solutions/index.html": {
+   "맞춤 제작/맞춤 앱": 1
+  },
+  "ko/business/white-label/index.html": {
+   "맞춤 제작/맞춤 앱": 1
+  },
+  "ko/studio/digital/index.html": {
+   "홈페이지 제작": 1
+  },
+  "ko/studio/digital/product-design/index.html": {
+   "시작가/starting price": 2
+  },
+  "ko/studio/index.html": {
+   "홈페이지 제작": 1
+  }
+ },
+ "en": {
+  "en/ai/enterprise/index.html": {
+   "deliver/handoff": 1,
+   "custom dev": 1
+  },
+  "en/business/ai-automation/index.html": {
+   "deliver/handoff": 6,
+   "project inquiry": 1
+  },
+  "en/business/app/index.html": {
+   "deliver/handoff": 10,
+   "project inquiry": 1
+  },
+  "en/business/automation/index.html": {
+   "deliver/handoff": 6,
+   "custom dev": 1
+  },
+  "en/business/automation/workflow/index.html": {
+   "deliver/handoff": 2,
+   "project inquiry": 1
+  },
+  "en/business/booking/index.html": {
+   "deliver/handoff": 3
+  },
+  "en/business/build/index.html": {
+   "deliver/handoff": 10
+  },
+  "en/business/care/index.html": {
+   "deliver/handoff": 5
+  },
+  "en/business/collaboration/development/index.html": {
+   "deliver/handoff": 4
+  },
+  "en/business/collaboration/partnership/index.html": {
+   "deliver/handoff": 3
+  },
+  "en/business/collaboration/product-service/index.html": {
+   "deliver/handoff": 3
+  },
+  "en/business/collaboration/promotion/index.html": {
+   "deliver/handoff": 2
+  },
+  "en/business/competitor-analysis/index.html": {
+   "deliver/handoff": 2,
+   "project inquiry": 1
+  },
+  "en/business/consumer-research/index.html": {
+   "deliver/handoff": 2,
+   "project inquiry": 1
+  },
+  "en/business/creative/index.html": {
+   "deliver/handoff": 1
+  },
+  "en/business/custom-product/index.html": {
+   "deliver/handoff": 15,
+   "custom dev": 18,
+   "project inquiry": 1
+  },
+  "en/business/data-reporting/index.html": {
+   "deliver/handoff": 13,
+   "project inquiry": 1
+  },
+  "en/business/design/index.html": {
+   "deliver/handoff": 10
+  },
+  "en/business/improvement/index.html": {
+   "deliver/handoff": 2
+  },
+  "en/business/index.html": {
+   "custom dev": 2
+  },
+  "en/business/inquiry/index.html": {
+   "custom dev": 2,
+   "project inquiry": 2
+  },
+  "en/business/internal-system/index.html": {
+   "deliver/handoff": 10,
+   "custom dev": 4,
+   "project inquiry": 1
+  },
+  "en/business/internal-tools/index.html": {
+   "deliver/handoff": 10,
+   "custom dev": 1,
+   "project inquiry": 1
+  },
+  "en/business/landing/index.html": {
+   "deliver/handoff": 10,
+   "project inquiry": 1
+  },
+  "en/business/maintenance/index.html": {
+   "deliver/handoff": 1
+  },
+  "en/business/market-research/index.html": {
+   "deliver/handoff": 3,
+   "project inquiry": 1
+  },
+  "en/business/mvp/index.html": {
+   "deliver/handoff": 3,
+   "project inquiry": 1
+  },
+  "en/business/post-launch/index.html": {
+   "deliver/handoff": 3
+  },
+  "en/business/product-launch/index.html": {
+   "deliver/handoff": 2,
+   "project inquiry": 1
+  },
+  "en/business/research/index.html": {
+   "deliver/handoff": 6
+  },
+  "en/business/solutions/index.html": {
+   "deliver/handoff": 5,
+   "custom dev": 5,
+   "project inquiry": 4
+  },
+  "en/business/trend-research/index.html": {
+   "deliver/handoff": 2,
+   "project inquiry": 1
+  },
+  "en/business/ux-audit/index.html": {
+   "deliver/handoff": 2,
+   "project inquiry": 1
+  },
+  "en/business/web/index.html": {
+   "deliver/handoff": 4,
+   "custom dev": 1,
+   "project inquiry": 1
+  },
+  "en/business/website-renewal/index.html": {
+   "deliver/handoff": 2
+  },
+  "en/business/white-label/index.html": {
+   "deliver/handoff": 7,
+   "custom dev": 7,
+   "project inquiry": 1
+  },
+  "en/studio/brand/identity/index.html": {
+   "deliver/handoff": 7,
+   "project inquiry": 1
+  },
+  "en/studio/brand/index.html": {
+   "deliver/handoff": 4
+  },
+  "en/studio/brand/logo/index.html": {
+   "deliver/handoff": 5,
+   "project inquiry": 1
+  },
+  "en/studio/brand/naming/index.html": {
+   "deliver/handoff": 4,
+   "project inquiry": 1
+  },
+  "en/studio/brand/strategy/index.html": {
+   "deliver/handoff": 6,
+   "project inquiry": 1
+  },
+  "en/studio/care/design-improvement/index.html": {
+   "deliver/handoff": 7,
+   "project inquiry": 1
+  },
+  "en/studio/care/index.html": {
+   "deliver/handoff": 4
+  },
+  "en/studio/care/monthly-design/index.html": {
+   "deliver/handoff": 6,
+   "project inquiry": 1
+  },
+  "en/studio/content/campaign/index.html": {
+   "deliver/handoff": 2,
+   "project inquiry": 1
+  },
+  "en/studio/content/index.html": {
+   "deliver/handoff": 4
+  },
+  "en/studio/content/social/index.html": {
+   "deliver/handoff": 2,
+   "project inquiry": 1
+  },
+  "en/studio/content/visual/index.html": {
+   "deliver/handoff": 4,
+   "project inquiry": 1
+  },
+  "en/studio/digital/app-ui-ux/index.html": {
+   "deliver/handoff": 11,
+   "project inquiry": 1
+  },
+  "en/studio/digital/index.html": {
+   "deliver/handoff": 11
+  },
+  "en/studio/digital/landing/index.html": {
+   "deliver/handoff": 10,
+   "project inquiry": 1
+  },
+  "en/studio/digital/product-design/index.html": {
+   "deliver/handoff": 13,
+   "project inquiry": 1
+  },
+  "en/studio/digital/web-design/index.html": {
+   "deliver/handoff": 10,
+   "project inquiry": 1
+  },
+  "en/studio/index.html": {
+   "deliver/handoff": 3
+  },
+  "en/studio/partnerships/index.html": {
+   "deliver/handoff": 1
+  },
+  "en/studio/projects/index.html": {
+   "deliver/handoff": 1
+  }
+ }
+}

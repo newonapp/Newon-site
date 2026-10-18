@@ -1,0 +1,2 @@
+fast-check: Pricing QA: 0 error(s), 0 warning(s).
+fast-check: PASS

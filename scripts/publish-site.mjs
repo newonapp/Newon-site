@@ -15,6 +15,9 @@ import { fileURLToPath } from "url";
 import { spawnSync } from "child_process";
 import { publishedArticles } from "./news-data.mjs";
 
+/** Build timestamp. SOURCE_DATE_EPOCH (seconds, reproducible-builds convention) pins it; unset = the current time, as before. */
+const buildDate = () => (process.env.SOURCE_DATE_EPOCH && /^\d+$/.test(process.env.SOURCE_DATE_EPOCH) ? new Date(Number(process.env.SOURCE_DATE_EPOCH) * 1000) : new Date());
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 const OUT = path.join(ROOT, "_publish");
@@ -56,6 +59,8 @@ const PUBLISH_ROOT_CORE = [
   "home-ongil.js",
   "ongil-site.css",
   "shareon.css",
+  "myworld-site.css",
+  "myworld-site.js",
   "shareon.js",
   "ecosystem.css",
   "ecosystem.js",
@@ -75,6 +80,9 @@ const PUBLISH_ROOT_CORE = [
   "business-type.css",
   "data-reporting.css",
   "business-pillar.css",
+  "business-intro.css",
+  "babylog-site.css",
+  "business-model-notice.css",
   "business-pillar.js",
   "pillar-service.css",
   "pillar-service.js",
@@ -187,8 +195,13 @@ const PUBLISH_COPY_DIRS = [
   /** Root /ongil/ and /lifestage/ → /{lang}/… language redirects (same pattern as /studio/, /business/). */
   { from: "ongil", to: "ongil", required: true },
   { from: "lifestage", to: "lifestage", required: true },
-  /** /shareon/… language redirects (the pages themselves live in the language dirs). */
-  { from: "shareon", to: "shareon", required: false },
+  /** Information-only business intro pages (BabyLog · PetLog · My World · ShareOn). */
+  /** Business Hub landing (business/seller-center and business/partners ride along with the business dir). */
+  { from: "business-hub", to: "business-hub", required: true },
+  { from: "babylog", to: "babylog", required: true },
+  { from: "petlog", to: "petlog", required: true },
+  { from: "myworld", to: "myworld", required: true },
+  { from: "shareon", to: "shareon", required: true },
   { from: "assets", to: "assets", required: true },
   { from: "vendor/three", to: "vendor/three", required: true },
   { from: "vendor/hls", to: "vendor/hls", required: false },
@@ -228,7 +241,7 @@ function stageHuman404Play() {
   fs.rmSync(dest, { recursive: true, force: true });
   copyDir(src, dest);
   const marker = [
-    new Date().toISOString(),
+    buildDate().toISOString(),
     process.env.GITHUB_SHA || "local",
     process.env.GITHUB_RUN_ID || "",
   ].join("\n");
@@ -532,6 +545,7 @@ function verify() {
   required.push(path.join(OUT, "ongil-start", "index.html"));
   required.push(path.join(OUT, "ongil", "index.html"));
   required.push(path.join(OUT, "lifestage", "index.html"));
+  for (const s of ["babylog", "petlog", "myworld", "shareon", "business-hub", "business/seller-center", "business/partners"]) required.push(path.join(OUT, s, "index.html"));
   required.push(path.join(OUT, "assets", "livon-mark.jpg"));
   required.push(path.join(OUT, "assets", "livon-mark-icon.jpg"));
   required.push(path.join(OUT, "assets", "livon-mark-icon-120.jpg"));

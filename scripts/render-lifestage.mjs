@@ -26,6 +26,7 @@ import { renderStudioHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { renderLifeStageSection } from "./home-lifestage-body.mjs";
 import { getLifeStageCopy } from "./home-lifestage-copy.mjs";
 
+import { lifeExtraHtml, LIFE_EXTRA_CSS } from "./render-business-intro.mjs";
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const NLS_VER = "20260924livon1";
 
@@ -70,9 +71,10 @@ function renderPage(lang) {
     HREFLANG_BLOCK: hreflangBlock("lifestage"),
     SKIP_LABEL: pick(flat, flatEn, "common.skipToContent") || "Skip to content",
     CHROME_HEADER: header,
-    MAIN_CONTENT: renderLifeStageSection(lang.dir, { detail: true }),
+    MAIN_CONTENT: renderLifeStageSection(lang.dir, { detail: true }) + lifeExtraHtml(lang.dir, "lifestage"),
     CHROME_FOOTER: footer,
-    EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=${NLS_VER}" />
+    EXTRA_CSS: `${LIFE_EXTRA_CSS}
+    <link rel="stylesheet" href="/home-lifestage.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,

@@ -367,7 +367,7 @@ function renderStoreDetailHtml({
   });
   html = html.replace(
     /business-service\.css\?v=[^"]+/g,
-    "business-service.css?v=20260830notify1"
+    "business-service.css?v=20261017p4a"
   );
   html = html.replace(
     '<script src="/business-service.js',
@@ -474,7 +474,7 @@ function renderLabDetailHtml({
   });
   html = html.replace(
     /business-service\.css\?v=[^"]+/g,
-    "business-service.css?v=20260829lablive2"
+    "business-service.css?v=20261017p4a"
   );
   html = html.replace(
     '<script src="/business-service.js',

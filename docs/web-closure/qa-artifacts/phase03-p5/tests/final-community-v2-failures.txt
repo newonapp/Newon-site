@@ -1,0 +1,26 @@
+not ok 60 - CV2-60 ONGIL untouched: no ONGIL, SHAREON or server file is changed by the Community V2 work
+  ---
+  duration_ms: 574.217587
+  type: 'test'
+  location: '/home/claude/newonapp/newon-site/tests/livon/community-v2.test.mjs:823:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Command failed: git diff-tree --no-commit-id --name-only -r d0c93dd687113054d94ffecd17c32555bdb070ee^ d0c93dd687113054d94ffecd17c32555bdb070ee
+    fatal: ambiguous argument 'd0c93dd687113054d94ffecd17c32555bdb070ee^': unknown revision or path not in the working tree.
+    Use '--' to separate paths from revisions, like this:
+    'git <command> [<revision>...] -- [<file>...]'
+    
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    genericNodeError (node:internal/errors:983:15)
+    wrappedFn (node:internal/errors:537:14)
+    checkExecSyncError (node:child_process:916:11)
+    execFileSync (node:child_process:952:15)
+    git (file:///home/claude/newonapp/newon-site/tests/livon/community-v2.test.mjs:827:25)
+    file:///home/claude/newonapp/newon-site/tests/livon/community-v2.test.mjs:831:48
+    Array.flatMap (<anonymous>)
+    TestContext.<anonymous> (file:///home/claude/newonapp/newon-site/tests/livon/community-v2.test.mjs:831:35)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+  ...
+1..60

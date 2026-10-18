@@ -1,0 +1,5 @@
+import fs from "fs";import path from "path";
+const L=["ko","en","ja","es","pt-br","fr","de","hi","id"];let blocks=0,bad=[],svc=0;const terms=/white[- ]?label|outsourc|custom (product|develop)|맞춤 제품|화이트라벨|외주|設計し構築|we design and build|구현합니다|설계하고/i;const hits=[];
+function walk(d){for(const e of fs.readdirSync(d,{withFileTypes:true})){const p=path.join(d,e.name);if(e.isDirectory()){if(["node_modules","_publish",".git"].includes(e.name))continue;walk(p)}else if(e.name==="index.html"){const h=fs.readFileSync(p,"utf8");for(const m of h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)){blocks++;try{const j=JSON.parse(m[1]);const arr=Array.isArray(j)?j:j["@graph"]||[j];for(const o of arr){if(o["@type"]==="Service"){svc++;if(terms.test(o.description||""))hits.push(p+": "+(o.description||"").slice(0,90))}}}catch(e){bad.push(p)}}}}}
+for(const l of L)if(fs.existsSync(l))walk(l);
+console.log({blocks,svc,bad:bad.length,hits:hits.length});hits.slice(0,20).forEach(x=>console.log(x));bad.slice(0,5).forEach(x=>console.log("BAD",x));

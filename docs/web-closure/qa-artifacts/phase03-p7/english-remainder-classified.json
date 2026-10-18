@@ -1,0 +1,1952 @@
+{
+ "definition": "see header",
+ "languages": {
+  "ja": {
+   "total": 1077,
+   "classes": {
+    "unknown-source": 89,
+    "english-in-pack": 2,
+    "english-source-only": 983,
+    "reframe-notice": 3
+   },
+   "topSources": [
+    [
+     "scripts/studio-service-detail-data.mjs",
+     580
+    ],
+    [
+     "scripts/business-new-services-copy.mjs",
+     90
+    ],
+    [
+     "scripts/business-service-copy.mjs",
+     72
+    ],
+    [
+     "scripts/studio-care-detail-data.mjs",
+     65
+    ],
+    [
+     "scripts/business-service-landing-copy.mjs",
+     61
+    ],
+    [
+     "scripts/studio-areas.mjs",
+     32
+    ],
+    [
+     "scripts/business-pillar-copy.mjs",
+     14
+    ],
+    [
+     "scripts/studio-pillar-copy.mjs",
+     14
+    ]
+   ],
+   "pages": 54,
+   "perPage": {
+    "A:business": {
+     "total": 22,
+     "unknown-source": 19,
+     "english-in-pack": 2,
+     "english-source-only": 1
+    },
+    "A:business/partners": {
+     "total": 13,
+     "unknown-source": 13
+    },
+    "A:business/seller-center": {
+     "total": 15,
+     "unknown-source": 15
+    },
+    "B:business/inquiry": {
+     "total": 14,
+     "english-source-only": 6,
+     "unknown-source": 8
+    },
+    "B:business/automation": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "B:business/ai-automation": {
+     "total": 4,
+     "english-source-only": 4
+    },
+    "B:business/automation/workflow": {
+     "total": 3,
+     "unknown-source": 1,
+     "english-source-only": 2
+    },
+    "B:business/data-reporting": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "B:business/internal-tools": {
+     "total": 4,
+     "unknown-source": 1,
+     "english-source-only": 3
+    },
+    "C:business/booking": {
+     "total": 16,
+     "english-source-only": 16
+    },
+    "B:business/build": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "C:business/mvp": {
+     "total": 4,
+     "english-source-only": 4
+    },
+    "C:business/landing": {
+     "total": 69,
+     "english-source-only": 67,
+     "reframe-notice": 2
+    },
+    "C:business/web": {
+     "total": 4,
+     "english-source-only": 4
+    },
+    "C:business/app": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "C:business/website-renewal": {
+     "total": 23,
+     "english-source-only": 23
+    },
+    "C:business/improvement": {
+     "total": 18,
+     "english-source-only": 18
+    },
+    "B:business/care": {
+     "total": 16,
+     "english-source-only": 14,
+     "unknown-source": 1,
+     "reframe-notice": 1
+    },
+    "C:business/maintenance": {
+     "total": 18,
+     "english-source-only": 18
+    },
+    "C:business/post-launch": {
+     "total": 14,
+     "english-source-only": 14
+    },
+    "B:business/solutions": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "A:business/white-label": {
+     "total": 3,
+     "english-source-only": 3
+    },
+    "C:business/custom-product": {
+     "total": 2,
+     "english-source-only": 2
+    },
+    "C:business/internal-system": {
+     "total": 3,
+     "english-source-only": 3
+    },
+    "C:business/product-launch": {
+     "total": 3,
+     "english-source-only": 3
+    },
+    "D:business/research": {
+     "total": 4,
+     "unknown-source": 1,
+     "english-source-only": 3
+    },
+    "B:business/market-research": {
+     "total": 5,
+     "unknown-source": 3,
+     "english-source-only": 2
+    },
+    "B:business/competitor-analysis": {
+     "total": 5,
+     "unknown-source": 4,
+     "english-source-only": 1
+    },
+    "B:business/consumer-research": {
+     "total": 5,
+     "unknown-source": 3,
+     "english-source-only": 2
+    },
+    "B:business/trend-research": {
+     "total": 7,
+     "unknown-source": 3,
+     "english-source-only": 4
+    },
+    "B:business/ux-audit": {
+     "total": 4,
+     "unknown-source": 2,
+     "english-source-only": 2
+    },
+    "D:business/design": {
+     "total": 33,
+     "english-source-only": 32,
+     "unknown-source": 1
+    },
+    "D:business/creative": {
+     "total": 5,
+     "unknown-source": 5
+    },
+    "A:studio": {
+     "total": 24,
+     "english-source-only": 24
+    },
+    "A:studio/partnerships": {
+     "total": 9,
+     "english-source-only": 9
+    },
+    "A:studio/projects": {
+     "total": 4,
+     "english-source-only": 4
+    },
+    "A:studio/contact": {
+     "total": 2,
+     "english-source-only": 2
+    },
+    "B:studio/digital": {
+     "total": 3,
+     "english-source-only": 3
+    },
+    "B:studio/digital/web-design": {
+     "total": 62,
+     "english-source-only": 61,
+     "unknown-source": 1
+    },
+    "B:studio/digital/app-ui-ux": {
+     "total": 71,
+     "english-source-only": 71
+    },
+    "B:studio/digital/landing": {
+     "total": 67,
+     "english-source-only": 67
+    },
+    "B:studio/digital/product-design": {
+     "total": 70,
+     "english-source-only": 70
+    },
+    "B:studio/brand": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "B:studio/brand/identity": {
+     "total": 41,
+     "english-source-only": 40,
+     "unknown-source": 1
+    },
+    "B:studio/brand/logo": {
+     "total": 64,
+     "english-source-only": 62,
+     "unknown-source": 2
+    },
+    "B:studio/brand/naming": {
+     "total": 44,
+     "english-source-only": 44
+    },
+    "B:studio/brand/strategy": {
+     "total": 26,
+     "english-source-only": 26
+    },
+    "B:studio/content": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "B:studio/content/campaign": {
+     "total": 69,
+     "english-source-only": 69
+    },
+    "B:studio/content/social": {
+     "total": 17,
+     "english-source-only": 15,
+     "unknown-source": 2
+    },
+    "B:studio/content/visual": {
+     "total": 71,
+     "english-source-only": 71
+    },
+    "C:studio/care": {
+     "total": 17,
+     "english-source-only": 17
+    },
+    "C:studio/care/monthly-design": {
+     "total": 40,
+     "english-source-only": 40
+    },
+    "C:studio/care/design-improvement": {
+     "total": 33,
+     "english-source-only": 33
+    }
+   }
+  },
+  "es": {
+   "total": 788,
+   "classes": {
+    "unknown-source": 111,
+    "english-in-pack": 14,
+    "english-source-only": 660,
+    "reframe-notice": 3
+   },
+   "topSources": [
+    [
+     "scripts/studio-service-detail-data.mjs",
+     396
+    ],
+    [
+     "scripts/business-new-services-copy.mjs",
+     62
+    ],
+    [
+     "scripts/studio-care-detail-data.mjs",
+     50
+    ],
+    [
+     "scripts/business-service-landing-copy.mjs",
+     41
+    ],
+    [
+     "scripts/business-service-copy.mjs",
+     33
+    ],
+    [
+     "scripts/studio-areas.mjs",
+     22
+    ],
+    [
+     "scripts/studio-service-detail-render.mjs",
+     12
+    ],
+    [
+     "scripts/business-pillar-copy.mjs",
+     10
+    ]
+   ],
+   "pages": 55,
+   "perPage": {
+    "A:business": {
+     "total": 14,
+     "unknown-source": 13,
+     "english-in-pack": 1
+    },
+    "A:business/partners": {
+     "total": 9,
+     "unknown-source": 9
+    },
+    "A:business/seller-center": {
+     "total": 13,
+     "unknown-source": 13
+    },
+    "B:business/inquiry": {
+     "total": 8,
+     "english-source-only": 2,
+     "unknown-source": 6
+    },
+    "B:business/automation": {
+     "total": 2,
+     "unknown-source": 2
+    },
+    "B:business/ai-automation": {
+     "total": 4,
+     "unknown-source": 1,
+     "english-in-pack": 2,
+     "english-source-only": 1
+    },
+    "B:business/automation/workflow": {
+     "total": 2,
+     "unknown-source": 1,
+     "english-in-pack": 1
+    },
+    "B:business/data-reporting": {
+     "total": 2,
+     "unknown-source": 1,
+     "english-source-only": 1
+    },
+    "B:business/internal-tools": {
+     "total": 2,
+     "unknown-source": 1,
+     "english-source-only": 1
+    },
+    "C:business/booking": {
+     "total": 10,
+     "unknown-source": 1,
+     "english-source-only": 9
+    },
+    "B:business/build": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "C:business/mvp": {
+     "total": 4,
+     "unknown-source": 1,
+     "english-in-pack": 1,
+     "english-source-only": 2
+    },
+    "C:business/landing": {
+     "total": 45,
+     "unknown-source": 1,
+     "english-source-only": 42,
+     "reframe-notice": 2
+    },
+    "C:business/web": {
+     "total": 5,
+     "unknown-source": 1,
+     "english-in-pack": 1,
+     "english-source-only": 3
+    },
+    "C:business/app": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "C:business/website-renewal": {
+     "total": 18,
+     "unknown-source": 1,
+     "english-source-only": 17
+    },
+    "C:business/improvement": {
+     "total": 16,
+     "unknown-source": 1,
+     "english-source-only": 15
+    },
+    "B:business/care": {
+     "total": 13,
+     "unknown-source": 2,
+     "english-source-only": 10,
+     "reframe-notice": 1
+    },
+    "C:business/maintenance": {
+     "total": 14,
+     "unknown-source": 1,
+     "english-source-only": 13
+    },
+    "C:business/post-launch": {
+     "total": 9,
+     "unknown-source": 1,
+     "english-source-only": 8
+    },
+    "B:business/solutions": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "A:business/white-label": {
+     "total": 2,
+     "unknown-source": 1,
+     "english-source-only": 1
+    },
+    "C:business/custom-product": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "C:business/internal-system": {
+     "total": 2,
+     "unknown-source": 1,
+     "english-in-pack": 1
+    },
+    "C:business/product-launch": {
+     "total": 3,
+     "unknown-source": 1,
+     "english-in-pack": 1,
+     "english-source-only": 1
+    },
+    "D:business/research": {
+     "total": 4,
+     "unknown-source": 2,
+     "english-source-only": 2
+    },
+    "B:business/market-research": {
+     "total": 4,
+     "unknown-source": 4
+    },
+    "B:business/competitor-analysis": {
+     "total": 4,
+     "unknown-source": 3,
+     "english-in-pack": 1
+    },
+    "B:business/consumer-research": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "B:business/trend-research": {
+     "total": 5,
+     "unknown-source": 4,
+     "english-source-only": 1
+    },
+    "B:business/ux-audit": {
+     "total": 6,
+     "unknown-source": 3,
+     "english-in-pack": 1,
+     "english-source-only": 2
+    },
+    "D:business/design": {
+     "total": 20,
+     "unknown-source": 1,
+     "english-source-only": 19
+    },
+    "D:business/creative": {
+     "total": 6,
+     "unknown-source": 6
+    },
+    "B:business/collaboration/development": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "A:studio": {
+     "total": 16,
+     "english-source-only": 16
+    },
+    "A:studio/partnerships": {
+     "total": 6,
+     "english-source-only": 6
+    },
+    "A:studio/projects": {
+     "total": 3,
+     "english-source-only": 3
+    },
+    "A:studio/contact": {
+     "total": 2,
+     "english-source-only": 2
+    },
+    "B:studio/digital": {
+     "total": 3,
+     "unknown-source": 1,
+     "english-source-only": 2
+    },
+    "B:studio/digital/web-design": {
+     "total": 45,
+     "unknown-source": 2,
+     "english-in-pack": 1,
+     "english-source-only": 42
+    },
+    "B:studio/digital/app-ui-ux": {
+     "total": 46,
+     "unknown-source": 1,
+     "english-source-only": 45
+    },
+    "B:studio/digital/landing": {
+     "total": 53,
+     "unknown-source": 1,
+     "english-source-only": 52
+    },
+    "B:studio/digital/product-design": {
+     "total": 49,
+     "unknown-source": 1,
+     "english-source-only": 48
+    },
+    "B:studio/brand": {
+     "total": 2,
+     "unknown-source": 1,
+     "english-in-pack": 1
+    },
+    "B:studio/brand/identity": {
+     "total": 31,
+     "unknown-source": 2,
+     "english-source-only": 29
+    },
+    "B:studio/brand/logo": {
+     "total": 47,
+     "unknown-source": 2,
+     "english-source-only": 45
+    },
+    "B:studio/brand/naming": {
+     "total": 35,
+     "unknown-source": 1,
+     "english-source-only": 34
+    },
+    "B:studio/brand/strategy": {
+     "total": 20,
+     "unknown-source": 1,
+     "english-source-only": 19
+    },
+    "B:studio/content": {
+     "total": 2,
+     "unknown-source": 1,
+     "english-source-only": 1
+    },
+    "B:studio/content/campaign": {
+     "total": 46,
+     "unknown-source": 1,
+     "english-in-pack": 2,
+     "english-source-only": 43
+    },
+    "B:studio/content/social": {
+     "total": 14,
+     "unknown-source": 3,
+     "english-source-only": 11
+    },
+    "B:studio/content/visual": {
+     "total": 44,
+     "unknown-source": 1,
+     "english-source-only": 43
+    },
+    "C:studio/care": {
+     "total": 14,
+     "unknown-source": 1,
+     "english-source-only": 13
+    },
+    "C:studio/care/monthly-design": {
+     "total": 32,
+     "unknown-source": 1,
+     "english-source-only": 31
+    },
+    "C:studio/care/design-improvement": {
+     "total": 26,
+     "unknown-source": 1,
+     "english-source-only": 25
+    }
+   }
+  },
+  "pt-br": {
+   "total": 849,
+   "classes": {
+    "unknown-source": 113,
+    "english-in-pack": 73,
+    "english-source-only": 660,
+    "reframe-notice": 3
+   },
+   "topSources": [
+    [
+     "scripts/studio-service-detail-data.mjs",
+     396
+    ],
+    [
+     "scripts/business-new-services-copy.mjs",
+     62
+    ],
+    [
+     "scripts/studio-care-detail-data.mjs",
+     50
+    ],
+    [
+     "scripts/business-service-landing-copy.mjs",
+     41
+    ],
+    [
+     "scripts/i18n/packs/pt-br/studio-service-details.json",
+     34
+    ],
+    [
+     "scripts/business-service-copy.mjs",
+     33
+    ],
+    [
+     "scripts/studio-areas.mjs",
+     22
+    ],
+    [
+     "scripts/studio-service-detail-render.mjs",
+     12
+    ]
+   ],
+   "pages": 55,
+   "perPage": {
+    "A:business": {
+     "total": 14,
+     "unknown-source": 13,
+     "english-in-pack": 1
+    },
+    "A:business/partners": {
+     "total": 9,
+     "unknown-source": 9
+    },
+    "A:business/seller-center": {
+     "total": 13,
+     "unknown-source": 13
+    },
+    "B:business/inquiry": {
+     "total": 10,
+     "english-source-only": 2,
+     "unknown-source": 8
+    },
+    "B:business/automation": {
+     "total": 2,
+     "unknown-source": 2
+    },
+    "B:business/ai-automation": {
+     "total": 5,
+     "unknown-source": 1,
+     "english-in-pack": 3,
+     "english-source-only": 1
+    },
+    "B:business/automation/workflow": {
+     "total": 2,
+     "unknown-source": 1,
+     "english-in-pack": 1
+    },
+    "B:business/data-reporting": {
+     "total": 3,
+     "unknown-source": 1,
+     "english-source-only": 1,
+     "english-in-pack": 1
+    },
+    "B:business/internal-tools": {
+     "total": 3,
+     "unknown-source": 1,
+     "english-in-pack": 1,
+     "english-source-only": 1
+    },
+    "C:business/booking": {
+     "total": 10,
+     "unknown-source": 1,
+     "english-source-only": 9
+    },
+    "B:business/build": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "C:business/mvp": {
+     "total": 4,
+     "unknown-source": 1,
+     "english-in-pack": 1,
+     "english-source-only": 2
+    },
+    "C:business/landing": {
+     "total": 45,
+     "unknown-source": 1,
+     "english-source-only": 42,
+     "reframe-notice": 2
+    },
+    "C:business/web": {
+     "total": 12,
+     "unknown-source": 1,
+     "english-in-pack": 8,
+     "english-source-only": 3
+    },
+    "C:business/app": {
+     "total": 6,
+     "unknown-source": 1,
+     "english-in-pack": 5
+    },
+    "C:business/website-renewal": {
+     "total": 18,
+     "unknown-source": 1,
+     "english-source-only": 17
+    },
+    "C:business/improvement": {
+     "total": 16,
+     "unknown-source": 1,
+     "english-source-only": 15
+    },
+    "B:business/care": {
+     "total": 13,
+     "unknown-source": 2,
+     "english-source-only": 10,
+     "reframe-notice": 1
+    },
+    "C:business/maintenance": {
+     "total": 14,
+     "unknown-source": 1,
+     "english-source-only": 13
+    },
+    "C:business/post-launch": {
+     "total": 9,
+     "unknown-source": 1,
+     "english-source-only": 8
+    },
+    "B:business/solutions": {
+     "total": 2,
+     "unknown-source": 1,
+     "english-in-pack": 1
+    },
+    "A:business/white-label": {
+     "total": 4,
+     "unknown-source": 1,
+     "english-in-pack": 2,
+     "english-source-only": 1
+    },
+    "C:business/custom-product": {
+     "total": 2,
+     "unknown-source": 1,
+     "english-in-pack": 1
+    },
+    "C:business/internal-system": {
+     "total": 3,
+     "unknown-source": 1,
+     "english-in-pack": 2
+    },
+    "C:business/product-launch": {
+     "total": 8,
+     "unknown-source": 1,
+     "english-in-pack": 6,
+     "english-source-only": 1
+    },
+    "D:business/research": {
+     "total": 4,
+     "unknown-source": 2,
+     "english-source-only": 2
+    },
+    "B:business/market-research": {
+     "total": 7,
+     "unknown-source": 4,
+     "english-in-pack": 3
+    },
+    "B:business/competitor-analysis": {
+     "total": 3,
+     "unknown-source": 3
+    },
+    "B:business/consumer-research": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "B:business/trend-research": {
+     "total": 5,
+     "unknown-source": 4,
+     "english-source-only": 1
+    },
+    "B:business/ux-audit": {
+     "total": 5,
+     "unknown-source": 3,
+     "english-source-only": 2
+    },
+    "D:business/design": {
+     "total": 20,
+     "unknown-source": 1,
+     "english-source-only": 19
+    },
+    "D:business/creative": {
+     "total": 6,
+     "unknown-source": 6
+    },
+    "B:business/collaboration/development": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "A:studio": {
+     "total": 16,
+     "english-source-only": 16
+    },
+    "A:studio/partnerships": {
+     "total": 6,
+     "english-source-only": 6
+    },
+    "A:studio/projects": {
+     "total": 3,
+     "english-source-only": 3
+    },
+    "A:studio/contact": {
+     "total": 2,
+     "english-source-only": 2
+    },
+    "B:studio/digital": {
+     "total": 4,
+     "unknown-source": 1,
+     "english-in-pack": 1,
+     "english-source-only": 2
+    },
+    "B:studio/digital/web-design": {
+     "total": 48,
+     "unknown-source": 2,
+     "english-in-pack": 4,
+     "english-source-only": 42
+    },
+    "B:studio/digital/app-ui-ux": {
+     "total": 50,
+     "unknown-source": 1,
+     "english-in-pack": 4,
+     "english-source-only": 45
+    },
+    "B:studio/digital/landing": {
+     "total": 58,
+     "unknown-source": 1,
+     "english-in-pack": 5,
+     "english-source-only": 52
+    },
+    "B:studio/digital/product-design": {
+     "total": 52,
+     "unknown-source": 1,
+     "english-source-only": 48,
+     "english-in-pack": 3
+    },
+    "B:studio/brand": {
+     "total": 3,
+     "unknown-source": 1,
+     "english-in-pack": 2
+    },
+    "B:studio/brand/identity": {
+     "total": 34,
+     "unknown-source": 2,
+     "english-in-pack": 3,
+     "english-source-only": 29
+    },
+    "B:studio/brand/logo": {
+     "total": 49,
+     "unknown-source": 2,
+     "english-in-pack": 2,
+     "english-source-only": 45
+    },
+    "B:studio/brand/naming": {
+     "total": 36,
+     "unknown-source": 1,
+     "english-in-pack": 1,
+     "english-source-only": 34
+    },
+    "B:studio/brand/strategy": {
+     "total": 22,
+     "unknown-source": 1,
+     "english-in-pack": 2,
+     "english-source-only": 19
+    },
+    "B:studio/content": {
+     "total": 2,
+     "unknown-source": 1,
+     "english-source-only": 1
+    },
+    "B:studio/content/campaign": {
+     "total": 52,
+     "unknown-source": 1,
+     "english-in-pack": 8,
+     "english-source-only": 43
+    },
+    "B:studio/content/social": {
+     "total": 14,
+     "unknown-source": 3,
+     "english-source-only": 11
+    },
+    "B:studio/content/visual": {
+     "total": 46,
+     "unknown-source": 1,
+     "english-source-only": 43,
+     "english-in-pack": 2
+    },
+    "C:studio/care": {
+     "total": 14,
+     "unknown-source": 1,
+     "english-source-only": 13
+    },
+    "C:studio/care/monthly-design": {
+     "total": 32,
+     "unknown-source": 1,
+     "english-source-only": 31
+    },
+    "C:studio/care/design-improvement": {
+     "total": 26,
+     "unknown-source": 1,
+     "english-source-only": 25
+    }
+   }
+  },
+  "fr": {
+   "total": 728,
+   "classes": {
+    "unknown-source": 64,
+    "english-in-pack": 1,
+    "english-source-only": 660,
+    "reframe-notice": 3
+   },
+   "topSources": [
+    [
+     "scripts/studio-service-detail-data.mjs",
+     396
+    ],
+    [
+     "scripts/business-new-services-copy.mjs",
+     62
+    ],
+    [
+     "scripts/studio-care-detail-data.mjs",
+     50
+    ],
+    [
+     "scripts/business-service-landing-copy.mjs",
+     41
+    ],
+    [
+     "scripts/business-service-copy.mjs",
+     33
+    ],
+    [
+     "scripts/studio-areas.mjs",
+     22
+    ],
+    [
+     "scripts/studio-service-detail-render.mjs",
+     12
+    ],
+    [
+     "scripts/business-pillar-copy.mjs",
+     10
+    ]
+   ],
+   "pages": 46,
+   "perPage": {
+    "A:business": {
+     "total": 14,
+     "unknown-source": 13,
+     "english-in-pack": 1
+    },
+    "A:business/partners": {
+     "total": 9,
+     "unknown-source": 9
+    },
+    "A:business/seller-center": {
+     "total": 13,
+     "unknown-source": 13
+    },
+    "B:business/inquiry": {
+     "total": 8,
+     "english-source-only": 2,
+     "unknown-source": 6
+    },
+    "B:business/automation": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "B:business/ai-automation": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "B:business/data-reporting": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "B:business/internal-tools": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "C:business/booking": {
+     "total": 9,
+     "english-source-only": 9
+    },
+    "C:business/mvp": {
+     "total": 2,
+     "english-source-only": 2
+    },
+    "C:business/landing": {
+     "total": 44,
+     "english-source-only": 42,
+     "reframe-notice": 2
+    },
+    "C:business/web": {
+     "total": 3,
+     "english-source-only": 3
+    },
+    "C:business/website-renewal": {
+     "total": 17,
+     "english-source-only": 17
+    },
+    "C:business/improvement": {
+     "total": 15,
+     "english-source-only": 15
+    },
+    "B:business/care": {
+     "total": 12,
+     "english-source-only": 10,
+     "unknown-source": 1,
+     "reframe-notice": 1
+    },
+    "C:business/maintenance": {
+     "total": 13,
+     "english-source-only": 13
+    },
+    "C:business/post-launch": {
+     "total": 8,
+     "english-source-only": 8
+    },
+    "A:business/white-label": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "C:business/product-launch": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "D:business/research": {
+     "total": 3,
+     "unknown-source": 1,
+     "english-source-only": 2
+    },
+    "B:business/market-research": {
+     "total": 3,
+     "unknown-source": 3
+    },
+    "B:business/competitor-analysis": {
+     "total": 2,
+     "unknown-source": 2
+    },
+    "B:business/trend-research": {
+     "total": 4,
+     "unknown-source": 3,
+     "english-source-only": 1
+    },
+    "B:business/ux-audit": {
+     "total": 4,
+     "unknown-source": 2,
+     "english-source-only": 2
+    },
+    "D:business/design": {
+     "total": 19,
+     "english-source-only": 19
+    },
+    "D:business/creative": {
+     "total": 5,
+     "unknown-source": 5
+    },
+    "A:studio": {
+     "total": 16,
+     "english-source-only": 16
+    },
+    "A:studio/partnerships": {
+     "total": 6,
+     "english-source-only": 6
+    },
+    "A:studio/projects": {
+     "total": 3,
+     "english-source-only": 3
+    },
+    "A:studio/contact": {
+     "total": 2,
+     "english-source-only": 2
+    },
+    "B:studio/digital": {
+     "total": 2,
+     "english-source-only": 2
+    },
+    "B:studio/digital/web-design": {
+     "total": 43,
+     "english-source-only": 42,
+     "unknown-source": 1
+    },
+    "B:studio/digital/app-ui-ux": {
+     "total": 45,
+     "english-source-only": 45
+    },
+    "B:studio/digital/landing": {
+     "total": 52,
+     "english-source-only": 52
+    },
+    "B:studio/digital/product-design": {
+     "total": 48,
+     "english-source-only": 48
+    },
+    "B:studio/brand/identity": {
+     "total": 30,
+     "english-source-only": 29,
+     "unknown-source": 1
+    },
+    "B:studio/brand/logo": {
+     "total": 46,
+     "english-source-only": 45,
+     "unknown-source": 1
+    },
+    "B:studio/brand/naming": {
+     "total": 34,
+     "english-source-only": 34
+    },
+    "B:studio/brand/strategy": {
+     "total": 19,
+     "english-source-only": 19
+    },
+    "B:studio/content": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "B:studio/content/campaign": {
+     "total": 43,
+     "english-source-only": 43
+    },
+    "B:studio/content/social": {
+     "total": 13,
+     "english-source-only": 11,
+     "unknown-source": 2
+    },
+    "B:studio/content/visual": {
+     "total": 43,
+     "english-source-only": 43
+    },
+    "C:studio/care": {
+     "total": 13,
+     "english-source-only": 13
+    },
+    "C:studio/care/monthly-design": {
+     "total": 31,
+     "english-source-only": 31
+    },
+    "C:studio/care/design-improvement": {
+     "total": 25,
+     "english-source-only": 25
+    }
+   }
+  },
+  "de": {
+   "total": 734,
+   "classes": {
+    "unknown-source": 64,
+    "english-in-pack": 7,
+    "english-source-only": 660,
+    "reframe-notice": 3
+   },
+   "topSources": [
+    [
+     "scripts/studio-service-detail-data.mjs",
+     396
+    ],
+    [
+     "scripts/business-new-services-copy.mjs",
+     62
+    ],
+    [
+     "scripts/studio-care-detail-data.mjs",
+     50
+    ],
+    [
+     "scripts/business-service-landing-copy.mjs",
+     41
+    ],
+    [
+     "scripts/business-service-copy.mjs",
+     33
+    ],
+    [
+     "scripts/studio-areas.mjs",
+     22
+    ],
+    [
+     "scripts/studio-service-detail-render.mjs",
+     12
+    ],
+    [
+     "scripts/business-pillar-copy.mjs",
+     10
+    ]
+   ],
+   "pages": 48,
+   "perPage": {
+    "A:business": {
+     "total": 14,
+     "unknown-source": 13,
+     "english-in-pack": 1
+    },
+    "A:business/partners": {
+     "total": 9,
+     "unknown-source": 9
+    },
+    "A:business/seller-center": {
+     "total": 13,
+     "unknown-source": 13
+    },
+    "B:business/inquiry": {
+     "total": 8,
+     "english-source-only": 2,
+     "unknown-source": 6
+    },
+    "B:business/automation": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "B:business/ai-automation": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "B:business/data-reporting": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "B:business/internal-tools": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "C:business/booking": {
+     "total": 9,
+     "english-source-only": 9
+    },
+    "C:business/mvp": {
+     "total": 2,
+     "english-source-only": 2
+    },
+    "C:business/landing": {
+     "total": 44,
+     "english-source-only": 42,
+     "reframe-notice": 2
+    },
+    "C:business/web": {
+     "total": 3,
+     "english-source-only": 3
+    },
+    "C:business/app": {
+     "total": 1,
+     "english-in-pack": 1
+    },
+    "C:business/website-renewal": {
+     "total": 17,
+     "english-source-only": 17
+    },
+    "C:business/improvement": {
+     "total": 15,
+     "english-source-only": 15
+    },
+    "B:business/care": {
+     "total": 12,
+     "english-source-only": 10,
+     "unknown-source": 1,
+     "reframe-notice": 1
+    },
+    "C:business/maintenance": {
+     "total": 13,
+     "english-source-only": 13
+    },
+    "C:business/post-launch": {
+     "total": 8,
+     "english-source-only": 8
+    },
+    "A:business/white-label": {
+     "total": 3,
+     "english-in-pack": 2,
+     "english-source-only": 1
+    },
+    "C:business/custom-product": {
+     "total": 1,
+     "english-in-pack": 1
+    },
+    "C:business/product-launch": {
+     "total": 2,
+     "english-in-pack": 1,
+     "english-source-only": 1
+    },
+    "D:business/research": {
+     "total": 3,
+     "unknown-source": 1,
+     "english-source-only": 2
+    },
+    "B:business/market-research": {
+     "total": 3,
+     "unknown-source": 3
+    },
+    "B:business/competitor-analysis": {
+     "total": 2,
+     "unknown-source": 2
+    },
+    "B:business/trend-research": {
+     "total": 4,
+     "unknown-source": 3,
+     "english-source-only": 1
+    },
+    "B:business/ux-audit": {
+     "total": 4,
+     "unknown-source": 2,
+     "english-source-only": 2
+    },
+    "D:business/design": {
+     "total": 19,
+     "english-source-only": 19
+    },
+    "D:business/creative": {
+     "total": 5,
+     "unknown-source": 5
+    },
+    "A:studio": {
+     "total": 16,
+     "english-source-only": 16
+    },
+    "A:studio/partnerships": {
+     "total": 6,
+     "english-source-only": 6
+    },
+    "A:studio/projects": {
+     "total": 3,
+     "english-source-only": 3
+    },
+    "A:studio/contact": {
+     "total": 2,
+     "english-source-only": 2
+    },
+    "B:studio/digital": {
+     "total": 2,
+     "english-source-only": 2
+    },
+    "B:studio/digital/web-design": {
+     "total": 43,
+     "english-source-only": 42,
+     "unknown-source": 1
+    },
+    "B:studio/digital/app-ui-ux": {
+     "total": 45,
+     "english-source-only": 45
+    },
+    "B:studio/digital/landing": {
+     "total": 52,
+     "english-source-only": 52
+    },
+    "B:studio/digital/product-design": {
+     "total": 48,
+     "english-source-only": 48
+    },
+    "B:studio/brand/identity": {
+     "total": 30,
+     "english-source-only": 29,
+     "unknown-source": 1
+    },
+    "B:studio/brand/logo": {
+     "total": 46,
+     "english-source-only": 45,
+     "unknown-source": 1
+    },
+    "B:studio/brand/naming": {
+     "total": 35,
+     "english-in-pack": 1,
+     "english-source-only": 34
+    },
+    "B:studio/brand/strategy": {
+     "total": 19,
+     "english-source-only": 19
+    },
+    "B:studio/content": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "B:studio/content/campaign": {
+     "total": 43,
+     "english-source-only": 43
+    },
+    "B:studio/content/social": {
+     "total": 13,
+     "english-source-only": 11,
+     "unknown-source": 2
+    },
+    "B:studio/content/visual": {
+     "total": 43,
+     "english-source-only": 43
+    },
+    "C:studio/care": {
+     "total": 13,
+     "english-source-only": 13
+    },
+    "C:studio/care/monthly-design": {
+     "total": 31,
+     "english-source-only": 31
+    },
+    "C:studio/care/design-improvement": {
+     "total": 25,
+     "english-source-only": 25
+    }
+   }
+  },
+  "hi": {
+   "total": 1077,
+   "classes": {
+    "unknown-source": 89,
+    "english-in-pack": 2,
+    "english-source-only": 983,
+    "reframe-notice": 3
+   },
+   "topSources": [
+    [
+     "scripts/studio-service-detail-data.mjs",
+     580
+    ],
+    [
+     "scripts/business-new-services-copy.mjs",
+     90
+    ],
+    [
+     "scripts/business-service-copy.mjs",
+     72
+    ],
+    [
+     "scripts/studio-care-detail-data.mjs",
+     65
+    ],
+    [
+     "scripts/business-service-landing-copy.mjs",
+     61
+    ],
+    [
+     "scripts/studio-areas.mjs",
+     32
+    ],
+    [
+     "scripts/business-pillar-copy.mjs",
+     14
+    ],
+    [
+     "scripts/studio-pillar-copy.mjs",
+     14
+    ]
+   ],
+   "pages": 54,
+   "perPage": {
+    "A:business": {
+     "total": 22,
+     "unknown-source": 19,
+     "english-in-pack": 2,
+     "english-source-only": 1
+    },
+    "A:business/partners": {
+     "total": 13,
+     "unknown-source": 13
+    },
+    "A:business/seller-center": {
+     "total": 15,
+     "unknown-source": 15
+    },
+    "B:business/inquiry": {
+     "total": 14,
+     "english-source-only": 6,
+     "unknown-source": 8
+    },
+    "B:business/automation": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "B:business/ai-automation": {
+     "total": 4,
+     "english-source-only": 4
+    },
+    "B:business/automation/workflow": {
+     "total": 3,
+     "unknown-source": 1,
+     "english-source-only": 2
+    },
+    "B:business/data-reporting": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "B:business/internal-tools": {
+     "total": 4,
+     "unknown-source": 1,
+     "english-source-only": 3
+    },
+    "C:business/booking": {
+     "total": 16,
+     "english-source-only": 16
+    },
+    "B:business/build": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "C:business/mvp": {
+     "total": 4,
+     "english-source-only": 4
+    },
+    "C:business/landing": {
+     "total": 69,
+     "english-source-only": 67,
+     "reframe-notice": 2
+    },
+    "C:business/web": {
+     "total": 4,
+     "english-source-only": 4
+    },
+    "C:business/app": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "C:business/website-renewal": {
+     "total": 23,
+     "english-source-only": 23
+    },
+    "C:business/improvement": {
+     "total": 18,
+     "english-source-only": 18
+    },
+    "B:business/care": {
+     "total": 16,
+     "english-source-only": 14,
+     "unknown-source": 1,
+     "reframe-notice": 1
+    },
+    "C:business/maintenance": {
+     "total": 18,
+     "english-source-only": 18
+    },
+    "C:business/post-launch": {
+     "total": 14,
+     "english-source-only": 14
+    },
+    "B:business/solutions": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "A:business/white-label": {
+     "total": 3,
+     "english-source-only": 3
+    },
+    "C:business/custom-product": {
+     "total": 2,
+     "english-source-only": 2
+    },
+    "C:business/internal-system": {
+     "total": 3,
+     "english-source-only": 3
+    },
+    "C:business/product-launch": {
+     "total": 3,
+     "english-source-only": 3
+    },
+    "D:business/research": {
+     "total": 4,
+     "unknown-source": 1,
+     "english-source-only": 3
+    },
+    "B:business/market-research": {
+     "total": 5,
+     "unknown-source": 3,
+     "english-source-only": 2
+    },
+    "B:business/competitor-analysis": {
+     "total": 5,
+     "unknown-source": 4,
+     "english-source-only": 1
+    },
+    "B:business/consumer-research": {
+     "total": 5,
+     "unknown-source": 3,
+     "english-source-only": 2
+    },
+    "B:business/trend-research": {
+     "total": 7,
+     "unknown-source": 3,
+     "english-source-only": 4
+    },
+    "B:business/ux-audit": {
+     "total": 4,
+     "unknown-source": 2,
+     "english-source-only": 2
+    },
+    "D:business/design": {
+     "total": 33,
+     "english-source-only": 32,
+     "unknown-source": 1
+    },
+    "D:business/creative": {
+     "total": 5,
+     "unknown-source": 5
+    },
+    "A:studio": {
+     "total": 24,
+     "english-source-only": 24
+    },
+    "A:studio/partnerships": {
+     "total": 9,
+     "english-source-only": 9
+    },
+    "A:studio/projects": {
+     "total": 4,
+     "english-source-only": 4
+    },
+    "A:studio/contact": {
+     "total": 2,
+     "english-source-only": 2
+    },
+    "B:studio/digital": {
+     "total": 3,
+     "english-source-only": 3
+    },
+    "B:studio/digital/web-design": {
+     "total": 62,
+     "english-source-only": 61,
+     "unknown-source": 1
+    },
+    "B:studio/digital/app-ui-ux": {
+     "total": 71,
+     "english-source-only": 71
+    },
+    "B:studio/digital/landing": {
+     "total": 67,
+     "english-source-only": 67
+    },
+    "B:studio/digital/product-design": {
+     "total": 70,
+     "english-source-only": 70
+    },
+    "B:studio/brand": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "B:studio/brand/identity": {
+     "total": 41,
+     "english-source-only": 40,
+     "unknown-source": 1
+    },
+    "B:studio/brand/logo": {
+     "total": 64,
+     "english-source-only": 62,
+     "unknown-source": 2
+    },
+    "B:studio/brand/naming": {
+     "total": 44,
+     "english-source-only": 44
+    },
+    "B:studio/brand/strategy": {
+     "total": 26,
+     "english-source-only": 26
+    },
+    "B:studio/content": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "B:studio/content/campaign": {
+     "total": 69,
+     "english-source-only": 69
+    },
+    "B:studio/content/social": {
+     "total": 17,
+     "english-source-only": 15,
+     "unknown-source": 2
+    },
+    "B:studio/content/visual": {
+     "total": 71,
+     "english-source-only": 71
+    },
+    "C:studio/care": {
+     "total": 17,
+     "english-source-only": 17
+    },
+    "C:studio/care/monthly-design": {
+     "total": 40,
+     "english-source-only": 40
+    },
+    "C:studio/care/design-improvement": {
+     "total": 33,
+     "english-source-only": 33
+    }
+   }
+  },
+  "id": {
+   "total": 729,
+   "classes": {
+    "unknown-source": 64,
+    "english-in-pack": 2,
+    "english-source-only": 660,
+    "reframe-notice": 3
+   },
+   "topSources": [
+    [
+     "scripts/studio-service-detail-data.mjs",
+     396
+    ],
+    [
+     "scripts/business-new-services-copy.mjs",
+     62
+    ],
+    [
+     "scripts/studio-care-detail-data.mjs",
+     50
+    ],
+    [
+     "scripts/business-service-landing-copy.mjs",
+     41
+    ],
+    [
+     "scripts/business-service-copy.mjs",
+     33
+    ],
+    [
+     "scripts/studio-areas.mjs",
+     22
+    ],
+    [
+     "scripts/studio-service-detail-render.mjs",
+     12
+    ],
+    [
+     "scripts/business-pillar-copy.mjs",
+     10
+    ]
+   ],
+   "pages": 47,
+   "perPage": {
+    "A:business": {
+     "total": 14,
+     "unknown-source": 13,
+     "english-in-pack": 1
+    },
+    "A:business/partners": {
+     "total": 9,
+     "unknown-source": 9
+    },
+    "A:business/seller-center": {
+     "total": 13,
+     "unknown-source": 13
+    },
+    "B:business/inquiry": {
+     "total": 8,
+     "english-source-only": 2,
+     "unknown-source": 6
+    },
+    "B:business/automation": {
+     "total": 1,
+     "unknown-source": 1
+    },
+    "B:business/ai-automation": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "B:business/data-reporting": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "B:business/internal-tools": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "C:business/booking": {
+     "total": 9,
+     "english-source-only": 9
+    },
+    "C:business/mvp": {
+     "total": 2,
+     "english-source-only": 2
+    },
+    "C:business/landing": {
+     "total": 44,
+     "english-source-only": 42,
+     "reframe-notice": 2
+    },
+    "C:business/web": {
+     "total": 3,
+     "english-source-only": 3
+    },
+    "C:business/website-renewal": {
+     "total": 17,
+     "english-source-only": 17
+    },
+    "C:business/improvement": {
+     "total": 15,
+     "english-source-only": 15
+    },
+    "B:business/care": {
+     "total": 12,
+     "english-source-only": 10,
+     "unknown-source": 1,
+     "reframe-notice": 1
+    },
+    "C:business/maintenance": {
+     "total": 13,
+     "english-source-only": 13
+    },
+    "C:business/post-launch": {
+     "total": 8,
+     "english-source-only": 8
+    },
+    "A:business/white-label": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "C:business/internal-system": {
+     "total": 1,
+     "english-in-pack": 1
+    },
+    "C:business/product-launch": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "D:business/research": {
+     "total": 3,
+     "unknown-source": 1,
+     "english-source-only": 2
+    },
+    "B:business/market-research": {
+     "total": 3,
+     "unknown-source": 3
+    },
+    "B:business/competitor-analysis": {
+     "total": 2,
+     "unknown-source": 2
+    },
+    "B:business/trend-research": {
+     "total": 4,
+     "unknown-source": 3,
+     "english-source-only": 1
+    },
+    "B:business/ux-audit": {
+     "total": 4,
+     "unknown-source": 2,
+     "english-source-only": 2
+    },
+    "D:business/design": {
+     "total": 19,
+     "english-source-only": 19
+    },
+    "D:business/creative": {
+     "total": 5,
+     "unknown-source": 5
+    },
+    "A:studio": {
+     "total": 16,
+     "english-source-only": 16
+    },
+    "A:studio/partnerships": {
+     "total": 6,
+     "english-source-only": 6
+    },
+    "A:studio/projects": {
+     "total": 3,
+     "english-source-only": 3
+    },
+    "A:studio/contact": {
+     "total": 2,
+     "english-source-only": 2
+    },
+    "B:studio/digital": {
+     "total": 2,
+     "english-source-only": 2
+    },
+    "B:studio/digital/web-design": {
+     "total": 43,
+     "english-source-only": 42,
+     "unknown-source": 1
+    },
+    "B:studio/digital/app-ui-ux": {
+     "total": 45,
+     "english-source-only": 45
+    },
+    "B:studio/digital/landing": {
+     "total": 52,
+     "english-source-only": 52
+    },
+    "B:studio/digital/product-design": {
+     "total": 48,
+     "english-source-only": 48
+    },
+    "B:studio/brand/identity": {
+     "total": 30,
+     "english-source-only": 29,
+     "unknown-source": 1
+    },
+    "B:studio/brand/logo": {
+     "total": 46,
+     "english-source-only": 45,
+     "unknown-source": 1
+    },
+    "B:studio/brand/naming": {
+     "total": 34,
+     "english-source-only": 34
+    },
+    "B:studio/brand/strategy": {
+     "total": 19,
+     "english-source-only": 19
+    },
+    "B:studio/content": {
+     "total": 1,
+     "english-source-only": 1
+    },
+    "B:studio/content/campaign": {
+     "total": 43,
+     "english-source-only": 43
+    },
+    "B:studio/content/social": {
+     "total": 13,
+     "english-source-only": 11,
+     "unknown-source": 2
+    },
+    "B:studio/content/visual": {
+     "total": 43,
+     "english-source-only": 43
+    },
+    "C:studio/care": {
+     "total": 13,
+     "english-source-only": 13
+    },
+    "C:studio/care/monthly-design": {
+     "total": 31,
+     "english-source-only": 31
+    },
+    "C:studio/care/design-improvement": {
+     "total": 25,
+     "english-source-only": 25
+    }
+   }
+  }
+ }
+}

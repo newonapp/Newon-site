@@ -1,0 +1,56 @@
+{
+ "files": 7626,
+ "hashA1": "235e17d644b0890d",
+ "hashA2": "bb4ffb35c4ec8eb2",
+ "hashB1": "235e17d644b0890d",
+ "repeatDiff": [
+  "_publish/de/index.html",
+  "_publish/es/index.html",
+  "_publish/fr/index.html",
+  "_publish/hi/index.html",
+  "_publish/id/index.html",
+  "_publish/ja/index.html",
+  "_publish/locales/de.json",
+  "_publish/locales/es.json",
+  "_publish/locales/fr.json",
+  "_publish/locales/hi.json",
+  "_publish/locales/id.json",
+  "_publish/locales/ja.json",
+  "_publish/locales/pt-br.json",
+  "_publish/pt-br/index.html",
+  "de/index.html",
+  "es/index.html",
+  "fr/index.html",
+  "hi/index.html",
+  "id/index.html",
+  "ja/index.html",
+  "locales/de.json",
+  "locales/es.json",
+  "locales/fr.json",
+  "locales/hi.json",
+  "locales/id.json",
+  "locales/ja.json",
+  "locales/pt-br.json",
+  "pt-br/index.html"
+ ],
+ "repeatGroups": {
+  "page": 14,
+  "locale-data": 14
+ },
+ "independentDiff": [],
+ "independentGroups": {},
+ "protectedSourcesTouched": [
+  "locales/_sp.de.json",
+  "locales/_sp.es.json",
+  "locales/_sp.fr.json",
+  "locales/_sp.hi.json",
+  "locales/_sp.id.json",
+  "locales/_sp.ja.json",
+  "locales/_sp.pt-br.json"
+ ],
+ "epoch": "1792281600",
+ "errors": [
+  "repeat build changed 28 file(s)",
+  "build modified protected translation sources: locales/_sp.de.json, locales/_sp.es.json, locales/_sp.fr.json, locales/_sp.hi.json, locales/_sp.id.json, locales/_sp.ja.json, locales/_sp.pt-br.json"
+ ]
+}

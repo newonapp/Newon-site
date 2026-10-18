@@ -23,7 +23,7 @@ import { publishedArticles } from "./news-data.mjs";
 import { buildHomeStudioBody } from "./home-page-body.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { businessServicesHtml } from "./business-services-html.mjs";
-import { renderGlobalHeader, renderStudioFooter } from "./site-chrome.mjs";
+import { renderGlobalHeader, renderStudioFooter, renderFooterNavLinks } from "./site-chrome.mjs";
 import { fontLinksHtml } from "./hub-utils.mjs";
 import { clampSeoDescription, isSeoDescriptionKey } from "./seo-meta.mjs";
 import { STORE_PRODUCTS, LABS_EXPERIMENTS } from "./resources-data.mjs";
@@ -36,6 +36,9 @@ import {
 import { STUDIO_AREA_PAGES } from "./studio-areas.mjs";
 import { BSP_SITEMAP_PATHS } from "./render-bsp.mjs";
 import { PETLOG_SITE_PATHS } from "./render-petlog-site.mjs";
+
+/** Build timestamp. SOURCE_DATE_EPOCH (seconds, reproducible-builds convention) pins it; unset = the current time, as before. */
+const buildDate = () => (process.env.SOURCE_DATE_EPOCH && /^\d+$/.test(process.env.SOURCE_DATE_EPOCH) ? new Date(Number(process.env.SOURCE_DATE_EPOCH) * 1000) : new Date());
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -336,9 +339,13 @@ function hreflangBlockPrivacyRoot() {
   return lines.join("\n");
 }
 
+const BRAND_FOOTER_RE = /<footer class="site-footer site-footer--brand[^"]*"[^>]*>[\s\S]*?<\/footer>/;
+
 function ensureBrandFooter(html, flat, flatEn, base, langDir) {
-  if (String(html).includes("site-footer--brand")) return html;
   const footer = renderStudioFooter(flat, flatEn, { base, langDir });
+  // A page that already carried the brand footer used to be skipped, so it kept the link set it was first
+  // written with when FOOTER_MENUS changed. Refresh it in place so the footer always follows renderStudioFooter().
+  if (BRAND_FOOTER_RE.test(String(html))) return String(html).replace(BRAND_FOOTER_RE, () => footer);
   let out = html;
   if (!out.includes("hub-pages.css")) {
     out = out.replace(
@@ -400,6 +407,7 @@ for (const { dir, file, htmlLang } of LANGS) {
   tpl = tpl.replace(/\{\{HOME_STUDIO_BODY\}\}/g, buildHomeStudioBody(copyLang));
 
   tpl = tpl.replace(/\{\{GLOBAL_HEADER\}\}/g, renderGlobalHeader(flat, flatEn, { activeNav: "", base: "", idSuffix: "home", langDir: dir }));
+  tpl = tpl.replace(/\{\{FOOTER_NAV_LINKS\}\}/g, renderFooterNavLinks(flat, flatEn, { base: "", langDir: dir }));
 
   const outDir = path.join(ROOT, dir);
   fs.mkdirSync(outDir, { recursive: true });
@@ -556,7 +564,7 @@ function writeRobotsTxt() {
  * Uses catalog routePath / studio paths; skips redirects, admin, success, delete-account.
  */
 function writeSitemap() {
-  const today = new Date().toISOString().slice(0, 10);
+  const today = buildDate().toISOString().slice(0, 10);
   /** @type {Map<string, { changefreq: string, priority: string }>} */
   const entries = new Map();
 
@@ -597,7 +605,7 @@ function writeSitemap() {
   }
 
   // Product hubs
-  for (const page of ["products", "apps", "ecosystem", "ai", "ai/enterprise", "lifestage", "ongil", "ongil/platform", "ongil/business", "ongil/partnerships", "ongil/contact", "shareon", "saas", "games", "tools", "market", "contact", "media"]) {
+  for (const page of ["products", "apps", "ecosystem", "ai", "ai/enterprise", "business-hub", "business/seller-center", "business/partners", "babylog", "babylog/platform", "babylog/business", "babylog/partnerships", "babylog/contact", "petlog", "myworld", "shareon", "lifestage", "ongil", "ongil/platform", "ongil/business", "ongil/partnerships", "ongil/contact", "saas", "games", "tools", "market", "contact", "media"]) {
     addAllLocales(page, "0.65", "monthly");
   }
 
@@ -716,11 +724,17 @@ runScript("render-news.mjs");
 runScript("render-ideas.mjs");
 runScript("render-business-hub.mjs");
 runScript("render-studio-hubs.mjs");
+runScript("render-business-intro.mjs");
+runScript("render-bizhub.mjs");
+runScript("business-model-sanitize.mjs");
+runScript("business-model-reframe.mjs");
 runScript("render-lifestage.mjs");
+runScript("render-babylog-site.mjs");
 runScript("render-ongil.mjs");
 runScript("render-shareon.mjs");
 runScript("render-bsp.mjs");
 runScript("render-petlog-site.mjs");
+runScript("render-myworld-site.mjs");
 // ONGIL corporate website (KO/EN five pages) — overwrites the KO/EN ONGIL overview written just above
 runScript("render-ongil-site.mjs");
 runScript("render-ox-month-web.mjs");

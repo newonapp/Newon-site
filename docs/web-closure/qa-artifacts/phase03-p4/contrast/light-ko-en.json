@@ -1,0 +1,3828 @@
+{
+ "1440/ko/business/inquiry": [
+  [
+   "SPAN",
+   4.4,
+   4.5,
+   "NEWON",
+   "span. < div.bz-sv__foot < div.bz-sv < aside.bz-hero__visual.bz-hero-enter",
+   "rgba(10, 10, 10, 0.55)",
+   true
+  ],
+  [
+   "SPAN",
+   4.4,
+   4.5,
+   "EST. 2026",
+   "span. < div.bz-sv__foot < div.bz-sv < aside.bz-hero__visual.bz-hero-enter",
+   "rgba(10, 10, 10, 0.55)",
+   true
+  ],
+  [
+   "bz-inq-explore__n",
+   2.81,
+   4.5,
+   "01",
+   "span.bz-inq-explore__n < div.bz-inq-explore__top < a.bz-inq-explore__card < div.bz-inq-explore__grid",
+   "rgb(154, 154, 154)",
+   true
+  ],
+  [
+   "bz-inq-explore__n",
+   2.81,
+   4.5,
+   "02",
+   "span.bz-inq-explore__n < div.bz-inq-explore__top < a.bz-inq-explore__card < div.bz-inq-explore__grid",
+   "rgb(154, 154, 154)",
+   true
+  ],
+  [
+   "bz-inq-explore__n",
+   2.81,
+   4.5,
+   "03",
+   "span.bz-inq-explore__n < div.bz-inq-explore__top < a.bz-inq-explore__card < div.bz-inq-explore__grid",
+   "rgb(154, 154, 154)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "01",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "02",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "03",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "04",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "05",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ]
+ ],
+ "1440/ko/business/automation": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUSINESS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "AUTOMATION",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/ko/business/ai-automation": [
+  [
+   "bs-sv__k",
+   3.37,
+   4.5,
+   "AI",
+   "p.bs-sv__k < article.is-run < div.bs-sv-biz-ai__grid < div.bs-sv-biz-ai",
+   "rgb(47, 158, 110)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/ko/business/automation/workflow": [
+  [
+   "EM",
+   3.37,
+   4.5,
+   "Running",
+   "em. < div.is-run < div.bs-sv-biz-wf__queue < div.bs-sv-biz-wf",
+   "rgb(47, 158, 110)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-wfa-ai-split__live",
+   3.37,
+   4.5,
+   "ON",
+   "span.bs-wfa-ai-split__live < div.bs-wfa-ai-split__head < div.bs-wfa-ai-split__viz < div.bs-wfa-ai-stack",
+   "rgb(47, 158, 110)",
+   true
+  ],
+  [
+   "bs-wfa-error-flow__live",
+   4.24,
+   4.5,
+   "SIM",
+   "span.bs-wfa-error-flow__live < div.bs-wfa-error-flow__head < div.bs-wfa-error-flow__frame < div.bs-wfa-error-flow",
+   "rgb(196, 92, 62)",
+   true
+  ],
+  [
+   "is-fail",
+   4.24,
+   4.5,
+   "API timeout",
+   "span.is-fail < div.bs-wfa-error-flow__track < div.bs-wfa-error-flow__frame < div.bs-wfa-error-flow",
+   "rgb(196, 92, 62)",
+   true
+  ],
+  [
+   "is-out",
+   3.37,
+   4.5,
+   "Notify owner",
+   "span.is-out < div.bs-wfa-error-flow__track < div.bs-wfa-error-flow__frame < div.bs-wfa-error-flow",
+   "rgb(47, 158, 110)",
+   true
+  ]
+ ],
+ "1440/ko/business/internal-tools": [
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "06",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-it-ext-grid__live",
+   3.37,
+   4.5,
+   "ON",
+   "span.bs-it-ext-grid__live < div.bs-it-ext-grid__head < div.bs-it-ext-grid__viz.bs-it-ext-grid__viz--ai < article.bs-it-ext-grid__col",
+   "rgb(47, 158, 110)",
+   true
+  ]
+ ],
+ "1440/ko/business/build": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUSINESS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUILD",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "05",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "06",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "1440/ko/business/mvp": [
+  [
+   "bs-sv__k",
+   3.19,
+   4.5,
+   "CORE FLOW",
+   "p.bs-sv__k < div.bs-sv-biz-mvp__screen < div.bs-sv-biz-mvp__phone < div.bs-sv-biz-mvp__stage",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/ko/business/landing": [
+  [
+   "EM",
+   3.37,
+   4.5,
+   "Convert",
+   "em. < section.is-run < div.bs-sv-biz-lp__page < div.bs-sv-biz-lp",
+   "rgb(47, 158, 110)",
+   true
+  ]
+ ],
+ "1440/ko/business/app": [
+  [
+   "bs-sv__k",
+   3.22,
+   4.5,
+   "CORE TASK",
+   "p.bs-sv__k < div.bs-sv-biz-app__screen < div.bs-sv-biz-app__phone.is-front < div.bs-sv-biz-app__phones",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "SPAN",
+   3.22,
+   4.5,
+   "Home",
+   "span. < div.bs-sv-biz-app__flow < div.bs-sv-biz-app__screen < div.bs-sv-biz-app__phone.is-front",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "SPAN",
+   3.22,
+   4.5,
+   "Action",
+   "span. < div.bs-sv-biz-app__flow < div.bs-sv-biz-app__screen < div.bs-sv-biz-app__phone.is-front",
+   "rgb(138, 138, 138)",
+   true
+  ]
+ ],
+ "1440/ko/business/care": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUSINESS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "CARE",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "1440/ko/business/solutions": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUSINESS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "SOLUTIONS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-lflow__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-lflow__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-lflow__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-lflow__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-lflow__n",
+   1.1,
+   3,
+   "05",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-lflow__n",
+   1.1,
+   3,
+   "06",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-when__ghost",
+   1.09,
+   3,
+   "01",
+   "span.bp-when__ghost < li.bp-when__item < ol.bp-when__list < div.bp-inner",
+   "rgba(0, 0, 0, 0.04)",
+   true
+  ],
+  [
+   "bp-when__ghost",
+   1.09,
+   3,
+   "02",
+   "span.bp-when__ghost < li.bp-when__item < ol.bp-when__list < div.bp-inner",
+   "rgba(0, 0, 0, 0.04)",
+   true
+  ],
+  [
+   "bp-when__ghost",
+   1.09,
+   3,
+   "03",
+   "span.bp-when__ghost < li.bp-when__item < ol.bp-when__list < div.bp-inner",
+   "rgba(0, 0, 0, 0.04)",
+   true
+  ],
+  [
+   "bp-when__ghost",
+   1.09,
+   3,
+   "04",
+   "span.bp-when__ghost < li.bp-when__item < ol.bp-when__list < div.bp-inner",
+   "rgba(0, 0, 0, 0.04)",
+   true
+  ],
+  [
+   "bp-when__ghost",
+   1.09,
+   3,
+   "05",
+   "span.bp-when__ghost < li.bp-when__item < ol.bp-when__list < div.bp-inner",
+   "rgba(0, 0, 0, 0.04)",
+   true
+  ]
+ ],
+ "1440/ko/business/custom-product": [
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/ko/business/internal-system": [
+  [
+   "EM",
+   3.37,
+   4.5,
+   "Review",
+   "em. < div.bs-sv-biz-is__row.is-run < div.bs-sv-biz-is__rows < div.bs-sv-biz-is",
+   "rgb(47, 158, 110)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/ko/business/product-launch": [
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/ko/business/research": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUSINESS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "PLANNING",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-custom__brief-k",
+   3.54,
+   4.5,
+   "REPORT STRUCTURE PREVIEW",
+   "p.bp-custom__brief-k < div.bp-custom__brief < div.bp-inner.bp-custom__grid < section.bp-sec.bp-custom.is-in",
+   "rgb(136, 136, 136)",
+   true
+  ],
+  [
+   "bp-custom__k",
+   3.54,
+   4.5,
+   "QUESTION",
+   "p.bp-custom__k < div.bp-custom__row < div.bp-custom__brief-body < div.bp-custom__brief",
+   "rgb(136, 136, 136)",
+   true
+  ],
+  [
+   "bp-custom__k",
+   3.54,
+   4.5,
+   "CONTEXT",
+   "p.bp-custom__k < div.bp-custom__row < div.bp-custom__brief-body < div.bp-custom__brief",
+   "rgb(136, 136, 136)",
+   true
+  ],
+  [
+   "bp-custom__k",
+   3.54,
+   4.5,
+   "SCOPE",
+   "p.bp-custom__k < div.bp-custom__row < div.bp-custom__brief-body < div.bp-custom__brief",
+   "rgb(136, 136, 136)",
+   true
+  ],
+  [
+   "bp-custom__k",
+   3.54,
+   4.5,
+   "OUTPUT",
+   "p.bp-custom__k < div.bp-custom__row < div.bp-custom__brief-body < div.bp-custom__brief",
+   "rgb(136, 136, 136)",
+   true
+  ]
+ ],
+ "1440/ko/business/ux-audit": [
+  [
+   "SPAN",
+   3.25,
+   4.5,
+   "P2",
+   "span. < div.bs-sv-biz-ux__row.is-p2 < div.bs-sv-biz-ux__findings < div.bs-sv-biz-ux",
+   "rgb(184, 134, 11)",
+   true
+  ]
+ ],
+ "1440/ko/studio/partnerships": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "PARTNERSHIPS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "1440/ko/studio/projects": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "PROJECTS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "1440/ko/studio/contact": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "CONTACT",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "1440/ko/studio/digital": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "DIGITAL PRODUCTS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/ko/studio/digital/app-ui-ux": [
+  [
+   "bs-sv-app__kicker",
+   3.22,
+   4.5,
+   "TODAY",
+   "p.bs-sv-app__kicker < div.bs-sv-app__screen < div.bs-sv-app__phone < div.bs-sv-app",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "01",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "02",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "03",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "04",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "05",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "06",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "07",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "08",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ]
+ ],
+ "1440/ko/studio/brand": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BRAND",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/ko/studio/brand/logo": [
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "01",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "02",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "03",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "04",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "05",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "06",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "07",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "08",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ]
+ ],
+ "1440/ko/studio/content": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "CONTENT & CAMPAIGN",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "1440/ko/studio/content/campaign": [
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "01",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "02",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "03",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "04",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "05",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "06",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "07",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "08",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ]
+ ],
+ "1440/ko/studio/care": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "DESIGN CARE",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/business/inquiry": [
+  [
+   "SPAN",
+   4.4,
+   4.5,
+   "NEWON",
+   "span. < div.bz-sv__foot < div.bz-sv < aside.bz-hero__visual.bz-hero-enter",
+   "rgba(10, 10, 10, 0.55)",
+   true
+  ],
+  [
+   "SPAN",
+   4.4,
+   4.5,
+   "EST. 2026",
+   "span. < div.bz-sv__foot < div.bz-sv < aside.bz-hero__visual.bz-hero-enter",
+   "rgba(10, 10, 10, 0.55)",
+   true
+  ],
+  [
+   "bz-inq-explore__n",
+   2.81,
+   4.5,
+   "01",
+   "span.bz-inq-explore__n < div.bz-inq-explore__top < a.bz-inq-explore__card < div.bz-inq-explore__grid",
+   "rgb(154, 154, 154)",
+   true
+  ],
+  [
+   "bz-inq-explore__n",
+   2.81,
+   4.5,
+   "02",
+   "span.bz-inq-explore__n < div.bz-inq-explore__top < a.bz-inq-explore__card < div.bz-inq-explore__grid",
+   "rgb(154, 154, 154)",
+   true
+  ],
+  [
+   "bz-inq-explore__n",
+   2.81,
+   4.5,
+   "03",
+   "span.bz-inq-explore__n < div.bz-inq-explore__top < a.bz-inq-explore__card < div.bz-inq-explore__grid",
+   "rgb(154, 154, 154)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "01",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "02",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "03",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "04",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "05",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ]
+ ],
+ "1440/en/business/automation": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUSINESS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "AUTOMATION",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/business/ai-automation": [
+  [
+   "bs-sv__k",
+   3.37,
+   4.5,
+   "AI",
+   "p.bs-sv__k < article.is-run < div.bs-sv-biz-ai__grid < div.bs-sv-biz-ai",
+   "rgb(47, 158, 110)",
+   true
+  ]
+ ],
+ "1440/en/business/automation/workflow": [
+  [
+   "EM",
+   3.37,
+   4.5,
+   "Running",
+   "em. < div.is-run < div.bs-sv-biz-wf__queue < div.bs-sv-biz-wf",
+   "rgb(47, 158, 110)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-wfa-ai-split__live",
+   3.37,
+   4.5,
+   "ON",
+   "span.bs-wfa-ai-split__live < div.bs-wfa-ai-split__head < div.bs-wfa-ai-split__viz < div.bs-wfa-ai-stack",
+   "rgb(47, 158, 110)",
+   true
+  ]
+ ],
+ "1440/en/business/data-reporting": [
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "06",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/business/internal-tools": [
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "06",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/business/build": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUSINESS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUILD",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "05",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "06",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "1440/en/business/mvp": [
+  [
+   "bs-sv__k",
+   3.19,
+   4.5,
+   "CORE FLOW",
+   "p.bs-sv__k < div.bs-sv-biz-mvp__screen < div.bs-sv-biz-mvp__phone < div.bs-sv-biz-mvp__stage",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/business/landing": [
+  [
+   "EM",
+   3.37,
+   4.5,
+   "Convert",
+   "em. < section.is-run < div.bs-sv-biz-lp__page < div.bs-sv-biz-lp",
+   "rgb(47, 158, 110)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/business/app": [
+  [
+   "bs-sv__k",
+   3.22,
+   4.5,
+   "CORE TASK",
+   "p.bs-sv__k < div.bs-sv-biz-app__screen < div.bs-sv-biz-app__phone.is-front < div.bs-sv-biz-app__phones",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "SPAN",
+   3.22,
+   4.5,
+   "Home",
+   "span. < div.bs-sv-biz-app__flow < div.bs-sv-biz-app__screen < div.bs-sv-biz-app__phone.is-front",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "SPAN",
+   3.22,
+   4.5,
+   "Action",
+   "span. < div.bs-sv-biz-app__flow < div.bs-sv-biz-app__screen < div.bs-sv-biz-app__phone.is-front",
+   "rgb(138, 138, 138)",
+   true
+  ]
+ ],
+ "1440/en/business/care": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUSINESS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "CARE",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "1440/en/business/solutions": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUSINESS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "SOLUTIONS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/business/white-label": [
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/business/custom-product": [
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/business/internal-system": [
+  [
+   "EM",
+   3.37,
+   4.5,
+   "Review",
+   "em. < div.bs-sv-biz-is__row.is-run < div.bs-sv-biz-is__rows < div.bs-sv-biz-is",
+   "rgb(47, 158, 110)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "EM",
+   2.15,
+   4.5,
+   "Pending",
+   "em. < div.bs-is-console__row.is-on < div.bs-is-console < div.bs-dr-output__page",
+   "rgb(245, 158, 11)",
+   true
+  ]
+ ],
+ "1440/en/business/research": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BUSINESS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "PLANNING",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/business/ux-audit": [
+  [
+   "SPAN",
+   3.25,
+   4.5,
+   "P2",
+   "span. < div.bs-sv-biz-ux__row.is-p2 < div.bs-sv-biz-ux__findings < div.bs-sv-biz-ux",
+   "rgb(184, 134, 11)",
+   true
+  ]
+ ],
+ "1440/en/business/design": [
+  [
+   "EM",
+   3.37,
+   4.5,
+   "Review",
+   "em. < div.bs-sv-biz-is__row.is-run < div.bs-sv-biz-is__rows < div.bs-sv-biz-is",
+   "rgb(47, 158, 110)",
+   true
+  ]
+ ],
+ "1440/en/studio/partnerships": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "PARTNERSHIPS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "1440/en/studio/projects": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "PROJECTS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "1440/en/studio/contact": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "CONTACT",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "1440/en/studio/digital": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "DIGITAL PRODUCTS",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/studio/digital/app-ui-ux": [
+  [
+   "bs-sv-app__kicker",
+   3.22,
+   4.5,
+   "TODAY",
+   "p.bs-sv-app__kicker < div.bs-sv-app__screen < div.bs-sv-app__phone < div.bs-sv-app",
+   "rgb(138, 138, 138)",
+   true
+  ]
+ ],
+ "1440/en/studio/brand": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "BRAND",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/studio/content": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "CONTENT & CAMPAIGN",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "1440/en/studio/care": [
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "STUDIO",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bp-mark__line",
+   1,
+   3,
+   "DESIGN CARE",
+   "span.bp-mark__line < p.bp-mark.bp-mark--stack < aside.bp-hero__visual.bp-hero__visual--mark < div.bp-inner.bp-hero__grid",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "390/ko/business/inquiry": [
+  [
+   "SPAN",
+   4.4,
+   4.5,
+   "NEWON",
+   "span. < div.bz-sv__foot < div.bz-sv < aside.bz-hero__visual.bz-hero-enter",
+   "rgba(10, 10, 10, 0.55)",
+   true
+  ],
+  [
+   "SPAN",
+   4.4,
+   4.5,
+   "EST. 2026",
+   "span. < div.bz-sv__foot < div.bz-sv < aside.bz-hero__visual.bz-hero-enter",
+   "rgba(10, 10, 10, 0.55)",
+   true
+  ],
+  [
+   "bz-inq-explore__n",
+   2.81,
+   4.5,
+   "01",
+   "span.bz-inq-explore__n < div.bz-inq-explore__top < a.bz-inq-explore__card < div.bz-inq-explore__grid",
+   "rgb(154, 154, 154)",
+   true
+  ],
+  [
+   "bz-inq-explore__n",
+   2.81,
+   4.5,
+   "02",
+   "span.bz-inq-explore__n < div.bz-inq-explore__top < a.bz-inq-explore__card < div.bz-inq-explore__grid",
+   "rgb(154, 154, 154)",
+   true
+  ],
+  [
+   "bz-inq-explore__n",
+   2.81,
+   4.5,
+   "03",
+   "span.bz-inq-explore__n < div.bz-inq-explore__top < a.bz-inq-explore__card < div.bz-inq-explore__grid",
+   "rgb(154, 154, 154)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "01",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "02",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "03",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "04",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "05",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ]
+ ],
+ "390/ko/business/ai-automation": [
+  [
+   "bs-sv__k",
+   3.37,
+   4.5,
+   "AI",
+   "p.bs-sv__k < article.is-run < div.bs-sv-biz-ai__grid < div.bs-sv-biz-ai",
+   "rgb(47, 158, 110)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "390/ko/business/automation/workflow": [
+  [
+   "EM",
+   3.37,
+   4.5,
+   "Running",
+   "em. < div.is-run < div.bs-sv-biz-wf__queue < div.bs-sv-biz-wf",
+   "rgb(47, 158, 110)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "390/ko/business/mvp": [
+  [
+   "bs-sv__k",
+   3.19,
+   4.5,
+   "CORE FLOW",
+   "p.bs-sv__k < div.bs-sv-biz-mvp__screen < div.bs-sv-biz-mvp__phone < div.bs-sv-biz-mvp__stage",
+   "rgb(138, 138, 138)",
+   true
+  ]
+ ],
+ "390/ko/business/landing": [
+  [
+   "EM",
+   3.37,
+   4.5,
+   "Convert",
+   "em. < section.is-run < div.bs-sv-biz-lp__page < div.bs-sv-biz-lp",
+   "rgb(47, 158, 110)",
+   true
+  ]
+ ],
+ "390/ko/business/web": [
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "390/ko/business/app": [
+  [
+   "bs-sv__k",
+   3.22,
+   4.5,
+   "CORE TASK",
+   "p.bs-sv__k < div.bs-sv-biz-app__screen < div.bs-sv-biz-app__phone.is-front < div.bs-sv-biz-app__phones",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "SPAN",
+   3.22,
+   4.5,
+   "Home",
+   "span. < div.bs-sv-biz-app__flow < div.bs-sv-biz-app__screen < div.bs-sv-biz-app__phone.is-front",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "SPAN",
+   3.22,
+   4.5,
+   "Action",
+   "span. < div.bs-sv-biz-app__flow < div.bs-sv-biz-app__screen < div.bs-sv-biz-app__phone.is-front",
+   "rgb(138, 138, 138)",
+   true
+  ]
+ ],
+ "390/ko/business/solutions": [
+  [
+   "bp-lflow__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-lflow__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-lflow__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-lflow__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-lflow__n",
+   1.1,
+   3,
+   "05",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-lflow__n",
+   1.1,
+   3,
+   "06",
+   "span.bp-lflow__n < li.bp-lflow__step < ol.bp-lflow < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "390/ko/business/white-label": [
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "390/ko/business/internal-system": [
+  [
+   "EM",
+   3.37,
+   4.5,
+   "Review",
+   "em. < div.bs-sv-biz-is__row.is-run < div.bs-sv-biz-is__rows < div.bs-sv-biz-is",
+   "rgb(47, 158, 110)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "390/ko/business/research": [
+  [
+   "bp-custom__brief-k",
+   3.54,
+   4.5,
+   "REPORT STRUCTURE PREVIEW",
+   "p.bp-custom__brief-k < div.bp-custom__brief < div.bp-inner.bp-custom__grid < section.bp-sec.bp-custom.is-in",
+   "rgb(136, 136, 136)",
+   true
+  ],
+  [
+   "bp-custom__k",
+   3.54,
+   4.5,
+   "QUESTION",
+   "p.bp-custom__k < div.bp-custom__row < div.bp-custom__brief-body < div.bp-custom__brief",
+   "rgb(136, 136, 136)",
+   true
+  ],
+  [
+   "bp-custom__k",
+   3.54,
+   4.5,
+   "CONTEXT",
+   "p.bp-custom__k < div.bp-custom__row < div.bp-custom__brief-body < div.bp-custom__brief",
+   "rgb(136, 136, 136)",
+   true
+  ],
+  [
+   "bp-custom__k",
+   3.54,
+   4.5,
+   "SCOPE",
+   "p.bp-custom__k < div.bp-custom__row < div.bp-custom__brief-body < div.bp-custom__brief",
+   "rgb(136, 136, 136)",
+   true
+  ],
+  [
+   "bp-custom__k",
+   3.54,
+   4.5,
+   "OUTPUT",
+   "p.bp-custom__k < div.bp-custom__row < div.bp-custom__brief-body < div.bp-custom__brief",
+   "rgb(136, 136, 136)",
+   true
+  ]
+ ],
+ "390/ko/business/ux-audit": [
+  [
+   "SPAN",
+   3.25,
+   4.5,
+   "P2",
+   "span. < div.bs-sv-biz-ux__row.is-p2 < div.bs-sv-biz-ux__findings < div.bs-sv-biz-ux",
+   "rgb(184, 134, 11)",
+   true
+  ]
+ ],
+ "390/ko/business/design": [
+  [
+   "EM",
+   3.37,
+   4.5,
+   "Review",
+   "em. < div.bs-sv-biz-is__row.is-run < div.bs-sv-biz-is__rows < div.bs-sv-biz-is",
+   "rgb(47, 158, 110)",
+   true
+  ]
+ ],
+ "390/ko/studio/projects": [
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "390/ko/studio/contact": [
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "390/ko/studio/digital/app-ui-ux": [
+  [
+   "bs-sv-app__kicker",
+   3.22,
+   4.5,
+   "TODAY",
+   "p.bs-sv-app__kicker < div.bs-sv-app__screen < div.bs-sv-app__phone < div.bs-sv-app",
+   "rgb(138, 138, 138)",
+   true
+  ]
+ ],
+ "390/ko/studio/brand/strategy": [
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "01",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "02",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "03",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "04",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "05",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "06",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "07",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ]
+ ],
+ "390/en/business/inquiry": [
+  [
+   "SPAN",
+   4.4,
+   4.5,
+   "NEWON",
+   "span. < div.bz-sv__foot < div.bz-sv < aside.bz-hero__visual.bz-hero-enter",
+   "rgba(10, 10, 10, 0.55)",
+   true
+  ],
+  [
+   "SPAN",
+   4.4,
+   4.5,
+   "EST. 2026",
+   "span. < div.bz-sv__foot < div.bz-sv < aside.bz-hero__visual.bz-hero-enter",
+   "rgba(10, 10, 10, 0.55)",
+   true
+  ],
+  [
+   "bz-inq-explore__n",
+   2.81,
+   4.5,
+   "01",
+   "span.bz-inq-explore__n < div.bz-inq-explore__top < a.bz-inq-explore__card < div.bz-inq-explore__grid",
+   "rgb(154, 154, 154)",
+   true
+  ],
+  [
+   "bz-inq-explore__n",
+   2.81,
+   4.5,
+   "02",
+   "span.bz-inq-explore__n < div.bz-inq-explore__top < a.bz-inq-explore__card < div.bz-inq-explore__grid",
+   "rgb(154, 154, 154)",
+   true
+  ],
+  [
+   "bz-inq-explore__n",
+   2.81,
+   4.5,
+   "03",
+   "span.bz-inq-explore__n < div.bz-inq-explore__top < a.bz-inq-explore__card < div.bz-inq-explore__grid",
+   "rgb(154, 154, 154)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "01",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "02",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "03",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "04",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ],
+  [
+   "bz-process__n",
+   1.27,
+   3,
+   "05",
+   "span.bz-process__n < li. < ol.bz-process__track < div.bz-inner.bz-process__layout",
+   "rgb(228, 228, 228)",
+   true
+  ]
+ ],
+ "390/en/business/ai-automation": [
+  [
+   "bs-sv__k",
+   3.37,
+   4.5,
+   "AI",
+   "p.bs-sv__k < article.is-run < div.bs-sv-biz-ai__grid < div.bs-sv-biz-ai",
+   "rgb(47, 158, 110)",
+   true
+  ]
+ ],
+ "390/en/business/automation/workflow": [
+  [
+   "EM",
+   3.37,
+   4.5,
+   "Running",
+   "em. < div.is-run < div.bs-sv-biz-wf__queue < div.bs-sv-biz-wf",
+   "rgb(47, 158, 110)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "390/en/business/build": [
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "05",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "06",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "390/en/business/mvp": [
+  [
+   "bs-sv__k",
+   3.19,
+   4.5,
+   "CORE FLOW",
+   "p.bs-sv__k < div.bs-sv-biz-mvp__screen < div.bs-sv-biz-mvp__phone < div.bs-sv-biz-mvp__stage",
+   "rgb(138, 138, 138)",
+   true
+  ]
+ ],
+ "390/en/business/landing": [
+  [
+   "EM",
+   3.37,
+   4.5,
+   "Convert",
+   "em. < section.is-run < div.bs-sv-biz-lp__page < div.bs-sv-biz-lp",
+   "rgb(47, 158, 110)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "390/en/business/app": [
+  [
+   "bs-sv__k",
+   3.22,
+   4.5,
+   "CORE TASK",
+   "p.bs-sv__k < div.bs-sv-biz-app__screen < div.bs-sv-biz-app__phone.is-front < div.bs-sv-biz-app__phones",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "SPAN",
+   3.22,
+   4.5,
+   "Home",
+   "span. < div.bs-sv-biz-app__flow < div.bs-sv-biz-app__screen < div.bs-sv-biz-app__phone.is-front",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "SPAN",
+   3.22,
+   4.5,
+   "Action",
+   "span. < div.bs-sv-biz-app__flow < div.bs-sv-biz-app__screen < div.bs-sv-biz-app__phone.is-front",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "390/en/business/white-label": [
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "01",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "02",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "03",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "04",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ],
+  [
+   "bs-flow-stage-grid__n",
+   1,
+   3,
+   "05",
+   "span.bs-flow-stage-grid__n < article.bs-flow-stage-grid__item < div.bs-flow-stage-grid.bs-flow-stage-grid--flow < div.bs-inner",
+   "rgba(0, 0, 0, 0)",
+   true
+  ]
+ ],
+ "390/en/business/internal-system": [
+  [
+   "EM",
+   3.37,
+   4.5,
+   "Review",
+   "em. < div.bs-sv-biz-is__row.is-run < div.bs-sv-biz-is__rows < div.bs-sv-biz-is",
+   "rgb(47, 158, 110)",
+   true
+  ]
+ ],
+ "390/en/business/research": [
+  [
+   "bp-custom__brief-k",
+   3.54,
+   4.5,
+   "REPORT STRUCTURE PREVIEW",
+   "p.bp-custom__brief-k < div.bp-custom__brief < div.bp-inner.bp-custom__grid < section.bp-sec.bp-custom.is-in",
+   "rgb(136, 136, 136)",
+   true
+  ],
+  [
+   "bp-custom__k",
+   3.54,
+   4.5,
+   "QUESTION",
+   "p.bp-custom__k < div.bp-custom__row < div.bp-custom__brief-body < div.bp-custom__brief",
+   "rgb(136, 136, 136)",
+   true
+  ],
+  [
+   "bp-custom__k",
+   3.54,
+   4.5,
+   "CONTEXT",
+   "p.bp-custom__k < div.bp-custom__row < div.bp-custom__brief-body < div.bp-custom__brief",
+   "rgb(136, 136, 136)",
+   true
+  ],
+  [
+   "bp-custom__k",
+   3.54,
+   4.5,
+   "SCOPE",
+   "p.bp-custom__k < div.bp-custom__row < div.bp-custom__brief-body < div.bp-custom__brief",
+   "rgb(136, 136, 136)",
+   true
+  ],
+  [
+   "bp-custom__k",
+   3.54,
+   4.5,
+   "OUTPUT",
+   "p.bp-custom__k < div.bp-custom__row < div.bp-custom__brief-body < div.bp-custom__brief",
+   "rgb(136, 136, 136)",
+   true
+  ]
+ ],
+ "390/en/business/ux-audit": [
+  [
+   "SPAN",
+   3.25,
+   4.5,
+   "P2",
+   "span. < div.bs-sv-biz-ux__row.is-p2 < div.bs-sv-biz-ux__findings < div.bs-sv-biz-ux",
+   "rgb(184, 134, 11)",
+   true
+  ]
+ ],
+ "390/en/business/design": [
+  [
+   "EM",
+   3.37,
+   4.5,
+   "Review",
+   "em. < div.bs-sv-biz-is__row.is-run < div.bs-sv-biz-is__rows < div.bs-sv-biz-is",
+   "rgb(47, 158, 110)",
+   true
+  ]
+ ],
+ "390/en/studio/partnerships": [
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "390/en/studio/projects": [
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "390/en/studio/contact": [
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "01",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "02",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "03",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ],
+  [
+   "bp-proc__n",
+   1.1,
+   3,
+   "04",
+   "span.bp-proc__n < li.bp-proc__step < ol.bp-proc < div.bp-inner",
+   "rgba(0, 0, 0, 0.043)",
+   true
+  ]
+ ],
+ "390/en/studio/digital/app-ui-ux": [
+  [
+   "bs-sv-app__kicker",
+   3.22,
+   4.5,
+   "TODAY",
+   "p.bs-sv-app__kicker < div.bs-sv-app__screen < div.bs-sv-app__phone < div.bs-sv-app",
+   "rgb(138, 138, 138)",
+   true
+  ]
+ ],
+ "390/en/studio/brand/naming": [
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "01",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "02",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "03",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "04",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "05",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "06",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "07",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ],
+  [
+   "bs-get__n",
+   3.45,
+   4.5,
+   "08",
+   "span.bs-get__n < article.bs-get__item < div.bs-get.bs-get--deliver < div.bs-inner",
+   "rgb(138, 138, 138)",
+   true
+  ]
+ ]
+}

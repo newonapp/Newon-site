@@ -349,7 +349,9 @@ function injectAppSections(html, app) {
     );
   }
 
-  return out;
+  // P6: removeSection + insertBefore/After leave their separator whitespace behind, so every run added two blank lines at
+  // each block (templates grew on every build). Cap blank-line runs so a second run is a no-op.
+  return out.replace(/\n(?:[ \t]*\n){3,}/g, "\n\n\n");
 }
 
 const templateFiles = fs

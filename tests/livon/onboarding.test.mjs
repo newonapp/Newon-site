@@ -561,7 +561,8 @@ test('ON-35 Today: the feed profile carries Life Events and they raise matching 
   assert.deepEqual([...p.events], ['first-trip']);
   const item = { title: '첫 해외여행 준비', desc: '', category: '', tags: [], stageIds: [], cats: [] };
   const withEv = T._test.score(item, p), without = T._test.score(item, Object.assign({}, p, { events: [] }));
-  assert.equal(withEv - without, 2);
+  /* score() adds a day-seeded jitter to both sides, so the difference carries float rounding (1.9999999999999998 on some days). */
+  assert.ok(Math.abs(withEv - without - 2) < 1e-9, 'the event boost is 2, got ' + (withEv - without));
   assert.equal(a.PZ.eventBoost('관계없는 글', ['first-trip']), null);
   assert.match(read('today-feed.js'), /document\.addEventListener\("livon:personalization", function \(\) \{ try \{ refresh\(\); \}/);
 });

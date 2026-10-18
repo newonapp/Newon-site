@@ -1,0 +1,86 @@
+{
+ "ko/business/automation/workflow": [
+  {
+   "role": "list",
+   "articles": 5,
+   "listitems_in_a11y_tree": 20,
+   "numerals_exposed_separately": 0,
+   "first_lines": [
+    "- list:",
+    "  - listitem:",
+    "    - heading \"TRIGGER\" [level=3]",
+    "    - paragraph: 자동화가 시작되는 이벤트입니다. Form, 주문, 상태 변경 등으로 Workflow가 시작됩니다."
+   ]
+  }
+ ],
+ "en/business/automation/workflow": [
+  {
+   "role": "list",
+   "articles": 5,
+   "listitems_in_a11y_tree": 20,
+   "numerals_exposed_separately": 0,
+   "first_lines": [
+    "- list:",
+    "  - listitem:",
+    "    - heading \"TRIGGER\" [level=3]",
+    "    - paragraph: The event that starts automation. Forms, orders, or status changes can kick off a workflow."
+   ]
+  }
+ ],
+ "de/business/automation/workflow": [
+  {
+   "role": "list",
+   "articles": 5,
+   "listitems_in_a11y_tree": 20,
+   "numerals_exposed_separately": 0,
+   "first_lines": [
+    "- list:",
+    "  - listitem:",
+    "    - heading \"AUSLÖSEN\" [level=3]",
+    "    - paragraph: Das Ereignis, das die Automatisierung startet. Formulare, Bestellungen oder Statusänderungen können einen Workflow auslösen."
+   ]
+  }
+ ],
+ "ko/business/internal-tools": [
+  {
+   "role": "list",
+   "articles": 6,
+   "listitems_in_a11y_tree": 6,
+   "numerals_exposed_separately": 0,
+   "first_lines": [
+    "- list:",
+    "  - listitem:",
+    "    - heading \"INTAKE\" [level=3]",
+    "    - paragraph: 요청·데이터가 폼·API·파일로 유입됩니다. 필수 필드와 첨부 규칙을 먼저 검증합니다."
+   ]
+  }
+ ],
+ "ko/business/mvp": [
+  {
+   "role": "list",
+   "articles": 5,
+   "listitems_in_a11y_tree": 20,
+   "numerals_exposed_separately": 0,
+   "first_lines": [
+    "- list:",
+    "  - listitem:",
+    "    - heading \"IDEA\" [level=3]",
+    "    - paragraph: 아이디어와 해결하려는 문제를 정리합니다. 검증 질문과 성공 기준을 함께 정의합니다."
+   ]
+  }
+ ],
+ "ja/business/data-reporting": [
+  {
+   "role": "list",
+   "articles": 6,
+   "listitems_in_a11y_tree": 6,
+   "numerals_exposed_separately": 0,
+   "first_lines": [
+    "- list:",
+    "  - listitem:",
+    "    - heading \"収集\" [level=3]",
+    "    - paragraph: スプレッドシート、データベース、APIから取得します。 接続と収集スケジュールを一緒に設計します。"
+   ]
+  }
+ ]
+}

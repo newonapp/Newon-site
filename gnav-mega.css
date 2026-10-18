@@ -1251,13 +1251,13 @@ body.gnav-mega-open { overflow: visible; }
   scroll-margin-top: calc(var(--gnav-h, 74px) + 1.25rem);
 }
 
-@media (min-width: 901px) {
+@media (min-width: 1280px) {
   .gnav.site-header .gnav__nav { display: flex; }
   .gnav__menu-btn { display: none; }
   .gnav__cta { display: inline-flex; }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1279px) {
   .gnav__inner {
     grid-template-columns: 1fr auto;
     padding: 0 1.25rem;
@@ -1380,4 +1380,86 @@ body.gnav-mega-open { overflow: visible; }
 
 .gnav-mobile__ventures .gnav-mobile__acc-link {
   letter-spacing: 0.02em;
+/* Ten top-level menus (Apps · AI · six businesses · Business Hub · Company).
+   Desktop bar is used from 1280px up; below that the drawer menu is used (see site-chrome.js desktopMq),
+   because a horizontally scrolling bar hides items. Fixed compact type so the longest locale still fits. */
+.gnav.site-header.gnav--many .gnav__nav-scroller {
+  gap: 0.5rem;
+}
+.gnav.site-header.gnav--many .gnav__link {
+  font-size: 0.8125rem;
+  letter-spacing: -0.01em;
+  gap: 0.1rem;
+}
+@media (min-width: 1440px) {
+  .gnav.site-header.gnav--many .gnav__inner {
+    max-width: 1440px;
+  }
+  .gnav.site-header.gnav--many .gnav__nav-scroller {
+    gap: 0.7rem;
+  }
+  .gnav.site-header.gnav--many .gnav__link {
+    font-size: 0.875rem;
+  }
+}
+
+/* ── Business Hub: one top menu with two groups (Business · Studio) ───────────── */
+.gnav-mega__groups {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem 3rem;
+  margin-top: 1.25rem;
+}
+@media (min-width: 900px) {
+  .gnav-mega__groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.gnav-mega__group-head {
+  margin: 0;
+}
+.gnav-mega__group-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  font-size: 1.0625rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--gnav-text-strong);
+  text-decoration: none;
+}
+.gnav-mega__group-link:hover,
+.gnav-mega__group-link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+.gnav-mega__group-lead {
+  margin: 0.3rem 0 0.4rem;
+  font-size: 0.8125rem;
+  color: var(--gnav-muted, var(--gnav-faint));
+}
+/* Two columns are narrow: stack title above description inside group rows. */
+.gnav-mega__list.gnav-mega__list--group .gnav-mega__row-main {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+}
+.gnav-mega__list.gnav-mega__list--group .gnav-mega__row-title {
+  flex: none;
+  min-width: 0;
+}
+.gnav-mega__list.gnav-mega__list--group .gnav-mega__row {
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+
+.gnav-mobile__group {
+  display: flex;
+  flex-direction: column;
+}
+.gnav-mobile__sublink--group {
+  font-weight: 650;
+}
+.gnav-mobile__sublink--nested {
+  padding-left: 1.75rem;
 }
