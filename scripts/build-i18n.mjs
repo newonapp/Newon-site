@@ -607,6 +607,11 @@ function writeSitemap() {
     addAllLocales(`tools/${tool.slug}`, "0.55", "monthly");
   }
 
+  // SHAREON (sharing & rental platform pages, render-shareon.mjs)
+  for (const sub of ["shareon", "shareon/platform", "shareon/business", "shareon/partnerships", "shareon/contact"]) {
+    addAllLocales(sub, sub === "shareon" ? "0.7" : "0.6", "monthly");
+  }
+
   // Business hub + pillars + inquiry (not success)
   addAllLocales("business", "0.75", "monthly");
   for (const pillar of ["build", "automation", "research", "solutions", "care"]) {

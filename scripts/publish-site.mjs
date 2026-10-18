@@ -55,6 +55,8 @@ const PUBLISH_ROOT_CORE = [
   "home-ongil-layout.css",
   "home-ongil.js",
   "ongil-site.css",
+  "shareon.css",
+  "shareon.js",
   "ecosystem.css",
   "ecosystem.js",
   "apps-hub.css",
@@ -185,6 +187,8 @@ const PUBLISH_COPY_DIRS = [
   /** Root /ongil/ and /lifestage/ → /{lang}/… language redirects (same pattern as /studio/, /business/). */
   { from: "ongil", to: "ongil", required: true },
   { from: "lifestage", to: "lifestage", required: true },
+  /** /shareon/… language redirects (the pages themselves live in the language dirs). */
+  { from: "shareon", to: "shareon", required: false },
   { from: "assets", to: "assets", required: true },
   { from: "vendor/three", to: "vendor/three", required: true },
   { from: "vendor/hls", to: "vendor/hls", required: false },
