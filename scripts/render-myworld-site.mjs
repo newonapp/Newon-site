@@ -28,7 +28,7 @@ import { renderMyWorldSitePage } from "./myworld-site-body.mjs";
 import { FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const MWS_VER = "20261018light1";
+const MWS_VER = "20261018film1";
 const LASTMOD = "2026-10-18";
 
 function localeFlat(lang) {
@@ -61,7 +61,8 @@ function renderPage(lang, page) {
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=20260924livon1" />
     <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
     <link rel="stylesheet" href="/myworld-site.css?v=${MWS_VER}" />`,
-    EXTRA_SCRIPTS: `<script src="/home-lifestage.js?v=20260924livon1" defer></script>
+    EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
+    <script src="/home-lifestage.js?v=20260924livon1" defer></script>
     <script src="/myworld-site.js?v=${MWS_VER}" defer></script>`,
   });
   const out = path.join(ROOT, lang.dir, rel, "index.html");

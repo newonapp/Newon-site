@@ -89,6 +89,9 @@ const shot = (s, cls = "") =>
 /* ---------- hero (shared flagship film hero — keep as is) ---------- */
 /** Hero — the same dark film hero as the other flagship pages (PETLOG · BABYLOG · LIVON):
  *  wordmark, slogan, lead and two buttons. No art, kicker or stats. */
+/** MY WORLD first-screen background film (owner-provided, 2026-10-18). */
+const MYWORLD_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260407_043131_ebe2f0b5-9acc-4a4f-b2c1-7297f1a3beb9.mp4";
+
 function hbtn(href, label, { ghost = false, external = false } = {}) {
   const e = external ? ' target="_blank" rel="noopener noreferrer"' : "";
   return `<a class="nls-btn${ghost ? " nls-btn--ghost" : ""}" href="${esc(href)}"${e}>${esc(label)}${ghost ? "" : " →"}</a>`;
@@ -98,6 +101,9 @@ function hero(copy, h, { ctas = "" } = {}) {
   <div class="nls-film" data-nls-film data-hs-section>
     <div class="nls-film__stage">
       <div class="nls-film__fallback" aria-hidden="true"></div>
+      <video class="nls-film__video" src="${MYWORLD_FILM}" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" aria-hidden="true">
+        <source src="${MYWORLD_FILM}" type="video/mp4" />
+      </video>
       <div class="nls-film__lockup">
         <div class="nls-film__veil" aria-hidden="true"></div>
         <p class="nls-film__wordmark" lang="en">${esc(copy.ui.brand)}</p>
