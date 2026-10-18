@@ -185,7 +185,9 @@ for (const p of pages) {
     const hasPlan = /bl-status--plan|nls-note/.test(body) && body.includes(p.lang === "ko" ? "비전과 계획" : "vision and plan");
     const emerg = p.nav.id === "overview" ? true : /bl-emergency/.test(body);
     const ext = [...body.matchAll(/ href="(https?:[^"]+)"/g)].map((m) => m[1]).filter((u) => !/apps\.apple\.com|play\.google\.com/.test(u));
-    const img = count(body, /<img\b|<picture\b|<video\b|background-image/gi);
+    // The owner-chosen first-screen background film (landscape, no children) is the only allowed media.
+    const bodyNoHeroFilm = body.replace(/<video class="nls-film__video"[\s\S]*?<\/video>/, "");
+    const img = count(bodyNoHeroFilm, /<img\b|<picture\b|<video\b|background-image/gi);
     const claims = /(공식 파트너|official partner|협약 체결|제휴 기관 목록)/i.test(text(body));
     rec(`child-safety ${tag}`, hasPlan && emerg && ext.length === 0 && img === 0 && !claims, `plan label ${hasPlan}, emergency note ${emerg}, external links ${ext.length}, images ${img}, partner claims ${claims}`);
   }

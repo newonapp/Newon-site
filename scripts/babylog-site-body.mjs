@@ -47,11 +47,17 @@ function block(id, inner, band = false, cls = "") {
   return `<section id="${id}" class="nls-block${band ? " nls-block--band" : ""}${cls ? " " + cls : ""}" data-hs-section aria-labelledby="${id}-title">${inner}</section>`;
 }
 
+/** BABYLOG first-screen background film (owner-provided, 2026-10-18). */
+const BABYLOG_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_171521_25968ba2-b594-4b32-aab7-f6b69398a6fa.mp4";
+
 /** Compact or full dark hero. No video, no external media. */
 function hero(C, lang, page, h, compact) {
   return `<div class="nls-film bl-film${compact ? " bl-film--compact" : ""}" data-nls-film data-hs-section>
     <div class="nls-film__stage">
       <div class="nls-film__fallback" aria-hidden="true"></div>
+      <video class="nls-film__video" src="${BABYLOG_FILM}" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" aria-hidden="true">
+        <source src="${BABYLOG_FILM}" type="video/mp4" />
+      </video>
       <div class="nls-film__lockup">
         <div class="nls-film__veil" aria-hidden="true"></div>
         <p class="nls-film__wordmark">${esc(C.ui.wordmark)}</p>

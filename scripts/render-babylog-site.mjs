@@ -105,7 +105,8 @@ function renderPage(lang, nav) {
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="/babylog-site.css?v=${BL_VER}" />
 ${jsonLd(lang.dir, nav, seo, canonical)}`,
-    EXTRA_SCRIPTS: `<script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,
+    EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
+    <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,
   });
   const out = path.join(ROOT, lang.dir, BL_SLUG, nav.sub, "index.html");
   ensureDir(out);
