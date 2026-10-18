@@ -664,8 +664,12 @@ html[data-newon-shell-theme="dark"] #myworld-site.mws {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+@media (min-width: 760px) {
+  #myworld-site .mws-cols--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 @media (min-width: 900px) {
-  #myworld-site .mws-cols--3,
   #myworld-site .mws-cols--5 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -735,6 +739,11 @@ html[data-newon-shell-theme="dark"] #myworld-site.mws {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(0.6rem, 1.6vw, 1.25rem);
   align-items: start;
+}
+@media (max-width: 959px) {
+  #myworld-site .mws-phones {
+    max-width: 34rem;
+  }
 }
 #myworld-site .mws-phone {
   margin: 0;

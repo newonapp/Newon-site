@@ -69,8 +69,8 @@ for (const p of pages) {
   const tag = `${p.lang}/${p.nav.id}`;
 
   /* ---- menu ---- */
-  const nav = (h.match(/<nav class="bl-subnav"[\s\S]*?<\/nav>/) || [""])[0];
-  const links = [...nav.matchAll(/<a class="bl-subnav__link[^"]*" href="([^"]+)"( aria-current="page")?/g)];
+  const nav = (h.match(/<nav class="fsn" data-biz="babylog"[\s\S]*?<\/nav>/) || [""])[0];
+  const links = [...nav.matchAll(/<a class="fsn__a" href="([^"]+)"( aria-current="page")?/g)];
   const want = BL_NAV.map((n) => `/${p.lang}/babylog/${n.sub ? n.sub + "/" : ""}`);
   const gotHrefs = links.map((m) => m[1]);
   const cur = links.filter((m) => m[2]).map((m) => m[1]);
@@ -173,7 +173,7 @@ for (const p of pages) {
   for (let i = 1; i < hs.length; i++) if (hs[i] - hs[i - 1] > 1) skip = true;
   const emptyA = count(body, /<a [^>]*>\s*<\/a>/g);
   const emptyB = count(body, /<button[^>]*>\s*<\/button>/g);
-  const navLabel = /<nav class="bl-subnav" aria-label="[^"]+"/.test(h) && /<nav class="bl-crumb" aria-label="[^"]+"/.test(h);
+  const navLabel = /<nav class="fsn" data-biz="babylog" aria-label="[^"]+"/.test(h);
   rec(`a11y ${tag}`, h1 === 1 && !skip && !emptyA && !emptyB && navLabel, `h1 ${h1}, level-skip ${skip}, empty links ${emptyA}, empty buttons ${emptyB}, nav labels ${navLabel}`);
 
   /* ---- info-only ---- */

@@ -9,7 +9,7 @@
  * Korean sub-labels are shown on Korean pages only.
  */
 
-export const FLAGSHIP_SUBNAV_CSS = "/flagship-subnav.css?v=20261018fsn1";
+export const FLAGSHIP_SUBNAV_CSS = "/flagship-subnav.css?v=20261018fsn2";
 
 const SLUG = { babylog: "babylog", petlog: "petlog", myworld: "myworld", shareon: "shareon", livon: "livon", ongil: "ongil" };
 const BRAND = { babylog: "BABYLOG", petlog: "PETLOG", myworld: "MY WORLD", shareon: "SHAREON", livon: "LIVON", ongil: "ONGIL" };

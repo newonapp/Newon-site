@@ -593,6 +593,13 @@ function writeSitemap() {
     }
   }
 
+  // Six flagship business sites — five pages each (ONGIL sub-pages exist in KO/EN only; other languages are noindex forwards)
+  for (const biz of ["babylog", "petlog", "myworld", "shareon", "livon"]) {
+    for (const sub of ["", "/platform", "/business", "/partnerships", "/contact"]) addAllLocales(`${biz}${sub}`, "0.65", "monthly");
+  }
+  addAllLocales("ongil", "0.65", "monthly");
+  for (const dir of ["ko", "en"]) for (const sub of ["platform", "business", "partnerships", "contact"]) add(`${dir}/ongil/${sub}`, "0.6", "monthly");
+
   // Root (Korean homepage copy) + locale homes
   add("", "1.0", "weekly");
   addAllLocales("", "0.9", "weekly");

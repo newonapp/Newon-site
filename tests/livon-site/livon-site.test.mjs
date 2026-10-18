@@ -21,8 +21,8 @@ test("5 top menus, in order, on every page of every language, current page marke
   assert.deepEqual(LIVON_SITE_PAGES.map((p) => p.en), ["Overview", "Platform", "Business", "Partnerships", "Contact"]);
   for (const lang of LANGS) for (const p of LIVON_SITE_PAGES) {
     const html = page(lang, p.id);
-    const nav = html.match(/<nav class="lvs-subnav"[\s\S]*?<\/nav>/)[0];
-    assert.equal(count(nav, /<a href=/g), 5, `${lang}/${p.id}`);
+    const nav = html.match(/<nav class="fsn" data-biz="livon"[\s\S]*?<\/nav>/)[0];
+    assert.equal(count(nav, /<a class="fsn__a" href=/g), 5, `${lang}/${p.id}`);
     for (const q of LIVON_SITE_PAGES) assert.ok(nav.includes(`href="/${lang}/livon/${q.path}"`), `${lang}/${p.id} → ${q.id}`);
     assert.equal(count(nav, /aria-current="page"/g), 1);
     assert.match(nav, new RegExp(`href="/${lang}/livon/${p.path}" aria-current="page"`));
@@ -170,7 +170,7 @@ test("accessibility basics: heading order, labelled nav, lang attribute, reduced
     const levels = [...main.matchAll(/<h([1-6])[\s>]/g)].map((m) => Number(m[1]));
     assert.equal(levels[0], 1, `${lang}/${p.id} starts with h1`);
     for (let i = 1; i < levels.length; i++) assert.ok(levels[i] <= levels[i - 1] + 1, `${lang}/${p.id} skips a heading level at ${i}`);
-    assert.match(main, /<nav class="lvs-subnav" aria-label="[^"]+">/);
+    assert.match(main, /<nav class="fsn" data-biz="livon" aria-label="[^"]+">/);
   }
   const css = read("livon-site.css");
   assert.match(css, /prefers-reduced-motion: reduce/);
