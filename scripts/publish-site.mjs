@@ -59,6 +59,8 @@ const PUBLISH_ROOT_CORE = [
   "home-ongil.js",
   "ongil-site.css",
   "shareon.css",
+  "livon-site.css",
+  "livon-site.js",
   "myworld-site.css",
   "myworld-site.js",
   "shareon.js",

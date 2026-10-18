@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 /**
- * Render /{lang}/lifestage/ detail pages for all locales.
- * Does not restyle the homepage LivOn story row.
+ * Render the LivOn business pages for all locales.
+ * LIVON site (2026-10): five pages — /{lang}/livon/ (01 Overview) plus platform/, business/,
+ * partnerships/ and contact/ — from scripts/livon-site-data.mjs + livon-site-body.mjs.
+ * Canonical: /{lang}/livon/ (LIVON_HUB_PATH). The former /{lang}/lifestage/ URL is kept
+ * as a redirect stub (meta refresh + canonical + noindex) so old links and search
+ * results keep working. Does not restyle the homepage LivOn story row.
  */
 import fs from "fs";
 import path from "path";
@@ -15,7 +19,6 @@ import {
   fillMissing,
   applyTemplate,
   hreflangBlock,
-  writeRootRedirect,
   ensureDir,
   escapeHtml,
   pick,
@@ -23,25 +26,17 @@ import {
 } from "./hub-utils.mjs";
 import { clampSeoDescription } from "./seo-meta.mjs";
 import { renderStudioHeader, renderStudioFooter } from "./site-chrome.mjs";
-import { renderLifeStageSection } from "./home-lifestage-body.mjs";
+import { LIVON_SITE_RENDERERS } from "./livon-site-body.mjs";
+import { LIVON_SITE_PAGES, siteCopy } from "./livon-site-data.mjs";
 import { getLifeStageCopy } from "./home-lifestage-copy.mjs";
+import { LIVON_HUB_PATH, LIVON_LEGACY_PATH } from "./newon-business-units.mjs";
 
-import { lifeExtraHtml, LIFE_EXTRA_CSS } from "./render-business-intro.mjs";
+const HUB = LIVON_HUB_PATH.replace(/\/$/, "");
+const LEGACY = LIVON_LEGACY_PATH.replace(/\/$/, "");
+
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const NLS_VER = "20260924livon1";
-
-const SEO = {
-  ko: {
-    title: "LivOn | Newon — 10대부터 70대까지, 생애주기 종합 플랫폼",
-    description:
-      "삶의 모든 단계에, 필요한 다음을. 10대부터 70대까지, 생애 첫 경험과 인생의 변화까지 함께하는 생애주기 플랫폼입니다. 현재는 사업 소개이며, 예약·결제·가입은 아직 연결되지 않았습니다.",
-  },
-  en: {
-    title: "LivOn | Newon — A life-stage platform from the teens through the 70s.",
-    description:
-      "At every stage of life, the next thing you need. A platform for first experiences, life changes, and new beginnings, from the teens through the 70s. This page is an introduction — booking, payment, and sign-up are not connected yet.",
-  },
-};
+const LVS_VER = "20261018lvs3";
 
 function localeFlat(lang) {
   const en = loadJson("en.json");
@@ -49,44 +44,85 @@ function localeFlat(lang) {
   return { flat: flatten(loc), flatEn: flatten(en) };
 }
 
-function seoFor(dir) {
-  return SEO[dir] || SEO.en;
+/** Title / description per page (KO and EN written; other languages use EN, like the rest of the LivOn copy). */
+function seoFor(dir, pageId) {
+  return siteCopy(dir).seo[pageId];
 }
 
-function renderPage(lang) {
+function renderPage(lang, page) {
   const { flat, flatEn } = localeFlat(lang);
-  const seo = seoFor(lang.dir);
-  const copy = getLifeStageCopy(lang.dir);
-  const header = renderStudioHeader(flat, flatEn, { activeNav: "lifestage", base: "../" });
-  const footer = renderStudioFooter(flat, flatEn, { base: "../" });
-  const canonical = `${SITE_ORIGIN}/${lang.dir}/lifestage/`;
+  const seo = seoFor(lang.dir, page.id);
+  const rel = `${HUB}/${page.path}`.replace(/\/$/, "");
+  const depth = rel.split("/").length;
+  const base = "../".repeat(depth);
+  const header = renderStudioHeader(flat, flatEn, { activeNav: "lifestage", base });
+  const footer = renderStudioFooter(flat, flatEn, { base });
+  const canonical = `${SITE_ORIGIN}/${lang.dir}/${rel}/`;
   const html = applyTemplate(SHELL, flat, flatEn, {
     HTML_LANG: lang.htmlLang,
     LANG_DIR: lang.dir,
     FONT_LINKS: fontLinksHtml(lang.dir),
     TITLE: escapeHtml(seo.title),
-    META_DESCRIPTION: escapeHtml(clampSeoDescription(seo.description)),
+    META_DESCRIPTION: escapeHtml(clampSeoDescription(seo.desc)),
     CANONICAL: canonical,
     OG_LOCALE: OG_LOCALE[lang.dir] || "en_US",
-    HREFLANG_BLOCK: hreflangBlock("lifestage"),
+    HREFLANG_BLOCK: hreflangBlock(rel),
     SKIP_LABEL: pick(flat, flatEn, "common.skipToContent") || "Skip to content",
     CHROME_HEADER: header,
-    MAIN_CONTENT: renderLifeStageSection(lang.dir, { detail: true }) + lifeExtraHtml(lang.dir, "lifestage"),
+    MAIN_CONTENT: LIVON_SITE_RENDERERS[page.id](lang.dir),
     CHROME_FOOTER: footer,
-    EXTRA_CSS: `${LIFE_EXTRA_CSS}
-    <link rel="stylesheet" href="/home-lifestage.css?v=${NLS_VER}" />
-    <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />`,
+    EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=${NLS_VER}" />
+    <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
+    <link rel="stylesheet" href="/livon-site.css?v=${LVS_VER}" />`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
-    <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,
+    <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>
+    <script src="/livon-site.js?v=${LVS_VER}" defer></script>`,
   });
-  const out = path.join(ROOT, lang.dir, "lifestage", "index.html");
+  const out = path.join(ROOT, lang.dir, rel, "index.html");
   ensureDir(out);
   fs.writeFileSync(out, html);
-  const ages = copy.journey.items.map((a) => a.id).join(",");
-  const firstN = (copy.first && copy.first.items && copy.first.items.length) || 0;
-  console.log("render-lifestage:", lang.dir, "journey", ages, "first", firstN, "platform", copy.platform.items.length);
+  if (page.id === "overview") writeLegacyRedirect(lang.dir);
+  console.log("render-lifestage:", lang.dir, page.id);
 }
 
-writeRootRedirect("lifestage");
-for (const lang of LANGS) renderPage(lang);
-console.log("render-lifestage: OK", getLifeStageCopy("ko").hero.ctaMain);
+/** Append the LIVON sub pages to sitemap.xml (append-only; existing entries untouched). */
+function patchSitemap() {
+  const file = path.join(ROOT, "sitemap.xml");
+  if (!fs.existsSync(file)) return;
+  let xml = fs.readFileSync(file, "utf8");
+  const today = new Date().toISOString().slice(0, 10);
+  const extra = [];
+  for (const page of LIVON_SITE_PAGES) {
+    for (const lang of LANGS) {
+      const loc = `${SITE_ORIGIN}/${lang.dir}/${HUB}/${page.path}`;
+      if (xml.includes(`<loc>${loc}</loc>`)) continue;
+      extra.push(["  <url>", `    <loc>${loc}</loc>`, `    <lastmod>${today}</lastmod>`, "    <changefreq>monthly</changefreq>", "    <priority>0.6</priority>", "  </url>"].join("\n"));
+    }
+  }
+  if (!extra.length) return;
+  xml = xml.replace("</urlset>", `${extra.join("\n")}\n</urlset>`);
+  fs.writeFileSync(file, xml);
+  console.log("render-lifestage: sitemap +", extra.length);
+}
+
+/** /{lang}/lifestage/ → /{lang}/livon/ (keeps #hash). */
+function writeLegacyRedirect(dir) {
+  const target = `/${dir}/${HUB}/`;
+  const html = `<!DOCTYPE html><html lang="${dir}"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="robots" content="noindex, follow"/><link rel="canonical" href="${SITE_ORIGIN}${target}"/><meta http-equiv="refresh" content="0;url=${target}"/><title>LivOn | Newon</title><script>location.replace("${target}"+(location.hash||""));</script></head><body style="font-family:system-ui,sans-serif;padding:1.5rem"><p><a href="${target}">LivOn</a></p></body></html>`;
+  const out = path.join(ROOT, dir, LEGACY, "index.html");
+  ensureDir(out);
+  fs.writeFileSync(out, html);
+}
+
+/** Root /lifestage/ → preferred locale /{lang}/livon/ (root /livon/ is the LivOn web service itself). */
+function writeRootLegacyRedirect() {
+  const list = JSON.stringify(LANGS.map((l) => l.dir));
+  const html = `<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"/><meta name="robots" content="noindex, follow"/><link rel="canonical" href="${SITE_ORIGIN}/ko/${HUB}/"/><meta http-equiv="refresh" content="0;url=/ko/${HUB}/"/><title>LivOn | Newon</title><script>(function(){var L=${list};var d="ko";try{var v=localStorage.getItem("newon-lang-dir");if(v&&L.indexOf(v)!==-1)d=v;}catch(e){}location.replace("/"+d+"/${HUB}/"+(location.hash||""));})();</script></head><body style="font-family:system-ui,sans-serif;padding:1.5rem"><p><a href="/ko/${HUB}/">LivOn</a></p></body></html>`;
+  fs.mkdirSync(path.join(ROOT, LEGACY), { recursive: true });
+  fs.writeFileSync(path.join(ROOT, LEGACY, "index.html"), html);
+}
+
+writeRootLegacyRedirect();
+for (const lang of LANGS) for (const page of LIVON_SITE_PAGES) renderPage(lang, page);
+patchSitemap();
+console.log("render-lifestage: OK", getLifeStageCopy("ko").hero.ctaMain, "pages", LIVON_SITE_PAGES.length * LANGS.length);
