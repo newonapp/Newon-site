@@ -129,19 +129,25 @@ export function buildPortfolioHomeBody(lang) {
     )
     .join(`<p class="np-plus" data-np-x="0" aria-hidden="true">+</p>`);
 
-  const services = story.stories
-    .map(
-      (item) => `<li class="np-row np-reveal">
-        <a href="#story-${escapeHtml(item.id)}">
+  // Rows list the six core platforms when the copy defines them; otherwise the story list.
+  // Same row markup either way — only the text and link target differ.
+  const rows = story.platforms || story.stories;
+  const services = rows
+    .map((item) => {
+      const rowHref = item.href ? href(L, item.href) : `#story-${item.id}`;
+      const status = story.statusLabels[item.status] || "";
+      const meta = story.platforms && item.cat ? `${status} · ${item.cat}` : status;
+      return `<li class="np-row np-reveal">
+        <a href="${escapeHtml(rowHref)}">
           <span class="np-row__n">${escapeHtml(item.n)}</span>
           <span>
             <strong>${escapeHtml(item.name)}</strong>
-            <em>${escapeHtml(story.statusLabels[item.status] || "")}</em>
+            <em>${escapeHtml(meta)}</em>
             <p>${escapeHtml(item.lead)}</p>
           </span>
         </a>
-      </li>`
-    )
+      </li>`;
+    })
     .join("");
 
   const pillars = vision.pillars
