@@ -1251,13 +1251,13 @@ body.gnav-mega-open { overflow: visible; }
   scroll-margin-top: calc(var(--gnav-h, 74px) + 1.25rem);
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 901px) {
   .gnav.site-header .gnav__nav { display: flex; }
   .gnav__menu-btn { display: none; }
   .gnav__cta { display: inline-flex; }
 }
 
-@media (max-width: 1279px) {
+@media (max-width: 900px) {
   .gnav__inner {
     grid-template-columns: 1fr auto;
     padding: 0 1.25rem;

@@ -4,8 +4,8 @@
 import { renderStudioHeader, renderStudioFooter, renderGlobalHeader, renderCompanySwitcher } from "./site-chrome.mjs";
 import { CHROME_HEAD_CSS } from "./hub-utils.mjs";
 
-const GnavCss = "gnav-mega.css?v=20261018all1";
-const SiteChromeJs = "site-chrome.js?v=20261017nav8";
+const GnavCss = "gnav-mega.css?v=20261018all2";
+const SiteChromeJs = "site-chrome.js?v=20261018nav9";
 
 function injectHeadCss(html) {
   let out = html;

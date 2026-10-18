@@ -7,7 +7,7 @@
   var COMPACT_LANG = { ko: "KO", en: "EN", ja: "JA", es: "ES", "pt-br": "PT", fr: "FR", de: "DE", hi: "HI", id: "ID" };
   var CLOSE_DELAY = 280;
   var closeTimer = null;
-  var desktopMq = window.matchMedia("(min-width: 1280px)");
+  var desktopMq = window.matchMedia("(min-width: 901px)");
 
   var MOON =
     '<svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>';
