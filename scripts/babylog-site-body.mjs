@@ -1,36 +1,22 @@
 /**
- * BABYLOG corporate site — section HTML per page (Website Content Master Plan, 2026-10-18).
+ * BABYLOG corporate site — section HTML per page.
  *
- * Each of the five menu pages shows ONLY its own content (like ONGIL):
- *   01 Overview      about · mission · journey timeline · core experience · family first · beyond · commitment · next step
- *   02 Platform      21 services in groups A–E (sticky group index + numbered rows) · app access
- *   03 Business      8 group bands with 32 numbered rows · business models table · revenue note
- *   04 Partnerships  15 categories grid · why partner · 6 principles · process
- *   05 Contact       17 categories table · NEWON contact card · before-you-write guide
- * Every page keeps the shared dark film hero, the shared five-menu bar and ends with the common brand sign-off.
+ * Reuses the Life Stage (nls-*) component vocabulary and its stylesheet unchanged:
+ *   nls-film hero, nls-head, nls-split/nls-roster, nls-rail + nls-decade (journey), nls-flow, nls-proc,
+ *   nls-board, nls-index, nls-pipe, nls-dir, nls-close, nls-chips, nls-note, nls-btn.
+ * BABYLOG-only additions (sub navigation, status labels, detail list) are bl-* classes in babylog-site.css,
+ * scoped to #lifestage-detail.nls[data-story="babylog"].
  *
- * Reuses the Life Stage shell (nls-film hero, nls-block, nls-head, nls-btn, nls-close) unchanged; BABYLOG-only
- * layouts are bl-* classes in /babylog-site.css, scoped to #lifestage-detail.nls[data-story="babylog"].
- * Information only: no form, input, login, booking or payment control is rendered here.
+ * Information only: no form, input, login or commerce control is rendered here.
  */
 import { escapeHtml } from "./hub-utils.mjs";
-import { renderFlagshipSubnav } from "./flagship-subnav.mjs";
+import { renderFlagshipSubnav, FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
 import { BUSINESS } from "./six-businesses.mjs";
-import {
-  BL_NAV,
-  BL_SLUG,
-  getBabylogCopy,
-  copyLangFor,
-  PARTNER_CODES,
-  CONTACT_CODES,
-  CORE_STATUS,
-  PLATFORM_STATUS,
-  BUSINESS_STATUS,
-} from "./babylog-site-copy.mjs";
+import { BL_NAV, BL_SLUG, getBabylogCopy, copyLangFor } from "./babylog-site-copy.mjs";
+import { CS_PARTNER_CODES, IND_PARTNER_CODES } from "./babylog-expansion-copy.mjs";
 
 const esc = escapeHtml;
-const nl = (s) => esc(s || "").replace(/\n/g, "<br />");
-const n2 = (i) => String(i).padStart(2, "0");
+const nl = (s) => esc(s || "").replace(/\n/g, "<br>");
 
 export const pagePath = (lang, sub = "") => `/${lang}/${BL_SLUG}/${sub ? sub + "/" : ""}`;
 
@@ -40,51 +26,31 @@ export function inquiryHref(lang, page, code) {
   return `/${lang}/business/inquiry/?category=Partnership&source=${encodeURIComponent(source)}#inquiry`;
 }
 
-const ARROW = `<span class="bl-arrow" aria-hidden="true">→</span>`;
-const CHECK = `<svg class="bl-check" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>`;
-
-function head(kicker, title, lead, id, cls = "") {
-  return `<header class="nls-head bl-head${cls ? " " + cls : ""}">
-      ${kicker ? `<p class="nls-kicker">${esc(kicker)}</p>` : ""}
-      <h2 class="nls-title" id="${id}">${nl(title)}</h2>
-      ${lead ? `<p class="nls-lead">${esc(lead)}</p>` : ""}
-    </header>`;
+function titleBlock(kicker, title, lead, level = 2, id = "") {
+  const tag = `h${level}`;
+  return `<header class="nls-head">
+    ${kicker ? `<p class="nls-kicker">${esc(kicker)}</p>` : ""}
+    <${tag} class="nls-title"${id ? ` id="${id}"` : ""}>${nl(title)}</${tag}>
+    ${lead ? `<p class="nls-lead">${esc(lead)}</p>` : ""}
+  </header>`;
 }
 
-function chip(C, key) {
+function chips(items) {
+  return `<ul class="nls-chips">${(items || []).map((t) => `<li>${esc(t)}</li>`).join("")}</ul>`;
+}
+
+function statusChip(C, key) {
   return `<span class="bl-status bl-status--${esc(key)}">${esc(C.status[key])}</span>`;
 }
 
-function section(id, cls, inner) {
-  return `<section id="${id}" class="nls-block bl-sec ${cls}" data-hs-section aria-labelledby="${id}-title">
-    ${inner}
-  </section>`;
+function block(id, inner, band = false, cls = "") {
+  return `<section id="${id}" class="nls-block${band ? " nls-block--band" : ""}${cls ? " " + cls : ""}" data-hs-section aria-labelledby="${id}-title">${inner}</section>`;
 }
 
-function legend(C) {
-  return `<div class="bl-legend" role="note">
-      <p class="bl-legend__k">${esc(C.status.legend)}</p>
-      <ul class="bl-legend__list">
-        <li>${chip(C, "live")}</li>
-        <li>${chip(C, "prep")}</li>
-        <li>${chip(C, "plan")}</li>
-      </ul>
-      <p class="bl-legend__body">${esc(C.status.legendBody)}</p>
-    </div>`;
-}
-
-function emergency(C) {
-  return `<div class="bl-emergency" role="note">
-        <p class="bl-emergency__t">${esc(C.ui.emergencyTitle)}</p>
-        <p>${esc(C.ui.emergencyBody)}</p>
-        <p>${esc(C.ui.noChildData)}</p>
-      </div>`;
-}
-
-/* ------------------------------------------------------------------------------------------- hero */
 /** BABYLOG first-screen background film (owner-provided, 2026-10-18). */
 const BABYLOG_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_171521_25968ba2-b594-4b32-aab7-f6b69398a6fa.mp4";
 
+/** Compact or full dark hero. No video, no external media. */
 function hero(C, lang, page, h, compact) {
   return `<div class="nls-film bl-film${compact ? " bl-film--compact" : ""}" data-nls-film data-hs-section>
     <div class="nls-film__stage">
@@ -108,13 +74,13 @@ function hero(C, lang, page, h, compact) {
 function heroActions(lang, page, h) {
   const first = {
     overview: `<a class="nls-btn" href="${pagePath(lang, "platform")}">${esc(h.ctaMain)} →</a>`,
-    platform: `<a class="nls-btn" href="#bl-groups" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
-    business: `<a class="nls-btn" href="#bl-groups" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
-    partnerships: `<a class="nls-btn" href="#bl-cats" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
-    contact: `<a class="nls-btn" href="#bl-cats" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
+    platform: `<a class="nls-btn" href="#bl-access" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
+    business: `<a class="nls-btn" href="#bl-biz" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
+    partnerships: `<a class="nls-btn" href="#bl-types" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
+    contact: `<a class="nls-btn" href="#bl-contact-list" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
   }[page];
   const second = {
-    overview: inquiryHref(lang, "overview", "partnership"),
+    overview: pagePath(lang, "partnerships"),
     platform: pagePath(lang, "contact"),
     business: pagePath(lang, "partnerships"),
     partnerships: pagePath(lang, "contact"),
@@ -124,438 +90,601 @@ function heroActions(lang, page, h) {
           <a class="nls-btn nls-btn--ghost" href="${second}">${esc(h.ctaSub)}</a>`;
 }
 
-/* ---------------------------------------------------------------------------- closing + sign-off */
-function closeBlock(C, c, ctas) {
-  return `<section id="bl-close" class="nls-block nls-close nls-block--ink" data-hs-section aria-labelledby="bl-close-title">
-    <p class="nls-kicker">${esc(c.kicker)}</p>
-    <h2 class="nls-hero__title" id="bl-close-title">${c.titleHtml}</h2>
-    <p class="nls-lead">${esc(c.lead)}</p>
-    <div class="nls-actions">${ctas}</div>
-    <p class="nls-note">${esc(C.ui.infoOnly)}</p>
-  </section>`;
-}
-
-/** Small strip of links to the other four menu pages (never their content). */
-function moreStrip(C, lang, active) {
+/** The five-item BABYLOG menu. Same on every BABYLOG page; current page marked with aria-current. */
+function subnav(C, lang, active) {
   const cl = copyLangFor(lang);
-  const items = BL_NAV.filter((n) => n.id !== active)
-    .map(
-      (n) => `<li><a class="bl-more__a" href="${pagePath(lang, n.sub)}"><span class="bl-more__n">${n.n}</span><span class="bl-more__en">${esc(n.en)}</span>${cl === "ko" ? `<span class="bl-more__ko">${esc(n.ko)}</span>` : ""}${ARROW}</a></li>`
-    )
-    .join("");
-  return `<nav class="bl-more" aria-label="${esc(C.ui.more)}"><p class="bl-more__k">${esc(C.ui.more)}</p><ul class="bl-more__list">${items}</ul></nav>`;
+  const items = BL_NAV.map((it) => {
+    const cur = it.id === active;
+    return `<li><a class="bl-subnav__link${cur ? " is-current" : ""}" href="${pagePath(lang, it.sub)}"${cur ? ' aria-current="page"' : ""}>
+        <span class="bl-subnav__n" aria-hidden="true">${it.n}</span>
+        <span class="bl-subnav__en">${esc(it.en)}</span>
+        <span class="bl-subnav__ko">${esc(cl === "ko" ? it.ko : it.en)}</span>
+      </a></li>`;
+  }).join("");
+  return `<nav class="bl-subnav" aria-label="${esc(C.ui.menuLabel)}"><ul class="bl-subnav__list">${items}</ul></nav>`;
 }
 
-function brandSign(C) {
-  const b = C.brand;
-  return `<aside class="bl-brand" aria-label="${esc(b.kicker)}">
-    <p class="bl-brand__k"><span class="bl-dot" aria-hidden="true"></span>${esc(b.kicker)}</p>
-    <p class="bl-brand__t">${esc(b.title)}</p>
-    <p class="bl-brand__b">${esc(b.body)}</p>
-    <p class="bl-brand__s">${esc(b.sign)}</p>
+function legend(C) {
+  return `<aside class="bl-legend" aria-label="${esc(C.status.legend)}">
+    <p class="bl-legend__k">${esc(C.status.legend)}</p>
+    <ul class="bl-legend__list">
+      <li>${statusChip(C, "released")}</li>
+      <li>${statusChip(C, "direction")}</li>
+      <li>${statusChip(C, "review")}</li>
+      <li>${statusChip(C, "plan")}</li>
+    </ul>
+    <p class="nls-note">${esc(C.status.legendBody)}</p>
+    <p class="nls-note">${esc(C.status.planLegend)}</p>
   </aside>`;
 }
 
-/* ------------------------------------------------------------------------------------ 01 Overview */
+function closeBlock(C, lang, page, c, ctas) {
+  return `<section id="bl-close" class="nls-block nls-close nls-block--ink" data-hs-section aria-labelledby="bl-close-title">
+    <p class="nls-kicker">${esc(c.closeKicker || c.next?.kicker || "")}</p>
+    <h2 class="nls-hero__title" id="bl-close-title">${c.closeTitleHtml || c.next.titleHtml}</h2>
+    <p class="nls-lead">${esc(c.closeLead || c.next.lead)}</p>
+    <p class="nls-note">${esc(C.ui.infoOnly)}</p>
+    <div class="nls-actions">${ctas}</div>
+  </section>`;
+}
+
+/** Shared child-safety notices. Plan status, Korea-based systems, emergency routing, no child data. */
+function csNotices(C, withEmergency = true) {
+  return `<aside class="bl-notice" aria-label="${esc(C.x.platform.cs.kicker)}">
+    <p class="nls-note">${esc(C.ui.csNote)}</p>
+    <p class="nls-note">${esc(C.ui.koreaNote)}</p>
+    ${
+      withEmergency
+        ? `<div class="bl-emergency" role="note"><p class="bl-emergency__t">${esc(C.ui.emergencyTitle)}</p><p>${esc(C.ui.emergencyBody)}</p><p>${esc(C.ui.noChildData)}</p></div>`
+        : ""
+    }
+  </aside>`;
+}
+
+function flowItems(items) {
+  return items
+    .map((it) => `<article class="nls-flow__item"><span class="nls-flow__n">${esc(it.n)}</span><h3>${esc(it.name)}</h3><p>${esc(it.lead)}</p></article>`)
+    .join("");
+}
+
+/** Alternate band backgrounds in order; ink blocks do not take part. */
+function bands(list) {
+  let i = 0;
+  return list
+    .map((b) => {
+      if (b.ink) return b.html;
+      const band = i % 2 === 1;
+      i++;
+      return block(b.id, b.inner, band, b.cls || "");
+    })
+    .join("\n");
+}
+
+/** The 32 business groups: 24 + 8 child-safety groups, with category metadata. */
+function allGroups(C) {
+  const g = C.x.business.groups;
+  const map = new Map();
+  for (const it of g.items) {
+    const [id, en, name, subs, customers, value, ops, status] = it;
+    map.set(id, { id, n: id.slice(1), en, name, subs, customers, value, ops, status, cs: false });
+  }
+  for (const c of C.x.csGroups) {
+    map.set(`g${c.n}`, { id: `g${c.n}`, n: c.n, en: c.en, name: c.name, subs: c.subs, customers: c.customers, value: c.service, ops: c.guard, sources: c.sources, rev: c.rev, status: "plan", cs: true });
+  }
+  return map;
+}
+
+/* ------------------------------------------------------------------ Overview */
 function overviewBody(C, lang) {
   const o = C.overview;
-
-  const about = section(
-    "bl-about",
-    "bl-about",
-    `<p class="bl-eyebrow"><span class="bl-dot" aria-hidden="true"></span>${esc(o.eyebrow)}</p>
-    <div class="bl-about__grid">
-      <div>
-        <p class="nls-kicker">${esc(o.about.kicker)}</p>
-        <h2 class="bl-display" id="bl-about-title">${nl(o.about.title)}</h2>
-      </div>
-      <div class="bl-about__body">${o.about.body.map((p, i) => `<p${i === 1 ? ' class="bl-pull"' : ""}>${esc(p)}</p>`).join("")}</div>
-    </div>
-    <ul class="bl-facets" aria-label="${esc(o.about.kicker)}">${o.about.facets.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>`
-  );
-
-  const mission = `<section id="bl-mission" class="nls-block nls-block--ink bl-sec bl-mission" data-hs-section aria-labelledby="bl-mission-title">
-    <div class="bl-mission__grid">
-      ${head(o.mission.kicker, o.mission.title, o.mission.lead, "bl-mission-title")}
-      <ol class="bl-mission__list">${o.mission.items.map((t, i) => `<li><span class="bl-mission__n">${n2(i + 1)}</span><p>${esc(t)}</p></li>`).join("")}</ol>
-    </div>
-  </section>`;
-
-  const journey = section(
-    "bl-journey",
-    "bl-journey",
-    `<div class="bl-split">
-      ${head(o.journey.kicker, o.journey.title, "", "bl-journey-title")}
-      <p class="bl-body-lg">${esc(o.journey.body)}</p>
-    </div>
-    <ol class="bl-tl" aria-label="${esc(o.journey.kicker.replace(/^\d+ · /, ""))}">${o.journey.items
-      .map(
-        ([en, t], i) => `<li class="bl-tl__item">
-        <span class="bl-tl__dot" aria-hidden="true"></span>
-        <span class="bl-tl__n">${n2(i + 1)}</span>
-        <h3 class="bl-tl__en">${esc(en)}</h3>
-        <p class="bl-tl__t">${esc(t)}</p>
-      </li>`
-      )
-      .join("")}</ol>`
-  );
-
-  const core = section(
-    "bl-core",
-    "nls-block--band bl-core",
-    `${head(o.core.kicker, o.core.title, "", "bl-core-title")}
-    <ul class="bl-matrix">${o.core.items
-      .map(
-        ([en, t], i) => `<li class="bl-matrix__cell">
-        <div class="bl-matrix__top"><span class="bl-matrix__n">${n2(i + 1)}</span>${chip(C, CORE_STATUS[i])}</div>
-        <h3 class="bl-matrix__en">${esc(en)}</h3>
-        <p>${esc(t)}</p>
-      </li>`
-      )
-      .join("")}</ul>
-    ${legend(C)}`
-  );
-
-  const f = o.family;
-  const family = section(
-    "bl-family",
-    "bl-family",
-    `<div class="bl-family__grid">
-      <div>
-        ${head(f.kicker, f.title, "", "bl-family-title")}
-        ${f.body.map((p) => `<p class="bl-body">${esc(p)}</p>`).join("")}
-      </div>
-      <figure class="bl-orbit">
-        <div class="bl-orbit__stage">
-          <div class="bl-orbit__ring" aria-hidden="true"></div>
-          <div class="bl-orbit__ring bl-orbit__ring--in" aria-hidden="true"></div>
-          <p class="bl-orbit__center">${esc(f.center)}</p>
-          <ul class="bl-orbit__roles">${f.roles.map(([r, d], i) => `<li class="bl-orbit__role bl-orbit__role--${i + 1}"><strong>${esc(r)}</strong><span>${esc(d)}</span></li>`).join("")}</ul>
-        </div>
-        <figcaption class="bl-orbit__cap"><span class="bl-dot" aria-hidden="true"></span>${esc(f.guard)}</figcaption>
-      </figure>
-    </div>`
-  );
-
-  const b = o.beyond;
-  const beyond = section(
-    "bl-beyond",
-    "nls-block--band bl-beyond",
-    `<div class="bl-split">
-      ${head(b.kicker, b.title, "", "bl-beyond-title")}
-      <div>${b.body.map((p) => `<p class="bl-body">${esc(p)}</p>`).join("")}<p class="bl-beyond__tag">${chip(C, "plan")} <span>${esc(b.tag)}</span></p></div>
-    </div>
-    <ol class="bl-chain">${b.chain.map((t, i) => `<li${i === 0 ? ' class="is-home"' : ""}><span class="bl-chain__n">${n2(i + 1)}</span><span class="bl-chain__t">${esc(t)}</span></li>`).join("")}</ol>
-    <ol class="bl-path">${b.path.map((t) => `<li>${esc(t)}</li>`).join("")}</ol>`
-  );
-
-  const commitment = section(
-    "bl-commit",
-    "bl-commit",
-    `<div class="bl-split bl-split--top">
-      ${head(o.commitment.kicker, o.commitment.title, o.commitment.lead, "bl-commit-title")}
-      <ul class="bl-checks">${o.commitment.items.map((t) => `<li>${CHECK}<span>${esc(t)}</span></li>`).join("")}</ul>
-    </div>`
-  );
-
-  const nx = o.next;
-  const ctas = `<a class="nls-btn" href="${pagePath(lang, "platform")}">${esc(nx.ctas[0])} →</a>
-      <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "business")}">${esc(nx.ctas[1])}</a>
-      <a class="nls-btn nls-btn--ghost" href="${inquiryHref(lang, "overview", "partnership")}">${esc(nx.ctas[2])}</a>`;
-
-  return {
-    hero: hero(C, lang, "overview", o.hero, false),
-    main: [about, mission, journey, core, family, beyond, commitment, moreStrip(C, lang, "overview"), closeBlock(C, nx, ctas)].join("\n"),
-  };
-}
-
-/* ------------------------------------------------------------------------------------ 02 Platform */
-function platformBody(C, lang) {
-  const p = C.platform;
-  const cl = copyLangFor(lang);
-  const index = p.groups
+  const roster = o.vision.lines
+    .map((p, i) => `<li><span>${String(i + 1).padStart(2, "0")}</span><p>${esc(p)}</p></li>`)
+    .join("");
+  const rail = o.journey.items
     .map(
-      (g) => `<li><a class="bl-gidx__a" href="#bl-grp-${g.id}"><span class="bl-gidx__l">${g.id.toUpperCase()}</span><span class="bl-gidx__t">${esc(g.en)}${cl === "ko" ? `<em>${esc(g.name)}</em>` : ""}</span><span class="bl-gidx__c">${g.items.length}</span></a></li>`
+      (it, i) => `<button type="button" class="nls-rail__btn${i === 0 ? " is-on" : ""}" data-nls-decade="${it.id}" aria-pressed="${i === 0 ? "true" : "false"}">
+        <em>${esc(it.n)}</em><span>${esc(it.age)}</span></button>`
     )
     .join("");
-  const groups = p.groups
-    .map((g) => {
-      const rows = g.items
-        .map(([num, name, body, tags, note]) => {
-          const st = PLATFORM_STATUS[+num - 1];
-          const tagHtml = tags.length
-            ? `<div class="bl-row__tags"><p class="bl-row__tk">${esc(C.ui.keyAreas)}</p><ul class="bl-tags">${tags.map((t) => `<li>${esc(t)}</li>`).join("")}</ul></div>`
-            : "";
-          const noteHtml = note ? `<p class="bl-row__note bl-row__note--${note}">${esc(C.ui[note])}</p>` : "";
-          return `<li class="bl-row" id="bl-svc-${num}">
-          <span class="bl-row__n">${num}</span>
-          <div class="bl-row__main">
-            <h4 class="bl-row__t">${esc(name)}</h4>
-            <p class="bl-row__d">${esc(body)}</p>
-            ${tagHtml}
-            ${noteHtml}
-          </div>
-          <div class="bl-row__st">${chip(C, st)}</div>
-        </li>`;
-        })
+  const cards = o.journey.items
+    .map(
+      (it, i) => `<article class="nls-decade${i === 0 ? " is-on" : ""}" data-nls-decade-card="${it.id}" data-scene="${it.id}">
+        <div class="nls-decade__mark" aria-hidden="true"><b>${esc(it.age)}</b><em>${esc(it.n)}</em></div>
+        <div class="nls-decade__copy">
+          <p class="nls-decade__n">${esc(it.n)}</p>
+          <p class="nls-decade__age">${esc(it.age)}</p>
+          <h3>${esc(it.name)}</h3>
+          <p class="nls-decade__lead">${esc(it.lead)}</p>
+          ${chips(it.topics)}
+        </div>
+      </article>`
+    )
+    .join("");
+  const connect = o.connect.items
+    .map((it) => `<article class="nls-flow__item"><span class="nls-flow__n">${esc(it.n)}</span><h3>${esc(it.name)}</h3><p>${esc(it.lead)}</p></article>`)
+    .join("");
+  const eco = o.ecosystem.items
+    .map((it) => `<article class="nls-proc__item"><span class="nls-proc__n">${esc(it.n)}</span><h3>${esc(it.name)}</h3><p>${esc(it.lead)}</p></article>`)
+    .join("");
+  const opp = C.business.categories
+    .map(
+      (b) => `<li><span>${esc(b.code)}</span><strong><a class="bl-link" href="${pagePath(lang, "business")}#biz-${b.id}">${esc(b.en)} <em>${esc(b.name === b.en ? "" : b.name)}</em></a></strong></li>`
+    )
+    .join("");
+  const dir = o.newon.items
+    .map((s) => `<li><span>${esc(s.n)}</span><div><strong>${esc(s.name)}</strong><p>${esc(s.body)}</p></div></li>`)
+    .join("");
+  const ctas = `<a class="nls-btn" href="${pagePath(lang, "platform")}">${esc(C.ui.toPlatform)} →</a>
+      <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "business")}">${esc(C.ui.toBusiness)}</a>
+      <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "partnerships")}">${esc(C.ui.toPartnerships)}</a>`;
+  const X = C.x.overview;
+  const cats = C.x.business.groups.cats;
+  const catIndex = cats
+    .map(
+      (c) => `<li><span>${esc(c.id)}</span><strong><a class="bl-link" href="${pagePath(lang, "business")}#cat-${c.id}">${esc(c.en)}${c.name === c.en ? "" : ` <em>${esc(c.name)}</em>`}</a></strong></li>`
+    )
+    .join("");
+  const platformList = X.platforms.items
+    .map((s2) => `<li><span>${esc(s2.n)}</span><div><strong>${esc(s2.name)}</strong><p>${esc(s2.body)}</p></div></li>`)
+    .join("");
+  const solutions = X.solutions.items
+    .map((it) => `<article class="nls-pipe__item"><p class="nls-pipe__n">${esc(it.n)}</p><h3>${esc(it.name)}</h3><p>${esc(it.body)}</p></article>`)
+    .join("");
+  const impactItems = X.impact.items
+    .map((it) => `<li><span>${esc(it.n)}</span><div><strong>${esc(it.name)}</strong><p>${esc(it.lead)}</p></div></li>`)
+    .join("");
+  const impact = `<section id="bl-impact" class="nls-block nls-block--ink bl-impact" data-hs-section aria-labelledby="bl-impact-title">
+    <div class="nls-split">
+      <div>
+        ${titleBlock(X.impact.kicker, X.impact.title, "", 2, "bl-impact-title")}
+        <p class="nls-lead">${esc(X.impact.body)}</p>
+        <div class="nls-actions">
+          <a class="nls-btn" href="${pagePath(lang, "business")}#cat-09">${esc(X.impact.ctaBusiness)} →</a>
+          <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "partnerships")}#bl-cs-partners">${esc(X.impact.ctaPartner)}</a>
+        </div>
+      </div>
+      <ol class="nls-dir">${impactItems}</ol>
+    </div>
+    <p class="nls-note">${esc(C.ui.csNote)}</p>
+    <p class="nls-note">${esc(C.ui.koreaNote)}</p>
+  </section>`;
+  return {
+    hero: hero(C, lang, "overview", o.hero, false),
+    main: [
+      bands([
+        { id: "bl-vision", inner: `<div class="nls-split">${titleBlock(o.vision.kicker, o.vision.title, "", 2, "bl-vision-title")}<ol class="nls-roster">${roster}</ol></div>` },
+        {
+          id: "bl-journey",
+          cls: "nls-journey-sec",
+          inner: `${titleBlock(o.journey.kicker, o.journey.title, o.journey.lead, 2, "bl-journey-title")}
+    <div class="nls-rail" role="group" aria-label="${esc(o.journey.kicker.replace(/^\d+ · /, ""))}">${rail}</div>
+    <div class="nls-journey">${cards}</div>
+    <p class="nls-note">${esc(o.journey.note)}</p>`,
+        },
+        { id: "bl-connect", inner: `${titleBlock(o.connect.kicker, o.connect.title, o.connect.lead, 2, "bl-connect-title")}<div class="nls-flow bl-flow4">${connect}</div>` },
+        { id: "bl-daily", inner: `${titleBlock(X.daily.kicker, X.daily.title, X.daily.lead, 2, "bl-daily-title")}<div class="nls-flow bl-flow4">${flowItems(X.daily.items)}</div>` },
+        { id: "bl-health", inner: `${titleBlock(X.health.kicker, X.health.title, X.health.lead, 2, "bl-health-title")}<div class="nls-flow bl-flow4">${flowItems(X.health.items)}</div>` },
+        { id: "bl-ecosystem", inner: `${titleBlock(o.ecosystem.kicker, o.ecosystem.title, o.ecosystem.lead, 2, "bl-ecosystem-title")}<div class="nls-proc">${eco}</div>` },
+        { id: "bl-parent-eco", inner: `${titleBlock(X.parentEco.kicker, X.parentEco.title, X.parentEco.lead, 2, "bl-parent-eco-title")}<div class="nls-flow bl-flow4">${flowItems(X.parentEco.items)}</div>` },
+        { id: "bl-solutions", inner: `${titleBlock(X.solutions.kicker, X.solutions.title, X.solutions.lead, 2, "bl-solutions-title")}<div class="nls-pipe bl-pipe5">${solutions}</div>` },
+        {
+          id: "bl-opportunities",
+          inner: `${titleBlock(o.opportunities.kicker, o.opportunities.title, o.opportunities.lead, 2, "bl-opportunities-title")}
+    <p class="nls-note">${esc(o.opportunities.note)}</p>
+    <ol class="nls-index">${opp}</ol>
+    <h3 class="bl-sub">${esc(X.groupsIndex.kicker)} · ${esc(X.groupsIndex.title.replace(/\n/g, " "))}</h3>
+    <p class="nls-lead">${esc(X.groupsIndex.lead)}</p>
+    <ol class="nls-index">${catIndex}</ol>`,
+        },
+        { ink: true, html: impact },
+        {
+          id: "bl-newon",
+          inner: `<div class="nls-split"><div>${titleBlock(o.newon.kicker, o.newon.title, o.newon.lead, 2, "bl-newon-title")}</div><ol class="nls-dir">${dir}</ol></div>`,
+        },
+        {
+          id: "bl-platforms",
+          inner: `<div class="nls-split"><div>${titleBlock(X.platforms.kicker, X.platforms.title, X.platforms.lead, 2, "bl-platforms-title")}<p class="nls-note">${esc(X.platforms.note)}</p></div><ol class="nls-dir">${platformList}</ol></div>
+    ${legend(C)}`,
+        },
+      ]),
+      closeBlock(C, lang, "overview", o, ctas),
+    ].join("\n"),
+  };
+}
+
+/* ------------------------------------------------------------------ Platform */
+function platformBody(C, lang) {
+  const p = C.platform;
+  const secs = p.sections
+    .map((s, i) => {
+      const n = s.items.length;
+      const items = s.items
+        .map(
+          (it) => `<article class="nls-board__item">
+        <div class="nls-board__meta">${statusChip(C, it.status)}</div>
+        <h3>${esc(it.name)}</h3>
+        <p>${esc(it.lead)}</p>
+      </article>`
+        )
         .join("");
-      const safe = g.id === "e" ? `<div class="bl-safe"><p class="bl-safe__note">${esc(C.ui.csNote)}</p>${emergency(C)}</div>` : "";
-      return `<section class="bl-pgrp" id="bl-grp-${g.id}" aria-labelledby="bl-grp-${g.id}-t">
-        <header class="bl-pgrp__head">
-          <span class="bl-pgrp__l" aria-hidden="true">${g.id.toUpperCase()}</span>
-          <div>
-            <p class="nls-kicker">${g.id.toUpperCase()} · ${esc(g.en)}</p>
-            <h3 class="bl-pgrp__t" id="bl-grp-${g.id}-t">${esc(g.name)}</h3>
-          </div>
-          <span class="bl-pgrp__c">${g.items.length}${esc(C.ui.count)}</span>
-        </header>
-        <ol class="bl-rows">${rows}</ol>
-        ${safe}
-      </section>`;
+      return block(
+        `bl-${s.id}`,
+        `${titleBlock(s.kicker, s.title, s.lead, 2, `bl-${s.id}-title`)}
+    <div class="nls-board bl-cols-${Math.min(n, 3)}">${items}</div>`,
+        i % 2 === 1
+      );
     })
     .join("\n");
-
-  const main = section(
-    "bl-groups",
-    "bl-platform",
-    `<div class="bl-split bl-split--top">
-      ${head(p.intro.kicker, p.intro.title, p.intro.lead, "bl-groups-title")}
-      ${legend(C)}
-    </div>
-    <div class="bl-pf">
-      <nav class="bl-gidx" aria-label="${esc(C.ui.groupIndex)}"><p class="bl-gidx__k">${esc(C.ui.groupIndex)}</p><ol class="bl-gidx__list">${index}</ol></nav>
-      <div class="bl-pf__groups">${groups}</div>
+  const X = C.x.platform;
+  const sc = X.screens;
+  const screenGroups = sc.groups
+    .map(
+      (g) => `<div class="bl-group" aria-labelledby="bl-${g.id}-t">
+      <h3 class="bl-group__t" id="bl-${g.id}-t">${esc(g.name)}</h3>
+      <div class="nls-board bl-cols-3">${g.items
+        .map(
+          (it) => `<article class="nls-board__item bl-screen">
+        <div class="nls-board__meta"><span class="bl-screen__n" aria-hidden="true">${esc(it.n)}</span>${statusChip(C, it.status)}</div>
+        <p class="nls-kicker">${esc(it.en)}</p>
+        <h4>${esc(it.name)}</h4>
+        <p>${esc(it.lead)}</p>
+      </article>`
+        )
+        .join("")}</div>
     </div>`
+    )
+    .join("");
+  const screens = block(
+    "bl-screens",
+    `${titleBlock(sc.kicker, sc.title, sc.lead, 2, "bl-screens-title")}
+    <p class="nls-note">${esc(sc.note)}</p>
+    ${screenGroups}`,
+    false
   );
-
+  const csRail = C.x.csGroups
+    .map((g) => `<li><a class="bl-rail__link" href="#bl-cs-${g.id}"><span aria-hidden="true">${esc(g.n)}</span> ${esc(g.en)}</a></li>`)
+    .join("");
+  const F2 = X.cs.fields;
+  const csIntro = block(
+    "bl-cs",
+    `${titleBlock(X.cs.kicker, X.cs.title, X.cs.lead, 2, "bl-cs-title")}
+    ${csNotices(C, true)}
+    <nav class="bl-rail" aria-label="${esc(X.cs.railLabel)}"><ol class="bl-rail__list">${csRail}</ol></nav>`,
+    false
+  );
+  const csSecs = C.x.csGroups
+    .map((g, i) =>
+      block(
+        `bl-cs-${g.id}`,
+        `${titleBlock(`${g.n} · ${g.en}`, g.title, "", 2, `bl-cs-${g.id}-title`)}
+    <p class="nls-lead">${esc(g.service)}</p>
+    <p class="bl-sub">${esc(F2.subs)}</p>
+    ${chips(g.subs)}
+    ${dl([
+      [F2.sources, esc(g.sources)],
+      [F2.guard, esc(g.guard)],
+      [F2.status, statusChip(C, "plan")],
+    ])}`,
+        i % 2 === 0,
+        "bl-cs-sec"
+      )
+    )
+    .join("\n");
+  const csNote = block("bl-cs-note", `<p class="nls-note">${esc(C.ui.sourcesNote)}</p><p class="nls-note">${esc(C.ui.csNote)}</p>`, false, "bl-cs-end");
   const a = p.access;
-  const st = BUSINESS.babylog.stores;
-  const access = section(
+  const b = BUSINESS.babylog;
+  const access = block(
     "bl-access",
-    "nls-block--band bl-access",
-    `<div class="bl-access__grid">
-      ${head(a.kicker, a.title, a.lead, "bl-access-title")}
-      <div class="bl-access__links">
-        <a class="nls-btn" href="${esc(st.appStore)}" target="_blank" rel="noopener" data-analytics="app_store_babylog">${esc(a.appStore)}</a>
-        <a class="nls-btn" href="${esc(st.googlePlay)}" target="_blank" rel="noopener" data-analytics="google_play_babylog">${esc(a.googlePlay)}</a>
-        <a class="bl-textlink" href="/${lang}/${BL_SLUG}/delete-account/">${esc(a.deleteNote)} ${ARROW}</a>
-      </div>
-    </div>`
+    `${titleBlock(a.kicker, a.title, a.lead, 2, "bl-access-title")}
+    <div class="nls-actions">
+      <a class="nls-btn" href="${esc(b.stores.appStore)}" target="_blank" rel="noopener" data-analytics="app_store_babylog">${esc(a.appStore)}</a>
+      <a class="nls-btn" href="${esc(b.stores.googlePlay)}" target="_blank" rel="noopener" data-analytics="google_play_babylog">${esc(a.googlePlay)}</a>
+      <a class="nls-btn nls-btn--ghost" href="/${lang}/${BL_SLUG}/delete-account/">${esc(a.deleteNote)}</a>
+    </div>
+    <p class="nls-note">${esc(a.note)}</p>
+    ${legend(C)}`,
+    true
   );
-
-  const c = p.close;
-  const ctas = `<a class="nls-btn" href="${pagePath(lang, "business")}">${esc(c.ctas[0])} →</a>
-      <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "partnerships")}">${esc(c.ctas[1])}</a>`;
+  const ctas = `<a class="nls-btn" href="${inquiryHref(lang, "platform", "app")}">${esc(C.ui.toInquiry)} →</a>
+      <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "business")}">${esc(C.ui.toBusiness)}</a>`;
   return {
     hero: hero(C, lang, "platform", p.hero, true),
-    main: [main, access, moreStrip(C, lang, "platform"), closeBlock(C, c, ctas)].join("\n"),
+    main: [
+      screens,
+      secs,
+      csIntro,
+      csSecs,
+      csNote,
+      access,
+      closeBlock(C, lang, "platform", { closeKicker: C.contact.closeKicker, closeTitleHtml: C.contact.closeTitleHtml, closeLead: C.contact.closeLead }, ctas),
+    ].join("\n"),
   };
 }
 
-/* ------------------------------------------------------------------------------------ 03 Business */
+/* ------------------------------------------------------------------ Business */
+function dl(rows) {
+  return `<dl class="bl-dl">${rows
+    .map(([k, v]) => `<div class="bl-dl__row"><dt>${esc(k)}</dt><dd>${v}</dd></div>`)
+    .join("")}</dl>`;
+}
+
 function businessBody(C, lang) {
   const b = C.business;
-  const cl = copyLangFor(lang);
-
-  const intro = section(
-    "bl-bintro",
-    "bl-bintro",
-    `<div class="bl-split bl-split--top">
-      ${head(b.intro.kicker, b.intro.title, b.intro.lead, "bl-bintro-title")}
-      <dl class="bl-stats">${b.intro.stats.map(([v, k]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
-    </div>
-    ${legend(C)}`
-  );
-
-  let k = 0;
-  const rail = b.groups
-    .map((g) => `<li><a class="bl-rail__a" href="#grp-${g.n}"><span>${g.n}</span>${esc(cl === "ko" ? g.name : g.en)}</a></li>`)
-    .join("");
-  const bands = b.groups
-    .map((g, gi) => {
-      const rows = g.items
-        .map(([en, body]) => {
-          k++;
-          const num = n2(k);
-          return `<li class="bl-brow" id="biz-${num}">
-            <span class="bl-brow__n">${num}</span>
-            <div class="bl-brow__main"><h4 class="bl-brow__t">${esc(en)}</h4><p>${esc(body)}</p></div>
-            <div class="bl-brow__st">${chip(C, BUSINESS_STATUS[k - 1])}</div>
-          </li>`;
-        })
-        .join("");
-      const tone = g.cs ? " bl-band--ink" : gi % 2 === 1 ? " bl-band--soft" : "";
-      const cs = g.cs ? `<p class="bl-band__note">${esc(C.ui.csNote)}</p>${g.n === "07" ? emergency(C) : ""}` : "";
-      return `<section class="bl-band${tone}" id="grp-${g.n}" aria-labelledby="grp-${g.n}-t">
-        <div class="bl-band__in">
-          <header class="bl-band__head">
-            <span class="bl-band__n" aria-hidden="true">${g.n}</span>
-            <p class="nls-kicker">${esc(g.en)}</p>
-            <h3 class="bl-band__t" id="grp-${g.n}-t">${esc(g.name)}</h3>
-            <p class="bl-band__c">${g.items.length}${esc(C.ui.count)} · ${n2(k - g.items.length + 1)}–${n2(k)}</p>
-            ${cs}
-          </header>
-          <ol class="bl-brows">${rows}</ol>
+  const F = b.fields;
+  const cards = b.categories
+    .map((cat) => {
+      const rows = [
+        [F.overview, esc(cat.overview)],
+        [F.customers, esc(cat.customers)],
+        [F.problem, esc(cat.problem)],
+        [F.value, esc(cat.value)],
+        [F.revenue, esc(cat.revenue)],
+        [F.partners, esc(cat.partners)],
+        [F.status, statusChip(C, cat.status)],
+      ];
+      return `<article id="biz-${cat.id}" class="bl-biz" aria-labelledby="biz-${cat.id}-title">
+      <header class="bl-biz__head">
+        <span class="bl-biz__code" aria-hidden="true">${esc(cat.code)}</span>
+        <div>
+          <p class="nls-kicker">${esc(cat.en)}</p>
+          <h3 id="biz-${cat.id}-title" class="bl-biz__title">${esc(cat.name)}</h3>
         </div>
-      </section>`;
+      </header>
+      ${chips(cat.items)}
+      ${dl(rows)}
+      <p class="bl-biz__cta"><a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "partnerships")}#partner-${cat.partnerType}" aria-label="${esc(F.cta)}: ${esc(cat.name)}">${esc(F.cta)} →</a></p>
+    </article>`;
     })
     .join("\n");
-
-  const groups = `<section id="bl-groups" class="nls-block bl-sec bl-groups" data-hs-section aria-labelledby="bl-groups-title">
-    <h2 class="bl-vh" id="bl-groups-title">${esc(b.intro.title)}</h2>
-    <nav class="bl-rail" aria-label="${esc(C.ui.bizIndex)}"><ol class="bl-rail__list">${rail}</ol></nav>
-    ${bands}
-  </section>`;
-
-  const m = b.models;
-  const models = section(
-    "bl-models",
-    "bl-models",
-    `${head(m.kicker, m.title, "", "bl-models-title")}
-    <table class="bl-table">
-      <thead><tr>${m.cols.map((c) => `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead>
-      <tbody>${m.rows
-        .map(([a, t, d]) => `<tr><th scope="row" data-k="${esc(m.cols[0])}">${esc(a)}</th><td data-k="${esc(m.cols[1])}">${esc(t)}</td><td data-k="${esc(m.cols[2])}">${esc(d)}</td></tr>`)
-        .join("")}</tbody>
-    </table>
-    <p class="nls-note">${esc(C.ui.noPrice)}</p>`
+  const intro = block(
+    "bl-biz",
+    `${titleBlock(b.intro.kicker, b.intro.title, b.intro.lead, 2, "bl-biz-title")}
+    <p class="nls-note">${esc(C.ui.noOutsourcing)}</p>
+    <p class="nls-note">${esc(C.ui.noPrice)}</p>
+    <div class="bl-biz__list">${cards}</div>`
   );
-
-  const r = b.revenue;
-  const revenue = section(
-    "bl-revenue",
-    "nls-block--band bl-revenue",
-    `<div class="bl-split bl-split--top">
-      <header class="nls-head bl-head"><p class="nls-kicker">${esc(r.label)}</p><h2 class="nls-title" id="bl-revenue-title">${esc(r.kicker)}</h2><p class="nls-lead">${esc(r.body)}</p></header>
-      <ul class="bl-streams">${r.streams.map((s, i) => `<li><span>${n2(i + 1)}</span>${esc(s)}</li>`).join("")}</ul>
-    </div>
-    <aside class="bl-rule" aria-label="${esc(r.ruleLabel)}">
-      <p class="bl-rule__k">${esc(r.ruleLabel)}</p>
-      <p class="bl-rule__t">${esc(r.rule)}</p>
-    </aside>`
+  const G = C.x.business.groups;
+  const GF = G.fields;
+  const gmap = allGroups(C);
+  const catRail = G.cats
+    .map((c) => `<li><a class="bl-rail__link" href="#cat-${c.id}"><span aria-hidden="true">${esc(c.id)}</span> ${esc(copyLangFor(lang) === "ko" ? c.name : c.en)}</a></li>`)
+    .join("");
+  const catHtml = G.cats
+    .map((c) => {
+      const members = c.groups.map((id) => gmap.get(id));
+      const csCat = c.id === "09";
+      const catRows = [
+        [GF.model, esc(c.model)],
+        [GF.revenue, esc(c.revenue)],
+      ];
+      const forb = c.forbidden
+        ? `<p class="bl-sub">${esc(c.forbiddenLabel)}</p>${chips(c.forbidden)}`
+        : "";
+      const cards2 = members
+        .map((g) => {
+          const rows = [
+            [GF.customers, esc(g.customers)],
+            [GF.value, esc(g.value)],
+            [GF.ops, esc(g.ops)],
+          ];
+          if (g.cs) {
+            rows.push([GF.sources, esc(g.sources)]);
+            rows.push([GF.revenue, esc(g.rev)]);
+          }
+          rows.push([GF.status, statusChip(C, g.status)]);
+          const target = g.cs ? `${pagePath(lang, "partnerships")}#bl-cs-partners` : `${pagePath(lang, "partnerships")}#bl-industry`;
+          return `<article id="grp-${g.n}" class="bl-grp${g.cs ? " bl-grp--cs" : ""}" aria-labelledby="grp-${g.n}-title">
+        <header class="bl-biz__head">
+          <span class="bl-biz__code" aria-hidden="true">${esc(g.n)}</span>
+          <div><p class="nls-kicker">${esc(g.en)}</p><h4 id="grp-${g.n}-title" class="bl-biz__title">${esc(copyLangFor(lang) === "ko" ? g.name : g.en)}</h4></div>
+        </header>
+        ${chips(g.subs)}
+        ${dl(rows)}
+        <p class="bl-biz__cta"><a class="bl-link" href="${target}">${esc(b.fields.cta)} →</a></p>
+      </article>`;
+        })
+        .join("");
+      return `<section id="cat-${c.id}" class="bl-cat${csCat ? " bl-cat--cs" : ""}" aria-labelledby="cat-${c.id}-title">
+      <header class="bl-cat__head">
+        <span class="bl-biz__code" aria-hidden="true">${esc(c.id)}</span>
+        <div><p class="nls-kicker">${esc(c.en)}</p><h3 id="cat-${c.id}-title" class="bl-biz__title">${esc(copyLangFor(lang) === "ko" ? c.name : c.en)}</h3></div>
+        <span class="bl-cat__count">${members.length}${esc(C.x.overview.groupsIndex.countUnit)}</span>
+      </header>
+      ${csCat ? csNotices(C, true) : ""}
+      ${dl(catRows)}
+      <p class="nls-note">${esc(C.ui.catApplies)}</p>
+      ${forb}
+      <div class="bl-grp__list">${cards2}</div>
+    </section>`;
+    })
+    .join("\n");
+  const groups = block(
+    "bl-groups",
+    `${titleBlock(G.kicker, G.title, G.lead, 2, "bl-groups-title")}
+    <p class="nls-note">${esc(G.note)}</p>
+    <nav class="bl-rail bl-rail--cats" aria-label="${esc(C.ui.cats)}"><ol class="bl-rail__list">${catRail}</ol></nav>
+    ${catHtml}
+    ${legend(C)}`,
+    true
   );
-
-  const c = b.close;
-  const ctas = `<a class="nls-btn" href="${pagePath(lang, "partnerships")}">${esc(c.ctas[0])} →</a>
-      <a class="nls-btn nls-btn--ghost" href="${inquiryHref(lang, "business", "corporate")}">${esc(c.ctas[1])}</a>`;
+  const ph = G ? C.x.business.phases : null;
+  const phases = block(
+    "bl-phases",
+    `${titleBlock(ph.kicker, ph.title, ph.lead, 2, "bl-phases-title")}
+    <div class="nls-pipe bl-pipe5">${ph.items
+      .map((s2, i) => `<article class="nls-pipe__item${i === 0 ? " is-on" : ""}"><p class="nls-pipe__n">${esc(s2.n)}</p><h3>${esc(s2.name)}</h3><p>${esc(s2.body)}</p></article>`)
+      .join("")}</div>
+    <p class="nls-note">${esc(ph.note)}</p>`
+  );
+  const ctas = `<a class="nls-btn" href="${pagePath(lang, "partnerships")}">${esc(C.ui.toPartnerships)} →</a>
+      <a class="nls-btn nls-btn--ghost" href="${inquiryHref(lang, "business", "")}">${esc(C.ui.inquiryCta)}</a>`;
   return {
     hero: hero(C, lang, "business", b.hero, true),
-    main: [intro, groups, models, revenue, moreStrip(C, lang, "business"), closeBlock(C, c, ctas)].join("\n"),
+    main: [intro, groups, phases, closeBlock(C, lang, "business", b, ctas)].join("\n"),
   };
 }
 
-/* -------------------------------------------------------------------------------- 04 Partnerships */
+/* -------------------------------------------------------------- Partnerships */
 function partnershipsBody(C, lang) {
   const p = C.partnerships;
-  const cats = section(
-    "bl-cats",
-    "bl-pcats",
-    `<div class="bl-split bl-split--top">
-      ${head(p.cats.kicker, p.cats.title, "", "bl-cats-title")}
-      <p class="bl-pcats__note">${chip(C, "review")} <span>${esc(C.ui.noPartner)}</span></p>
-    </div>
-    <ol class="bl-tiles">${p.cats.items
-      .map(
-        ([en, d], i) => `<li class="bl-tile" id="partner-${PARTNER_CODES[i]}">
-        <span class="bl-tile__n">${n2(i + 1)}</span>
-        <h3 class="bl-tile__t">${esc(en)}</h3>
-        <p class="bl-tile__d">${esc(d)}</p>
-        <a class="bl-tile__a" href="${inquiryHref(lang, "partnerships", PARTNER_CODES[i])}" aria-label="${esc(C.ui.propose)}: ${esc(en)}">${esc(C.ui.propose)} ${ARROW}</a>
-      </li>`
-      )
-      .join("")}</ol>`
-  );
-
-  const w = p.why;
-  const why = section(
-    "bl-why",
-    "nls-block--band bl-why",
-    `<div class="bl-split">
-      <div><p class="nls-kicker">${esc(w.kicker)}</p><h2 class="bl-display bl-display--md" id="bl-why-title">${nl(w.title)}</h2></div>
-      <p class="bl-body-lg">${esc(w.body)}</p>
-    </div>
-    <ol class="bl-points">${w.points.map((t, i) => `<li><span>${n2(i + 1)}</span>${esc(t)}</li>`).join("")}</ol>`
-  );
-
-  const pr = p.principles;
-  const principles = `<section id="bl-principles" class="nls-block nls-block--ink bl-sec bl-principles" data-hs-section aria-labelledby="bl-principles-title">
-    ${head(pr.kicker, pr.title, "", "bl-principles-title")}
-    <ol class="bl-princ">${pr.items.map((t, i) => `<li><span class="bl-princ__n">${n2(i + 1)}</span>${CHECK}<p>${esc(t)}</p></li>`).join("")}</ol>
-  </section>`;
-
-  const ps = p.process;
-  const process = section(
-    "bl-process",
-    "bl-process",
-    `${head(ps.kicker, ps.title, ps.lead, "bl-process-title")}
-    <ol class="bl-steps">${ps.steps.map(([t, d], i) => `<li><span class="bl-steps__n">${n2(i + 1)}</span><h3>${esc(t)}</h3><p>${esc(d)}</p></li>`).join("")}</ol>
-    <p class="nls-note">${esc(C.ui.noPrice)}</p>`
-  );
-
-  const c = p.close;
-  const ctas = `<a class="nls-btn" href="${inquiryHref(lang, "partnerships", "")}">${esc(c.ctas[0])} →</a>
-      <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "contact")}">${esc(c.ctas[1])}</a>`;
+  const T = p.types;
+  const steps = p.process.steps
+    .map(
+      (s, i) => `<article class="nls-pipe__item${i === 0 ? " is-on" : ""}"><p class="nls-pipe__n">${esc(s.n)}</p><h3>${esc(s.name)}</h3><p>${esc(s.body)}</p></article>`
+    )
+    .join("");
+  const rail = T.items
+    .map((it) => `<li><a class="bl-rail__link" href="#partner-${it.code}"><span aria-hidden="true">${esc(it.n)}</span> ${esc(it.name)}</a></li>`)
+    .join("");
+  const cards = T.items
+    .map((it) => {
+      const rows = [
+        [T.fields.who, esc(it.who)],
+        [T.fields.areas, esc(it.areas)],
+        [T.fields.revenue, esc(it.revenue)],
+        [T.fields.terms, esc(it.terms)],
+        [T.fields.flow, esc(T.flowText)],
+      ];
+      return `<article id="partner-${it.code}" class="bl-biz" aria-labelledby="partner-${it.code}-title">
+      <header class="bl-biz__head">
+        <span class="bl-biz__code" aria-hidden="true">${esc(it.n)}</span>
+        <div><h3 id="partner-${it.code}-title" class="bl-biz__title">${esc(it.name)}</h3></div>
+      </header>
+      ${dl(rows)}
+      <p class="bl-biz__cta"><a class="nls-btn" href="${inquiryHref(lang, "partnerships", it.code)}">${esc(T.cta)} →</a></p>
+    </article>`;
+    })
+    .join("\n");
+  const PX = C.x.partnerships;
+  const ind = PX.industry;
+  const indRail = ind.items
+    .map((it, i) => `<li><a class="bl-rail__link" href="#partner-${IND_PARTNER_CODES[i]}"><span aria-hidden="true">${String(i + 1).padStart(2, "0")}</span> ${esc(it[0])}</a></li>`)
+    .join("");
+  const indCards = ind.items
+    .map((it, i) => {
+      const code = IND_PARTNER_CODES[i];
+      const n = String(i + 1).padStart(2, "0");
+      const rows = [
+        [ind.fields.purpose, esc(it[1])],
+        [ind.fields.terms, esc(it[2])],
+        [ind.fields.flow, esc(T.flowText)],
+      ];
+      return `<article id="partner-${code}" class="bl-biz bl-biz--compact" aria-labelledby="partner-${code}-title">
+      <header class="bl-biz__head"><span class="bl-biz__code" aria-hidden="true">${n}</span><div><h3 id="partner-${code}-title" class="bl-biz__title">${esc(it[0])}</h3></div></header>
+      ${dl(rows)}
+      <p class="bl-biz__cta"><a class="nls-btn nls-btn--ghost" href="${inquiryHref(lang, "partnerships", code)}">${esc(T.cta)} →</a></p>
+    </article>`;
+    })
+    .join("\n");
+  const cs = PX.cs;
+  const csRail = cs.items
+    .map((it, i) => `<li><a class="bl-rail__link" href="#partner-${CS_PARTNER_CODES[i]}"><span aria-hidden="true">${String(i + 1).padStart(2, "0")}</span> ${esc(it[0])}</a></li>`)
+    .join("");
+  const csCards = cs.items
+    .map((it, i) => {
+      const code = CS_PARTNER_CODES[i];
+      const n = String(i + 1).padStart(2, "0");
+      const rows = [
+        [cs.fields.purpose, esc(it[1])],
+        [cs.fields.value, esc(it[2])],
+        [cs.fields.flow, esc(cs.flowText)],
+        [cs.fields.terms, esc(it[3])],
+      ];
+      return `<article id="partner-${code}" class="bl-biz bl-biz--compact bl-biz--cs" aria-labelledby="partner-${code}-title">
+      <header class="bl-biz__head"><span class="bl-biz__code" aria-hidden="true">${n}</span><div><h3 id="partner-${code}-title" class="bl-biz__title">${esc(it[0])}</h3></div></header>
+      ${dl(rows)}
+      <p class="bl-biz__cta"><a class="nls-btn" href="${inquiryHref(lang, "partnerships", code)}">${esc(cs.cta)}</a></p>
+    </article>`;
+    })
+    .join("\n");
+  const ctas = `<a class="nls-btn" href="${inquiryHref(lang, "partnerships", "")}">${esc(C.ui.inquiryCta)} →</a>
+      <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "contact")}">${esc(C.ui.toInquiry)}</a>`;
   return {
     hero: hero(C, lang, "partnerships", p.hero, true),
-    main: [cats, why, principles, process, moreStrip(C, lang, "partnerships"), closeBlock(C, c, ctas)].join("\n"),
+    main: [
+      block(
+        "bl-process",
+        `${titleBlock(p.process.kicker, p.process.title, p.process.lead, 2, "bl-process-title")}<div class="nls-pipe bl-pipe5">${steps}</div>`
+      ),
+      block(
+        "bl-types",
+        `${titleBlock(T.kicker, T.title, T.lead, 2, "bl-types-title")}
+    <p class="nls-note">${esc(C.ui.noPartner)}</p>
+    <nav class="bl-rail" aria-label="${esc(T.railLabel)}"><ol class="bl-rail__list">${rail}</ol></nav>
+    <div class="bl-biz__list">${cards}</div>
+    <p class="nls-note">${esc(C.ui.noPrice)}</p>`,
+        true
+      ),
+      block(
+        "bl-industry",
+        `${titleBlock(ind.kicker, ind.title, ind.lead, 2, "bl-industry-title")}
+    <nav class="bl-rail" aria-label="${esc(ind.railLabel)}"><ol class="bl-rail__list">${indRail}</ol></nav>
+    <div class="bl-biz__list bl-biz__list--compact">${indCards}</div>`
+      ),
+      block(
+        "bl-cs-partners",
+        `${titleBlock(cs.kicker, cs.title, cs.lead, 2, "bl-cs-partners-title")}
+    ${csNotices(C, true)}
+    <p class="nls-note">${esc(C.ui.csPartnerNote)}</p>
+    <nav class="bl-rail" aria-label="${esc(cs.railLabel)}"><ol class="bl-rail__list">${csRail}</ol></nav>
+    <div class="bl-biz__list bl-biz__list--compact">${csCards}</div>
+    <p class="nls-note">${esc(C.ui.noPrice)}</p>`,
+        true
+      ),
+      closeBlock(C, lang, "partnerships", p, ctas),
+    ].join("\n"),
   };
 }
 
-/* ------------------------------------------------------------------------------------- 05 Contact */
+/* ------------------------------------------------------------------- Contact */
 function contactBody(C, lang) {
   const c = C.contact;
-  const rows = c.cats.items
+  const cards = c.list.items
     .map(
-      ([en, d], i) => `<li><a class="bl-crow" href="${inquiryHref(lang, "contact", CONTACT_CODES[i])}" data-analytics="babylog_contact_${CONTACT_CODES[i]}">
-        <span class="bl-crow__n">${n2(i + 1)}</span>
-        <strong class="bl-crow__t">${esc(en)}</strong>
-        <span class="bl-crow__d">${esc(d)}</span>
-        <span class="bl-crow__go">${esc(C.ui.ask)} ${ARROW}</span>
+      (it) => `<li><a class="bl-card" href="${inquiryHref(lang, "contact", it.code)}" data-analytics="babylog_contact_${it.code}">
+        <span class="bl-card__n" aria-hidden="true">${esc(it.n)}</span>
+        <strong class="bl-card__t">${esc(it.name)}</strong>
+        <span class="bl-card__d">${esc(it.lead)}</span>
+        <span class="bl-card__go">${esc(c.list.go)}</span>
       </a></li>`
     )
     .join("");
-  const info = c.info;
-  const card = `<aside class="bl-ccard" aria-labelledby="bl-ccard-t">
-      <p class="bl-ccard__k">${esc(info.kicker)}</p>
-      <h3 class="bl-ccard__t" id="bl-ccard-t">${esc(info.name)}</h3>
-      <p class="bl-ccard__mail"><a href="mailto:${esc(info.email)}">${esc(info.email)}</a></p>
-      <div class="bl-ccard__act">
-        <button type="button" class="nls-btn nls-btn--ghost bl-copy" data-bl-copy="${esc(info.email)}" data-bl-copied="${esc(C.ui.copied)}" hidden>${esc(C.ui.copy)}</button>
-        <a class="nls-btn nls-btn--ghost" href="mailto:${esc(info.email)}">${esc(C.ui.mail)}</a>
-      </div>
-      <a class="nls-btn bl-ccard__form" href="${inquiryHref(lang, "contact", "")}">${esc(C.ui.form)} →</a>
-      <p class="bl-ccard__note"><span class="bl-dot" aria-hidden="true"></span>${esc(info.note)}</p>
-    </aside>`;
-
-  const main = section(
-    "bl-cats",
-    "bl-contact",
-    `${head(c.cats.kicker, c.cats.title, c.cats.lead, "bl-cats-title")}
-    <div class="bl-cgrid">
-      <div class="bl-ctable">
-        <p class="bl-ctable__h" aria-hidden="true"><span>${esc(c.cats.cols[0])}</span><span>${esc(c.cats.cols[1])}</span><span>${esc(c.cats.cols[2])}</span></p>
-        <ol class="bl-ctable__list">${rows}</ol>
-      </div>
-      ${card}
-    </div>`
-  );
-
-  const g = c.guide;
-  const guide = section(
-    "bl-guide",
-    "nls-block--band bl-guide",
-    `${head(g.kicker, g.title, "", "bl-guide-title")}
-    <ol class="bl-guide__list">${g.items.map(([t, d], i) => `<li><span>${n2(i + 1)}</span><h3>${esc(t)}</h3><p>${esc(d)}</p></li>`).join("")}</ol>
-    ${emergency(C)}
-    <p class="nls-note">${esc(C.ui.privacyNote)} <a class="bl-textlink" href="/${lang}/privacy/">${esc(C.ui.privacyLink)}</a></p>`
-  );
-
-  const cl = c.close;
-  const ctas = `<a class="nls-btn" href="${inquiryHref(lang, "contact", "")}">${esc(cl.ctas[0])} →</a>
-      <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "partnerships")}">${esc(cl.ctas[1])}</a>`;
+  const guide = c.guide.items
+    .map((it) => `<article class="nls-proc__item"><span class="nls-proc__n">${esc(it.n)}</span><h3>${esc(it.name)}</h3><p>${esc(it.body)}</p></article>`)
+    .join("");
+  const CX = C.x.contact;
+  const cardList = (items) =>
+    items
+      .map(
+        (it) => `<li><a class="bl-card" href="${inquiryHref(lang, "contact", it.code)}" data-analytics="babylog_contact_${it.code}">
+        <span class="bl-card__n" aria-hidden="true">${esc(it.n)}</span>
+        <strong class="bl-card__t">${esc(it.name)}</strong>
+        <span class="bl-card__d">${esc(it.lead)}</span>
+        <span class="bl-card__go">${esc(c.list.go)}</span>
+      </a></li>`
+      )
+      .join("");
+  const ctas = `<a class="nls-btn" href="${inquiryHref(lang, "contact", "")}">${esc(C.ui.toInquiry)} →</a>
+      <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "partnerships")}">${esc(C.ui.toPartnerships)}</a>`;
   return {
     hero: hero(C, lang, "contact", c.hero, true),
-    main: [main, guide, moreStrip(C, lang, "contact"), closeBlock(C, cl, ctas)].join("\n"),
+    main: [
+      block("bl-contact-list", `${titleBlock(c.list.kicker, c.list.title, c.list.lead, 2, "bl-contact-list-title")}<ul class="bl-cards">${cards}</ul>`),
+      block("bl-contact-more", `${titleBlock(CX.more.kicker, CX.more.title, CX.more.lead, 2, "bl-contact-more-title")}<ul class="bl-cards">${cardList(CX.more.items)}</ul>`, true),
+      block(
+        "bl-contact-cs",
+        `${titleBlock(CX.cs.kicker, CX.cs.title, CX.cs.lead, 2, "bl-contact-cs-title")}
+    ${csNotices(C, true)}
+    <ul class="bl-cards bl-cards--cs">${cardList(CX.cs.items)}</ul>`
+      ),
+      block(
+        "bl-guide",
+        `${titleBlock(c.guide.kicker, c.guide.title, "", 2, "bl-guide-title")}<div class="nls-proc bl-proc3">${guide}</div>
+    <p class="nls-note">${esc(C.ui.privacyNote)} <a class="bl-link" href="/${lang}/privacy/">${esc(C.ui.privacyLink)}</a></p>`,
+        true
+      ),
+      closeBlock(C, lang, "contact", c, ctas),
+    ].join("\n"),
   };
 }
 
@@ -571,7 +700,6 @@ export function renderBabylogSection(lang, page) {
   ${renderFlagshipSubnav({ biz: "babylog", lang, active: page })}
   <div class="nls__wrap">
     ${main}
-    ${brandSign(C)}
   </div>
 </section>`;
 }

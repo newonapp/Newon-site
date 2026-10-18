@@ -1,20 +1,11 @@
 /**
  * LIVON corporate site — page bodies for /{lang}/livon/ (Overview) and its four sub pages
- * (platform/, business/, partnerships/, contact/). One topic per page:
- *   01 Overview      brand story — why, before/after, mission & vision, journey, life stage,
- *                    a person's journey, principles, direction, place in NEWON, links
- *   02 Platform      app tabs, 8 core features, anonymous mode, life-event explorer,
- *                    40 categories, market (in preparation), official info, FAQ
- *   03 Business      principle, two tracks, 15 areas in 5 groups, models table, revenue,
- *                    roadmap, operating principles
- *   04 Partnerships  why partner, 20 types in 5 groups, sources vs partners, principles,
- *                    process, FAQ
- *   05 Contact       14 inquiry types (table), NEWON contact, notes, FAQ, closing
- * Information only: no forms, no storage, no personalisation. Styles: /livon-site.css (scoped to .lvs)
- * on top of the Life Stage styles (/home-lifestage.css, /home-lifestage-layout.css, scoped to .nls).
+ * (platform/, business/, partnerships/, contact/). Information only: no forms, no storage,
+ * no personalisation. Styles: /livon-site.css (scoped to .lvs) on top of the existing
+ * Life Stage styles (/home-lifestage.css, /home-lifestage-layout.css, scoped to .nls).
  */
 import { escapeHtml } from "./hub-utils.mjs";
-import { renderFlagshipSubnav } from "./flagship-subnav.mjs";
+import { renderFlagshipSubnav, FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
 import { getLifeStageCopy } from "./home-lifestage-copy.mjs";
 import {
   LIVON_SITE_PAGES,
@@ -25,19 +16,16 @@ import {
   NEWON_APPS,
   LIFE_EVENTS,
   CORE_FEATURES,
-  CORE_TAGS,
   BUSINESS,
-  BIZ_GROUPS,
-  BIZ_TAGS,
-  MODELS,
+  REVENUE,
   ROADMAP,
   JOURNEY,
   PLATFORM_EXAMPLES,
   PARTNER_GROUPS,
   PARTNER_STEPS,
-  PARTNER_TAGS,
   CONTACT_GROUPS,
   PARTNERS,
+  PARTNER_COMMON,
   CONTACT_TYPES,
   SUBNAV_I18N,
   siteCopy,
@@ -45,12 +33,10 @@ import {
 } from "./livon-site-data.mjs";
 
 const FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_102608_5fa1187d-9ac6-44fb-82ab-54376200abc0.mp4";
-const NEWON_EMAIL = "newon@newon.app";
 
 const e = (s) => escapeHtml(s == null ? "" : String(s));
 const nl = (s) => e(s).replace(/\n/g, "<br>");
 const pick = (lang, ko, en) => (isKo(lang) ? ko : en);
-const pair = (lang, arr) => (isKo(lang) ? arr[0] : arr[1]);
 
 export function pageHref(lang, id) {
   const p = LIVON_SITE_PAGES.find((x) => x.id === id);
@@ -63,12 +49,27 @@ function pageLabel(lang, p) {
   return (t && t[p.id]) || p.en;
 }
 
-function head(kicker, title, lead, id = "") {
+function subnav(lang, active) {
+  const c = siteCopy(lang);
+  const items = LIVON_SITE_PAGES.map((p) => {
+    const cur = p.id === active;
+    return `<li><a href="${e(pageHref(lang, p.id))}"${cur ? ' aria-current="page" class="is-on"' : ""}><span class="lvs-subnav__n" aria-hidden="true">${e(p.n)}</span><span class="lvs-subnav__en">${e(p.en)}</span>${lang === "en" ? "" : `<span class="lvs-subnav__loc">${e(pageLabel(lang, p))}</span>`}</a></li>`;
+  }).join("");
+  return `<nav class="lvs-subnav" aria-label="${e(c.subnavLabel)}"><ol>${items}</ol></nav>`;
+}
+
+function head(kicker, title, lead, level = 2, id = "") {
+  const h = level === 1 ? "h1" : "h2";
   return `<header class="nls-head">
     ${kicker ? `<p class="nls-kicker">${e(kicker)}</p>` : ""}
-    <h2 class="nls-title"${id ? ` id="${e(id)}"` : ""}>${nl(title)}</h2>
+    <${h} class="nls-title"${id ? ` id="${e(id)}"` : ""}>${nl(title)}</${h}>
     ${lead ? `<p class="nls-lead">${e(lead)}</p>` : ""}
   </header>`;
+}
+
+function badge(lang, key) {
+  const s = STATUS[key] || STATUS.planned;
+  return `<span class="lvs-status lvs-status--${e(key)}">${e(pick(lang, s.ko, s.en))}</span>`;
 }
 
 function chips(items) {
@@ -82,6 +83,16 @@ function dl(rows) {
     .join("")}</dl>`;
 }
 
+function textHero(lang, kicker, title, lead, titleId) {
+  const c = siteCopy(lang);
+  return `<div class="nls-block nls-close nls-block--ink lvs-top">
+    <p class="nls-kicker">${e(c.brand)} · ${e(kicker)}</p>
+    <h1 class="nls-hero__title" id="${e(titleId)}">${nl(title)}</h1>
+    <p class="nls-lead">${e(lead)}</p>
+    <p class="nls-note">${e(c.appStatus)}</p>
+  </div>`;
+}
+
 function shell(lang, active, titleId, hero, body) {
   return `<section id="lifestage-detail" class="nls lvs" data-story="lifestage" data-lvs-page="${e(active)}" aria-labelledby="${e(titleId)}">
     ${hero}
@@ -93,57 +104,21 @@ function shell(lang, active, titleId, hero, body) {
 }
 
 const byN = Object.fromEntries(CATEGORIES.map((x) => [x.n, x]));
+const groupOf = (id) => GROUPS.find((g) => g.id === id);
 const pad = (i) => String(i).padStart(2, "0");
-const ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"];
 const catHref = (lang, n) => `${pageHref(lang, "platform")}#lvs-cat-${n}`;
 const note = (t) => (t ? `<p class="nls-note">${e(t)}</p>` : "");
-const stLabel = (lang, key) => {
+const status = (lang, key) => {
   const s = STATUS[key] || STATUS.planned;
-  return pick(lang, s.ko, s.en);
+  return `<p class="nls-status lvs-st lvs-st--${e(key)}">${e(pick(lang, s.ko, s.en))}</p>`;
 };
-const status = (lang, key) => `<p class="nls-status lvs-st lvs-st--${e(key)}">${e(stLabel(lang, key))}</p>`;
-const chip = (lang, key) => `<span class="lvs-chip lvs-st--${e(key)}">${e(stLabel(lang, key))}</span>`;
 const roster = (rows) =>
   `<ol class="nls-roster">${rows.map(([n, t]) => `<li><span>${e(n)}</span><p>${t}</p></li>`).join("")}</ol>`;
-const sec = (id, n, cls, inner) => `<div id="${e(id)}" class="nls-block${cls ? ` ${cls}` : ""}" data-lvs-section="${e(n)}">${inner}</div>`;
 
-/** Responsive table: rows stack into labelled blocks on narrow screens. */
-function rtable(cols, rows, cls = "") {
-  const th = cols.map((t) => `<th scope="col">${e(t)}</th>`).join("");
-  const body = rows
-    .map((r) => `<tr>${r.map((cell, i) => (i === 0 ? `<th scope="row">${cell}</th>` : `<td data-label="${e(cols[i])}">${cell}</td>`)).join("")}</tr>`)
-    .join("");
-  return `<div class="lvs-rt-wrap"><table class="lvs-rt${cls ? ` ${cls}` : ""}"><thead><tr>${th}</tr></thead><tbody>${body}</tbody></table></div>`;
-}
-
-/** Checklist (square tick + title + body). */
-function checklist(items, cls = "") {
-  return `<ul class="lvs-check${cls ? ` ${cls}` : ""}">${items
-    .map((it) => (Array.isArray(it) ? `<li><i aria-hidden="true"></i><div><strong>${e(it[0])}</strong><p>${e(it[1])}</p></div></li>` : `<li><i aria-hidden="true"></i><div><p>${e(it)}</p></div></li>`))
-    .join("")}</ul>`;
-}
-
-/** FAQ accordion. */
-function faq(items) {
-  return `<div class="lvs-faq">${items
-    .map(([q, a], i) => `<details class="lvs-faq__item"${i === 0 ? " open" : ""}><summary><span class="lvs-faq__n">${pad(i + 1)}</span><span class="lvs-faq__q">${e(q)}</span></summary><p>${e(a)}</p></details>`)
-    .join("")}</div>`;
-}
-
-/** Ink closing block with actions. */
-function closing(kicker, title, lead, actions) {
-  return `<div class="nls-block nls-close nls-block--ink lvs-close" data-lvs-section="close">
-    ${kicker ? `<p class="nls-kicker">${e(kicker)}</p>` : ""}
-    <h2 class="nls-hero__title">${nl(title)}</h2>
-    ${lead ? `<p class="nls-lead">${e(lead)}</p>` : ""}
-    <div class="nls-actions">${actions}</div>
-  </div>`;
-}
-
-/* ════════════════════════ 01 Overview — brand story ════════════════════════ */
-/** First screen: the shared dark film hero (same video + component on every LIVON page). */
-function filmHero({ titleHtml, lead, note: sub, id, actions, compact }) {
-  return `<div class="nls-film${compact ? " lvs-film--compact" : ""}" data-nls-film data-hs-section>
+/* ════════════════════════ 01 Overview ════════════════════════ */
+function overviewHero(lang) {
+  const c = siteCopy(lang).overview;
+  return `<div class="nls-film" data-nls-film data-hs-section>
     <div class="nls-film__stage">
       <div class="nls-film__fallback" aria-hidden="true"></div>
       <video class="nls-film__video" src="${FILM}" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" aria-hidden="true">
@@ -152,92 +127,46 @@ function filmHero({ titleHtml, lead, note: sub, id, actions, compact }) {
       <div class="nls-film__lockup">
         <div class="nls-film__veil" aria-hidden="true"></div>
         <p class="nls-film__wordmark">LIVON</p>
-        <h1 id="${e(id)}" class="nls-film__slogan">${titleHtml}</h1>
-        <p class="nls-film__lead">${e(lead)}</p>
-        ${sub ? `<p class="nls-film__lead lvs-film__note">${e(sub)}</p>` : ""}
-        <div class="nls-film__actions">${actions}</div>
+        <h1 id="lvs-overview-title" class="nls-film__slogan">${c.heroTitleHtml}</h1>
+        <p class="nls-film__lead">${e(c.heroLead)}</p>
+        <div class="nls-film__actions">
+          <a class="nls-btn" href="${e(pageHref(lang, "platform"))}">${e(c.heroCta)} →</a>
+          <a class="nls-btn nls-btn--ghost" href="${e(pageHref(lang, "contact"))}">${e(siteCopy(lang).toContact)}</a>
+        </div>
       </div>
     </div>
   </div>`;
 }
 
-function overviewHero(lang) {
-  const c = siteCopy(lang).overview;
-  return filmHero({
-    titleHtml: c.heroTitleHtml,
-    lead: c.heroLead,
-    id: "lvs-overview-title",
-    actions: `<a class="nls-btn" href="${e(pageHref(lang, "platform"))}">${e(c.heroCta)} →</a>
-          <a class="nls-btn nls-btn--ghost" href="${e(pageHref(lang, "contact"))}">${e(siteCopy(lang).toContact)}</a>`,
-  });
-}
-
-/** Sub-page first screen: the same film hero, compact, with the page's own headline and lead. */
-function subHero(lang, kicker, title, lead, titleId, main) {
-  const c = siteCopy(lang);
-  return filmHero({
-    titleHtml: `<span class="lvs-film__k">${e(kicker)}</span>${nl(title)}`,
-    lead,
-    note: c.appStatus,
-    id: titleId,
-    compact: true,
-    actions: `<a class="nls-btn" href="${e(main[1])}">${e(main[0])} →</a>
-          <a class="nls-btn nls-btn--ghost" href="${e(pageHref(lang, "contact"))}">${e(c.toContact)}</a>`,
-  });
-}
-
-/* 02 — editorial big-type statement */
-function why(lang) {
-  const c = siteCopy(lang);
-  const w = c.overview.why;
-  return sec("lvs-why", "02", "lvs-manifesto", `
-    <p class="nls-kicker">${e(w.kicker)} · ${e(c.positioning)}</p>
-    <h2 class="lvs-statement">${nl(w.statement)}</h2>
-    <div class="lvs-manifesto__body">${w.body.map((t) => `<p>${e(t)}</p>`).join("")}</div>
-    <ol class="lvs-marks">${w.marks.map(([k, t], i) => `<li><span>${pad(i + 1)}</span><strong>${e(k)}</strong><p>${e(t)}</p></li>`).join("")}</ol>`);
-}
-
-/* 03 — before / after comparison */
-function problem(lang) {
-  const p = siteCopy(lang).overview.problem;
-  return sec("lvs-problem", "03", "nls-block--band", `
-    ${head(p.kicker, p.title, "")}
-    ${rtable(p.cols, p.rows.map(([k, a, b]) => [e(k), e(a), `<b>${e(b)}</b>`]), "lvs-rt--compare")}`);
-}
-
-/* 04 — mission & vision */
 function vision(lang) {
-  const v = siteCopy(lang).overview.vision;
-  const facts = v.facts.map(([n, k]) => `<li><strong>${e(n)}</strong><span>${e(k)}</span></li>`).join("");
-  return sec("lvs-vision", "04", "nls-why-sec", `
-    <p class="nls-kicker">${e(v.kicker)}</p>
-    <div class="lvs-mv">
-      <div class="lvs-mv__line"><p class="lvs-mv__k">${e(v.missionLabel)}</p><h2 class="lvs-mv__t">${e(v.mission)}</h2></div>
-      <div class="lvs-mv__line"><p class="lvs-mv__k">${e(v.visionLabel)}</p><p class="lvs-mv__t">${e(v.vision)}</p></div>
+  const c = siteCopy(lang);
+  const v = c.overview.vision;
+  const facts = c.stats.map(([n, k]) => `<li><strong>${e(n)}</strong><span>${e(k)}</span></li>`).join("");
+  return `<div id="lvs-vision" class="nls-block nls-why-sec" data-lvs-section="02">
+    <div class="nls-split">
+      ${head(v.kicker, v.title, v.lead)}
+      ${roster(v.points.map(([k, t], i) => [pad(i + 1), `<b>${e(k)}</b> ${e(t)}`]))}
     </div>
-    ${roster(v.points.map(([k, t], i) => [pad(i + 1), `<b>${e(k)}</b> ${e(t)}`]))}
     <ul class="lvs-facts">${facts}</ul>
-    ${note(v.factsNote)}`);
+  </div>`;
 }
 
-/* 05 — horizontal journey timeline */
 function lifeJourney(lang) {
   const c = siteCopy(lang).overview.journey;
   const items = JOURNEY.map(
-    (j, i) => `<li class="lvs-tl__item">
-      <span class="lvs-tl__dot" aria-hidden="true"></span>
-      <p class="lvs-tl__age">${pad(i + 1)} · ${e(pick(lang, j.ageKo, j.ageEn))}</p>
+    (j, i) => `<article class="nls-board__item lvs-chapter">
+      <div class="nls-board__meta"><span class="nls-board__n">${pad(i + 1)}</span><span class="lvs-chapter__age">${e(pick(lang, j.ageKo, j.ageEn))}</span></div>
       <h3>${e(pick(lang, j.ko, j.en))}</h3>
-      <p class="lvs-tl__q">“${e(c.questions[i])}”</p>
       <p>${e(pick(lang, j.bodyKo, j.bodyEn))}</p>
-    </li>`
+      <ul class="nls-chips">${j.areas.map((a) => `<li>${e(a)} ${e(pick(lang, groupOf(a).ko, groupOf(a).en))}</li>`).join("")}</ul>
+    </article>`
   ).join("");
-  return sec("lvs-journey", "05", "nls-block--band", `
+  return `<div id="lvs-journey" class="nls-block nls-block--band" data-lvs-section="03">
     ${head(c.kicker, c.title, c.lead)}
-    <ol class="lvs-tl">${items}</ol>`);
+    <div class="nls-board lvs-board--5">${items}</div>
+  </div>`;
 }
 
-/* 06 — Life Stage rail (interactive, from the existing Life Stage page) */
 function lifeStage(lang) {
   const c = siteCopy(lang).overview.stage;
   const life = getLifeStageCopy(lang);
@@ -257,99 +186,15 @@ function lifeStage(lang) {
         </div>
       </article>`)
     .join("");
-  return sec("lvs-stage", "06", "nls-journey-sec", `
+  return `<div id="lvs-stage" class="nls-block nls-journey-sec" data-lvs-section="04">
     ${head(c.kicker, c.title, c.lead)}
     <div class="nls-rail" role="group" aria-label="${e(life.hero.pathLabel)}">${rail}</div>
     <div class="nls-journey">${cards}</div>
-    <p class="nls-note">${e(life.ui.journeyNote)}</p>`);
-}
-
-/* 07 — a person's journey (process stepper with example) */
-function personFlow(lang) {
-  const f = siteCopy(lang).overview.flow;
-  const steps = f.steps
-    .map(([t, d, ex], i) => `<li class="lvs-step">
-      <p class="lvs-step__n">${pad(i + 1)}</p>
-      <h3>${e(t)}</h3>
-      <p>${e(d)}</p>
-      <p class="lvs-step__ex"><span>${e(f.exampleLabel)}</span>${e(ex)}</p>
-    </li>`)
-    .join("");
-  return sec("lvs-flow", "07", "nls-how-sec", `
-    ${head(f.kicker, f.title, f.lead)}
-    <ol class="lvs-stepper">${steps}</ol>`);
-}
-
-/* 08 — principles checklist */
-function principles(lang) {
-  const p = siteCopy(lang).overview.principles;
-  return sec("lvs-principles", "08", "nls-block--band", `
-    <div class="lvs-side">
-      ${head(p.kicker, p.title, "")}
-      ${checklist(p.items, "lvs-check--2")}
-    </div>`);
-}
-
-/* 09 — direction (now / next / later) */
-function direction(lang) {
-  const d = siteCopy(lang).overview.direction;
-  const rows = d.items
-    .map(([when, t, b, st]) => `<li class="lvs-hz__row">
-      <p class="lvs-hz__when">${e(when)}</p>
-      <div><h3>${e(t)}</h3><p>${e(b)}</p></div>
-      ${chip(lang, st)}
-    </li>`)
-    .join("");
-  return sec("lvs-direction", "09", "", `
-    ${head(d.kicker, d.title, d.lead)}
-    <ol class="lvs-hz">${rows}</ol>`);
-}
-
-/* 10 — LIVON inside NEWON (split: centre block + app directory) */
-function inNewon(lang) {
-  const c = siteCopy(lang).overview.newon;
-  const dir = Object.values(NEWON_APPS)
-    .map((a, i) => `<li><span>${pad(i + 1)}</span><div><strong>${e(a.name)}</strong><p>${e(pick(lang, a.ko, a.en))}</p></div></li>`)
-    .join("");
-  return sec("lvs-newon", "10", "nls-block--band", `
-    ${head(c.kicker, c.title, c.lead)}
-    <div class="lvs-hub">
-      <div class="lvs-hub__core"><p class="nls-kicker">NEWON · ${e(c.center)}</p><p class="lvs-hub__name">LIVON</p><p>${e(c.livon)}</p></div>
-      <ol class="nls-dir lvs-hub__dir">${dir}</ol>
-    </div>
-    <div class="lvs-hub__ex">${pick(lang, PLATFORM_EXAMPLES.ko, PLATFORM_EXAMPLES.en).map((t) => `<p class="nls-note">${e(t)}</p>`).join("")}</div>`);
-}
-
-/* small strip linking to the other four pages */
-function nextStrip(lang) {
-  const n = siteCopy(lang).overview.next;
-  const links = LIVON_SITE_PAGES.filter((p) => p.id !== "overview")
-    .map((p) => `<li><a href="${e(pageHref(lang, p.id))}"><span>${e(p.n)}</span><strong>${e(p.en)}</strong>${lang === "en" ? "" : `<em>${e(pageLabel(lang, p))}</em>`}<i aria-hidden="true">→</i></a></li>`)
-    .join("");
-  return `<div id="lvs-next" class="nls-block lvs-strip" data-lvs-section="11">
-    <p class="nls-kicker">${e(n.kicker)}</p>
-    <h2 class="lvs-h2s">${e(n.title)}</h2>
-    <ul class="lvs-strip__list">${links}</ul>
+    <p class="nls-note">${e(life.ui.journeyNote)}</p>
   </div>`;
 }
 
-export function renderOverview(lang) {
-  const body = `
-    ${why(lang)}
-    ${problem(lang)}
-    ${vision(lang)}
-    ${lifeJourney(lang)}
-    ${lifeStage(lang)}
-    ${personFlow(lang)}
-    ${principles(lang)}
-    ${direction(lang)}
-    ${inNewon(lang)}
-    ${nextStrip(lang)}`;
-  return shell(lang, "overview", "lvs-overview-title", overviewHero(lang), body);
-}
-
-/* ════════════════════════ 02 Platform ════════════════════════ */
-/** 40-cell map: 5 rows (areas) × 8 categories. */
+/** 40-cell map: 5 rows (areas) × 8 categories, hairline grid like the Life Stage rail. */
 function lifeMap(lang, hits = [], label = "") {
   const rows = GROUPS.map((g) => {
     const cells = CATEGORIES.filter((x) => x.g === g.id)
@@ -362,59 +207,12 @@ function lifeMap(lang, hits = [], label = "") {
 
 function legend(lang) {
   return `<ul class="lvs-legend">${["web", "partial", "planned"]
-    .map((k) => `<li class="lvs-legend--${k}"><i aria-hidden="true"></i>${e(stLabel(lang, k))}</li>`)
+    .map((k) => `<li class="lvs-legend--${k}"><i aria-hidden="true"></i>${e(pick(lang, STATUS[k].ko, STATUS[k].en))}</li>`)
     .join("")}</ul>`;
 }
 
-function appTabs(lang) {
-  const t = siteCopy(lang).platform.tabs;
-  const bar = t.items.map(([ko, en, , st], i) => `<li class="${i === 0 ? "is-on" : ""}${st === "preparing" ? " is-prep" : ""}"><i aria-hidden="true"></i><span>${e(isKo(lang) ? ko : en)}</span></li>`).join("");
-  const rows = t.items
-    .map(([ko, en, d, st], i) => `<li><span>${pad(i + 1)}</span><div><strong>${e(isKo(lang) ? ko : en)}${isKo(lang) ? ` <small>${e(en)}</small>` : ""}</strong><p>${e(d)}</p></div>${chip(lang, st)}</li>`)
-    .join("");
-  return sec("lvs-tabs", "02", "", `
-    <div class="lvs-split2">
-      <div>
-        ${head(t.kicker, t.title, t.lead)}
-        <ol class="lvs-tablist">${rows}</ol>
-      </div>
-      <figure class="lvs-phone" aria-hidden="true">
-        <div class="lvs-phone__screen">
-          <p class="lvs-phone__brand">LIVON</p>
-          <p class="lvs-phone__line"></p><p class="lvs-phone__line lvs-phone__line--s"></p>
-          <div class="lvs-phone__cards"><span></span><span></span><span></span><span></span></div>
-        </div>
-        <ol class="lvs-phone__bar">${bar}</ol>
-        <figcaption>${e(t.phoneNote)}</figcaption>
-      </figure>
-    </div>`);
-}
-
-function coreFeatures(lang) {
-  const p = siteCopy(lang).platform;
-  const rows = CORE_FEATURES.map(
-    (x, i) => `<li class="lvs-row lvs-core" data-status="${e(x.st)}">
-      <span class="lvs-row__n">${pad(i + 1)}</span>
-      <div class="lvs-row__t"><h3>${e(x.en)}</h3>${isKo(lang) ? `<p class="lvs-row__sub">${e(x.ko)}</p>` : ""}</div>
-      <div class="lvs-row__d"><p>${e(pick(lang, x.nowKo, x.nowEn))}</p><p class="lvs-row__tags"><span>${e(p.tagsLabel)}</span>${pair(lang, CORE_TAGS[i]).map((t) => `<em>${e(t)}</em>`).join("")}</p></div>
-      ${chip(lang, x.st)}
-    </li>`
-  ).join("");
-  return sec("lvs-core", "03", "nls-block--band", `
-    ${head(p.coreKicker, p.coreTitle, p.coreLead)}
-    <ol class="lvs-rows">${rows}</ol>`);
-}
-
-function anonMode(lang) {
-  const a = siteCopy(lang).platform.anon;
-  return sec("lvs-anon", "04", "", `
-    ${head(a.kicker, a.title, a.lead)}
-    ${rtable(a.cols, a.rows.map(([f, l, s, st]) => [e(f), e(l), e(s), chip(lang, st)]), "lvs-rt--anon")}
-    ${note(a.note)}`);
-}
-
 function explorer(lang) {
-  const c = siteCopy(lang).platform.events;
+  const c = siteCopy(lang).overview.events;
   const first = LIFE_EVENTS[0];
   const tabs = LIFE_EVENTS.map(
     (ev, i) => `<button type="button" class="lvs-ex__tab${i === 0 ? " is-on" : ""}" data-lvs-event="${e(ev.id)}" aria-pressed="${i === 0 ? "true" : "false"}"><em>${pad(i + 1)}</em><span>${e(pick(lang, ev.ko, ev.en))}</span></button>`
@@ -431,9 +229,9 @@ function explorer(lang) {
       <ul class="nls-chips">${pick(lang, ev.checkKo, ev.checkEn).map((t) => `<li>${e(t)}</li>`).join("")}</ul>
     </article>`;
   }).join("");
-  return sec("lvs-events", "05", "nls-block--band", `
+  return `<div id="lvs-events" class="nls-block nls-block--band" data-lvs-section="05">
     ${head(c.kicker, c.title, c.lead)}
-    <p class="nls-status">${e(c.tag)}</p>
+    <p class="nls-status">${e(pick(lang, "구조 예시", "Structure example"))}</p>
     ${note(c.note)}
     <div class="lvs-ex" data-lvs-explorer>
       <div class="lvs-ex__tabs" role="group" aria-label="${e(c.kicker)}" hidden>${tabs}</div>
@@ -445,9 +243,103 @@ function explorer(lang) {
           ${legend(lang)}
         </div>
       </div>
-    </div>`);
+    </div>
+  </div>`;
 }
 
+function areaSection(lang, id, sec, key, gids, band) {
+  const c = siteCopy(lang).overview[key];
+  const cols = gids.map((gid) => {
+    const g = groupOf(gid);
+    const rows = CATEGORIES.filter((x) => x.g === gid)
+      .map((x) => `<li><span>${e(x.n)}</span><div><strong><a href="${e(catHref(lang, x.n))}">${e(pick(lang, x.ko, x.en))}</a></strong><p>${e(pick(lang, x.lineKo, x.lineEn))}</p></div><i class="lvs-mark lvs-mark--${e(categoryStatus(x))}" title="${e(pick(lang, STATUS[categoryStatus(x)].ko, STATUS[categoryStatus(x)].en))}"></i></li>`)
+      .join("");
+    return `<section class="lvs-area" aria-labelledby="lvs-area-${gid}">
+      <header class="lvs-area__head">
+        <p class="nls-kicker">${e(gid)} · ${e(g.en)} · ${e(g.range)}</p>
+        <h3 id="lvs-area-${gid}">${e(pick(lang, g.ko, g.en))}</h3>
+        <p>${e(pick(lang, g.leadKo, g.leadEn))}</p>
+      </header>
+      <ol class="nls-dir lvs-dir">${rows}</ol>
+    </section>`;
+  }).join("");
+  return `<div id="${id}" class="nls-block${band ? " nls-block--band" : ""}" data-lvs-section="${sec}">
+    ${head(c.kicker, c.title, c.lead)}
+    <div class="lvs-cols">${cols}</div>
+    ${legend(lang)}
+  </div>`;
+}
+
+function communityAi(lang) {
+  const c = siteCopy(lang).overview.ca;
+  const items = c.items
+    .map(([t, sub, body, st], i) => `<article class="nls-flow__item">
+      <span class="nls-flow__n">${pad(i + 1)}</span>
+      <h3>${e(t)}</h3>
+      <p><b>${e(sub)}</b></p>
+      <p>${e(body)}</p>
+      ${status(lang, st)}
+    </article>`)
+    .join("");
+  return `<div id="lvs-community" class="nls-block nls-pillars-sec" data-lvs-section="08">
+    ${head(c.kicker, c.title, "")}
+    <div class="nls-flow">${items}</div>
+  </div>`;
+}
+
+function ecosystem(lang) {
+  const c = siteCopy(lang).overview.eco;
+  const tracks = c.tracks.map(([t, b], i) => `<li><span>${pad(i + 1)}</span><strong>${e(t)} — ${e(b)}</strong></li>`).join("");
+  const apps = [["LIVON", c.livon]].concat(Object.values(NEWON_APPS).map((a) => [a.name, pick(lang, a.ko, a.en)]));
+  const dir = apps.map(([n, t], i) => `<li><span>${pad(i + 1)}</span><div><strong>${e(n)}</strong><p>${e(t)}</p></div></li>`).join("");
+  return `<div id="lvs-ecosystem" class="nls-block nls-block--band nls-related-sec" data-lvs-section="09">
+    ${head(c.kicker, c.title, c.lead)}
+    <ol class="nls-index">${tracks}</ol>
+    <div class="nls-split lvs-gap">
+      <div>
+        <header class="nls-head"><h3 class="lvs-h3">${e(c.newonTitle)}</h3><p class="nls-lead">${e(c.newonLead)}</p></header>
+        ${pick(lang, PLATFORM_EXAMPLES.ko, PLATFORM_EXAMPLES.en).map((t) => `<p class="nls-note">${e(t)}</p>`).join("")}
+      </div>
+      <ol class="nls-dir">${dir}</ol>
+    </div>
+  </div>`;
+}
+
+function nextStep(lang) {
+  const c = siteCopy(lang);
+  const n = c.overview.next;
+  const links = LIVON_SITE_PAGES.filter((p) => p.id !== "overview")
+    .map((p) => `<a class="nls-btn nls-btn--ghost" href="${e(pageHref(lang, p.id))}">${e(p.en)}${lang === "en" ? "" : ` · ${e(pageLabel(lang, p))}`}</a>`)
+    .join("");
+  return `<div id="lvs-next" class="nls-block nls-close nls-block--ink" data-lvs-section="10">
+    <p class="nls-kicker">${e(n.kicker)}</p>
+    <h2 class="nls-hero__title">${nl(n.title)}</h2>
+    <p class="nls-lead">${e(n.lead)}</p>
+    <p class="nls-note">${e(c.appStatus)}</p>
+    <div class="nls-actions">
+      <a class="nls-btn" href="/livon/">${e(c.tryWeb)} →</a>
+      ${links}
+    </div>
+  </div>`;
+}
+
+export function renderOverview(lang) {
+  const c = siteCopy(lang);
+  const body = `
+    <p class="nls-note lvs-lead-note">${e(c.notice)}</p>
+    ${vision(lang)}
+    ${lifeJourney(lang)}
+    ${lifeStage(lang)}
+    ${explorer(lang)}
+    ${areaSection(lang, "lvs-daily", "06", "daily", ["B", "C"], false)}
+    ${areaSection(lang, "lvs-family", "07", "family", ["D", "E"], true)}
+    ${communityAi(lang)}
+    ${ecosystem(lang)}
+    ${nextStep(lang)}`;
+  return shell(lang, "overview", "lvs-overview-title", overviewHero(lang), body);
+}
+
+/* ════════════════════════ 02 Platform ════════════════════════ */
 function categoryCard(lang, x) {
   const f = siteCopy(lang).platform.f;
   const st = categoryStatus(x);
@@ -467,7 +359,6 @@ function categoryCard(lang, x) {
     ${nt ? `<p class="lvs-cat__note">${e(f.note)} · ${e(nt)}</p>` : ""}
     <details class="lvs-more">
       <summary>${e(f.more)}</summary>
-      <div class="lvs-more__m"><p>${e(pick(lang, x.introKo, x.introEn))}</p>${chips(pick(lang, x.topicsKo, x.topicsEn))}${nt ? `<p class="lvs-cat__note">${e(nt)}</p>` : ""}</div>
       ${dl([
         [f.situations, e(pick(lang, x.sitKo, x.sitEn).join(", "))],
         [f.who, e(pick(lang, x.whoKo, x.whoEn))],
@@ -480,120 +371,77 @@ function categoryCard(lang, x) {
   </article>`;
 }
 
-function categories(lang) {
+export function renderPlatform(lang) {
   const c = siteCopy(lang);
   const p = c.platform;
+  const core = CORE_FEATURES.map(
+    (x, i) => `<article class="nls-proc__item lvs-core" data-status="${e(x.st)}">
+      <span class="nls-proc__n">${pad(i + 1)}</span>
+      <h3>${e(x.en)}${isKo(lang) ? ` <small>${e(x.ko)}</small>` : ""}</h3>
+      <p>${e(pick(lang, x.nowKo, x.nowEn))}</p>
+      ${status(lang, x.st)}
+    </article>`
+  ).join("");
   const jump = GROUPS.map((g) => `<li><a href="#lvs-group-${e(g.id)}"><span>${e(g.id)}</span><strong>${e(pick(lang, g.ko, g.en))}</strong><em>${e(g.range)}</em></a></li>`).join("");
   const groups = GROUPS.map((g) => {
     const cards = CATEGORIES.filter((x) => x.g === g.id).map((x) => categoryCard(lang, x)).join("");
-    return `<section class="lvs-band" id="lvs-group-${e(g.id)}" aria-labelledby="lvs-group-${e(g.id)}-t">
-      <header class="lvs-band__head">
-        <p class="lvs-band__id">${e(g.id)}</p>
-        <p class="nls-kicker">${e(g.en)} · ${e(g.range)}</p>
-        <h3 class="lvs-band__title" id="lvs-group-${e(g.id)}-t">${e(pick(lang, g.ko, g.en))}</h3>
-        <p>${e(pick(lang, g.leadKo, g.leadEn))}</p>
+    return `<section class="lvs-group" id="lvs-group-${e(g.id)}" aria-labelledby="lvs-group-${e(g.id)}-t">
+      <header class="nls-head lvs-group__head">
+        <p class="nls-kicker">${e(g.id)} · ${e(g.en)} · ${e(g.range)}</p>
+        <h3 class="lvs-group__title" id="lvs-group-${e(g.id)}-t">${e(pick(lang, g.ko, g.en))}</h3>
+        <p class="nls-lead">${e(pick(lang, g.leadKo, g.leadEn))}</p>
       </header>
       <div class="nls-board lvs-board--cats">${cards}</div>
     </section>`;
   }).join("");
-  return `<div id="lvs-map" class="nls-block" data-lvs-section="06">
+  const body = `
+    <p class="nls-note lvs-lead-note">${e(c.notice)}</p>
+    <div id="lvs-core" class="nls-block nls-platform-sec">
+      ${head(p.coreKicker, p.coreTitle, "")}
+      <div class="nls-proc lvs-proc">${core}</div>
+    </div>
+    <div id="lvs-map" class="nls-block nls-block--band">
       ${head(p.groupsKicker, p.groupsTitle, p.groupsLead)}
-      <p class="nls-note lvs-lead-note">${e(c.notice)}</p>
       <nav class="lvs-jump" aria-label="${e(p.groupsTitle)}"><ul>${jump}</ul></nav>
       ${lifeMap(lang, [], p.groupsTitle)}
       ${legend(lang)}
     </div>
-    <div id="lvs-groups" class="nls-block lvs-bands">${groups}</div>`;
-}
-
-function market(lang) {
-  const m = siteCopy(lang).platform.market;
-  return sec("lvs-market", "07", "nls-block--band", `
-    <div class="lvs-split2 lvs-split2--even">
-      <div>
-        ${head(m.kicker, m.title, m.lead)}
-        <p class="nls-status lvs-st--preparing">${e(stLabel(lang, "preparing"))}</p>
-        <p class="lvs-market__share"><a class="lvs-link" href="/${e(lang)}/shareon/">${e(m.shareon)} →</a></p>
+    <div id="lvs-groups" class="nls-block">${groups}</div>
+    <div id="lvs-official" class="nls-block nls-block--band nls-why-sec">
+      <div class="nls-split">
+        ${head(p.officialKicker, p.officialTitle, "")}
+        ${roster(p.officialItems.map(([k, v], i) => [pad(i + 1), `<b>${e(k)}</b> ${e(v)}`]))}
       </div>
-      <div class="lvs-duo">
-        <section class="lvs-duo__col" aria-labelledby="lvs-market-do"><h3 id="lvs-market-do">${e(m.doTitle)}</h3>${checklist(m.doItems)}</section>
-        <section class="lvs-duo__col lvs-duo__col--no" aria-labelledby="lvs-market-no"><h3 id="lvs-market-no">${e(m.dontTitle)}</h3>${checklist(m.dontItems, "lvs-check--no")}</section>
-      </div>
-    </div>`);
-}
-
-function officialInfo(lang) {
-  const p = siteCopy(lang).platform;
-  return sec("lvs-official", "08", "nls-why-sec", `
-    <div class="nls-split">
-      ${head(p.officialKicker, p.officialTitle, "")}
-      ${roster(p.officialItems.map(([k, v], i) => [pad(i + 1), `<b>${e(k)}</b> ${e(v)}`]))}
-    </div>
-    ${note(siteCopy(lang).disclaimer)}`);
-}
-
-export function renderPlatform(lang) {
-  const c = siteCopy(lang);
-  const p = c.platform;
-  const body = `
-    ${appTabs(lang)}
-    ${coreFeatures(lang)}
-    ${anonMode(lang)}
-    ${explorer(lang)}
-    ${categories(lang)}
-    ${market(lang)}
-    ${officialInfo(lang)}
-    ${sec("lvs-faq", "09", "nls-block--band", `<div class="lvs-side">${head(p.faq.kicker, p.faq.title, "")}${faq(p.faq.items)}</div>`)}`;
-  return shell(lang, "platform", "lvs-platform-title", subHero(lang, "Platform", p.heroTitle, p.heroLead, "lvs-platform-title", [pick(lang, "40개 분야 보기", "See the 40 categories"), "#lvs-map"]), body);
+    </div>`;
+  return shell(lang, "platform", "lvs-platform-title", textHero(lang, "Platform", p.heroTitle, p.heroLead, "lvs-platform-title"), body);
 }
 
 /* ════════════════════════ 03 Business ════════════════════════ */
 export function renderBusiness(lang) {
   const c = siteCopy(lang);
   const b = c.business;
-  const byB = Object.fromEntries(BUSINESS.map((x) => [x.n, x]));
-  const area = (x) => {
+  const cards = BUSINESS.map((x) => {
     const d = pick(lang, x.ko2, x.en2);
-    return `<li class="lvs-row lvs-biz" id="lvs-biz-${e(x.n)}" data-status="${e(x.st)}">
-      <span class="lvs-row__n">${e(x.n)}</span>
-      <div class="lvs-row__t"><h4>${e(pick(lang, x.ko, x.en))}</h4>${isKo(lang) ? `<p class="lvs-row__sub">${e(x.en)}</p>` : ""}</div>
-      <div class="lvs-row__d">
+    return `<article class="nls-signal__item lvs-biz" id="lvs-biz-${e(x.n)}" data-status="${e(x.st)}">
+      <span class="nls-signal__n">${e(x.n)}</span>
+      <div class="nls-signal__copy">
+        <h3>${e(pick(lang, x.ko, x.en))} <small>${e(x.en)}</small></h3>
         <p>${e(d.what)}</p>
-        <p class="lvs-row__tags"><span>${e(b.f.tags)}</span>${pair(lang, BIZ_TAGS[x.n]).map((t) => `<em>${e(t)}</em>`).join("")}</p>
-        <details class="lvs-more">
-          <summary>${e(b.f.more)}</summary>
-          ${dl([[b.f.who, e(d.who)], [b.f.value, e(d.value)], [b.f.rev, e(d.rev)], [b.f.partners, e(d.partners)], [b.f.rule, e(d.rule)]])}
-        </details>
+        ${dl([
+          [b.f.who, e(d.who)],
+          [b.f.value, e(d.value)],
+          [b.f.rev, e(d.rev)],
+          [b.f.partners, e(d.partners)],
+          [b.f.rule, e(d.rule)],
+        ])}
+        <div class="lvs-cat__foot">${status(lang, x.st)}<a class="lvs-link" href="/${e(lang)}/contact/?type=business">${e(b.f.cta)} →</a></div>
       </div>
-      ${chip(lang, x.st)}
-    </li>`;
-  };
-  const groups = BIZ_GROUPS.map(
-    (g, gi) => `<section class="lvs-band" id="lvs-bizgroup-${e(g.id)}" aria-labelledby="lvs-bizgroup-${e(g.id)}-t">
-      <header class="lvs-band__head">
-        <p class="lvs-band__id">${ROMAN[gi]}</p>
-        <p class="nls-kicker">${e(g.en)} · ${g.ids.length}</p>
-        <h3 class="lvs-band__title" id="lvs-bizgroup-${e(g.id)}-t">${e(pick(lang, g.ko, g.en))}</h3>
-        <p>${e(pick(lang, g.leadKo, g.leadEn))}</p>
-      </header>
-      <ol class="lvs-rows lvs-rows--tight">${g.ids.map((n) => area(byB[n])).join("")}</ol>
-    </section>`
+    </article>`;
+  }).join("");
+  const revRows = REVENUE.map(
+    (r) => `<tr><th scope="row">${e(pick(lang, r.ko, r.en))}</th><td>${e(pick(lang, r.whoKo, r.whoEn))}</td><td>${e(pick(lang, r.howKo, r.howEn))}</td><td>${e(b.revStatus)}</td></tr>`
   ).join("");
-  const tracks = b.tracks.items
-    .map(([k, t, d, list, st]) => `<article class="lvs-track">
-      <p class="lvs-track__k">${e(k)}</p>
-      <h3>${e(t)}</h3>
-      <p>${e(d)}</p>
-      ${chips(list)}
-      ${chip(lang, st)}
-    </article>`)
-    .join("");
-  const models = rtable(
-    b.models.cols,
-    MODELS.map((m) => [e(pick(lang, m.ko, m.en)), e(pick(lang, m.whoKo, m.whoEn)), e(pick(lang, m.valueKo, m.valueEn)), e(pick(lang, m.howKo, m.howEn)), chip(lang, m.st)]),
-    "lvs-rt--models"
-  );
-  const lane = { now: b.roadNow, next: b.roadNext, later: b.roadLater };
+  const stLabel = { now: b.roadNow, next: b.roadNext, later: b.roadLater };
   const road = ROADMAP.map(
     (r) => `<article class="nls-lane__item lvs-road__step" data-st="${e(r.st)}">
       <span class="nls-lane__n">${e(pad(r.n))}</span>
@@ -601,93 +449,89 @@ export function renderBusiness(lang) {
         <h3>${e(pick(lang, r.ko, r.en))}</h3>
         <p>${e(pick(lang, r.bodyKo, r.bodyEn))}</p>
       </div>
-      <p class="nls-status${r.st === "now" ? " is-now" : ""}">${e(lane[r.st])}</p>
+      <p class="nls-status${r.st === "now" ? " is-now" : ""}">${e(stLabel[r.st])}</p>
     </article>`
   ).join("");
-  const rv = b.revenue;
   const body = `
-    ${sec("lvs-verdict", "02", "lvs-manifesto", `
-      <p class="nls-kicker">${e(b.verdict.kicker)}</p>
-      <h2 class="lvs-statement">${nl(b.verdict.title)}</h2>
-      ${roster(b.verdict.items.map((t, i) => [pad(i + 1), e(t)]))}`)}
-    ${sec("lvs-tracks", "03", "nls-block--band", `
-      ${head(b.tracks.kicker, b.tracks.title, "")}
-      <div class="lvs-tracks">${tracks}</div>`)}
-    ${sec("lvs-biz", "04", "lvs-bands", `
-      ${head(b.kicker, b.title, b.lead)}
-      ${groups}`)}
-    ${sec("lvs-models", "05", "nls-block--band", `
-      ${head(b.models.kicker, b.models.title, b.models.lead)}
-      ${models}`)}
-    ${sec("lvs-revenue", "06", "", `
-      <div class="lvs-split2">
-        <div>
-          <p class="nls-kicker">${e(rv.kicker)}</p>
-          <h2 class="nls-title">${nl(rv.title)}</h2>
-          <div class="lvs-prose">${rv.body.map((t) => `<p>${e(t)}</p>`).join("")}</div>
-        </div>
-        <aside class="lvs-aside" aria-labelledby="lvs-caveats-t"><h3 id="lvs-caveats-t">${e(rv.caveatsTitle)}</h3>${checklist(rv.caveats)}</aside>
-      </div>`)}
-    ${sec("lvs-roadmap", "07", "nls-block--band nls-expand-sec", `
-      ${head(b.roadKicker, b.roadTitle, "")}
-      <div class="nls-lane">${road}</div>`)}
-    ${sec("lvs-rules", "08", "", `
-      <div class="lvs-side">
-        ${head(b.ruleKicker, b.ruleTitle, "")}
-        ${checklist(b.ruleItems, "lvs-check--2")}
+    <div id="lvs-verdict" class="nls-block nls-why-sec">
+      <div class="nls-split">
+        <header class="nls-head"><p class="nls-kicker">Principle</p><h2 class="nls-title">${e(b.verdictTitle)}</h2></header>
+        ${roster([["01", e(b.verdictBody)], ["02", e(pick(lang, "고객별 맞춤 외주가 아니라 표준화된 자체 솔루션과 플랫폼 제품을 만듭니다.", "Standard products and our own platform — not custom client work."))], ["03", e(b.revNote)]])}
       </div>
-      ${note(c.disclaimer)}`)}
-    ${closing("Business", b.close.title, b.close.lead, `<a class="nls-btn" href="/${e(lang)}/contact/?type=business">${e(b.f.cta)} →</a><a class="nls-btn nls-btn--ghost" href="${e(pageHref(lang, "contact"))}">${e(c.toContact)}</a>`)}`;
-  return shell(lang, "business", "lvs-business-title", subHero(lang, "Business", b.heroTitle, b.heroLead, "lvs-business-title", [pick(lang, "사업 영역 보기", "See the business areas"), "#lvs-biz"]), body);
+    </div>
+    <div id="lvs-biz" class="nls-block nls-block--band nls-areas-sec">
+      ${head(b.kicker, b.title, b.lead)}
+      <div class="nls-signal lvs-signal">${cards}</div>
+    </div>
+    <div id="lvs-revenue" class="nls-block">
+      ${head(b.revKicker, b.revTitle, "")}
+      <p class="nls-status">${e(b.revStatus)}</p>
+      <div class="lvs-table-wrap"><table class="lvs-table">
+        <thead><tr>${b.revCols.map((t) => `<th scope="col">${e(t)}</th>`).join("")}</tr></thead>
+        <tbody>${revRows}</tbody>
+      </table></div>
+    </div>
+    <div id="lvs-roadmap" class="nls-block nls-block--band nls-expand-sec">
+      ${head(b.roadKicker, b.roadTitle, "")}
+      <div class="nls-lane">${road}</div>
+    </div>
+    <div id="lvs-rules" class="nls-block nls-why-sec">
+      <div class="nls-split">
+        ${head(b.ruleKicker, b.ruleTitle, "")}
+        ${roster(b.ruleItems.map((t, i) => [pad(i + 1), e(t)]))}
+      </div>
+    </div>`;
+  return shell(lang, "business", "lvs-business-title", textHero(lang, "Business", b.heroTitle, b.heroLead, "lvs-business-title"), body);
 }
 
 /* ════════════════════════ 04 Partnerships ════════════════════════ */
 export function renderPartnerships(lang) {
   const c = siteCopy(lang);
   const p = c.partnerships;
+  const pc = pick(lang, PARTNER_COMMON.ko, PARTNER_COMMON.en);
   const byP = Object.fromEntries(PARTNERS.map((x) => [x.n, x]));
-  const row = (x) => `<li class="lvs-row lvs-partner${x.official ? " is-source" : ""}" id="lvs-partner-${e(x.n)}">
-      <span class="lvs-row__n">${e(x.n)}</span>
-      <div class="lvs-row__t"><h4>${e(pick(lang, x.ko, x.en))}</h4>${isKo(lang) ? `<p class="lvs-row__sub">${e(x.en)}</p>` : ""}</div>
-      <div class="lvs-row__d"><p>${e(pick(lang, x.whatKo, x.whatEn))}</p><p class="lvs-row__tags">${pair(lang, PARTNER_TAGS[x.n]).map((t) => `<em>${e(t)}</em>`).join("")}</p></div>
-      ${x.official ? `<span class="lvs-chip lvs-st--source">${e(p.f.officialTag)}</span>` : chip(lang, "review")}
-    </li>`;
+  const card = (x) => `<article class="nls-board__item lvs-partner${x.official ? " is-source" : ""}" id="lvs-partner-${e(x.n)}">
+      <div class="nls-board__meta"><span class="nls-board__n">${e(x.n)}</span><span class="lvs-cat__en">${e(x.en)}</span></div>
+      <h4>${e(pick(lang, x.ko, x.en))}</h4>
+      <p>${e(pick(lang, x.whatKo, x.whatEn))}</p>
+      ${x.official ? `<p class="nls-status">${e(p.f.officialTag)}</p>` : ""}
+    </article>`;
   const groups = PARTNER_GROUPS.map(
-    (g, gi) => `<section class="lvs-band" aria-labelledby="lvs-pgroup-${gi}">
-      <header class="lvs-band__head">
-        <p class="lvs-band__id">${ROMAN[gi]}</p>
-        <p class="nls-kicker">${e(g.en)} · ${g.ids.length}</p>
-        <h3 class="lvs-band__title" id="lvs-pgroup-${gi}">${e(pick(lang, g.ko, g.en))}</h3>
-      </header>
-      <ol class="lvs-rows lvs-rows--tight">${g.ids.map((n) => row(byP[n])).join("")}</ol>
+    (g, gi) => `<section class="lvs-pgroup" aria-labelledby="lvs-pgroup-${gi}">
+      <h3 id="lvs-pgroup-${gi}" class="lvs-pgroup__title">${e(pick(lang, g.ko, g.en))} <span>${g.ids.length}</span></h3>
+      <div class="nls-board lvs-board--4">${g.ids.map((n) => card(byP[n])).join("")}</div>
     </section>`
   ).join("");
   const steps = pick(lang, PARTNER_STEPS.ko, PARTNER_STEPS.en)
     .map(([t, b], i) => `<article class="nls-pipe__item${i === 0 ? " is-on" : ""}"><p class="nls-pipe__n">${pad(i + 1)}</p><h3>${e(t)}</h3><p>${e(b)}</p></article>`)
     .join("");
-  const why = p.why.items.map(([k, t], i) => `<li><span>${pad(i + 1)}</span><strong>${e(k)}</strong><p>${e(t)}</p></li>`).join("");
   const body = `
-    ${sec("lvs-why-partner", "02", "lvs-manifesto", `
-      <p class="nls-kicker">${e(p.why.kicker)}</p>
-      <h2 class="lvs-statement lvs-statement--m">${nl(p.why.title)}</h2>
-      <ol class="lvs-marks lvs-marks--4">${why}</ol>`)}
-    ${sec("lvs-partners", "03", "nls-block--band lvs-bands", `
-      ${head(p.kicker, p.title, p.lead)}
-      ${groups}`)}
-    ${sec("lvs-terms", "04", "", `
-      ${head(p.terms.kicker, p.terms.title, p.terms.lead)}
-      ${rtable(p.terms.cols, p.terms.rows.map(([k, a, b]) => [e(k), e(a), `<b>${e(b)}</b>`]), "lvs-rt--compare")}`)}
-    ${sec("lvs-pprinciples", "05", "nls-block--band", `
-      <div class="lvs-side">
-        ${head(p.principles.kicker, p.principles.title, "")}
-        ${checklist(p.principles.items, "lvs-check--2")}
-      </div>`)}
-    ${sec("lvs-steps", "06", "nls-how-sec", `
+    <div id="lvs-partners" class="nls-block nls-first-sec">
+      ${head(p.kicker, p.title, "")}
+      ${note(p.sourceNote)}
+      ${groups}
+    </div>
+    <div id="lvs-terms" class="nls-block nls-block--band nls-why-sec">
+      <div class="nls-split">
+        <header class="nls-head"><p class="nls-kicker">Terms</p><h2 class="nls-title">${e(p.sourceTitle)}</h2></header>
+        ${roster([
+          ["01", `<b>${e(p.f.value)}</b> ${e(pc.value)}`],
+          ["02", `<b>${e(p.f.rev)}</b> ${e(pc.rev)}`],
+          ["03", `<b>${e(p.f.cond)}</b> ${e(pc.cond)}`],
+          ["04", `<b>${e(p.f.officialTag)}</b> ${e(pc.officialRev)} ${e(pc.officialCond)}`],
+        ])}
+      </div>
+    </div>
+    <div id="lvs-steps" class="nls-block nls-how-sec">
       ${head(p.stepsKicker, p.stepsTitle, "")}
-      <div class="nls-pipe lvs-pipe--5">${steps}</div>`)}
-    ${sec("lvs-pfaq", "07", "nls-block--band", `<div class="lvs-side">${head(p.faq.kicker, p.faq.title, "")}${faq(p.faq.items)}</div>`)}
-    ${closing(p.close.kicker, p.close.title, "", `<a class="nls-btn" href="/${e(lang)}/contact/?type=partnership">${e(p.f.cta)} →</a><a class="nls-btn nls-btn--ghost" href="${e(pageHref(lang, "contact"))}">${e(c.toContact)}</a>`)}`;
-  return shell(lang, "partnerships", "lvs-partnerships-title", subHero(lang, "Partnerships", p.heroTitle, p.heroLead, "lvs-partnerships-title", [pick(lang, "협력 유형 보기", "See partnership types"), "#lvs-partners"]), body);
+      <div class="nls-pipe lvs-pipe--4">${steps}</div>
+    </div>
+    <div class="nls-block nls-close nls-block--ink">
+      <p class="nls-kicker">Partnership</p>
+      <h2 class="nls-hero__title">${nl(p.heroTitle)}</h2>
+      <div class="nls-actions"><a class="nls-btn" href="/${e(lang)}/contact/?type=partnership">${e(p.f.cta)} →</a></div>
+    </div>`;
+  return shell(lang, "partnerships", "lvs-partnerships-title", textHero(lang, "Partnerships", p.heroTitle, p.heroLead, "lvs-partnerships-title"), body);
 }
 
 /* ════════════════════════ 05 Contact ════════════════════════ */
@@ -699,42 +543,27 @@ export function renderContact(lang) {
     const rows = CONTACT_TYPES.filter((x) => x.g === gid).map((x) => {
       const label = pick(lang, x.ko, x.en);
       i += 1;
-      return `<tr class="lvs-contact__item">
-        <td class="lvs-ct__n" data-label="${e(k.cols[0])}">${pad(i)}</td>
-        <th scope="row">${e(label)}</th>
-        <td data-label="${e(k.cols[2])}">${e(pick(lang, x.forKo, x.forEn))}</td>
-        <td data-label="${e(k.cols[3])}"><code>[LIVON] ${e(label)}</code></td>
-        <td class="lvs-ct__go"><a class="lvs-link" href="/${e(lang)}/contact/?type=${e(x.type)}">${e(k.go)} →</a></td>
-      </tr>`;
+      return `<li class="lvs-contact__item"><span>${pad(i)}</span><div><strong>${e(label)}</strong><p>${e(k.subjectLabel)} · [LIVON] ${e(label)}</p></div><a class="lvs-link" href="/${e(lang)}/contact/?type=${e(x.type)}">${e(k.go)} →</a></li>`;
     }).join("");
-    return `<tbody><tr class="lvs-ct__group"><th colspan="5" scope="rowgroup">${e(pick(lang, g.ko, g.en))}</th></tr>${rows}</tbody>`;
+    return `<section class="lvs-cgroup" aria-labelledby="lvs-cgroup-${gid}">
+      <h3 id="lvs-cgroup-${gid}" class="lvs-pgroup__title">${e(pick(lang, g.ko, g.en))}</h3>
+      <ol class="nls-dir lvs-dir">${rows}</ol>
+    </section>`;
   }).join("");
-  const ch = k.channel;
   const body = `
-    ${sec("lvs-contact", "02", "", `
-      ${head(k.kicker, k.title, k.lead)}
-      <div class="lvs-rt-wrap"><table class="lvs-rt lvs-ct">
-        <thead><tr>${k.cols.map((t) => `<th scope="col">${e(t)}</th>`).join("")}</tr></thead>
-        ${groups}
-      </table></div>`)}
-    ${sec("lvs-channel", "03", "nls-block--band", `
-      <div class="lvs-split2 lvs-split2--even">
-        ${head(ch.kicker, ch.title, ch.lead)}
-        <dl class="lvs-channel">
-          <div><dt>${e(ch.emailLabel)}</dt><dd><a class="lvs-channel__mail" href="mailto:${NEWON_EMAIL}">${NEWON_EMAIL}</a></dd></div>
-          <div><dt>${e(ch.formLabel)}</dt><dd><a class="nls-btn" href="/${e(lang)}/contact/">${e(ch.formCta)} →</a></dd></div>
-          <div><dt>${e(ch.bizLabel)}</dt><dd><a class="lvs-link" href="/${e(lang)}/business/inquiry/">${e(ch.bizCta)} →</a></dd></div>
-        </dl>
-      </div>`)}
-    ${sec("lvs-contact-tips", "04", "", `
-      <div class="lvs-duo lvs-duo--wide">
-        <section class="lvs-duo__col" aria-labelledby="lvs-tips-t"><h2 class="lvs-h2s" id="lvs-tips-t">${e(k.tipsTitle)}</h2>${checklist(k.tips)}</section>
-        <section class="lvs-duo__col lvs-duo__col--no" aria-labelledby="lvs-limits-t"><h2 class="lvs-h2s" id="lvs-limits-t">${e(k.limitsTitle)}</h2>${checklist(k.limits, "lvs-check--no")}</section>
+    <div id="lvs-contact" class="nls-block">
+      ${head(k.kicker, k.title, "")}
+      <div class="lvs-cols lvs-cols--3">${groups}</div>
+    </div>
+    <div id="lvs-contact-tips" class="nls-block nls-block--band nls-why-sec">
+      <div class="nls-split">
+        <header class="nls-head"><p class="nls-kicker">Before you write</p><h2 class="nls-title">${e(k.tipsTitle)}</h2></header>
+        ${roster(k.tips.map((t, j) => [pad(j + 1), e(t)]))}
       </div>
-      ${note(c.disclaimer)}`)}
-    ${sec("lvs-cfaq", "05", "nls-block--band", `<div class="lvs-side">${head(k.faq.kicker, k.faq.title, "")}${faq(k.faq.items)}</div>`)}
-    ${closing(k.close.kicker, k.close.title, "", `<a class="nls-btn" href="/${e(lang)}/contact/">${e(ch.formCta)} →</a><a class="nls-btn nls-btn--ghost" href="mailto:${NEWON_EMAIL}">${NEWON_EMAIL}</a>`)}`;
-  return shell(lang, "contact", "lvs-contact-title", subHero(lang, "Contact", k.heroTitle, k.heroLead, "lvs-contact-title", [pick(lang, "문의 유형 보기", "See inquiry types"), "#lvs-contact"]), body);
+      ${note(k.note)}
+      <p class="nls-note">${e(k.bizNote)} <a href="/${e(lang)}/business/inquiry/">NEWON Business →</a></p>
+    </div>`;
+  return shell(lang, "contact", "lvs-contact-title", textHero(lang, "Contact", k.heroTitle, k.heroLead, "lvs-contact-title"), body);
 }
 
 export const LIVON_SITE_RENDERERS = {
