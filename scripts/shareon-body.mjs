@@ -41,13 +41,6 @@ function mailHref(c, title) {
 
 /* ───────── small building blocks ───────── */
 
-function badge(c, key) {
-  if (!key) return "";
-  return `<span class="nsh-badge nsh-badge--${e(key)}"><span class="nsh-badge__dot" aria-hidden="true"></span><span class="nsh-vh">${e(c.statusLabel)}: </span>${e(
-    c.status[key]
-  )}</span>`;
-}
-
 function head(id, kicker, title, lead, { extra = "", cls = "" } = {}) {
   return `<header class="nsh-head${cls ? ` ${cls}` : ""}">
       ${kicker ? `<p class="nsh-kicker" lang="en">${e(kicker)}</p>` : ""}
@@ -104,11 +97,10 @@ function hero(c, lang, id, h, main, sub) {
 </section>`;
 }
 
-/** Thin status strip directly under the menu bar: pilot note + status legend. */
+/** Thin strip directly under the menu bar: the one shared notice per page (per-card status badges were removed in V2). */
 function status(c) {
   return `<div class="nsh-wrap nsh-status">
-    <p class="nsh-status__note"><span class="nsh-status__pilot" lang="en">Pilot</span>${e(c.statusNote)}</p>
-    <ul class="nsh-status__legend" role="list" aria-label="${e(c.statusLabel)}">${["dev", "prep", "long"].map((k) => `<li>${badge(c, k)}</li>`).join("")}</ul>
+    <p class="nsh-status__note"><span class="nsh-status__pilot" lang="en">Pilot</span><span class="nsh-vh">${e(c.statusLabel)}: </span>${e(c.statusNote)}</p>
   </div>`;
 }
 
@@ -273,7 +265,7 @@ function overview(c, lang) {
   );
 
   return {
-    hero: hero(c, lang, "overview", o.hero, pageHref(lang, "platform"), pageHref(lang, "contact")),
+    hero: hero(c, lang, "overview", o.hero, pageHref(lang, "platform"), "#nsh-vision"),
     body: [
       vision,
       glance,
@@ -285,7 +277,7 @@ function overview(c, lang) {
       newon,
       closing("next", o.next, [
         [pageHref(lang, "platform"), o.next.ctas[0]],
-        [pageHref(lang, "partnerships"), o.next.ctas[1]],
+        [pageHref(lang, "business"), o.next.ctas[1]],
         [pageHref(lang, "contact"), o.next.ctas[2]],
       ]),
     ],
@@ -328,7 +320,7 @@ function platform(c, lang) {
     <div class="nsh-catalog">${S("a")
       .map(
         (s) => `<article class="nsh-catalog__row" id="svc-${e(s.n)}" aria-labelledby="svc-${e(s.n)}-t">
-          <div class="nsh-catalog__side"><span class="nsh-catalog__ico">${icon(s.icon)}</span><div>${svcHead(c, s)}${badge(c, s.status)}</div></div>
+          <div class="nsh-catalog__side"><span class="nsh-catalog__ico">${icon(s.icon)}</span><div>${svcHead(c, s)}</div></div>
           <div class="nsh-catalog__main"><p class="nsh-catalog__body">${e(s.body)}</p>${chips(s.chips)}${consider(c, s)}</div>
         </article>`
       )
@@ -343,7 +335,7 @@ function platform(c, lang) {
       ${S("b")
         .map(
           (s) => `<li class="nsh-grid3__item" id="svc-${e(s.n)}">
-          <div class="nsh-grid3__top"><span class="nsh-grid3__ico">${icon(s.icon)}</span>${badge(c, s.status)}</div>
+          <div class="nsh-grid3__top"><span class="nsh-grid3__ico">${icon(s.icon)}</span></div>
           ${svcHead(c, s)}
           <p class="nsh-grid3__body">${e(s.body)}</p>
           ${chips(s.chips)}
@@ -362,7 +354,7 @@ function platform(c, lang) {
       .map(
         (s) => `<article class="nsh-duo__item" id="svc-${e(s.n)}" aria-labelledby="svc-${e(s.n)}-t">
           <span class="nsh-duo__big" aria-hidden="true">${e(s.n)}</span>
-          <div class="nsh-duo__top"><span class="nsh-duo__ico">${icon(s.icon)}</span>${badge(c, s.status)}</div>
+          <div class="nsh-duo__top"><span class="nsh-duo__ico">${icon(s.icon)}</span></div>
           ${svcHead(c, s)}
           <p class="nsh-duo__body">${e(s.body)}</p>
           ${chips(s.chips)}
@@ -382,7 +374,6 @@ function platform(c, lang) {
         (s, i) => `<li class="nsh-proc__item" id="svc-${e(s.n)}">
           <div class="nsh-proc__top"><span class="nsh-proc__box" aria-hidden="true">${pad(i)}</span><span class="nsh-proc__ico">${icon(s.icon)}</span></div>
           ${svcHead(c, s)}
-          ${badge(c, s.status)}
           <p class="nsh-proc__body">${e(s.body)}</p>
           ${chips(s.chips, "nsh-chips--sm")}
           ${consider(c, s)}
@@ -412,7 +403,6 @@ function platform(c, lang) {
       <div class="nsh-device__text">
         ${head("grp-e", G.e.kicker, app.title, "")}
         <p class="nsh-svc__meta"><span class="nsh-svc__n" aria-hidden="true">${e(app.n)}</span><span lang="en">${e(app.en)}</span></p>
-        ${badge(c, app.status)}
         <p class="nsh-device__body">${e(app.body)}</p>
         ${chips(app.chips, "nsh-chips--lg")}
         ${consider(c, app)}
@@ -429,7 +419,7 @@ function platform(c, lang) {
       cc,
       d,
       e1,
-      closing("next", c.overview.next, [
+      closing("next", p.next, [
         [pageHref(lang, "business"), c.platform.hero.ctaMain],
         [pageHref(lang, "partnerships"), c.overview.next.ctas[1]],
         [pageHref(lang, "contact"), c.overview.next.ctas[2]],
@@ -482,7 +472,6 @@ function business(c, lang) {
                   it.title
                 )}</h4></div>
               </div>
-              ${badge(c, it.status)}
               <dl class="nsh-biz__dl">
                 <div><dt>${e(c.targetsLabel)}</dt><dd>${e(it.targets)}</dd></div>
                 <div><dt>${e(c.customerLabel)}</dt><dd>${e(it.customer)}</dd></div>
@@ -552,7 +541,7 @@ function business(c, lang) {
   const s = b.saas;
   const saas = sec(
     "saas",
-    `${head("saas", s.kicker, s.title, s.lead, { extra: `<div class="nsh-head__row">${badge(c, s.status)}${link(inquiryHref(lang, "saas"), s.cta)}</div>` })}
+    `${head("saas", s.kicker, s.title, s.lead, { extra: `<div class="nsh-head__row">${link(inquiryHref(lang, "saas"), s.cta)}</div>` })}
     <ul class="nsh-modules" role="list">${s.items
       .map(
         (it, i) => `<li class="nsh-modules__item"><span class="nsh-modules__n" aria-hidden="true">${pad(i)}</span><h3 class="nsh-modules__name" lang="en">${e(
@@ -628,7 +617,7 @@ function partnerships(c, lang) {
     <ol class="nsh-dir" role="list">
       <li class="nsh-dir__row nsh-dir__row--head" aria-hidden="true"><span></span><span></span><span>${e(t.labels.collab)}</span><span>${e(t.labels.value)}</span><span>${e(
         t.labels.terms
-      )}</span><span>${e(t.labels.status)}</span></li>
+      )}</span><span>${e(t.labels.route)}</span></li>
       ${t.items
         .map(
           (it) => `<li class="nsh-dir__row">
@@ -642,7 +631,7 @@ function partnerships(c, lang) {
           <div><dt>${e(t.labels.collab)}</dt><dd>${e(it.collab)}</dd></div>
           <div><dt>${e(t.labels.value)}</dt><dd>${e(it.value)}</dd></div>
           <div><dt>${e(t.labels.terms)}</dt><dd>${e(it.terms)}</dd></div>
-          <div><dt>${e(t.labels.status)}</dt><dd>${badge(c, it.status)}</dd></div>
+          <div><dt>${e(t.labels.route)}</dt><dd>${e(it.route)}</dd></div>
         </dl>
       </li>`
         )
@@ -672,7 +661,7 @@ function partnerships(c, lang) {
       process,
       closing("next", p.next, [
         [inquiryHref(lang, "partnership"), p.next.ctas[0]],
-        [pageHref(lang, "overview"), p.next.ctas[1]],
+        [pageHref(lang, "contact"), p.next.ctas[1]],
       ]),
     ],
   };
@@ -688,12 +677,12 @@ function contact(c, lang) {
     <ul class="nsh-tiles" role="list">${k.items
       .map(
         (it) => `<li class="nsh-tiles__item">
-          <div class="nsh-tiles__top"><span class="nsh-tiles__ico">${icon(it.icon)}</span><span class="nsh-tiles__n" aria-hidden="true">${e(it.n)}</span></div>
+          <div class="nsh-tiles__top"><span class="nsh-tiles__ico">${icon(it.icon)}</span><span class="nsh-tiles__n">${k.groups && it.g ? `${e(k.groups[it.g])} ` : ""}<span aria-hidden="true">· ${e(it.n)}</span></span></div>
           <h3 class="nsh-tiles__title">${e(it.title)}</h3>
           <p class="nsh-tiles__body">${e(it.body)}</p>
           <div class="nsh-tiles__acts">
             <a class="nsh-tiles__btn" href="${e(inquiryHref(lang, it.slug))}">${e(k.formCta)}<span class="nsh-vh"> — ${e(it.title)}</span> <span aria-hidden="true">→</span></a>
-            <a class="nsh-tiles__mail" href="${e(mailHref(c, it.title))}">${e(k.mailCta)}<span class="nsh-vh"> — ${e(it.title)}</span></a>
+            <a class="nsh-tiles__mail" href="${e(mailHref(c, k.groups && it.g ? `${k.groups[it.g]} · ${it.title}` : it.title))}">${e(k.mailCta)}<span class="nsh-vh"> — ${e(it.title)}</span></a>
           </div>
         </li>`
       )
