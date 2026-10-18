@@ -398,7 +398,17 @@
     "petlogMenuPartnerships": "Partnerships",
     "petlogMenuPartnershipsDesc": "12 jenis mitra",
     "petlogMenuContact": "Contact",
-    "petlogMenuContactDesc": "Hubungi PETLOG"
+    "petlogMenuContactDesc": "Hubungi PETLOG",
+    "site5Overview": "Overview",
+    "site5OverviewDesc": "The business and its vision",
+    "site5Platform": "Platform",
+    "site5PlatformDesc": "Services and areas",
+    "site5Business": "Business",
+    "site5BusinessDesc": "Business areas and models",
+    "site5Partnerships": "Partnerships",
+    "site5PartnershipsDesc": "Partners we work with",
+    "site5Contact": "Contact",
+    "site5ContactDesc": "Business and partnership inquiries"
   },
   "home": {
     "heroLogoAlt": "Newon logo",

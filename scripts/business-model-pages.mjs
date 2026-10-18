@@ -28,7 +28,7 @@ export const PAGES = {
   "business/inquiry/success": ["B", "system", "none", "문의 접수 완료 화면", "변경 없음"],
 
   // ── Business: Automation ─────────────────────────────────────────────────
-  "business/automation": ["B", "hub", "cap", "자동화 역량 허브", "역량 안내 추가. 자체 자동화 상품이 확정되면 상품 소개로 승격(보류)"],
+  "business/automation": ["B", "hub", "none", "자동화 역량 허브", "역량 안내 추가. 자체 자동화 상품이 확정되면 상품 소개로 승격(보류)"],
   "business/ai-automation": ["B", "detail", "cap", "AI 업무 자동화 역량(고객사 구축 프로젝트 서술 포함)", "역량 안내 추가. 고객사 구축 서술은 상품 확정 후 재작성(보류)"],
   "business/automation/workflow": ["B", "detail", "cap", "SaaS·업무 연결 자동화 역량", "역량 안내 추가"],
   "business/data-reporting": ["B", "detail", "cap", "데이터 수집·리포트 자동화 역량", "역량 안내 추가"],
@@ -50,7 +50,7 @@ export const PAGES = {
   "business/post-launch": ["C", "detail", "legacy", "고객 제품 출시 직후 지원", "Care 허브로 통합, 리디렉션 후보"],
 
   // ── Business: Solutions ──────────────────────────────────────────────────
-  "business/solutions": ["B", "hub", "cap", "솔루션 구성 방식 허브", "역량 안내 추가"],
+  "business/solutions": ["B", "hub", "none", "솔루션 구성 방식 허브", "역량 안내 추가"],
   "business/white-label": ["A", "detail", "cap", "검증된 자체 시스템(Base)을 브랜드에 맞게 제공하는 제품형 모델", "Base 시스템의 실제 제품 목록 확인 후 자체 제품 소개로 재작성(보류). 그 전까지 역량 안내 표시"],
   "business/custom-product": ["C", "detail", "legacy", "문제에 맞춘 고객별 맞춤 제품 구축", "Solutions 허브로 통합, 리디렉션 후보"],
   "business/internal-system": ["C", "detail", "legacy", "고객사 내부 시스템 구축", "Solutions 허브로 통합, 리디렉션 후보"],
@@ -79,7 +79,7 @@ export const PAGES = {
   "studio/partnerships": ["A", "hub", "none", "브랜드·기업과 장기 협업", "프로젝트 문구를 제휴·협업 문구로 전환(적용)"],
   "studio/projects": ["A", "hub", "none", "Newon이 직접 만들고 운영하는 제품", "프로젝트 문의를 제휴·협업 문의로 전환(적용)"],
   "studio/contact": ["A", "hub", "none", "제휴·협업 문의 진입", "CTA를 제휴·협업 문의로 전환(적용), 폼·URL 유지"],
-  "studio/digital": ["B", "hub", "cap", "웹·앱 디자인 역량 허브(Design Only)", "역량 안내 추가. 자체 디지털 상품 콘텐츠는 확정 후 추가(보류)"],
+  "studio/digital": ["B", "hub", "none", "웹·앱 디자인 역량 허브(Design Only)", "역량 안내 추가. 자체 디지털 상품 콘텐츠는 확정 후 추가(보류)"],
   "studio/digital/web-design": ["B", "detail", "cap", "웹 디자인 접근법·기준", "역량 안내 추가"],
   "studio/digital/app-ui-ux": ["B", "detail", "cap", "앱 UI/UX 접근법·기준", "역량 안내 추가"],
   "studio/digital/landing": ["B", "detail", "cap", "랜딩 디자인 접근법·기준", "역량 안내 추가"],

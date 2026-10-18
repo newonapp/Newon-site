@@ -605,7 +605,7 @@ function writeSitemap() {
   }
 
   // Product hubs
-  for (const page of ["products", "apps", "ecosystem", "ai", "ai/enterprise", "business-hub", "business/seller-center", "business/partners", "babylog", "babylog/platform", "babylog/business", "babylog/partnerships", "babylog/contact", "petlog", "myworld", "shareon", "lifestage", "ongil", "ongil/platform", "ongil/business", "ongil/partnerships", "ongil/contact", "saas", "games", "tools", "market", "contact", "media"]) {
+  for (const page of ["products", "apps", "ecosystem", "ai", "ai/enterprise", "business-hub", "business/seller-center", "business/partners", "babylog", "babylog/platform", "babylog/business", "babylog/partnerships", "babylog/contact", "petlog", "myworld", "shareon", "lifestage", "ongil", "saas", "games", "tools", "market", "contact", "media"]) {
     addAllLocales(page, "0.65", "monthly");
   }
 

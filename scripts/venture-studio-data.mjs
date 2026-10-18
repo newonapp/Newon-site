@@ -70,10 +70,10 @@ export const MEGA_DESTINATIONS = {
   ],
   ongil: [
     { titleKey: "nav.site5Overview", descKey: "nav.site5OverviewDesc", href: "ongil/", titleFb: "Overview" },
-    { titleKey: "nav.site5Platform", descKey: "nav.site5PlatformDesc", href: "ongil/platform/", titleFb: "Platform", langs: ["ko", "en"] },
-    { titleKey: "nav.site5Business", descKey: "nav.site5BusinessDesc", href: "ongil/business/", titleFb: "Business", langs: ["ko", "en"] },
-    { titleKey: "nav.site5Partnerships", descKey: "nav.site5PartnershipsDesc", href: "ongil/partnerships/", titleFb: "Partnerships", langs: ["ko", "en"] },
-    { titleKey: "nav.site5Contact", descKey: "nav.site5ContactDesc", href: "ongil/contact/", titleFb: "Contact", langs: ["ko", "en"] },
+    { titleKey: "nav.site5Platform", descKey: "nav.site5PlatformDesc", href: "ongil/platform/", titleFb: "Platform" },
+    { titleKey: "nav.site5Business", descKey: "nav.site5BusinessDesc", href: "ongil/business/", titleFb: "Business" },
+    { titleKey: "nav.site5Partnerships", descKey: "nav.site5PartnershipsDesc", href: "ongil/partnerships/", titleFb: "Partnerships" },
+    { titleKey: "nav.site5Contact", descKey: "nav.site5ContactDesc", href: "ongil/contact/", titleFb: "Contact" },
   ],
   babylog: [
     { titleKey: "nav.site5Overview", descKey: "nav.site5OverviewDesc", href: "babylog/", titleFb: "Overview" },

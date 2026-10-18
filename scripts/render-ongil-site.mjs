@@ -461,8 +461,29 @@ function patchSitemap() {
   return extra.length;
 }
 
+/** Other languages: ONGIL sub-pages exist in KO/EN only, so /{lang}/ongil/{page}/ forwards to the English page
+ *  (keeps the shared ONGIL menu working in every language; noindex, canonical = EN). */
+function writeForwardStubs() {
+  let n = 0;
+  for (const L of LANGS) {
+    if (SITE_LANGS.includes(L.dir)) continue;
+    for (const page of PAGES.filter((pg) => pg !== "overview")) {
+      const target = pagePath("en", page);
+      const out = path.join(ROOT, L.dir, "ongil", page, "index.html");
+      ensureDir(out);
+      fs.writeFileSync(
+        out,
+        `<!doctype html>\n<html lang="${L.htmlLang}">\n<head>\n<meta charset="utf-8" />\n<meta name="robots" content="noindex" />\n<link rel="canonical" href="${SITE_ORIGIN}${target}" />\n<meta http-equiv="refresh" content="0;url=${target}" />\n<title>ONGIL</title>\n</head>\n<body><p><a href="${target}">ONGIL</a></p></body>\n</html>\n`
+      );
+      n++;
+    }
+  }
+  return n;
+}
+
 if (import.meta.url === `file://${process.argv[1]}`) {
   for (const lang of SITE_LANGS) for (const page of PAGES) renderPage(lang, page);
+  writeForwardStubs();
   const added = patchSitemap();
   console.log("render-ongil-site: OK", SITE_LANGS.join(","), PAGES.length, "pages each; sitemap +", added);
 }
