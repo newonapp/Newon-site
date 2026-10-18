@@ -26,26 +26,62 @@ test("KO and EN copy share the same structure", () => {
   assert.deepEqual(shape(EN), shape(KO));
 });
 
-test("required counts: 6 journey steps, 5 pillars, 20 services in 6 groups, 8 groups/20 lines, 6 revenue axes, 14 partner types, 5 steps, 13 inquiry types", () => {
+test("required counts: 20 services in 6 groups, 8 groups/20 lines, 6 models, 14 partner types, 5 steps, 16 inquiry types", () => {
   for (const c of [KO, EN]) {
     assert.equal(c.overview.journey.items.length, 6);
+    assert.equal(c.overview.v2.tabs.length, 5);
+    assert.deepEqual(c.overview.v2.tabs.map((t) => t.en), ["World", "Travel", "Book", "Community", "My"]);
+    assert.equal(c.overview.principles.items.length, 8);
     assert.equal(c.platform.items.length, 20);
-    assert.equal(c.overview.pillars.items.length, 5);
-    assert.equal(c.overview.roadmap.items.length, 5);
+    assert.equal(c.platform.groups.length, 6);
+    assert.equal(c.platform.tabmap.rows.length, 5);
     assert.equal(c.business.groups.length, 8);
     assert.equal(c.business.lines.length, 20);
-    assert.equal(c.business.revenue.items.length, 6);
+    assert.equal(c.business.models.rows.length, 6);
+    assert.equal(c.business.roadmap.items.length, 5);
     assert.equal(c.partnerships.items.length, 14);
+    assert.equal(c.partnerships.models.items.length, 6);
+    assert.equal(c.partnerships.principles.items.length, 8);
     assert.equal(c.partnerships.process.steps.length, 5);
-    assert.equal(c.contact.items.length, 13);
+    assert.equal(c.contact.items.length, 16);
     const seq = (n) => Array.from({ length: n }, (_, i) => i + 1);
     const cover = (groups, key) => groups.flatMap((x) => x[key]).sort((a, b) => a - b);
     assert.deepEqual(cover(c.business.groups, "lines"), seq(20));
     assert.deepEqual(cover(c.platform.groups, "items"), seq(20));
     assert.deepEqual(cover(c.partnerships.groups, "items"), seq(14));
-    assert.deepEqual(cover(c.contact.groups, "items"), seq(13));
+    assert.deepEqual(cover(c.contact.groups, "items"), seq(16));
     assert.deepEqual(c.platform.items.filter((s) => s.status === "live").length, 3);
     for (const s of c.platform.items) assert.ok(s.features.length >= 3 && s.features.length <= 5, s.name);
+    // Book stays "in preparation" until affiliate contracts; community is not presented as shared
+    assert.equal(c.overview.v2.tabs.find((t) => t.id === "book").status, "planned");
+    assert.equal(c.overview.v2.tabs.find((t) => t.id === "community").status, "planned");
+  }
+});
+
+test("overview is the brand story only: no service, business-line, partner-type or inquiry lists", () => {
+  for (const l of ["ko", "en"]) {
+    const m = main(read(`${l}/myworld/index.html`));
+    for (const cls of ["mws-svc", "mws-spec", "mws-prow", "mws-table--inquiry", "mws-table--models"]) {
+      assert.doesNotMatch(m, new RegExp(`class="${cls}[" ]`), `${l} overview contains ${cls}`);
+    }
+    assert.match(m, /class="mws-explore"/);
+  }
+});
+
+test("hero film constant and shared sub-menu are kept on every page", () => {
+  for (const l of LANGS) for (const p of PAGES) {
+    const html = read(`${l}/${p}index.html`);
+    assert.match(html, /hf_20260407_043131_ebe2f0b5-9acc-4a4f-b2c1-7297f1a3beb9\.mp4/);
+    assert.match(html, /class="fsn" data-biz="myworld"/);
+    assert.match(html, /film-keep\.js/);
+  }
+});
+
+test("contact page links to the NEWON inquiry system and email", () => {
+  for (const l of ["ko", "en"]) {
+    const m = main(read(`${l}/myworld/contact/index.html`));
+    assert.match(m, new RegExp(`href="/${l}/contact/"`));
+    assert.match(m, /mailto:newon@newon\.app/);
   }
 });
 

@@ -26,10 +26,11 @@ export const LIVON_SITE_PAGES = [
 export const STATUS = {
   web: { ko: "LIVON 웹 콘텐츠 제공 중 (일부)", en: "In the LIVON web service (partly)" },
   partial: { ko: "관련 안내 일부 제공", en: "Related guides partly available" },
-  planned: { ko: "계획 · 아직 제공하지 않음", en: "Planned · not available yet" },
-  concept: { ko: "구상 단계 · 운영 전", en: "Concept · not operating" },
-  live: { ko: "운영 중 (LIVON 웹)", en: "Live (LIVON web)" },
+  planned: { ko: "추진 예정 · 아직 제공하지 않음", en: "Planned · not available yet" },
+  concept: { ko: "확장 방향 · 운영 전", en: "Expansion direction · not operating" },
+  live: { ko: "제공 중 (LIVON 웹)", en: "Available (LIVON web)" },
   preparing: { ko: "준비 중", en: "In preparation" },
+  review: { ko: "협력 검토 분야", en: "Open for discussion" },
 };
 
 /* ───────────────────────── groups ───────────────────────── */
@@ -655,6 +656,32 @@ export const CORE_FEATURES = [
 
 /* ───────────────────────── Business (15) ───────────────────────── */
 const B = (n, en, ko, st, ko2, en2) => ({ n, en, ko, st, ko2, en2 });
+/** Business areas grouped for the Business page (15 areas, 5 groups). */
+export const BIZ_GROUPS = [
+  { id: "edu", ko: "교육·커리어", en: "Education & careers", leadKo: "배움에서 첫 일, 재교육까지 — 생애 초반의 결정을 돕는 정보 사업", leadEn: "Learning, a first job and retraining — information for the early decisions of life", ids: ["01", "02", "03"] },
+  { id: "life", ko: "생활·행정·금융", en: "Living, paperwork & money", leadKo: "절차와 돈, 집처럼 매일 막히는 영역을 판매가 아닌 이해 중심으로", leadEn: "Procedures, money and housing — explained for understanding, not for selling", ids: ["04", "05", "06"] },
+  { id: "family", ko: "가족·건강", en: "Family & health", leadKo: "결혼과 출산, 육아와 건강 — 공식 기관 정보를 우선하는 영역", leadEn: "Marriage, birth, parenting and health — official bodies come first", ids: ["07", "08", "09"] },
+  { id: "welfare", ko: "복지·시니어", en: "Welfare & senior life", leadKo: "공공 지원과 노후 준비 — 수수료 없이 공식 출처로 연결", leadEn: "Public support and retirement — linked to official sources, never charged for", ids: ["10", "11"] },
+  { id: "scale", ko: "마켓·기업·공공·글로벌", en: "Market, enterprise, public & global", leadKo: "개인의 삶에서 서비스 마켓, 기업·기관 솔루션, 해외로 넓히는 확장 방향", leadEn: "From personal life to a service market, solutions for organisations and other countries", ids: ["12", "13", "14", "15"] },
+];
+/** "주요 영역" keywords per business area (same order as BUSINESS). */
+export const BIZ_TAGS = {
+  "01": [["입시·진학", "장학", "학교생활"], ["Admissions", "Scholarships", "School life"]],
+  "02": [["채용 정보", "이력서·면접", "이직"], ["Job listings", "CVs & interviews", "Changing jobs"]],
+  "03": [["자격증", "직업훈련", "평생교육"], ["Certificates", "Vocational training", "Lifelong learning"]],
+  "04": [["병역", "민원·여권", "생활법률"], ["Military service", "Civil services", "Everyday law"]],
+  "05": [["금융 기초", "보험 이해", "세금"], ["Money basics", "Insurance", "Tax"]],
+  "06": [["전월세·청약", "이사·독립", "계약 전 확인"], ["Renting & subscription", "Moving out", "Pre-contract checks"]],
+  "07": [["결혼 준비", "혼인신고", "가족 행정"], ["Wedding planning", "Registration", "Family paperwork"]],
+  "08": [["임신 준비", "출산 지원", "육아휴직·보육"], ["Pregnancy planning", "Birth support", "Leave & childcare"]],
+  "09": [["건강검진", "마음 건강", "운동"], ["Check-ups", "Mental wellbeing", "Exercise"]],
+  "10": [["지원금·바우처", "복지 제도", "공식 포털"], ["Benefits & vouchers", "Welfare schemes", "Official portals"]],
+  "11": [["연금", "은퇴 준비", "시니어 생활"], ["Pensions", "Retirement", "Senior living"]],
+  "12": [["경험 공유", "전문가 콘텐츠", "서비스 마켓"], ["Shared experience", "Expert content", "Service market"]],
+  "13": [["직원 생애 이벤트", "사내 복지 안내", "SaaS"], ["Employee life events", "Benefits guidance", "SaaS"]],
+  "14": [["지자체", "공공기관", "학교"], ["Local government", "Public bodies", "Schools"]],
+  "15": [["다국어", "현지화", "라이선스"], ["Multilingual", "Localisation", "Licensing"]],
+};
 export const BUSINESS = [
   B("01", "Education Information", "교육 정보", "preparing",
     { what: "학교·대학·입시·장학 정보를 생애 단계에 맞춰 안내", who: "학생·학부모·교육기관", value: "흩어진 교육 정보를 시기별로 정리", rev: "기관용 정보 안내 솔루션, 표시된 제휴 (검토 중)", partners: "학교·교육기관, 대학·장학기관", rule: "입학·합격 보장 표현 금지, 공식 출처 표시" },
@@ -689,9 +716,9 @@ export const BUSINESS = [
   B("11", "Senior & Retirement Information", "시니어·은퇴 정보", "preparing",
     { what: "연금·퇴직·노후 준비·시니어 생활 정보", who: "은퇴를 준비하는 사람, 시니어·은퇴 지원기관", value: "노후 준비를 단계별로", rev: "기업 복지 솔루션·기관 협력 (검토 중)", partners: "시니어·은퇴 지원기관", rule: "투자 자문 없음, 실제 돌봄은 ONGIL 안내" },
     { what: "Pensions, retirement, preparing for later life, senior living", who: "People preparing to retire; senior and retirement bodies", value: "Retirement planning, step by step", rev: "Enterprise benefit solutions and institutional work (under review)", partners: "Senior and retirement support bodies", rule: "No investment advice; day-to-day care points to ONGIL" }),
-  B("12", "Community & Content", "커뮤니티·콘텐츠", "concept",
-    { what: "경험·질문 공유와 전문가 콘텐츠", who: "이용자, 콘텐츠·전문가 파트너", value: "실제 경험과 검증된 정보의 결합", rev: "표시된 광고·콘텐츠 제휴, 프리미엄 (검토 중)", partners: "콘텐츠·전문가 파트너", rule: "광고·후원 표시, 운영 정책과 신고 체계 필요 (현재 공개 커뮤니티 없음)" },
-    { what: "Shared experiences and questions, plus expert content", who: "Users; content and expert partners", value: "Real experience together with checked information", rev: "Labelled ads and content partnerships, premium (under review)", partners: "Content creators and experts", rule: "Ads and sponsorship labelled; moderation rules required (no public community today)" }),
+  B("12", "Community & Service Market", "커뮤니티·서비스 마켓", "preparing",
+    { what: "경험·질문 공유와 전문가 콘텐츠, 그리고 실제 판매자가 확보된 뒤 열 생활 서비스·전문가 마켓", who: "이용자, 생활 서비스 사업자, 전문가·콘텐츠 파트너", value: "정보를 확인한 그 자리에서 믿을 수 있는 서비스와 전문가를 찾는 경로", rev: "표시된 광고·콘텐츠 제휴, 마켓 중개 수수료 (모두 제안 단계 · 규제 분야 성과형 수수료는 법률 검토 전까지 보류)", partners: "생활 서비스 사업자, 전문가·콘텐츠 파트너", rule: "실제 판매자가 생기기 전에는 상품·예약·결제를 만들지 않음 (앱의 마켓 탭은 ‘준비 중’ 표시), 개인 간 중고거래는 SHAREON으로 안내, 공개 커뮤니티는 운영 정책 이후" },
+    { what: "Shared experiences and questions, expert content, and — once real sellers exist — a market for everyday services and experts", who: "Users, service businesses, experts and content partners", value: "Finding trustworthy services and experts right where you checked the information", rev: "Labelled ads and content partnerships, market commission (all proposals; performance-based fees in regulated fields on hold pending legal review)", partners: "Service businesses, experts and content partners", rule: "No products, booking or payment before real sellers exist (the app's Market tab says ‘in preparation’); personal used-goods trading points to SHAREON; public community only after moderation rules" }),
   B("13", "Enterprise Information Solutions", "기업 정보 솔루션", "concept",
     { what: "직원의 생애 이벤트(입사·결혼·출산·이사·은퇴)에 맞춘 사내·공공 제도 안내", who: "기업 인사·복지 담당자", value: "사내 제도와 공공 제도를 한 화면에", rev: "기업 SaaS (가격 미정)", partners: "기업 복지 담당자", rule: "표준화된 자체 솔루션 — 고객별 맞춤 외주 제작이 아님, 직원 개인정보 최소 처리" },
     { what: "Company and public benefit guidance for employees' life events", who: "HR and benefits teams", value: "Company and public schemes on one screen", rev: "Enterprise SaaS (no price set)", partners: "Corporate benefits teams", rule: "A standard product, not custom-built work; minimal employee data" }),
@@ -703,20 +730,22 @@ export const BUSINESS = [
     { what: "Localisation and licensing for other countries' systems", who: "Overseas companies and institutions", value: "Reusing a proven information structure", rev: "Global licensing (under review)", partners: "Global, technology and content partners", rule: "Each country's law, schemes and privacy rules followed" }),
 ];
 
-export const REVENUE = [
-  { n: "01", ko: "프리미엄 구독", en: "Premium subscription", whoKo: "개인 사용자", whoEn: "Individuals", howKo: "고급 관리·개인화·AI", howEn: "Advanced management, personalisation, AI" },
-  { n: "02", ko: "기업 SaaS", en: "Enterprise SaaS", whoKo: "기업·기관", whoEn: "Companies and institutions", howKo: "정보 안내·운영 솔루션", howEn: "Information and operations solutions" },
-  { n: "03", ko: "적법한 서비스 연결", en: "Lawful service links", whoKo: "서비스 사업자", whoEn: "Service providers", howKo: "표시된 제휴·광고·연결", howEn: "Labelled partnerships, ads and referrals" },
-  { n: "04", ko: "콘텐츠·광고", en: "Content & advertising", whoKo: "브랜드·기관", whoEn: "Brands and institutions", howKo: "명확히 표시된 광고", howEn: "Clearly labelled advertising" },
-  { n: "05", ko: "공공·기관 사업", en: "Public & institutional work", whoKo: "지자체·기관", whoEn: "Local and public bodies", howKo: "정보 서비스·프로젝트 계약", howEn: "Information services and project contracts" },
-  { n: "06", ko: "글로벌 라이선스", en: "Global licensing", whoKo: "해외 기업·기관", whoEn: "Overseas companies and institutions", howKo: "다국어·현지화·라이선스", howEn: "Multilingual, localisation, licensing" },
+/** Business models (Business page table). Every revenue line is a proposal: no price, fee or rate is set or shown. */
+export const MODELS = [
+  { id: "b2c", ko: "B2C 무료 핵심", en: "B2C free core", whoKo: "개인 이용자", whoEn: "Individuals", valueKo: "로그인 없이 쓰는 생애 정보·기록·공식 출처 연결", valueEn: "Life information, records and official sources — no account needed", howKo: "무료 유지. 고급 관리·개인화·AI는 프리미엄 구독으로 제안", howEn: "Stays free. Advanced management, personalisation and AI proposed as a premium subscription", st: "live" },
+  { id: "market", ko: "서비스·전문가 마켓", en: "Service & expert market", whoKo: "생활 서비스 사업자·전문가", whoEn: "Service businesses and experts", valueKo: "정보를 확인한 이용자와 실제 서비스의 연결", valueEn: "Connecting informed users with real services", howKo: "중개 수수료 제안. 의료·법률 등 규제 분야 성과형 수수료는 법률 검토 전까지 보류", howEn: "Commission proposed. Performance-based fees in regulated fields (medical, legal) on hold pending legal review", st: "preparing" },
+  { id: "b2b", ko: "B2B 기업 솔루션", en: "B2B enterprise solutions", whoKo: "기업 인사·복지 담당", whoEn: "HR and benefits teams", valueKo: "직원 생애 이벤트에 맞춘 사내·공공 제도 안내", valueEn: "Company and public schemes around employees' life events", howKo: "표준화된 SaaS 구독 제안", howEn: "Standard SaaS subscription proposed", st: "concept" },
+  { id: "b2g", ko: "B2G 공공·기관", en: "B2G public & institutional", whoKo: "지자체·공공기관·학교", whoEn: "Local governments, public bodies, schools", valueKo: "주민·이용자 대상 생활 정보 안내", valueEn: "Life information for residents and users", howKo: "정보 서비스·프로젝트 계약 (공공 조달 절차)", howEn: "Information services and project contracts (public procurement)", st: "concept" },
+  { id: "ads", ko: "콘텐츠·광고", en: "Content & advertising", whoKo: "브랜드·기관", whoEn: "Brands and institutions", valueKo: "필요한 시점의 이용자에게 닿는 표시된 메시지", valueEn: "Labelled messages that reach people at the right moment", howKo: "명확히 표시된 광고·콘텐츠 제휴 제안", howEn: "Clearly labelled ads and content partnerships proposed", st: "concept" },
+  { id: "link", ko: "적법한 서비스 연결", en: "Lawful service links", whoKo: "인허가를 갖춘 사업자", whoEn: "Licensed providers", valueKo: "LIVON이 하지 않는 인허가 서비스로의 안내", valueEn: "Pointing to licensed services LIVON itself does not provide", howKo: "표시된 제휴·연결 제안 (모집·중개·판매는 하지 않음)", howEn: "Labelled partnerships and referrals proposed (no selling, soliciting or brokering)", st: "concept" },
+  { id: "global", ko: "글로벌 라이선스", en: "Global licensing", whoKo: "해외 기업·기관", whoEn: "Overseas companies and institutions", valueKo: "검증된 생애 정보 구조의 현지화", valueEn: "Localising a proven life-information structure", howKo: "다국어·현지화·라이선스 제안", howEn: "Multilingual, localisation and licensing proposed", st: "concept" },
 ];
 
 export const ROADMAP = [
-  { n: "1", ko: "기존 LIVON 앱 안정화", en: "Stabilise the LIVON app", st: "now", bodyKo: "Life Stage·Today Feed·Explore·My Life·Community, 기존 데이터·API·익명 이용 흐름 검증", bodyEn: "Verify Life Stage, Today Feed, Explore, My Life, Community, existing data, API and anonymous use" },
-  { n: "2", ko: "40개 생활 분야 체계화", en: "Structure the 40 categories", st: "next", bodyKo: "분야별 분류, 공식 정보 출처, 검색·필터, 생애 단계 연결", bodyEn: "Classification, official sources, search and filters, links to life stages" },
-  { n: "3", ko: "Life Event Explorer", en: "Life Event Explorer", st: "later", bodyKo: "군 입대·취업·독립·결혼·출산·은퇴 등 인생 사건별 정보 연결", bodyEn: "Information connected around events such as enlisting, a first job, moving out, marriage, birth and retirement" },
-  { n: "4", ko: "개인화·AI·커뮤니티", en: "Personalisation, AI, community", st: "later", bodyKo: "관심 분야, 개인화 정보, 생활정보 설명, 커뮤니티 품질", bodyEn: "Interests, personalised information, explanations, community quality" },
+  { n: "1", ko: "무료 핵심 기능 안정화", en: "Stabilise the free core", st: "now", bodyKo: "Life Stage·Today Feed·Explore·My Life를 로그인 없이 안정적으로. 기존 익명 이용자의 기록은 그대로 지킵니다.", bodyEn: "Life Stage, Today Feed, Explore and My Life, stable and usable without an account. Existing anonymous users' records are kept as they are." },
+  { n: "2", ko: "40개 생활 분야 체계화", en: "Structure the 40 categories", st: "next", bodyKo: "분야별 분류, 공식 출처·기준일·지역, 검색·필터, 생애 단계와 인생 사건 연결", bodyEn: "Classification, official source, date and region, search and filters, links to stages and life events" },
+  { n: "3", ko: "단독 iOS·Android 앱", en: "Standalone iOS & Android apps", st: "later", bodyKo: "웹을 감싼 앱이 아닌 독립 앱. 하단 탭 홈·탐색·마켓·마이라이프·전체", bodyEn: "Real apps, not a wrapped website. Bottom tabs: Home, Explore, Market, My Life, More" },
+  { n: "4", ko: "서비스·전문가 마켓", en: "Service & expert market", st: "later", bodyKo: "실제 판매자가 확보된 뒤에 엽니다. 그전까지 마켓 탭은 ‘준비 중’", bodyEn: "Opens only once real sellers are on board. Until then the Market tab says ‘in preparation’" },
   { n: "5", ko: "기업·공공·글로벌", en: "Enterprise, public, global", st: "later", bodyKo: "기업용 정보 솔루션, 기관 협력, 공식 데이터 연계, 해외 현지화", bodyEn: "Enterprise solutions, institutional work, official data links, localisation" },
 ];
 
@@ -756,177 +785,69 @@ export const PARTNER_COMMON = {
   en: { value: "A route to people who need accurate information", rev: "To be agreed (paid ads and partnerships always labelled)", cond: "Official sources shown, no false or exaggerated claims, minimal personal data", officialRev: "Not applicable — shown only as a public information source", officialCond: "Never shown as a partner unless an agreement exists" },
 };
 export const PARTNER_STEPS = {
-  ko: [["문의", "협력 유형과 목적을 알려 주세요."], ["검토", "정보 정확성·이용자 가치·규제 조건을 함께 확인합니다."], ["제안", "협력 범위와 표시 방식(출처·광고·제휴)을 정합니다."], ["시작", "합의된 범위로 시작하고, 표시 원칙을 지킵니다."]],
-  en: [["Inquiry", "Tell us the type and purpose of the partnership."], ["Review", "We check accuracy, value to users and regulatory conditions together."], ["Proposal", "We agree the scope and how it is shown — source, ad or partnership."], ["Start", "We start within the agreed scope and keep the labelling rules."]],
+  ko: [["문의", "협력 유형과 목적, 관련 생활 분야를 NEWON 문의 창구로 알려 주세요."], ["검토", "정보 정확성, 이용자에게 주는 가치, 인허가·개인정보 등 규제 조건을 함께 확인합니다."], ["제안", "협력 범위와 표시 방식(출처·광고·제휴)을 정합니다. 조건은 협의로 정하며 이 페이지에 공개하지 않습니다."], ["합의", "역할과 책임, 정보 갱신 주기, 종료 조건을 문서로 합의합니다."], ["시작·점검", "합의한 범위로 시작하고, 표시 원칙과 정보 정확성을 주기적으로 함께 점검합니다."]],
+  en: [["Inquiry", "Tell us the type, purpose and life area through NEWON's contact page."], ["Review", "We check accuracy, value to users and regulatory conditions such as licensing and privacy together."], ["Proposal", "We agree the scope and how it is shown — source, ad or partnership. Terms are agreed privately, not published here."], ["Agreement", "Roles, responsibilities, update cycle and exit terms are agreed in writing."], ["Start & review", "We start within the agreed scope and review labelling and accuracy together, regularly."]],
+};
+/** Two short "협력 형태" tags per partner type (same order as PARTNERS). */
+export const PARTNER_TAGS = {
+  "01": [["콘텐츠 검수", "공동 안내"], ["Content review", "Co-presenting"]],
+  "02": [["정보 정확성", "출처 연계"], ["Accuracy", "Source links"]],
+  "03": [["일정 갱신", "출처 연계"], ["Calendar updates", "Source links"]],
+  "04": [["표시된 광고", "준비 정보"], ["Labelled ads", "Preparation guides"]],
+  "05": [["채용 정보", "커리어 콘텐츠"], ["Job listings", "Career content"]],
+  "06": [["과정 정보", "재교육"], ["Course data", "Retraining"]],
+  "07": [["절차 안내", "지원사업 정보"], ["Procedures", "Programme data"]],
+  "08": [["공공정보 출처", "정확성 확인"], ["Public source", "Accuracy checks"]],
+  "09": [["면허·교통 정보", "안전 교육"], ["Licence & transport", "Safety education"]],
+  "10": [["민원·권리 검수", "대리 없음"], ["Civil & rights review", "No representation"]],
+  "11": [["금융 이해 교육", "콘텐츠"], ["Financial literacy", "Content"]],
+  "12": [["일반 정보", "표시된 광고"], ["General information", "Labelled ads"]],
+  "13": [["주거 정보", "계약 전 확인"], ["Housing data", "Pre-contract checks"]],
+  "14": [["가족 생활 정보", "검수"], ["Family information", "Review"]],
+  "15": [["제도 정보 검수", "출처 연계"], ["Scheme review", "Source links"]],
+  "16": [["건강 정보 검수", "의료행위 없음"], ["Health review", "No medical practice"]],
+  "17": [["복지·돌봄 안내", "ONGIL 연계 검토"], ["Welfare & care", "With ONGIL (under review)"]],
+  "18": [["노후 준비", "시니어 생활"], ["Retirement", "Senior living"]],
+  "19": [["주민 안내", "공공 절차"], ["Resident guidance", "Public procedures"]],
+  "20": [["현지화", "기술·콘텐츠"], ["Localisation", "Tech & content"]],
 };
 
 /* ───────────────────────── Contact (14) → existing NEWON contact types ───────────────────────── */
 export const CONTACT_TYPES = [
-  { ko: "앱 이용·기술 지원", en: "App use & technical support", type: "support", g: "svc" },
-  { ko: "생활정보·콘텐츠 제안", en: "Life information & content", type: "other", g: "svc" },
-  { ko: "교육·진로", en: "Education & careers", type: "other", g: "info" },
-  { ko: "병역·행정", en: "Military service & administration", type: "other", g: "info" },
-  { ko: "금융·경제", en: "Money & the economy", type: "other", g: "info" },
-  { ko: "주거", en: "Housing", type: "other", g: "info" },
-  { ko: "결혼·출산·육아", en: "Marriage, birth & parenting", type: "other", g: "info" },
-  { ko: "건강·복지", en: "Health & welfare", type: "other", g: "info" },
-  { ko: "시니어", en: "Senior life", type: "other", g: "info" },
-  { ko: "콘텐츠·전문가 협력", en: "Content & expert cooperation", type: "partnership", g: "biz" },
-  { ko: "기업 솔루션", en: "Enterprise solutions", type: "business", g: "biz" },
-  { ko: "공공기관·지자체", en: "Public bodies & local government", type: "partnership", g: "biz" },
-  { ko: "파트너십 일반", en: "General partnerships", type: "partnership", g: "biz" },
-  { ko: "글로벌 협력", en: "Global cooperation", type: "partnership", g: "biz" },
+  { ko: "앱 이용·기술 지원", en: "App use & technical support", forKo: "LIVON 웹 사용 방법, 오류, 기기에 저장된 기록에 관한 질문", forEn: "Using LIVON on the web, errors, records stored on your device", type: "support", g: "svc" },
+  { ko: "생활정보·콘텐츠 제안", en: "Life information & content", forKo: "빠진 주제, 고쳐야 할 정보, 새로 다뤘으면 하는 생활 분야", forEn: "Missing topics, information to correct, life areas to add", type: "other", g: "svc" },
+  { ko: "교육·진로", en: "Education & careers", forKo: "학교·대학·자격증·직업훈련 정보의 오류나 제안", forEn: "Errors or ideas on school, university, certificate and training information", type: "other", g: "info" },
+  { ko: "병역·행정", en: "Military service & administration", forKo: "병역·민원·여권·법률 절차 안내에 관한 의견", forEn: "Feedback on military, civil, passport and legal-procedure guides", type: "other", g: "info" },
+  { ko: "금융·경제", en: "Money & the economy", forKo: "금융 기초·보험·세금 정보의 정확성에 관한 의견 (개인 자문 제외)", forEn: "Accuracy of money, insurance and tax information (no personal advice)", type: "other", g: "info" },
+  { ko: "주거", en: "Housing", forKo: "전월세·청약·이사·독립 정보에 관한 의견", forEn: "Feedback on renting, subscription, moving and living alone", type: "other", g: "info" },
+  { ko: "결혼·출산·육아", en: "Marriage, birth & parenting", forKo: "결혼·임신·출산·육아 제도 정보에 관한 의견", forEn: "Feedback on marriage, pregnancy, birth and parenting schemes", type: "other", g: "info" },
+  { ko: "건강·복지", en: "Health & welfare", forKo: "건강·마음 건강·복지 제도 정보에 관한 의견 (진료 상담 제외)", forEn: "Feedback on health, mental wellbeing and welfare information (no medical consultations)", type: "other", g: "info" },
+  { ko: "시니어", en: "Senior life", forKo: "연금·은퇴·시니어 생활 정보에 관한 의견", forEn: "Feedback on pensions, retirement and senior-life information", type: "other", g: "info" },
+  { ko: "콘텐츠·전문가 협력", en: "Content & expert cooperation", forKo: "전문가 검수, 콘텐츠 제휴, 향후 서비스 마켓 참여 의향", forEn: "Expert review, content partnerships, interest in the future service market", type: "partnership", g: "biz" },
+  { ko: "기업 솔루션", en: "Enterprise solutions", forKo: "직원 생애 이벤트 안내 등 기업용 정보 솔루션", forEn: "Enterprise information solutions such as employee life-event guidance", type: "business", g: "biz" },
+  { ko: "공공기관·지자체", en: "Public bodies & local government", forKo: "주민·이용자 대상 생활 정보 안내 협력", forEn: "Life-information projects for residents and users", type: "partnership", g: "biz" },
+  { ko: "파트너십 일반", en: "General partnerships", forKo: "위 유형에 없는 협력 제안", forEn: "Partnership ideas not listed above", type: "partnership", g: "biz" },
+  { ko: "글로벌 협력", en: "Global cooperation", forKo: "다국어·현지화·라이선스 협력", forEn: "Multilingual, localisation and licensing", type: "partnership", g: "biz" },
 ];
 export const CONTACT_GROUPS = {
   svc: { ko: "서비스 이용", en: "Using the service" },
   info: { ko: "생활 분야 정보", en: "Life information" },
   biz: { ko: "사업·제휴", en: "Business & partnerships" },
 };
-/* ───────────────────────── page copy ───────────────────────── */
-export const COPY = {
-  ko: {
-    brand: "LIVON",
-    positioning: "All-in-One Life Journey Platform",
-    subnavLabel: "LIVON 메뉴",
-    appStatus: "LIVON 앱은 출시 준비 중입니다. 지금은 LIVON 웹에서 이용할 수 있습니다.",
-    notice: "40개 분야는 사업·콘텐츠 분류입니다. 모두 제공 중인 기능이라는 뜻이 아니며, 분야마다 실제 제공 상태를 함께 표시합니다.",
-    tryWeb: "LIVON 웹 써 보기",
-    toContact: "문의하기",
-    stats: [["40", "핵심 사업군"], ["5", "생애 영역 그룹"], ["7", "생애 단계"], ["5", "웹사이트 메뉴"]],
-    seo: {
-      overview: { title: "LIVON | NEWON — 인생의 모든 순간, LIVON 하나로", desc: "교육, 진로, 취업, 군 복무, 금융, 주거, 결혼, 출산, 가족, 건강, 복지, 은퇴까지. 인생의 모든 단계에서 필요한 정보와 서비스를 연결하는 통합 라이프 플랫폼 LIVON." },
-      platform: { title: "LIVON Platform | 40개 생활 분야와 8개 핵심 기능 — NEWON", desc: "Life Stage, Today Feed, Explore, My Life, Community, Life Event Explorer, AI, 공식 정보 연결. 5개 영역 40개 분야의 세부 주제와 실제 제공 상태." },
-      business: { title: "LIVON Business | 15개 사업 영역과 수익 모델 — NEWON", desc: "교육·커리어부터 기업 정보 솔루션, 공공·기관 솔루션, 글로벌 라이선스까지. LIVON의 15개 사업 영역, 수익 모델, 추진 단계와 운영 원칙." },
-      partnerships: { title: "LIVON Partnerships | 20개 협력 유형 — NEWON", desc: "교육·커리어, 생활·행정, 금융, 가족·건강·돌봄, 공공·글로벌. LIVON과 함께할 20개 협력 유형과 협력 원칙." },
-      contact: { title: "LIVON Contact | 문의 — NEWON", desc: "서비스 이용, 생활 분야 정보, 사업·제휴까지 LIVON 문의 14개 유형. NEWON 공식 문의 창구로 연결됩니다." },
-    },
-    overview: {
-      label: "LIVON / OVERVIEW",
-      heroTitleHtml: "인생의 모든 순간,<br>LIVON 하나로.",
-      heroLead: "교육, 진로, 취업, 군 복무, 금융, 주거, 결혼, 출산, 가족, 건강, 복지, 은퇴까지. 인생의 모든 단계에서 필요한 정보와 서비스를 연결하는 통합 라이프 플랫폼.",
-      heroCta: "40개 분야 보기",
-      vision: { kicker: "Our Vision", title: "흩어진 정보를 모으는 데서 끝나지 않고,\n지금의 삶에 맞게 연결합니다.", lead: "LIVON의 핵심은 정보의 양이 아니라 연결입니다. 생애 단계와 지금 겪는 상황을 기준으로 여러 분야의 정보를 한 흐름으로 이어 줍니다.", points: [["단계", "10대부터 70대 이상까지, 지금의 생애 단계에서 출발합니다."], ["사건", "군 입대, 첫 취업, 결혼, 은퇴처럼 한 사건에 필요한 여러 분야를 함께 보여 줍니다."], ["출처", "공공 제도는 공식 출처와 기준일, 대상 지역을 함께 표시합니다."]] },
-      journey: { kicker: "Life Journey", title: "성장에서 노후까지,\n하나로 이어지는 여정.", lead: "삶의 다섯 장(章)과 그 시기에 주로 열어 보는 생애 영역입니다. 나이는 일반적인 예시이며 사람마다 다릅니다." },
-      stage: { kicker: "Life Stage", title: "지금의 생애 단계에서\n출발합니다.", lead: "LIVON 웹은 이미 7개 생애 단계별 주제와 가이드를 제공합니다. 단계를 고르면 그 시기의 대표 주제가 보입니다." },
-      events: { kicker: "Life Event Explorer", title: "지금, 어떤 순간을\n준비하고 있나요?", lead: "하나의 인생 사건에 필요한 여러 분야를 함께 연결합니다. 사건을 고르면 40칸 분야 지도에 관련 분야가 표시됩니다.", check: "먼저 확인할 것", related: "연결되는 분야", mapLabel: "40개 분야 지도", note: "실제 앱 기능이 아니라, LIVON이 정보를 연결하는 구조를 보여 주는 예시입니다. 입력한 내용을 저장하거나 개인 결과를 계산하지 않습니다." },
-      daily: { kicker: "Daily Life", title: "생활·경제·행정,\n매일의 결정을 쉽게.", lead: "군 복무와 운전, 서류와 권리, 돈과 보험, 집과 독립. 일상에서 가장 자주 막히는 두 영역입니다." },
-      family: { kicker: "Family & Wellness", title: "가족·건강·복지,\n함께 사는 삶을 위해.", lead: "결혼과 출산, 육아와 돌봄, 건강과 마음, 은퇴와 그 이후까지." },
-      ca: { kicker: "Community & AI", title: "경험은 나누고,\n어려운 정보는 쉽게.", items: [["Community", "경험·질문·정보 공유", "지금은 혼자 쓰는 모임 기록과 하루 체크만 제공합니다. 공개 공유는 운영 정책을 갖춘 뒤 도입을 검토합니다.", "partial"], ["AI Life Assistant", "생활 정보 설명·탐색 지원", "아직 연결되지 않았습니다. 답변마다 공식 출처와 한계를 함께 보여 주는 방향으로 설계합니다.", "planned"], ["Official Information", "정부·공공기관 정보 연결", "17개 공식 포털로 연결하고 확인 기준일을 표시합니다. 신청과 최종 확인은 각 기관에서 합니다.", "live"]] },
-      eco: { kicker: "Business Ecosystem", title: "개인의 삶에서\n기업·공공·글로벌로.", lead: "LIVON은 직접 상품을 판매하기보다 정보와 사용자 경험, 기업·기관용 솔루션으로 사업을 넓힙니다.", tracks: [["개인", "생활 정보·개인화·프리미엄"], ["기업", "직원 생애 이벤트 정보 솔루션"], ["공공·기관", "주민·이용자 생활 정보 안내"], ["글로벌", "다국어·현지화·라이선스"]], newonTitle: "NEWON 플랫폼과의 역할 구분", newonLead: "각 앱은 자기 역할에 집중하고 LIVON은 관련 정보를 안내합니다. 현재 앱 사이의 데이터 연동은 없습니다.", livon: "인생 전반의 정보·제도·생활 안내" },
-      next: { kicker: "Next Step", title: "LIVON을 더 깊이\n살펴보세요.", lead: "40개 분야와 핵심 기능, 사업 구조, 협력 방식, 문의로 이어집니다." },
-    },
-    platform: {
-      label: "LIVON / PLATFORM",
-      heroTitle: "삶에서 필요한 모든 정보를,\n하나의 연결로.",
-      heroLead: "기존 LIVON 앱의 기능 구조를 유지하면서 40개 생활 분야로 넓혀 갑니다. 기능과 분야마다 지금의 제공 상태를 그대로 표시합니다.",
-      coreKicker: "Core Features", coreTitle: "8개 핵심 기능", coreNow: "지금 제공하는 것",
-      groupsKicker: "40 Life Categories", groupsTitle: "5개 영역, 40개 생활 분야", groupsLead: "영역을 고르면 해당 분야로 이동합니다. 분야마다 영문 라벨, 서비스 설명, 세부 주제, 공식 정보 출처, 제공 상태를 담았습니다.",
-      officialKicker: "Official Information", officialTitle: "공공 제도는 출처·기준일·대상 지역과 함께.", officialItems: [["출처", "제도를 운영하는 공식 기관과 링크"], ["기준일", "LIVON이 마지막으로 확인한 날짜"], ["대상 지역", "전국인지, 특정 지자체인지"], ["변경 안내", "신청 전 공식 사이트에서 다시 확인하도록 안내"]],
-      f: { line: "세부 서비스", topics: "세부 주제", situations: "관련 인생 상황", who: "이용 대상", src: "공식 정보 출처", svc: "관련 LIVON 서비스", newon: "NEWON 연계", newonNone: "없음", newonNote: "별도 앱 · 데이터 연동 없음", note: "운영 원칙", ctaWeb: "LIVON 웹에서 보기", ctaPlanned: "이 분야 협력 문의", more: "자세히 보기" },
-    },
-    business: {
-      label: "LIVON / BUSINESS",
-      heroTitle: "사람의 삶과 정보·서비스를\n연결하는 사업.",
-      heroLead: "LIVON은 상품을 직접 판매하기보다 정보·사용자 경험·기업용 솔루션을 중심으로 수익화합니다. 고객별 맞춤 외주가 아니라 표준화된 자체 솔루션과 플랫폼 제품을 만듭니다.",
-      kicker: "Business Areas", title: "15개 사업 영역", lead: "대부분은 준비 또는 구상 단계입니다. 영역마다 현재 상태를 그대로 표시합니다.",
-      f: { what: "사업 개요", who: "대상 고객", value: "제공 가치", rev: "수익 구조", partners: "협력 대상", rule: "규제·운영 조건", cta: "사업 문의" },
-      revKicker: "Revenue Model", revTitle: "6개 수익원", revCols: ["수익원", "대상", "수익 방식", "상태"], revStatus: "검토 중", revNote: "확정된 요금은 없습니다. 공공 지원금·법정 급여에는 수수료를 부과하지 않으며, 유료 광고와 일반 정보는 항상 구분해 표시합니다.",
-      roadKicker: "Roadmap", roadTitle: "다섯 단계로 추진합니다.", roadNow: "진행 중", roadNext: "다음", roadLater: "이후",
-      ruleKicker: "Operating Principles", ruleTitle: "일반 정보와 인허가 서비스의 경계를 지킵니다.", ruleItems: ["보험 모집·중개를 하지 않습니다.", "금융상품을 판매·권유하지 않습니다.", "투자 자문·개인별 투자 추천을 하지 않습니다.", "진단·치료 등 의료행위를 하지 않습니다.", "법률 대리·세무 대리를 하지 않습니다.", "공공 지원금에 수수료를 부과하지 않습니다."],
-      verdictTitle: "40개 분야를 40개의 앱으로 만들지 않습니다.", verdictBody: "공통 데이터 구조, 생애 단계, 인생 사건별 연결, 공식 출처 관리를 중심으로 하나의 플랫폼을 운영합니다. 그래야 정보 갱신 부담을 줄이고 정확성을 지킬 수 있습니다.",
-    },
-    partnerships: {
-      label: "LIVON / PARTNERSHIPS",
-      heroTitle: "삶의 중요한 순간을\n함께 연결할 파트너를 찾습니다.",
-      heroLead: "LIVON과 협력할 수 있는 20개 유형입니다. 이 페이지는 협력 유형 안내이며, 실제 협약이 체결되지 않은 기관을 파트너로 표시하지 않습니다.",
-      kicker: "Partnership Types", title: "20개 협력 유형",
-      f: { what: "협력 내용", value: "제공 가치", rev: "수익 구조", cond: "협력 조건", cta: "협력 문의", officialTag: "공공정보 출처" },
-      sourceTitle: "공공정보 출처와 사업 파트너는 다릅니다.", sourceNote: "정부·공공기관은 협약이 없는 한 제휴사로 표시하지 않고, 공개된 정보의 출처로만 표시합니다.",
-      stepsKicker: "How it works", stepsTitle: "협력은 이렇게 진행됩니다.",
-    },
-    contact: {
-      label: "LIVON / CONTACT",
-      heroTitle: "LIVON과 함께할\n새로운 가능성을 이야기해 주세요.",
-      heroLead: "문의 유형을 고르면 NEWON 공식 문의 창구로 이동합니다. 추천 제목을 그대로 쓰면 담당 분야로 빠르게 전달됩니다.",
-      kicker: "Inquiry Types", title: "14개 문의 유형",
-      subjectLabel: "추천 제목", go: "문의 창구로",
-      tipsTitle: "문의에 담아 주시면 좋은 내용", tips: ["문의 유형과 기관·회사 이름", "협력 또는 문의하려는 생활 분야", "원하는 시기와 범위", "참고할 수 있는 자료 링크"],
-      note: "LIVON 전용 문의 시스템이나 회원가입은 없습니다. NEWON 공식 문의 창구를 그대로 사용합니다. 개인의 생활 상담·법률·의료·금융 자문 요청에는 답변하지 않으며, 해당 공식 기관을 안내합니다.",
-      bizNote: "기업·기관 프로젝트는 NEWON Business 문의도 이용할 수 있습니다.",
-    },
-  },
-  en: {
-    brand: "LIVON",
-    positioning: "All-in-One Life Journey Platform",
-    subnavLabel: "LIVON menu",
-    appStatus: "The LIVON app is in preparation. You can use LIVON on the web today.",
-    notice: "The 40 categories are a business and content classification, not 40 finished features. Each one shows what is actually available.",
-    tryWeb: "Try LIVON on the web",
-    toContact: "Contact us",
-    stats: [["40", "Core categories"], ["5", "Life areas"], ["7", "Life stages"], ["5", "Site sections"]],
-    seo: {
-      overview: { title: "LIVON | NEWON — Every moment of life, one LIVON", desc: "Education, careers, military service, money, housing, marriage, birth, family, health, welfare and retirement — LIVON connects the information and services every stage of life needs." },
-      platform: { title: "LIVON Platform | 40 life categories and 8 core features — NEWON", desc: "Life Stage, Today Feed, Explore, My Life, Community, Life Event Explorer, AI and official information — five areas, forty categories, their topics and real status." },
-      business: { title: "LIVON Business | 15 business areas and revenue model — NEWON", desc: "From education and careers to enterprise, public and global solutions — LIVON's 15 business areas, revenue model, roadmap and operating principles." },
-      partnerships: { title: "LIVON Partnerships | 20 partnership types — NEWON", desc: "Education and careers, living and administration, finance, family and care, public and global — 20 ways to work with LIVON." },
-      contact: { title: "LIVON Contact — NEWON", desc: "14 LIVON inquiry types — service, life information, business and partnerships — through NEWON's official contact page." },
-    },
-    overview: {
-      label: "LIVON / OVERVIEW",
-      heroTitleHtml: "Every moment of life,<br>one LIVON.",
-      heroLead: "Education, careers, military service, money, housing, marriage, birth, family, health, welfare and retirement. One life platform that connects the information and services every stage needs.",
-      heroCta: "See the 40 categories",
-      vision: { kicker: "Our Vision", title: "Not just collecting information —\nconnecting it to the life you live now.", lead: "LIVON's strength is connection, not volume. It links information across fields around your life stage and what you are going through.", points: [["Stage", "Start from where you are, from the teens to 70+."], ["Event", "One life event — enlisting, a first job, marriage, retirement — shows every field it touches."], ["Source", "Public schemes always show the official source, the date checked and the region covered."]] },
-      journey: { kicker: "Life Journey", title: "From growing up to later life,\none continuous journey.", lead: "Five chapters of life and the areas people open most in each. Ages are typical examples — everyone's pace differs." },
-      stage: { kicker: "Life Stage", title: "Start from the stage\nyou are in.", lead: "The LIVON web service already offers topics and guides for seven life stages. Pick a stage to see its key topics." },
-      events: { kicker: "Life Event Explorer", title: "What moment are you\npreparing for?", lead: "One life event, all the fields it touches. Choose an event and the 40-cell map shows which categories it connects.", check: "Check first", related: "Connected categories", mapLabel: "Map of the 40 categories", note: "An example of how LIVON connects information, not an app feature. Nothing you choose is stored and no personal result is calculated." },
-      daily: { kicker: "Daily Life", title: "Living, money, paperwork —\neveryday decisions made easier.", lead: "Military service and driving, documents and rights, money and insurance, a home of your own. The two areas where everyday life gets stuck most." },
-      family: { kicker: "Family & Wellness", title: "Family, health, welfare —\nfor a life lived together.", lead: "Marriage and birth, parenting and care, body and mind, retirement and beyond." },
-      ca: { kicker: "Community & AI", title: "Share experience,\nmake hard information easy.", items: [["Community", "Sharing experiences and questions", "Today only private group notes and daily check-ins. Public sharing will be considered once moderation rules are in place.", "partial"], ["AI Life Assistant", "Explaining and finding information", "Not connected yet. Designed to show official sources and limits with every answer.", "planned"], ["Official Information", "Links to government and public bodies", "17 official portals, each with the date checked. Applications and final checks happen with each agency.", "live"]] },
-      eco: { kicker: "Business Ecosystem", title: "From personal life\nto enterprise, public and global.", lead: "Rather than selling products, LIVON grows through information, user experience and solutions for companies and institutions.", tracks: [["Personal", "Life information, personalisation, premium"], ["Enterprise", "Information for employees' life events"], ["Public", "Everyday information for residents"], ["Global", "Multilingual, localisation, licensing"]], newonTitle: "How the NEWON platforms divide the work", newonLead: "Each app focuses on its own job and LIVON points to them. There is no data link between the apps today.", livon: "Information, schemes and guidance across life" },
-      next: { kicker: "Next Step", title: "Look closer\nat LIVON.", lead: "Categories and features, business, partnerships and contact." },
-    },
-    platform: {
-      label: "LIVON / PLATFORM",
-      heroTitle: "Everything life asks of you,\nin one connection.",
-      heroLead: "LIVON keeps the structure of its existing app and grows into 40 life categories. Every feature and category shows what is available today.",
-      coreKicker: "Core Features", coreTitle: "8 core features", coreNow: "Available today",
-      groupsKicker: "40 Life Categories", groupsTitle: "Five areas, forty life categories", groupsLead: "Choose an area to jump to its categories. Each has its label, service line, topics, official sources and status.",
-      officialKicker: "Official Information", officialTitle: "Public schemes come with source, date and region.", officialItems: [["Source", "The official body that runs it, with a link"], ["Date checked", "When LIVON last checked it"], ["Region", "National, or a specific local government"], ["Change notice", "A reminder to re-check on the official site"]],
-      f: { line: "Services", topics: "Topics", situations: "Related life situations", who: "For", src: "Official sources", svc: "Related LIVON service", newon: "NEWON link", newonNone: "None", newonNote: "Separate app · no data link", note: "Principle", ctaWeb: "See it in LIVON web", ctaPlanned: "Discuss this area", more: "Details" },
-    },
-    business: {
-      label: "LIVON / BUSINESS",
-      heroTitle: "A business that connects people's lives\nwith information and services.",
-      heroLead: "LIVON earns through information, user experience and enterprise solutions rather than selling products. It builds standard products and its own platform, not custom client work.",
-      kicker: "Business Areas", title: "15 business areas", lead: "Most are at preparation or concept stage. Each shows its status as it is.",
-      f: { what: "Overview", who: "Customers", value: "Value", rev: "Revenue", partners: "Partners", rule: "Rules and conditions", cta: "Business inquiry" },
-      revKicker: "Revenue Model", revTitle: "Six revenue streams", revCols: ["Stream", "For", "How", "Status"], revStatus: "Under review", revNote: "No prices are set. No fees are charged on public benefits or statutory payments, and paid ads are always kept apart from general information.",
-      roadKicker: "Roadmap", roadTitle: "Five stages.", roadNow: "Now", roadNext: "Next", roadLater: "Later",
-      ruleKicker: "Operating Principles", ruleTitle: "We keep general information apart from licensed services.", ruleItems: ["No insurance sales or brokerage.", "No sale or recommendation of financial products.", "No investment advice or personal recommendations.", "No diagnosis, treatment or other medical practice.", "No legal or tax representation.", "No fees on public benefits."],
-      verdictTitle: "Forty categories, not forty apps.", verdictBody: "One platform built on a shared data structure, life stages, event-led connections and managed official sources — the only way to keep updates manageable and information accurate.",
-    },
-    partnerships: {
-      label: "LIVON / PARTNERSHIPS",
-      heroTitle: "Looking for partners to connect\nlife's important moments.",
-      heroLead: "Twenty ways to work with LIVON. This page describes partnership types; organisations without a signed agreement are never shown as partners.",
-      kicker: "Partnership Types", title: "20 partnership types",
-      f: { what: "What we would do", value: "Value", rev: "Revenue", cond: "Conditions", cta: "Partnership inquiry", officialTag: "Public information source" },
-      sourceTitle: "Public information sources are not business partners.", sourceNote: "Government and public bodies are shown only as sources of public information unless an agreement exists.",
-      stepsKicker: "How it works", stepsTitle: "How a partnership comes together.",
-    },
-    contact: {
-      label: "LIVON / CONTACT",
-      heroTitle: "Tell us about new possibilities\nwith LIVON.",
-      heroLead: "Choose an inquiry type to open NEWON's official contact page. Use the suggested subject so it reaches the right team quickly.",
-      kicker: "Inquiry Types", title: "14 inquiry types",
-      subjectLabel: "Suggested subject", go: "Open contact",
-      tipsTitle: "Helpful to include", tips: ["Inquiry type and your organisation", "The life area you have in mind", "Timing and scope", "Links to any material"],
-      note: "There is no separate LIVON contact system or sign-up. NEWON's official contact page is used as it is. Personal legal, medical or financial advice requests are not answered — we point to the right official body instead.",
-      bizNote: "Company and institution projects can also use the NEWON Business inquiry.",
-    },
-  },
-};
+/** "주요 영역" keywords for the 8 core features (same order as CORE_FEATURES). */
+export const CORE_TAGS = [
+  [["7개 생애 단계", "주제 가이드", "체크리스트"], ["7 life stages", "Topic guides", "Checklists"]],
+  [["가 볼 만한 곳", "해 볼 만한 경험", "생활 가이드"], ["Places", "Experiences", "Life guides"]],
+  [["분야별 탐색", "공식 포털", "실시간 검색"], ["Browse by field", "Official portals", "Live search"]],
+  [["할 일·일정", "루틴·기록", "기기 저장"], ["To-dos & plans", "Routines & notes", "On-device"]],
+  [["모임 기록", "하루 체크", "공유는 추진 예정"], ["Group notes", "Daily check-in", "Sharing planned"]],
+  [["생애 이벤트 가이드", "분야 연결", "준비 순서"], ["Life-event guides", "Linked fields", "What to do first"]],
+  [["쉬운 설명", "공식 출처 표시", "한계 안내"], ["Plain explanations", "Sources shown", "Limits stated"]],
+  [["출처", "확인 기준일", "대상 지역"], ["Source", "Date checked", "Region"]],
+];
+
+import { COPY } from "./livon-site-copy.mjs";
+export { COPY };
 
 /** Short labels for the other site languages (long content falls back to English, as on the rest of the site). */
 export const SUBNAV_I18N = {

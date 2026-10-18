@@ -10,8 +10,9 @@
  *
  * Design: reuses the Life Stage page shell (hub-shell + nls-* components + home-lifestage CSS/JS, unchanged).
  * Only BABYLOG-specific additions live in /babylog-site.css, scoped to #lifestage-detail[data-story="babylog"].
- * Runs after render-business-intro.mjs and replaces its /{lang}/babylog/index.html (the earlier single page's
- * content is carried into Platform §10 App Access and the Business/Partnerships pages).
+ * Runs after render-business-intro.mjs and replaces its /{lang}/babylog/index.html.
+ * Content: the owner's Website Content Master Plan (2026-10-18); each menu page shows only its own content.
+ * /babylog-site.js only reveals and wires the e-mail copy button on the Contact page.
  * /babylog/delete-account/ is not touched.
  *
  * Translation: ko = owner wording (+ unreviewed connecting text); en = unreviewed draft; the other 7 locales render
@@ -42,7 +43,7 @@ import { renderBabylogSection } from "./babylog-site-body.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const NLS_VER = "20260924livon1"; // Life Stage assets are reused as-is
-const BL_VER = "20261018bl2";
+const BL_VER = "20261018bl3";
 
 function localeFlat(lang) {
   const en = loadJson("en.json");
@@ -106,7 +107,8 @@ function renderPage(lang, nav) {
     <link rel="stylesheet" href="/babylog-site.css?v=${BL_VER}" />
 ${jsonLd(lang.dir, nav, seo, canonical)}`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
-    <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,
+    <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>
+    <script src="/babylog-site.js?v=${BL_VER}" defer></script>`,
   });
   const out = path.join(ROOT, lang.dir, BL_SLUG, nav.sub, "index.html");
   ensureDir(out);
@@ -123,6 +125,10 @@ export function renderBabylogSite() {
   for (const nav of BL_NAV) if (nav.sub) written.push(path.join(BL_SLUG, nav.sub, "index.html"));
   const pub = path.join(ROOT, "_publish");
   if (fs.existsSync(pub)) {
+    // BABYLOG-only assets (publish-site.mjs copies babylog-site.css; babylog-site.js is copied here as well).
+    for (const asset of ["babylog-site.css", "babylog-site.js"]) {
+      if (fs.existsSync(path.join(ROOT, asset))) fs.copyFileSync(path.join(ROOT, asset), path.join(pub, asset));
+    }
     for (const rel of written) {
       const dest = path.join(pub, rel);
       fs.mkdirSync(path.dirname(dest), { recursive: true });

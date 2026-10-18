@@ -7,7 +7,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   LIVON_SITE_PAGES, CATEGORIES, GROUPS, categoryStatus, LIFE_EVENTS, CORE_FEATURES, BUSINESS,
-  PARTNERS, CONTACT_TYPES, COPY, REVENUE, ROADMAP,
+  PARTNERS, CONTACT_TYPES, COPY, MODELS, ROADMAP, BIZ_GROUPS,
 } from "../../scripts/livon-site-data.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "../..");
@@ -29,24 +29,41 @@ test("5 top menus, in order, on every page of every language, current page marke
   }
 });
 
-test("Overview has the 10 required sections, one h1 and the required slogan", () => {
+test("Overview is the brand story only: 10 sections after the hero, one h1, the slogan, no category/business/partner lists", () => {
   const html = page("ko", "overview");
   assert.equal(count(html, /<h1[\s>]/g), 1);
   assert.match(html, /인생의 모든 순간,<br>LIVON 하나로\./);
-  for (const id of ["lvs-vision", "lvs-journey", "lvs-stage", "lvs-events", "lvs-daily", "lvs-family", "lvs-community", "lvs-ecosystem", "lvs-next"]) assert.ok(html.includes(`id="${id}"`), id);
-  assert.equal(count(html, /data-lvs-section="/g) + 1 /* hero */, 10);
+  assert.match(html, /All-in-One Life Platform/);
+  for (const id of ["lvs-why", "lvs-problem", "lvs-vision", "lvs-journey", "lvs-stage", "lvs-flow", "lvs-principles", "lvs-direction", "lvs-newon", "lvs-next"]) assert.ok(html.includes(`id="${id}"`), id);
+  assert.equal(count(html, /data-lvs-section="/g), 10);
+  // one topic per page: the full lists live on their own pages
+  assert.equal(count(html, /id="lvs-cat-\d\d"/g), 0, "no category cards");
+  assert.equal(count(html, /id="lvs-biz-\d\d"/g), 0, "no business areas");
+  assert.equal(count(html, /id="lvs-partner-\d\d"/g), 0, "no partner types");
+  assert.equal(count(html, /class="lvs-contact__item"/g), 0, "no inquiry types");
+  assert.doesNotMatch(html, /data-lvs-explorer/);
+  // overview ends with a small strip linking to the other four pages
+  const strip = html.match(/<div id="lvs-next"[\s\S]*?<\/ul>/)[0];
+  for (const p of LIVON_SITE_PAGES.filter((p) => p.id !== "overview")) assert.ok(strip.includes(`href="/ko/livon/${p.path}"`), p.id);
+});
+
+test("Platform carries the life-event explorer: 13 events, the 6 featured first, a 40-cell map, labelled as an example", () => {
+  const html = page("ko", "platform");
   assert.equal(count(html, /class="lvs-event[ "]/g), 13);
   assert.equal(count(html, /data-lvs-event="/g), 13);
   assert.equal(LIFE_EVENTS.length, 13);
-  // the 6 featured events from the plan come first; the explorer map has 40 cells
   assert.deepEqual(LIFE_EVENTS.slice(0, 6).map((x) => x.id), ["enlist", "first-job", "move-out", "marriage", "birth", "retire"]);
   assert.equal(count(html.match(/<div class="lvs-ex"[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/)[0], /class="lvs-map__cell/g), 40);
   for (const ev of LIFE_EVENTS) for (const n of ev.cats) assert.ok(CATEGORIES.some((c) => c.n === n), ev.id + " " + n);
-  // explorer is labelled as an example of a structure, not an app feature
   assert.match(html, /실제 앱 기능이 아니라/);
-  // tabs are hidden without JS so the no-JS page lists every event
   assert.match(html, /class="lvs-ex__tabs" role="group" aria-label="[^"]+" hidden>/);
   assert.match(read("scripts/publish-site.mjs"), /"livon-site\.js"/);
+  // app tabs, market in preparation, used goods → SHAREON, anonymous mode
+  for (const t of ["홈", "탐색", "마켓", "마이라이프", "전체"]) assert.match(html, new RegExp(`<strong>${t} <small>`), t);
+  assert.match(html, /마켓<\/span><\/li>/);
+  assert.match(html, /href="\/ko\/shareon\/"/);
+  assert.match(html, /id="lvs-anon"/);
+  assert.match(html, /id="lvs-market"/);
 });
 
 test("Platform: 40 categories in 5 groups of 8, 200+ topics, every required field, 8 core features", () => {
@@ -65,7 +82,7 @@ test("Platform: 40 categories in 5 groups of 8, 200+ topics, every required fiel
   for (const lang of ["ko", "en"]) {
     const html = page(lang, "platform");
     assert.equal(count(html, /class="nls-board__item lvs-cat" id="lvs-cat-\d\d"/g), 40);
-    assert.equal(count(html, /class="nls-proc__item lvs-core"/g), 8);
+    assert.equal(count(html, /class="lvs-row lvs-core"/g), 8);
     assert.equal(count(html, /class="nls-board__item lvs-cat" id="lvs-cat-\d\d" data-status="(web|partial|planned)"/g), 40);
   }
   assert.equal(CORE_FEATURES.length, 8);
@@ -92,15 +109,16 @@ test("status is derived from the real LIVON web data, and every mapped id exists
   for (const n of ["04", "09", "10", "11", "13", "27", "31", "40"]) assert.equal(categoryStatus(CATEGORIES.find((c) => c.n === n)), "planned", n);
 });
 
-test("Business 15 areas, Partnerships 20 types, Contact 14 types — rendered with every field", () => {
+test("Business 15 areas in 5 groups, Partnerships 20 types, Contact 14 types — rendered with every field", () => {
   assert.equal(BUSINESS.length, 15);
+  assert.deepEqual(BIZ_GROUPS.flatMap((g) => g.ids).sort(), BUSINESS.map((b) => b.n));
   assert.equal(PARTNERS.length, 20);
   assert.equal(CONTACT_TYPES.length, 14);
-  assert.equal(REVENUE.length, 6);
+  assert.equal(MODELS.length, 7);
   assert.equal(ROADMAP.length, 5);
   for (const b of BUSINESS) for (const k of ["what", "who", "value", "rev", "partners", "rule"]) assert.ok(b.ko2[k] && b.en2[k], `${b.n} ${k}`);
   for (const lang of ["ko", "en"]) {
-    assert.equal(count(page(lang, "business"), /class="nls-signal__item lvs-biz" id="lvs-biz-/g), 15);
+    assert.equal(count(page(lang, "business"), /class="lvs-row lvs-biz" id="lvs-biz-/g), 15);
     assert.equal(count(page(lang, "partnerships"), /id="lvs-partner-\d\d"/g), 20);
     assert.equal(count(page(lang, "contact"), /class="lvs-contact__item"/g), 14);
     assert.equal(count(page(lang, "business"), /class="nls-lane__item lvs-road__step"/g), 5);
@@ -151,7 +169,7 @@ test("internal links on the LIVON pages resolve to existing files or anchors", (
     const html = page(lang, p.id);
     const main = html.match(/<section id="lifestage-detail"[\s\S]*<\/section>/)[0];
     for (const [, href] of main.matchAll(/href="([^"]+)"/g)) {
-      if (/^https?:/.test(href)) continue;
+      if (/^(https?|mailto):/.test(href)) continue;
       const [pathPart, hash] = href.split("#");
       if (!pathPart) { assert.ok(html.includes(`id="${hash}"`), `${lang}/${p.id} #${hash}`); continue; }
       const clean = pathPart.split("?")[0];
@@ -176,8 +194,9 @@ test("accessibility basics: heading order, labelled nav, lang attribute, reduced
   assert.match(css, /prefers-reduced-motion: reduce/);
   assert.match(css, /focus-visible/);
   assert.match(css, /min-height: 44px|min-height: 48px/);
-  // same visual language as the Life Stage page: no extra accent colour, no rounded cards
-  assert.doesNotMatch(css, /#f6d76b|border-radius/i);
+  // same visual language as the Life Stage page: no rounded cards; the LIVON point colour is declared once as a token
+  assert.doesNotMatch(css, /border-radius/i);
+  assert.equal(count(css, /#f6d76b/gi), 2, "point colour only as the --lvs-point token (light + dark text accent)");
 });
 
 test("existing LIVON web service and other pages are untouched by the renderer's outputs", () => {
@@ -185,4 +204,15 @@ test("existing LIVON web service and other pages are untouched by the renderer's
   assert.match(read("livon/index.html"), /lv-hm-display--brand/);
   // the legacy /{lang}/lifestage/ redirect stubs still point to the overview
   for (const lang of LANGS) assert.match(read(`${lang}/lifestage/index.html`), new RegExp(`url=/${lang}/livon/`));
+});
+
+test("every LIVON page opens with the same film hero (same video), sub pages compact, then the shared sub-menu", () => {
+  const video = page("ko", "overview").match(/<video class="nls-film__video" src="([^"]+)"/)[1];
+  for (const lang of LANGS) for (const p of LIVON_SITE_PAGES) {
+    const main = page(lang, p.id).match(/<section id="lifestage-detail"[\s\S]*<\/section>/)[0];
+    assert.match(main, /^<section[^>]*>\s*<div class="nls-film( lvs-film--compact)?" data-nls-film/, `${lang}/${p.id}`);
+    assert.ok(main.includes(`src="${video}"`), `${lang}/${p.id} video`);
+    assert.equal(p.id === "overview", !main.includes("lvs-film--compact"), `${lang}/${p.id} compact`);
+    assert.ok(main.indexOf('<nav class="fsn"') > main.indexOf("nls-film__lockup"), `${lang}/${p.id} subnav under hero`);
+  }
 });

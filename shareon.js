@@ -1,71 +1,33 @@
-/* SHAREON pages — progressive enhancement only (category tabs, hypothetical revenue calculator). No network calls. */
+/* SHAREON pages — progressive enhancement only. No network calls.
+   Business page: highlights the sticky group index entry for the group currently on screen.
+   Everything else (FAQ <details>, anchors) works without JS. */
 (function () {
   "use strict";
   var root = document.getElementById("shareon-detail");
-  if (!root) return;
+  if (!root || !("IntersectionObserver" in window)) return;
 
-  /* Tabs: without JS every panel stays visible; with JS they become an ARIA tab set (arrow keys, Home/End). */
-  Array.prototype.forEach.call(root.querySelectorAll("[data-nsh-tabs]"), function (box) {
-    var list = box.querySelector("[data-nsh-tablist]");
-    if (!list) return;
-    var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
-    var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute("aria-controls")); });
-    list.hidden = false;
-    box.classList.add("is-enhanced");
-    panels.forEach(function (p, i) {
-      if (!p) return;
-      p.setAttribute("role", "tabpanel");
-      p.setAttribute("aria-labelledby", tabs[i].id);
-      p.setAttribute("tabindex", "0");
+  Array.prototype.forEach.call(root.querySelectorAll("[data-nsh-groups]"), function (box) {
+    var links = {};
+    Array.prototype.forEach.call(box.querySelectorAll("[data-nsh-group-link]"), function (a) {
+      links[a.getAttribute("data-nsh-group-link")] = a;
     });
-    function select(i, focus) {
-      tabs.forEach(function (t, j) {
-        var on = i === j;
-        t.setAttribute("aria-selected", on ? "true" : "false");
-        t.tabIndex = on ? 0 : -1;
-        if (panels[j]) panels[j].hidden = !on;
+    var groups = box.querySelectorAll("[data-nsh-group]");
+    if (!groups.length) return;
+    function mark(id) {
+      Object.keys(links).forEach(function (k) {
+        if (k === id) links[k].setAttribute("aria-current", "true");
+        else links[k].removeAttribute("aria-current");
       });
-      if (focus) tabs[i].focus();
     }
-    tabs.forEach(function (t, i) {
-      t.addEventListener("click", function () { select(i, false); });
-      t.addEventListener("keydown", function (ev) {
-        var k = ev.key, n = tabs.length, to = -1;
-        if (k === "ArrowRight" || k === "ArrowDown") to = (i + 1) % n;
-        else if (k === "ArrowLeft" || k === "ArrowUp") to = (i - 1 + n) % n;
-        else if (k === "Home") to = 0;
-        else if (k === "End") to = n - 1;
-        if (to < 0) return;
-        ev.preventDefault();
-        select(to, true);
-      });
-    });
-    select(0, false);
-  });
-
-  /* Calculator: GMV = count × average; fee = GMV × rate. Purely illustrative, values stay in the page. */
-  Array.prototype.forEach.call(root.querySelectorAll("[data-nsh-calc]"), function (box) {
-    var locale = box.getAttribute("data-lang") || "en-US";
-    var fmt;
-    try { fmt = new Intl.NumberFormat(locale); } catch (err) { fmt = { format: String }; }
-    function val(name, max) {
-      var el = box.querySelector('[data-nsh-calc-in="' + name + '"]');
-      var v = parseFloat(el && el.value);
-      if (!isFinite(v) || v < 0) v = 0;
-      return Math.min(v, max);
-    }
-    function out(name, v) {
-      var el = box.querySelector('[data-nsh-calc-out="' + name + '"]');
-      if (el) el.textContent = fmt.format(Math.round(v));
-    }
-    function update() {
-      var gmv = val("count", 1e7) * val("avg", 1e8);
-      out("gmv", gmv);
-      out("fee", (gmv * val("rate", 100)) / 100);
-    }
-    box.addEventListener("input", update);
-    var form = box.querySelector("form");
-    if (form) form.addEventListener("submit", function (ev) { ev.preventDefault(); update(); });
-    update();
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) mark(en.target.getAttribute("data-nsh-group"));
+        });
+      },
+      { rootMargin: "-35% 0px -55% 0px", threshold: 0 }
+    );
+    Array.prototype.forEach.call(groups, function (g) { io.observe(g); });
+    mark(groups[0].getAttribute("data-nsh-group"));
   });
 })();

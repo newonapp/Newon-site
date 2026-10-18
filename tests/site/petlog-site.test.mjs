@@ -29,17 +29,17 @@ test("five PETLOG pages exist in all nine locales with SEO basics", () => {
   }
 });
 
-test("section counts follow the final plan: 6 journey stages, 18 services, 20 business lines in 8 groups, 14 partner types, 11 inquiry types", () => {
+test("section counts follow the plan: 6 journey stages, 18 services, 20 business lines in 8 pillars, 14 partner types, 16 inquiry types", () => {
   const count = (html, re) => (main(html).match(re) || []).length;
   for (const lang of ["ko", "en"]) {
     assert.equal(count(read(`${lang}/petlog/index.html`), /data-nls-decade-card=/g), 6, `${lang} journey`);
     assert.equal(count(read(`${lang}/petlog/platform/index.html`), /class="nls-status" data-status=/g), 18, `${lang} services`);
     const biz = read(`${lang}/petlog/business/index.html`);
-    assert.equal(count(biz, /<article class="nls-(?:board|signal)__item" id="line-\d\d"/g), 20, `${lang} business lines`);
+    assert.equal(count(biz, /<article class="pl-line" id="line-\d\d"/g), 20, `${lang} business lines`);
     assert.equal(count(biz, /data-nls-decade-card=/g), 8, `${lang} business groups`);
-    assert.equal(count(read(`${lang}/petlog/partnerships/index.html`), /<article class="nls-board__item" id="partner-\d\d"/g), 14, `${lang} partners`);
+    assert.equal(count(read(`${lang}/petlog/partnerships/index.html`), /<details class="pl-acc__item" id="partner-\d\d"/g), 14, `${lang} partners`);
     const sel = read(`${lang}/petlog/contact/index.html`).match(/<select id="bz-type"[\s\S]*?<\/select>/)[0];
-    assert.equal((sel.match(/<option value="[^"]+"/g) || []).length, 11, `${lang} inquiry types`);
+    assert.equal((sel.match(/<option value="[^"]+"/g) || []).length, 16, `${lang} inquiry types`);
   }
 });
 
@@ -53,9 +53,9 @@ test("no unconfirmed price or fee is published; services and business lines carr
     const plat = read(`${lang}/petlog/platform/index.html`);
     const st = [...main(plat).matchAll(/class="nls-status" data-status="([a-z]+)"/g)].map((m) => m[1]);
     assert.equal(st.filter((s) => s === "app").length, 6, `${lang} only the six shipped app features are marked as in the app`);
-    assert.ok(st.every((s) => ["app", "prep", "plan", "legal"].includes(s)));
+    assert.ok(st.every((s) => ["app", "prep", "plan", "dir", "legal"].includes(s)));
     const biz = main(read(`${lang}/petlog/business/index.html`));
-    for (const m of biz.matchAll(/<article class="nls-(?:board|signal)__item" id="line-\d\d"[\s\S]*?<\/article>/g)) assert.match(m[0], /class="nls-status" data-status=/);
+    for (const m of biz.matchAll(/<article class="pl-line" id="line-\d\d"[\s\S]*?<\/article>/g)) assert.match(m[0], /class="nls-status" data-status=/);
   }
 });
 
@@ -74,6 +74,18 @@ test("no app feature on the web: only the shared Newon inquiry form, no login/or
         assert.equal(forms.length, 0, `${lang}/${p} must not contain a form`);
       }
       assert.doesNotMatch(html, /type="password"|name="card|data-checkout|data-booking-submit/);
+    }
+  }
+});
+
+test("one topic per page: the Overview carries no service, business-line, partner or inquiry lists; every page has the PETLOG wordmark", () => {
+  for (const lang of ["ko", "en"]) {
+    const ov = main(read(`${lang}/petlog/index.html`));
+    assert.doesNotMatch(ov, /class="pl-row"|class="pl-line"|class="pl-acc__item"|id="bz-type"/, `${lang} overview repeats a list`);
+    for (const p of PETLOG_SITE_PATHS) {
+      const html = read(`${lang}/${p}/index.html`);
+      assert.match(html, /<p class="nls-film__wordmark" lang="en">PETLOG<\/p>/, `${lang}/${p} wordmark`);
+      assert.match(html, /class="fsn/, `${lang}/${p} sub-menu`);
     }
   }
 });

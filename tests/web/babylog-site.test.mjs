@@ -6,6 +6,7 @@
  * BL-4 a form control fails the check
  * BL-5 an unverified store URL fails the check
  * BL-6 the copy module carries no price or internal revenue figure
+ * BL-7/8 child-safety guards · BL-9 copy follows the content master plan (counts)
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -50,7 +51,7 @@ test("BL-1 committed BABYLOG pages pass the full static check", () => {
 test("BL-2 a price in a public BABYLOG page fails the check", () => {
   const d = scratch();
   try {
-    mutate(d, "ko/babylog/business/index.html", (h) => h.replace("확정된 요금은 없습니다.", "월 ₩19,900 확정."));
+    mutate(d, "ko/babylog/business/index.html", (h) => h.replace("이 페이지는 가격을 공개하지 않습니다.", "월 ₩19,900 확정."));
     const r = run(d);
     assert.notEqual(r.status, 0);
     assert.match(r.stdout, /FAIL revenue ko\/business/);
@@ -62,7 +63,7 @@ test("BL-2 a price in a public BABYLOG page fails the check", () => {
 test("BL-3 a missing menu item fails the check", () => {
   const d = scratch();
   try {
-    mutate(d, "en/babylog/platform/index.html", (h) => h.replace(/<li><a class="bl-subnav__link[^"]*" href="\/en\/babylog\/contact\/">[\s\S]*?<\/a><\/li>/, ""));
+    mutate(d, "en/babylog/platform/index.html", (h) => h.replace(/<li><a class="fsn__a" href="\/en\/babylog\/contact\/"[\s\S]*?<\/a><\/li>/, ""));
     const r = run(d);
     assert.notEqual(r.status, 0);
     assert.match(r.stdout, /FAIL menu en\/platform/);
@@ -74,7 +75,7 @@ test("BL-3 a missing menu item fails the check", () => {
 test("BL-4 a form control in a BABYLOG page fails the check", () => {
   const d = scratch();
   try {
-    mutate(d, "de/babylog/contact/index.html", (h) => h.replace('<ul class="bl-cards">', '<form><input name="email"></form><ul class="bl-cards">'));
+    mutate(d, "de/babylog/contact/index.html", (h) => h.replace('<ol class="bl-ctable__list">', '<form><input name="email"></form><ol class="bl-ctable__list">'));
     const r = run(d);
     assert.notEqual(r.status, 0);
     assert.match(r.stdout, /FAIL info-only de\/contact/);
@@ -127,20 +128,23 @@ test("BL-8 removing the emergency routing note from a child-safety page fails th
   }
 });
 
-test("BL-9 the expansion copy has 32 groups, 12 + 14 partner types and no price or internal figure", async () => {
-  const m = await import("../../scripts/babylog-expansion-copy.mjs");
+test("BL-9 the copy follows the content master plan: 21 services, 32 businesses, 15 partner and 17 contact categories", async () => {
+  const m = await import("../../scripts/babylog-site-copy.mjs");
+  assert.equal(m.PLATFORM_STATUS.length, 21);
+  assert.equal(m.BUSINESS_STATUS.length, 32);
+  assert.equal(m.PARTNER_CODES.length, 15);
+  assert.equal(m.CONTACT_CODES.length, 17);
   for (const lang of ["ko", "en"]) {
-    const c = m.getExpansionCopy(lang);
-    assert.equal(c.business.groups.items.length + c.csGroups.length, 32);
-    assert.equal(c.csGroups.length, 8);
-    assert.equal(c.partnerships.cs.items.length, 12);
-    assert.equal(c.partnerships.industry.items.length, 14);
-    assert.equal(c.platform.screens.groups.reduce((n, g) => n + g.items.length, 0), 20);
-    assert.equal(c.business.groups.cats.reduce((n, x) => n + x.groups.length, 0), 32);
-  }
-  const src = fs.readFileSync(path.join(ROOT, "scripts", "babylog-expansion-copy.mjs"), "utf8");
-  const body = src.slice(src.indexOf("const KO ="));
-  for (const re of [/₩\s?\d/, /\d[\d,]*\s?원(?!칙)/, /\d+\s?%/, /19,?900/, /169,?000/, /179,?000/]) {
-    assert.ok(!re.test(body), `expansion copy matches ${re}`);
+    const c = m.getBabylogCopy(lang);
+    assert.equal(c.platform.groups.reduce((n, g) => n + g.items.length, 0), 21);
+    assert.deepEqual(c.platform.groups.map((g) => g.id), m.PLATFORM_GROUP_CODES);
+    assert.equal(c.business.groups.length, 8);
+    assert.equal(c.business.groups.reduce((n, g) => n + g.items.length, 0), 32);
+    assert.equal(c.business.models.rows.length, 5);
+    assert.equal(c.partnerships.cats.items.length, 15);
+    assert.equal(c.partnerships.principles.items.length, 6);
+    assert.equal(c.contact.cats.items.length, 17);
+    assert.equal(c.overview.journey.items.length, 7);
+    assert.equal(c.overview.core.items.length, 6);
   }
 });

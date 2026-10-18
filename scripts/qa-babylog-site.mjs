@@ -6,7 +6,8 @@
  *
  * Checks (each prints PASS / FAIL; exit 1 on any FAIL):
  *   menu        5 menu links on every page, exact hrefs, one aria-current on the right item
- *   sections    every specified section/detail is present (counts + ids)
+ *   sections    every section of the content master plan is present (counts + ids), and each menu page shows
+ *               ONLY its own content (no platform rows / business rows / partner tiles / contact rows elsewhere)
  *   seo         unique title/description per page, canonical, 9 hreflang + x-default, og:*, JSON-LD parses
  *   a11y        one h1, no heading level skips, labelled nav/landmarks, no empty links/buttons
  *   info-only   no form/input/select/textarea/password/payment controls
@@ -21,8 +22,7 @@ import path from "path";
 import crypto from "crypto";
 import { execFileSync } from "child_process";
 import { fileURLToPath } from "url";
-import { BL_NAV, PARTNER_CODES, CONTACT_CODES, BIZ_CODES } from "./babylog-site-copy.mjs";
-import { CS_PARTNER_CODES, IND_PARTNER_CODES, CONTACT_MORE_CODES, CONTACT_CS_CODES, CS_GROUP_CODES } from "./babylog-expansion-copy.mjs";
+import { BL_NAV, PARTNER_CODES, CONTACT_CODES, PLATFORM_GROUP_CODES } from "./babylog-site-copy.mjs";
 import { BUSINESS } from "./six-businesses.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -90,56 +90,68 @@ for (const p of pages) {
     const j = body.indexOf("</section>", i);
     return body.slice(i, j > 0 ? j : undefined);
   };
+  const pad = (i) => String(i).padStart(2, "0");
+  const lackOf = (list) => list.filter((i) => !ids.has(i));
+  // Content that belongs to one menu page only (ONGIL-style: each sub-menu shows only its own content).
+  const foreign = {
+    platform: count(body, /class="bl-row"/g),
+    business: count(body, /class="bl-brow"/g),
+    partnerships: count(body, /class="bl-tile"/g),
+    contact: count(body, /class="bl-crow"/g),
+  };
+  const leak = Object.entries(foreign).filter(([k, v]) => k !== p.nav.id && v > 0).map(([k, v]) => `${k}:${v}`);
+  const brand = /class="bl-brand"/.test(body);
+  const more = count(body, /class="bl-more__a"/g);
   if (p.nav.id === "overview") {
-    const need = ["bl-vision", "bl-journey", "bl-connect", "bl-daily", "bl-health", "bl-ecosystem", "bl-parent-eco", "bl-solutions", "bl-opportunities", "bl-impact", "bl-newon", "bl-platforms", "bl-close"];
-    const lack = need.filter((i) => !ids.has(i));
-    const stages = count(body, /data-nls-decade-card=/g);
-    const eco = count(body, /nls-proc__item/g);
-    const biz = count(body, /class="bl-link" href="[^"]*#biz-[a-f]"/g);
-    const cats = count(body, /class="bl-link" href="[^"]*#cat-0[1-9]"/g);
-    const ctas = count(body.slice(body.indexOf('id="bl-close"')), /class="nls-btn/g);
-    const imp = sect("bl-impact");
-    const impOk = count(imp, /<li><span>0[1-4]<\/span>/g) === 4 && count(imp, /class="nls-btn/g) === 2 && /#cat-09/.test(imp) && /#bl-cs-partners/.test(imp) && /bl-status|nls-note/.test(imp);
-    const sol = count(sect("bl-solutions"), /nls-pipe__item/g);
-    const pl = count(sect("bl-platforms"), /<li><span>0[1-6]<\/span>/g);
-    secOk = !lack.length && stages === 6 && eco === 4 && biz === 6 && cats === 9 && ctas === 3 && impOk && sol === 5 && pl === 6 && /story-babylog-title/.test(body);
-    secInfo = `missing ${lack.join(",") || "-"}, stages ${stages}, ecosystem ${eco}, business links ${biz}, category links ${cats}, impact ${impOk}, solutions ${sol}, platforms ${pl}, next-step CTAs ${ctas}`;
+    const lack = lackOf(["bl-about", "bl-mission", "bl-journey", "bl-core", "bl-family", "bl-beyond", "bl-commit", "bl-close"]);
+    const tl = count(sect("bl-journey"), /class="bl-tl__item"/g);
+    const core = count(sect("bl-core"), /class="bl-matrix__cell"/g);
+    const coreSt = count(sect("bl-core"), /<div class="bl-matrix__top">[\s\S]*?bl-status--/g);
+    const mission = count(sect("bl-mission"), /class="bl-mission__n"/g);
+    const commit = count(sect("bl-commit"), /<li><svg class="bl-check"/g);
+    const roles = count(sect("bl-family"), /class="bl-orbit__role /g);
+    const chain = count(sect("bl-beyond"), /class="bl-chain__t"/g);
+    const ctas = count(sect("bl-close"), /class="nls-btn/g);
+    secOk = !lack.length && tl === 7 && core === 6 && coreSt === 6 && mission === 5 && commit === 6 && roles === 3 && chain === 5 && ctas === 3;
+    secInfo = `missing ${lack.join(",") || "-"}, journey ${tl}/7, core ${core}/6 (status ${coreSt}), mission ${mission}/5, commitment ${commit}/6, family roles ${roles}, chain ${chain}/5, next-step CTAs ${ctas}/3`;
   } else if (p.nav.id === "platform") {
-    const need = ["screens", "growth", "records", "family", "learning", "memories", "assist", "explore", "trust", "cs", ...CS_GROUP_CODES.map((c) => "cs-" + c)].map((x) => "bl-" + x).concat("bl-access", "bl-close");
-    const lack = need.filter((i) => !ids.has(i));
-    const screens = count(sect("bl-screens"), /class="nls-board__item bl-screen"/g);
-    const csRail = count(sect("bl-cs"), /class="bl-rail__link"/g);
-    const csPlan = CS_GROUP_CODES.every((c) => /bl-status--plan/.test(sect("bl-cs-" + c)));
-    secOk = !lack.length && screens === 20 && csRail === 8 && csPlan && /story-babylog-title/.test(body);
-    secInfo = `missing ${lack.join(",") || "-"}, screens ${screens}/20, child-safety jump links ${csRail}/8, all 8 marked plan ${csPlan}`;
+    const lack = lackOf([...PLATFORM_GROUP_CODES.map((c) => "bl-grp-" + c), ...Array.from({ length: 21 }, (_, i) => "bl-svc-" + pad(i + 1)), "bl-groups", "bl-access", "bl-close"]);
+    const rows = count(body, /class="bl-row"/g);
+    const st = count(body, /<div class="bl-row__st"><span class="bl-status bl-status--(live|prep|plan)"/g);
+    const idx = count(body, /class="bl-gidx__a"/g);
+    const med = /id="bl-svc-07"[\s\S]*?bl-row__note--medical[\s\S]*?id="bl-svc-08"/.test(body);
+    const sh = /id="bl-svc-16"[\s\S]*?bl-row__note--shareon[\s\S]*?id="bl-svc-17"/.test(body);
+    secOk = !lack.length && rows === 21 && st === 21 && idx === 5 && med && sh;
+    secInfo = `missing ${lack.join(",") || "-"}, service rows ${rows}/21 (status ${st}), group index ${idx}/5, medical note on 07 ${med}, SHAREON note on 16 ${sh}`;
   } else if (p.nav.id === "business") {
-    const arts = BIZ_CODES.map((c) => `biz-${c}`);
-    const cats = Array.from({ length: 9 }, (_, i) => `cat-0${i + 1}`);
-    const grps = Array.from({ length: 32 }, (_, i) => `grp-${String(i + 1).padStart(2, "0")}`);
-    const lack = [...arts, ...cats, ...grps, "bl-phases", "bl-groups"].filter((i) => !ids.has(i));
-    const dts = count(sect("bl-biz"), /<dt>/g);
-    const ctaLinks = count(sect("bl-biz"), /class="bl-biz__cta"/g);
-    const csCards = count(body, /class="bl-grp bl-grp--cs"/g);
-    const cat9 = sect("cat-09");
-    const cat9Plan = count(cat9, /bl-status--plan/g) === 8 && /bl-emergency/.test(cat9);
-    const phases = count(sect("bl-phases"), /nls-pipe__item/g);
-    secOk = !lack.length && dts === 7 * 6 && ctaLinks === 6 && csCards === 8 && cat9Plan && phases === 5 && count(body, /class="bl-grp(?: bl-grp--cs)?" aria-labelledby/g) === 32;
-    secInfo = `missing ${lack.join(",") || "-"}, six-area dt ${dts}/42, child-safety cards ${csCards}/8, category 09 plan+emergency ${cat9Plan}, phases ${phases}`;
+    const lack = lackOf([...Array.from({ length: 8 }, (_, i) => "grp-" + pad(i + 1)), ...Array.from({ length: 32 }, (_, i) => "biz-" + pad(i + 1)), "bl-bintro", "bl-groups", "bl-models", "bl-revenue", "bl-close"]);
+    const rows = count(body, /class="bl-brow"/g);
+    const st = count(body, /<div class="bl-brow__st"><span class="bl-status bl-status--(live|prep|plan)"/g);
+    const rail = count(body, /class="bl-rail__a"/g);
+    const models = count(sect("bl-models"), /<tr><th scope="row"/g);
+    const rule = /class="bl-rule"/.test(sect("bl-revenue"));
+    secOk = !lack.length && rows === 32 && st === 32 && rail === 8 && models === 5 && rule;
+    secInfo = `missing ${lack.join(",") || "-"}, business rows ${rows}/32 (status ${st}), group jump links ${rail}/8, models ${models}/5, never-monetized rule ${rule}`;
   } else if (p.nav.id === "partnerships") {
-    const arts = [...PARTNER_CODES, ...IND_PARTNER_CODES, ...CS_PARTNER_CODES].map((c) => `partner-${c}`);
-    const lack = arts.filter((i) => !ids.has(i));
-    const dts = count(body, /<dt>/g);
-    const steps = count(body, /nls-pipe__item/g);
-    const rail = count(body, /bl-rail__link/g);
-    secOk = !lack.length && dts === 5 * 8 + 3 * 14 + 4 * 12 && steps === 5 && rail === 8 + 14 + 12 && ids.has("bl-cs-partners") && ids.has("bl-industry");
-    secInfo = `missing ${lack.join(",") || "-"}, dt ${dts}/${5 * 8 + 3 * 14 + 4 * 12}, steps ${steps}, jump links ${rail}/34`;
+    const lack = lackOf([...PARTNER_CODES.map((c) => "partner-" + c), "bl-cats", "bl-why", "bl-principles", "bl-process", "bl-close"]);
+    const tiles = count(body, /class="bl-tile"/g);
+    const tileLinks = [...body.matchAll(/class="bl-tile__a" href="([^"]+)"/g)].map((m) => (m[1].match(/source=babylog-partnerships-([a-z-]+)/) || [])[1]);
+    const princ = count(sect("bl-principles"), /class="bl-princ__n"/g);
+    const steps = count(sect("bl-process"), /class="bl-steps__n"/g);
+    const pts = count(sect("bl-why"), /<li><span>0[1-5]<\/span>/g);
+    const review = /bl-status--review/.test(sect("bl-cats"));
+    secOk = !lack.length && tiles === 15 && JSON.stringify(tileLinks) === JSON.stringify(PARTNER_CODES) && princ === 6 && steps === 5 && pts === 5 && review;
+    secInfo = `missing ${lack.join(",") || "-"}, categories ${tiles}/15, category inquiry codes ${tileLinks.filter(Boolean).length}/15, principles ${princ}/6, steps ${steps}/5, why points ${pts}/5, review label ${review}`;
   } else {
-    const cards = [...body.matchAll(/class="bl-card" href="([^"]+)"/g)].map((m) => m[1]);
-    const codes = cards.map((c) => (c.match(/source=babylog-contact-([a-z]+)/) || [])[1]);
-    const want = [...CONTACT_CODES, ...CONTACT_MORE_CODES, ...CONTACT_CS_CODES];
-    secOk = cards.length === 24 && JSON.stringify(codes) === JSON.stringify(want) && /bl-emergency/.test(sect("bl-contact-cs"));
-    secInfo = `cards ${cards.length}/24, codes ${codes.join(",")}`;
+    const rowsH = [...body.matchAll(/class="bl-crow" href="([^"]+)"/g)].map((m) => m[1]);
+    const codes = rowsH.map((c) => (c.match(/source=babylog-contact-([a-z-]+)/) || [])[1]);
+    const card = /class="bl-ccard"/.test(body) && /href="mailto:newon@newon.app"/.test(body);
+    const lack = lackOf(["bl-cats", "bl-guide", "bl-close"]);
+    secOk = !lack.length && rowsH.length === 17 && JSON.stringify(codes) === JSON.stringify(CONTACT_CODES) && card && /bl-emergency/.test(sect("bl-guide"));
+    secInfo = `missing ${lack.join(",") || "-"}, categories ${rowsH.length}/17, codes ${codes.join(",")}, NEWON contact card ${card}`;
   }
+  secOk = secOk && leak.length === 0 && brand && more === 4;
+  secInfo += `, other pages' content ${leak.join(",") || "none"}, brand sign-off ${brand}, menu strip ${more}/4`;
   rec(`sections ${tag}`, secOk, secInfo);
 
   /* ---- seo ---- */
@@ -182,8 +194,9 @@ for (const p of pages) {
 
   /* ---- child safety: plan label, emergency routing, no external links, no child imagery ---- */
   {
-    const hasPlan = /bl-status--plan|nls-note/.test(body) && body.includes(p.lang === "ko" ? "비전과 계획" : "vision and plan");
-    const emerg = p.nav.id === "overview" ? true : /bl-emergency/.test(body);
+    const csPage = ["platform", "business", "contact"].includes(p.nav.id);
+    const hasPlan = !["platform", "business"].includes(p.nav.id) || body.includes(p.lang === "ko" ? "공식 기관 연결을 중심으로 하는 추진 분야" : "planned areas focused on official information");
+    const emerg = !csPage || /bl-emergency/.test(body);
     const ext = [...body.matchAll(/ href="(https?:[^"]+)"/g)].map((m) => m[1]).filter((u) => !/apps\.apple\.com|play\.google\.com/.test(u));
     // The owner-chosen first-screen background film (landscape, no children) is the only allowed media.
     const bodyNoHeroFilm = body.replace(/<video class="nls-film__video"[\s\S]*?<\/video>/, "");
@@ -201,8 +214,8 @@ for (const p of pages) {
   rec(`revenue ${tag}`, bad.length === 0, bad.length ? `price/fee pattern: ${bad.map(String).join(" ")}` : "no price, rate or internal figure");
 
   /* ---- status & translation ---- */
-  const labels = ["released", "direction", "review"].filter((k) => body.includes(`bl-status--${k}`));
-  const needLabels = p.nav.id === "platform" ? 3 : p.nav.id === "business" ? 2 : 0;
+  const labels = ["live", "prep", "plan"].filter((k) => body.includes(`bl-status--${k}`));
+  const needLabels = ["overview", "platform", "business"].includes(p.nav.id) ? 3 : 0;
   const fb = !["ko", "en"].includes(p.lang);
   const langAttr = /id="lifestage-detail"[^>]*\slang="en"/.test(body);
   rec(`status ${tag}`, labels.length >= needLabels && langAttr === fb, `labels ${labels.join(",") || "-"}, fallback lang=en ${langAttr} (expected ${fb})`);
