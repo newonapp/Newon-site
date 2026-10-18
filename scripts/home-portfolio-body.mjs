@@ -13,6 +13,7 @@ import { getLifeStageCopy } from "./home-lifestage-copy.mjs";
 import { getOngilCopy } from "./home-ongil-copy.mjs";
 import { getBusinessFilmCopy } from "./business-film-copy.mjs";
 import { getEcosystemCopy } from "./ecosystem-copy.mjs";
+import { STUDIO_FILM_SRC, getStudioFilmCopy } from "./studio-film-copy.mjs";
 
 const FILM = {
   consumer:
@@ -28,6 +29,9 @@ const FILM = {
     "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4",
   games:
     "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_230900_ef8565a6-16eb-4fe9-98e4-4b972d3f436d.mp4",
+  studio: STUDIO_FILM_SRC,
+  partnerships:
+    "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4",
 };
 
 function href(lang, path) {
@@ -66,6 +70,11 @@ function filmLockup(id, lang) {
     business: { wordmark: "Newon Business", slogan: business.sloganHtml },
     commerce: { wordmark: "Newon<br>Ecosystem", slogan: eco.sloganHtml },
     games: { wordmark: "404:<br>HUMAN", slogan: gamesSlogan },
+    studio: { wordmark: "Newon<br>Studio", slogan: getStudioFilmCopy(lang).sloganHtml },
+    partnerships: {
+      wordmark: "Partnerships",
+      slogan: lang === "ko" ? "함께할 때,<br>사업은 더 멀리 갑니다." : "Together,<br>business goes further.",
+    },
   };
   return map[id] || { wordmark: "", slogan: "" };
 }
