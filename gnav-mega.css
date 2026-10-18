@@ -1366,7 +1366,10 @@ body.gnav-mega-open { overflow: visible; }
 
   .gnav.site-header.gnav--ventures .gnav-mega[data-gnav-mega="lifestage"],
   .gnav.site-header.gnav--ventures .gnav-mega[data-gnav-mega="ongil"],
-  .gnav.site-header.gnav--ventures .gnav-mega[data-gnav-mega="petlog"] {
+  .gnav.site-header.gnav--ventures .gnav-mega[data-gnav-mega="petlog"],
+  .gnav.site-header.gnav--ventures .gnav-mega[data-gnav-mega="babylog"],
+  .gnav.site-header.gnav--ventures .gnav-mega[data-gnav-mega="myworld"],
+  .gnav.site-header.gnav--ventures .gnav-mega[data-gnav-mega="shareon"] {
     top: var(--gnav-h);
   }
 }
