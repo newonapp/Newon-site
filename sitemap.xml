@@ -7839,42 +7839,56 @@
   <url>
     <loc>https://www.newon.app/ko/myworld/platform/</loc>
     <lastmod>2026-10-18</lastmod>
+    <loc>https://www.newon.app/ko/ongil/platform/</loc>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/myworld/platform/</loc>
     <lastmod>2026-10-18</lastmod>
+    <loc>https://www.newon.app/ko/ongil/business/</loc>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/myworld/platform/</loc>
     <lastmod>2026-10-18</lastmod>
+    <loc>https://www.newon.app/ko/ongil/partnerships/</loc>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/myworld/platform/</loc>
     <lastmod>2026-10-18</lastmod>
+    <loc>https://www.newon.app/ko/ongil/contact/</loc>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/myworld/platform/</loc>
     <lastmod>2026-10-18</lastmod>
+    <loc>https://www.newon.app/en/ongil/platform/</loc>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/myworld/platform/</loc>
     <lastmod>2026-10-18</lastmod>
+    <loc>https://www.newon.app/en/ongil/business/</loc>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/myworld/platform/</loc>
     <lastmod>2026-10-18</lastmod>
+    <loc>https://www.newon.app/en/ongil/partnerships/</loc>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -8049,7 +8063,10 @@
   <url>
     <loc>https://www.newon.app/id/myworld/contact/</loc>
     <lastmod>2026-10-18</lastmod>
+    <loc>https://www.newon.app/en/ongil/contact/</loc>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 </urlset>
+

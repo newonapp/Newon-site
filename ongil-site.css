@@ -1,0 +1,952 @@
+/* ONGIL corporate website — scoped to #ongil-site.
+ * Life Stage language: white/black, wide space, large type, thin lines, small English labels, numbered sections.
+ * ONGIL Warm Apricot is a point colour only: #E99465 for marks and rules (never body text on white),
+ * #A84E24 for text/links that need colour (≈6:1 on white), #FFF3EB as a light wash.
+ */
+.hub-page:has(#ongil-site) {
+  padding: 0;
+  max-width: none;
+  overflow-x: clip;
+}
+
+#ongil-site.ogs {
+  --ogs-ink: #171717;
+  --ogs-muted: #4a4a4a;
+  --ogs-faint: #626262;
+  --ogs-line: #e8e8e8;
+  --ogs-line-strong: #cfcfcf;
+  --ogs-paper: #ffffff;
+  --ogs-wash: #fff3eb;
+  --ogs-apricot: #e99465;
+  --ogs-apricot-ink: #a84e24;
+  --ogs-btn: #171717;
+  --ogs-btn-ink: #ffffff;
+  --ogs-plan: #6b6b6b;
+  background: var(--ogs-paper);
+  color: var(--ogs-ink);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+#ongil-site.ogs :where(h1, h2, h3, p, li, a, span, dt, dd, strong, em) {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+#ongil-site .ogs-wrap {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+#ongil-site [id] {
+  scroll-margin-top: 6rem;
+}
+
+/* ── sub navigation (5 fixed menus) ── */
+#ongil-site .ogs-subnav {
+  border-bottom: 1px solid var(--ogs-line);
+  background: var(--ogs-paper);
+}
+#ongil-site .ogs-subnav__in {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 3.75rem;
+}
+#ongil-site .ogs-subnav__brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  gap: 0.4rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--ogs-ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+#ongil-site .ogs-subnav__brand span::before {
+  content: "";
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-right: 0.45rem;
+  border-radius: 50%;
+  background: var(--ogs-apricot);
+  vertical-align: 0.05em;
+}
+#ongil-site .ogs-subnav__brand em {
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--ogs-faint);
+  font-size: 0.9rem;
+}
+#ongil-site .ogs-subnav__list {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0 0 0 auto;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+#ongil-site .ogs-subnav__list::-webkit-scrollbar {
+  display: none;
+}
+#ongil-site .ogs-subnav__a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  min-height: 44px;
+  padding: 0.7rem 0.8rem;
+  color: var(--ogs-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  font-size: 0.95rem;
+}
+#ongil-site .ogs-subnav__n {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ogs-faint);
+}
+#ongil-site .ogs-subnav__en {
+  font-weight: 600;
+}
+#ongil-site .ogs-subnav__ko {
+  font-size: 0.85rem;
+  color: var(--ogs-faint);
+}
+#ongil-site .ogs-subnav__a:hover {
+  color: var(--ogs-ink);
+}
+#ongil-site .ogs-subnav__a[aria-current="page"] {
+  color: var(--ogs-ink);
+  border-bottom-color: var(--ogs-apricot);
+}
+#ongil-site .ogs-subnav__a[aria-current="page"] .ogs-subnav__n {
+  color: var(--ogs-apricot-ink);
+}
+
+/* ── type ── */
+#ongil-site .ogs-kicker,
+#ongil-site .ogs-label,
+#ongil-site .ogs-dt {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ogs-faint);
+}
+#ongil-site .ogs-kicker__n,
+#ongil-site .ogs-label__n {
+  color: var(--ogs-apricot-ink);
+}
+#ongil-site .ogs-kicker__n::after,
+#ongil-site .ogs-label__n::after {
+  content: "";
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  margin-left: 0.6rem;
+  background: var(--ogs-apricot);
+  vertical-align: middle;
+}
+
+#ongil-site .ogs-hero {
+  padding: clamp(3rem, 8vw, 6.5rem) 0 clamp(2.5rem, 6vw, 4.5rem);
+}
+#ongil-site .ogs-wordmark {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  color: var(--ogs-ink);
+}
+#ongil-site .ogs-wordmark span {
+  margin-left: 0.6rem;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  color: var(--ogs-faint);
+}
+#ongil-site .ogs-hero__title {
+  margin: 0;
+  max-width: 18ch;
+  font-size: clamp(2.25rem, 6.2vw, 4.6rem);
+  line-height: 1.16;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+#ongil-site:lang(en) .ogs-hero__title {
+  max-width: 22ch;
+}
+#ongil-site .ogs-hero__lead {
+  max-width: 44rem;
+  margin: 1.5rem 0 0;
+  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+  color: var(--ogs-muted);
+}
+#ongil-site .ogs-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+#ongil-site .ogs-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin: clamp(2.5rem, 5vw, 3.5rem) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ogs-ink);
+}
+#ongil-site .ogs-facts li {
+  padding: 1rem 1.25rem 0 0;
+  border-right: 1px solid var(--ogs-line);
+}
+#ongil-site .ogs-facts li + li {
+  padding-left: 1.25rem;
+}
+#ongil-site .ogs-facts li:last-child {
+  border-right: 0;
+}
+#ongil-site .ogs-facts span {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ogs-apricot-ink);
+}
+#ongil-site .ogs-facts strong {
+  display: block;
+  margin-top: 0.3rem;
+  font-weight: 600;
+}
+
+/* ── buttons ── */
+#ongil-site .ogs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.75rem 1.35rem;
+  border: 1px solid var(--ogs-btn);
+  border-radius: 999px;
+  background: var(--ogs-btn);
+  color: var(--ogs-btn-ink);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  line-height: 1.2;
+}
+#ongil-site .ogs-btn:hover {
+  background: #000;
+}
+#ongil-site .ogs-btn--ghost,
+#ongil-site .ogs-btn--line {
+  background: transparent;
+  color: var(--ogs-ink);
+}
+#ongil-site .ogs-btn--ghost:hover,
+#ongil-site .ogs-btn--line:hover {
+  background: var(--ogs-wash);
+}
+#ongil-site .ogs-btn--line {
+  border-color: var(--ogs-line-strong);
+}
+#ongil-site a:focus-visible,
+#ongil-site .ogs-btn:focus-visible {
+  outline: 3px solid var(--ogs-apricot-ink);
+  outline-offset: 3px;
+}
+
+/* ── sections ── */
+#ongil-site .ogs-sec {
+  padding: clamp(3rem, 7vw, 5.5rem) 0;
+  border-top: 1px solid var(--ogs-line);
+}
+#ongil-site .ogs-sec--tint {
+  background: var(--ogs-wash);
+  border-top-color: transparent;
+}
+#ongil-site .ogs-sec--index {
+  padding: clamp(2rem, 4vw, 3rem) 0;
+}
+#ongil-site .ogs-sechead {
+  max-width: 46rem;
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+}
+#ongil-site .ogs-title {
+  margin: 0;
+  font-size: clamp(1.75rem, 3.8vw, 2.8rem);
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+#ongil-site .ogs-lead {
+  margin: 1rem 0 0;
+  color: var(--ogs-muted);
+  font-size: 1.0625rem;
+}
+#ongil-site .ogs-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+#ongil-site .ogs-split .ogs-sechead {
+  margin-bottom: 0;
+}
+#ongil-site .ogs-note {
+  margin: 1.5rem 0 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--ogs-apricot);
+  color: var(--ogs-muted);
+  font-size: 0.975rem;
+  max-width: 52rem;
+}
+#ongil-site .ogs-note--strong {
+  color: var(--ogs-ink);
+  font-weight: 600;
+}
+
+/* grids & cells */
+#ongil-site .ogs-grid {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ogs-ink);
+}
+#ongil-site .ogs-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+#ongil-site .ogs-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+#ongil-site .ogs-cell,
+#ongil-site .ogs-grid > li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem 1.5rem 1.75rem 0;
+  border-bottom: 1px solid var(--ogs-line);
+}
+#ongil-site .ogs-grid--3 > li:not(:nth-child(3n + 1)),
+#ongil-site .ogs-grid--2 > li:nth-child(2n) {
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--ogs-line);
+}
+#ongil-site .ogs-cell h3,
+#ongil-site .ogs-grid h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+#ongil-site .ogs-cell p,
+#ongil-site .ogs-grid p {
+  margin: 0;
+  color: var(--ogs-muted);
+}
+#ongil-site .ogs-cell__n {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ogs-apricot-ink);
+}
+#ongil-site .ogs-cell__k {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ogs-faint) !important;
+}
+#ongil-site .ogs-grid .ogs-btn,
+#ongil-site .ogs-grid .ogs-status {
+  margin-top: auto;
+  align-self: flex-start;
+}
+#ongil-site .ogs-grid .ogs-btn {
+  margin-top: 0.75rem;
+}
+
+/* values */
+#ongil-site .ogs-values {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ogs-ink);
+}
+#ongil-site .ogs-values li {
+  padding: 1.5rem 1.5rem 1.75rem 0;
+  border-bottom: 1px solid var(--ogs-line);
+}
+#ongil-site .ogs-values li:not(:nth-child(3n + 1)) {
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--ogs-line);
+}
+#ongil-site .ogs-values__n {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ogs-apricot-ink);
+}
+#ongil-site .ogs-values__en {
+  margin: 0.5rem 0 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+#ongil-site .ogs-values__ko {
+  margin: 0;
+  color: var(--ogs-faint);
+  font-weight: 600;
+}
+#ongil-site .ogs-values__t {
+  margin: 0.6rem 0 0;
+  color: var(--ogs-muted);
+}
+
+/* steps & flow */
+#ongil-site .ogs-steps,
+#ongil-site .ogs-flow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#ongil-site .ogs-flow {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+#ongil-site .ogs-flow--5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+#ongil-site .ogs-steps li,
+#ongil-site .ogs-flow li {
+  padding-top: 1rem;
+  border-top: 2px solid var(--ogs-ink);
+}
+#ongil-site .ogs-steps li:first-child,
+#ongil-site .ogs-flow li:first-child {
+  border-top-color: var(--ogs-apricot);
+}
+#ongil-site .ogs-steps h3,
+#ongil-site .ogs-flow h3 {
+  margin: 0.4rem 0 0.4rem;
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+#ongil-site .ogs-steps p,
+#ongil-site .ogs-flow p {
+  margin: 0;
+  color: var(--ogs-muted);
+  font-size: 0.975rem;
+}
+#ongil-site .ogs-steps__n,
+#ongil-site .ogs-flow__n {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ogs-apricot-ink);
+}
+
+/* roster (numbered rows) */
+#ongil-site .ogs-roster {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ogs-ink);
+}
+#ongil-site .ogs-roster li {
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  gap: 0.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--ogs-line-strong);
+}
+#ongil-site .ogs-roster span {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ogs-apricot-ink);
+  padding-top: 0.2rem;
+}
+#ongil-site .ogs-roster p {
+  margin: 0;
+}
+#ongil-site .ogs-statusline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: baseline;
+  margin: 1.25rem 0 0;
+  color: var(--ogs-muted);
+  font-size: 0.975rem;
+}
+
+/* link rows (NEWON ecosystem) */
+#ongil-site .ogs-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ogs-ink);
+}
+#ongil-site .ogs-links a {
+  display: grid;
+  grid-template-columns: 3rem minmax(8rem, 0.6fr) minmax(0, 1.4fr) 1.5rem;
+  gap: 1rem;
+  align-items: baseline;
+  min-height: 48px;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--ogs-line);
+  color: var(--ogs-ink);
+  text-decoration: none;
+}
+#ongil-site .ogs-links a:hover .ogs-links__name {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+#ongil-site .ogs-links__n {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ogs-apricot-ink);
+}
+#ongil-site .ogs-links__name {
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+#ongil-site .ogs-links__t {
+  color: var(--ogs-muted);
+}
+
+/* status */
+#ongil-site .ogs-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--ogs-line-strong);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ogs-ink);
+  background: var(--ogs-paper);
+}
+#ongil-site .ogs-status i {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--ogs-plan);
+  flex: none;
+}
+#ongil-site .ogs-status--live i {
+  background: var(--ogs-apricot-ink);
+}
+#ongil-site .ogs-status--partial i {
+  background: var(--ogs-apricot);
+}
+#ongil-site .ogs-status--prep i,
+#ongil-site .ogs-status--plan i {
+  background: transparent;
+  border: 1.5px solid var(--ogs-plan);
+}
+#ongil-site .ogs-legend {
+  margin-top: 1.75rem;
+}
+#ongil-site .ogs-legend__t {
+  margin: 0 0 0.6rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ogs-faint);
+}
+#ongil-site .ogs-legend ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#ongil-site .ogs-legend li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+#ongil-site .ogs-legend__note {
+  color: var(--ogs-faint);
+  font-size: 0.875rem;
+}
+
+/* index (platform / partnerships) */
+#ongil-site .ogs-index {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ogs-ink);
+}
+#ongil-site .ogs-index a {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  column-gap: 0.25rem;
+  min-height: 48px;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--ogs-line);
+  color: var(--ogs-ink);
+  text-decoration: none;
+  font-weight: 700;
+}
+#ongil-site .ogs-index span {
+  grid-row: span 2;
+  font-size: 0.8125rem;
+  color: var(--ogs-apricot-ink);
+  padding-top: 0.15rem;
+}
+#ongil-site .ogs-index em {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--ogs-muted);
+  font-size: 0.95rem;
+}
+#ongil-site .ogs-index a:hover {
+  background: var(--ogs-wash);
+}
+
+/* categories (business) */
+#ongil-site .ogs-cats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ogs-ink);
+}
+#ongil-site .ogs-cats > li {
+  padding: 1.1rem 1.1rem 1.25rem 0;
+  border-bottom: 1px solid var(--ogs-line);
+}
+#ongil-site .ogs-cats > li:not(:nth-child(4n + 1)) {
+  padding-left: 1.1rem;
+  border-left: 1px solid var(--ogs-line);
+}
+#ongil-site .ogs-cats__en {
+  margin: 0;
+  font-weight: 700;
+}
+#ongil-site .ogs-cats__ko {
+  margin: 0;
+  color: var(--ogs-faint);
+  font-size: 0.9rem;
+}
+#ongil-site .ogs-cats ul {
+  margin: 0.6rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+#ongil-site .ogs-cats ul a {
+  display: flex;
+  gap: 0.5rem;
+  min-height: 44px;
+  align-items: center;
+  color: var(--ogs-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+#ongil-site .ogs-cats ul a:hover {
+  color: var(--ogs-ink);
+  text-decoration: underline;
+}
+#ongil-site .ogs-cats ul span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ogs-apricot-ink);
+}
+
+/* items (platform / business / partnerships) */
+#ongil-site .ogs-items {
+  padding-bottom: clamp(2rem, 5vw, 4rem);
+}
+#ongil-site .ogs-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  padding: clamp(2.25rem, 5vw, 3.5rem) 0;
+  border-top: 1px solid var(--ogs-line);
+}
+#ongil-site .ogs-item:first-child {
+  border-top-color: var(--ogs-ink);
+}
+#ongil-site .ogs-item__title {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+#ongil-site .ogs-item__desc {
+  margin: 0.9rem 0 0;
+  color: var(--ogs-muted);
+}
+#ongil-site .ogs-list {
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ogs-line-strong);
+}
+#ongil-site .ogs-list li {
+  position: relative;
+  padding: 0.6rem 0 0.6rem 1.1rem;
+  border-bottom: 1px solid var(--ogs-line);
+}
+#ongil-site .ogs-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.2rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--ogs-apricot);
+}
+#ongil-site .ogs-dl {
+  margin: 0;
+}
+#ongil-site .ogs-dl > div {
+  display: grid;
+  grid-template-columns: minmax(7rem, 0.38fr) minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--ogs-line);
+}
+#ongil-site .ogs-dl--rows {
+  border-top: 1px solid var(--ogs-line-strong);
+}
+#ongil-site .ogs-dl dt {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--ogs-faint);
+}
+#ongil-site .ogs-dl dd {
+  margin: 0;
+}
+#ongil-site .ogs-item__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1.5rem;
+}
+#ongil-site .ogs-top {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ogs-faint);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+#ongil-site .ogs-top:hover {
+  color: var(--ogs-ink);
+  text-decoration: underline;
+}
+
+/* contact */
+#ongil-site .ogs-channel__v a {
+  color: var(--ogs-apricot-ink);
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+#ongil-site .ogs-channel__v a:hover {
+  text-decoration: underline;
+}
+#ongil-site .ogs-types h3 {
+  font-size: 1.15rem;
+}
+
+/* closing + notes */
+#ongil-site .ogs-sec--close {
+  background: var(--ogs-wash);
+  border-top-color: transparent;
+}
+#ongil-site .ogs-foot {
+  padding: 1.75rem 0 2.5rem;
+  border-top: 1px solid var(--ogs-line);
+  color: var(--ogs-faint);
+  font-size: 0.925rem;
+}
+#ongil-site .ogs-foot p {
+  margin: 0.25rem 0;
+}
+
+/* ── responsive ── */
+@media (max-width: 960px) {
+  #ongil-site .ogs-grid--3,
+  #ongil-site .ogs-values,
+  #ongil-site .ogs-index {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #ongil-site .ogs-grid--3 > li,
+  #ongil-site .ogs-values li {
+    padding-left: 0 !important;
+    border-left: 0 !important;
+  }
+  #ongil-site .ogs-grid--3 > li:nth-child(2n),
+  #ongil-site .ogs-values li:nth-child(2n) {
+    padding-left: 1.25rem !important;
+    border-left: 1px solid var(--ogs-line) !important;
+  }
+  #ongil-site .ogs-steps,
+  #ongil-site .ogs-flow,
+  #ongil-site .ogs-flow--5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #ongil-site .ogs-cats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #ongil-site .ogs-cats > li {
+    padding-left: 0 !important;
+    border-left: 0 !important;
+  }
+  #ongil-site .ogs-cats > li:nth-child(2n) {
+    padding-left: 1.1rem !important;
+    border-left: 1px solid var(--ogs-line) !important;
+  }
+  #ongil-site .ogs-split,
+  #ongil-site .ogs-item {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #ongil-site .ogs-subnav__brand em {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  #ongil-site.ogs {
+    font-size: 1.0625rem;
+  }
+  #ongil-site .ogs-wrap {
+    width: calc(100% - 2rem);
+  }
+  #ongil-site .ogs-subnav__in {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding-top: 0.6rem;
+  }
+  #ongil-site .ogs-subnav__list {
+    flex-wrap: wrap;
+    margin: 0 0 0.4rem;
+    overflow: visible;
+  }
+  #ongil-site .ogs-subnav__a {
+    padding: 0.55rem 0.7rem 0.55rem 0;
+  }
+  #ongil-site .ogs-subnav__ko {
+    display: none;
+  }
+  #ongil-site .ogs-grid--3,
+  #ongil-site .ogs-grid--2,
+  #ongil-site .ogs-values,
+  #ongil-site .ogs-index,
+  #ongil-site .ogs-cats,
+  #ongil-site .ogs-steps,
+  #ongil-site .ogs-flow,
+  #ongil-site .ogs-flow--5,
+  #ongil-site .ogs-facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #ongil-site .ogs-grid > li,
+  #ongil-site .ogs-grid--3 > li:nth-child(2n),
+  #ongil-site .ogs-values li,
+  #ongil-site .ogs-values li:nth-child(2n),
+  #ongil-site .ogs-cats > li,
+  #ongil-site .ogs-cats > li:nth-child(2n),
+  #ongil-site .ogs-facts li {
+    padding-left: 0 !important;
+    padding-right: 0;
+    border-left: 0 !important;
+    border-right: 0;
+  }
+  #ongil-site .ogs-facts li {
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--ogs-line);
+  }
+  #ongil-site .ogs-links a {
+    grid-template-columns: 2.25rem minmax(0, 1fr) 1.25rem;
+  }
+  #ongil-site .ogs-links__t {
+    grid-column: 2 / 3;
+  }
+  #ongil-site .ogs-dl > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.15rem;
+  }
+  #ongil-site .ogs-btn {
+    width: 100%;
+  }
+  #ongil-site .ogs-item__cta .ogs-btn {
+    width: auto;
+  }
+}
+
+/* larger text when the visitor zooms / prefers it is handled by rem; motion */
+@media (prefers-reduced-motion: no-preference) {
+  #ongil-site .ogs-btn,
+  #ongil-site .ogs-index a,
+  #ongil-site .ogs-subnav__a {
+    transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #ongil-site * {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media (forced-colors: active) {
+  #ongil-site .ogs-status i {
+    forced-color-adjust: none;
+    border: 1px solid CanvasText;
+  }
+}
+
+/* ── dark mode (site toggle) ── */
+html[data-theme="dark"] #ongil-site.ogs {
+  --ogs-ink: #f2f2f2;
+  --ogs-muted: #c8c8c8;
+  --ogs-faint: #a8a8a8;
+  --ogs-line: #2a2a2a;
+  --ogs-line-strong: #3a3a3a;
+  --ogs-paper: #0f0f0f;
+  --ogs-wash: #1d1612;
+  --ogs-apricot: #e99465;
+  --ogs-apricot-ink: #f0a97f;
+  --ogs-btn: #f2f2f2;
+  --ogs-btn-ink: #111111;
+  --ogs-plan: #9a9a9a;
+}
+html[data-theme="dark"] #ongil-site .ogs-btn:hover {
+  background: #ffffff;
+}
+html[data-theme="dark"] #ongil-site .ogs-btn--ghost:hover,
+html[data-theme="dark"] #ongil-site .ogs-btn--line:hover {
+  background: var(--ogs-wash);
+}
