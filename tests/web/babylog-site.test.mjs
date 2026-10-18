@@ -62,7 +62,7 @@ test("BL-2 a price in a public BABYLOG page fails the check", () => {
 test("BL-3 a missing menu item fails the check", () => {
   const d = scratch();
   try {
-    mutate(d, "en/babylog/platform/index.html", (h) => h.replace(/<li><a class="bl-subnav__link[^"]*" href="\/en\/babylog\/contact\/">[\s\S]*?<\/a><\/li>/, ""));
+    mutate(d, "en/babylog/platform/index.html", (h) => h.replace(/<li><a class="fsn__a" href="\/en\/babylog\/contact\/"[^>]*>[\s\S]*?<\/a><\/li>/, ""));
     const r = run(d);
     assert.notEqual(r.status, 0);
     assert.match(r.stdout, /FAIL menu en\/platform/);
@@ -127,15 +127,15 @@ test("BL-8 removing the emergency routing note from a child-safety page fails th
   }
 });
 
-test("BL-9 the expansion copy has 32 groups, 12 + 14 partner types and no price or internal figure", async () => {
+test("BL-9 the expansion copy has 32 groups, 12 + 15 partner types and no price or internal figure", async () => {
   const m = await import("../../scripts/babylog-expansion-copy.mjs");
   for (const lang of ["ko", "en"]) {
     const c = m.getExpansionCopy(lang);
     assert.equal(c.business.groups.items.length + c.csGroups.length, 32);
     assert.equal(c.csGroups.length, 8);
     assert.equal(c.partnerships.cs.items.length, 12);
-    assert.equal(c.partnerships.industry.items.length, 14);
-    assert.equal(c.platform.screens.groups.reduce((n, g) => n + g.items.length, 0), 20);
+    assert.equal(c.partnerships.industry.items.length, 15);
+    assert.equal(c.platform.screens.groups.reduce((n, g) => n + g.items.length, 0), 21);
     assert.equal(c.business.groups.cats.reduce((n, x) => n + x.groups.length, 0), 32);
   }
   const src = fs.readFileSync(path.join(ROOT, "scripts", "babylog-expansion-copy.mjs"), "utf8");

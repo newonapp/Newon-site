@@ -160,7 +160,7 @@ function bands(list) {
     .join("\n");
 }
 
-/** The 32 business groups: 24 + 8 child-safety groups, with category metadata. */
+/** The 32 business lines: 24 + 8 public welfare / child-safety lines (25-32), with category metadata. */
 function allGroups(C) {
   const g = C.x.business.groups;
   const map = new Map();
@@ -239,7 +239,7 @@ function overviewBody(C, lang) {
         ${titleBlock(X.impact.kicker, X.impact.title, "", 2, "bl-impact-title")}
         <p class="nls-lead">${esc(X.impact.body)}</p>
         <div class="nls-actions">
-          <a class="nls-btn" href="${pagePath(lang, "business")}#cat-09">${esc(X.impact.ctaBusiness)} →</a>
+          <a class="nls-btn" href="${pagePath(lang, "business")}#cat-07">${esc(X.impact.ctaBusiness)} →</a>
           <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "partnerships")}#bl-cs-partners">${esc(X.impact.ctaPartner)}</a>
         </div>
       </div>
@@ -396,7 +396,7 @@ function platformBody(C, lang) {
       csSecs,
       csNote,
       access,
-      closeBlock(C, lang, "platform", { closeKicker: C.contact.closeKicker, closeTitleHtml: C.contact.closeTitleHtml, closeLead: C.contact.closeLead }, ctas),
+      closeBlock(C, lang, "platform", { closeKicker: p.closeKicker || C.contact.closeKicker, closeTitleHtml: p.closeTitleHtml || C.contact.closeTitleHtml, closeLead: p.closeLead || C.contact.closeLead }, ctas),
     ].join("\n"),
   };
 }
@@ -452,7 +452,7 @@ function businessBody(C, lang) {
   const catHtml = G.cats
     .map((c) => {
       const members = c.groups.map((id) => gmap.get(id));
-      const csCat = c.id === "09";
+      const csCat = !!c.cs;
       const catRows = [
         [GF.model, esc(c.model)],
         [GF.revenue, esc(c.revenue)],
