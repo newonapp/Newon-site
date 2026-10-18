@@ -22,6 +22,9 @@ const e = (s) => escapeHtml(s == null ? "" : String(s));
 const nl = (s) => e(s).replace(/\n/g, "<br />");
 const pad = (i) => String(i + 1).padStart(2, "0");
 
+/** SHAREON first-screen background film (owner-provided, 2026-10-18). */
+const SHAREON_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_171521_25968ba2-b594-4b32-aab7-f6b69398a6fa.mp4";
+
 function pageHref(lang, id) {
   const p = SHAREON_PAGES.find((x) => x.id === id);
   return `/${lang}/${p.path}/`;
@@ -83,6 +86,9 @@ function hero(c, lang, id, h, main, sub) {
   <div class="nls-film${id === "overview" ? "" : " nsh-film--compact"}" data-nls-film data-hs-section>
     <div class="nls-film__stage">
       <div class="nls-film__fallback" aria-hidden="true"></div>
+      <video class="nls-film__video" src="${SHAREON_FILM}" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" aria-hidden="true">
+        <source src="${SHAREON_FILM}" type="video/mp4" />
+      </video>
       <div class="nls-film__lockup">
         <div class="nls-film__veil" aria-hidden="true"></div>
         <p class="nls-film__wordmark" lang="en" aria-hidden="true">SHAREON</p>

@@ -69,7 +69,8 @@ function renderPage(lang, page) {
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
     <link rel="stylesheet" href="/shareon.css?v=${CSS_VER}" />`,
-    EXTRA_SCRIPTS: `<script src="/home-lifestage.js?v=${NLS_VER}" defer></script>
+    EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
+    <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>
     <script src="/shareon.js?v=${CSS_VER}" defer></script>`,
   });
   const out = path.join(ROOT, lang.dir, page.path, "index.html");
