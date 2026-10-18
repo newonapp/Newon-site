@@ -2,7 +2,7 @@
 /**
  * ONGIL corporate website — five pages for KO and EN:
  *   /{ko,en}/ongil/               01 Overview      (replaces the earlier single ONGIL introduction for these two locales)
- *   /{ko,en}/ongil/platform/      02 Platform      (18 areas)
+ *   /{ko,en}/ongil/platform/      02 Platform      (18 areas in the brief's 8 groups A–H)
  *   /{ko,en}/ongil/business/      03 Business      (20 business groups in 8 categories)
  *   /{ko,en}/ongil/partnerships/  04 Partnerships  (14 partner types)
  *   /{ko,en}/ongil/contact/       05 Contact       (13 inquiry types → the existing Newon email / business inquiry form)
@@ -15,6 +15,10 @@
  * Runs AFTER render-ongil.mjs (build-i18n.mjs). The other seven locales keep the existing localized ONGIL page that
  * render-ongil.mjs writes; their sub-pages forward to EN (writeForwardStubs). Header/footer come from site-chrome.mjs.
  * Business introduction only: no sign-in, booking, payment, CRM or new inquiry backend.
+ *
+ * V2 (2026-10-19): per-card status badges and the status legend are no longer rendered. Each page shows one shared
+ * notice (c.notice, existing .ogs-note style, marked .ogs-notice) and each item states availability in its own copy.
+ * Design (Warm Apricot, ongil-site.css) is unchanged; only existing component classes are used.
  */
 import fs from "fs";
 import path from "path";
@@ -36,8 +40,8 @@ import {
 import { clampSeoDescription } from "./seo-meta.mjs";
 import { renderStudioHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { renderFlagshipSubnav, FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
-import { KO, STATUS_KO } from "./ongil-site-ko.mjs";
-import { EN, STATUS_EN } from "./ongil-site-en.mjs";
+import { KO } from "./ongil-site-ko.mjs";
+import { EN } from "./ongil-site-en.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 export const OGS_VER = "20261018ogs2";
@@ -47,7 +51,7 @@ const ONGIL_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwI
 
 export const SITE_LANGS = ["ko", "en"];
 export const PAGES = ["overview", "platform", "business", "partnerships", "contact"];
-const CONTENT = { ko: { c: KO, s: STATUS_KO }, en: { c: EN, s: STATUS_EN } };
+const CONTENT = { ko: { c: KO }, en: { c: EN } };
 
 const e = escapeHtml;
 const nl = (s) => e(s || "").replace(/\n/g, "<br>");
@@ -65,11 +69,6 @@ function rel(lang, p) {
 }
 
 /* ───────── shared pieces ───────── */
-
-function statusBadge(S, key) {
-  const st = S[key] || S.plan;
-  return `<span class="ogs-status ogs-status--${e(st.tone)}"><i aria-hidden="true"></i>${e(st.label)}</span>`;
-}
 
 /** Section heading in the Life Stage vocabulary (nls-head / nls-kicker / nls-title / nls-lead). */
 function head(id, kicker, title, lead, n = "") {
@@ -89,6 +88,8 @@ function sec(id, inner, { tone = "", cls = "" } = {}) {
 }
 
 const note = (t, strong = false) => (t ? `<p class="nls-note ogs-note${strong ? " ogs-note--strong" : ""}">${e(t)}</p>` : "");
+/** The one shared notice per page (replaces the per-card status badges). Same look as .ogs-note. */
+const notice = (c) => `<p class="nls-note ogs-note ogs-notice">${e(c.notice)}</p>`;
 
 /** First screen: the shared dark film hero, no video and no poster (gradient fallback in ongil-site.css). */
 function hero(c, h, { main, sub, compact }) {
@@ -126,13 +127,6 @@ function notesFoot(c) {
   </aside>`;
 }
 
-function statusLegend(c, S, counts) {
-  const rows = ["web", "partial", "prep", "plan"]
-    .map((k) => `<li>${statusBadge(S, k)}<span class="ogs-legend__note">${e(S[k].note)}</span>${counts ? `<b class="ogs-legend__count">${counts[k] || 0}</b>` : ""}</li>`)
-    .join("");
-  return `<div class="ogs-legend"><p class="ogs-legend__t">${e(counts ? c.ui.statusCount : c.ui.statusLegendTitle)}</p><ul>${rows}</ul></div>`;
-}
-
 /** Item CTA. The web-preview ("start") entry points were removed by the owner; those items point to the inquiry page. */
 function ctaLink(c, lang, key) {
   if (key === "partners") return `<a class="ogs-link" href="${pagePath(lang, "partnerships")}">${e(c.ui.propose)} →</a>`;
@@ -142,13 +136,13 @@ const backLink = (c) => `<a class="ogs-top" href="#ogs-index">${e(c.ui.back)} �
 
 const chips = (items) => `<ul class="nls-chips ogs-chips">${(items || []).map((t) => `<li>${e(t)}</li>`).join("")}</ul>`;
 
-function closeInk(c, lang, actions) {
+function closeInk(c, lang, actions, x) {
   return sec(
     "ogs-close",
     `<div class="ogs-close">
-      <p class="nls-kicker" lang="en">${e(c.ui.closeKicker)}</p>
-      <h2 class="nls-hero__title" id="ogs-close-t">${c.ui.closeTitleHtml}</h2>
-      <p class="nls-lead">${e(c.ui.closeLead)}</p>
+      <p class="nls-kicker" lang="en">${e(x.closeKicker || c.ui.closeKicker)}</p>
+      <h2 class="nls-hero__title" id="ogs-close-t">${x.closeTitleHtml}</h2>
+      <p class="nls-lead">${e(x.closeLead)}</p>
       <div class="nls-actions">${actions
         .map(([label, href], i) => `<a class="nls-btn${i ? " nls-btn--ghost" : ""}" href="${e(href)}">${e(label)}${i ? "" : " →"}</a>`)
         .join("")}</div>
@@ -161,80 +155,80 @@ function closeInk(c, lang, actions) {
 
 function overviewMain(c, S, lang) {
   const o = c.overview;
-  const h = o.hero;
+  const ab = o.about;
 
-  // A · split statement + facts
+  // A · About ONGIL: split statement + facts, then the page's one shared notice
   const intro = sec(
     "ogs-intro",
     `<div class="ogs-intro">
       <div>
-        <p class="nls-kicker ogs-kicker" lang="en">${e(h.kicker)}</p>
-        <p class="ogs-intro__statement" id="ogs-intro-t">${e(h.body)}</p>
+        <p class="nls-kicker ogs-kicker" lang="en">${e(ab.kicker)}</p>
+        <p class="ogs-intro__statement" id="ogs-intro-t">${e(ab.statement)}</p>
+        <p class="nls-lead">${e(ab.lead)}</p>
       </div>
-      <dl class="ogs-facts">${h.facts.map((f) => `<div><dt>${e(f.k)}</dt><dd>${e(f.v)}</dd></div>`).join("")}</dl>
-    </div>`
+      <dl class="ogs-facts">${ab.facts.map((f) => `<div><dt>${e(f.k)}</dt><dd>${e(f.v)}</dd></div>`).join("")}</dl>
+    </div>
+    ${notice(c)}`
   );
 
-  // B · 3-column value board
-  const vision = sec(
+  // B · Our Mission: 3-column value board
+  const mission = sec(
     "ogs-vision",
-    `${head("ogs-vision", o.vision.label, o.vision.title, o.vision.lead, o.vision.n)}
-      <ol class="ogs-values">${o.vision.values
+    `${head("ogs-vision", o.mission.label, o.mission.title, o.mission.lead, o.mission.n)}
+      <ol class="ogs-values">${o.mission.values
         .map(
           (v, i) => `<li><span class="ogs-values__n">${pad(i + 1)}</span><p class="ogs-values__en" lang="en">${e(v.en)}</p>${c.lang === "ko" ? `<p class="ogs-values__ko">${e(v.ko)}</p>` : ""}<p class="ogs-values__t">${e(v.text)}</p></li>`
         )
         .join("")}</ol>`
   );
 
-  // C · tinted timeline
+  // C · The Senior Life Journey: 8 areas as 2-column signal cards (no status badges; availability is in the text)
   const journey = sec(
+    "ogs-support",
+    `${head("ogs-support", o.journey.label, o.journey.title, o.journey.lead, o.journey.n)}
+      <ol class="ogs-signal">${o.journey.items
+        .map((s) => `<li><span class="ogs-signal__n">${e(s.n)}</span><div>${c.lang === "ko" ? `<p class="ogs-label"><span lang="en">${e(s.en)}</span></p>` : ""}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></div></li>`)
+        .join("")}</ol>`
+  );
+
+  // D · Core Experience: tinted timeline
+  const core = sec(
     "ogs-journey",
-    `${head("ogs-journey", o.journey.label, o.journey.title, o.journey.lead, o.journey.n)}
-      <ol class="ogs-timeline">${o.journey.steps.map((s) => `<li><span class="ogs-timeline__dot" aria-hidden="true"></span><span class="ogs-timeline__n">${e(s.n)}</span><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ol>`,
+    `${head("ogs-journey", o.core.label, o.core.title, o.core.lead, o.core.n)}
+      <ol class="ogs-timeline">${o.core.steps.map((s) => `<li><span class="ogs-timeline__dot" aria-hidden="true"></span><span class="ogs-timeline__n">${e(s.n)}</span><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ol>`,
     { tone: "tint" }
   );
 
-  // D · split heading + numbered rows
-  const who = sec(
+  // E · For Seniors & Families: split heading + numbered rows
+  const people = sec(
     "ogs-who",
     `<div class="nls-split">
-      ${head("ogs-who", o.who.label, o.who.title, "", o.who.n)}
-      <ol class="nls-roster ogs-roster">${o.who.items.map((s) => `<li><span>${e(s.n)}</span><div><strong>${e(s.name)}</strong><p>${e(s.text)}</p></div></li>`).join("")}</ol>
+      ${head("ogs-who", o.people.label, o.people.title, o.people.lead, o.people.n)}
+      <ol class="nls-roster ogs-roster">${o.people.items.map((s) => `<li><span>${e(s.n)}</span><div><strong>${e(s.name)}</strong><p>${e(s.text)}</p></div></li>`).join("")}</ol>
     </div>`
   );
 
-  // E · 2-column signal cards with status
-  const support = sec(
-    "ogs-support",
-    `${head("ogs-support", o.support.label, o.support.title, "", o.support.n)}
-      <ol class="ogs-signal">${o.support.items
-        .map((s) => `<li><span class="ogs-signal__n">${e(s.n)}</span><div><h3>${e(s.name)}</h3><p>${e(s.text)}</p>${statusBadge(S, s.status)}</div></li>`)
-        .join("")}</ol>
-      ${statusLegend(c, S)}`
+  // F · Beyond Senior Life: boxed 4 layers
+  const beyond = sec(
+    "ogs-ecosystem",
+    `${head("ogs-ecosystem", o.beyond.label, o.beyond.title, o.beyond.lead, o.beyond.n)}
+      <ol class="ogs-proc ogs-proc--4">${o.beyond.layers.map((s) => `<li><span class="ogs-proc__n">${e(s.n)}</span><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ol>
+      ${note(o.beyond.note)}`
   );
 
-  // F · tinted split with check rows
-  const family = sec(
+  // G · Trust & Responsibility: tinted split with check rows
+  const trust = sec(
     "ogs-family",
     `<div class="nls-split">
-      ${head("ogs-family", o.family.label, o.family.title, o.family.lead, o.family.n)}
-      <div>
-        <ol class="ogs-checks">${o.family.points.map((p, i) => `<li><span>${pad(i + 1)}</span><p>${e(p)}</p></li>`).join("")}</ol>
-        <p class="ogs-statusline">${statusBadge(S, o.family.status)} <span>${e(o.family.statusText)}</span></p>
-      </div>
+      ${head("ogs-family", o.trust.label, o.trust.title, o.trust.lead, o.trust.n)}
+      <ol class="ogs-checks">${o.trust.points
+        .map((p, i) => `<li${p.alert ? ' class="ogs-checks__alert"' : ""}><span>${pad(i + 1)}</span><p><strong>${e(p.t)}</strong> · ${e(p.text)}</p></li>`)
+        .join("")}</ol>
     </div>`,
     { tone: "tint" }
   );
 
-  // G · boxed 4-step process
-  const eco = sec(
-    "ogs-ecosystem",
-    `${head("ogs-ecosystem", o.ecosystem.label, o.ecosystem.title, o.ecosystem.lead, o.ecosystem.n)}
-      <ol class="ogs-proc ogs-proc--4">${o.ecosystem.layers.map((s) => `<li><span class="ogs-proc__n">${e(s.n)}</span><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ol>
-      ${note(o.ecosystem.note)}`
-  );
-
-  // H · full-width link rows
+  // H · full-width link rows (role separation with LivOn / MY WORLD)
   const newon = sec(
     "ogs-newon",
     `${head("ogs-newon", o.newon.label, o.newon.title, o.newon.lead, o.newon.n)}
@@ -253,7 +247,7 @@ function overviewMain(c, S, lang) {
     { tone: "ink" }
   );
 
-  return [intro, vision, journey, who, support, family, eco, newon, next].join("\n");
+  return [intro, mission, journey, core, people, beyond, trust, newon, next].join("\n");
 }
 
 /* ───────── 02 Platform ───────── */
@@ -262,7 +256,6 @@ function areaBody(c, S, lang, s) {
   return `${chips(s.services)}
         <dl class="ogs-dl">
           <div><dt>${e(c.ui.audience)}</dt><dd>${e(s.audience)}</dd></div>
-          <div><dt>${e(c.ui.status)}</dt><dd>${statusBadge(S, s.status)}</dd></div>
         </dl>
         ${note(s.note)}
         <div class="ogs-foot-links">${ctaLink(c, lang, s.cta)}${backLink(c)}</div>`;
@@ -270,8 +263,14 @@ function areaBody(c, S, lang, s) {
 
 function platformMain(c, S, lang) {
   const p = c.platform;
-  const counts = {};
-  p.sections.forEach((s) => (counts[s.status] = (counts[s.status] || 0) + 1));
+  // Brief groups A–H: the legend box (existing .ogs-legend look) now lists groups instead of status badges.
+  const groupRows = p.groupMap
+    .map((g) => {
+      const nums = p.sections.map((s, i) => (s.grp === g.id ? pad(i + 1) : "")).filter(Boolean);
+      return `<li><strong lang="en">${e(g.id)} · ${e(g.en)}</strong><span class="ogs-legend__note">${c.lang === "ko" ? `${e(g.ko)} · ` : ""}${nums.join(" · ")}</span><b class="ogs-legend__count">${nums.length}</b></li>`;
+    })
+    .join("");
+  const groupMap = `<div class="ogs-legend"><p class="ogs-legend__t">${e(c.ui.groupMapTitle)}</p><ul>${groupRows}</ul></div>`;
   const idx = p.sections
     .map((s, i) => `<li><a href="#p-${e(s.id)}"><span>${pad(i + 1)}</span><strong>${e(s.title)}</strong><em lang="en">${e(s.label)}</em></a></li>`)
     .join("");
@@ -281,8 +280,9 @@ function platformMain(c, S, lang) {
     "ogs-index",
     `<div class="nls-split ogs-split--index">
       <div>
-        ${head("ogs-index", `${c.ui.onThisPage} · 18`, c.lang === "ko" ? "18개 영역,\n지금 제공하는 것과 준비 중인 것." : "18 areas —\nwhat is available and what is coming.", "")}
-        ${statusLegend(c, S, counts)}
+        ${head("ogs-index", `${c.ui.onThisPage} · 18`, p.indexTitle, "")}
+        ${notice(c)}
+        ${groupMap}
       </div>
       <ol class="ogs-index">${idx}</ol>
     </div>`
@@ -318,11 +318,16 @@ function platformMain(c, S, lang) {
     })
     .join("\n");
 
-  const close = closeInk(c, lang, [
-    [c.ui.toBusiness, pagePath(lang, "business")],
-    [c.ui.toPartnerships, pagePath(lang, "partnerships")],
-    [c.ui.inquiry, pagePath(lang, "contact")],
-  ]);
+  const close = closeInk(
+    c,
+    lang,
+    [
+      [c.ui.toBusiness, pagePath(lang, "business")],
+      [c.ui.toPartnerships, pagePath(lang, "partnerships")],
+      [c.ui.inquiry, pagePath(lang, "contact")],
+    ],
+    p
+  );
   return [index, groups, close].join("\n");
 }
 
@@ -335,7 +340,6 @@ function groupDl(c, S, g) {
           <div><dt>${e(c.ui.partners)}</dt><dd>${e(g.partners)}</dd></div>
           <div><dt>${e(c.ui.revenue)}</dt><dd>${e(g.revenue)}</dd></div>
           <div><dt>${e(c.ui.regulation)}</dt><dd>${e(g.regulation)}</dd></div>
-          <div><dt>${e(c.ui.status)}</dt><dd>${statusBadge(S, g.status)}</dd></div>
         </dl>`;
 }
 
@@ -354,16 +358,17 @@ function businessMain(c, S, lang) {
   const index = sec(
     "ogs-index",
     `${head("ogs-index", `${c.ui.category} · 8 / 20`, c.lang === "ko" ? "8개 카테고리,\n20개 사업군." : "8 categories,\n20 business groups.", "")}
-      <ol class="ogs-cats">${catBoard}</ol>`
+      <ol class="ogs-cats">${catBoard}</ol>
+      ${notice(c)}`
   );
 
-  // B · tinted split: revenue hypotheses
+  // B · tinted split: business models + revenue candidates (no "hypothesis" flag badge; the lead says it once)
   const revenue = sec(
     "ogs-revenue",
     `<div class="nls-split">
       <div>
-        ${head("ogs-revenue", "Revenue Model", b.revenueTitle, b.disclaimer)}
-        <p class="ogs-flag">${e(c.ui.revenueBadge)}</p>
+        ${head("ogs-revenue", b.revenueKicker, b.revenueTitle, b.models)}
+        ${note(b.disclaimer)}
       </div>
       <div>
         <ol class="ogs-rev">${b.revenue.map((r, i) => `<li><span>${pad(i + 1)}</span><p>${e(r)}</p></li>`).join("")}</ol>
@@ -406,11 +411,23 @@ function businessMain(c, S, lang) {
     })
     .join("\n");
 
-  const close = closeInk(c, lang, [
-    [c.ui.propose, pagePath(lang, "partnerships")],
-    [c.ui.inquiry, pagePath(lang, "contact")],
-  ]);
-  return [index, revenue, cats, close].join("\n");
+  // D · roadmap: the same boxed 5-step process component as the Partnerships page
+  const roadmap = sec(
+    "ogs-roadmap",
+    `${head("ogs-roadmap", b.roadmapKicker, b.roadmapTitle, b.roadmapLead)}
+      <ol class="ogs-proc ogs-proc--5">${b.roadmap.map((s) => `<li><span class="ogs-proc__n">${e(s.n)}</span><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ol>`
+  );
+
+  const close = closeInk(
+    c,
+    lang,
+    [
+      [c.ui.toPartnerships, pagePath(lang, "partnerships")],
+      [c.ui.inquiry, pagePath(lang, "contact")],
+    ],
+    b
+  );
+  return [index, revenue, cats, roadmap, close].join("\n");
 }
 
 /* ───────── 04 Partnerships ───────── */
@@ -423,13 +440,15 @@ function partnershipsMain(c, S, lang) {
     "ogs-process",
     `${head("ogs-process", "Process", p.processTitle, "")}
       <ol class="ogs-proc ogs-proc--5">${p.process.map((s) => `<li><span class="ogs-proc__n">${e(s.n)}</span><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ol>
+      <div class="ogs-note"><p class="ogs-dt">${e(c.ui.principlesTitle)}</p>${chips(p.principles)}</div>
+      ${notice(c)}
       ${note(p.note)}`
   );
 
   // B · tinted chip cloud of the 14 types
   const index = sec(
     "ogs-index",
-    `${head("ogs-index", `${c.ui.onThisPage} · 14`, c.ui.partnerIndexTitle, "")}
+    `${head("ogs-index", `${c.ui.onThisPage} · 14`, c.ui.partnerIndexTitle, p.indexLead)}
       <ol class="ogs-cloud">${p.items.map((it, i) => `<li><a href="#pt-${pad(i + 1)}"><span>${pad(i + 1)}</span>${e(it.name)}</a></li>`).join("")}</ol>`,
     { tone: "tint" }
   );
@@ -441,7 +460,7 @@ function partnershipsMain(c, S, lang) {
       <div class="ogs-cards ogs-cards--2 ogs-cards--partners">${p.items
         .map(
           (it, i) => `<article class="ogs-card" id="pt-${pad(i + 1)}" aria-labelledby="pt-${pad(i + 1)}-t">
-          <p class="ogs-label"><span class="ogs-label__n">${pad(i + 1)}</span><span lang="en">Partner</span></p>
+          <p class="ogs-label"><span class="ogs-label__n">${pad(i + 1)}</span><span lang="en">${e(it.opp)}</span></p>
           <h3 id="pt-${pad(i + 1)}-t">${e(it.name)}</h3>
           <dl class="ogs-dl ogs-dl--rows">
             <div><dt>${e(c.ui.field)}</dt><dd>${e(it.field)}</dd></div>
@@ -455,10 +474,15 @@ function partnershipsMain(c, S, lang) {
         .join("")}</div>`
   );
 
-  const close = closeInk(c, lang, [
-    [c.ui.propose, `${pagePath(lang, "contact")}#ogs-types`],
-    [c.ui.toBusiness, pagePath(lang, "business")],
-  ]);
+  const close = closeInk(
+    c,
+    lang,
+    [
+      [c.ui.partnerInquiry, `${pagePath(lang, "contact")}#ogs-types`],
+      [c.ui.toBusiness, pagePath(lang, "business")],
+    ],
+    p
+  );
   return [process, index, items, close].join("\n");
 }
 
@@ -485,7 +509,7 @@ function contactMain(c, S, lang) {
   // B · 3-column board of 13 inquiry types
   const types = sec(
     "ogs-types",
-    `${head("ogs-types", "Inquiry Types · 13", c.ui.typesTitle, "")}
+    `${head("ogs-types", `Inquiry Types · ${k.types.length}`, c.ui.typesTitle, k.typesLead)}
       <ol class="ogs-board">${k.types
         .map(
           (t, i) => `<li id="c-${pad(i + 1)}">
@@ -495,7 +519,8 @@ function contactMain(c, S, lang) {
           <a class="ogs-link" href="${e(t.channel === "mail" ? mailHref(t.name) : formHref(t.name))}">${e(t.channel === "mail" ? k.mailCta : k.formCta)} →</a>
         </li>`
         )
-        .join("")}</ol>`
+        .join("")}</ol>
+      ${notice(c)}`
   );
 
   // C · tinted split: privacy & emergency
@@ -512,7 +537,18 @@ function contactMain(c, S, lang) {
     { tone: "tint" }
   );
 
-  return [channels, types, guard].join("\n");
+  // D · black close: Contact → the official inquiry form (PART 11 CTA flow)
+  const close = closeInk(
+    c,
+    lang,
+    [
+      [k.formCta, formHref(c.lang === "ko" ? "일반 문의" : "General inquiry")],
+      [k.mailCta, mailHref(c.lang === "ko" ? "문의" : "Inquiry")],
+    ],
+    k
+  );
+
+  return [channels, types, guard, close].join("\n");
 }
 
 const MAINS = { overview: overviewMain, platform: platformMain, business: businessMain, partnerships: partnershipsMain, contact: contactMain };
@@ -520,7 +556,7 @@ const MAINS = { overview: overviewMain, platform: platformMain, business: busine
 function heroFor(c, lang, page) {
   const u = c.ui;
   const map = {
-    overview: { h: c.overview.hero, main: [`${u.toPlatform} →`, pagePath(lang, "platform")], sub: [u.toPartnerships, pagePath(lang, "partnerships")] },
+    overview: { h: c.overview.hero, main: [`${u.toAbout} ↓`, "#ogs-intro"], sub: [`${u.toPlatform} →`, pagePath(lang, "platform")] },
     platform: { h: c.platform.hero, main: [u.heroCta.platform, "#ogs-index"], sub: [u.inquiry, pagePath(lang, "contact")] },
     business: { h: c.business.hero, main: [u.heroCta.business, "#ogs-index"], sub: [u.toPartnerships, pagePath(lang, "partnerships")] },
     partnerships: { h: c.partnerships.hero, main: [u.heroCta.partnerships, "#ogs-index"], sub: [u.propose, `${pagePath(lang, "contact")}#ogs-types`] },
@@ -530,12 +566,12 @@ function heroFor(c, lang, page) {
 }
 
 export function renderMain(lang, page) {
-  const { c, s } = CONTENT[lang];
+  const { c } = CONTENT[lang];
   return `<section id="lifestage-detail" class="nls ogs" data-story="ongil" data-ogs-page="${page}" lang="${lang}" aria-labelledby="ogs-hero-title">
   ${heroFor(c, lang, page)}
   ${renderFlagshipSubnav({ biz: "ongil", lang, active: page })}
   <div class="nls__wrap">
-  ${MAINS[page](c, s, lang)}
+  ${MAINS[page](c, null, lang)}
   </div>
   ${notesFoot(c)}
 </section>`;
