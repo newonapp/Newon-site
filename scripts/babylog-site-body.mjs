@@ -10,6 +10,7 @@
  * Information only: no form, input, login or commerce control is rendered here.
  */
 import { escapeHtml } from "./hub-utils.mjs";
+import { renderFlagshipSubnav, FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
 import { BUSINESS } from "./six-businesses.mjs";
 import { BL_NAV, BL_SLUG, getBabylogCopy, copyLangFor } from "./babylog-site-copy.mjs";
 import { CS_PARTNER_CODES, IND_PARTNER_CODES } from "./babylog-expansion-copy.mjs";
@@ -244,7 +245,6 @@ function overviewBody(C, lang) {
   return {
     hero: hero(C, lang, "overview", o.hero, false),
     main: [
-      subnav(C, lang, "overview"),
       bands([
         { id: "bl-vision", inner: `<div class="nls-split">${titleBlock(o.vision.kicker, o.vision.title, "", 2, "bl-vision-title")}<ol class="nls-roster">${roster}</ol></div>` },
         {
@@ -384,7 +384,6 @@ function platformBody(C, lang) {
   return {
     hero: hero(C, lang, "platform", p.hero, true),
     main: [
-      subnav(C, lang, "platform"),
       screens,
       secs,
       csIntro,
@@ -515,7 +514,7 @@ function businessBody(C, lang) {
       <a class="nls-btn nls-btn--ghost" href="${inquiryHref(lang, "business", "")}">${esc(C.ui.inquiryCta)}</a>`;
   return {
     hero: hero(C, lang, "business", b.hero, true),
-    main: [subnav(C, lang, "business"), intro, groups, phases, closeBlock(C, lang, "business", b, ctas)].join("\n"),
+    main: [intro, groups, phases, closeBlock(C, lang, "business", b, ctas)].join("\n"),
   };
 }
 
@@ -597,7 +596,6 @@ function partnershipsBody(C, lang) {
   return {
     hero: hero(C, lang, "partnerships", p.hero, true),
     main: [
-      subnav(C, lang, "partnerships"),
       block(
         "bl-process",
         `${titleBlock(p.process.kicker, p.process.title, p.process.lead, 2, "bl-process-title")}<div class="nls-pipe bl-pipe5">${steps}</div>`
@@ -665,7 +663,6 @@ function contactBody(C, lang) {
   return {
     hero: hero(C, lang, "contact", c.hero, true),
     main: [
-      subnav(C, lang, "contact"),
       block("bl-contact-list", `${titleBlock(c.list.kicker, c.list.title, c.list.lead, 2, "bl-contact-list-title")}<ul class="bl-cards">${cards}</ul>`),
       block("bl-contact-more", `${titleBlock(CX.more.kicker, CX.more.title, CX.more.lead, 2, "bl-contact-more-title")}<ul class="bl-cards">${cardList(CX.more.items)}</ul>`, true),
       block(
@@ -694,12 +691,8 @@ export function renderBabylogSection(lang, page) {
   const fallbackLang = copyLangFor(lang) !== lang ? ` lang="${copyLangFor(lang)}"` : "";
   return `<section id="lifestage-detail" class="nls" data-story="babylog" data-bl-page="${page}"${fallbackLang} aria-labelledby="story-babylog-title">
     ${heroHtml}
+  ${renderFlagshipSubnav({ biz: "babylog", lang, active: page })}
   <div class="nls__wrap">
-    <nav class="bl-crumb" aria-label="Breadcrumb"><ol>
-      <li><a href="/${lang}/">${esc(C.ui.crumbHome)}</a></li>
-      <li>${page === "overview" ? `<span aria-current="page">${esc(C.ui.crumbBabylog)}</span>` : `<a href="${pagePath(lang)}">${esc(C.ui.crumbBabylog)}</a>`}</li>
-      ${page === "overview" ? "" : `<li><span aria-current="page">${esc(BL_NAV.find((n) => n.id === page)[copyLangFor(lang) === "ko" ? "ko" : "en"])}</span></li>`}
-    </ol></nav>
     ${main}
   </div>
 </section>`;

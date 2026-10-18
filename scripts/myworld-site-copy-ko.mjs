@@ -34,6 +34,7 @@ export const KO = {
     partnerNote: "이 페이지에는 체결된 파트너사, 계약, 판매 실적, 지원 국가를 표시하지 않습니다. 제휴는 검토와 계약을 거쳐 공개합니다.",
     appCta: "Google Play에서 받기",
     inquiryCta: "문의하기",
+    heroInquiryCta: "사업·제휴 문의",
     partnerCta: "파트너십 문의",
     platformCta: "서비스 살펴보기",
     businessCta: "비즈니스 살펴보기",

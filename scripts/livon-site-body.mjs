@@ -5,6 +5,7 @@
  * Life Stage styles (/home-lifestage.css, /home-lifestage-layout.css, scoped to .nls).
  */
 import { escapeHtml } from "./hub-utils.mjs";
+import { renderFlagshipSubnav, FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
 import { getLifeStageCopy } from "./home-lifestage-copy.mjs";
 import {
   LIVON_SITE_PAGES,
@@ -95,8 +96,8 @@ function textHero(lang, kicker, title, lead, titleId) {
 function shell(lang, active, titleId, hero, body) {
   return `<section id="lifestage-detail" class="nls lvs" data-story="lifestage" data-lvs-page="${e(active)}" aria-labelledby="${e(titleId)}">
     ${hero}
+  ${renderFlagshipSubnav({ biz: "livon", lang, active })}
   <div class="nls__wrap">
-    ${subnav(lang, active)}
     ${body}
   </div>
 </section>`;

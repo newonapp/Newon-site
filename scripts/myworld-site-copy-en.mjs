@@ -33,6 +33,7 @@ export const EN = {
       "This page does not list signed partners, contracts, sales figures or supported countries. Partnerships are announced only after review and contract.",
     appCta: "Get it on Google Play",
     inquiryCta: "Contact us",
+    heroInquiryCta: "Business & partnership inquiry",
     partnerCta: "Partnership inquiry",
     platformCta: "Explore the services",
     businessCta: "Explore the business",

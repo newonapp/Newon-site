@@ -53,6 +53,25 @@ export const KO = {
     statusLegendTitle: "상태 표시 안내",
     seeAll: "전체 보기",
     next: "다음",
+    toPlatform: "플랫폼 살펴보기",
+    toBusiness: "비즈니스 보기",
+    toPartnerships: "파트너십 보기",
+    heroCta: {
+      platform: "18개 영역 보기 ↓",
+      business: "20개 사업군 보기 ↓",
+      partnerships: "14개 파트너 유형 보기 ↓",
+      contact: "문의 유형 보기 ↓",
+    },
+    notesLabel: "안내",
+    revenueBadge: "내부 검토 가설",
+    areasLabel: "Areas",
+    typesTitle: "문의 유형",
+    partnerTypesTitle: "함께하고 싶은 14개 파트너 유형",
+    partnerIndexTitle: "파트너 유형 한눈에 보기",
+    statusCount: "상태별 영역 수",
+    closeKicker: "Next Step",
+    closeTitleHtml: "온길과 함께<br>다음 단계를 시작하세요.",
+    closeLead: "기관·사업자의 협력 제안과 문의를 기다립니다. 확인 후 이메일로 답변드립니다.",
   },
   seo: {
     overview: {
@@ -84,6 +103,7 @@ export const KO = {
       label: "Hero",
       kicker: "ONGIL · Senior Life & Care Platform",
       titleHtml: "나이 들어가는 모든 순간에,<br>따뜻한 연결을.",
+      lead: "어르신의 일상과 건강한 생활을 지원하고, 가족과 돌봄 제공자, 복지기관을 연결하는 시니어 라이프 플랫폼.",
       body: "ONGIL은 어르신의 일상과 건강한 생활을 지원하고, 가족과 돌봄 제공자, 복지기관을 연결하는 통합 시니어 라이프 플랫폼을 지향합니다. 익숙한 일상을 오래 유지하고, 필요한 도움을 더 쉽게 찾을 수 있도록 돕고자 합니다.",
       ctaMain: "플랫폼 살펴보기",
       ctaSub: "온길 시작하기",
@@ -190,7 +210,7 @@ export const KO = {
       label: "Next Step",
       title: "온길과 함께\n다음 단계를 시작하세요.",
       items: [
-        { k: "어르신·가족", text: "웹 체험판에서 일정과 건강 기록을 먼저 써보세요.", cta: "온길 시작하기", href: "/ongil-start/" },
+        { k: "어르신·가족", text: "웹 체험판에서 일정과 건강 기록을 먼저 써보세요.", cta: "플랫폼 살펴보기", href: "platform/" },
         { k: "기관·사업자", text: "돌봄·생활 서비스 협력을 제안해 주세요.", cta: "파트너십 보기", href: "partnerships/" },
         { k: "문의", text: "앱 이용부터 기관 협력까지, 유형별로 연락드립니다.", cta: "문의하기", href: "contact/" },
       ],
@@ -204,6 +224,11 @@ export const KO = {
       titleHtml: "일상부터 돌봄까지,<br>필요한 연결을 한곳에서.",
       lead: "ONGIL 플랫폼의 18개 영역입니다. 영역마다 지금 제공하는 것과 준비 중인 것을 구분해 표시합니다.",
     },
+    groups: [
+      { from: 0, to: 6, kicker: "Areas 01–06", title: "일상과 건강,\n가족과 돌봄", lead: "하루를 이어가는 기록과 건강한 생활, 가족 연결, 그리고 돌봄 정보와 병원 가는 날까지." },
+      { from: 6, to: 12, kicker: "Areas 07–12", title: "생활 편의와 여가,\n배움과 복지", lead: "식사와 생활용품, 가까운 즐길거리와 배움, 이웃과 복지 정보로 일상을 넓힙니다." },
+      { from: 12, to: 18, kicker: "Areas 13–18", title: "안전과 참여,\n돌봄 도구와 접근성", lead: "익숙한 집에서의 안전, 일과 참여, 가족·돌봄 제공자를 위한 도구, 누구나 쓰기 쉬운 앱." },
+    ],
     sections: [
       {
         id: "daily-life", label: "Daily Life", title: "하루를 편안하게 이어가는 일상 관리",

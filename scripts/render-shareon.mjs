@@ -31,9 +31,11 @@ import { clampSeoDescription } from "./seo-meta.mjs";
 import { renderStudioHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { renderShareonPage, getShareonCopy } from "./shareon-body.mjs";
 import { SHAREON_PAGES } from "./shareon-copy.mjs";
+import { FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const CSS_VER = "20261018v5";
+const CSS_VER = "20261018v6";
+const NLS_VER = "20260924livon1"; // shared Life Stage film hero assets, reused as-is
 
 function localeFlat(lang) {
   const en = loadJson("en.json");
@@ -63,8 +65,12 @@ function renderPage(lang, page) {
     CHROME_HEADER: header,
     MAIN_CONTENT: renderShareonPage(lang.dir, page.id),
     CHROME_FOOTER: footer,
-    EXTRA_CSS: `<link rel="stylesheet" href="/shareon.css?v=${CSS_VER}" />`,
-    EXTRA_SCRIPTS: `<script src="/shareon.js?v=${CSS_VER}" defer></script>`,
+    EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=${NLS_VER}" />
+    <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
+    <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
+    <link rel="stylesheet" href="/shareon.css?v=${CSS_VER}" />`,
+    EXTRA_SCRIPTS: `<script src="/home-lifestage.js?v=${NLS_VER}" defer></script>
+    <script src="/shareon.js?v=${CSS_VER}" defer></script>`,
   });
   const out = path.join(ROOT, lang.dir, page.path, "index.html");
   ensureDir(out);

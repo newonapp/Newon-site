@@ -31,6 +31,7 @@ import { clampSeoDescription } from "./seo-meta.mjs";
 import { renderGlobalHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { inquiryFormHtml } from "./render-bsp.mjs";
 import { STATUS, PETLOG_FILM, STORE, PETLOG_MENU, OVERVIEW, PLATFORM, BUSINESS, PARTNERS, CONTACT } from "./petlog-site-content.mjs";
+import { renderFlagshipSubnav, FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const NLS_VER = "20260924livon1";
@@ -255,6 +256,7 @@ function overviewPage(lang) {
   const D = 1;
   const journey = c.journey.items.map((it) => ({ id: it.id, n: it.n, tab: it.age, mark: it.age, label: it.age, name: it.name, lead: it.lead, chips: it.topics }));
   return wrap(`${hero({ wordmark: "PETLOG", titleHtml: c.heroTitle, lead: c.heroLead, main: [`${c.ctaMain} →`, "#nls-vision"], sub: [c.ctaSub, rel(D, "petlog/contact/")] })}
+  ${renderFlagshipSubnav({ biz: "petlog", lang, active: "overview" })}
   <div class="nls__wrap">
     <p class="nls-note">${esc(c.statusNote)}</p>
     ${rosterBlock("nls-vision", c.vision.kicker, c.vision.title, c.vision.body)}
@@ -284,6 +286,7 @@ function platformPage(lang) {
     .join("\n");
   const legend = m.legend.map(([k, v], i) => ({ n: pad2(i + 1), name: k, body: v }));
   return wrap(`${hero({ wordmark: "Platform", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "18개 서비스 보기 ↓" : "See 18 services ↓", "#nls-records"], sub: [lang === "ko" ? "PETLOG 소개" : "About PETLOG", rel(D, "petlog/")] })}
+  ${renderFlagshipSubnav({ biz: "petlog", lang, active: "platform" })}
   <div class="nls__wrap">
     ${splitDir("nls-legend", { kicker: m.legendKicker, title: m.legendTitle, noteText: m.note, items: legend, depth: D })}
     ${groups}
@@ -333,6 +336,7 @@ function businessPage(lang) {
   const structure = m.structure.map(([k, v], i) => ({ n: pad2(i + 1), name: k, body: v }));
   const revenue = m.revenue.map(([t, d, stage], i) => ({ n: pad2(i + 1), name: t, lead: d, chips: [stage] }));
   return wrap(`${hero({ wordmark: "Business", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "20개 사업군 보기 ↓" : "See 20 lines ↓", "#nls-groups"], sub: [m.labels.cta, rel(D, "petlog/contact/")] })}
+  ${renderFlagshipSubnav({ biz: "petlog", lang, active: "business" })}
   <div class="nls__wrap">
     ${splitDir("nls-structure", { kicker: m.structureKicker, title: m.structureTitle, items: structure, depth: D })}
     ${railBlock("nls-groups", { kicker: m.groupsKicker, title: m.groupsTitle, lead: m.groupsLead, items: rail })}
@@ -357,6 +361,7 @@ function partnershipsPage(lang) {
   const groups = m.groups.map((g, gi) => section(`nls-p-${g.id}`, { kicker: g.kicker, title: g.title, lead: g.lead, band: gi % 2 === 0, body: cardsHtml(g.layout, g.items.map(card), lang, D) })).join("\n");
   const steps = m.steps.map(([t, d]) => [t, d]);
   return wrap(`${hero({ wordmark: "Partnerships", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "14개 협력 유형 ↓" : "14 partner types ↓", "#nls-p-care"], sub: [m.labels.cta, rel(D, "petlog/contact/")] })}
+  ${renderFlagshipSubnav({ biz: "petlog", lang, active: "partnerships" })}
   <div class="nls__wrap">
     ${section("nls-offer", { kicker: m.offerKicker, title: m.offerTitle, body: cardsHtml("proc", m.offer, lang, D) })}
     ${groups}
@@ -377,6 +382,7 @@ function contactPage(lang) {
     copy: { label: "PETLOG", title: c.formTitle, subject: c.subject, types: c.types.map(([k, n]) => [k, n]), type: c.typeLabel, message: c.messageLabel, messagePh: c.messagePh, submit: lang === "ko" ? "문의 보내기" : "Send inquiry" },
   });
   return wrap(`${hero({ wordmark: "Contact", titleHtml: c.heroTitle, lead: c.heroLead, main: [lang === "ko" ? "문의하기 ↓" : "Send an inquiry ↓", "#inquiry"], sub: [lang === "ko" ? "PETLOG 소개" : "About PETLOG", rel(D, "petlog/")] })}
+  ${renderFlagshipSubnav({ biz: "petlog", lang, active: "contact" })}
   <div class="nls__wrap">
     ${splitDir("nls-types", { kicker: c.kicker, title: c.listTitle, lead: c.listLead, items, depth: D })}
     ${section("nls-guide", { kicker: c.guideKicker, title: c.guideTitle, band: true, body: indexList(c.guide) })}
@@ -474,6 +480,7 @@ export function renderPetlogSite() {
         MAIN_CONTENT: main,
         CHROME_FOOTER: footer,
         EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=${NLS_VER}" />
+    <link rel="stylesheet" href="/flagship-subnav.css?v=20261018fsn1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />${page.contact ? `\n    <link rel="stylesheet" href="/business-pillar.css?v=20260923pad1" />` : ""}
     ${PETLOG_CSS}`,
         EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>

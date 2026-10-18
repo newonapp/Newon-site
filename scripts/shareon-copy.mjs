@@ -45,6 +45,7 @@ const KO = {
     { n: "5", label: "웹사이트 메뉴" },
   ],
   statsNote: "숫자는 사업 계획의 구성이며, 이용자·거래 실적이 아닙니다.",
+  matrix: { provider: "빌려주는 쪽", renter: "빌리는 쪽", person: "개인", business: "기업" },
 
   /* ─────────────── 01 Overview ─────────────── */
   overview: {
@@ -56,7 +57,7 @@ const KO = {
       title: "소유하지 않아도,\n필요한 순간에.",
       lead: "SHAREON은 개인과 기업이 보유한 물건, 장비, 공간 등 다양한 자원을 필요한 사람과 연결하는 공유·대여 플랫폼을 지향합니다.",
       ctaMain: "서비스 알아보기",
-      ctaSub: "비즈니스 살펴보기",
+      ctaSub: "사업·제휴 문의",
     },
     vision: {
       kicker: "OUR VISION",
@@ -450,6 +451,7 @@ const EN = {
     { n: "5", label: "Website menus" },
   ],
   statsNote: "These numbers describe the business plan, not users or transactions.",
+  matrix: { provider: "Lends", renter: "Borrows", person: "Person", business: "Business" },
 
   overview: {
     seoTitle: "SHAREON | Newon — Sharing & Rental Marketplace",
@@ -460,7 +462,7 @@ const EN = {
       title: "No need to own it.\nJust when you need it.",
       lead: "SHAREON aims to be a sharing and rental platform that connects the things, equipment and spaces people and businesses own with the people who need them.",
       ctaMain: "Explore the platform",
-      ctaSub: "See the business",
+      ctaSub: "Business & partnership inquiry",
     },
     vision: {
       kicker: "OUR VISION",
