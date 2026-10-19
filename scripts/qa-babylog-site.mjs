@@ -96,22 +96,22 @@ for (const p of pages) {
     const need = ["bl-vision", "bl-connect", "bl-journey", "bl-daily", "bl-health", "bl-ecosystem", "bl-parent-eco", "bl-trust", "bl-opportunities", "bl-impact", "bl-newon", "bl-platforms", "bl-close"];
     const lack = need.filter((i) => !ids.has(i));
     const stages = count(body, /data-nls-decade-card=/g);
-    const eco = count(body, /nls-proc__item/g);
-    const biz = count(body, /class="bl-link" href="[^"]*#biz-[a-f]"/g);
-    const cats = count(body, /class="bl-link" href="[^"]*#cat-0[1-9]"/g);
+    const eco = count(body, /class="bl-net__item"/g);
+    const biz = count(body, /class="bl-link[^"]*" href="[^"]*#biz-[a-f]"/g);
+    const cats = count(body, /class="bl-link[^"]*" href="[^"]*#cat-0[1-9]"/g);
     const ctas = count(body.slice(body.indexOf('id="bl-close"')), /class="nls-btn/g);
     const imp = sect("bl-impact");
     const impOk = count(imp, /<li><span>0[1-4]<\/span>/g) === 4 && count(imp, /class="nls-btn/g) === 2 && /#cat-07/.test(imp) && /#bl-cs-partners/.test(imp) && /nls-note/.test(imp);
-    const sol = count(sect("bl-trust"), /<li><span>0[1-6]<\/span>/g);
-    const values = count(sect("bl-connect"), /nls-flow__item/g);
-    const core = count(sect("bl-daily"), /nls-flow__item/g);
-    const pl = count(sect("bl-platforms"), /<li><span>0[1-6]<\/span>/g);
+    const sol = count(sect("bl-trust"), /class="bl-checks__item"/g);
+    const values = count(sect("bl-connect"), /class="bl-val"/g);
+    const core = count(sect("bl-daily"), /class="bl-bento__item/g);
+    const pl = count(sect("bl-platforms"), /class="bl-plat[ "]/g);
     secOk = !lack.length && stages === 6 && eco === 4 && biz === 6 && cats === 8 && ctas === 2 && impOk && sol === 6 && values === 6 && core === 8 && pl === 6 && /story-babylog-title/.test(body);
     secInfo = `missing ${lack.join(",") || "-"}, stages ${stages}, values ${values}/6, core experience ${core}/8, ecosystem ${eco}, business links ${biz}, category links ${cats}, impact ${impOk}, trust ${sol}/6, platforms ${pl}, closing CTAs ${ctas}`;
   } else if (p.nav.id === "platform") {
     const need = ["screens", "growth", "records", "family", "learning", "memories", "assist", "explore", "trust", "cs", ...CS_GROUP_CODES.map((c) => "cs-" + c)].map((x) => "bl-" + x).concat("bl-access", "bl-close");
     const lack = need.filter((i) => !ids.has(i));
-    const screens = count(sect("bl-screens"), /class="nls-board__item bl-screen"/g);
+    const screens = count(sect("bl-screens"), /class="bl-screen"/g);
     const csRail = count(sect("bl-cs"), /class="bl-rail__link"/g);
     // each public-welfare / child-safety area keeps its official-source and "what we do not do" rows
     const csGuard = CS_GROUP_CODES.every((c) => count(sect("bl-cs-" + c), /<dt>/g) === 2);
@@ -128,21 +128,21 @@ for (const p of pages) {
     const cat7 = sect("cat-07");
     const cat8 = sect("cat-08");
     const cat9Plan = /bl-emergency/.test(cat7) && /bl-emergency/.test(cat8) && count(cat7, /<li>/g) >= 3 && count(cat8, /<li>/g) >= 3;
-    const phases = count(sect("bl-phases"), /nls-pipe__item/g);
+    const phases = count(sect("bl-phases"), /class="bl-steps__item"/g);
     secOk = !lack.length && dts === 6 * 6 && ctaLinks === 6 && csCards === 8 && cat9Plan && phases === 5 && count(body, /class="bl-grp(?: bl-grp--cs)?" aria-labelledby/g) === 32;
     secInfo = `missing ${lack.join(",") || "-"}, six-model dt ${dts}/36, public-welfare/child-safety cards ${csCards}/8, categories 07-08 emergency+forbidden ${cat9Plan}, phases ${phases}`;
   } else if (p.nav.id === "partnerships") {
     const arts = [...PARTNER_CODES, ...IND_PARTNER_CODES, ...CS_PARTNER_CODES].map((c) => `partner-${c}`);
     const lack = arts.filter((i) => !ids.has(i));
     const dts = count(body, /<dt>/g);
-    const steps = count(body, /nls-pipe__item/g);
+    const steps = count(body, /class="bl-steps__item"/g);
     const rail = count(body, /bl-rail__link/g);
     const principles = count(sect("bl-process"), /<li>/g);
     const models = count(sect("bl-types"), /<ul class="nls-chips">/g);
     secOk = !lack.length && dts === 4 * 8 + 2 * 15 + 3 * 12 && steps === 5 && principles === 6 && models === 1 && rail === 8 + 15 + 12 && ids.has("bl-cs-partners") && ids.has("bl-industry");
     secInfo = `missing ${lack.join(",") || "-"}, dt ${dts}/${4 * 8 + 2 * 15 + 3 * 12}, steps ${steps}, principles ${principles}/6, model chips ${models}, jump links ${rail}/35`;
   } else {
-    const cards = [...body.matchAll(/class="bl-card" href="([^"]+)"/g)].map((m) => m[1]);
+    const cards = [...body.matchAll(/class="bl-card[^"]*" href="([^"]+)"/g)].map((m) => m[1]);
     const codes = cards.map((c) => (c.match(/source=babylog-contact-([a-z]+)/) || [])[1]);
     const want = [...CONTACT_CODES, ...CONTACT_MORE_CODES, ...CONTACT_CS_CODES];
     secOk = cards.length === 26 && JSON.stringify(codes) === JSON.stringify(want) && /bl-emergency/.test(sect("bl-contact-cs"));
