@@ -46,7 +46,7 @@ test("five screens in nine locales: one h1, canonical, 9+1 hreflang, JSON-LD, me
   }
 });
 
-test("hero films: Studio film on all five Business & Partnerships screens (owner request 2026-10-19)", () => {
+test("hero films: owner-chosen film (hf_20260314_131748) on all five Business & Partnerships screens (2026-10-19 11:45)", () => {
   assert.ok(BP_FILMS.studio.endsWith(STUDIO_FILM));
   assert.ok(BP_FILMS.partnerships.endsWith(PARTNER_FILM));
   // the films are the ones the Studio and the old Partnerships first screens use
@@ -61,7 +61,7 @@ test("hero films: Studio film on all five Business & Partnerships screens (owner
       assert.ok(!html.includes(other), `${lang} ${nav.id} has only its own film`);
     }
   }
-  assert.deepEqual(BP_PAGE_FILM, { overview: "studio", platforms: "studio", models: "studio", partnerships: "studio", contact: "studio" });
+  assert.deepEqual(BP_PAGE_FILM, { overview: "partnerships", platforms: "partnerships", models: "partnerships", partnerships: "partnerships", contact: "partnerships" });
 });
 
 test("global header: one Business & Partnerships menu with the five screens; footer link merged", () => {
