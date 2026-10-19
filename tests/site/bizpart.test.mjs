@@ -50,7 +50,8 @@ test("hero films: owner-chosen film (hf_20260314_131748) on all five Business & 
   assert.ok(BP_FILMS.studio.endsWith(STUDIO_FILM));
   assert.ok(BP_FILMS.partnerships.endsWith(PARTNER_FILM));
   // the films are the ones the Studio and the old Partnerships first screens use
-  assert.ok(read("ko/studio/index.html").includes(STUDIO_FILM), "Studio hero film");
+  assert.ok(read("scripts/studio-film-copy.mjs").includes(STUDIO_FILM), "Studio film constant (home Studio card)");
+  assert.ok(read("ko/studio/index.html").includes("hf_20260819_212700_3bb9329b"), "Studio page film (owner choice 2026-10-19)");
   assert.ok(read("scripts/bsp-content.mjs").includes(PARTNER_FILM), "Partnerships hero film");
   for (const nav of BP_NAV) {
     const want = BP_PAGE_FILM[nav.id] === "studio" ? STUDIO_FILM : PARTNER_FILM;
