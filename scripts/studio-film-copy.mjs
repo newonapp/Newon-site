@@ -1,5 +1,9 @@
 /** First-screen film copy for /{lang}/studio/ only. */
 
+/** Background film of the Studio page first screen (owner choice 2026-10-19 11:48). The home Studio card keeps STUDIO_FILM_SRC. */
+export const STUDIO_PAGE_FILM_SRC =
+  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260819_212700_3bb9329b-5c50-4257-a09b-ca85cf3654a3.mp4";
+
 export const STUDIO_FILM_SRC =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_202655_a7f5aca0-2f80-4bc9-bcb5-96ac95662003.mp4";
 

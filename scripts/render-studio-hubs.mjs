@@ -37,7 +37,7 @@ import { STORE_PRODUCTS } from "./store-data.mjs";
 import { renderResources } from "./render-resources.mjs";
 import { bspHubHtml, bspHubFilmCtas } from "./render-bsp.mjs";
 import { renderStudioPillars } from "./render-studio-pillars.mjs";
-import { STUDIO_FILM_SRC, getStudioFilmCopy } from "./studio-film-copy.mjs";
+import { STUDIO_PAGE_FILM_SRC as STUDIO_FILM_SRC, getStudioFilmCopy } from "./studio-film-copy.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const HUB_PAGES = [
