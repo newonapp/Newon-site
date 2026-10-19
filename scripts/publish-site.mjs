@@ -662,6 +662,12 @@ spawnSync(process.execPath, [path.join(ROOT, "scripts", "livon-performance-quali
   stdio: "inherit",
 }).status === 0 || process.exit(1);
 
+// One ?v= cache key per shared nav script on every page (see normalize-asset-versions.mjs).
+spawnSync(process.execPath, [path.join(ROOT, "scripts", "normalize-asset-versions.mjs"), "--root", OUT], {
+  cwd: ROOT,
+  stdio: "inherit",
+}).status === 0 || process.exit(1);
+
 // Newon+ public web config: written only when every NEWON_PLUS_FIREBASE_* public value is set (otherwise stays empty).
 {
   const cfg = newonAuthConfigFromEnv(process.env);
