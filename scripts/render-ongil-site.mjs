@@ -19,6 +19,10 @@
  * V2 (2026-10-19): per-card status badges and the status legend are no longer rendered. Each page shows one shared
  * notice (c.notice, existing .ogs-note style, marked .ogs-notice) and each item states availability in its own copy.
  * Design (Warm Apricot, ongil-site.css) is unchanged; only existing component classes are used.
+ *
+ * V3 accent redesign (2026-10-19): sections below the film hero use varied layouts (icon tiles, wash bands, stepper,
+ * layer stack, role cards, check grid, callouts) with Warm Apricot as a point colour and inline line icons
+ * (ongil-site-icons.mjs). No screenshots or raster images. Hero, shared menu and all copy/links are unchanged.
  */
 import fs from "fs";
 import path from "path";
@@ -42,9 +46,24 @@ import { renderStudioHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { renderFlagshipSubnav, FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
 import { KO } from "./ongil-site-ko.mjs";
 import { EN } from "./ongil-site-en.mjs";
+import {
+  icon,
+  roadArt,
+  FACT_ICONS,
+  VALUE_ICONS,
+  JOURNEY_ICONS,
+  CORE_ICONS,
+  PEOPLE_ICONS,
+  LAYER_ICONS,
+  NEXT_ICONS,
+  AREA_ICONS,
+  CATEGORY_ICONS,
+  PARTNER_ICONS,
+  PROCESS_ICONS,
+} from "./ongil-site-icons.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-export const OGS_VER = "20261018ogs2";
+export const OGS_VER = "20261019ogs3";
 const NLS_VER = "20260924livon1"; // Life Stage assets are reused as-is
 /** ONGIL first-screen background film (owner-provided, 2026-10-18). */
 const ONGIL_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260323_071151_38c3924f-c312-48af-a196-3fbb80e4226f.mp4";
@@ -71,9 +90,9 @@ function rel(lang, p) {
 /* ───────── shared pieces ───────── */
 
 /** Section heading in the Life Stage vocabulary (nls-head / nls-kicker / nls-title / nls-lead). */
-function head(id, kicker, title, lead, n = "") {
+function head(id, kicker, title, lead, n = "", ico = "") {
   return `<header class="nls-head">
-      <p class="nls-kicker ogs-kicker">${n ? `<span class="ogs-kicker__n">${e(n)}</span>` : ""}${e(kicker)}</p>
+      <p class="nls-kicker ogs-kicker">${ico ? `<span class="ogs-kicker__ico">${icon(ico)}</span>` : ""}${n ? `<span class="ogs-kicker__n">${e(n)}</span>` : ""}${e(kicker)}</p>
       <h2 class="nls-title" id="${id}-t">${nl(title)}</h2>
       ${lead ? `<p class="nls-lead">${e(lead)}</p>` : ""}
     </header>`;
@@ -90,6 +109,8 @@ function sec(id, inner, { tone = "", cls = "" } = {}) {
 const note = (t, strong = false) => (t ? `<p class="nls-note ogs-note${strong ? " ogs-note--strong" : ""}">${e(t)}</p>` : "");
 /** The one shared notice per page (replaces the per-card status badges). Same look as .ogs-note. */
 const notice = (c) => `<p class="nls-note ogs-note ogs-notice">${e(c.notice)}</p>`;
+/** Small apricot icon tile. */
+const tile = (name, mod = "") => `<span class="ogs-tile${mod ? " ogs-tile--" + mod : ""}">${icon(name)}</span>`;
 
 /** First screen: the shared dark film hero, no video and no poster (gradient fallback in ongil-site.css). */
 function hero(c, h, { main, sub, compact }) {
@@ -136,15 +157,17 @@ const backLink = (c) => `<a class="ogs-top" href="#ogs-index">${e(c.ui.back)} �
 
 const chips = (items) => `<ul class="nls-chips ogs-chips">${(items || []).map((t) => `<li>${e(t)}</li>`).join("")}</ul>`;
 
+/** Black closing band: road line art + centred title; the first action is the apricot CTA. */
 function closeInk(c, lang, actions, x) {
   return sec(
     "ogs-close",
     `<div class="ogs-close">
+      ${roadArt("ogs-road ogs-road--close")}
       <p class="nls-kicker" lang="en">${e(x.closeKicker || c.ui.closeKicker)}</p>
       <h2 class="nls-hero__title" id="ogs-close-t">${x.closeTitleHtml}</h2>
       <p class="nls-lead">${e(x.closeLead)}</p>
       <div class="nls-actions">${actions
-        .map(([label, href], i) => `<a class="nls-btn${i ? " nls-btn--ghost" : ""}" href="${e(href)}">${e(label)}${i ? "" : " →"}</a>`)
+        .map(([label, href], i) => `<a class="nls-btn${i ? " nls-btn--ghost" : " ogs-btn--accent"}" href="${e(href)}">${e(label)}${i ? "" : " →"}</a>`)
         .join("")}</div>
     </div>`,
     { tone: "ink" }
@@ -157,75 +180,88 @@ function overviewMain(c, S, lang) {
   const o = c.overview;
   const ab = o.about;
 
-  // A · About ONGIL: split statement + facts, then the page's one shared notice
+  // A · About ONGIL: statement + "warm road" facts panel (tinted, icon rows), then the page's one shared notice
   const intro = sec(
     "ogs-intro",
     `<div class="ogs-intro">
-      <div>
+      <div class="ogs-intro__text">
         <p class="nls-kicker ogs-kicker" lang="en">${e(ab.kicker)}</p>
         <p class="ogs-intro__statement" id="ogs-intro-t">${e(ab.statement)}</p>
         <p class="nls-lead">${e(ab.lead)}</p>
       </div>
-      <dl class="ogs-facts">${ab.facts.map((f) => `<div><dt>${e(f.k)}</dt><dd>${e(f.v)}</dd></div>`).join("")}</dl>
+      <div class="ogs-panel">
+        ${roadArt()}
+        <dl class="ogs-facts">${ab.facts.map((f, i) => `<div>${tile(FACT_ICONS[i % FACT_ICONS.length])}<dt>${e(f.k)}</dt><dd>${e(f.v)}</dd></div>`).join("")}</dl>
+      </div>
     </div>
     ${notice(c)}`
   );
 
-  // B · Our Mission: 3-column value board
+  // B · Our Mission: 6 values, open icon columns (hairline + apricot segment, no boxes)
   const mission = sec(
     "ogs-vision",
     `${head("ogs-vision", o.mission.label, o.mission.title, o.mission.lead, o.mission.n)}
       <ol class="ogs-values">${o.mission.values
         .map(
-          (v, i) => `<li><span class="ogs-values__n">${pad(i + 1)}</span><p class="ogs-values__en" lang="en">${e(v.en)}</p>${c.lang === "ko" ? `<p class="ogs-values__ko">${e(v.ko)}</p>` : ""}<p class="ogs-values__t">${e(v.text)}</p></li>`
+          (v, i) => `<li><div class="ogs-values__top">${tile(VALUE_ICONS[i % VALUE_ICONS.length], "round")}<span class="ogs-values__n">${pad(i + 1)}</span></div><p class="ogs-values__en" lang="en">${e(v.en)}</p>${c.lang === "ko" ? `<p class="ogs-values__ko">${e(v.ko)}</p>` : ""}<p class="ogs-values__t">${e(v.text)}</p></li>`
         )
         .join("")}</ol>`
   );
 
-  // C · The Senior Life Journey: 8 areas as 2-column signal cards (no status badges; availability is in the text)
+  // C · The Senior Life Journey: 8 areas as white icon tiles on the apricot wash band (4 × 2)
   const journey = sec(
     "ogs-support",
     `${head("ogs-support", o.journey.label, o.journey.title, o.journey.lead, o.journey.n)}
       <ol class="ogs-signal">${o.journey.items
-        .map((s) => `<li><span class="ogs-signal__n">${e(s.n)}</span><div>${c.lang === "ko" ? `<p class="ogs-label"><span lang="en">${e(s.en)}</span></p>` : ""}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></div></li>`)
-        .join("")}</ol>`
-  );
-
-  // D · Core Experience: tinted timeline
-  const core = sec(
-    "ogs-journey",
-    `${head("ogs-journey", o.core.label, o.core.title, o.core.lead, o.core.n)}
-      <ol class="ogs-timeline">${o.core.steps.map((s) => `<li><span class="ogs-timeline__dot" aria-hidden="true"></span><span class="ogs-timeline__n">${e(s.n)}</span><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ol>`,
+        .map(
+          (s, i) => `<li><div class="ogs-signal__top">${tile(JOURNEY_ICONS[i % JOURNEY_ICONS.length])}<span class="ogs-signal__n">${e(s.n)}</span></div><div>${c.lang === "ko" ? `<p class="ogs-label"><span lang="en">${e(s.en)}</span></p>` : ""}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></div></li>`
+        )
+        .join("")}</ol>`,
     { tone: "tint" }
   );
 
-  // E · For Seniors & Families: split heading + numbered rows
+  // D · Core Experience: numbered stepper (circles on one line)
+  const core = sec(
+    "ogs-journey",
+    `${head("ogs-journey", o.core.label, o.core.title, o.core.lead, o.core.n)}
+      <ol class="ogs-timeline">${o.core.steps
+        .map((s, i) => `<li><span class="ogs-timeline__dot" aria-hidden="true">${icon(CORE_ICONS[i % CORE_ICONS.length])}</span><span class="ogs-timeline__n">${e(s.n)}</span><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
+        .join("")}</ol>`
+  );
+
+  // E · For Seniors & Families: split heading + three role cards (consent card highlighted)
   const people = sec(
     "ogs-who",
     `<div class="nls-split">
       ${head("ogs-who", o.people.label, o.people.title, o.people.lead, o.people.n)}
-      <ol class="nls-roster ogs-roster">${o.people.items.map((s) => `<li><span>${e(s.n)}</span><div><strong>${e(s.name)}</strong><p>${e(s.text)}</p></div></li>`).join("")}</ol>
-    </div>`
-  );
-
-  // F · Beyond Senior Life: boxed 4 layers
-  const beyond = sec(
-    "ogs-ecosystem",
-    `${head("ogs-ecosystem", o.beyond.label, o.beyond.title, o.beyond.lead, o.beyond.n)}
-      <ol class="ogs-proc ogs-proc--4">${o.beyond.layers.map((s) => `<li><span class="ogs-proc__n">${e(s.n)}</span><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ol>
-      ${note(o.beyond.note)}`
-  );
-
-  // G · Trust & Responsibility: tinted split with check rows
-  const trust = sec(
-    "ogs-family",
-    `<div class="nls-split">
-      ${head("ogs-family", o.trust.label, o.trust.title, o.trust.lead, o.trust.n)}
-      <ol class="ogs-checks">${o.trust.points
-        .map((p, i) => `<li${p.alert ? ' class="ogs-checks__alert"' : ""}><span>${pad(i + 1)}</span><p><strong>${e(p.t)}</strong> · ${e(p.text)}</p></li>`)
+      <ol class="ogs-roles">${o.people.items
+        .map((s, i) => `<li${i === o.people.items.length - 1 ? ' class="ogs-roles__key"' : ""}>${tile(PEOPLE_ICONS[i % PEOPLE_ICONS.length])}<div><span class="ogs-roles__n">${e(s.n)}</span><strong>${e(s.name)}</strong><p>${e(s.text)}</p></div></li>`)
         .join("")}</ol>
     </div>`,
     { tone: "tint" }
+  );
+
+  // F · Beyond Senior Life: widening layer stack (each layer's wash bar grows: individual → institutions)
+  const beyond = sec(
+    "ogs-ecosystem",
+    `${head("ogs-ecosystem", o.beyond.label, o.beyond.title, o.beyond.lead, o.beyond.n)}
+      <ol class="ogs-layers">${o.beyond.layers
+        .map((s, i) => `<li style="--ogs-w:${40 + i * 20}%"><span class="ogs-layers__n">${e(s.n)}</span>${tile(LAYER_ICONS[i % LAYER_ICONS.length], "round")}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
+        .join("")}</ol>
+      ${note(o.beyond.note)}`
+  );
+
+  // G · Trust & Responsibility: split heading + check list (the 119 item flagged)
+  const trust = sec(
+    "ogs-family",
+    `<div class="nls-split ogs-split--wide">
+      ${head("ogs-family", o.trust.label, o.trust.title, o.trust.lead, o.trust.n)}
+      <ol class="ogs-checks ogs-checks--grid">${o.trust.points
+        .map(
+          (p, i) => `<li${p.alert ? ' class="ogs-checks__alert"' : ""}><span class="ogs-checks__mark">${icon(p.alert ? "alert" : "check")}</span><div><span class="ogs-checks__n">${pad(i + 1)}</span><p><strong>${e(p.t)}</strong> · ${e(p.text)}</p></div></li>`
+        )
+        .join("")}</ol>
+    </div>`
   );
 
   // H · full-width link rows (role separation with LivOn / MY WORLD)
@@ -233,16 +269,19 @@ function overviewMain(c, S, lang) {
     "ogs-newon",
     `${head("ogs-newon", o.newon.label, o.newon.title, o.newon.lead, o.newon.n)}
       <ol class="ogs-linkrows">${o.newon.items
-        .map((s) => `<li><a href="${rel(lang, s.href)}"><span class="ogs-linkrows__n">${e(s.n)}</span><strong lang="en">${e(s.name)}</strong><span class="ogs-linkrows__t">${e(s.text)}</span><span class="ogs-linkrows__arrow" aria-hidden="true">→</span></a></li>`)
+        .map((s) => `<li><a href="${rel(lang, s.href)}"><span class="ogs-linkrows__n">${e(s.n)}</span><strong lang="en">${e(s.name)}</strong><span class="ogs-linkrows__t">${e(s.text)}</span><span class="ogs-linkrows__arrow" aria-hidden="true">${icon("arrow")}</span></a></li>`)
         .join("")}</ol>`
   );
 
   // I · black close with three next steps
   const next = sec(
     "ogs-next",
-    `${head("ogs-next", o.next.label, o.next.title, "", o.next.n)}
+    `${roadArt("ogs-road ogs-road--close")}
+      ${head("ogs-next", o.next.label, o.next.title, "", o.next.n)}
       <ol class="ogs-next">${o.next.items
-        .map((s, i) => `<li><span class="ogs-next__n">${pad(i + 1)}</span><p class="ogs-next__k">${e(s.k)}</p><p>${e(s.text)}</p><a class="nls-btn${i ? " nls-btn--ghost" : ""}" href="${rel(lang, s.href)}">${e(s.cta)} →</a></li>`)
+        .map(
+          (s, i) => `<li>${tile(NEXT_ICONS[i % NEXT_ICONS.length], "ink")}<span class="ogs-next__n">${pad(i + 1)}</span><p class="ogs-next__k">${e(s.k)}</p><p>${e(s.text)}</p><a class="nls-btn${i ? " nls-btn--ghost" : " ogs-btn--accent"}" href="${rel(lang, s.href)}">${e(s.cta)} →</a></li>`
+        )
         .join("")}</ol>`,
     { tone: "ink" }
   );
@@ -263,11 +302,11 @@ function areaBody(c, S, lang, s) {
 
 function platformMain(c, S, lang) {
   const p = c.platform;
-  // Brief groups A–H: the legend box (existing .ogs-legend look) now lists groups instead of status badges.
+  // Brief groups A–H: a 2 × 4 map of group tiles (letter badge, name, area numbers, count).
   const groupRows = p.groupMap
     .map((g) => {
       const nums = p.sections.map((s, i) => (s.grp === g.id ? pad(i + 1) : "")).filter(Boolean);
-      return `<li><strong lang="en">${e(g.id)} · ${e(g.en)}</strong><span class="ogs-legend__note">${c.lang === "ko" ? `${e(g.ko)} · ` : ""}${nums.join(" · ")}</span><b class="ogs-legend__count">${nums.length}</b></li>`;
+      return `<li><span class="ogs-legend__badge" lang="en">${e(g.id)}</span><strong lang="en">${e(g.en)}</strong><span class="ogs-legend__note">${c.lang === "ko" ? `${e(g.ko)} · ` : ""}${nums.join(" · ")}</span><b class="ogs-legend__count">${nums.length}</b></li>`;
     })
     .join("");
   const groupMap = `<div class="ogs-legend"><p class="ogs-legend__t">${e(c.ui.groupMapTitle)}</p><ul>${groupRows}</ul></div>`;
@@ -275,7 +314,7 @@ function platformMain(c, S, lang) {
     .map((s, i) => `<li><a href="#p-${e(s.id)}"><span>${pad(i + 1)}</span><strong>${e(s.title)}</strong><em lang="en">${e(s.label)}</em></a></li>`)
     .join("");
 
-  // A · split: heading + legend | 2-col numbered index
+  // A · split: heading + notice + group map | 2-col numbered index
   const index = sec(
     "ogs-index",
     `<div class="nls-split ogs-split--index">
@@ -288,6 +327,7 @@ function platformMain(c, S, lang) {
     </div>`
   );
 
+  // three groups, three layouts: wide icon rows (white) · 2-col cards on the wash band · 3-col cards with apricot rule
   const layouts = ["rows", "cards2", "cards3"];
   const groups = p.groups
     .map((g, gi) => {
@@ -299,7 +339,7 @@ function platformMain(c, S, lang) {
         body = `<div class="ogs-rows">${items
           .map(
             (s, i) => `<article class="ogs-row" id="p-${e(s.id)}" aria-labelledby="p-${e(s.id)}-t">
-          <div class="ogs-row__head">${label(s, i)}<h3 id="p-${e(s.id)}-t">${e(s.title)}</h3><p>${e(s.desc)}</p></div>
+          <div class="ogs-row__head">${tile(AREA_ICONS[s.id])}${label(s, i)}<h3 id="p-${e(s.id)}-t">${e(s.title)}</h3><p>${e(s.desc)}</p></div>
           <div class="ogs-row__body"><p class="ogs-dt">${e(c.ui.services)}</p>${areaBody(c, S, lang, s)}</div>
         </article>`
           )
@@ -308,13 +348,16 @@ function platformMain(c, S, lang) {
         body = `<div class="ogs-cards ogs-cards--${layout === "cards2" ? "2" : "3"}">${items
           .map(
             (s, i) => `<article class="ogs-card" id="p-${e(s.id)}" aria-labelledby="p-${e(s.id)}-t">
-          ${label(s, i)}<h3 id="p-${e(s.id)}-t">${e(s.title)}</h3><p class="ogs-card__desc">${e(s.desc)}</p>
+          <div class="ogs-card__top">${tile(AREA_ICONS[s.id])}${label(s, i)}</div><h3 id="p-${e(s.id)}-t">${e(s.title)}</h3><p class="ogs-card__desc">${e(s.desc)}</p>
           ${areaBody(c, S, lang, s)}
         </article>`
           )
           .join("")}</div>`;
       }
-      return sec(`ogs-area-${gi + 1}`, `${head(`ogs-area-${gi + 1}`, g.kicker, g.title, g.lead)}${body}`, { tone: layout === "cards2" ? "tint" : "" });
+      return sec(`ogs-area-${gi + 1}`, `${head(`ogs-area-${gi + 1}`, g.kicker, g.title, g.lead)}${body}`, {
+        tone: layout === "cards2" ? "tint" : "",
+        cls: layout === "cards3" ? "ogs-sec--rule" : "",
+      });
     })
     .join("\n");
 
@@ -348,10 +391,10 @@ function businessMain(c, S, lang) {
   const byCat = Object.fromEntries(b.categories.map((k) => [k.id, []]));
   b.groups.forEach((g, i) => byCat[g.cat].push(i));
 
-  // A · 4-column category board
+  // A · 4-column category board (icon tiles)
   const catBoard = b.categories
     .map(
-      (k, ci) => `<li><span class="ogs-cats__n">${pad(ci + 1)}</span><p class="ogs-cats__en" lang="en"><a href="#bc-${e(k.id)}">${e(k.en)}</a></p>${c.lang === "ko" ? `<p class="ogs-cats__ko">${e(k.ko)}</p>` : ""}
+      (k, ci) => `<li><div class="ogs-cats__top">${tile(CATEGORY_ICONS[k.id])}<span class="ogs-cats__n">${pad(ci + 1)}</span></div><p class="ogs-cats__en" lang="en"><a href="#bc-${e(k.id)}">${e(k.en)}</a></p>${c.lang === "ko" ? `<p class="ogs-cats__ko">${e(k.ko)}</p>` : ""}
         <ul>${byCat[k.id].map((i) => `<li><a href="#b-${pad(i + 1)}"><span>${pad(i + 1)}</span>${e(b.groups[i].name)}</a></li>`).join("")}</ul></li>`
     )
     .join("");
@@ -362,7 +405,7 @@ function businessMain(c, S, lang) {
       ${notice(c)}`
   );
 
-  // B · tinted split: business models + revenue candidates (no "hypothesis" flag badge; the lead says it once)
+  // B · tinted split: business models + revenue candidates as white pills (no "hypothesis" flag badge; the lead says it once)
   const revenue = sec(
     "ogs-revenue",
     `<div class="nls-split">
@@ -378,7 +421,7 @@ function businessMain(c, S, lang) {
     { tone: "tint" }
   );
 
-  // C · one section per category, alternating card grid / wide rows
+  // C · one section per category, alternating card grid / wide rows; the category icon leads each heading
   let flip = 0;
   const cats = b.categories
     .map((k, ci) => {
@@ -407,15 +450,21 @@ function businessMain(c, S, lang) {
             .join("")}</div>`;
       const title = c.lang === "ko" ? k.ko : k.en;
       const kicker = `${pad(ci + 1)} · ${k.en} · ${ids.length}`;
-      return sec(`bc-${k.id}`, `${head(`bc-${k.id}`, kicker, title, "")}${body}`, { tone: !rows && ci % 4 === 2 ? "tint" : "", cls: rows ? "ogs-sec--rows" : "" });
+      return sec(`bc-${k.id}`, `${head(`bc-${k.id}`, kicker, title, "", "", CATEGORY_ICONS[k.id])}${body}`, {
+        tone: !rows && ci % 4 === 2 ? "tint" : "",
+        cls: rows ? "ogs-sec--rows" : "",
+      });
     })
     .join("\n");
 
-  // D · roadmap: the same boxed 5-step process component as the Partnerships page
+  // D · roadmap: numbered horizontal timeline (different from the Partnerships stepper)
   const roadmap = sec(
     "ogs-roadmap",
     `${head("ogs-roadmap", b.roadmapKicker, b.roadmapTitle, b.roadmapLead)}
-      <ol class="ogs-proc ogs-proc--5">${b.roadmap.map((s) => `<li><span class="ogs-proc__n">${e(s.n)}</span><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ol>`
+      <ol class="ogs-timeline ogs-timeline--road">${b.roadmap
+        .map((s) => `<li><span class="ogs-timeline__dot ogs-timeline__dot--n" aria-hidden="true">${e(s.n)}</span><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
+        .join("")}</ol>`,
+    { tone: "tint" }
   );
 
   const close = closeInk(
@@ -435,12 +484,16 @@ function businessMain(c, S, lang) {
 function partnershipsMain(c, S, lang) {
   const p = c.partnerships;
 
-  // A · boxed 5-step process
+  // A · 5-step stepper with icons + principles as a tinted check panel
   const process = sec(
     "ogs-process",
     `${head("ogs-process", "Process", p.processTitle, "")}
-      <ol class="ogs-proc ogs-proc--5">${p.process.map((s) => `<li><span class="ogs-proc__n">${e(s.n)}</span><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ol>
-      <div class="ogs-note"><p class="ogs-dt">${e(c.ui.principlesTitle)}</p>${chips(p.principles)}</div>
+      <ol class="ogs-proc ogs-proc--5">${p.process
+        .map((s, i) => `<li><div class="ogs-proc__top"><span class="ogs-proc__n">${e(s.n)}</span>${tile(PROCESS_ICONS[i % PROCESS_ICONS.length], "round")}</div><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
+        .join("")}</ol>
+      <div class="ogs-note ogs-principles"><p class="ogs-dt">${e(c.ui.principlesTitle)}</p><ul class="nls-chips ogs-chips ogs-chips--check">${p.principles
+        .map((t) => `<li>${icon("check")}${e(t)}</li>`)
+        .join("")}</ul></div>
       ${notice(c)}
       ${note(p.note)}`
   );
@@ -453,14 +506,14 @@ function partnershipsMain(c, S, lang) {
     { tone: "tint" }
   );
 
-  // C · 2-column partner cards
+  // C · 2-column partner cards with icon tiles
   const items = sec(
     "ogs-partner-types",
     `${head("ogs-partner-types", "Partner Types", c.ui.partnerTypesTitle, "")}
       <div class="ogs-cards ogs-cards--2 ogs-cards--partners">${p.items
         .map(
           (it, i) => `<article class="ogs-card" id="pt-${pad(i + 1)}" aria-labelledby="pt-${pad(i + 1)}-t">
-          <p class="ogs-label"><span class="ogs-label__n">${pad(i + 1)}</span><span lang="en">${e(it.opp)}</span></p>
+          <div class="ogs-card__top">${tile(PARTNER_ICONS[i % PARTNER_ICONS.length])}<p class="ogs-label"><span class="ogs-label__n">${pad(i + 1)}</span><span lang="en">${e(it.opp)}</span></p></div>
           <h3 id="pt-${pad(i + 1)}-t">${e(it.name)}</h3>
           <dl class="ogs-dl ogs-dl--rows">
             <div><dt>${e(c.ui.field)}</dt><dd>${e(it.field)}</dd></div>
@@ -494,47 +547,47 @@ function contactMain(c, S, lang) {
     `/${lang}/business/inquiry/?service=partnership&source=${encodeURIComponent(`/${lang}/ongil/contact/`)}&topic=${encodeURIComponent(`ONGIL - ${topic}`)}`;
   const mailHref = (topic) => `mailto:${k.email}?subject=${encodeURIComponent(`[ONGIL] ${topic}`)}`;
 
-  // A · two large channel panels
+  // A · two large channel panels (email = apricot wash, form = white)
   const channels = sec(
     "ogs-channels",
     `${head("ogs-channels", "Channels", k.channelsTitle, "")}
       <ul class="ogs-channels">${k.channels
         .map((ch, i) => {
           const href = ch.href ? `/${lang}/${ch.href.replace("source=/ongil/", `source=/${lang}/ongil/`)}` : `mailto:${ch.v}`;
-          return `<li><span class="ogs-channels__n">${pad(i + 1)}</span><p class="ogs-channels__k">${e(ch.k)}</p><a class="ogs-channels__v" href="${e(href)}">${e(ch.v)}${ch.href ? " →" : ""}</a><p>${e(ch.text)}</p></li>`;
+          return `<li><div class="ogs-channels__top">${tile(ch.href ? "form" : "mail", "lg")}<span class="ogs-channels__n">${pad(i + 1)}</span></div><p class="ogs-channels__k">${e(ch.k)}</p><a class="ogs-channels__v" href="${e(href)}">${e(ch.v)}${ch.href ? " →" : ""}</a><p>${e(ch.text)}</p></li>`;
         })
         .join("")}</ul>`
   );
 
-  // B · 3-column board of 13 inquiry types
+  // B · 3-column board of 13 inquiry types (separate rounded cards; channel shown as an icon chip)
   const types = sec(
     "ogs-types",
     `${head("ogs-types", `Inquiry Types · ${k.types.length}`, c.ui.typesTitle, k.typesLead)}
       <ol class="ogs-board">${k.types
         .map(
           (t, i) => `<li id="c-${pad(i + 1)}">
-          <div class="ogs-board__meta"><span>${pad(i + 1)}</span><em lang="en">${t.channel === "mail" ? "Email" : "Form"}</em></div>
+          <div class="ogs-board__meta"><span>${pad(i + 1)}</span><em lang="en">${icon(t.channel === "mail" ? "mail" : "form")}${t.channel === "mail" ? "Email" : "Form"}</em></div>
           <h3>${e(t.name)}</h3>
           <p>${e(t.text)}</p>
           <a class="ogs-link" href="${e(t.channel === "mail" ? mailHref(t.name) : formHref(t.name))}">${e(t.channel === "mail" ? k.mailCta : k.formCta)} →</a>
         </li>`
         )
         .join("")}</ol>
-      ${notice(c)}`
+      ${notice(c)}`,
+    { tone: "tint" }
   );
 
-  // C · tinted split: privacy & emergency
+  // C · split: privacy & emergency as two callout cards
   const careTitle = c.lang === "ko" ? "문의 전에\n확인해 주세요." : "Before you\nget in touch.";
   const guard = sec(
     "ogs-guard",
     `<div class="nls-split">
       ${head("ogs-guard", "Privacy & Safety", careTitle, "")}
-      <ol class="ogs-checks">
-        <li><span>01</span><p>${e(k.privacy)}</p></li>
-        <li class="ogs-checks__alert"><span>02</span><p><strong>${e(k.emergency)}</strong></p></li>
+      <ol class="ogs-checks ogs-checks--cards">
+        <li><span class="ogs-checks__mark">${icon("lock")}</span><div><span class="ogs-checks__n">01</span><p>${e(k.privacy)}</p></div></li>
+        <li class="ogs-checks__alert"><span class="ogs-checks__mark">${icon("alert")}</span><div><span class="ogs-checks__n">02</span><p><strong>${e(k.emergency)}</strong></p></div></li>
       </ol>
-    </div>`,
-    { tone: "tint" }
+    </div>`
   );
 
   // D · black close: Contact → the official inquiry form (PART 11 CTA flow)
@@ -615,7 +668,7 @@ function renderPage(lang, page) {
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
-    <link rel="stylesheet" href="/ongil-site.css?v=20261019hero1" />`,
+    <link rel="stylesheet" href="/ongil-site.css?v=20261019accent1" />`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,
   });
