@@ -88,7 +88,7 @@ function block(id, inner, tone = "", cls = "") {
 }
 
 /** BABYLOG first-screen background film (owner-provided, 2026-10-18). */
-const BABYLOG_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_202655_a7f5aca0-2f80-4bc9-bcb5-96ac95662003.mp4";
+const BABYLOG_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260629_030107_874273ea-684a-4e90-bb96-8fdfde48d53d.mp4";
 
 /** Compact or full dark hero. No video, no external media. */
 function hero(C, lang, page, h, compact) {
