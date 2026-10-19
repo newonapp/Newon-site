@@ -541,6 +541,9 @@ html[data-newon-shell-theme="dark"] .hs-home:has(.np-home) {
   color: #000 !important;
   -webkit-text-fill-color: #000;
 }
+.np-vision .np-pillars {
+  margin: 2.6rem auto 0;
+}
 .np-vision .np-pillar {
   display: flex;
   flex-direction: column;
