@@ -31,7 +31,7 @@ if (!NEW.VENTURE_NAV) {
   process.exit(2);
 }
 const LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
-const CSSV = "gnav-mega.css?v=20261017ventures1";
+const CSSV = "gnav-mega.css?v=20261019line1";
 const VENTURE_PAGES = new Set(["babylog", "petlog", "myworld"]);
 
 function flatten(obj, prefix = "") {

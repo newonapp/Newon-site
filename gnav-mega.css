@@ -1383,6 +1383,8 @@ body.gnav-mega-open { overflow: visible; }
 
 .gnav-mobile__ventures .gnav-mobile__acc-link {
   letter-spacing: 0.02em;
+}
+
 /* Ten top-level menus (Apps · AI · six businesses · Business Hub · Company).
    Desktop bar is used from 1280px up; below that the drawer menu is used (see site-chrome.js desktopMq),
    because a horizontally scrolling bar hides items. Fixed compact type so the longest locale still fits. */
@@ -1465,4 +1467,27 @@ body.gnav-mega-open { overflow: visible; }
 }
 .gnav-mobile__sublink--nested {
   padding-left: 1.75rem;
+}
+
+/* Active / open menu underline: one straight line under the whole item (label + chevron),
+   instead of separate lines under the label and the chevron button. */
+.gnav.site-header .gnav-dd { position: relative; }
+.gnav.site-header .gnav-dd--active > .gnav__link::after,
+.gnav.site-header .gnav-dd--open > .gnav__link::after,
+.gnav.site-header .gnav-dd > .gnav-ventures__link--active::after { content: none; }
+.gnav.site-header .gnav-dd--active::after,
+.gnav.site-header .gnav-dd--open::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.42rem;
+  height: 1px;
+  background: var(--gnav-text-strong, currentColor);
+  opacity: 0.85;
+  pointer-events: none;
+}
+@media (min-width: 901px) {
+  .gnav.site-header .gnav__ventures .gnav-dd--active::after,
+  .gnav.site-header .gnav__ventures .gnav-dd--open::after { bottom: 0.1rem; }
 }
