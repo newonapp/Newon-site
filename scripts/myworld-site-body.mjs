@@ -83,8 +83,39 @@ function split({ id, kicker, title, lead = "", note = "", rows, aside = "", tone
   });
 }
 const rosterRow = (n, body) => `<li><span class="mws-roster__n">${n}</span><p>${esc(body)}</p></li>`;
-const shot = (s, cls = "") =>
-  `<figure class="mws-phone${cls ? ` ${cls}` : ""}"><img src="${s.src}" alt="${esc(s.alt)}" width="1242" height="2688" loading="lazy" decoding="async" /></figure>`;
+/* ---------- abstract line art (inline SVG, decorative, no images) ---------- */
+/** Line-drawn globe with dotted routes and pins — the MY WORLD "world map" motif. */
+function globeArt(uid, cls = "") {
+  return `<div class="mws-art${cls ? ` ${cls}` : ""}" aria-hidden="true"><svg viewBox="0 0 480 400" focusable="false">
+      <defs><pattern id="mws-dots-${uid}" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" class="mws-art__grid" /></pattern></defs>
+      <rect width="480" height="400" fill="url(#mws-dots-${uid})" />
+      <g class="mws-art__globe" fill="none">
+        <circle cx="240" cy="200" r="150" class="mws-art__disc" />
+        <ellipse cx="240" cy="200" rx="100" ry="150" />
+        <ellipse cx="240" cy="200" rx="48" ry="150" />
+        <path d="M240 50v300" />
+        <path d="M95 160h290M95 240h290M120 110h240M120 290h240" />
+        <path d="M90 200h300" />
+      </g>
+      <path class="mws-art__route" d="M150 262C178 168 252 140 318 168" />
+      <path class="mws-art__route" d="M318 168C352 186 362 232 330 272" />
+      <path class="mws-art__route mws-art__route--soft" d="M150 262C120 230 128 160 186 120" />
+      <g class="mws-art__pin" transform="translate(150 262)"><circle r="11" class="mws-art__halo" /><circle r="5.5" /></g>
+      <g class="mws-art__pin" transform="translate(318 168)"><circle r="11" class="mws-art__halo" /><circle r="5.5" /></g>
+      <g class="mws-art__pin mws-art__pin--open" transform="translate(330 272)"><circle r="6" /></g>
+      <g class="mws-art__pin mws-art__pin--open" transform="translate(186 120)"><circle r="6" /></g>
+    </svg></div>`;
+}
+/** Six-stop route line for the journey tabs; stops up to `active` are filled. */
+function routeArt(count, active) {
+  const xs = Array.from({ length: count }, (_, i) => 14 + (i * 292) / (count - 1));
+  const ys = xs.map((_, i) => (i % 2 ? 22 : 44));
+  const d = xs.map((x, i) => (i === 0 ? `M${x} ${ys[i]}` : `S${x - 26} ${ys[i]} ${x} ${ys[i]}`)).join(" ");
+  const stops = xs
+    .map((x, i) => `<circle cx="${x}" cy="${ys[i]}" r="${i === active ? 7 : 4.5}" class="mws-route__stop${i < active ? " is-done" : ""}${i === active ? " is-on" : ""}" />`)
+    .join("");
+  return `<svg class="mws-route" viewBox="0 0 320 66" aria-hidden="true" focusable="false"><path d="${d}" class="mws-route__line" fill="none" />${stops}</svg>`;
+}
 
 /* ---------- hero (shared flagship film hero — keep as is) ---------- */
 /** Hero — the same dark film hero as the other flagship pages (PETLOG · BABYLOG · LIVON):
@@ -176,7 +207,7 @@ function overview(lang, copy) {
     .join("");
   const panels = j.items
     .map((s, i) => `<div class="mws-panel" role="tabpanel" id="mws-panel-${s.id}" aria-labelledby="mws-tab-${s.id}"${i === 4 ? "" : " data-hidden"}>
-        <div class="mws-panel__visual mws-panel__visual--${s.status}" aria-hidden="true"><span class="mws-panel__n">${pad(i + 1)} / ${pad(j.items.length)}</span><span class="mws-panel__big" lang="en">${esc(s.en)}</span></div>
+        <div class="mws-panel__visual mws-panel__visual--${s.status}" aria-hidden="true"><span class="mws-panel__n">${pad(i + 1)} / ${pad(j.items.length)}</span>${routeArt(j.items.length, i)}<span class="mws-panel__big" lang="en">${esc(s.en)}</span></div>
         <div class="mws-panel__body">
           <p class="mws-en">${pad(i + 1)} · ${esc(s.en)}</p>
           <h3 class="mws-h3 mws-h3--lg">${esc(s.head)}</h3>
@@ -201,13 +232,15 @@ function overview(lang, copy) {
   const pillars = section({
     id: "mws-pillars",
     inner: `${head({ id: "mws-pillars", kicker: p.kicker, title: p.title, lead: p.lead, cls: "mws-head--wide" })}
-      <ol class="mws-cols mws-cols--5">${p.items.map((c, i) => `<li class="mws-col">
-        <span class="mws-col__n">${pad(i + 1)}</span>
-        <p class="mws-en">${esc(c.en)}</p>
-        <h3 class="mws-h3">${esc(c.name)}</h3>
-        <p class="mws-body">${esc(c.lead)}</p>
-        <p class="mws-col__tags">${c.chips.map(esc).join('<span aria-hidden="true"> · </span>')}</p>
-        <p class="mws-col__foot">${badge(copy, c.status)}</p>
+      <ol class="mws-bento">${p.items.map((c, i) => `<li class="mws-bento__cell${i === 0 ? " mws-bento__cell--lead" : ""}">
+        <div class="mws-bento__top"><span class="mws-bento__n">${pad(i + 1)}</span>${badge(copy, c.status)}</div>
+        ${i === 0 ? globeArt("pillars", "mws-art--bento") : ""}
+        <div class="mws-bento__body">
+          <p class="mws-en">${esc(c.en)}</p>
+          <h3 class="mws-h3${i === 0 ? " mws-h3--lg" : ""}">${esc(c.name)}</h3>
+          <p class="mws-body">${esc(c.lead)}</p>
+          ${chips(c.chips, "mws-chips--soft")}
+        </div>
       </li>`).join("")}</ol>`,
   });
 
@@ -222,7 +255,7 @@ function overview(lang, copy) {
           <ol class="mws-dir mws-dir--compact">${m.items.map((it, i) => `<li><span class="mws-dir__n">${pad(i + 1)}</span><div><h3 class="mws-h4">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></div></li>`).join("")}</ol>
           <div class="mws-actions">${btn(GOOGLE_PLAY_URL, copy.ui.appCta, { external: true })}</div>
         </div>
-        <div class="mws-phones">${m.shots.map((s, i) => shot(s, `mws-phone--${i + 1}`)).join("")}</div>
+        <div class="mws-feature__art">${globeArt("memories", "mws-art--panel")}</div>
       </div>`,
   });
 
@@ -296,11 +329,14 @@ function platform(lang, copy) {
     ctas: hbtn(GOOGLE_PLAY_URL, copy.ui.appCta, { external: true }) + hbtn(pageHref(lang, "contact"), copy.ui.contactCta, { ghost: true }),
   });
 
-  // App screens — tinted band, screenshot row
+  // The app today — tinted band, line-art globe + feature tiles (no screenshots)
   const shots = section({
     id: "mws-shots", tone: "tint",
     inner: `<div class="mws-rowhead">${head({ id: "mws-shots", kicker: p.shotsKicker, title: p.shotsTitle })}<div class="mws-actions">${btn(GOOGLE_PLAY_URL, copy.ui.appCta, { external: true })}</div></div>
-      <div class="mws-strip" tabindex="0" role="region" aria-label="${esc(p.shotsTitle)}">${p.shots.map((s) => shot(s)).join("")}</div>`,
+      <div class="mws-today">
+        <div class="mws-today__art">${globeArt("today", "mws-art--panel")}</div>
+        <ol class="mws-tiles">${p.shots.map((s, i) => `<li class="mws-tile"><span class="mws-ico-box mws-ico-box--soft">${icon(s.icon)}</span><span class="mws-tile__n">${pad(i + 1)}</span><p class="mws-tile__text">${esc(s.text)}</p></li>`).join("")}</ol>
+      </div>`,
   });
 
   // Service map — 3-col board with letters
