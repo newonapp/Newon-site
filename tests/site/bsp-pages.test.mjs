@@ -90,17 +90,17 @@ test("retired Business / Partnerships pages of render-bsp are redirect stubs to 
   }
 });
 
-test("business inquiry lists the product-business types first", () => {
+test("business inquiry lists the six business inquiry types (Oct 2026 brief) after the placeholder", () => {
   const html = read("ko/business/inquiry/index.html");
   const sel = html.match(/<select id="bz-type"[\s\S]*?<\/select>/)[0];
   const opts = [...sel.matchAll(/<option value="([^"]*)"/g)].map((m) => m[1]);
   assert.deepEqual(opts.slice(1, 7), [
-    "PRODUCT / Product adoption",
-    "PRODUCT / Enterprise solution",
-    "PRODUCT / Automation product",
-    "PRODUCT / Sales &amp; distribution",
-    "PRODUCT / Platform integration",
-    "PRODUCT / License",
+    "Platform Participation &amp; Transactions",
+    "Brand, Service &amp; Content Partnership",
+    "Enterprise Service Adoption",
+    "Public Sector &amp; Organization Partnership",
+    "Technology &amp; Global Partnership",
+    "Other Business Inquiry",
   ]);
 });
 

@@ -238,6 +238,9 @@ export function sanitizeBusinessHtml(html, lang = "ko") {
   // Already reframed (carries a notice): the reframe step owns this text now. Re-running the sentence
   // filters here would cut the notice and the meta/JSON-LD descriptions (build runs sanitize -> reframe on fresh pages).
   if (/data-bm-notice="/.test(html)) return html;
+  // Owner-approved copy that must state "no outsourcing" verbatim (Business Inquiry, Oct 2026): the sentence filter
+  // would drop it (e.g. the FAQ "외주 웹·앱 제작도 의뢰할 수 있나요?"). The page carries no price/quote UI.
+  if (/data-bm-owner-copy="1"/.test(html)) return html;
   let h = html;
   // 1) price / pricing / quote sections (whole section)
   h = removeSectionsContaining(h, ['class="bs-price', 'class="bp-pricing', 'class="bp-sec bp-pricing', "bs-collab-pricing", 'class="bp-quote', 'aria-labelledby="bs-dr-engage-title']);

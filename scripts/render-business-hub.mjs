@@ -2,19 +2,14 @@
 /**
  * Render business explore hub + inquiry hub for all locales.
  *   /business/         — Studio-style service overview (explore)
- *   /business/inquiry/ — Full collaboration page + inquiry form
+ *   /business/inquiry/ — Business Inquiry: six-platform business · partnership inquiries + form
  */
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import {
-  APP_CATALOG,
-  BUSINESS_APP_EXTRAS,
-  BUSINESS_ECOSYSTEM,
-} from "./portfolio-data.mjs";
 import { writeInquirySuccessPages } from "./gen-business-details.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
-import { businessInquiryExploreHtml } from "./business-inquiry-explore-html.mjs";
+import { fillBusinessInquiry } from "./business-inquiry-sections.mjs";
 import { businessExploreHtml } from "./business-explore-html.mjs";
 import { renderStudioHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { renderBusinessServices } from "./render-business-services.mjs";
@@ -23,29 +18,6 @@ import { renderPillarServices } from "./render-pillar-services.mjs";
 import { renderCreative } from "./render-creative.mjs";
 import { fontLinksHtml } from "./hub-utils.mjs";
 import { clampSeoDescription } from "./seo-meta.mjs";
-import { BIZ_INQUIRY_TYPES } from "./bsp-content.mjs";
-
-/** Product-business inquiry types (Oct 2026) — listed first in the type select. */
-function productInquiryOptionsHtml(dir) {
-  const lang = dir === "ko" ? "ko" : "en";
-  return BIZ_INQUIRY_TYPES.map(
-    (o) =>
-      `                <option value="${escapeHtml(o.value)}" data-biz-option="1" data-slug="${o.key}" data-area="PRODUCT">${escapeHtml(o[lang])}</option>`
-  ).join("\n");
-}
-function productInquiryServiceMap() {
-  const map = {};
-  for (const o of BIZ_INQUIRY_TYPES) {
-    map[o.key] = o.value;
-    map[o.value] = o.value;
-  }
-  return map;
-}
-import {
-  businessInquirySelectOptionsHtml,
-  businessInquiryServiceMap,
-  businessInquiryPackagePrices,
-} from "./business-pricing.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE_ORIGIN = "https://www.newon.app";
@@ -147,31 +119,6 @@ function hreflangBlock(pagePath) {
   return lines.join("\n");
 }
 
-function businessEcosystemHtml(flat, flatEn, appPrefix = "../") {
-  const bySlug = Object.fromEntries(
-    [...APP_CATALOG, ...BUSINESS_APP_EXTRAS].map((app) => [app.slug, app])
-  );
-  return BUSINESS_ECOSYSTEM.map((group) => {
-    const title = escapeHtml(pick(flat, flatEn, group.titleKey) || group.titleKey);
-    const apps = group.slugs
-      .map((slug) => bySlug[slug])
-      .filter(Boolean)
-      .map(
-        (app) => `<a class="bz-app" href="${appPrefix}${app.homeHash.replace(/^\.\.\//, "")}">
-                  <img src="${escapeHtml(app.icon)}" alt="" width="36" height="36" decoding="async" />
-                  <span>${escapeHtml(app.name)}</span>
-                </a>`
-      )
-      .join("\n                ");
-    return `<div class="bz-eco-card">
-              <h3>${title}</h3>
-              <div class="bz-app-row">
-                ${apps}
-              </div>
-            </div>`;
-  }).join("\n            ");
-}
-
 const hubShell = fs.readFileSync(path.join(ROOT, "templates", "hub-shell.html"), "utf8");
 const inquiryTemplate = fs.readFileSync(path.join(ROOT, "templates", "business-inquiry.html"), "utf8");
 const exploreOnly = process.argv.includes("--explore-only");
@@ -227,25 +174,9 @@ for (const { dir, file, htmlLang } of LANGS) {
   inquiry = inquiry.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
   inquiry = inquiry.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangBlock("business/inquiry"));
   inquiry = inquiry.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/business/inquiry/`);
+  // Business Inquiry copy (six-platform business · partnership inquiries) — scripts/business-inquiry-copy.mjs
+  inquiry = fillBusinessInquiry(inquiry, dir);
   inquiry = applyTemplate(inquiry, flat, flatEn);
-  const pkgPrices = businessInquiryPackagePrices(dir === "ko" ? "ko" : "en");
-  inquiry = inquiry.replace(
-    /\{\{BUSINESS_SELECT_OPTIONS\}\}/g,
-    `${productInquiryOptionsHtml(dir)}\n${businessInquirySelectOptionsHtml((slug) => pick(flat, flatEn, `business.inqOpt.${slug}`))}`
-  );
-  inquiry = inquiry.replace(
-    /\{\{BUSINESS_SERVICE_MAP_JSON\}\}/g,
-    JSON.stringify({ ...businessInquiryServiceMap(), ...productInquiryServiceMap() })
-  );
-  inquiry = inquiry.replace(/\{\{BUSINESS_PKG_LANDING_PRICE\}\}/g, escapeHtml(pkgPrices.landing));
-  inquiry = inquiry.replace(/\{\{BUSINESS_PKG_WEB_PRICE\}\}/g, escapeHtml(pkgPrices.web));
-  inquiry = inquiry.replace(/\{\{BUSINESS_PKG_MVP_PRICE\}\}/g, escapeHtml(pkgPrices.mvp));
-  inquiry = inquiry.replace(/\{\{BUSINESS_PKG_CUSTOM_PRICE\}\}/g, escapeHtml(pkgPrices.custom));
-  inquiry = inquiry.replace(/\{\{BUSINESS_ECOSYSTEM\}\}/g, businessEcosystemHtml(flat, flatEn, "../../"));
-  inquiry = inquiry.replace(
-    /\{\{BUSINESS_SERVICES\}\}/g,
-    businessInquiryExploreHtml(flat, flatEn, dir)
-  );
   inquiry = injectSiteChrome(inquiry, flat, flatEn, { activeNav: "business", base: "../../" });
   const inquiryDir = path.join(ROOT, dir, "business", "inquiry");
   fs.mkdirSync(inquiryDir, { recursive: true });

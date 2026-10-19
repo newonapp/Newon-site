@@ -155,8 +155,10 @@ test("contact links use the existing inquiry page with known params, and mailto 
     }
     assert.ok(fs.existsSync(path.join(ROOT, lang, "business", "inquiry", "index.html")));
   }
-  // the inquiry page maps service=partnership to an existing option
-  assert.match(read("ko/business/inquiry/index.html"), /<option value="partnership"/);
+  // the inquiry page maps service=partnership to an existing option (Business Inquiry, Oct 2026: brand/service partnership type)
+  const inq = read("ko/business/inquiry/index.html");
+  assert.match(inq, /"partnership":"Brand, Service & Content Partnership"/);
+  assert.match(inq, /<option value="Brand, Service &amp; Content Partnership"/);
 });
 
 test("role separation with LivOn and MY WORLD is stated", () => {
