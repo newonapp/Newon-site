@@ -68,7 +68,7 @@ function renderPage(lang, page) {
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
-    <link rel="stylesheet" href="/shareon.css?v=20261019hero1" />`,
+    <link rel="stylesheet" href="/shareon.css?v=20261019accent1" />`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>
     <script src="/shareon.js?v=${CSS_VER}" defer></script>`,

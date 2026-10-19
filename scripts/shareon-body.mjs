@@ -49,7 +49,7 @@ function head(id, kicker, title, lead, { extra = "", cls = "" } = {}) {
     </header>`;
 }
 
-/** One body section. `mod` picks the background: "" (white, thin top rule) · "band" (purple tint) · "ink" (black). */
+/** One body section. `mod` picks the background: "" (white, thin top rule) · "tint" (faint purple wash) · "band" (purple tint) · "ink" (black). */
 function sec(id, inner, mod = "") {
   return `<section class="nsh-sec${mod ? ` nsh-sec--${mod}` : ""}" id="nsh-${e(id)}" aria-labelledby="nsh-${e(id)}-t">
     <div class="nsh-wrap">${inner}</div>
@@ -107,6 +107,7 @@ function status(c) {
 /** Black closing band. */
 function closing(id, n, ctas, { big = false } = {}) {
   return `<section class="nsh-sec nsh-sec--ink nsh-close" id="nsh-${e(id)}" aria-labelledby="nsh-${e(id)}-t">
+    <svg class="nsh-close__art" viewBox="0 0 360 200" aria-hidden="true" focusable="false"><circle cx="130" cy="100" r="86" fill="none" stroke="#7771E8" stroke-width="1.5"/><circle cx="230" cy="100" r="86" fill="none" stroke="#b3afff" stroke-width="1.5" stroke-dasharray="3 7"/><circle cx="180" cy="100" r="5" fill="#7771E8"/></svg>
     <div class="nsh-wrap nsh-close__in">
       ${n.kicker ? `<p class="nsh-kicker" lang="en">${e(n.kicker)}</p>` : ""}
       <h2 class="nsh-close__title${big ? " nsh-close__title--mail" : ""}" id="nsh-${e(id)}-t">${nl(n.title)}</h2>
@@ -203,7 +204,8 @@ function overview(c, lang) {
           ${chips(it.chips)}
         </li>`
       )
-      .join("")}</ul>`
+      .join("")}</ul>`,
+    "tint"
   );
 
   const how = sec(
@@ -261,7 +263,8 @@ function overview(c, lang) {
           )}</h3><p class="nsh-family__body">${e(r.body)}</p></li>`
         )
         .join("")}</ul>
-    </div>`
+    </div>`,
+    "tint"
   );
 
   return {
@@ -310,7 +313,8 @@ function platform(c, lang) {
           .map((s) => `<li><a href="#svc-${e(s.n)}"><span aria-hidden="true">${e(s.n)}</span>${e(s.title)}</a></li>`)
           .join("")}</ul></div>`
       )
-      .join("")}</div>`
+      .join("")}</div>`,
+    "tint"
   );
 
   /* A — catalog rows */
@@ -388,16 +392,17 @@ function platform(c, lang) {
     "grp-e",
     `<div class="nsh-device" id="svc-${e(app.n)}">
       <div class="nsh-device__art" aria-hidden="true">
-        <svg viewBox="0 0 220 300" focusable="false">
-          <rect x="40" y="10" width="140" height="280" rx="26" fill="none" stroke="#cfcfd6" stroke-width="2"/>
-          <rect x="54" y="34" width="112" height="210" rx="6" fill="#F0EEFF"/>
-          <path d="M70 62h56M70 78h80" stroke="#554CC8" stroke-width="6" stroke-linecap="round"/>
-          <rect x="70" y="100" width="36" height="36" rx="6" fill="#7771E8"/>
-          <rect x="114" y="100" width="36" height="36" rx="6" fill="none" stroke="#7771E8" stroke-width="2"/>
-          <rect x="70" y="144" width="36" height="36" rx="6" fill="none" stroke="#7771E8" stroke-width="2"/>
-          <rect x="114" y="144" width="36" height="36" rx="6" fill="none" stroke="#7771E8" stroke-width="2"/>
-          <path d="M70 204h80" stroke="#b3afff" stroke-width="6" stroke-linecap="round"/>
-          <path d="M96 266h28" stroke="#cfcfd6" stroke-width="4" stroke-linecap="round"/>
+        <svg viewBox="0 0 280 240" focusable="false">
+          <circle cx="92" cy="96" r="62" fill="#F0EEFF"/>
+          <circle cx="92" cy="96" r="62" fill="none" stroke="#7771E8" stroke-width="2"/>
+          <path d="M92 34a62 62 0 0 1 0 124z" fill="#7771E8"/>
+          <text x="196" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="64" font-weight="700" fill="#554CC8" letter-spacing="-3">Aa</text>
+          <path d="M160 140h72" stroke="#dedaff" stroke-width="2"/>
+          <path d="M40 196h200" stroke="#dedaff" stroke-width="6" stroke-linecap="round"/>
+          <path d="M40 196h124" stroke="#7771E8" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="164" cy="196" r="11" fill="#fff" stroke="#554CC8" stroke-width="3"/>
+          <circle cx="232" cy="56" r="7" fill="none" stroke="#7771E8" stroke-width="2"/>
+          <circle cx="232" cy="56" r="17" fill="none" stroke="#b3afff" stroke-width="1.5"/>
         </svg>
       </div>
       <div class="nsh-device__text">
@@ -407,7 +412,8 @@ function platform(c, lang) {
         ${chips(app.chips, "nsh-chips--lg")}
         ${consider(c, app)}
       </div>
-    </div>`
+    </div>`,
+    "tint"
   );
 
   return {
@@ -609,18 +615,21 @@ function partnerships(c, lang) {
   const p = c.partnerships;
   const t = p.types;
 
-  const open = split("open", p.open.kicker, p.open.title, p.open.lead, p.open.points);
+  const open = split("open", p.open.kicker, p.open.title, p.open.lead, p.open.points, { mod: "tint" });
 
   const types = sec(
     "types",
     `<div class="nsh-dir__head">${head("types", t.kicker, t.title, "")}<p class="nsh-notice"><span class="nsh-notice__k" aria-hidden="true">!</span>${e(p.notice)}</p></div>
+    <ul class="nsh-pidx" role="list">${t.items
+      .map((it) => `<li><a class="nsh-pidx__a" href="#ptype-${e(it.n)}"><span class="nsh-pidx__ico">${icon(it.icon)}</span><span class="nsh-pidx__n" aria-hidden="true">${e(it.n)}</span><span class="nsh-pidx__t">${e(it.title)}</span></a></li>`)
+      .join("")}</ul>
     <ol class="nsh-dir" role="list">
       <li class="nsh-dir__row nsh-dir__row--head" aria-hidden="true"><span></span><span></span><span>${e(t.labels.collab)}</span><span>${e(t.labels.value)}</span><span>${e(
         t.labels.terms
       )}</span><span>${e(t.labels.route)}</span></li>
       ${t.items
         .map(
-          (it) => `<li class="nsh-dir__row">
+          (it) => `<li class="nsh-dir__row" id="ptype-${e(it.n)}">
         <span class="nsh-dir__n" aria-hidden="true">${e(it.n)}</span>
         <div class="nsh-dir__name"><span class="nsh-dir__ico">${icon(it.icon)}</span><div><h3 class="nsh-dir__title">${e(it.title)}</h3>${link(
             inquiryHref(lang, `partner-${it.n}`),
@@ -674,7 +683,12 @@ function contact(c, lang) {
   const types = sec(
     "types",
     `${head("types", k.kicker, k.title, k.lead)}
-    <ul class="nsh-tiles" role="list">${k.items
+    <div class="nsh-tgroups">${(k.groups ? Object.keys(k.groups) : [null])
+      .map((gid) => {
+        const list = gid ? k.items.filter((it) => it.g === gid) : k.items;
+        return `<div class="nsh-tgroup${gid ? ` nsh-tgroup--${e(gid)}` : ""}">
+      ${gid ? `<p class="nsh-tgroup__k"><span class="nsh-tgroup__dot" aria-hidden="true"></span>${e(k.groups[gid])}<span class="nsh-tgroup__count">${list.length}</span></p>` : ""}
+      <ul class="nsh-tiles" role="list">${list
       .map(
         (it) => `<li class="nsh-tiles__item">
           <div class="nsh-tiles__top"><span class="nsh-tiles__ico">${icon(it.icon)}</span><span class="nsh-tiles__n">${k.groups && it.g ? `${e(k.groups[it.g])} ` : ""}<span aria-hidden="true">· ${e(it.n)}</span></span></div>
@@ -686,7 +700,9 @@ function contact(c, lang) {
           </div>
         </li>`
       )
-      .join("")}</ul>`
+      .join("")}</ul></div>`;
+      })
+      .join("")}</div>`
   );
   const g = k.guide;
   const guide = sec(

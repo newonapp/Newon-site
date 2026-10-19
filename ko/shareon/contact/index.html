@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=20260924livon1" />
     <link rel="stylesheet" href="/flagship-subnav.css?v=20261018fsn2" />
-    <link rel="stylesheet" href="/shareon.css?v=20261019hero1" />
+    <link rel="stylesheet" href="/shareon.css?v=20261019accent1" />
     <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
 <script src="/theme-shell.js?v=20260904perf1"></script>
     <script src="/lang-nav.js?v=20260825studio"></script>
@@ -788,7 +788,9 @@
       <h2 class="nsh-title" id="nsh-types-t">문의 유형을<br />선택해 주세요.</h2>
       <p class="nsh-lead">01–06은 앱 이용과 개인·기업 입점·대여 같은 이용·거래 문의, 07–10은 거래 인프라·기업 솔루션·기관·전략 제휴 같은 사업·파트너십 문의입니다. 각 유형은 NEWON 공식 문의 양식이나 공식 이메일로 연결되며, 회원가입은 필요하지 않습니다.</p>
     </header>
-    <ul class="nsh-tiles" role="list"><li class="nsh-tiles__item">
+    <div class="nsh-tgroups"><div class="nsh-tgroup nsh-tgroup--trade">
+      <p class="nsh-tgroup__k"><span class="nsh-tgroup__dot" aria-hidden="true"></span>이용·거래<span class="nsh-tgroup__count">6</span></p>
+      <ul class="nsh-tiles" role="list"><li class="nsh-tiles__item">
           <div class="nsh-tiles__top"><span class="nsh-tiles__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="6.5" y="2.5" width="11" height="19" rx="2"/><path d="M10.5 18.5h3"/></svg></span><span class="nsh-tiles__n">이용·거래 <span aria-hidden="true">· 01</span></span></div>
           <h3 class="nsh-tiles__title">앱 이용</h3>
           <p class="nsh-tiles__body">앱 이용과 기술 관련 질문. 앱은 아직 앱스토어에 출시되지 않았습니다.</p>
@@ -836,7 +838,9 @@
             <a class="nsh-tiles__btn" href="/ko/business/inquiry/?type=partnership&amp;source=shareon&amp;utm_source=shareon&amp;utm_content=returns#inquiry">문의 양식<span class="nsh-vh"> — 반납·분쟁</span> <span aria-hidden="true">→</span></a>
             <a class="nsh-tiles__mail" href="mailto:newon@newon.app?subject=%5BSHAREON%5D%20%EC%9D%B4%EC%9A%A9%C2%B7%EA%B1%B0%EB%9E%98%20%C2%B7%20%EB%B0%98%EB%82%A9%C2%B7%EB%B6%84%EC%9F%81">이메일<span class="nsh-vh"> — 반납·분쟁</span></a>
           </div>
-        </li><li class="nsh-tiles__item">
+        </li></ul></div><div class="nsh-tgroup nsh-tgroup--partner">
+      <p class="nsh-tgroup__k"><span class="nsh-tgroup__dot" aria-hidden="true"></span>사업·파트너십<span class="nsh-tgroup__count">4</span></p>
+      <ul class="nsh-tiles" role="list"><li class="nsh-tiles__item">
           <div class="nsh-tiles__top"><span class="nsh-tiles__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="5.5" width="19" height="13" rx="1.5"/><path d="M2.5 9.5h19"/><path d="M6 15h4"/></svg></span><span class="nsh-tiles__n">사업·파트너십 <span aria-hidden="true">· 07</span></span></div>
           <h3 class="nsh-tiles__title">결제·정산·보증금 인프라</h3>
           <p class="nsh-tiles__body">결제·정산·보증금 구조에 관한 적격 사업자 협력과 의견. 결제·보증금은 아직 운영되지 않습니다.</p>
@@ -868,7 +872,7 @@
             <a class="nsh-tiles__btn" href="/ko/business/inquiry/?type=partnership&amp;source=shareon&amp;utm_source=shareon&amp;utm_content=global#inquiry">문의 양식<span class="nsh-vh"> — 전략·기술·글로벌 제휴</span> <span aria-hidden="true">→</span></a>
             <a class="nsh-tiles__mail" href="mailto:newon@newon.app?subject=%5BSHAREON%5D%20%EC%82%AC%EC%97%85%C2%B7%ED%8C%8C%ED%8A%B8%EB%84%88%EC%8B%AD%20%C2%B7%20%EC%A0%84%EB%9E%B5%C2%B7%EA%B8%B0%EC%88%A0%C2%B7%EA%B8%80%EB%A1%9C%EB%B2%8C%20%EC%A0%9C%ED%9C%B4">이메일<span class="nsh-vh"> — 전략·기술·글로벌 제휴</span></a>
           </div>
-        </li></ul></div>
+        </li></ul></div></div></div>
   </section>
 <section class="nsh-sec nsh-sec--band" id="nsh-guide" aria-labelledby="nsh-guide-t">
     <div class="nsh-wrap"><div class="nsh-split">
@@ -881,6 +885,7 @@
     </div></div>
   </section>
 <section class="nsh-sec nsh-sec--ink nsh-close" id="nsh-next" aria-labelledby="nsh-next-t">
+    <svg class="nsh-close__art" viewBox="0 0 360 200" aria-hidden="true" focusable="false"><circle cx="130" cy="100" r="86" fill="none" stroke="#7771E8" stroke-width="1.5"/><circle cx="230" cy="100" r="86" fill="none" stroke="#b3afff" stroke-width="1.5" stroke-dasharray="3 7"/><circle cx="180" cy="100" r="5" fill="#7771E8"/></svg>
     <div class="nsh-wrap nsh-close__in">
       <p class="nsh-kicker" lang="en">NEWON · SHAREON</p>
       <h2 class="nsh-close__title nsh-close__title--mail" id="nsh-next-t">newon@newon.app</h2>
