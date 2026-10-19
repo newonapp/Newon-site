@@ -64,9 +64,9 @@ test("Platform: 40 categories in 5 groups of 8, 200+ topics, every required fiel
   assert.ok(topics >= 200, `topics ${topics}`);
   for (const lang of ["ko", "en"]) {
     const html = page(lang, "platform");
-    assert.equal(count(html, /class="nls-board__item lvs-cat" id="lvs-cat-\d\d"/g), 40);
-    assert.equal(count(html, /class="nls-proc__item lvs-core"/g), 8);
-    assert.equal(count(html, /class="nls-board__item lvs-cat" id="lvs-cat-\d\d" data-status="(web|partial|planned)"/g), 40);
+    assert.equal(count(html, /class="lvs-cat" id="lvs-cat-\d\d"/g), 40);
+    assert.equal(count(html, /class="lvs-core"/g), 8);
+    assert.equal(count(html, /class="lvs-cat" id="lvs-cat-\d\d" data-status="(web|partial|planned)"/g), 40);
   }
   assert.equal(CORE_FEATURES.length, 8);
   for (const f of CORE_FEATURES) assert.ok(f.nowKo && f.nowEn && ["live", "partial", "planned"].includes(f.st), f.en);
@@ -100,10 +100,10 @@ test("Business 15 areas, Partnerships 20 types, Contact 14 types — rendered wi
   assert.equal(ROADMAP.length, 5);
   for (const b of BUSINESS) for (const k of ["what", "who", "value", "rev", "partners", "rule"]) assert.ok(b.ko2[k] && b.en2[k], `${b.n} ${k}`);
   for (const lang of ["ko", "en"]) {
-    assert.equal(count(page(lang, "business"), /class="nls-signal__item lvs-biz" id="lvs-biz-/g), 15);
+    assert.equal(count(page(lang, "business"), /class="lvs-biz" id="lvs-biz-/g), 15);
     assert.equal(count(page(lang, "partnerships"), /id="lvs-partner-\d\d"/g), 20);
     assert.equal(count(page(lang, "contact"), /class="lvs-contact__item"/g), 14);
-    assert.equal(count(page(lang, "business"), /class="nls-lane__item lvs-road__step"/g), 5);
+    assert.equal(count(page(lang, "business"), /class="lvs-road__step"/g), 5);
     assert.equal(count(page(lang, "business"), /<tbody>[\s\S]*?<\/tbody>/g), 1);
   }
 });
@@ -176,8 +176,15 @@ test("accessibility basics: heading order, labelled nav, lang attribute, reduced
   assert.match(css, /prefers-reduced-motion: reduce/);
   assert.match(css, /focus-visible/);
   assert.match(css, /min-height: 44px|min-height: 48px/);
-  // same visual language as the Life Stage page: no extra accent colour, no rounded cards
-  assert.doesNotMatch(css, /#f6d76b|border-radius/i);
+  // Life Stage language (square, no rounded cards) with LIVON's butter-yellow point colour as tokens only (2026-10 owner brief)
+  assert.doesNotMatch(css, /border-radius/i);
+  assert.match(css, /--lvs-point: #f6d76b/i);
+  assert.match(css, /--lvs-point-ink: #7a5d00/i);
+  // no raster images or app screenshots in the LIVON site pages
+  for (const lang of LANGS) for (const p of LIVON_SITE_PAGES) {
+    const main = page(lang, p.id).match(/<section id="lifestage-detail"[\s\S]*<\/section>/)[0];
+    assert.doesNotMatch(main, /<img|\.png|\.jpe?g|\.webp/i, `${lang}/${p.id} image`);
+  }
 });
 
 test("existing LIVON web service and other pages are untouched by the renderer's outputs", () => {

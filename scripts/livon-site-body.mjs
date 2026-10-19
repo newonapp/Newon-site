@@ -125,12 +125,53 @@ const groupOf = (id) => GROUPS.find((g) => g.id === id);
 const pad = (i) => String(i).padStart(2, "0");
 const catHref = (lang, n) => `${pageHref(lang, "platform")}#lvs-cat-${n}`;
 const note = (t) => (t ? `<p class="nls-note">${e(t)}</p>` : "");
+/* status pill — yellow-ink outline for what runs today, dashed for plans and concepts */
 const status = (lang, key) => {
   const s = STATUS[key] || STATUS.planned;
-  return `<p class="nls-status lvs-st lvs-st--${e(key)}">${e(pick(lang, s.ko, s.en))}</p>`;
+  return `<p class="lvs-pill lvs-pill--${e(key)}">${e(pick(lang, s.ko, s.en))}</p>`;
 };
-const roster = (rows) =>
-  `<ol class="nls-roster">${rows.map(([n, t]) => `<li><span>${e(n)}</span><p>${t}</p></li>`).join("")}</ol>`;
+
+/* ── simple line icons (inline SVG, 24×24, stroke = currentColor; decorative only) ── */
+const ICON_PATHS = {
+  path: '<path d="M4 19c3-6 6-2 8-7s5-6 8-7"/><circle cx="4" cy="19" r="1.6"/><circle cx="20" cy="5" r="1.6"/>',
+  feed: '<rect x="4" y="4" width="16" height="16"/><path d="M8 9h8M8 13h8M8 17h5"/>',
+  search: '<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/>',
+  person: '<circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-4 4-6 7-6s5.8 2 7 6"/>',
+  chat: '<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/>',
+  route: '<circle cx="6" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 6h6a3 3 0 0 1 0 6h-4a3 3 0 0 0 0 6h6"/>',
+  spark: '<path d="M12 3v5M12 16v5M3 12h5M16 12h5M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>',
+  doc: '<path d="M6 3h9l3 3v15H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/>',
+  building: '<path d="M4 21V5l8-2v18M12 21V9l8 2v10M3 21h18M7 8h2M7 12h2M7 16h2M15 13h2M15 17h2"/>',
+  globe: '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.6 2.6 14.4 0 17M12 3.5c-2.6 2.6-2.6 14.4 0 17"/>',
+  users: '<circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3.5 19c.8-3.3 3-5 5.5-5s4.7 1.7 5.5 5M14.5 14.3c2.6-.4 4.8.9 5.8 4.2"/>',
+  link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+  check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+  mail: '<rect x="3.5" y="5.5" width="17" height="13"/><path d="M4 6.5l8 6 8-6"/>',
+  info: '<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.6v.4"/>',
+  book: '<path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/>',
+  home: '<path d="M4 11l8-6.5 8 6.5M6 9.5V20h12V9.5M10 20v-5h4v5"/>',
+  coin: '<ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v5c0 1.7 3.1 3 7 3s7-1.3 7-3V7M5 12v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/>',
+  heart: '<path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/>',
+  leaf: '<path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14z"/><path d="M5 19l8-8"/>',
+  shield: '<path d="M12 3.5l7 2.5v5.5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9 12l2.2 2.2L15.5 10"/>',
+  grid: '<rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/>',
+  handshake: '<path d="M3 11l4-4 4 2 3-2 4 1 3 3"/><path d="M7 7v6l4 4c.8.8 2 .8 2.8 0l4.2-4.2V8"/><path d="M11 13l2 2M13 11l2 2"/>',
+  arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+};
+const icon = (name, cls = "lvs-ico") =>
+  `<svg class="${cls}" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICON_PATHS[name] || ICON_PATHS.spark}</svg>`;
+const GROUP_ICON = { A: "book", B: "doc", C: "coin", D: "heart", E: "leaf" };
+const CORE_ICON = ["path", "feed", "search", "person", "chat", "route", "spark", "doc"];
+const CA_ICON = ["users", "spark", "shield"];
+const TRACK_ICON = ["person", "building", "shield", "globe"];
+const CONTACT_ICON = { svc: "chat", info: "book", biz: "handshake" };
+
+/* numbered list with a square yellow-ink number — replaces the black hover roster */
+const points = (rows, mod = "") =>
+  `<ol class="lvs-points${mod ? ` lvs-points--${mod}` : ""}">${rows.map(([n, t]) => `<li><span class="lvs-points__n">${e(n)}</span><p>${t}</p></li>`).join("")}</ol>`;
+/* check list — same content as a numbered roster, with a check mark instead of a number */
+const checks = (rows) =>
+  `<ul class="lvs-checks">${rows.map((t) => `<li>${icon("check", "lvs-checks__i")}<p>${t}</p></li>`).join("")}</ul>`;
 
 /* ════════════════════════ 01 Overview ════════════════════════ */
 function overviewHero(lang) {
@@ -155,35 +196,40 @@ function overviewHero(lang) {
   </div>`;
 }
 
+const leadNote = (t) => `<p class="lvs-notice">${icon("info", "lvs-notice__i")}<span>${e(t)}</span></p>`;
+
+/* 02 — split (headline / numbered principles) + stat tiles on a pale yellow wash */
 function vision(lang) {
   const c = siteCopy(lang);
   const v = c.overview.vision;
   const facts = c.stats.map(([n, k]) => `<li><strong>${e(n)}</strong><span>${e(k)}</span></li>`).join("");
-  return `<div id="lvs-vision" class="nls-block nls-why-sec" data-lvs-section="02">
+  return `<div id="lvs-vision" class="nls-block lvs-sec" data-lvs-section="02">
     <div class="nls-split">
       ${head(v.kicker, v.title, v.lead)}
-      ${roster(v.points.map(([k, t], i) => [pad(i + 1), `<b>${e(k)}</b> ${e(t)}`]))}
+      ${points(v.points.map(([k, t], i) => [pad(i + 1), `<b>${e(k)}</b> ${e(t)}`]))}
     </div>
     <ul class="lvs-facts">${facts}</ul>
   </div>`;
 }
 
+/* 03 — horizontal timeline (vertical on mobile) */
 function lifeJourney(lang) {
   const c = siteCopy(lang).overview.journey;
   const items = JOURNEY.map(
-    (j, i) => `<article class="nls-board__item lvs-chapter">
-      <div class="nls-board__meta"><span class="nls-board__n">${pad(i + 1)}</span><span class="lvs-chapter__age">${e(pick(lang, j.ageKo, j.ageEn))}</span></div>
+    (j, i) => `<li class="lvs-tl__item lvs-chapter">
+      <p class="lvs-tl__age"><span>${pad(i + 1)}</span> ${e(pick(lang, j.ageKo, j.ageEn))}</p>
       <h3>${e(pick(lang, j.ko, j.en))}</h3>
       <p>${e(pick(lang, j.bodyKo, j.bodyEn))}</p>
-      <ul class="nls-chips">${j.areas.map((a) => `<li>${e(a)} ${e(pick(lang, groupOf(a).ko, groupOf(a).en))}</li>`).join("")}</ul>
-    </article>`
+      <ul class="lvs-tags">${j.areas.map((a) => `<li><b>${e(a)}</b> ${e(pick(lang, groupOf(a).ko, groupOf(a).en))}</li>`).join("")}</ul>
+    </li>`
   ).join("");
-  return `<div id="lvs-journey" class="nls-block nls-block--band" data-lvs-section="03">
+  return `<div id="lvs-journey" class="nls-block nls-block--band lvs-wash" data-lvs-section="03">
     ${head(c.kicker, c.title, c.lead)}
-    <div class="nls-board lvs-board--5">${items}</div>
+    <ol class="lvs-tl">${items}</ol>
   </div>`;
 }
 
+/* 04 — decade rail (existing interactive component; recoloured in CSS) */
 function lifeStage(lang) {
   const c = siteCopy(lang).overview.stage;
   const life = getLifeStageCopy(lang);
@@ -203,7 +249,7 @@ function lifeStage(lang) {
         </div>
       </article>`)
     .join("");
-  return `<div id="lvs-stage" class="nls-block nls-journey-sec" data-lvs-section="04">
+  return `<div id="lvs-stage" class="nls-block nls-journey-sec lvs-sec" data-lvs-section="04">
     ${head(c.kicker, c.title, c.lead)}
     <div class="nls-rail" role="group" aria-label="${e(life.hero.pathLabel)}">${rail}</div>
     <div class="nls-journey">${cards}</div>
@@ -211,7 +257,7 @@ function lifeStage(lang) {
   </div>`;
 }
 
-/** 40-cell map: 5 rows (areas) × 8 categories, hairline grid like the Life Stage rail. */
+/** 40-cell map: 5 rows (areas) × 8 categories. */
 function lifeMap(lang, hits = [], label = "") {
   const rows = GROUPS.map((g) => {
     const cells = CATEGORIES.filter((x) => x.g === g.id)
@@ -228,6 +274,7 @@ function legend(lang) {
     .join("")}</ul>`;
 }
 
+/* 05 — tabbed explorer + highlighted 40-cell map (tabs and hits in yellow) */
 function explorer(lang) {
   const c = siteCopy(lang).overview.events;
   const first = LIFE_EVENTS[0];
@@ -235,20 +282,20 @@ function explorer(lang) {
     (ev, i) => `<button type="button" class="lvs-ex__tab${i === 0 ? " is-on" : ""}" data-lvs-event="${e(ev.id)}" aria-pressed="${i === 0 ? "true" : "false"}"><em>${pad(i + 1)}</em><span>${e(pick(lang, ev.ko, ev.en))}</span></button>`
   ).join("");
   const panels = LIFE_EVENTS.map((ev, i) => {
-    const rel = ev.cats.map((n) => `<li><a href="${e(catHref(lang, n))}"><span>${e(n)}</span><strong>${e(pick(lang, byN[n].ko, byN[n].en))}</strong></a></li>`).join("");
+    const rel = ev.cats.map((n) => `<li><a href="${e(catHref(lang, n))}"><span>${e(n)}</span><strong>${e(pick(lang, byN[n].ko, byN[n].en))}</strong>${icon("arrow", "lvs-rel__i")}</a></li>`).join("");
     return `<article class="lvs-event${i === 0 ? " is-on" : ""}" id="lvs-event-${e(ev.id)}" data-lvs-event-panel="${e(ev.id)}" data-cats="${e(ev.cats.join(" "))}">
-      <p class="nls-decade__n">${pad(i + 1)}</p>
+      <p class="lvs-event__n">${pad(i + 1)}</p>
       <h3>${e(pick(lang, ev.ko, ev.en))}</h3>
-      <p class="nls-decade__lead">${e(pick(lang, ev.tagKo, ev.tagEn))}</p>
+      <p class="lvs-event__lead">${e(pick(lang, ev.tagKo, ev.tagEn))}</p>
       <p class="lvs-k">${e(c.related)}</p>
-      <ol class="nls-index lvs-rel">${rel}</ol>
+      <ol class="lvs-rel">${rel}</ol>
       <p class="lvs-k">${e(c.check)}</p>
       <ul class="nls-chips">${pick(lang, ev.checkKo, ev.checkEn).map((t) => `<li>${e(t)}</li>`).join("")}</ul>
     </article>`;
   }).join("");
-  return `<div id="lvs-events" class="nls-block nls-block--band" data-lvs-section="05">
+  return `<div id="lvs-events" class="nls-block nls-block--band lvs-wash" data-lvs-section="05">
     ${head(c.kicker, c.title, c.lead)}
-    <p class="nls-status">${e(pick(lang, "구조 예시", "Structure example"))}</p>
+    <p class="lvs-pill lvs-pill--concept">${e(pick(lang, "구조 예시", "Structure example"))}</p>
     ${note(c.note)}
     <div class="lvs-ex" data-lvs-explorer>
       <div class="lvs-ex__tabs" role="group" aria-label="${e(c.kicker)}" hidden>${tabs}</div>
@@ -264,6 +311,7 @@ function explorer(lang) {
   </div>`;
 }
 
+/* 06 / 07 — two area panels, each with a letter monogram + a directory of 8 categories */
 function areaSection(lang, id, sec, key, gids, band) {
   const c = siteCopy(lang).overview[key];
   const cols = gids.map((gid) => {
@@ -273,68 +321,75 @@ function areaSection(lang, id, sec, key, gids, band) {
       .join("");
     return `<section class="lvs-area" aria-labelledby="lvs-area-${gid}">
       <header class="lvs-area__head">
-        <p class="nls-kicker">${e(gid)} · ${e(g.en)} · ${e(g.range)}</p>
-        <h3 id="lvs-area-${gid}">${e(pick(lang, g.ko, g.en))}</h3>
-        <p>${e(pick(lang, g.leadKo, g.leadEn))}</p>
+        <span class="lvs-mono" aria-hidden="true">${icon(GROUP_ICON[gid])}<b>${e(gid)}</b></span>
+        <div>
+          <p class="nls-kicker">${e(gid)} · ${e(g.en)} · ${e(g.range)}</p>
+          <h3 id="lvs-area-${gid}">${e(pick(lang, g.ko, g.en))}</h3>
+          <p>${e(pick(lang, g.leadKo, g.leadEn))}</p>
+        </div>
       </header>
-      <ol class="nls-dir lvs-dir">${rows}</ol>
+      <ol class="lvs-dir">${rows}</ol>
     </section>`;
   }).join("");
-  return `<div id="${id}" class="nls-block${band ? " nls-block--band" : ""}" data-lvs-section="${sec}">
+  return `<div id="${id}" class="nls-block${band ? " nls-block--band lvs-wash" : " lvs-sec"}" data-lvs-section="${sec}">
     ${head(c.kicker, c.title, c.lead)}
-    <div class="lvs-cols">${cols}</div>
+    <div class="lvs-cols${band ? " lvs-cols--cards" : ""}">${cols}</div>
     ${legend(lang)}
   </div>`;
 }
 
+/* 08 — bento: one large tile + two stacked tiles */
 function communityAi(lang) {
   const c = siteCopy(lang).overview.ca;
   const items = c.items
-    .map(([t, sub, body, st], i) => `<article class="nls-flow__item">
-      <span class="nls-flow__n">${pad(i + 1)}</span>
+    .map(([t, sub, body, st], i) => `<article class="lvs-bento__item${i === 0 ? " lvs-bento__item--lg" : ""}">
+      <span class="lvs-tile-ico">${icon(CA_ICON[i])}</span>
+      <p class="lvs-bento__n">${pad(i + 1)}</p>
       <h3>${e(t)}</h3>
       <p><b>${e(sub)}</b></p>
       <p>${e(body)}</p>
       ${status(lang, st)}
     </article>`)
     .join("");
-  return `<div id="lvs-community" class="nls-block nls-pillars-sec" data-lvs-section="08">
+  return `<div id="lvs-community" class="nls-block lvs-sec" data-lvs-section="08">
     ${head(c.kicker, c.title, "")}
-    <div class="nls-flow">${items}</div>
+    <div class="lvs-bento">${items}</div>
   </div>`;
 }
 
+/* 09 — four audience tiles + split (NEWON text / app list) */
 function ecosystem(lang) {
   const c = siteCopy(lang).overview.eco;
-  const tracks = c.tracks.map(([t, b], i) => `<li><span>${pad(i + 1)}</span><strong>${e(t)} — ${e(b)}</strong></li>`).join("");
+  const tracks = c.tracks.map(([t, b], i) => `<li><span class="lvs-tile-ico">${icon(TRACK_ICON[i])}</span><p class="lvs-aud__n">${pad(i + 1)}</p><strong>${e(t)}</strong><p>${e(b)}</p></li>`).join("");
   const apps = [["LIVON", c.livon]].concat(Object.values(NEWON_APPS).map((a) => [a.name, pick(lang, a.ko, a.en)]));
-  const dir = apps.map(([n, t], i) => `<li><span>${pad(i + 1)}</span><div><strong>${e(n)}</strong><p>${e(t)}</p></div></li>`).join("");
-  return `<div id="lvs-ecosystem" class="nls-block nls-block--band nls-related-sec" data-lvs-section="09">
+  const dir = apps.map(([n, t], i) => `<li${i === 0 ? ' class="is-self"' : ""}><span>${pad(i + 1)}</span><div><strong>${e(n)}</strong><p>${e(t)}</p></div></li>`).join("");
+  return `<div id="lvs-ecosystem" class="nls-block nls-block--band lvs-wash" data-lvs-section="09">
     ${head(c.kicker, c.title, c.lead)}
-    <ol class="nls-index">${tracks}</ol>
+    <ol class="lvs-aud">${tracks}</ol>
     <div class="nls-split lvs-gap">
       <div>
         <header class="nls-head"><h3 class="lvs-h3">${e(c.newonTitle)}</h3><p class="nls-lead">${e(c.newonLead)}</p></header>
-        ${pick(lang, PLATFORM_EXAMPLES.ko, PLATFORM_EXAMPLES.en).map((t) => `<p class="nls-note">${e(t)}</p>`).join("")}
+        ${pick(lang, PLATFORM_EXAMPLES.ko, PLATFORM_EXAMPLES.en).map((t) => `<p class="lvs-quote">${e(t)}</p>`).join("")}
       </div>
-      <ol class="nls-dir">${dir}</ol>
+      <ol class="lvs-apps">${dir}</ol>
     </div>
   </div>`;
 }
 
+/* 10 — closing ink band with one yellow call to action */
 function nextStep(lang) {
   const c = siteCopy(lang);
   const n = c.overview.next;
   const links = LIVON_SITE_PAGES.filter((p) => p.id !== "overview")
     .map((p) => `<a class="nls-btn nls-btn--ghost" href="${e(pageHref(lang, p.id))}">${e(p.en)}${lang === "en" ? "" : ` · ${e(pageLabel(lang, p))}`}</a>`)
     .join("");
-  return `<div id="lvs-next" class="nls-block nls-close nls-block--ink" data-lvs-section="10">
+  return `<div id="lvs-next" class="nls-block nls-close nls-block--ink lvs-close" data-lvs-section="10">
     <p class="nls-kicker">${e(n.kicker)}</p>
     <h2 class="nls-hero__title">${nl(n.title)}</h2>
     <p class="nls-lead">${e(n.lead)}</p>
     <p class="nls-note">${e(c.appStatus)}</p>
     <div class="nls-actions">
-      <a class="nls-btn" href="/livon/">${e(c.tryWeb)} →</a>
+      <a class="nls-btn lvs-btn-point" href="/livon/">${e(c.tryWeb)} →</a>
       ${links}
     </div>
   </div>`;
@@ -343,7 +398,7 @@ function nextStep(lang) {
 export function renderOverview(lang) {
   const c = siteCopy(lang);
   const body = `
-    <p class="nls-note lvs-lead-note">${e(c.notice)}</p>
+    ${leadNote(c.notice)}
     ${vision(lang)}
     ${lifeJourney(lang)}
     ${lifeStage(lang)}
@@ -367,11 +422,11 @@ function categoryCard(lang, x) {
       ? `<a class="lvs-link" href="${e(pageHref(lang, "contact"))}">${e(f.ctaPlanned)} →</a>`
       : `<a class="lvs-link" href="/livon/">${e(f.ctaWeb)} →</a>`;
   const nt = pick(lang, x.noteKo, x.noteEn);
-  return `<article class="nls-board__item lvs-cat" id="lvs-cat-${e(x.n)}" data-status="${e(st)}">
-    <div class="nls-board__meta"><span class="nls-board__n">${e(x.n)}</span><span class="lvs-cat__en">${e(x.en)}</span></div>
+  return `<article class="lvs-cat" id="lvs-cat-${e(x.n)}" data-status="${e(st)}">
+    <div class="lvs-cat__meta"><span class="lvs-cat__n">${e(x.n)}</span><span class="lvs-cat__en">${e(x.en)}</span></div>
     <h4>${e(pick(lang, x.ko, x.en))}</h4>
     <p class="lvs-cat__line">${e(pick(lang, x.lineKo, x.lineEn))}</p>
-    <p>${e(pick(lang, x.introKo, x.introEn))}</p>
+    <p class="lvs-cat__intro">${e(pick(lang, x.introKo, x.introEn))}</p>
     ${chips(pick(lang, x.topicsKo, x.topicsEn))}
     ${nt ? `<p class="lvs-cat__note">${e(f.note)} · ${e(nt)}</p>` : ""}
     <details class="lvs-more">
@@ -391,43 +446,47 @@ function categoryCard(lang, x) {
 export function renderPlatform(lang) {
   const c = siteCopy(lang);
   const p = c.platform;
+  /* core features — icon cards, 4 × 2 */
   const core = CORE_FEATURES.map(
-    (x, i) => `<article class="nls-proc__item lvs-core" data-status="${e(x.st)}">
-      <span class="nls-proc__n">${pad(i + 1)}</span>
+    (x, i) => `<article class="lvs-core" data-status="${e(x.st)}">
+      <div class="lvs-core__top"><span class="lvs-tile-ico">${icon(CORE_ICON[i])}</span><span class="lvs-core__n">${pad(i + 1)}</span></div>
       <h3>${e(x.en)}${isKo(lang) ? ` <small>${e(x.ko)}</small>` : ""}</h3>
       <p>${e(pick(lang, x.nowKo, x.nowEn))}</p>
       ${status(lang, x.st)}
     </article>`
   ).join("");
-  const jump = GROUPS.map((g) => `<li><a href="#lvs-group-${e(g.id)}"><span>${e(g.id)}</span><strong>${e(pick(lang, g.ko, g.en))}</strong><em>${e(g.range)}</em></a></li>`).join("");
+  const jump = GROUPS.map((g) => `<li><a href="#lvs-group-${e(g.id)}"><b>${e(g.id)}</b><span>${icon(GROUP_ICON[g.id])}</span><strong>${e(pick(lang, g.ko, g.en))}</strong><em>${e(g.range)}</em></a></li>`).join("");
+  /* each area — sticky side header (letter + title + lead) beside a 2-column card grid */
   const groups = GROUPS.map((g) => {
     const cards = CATEGORIES.filter((x) => x.g === g.id).map((x) => categoryCard(lang, x)).join("");
     return `<section class="lvs-group" id="lvs-group-${e(g.id)}" aria-labelledby="lvs-group-${e(g.id)}-t">
-      <header class="nls-head lvs-group__head">
-        <p class="nls-kicker">${e(g.id)} · ${e(g.en)} · ${e(g.range)}</p>
+      <header class="lvs-group__head">
+        <span class="lvs-group__letter" aria-hidden="true">${e(g.id)}</span>
+        <p class="nls-kicker">${e(g.en)} · ${e(g.range)}</p>
         <h3 class="lvs-group__title" id="lvs-group-${e(g.id)}-t">${e(pick(lang, g.ko, g.en))}</h3>
         <p class="nls-lead">${e(pick(lang, g.leadKo, g.leadEn))}</p>
       </header>
-      <div class="nls-board lvs-board--cats">${cards}</div>
+      <div class="lvs-cats">${cards}</div>
     </section>`;
   }).join("");
   const body = `
-    <p class="nls-note lvs-lead-note">${e(c.notice)}</p>
-    <div id="lvs-core" class="nls-block nls-platform-sec">
+    ${leadNote(c.notice)}
+    <div id="lvs-core" class="nls-block lvs-sec">
       ${head(p.coreKicker, p.coreTitle, "")}
-      <div class="nls-proc lvs-proc">${core}</div>
+      <div class="lvs-corelist">${core}</div>
     </div>
-    <div id="lvs-map" class="nls-block nls-block--band">
+    <div id="lvs-map" class="nls-block nls-block--band lvs-wash">
       ${head(p.groupsKicker, p.groupsTitle, p.groupsLead)}
       <nav class="lvs-jump" aria-label="${e(p.groupsTitle)}"><ul>${jump}</ul></nav>
       ${lifeMap(lang, [], p.groupsTitle)}
       ${legend(lang)}
     </div>
-    <div id="lvs-groups" class="nls-block">${groups}</div>
-    <div id="lvs-official" class="nls-block nls-block--band nls-why-sec">
-      <div class="nls-split">
+    <div id="lvs-groups" class="nls-block lvs-sec">${groups}</div>
+    <div id="lvs-official" class="nls-block nls-block--band lvs-wash">
+      <div class="lvs-callout">
+        <span class="lvs-callout__ico">${icon("shield")}</span>
         ${head(p.officialKicker, p.officialTitle, "")}
-        ${roster(p.officialItems.map(([k, v], i) => [pad(i + 1), `<b>${e(k)}</b> ${e(v)}`]))}
+        ${points(p.officialItems.map(([k, v], i) => [pad(i + 1), `<b>${e(k)}</b> ${e(v)}`]), "grid")}
       </div>
     </div>`;
   return shell(lang, "platform", "lvs-platform-title", textHero(lang, "Platform", p.heroTitle, p.heroLead, "lvs-platform-title"), body);
@@ -437,66 +496,67 @@ export function renderPlatform(lang) {
 export function renderBusiness(lang) {
   const c = siteCopy(lang);
   const b = c.business;
+  /* 15 areas — cards on a pale wash, fields in a 2-column definition grid */
   const cards = BUSINESS.map((x) => {
     const d = pick(lang, x.ko2, x.en2);
-    return `<article class="nls-signal__item lvs-biz" id="lvs-biz-${e(x.n)}" data-status="${e(x.st)}">
-      <span class="nls-signal__n">${e(x.n)}</span>
-      <div class="nls-signal__copy">
-        <h3>${e(pick(lang, x.ko, x.en))} <small>${e(x.en)}</small></h3>
-        <p>${e(d.what)}</p>
-        ${dl([
-          [b.f.who, e(d.who)],
-          [b.f.value, e(d.value)],
-          [b.f.rev, e(d.rev)],
-          [b.f.partners, e(d.partners)],
-          [b.f.rule, e(d.rule)],
-        ])}
-        <div class="lvs-cat__foot">${status(lang, x.st)}<a class="lvs-link" href="/${e(lang)}/contact/?type=business">${e(b.f.cta)} →</a></div>
-      </div>
+    return `<article class="lvs-biz" id="lvs-biz-${e(x.n)}" data-status="${e(x.st)}">
+      <div class="lvs-biz__top"><span class="lvs-biz__n">${e(x.n)}</span>${status(lang, x.st)}</div>
+      <h3>${e(pick(lang, x.ko, x.en))} <small>${e(x.en)}</small></h3>
+      <p class="lvs-biz__what">${e(d.what)}</p>
+      ${dl([
+        [b.f.who, e(d.who)],
+        [b.f.value, e(d.value)],
+        [b.f.rev, e(d.rev)],
+        [b.f.partners, e(d.partners)],
+        [b.f.rule, e(d.rule)],
+      ])}
+      <a class="lvs-link lvs-biz__cta" href="/${e(lang)}/contact/?type=business">${e(b.f.cta)} →</a>
     </article>`;
   }).join("");
   const revRows = REVENUE.map(
-    (r) => `<tr><th scope="row">${e(pick(lang, r.ko, r.en))}</th><td>${e(pick(lang, r.whoKo, r.whoEn))}</td><td>${e(pick(lang, r.howKo, r.howEn))}</td><td>${e(b.revStatus)}</td></tr>`
+    (r) => `<tr><th scope="row">${e(pick(lang, r.ko, r.en))}</th><td data-label="${e(b.revCols[1])}">${e(pick(lang, r.whoKo, r.whoEn))}</td><td data-label="${e(b.revCols[2])}">${e(pick(lang, r.howKo, r.howEn))}</td><td data-label="${e(b.revCols[3])}"><span class="lvs-pill lvs-pill--concept">${e(b.revStatus)}</span></td></tr>`
   ).join("");
   const stLabel = { now: b.roadNow, next: b.roadNext, later: b.roadLater };
+  /* roadmap — vertical timeline; the current step is filled yellow */
   const road = ROADMAP.map(
-    (r) => `<article class="nls-lane__item lvs-road__step" data-st="${e(r.st)}">
-      <span class="nls-lane__n">${e(pad(r.n))}</span>
-      <div class="nls-lane__copy">
+    (r) => `<li class="lvs-road__step" data-st="${e(r.st)}">
+      <span class="lvs-road__n">${e(pad(r.n))}</span>
+      <div class="lvs-road__copy">
+        <p class="lvs-pill lvs-pill--${r.st === "now" ? "now" : "later"}">${e(stLabel[r.st])}</p>
         <h3>${e(pick(lang, r.ko, r.en))}</h3>
         <p>${e(pick(lang, r.bodyKo, r.bodyEn))}</p>
       </div>
-      <p class="nls-status${r.st === "now" ? " is-now" : ""}">${e(stLabel[r.st])}</p>
-    </article>`
+    </li>`
   ).join("");
   const body = `
-    <div id="lvs-verdict" class="nls-block nls-why-sec">
-      <div class="nls-split">
-        <header class="nls-head"><p class="nls-kicker">Principle</p><h2 class="nls-title">${e(b.verdictTitle)}</h2></header>
-        ${roster([["01", e(b.verdictBody)], ["02", e(pick(lang, "고객별 맞춤 외주가 아니라 표준화된 자체 솔루션과 플랫폼 제품을 만듭니다.", "Standard products and our own platform — not custom client work."))], ["03", e(b.revNote)]])}
+    <div id="lvs-verdict" class="nls-block lvs-sec">
+      <div class="lvs-verdict">
+        <p class="nls-kicker">Principle</p>
+        <h2 class="nls-title">${e(b.verdictTitle)}</h2>
+        ${points([["01", e(b.verdictBody)], ["02", e(pick(lang, "고객별 맞춤 외주가 아니라 표준화된 자체 솔루션과 플랫폼 제품을 만듭니다.", "Standard products and our own platform — not custom client work."))], ["03", e(b.revNote)]], "row")}
       </div>
     </div>
-    <div id="lvs-biz" class="nls-block nls-block--band nls-areas-sec">
+    <div id="lvs-biz" class="nls-block nls-block--band lvs-wash">
       ${head(b.kicker, b.title, b.lead)}
-      <div class="nls-signal lvs-signal">${cards}</div>
+      <div class="lvs-bizgrid">${cards}</div>
     </div>
-    <div id="lvs-revenue" class="nls-block">
+    <div id="lvs-revenue" class="nls-block lvs-sec">
       ${head(b.revKicker, b.revTitle, "")}
-      <p class="nls-status">${e(b.revStatus)}</p>
+      <p class="lvs-pill lvs-pill--concept">${e(b.revStatus)}</p>
       <div class="lvs-table-wrap"><table class="lvs-table">
         <thead><tr>${b.revCols.map((t) => `<th scope="col">${e(t)}</th>`).join("")}</tr></thead>
         <tbody>${revRows}</tbody>
       </table></div>
     </div>
-    <div id="lvs-roadmap" class="nls-block nls-block--band nls-expand-sec">
-      ${head(b.roadKicker, b.roadTitle, "")}
-      <div class="nls-lane">${road}</div>
-    </div>
-    <div id="lvs-rules" class="nls-block nls-why-sec">
+    <div id="lvs-roadmap" class="nls-block nls-block--band lvs-wash">
       <div class="nls-split">
-        ${head(b.ruleKicker, b.ruleTitle, "")}
-        ${roster(b.ruleItems.map((t, i) => [pad(i + 1), e(t)]))}
+        ${head(b.roadKicker, b.roadTitle, "")}
+        <ol class="lvs-road">${road}</ol>
       </div>
+    </div>
+    <div id="lvs-rules" class="nls-block lvs-sec">
+      ${head(b.ruleKicker, b.ruleTitle, "")}
+      ${checks(b.ruleItems.map((t) => e(t)))}
     </div>`;
   return shell(lang, "business", "lvs-business-title", textHero(lang, "Business", b.heroTitle, b.heroLead, "lvs-business-title"), body);
 }
@@ -507,46 +567,49 @@ export function renderPartnerships(lang) {
   const p = c.partnerships;
   const pc = pick(lang, PARTNER_COMMON.ko, PARTNER_COMMON.en);
   const byP = Object.fromEntries(PARTNERS.map((x) => [x.n, x]));
-  const card = (x) => `<article class="nls-board__item lvs-partner${x.official ? " is-source" : ""}" id="lvs-partner-${e(x.n)}">
-      <div class="nls-board__meta"><span class="nls-board__n">${e(x.n)}</span><span class="lvs-cat__en">${e(x.en)}</span></div>
+  const card = (x) => `<article class="lvs-partner${x.official ? " is-source" : ""}" id="lvs-partner-${e(x.n)}">
+      <div class="lvs-cat__meta"><span class="lvs-cat__n">${e(x.n)}</span><span class="lvs-cat__en">${e(x.en)}</span></div>
       <h4>${e(pick(lang, x.ko, x.en))}</h4>
       <p>${e(pick(lang, x.whatKo, x.whatEn))}</p>
-      ${x.official ? `<p class="nls-status">${e(p.f.officialTag)}</p>` : ""}
+      ${x.official ? `<p class="lvs-pill lvs-pill--concept">${e(p.f.officialTag)}</p>` : ""}
     </article>`;
   const groups = PARTNER_GROUPS.map(
     (g, gi) => `<section class="lvs-pgroup" aria-labelledby="lvs-pgroup-${gi}">
       <h3 id="lvs-pgroup-${gi}" class="lvs-pgroup__title">${e(pick(lang, g.ko, g.en))} <span>${g.ids.length}</span></h3>
-      <div class="nls-board lvs-board--4">${g.ids.map((n) => card(byP[n])).join("")}</div>
+      <div class="lvs-partners">${g.ids.map((n) => card(byP[n])).join("")}</div>
     </section>`
   ).join("");
   const steps = pick(lang, PARTNER_STEPS.ko, PARTNER_STEPS.en)
-    .map(([t, b], i) => `<article class="nls-pipe__item${i === 0 ? " is-on" : ""}"><p class="nls-pipe__n">${pad(i + 1)}</p><h3>${e(t)}</h3><p>${e(b)}</p></article>`)
+    .map(([t, b], i) => `<li class="lvs-steps__item${i === 0 ? " is-on" : ""}"><span class="lvs-steps__n">${pad(i + 1)}</span><h3>${e(t)}</h3><p>${e(b)}</p></li>`)
+    .join("");
+  const terms = [
+    [p.f.value, pc.value],
+    [p.f.rev, pc.rev],
+    [p.f.cond, pc.cond],
+    [p.f.officialTag, `${pc.officialRev} ${pc.officialCond}`],
+  ]
+    .map(([k, v], i) => `<div><dt><span>${pad(i + 1)}</span>${e(k)}</dt><dd>${e(v)}</dd></div>`)
     .join("");
   const body = `
-    <div id="lvs-partners" class="nls-block nls-first-sec">
+    <div id="lvs-partners" class="nls-block lvs-sec">
       ${head(p.kicker, p.title, "")}
       ${note(p.sourceNote)}
       ${groups}
     </div>
-    <div id="lvs-terms" class="nls-block nls-block--band nls-why-sec">
+    <div id="lvs-terms" class="nls-block nls-block--band lvs-wash">
       <div class="nls-split">
         <header class="nls-head"><p class="nls-kicker">Terms</p><h2 class="nls-title">${e(p.sourceTitle)}</h2></header>
-        ${roster([
-          ["01", `<b>${e(p.f.value)}</b> ${e(pc.value)}`],
-          ["02", `<b>${e(p.f.rev)}</b> ${e(pc.rev)}`],
-          ["03", `<b>${e(p.f.cond)}</b> ${e(pc.cond)}`],
-          ["04", `<b>${e(p.f.officialTag)}</b> ${e(pc.officialRev)} ${e(pc.officialCond)}`],
-        ])}
+        <dl class="lvs-terms">${terms}</dl>
       </div>
     </div>
-    <div id="lvs-steps" class="nls-block nls-how-sec">
+    <div id="lvs-steps" class="nls-block lvs-sec">
       ${head(p.stepsKicker, p.stepsTitle, "")}
-      <div class="nls-pipe lvs-pipe--4">${steps}</div>
+      <ol class="lvs-steps">${steps}</ol>
     </div>
-    <div class="nls-block nls-close nls-block--ink">
+    <div class="nls-block nls-close nls-block--ink lvs-close">
       <p class="nls-kicker">Partnership</p>
       <h2 class="nls-hero__title">${nl(p.heroTitle)}</h2>
-      <div class="nls-actions"><a class="nls-btn" href="/${e(lang)}/contact/?type=partnership">${e(p.f.cta)} →</a></div>
+      <div class="nls-actions"><a class="nls-btn lvs-btn-point" href="/${e(lang)}/contact/?type=partnership">${e(p.f.cta)} →</a></div>
     </div>`;
   return shell(lang, "partnerships", "lvs-partnerships-title", textHero(lang, "Partnerships", p.heroTitle, p.heroLead, "lvs-partnerships-title"), body);
 }
@@ -563,22 +626,24 @@ export function renderContact(lang) {
       return `<li class="lvs-contact__item"><span>${pad(i)}</span><div><strong>${e(label)}</strong><p>${e(k.subjectLabel)} · [LIVON] ${e(label)}</p></div><a class="lvs-link" href="/${e(lang)}/contact/?type=${e(x.type)}">${e(k.go)} →</a></li>`;
     }).join("");
     return `<section class="lvs-cgroup" aria-labelledby="lvs-cgroup-${gid}">
-      <h3 id="lvs-cgroup-${gid}" class="lvs-pgroup__title">${e(pick(lang, g.ko, g.en))}</h3>
-      <ol class="nls-dir lvs-dir">${rows}</ol>
+      <header class="lvs-cgroup__head"><span class="lvs-tile-ico">${icon(CONTACT_ICON[gid] || "mail")}</span><h3 id="lvs-cgroup-${gid}" class="lvs-pgroup__title">${e(pick(lang, g.ko, g.en))}</h3></header>
+      <ol class="lvs-clist">${rows}</ol>
     </section>`;
   }).join("");
   const body = `
-    <div id="lvs-contact" class="nls-block">
+    <div id="lvs-contact" class="nls-block lvs-sec">
       ${head(k.kicker, k.title, "")}
-      <div class="lvs-cols lvs-cols--3">${groups}</div>
+      <div class="lvs-cgroups">${groups}</div>
     </div>
-    <div id="lvs-contact-tips" class="nls-block nls-block--band nls-why-sec">
+    <div id="lvs-contact-tips" class="nls-block nls-block--band lvs-wash">
       <div class="nls-split">
         <header class="nls-head"><p class="nls-kicker">Before you write</p><h2 class="nls-title">${e(k.tipsTitle)}</h2></header>
-        ${roster(k.tips.map((t, j) => [pad(j + 1), e(t)]))}
+        ${points(k.tips.map((t, j) => [pad(j + 1), e(t)]))}
       </div>
-      ${note(k.note)}
-      <p class="nls-note">${e(k.bizNote)} <a href="/${e(lang)}/business/inquiry/">NEWON Business →</a></p>
+      <div class="lvs-notes">
+        ${k.note ? `<p class="lvs-notice">${icon("info", "lvs-notice__i")}<span>${e(k.note)}</span></p>` : ""}
+        <p class="lvs-notice">${icon("building", "lvs-notice__i")}<span>${e(k.bizNote)} <a href="/${e(lang)}/business/inquiry/">NEWON Business →</a></span></p>
+      </div>
     </div>`;
   return shell(lang, "contact", "lvs-contact-title", textHero(lang, "Contact", k.heroTitle, k.heroLead, "lvs-contact-title"), body);
 }
