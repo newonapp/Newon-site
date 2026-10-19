@@ -151,7 +151,7 @@ test("BL-9 the expansion copy has 32 groups, 12 + 15 partner types and no price 
 test("BL-10 a per-card status badge in a BABYLOG page fails the check (V2 policy)", () => {
   const d = scratch();
   try {
-    mutate(d, "ko/babylog/platform/index.html", (h) => h.replace('<span class="bl-screen__n"', '<span class="bl-status bl-status--direction">방향 · 출시 일정 미정</span><span class="bl-screen__n"'));
+    mutate(d, "ko/babylog/platform/index.html", (h) => h.replace('<p class="bl-screen__n"', '<span class="bl-status bl-status--direction">방향 · 출시 일정 미정</span><p class="bl-screen__n"'));
     const r = run(d);
     assert.notEqual(r.status, 0);
     assert.match(r.stdout, /FAIL status ko\/platform/);

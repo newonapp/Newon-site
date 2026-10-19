@@ -87,8 +87,17 @@ function block(id, inner, tone = "", cls = "") {
   return `<section id="${id}" class="nls-block bl-sec${t}${cls ? " " + cls : ""}" data-hs-section aria-labelledby="${id}-title">${inner}</section>`;
 }
 
-/** BABYLOG first-screen background film (owner-provided, 2026-10-18). */
-const BABYLOG_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260629_030107_874273ea-684a-4e90-bb96-8fdfde48d53d.mp4";
+/** BABYLOG first-screen background films (owner-provided, 2026-10-19): one is picked at random on load,
+ *  and each time a film reaches its end the next random (different) one plays, so all three are seen. */
+const CDN = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/";
+const BABYLOG_FILMS = [
+  `${CDN}hf_20260629_030107_874273ea-684a-4e90-bb96-8fdfde48d53d.mp4`,
+  `${CDN}hf_20260629_032424_3c9c2a9d-807b-4482-80e6-dd6d9dfd4545.mp4`,
+  `${CDN}hf_20260627_094019_4214ea73-b963-46a4-8327-61489192de99.mp4`,
+];
+const BABYLOG_FILM = BABYLOG_FILMS[0];
+/* Background only: swaps the video source; no markup, text or layout change. Works with film-keep.js (loop stays on). */
+const BABYLOG_FILM_SHUFFLE = `<script>(function(){var v=document.currentScript&&document.currentScript.previousElementSibling;if(!v||v.tagName!=="VIDEO")return;var L=${JSON.stringify(BABYLOG_FILMS)};var i=Math.floor(Math.random()*L.length);function set(n){i=n;v.src=L[n];var p=v.play();if(p&&p.catch)p.catch(function(){});}if(i!==0)set(i);var busy=false,last=0;v.addEventListener("timeupdate",function(){var t=v.currentTime,d=v.duration,wrapped=last-t>1;last=t;if(busy||!d||(t<d-0.5&&!wrapped))return;busy=true;last=0;var n=Math.floor(Math.random()*(L.length-1));if(n>=i)n++;set(n);setTimeout(function(){busy=false;},1500);});})();</script>`;
 
 /** Compact or full dark hero. No video, no external media. */
 function hero(C, lang, page, h, compact) {
@@ -98,6 +107,7 @@ function hero(C, lang, page, h, compact) {
       <video class="nls-film__video" src="${BABYLOG_FILM}" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" aria-hidden="true">
         <source src="${BABYLOG_FILM}" type="video/mp4" />
       </video>
+      ${BABYLOG_FILM_SHUFFLE}
       <div class="nls-film__lockup">
         <div class="nls-film__veil" aria-hidden="true"></div>
         <p class="nls-film__wordmark">${esc(C.ui.wordmark)}</p>
