@@ -107,7 +107,6 @@ function status(c) {
 /** Black closing band. */
 function closing(id, n, ctas, { big = false } = {}) {
   return `<section class="nsh-sec nsh-sec--ink nsh-close" id="nsh-${e(id)}" aria-labelledby="nsh-${e(id)}-t">
-    <svg class="nsh-close__art" viewBox="0 0 360 200" aria-hidden="true" focusable="false"><circle cx="130" cy="100" r="86" fill="none" stroke="#7771E8" stroke-width="1.5"/><circle cx="230" cy="100" r="86" fill="none" stroke="#b3afff" stroke-width="1.5" stroke-dasharray="3 7"/><circle cx="180" cy="100" r="5" fill="#7771E8"/></svg>
     <div class="nsh-wrap nsh-close__in">
       ${n.kicker ? `<p class="nsh-kicker" lang="en">${e(n.kicker)}</p>` : ""}
       <h2 class="nsh-close__title${big ? " nsh-close__title--mail" : ""}" id="nsh-${e(id)}-t">${nl(n.title)}</h2>
@@ -210,7 +209,7 @@ function overview(c, lang) {
 
   const how = sec(
     "how",
-    `<div class="nsh-how__head">${head("how", o.how.kicker, o.how.title, o.how.lead)}${LOOP_SVG}</div>
+    `<div class="nsh-how__head">${head("how", o.how.kicker, o.how.title, o.how.lead)}</div>
     <ol class="nsh-track" role="list">${o.how.steps
       .map(
         (s) => `<li class="nsh-track__step">
@@ -390,21 +389,7 @@ function platform(c, lang) {
   const app = S("e")[0];
   const e1 = sec(
     "grp-e",
-    `<div class="nsh-device" id="svc-${e(app.n)}">
-      <div class="nsh-device__art" aria-hidden="true">
-        <svg viewBox="0 0 280 240" focusable="false">
-          <circle cx="92" cy="96" r="62" fill="#F0EEFF"/>
-          <circle cx="92" cy="96" r="62" fill="none" stroke="#7771E8" stroke-width="2"/>
-          <path d="M92 34a62 62 0 0 1 0 124z" fill="#7771E8"/>
-          <text x="196" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="64" font-weight="700" fill="#554CC8" letter-spacing="-3">Aa</text>
-          <path d="M160 140h72" stroke="#dedaff" stroke-width="2"/>
-          <path d="M40 196h200" stroke="#dedaff" stroke-width="6" stroke-linecap="round"/>
-          <path d="M40 196h124" stroke="#7771E8" stroke-width="6" stroke-linecap="round"/>
-          <circle cx="164" cy="196" r="11" fill="#fff" stroke="#554CC8" stroke-width="3"/>
-          <circle cx="232" cy="56" r="7" fill="none" stroke="#7771E8" stroke-width="2"/>
-          <circle cx="232" cy="56" r="17" fill="none" stroke="#b3afff" stroke-width="1.5"/>
-        </svg>
-      </div>
+    `<div class="nsh-device nsh-device--solo" id="svc-${e(app.n)}">
       <div class="nsh-device__text">
         ${head("grp-e", G.e.kicker, app.title, "")}
         <p class="nsh-svc__meta"><span class="nsh-svc__n" aria-hidden="true">${e(app.n)}</span><span lang="en">${e(app.en)}</span></p>

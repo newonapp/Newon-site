@@ -207,7 +207,7 @@ function overviewBody(C, lang) {
 
   // 02 · About — statement split: title left, numbered statements right
   const roster = o.vision.lines.map((p, i) => `<li><span class="bl-roster__n">${String(i + 1).padStart(2, "0")}</span><p>${esc(p)}</p></li>`).join("");
-  const vision = block("bl-vision", `<div class="bl-split bl-split--statement"><div>${titleBlock(o.vision.kicker, o.vision.title, "", 2, "bl-vision-title")}<div class="bl-orbit" aria-hidden="true"><span></span><span></span><span></span></div></div><ol class="bl-roster">${roster}</ol></div>`);
+  const vision = block("bl-vision", `<div class="bl-split bl-split--statement"><div>${titleBlock(o.vision.kicker, o.vision.title, "", 2, "bl-vision-title")}</div><ol class="bl-roster">${roster}</ol></div>`);
 
   // 03 · Mission — six values, icon cards on a pale pink band
   const valueIcons = ["heart", "sprout", "link", "hand", "shield", "access"];

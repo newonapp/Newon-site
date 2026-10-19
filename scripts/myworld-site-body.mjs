@@ -234,7 +234,6 @@ function overview(lang, copy) {
     inner: `${head({ id: "mws-pillars", kicker: p.kicker, title: p.title, lead: p.lead, cls: "mws-head--wide" })}
       <ol class="mws-bento">${p.items.map((c, i) => `<li class="mws-bento__cell${i === 0 ? " mws-bento__cell--lead" : ""}">
         <div class="mws-bento__top"><span class="mws-bento__n">${pad(i + 1)}</span>${badge(copy, c.status)}</div>
-        ${i === 0 ? globeArt("pillars", "mws-art--bento") : ""}
         <div class="mws-bento__body">
           <p class="mws-en">${esc(c.en)}</p>
           <h3 class="mws-h3${i === 0 ? " mws-h3--lg" : ""}">${esc(c.name)}</h3>
@@ -248,14 +247,13 @@ function overview(lang, copy) {
   const m = o.memories;
   const memories = section({
     id: "mws-memories", tone: "tint",
-    inner: `<div class="mws-feature">
+    inner: `<div class="mws-feature mws-feature--solo">
         <div class="mws-feature__copy">
           ${head({ id: "mws-memories", kicker: m.kicker, title: m.title, lead: m.lead })}
           <p class="mws-feature__badge">${badge(copy, "live")}</p>
           <ol class="mws-dir mws-dir--compact">${m.items.map((it, i) => `<li><span class="mws-dir__n">${pad(i + 1)}</span><div><h3 class="mws-h4">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></div></li>`).join("")}</ol>
           <div class="mws-actions">${btn(GOOGLE_PLAY_URL, copy.ui.appCta, { external: true })}</div>
         </div>
-        <div class="mws-feature__art">${globeArt("memories", "mws-art--panel")}</div>
       </div>`,
   });
 
@@ -333,8 +331,7 @@ function platform(lang, copy) {
   const shots = section({
     id: "mws-shots", tone: "tint",
     inner: `<div class="mws-rowhead">${head({ id: "mws-shots", kicker: p.shotsKicker, title: p.shotsTitle })}<div class="mws-actions">${btn(GOOGLE_PLAY_URL, copy.ui.appCta, { external: true })}</div></div>
-      <div class="mws-today">
-        <div class="mws-today__art">${globeArt("today", "mws-art--panel")}</div>
+      <div class="mws-today mws-today--solo">
         <ol class="mws-tiles">${p.shots.map((s, i) => `<li class="mws-tile"><span class="mws-ico-box mws-ico-box--soft">${icon(s.icon)}</span><span class="mws-tile__n">${pad(i + 1)}</span><p class="mws-tile__text">${esc(s.text)}</p></li>`).join("")}</ol>
       </div>`,
   });

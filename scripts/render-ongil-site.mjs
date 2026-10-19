@@ -162,7 +162,6 @@ function closeInk(c, lang, actions, x) {
   return sec(
     "ogs-close",
     `<div class="ogs-close">
-      ${roadArt("ogs-road ogs-road--close")}
       <p class="nls-kicker" lang="en">${e(x.closeKicker || c.ui.closeKicker)}</p>
       <h2 class="nls-hero__title" id="ogs-close-t">${x.closeTitleHtml}</h2>
       <p class="nls-lead">${e(x.closeLead)}</p>
@@ -190,7 +189,6 @@ function overviewMain(c, S, lang) {
         <p class="nls-lead">${e(ab.lead)}</p>
       </div>
       <div class="ogs-panel">
-        ${roadArt()}
         <dl class="ogs-facts">${ab.facts.map((f, i) => `<div>${tile(FACT_ICONS[i % FACT_ICONS.length])}<dt>${e(f.k)}</dt><dd>${e(f.v)}</dd></div>`).join("")}</dl>
       </div>
     </div>
@@ -276,7 +274,7 @@ function overviewMain(c, S, lang) {
   // I · black close with three next steps
   const next = sec(
     "ogs-next",
-    `${roadArt("ogs-road ogs-road--close")}
+    `
       ${head("ogs-next", o.next.label, o.next.title, "", o.next.n)}
       <ol class="ogs-next">${o.next.items
         .map(

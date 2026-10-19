@@ -2362,3 +2362,9 @@ html[data-newon-shell-theme="dark"] #myworld-site .mws-current {
   background: radial-gradient(ellipse 70% 55% at 50% 42%, #262626 0%, #111 55%, #0a0a0a 100%);
 }
 /* first-screen size/position: unified film spec at the end of home-lifestage.css */
+
+/* Decorative globe drawings removed (owner: no ornament shapes) — the remaining column spans the row. */
+#myworld-site .mws-feature--solo,
+#myworld-site .mws-today--solo {
+  grid-template-columns: minmax(0, 1fr) !important;
+}

@@ -1782,3 +1782,8 @@ html[data-newon-shell-theme="dark"] body #shareon-detail .nsh-proc__item:first-c
 html[data-newon-shell-theme="dark"] body #shareon-detail .nsh-chain__n { color: #2a2740 !important; }
 html[data-newon-shell-theme="dark"] body #shareon-detail .nsh-cloud__list a { background: #1a1830 !important; }
 html[data-newon-shell-theme="dark"] body #shareon-detail .nsh-close__art { opacity: 0.4; }
+
+/* Decorative device drawing removed (owner: no ornament shapes) — the text spans the row. */
+#shareon-detail .nsh-device--solo {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
