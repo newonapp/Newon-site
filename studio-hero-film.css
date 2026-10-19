@@ -1,8 +1,0 @@
-/* Studio sub-pages: Studio film behind the existing light first screen (background only). */
-.bp-hero.shf-host { position: relative; overflow: hidden; isolation: isolate; }
-.bp-hero.shf-host > .shf { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-.bp-hero.shf-host > .shf .shf__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.bp-hero.shf-host > .shf .shf__veil { position: absolute; inset: 0; background: rgba(255, 255, 255, 0.74); }
-html[data-newon-shell-theme="dark"] .bp-hero.shf-host > .shf .shf__veil { background: rgba(11, 11, 11, 0.72); }
-.bp-hero.shf-host > .bp-inner { position: relative; z-index: 1; }
-@media (prefers-reduced-motion: reduce) { .bp-hero.shf-host > .shf .shf__video { display: none; } }

@@ -755,8 +755,6 @@ runScript("render-company.mjs");
 runScript("render-blog.mjs");
 // NEWON Business & Partnerships five screens + redirect stubs for the retired Business / Partnerships URLs (runs last)
 runScript("render-bizpart.mjs");
-// Studio sub-pages: Studio film behind the existing first screen (background only)
-runScript("apply-studio-hero-film.mjs");
 runScript("generate-search-index.mjs");
 runScript("generate-admin-data.mjs");
 writeRobotsTxt();
