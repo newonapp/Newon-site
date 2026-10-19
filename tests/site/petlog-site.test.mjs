@@ -34,11 +34,11 @@ test("section counts follow the V2 plan: 6 journey stages, 18 services, 20 busin
   const count = (html, re) => (main(html).match(re) || []).length;
   for (const lang of ["ko", "en"]) {
     assert.equal(count(read(`${lang}/petlog/index.html`), /data-nls-decade-card=/g), 6, `${lang} journey`);
-    assert.equal(count(read(`${lang}/petlog/platform/index.html`), /<article class="nls-(?:board|signal)__item" id="[a-z-]+"/g), 18, `${lang} services`);
+    assert.equal(count(read(`${lang}/petlog/platform/index.html`), /<article class="pl-[a-z -]+" id="[a-z-]+"/g), 18, `${lang} services`);
     const biz = read(`${lang}/petlog/business/index.html`);
-    assert.equal(count(biz, /<article class="nls-(?:board|signal)__item" id="line-\d\d"/g), 20, `${lang} business areas`);
+    assert.equal(count(biz, /<article class="pl-[a-z -]+" id="line-\d\d"/g), 20, `${lang} business areas`);
     assert.equal(count(biz, /data-nls-decade-card=/g), 6, `${lang} business groups`);
-    assert.equal(count(read(`${lang}/petlog/partnerships/index.html`), /<article class="nls-board__item" id="partner-\d\d"/g), 14, `${lang} partners`);
+    assert.equal(count(read(`${lang}/petlog/partnerships/index.html`), /<article class="pl-[a-z -]+" id="partner-\d\d"/g), 14, `${lang} partners`);
     const sel = read(`${lang}/petlog/contact/index.html`).match(/<select id="bz-type"[\s\S]*?<\/select>/)[0];
     assert.equal((sel.match(/<option value="[^"]+"/g) || []).length, 12, `${lang} inquiry types`);
   }
