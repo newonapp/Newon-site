@@ -469,7 +469,7 @@ const KO = {
       lead: "플랫폼 밖의 협력은 해당 메뉴에서 안내합니다.",
       items: [
         { n: "01", name: "Newon AI", lead: "AI 제품과 기업용 AI 협력", href: "ai/enterprise/" },
-        { n: "02", name: "Newon Studio", lead: "디지털 제품 유통과 자산 라이선스 협력", href: "studio/partnerships/" },
+        { n: "02", name: "Newon Studio", lead: "디지털 제품 유통과 자산 라이선스 협력", href: "studio/business/" },
       ],
     },
     close: {
@@ -791,7 +791,7 @@ const EN = {
       lead: "Partnerships outside the platforms are covered on their own menus.",
       items: [
         { n: "01", name: "Newon AI", lead: "AI products and enterprise AI partnerships", href: "ai/enterprise/" },
-        { n: "02", name: "Newon Studio", lead: "Digital product distribution and asset licensing", href: "studio/partnerships/" },
+        { n: "02", name: "Newon Studio", lead: "Digital product distribution and asset licensing", href: "studio/business/" },
       ],
     },
     close: {

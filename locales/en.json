@@ -1115,7 +1115,17 @@
     "bpPartnerships": "Partnerships",
     "bpPartnershipsDesc": "Ways to partner and how it works",
     "bpContact": "Contact",
-    "bpContactDesc": "Business and partnership inquiries"
+    "bpContactDesc": "Business and partnership inquiries",
+    "stOverview": "Overview",
+    "stOverviewDesc": "What Studio does and its four product families",
+    "stStore": "Digital Store",
+    "stStoreDesc": "Templates, tools and software",
+    "stPlatforms": "Our Platforms",
+    "stPlatformsDesc": "Products for the six platforms",
+    "stBusiness": "Business Products",
+    "stBusinessDesc": "Standard products and licences by industry",
+    "stContact": "Contact",
+    "stContactDesc": "Product, purchase and licence questions"
   },
   "home": {
     "heroLogoAlt": "Newon",

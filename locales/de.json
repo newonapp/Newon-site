@@ -462,7 +462,17 @@
     "bpPartnerships": "Partnerschaften",
     "bpPartnershipsDesc": "Kooperationsformen und Ablauf",
     "bpContact": "Kontakt",
-    "bpContactDesc": "Geschäfts- und Partnerschaftsanfragen"
+    "bpContactDesc": "Geschäfts- und Partnerschaftsanfragen",
+    "stOverview": "Überblick",
+    "stOverviewDesc": "Was Studio macht und seine vier Produktfamilien",
+    "stStore": "Digital Store",
+    "stStoreDesc": "Vorlagen, Tools und Software",
+    "stPlatforms": "Unsere Plattformen",
+    "stPlatformsDesc": "Produkte für die sechs Plattformen",
+    "stBusiness": "Produkte für Unternehmen",
+    "stBusinessDesc": "Standardprodukte und Lizenzen nach Branche",
+    "stContact": "Kontakt",
+    "stContactDesc": "Fragen zu Produkten, Kauf und Lizenzen"
   },
   "home": {
     "heroLogoAlt": "Newon logo",

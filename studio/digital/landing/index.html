@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta http-equiv="refresh" content="0;url=/ko/studio/digital/landing/" />
-<script src="/lang-nav.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, follow" />
+<title>NEWON Studio</title>
+<link rel="canonical" href="https://www.newon.app/ko/studio/" />
+<meta http-equiv="refresh" content="0;url=/ko/studio/" />
 <script>
 (function(){
   var LANGS=["ko","en","ja","es","pt-br","fr","de","hi","id"];
   var pref="ko";
   try{var s=localStorage.getItem("newon-lang-dir");if(s&&LANGS.indexOf(s)!==-1)pref=s;}catch(e){}
-  location.replace("/"+pref+"/studio/digital/landing/");
+  location.replace("/"+pref+"/studio/"+(location.search||"")+(location.hash||""));
 })();
 </script>
-<title>Redirect</title>
 </head>
-<body><p><a href="/ko/studio/digital/landing/">Continue</a></p></body>
+<body><p><a href="/ko/studio/">NEWON Studio →</a></p></body>
 </html>

@@ -462,7 +462,17 @@
     "bpPartnerships": "साझेदारी",
     "bpPartnershipsDesc": "साझेदारी के प्रकार और प्रक्रिया",
     "bpContact": "संपर्क",
-    "bpContactDesc": "व्यापार और साझेदारी पूछताछ"
+    "bpContactDesc": "व्यापार और साझेदारी पूछताछ",
+    "stOverview": "अवलोकन",
+    "stOverviewDesc": "Studio क्या करता है और इसके चार उत्पाद परिवार",
+    "stStore": "डिजिटल स्टोर",
+    "stStoreDesc": "टेम्पलेट, टूल और सॉफ़्टवेयर",
+    "stPlatforms": "हमारे प्लेटफ़ॉर्म",
+    "stPlatformsDesc": "छह प्लेटफ़ॉर्म के उत्पाद",
+    "stBusiness": "व्यवसाय उत्पाद",
+    "stBusinessDesc": "उद्योग के अनुसार मानक उत्पाद और लाइसेंस",
+    "stContact": "संपर्क",
+    "stContactDesc": "उत्पाद, खरीद और लाइसेंस से जुड़े प्रश्न"
   },
   "home": {
     "heroLogoAlt": "Newon logo",

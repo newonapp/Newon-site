@@ -2,7 +2,9 @@
  * Regression tests for the Business · Studio · Partnerships restructure (Oct 2026).
  * Since 2026-10-19 Business and Partnerships are one "Business & Partnerships" menu (render-bizpart.mjs,
  * tests/site/bizpart.test.mjs): the render-bsp Business / Partnerships pages are redirect stubs now, so the
- * page checks below cover the Studio pages render-bsp still owns, plus the stubs that replaced the others.
+ * page checks below cover the stubs that replaced them. Since 2026-10-19 (later) the Studio pages render-bsp writes are
+ * retired as well: NEWON Studio is eleven screens (render-studio-site.mjs, tests/site/studio-site.test.mjs) and the
+ * render-bsp Studio pages are redirect stubs to them.
  * Run: node --test tests/site/bsp-pages.test.mjs   (reads the committed HTML; no build needed)
  */
 import test from "node:test";
@@ -13,6 +15,7 @@ import { fileURLToPath } from "url";
 import { ALL_PAGES } from "../../scripts/render-bsp.mjs";
 import { PAGES, MENUS } from "../../scripts/bsp-content.mjs";
 import { LEGACY_REDIRECTS } from "../../scripts/render-bizpart.mjs";
+import { LEGACY_STUDIO_REDIRECTS, STUDIO_SITE_PATHS } from "../../scripts/render-studio-site.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 const LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
@@ -25,18 +28,16 @@ const megaRows = (h, id) => {
   return m ? (m[0].match(/class="gnav-mega__row"/g) || []).length : 0;
 };
 
-test("every Studio page from render-bsp exists in all nine locales with SEO basics", () => {
+test("the Studio pages render-bsp writes are redirect stubs to the new Studio screens in all nine locales", () => {
   for (const lang of LANGS) {
     for (const page of STUDIO_PAGES) {
       const rel = `${lang}/${page.slug}/index.html`;
-      assert.ok(fs.existsSync(path.join(ROOT, rel)), `${rel} missing`);
+      const to = LEGACY_STUDIO_REDIRECTS[page.slug];
+      assert.ok(to, `${page.slug} has a Studio mapping`);
       const html = read(rel);
-      assert.equal((html.match(/<h1[\s>]/g) || []).length, 1, `${rel} must have one h1`);
-      assert.match(html, new RegExp(`<link rel="canonical" href="https://www\\.newon\\.app/${lang}/${page.slug}/"`), `${rel} canonical`);
-      assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 10, `${rel} hreflang (9 + x-default)`);
-      for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) JSON.parse(m[1]);
-      assert.ok(html.includes('data-gnav-menu="business"'), `${rel} header has Business & Partnerships`);
-      assert.ok(!html.includes('data-gnav-menu="partnerships"'), `${rel} header has no separate Partnerships menu`);
+      assert.match(html, new RegExp(`<meta http-equiv="refresh" content="0;url=/${lang}/${to.replace(/\//g, "\\/")}"`), `${rel} refresh`);
+      assert.match(html, /<meta name="robots" content="noindex, follow"/, `${rel} noindex`);
+      assert.ok(!html.includes("<main"), `${rel} has no body`);
     }
   }
 });
@@ -64,18 +65,12 @@ test("copy never presents outsourcing, unreleased sales, unbuilt integrations or
   const agency = /견적|외주 제작|프로젝트 상담|맞춤 제작해|구축 대행합니다|Custom quote|Project inquiry/;
   const claims = /판매 중입니다|연동 완료|연동되어 있습니다|투자를 유치했습니다|공식 모집 중|협약을 체결했습니다|now on sale everywhere|integration is complete|investment round is open/i;
   for (const lang of ["ko", "en"]) {
-    for (const page of STUDIO_PAGES) {
-      const html = read(`${lang}/${page.slug}/index.html`);
-      const main = html.slice(html.indexOf("<main"), html.indexOf("</main>"));
-      const text = main.replace(/<[^>]+>/g, " ");
-      assert.doesNotMatch(text, agency, `${lang}/${page.slug} agency wording`);
-      assert.doesNotMatch(text, claims, `${lang}/${page.slug} overclaim`);
-    }
-    for (const hub of ["studio"]) {
-      const html = read(`${lang}/${hub}/index.html`);
-      const main = html.slice(html.indexOf("<main"), html.indexOf("</main>")).replace(/<[^>]+>/g, " ");
-      assert.doesNotMatch(main, agency, `${lang}/${hub} hub agency wording`);
-    }
+    // The Studio hub is the new Overview screen: no outsourcing offer (it may name the Starter Kit's quotation template).
+    const offer = /견적 문의|견적 요청|외주 제작 문의|프로젝트 상담|맞춤 제작해|구축 대행합니다|Request a quote|Get a quote|Project inquiry/;
+    const html = read(`${lang}/studio/index.html`);
+    const main = html.slice(html.indexOf("<main"), html.indexOf("</main>")).replace(/<[^>]+>/g, " ");
+    assert.doesNotMatch(main, offer, `${lang}/studio hub agency wording`);
+    assert.doesNotMatch(main, claims, `${lang}/studio hub overclaim`);
   }
   // "live" status only where the site already lists something as available
   const live = PAGES.flatMap((p) => (p.ko.blocks || []).flatMap((b) => (b.items || []).filter((it) => it.status === "live").map((it) => `${p.slug}:${it.tab}`)));
@@ -109,14 +104,14 @@ test("business inquiry lists the product-business types first", () => {
   ]);
 });
 
-test("sitemap lists every Studio URL once and no retired Business / Partnerships URL", () => {
+test("sitemap lists every new Studio screen once and no retired Studio, Business or Partnerships URL", () => {
   const xml = read("sitemap.xml");
   for (const lang of LANGS) {
-    for (const page of STUDIO_PAGES) {
-      const loc = `<loc>https://www.newon.app/${lang}/${page.slug}/</loc>`;
+    for (const p of STUDIO_SITE_PATHS) {
+      const loc = `<loc>https://www.newon.app/${lang}/${p}/</loc>`;
       assert.equal(xml.split(loc).length - 1, 1, `${loc} in sitemap`);
     }
-    for (const page of RETIRED) {
+    for (const page of [...STUDIO_PAGES, ...RETIRED]) {
       assert.ok(!xml.includes(`<loc>https://www.newon.app/${lang}/${page.slug}/</loc>`), `${lang}/${page.slug} not in sitemap`);
     }
   }

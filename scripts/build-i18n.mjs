@@ -37,6 +37,7 @@ import { STUDIO_AREA_PAGES } from "./studio-areas.mjs";
 import { BSP_SITEMAP_PATHS } from "./render-bsp.mjs";
 import { PETLOG_SITE_PATHS } from "./render-petlog-site.mjs";
 import { BIZPART_PATHS, isLegacyBizpartPath } from "./render-bizpart.mjs";
+import { STUDIO_SITE_PATHS, isLegacyStudioPath } from "./render-studio-site.mjs";
 
 /** Build timestamp. SOURCE_DATE_EPOCH (seconds, reproducible-builds convention) pins it; unset = the current time, as before. */
 const buildDate = () => (process.env.SOURCE_DATE_EPOCH && /^\d+$/.test(process.env.SOURCE_DATE_EPOCH) ? new Date(Number(process.env.SOURCE_DATE_EPOCH) * 1000) : new Date());
@@ -575,6 +576,8 @@ function writeSitemap() {
     if (entries.has(loc)) return;
     // Retired Business / Partnerships URLs are redirect stubs now (render-bizpart.mjs): never listed.
     if (isLegacyBizpartPath(clean)) return;
+    // Retired Studio URLs are redirect stubs now (render-studio-site.mjs): never listed.
+    if (isLegacyStudioPath(clean)) return;
     // Soft existence check when locale HTML already exists from this/prior build
     if (clean) {
       const rel = clean.split("/").join(path.sep);
@@ -649,6 +652,9 @@ function writeSitemap() {
     const route = page.routePath || page.slug;
     addAllLocales(`business/${route}`, "0.65", "monthly");
   }
+
+  // NEWON Studio — eleven screens (render-studio-site.mjs); the retired pillar / service URLs below are filtered out in add()
+  for (const p of STUDIO_SITE_PATHS) addAllLocales(p, p === "studio" ? "0.75" : "0.7", "monthly");
 
   // Studio hub + pillars + all public service details (incl. Coming Soon / Internal pages)
   addAllLocales("studio", "0.7", "monthly");
@@ -755,6 +761,8 @@ runScript("render-company.mjs");
 runScript("render-blog.mjs");
 // NEWON Business & Partnerships five screens + redirect stubs for the retired Business / Partnerships URLs (runs last)
 runScript("render-bizpart.mjs");
+// NEWON Studio eleven screens + redirect stubs for the retired Studio URLs (runs after every other page renderer)
+runScript("render-studio-site.mjs");
 runScript("generate-search-index.mjs");
 runScript("generate-admin-data.mjs");
 writeRobotsTxt();

@@ -462,7 +462,17 @@
     "bpPartnerships": "Kemitraan",
     "bpPartnershipsDesc": "Jenis kemitraan dan alurnya",
     "bpContact": "Kontak",
-    "bpContactDesc": "Pertanyaan bisnis dan kemitraan"
+    "bpContactDesc": "Pertanyaan bisnis dan kemitraan",
+    "stOverview": "Ringkasan",
+    "stOverviewDesc": "Apa yang dilakukan Studio dan empat keluarga produknya",
+    "stStore": "Toko digital",
+    "stStoreDesc": "Templat, alat, dan perangkat lunak",
+    "stPlatforms": "Platform kami",
+    "stPlatformsDesc": "Produk untuk enam platform",
+    "stBusiness": "Produk bisnis",
+    "stBusinessDesc": "Produk standar dan lisensi per industri",
+    "stContact": "Kontak",
+    "stContactDesc": "Pertanyaan produk, pembelian, dan lisensi"
   },
   "home": {
     "heroLogoAlt": "Newon logo",

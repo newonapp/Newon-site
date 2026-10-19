@@ -115,12 +115,13 @@ export const MEGA_DESTINATIONS = {
     { titleKey: "nav.bpPartnerships", descKey: "nav.bpPartnershipsDesc", href: "business/partnerships/", titleFb: "Partnerships" },
     { titleKey: "nav.bpContact", descKey: "nav.bpContactDesc", href: "business/contact/", titleFb: "Contact" },
   ],
+  // NEWON Studio (2026-10-19): five screens; the six platform product pages sit under Our Platforms.
   studio: [
-    { titleKey: "nav.studioMenuOverviewTitle", descKey: "nav.studioMenuOverviewDesc", href: "studio/", titleFb: "Overview" },
-    { titleKey: "nav.studioDigitalProducts", descKey: "nav.studioMenuDigitalDesc", href: "studio/digital/", titleFb: "Digital Products" },
-    { titleKey: "nav.studioMenuDesignSystemsTitle", descKey: "nav.studioMenuDesignSystemsDesc", href: "studio/design-systems/", titleFb: "Design Systems" },
-    { titleKey: "nav.studioProjects", descKey: "nav.studioMenuProjectsDesc", href: "studio/projects/", titleFb: "Projects" },
-    { titleKey: "nav.studioPartnerships", descKey: "nav.studioMenuPartnershipsDesc", href: "studio/partnerships/", titleFb: "Partnerships" },
+    { titleKey: "nav.stOverview", descKey: "nav.stOverviewDesc", href: "studio/", titleFb: "Overview" },
+    { titleKey: "nav.stStore", descKey: "nav.stStoreDesc", href: "studio/store/", titleFb: "Digital Store" },
+    { titleKey: "nav.stPlatforms", descKey: "nav.stPlatformsDesc", href: "studio/platforms/", titleFb: "Our Platforms" },
+    { titleKey: "nav.stBusiness", descKey: "nav.stBusinessDesc", href: "studio/business/", titleFb: "Business Products" },
+    { titleKey: "nav.stContact", descKey: "nav.stContactDesc", href: "studio/contact/", titleFb: "Contact" },
   ],
   bizhubBusiness: [
     { titleKey: "nav.bhAutomation", descKey: "nav.bhAutomationDesc", href: "business/automation/", titleFb: "Automation" },

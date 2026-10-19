@@ -1118,7 +1118,17 @@
     "bpPartnerships": "파트너십",
     "bpPartnershipsDesc": "협력 유형과 진행 흐름",
     "bpContact": "문의",
-    "bpContactDesc": "사업·제휴 문의 접수"
+    "bpContactDesc": "사업·제휴 문의 접수",
+    "stOverview": "개요",
+    "stOverviewDesc": "Studio 사업과 네 가지 제품군",
+    "stStore": "스토어",
+    "stStoreDesc": "템플릿·도구·소프트웨어 안내",
+    "stPlatforms": "플랫폼",
+    "stPlatformsDesc": "6개 플랫폼별 제품",
+    "stBusiness": "기업용 제품",
+    "stBusinessDesc": "업종별 표준 제품과 라이선스",
+    "stContact": "문의",
+    "stContactDesc": "제품·구매·라이선스 문의"
   },
   "home": {
     "heroLogoAlt": "Newon",

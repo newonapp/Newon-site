@@ -3730,1189 +3730,595 @@
     <loc>https://www.newon.app/ko/studio/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/studio/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/studio/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/studio/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/studio/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/studio/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/studio/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/studio/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/studio/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/ko/studio/store/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/ko/studio/brand/</loc>
+    <loc>https://www.newon.app/en/studio/store/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/en/studio/brand/</loc>
+    <loc>https://www.newon.app/ja/studio/store/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/ja/studio/brand/</loc>
+    <loc>https://www.newon.app/es/studio/store/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/es/studio/brand/</loc>
+    <loc>https://www.newon.app/pt-br/studio/store/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/pt-br/studio/brand/</loc>
+    <loc>https://www.newon.app/fr/studio/store/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/fr/studio/brand/</loc>
+    <loc>https://www.newon.app/de/studio/store/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/de/studio/brand/</loc>
+    <loc>https://www.newon.app/hi/studio/store/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/hi/studio/brand/</loc>
+    <loc>https://www.newon.app/id/studio/store/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/id/studio/brand/</loc>
+    <loc>https://www.newon.app/ko/studio/platforms/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/ko/studio/digital/</loc>
+    <loc>https://www.newon.app/en/studio/platforms/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/en/studio/digital/</loc>
+    <loc>https://www.newon.app/ja/studio/platforms/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/ja/studio/digital/</loc>
+    <loc>https://www.newon.app/es/studio/platforms/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/es/studio/digital/</loc>
+    <loc>https://www.newon.app/pt-br/studio/platforms/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/pt-br/studio/digital/</loc>
+    <loc>https://www.newon.app/fr/studio/platforms/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/fr/studio/digital/</loc>
+    <loc>https://www.newon.app/de/studio/platforms/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/de/studio/digital/</loc>
+    <loc>https://www.newon.app/hi/studio/platforms/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/hi/studio/digital/</loc>
+    <loc>https://www.newon.app/id/studio/platforms/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/id/studio/digital/</loc>
+    <loc>https://www.newon.app/ko/studio/business/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/ko/studio/content/</loc>
+    <loc>https://www.newon.app/en/studio/business/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/en/studio/content/</loc>
+    <loc>https://www.newon.app/ja/studio/business/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/ja/studio/content/</loc>
+    <loc>https://www.newon.app/es/studio/business/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/es/studio/content/</loc>
+    <loc>https://www.newon.app/pt-br/studio/business/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/pt-br/studio/content/</loc>
+    <loc>https://www.newon.app/fr/studio/business/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/fr/studio/content/</loc>
+    <loc>https://www.newon.app/de/studio/business/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/de/studio/content/</loc>
+    <loc>https://www.newon.app/hi/studio/business/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/hi/studio/content/</loc>
+    <loc>https://www.newon.app/id/studio/business/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/id/studio/content/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ko/studio/care/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/en/studio/care/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ja/studio/care/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/es/studio/care/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/pt-br/studio/care/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/fr/studio/care/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/de/studio/care/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/hi/studio/care/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/id/studio/care/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ko/studio/brand/strategy/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/en/studio/brand/strategy/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ja/studio/brand/strategy/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/es/studio/brand/strategy/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/pt-br/studio/brand/strategy/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/fr/studio/brand/strategy/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/de/studio/brand/strategy/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/hi/studio/brand/strategy/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/id/studio/brand/strategy/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ko/studio/brand/naming/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/en/studio/brand/naming/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ja/studio/brand/naming/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/es/studio/brand/naming/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/pt-br/studio/brand/naming/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/fr/studio/brand/naming/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/de/studio/brand/naming/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/hi/studio/brand/naming/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/id/studio/brand/naming/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ko/studio/brand/identity/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/en/studio/brand/identity/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ja/studio/brand/identity/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/es/studio/brand/identity/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/pt-br/studio/brand/identity/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/fr/studio/brand/identity/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/de/studio/brand/identity/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/hi/studio/brand/identity/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/id/studio/brand/identity/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ko/studio/brand/logo/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/en/studio/brand/logo/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ja/studio/brand/logo/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/es/studio/brand/logo/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/pt-br/studio/brand/logo/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/fr/studio/brand/logo/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/de/studio/brand/logo/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/hi/studio/brand/logo/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/id/studio/brand/logo/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ko/studio/digital/web-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/en/studio/digital/web-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ja/studio/digital/web-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/es/studio/digital/web-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/pt-br/studio/digital/web-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/fr/studio/digital/web-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/de/studio/digital/web-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/hi/studio/digital/web-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/id/studio/digital/web-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ko/studio/digital/app-ui-ux/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/en/studio/digital/app-ui-ux/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ja/studio/digital/app-ui-ux/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/es/studio/digital/app-ui-ux/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/pt-br/studio/digital/app-ui-ux/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/fr/studio/digital/app-ui-ux/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/de/studio/digital/app-ui-ux/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/hi/studio/digital/app-ui-ux/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/id/studio/digital/app-ui-ux/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ko/studio/digital/landing/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/en/studio/digital/landing/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ja/studio/digital/landing/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/es/studio/digital/landing/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/pt-br/studio/digital/landing/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/fr/studio/digital/landing/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/de/studio/digital/landing/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/hi/studio/digital/landing/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/id/studio/digital/landing/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ko/studio/digital/product-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/en/studio/digital/product-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ja/studio/digital/product-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/es/studio/digital/product-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/pt-br/studio/digital/product-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/fr/studio/digital/product-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/de/studio/digital/product-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/hi/studio/digital/product-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/id/studio/digital/product-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ko/studio/content/social/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/en/studio/content/social/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ja/studio/content/social/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/es/studio/content/social/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/pt-br/studio/content/social/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/fr/studio/content/social/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/de/studio/content/social/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/hi/studio/content/social/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/id/studio/content/social/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ko/studio/content/campaign/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/en/studio/content/campaign/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ja/studio/content/campaign/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/es/studio/content/campaign/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/pt-br/studio/content/campaign/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/fr/studio/content/campaign/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/de/studio/content/campaign/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/hi/studio/content/campaign/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/id/studio/content/campaign/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ko/studio/content/visual/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/en/studio/content/visual/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ja/studio/content/visual/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/es/studio/content/visual/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/pt-br/studio/content/visual/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/fr/studio/content/visual/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/de/studio/content/visual/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/hi/studio/content/visual/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/id/studio/content/visual/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ko/studio/care/monthly-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/en/studio/care/monthly-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ja/studio/care/monthly-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/es/studio/care/monthly-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/pt-br/studio/care/monthly-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/fr/studio/care/monthly-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/de/studio/care/monthly-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/hi/studio/care/monthly-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/id/studio/care/monthly-design/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ko/studio/care/design-improvement/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/en/studio/care/design-improvement/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ja/studio/care/design-improvement/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/es/studio/care/design-improvement/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/pt-br/studio/care/design-improvement/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/fr/studio/care/design-improvement/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/de/studio/care/design-improvement/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/hi/studio/care/design-improvement/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/id/studio/care/design-improvement/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/studio/contact/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/studio/contact/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/studio/contact/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/studio/contact/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/studio/contact/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/studio/contact/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/studio/contact/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/studio/contact/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/studio/contact/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/ko/studio/design-systems/</loc>
+    <loc>https://www.newon.app/ko/studio/platforms/babylog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/en/studio/design-systems/</loc>
+    <loc>https://www.newon.app/en/studio/platforms/babylog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/ja/studio/design-systems/</loc>
+    <loc>https://www.newon.app/ja/studio/platforms/babylog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/es/studio/design-systems/</loc>
+    <loc>https://www.newon.app/es/studio/platforms/babylog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/pt-br/studio/design-systems/</loc>
+    <loc>https://www.newon.app/pt-br/studio/platforms/babylog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/fr/studio/design-systems/</loc>
+    <loc>https://www.newon.app/fr/studio/platforms/babylog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/de/studio/design-systems/</loc>
+    <loc>https://www.newon.app/de/studio/platforms/babylog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/hi/studio/design-systems/</loc>
+    <loc>https://www.newon.app/hi/studio/platforms/babylog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/id/studio/design-systems/</loc>
+    <loc>https://www.newon.app/id/studio/platforms/babylog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/ko/studio/projects/</loc>
+    <loc>https://www.newon.app/ko/studio/platforms/petlog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/en/studio/projects/</loc>
+    <loc>https://www.newon.app/en/studio/platforms/petlog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/ja/studio/projects/</loc>
+    <loc>https://www.newon.app/ja/studio/platforms/petlog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/es/studio/projects/</loc>
+    <loc>https://www.newon.app/es/studio/platforms/petlog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/pt-br/studio/projects/</loc>
+    <loc>https://www.newon.app/pt-br/studio/platforms/petlog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/fr/studio/projects/</loc>
+    <loc>https://www.newon.app/fr/studio/platforms/petlog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/de/studio/projects/</loc>
+    <loc>https://www.newon.app/de/studio/platforms/petlog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/hi/studio/projects/</loc>
+    <loc>https://www.newon.app/hi/studio/platforms/petlog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/id/studio/projects/</loc>
+    <loc>https://www.newon.app/id/studio/platforms/petlog/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/ko/studio/partnerships/</loc>
+    <loc>https://www.newon.app/ko/studio/platforms/myworld/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/en/studio/partnerships/</loc>
+    <loc>https://www.newon.app/en/studio/platforms/myworld/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/ja/studio/partnerships/</loc>
+    <loc>https://www.newon.app/ja/studio/platforms/myworld/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/es/studio/partnerships/</loc>
+    <loc>https://www.newon.app/es/studio/platforms/myworld/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/pt-br/studio/partnerships/</loc>
+    <loc>https://www.newon.app/pt-br/studio/platforms/myworld/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/fr/studio/partnerships/</loc>
+    <loc>https://www.newon.app/fr/studio/platforms/myworld/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/de/studio/partnerships/</loc>
+    <loc>https://www.newon.app/de/studio/platforms/myworld/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/hi/studio/partnerships/</loc>
+    <loc>https://www.newon.app/hi/studio/platforms/myworld/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.newon.app/id/studio/partnerships/</loc>
+    <loc>https://www.newon.app/id/studio/platforms/myworld/</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/ko/studio/platforms/shareon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/en/studio/platforms/shareon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/ja/studio/platforms/shareon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/es/studio/platforms/shareon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/pt-br/studio/platforms/shareon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/fr/studio/platforms/shareon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/de/studio/platforms/shareon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/hi/studio/platforms/shareon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/id/studio/platforms/shareon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/ko/studio/platforms/livon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/en/studio/platforms/livon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/ja/studio/platforms/livon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/es/studio/platforms/livon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/pt-br/studio/platforms/livon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/fr/studio/platforms/livon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/de/studio/platforms/livon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/hi/studio/platforms/livon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/id/studio/platforms/livon/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/ko/studio/platforms/ongil/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/en/studio/platforms/ongil/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/ja/studio/platforms/ongil/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/es/studio/platforms/ongil/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/pt-br/studio/platforms/ongil/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/fr/studio/platforms/ongil/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/de/studio/platforms/ongil/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/hi/studio/platforms/ongil/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/id/studio/platforms/ongil/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/resources/</loc>

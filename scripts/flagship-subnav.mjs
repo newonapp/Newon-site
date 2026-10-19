@@ -7,15 +7,16 @@
  * One markup + one stylesheet (/flagship-subnav.css) for every business, placed directly under
  * each page's first screen (hero). Only the point colour differs per business (data-biz).
  * Korean sub-labels are shown on Korean pages only.
- * Also used by the NEWON Business & Partnerships hub (biz: "bizpart", its own five screens; see BIZPART_PAGES).
+ * Also used by the NEWON Business & Partnerships hub (biz: "bizpart", its own five screens; see BIZPART_PAGES)
+ * and by NEWON Studio (biz: "studio", its own five screens; see STUDIO_PAGES).
  */
 
 export const FLAGSHIP_SUBNAV_CSS = "/flagship-subnav.css?v=20261018fsn2";
 
-const SLUG = { babylog: "babylog", petlog: "petlog", myworld: "myworld", shareon: "shareon", livon: "livon", ongil: "ongil", bizpart: "business" };
-const BRAND = { babylog: "BABYLOG", petlog: "PETLOG", myworld: "MY WORLD", shareon: "SHAREON", livon: "LIVON", ongil: "ONGIL", bizpart: "BUSINESS & PARTNERSHIPS" };
+const SLUG = { babylog: "babylog", petlog: "petlog", myworld: "myworld", shareon: "shareon", livon: "livon", ongil: "ongil", bizpart: "business", studio: "studio" };
+const BRAND = { babylog: "BABYLOG", petlog: "PETLOG", myworld: "MY WORLD", shareon: "SHAREON", livon: "LIVON", ongil: "ONGIL", bizpart: "BUSINESS & PARTNERSHIPS", studio: "NEWON STUDIO" };
 /** Korean aria label for the menu (the six businesses use "<BRAND> 메뉴"). */
-const BRAND_KO = { bizpart: "비즈니스·파트너십" };
+const BRAND_KO = { bizpart: "비즈니스·파트너십", studio: "NEWON 스튜디오" };
 
 export const FLAGSHIP_PAGES = [
   { id: "overview", n: "01", en: "Overview", ko: "개요", sub: "" },
@@ -36,7 +37,18 @@ export const BIZPART_PAGES = [
   { id: "partnerships", n: "04", en: "Partnerships", ko: "파트너십", sub: "partnerships/" },
   { id: "contact", n: "05", en: "Contact", ko: "문의", sub: "contact/" },
 ];
-const PAGES_FOR = { bizpart: BIZPART_PAGES };
+/**
+ * NEWON Studio (/{lang}/studio/, 2026-10-19): five screens; the six platform product pages
+ * (/{lang}/studio/platforms/{id}/) show this bar with "Our Platforms" active.
+ */
+export const STUDIO_PAGES = [
+  { id: "overview", n: "01", en: "Overview", ko: "개요", sub: "" },
+  { id: "store", n: "02", en: "Digital Store", ko: "스토어", sub: "store/" },
+  { id: "platforms", n: "03", en: "Our Platforms", ko: "플랫폼", sub: "platforms/" },
+  { id: "business", n: "04", en: "Business Products", ko: "기업용 제품", sub: "business/" },
+  { id: "contact", n: "05", en: "Contact", ko: "문의", sub: "contact/" },
+];
+const PAGES_FOR = { bizpart: BIZPART_PAGES, studio: STUDIO_PAGES };
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 

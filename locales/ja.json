@@ -462,7 +462,17 @@
     "bpPartnerships": "パートナーシップ",
     "bpPartnershipsDesc": "協業の種類と進め方",
     "bpContact": "お問い合わせ",
-    "bpContactDesc": "事業・提携のお問い合わせ"
+    "bpContactDesc": "事業・提携のお問い合わせ",
+    "stOverview": "概要",
+    "stOverviewDesc": "Studioの事業と4つの製品群",
+    "stStore": "デジタルストア",
+    "stStoreDesc": "テンプレート・ツール・ソフトウェア",
+    "stPlatforms": "プラットフォーム",
+    "stPlatformsDesc": "6つのプラットフォーム別の製品",
+    "stBusiness": "法人向け製品",
+    "stBusinessDesc": "業種別の標準製品とライセンス",
+    "stContact": "お問い合わせ",
+    "stContactDesc": "製品・購入・ライセンスのお問い合わせ"
   },
   "home": {
     "heroLogoAlt": "0ロゴ",

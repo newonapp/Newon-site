@@ -462,7 +462,17 @@
     "bpPartnerships": "Alianzas",
     "bpPartnershipsDesc": "Formas de colaborar y cómo funciona",
     "bpContact": "Contacto",
-    "bpContactDesc": "Consultas de negocios y alianzas"
+    "bpContactDesc": "Consultas de negocios y alianzas",
+    "stOverview": "Resumen",
+    "stOverviewDesc": "Qué hace Studio y sus cuatro familias de productos",
+    "stStore": "Tienda digital",
+    "stStoreDesc": "Plantillas, herramientas y software",
+    "stPlatforms": "Nuestras plataformas",
+    "stPlatformsDesc": "Productos para las seis plataformas",
+    "stBusiness": "Productos para empresas",
+    "stBusinessDesc": "Productos estándar y licencias por sector",
+    "stContact": "Contacto",
+    "stContactDesc": "Consultas sobre productos, compras y licencias"
   },
   "home": {
     "heroLogoAlt": "0 logo",
