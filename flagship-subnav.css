@@ -15,7 +15,7 @@
   border-bottom: 1px solid var(--fsn-line);
   font-family: "Noto Sans", "Noto Sans KR", "Pretendard", system-ui, sans-serif;
 }
-.fsn[data-biz="babylog"] { --fsn-point: #e3a33b; --fsn-point-ink: #8a5a0a; }
+.fsn[data-biz="babylog"] { --fsn-point: #e8628e; --fsn-point-ink: #b8336a; }
 .fsn[data-biz="petlog"] { --fsn-point: #278a53; --fsn-point-ink: #1e6b41; }
 .fsn[data-biz="myworld"] { --fsn-point: #1769ff; --fsn-point-ink: #1257d6; }
 .fsn[data-biz="shareon"] { --fsn-point: #7771e8; --fsn-point-ink: #554cc8; }

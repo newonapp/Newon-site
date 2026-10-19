@@ -723,7 +723,7 @@ function renderPage(lang, screen) {
     MAIN_CONTENT: renderStudioSection(lang.dir, screen),
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=${ST_VER}" />
-    <link rel="stylesheet" href="/flagship-subnav.css?v=20261018fsn2" />
+    <link rel="stylesheet" href="/flagship-subnav.css?v=20261019fsn3" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="/studio-site.css?v=${ST_VER}" />
 ${jsonLd(lang.dir, screen, seo, canonical)}`,

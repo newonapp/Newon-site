@@ -644,7 +644,7 @@ function renderPage(lang, nav) {
     MAIN_CONTENT: renderBizpartSection(lang.dir, nav.id),
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
-    <link rel="stylesheet" href="/flagship-subnav.css?v=20261018fsn2" />
+    <link rel="stylesheet" href="/flagship-subnav.css?v=20261019fsn3" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="/bizpart-site.css?v=20261019rest1" />
 ${jsonLd(lang.dir, nav, seo, canonical)}`,

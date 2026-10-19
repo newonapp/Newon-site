@@ -11,7 +11,7 @@
  * and by NEWON Studio (biz: "studio", its own five screens; see STUDIO_PAGES).
  */
 
-export const FLAGSHIP_SUBNAV_CSS = "/flagship-subnav.css?v=20261018fsn2";
+export const FLAGSHIP_SUBNAV_CSS = "/flagship-subnav.css?v=20261019fsn3";
 
 const SLUG = { babylog: "babylog", petlog: "petlog", myworld: "myworld", shareon: "shareon", livon: "livon", ongil: "ongil", bizpart: "business", studio: "studio" };
 const BRAND = { babylog: "BABYLOG", petlog: "PETLOG", myworld: "MY WORLD", shareon: "SHAREON", livon: "LIVON", ongil: "ONGIL", bizpart: "BUSINESS & PARTNERSHIPS", studio: "NEWON STUDIO" };
