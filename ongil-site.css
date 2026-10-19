@@ -40,34 +40,7 @@ html[data-theme="dark"] #lifestage-detail.ogs {
 #lifestage-detail.nls[data-story="ongil"] .nls-film__lead {
   max-width: 34rem;
 }
-#lifestage-detail.nls[data-story="ongil"] .ogs-film--compact {
-  height: 40rem;
-  min-height: 40rem;
-  max-height: none;
-}
-#lifestage-detail.nls[data-story="ongil"] .ogs-film--compact .nls-film__lockup {
-  top: calc(50% + 2rem);
-}
-#lifestage-detail.nls[data-story="ongil"] .ogs-film--compact .nls-film__wordmark {
-  font-size: clamp(3.6rem, 10vw, 6.6rem);
-  margin-bottom: 1.4rem;
-}
-#lifestage-detail.nls[data-story="ongil"] .ogs-film--compact .nls-film__slogan {
-  font-size: clamp(1.4rem, 2.8vw, 2.1rem);
-}
-@media (max-width: 760px) {
-  #lifestage-detail.nls[data-story="ongil"] .ogs-film--compact {
-    height: 40rem;
-    min-height: 40rem;
-  }
-  #lifestage-detail.nls[data-story="ongil"] .ogs-film--compact .nls-film__wordmark {
-    font-size: clamp(3rem, 15vw, 4.4rem);
-    margin-bottom: 1.1rem;
-  }
-  #lifestage-detail.nls[data-story="ongil"] .ogs-film--compact .nls-film__slogan {
-    font-size: clamp(1.25rem, 5.4vw, 1.6rem);
-  }
-}
+/* first-screen size/position: unified film spec at the end of home-lifestage.css */
 
 /* ───────── Section rhythm ───────── */
 #lifestage-detail.ogs .ogs-sec {

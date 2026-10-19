@@ -54,7 +54,7 @@ function renderPage(lang) {
     CHROME_HEADER: header,
     MAIN_CONTENT: renderEcosystemSection(lang.dir),
     CHROME_FOOTER: footer,
-    EXTRA_CSS: `<link rel="stylesheet" href="/ecosystem.css?v=${ECO_VER}" />`,
+    EXTRA_CSS: `<link rel="stylesheet" href="/ecosystem.css?v=20261019hero1" />`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/ecosystem.js?v=${ECO_VER}" defer></script>`,
   });

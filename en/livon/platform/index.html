@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="/styles.css?v=20260904a11y1" />
     <link rel="stylesheet" href="/gnav-mega.css?v=20261019line1" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
-    <link rel="stylesheet" href="/home-lifestage.css?v=20260924livon1" />
+    <link rel="stylesheet" href="/home-lifestage.css?v=20261019hero1" />
     <link rel="stylesheet" href="/flagship-subnav.css?v=20261018fsn2" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=20260924livon1" />
     <link rel="stylesheet" href="/livon-site.css?v=20261018lvs3" />
@@ -753,11 +753,23 @@
     </header>
     <main id="hub-main" class="hub-page">
       <section id="lifestage-detail" class="nls lvs" data-story="lifestage" data-lvs-page="platform" aria-labelledby="lvs-platform-title">
-    <div class="nls-block nls-close nls-block--ink lvs-top">
-    <p class="nls-kicker">LIVON · Platform</p>
-    <h1 class="nls-hero__title" id="lvs-platform-title">Everything life asks of you,<br>in one connection.</h1>
-    <p class="nls-lead">LIVON keeps the structure of its existing app and grows into 40 life categories. The core features are free and work without logging in, and every feature and category shows what is available today.</p>
-    <p class="nls-note">The LIVON app is in preparation. You can use LIVON on the web for free today.</p>
+    <div class="nls-film lvs-film" data-nls-film data-hs-section>
+    <div class="nls-film__stage">
+      <div class="nls-film__fallback" aria-hidden="true"></div>
+      <video class="nls-film__video" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_102608_5fa1187d-9ac6-44fb-82ab-54376200abc0.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" aria-hidden="true">
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_102608_5fa1187d-9ac6-44fb-82ab-54376200abc0.mp4" type="video/mp4" />
+      </video>
+      <div class="nls-film__lockup">
+        <div class="nls-film__veil" aria-hidden="true"></div>
+        <p class="nls-film__wordmark">LIVON</p>
+        <h1 id="lvs-platform-title" class="nls-film__slogan">Everything life asks of you,<br>in one connection.</h1>
+        <p class="nls-film__lead">LIVON keeps the structure of its existing app and grows into 40 life categories. The core features are free and work without logging in, and every feature and category shows what is available today.</p>
+        <div class="nls-film__actions">
+          <a class="nls-btn" href="/livon/">Try LIVON on the web →</a>
+          <a class="nls-btn nls-btn--ghost" href="/en/livon/contact/">Contact us</a>
+        </div>
+      </div>
+    </div>
   </div>
   <nav class="fsn" data-biz="livon" aria-label="LIVON menu">
   <div class="fsn__in">
@@ -766,6 +778,7 @@
   </div>
 </nav>
   <div class="nls__wrap">
+    <p class="nls-note lvs-app-note">The LIVON app is in preparation. You can use LIVON on the web for free today.</p>
     
     <p class="nls-note lvs-lead-note">The 40 categories are a business and content classification, not 40 finished features. Each one shows what is actually available.</p>
     <div id="lvs-core" class="nls-block nls-platform-sec">

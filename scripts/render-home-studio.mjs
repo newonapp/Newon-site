@@ -38,10 +38,10 @@ function patchHome(html, body) {
   if (!next.includes("home-lifestage.css")) {
     next = next.replace(
       /(<link rel="stylesheet" href="\/home-studio\.css\?v=[^"]+" \/>)/,
-      `$1\n    <link rel="stylesheet" href="/home-lifestage.css?v=${NLS_VER}" />`
+      `$1\n    <link rel="stylesheet" href="/home-lifestage.css?v=20261019hero1" />`
     );
   } else {
-    next = next.replace(/home-lifestage\.css\?v=[^"]+/g, `home-lifestage.css?v=${NLS_VER}`);
+    next = next.replace(/home-lifestage\.css\?v=[^"]+/g, `home-lifestage.css?v=20261019hero1`);
   }
   if (!next.includes("home-lifestage.js")) {
     next = next.replace(

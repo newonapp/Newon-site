@@ -18,27 +18,9 @@
   background:
     radial-gradient(ellipse 70% 55% at 50% 42%, #262626 0%, #111 55%, #0a0a0a 100%);
 }
-#lifestage-detail.nls[data-story="babylog"] .bl-film--compact {
-  height: 34rem;
-  min-height: 34rem;
-  max-height: none;
-}
-#lifestage-detail.nls[data-story="babylog"] .bl-film--compact .nls-film__wordmark {
-  font-size: clamp(3.6rem, 11vw, 7.2rem);
-  margin-bottom: 1.4rem;
-}
+/* first-screen size/position: unified film spec at the end of home-lifestage.css */
 #lifestage-detail.nls[data-story="babylog"] .nls-film__slogan {
   max-width: 40rem;
-}
-@media (max-width: 760px) {
-  #lifestage-detail.nls[data-story="babylog"] .bl-film--compact {
-    height: 32rem;
-    min-height: 32rem;
-  }
-  #lifestage-detail.nls[data-story="babylog"] .bl-film--compact .nls-film__wordmark {
-    font-size: clamp(3rem, 16vw, 4.6rem);
-    margin-bottom: 1.1rem;
-  }
 }
 
 /* ---- Breadcrumb ------------------------------------------------------------------------------ */
@@ -477,9 +459,6 @@ html[data-newon-shell-theme="dark"] #lifestage-detail.nls[data-story="babylog"] 
   }
 }
 
-#lifestage-detail.nls[data-story="babylog"] .bl-film--compact .nls-film__lockup {
-  top: calc(50% + 1.8rem);
-}
 @media (min-width: 860px) {
   #lifestage-detail.nls[data-story="babylog"] .nls-proc.bl-proc3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));

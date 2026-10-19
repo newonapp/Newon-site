@@ -83,13 +83,29 @@ function dl(rows) {
     .join("")}</dl>`;
 }
 
+/* Sub-page first screen: the same LIVON film hero as the Overview (same video, same nls-film component),
+   carrying the page's own headline and lead. `kicker` is kept for the page id only. */
 function textHero(lang, kicker, title, lead, titleId) {
   const c = siteCopy(lang);
-  return `<div class="nls-block nls-close nls-block--ink lvs-top">
-    <p class="nls-kicker">${e(c.brand)} · ${e(kicker)}</p>
-    <h1 class="nls-hero__title" id="${e(titleId)}">${nl(title)}</h1>
-    <p class="nls-lead">${e(lead)}</p>
-    <p class="nls-note">${e(c.appStatus)}</p>
+  const isContact = kicker === "Contact";
+  const contactHref = isContact ? "#lvs-contact" : pageHref(lang, "contact");
+  return `<div class="nls-film lvs-film" data-nls-film data-hs-section>
+    <div class="nls-film__stage">
+      <div class="nls-film__fallback" aria-hidden="true"></div>
+      <video class="nls-film__video" src="${FILM}" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" aria-hidden="true">
+        <source src="${FILM}" type="video/mp4" />
+      </video>
+      <div class="nls-film__lockup">
+        <div class="nls-film__veil" aria-hidden="true"></div>
+        <p class="nls-film__wordmark">${e(c.brand)}</p>
+        <h1 id="${e(titleId)}" class="nls-film__slogan">${nl(title)}</h1>
+        <p class="nls-film__lead">${e(lead)}</p>
+        <div class="nls-film__actions">
+          <a class="nls-btn" href="/livon/">${e(c.tryWeb)} →</a>
+          <a class="nls-btn nls-btn--ghost" href="${e(contactHref)}"${isContact ? " data-nls-scroll" : ""}>${e(c.toContact)}${isContact ? " ↓" : ""}</a>
+        </div>
+      </div>
+    </div>
   </div>`;
 }
 
@@ -98,7 +114,8 @@ function shell(lang, active, titleId, hero, body) {
     ${hero}
   ${renderFlagshipSubnav({ biz: "livon", lang, active })}
   <div class="nls__wrap">
-    ${body}
+    ${active === "overview" ? "" : `<p class="nls-note lvs-app-note">${e(siteCopy(lang).appStatus)}</p>
+    `}${body}
   </div>
 </section>`;
 }

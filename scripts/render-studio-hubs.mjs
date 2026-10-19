@@ -198,7 +198,7 @@ function studioBody(flat, flatEn, lang = "en") {
 <link rel="stylesheet" href="/newon-studio.css?v=${cssV}" />
 <link rel="stylesheet" href="/business-page.css?v=${cssV}" />
 <link rel="stylesheet" href="/business-pillar.css?v=${cssV}" />
-<link rel="stylesheet" href="/studio-film.css?v=${filmV}" />
+<link rel="stylesheet" href="/studio-film.css?v=20261019hero1" />
 <section id="studio-film" class="st-film" data-st-film data-lockup-reveal aria-label="Newon Studio">
   <div class="st-film__stage">
     <div class="st-film__fallback" aria-hidden="true"></div>
@@ -296,7 +296,7 @@ const HUB_RENDERERS = {
     title: pick(f, fe, "studio.appsSeoTitle"),
     description: pick(f, fe, "studio.appsMetaDescription"),
     body: appsBody(f, fe, l),
-    extraCss: '<link rel="stylesheet" href="/apps-hub.css?v=20260922appfit2" />',
+    extraCss: '<link rel="stylesheet" href="/apps-hub.css?v=20261019hero1" />',
     extraScripts: '<script src="/film-keep.js?v=20260924play2"></script>\n    <script src="/apps-hub.js?v=20260825apps5" defer></script>',
   }),
   ai: (f, fe, l) => ({
@@ -304,7 +304,7 @@ const HUB_RENDERERS = {
     title: pick(f, fe, "studio.aiSeoTitle"),
     description: pick(f, fe, "studio.aiMetaDescription"),
     body: aiBody(f, fe, l),
-    extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260922aibtn3" />',
+    extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20261019hero1" />',
     extraScripts: '<script src="/film-keep.js?v=20260924play2"></script>\n    <script src="/ai-hub.js?v=20260922aibtn3" defer></script>',
   }),
   "ai/enterprise": (f, fe, l) => {
@@ -314,7 +314,7 @@ const HUB_RENDERERS = {
       title: copy.seoTitle,
       description: copy.seoDescription,
       body: renderAiEnterpriseBody(f, fe, l),
-      extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260923entv9" />',
+      extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20261019hero1" />',
       extraScripts: '<script src="/film-keep.js?v=20260924play2"></script>\n    <script src="/ai-hub.js?v=20260923entv" defer></script>',
       seoMax: 160,
     };
@@ -332,7 +332,7 @@ const HUB_RENDERERS = {
     title: pick(f, fe, "studio.gamesSeoTitle"),
     description: pick(f, fe, "studio.gamesMetaDescription"),
     body: gamesBody(f, fe, l),
-    extraCss: '<link rel="stylesheet" href="/games-hub.css?v=20260922games3" />',
+    extraCss: '<link rel="stylesheet" href="/games-hub.css?v=20261019hero1" />',
     extraScripts: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/games-hub.js?v=20260922games3" defer></script>`,
   }),

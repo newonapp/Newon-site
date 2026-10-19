@@ -100,10 +100,10 @@ function renderPage(lang, nav) {
     CHROME_HEADER: header,
     MAIN_CONTENT: renderBabylogSection(lang.dir, nav.id),
     CHROME_FOOTER: footer,
-    EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=${NLS_VER}" />
+    EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019hero1" />
     <link rel="stylesheet" href="/flagship-subnav.css?v=20261018fsn2" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
-    <link rel="stylesheet" href="/babylog-site.css?v=${BL_VER}" />
+    <link rel="stylesheet" href="/babylog-site.css?v=20261019hero1" />
 ${jsonLd(lang.dir, nav, seo, canonical)}`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,

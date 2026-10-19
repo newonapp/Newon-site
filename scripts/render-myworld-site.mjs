@@ -57,10 +57,10 @@ function renderPage(lang, page) {
     CHROME_HEADER: header,
     MAIN_CONTENT: renderMyWorldSitePage(lang.dir, page, site),
     CHROME_FOOTER: footer,
-    EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20260924livon1" />
+    EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019hero1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=20260924livon1" />
     <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
-    <link rel="stylesheet" href="/myworld-site.css?v=${MWS_VER}" />`,
+    <link rel="stylesheet" href="/myworld-site.css?v=20261019hero1" />`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=20260924livon1" defer></script>
     <script src="/myworld-site.js?v=${MWS_VER}" defer></script>`,

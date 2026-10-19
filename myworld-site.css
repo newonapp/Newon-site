@@ -1817,7 +1817,4 @@ html[data-newon-shell-theme="dark"] #myworld-site .mws-current {
 #lifestage-detail.nls[data-story="myworld"] .nls-film__fallback {
   background: radial-gradient(ellipse 70% 55% at 50% 42%, #262626 0%, #111 55%, #0a0a0a 100%);
 }
-#lifestage-detail.nls[data-story="myworld"] .nls-film__wordmark {
-  white-space: nowrap;
-  font-size: clamp(3.6rem, 13vw, 10rem);
-}
+/* first-screen size/position: unified film spec at the end of home-lifestage.css */

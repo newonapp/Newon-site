@@ -65,10 +65,10 @@ function renderPage(lang, page) {
     CHROME_HEADER: header,
     MAIN_CONTENT: renderShareonPage(lang.dir, page.id),
     CHROME_FOOTER: footer,
-    EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=${NLS_VER}" />
+    EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019hero1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
-    <link rel="stylesheet" href="/shareon.css?v=${CSS_VER}" />`,
+    <link rel="stylesheet" href="/shareon.css?v=20261019hero1" />`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>
     <script src="/shareon.js?v=${CSS_VER}" defer></script>`,
