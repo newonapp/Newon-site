@@ -417,7 +417,7 @@ function mobileNav(flat, flatEn, base, suffix, langDir = "") {
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
           ${sections}
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
-          <a class="gnav-mobile__cta btn btn-primary" href="${href(base, "business/inquiry/", langDir)}">${projectInquiry}</a>
+          <a class="gnav-mobile__cta btn btn-primary" href="${href(base, "business/contact/", langDir)}">${projectInquiry}</a>
         </div>
       </div>
     </div>`;
@@ -447,7 +447,7 @@ export function renderGlobalHeader(
             ${desktopNav(flat, flatEn, base, activeNav, langDir)}
           </nav>
           <div class="gnav__util">
-            <a class="gnav__cta" href="${href(base, "business/inquiry/", langDir)}">${inquiry}</a>
+            <a class="gnav__cta" href="${href(base, "business/contact/", langDir)}">${inquiry}</a>
             ${langSelect(flat, flatEn, langId)}
             <button type="button" class="gnav__theme" data-theme-toggle data-label-light="${escapeHtml(t(flat, flatEn, "common.themeToLight", ""))}" data-label-dark="${escapeHtml(t(flat, flatEn, "common.themeToDark", ""))}" title="${themeTitle}" aria-label="${themeLabel}">${MOON_SVG}</button>
             <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-${idSuffix}" aria-label="${menuLabel}">

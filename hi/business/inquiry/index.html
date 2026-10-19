@@ -6,8 +6,52 @@
     <title>Business Inquiry | NEWON</title>
     <meta name="description" content="Inquiries about joining, partnering with, adopting enterprise services from, or collaborating with NEWON's six digital platforms: BABYLOG, PETLOG, MY WORLD, SHAREON, LIVON and ONGIL." />
     <meta name="keywords" content="Newon, यात्रा जर्नल, यात्रा ट्रैकर, देखे गए देश, travel journal, travel tracker, My World, EatOn, FitOn" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="robots" content="noindex, follow" />
     <link rel="canonical" href="https://www.newon.app/hi/business/inquiry/" />
+    <script>
+      /* /business/inquiry/ is folded into the official business inquiry page /business/contact/.
+         Forward visitors (query + hash mapped), except the store purchase inflow (?category=Store),
+         which keeps using this page's form. Studio inquiries (?category=Studio) go to Studio Contact.
+         Scoped to this exact path so pages that reuse this template are never redirected. */
+      (function () {
+        try {
+          var m = location.pathname.match(/^\/([a-z]{2}(?:-[a-z]{2})?)\/business\/inquiry\/?(?:index\.html)?$/i);
+          if (!m) return;
+          var lang = m[1].toLowerCase();
+          var q = new URLSearchParams(location.search);
+          var cat = (q.get("category") || "").toLowerCase();
+          var typ = q.get("type") || "";
+          if (cat === "store" || /^store\s*\//i.test(typ)) return;
+          var out = new URLSearchParams();
+          var codes = ["general", "participation", "commerce", "saas", "institution", "brand", "technology", "public", "global", "other"];
+          var byValue = {
+            "platform participation & transactions": "participation",
+            "brand, service & content partnership": "brand",
+            "enterprise service adoption": "saas",
+            "public sector & organization partnership": "public",
+            "technology & global partnership": "technology",
+            "other business inquiry": "other",
+            "partnership": "brand"
+          };
+          var t = typ.toLowerCase();
+          var code = codes.indexOf(t) > -1 ? t : byValue[t] || "";
+          var svc = (q.get("service") || "").toLowerCase();
+          if (!code && (svc === "partnership" || cat === "partnership")) code = "brand";
+          if (!code && /ai\s*automation|saas/.test(svc)) code = "saas";
+          if (code) out.set("type", code);
+          var src = q.get("source") || "";
+          var plat = (q.get("platform") || "").toLowerCase().replace(/\s+/g, "");
+          if (!plat) { var pm = src.toLowerCase().match(/babylog|petlog|myworld|shareon|livon|ongil/); if (pm) plat = pm[0]; }
+          if (plat) out.set("platform", plat);
+          var topic = q.get("topic") || "";
+          if (src || topic) out.set("source", (src + (topic ? " | " + topic : "")).slice(0, 80));
+          var dest = cat === "studio" ? "/" + lang + "/studio/contact/" : "/" + lang + "/business/contact/";
+          var qs = out.toString();
+          var hash = location.hash && location.hash !== "#inquiry" ? location.hash : (location.hash ? (cat === "studio" ? "#sts-form" : "#bpt-form") : "");
+          location.replace(dest + (qs ? "?" + qs : "") + hash);
+        } catch (e) {}
+      })();
+    </script>
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.newon.app/hi/business/inquiry/" />
     <meta property="og:locale" content="hi_IN" />
@@ -2172,7 +2216,7 @@
         <span class="gnav-mega__row-desc">Market notes and signals</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../../business/inquiry/" role="menuitem">
+    </a><a class="gnav-mega__row" href="../../business/contact/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">07</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">संपर्क</span>
@@ -2186,7 +2230,7 @@
     </div>
           </nav>
           <div class="gnav__util">
-            <a class="gnav__cta" href="../../business/inquiry/">Contact</a>
+            <a class="gnav__cta" href="../../business/contact/">Contact</a>
             <div class="gnav__lang" data-lang-switcher>
     <label class="visually-hidden" for="lang-select-gnav-hub">भाषा</label>
     <select id="lang-select-gnav-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="भाषा">
@@ -2332,10 +2376,10 @@
           <a class="gnav-mobile__acc-link" href="../../about/">कंपनी</a>
           <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="कंपनी"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../about/">About Newon</a><a class="gnav-mobile__sublink" href="../../portfolio/">Portfolio</a><a class="gnav-mobile__sublink" href="../../news/">News</a><a class="gnav-mobile__sublink" href="../../media/">मीडिया</a><a class="gnav-mobile__sublink" href="../../resources/blog/">ब्लॉग</a><a class="gnav-mobile__sublink" href="../../market/">Market</a><a class="gnav-mobile__sublink" href="../../business/inquiry/">संपर्क</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../about/">About Newon</a><a class="gnav-mobile__sublink" href="../../portfolio/">Portfolio</a><a class="gnav-mobile__sublink" href="../../news/">News</a><a class="gnav-mobile__sublink" href="../../media/">मीडिया</a><a class="gnav-mobile__sublink" href="../../resources/blog/">ब्लॉग</a><a class="gnav-mobile__sublink" href="../../market/">Market</a><a class="gnav-mobile__sublink" href="../../business/contact/">संपर्क</a></div>
       </div>
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
-          <a class="gnav-mobile__cta btn btn-primary" href="../../business/inquiry/">Partnership inquiry</a>
+          <a class="gnav-mobile__cta btn btn-primary" href="../../business/contact/">Partnership inquiry</a>
         </div>
       </div>
     </div>

@@ -380,7 +380,8 @@ for (const hub of HUBS_TO_RENDER) {
     if (RESOURCE_REDIRECT_HUBS.has(hub)) {
       const out = path.join(ROOT, lang.dir, hub, "index.html");
       ensureDir(out);
-      fs.writeFileSync(out, metaRefreshPage(lang.dir, `resources/${hub}`));
+      // Labs pages were removed (resources/labs/ is a 404); the old /labs/ URL goes to the free web tools.
+      fs.writeFileSync(out, metaRefreshPage(lang.dir, hub === "labs" ? "tools" : `resources/${hub}`));
       continue;
     }
     const { flat, flatEn } = localeFlat(lang);

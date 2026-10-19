@@ -41,10 +41,11 @@ import { insightsResearchSection } from "./insights-research-section.mjs";
 
 /** Insights research detail routes → Business Research (redirect-only; no full-page render). */
 const INSIGHTS_RESEARCH_REDIRECTS = {
-  "market-research": "business/market-research/",
-  "competitor-analysis": "business/competitor-analysis/",
-  "consumer-research": "business/consumer-research/",
-  "custom-report": "business/research/#custom",
+  /* The research detail pages themselves forward to /business/, so point there directly (no double hop). */
+  "market-research": "business/",
+  "competitor-analysis": "business/",
+  "consumer-research": "business/",
+  "custom-report": "business/",
 };
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));

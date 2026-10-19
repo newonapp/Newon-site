@@ -641,7 +641,7 @@ function writeSitemap() {
   for (const pillar of ["build", "automation", "research", "solutions", "care"]) {
     addAllLocales(`business/${pillar}`, "0.7", "monthly");
   }
-  addAllLocales("business/inquiry", "0.55", "monthly");
+  // /business/inquiry/ forwards to the official /business/contact/ (noindex) — not listed in the sitemap.
 
   for (const page of BUSINESS_DETAIL_PAGES) {
     const route = `business/collaboration/${page.pathSlug || page.slug}`;
