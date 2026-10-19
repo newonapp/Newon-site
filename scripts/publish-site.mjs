@@ -94,6 +94,7 @@ const PUBLISH_ROOT_CORE = [
   "business-film.css",
   "business-film.js",
   "studio-film.css",
+  "studio-hero-film.css",
   "studio-film.js",
   "business-creative.css",
   "business-creative.js",
