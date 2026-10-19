@@ -35,7 +35,7 @@ export const BP_FILMS = {
   studio: `${CDN}hf_20260622_202655_a7f5aca0-2f80-4bc9-bcb5-96ac95662003.mp4`,
   partnerships: `${CDN}hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4`,
 };
-export const BP_PAGE_FILM = { overview: "studio", platforms: "studio", models: "studio", partnerships: "partnerships", contact: "partnerships" };
+export const BP_PAGE_FILM = { overview: "studio", platforms: "studio", models: "studio", partnerships: "studio", contact: "studio" };
 
 /** The six flagship platforms. `slug` = their own site folder (/{lang}/{slug}/business/ and /partnerships/). */
 export const BP_PLATFORMS = [
