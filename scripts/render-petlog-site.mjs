@@ -44,6 +44,8 @@ const rel = (depth, p) => (/^(https?:|mailto:|#|\/)/.test(p) ? p : "../".repeat(
 
 /* PETLOG green (#278A53 brand; darker #1E6B41 for text contrast on white) — kicker labels and status tags only. */
 const PETLOG_CSS = `<style>
+  /* Background film framing: show more of the right side (owner request 2026-10-19). */
+  #lifestage-detail.nls[data-story="petlog"] .nls-film__video { object-position: 75% 50%; }
   #lifestage-detail.nls--petlog .nls-kicker { color: #1e6b41; }
   #lifestage-detail.nls--petlog .nls-status { border-color: #278a53; color: #1e6b41; }
   #lifestage-detail.nls--petlog .nls-status[data-status="app"] { background: #278a53; border-color: #278a53; color: #fff; }
