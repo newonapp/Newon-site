@@ -6,6 +6,8 @@ import { getAboutPageCopy } from "./about-page-copy.mjs";
 import { getCompanyMetrics } from "./company-metrics.mjs";
 import { APP_CATALOG } from "./portfolio-data.mjs";
 import { getCompanyProjects } from "./company-portfolio-data.mjs";
+import { APP_COUNT } from "./company-metrics.mjs";
+import { COPY_LANGS } from "./i18n/copy-lang.mjs";
 
 const ICON_BY_SLUG = Object.fromEntries(APP_CATALOG.map((a) => [a.slug, a.icon || ""]));
 ICON_BY_SLUG["404-human"] = "/404-human-logo.png";
@@ -62,13 +64,30 @@ function logoHtml(slug, name, size = 48) {
   return `<span class="ab-logo ab-logo--mark" aria-hidden="true">${escapeHtml(mark)}</span>`;
 }
 
+/**
+ * Verified About figures only (see about-page-copy.mjs metricItems):
+ * platforms / businessAreas = counts of the copy lists, languages = site locales,
+ * apps = apps with App Store + Google Play listings in the repo (APP_COUNT).
+ */
+function verifiedFacts(copy) {
+  return {
+    platforms: String((copy.buildAreas || []).length),
+    businessAreas: String((copy.ventures || []).length),
+    languages: String(COPY_LANGS.length),
+    apps: String(APP_COUNT),
+  };
+}
+
 function metricsHtml(copy, stats) {
-  const items = [
-    { value: stats.apps, label: copy.metricLabels.apps },
-    { value: stats.products, label: copy.metricLabels.products },
-    { value: stats.countries, label: copy.metricLabels.countries },
-    { value: stats.languages, label: copy.metricLabels.languages },
-  ];
+  const facts = verifiedFacts(copy);
+  const items = Array.isArray(copy.metricItems)
+    ? copy.metricItems.map((m) => ({ value: facts[m.key], label: m.label })).filter((m) => m.value)
+    : [
+        { value: stats.apps, label: copy.metricLabels.apps },
+        { value: stats.products, label: copy.metricLabels.products },
+        { value: stats.countries, label: copy.metricLabels.countries },
+        { value: stats.languages, label: copy.metricLabels.languages },
+      ];
   return `<section class="ab-metrics" id="ab-metrics" aria-label="Company metrics" data-ab-reveal>
   <div class="ab-inner ab-metrics__grid">
     ${items
@@ -118,8 +137,8 @@ function brandHtml(copy, stats = {}) {
         ${domainList}
         ${meaning ? `<p class="ab-brand__meaning"><span class="ab-brand__meaning-k">${kicker}</span><span class="ab-brand__meaning-t">${meaning}</span></p>` : ""}
         <div class="ab-brand__cta">
-          <a class="ab-btn ab-btn--primary" href="../products/">${escapeHtml(copy.ctaProducts)}</a>
-          <a class="ab-btn ab-btn--ghost" href="../business/inquiry/">${escapeHtml(copy.ctaBusiness)}</a>
+          <a class="ab-btn ab-btn--primary" href="${escapeHtml(copy.ctaProductsHref || "../products/")}">${escapeHtml(copy.ctaProducts)}</a>
+          <a class="ab-btn ab-btn--ghost" href="${escapeHtml(copy.ctaBusinessHref || "../business/inquiry/")}">${escapeHtml(copy.ctaBusiness)}</a>
         </div>
       </div>
       <aside class="ab-brand__visual" aria-label="${cardAria}">
@@ -375,7 +394,7 @@ function spacesHtml(copy, bySlug) {
       return `<article class="ab-space">
         <div class="ab-space__meta">
           <span class="ab-space__n">${escapeHtml(sp.n)}</span>
-          <span class="ab-space__count">${apps.length ? String(apps.length).padStart(2, "0") : "—"}</span>
+          <span class="ab-space__count">${escapeHtml(sp.count || (apps.length ? String(apps.length).padStart(2, "0") : "—"))}</span>
         </div>
         <h3 class="ab-space__title">${escapeHtml(sp.title)}</h3>
         <p class="ab-space__body">${escapeHtml(sp.body)}</p>
@@ -399,9 +418,12 @@ function buildHtml(copy) {
       const raw = String(a.body || "");
       const splitAt = raw.indexOf(". ");
       const rest = splitAt === -1 ? "" : raw.slice(splitAt + 2).trim();
-      const useTags = /[·•|]/.test(rest);
+      const explicitTags = Array.isArray(a.tags);
+      const useTags = !explicitTags && /[·•|]/.test(rest);
       const lead = useTags ? raw.slice(0, splitAt + 1) : raw;
-      const tags = useTags
+      const tags = explicitTags
+        ? a.tags.map((t) => String(t).trim()).filter(Boolean)
+        : useTags
         ? rest
             .split(/\s*[·•|]\s*/)
             .map((t) => t.trim())
@@ -428,14 +450,14 @@ function buildHtml(copy) {
     <header class="ab-build-sec__intro">
       <div class="ab-build-sec__kicker">
         <p class="ab-eyebrow">${escapeHtml(copy.buildEyebrow)}</p>
-        <span class="ab-build-sec__meta" aria-hidden="true">Newon · 6</span>
+        <span class="ab-build-sec__meta" aria-hidden="true">${escapeHtml(copy.buildMeta || "Newon · 6")}</span>
       </div>
       <h2 id="ab-build-title" class="ab-title ab-title--wide">${escapeHtml(copy.buildTitle)}</h2>
     </header>
     <div class="ab-build-board">
       <div class="ab-build-board__head" aria-hidden="true">
-        <span class="ab-build-board__live"><i></i> AREAS</span>
-        <span>APPS · AI · LIVON · ONGIL · BUSINESS · STUDIO</span>
+        <span class="ab-build-board__live"><i></i> ${escapeHtml(copy.buildBoardLabel || "AREAS")}</span>
+        <span>${escapeHtml(copy.buildBoardTags || "APPS · AI · LIVON · ONGIL · BUSINESS · STUDIO")}</span>
       </div>
       <div class="ab-build">${cards}</div>
     </div>
@@ -573,7 +595,7 @@ function journeyHtml(copy) {
     <header class="ab-journey__head">
       <div class="ab-journey__kicker">
         <p class="ab-eyebrow">${escapeHtml(copy.journeyEyebrow)}</p>
-        <span class="ab-journey__meta" aria-hidden="true">01 → 04</span>
+        <span class="ab-journey__meta" aria-hidden="true">${escapeHtml(copy.journeyMeta || "01 → 04")}</span>
       </div>
       <div class="ab-journey__head-row">
         <h2 id="ab-journey-title" class="ab-title">${escapeHtml(copy.journeyTitle)}</h2>
@@ -583,7 +605,7 @@ function journeyHtml(copy) {
     <div class="ab-journey__board">
       <div class="ab-journey__board-head" aria-hidden="true">
         <span class="ab-journey__board-live"><i></i> PATH</span>
-        <span>START · BUILD · EXPAND · NEXT</span>
+        <span>${escapeHtml(copy.journeyBoardTags || "START · BUILD · EXPAND · NEXT")}</span>
       </div>
       <ol class="ab-journey__rail">${steps}</ol>
     </div>
@@ -604,12 +626,13 @@ function founderHtml(copy) {
 }
 
 function exploreHtml(copy) {
-  const strip = ["ox-month", "goalup", "savy", "babylog", "petlog", "pillmate", "countup", "subping", "piggyup", "myworld", "newon-plus"]
-    .map((slug) => logoHtml(slug, slug, 36))
-    .join("");
+  const stripSlugs = Array.isArray(copy.exploreLogoSlugs)
+    ? copy.exploreLogoSlugs
+    : ["ox-month", "goalup", "savy", "babylog", "petlog", "pillmate", "countup", "subping", "piggyup", "myworld", "newon-plus"];
+  const strip = stripSlugs.map((slug) => logoHtml(slug, slug, 36)).join("");
   const panels = (copy.explorePanels || [])
     .map((p, i) => {
-      const logos = i === 0 ? `<div class="ab-explore__logos">${strip}</div>` : "";
+      const logos = i === 0 && strip ? `<div class="ab-explore__logos">${strip}</div>` : "";
       return `<a class="ab-explore__panel" href="${escapeHtml(p.href)}">
       <div class="ab-explore__top">
         <span class="ab-explore__n">${escapeHtml(p.n)}</span>
@@ -639,7 +662,7 @@ function ideaHtml(copy) {
     </div>
     <div class="ab-idea__side">
       <p class="ab-lead">${escapeHtml(copy.ideaLead)}</p>
-      <a class="ab-btn ab-btn--primary" href="../ideas/">${escapeHtml(copy.ideaCta)}</a>
+      <a class="ab-btn ab-btn--primary" href="${escapeHtml(copy.ideaHref || "../ideas/")}">${escapeHtml(copy.ideaCta)}</a>
       <p class="ab-idea__hint">${escapeHtml(copy.ideaHint)}</p>
     </div>
   </div>
@@ -654,9 +677,9 @@ function closeHtml(copy) {
     <p class="ab-lead ab-lead--on-ink">${escapeHtml(copy.closeLead)}</p>
     ${copy.closeTaglineEn ? `<p class="ab-close__en">${escapeHtml(copy.closeTaglineEn)}</p>` : ""}
     <div class="ab-close__cta">
-      <a class="ab-btn ab-btn--on-ink" href="../products/">${escapeHtml(copy.closeProducts)}</a>
-      <a class="ab-btn ab-btn--ghost-on-ink" href="../business/inquiry/">${escapeHtml(copy.closeBusiness)}</a>
-      ${copy.closePortfolio ? `<a class="ab-btn ab-btn--ghost-on-ink ab-btn--tertiary" href="../portfolio/">${escapeHtml(copy.closePortfolio)}</a>` : ""}
+      <a class="ab-btn ab-btn--on-ink" href="${escapeHtml(copy.closeProductsHref || "../products/")}">${escapeHtml(copy.closeProducts)}</a>
+      <a class="ab-btn ab-btn--ghost-on-ink" href="${escapeHtml(copy.closeBusinessHref || "../business/inquiry/")}">${escapeHtml(copy.closeBusiness)}</a>
+      ${copy.closePortfolio ? `<a class="ab-btn ab-btn--ghost-on-ink ab-btn--tertiary" href="${escapeHtml(copy.closePortfolioHref || "../portfolio/")}">${escapeHtml(copy.closePortfolio)}</a>` : ""}
     </div>
   </div>
 </section>`;
@@ -672,19 +695,24 @@ export function buildAboutPageBody(lang) {
   const bySlug = projectsBySlug(copyLang);
   const products = orderedProducts(copy, bySlug);
 
+  // Corporate order (2026-10): 1 ABOUT NEWON (hero + verified figures) · 2 WHO WE ARE (why + philosophy)
+  // · 3 OUR SIX PLATFORMS · 4 OUR BUSINESS (three areas + models) · 5 NEWON ECOSYSTEM
+  // · 6 HOW WE BUILD (process + principles) · 7 OUR VISION (statement + directions)
+  // · 8 OUR JOURNEY (verified milestones + released-app history) · 9 EXPLORE NEWON (+ partnership, close).
+  // Every block reuses an existing About section component unchanged.
   return `${brandHtml(copy, stats)}
 ${metricsHtml(copy, stats)}
 ${whyHtml(copy)}
 ${missionHtml(copy)}
 ${buildHtml(copy)}
 ${venturesHtml(copy)}
-${glanceHtml(copy)}
-${spacesHtml(copy, bySlug)}
 ${productAreasHtml(copy)}
+${glanceHtml(copy)}
 ${workHtml(copy)}
 ${principlesHtml(copy)}
-${journeyHtml(copy)}
 ${studioNoteHtml(copy)}
+${spacesHtml(copy, bySlug)}
+${journeyHtml(copy)}
 ${selectedProductsHtml(copy, products)}
 ${exploreHtml(copy)}
 ${ideaHtml(copy)}
