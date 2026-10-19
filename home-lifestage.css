@@ -3048,14 +3048,14 @@ html[data-theme="dark"] #lifestage-detail.nls .nls-id__path {
    top gap ≥ 44px (≤640px: 32px). Same hero height (100svh, min 640px / 560px; grows instead of clipping),
    same wordmark / headline / lead sizes and button spacing on every film first screen
    (px, not rem, so pages with a different root font size — e.g. Studio — still match). */
-#lifestage-detail.nls .nls-film {
+#lifestage-detail.nls:not([data-story="bizpart"]) .nls-film {
   --film-gap: 44px;
   --film-min-h: 640px;
   height: auto;
   min-height: max(100svh, var(--film-min-h));
   max-height: none;
 }
-#lifestage-detail.nls .nls-film__stage {
+#lifestage-detail.nls:not([data-story="bizpart"]) .nls-film__stage {
   position: relative;
   inset: auto;
   box-sizing: border-box;
@@ -3066,7 +3066,7 @@ html[data-theme="dark"] #lifestage-detail.nls .nls-id__path {
   min-height: max(100svh, var(--film-min-h));
   padding: calc(var(--gnav-h, 74px) + var(--film-gap)) 16px calc(var(--film-gap) + 20px);
 }
-#lifestage-detail.nls .nls-film__lockup {
+#lifestage-detail.nls:not([data-story="bizpart"]) .nls-film__lockup {
   position: relative;
   left: auto;
   top: auto;
@@ -3077,27 +3077,27 @@ html[data-theme="dark"] #lifestage-detail.nls .nls-id__path {
   padding: 0;
   transform: none;
 }
-#lifestage-detail.nls .nls-film__wordmark {
+#lifestage-detail.nls:not([data-story="bizpart"]) .nls-film__wordmark {
   font-size: min(clamp(52px, 10vw, 144px), calc((100vw - 32px) / 6.8));
   white-space: nowrap;
 }
-#lifestage-detail.nls .nls-film__wordmark {
+#lifestage-detail.nls:not([data-story="bizpart"]) .nls-film__wordmark {
   max-width: none;
   margin: 0 0 clamp(18px, 2.2vw, 28px);
 }
-#lifestage-detail.nls .nls-film__slogan {
+#lifestage-detail.nls:not([data-story="bizpart"]) .nls-film__slogan {
   font-size: clamp(21px, 16px + 1.6vw, 36px);
 }
-#lifestage-detail.nls .nls-film__lead {
+#lifestage-detail.nls:not([data-story="bizpart"]) .nls-film__lead {
   margin-top: 15px;
   font-size: clamp(14.5px, 13.6px + 0.25vw, 16.8px);
 }
-#lifestage-detail.nls .nls-film__actions {
+#lifestage-detail.nls:not([data-story="bizpart"]) .nls-film__actions {
   gap: 11px;
   margin-top: 22px;
 }
 @media (max-width: 640px) {
-  #lifestage-detail.nls .nls-film {
+  #lifestage-detail.nls:not([data-story="bizpart"]) .nls-film {
     --film-gap: 32px;
     --film-min-h: 560px;
   }

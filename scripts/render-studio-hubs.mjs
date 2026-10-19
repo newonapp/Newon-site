@@ -198,7 +198,7 @@ function studioBody(flat, flatEn, lang = "en") {
 <link rel="stylesheet" href="/newon-studio.css?v=${cssV}" />
 <link rel="stylesheet" href="/business-page.css?v=${cssV}" />
 <link rel="stylesheet" href="/business-pillar.css?v=${cssV}" />
-<link rel="stylesheet" href="/studio-film.css?v=20261019hero1" />
+<link rel="stylesheet" href="/studio-film.css?v=20261019rest1" />
 <section id="studio-film" class="st-film" data-st-film data-lockup-reveal aria-label="Newon Studio">
   <div class="st-film__stage">
     <div class="st-film__fallback" aria-hidden="true"></div>

@@ -71,7 +71,7 @@ function renderPage(lang, page) {
     CHROME_HEADER: header,
     MAIN_CONTENT: LIVON_SITE_RENDERERS[page.id](lang.dir),
     CHROME_FOOTER: footer,
-    EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019hero1" />
+    EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/flagship-subnav.css?v=20261018fsn2" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="/livon-site.css?v=${LVS_VER}" />`,

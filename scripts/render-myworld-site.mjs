@@ -57,7 +57,7 @@ function renderPage(lang, page) {
     CHROME_HEADER: header,
     MAIN_CONTENT: renderMyWorldSitePage(lang.dir, page, site),
     CHROME_FOOTER: footer,
-    EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019hero1" />
+    EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=20260924livon1" />
     <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
     <link rel="stylesheet" href="/myworld-site.css?v=20261019hero1" />`,

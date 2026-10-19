@@ -421,11 +421,16 @@ function hero(section, name, b, depth) {
 
 /**
  * Full-screen film hero — the existing Newon Studio first screen (#studio-film, studio-film.css/js),
- * reused as-is (wordmark size comes from the unified film spec in studio-film.css). `film.src` is the moving background (Partnerships uses the LIVON Community film).
+ * reused as-is . `film.src` is the moving background (Partnerships uses the LIVON Community film).
  */
 function filmHero(page, b, depth) {
   const f = page.film;
-  return `<link rel="stylesheet" href="/studio-film.css?v=20261019hero1" />
+  return `<link rel="stylesheet" href="/studio-film.css?v=20261019rest1" />
+<style>
+  /* Same film hero as Newon Studio; only the wordmark is scaled so the longer "Partnerships" fits the screen. */
+  #studio-film.st-film--${esc(page.section)} .st-film__wordmark { font-size: clamp(3.1rem, 14vw, 11rem); }
+  @media (max-height: 720px) { #studio-film.st-film--${esc(page.section)} .st-film__wordmark { font-size: clamp(3rem, 11vw, 8rem); } }
+</style>
 <section id="studio-film" class="st-film st-film--${esc(page.section)}" data-st-film data-lockup-reveal aria-labelledby="bp-hero-title">
   <div class="st-film__stage">
     <div class="st-film__fallback" aria-hidden="true"></div>

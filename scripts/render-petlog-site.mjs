@@ -475,7 +475,7 @@ export function renderPetlogSite() {
         CHROME_HEADER: header,
         MAIN_CONTENT: main,
         CHROME_FOOTER: footer,
-        EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019hero1" />
+        EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/flagship-subnav.css?v=20261018fsn2" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />${page.contact ? `\n    <link rel="stylesheet" href="/business-pillar.css?v=20260923pad1" />` : ""}
     ${PETLOG_CSS}`,

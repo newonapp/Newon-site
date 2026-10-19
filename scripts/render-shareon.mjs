@@ -65,7 +65,7 @@ function renderPage(lang, page) {
     CHROME_HEADER: header,
     MAIN_CONTENT: renderShareonPage(lang.dir, page.id),
     CHROME_FOOTER: footer,
-    EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019hero1" />
+    EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
     <link rel="stylesheet" href="/shareon.css?v=20261019hero1" />`,
