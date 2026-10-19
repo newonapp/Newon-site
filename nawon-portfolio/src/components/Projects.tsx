@@ -1,7 +1,7 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { isKo, t } from "../copy";
-import { projects, type Project } from "../data";
+import { isKo } from "../copy";
+import type { Project } from "../data";
 import { FilmPlate } from "./Film";
 
 function Card({ project, index, total }: { project: Project; index: number; total: number }) {
@@ -41,7 +41,7 @@ function Card({ project, index, total }: { project: Project; index: number; tota
             rel="noopener noreferrer"
             className="rounded-full border-2 border-mist px-6 py-2.5 text-xs font-medium uppercase tracking-widest text-mist transition-colors duration-200 hover:bg-mist/10 sm:px-8 sm:py-3 sm:text-sm"
           >
-            {t.livePage}
+            {project.cta}
           </a>
         </div>
         <p className="mt-4 max-w-2xl text-sm font-light leading-relaxed text-mist/80 sm:text-base">{project.summary}</p>
@@ -58,21 +58,15 @@ function Card({ project, index, total }: { project: Project; index: number; tota
   );
 }
 
-export function Projects() {
+export function Projects({ id, items }: { id: string; items: Project[] }) {
   return (
     <section
-      id="projects"
+      id={id}
       className="relative z-10 bg-ink px-4 pb-10 pt-8 sm:px-6 md:px-10 md:pt-12"
     >
-      <h2
-        className="hero-heading mb-10 text-center font-black uppercase leading-none tracking-tight sm:mb-14"
-        style={{ fontSize: "clamp(2.6rem, 10vw, 140px)" }}
-      >
-        {t.projectsHeading}
-      </h2>
       <div className="mx-auto max-w-6xl">
-        {projects.map((project, index) => (
-          <Card key={project.id} project={project} index={index} total={projects.length} />
+        {items.map((project, index) => (
+          <Card key={project.id} project={project} index={index} total={items.length} />
         ))}
       </div>
     </section>

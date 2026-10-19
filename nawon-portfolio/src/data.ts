@@ -1,4 +1,4 @@
-import { t } from "./copy";
+import { siteHref, t } from "./copy";
 
 export function publicUrl(path: string) {
   return `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
@@ -14,6 +14,7 @@ export type Project = {
   lead: string;
   role: string;
   href: string;
+  cta: string;
   images: string[];
   alts: string[];
 };
@@ -68,100 +69,27 @@ export const appLogos = [
   { src: "/newon-plus-logo.png", alt: "Newon+" },
 ];
 
-export const projects: Project[] = [
-  {
-    id: "apps",
-    number: "01",
-    name: t.projects[0].name,
-    type: t.projects[0].type,
-    summary: t.projects[0].summary,
-    slogan: t.projects[0].slogan,
-    lead: t.projects[0].lead,
-    role: t.projects[0].role || t.role,
-    href: "/ko/apps/",
-    images: [businessFilms[0].src],
-    alts: [businessFilms[0].alt],
-  },
-  {
-    id: "ai",
-    number: "02",
-    name: t.projects[1].name,
-    type: t.projects[1].type,
-    summary: t.projects[1].summary,
-    slogan: t.projects[1].slogan,
-    lead: t.projects[1].lead,
-    role: t.role,
-    href: "/ko/ai/",
-    images: [businessFilms[1].src],
-    alts: [businessFilms[1].alt],
-  },
-  {
-    id: "livon",
-    number: "03",
-    name: t.projects[2].name,
-    type: t.projects[2].type,
-    summary: t.projects[2].summary,
-    slogan: t.projects[2].slogan,
-    lead: t.projects[2].lead,
-    role: t.role,
-    href: "/ko/lifestage/",
-    images: [businessFilms[2].src],
-    alts: [businessFilms[2].alt],
-  },
-  {
-    id: "ongil",
-    number: "04",
-    name: t.projects[3].name,
-    type: t.projects[3].type,
-    summary: t.projects[3].summary,
-    slogan: t.projects[3].slogan,
-    lead: t.projects[3].lead,
-    role: t.role,
-    href: "/ko/ongil/",
-    images: [businessFilms[3].src],
-    alts: [businessFilms[3].alt],
-  },
-  {
-    id: "business",
-    number: "05",
-    name: t.projects[4].name,
-    type: t.projects[4].type,
-    summary: t.projects[4].summary,
-    slogan: t.projects[4].slogan,
-    lead: t.projects[4].lead,
-    role: t.role,
-    href: "/ko/business/",
-    images: [businessFilms[4].src],
-    alts: [businessFilms[4].alt],
-  },
-  {
-    id: "studio",
-    number: "06",
-    name: t.projects[5].name,
-    type: t.projects[5].type,
-    summary: t.projects[5].summary,
-    slogan: t.projects[5].slogan,
-    lead: t.projects[5].lead,
-    role: t.role,
-    href: "/ko/studio/",
-    images: [businessFilms[5].src],
-    alts: [businessFilms[5].alt],
-  },
-  {
-    id: "games",
-    number: "07",
-    name: t.projects[6].name,
-    type: t.projects[6].type,
-    summary: t.projects[6].summary,
-    slogan: t.projects[6].slogan,
-    lead: t.projects[6].lead,
-    role: t.role,
-    href: "/ko/games/",
-    images: [businessFilms[6].src],
-    alts: [businessFilms[6].alt],
-  },
-];
+/** Each platform card plays the film used on that platform's own page. */
+const platformFilms: Record<string, string> = {
+  babylog: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_202655_a7f5aca0-2f80-4bc9-bcb5-96ac95662003.mp4",
+  petlog: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_204221_5339e40b-e73d-4ab0-9c65-79c18c66fd50.mp4",
+  myworld: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260407_043131_ebe2f0b5-9acc-4a4f-b2c1-7297f1a3beb9.mp4",
+  shareon: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_171521_25968ba2-b594-4b32-aab7-f6b69398a6fa.mp4",
+  livon: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_102608_5fa1187d-9ac6-44fb-82ab-54376200abc0.mp4",
+  ongil: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260323_071151_38c3924f-c312-48af-a196-3fbb80e4226f.mp4",
+};
 
-export const services = t.services;
-
-export const aboutText = t.aboutText;
+export const platforms: Project[] = t.platforms.map((p, i) => ({
+  id: p.id,
+  number: String(i + 1).padStart(2, "0"),
+  name: p.name,
+  type: p.type,
+  summary: p.summary,
+  slogan: p.slogan,
+  lead: p.lead,
+  role: p.role,
+  href: siteHref(`${p.id}/`),
+  cta: t.platformCta,
+  images: [platformFilms[p.id]],
+  alts: [`${p.name} film`],
+}));

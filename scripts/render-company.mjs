@@ -1471,6 +1471,16 @@ function renderCompany() {
         flatEn,
         chromeBase,
         i18n: { emptyFilter: copy.emptyFilter || "" },
+        structuredData: structuredDataScript({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: copy.seoTitle,
+          url: `${SITE_ORIGIN}/${dir}/portfolio/`,
+          inLanguage: htmlLang,
+          description: copy.metaDescription,
+          isPartOf: { "@type": "WebSite", name: "NEWON", url: `${SITE_ORIGIN}/` },
+          publisher: { "@type": "Organization", name: "NEWON", url: `${SITE_ORIGIN}/` },
+        }),
         extraHead: `<style>
       .nawon-embed { height: calc(100svh - var(--gnav-h, 74px)); margin: 0; padding: 0; background: #0c0c0c; }
       .nawon-embed__frame { display: block; width: 100%; height: 100%; border: 0; background: #0c0c0c; }
@@ -1481,7 +1491,7 @@ function renderCompany() {
       html = html.replace(
         /<main id="co-main" class="co-page"[\s\S]*?<\/main>/,
         `<main id="co-main" class="nawon-embed" data-co-page="portfolio" data-co-analytics="company_portfolio">
-      <iframe class="nawon-embed__frame" src="/nawon/?v=20260924pf14" title="Nawon"></iframe>
+      <iframe class="nawon-embed__frame" src="/nawon/?v=20261019pf15" title="NEWON Portfolio"></iframe>
     </main>`
       );
       writeFile(path.join(ROOT, dir, "portfolio", "index.html"), html);

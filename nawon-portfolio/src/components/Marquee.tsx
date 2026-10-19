@@ -60,14 +60,14 @@ export function Marquee() {
       <div className="flex flex-col gap-3">
         <Row offset={motion} direction={1}>
           {films.map((film, index) => {
-            const copy = t.projects[index % t.projects.length];
+            const slogan = t.filmSlogans[index % t.filmSlogans.length];
             return (
               <FilmPlate
                 key={`${film.alt}-${index}`}
                 src={film.src}
-                label={`${wordmarks[index % wordmarks.length].join(" ")} ${copy.slogan.join(" ")}`}
+                label={`${wordmarks[index % wordmarks.length].join(" ")} ${slogan.join(" ")}`}
                 wordmark={wordmarks[index % wordmarks.length]}
-                slogan={copy.slogan}
+                slogan={slogan}
                 className="h-[210px] w-[340px] shrink-0 rounded-2xl bg-ink sm:h-[260px] sm:w-[440px] md:h-[300px] md:w-[520px]"
               />
             );

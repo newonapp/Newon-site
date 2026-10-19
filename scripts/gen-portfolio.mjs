@@ -7,7 +7,6 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { APP_CATALOG, featuredApps, loadPortfolioApps, moreApps } from "./portfolio-data.mjs";
-import { portfolioInquiryHref } from "./portfolio-case-studies.mjs";
 import {
   getPortfolioBeyondItems,
   getPortfolioHubMetrics,
@@ -141,8 +140,13 @@ function iconImg(app, className, size) {
   return `<img class="${className}" src="${esc(app.icon)}" alt="${esc(app.iconAlt)}" width="${size}" height="${size}" />`;
 }
 
+function hasStoreLink(app) {
+  return [app.appStoreUrl, app.googlePlayUrl].some((u) => u && !String(u).startsWith("#"));
+}
+
 function storeBtn(url, label, extraClass = "", productId = "") {
-  if (!url) return "";
+  // Placeholder anchors (e.g. "#eo-top") are not store listings: unreleased apps get no store button.
+  if (!url || String(url).startsWith("#")) return "";
   const pid = productId ? ` data-product-id="${esc(productId)}"` : "";
   return `<a class="btn btn-ghost${extraClass ? ` ${extraClass}` : ""}" href="${esc(url)}" target="_blank" rel="noopener noreferrer"${pid} data-cta-location="portfolio">${esc(label)}</a>`;
 }
@@ -858,7 +862,7 @@ function projectPage(langMeta, copy, app, apps) {
       : "";
 
   const release =
-    app.isCaseStudy && (app.caseStatus || app.appStoreUrl || app.googlePlayUrl)
+    app.isCaseStudy && (app.caseStatus || hasStoreLink(app))
       ? `<section class="pf-section pf-section--tight">
         <div class="pf-wrap pf-wrap--narrow">
           <h2>${esc(copy.releaseTitle || "Release")}</h2>
@@ -873,7 +877,7 @@ function projectPage(langMeta, copy, app, apps) {
           </div>
         </div>
       </section>`
-      : app.appStoreUrl || app.googlePlayUrl
+      : hasStoreLink(app)
         ? `<section class="pf-section pf-section--tight">
         <div class="pf-wrap pf-wrap--narrow">
           <h2>${esc(copy.storeTitle || "App Store")}</h2>
@@ -892,12 +896,12 @@ function projectPage(langMeta, copy, app, apps) {
           <h2>${esc(copy.nextTitle || "Build a similar product")}</h2>
           <p class="pf-cs-lead">${esc(copy.nextLead || "")}</p>
           <div class="pf-hero__actions">
-            <a class="btn btn-primary" href="${esc(portfolioInquiryHref(lang, app.slug))}">${esc(copy.nextCta || "Project inquiry")}</a>
+            <a class="btn btn-primary" href="/${esc(lang)}/business/contact/">${esc(copy.nextCta || "Project inquiry")}</a>
             <a class="btn btn-ghost" href="/${esc(lang)}/business/">${esc(copy.nextBusiness || "Newon Business →")}</a>
           </div>
           ${
             copy.nextStudio
-              ? `<p class="pf-cs-studio"><a href="/${esc(lang)}/studio/digital/">${esc(copy.nextStudio)}</a></p>`
+              ? `<p class="pf-cs-studio"><a href="/${esc(lang)}/studio/">${esc(copy.nextStudio)}</a></p>`
               : ""
           }
         </div>

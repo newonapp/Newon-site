@@ -107,7 +107,7 @@ const KO = {
   },
   portfolio: {
     seoTitle: "Portfolio | Newon Company",
-    metaDescription: "Newon이 기획·설계·개발한 제품과 프로젝트를 살펴보세요.",
+    metaDescription: "NEWON이 직접 기획하고 개발한 6개 핵심 플랫폼(BABYLOG·PETLOG·MY WORLD·SHAREON·LIVON·ONGIL)과 출시한 앱, 웹 게임, 소프트웨어, 개발 과정과 이정표를 소개합니다.",
     eyebrow: "PORTFOLIO",
     subEyebrow: "SELECTED WORK",
     headline: "아이디어에서\n출시까지.",
@@ -356,7 +356,7 @@ const EN = {
   },
   portfolio: {
     seoTitle: "Portfolio | Newon Company",
-    metaDescription: "Selected work Newon planned, designed, and built.",
+    metaDescription: "Digital platforms and products NEWON plans and builds itself: six core platforms (BABYLOG, PETLOG, MY WORLD, SHAREON, LIVON, ONGIL), released apps, a web game, software, how we build and our milestones.",
     eyebrow: "PORTFOLIO",
     subEyebrow: "SELECTED WORK",
     headline: "From idea\nto launch.",
