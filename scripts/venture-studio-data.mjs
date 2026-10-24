@@ -144,7 +144,7 @@ export const MEGA_DESTINATIONS = {
     { titleKey: "nav.media", descKey: "nav.megaMediaDesc", href: "media/", titleFb: "Media" },
     { titleKey: "nav.blog", descKey: "nav.megaBlogDesc", href: "resources/blog/", titleFb: "BLOG" },
     { titleKey: "nav.market", descKey: "nav.megaMarketDesc", href: "market/", titleFb: "Market" },
-    { titleKey: "nav.contact", descKey: "nav.megaContactDesc", href: "business/contact/", titleFb: "Contact" },
+    { titleKey: "nav.contact", descKey: "nav.megaContactDesc", href: "contact/", titleFb: "Contact" },
   ],
 };
 

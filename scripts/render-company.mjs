@@ -12,6 +12,8 @@ import { LANGS, OG_LOCALE, SITE_ORIGIN, ROOT, escapeHtml, fontLinksHtml} from ".
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { COMPANY_PAGES, COMPANY_NAV_LABELS, COMPANY_HUB_REDIRECTS } from "./company-catalog.mjs";
 import { getCompanyCopy } from "./company-copy.mjs";
+import { contactPageBody, contactPageStructuredData } from "./contact-page-body.mjs";
+import { getContactPageCopy, CONTACT_HERO_FILM } from "./contact-page-copy.mjs";
 import { getCompanyProjects, getPortfolioFilters } from "./company-portfolio-data.mjs";
 import {
   NEWS_PRODUCTS,
@@ -32,7 +34,8 @@ const template = fs.readFileSync(path.join(ROOT, "templates", "company.html"), "
 
 const TIMELINE_ABOUT_LIMIT = 16;
 const TIMELINE_NEWS_LIMIT = 24;
-const FORMSUBMIT_INBOX = "newon@newon.app";
+/** Cache key for /contact/contact-page.css and /contact/contact-page.js. */
+const CONTACT_ASSET_V = "20261024ct1";
 
 function loadJson(file) {
   return JSON.parse(fs.readFileSync(path.join(ROOT, "locales", file), "utf8"));
@@ -1208,156 +1211,9 @@ ${heroBlock(copy, heroActions)}
 ${exploreFooter(copy, "../")}`;
 }
 
-/* ——— CONTACT ——— */
-
-function contactBody(copy, lang) {
-  const types = (copy.types || [])
-    .map(
-      (t, i) => `<button type="button" class="co-type${i === 0 ? " is-active" : ""}" data-co-type="${escapeHtml(t.id)}" aria-pressed="${i === 0 ? "true" : "false"}">
-        <span class="co-type__title">${escapeHtml(t.title)}</span>
-        <span class="co-type__body">${escapeHtml(t.body)}</span>
-      </button>`
-    )
-    .join("");
-
-  const projectKinds = (copy.projectKinds || [])
-    .map((k) => `<option value="${escapeHtml(k)}">${escapeHtml(k)}</option>`)
-    .join("");
-  const timelines = (copy.timelines || [])
-    .map((k) => `<option value="${escapeHtml(k)}">${escapeHtml(k)}</option>`)
-    .join("");
-
-  return `${breadcrumb(copy, COMPANY_NAV_LABELS.contact[lang === "ko" ? "ko" : "en"] || "CONTACT")}
-${companySwitcher("contact", lang, "../")}
-${heroBlock(copy)}
-<section class="co-section co-types" data-co-reveal aria-labelledby="co-type-title">
-  <div class="co-inner">
-    <p class="co-eyebrow">${escapeHtml(copy.typeEyebrow || "")}</p>
-    <h2 class="co-title" id="co-type-title">${escapeHtml(copy.typeTitle || "")}</h2>
-    <div class="co-type__grid" role="group" aria-label="Contact type">${types}</div>
-  </div>
-</section>
-<section class="co-section co-form-sec" data-co-reveal aria-labelledby="co-form-title">
-  <div class="co-inner">
-    <p class="co-eyebrow">${escapeHtml(copy.formEyebrow || "")}</p>
-    <h2 class="co-title" id="co-form-title">${escapeHtml(copy.formTitle || "")}</h2>
-    <form id="co-contact-form" class="co-form" data-co-contact-form novalidate>
-      <input type="hidden" name="_subject" value="Newon Contact" />
-      <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="contact_type" id="co-contact-type" value="project" />
-      <input type="text" name="_honey" class="co-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
-      <div class="co-form__row">
-        <div class="co-field">
-          <label class="co-label" for="co-contact-name">${escapeHtml(copy.nameLabel || "")}</label>
-          <input class="co-input" id="co-contact-name" name="name" type="text" required autocomplete="name" maxlength="120" />
-        </div>
-        <div class="co-field">
-          <label class="co-label" for="co-contact-email">${escapeHtml(copy.emailLabel || "")}</label>
-          <input class="co-input" id="co-contact-email" name="email" type="email" required autocomplete="email" />
-        </div>
-      </div>
-
-      <div class="co-field">
-        <label class="co-label" for="co-contact-company">${escapeHtml(copy.companyLabel || "")}</label>
-        <input class="co-input" id="co-contact-company" name="company" type="text" autocomplete="organization" maxlength="160" />
-      </div>
-
-      <div class="co-field">
-        <label class="co-label" for="co-contact-subject">${escapeHtml(copy.subjectLabel || "")}</label>
-        <input class="co-input" id="co-contact-subject" name="subject" type="text" required maxlength="200" />
-      </div>
-
-      <div class="co-field">
-        <label class="co-label" for="co-contact-message">${escapeHtml(copy.messageLabel || "")}</label>
-        <textarea class="co-input co-textarea" id="co-contact-message" name="message" rows="6" required maxlength="5000"></textarea>
-      </div>
-
-      <div class="co-field">
-        <label class="co-label" for="co-contact-url">${escapeHtml(copy.urlLabel || "")}</label>
-        <input class="co-input" id="co-contact-url" name="url" type="url" inputmode="url" placeholder="https://" />
-      </div>
-
-      <div class="co-when" data-co-when="project">
-        <div class="co-form__row">
-          <div class="co-field">
-            <label class="co-label" for="co-project-kind">${escapeHtml(copy.projectKindLabel || "")}</label>
-            <select class="co-input" id="co-project-kind" name="project_kind">
-              <option value="">—</option>${projectKinds}
-            </select>
-          </div>
-          <div class="co-field">
-            <label class="co-label" for="co-timeline">${escapeHtml(copy.timelineLabel || "")}</label>
-            <select class="co-input" id="co-timeline" name="timeline">
-              <option value="">—</option>${timelines}
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div class="co-when" data-co-when="partnership" hidden>
-        <div class="co-form__row">
-          <div class="co-field">
-            <label class="co-label" for="co-brand">${escapeHtml(copy.brandLabel || "")}</label>
-            <input class="co-input" id="co-brand" name="brand" type="text" maxlength="160" />
-          </div>
-          <div class="co-field">
-            <label class="co-label" for="co-collab">${escapeHtml(copy.collabLabel || "")}</label>
-            <input class="co-input" id="co-collab" name="collab_type" type="text" maxlength="160" />
-          </div>
-        </div>
-      </div>
-
-      <div class="co-when" data-co-when="media" hidden>
-        <div class="co-field">
-          <label class="co-label" for="co-media-name">${escapeHtml(copy.mediaNameLabel || "")}</label>
-          <input class="co-input" id="co-media-name" name="media_name" type="text" maxlength="160" />
-        </div>
-        <div class="co-field">
-          <label class="co-label" for="co-media-request">${escapeHtml(copy.mediaRequestLabel || "")}</label>
-          <input class="co-input" id="co-media-request" name="media_request" type="text" maxlength="200" />
-        </div>
-        <div class="co-field">
-          <label class="co-label" for="co-media-date">${escapeHtml(copy.mediaDateLabel || "")}</label>
-          <input class="co-input" id="co-media-date" name="media_date" type="text" maxlength="120" />
-        </div>
-      </div>
-
-      <div class="co-when" data-co-when="support" hidden>
-        <div class="co-form__row">
-          <div class="co-field">
-            <label class="co-label" for="co-product">${escapeHtml(copy.productLabel || "")}</label>
-            <input class="co-input" id="co-product" name="product" type="text" maxlength="120" />
-          </div>
-          <div class="co-field">
-            <label class="co-label" for="co-issue">${escapeHtml(copy.issueLabel || "")}</label>
-            <input class="co-input" id="co-issue" name="issue_type" type="text" maxlength="160" />
-          </div>
-        </div>
-      </div>
-
-      <p class="co-form__error" data-co-form-error hidden role="alert"></p>
-      <button type="submit" class="co-btn co-btn--primary" data-co-submit>${escapeHtml(copy.submit || "")}</button>
-      <div class="co-form__success" data-co-form-success hidden>
-        <h3 class="co-form__success-title">${escapeHtml(copy.successTitle || "")}</h3>
-        <p>${escapeHtml(copy.successBody || "")}</p>
-      </div>
-    </form>
-
-    <aside class="co-direct" data-co-reveal>
-      <p class="co-eyebrow">${escapeHtml(copy.directContact || "DIRECT CONTACT")}</p>
-      <p class="co-direct__label">GENERAL / BUSINESS</p>
-      <div class="co-direct__row">
-        <a class="co-direct__email" href="mailto:${FORMSUBMIT_INBOX}">${FORMSUBMIT_INBOX}</a>
-        <button type="button" class="co-btn co-btn--ghost" data-co-copy-email="${FORMSUBMIT_INBOX}">${escapeHtml(copy.copyEmail || "COPY EMAIL")}</button>
-      </div>
-      ${copy.responseNote ? `<p class="co-hint">${escapeHtml(copy.responseNote)}</p>` : ""}
-    </aside>
-  </div>
-</section>
-${exploreFooter(copy, "../")}`;
-}
+/* ——— CONTACT ———
+ * /{lang}/contact/ is the NEWON unified Contact page (scripts/contact-page-body.mjs + contact-page-copy.mjs).
+ */
 
 /* ——— I18N + render ——— */
 
@@ -1372,21 +1228,6 @@ function ideaI18n(copy) {
     errUrl: copy.errUrl || "",
     errLegal: copy.errLegal || "",
     errSend: copy.errSend || "",
-  };
-}
-
-function contactI18n(copy) {
-  return {
-    submitting: copy.submitting || "SENDING...",
-    submit: copy.submit || "",
-    successTitle: copy.successTitle || "",
-    successBody: copy.successBody || "",
-    errRequired: copy.errRequired || "",
-    errEmail: copy.errEmail || "",
-    errUrl: copy.errUrl || "",
-    errSend: copy.errSend || "",
-    copyEmail: copy.copyEmail || "COPY EMAIL",
-    copied: copy.copied || "COPIED",
   };
 }
 
@@ -1544,24 +1385,33 @@ function renderCompany() {
       pageCount += 1;
     }
 
-    // CONTACT → /{lang}/contact/
+    // CONTACT → /{lang}/contact/ — NEWON unified Contact page (home design language; hero film per owner).
     if (!only || only === "contact") {
-      const copy = getCompanyCopy("contact", lang);
-      const html = renderPage({
+      const copy = getContactPageCopy(lang);
+      const canonical = `${SITE_ORIGIN}/${dir}/contact/`;
+      let html = renderPage({
         htmlLang,
         ogLocale,
-        canonical: `${SITE_ORIGIN}/${dir}/contact/`,
+        canonical,
         hreflang: hreflangBlock("contact"),
         seoTitle: copy.seoTitle,
         metaDescription: copy.metaDescription,
         pageSlug: "contact",
         analyticsId: "company_contact",
-        body: contactBody(copy, lang),
+        body: contactPageBody(copy, dir),
         flat,
         flatEn,
         chromeBase,
-        i18n: contactI18n(copy),
+        i18n: {},
+        structuredData: structuredDataScript(contactPageStructuredData(copy, dir, canonical, htmlLang)),
+        extraHead: `<script>document.documentElement.classList.add("ct-js")</script>
+    <link rel="preload" as="image" href="${CONTACT_HERO_FILM.poster}" />
+    <link rel="stylesheet" href="/home-portfolio.css?v=20261019np13" />
+    <link rel="stylesheet" href="/contact/contact-page.css?v=${CONTACT_ASSET_V}" />`,
+        extraScripts: `<script src="/film-keep.js?v=20260924play2" defer></script>
+    <script src="/contact/contact-page.js?v=${CONTACT_ASSET_V}" defer></script>`,
       });
+      html = html.replace('<main id="co-main" class="co-page" ', '<main id="co-main" class="ct-main" ');
       writeFile(path.join(ROOT, dir, "contact", "index.html"), html);
       pageCount += 1;
     }
