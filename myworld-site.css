@@ -2368,3 +2368,8 @@ html[data-newon-shell-theme="dark"] #myworld-site .mws-current {
 #myworld-site .mws-today--solo {
   grid-template-columns: minmax(0, 1fr) !important;
 }
+
+/* Overview "service status" band: status-group columns sit below the in-app list (content30). */
+#myworld-site .mws-feature + .mws-cols {
+  margin-top: clamp(2.5rem, 5vw, 3.75rem);
+}

@@ -26,26 +26,54 @@ test("KO and EN copy share the same structure", () => {
   assert.deepEqual(shape(EN), shape(KO));
 });
 
-test("required counts: 6 journey steps, 5 pillars, 20 services in 6 groups, 8 groups/20 lines, 6 revenue axes, 14 partner types, 5 steps, 13 inquiry types", () => {
+test("required counts: 6 journey steps, 25 plan areas in 5 groups, 8 groups/20 lines, 13 revenue models in 4 stages, 18 partner types, 6 steps, 16 inquiry types", () => {
   for (const c of [KO, EN]) {
     assert.equal(c.overview.journey.items.length, 6);
-    assert.equal(c.platform.items.length, 20);
-    assert.equal(c.overview.pillars.items.length, 5);
+    assert.equal(c.overview.values.items.length, 5);
     assert.equal(c.overview.roadmap.items.length, 5);
+    assert.equal(c.platform.items.length, 25);
+    assert.equal(c.platform.groups.length, 5);
     assert.equal(c.business.groups.length, 8);
     assert.equal(c.business.lines.length, 20);
-    assert.equal(c.business.revenue.items.length, 6);
-    assert.equal(c.partnerships.items.length, 14);
-    assert.equal(c.partnerships.process.steps.length, 5);
-    assert.equal(c.contact.items.length, 13);
+    assert.equal(c.business.revenue.items.length, 13);
+    assert.equal(c.business.roadmap.items.length, 5);
+    assert.equal(c.partnerships.items.length, 18);
+    assert.equal(c.partnerships.process.steps.length, 6);
+    assert.equal(c.contact.items.length, 16);
     const seq = (n) => Array.from({ length: n }, (_, i) => i + 1);
     const cover = (groups, key) => groups.flatMap((x) => x[key]).sort((a, b) => a - b);
     assert.deepEqual(cover(c.business.groups, "lines"), seq(20));
-    assert.deepEqual(cover(c.platform.groups, "items"), seq(20));
-    assert.deepEqual(cover(c.partnerships.groups, "items"), seq(14));
-    assert.deepEqual(cover(c.contact.groups, "items"), seq(13));
-    assert.deepEqual(c.platform.items.filter((s) => s.status === "live").length, 3);
-    for (const s of c.platform.items) assert.ok(s.features.length >= 3 && s.features.length <= 5, s.name);
+    assert.deepEqual(cover(c.business.revenue.stages, "items"), seq(13));
+    assert.deepEqual(cover(c.platform.groups, "items"), seq(25));
+    assert.deepEqual(cover(c.partnerships.groups, "items"), seq(18));
+    assert.deepEqual(cover(c.contact.groups, "items"), seq(16));
+    for (const l of c.business.lines) assert.ok(l.rev >= 1 && l.rev <= 13, l.name);
+    // "available in the app" only for the verified record core (world map, journal, history & stats)
+    assert.deepEqual(c.platform.items.map((s, i) => (s.status === "live" ? i + 1 : 0)).filter(Boolean), [1, 2, 3]);
+    for (const s of c.platform.items) {
+      assert.ok(s.features.length >= 3 && s.features.length <= 5, s.name);
+      assert.ok(s.now && s.next, `${s.name} has now/next text`);
+    }
+  }
+});
+
+test("status is shown by grouping, not as a badge on every card", () => {
+  for (const l of ["ko", "en"]) {
+    const platform = main(read(`${l}/myworld/platform/index.html`));
+    const services = platform.slice(platform.indexOf('id="mws-services"'), platform.indexOf('id="mws-now"'));
+    assert.doesNotMatch(services, /mws-badge/, `${l} platform area rows carry no badges`);
+    const business = main(read(`${l}/myworld/business/index.html`));
+    const rev = business.slice(business.indexOf('id="mws-revenue"'), business.indexOf('id="mws-subscription"'));
+    assert.doesNotMatch(rev, /mws-badge/, `${l} revenue rows carry no badges`);
+  }
+});
+
+test("store links: the Google Play link is unchanged and the App Store link matches the NEWON home listing", async () => {
+  const { BUSINESS } = await import("../../scripts/six-businesses.mjs");
+  for (const p of PAGES) {
+    const html = read(`ko/${p}index.html`);
+    assert.match(html, /https:\/\/play\.google\.com\/store\/apps\/details\?id=com\.newon\.myworld&amp;pcampaignid=web_share/);
+    assert.ok(html.includes(BUSINESS.myworld.stores.appStore), p);
   }
 });
 
