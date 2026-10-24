@@ -51,7 +51,7 @@ const esc = escapeHtml;
 const nl = (s) => esc(s || "").replace(/\n/g, "<br>");
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const NLS_VER = "20260924livon1";
-const ST_VER = "20261019sts1";
+const ST_VER = "20261024h1";
 
 export const stCopyLang = (lang) => (lang === "ko" ? "ko" : "en");
 export const getStudioCopy = (lang) => (stCopyLang(lang) === "ko" ? KO : EN);

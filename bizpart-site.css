@@ -1038,3 +1038,18 @@ html[data-newon-shell-theme="dark"] .fsn[data-biz="bizpart"] {
 #lifestage-detail.nls[data-story="bizpart"] .nls-proc + .nls-note {
   margin-top: 1.4rem;
 }
+
+/* First screen on every sub-menu is the same size as the other menus' first screens
+   (full viewport, min 640px desktop / 560px mobile — matches the unified film rule in home-lifestage.css).
+   Height only: text, background and layout unchanged. */
+#lifestage-detail.nls[data-story="bizpart"] .bpt-film--compact {
+  height: auto;
+  min-height: max(100svh, 640px);
+  max-height: none;
+}
+@media (max-width: 640px) {
+  #lifestage-detail.nls[data-story="bizpart"] .bpt-film--compact {
+    height: auto;
+    min-height: max(100svh, 560px);
+  }
+}
