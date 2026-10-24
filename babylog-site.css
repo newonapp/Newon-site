@@ -1,0 +1,1972 @@
+/* BABYLOG corporate website — additions only.
+ *
+ * Loaded AFTER home-lifestage.css / home-lifestage-layout.css (both unchanged) on /{lang}/babylog/* pages.
+ * Every selector is scoped to #lifestage-detail.nls[data-story="babylog"], so nothing here can reach the
+ * NEWON header/footer, the shared sub-menu, the Life Stage page, or any other page.
+ *
+ * Accent redesign (2026-10-19): sections below the first screen use BABYLOG pink as a point colour only
+ * (eyebrows, numerals, icons, hairline accents, pale tinted bands, one CTA style). The first screen (film hero)
+ * is untouched. No raster images: icons are inline SVG from scripts/babylog-site-body.mjs.
+ *
+ *   --bl-pt       #E8628E  point (decoration only: dots, rules, icon strokes)        dark #EE7FA3
+ *   --bl-pt-ink   #B8336A  pink text / filled button (5.6:1 on white, 5.2:1 on wash)  dark #F49AB8
+ *   --bl-wash     #FDF3F7  pale band / card tint                                      dark #160D11
+ *   --bl-wash-2   #FBE5EE  icon disc                                                  dark #2A1520
+ *   --bl-wash-line #F4D3E0 tinted hairline                                            dark #3A2230
+ */
+
+#lifestage-detail.nls[data-story="babylog"] {
+  --bl-ink: #171717;
+  --bl-muted: #525252;
+  --bl-faint: #6b6b6b;
+  --bl-line: #ebebeb;
+  --bl-line-strong: #d8d8d8;
+  --bl-paper: #ffffff;
+  --bl-pt: #e8628e;
+  --bl-pt-ink: #b8336a;
+  --bl-pt-hover: #9e2b5a;
+  --bl-wash: #fdf3f7;
+  --bl-wash-2: #fbe5ee;
+  --bl-wash-line: #f4d3e0;
+  --bl-radius: 10px;
+}
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] {
+  --bl-ink: #f2f2f2;
+  --bl-muted: #c4c4c4;
+  --bl-faint: #a3a3a3;
+  --bl-line: #262626;
+  --bl-line-strong: #3a3a3a;
+  --bl-paper: #0a0a0a;
+  --bl-pt: #ee7fa3;
+  --bl-pt-ink: #f49ab8;
+  --bl-pt-hover: #f7b3ca;
+  --bl-wash: #160d11;
+  --bl-wash-2: #2a1520;
+  --bl-wash-line: #3a2230;
+}
+
+/* ---- Hero: same dark film shell (unchanged) ------------------------------------------------ */
+#lifestage-detail.nls[data-story="babylog"] .nls-film__fallback {
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 42%, #262626 0%, #111 55%, #0a0a0a 100%);
+}
+/* first-screen size/position: unified film spec at the end of home-lifestage.css */
+#lifestage-detail.nls[data-story="babylog"] .nls-film__slogan {
+  max-width: 40rem;
+}
+
+/* ======================================================================================
+ * Section shell
+ * ==================================================================================== */
+#lifestage-detail.nls[data-story="babylog"] .bl-sec {
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec.nls-block--band {
+  background: var(--bl-paper);
+  border-top: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec.bl-tint {
+  background: var(--bl-wash);
+  border-top: 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec .nls-head {
+  margin-bottom: 2rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec .nls-kicker {
+  color: var(--bl-pt-ink);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec .nls-title {
+  color: var(--bl-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec .nls-lead {
+  color: var(--bl-muted);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec .nls-note {
+  color: var(--bl-faint);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec :is(h3, h4) {
+  margin: 0;
+  color: var(--bl-ink);
+  letter-spacing: -0.025em;
+  line-height: 1.32;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec :is(ol, ul) {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec .nls-chips li {
+  background: var(--bl-paper);
+  border-color: var(--bl-wash-line);
+  color: var(--bl-ink);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.84rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-scope {
+  margin-top: 1.4rem;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--bl-pt);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sub {
+  margin: 1.4rem 0 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bl-faint);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sub.bl-sub--lg {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.2rem, 2.3vw, 1.5rem);
+  letter-spacing: -0.03em;
+  text-transform: none;
+  color: var(--bl-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+#lifestage-detail.nls[data-story="babylog"] :is(a, button):focus-visible {
+  outline: 2px solid var(--bl-pt-ink);
+  outline-offset: 2px;
+}
+
+/* icon disc */
+#lifestage-detail.nls[data-story="babylog"] .bl-ico-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--bl-wash-2);
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-ico-wrap .bl-ico {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-tint .bl-ico-wrap {
+  background: var(--bl-paper);
+}
+
+/* point CTA button */
+#lifestage-detail.nls[data-story="babylog"] .nls-btn.bl-btn-point {
+  background: var(--bl-pt-ink);
+  border-color: var(--bl-pt-ink);
+  color: #fff;
+}
+#lifestage-detail.nls[data-story="babylog"] .nls-btn.bl-btn-point:hover,
+#lifestage-detail.nls[data-story="babylog"] .nls-btn.bl-btn-point:focus-visible {
+  opacity: 1;
+  background: var(--bl-pt-hover);
+  border-color: var(--bl-pt-hover);
+  color: #fff;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec .nls-btn--ghost {
+  border-color: var(--bl-line-strong);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--bl-pt-ink);
+  font-size: 0.92rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-arrow svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.2s ease;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-arrow:hover svg {
+  transform: translateX(3px);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-arrow:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* splits */
+#lifestage-detail.nls[data-story="babylog"] .bl-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-split {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-split.bl-split--wide {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-split.bl-split--top {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    align-items: end;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-split > div:first-child .nls-head {
+    position: sticky;
+    top: calc(var(--gnav-h, 74px) + 5rem);
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-split .nls-head {
+  margin-bottom: 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-aside {
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--bl-pt);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-aside .bl-aside__ico {
+  width: 1.3rem;
+  height: 1.3rem;
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-aside .nls-note:first-of-type {
+  margin-top: 0.4rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-aside .nls-chips {
+  margin-bottom: 0.4rem;
+}
+
+/* ======================================================================================
+ * Overview
+ * ==================================================================================== */
+/* statement + numbered lines */
+#lifestage-detail.nls[data-story="babylog"] .bl-roster li {
+  display: grid;
+  grid-template-columns: 2.8rem minmax(0, 1fr);
+  gap: 0.8rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-roster li:last-child {
+  border-bottom: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-roster__n {
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  color: var(--bl-pt-ink);
+  padding-top: 0.2rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-roster p {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--bl-muted);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-roster li:first-child p {
+  font-size: clamp(1.12rem, 1.8vw, 1.28rem);
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--bl-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-orbit {
+  position: relative;
+  width: 8.5rem;
+  height: 8.5rem;
+  margin-top: 2.4rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-orbit span {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--bl-wash-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-orbit span:nth-child(1) {
+  inset: 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-orbit span:nth-child(2) {
+  inset: 1.4rem;
+  border-color: var(--bl-pt);
+  opacity: 0.55;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-orbit span:nth-child(3) {
+  inset: 3.15rem;
+  border: 0;
+  background: var(--bl-pt);
+}
+@media (max-width: 899px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-orbit {
+    display: none;
+  }
+}
+
+/* six values */
+#lifestage-detail.nls[data-story="babylog"] .bl-values {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+@media (min-width: 640px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-values {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-values {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-val {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.5rem 1.4rem 1.6rem;
+  background: var(--bl-paper);
+  border: 1px solid var(--bl-wash-line);
+  border-radius: var(--bl-radius);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-val .bl-ico-wrap {
+  background: var(--bl-wash-2);
+  margin-bottom: 0.6rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-val__n {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--bl-faint);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-val h3 {
+  font-size: 1.2rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-val p:last-child {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--bl-muted);
+}
+
+/* journey (interactive rail from home-lifestage.js) */
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls-journey-sec .nls-rail {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    border-color: var(--bl-line);
+    border-radius: var(--bl-radius) var(--bl-radius) 0 0;
+    overflow: hidden;
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .nls-journey-sec .nls-rail__btn {
+  background: var(--bl-paper);
+  border-color: var(--bl-line);
+  color: var(--bl-faint);
+  box-shadow: inset 0 3px 0 transparent;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+#lifestage-detail.nls[data-story="babylog"] .nls-journey-sec .nls-rail__btn span {
+  color: var(--bl-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .nls-journey-sec .nls-rail__btn:hover {
+  background: var(--bl-wash);
+}
+#lifestage-detail.nls[data-story="babylog"] .nls-journey-sec .nls-rail__btn.is-on {
+  background: var(--bl-wash);
+  color: var(--bl-pt-ink);
+  box-shadow: inset 0 3px 0 var(--bl-pt);
+}
+#lifestage-detail.nls[data-story="babylog"] .nls-journey-sec .nls-rail__btn.is-on span {
+  color: var(--bl-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .nls-journey {
+  border-color: var(--bl-line);
+  border-radius: 0 0 var(--bl-radius) var(--bl-radius);
+  overflow: hidden;
+}
+@media (max-width: 899px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls-journey {
+    border-top: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius);
+  }
+  #lifestage-detail.nls[data-story="babylog"] .nls-decade + .nls-decade {
+    border-top: 1px solid var(--bl-line);
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .nls-decade {
+  background: var(--bl-paper);
+}
+#lifestage-detail.nls[data-story="babylog"] .nls-decade__mark {
+  background: var(--bl-wash);
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .nls-decade__mark b {
+  font-size: clamp(1.7rem, 3.4vw, 2.7rem);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+#lifestage-detail.nls[data-story="babylog"] .nls-decade__mark em {
+  color: var(--bl-faint);
+}
+#lifestage-detail.nls[data-story="babylog"] .nls-decade__copy h3 {
+  color: var(--bl-ink);
+}
+
+/* bento: wide · wide / four / wide · wide */
+#lifestage-detail.nls[data-story="babylog"] .bl-bento {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+@media (min-width: 720px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-bento {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-bento__item.is-wide {
+    grid-column: span 2;
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-bento__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.4rem 1.35rem 1.5rem;
+  border: 1px solid var(--bl-line);
+  border-radius: var(--bl-radius);
+  background: var(--bl-paper);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-bento__item.is-wide {
+  background: var(--bl-wash);
+  border-color: var(--bl-wash-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-bento__item.is-wide .bl-ico-wrap {
+  background: var(--bl-paper);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-bento__item .bl-ico-wrap {
+  margin-bottom: 0.5rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-bento__n {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-bento__item h3 {
+  font-size: 1.12rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-bento__item.is-wide h3 {
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-bento__item p:last-child {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--bl-muted);
+}
+
+/* icon rows */
+#lifestage-detail.nls[data-story="babylog"] .bl-rows {
+  border-top: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-tint .bl-rows {
+  border-color: var(--bl-wash-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-rows__item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.1rem;
+  align-items: start;
+  padding: 1.3rem 0;
+  border-bottom: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-tint .bl-rows__item {
+  border-color: var(--bl-wash-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-rows__item h3 {
+  font-size: 1.12rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-rows__item p {
+  margin: 0.35rem 0 0;
+  font-size: 0.97rem;
+  line-height: 1.65;
+  color: var(--bl-muted);
+}
+
+/* hub diagram */
+#lifestage-detail.nls[data-story="babylog"] .bl-net {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-net__hub {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 2.2rem;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--bl-pt);
+  border-radius: 999px;
+  background: var(--bl-wash);
+  color: var(--bl-pt-ink);
+  font-size: 0.9rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-net__hub svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-net__hub::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 1px;
+  height: 2.2rem;
+  background: var(--bl-pt);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-net__row {
+  position: relative;
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.4rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-net__item {
+  position: relative;
+  padding-left: 2rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-net__row::before {
+  content: "";
+  position: absolute;
+  left: 0.45rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--bl-wash-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-net__dot {
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  border: 2px solid var(--bl-pt);
+  background: var(--bl-paper);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-net__n {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-net__item h3 {
+  font-size: 1.12rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-net__item p:last-child {
+  margin: 0.4rem 0 0;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--bl-muted);
+}
+@media (min-width: 860px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-net__row {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2rem;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-net__row::before {
+    left: 12.5%;
+    right: 12.5%;
+    top: 0.45rem;
+    bottom: auto;
+    width: auto;
+    height: 1px;
+    background: var(--bl-pt);
+    opacity: 0.45;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-net__item {
+    padding: 2rem 0 0;
+    text-align: center;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-net__dot {
+    left: calc(50% - 0.45rem);
+    top: 0;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-net__hub {
+    margin-bottom: 1.7rem;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-net__hub::after {
+    height: 1.7rem;
+  }
+}
+
+/* icon cards */
+#lifestage-detail.nls[data-story="babylog"] .bl-icards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+@media (min-width: 640px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-icards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-icards.bl-icards--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-icards.bl-icards--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-icard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem 1.35rem 1.6rem;
+  border-radius: var(--bl-radius);
+  background: var(--bl-wash);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-icard .bl-ico-wrap {
+  background: var(--bl-paper);
+  margin-bottom: 0.6rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-icard__n {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-icard h3 {
+  font-size: 1.15rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-icard p:last-child {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--bl-muted);
+}
+
+/* check list */
+#lifestage-detail.nls[data-story="babylog"] .bl-checks {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 2rem;
+}
+@media (min-width: 720px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-checks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-checks__item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.9rem;
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-tint .bl-checks__item {
+  border-color: var(--bl-wash-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-checks__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: var(--bl-wash-2);
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-tint .bl-checks__mark {
+  background: var(--bl-paper);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-checks__mark svg {
+  width: 1rem;
+  height: 1rem;
+  stroke-width: 2.2;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-checks__n {
+  margin: 0 0 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--bl-faint);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-checks__item h3 {
+  font-size: 1.04rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-checks__item p:last-child {
+  margin: 0.35rem 0 0;
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: var(--bl-muted);
+}
+
+/* six business models + category index */
+#lifestage-detail.nls[data-story="babylog"] .bl-models {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.9rem;
+}
+@media (min-width: 640px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-models {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-models {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-model {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  height: 100%;
+  padding: 1.3rem 3rem 1.35rem 1.35rem;
+  border: 1px solid var(--bl-wash-line);
+  border-radius: var(--bl-radius);
+  background: var(--bl-paper);
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-model:hover {
+  border-color: var(--bl-pt);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-model__code {
+  font-size: 2rem;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--bl-pt-ink);
+  margin-bottom: 0.6rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-model strong {
+  font-size: 1.08rem;
+  color: var(--bl-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-model em {
+  font-style: normal;
+  font-size: 0.92rem;
+  color: var(--bl-muted);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-model__go {
+  position: absolute;
+  right: 1.2rem;
+  top: 1.35rem;
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-model__go svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-split.bl-split--index {
+  margin-top: 3.2rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-catlist {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 2rem;
+}
+@media (min-width: 640px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-catlist {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-catrow {
+  display: grid;
+  grid-template-columns: 2.4rem minmax(0, 1fr);
+  column-gap: 0.4rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--bl-wash-line);
+  text-decoration: none;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-catrow:hover strong {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-catrow__n {
+  grid-row: span 2;
+  font-size: 0.8rem;
+  font-weight: 750;
+  color: var(--bl-pt-ink);
+  padding-top: 0.15rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-catrow strong {
+  font-size: 0.98rem;
+  color: var(--bl-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-catrow em {
+  font-style: normal;
+  font-size: 0.86rem;
+  color: var(--bl-faint);
+}
+
+/* dark impact band (kept), pink numerals */
+#lifestage-detail.nls[data-story="babylog"] .bl-impact .nls-kicker {
+  color: #f49ab8;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-impact .nls-title {
+  color: #fff;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-impact .nls-lead {
+  color: #d0d0d0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-impact .bl-impact__notes {
+  margin-top: 2.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-impact .nls-note {
+  color: #bdbdbd;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-ilist li {
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1fr);
+  gap: 0.6rem;
+  padding: 1.15rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-ilist li > span {
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  color: #f49ab8;
+  padding-top: 0.15rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-ilist strong {
+  font-size: 1.06rem;
+  color: #fff;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-ilist p {
+  margin: 0.35rem 0 0;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: #d6d6d6;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-impact ol,
+#lifestage-detail.nls[data-story="babylog"] .bl-impact ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-impact .nls-btn:not(.nls-btn--ghost) {
+  background: #f2f2f2;
+  color: #0a0a0a;
+  border-color: #f2f2f2;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-impact .nls-btn--ghost {
+  background: transparent;
+  color: #f2f2f2;
+  border-color: #8a8a8a;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-impact :is(a, button):focus-visible {
+  outline-color: #f49ab8;
+}
+
+/* callout with principles */
+#lifestage-detail.nls[data-story="babylog"] .bl-callout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.8rem;
+  padding: clamp(1.5rem, 4.5vw, 3.2rem);
+  border: 1px solid var(--bl-wash-line);
+  border-radius: calc(var(--bl-radius) + 4px);
+  background: var(--bl-wash);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-callout .nls-head {
+  max-width: 44rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-callout .nls-head {
+  margin: 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-pr {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.9rem;
+}
+@media (min-width: 640px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-pr {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1040px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-pr {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-pr li {
+  display: grid;
+  grid-template-columns: 2.2rem minmax(0, 1fr);
+  gap: 0.5rem;
+  padding: 1.2rem 1.2rem 1.3rem;
+  border-radius: var(--bl-radius);
+  background: var(--bl-paper);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-pr__n {
+  font-size: 0.8rem;
+  font-weight: 750;
+  color: var(--bl-pt-ink);
+  padding-top: 0.15rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-pr h3 {
+  font-size: 1.04rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-pr p {
+  margin: 0.35rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--bl-muted);
+}
+
+/* six platforms */
+#lifestage-detail.nls[data-story="babylog"] .bl-plats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+@media (min-width: 760px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-plats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1120px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-plats {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-plat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.1rem 1rem 1.2rem;
+  border: 1px solid var(--bl-line);
+  border-radius: var(--bl-radius);
+  background: var(--bl-paper);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-plat.is-self {
+  border-color: var(--bl-pt);
+  background: var(--bl-wash);
+  box-shadow: inset 0 3px 0 var(--bl-pt);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-plat__n {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--bl-faint);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-plat.is-self .bl-plat__n {
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-plat h3 {
+  font-size: 0.98rem;
+  letter-spacing: 0.02em;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-plat p {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--bl-muted);
+}
+#lifestage-detail.nls[data-story="babylog"] #bl-platforms .nls-note {
+  margin-top: 1.4rem;
+}
+
+/* closing band: pink eyebrow only */
+#lifestage-detail.nls[data-story="babylog"] .bl-close .nls-kicker {
+  color: #f49ab8;
+}
+
+/* ======================================================================================
+ * Platform
+ * ==================================================================================== */
+/* 21 services in five groups */
+#lifestage-detail.nls[data-story="babylog"] .bl-scr {
+  margin-top: 2.2rem;
+  border-top: 1px solid var(--bl-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-scr__grp:last-child {
+  border-bottom: 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-scr__grp {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.1rem;
+  padding: 1.8rem 0 2rem;
+  border-bottom: 1px solid var(--bl-line);
+}
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-scr__grp {
+    grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-scr__label {
+    position: sticky;
+    top: calc(var(--gnav-h, 74px) + 5rem);
+    align-self: start;
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-scr__label {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-scr__label {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-scr__letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: var(--bl-pt-ink);
+  color: #fff;
+  font-weight: 750;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-group__t {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--bl-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-scr__count {
+  display: none;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-scr__list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.8rem;
+}
+@media (min-width: 640px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-scr__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-screen {
+  display: grid;
+  grid-template-columns: 2.4rem minmax(0, 1fr);
+  gap: 0.4rem;
+  padding: 1.15rem 1.15rem 1.25rem;
+  border: 1px solid var(--bl-line);
+  border-radius: var(--bl-radius);
+  background: var(--bl-paper);
+  transition: border-color 0.2s ease;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-screen:hover {
+  border-color: var(--bl-wash-line);
+  background: var(--bl-wash);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-screen__n {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 750;
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-screen .nls-kicker {
+  margin: 0 0 0.25rem;
+  font-size: 0.68rem;
+  color: var(--bl-faint);
+  letter-spacing: 0.1em;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-screen h4 {
+  font-size: 1.06rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-screen p:last-child {
+  margin: 0.4rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--bl-muted);
+}
+
+/* numbered timeline */
+#lifestage-detail.nls[data-story="babylog"] .bl-steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.6rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-steps::before {
+  content: "";
+  position: absolute;
+  left: 0.45rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 1px;
+  background: var(--bl-wash-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-steps__item {
+  position: relative;
+  padding-left: 2.2rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-steps__dot {
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  border: 2px solid var(--bl-pt);
+  background: var(--bl-paper);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-tint .bl-steps__dot {
+  background: var(--bl-wash);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-steps__item:first-child .bl-steps__dot {
+  background: var(--bl-pt);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-steps__n {
+  margin: 0 0 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-steps__item h3 {
+  font-size: 1.12rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-steps__item p:last-child {
+  margin: 0.4rem 0 0;
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: var(--bl-muted);
+}
+@media (min-width: 860px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-steps {
+    grid-template-columns: repeat(var(--bl-n, 4), minmax(0, 1fr));
+    gap: 1.8rem;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-steps::before {
+    left: 0;
+    right: 0;
+    top: 0.45rem;
+    bottom: auto;
+    width: auto;
+    height: 1px;
+    background: var(--bl-pt);
+    opacity: 0.4;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-steps__item {
+    padding: 2rem 0 0;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-steps__item h3 {
+    font-size: 1.15rem;
+  }
+}
+
+/* two tinted cards */
+#lifestage-detail.nls[data-story="babylog"] .bl-duo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+@media (min-width: 720px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-duo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-duo__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  border-radius: calc(var(--bl-radius) + 2px);
+  background: var(--bl-wash);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-duo__item .bl-ico-wrap {
+  background: var(--bl-paper);
+  margin-bottom: 0.7rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-duo__item h3 {
+  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-duo__item p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--bl-muted);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-duo.bl-duo--line .bl-duo__item {
+  background: var(--bl-paper);
+  border: 1px solid var(--bl-line);
+  border-top: 3px solid var(--bl-pt);
+  border-radius: 4px;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-duo.bl-duo--line .bl-ico-wrap {
+  background: var(--bl-wash-2);
+}
+
+/* single callout (AI assist) */
+#lifestage-detail.nls[data-story="babylog"] .bl-solo {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  max-width: 54rem;
+  padding: clamp(1.3rem, 3vw, 2rem);
+  border: 1px solid var(--bl-wash-line);
+  border-left: 3px solid var(--bl-pt);
+  border-radius: 0 var(--bl-radius) var(--bl-radius) 0;
+  background: var(--bl-wash);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-solo + .bl-solo {
+  margin-top: 1rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-solo .bl-ico-wrap {
+  background: var(--bl-paper);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-solo h3 {
+  font-size: 1.2rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-solo p {
+  margin: 0.45rem 0 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--bl-muted);
+}
+
+/* child-safety notices */
+#lifestage-detail.nls[data-story="babylog"] .bl-notice {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem 2rem;
+  margin: 0 0 1.6rem;
+}
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-notice {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-notice__text {
+  padding-left: 1rem;
+  border-left: 2px solid var(--bl-pt);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-notice__text .nls-note:first-child {
+  margin-top: 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-emergency {
+  display: flex;
+  gap: 0.9rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--bl-ink);
+  border-radius: var(--bl-radius);
+  background: var(--bl-paper);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-emergency__ico {
+  flex: none;
+  width: 1.4rem;
+  height: 1.4rem;
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-emergency p {
+  margin: 0.35rem 0 0;
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: var(--bl-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-emergency .bl-emergency__t {
+  margin: 0;
+  font-weight: 750;
+  font-size: 1rem;
+}
+
+/* jump chips */
+#lifestage-detail.nls[data-story="babylog"] .bl-rail {
+  margin: 1.4rem 0 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-rail__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-rail__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--bl-line-strong);
+  border-radius: 999px;
+  background: var(--bl-paper);
+  color: var(--bl-ink);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-rail__link span {
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-rail__link:hover {
+  border-color: var(--bl-pt);
+  background: var(--bl-wash);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-tint .bl-rail__link {
+  border-color: var(--bl-wash-line);
+}
+
+/* public-welfare / child-safety areas (25–32): text left, detail card right; alternates */
+#lifestage-detail.nls[data-story="babylog"] .bl-csrow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.4rem;
+}
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-csrow {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 5vw, 4rem);
+    align-items: start;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-csrow.is-flip .bl-csrow__main {
+    order: 2;
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-csrow__main .bl-ico-wrap {
+  margin-bottom: 1rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-csrow__main .nls-head {
+  margin-bottom: 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-csrow__card {
+  padding: clamp(1.2rem, 3vw, 1.8rem);
+  border: 1px solid var(--bl-wash-line);
+  border-radius: var(--bl-radius);
+  background: var(--bl-wash);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-csrow__card .bl-sub {
+  margin-top: 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-csrow__card .nls-chips {
+  margin-bottom: 1.1rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-csrow__card .bl-dl,
+#lifestage-detail.nls[data-story="babylog"] .bl-csrow__card .bl-dl__row {
+  border-color: var(--bl-wash-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-csrow.is-flip .bl-csrow__card {
+  background: var(--bl-paper);
+  border-color: var(--bl-line);
+  border-top: 3px solid var(--bl-pt);
+  border-radius: 4px 4px var(--bl-radius) var(--bl-radius);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-csrow.is-flip .bl-csrow__card .bl-dl,
+#lifestage-detail.nls[data-story="babylog"] .bl-csrow.is-flip .bl-csrow__card .bl-dl__row {
+  border-color: var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-csrow.is-flip .bl-csrow__card .nls-chips li {
+  background: var(--bl-wash);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cs-sec {
+  border-top: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cs-end {
+  padding-block: 1.4rem;
+}
+
+/* app access CTA band */
+#lifestage-detail.nls[data-story="babylog"] .bl-ctaband {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.4rem;
+  padding: clamp(1.6rem, 5vw, 3.2rem);
+  border: 1px solid var(--bl-wash-line);
+  border-radius: calc(var(--bl-radius) + 6px);
+  background: var(--bl-wash);
+}
+@media (min-width: 800px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-ctaband {
+    grid-template-columns: 6rem minmax(0, 1fr);
+    gap: 2.4rem;
+    align-items: start;
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-ctaband__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: var(--bl-paper);
+  border: 1px solid var(--bl-wash-line);
+  color: var(--bl-pt);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-ctaband__mark svg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-ctaband .nls-head {
+  margin-bottom: 0;
+}
+
+/* ======================================================================================
+ * Description lists, business / partner cards
+ * ==================================================================================== */
+#lifestage-detail.nls[data-story="babylog"] .bl-dl {
+  margin: 1.1rem 0 0;
+  border-top: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-dl__row {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 9rem) minmax(0, 1fr);
+  gap: 0.3rem 1.2rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-dl dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--bl-faint);
+  padding-top: 0.15rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-dl dd {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--bl-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-dl.bl-dl--stack .bl-dl__row {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.2rem;
+}
+@media (max-width: 640px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-dl__row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.2rem;
+  }
+}
+
+#lifestage-detail.nls[data-story="babylog"] .bl-biz__list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.1rem;
+  margin-top: 2rem;
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-biz__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 720px) and (max-width: 999px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-biz__list.bl-biz__list--3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1100px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-biz__list.bl-biz__list--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-biz {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.25rem, 2.6vw, 1.8rem);
+  border: 1px solid var(--bl-line);
+  border-radius: var(--bl-radius);
+  background: var(--bl-paper);
+  scroll-margin-top: calc(var(--gnav-h, 74px) + 4.6rem);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-tint .bl-biz {
+  border-color: var(--bl-wash-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-biz__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-biz__head > div {
+  flex: 1;
+  min-width: 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-biz__head .nls-kicker {
+  margin: 0 0 0.2rem;
+  font-size: 0.7rem;
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-biz__code {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  min-width: 2.6rem;
+  height: 2.6rem;
+  padding: 0 0.4rem;
+  border-radius: 8px;
+  background: var(--bl-wash-2);
+  color: var(--bl-pt-ink);
+  font-size: 0.98rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-biz__ico {
+  flex: none;
+  color: var(--bl-pt);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-biz__ico svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-biz__title {
+  margin: 0.1rem 0 0;
+  font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-biz--compact .bl-biz__title {
+  font-size: 1.1rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-biz__cta {
+  margin: 0;
+  margin-top: auto;
+  padding-top: 1.1rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-biz > .nls-chips {
+  margin: 0.1rem 0 0;
+}
+
+/* 32 business lines: categories on the pale band */
+#lifestage-detail.nls[data-story="babylog"] .bl-cat {
+  margin-top: 3.4rem;
+  scroll-margin-top: calc(var(--gnav-h, 74px) + 4.6rem);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cat__head {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--bl-pt);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cat__head > div {
+  flex: 1;
+  min-width: 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cat__head .nls-kicker {
+  margin: 0 0 0.2rem;
+  font-size: 0.72rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cat__n {
+  flex: none;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  font-weight: 750;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cat__count {
+  flex: none;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--bl-wash-line);
+  border-radius: 999px;
+  background: var(--bl-paper);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cat > .bl-notice {
+  margin-top: 1.2rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cat__meta {
+  margin-top: 1.1rem;
+  padding: 0.3rem 1.3rem 1rem;
+  border-radius: var(--bl-radius);
+  background: var(--bl-paper);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cat__meta .bl-dl {
+  margin-top: 0;
+  border-top: 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-forbid {
+  margin-top: 0.4rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-grp__list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-grp__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-grp {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.15rem, 2.4vw, 1.6rem);
+  border: 1px solid var(--bl-line);
+  border-top: 3px solid var(--bl-pt);
+  border-radius: 4px 4px var(--bl-radius) var(--bl-radius);
+  background: var(--bl-paper);
+  scroll-margin-top: calc(var(--gnav-h, 74px) + 4.6rem);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-grp__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-bottom: 0.9rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-grp__head .nls-kicker {
+  margin: 0 0 0.2rem;
+  font-size: 0.7rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-grp__n {
+  flex: none;
+  font-size: 1.15rem;
+  font-weight: 750;
+  color: var(--bl-pt-ink);
+  padding-top: 0.05rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-grp .bl-biz__title {
+  font-size: clamp(1.08rem, 1.9vw, 1.28rem);
+}
+
+/* partnerships */
+#lifestage-detail.nls[data-story="babylog"] .bl-principles {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-plist {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 1.6rem;
+  margin-top: 0.8rem;
+}
+@media (min-width: 640px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-plist {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-plist {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-plist li {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--bl-line);
+  font-size: 0.97rem;
+  color: var(--bl-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-plist svg {
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.15rem;
+  color: var(--bl-pt-ink);
+  stroke-width: 2.2;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-models-chips {
+  margin: -0.4rem 0 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-models-chips .nls-note {
+  margin-top: 0.9rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-flow-note {
+  max-width: 60rem;
+}
+
+/* ======================================================================================
+ * Contact
+ * ==================================================================================== */
+#lifestage-detail.nls[data-story="babylog"] .bl-cards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.9rem;
+  margin: 0;
+}
+@media (min-width: 640px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-cards {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-cards.bl-cards--cs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  height: 100%;
+  min-height: 10.5rem;
+  padding: 1.2rem 1.2rem 1.25rem;
+  border: 1px solid var(--bl-line);
+  border-radius: var(--bl-radius);
+  background: var(--bl-paper);
+  color: var(--bl-ink);
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+@media (max-width: 639px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-card {
+    min-height: 0;
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-card__n {
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-card__t {
+  font-size: 1.06rem;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-card__d {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--bl-muted);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-card__go {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 650;
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-card__go svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  transition: transform 0.2s ease;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-card:hover,
+#lifestage-detail.nls[data-story="babylog"] .bl-card:focus-visible {
+  border-color: var(--bl-pt);
+  background: var(--bl-wash);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-card:hover .bl-card__go svg {
+  transform: translateX(3px);
+}
+/* list-style rows (09–17) */
+#lifestage-detail.nls[data-story="babylog"] .bl-cards.bl-cards--rows {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.6rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-card.bl-card--row {
+  display: grid;
+  grid-template-columns: 2.4rem minmax(0, 1fr) auto;
+  grid-template-areas: "n t go" "n d go";
+  column-gap: 0.8rem;
+  row-gap: 0.2rem;
+  min-height: 0;
+  padding: 1rem 1.2rem;
+  border-color: var(--bl-wash-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-card--row .bl-card__n {
+  grid-area: n;
+  padding-top: 0.2rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-card--row .bl-card__t {
+  grid-area: t;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-card--row .bl-card__d {
+  grid-area: d;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-card--row .bl-card__go {
+  grid-area: go;
+  align-self: center;
+  margin: 0;
+  padding: 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-card.bl-card--row:hover {
+  background: var(--bl-paper);
+}
+@media (max-width: 560px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-card.bl-card--row {
+    grid-template-columns: 2.2rem minmax(0, 1fr);
+    grid-template-areas: "n t" "n d" "n go";
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-card--row .bl-card__go {
+    justify-self: start;
+    padding-top: 0.4rem;
+  }
+}
+/* before you contact */
+#lifestage-detail.nls[data-story="babylog"] .bl-guide {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+@media (min-width: 860px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-guide {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-guide__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.5rem 1.4rem 1.6rem;
+  border-radius: var(--bl-radius);
+  background: var(--bl-wash);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-guide__item .bl-ico-wrap {
+  background: var(--bl-paper);
+  margin-bottom: 0.6rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-guide__n {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-guide__item h3 {
+  font-size: 1.12rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-guide__item p:last-child {
+  margin: 0;
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: var(--bl-muted);
+}
+#lifestage-detail.nls[data-story="babylog"] #bl-guide > .nls-note {
+  margin-top: 1.4rem;
+}
+
+/* ======================================================================================
+ * Dark mode (tokens above swap; a few fixed colours need help)
+ * ==================================================================================== */
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] .bl-sec .nls-btn:not(.nls-btn--ghost):not(.bl-btn-point) {
+  background: #f2f2f2;
+  border-color: #f2f2f2;
+  color: #0a0a0a;
+}
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] .nls-btn.bl-btn-point,
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] .nls-btn.bl-btn-point:hover,
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] .nls-btn.bl-btn-point:focus-visible {
+  color: #0a0a0a;
+}
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] .bl-sec .nls-btn--ghost {
+  color: #f2f2f2;
+  border-color: #4a4a4a;
+}
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] .bl-sec .nls-chips li {
+  background: #111;
+}
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] .nls-journey-sec .nls-rail__btn {
+  background: #0a0a0a;
+}
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] .nls-journey-sec .nls-rail__btn.is-on {
+  background: var(--bl-wash);
+  color: var(--bl-pt-ink);
+}
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] .nls-journey-sec .nls-rail__btn.is-on span {
+  color: #f2f2f2;
+}
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] .nls-decade {
+  background: #0a0a0a;
+  border-color: var(--bl-line);
+}
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] :is(.bl-val, .bl-bento__item:not(.is-wide), .bl-model, .bl-plat:not(.is-self), .bl-screen, .bl-biz, .bl-grp, .bl-card, .bl-emergency, .bl-cat__meta, .bl-pr li, .bl-rail__link) {
+  background: #111;
+}
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] .bl-card:hover,
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] .bl-card:focus-visible,
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] .bl-screen:hover {
+  background: var(--bl-wash);
+}
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] .bl-scr {
+  border-top-color: #3a3a3a;
+}
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] .bl-scr__letter {
+  color: #0a0a0a;
+}
+
+/* ---- Dark mode accents ---------------------------------------------------------------------
+ * site-dark.css (shared, unchanged) forces every descendant of .hub-page to black/#f5f5f5 with
+ * !important in dark mode. Restore only BABYLOG's pink point accents below the first screen
+ * (text, icons, accent rules); surfaces stay black. Scoped to bl-* sections, so the hero is untouched. */
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] :is(.bl-sec, .bl-impact, .bl-close) .nls-kicker,
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] :is(.bl-roster__n, .bl-val__n, .bl-bento__n, .bl-net__n, .bl-icard__n, .bl-model__code, .bl-model__go, .bl-catrow__n, .bl-pr__n, .bl-plat.is-self .bl-plat__n, .bl-screen__n, .bl-steps__n, .bl-arrow, .bl-card__n, .bl-card__go, .bl-guide__n, .bl-rail__link span, .bl-biz__code, .bl-grp__n, .bl-cat__n, .bl-cat__count, .bl-ico-wrap, .bl-checks__mark, .bl-biz__ico, .bl-ctaband__mark, .bl-net__hub, .bl-net__hub span, .bl-ilist li > span, .bl-checks__n),
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls-journey-sec .nls-rail__btn.is-on em,
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls-decade__mark b {
+  color: #f49ab8 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .bl-sec :is(.bl-plist li, .bl-aside) {
+  color: #f5f5f5 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .bl-plist li > svg,
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .bl-aside > svg {
+  color: #f49ab8;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .bl-emergency {
+  border-color: rgba(255, 255, 255, 0.55) !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] :is(.bl-scope, .bl-aside, .bl-notice__text, .bl-solo) {
+  border-left-color: #ee7fa3 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] :is(.bl-grp, .bl-duo--line .bl-duo__item, .bl-csrow.is-flip .bl-csrow__card) {
+  border-top-color: #ee7fa3 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .bl-cat__head {
+  border-bottom-color: #ee7fa3 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] :is(.bl-plat.is-self, .bl-net__hub, .bl-steps__dot, .bl-net__dot) {
+  border-color: #ee7fa3 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] :is(.bl-model, .bl-card, .bl-rail__link, .bl-screen):hover {
+  border-color: #ee7fa3 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .bl-steps::before,
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .bl-net__row::before,
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .bl-net__hub::after {
+  background: #ee7fa3 !important;
+  background-color: #ee7fa3 !important;
+  opacity: 0.55;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .bl-steps__item:first-child .bl-steps__dot,
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .bl-orbit span:nth-child(3) {
+  background: #ee7fa3 !important;
+  background-color: #ee7fa3 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .bl-orbit span:nth-child(2) {
+  border-color: #ee7fa3 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .bl-scr__letter {
+  background: #f49ab8 !important;
+  background-color: #f49ab8 !important;
+  color: #0a0a0a !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls-btn.bl-btn-point {
+  background: #f49ab8 !important;
+  background-color: #f49ab8 !important;
+  border-color: #f49ab8 !important;
+  color: #0a0a0a !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls-journey-sec .nls-rail__btn.is-on {
+  border-top: 2px solid #ee7fa3 !important;
+}

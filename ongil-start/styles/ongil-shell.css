@@ -1,0 +1,163 @@
+/*
+ * ONGIL shell — the existing ongil-start look, moved out of index.html.
+ * Rules are the original ones with literals replaced by tokens. Changes from the original are marked [P1].
+ */
+body:has(.og) { padding-top: 0 !important; background: var(--og-bg); color: var(--og-ink); }
+.og, .og *, .og-dialog, .og-dialog * { font-family: var(--og-font); }
+.gnav--ongil .gnav__link { font-size: 0.92rem; white-space: nowrap; }
+
+/* header tools (were .livon-tool / .livon-panel; renamed so ONGIL does not share class names with LIVON) */
+.og-tools { position: relative; display: flex; align-items: center; gap: 0.15rem; margin-right: 0.35rem; }
+.og-tool { position: relative; display: inline-flex; align-items: center; justify-content: center; width: var(--og-control); height: var(--og-control); padding: 0; border: 0; border-radius: 999px; background: transparent; color: var(--gnav-text-strong, var(--gnav-text, inherit)); cursor: pointer; text-decoration: none; } /* [P1] 2.4rem → 44px; icon colour follows the header text instead of the page's cream ink (cream on the light header was unreadable) */
+.og-tool:hover, .og-tool[aria-expanded="true"], .og-tool[aria-current="page"] { background: var(--og-tool-hover); }
+.og-tool[aria-current="page"]::after { content: ""; position: absolute; left: 30%; right: 30%; bottom: 0.3rem; height: 2px; border-radius: 2px; background: currentColor; } /* [P1] current view is not shown by colour alone */
+.og-panel { position: absolute; top: calc(100% + 0.65rem); right: 0; z-index: 30; width: min(22rem, calc(100vw - 2rem)); max-height: min(70vh, 32rem); overflow: auto; padding: 1rem 1rem 0.85rem; background: var(--og-panel-bg); color: var(--og-panel-ink); border: 1px solid var(--og-panel-border); border-radius: var(--og-radius-panel); box-shadow: var(--og-panel-shadow); }
+.og-panel__title { margin: 0 0 0.7rem; font-size: 1rem; font-weight: 700; letter-spacing: 0.04em; } /* [P1] 0.78rem → 0.95rem; [P11] → 1rem */
+.og-search { display: flex; gap: 0.4rem; }
+.og-search input { flex: 1; min-width: 0; height: var(--og-control); padding: 0 0.85rem; border: 1px solid var(--og-panel-input-border); border-radius: var(--og-radius-input); font: inherit; font-size: 1rem; color: var(--og-panel-ink); background: var(--og-panel-bg); }
+.og-search button { height: var(--og-control); padding: 0 1rem; border: 0; border-radius: var(--og-radius-input); background: var(--og-panel-ink); color: var(--og-panel-bg); font: inherit; font-size: 1rem; font-weight: 700; cursor: pointer; }
+.og-panel__note { margin: 0.7rem 0 0.15rem; color: #555; font-size: 1rem; line-height: 1.5; } /* [P1] 0.82rem #666 → 0.95rem #555; [P2C] → 1rem */
+.og-panel__group { margin: 0.9rem 0 0.2rem; font-size: 1rem; font-weight: 700; color: #555; } /* [P11] 0.9rem → 1rem */
+.og-panel__list { margin: 0; padding: 0; list-style: none; }
+.og-panel__list li { border-top: 1px solid var(--og-panel-line); }
+.og-panel__list li:first-child { border-top: 0; }
+.og-panel__list a, .og-panel__list li > span { display: flex; flex-direction: column; justify-content: center; gap: 0.1rem; min-height: var(--og-control); padding: 0.45rem 0.15rem; color: inherit; font-size: 1rem; text-decoration: none; }
+.og-panel__list a:hover .og-panel__result-title { text-decoration: underline; }
+.og-panel__result-title { font-weight: 700; }
+.og-panel__result-desc { color: #555; font-size: 1rem; line-height: 1.4; } /* [P2C] 0.9rem → 1rem */
+/* [P8] rows with actions (notifications) and small buttons inside a panel — 44px targets, state said in words */
+.og-panel__item { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.55rem 0.15rem; }
+.og-panel__item.is-unread .og-panel__result-title::before { content: "● "; }
+.og-panel__actions { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.3rem; }
+.og-panel__btn { display: inline-flex; align-items: center; justify-content: center; min-height: var(--og-control); padding: 0 0.9rem; border: 1px solid var(--og-panel-input-border); border-radius: var(--og-radius-input); background: transparent; color: var(--og-panel-ink); font: inherit; font-size: 1rem; font-weight: 700; text-decoration: none; cursor: pointer; }
+.og-panel__list a.og-panel__btn { flex-direction: row; min-height: var(--og-control); padding: 0 0.9rem; }
+.og-panel__result-title, .og-panel__result-desc { overflow-wrap: anywhere; }
+.og-panel__more { display: inline-flex; align-items: center; min-height: var(--og-control); color: inherit; font-size: 1rem; font-weight: 700; }
+.og-panel a:focus-visible, .og-panel button:focus-visible, .og-panel input:focus-visible { outline: 3px solid var(--og-panel-ink); outline-offset: 2px; }
+.og-tool:focus-visible { outline: 3px solid currentColor; outline-offset: 2px; }
+/* [P10] ONGIL 도우미: the same header panel as 통합검색, a little wider for a request and its result */
+.og-panel--assistant { width: min(26rem, calc(100vw - 2rem)); max-height: min(78vh, 40rem); }
+.og-assist__chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.3rem 0 0; padding: 0; list-style: none; }
+.og-assist__entries { margin: 0.4rem 0 0; padding: 0; list-style: none; }
+.og-assist__entry { padding: 0.7rem 0 0.8rem; border-top: 1px solid var(--og-panel-line); }
+.og-assist__entry:first-child { border-top: 0; }
+.og-assist__entry p { margin: 0 0 0.3rem; }
+.og-assist__entry > .og-panel__result-title { font-size: 1.05rem; }
+.og-assist__summary { margin: 0.3rem 0 0.5rem; padding: 0.5rem 0.75rem; list-style: none; border: 1px solid var(--og-panel-input-border); border-radius: var(--og-radius-input); }
+.og-assist__summary li { display: flex; flex-wrap: wrap; gap: 0.1rem 0.75rem; padding: 0.15rem 0; }
+.og-assist__primary { background: var(--og-panel-ink); color: var(--og-panel-bg); border-color: var(--og-panel-ink); }
+.og-assist__close { margin-top: 0.8rem; }
+.og-panel__btn:disabled { opacity: 0.55; cursor: default; }
+/* three header tools on a phone: the mark stays, the word beside it gives way (the link keeps its name for screen readers) */
+@media (max-width: 430px) {
+  .gnav--ongil .gnav__wordmark { display: none; }
+}
+/* [P11 review] the shared language button is 34px high by default: give it ONGIL's 44px touch height (height only, layout unchanged) */
+.gnav--ongil .lang-menu.lang-menu--chrome .lang-menu__btn { min-height: 44px; }
+/* [P11] the narrowest phones (320–359px): tighter header spacing so the mark and the three 44px tools do not overlap */
+@media (max-width: 359px) {
+  .gnav--ongil .gnav__inner { padding-inline: 10px; gap: 6px; }
+  .gnav--ongil .gnav__util { gap: 2px; }
+  .gnav--ongil .og-tools { gap: 0; margin-right: 0; }
+  .gnav--ongil .gnav__lang-select { padding-left: 6px; }
+}
+
+/* storage blocked — app.js puts one note just under the header, on every screen and scroll position, and reserves its height on <main>, so a screen's "추가했습니다" is never read as "saved" and nothing is covered */
+main > .og-notice[data-og-storage="memory"] { position: fixed; top: var(--gnav-h, 74px); left: 0; right: 0; z-index: 20; max-width: none; margin: 0; padding: 0.6rem 1rem; border-width: 0 0 1px; border-radius: 0; text-align: center; word-break: keep-all; }
+
+/* screen isolation — only the active view is shown */
+main > [data-og-screen] { display: none; }
+html[data-og-view="home"] main > [data-og-screen="home"],
+html[data-og-view="life"] main > [data-og-screen="life"],
+html[data-og-view="health"] main > [data-og-screen="health"],
+html[data-og-view="family"] main > [data-og-screen="family"],
+html[data-og-view="care"] main > [data-og-screen="care"],
+html[data-og-view="enjoy"] main > [data-og-screen="enjoy"],
+html[data-og-view="community"] main > [data-og-screen="community"],
+html[data-og-view="store"] main > [data-og-screen="store"],
+html[data-og-view="saved"] main > [data-og-screen="saved"],
+html[data-og-view="account"] main > [data-og-screen="account"] { display: block; }
+html[data-og-view="admin"] main > [data-og-screen="admin"] { display: block; }
+html[data-og-view], html[data-og-view] body { height: auto; overflow: auto; overflow-x: clip; }
+
+.og-screen { position: relative; z-index: 1; background: var(--og-bg); }
+
+/* film header */
+.og-film { position: relative; z-index: 1; isolation: isolate; width: 100%; min-height: 100svh; height: 100svh; overflow: hidden; background: var(--og-film-bg); }
+.og-film__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 50%; z-index: 1; pointer-events: none; }
+.og-film__lockup { position: absolute; left: 50%; top: 48%; z-index: 3; display: flex; flex-direction: column; align-items: center; width: max-content; max-width: calc(100vw - 1.5rem); margin: 0; padding: 1.4rem 0.75rem 1.6rem; transform: translate(-50%, -50%); text-align: center; }
+.og-film__veil { position: absolute; left: 50%; top: 46%; z-index: 0; width: min(56rem, 130%); height: min(32rem, 160%); transform: translate(-50%, -50%); background: radial-gradient(ellipse 58% 52% at 50% 46%, rgba(8,16,18,0.28) 0%, rgba(8,16,18,0.12) 46%, rgba(8,16,18,0) 78%); pointer-events: none; }
+.og-film__wordmark, .og-film__slogan, .og-film__lead, .og-film__actions { position: relative; z-index: 1; opacity: 0; transform: translateY(12px); }
+.og-film.is-ready .og-film__wordmark, .og-film.is-ready .og-film__slogan, .og-film.is-ready .og-film__lead, .og-film.is-ready .og-film__actions { opacity: 1; transform: translateY(0); transition: opacity var(--og-ease-reveal), transform var(--og-ease-reveal); }
+.og-film.is-ready .og-film__wordmark { transition-delay: 0.12s; }
+.og-film.is-ready .og-film__slogan { transition-delay: 0.3s; }
+.og-film.is-ready .og-film__lead { transition-delay: 0.48s; }
+.og-film.is-ready .og-film__actions { transition-delay: 0.64s; }
+.og-film__wordmark { margin: 0 0 1.65rem; color: var(--og-white); font-family: var(--og-font-wordmark); font-size: var(--og-size-wordmark); font-weight: 700; letter-spacing: -0.055em; line-height: 1; white-space: nowrap; width: max-content; max-width: 100%; text-shadow: var(--og-shadow-wordmark); }
+.og-film__slogan { margin: 0; color: var(--og-white); font-family: var(--og-font-kr); font-size: var(--og-size-slogan); font-weight: 650; letter-spacing: -0.045em; line-height: 1.28; text-shadow: var(--og-shadow-slogan); }
+.og-film__lead { margin: 0.95rem 0 0; max-width: 32rem; color: var(--og-film-lead); font-size: clamp(1rem, 1.5vw, 1.05rem); font-weight: 430; letter-spacing: -0.02em; line-height: 1.62; text-shadow: var(--og-shadow-lead); } /* [P1] minimum 0.9rem → 1rem */
+.og-film__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.65rem; margin-top: 1.25rem; }
+.og-film--still { background: radial-gradient(ellipse 70% 60% at 50% 40%, #1a1a1a 0%, var(--og-film-bg) 60%, var(--og-bg) 100%); } /* [P1] a film header without footage (Store) */
+.og-film--still .og-film__veil { display: none; }
+
+/* home hero */
+.og-hero { position: relative; z-index: 2; height: 100svh; min-height: 100svh; padding: 0; background: var(--og-bg); color: var(--og-white); overflow: hidden; }
+.og-hero__frame { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: var(--og-bg); transform: scale(1.08); transform-origin: center; }
+.og-hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.og-hero-title { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; font-size: var(--og-size-hero); line-height: 0.92; letter-spacing: -0.02em; color: #000; text-align: center; margin: 0; }
+.og-hero__title { position: absolute; left: 0; right: 0; top: calc(var(--gnav-h, 74px) + 4px); z-index: 2; width: 100%; padding: 0 1rem; opacity: 0; transform: translateY(1.5rem); transition: opacity var(--og-ease-hero), transform var(--og-ease-hero); }
+.og-hero__title.is-in, .og-hero__foot.is-in { opacity: 1; transform: translateY(0); }
+.og-hero__foot { position: absolute; left: 0; right: 0; bottom: 3rem; z-index: 2; display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; padding: 0 2.5rem; opacity: 0; transform: translateY(1.5rem); transition: opacity var(--og-ease-hero) 0.3s, transform var(--og-ease-hero) 0.3s; }
+.og-hero__foot p { max-width: 16rem; margin: 0; font-size: var(--og-size-body); font-weight: var(--og-weight-body); line-height: 1.6; color: rgba(255,255,255,0.86); text-shadow: var(--og-shadow-lead); } /* [P1] 0.875rem / 300 / 0.75 → 1rem / 400 / 0.86 */
+.og-hero__foot p.is-right { text-align: right; }
+.og-hero__actions { position: absolute; left: 50%; bottom: 0; display: flex; align-items: center; gap: 0.75rem; transform: translateX(-50%); }
+.og-hero__primary, .og-hero__secondary, .og-film__more { display: inline-flex; align-items: center; justify-content: center; min-height: var(--og-control); border-radius: var(--og-radius-pill); padding: 0.75rem 1.5rem; font-size: var(--og-size-body); font-weight: 500; text-decoration: none; white-space: nowrap; transition: transform var(--og-ease-press), box-shadow var(--og-ease-press); } /* [P1] 0.875rem → 1rem, 44px floor */
+.og-hero__primary { position: relative; overflow: hidden; background: var(--og-accent); color: var(--og-accent-ink); }
+.og-hero__primary:hover { transform: scale(1.03); box-shadow: var(--og-glow); }
+.og-hero__primary:active, .og-hero__secondary:active, .og-film__more:active { transform: scale(0.97); }
+.og-hero__secondary, .og-film__more { color: var(--og-white); }
+.og-hero__secondary:hover, .og-film__more:hover { transform: scale(1.03); }
+.og-film__more { border: 0; cursor: pointer; font-family: inherit; }
+.og-liquid-glass { background: rgba(255,255,255,0.01); background-blend-mode: luminosity; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); box-shadow: inset 0 1px 1px rgba(255,255,255,0.1); position: relative; overflow: hidden; }
+.og-liquid-glass::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.4px; background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+
+/* content bands, chips, cards (defined in the original sheet; now in use) */
+.og-band { position: relative; background: transparent; color: var(--og-ink); scroll-margin-top: 5.5rem; }
+.og-wrap { position: relative; z-index: 1; width: var(--og-wrap); margin: 0 auto; padding: var(--og-space-section) 0; }
+.og-label { margin: 0 0 1rem; color: var(--og-ink-soft); font-size: var(--og-size-label); letter-spacing: 0.08em; }
+.og-h { margin: 0 0 1.4rem; max-width: 18em; font-size: var(--og-size-h); font-weight: 400; line-height: 1.15; color: var(--og-ink); scroll-margin-top: 6rem; }
+.og-lead, .og-note, .og-empty { color: var(--og-muted); font-weight: 300; line-height: 1.5; }
+.og-chips { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--og-gap-chips); }
+.og-chip, .og-card { background: var(--og-surface); border-radius: var(--og-radius-card); }
+.og-chip { min-height: 7.5rem; padding: 1rem 1rem 1.1rem; }
+.og-chip h3, .og-chip h4, .og-card h3 { margin: 0 0 0.4rem; color: var(--og-ink); font-size: var(--og-size-card-title); font-weight: 700; }
+.og-chip p, .og-card li, .og-card__lead { margin: 0; color: var(--og-muted); font-size: 0.86rem; font-weight: 300; line-height: 1.4; }
+.og-serif, .og-serif * { font-family: var(--og-font-serif); font-style: italic; font-weight: 400; }
+
+@media (prefers-reduced-motion: reduce) {
+  .og-film__wordmark, .og-film__slogan, .og-film__lead, .og-film__actions,
+  .og-film.is-ready .og-film__wordmark, .og-film.is-ready .og-film__slogan,
+  .og-film.is-ready .og-film__lead, .og-film.is-ready .og-film__actions,
+  .og-hero__title, .og-hero__foot, .og-hero__title.is-in, .og-hero__foot.is-in { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .og-hero__primary, .og-hero__secondary, .og-film__more { transition: none; }
+}
+@media (max-width: 1100px) { .og-chips { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 860px) {
+  .og-hero__foot { flex-direction: column; align-items: center; gap: 1.25rem; bottom: 2rem; padding: 0 1.25rem; }
+  .og-hero__foot p { max-width: 18rem; text-align: center; }
+  .og-hero__foot p.is-right { text-align: center; }
+  .og-hero__actions { position: relative; left: auto; bottom: auto; transform: none; order: -1; }
+  .og-hero-title { font-size: clamp(72px, 22vw, 160px); }
+}
+@media (max-width: 700px) {
+  .og-chips { grid-template-columns: 1fr; }
+  .gnav--ongil .gnav__nav { display: none; }
+}
+
+/* Product Completion Audit V1 — mobile menu: a visible way out (the sheet covers the button that opened it and, on a
+   narrow phone, the backdrop too), readable link text, and a mark on the screen that is showing */
+.gnav--ongil .og-menu-close { display: flex; align-items: center; justify-content: center; margin: 0 0 0.6rem auto; min-height: 44px; min-width: 44px; padding: 0.5rem 0.9rem; border: 1px solid var(--gnav-border, currentColor); border-radius: 9px; background: transparent; color: var(--gnav-text-strong, inherit); font: inherit; font-size: 1rem; font-weight: 700; cursor: pointer; }
+.gnav--ongil .og-menu-close:focus-visible { outline: 2px solid var(--gnav-text-strong, currentColor); outline-offset: 2px; }
+.gnav--ongil .gnav-mobile__sublink { font-size: 1rem; }
+.gnav--ongil .gnav-mobile__sublink[aria-current="page"] { font-weight: 700; color: var(--gnav-text-strong, inherit); }
+.gnav--ongil .gnav-mobile__sublink[aria-current="page"]::after { content: "✓"; margin-left: auto; font-weight: 700; }

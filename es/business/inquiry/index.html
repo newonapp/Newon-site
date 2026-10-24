@@ -1,0 +1,3049 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business Inquiry | NEWON</title>
+    <meta name="description" content="Inquiries about joining, partnering with, adopting enterprise services from, or collaborating with NEWON's six digital platforms: BABYLOG, PETLOG, MY WORLD, SHAREON, LIVON and ONGIL." />
+    <meta name="keywords" content="Newon, newon.app, estudio de apps, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, EatOn, FitOn, diario de viajes, rastreador de viajes, países visitados, mapa de viajes, travel journal, travel tracker" />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://www.newon.app/es/business/inquiry/" />
+    <script>
+      /* /business/inquiry/ is folded into the official business inquiry page /business/contact/.
+         Forward visitors (query + hash mapped), except the store purchase inflow (?category=Store),
+         which keeps using this page's form. Studio inquiries (?category=Studio) go to Studio Contact.
+         Scoped to this exact path so pages that reuse this template are never redirected. */
+      (function () {
+        try {
+          var m = location.pathname.match(/^\/([a-z]{2}(?:-[a-z]{2})?)\/business\/inquiry\/?(?:index\.html)?$/i);
+          if (!m) return;
+          var lang = m[1].toLowerCase();
+          var q = new URLSearchParams(location.search);
+          var cat = (q.get("category") || "").toLowerCase();
+          var typ = q.get("type") || "";
+          if (cat === "store" || /^store\s*\//i.test(typ)) return;
+          var out = new URLSearchParams();
+          var codes = ["general", "participation", "commerce", "saas", "institution", "brand", "technology", "public", "global", "other"];
+          var byValue = {
+            "platform participation & transactions": "participation",
+            "brand, service & content partnership": "brand",
+            "enterprise service adoption": "saas",
+            "public sector & organization partnership": "public",
+            "technology & global partnership": "technology",
+            "other business inquiry": "other",
+            "partnership": "brand"
+          };
+          var t = typ.toLowerCase();
+          var code = codes.indexOf(t) > -1 ? t : byValue[t] || "";
+          var svc = (q.get("service") || "").toLowerCase();
+          if (!code && (svc === "partnership" || cat === "partnership")) code = "brand";
+          if (!code && /ai\s*automation|saas/.test(svc)) code = "saas";
+          if (code) out.set("type", code);
+          var src = q.get("source") || "";
+          var plat = (q.get("platform") || "").toLowerCase().replace(/\s+/g, "");
+          if (!plat) { var pm = src.toLowerCase().match(/babylog|petlog|myworld|shareon|livon|ongil/); if (pm) plat = pm[0]; }
+          if (plat) out.set("platform", plat);
+          var topic = q.get("topic") || "";
+          if (src || topic) out.set("source", (src + (topic ? " | " + topic : "")).slice(0, 80));
+          var dest = cat === "studio" ? "/" + lang + "/studio/contact/" : "/" + lang + "/business/contact/";
+          var qs = out.toString();
+          var hash = location.hash && location.hash !== "#inquiry" ? location.hash : (location.hash ? (cat === "studio" ? "#sts-form" : "#bpt-form") : "");
+          location.replace(dest + (qs ? "?" + qs : "") + hash);
+        } catch (e) {}
+      })();
+    </script>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.newon.app/es/business/inquiry/" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content="Business Inquiry | NEWON" />
+    <meta property="og:description" content="Inquiries about joining, partnering with, adopting enterprise services from, or collaborating with NEWON's six digital platforms: BABYLOG, PETLOG, MY WORLD, SHAREON, LIVON and ONGIL." />
+    <meta property="og:site_name" content="Newon" />
+    <meta property="og:image" content="https://www.newon.app/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Business Inquiry | NEWON" />
+    <meta name="twitter:description" content="Inquiries about joining, partnering with, adopting enterprise services from, or collaborating with NEWON's six digital platforms: BABYLOG, PETLOG, MY WORLD, SHAREON, LIVON and ONGIL." />
+    <meta name="twitter:image" content="https://www.newon.app/logo.png" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Business Inquiry | NEWON",
+  "url": "https://www.newon.app/es/business/inquiry/",
+  "description": "Inquiries about joining, partnering with, adopting enterprise services from, or collaborating with NEWON's six digital platforms: BABYLOG, PETLOG, MY WORLD, SHAREON, LIVON and ONGIL.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Newon",
+    "url": "https://www.newon.app",
+    "logo": "https://www.newon.app/logo.png",
+    "email": "newon@newon.app"
+  }
+}
+    </script>
+    <link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/inquiry/" />
+    <link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/inquiry/" />
+    <link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/inquiry/" />
+    <link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/inquiry/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/inquiry/" />
+    <link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/inquiry/" />
+    <link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/inquiry/" />
+    <link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/inquiry/" />
+    <link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/inquiry/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/inquiry/" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css?v=20260904a11y1" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20261019line1" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
+    <link rel="stylesheet" href="/ox-month.css" />
+    <link rel="stylesheet" href="/portfolio/portfolio.css" />
+    <script src="/theme-shell.js?v=20260904perf1"></script>
+    <script src="/analytics.js?v=20260904sec1" defer></script>
+    <style>
+      .bz-page { overflow-x: clip; }
+      .bz-page [id] { scroll-margin-top: calc(var(--header-h) + 18px); }
+      .bz-inner { width: min(1200px, calc(100% - var(--space) * 2)); margin: 0 auto; }
+      .bz-section { padding: 100px 0; }
+      .bz-section--tight { padding-top: 72px; }
+      @media (max-width: 799px) {
+        .bz-inner { width: min(1200px, calc(100% - 2rem)); }
+        .bz-section { padding: 72px 0; }
+        .bz-section--tight { padding-top: 56px; }
+      }
+      .bz-label {
+        margin: 0 0 0.85rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        color: var(--text-soft);
+      }
+      .bz-title {
+        margin: 0 0 1rem;
+        font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+        font-weight: 700;
+        letter-spacing: -0.035em;
+        line-height: 1.2;
+        color: var(--text);
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+      .bz-lead {
+        margin: 0;
+        max-width: 40rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: var(--text-muted);
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+      .bz-hero-actions .btn,
+      .bz-band .btn,
+      .bz-form .btn {
+        min-height: 44px;
+      }
+
+      /* Business inquiry hero — white editorial, scoped to .bz-hero only */
+      .bz-hero {
+        --bz-hero-ink: #0a0a0a;
+        --bz-hero-mute: #4a4a4a;
+        --bz-hero-soft: #8a8a8a;
+        --bz-hero-rule: #e8e8e8;
+        --bz-hero-rule-strong: #cfcfcf;
+        --bz-index-rule: #ececec;
+        --bz-index-hover-bg: rgba(0, 0, 0, 0.03);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: calc(100svh - var(--header-h));
+        min-height: 34rem;
+        max-height: 46rem;
+        padding: 0;
+        color: var(--bz-hero-ink);
+        background: #ffffff;
+        overflow: clip;
+        isolation: isolate;
+        border-bottom: 1px solid var(--bz-hero-rule);
+      }
+      .bz-hero::before,
+      .bz-hero::after {
+        content: none;
+        display: none;
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero {
+        --bz-hero-ink: var(--text);
+        --bz-hero-mute: var(--text-muted);
+        --bz-hero-soft: var(--text-soft);
+        --bz-hero-rule: rgba(255, 255, 255, 0.12);
+        --bz-hero-rule-strong: rgba(255, 255, 255, 0.28);
+        --bz-index-rule: rgba(255, 255, 255, 0.14);
+        --bz-index-hover-bg: rgba(255, 255, 255, 0.04);
+        background: var(--bg);
+      }
+      .bz-hero__stage {
+        position: relative;
+        z-index: 1;
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        min-height: 0;
+        padding: clamp(1.15rem, 2.8vh, 2rem) 0 0.75rem;
+      }
+      .bz-hero__grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(17rem, 0.92fr);
+        gap: clamp(1.5rem, 3.5vw, 2.75rem);
+        align-items: center;
+        width: min(1120px, calc(100% - var(--space) * 2));
+      }
+      .bz-hero__copy {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 0;
+        padding: 0.15rem 0 0.15rem 1rem;
+        border-left: 2px solid var(--bz-hero-ink);
+      }
+      .bz-hero__kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        margin: 0 0 1rem;
+        font-size: 0.6875rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        line-height: 1.2;
+        text-transform: uppercase;
+        color: var(--bz-hero-soft);
+      }
+      .bz-hero__kicker::before {
+        content: "";
+        width: 1.35rem;
+        height: 1px;
+        background: currentColor;
+        flex: none;
+      }
+      .bz-hero__title {
+        margin: 0;
+        max-width: 12ch;
+        font-size: clamp(2.55rem, 0.9rem + 2.8vw, 3.65rem);
+        font-weight: 800;
+        letter-spacing: -0.045em;
+        line-height: 1.08;
+        color: var(--bz-hero-ink);
+        word-break: keep-all;
+        overflow-wrap: break-word;
+        text-wrap: balance;
+      }
+      .bz-hero__lead {
+        margin: 1.05rem 0 0;
+        max-width: 30rem;
+        font-size: 1.02rem;
+        font-weight: 400;
+        line-height: 1.65;
+        color: var(--bz-hero-mute);
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+      .bz-hero .bz-hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.55rem;
+        margin-top: 1.45rem;
+      }
+      .bz-hero .bz-hero-actions .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.85rem;
+        height: 2.85rem;
+        padding: 0 1.2rem;
+        border-radius: 2px;
+        font-size: 0.875rem;
+        font-weight: 650;
+        letter-spacing: -0.015em;
+        box-shadow: none;
+        transform: none;
+        transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+      }
+      .bz-hero .bz-hero-actions .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: none;
+      }
+      .bz-hero .bz-hero-actions .btn-primary {
+        background: var(--bz-hero-ink);
+        color: #fff;
+        border-color: var(--bz-hero-ink);
+      }
+      .bz-hero .bz-hero-actions .btn-primary:hover {
+        background: #2a2a2a;
+        color: #fff;
+        border-color: #2a2a2a;
+      }
+      .bz-hero .bz-hero-actions .btn-ghost {
+        background: #fff;
+        color: var(--bz-hero-ink);
+        border: 1px solid var(--bz-hero-rule-strong);
+      }
+      .bz-hero .bz-hero-actions .btn-ghost:hover {
+        background: #fff;
+        border-color: var(--bz-hero-ink);
+        color: var(--bz-hero-ink);
+      }
+      .bz-hero__cta-go {
+        display: inline-block;
+        margin-left: 0.45em;
+        transition: transform 0.2s ease;
+      }
+      .bz-hero .bz-hero-actions .btn-primary:hover .bz-hero__cta-go,
+      .bz-hero .bz-hero-actions .btn-primary:focus-visible .bz-hero__cta-go {
+        transform: translateX(3px);
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero .bz-hero-actions .btn-primary {
+        background: #fff;
+        color: #111;
+        border-color: #fff;
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero .bz-hero-actions .btn-primary:hover {
+        background: #ececec;
+        color: #111;
+        border-color: #ececec;
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero .bz-hero-actions .btn-ghost {
+        background: transparent;
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.32);
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero .bz-hero-actions .btn-ghost:hover {
+        border-color: rgba(255, 255, 255, 0.7);
+        color: #fff;
+      }
+      .bz-hero__visual {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: min(28rem, 100%);
+        min-height: 0;
+        justify-self: end;
+        padding: 1rem 1.1rem 0.25rem;
+        border: 1px solid var(--bz-hero-rule);
+        background: #ffffff;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero__visual {
+        background: rgba(255, 255, 255, 0.03);
+        box-shadow: none;
+      }
+      .bz-hero__mark { display: none !important; }
+      .bz-hero__head {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 0.85rem;
+        flex: none;
+        padding: 0.1rem 0 0.85rem;
+        border-bottom: 1px solid var(--bz-hero-ink);
+      }
+      .bz-hero__sig { min-width: 0; }
+      .bz-hero__sig-name {
+        margin: 0;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.22em;
+        line-height: 1.15;
+        color: var(--bz-hero-ink);
+      }
+      .bz-hero__sig-line {
+        margin: 0.35rem 0 0;
+        font-size: 0.6875rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        color: var(--bz-hero-soft);
+      }
+      .bz-hero__count {
+        flex: none;
+        font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        color: var(--bz-hero-soft);
+        white-space: nowrap;
+      }
+      .bz-hero-index {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        min-height: 0;
+      }
+      .bz-hero-index__row {
+        position: relative;
+        display: grid;
+        grid-template-columns: 2.1rem minmax(0, 1fr) 1.1rem;
+        column-gap: 0.75rem;
+        align-items: center;
+        flex: 0 0 auto;
+        min-height: 3.55rem;
+        padding: 0.8rem 0.25rem 0.8rem 0.45rem;
+        border-bottom: 1px solid var(--bz-index-rule);
+        background: transparent;
+        color: inherit;
+        text-decoration: none;
+        transition: background 0.2s ease, padding-left 0.2s ease;
+      }
+      .bz-hero-index__row:last-child { border-bottom: 0; }
+      .bz-hero-index__row::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.55rem;
+        bottom: 0.55rem;
+        width: 2px;
+        background: transparent;
+        transition: background 0.2s ease;
+      }
+      .bz-hero-index__body { display: block; min-width: 0; }
+      .bz-hero-index__n {
+        font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: var(--bz-hero-soft);
+      }
+      .bz-hero-index__en {
+        display: block;
+        font-size: 0.625rem;
+        font-weight: 650;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--bz-hero-soft);
+      }
+      .bz-hero-index__ko {
+        display: block;
+        margin-top: 0.22rem;
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.25;
+        color: var(--bz-hero-ink);
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+      .bz-hero-index__go {
+        font-size: 0.9rem;
+        line-height: 1;
+        color: #c0c0c0;
+        transition: color 0.2s ease, transform 0.2s ease;
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero-index__go { color: rgba(255, 255, 255, 0.35); }
+      .bz-hero-index__row:hover,
+      .bz-hero-index__row:focus-visible {
+        background: var(--bz-index-hover-bg);
+        padding-left: 0.65rem;
+        outline: none;
+      }
+      .bz-hero-index__row:hover::before,
+      .bz-hero-index__row:focus-visible::before { background: var(--bz-hero-ink); }
+      .bz-hero-index__row:hover .bz-hero-index__n,
+      .bz-hero-index__row:focus-visible .bz-hero-index__n,
+      .bz-hero-index__row:hover .bz-hero-index__en,
+      .bz-hero-index__row:focus-visible .bz-hero-index__en { color: var(--bz-hero-mute); }
+      .bz-hero-index__row:hover .bz-hero-index__go,
+      .bz-hero-index__row:focus-visible .bz-hero-index__go {
+        color: var(--bz-hero-ink);
+        transform: translate(2px, -2px);
+      }
+      .bz-hero__bar {
+        position: relative;
+        z-index: 1;
+        flex: 0 0 auto;
+        min-height: 2.85rem;
+        border-top: 1px solid var(--bz-hero-rule);
+        background: #ffffff;
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero__bar { background: transparent; }
+      .bz-hero__bar-inner {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem 1.1rem;
+        width: min(1120px, calc(100% - var(--space) * 2));
+        min-height: 2.85rem;
+        margin: 0 auto;
+        font-size: 0.6875rem;
+        letter-spacing: 0.1em;
+        color: var(--bz-hero-soft);
+      }
+      .bz-hero__bar-label {
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        color: var(--bz-hero-ink);
+      }
+      .bz-hero__bar-meta {
+        position: relative;
+        padding-left: 0.9rem;
+        color: var(--bz-hero-soft);
+        letter-spacing: 0.08em;
+      }
+      .bz-hero__bar-meta::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 1px;
+        height: 0.85em;
+        transform: translateY(-50%);
+        background: var(--bz-hero-rule-strong);
+      }
+      .bz-hero__bar-explore {
+        margin-left: auto;
+        color: var(--bz-hero-mute);
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        transition: color 0.2s ease, transform 0.2s ease;
+      }
+      .bz-hero__bar-explore:hover {
+        color: var(--bz-hero-ink);
+        transform: translateY(1px);
+      }
+      .bz-hero-enter {
+        opacity: 0;
+        transform: translateY(10px);
+        animation: bz-hero-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+        animation-delay: calc(var(--d, 0) * 55ms);
+      }
+      @keyframes bz-hero-up {
+        to { opacity: 1; transform: none; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bz-hero-enter { opacity: 1; transform: none; animation: none; }
+        .bz-hero .bz-hero-actions .btn:hover,
+        .bz-hero .bz-hero-actions .btn-primary:hover .bz-hero__cta-go,
+        .bz-hero-index__row:hover .bz-hero-index__go,
+        .bz-hero-index__row:focus-visible .bz-hero-index__go,
+        .bz-hero__bar-explore:hover { transform: none; }
+      }
+      @media (min-width: 900px) and (max-width: 1100px) {
+        .bz-hero__title { font-size: clamp(2.35rem, 3.4vw, 3rem); }
+      }
+      @media (max-width: 899px) {
+        .bz-hero { height: auto; min-height: 0; max-height: none; }
+        .bz-hero__stage { padding: 1.35rem 0 0.85rem; }
+        .bz-hero__grid { grid-template-columns: 1fr; gap: 1.35rem; }
+        .bz-hero__copy { padding: 0 0 0 0.85rem; }
+        .bz-hero__kicker { margin-bottom: 0.85rem; }
+        .bz-hero__title {
+          max-width: none;
+          font-size: clamp(2.05rem, 7.8vw, 2.55rem);
+          line-height: 1.1;
+        }
+        .bz-hero__lead { margin-top: 0.9rem; font-size: 1rem; }
+        .bz-hero .bz-hero-actions { margin-top: 1.2rem; }
+        .bz-hero .bz-hero-actions .btn { width: 100%; }
+        .bz-hero__visual {
+          max-width: none;
+          justify-self: stretch;
+          padding: 0.9rem 0.9rem 0.15rem;
+        }
+        .bz-hero-index__row {
+          min-height: 3.35rem;
+          padding: 0.75rem 0.15rem 0.75rem 0.4rem;
+        }
+        .bz-hero-index__ko { font-size: 1rem; }
+        .bz-hero__bar-inner {
+          flex-wrap: wrap;
+          gap: 0.3rem 0.85rem;
+          padding: 0.7rem 0;
+        }
+        .bz-hero__bar-meta { padding-left: 0; }
+        .bz-hero__bar-meta::before { display: none; }
+        .bz-hero__bar-explore { margin-left: 0; flex: 1 0 100%; }
+      }
+      .bz-grid {
+        display: grid;
+        gap: 1rem;
+        margin: 2rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      .bz-grid--4 { grid-template-columns: 1fr; }
+      .bz-grid--2 { grid-template-columns: 1fr; }
+      .bz-grid--3 { grid-template-columns: 1fr; }
+      @media (min-width: 640px) {
+        .bz-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .bz-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .bz-grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (min-width: 1024px) {
+        .bz-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .bz-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      }
+      .bz-card {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+        padding: 1.5rem 1.35rem 1.35rem;
+        border: 1px solid #eaeaea;
+        border-radius: 12px;
+        background: #fff;
+        color: inherit;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+      html[data-newon-shell-theme="dark"] .bz-card {
+        background: var(--surface);
+        border-color: var(--border);
+      }
+      .bz-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+        border-color: #ddd;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bz-card:hover { transform: none; }
+      }
+      .bz-card h3 {
+        margin: 0 0 0.65rem;
+        font-size: 1.05rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+      .bz-card p {
+        margin: 0;
+        flex: 1;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: var(--text-muted);
+      }
+      .bz-card__more {
+        margin-top: 1.25rem;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--text);
+        display: inline-block;
+        transition: transform 0.25s ease;
+      }
+      a.bz-card:hover .bz-card__more { transform: translateX(3px); }
+      @media (prefers-reduced-motion: reduce) {
+        a.bz-card:hover .bz-card__more { transform: none; }
+      }
+
+      /* ——— Inquiry explore: Business / Studio / Resources ——— */
+      .bz-inq-explore {
+        padding-top: clamp(3.5rem, 7vw, 5.5rem);
+        padding-bottom: clamp(3rem, 6vw, 4.5rem);
+        border-top: 1px solid #ececec;
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore {
+        border-top-color: var(--border);
+      }
+      .bz-inq-explore__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
+        border: 1px solid #111;
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__grid {
+        border-color: var(--border);
+      }
+      .bz-inq-explore__card {
+        display: flex;
+        flex-direction: column;
+        min-height: 15.5rem;
+        padding: 1.65rem 1.5rem 1.45rem;
+        border-bottom: 1px solid #ececec;
+        background: #fff;
+        color: inherit;
+        text-decoration: none;
+        transition: background 0.32s ease, color 0.32s ease, border-color 0.32s ease;
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card {
+        background: var(--surface);
+        border-bottom-color: var(--border);
+      }
+      .bz-inq-explore__card:last-child {
+        border-bottom: 0;
+      }
+      .bz-inq-explore__card:hover,
+      .bz-inq-explore__card:focus-visible {
+        background: #111;
+        color: #fff;
+        outline: none;
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:hover,
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:focus-visible {
+        background: #fff;
+        color: #111;
+      }
+      .bz-inq-explore__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.65rem;
+      }
+      .bz-inq-explore__n {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        color: #9a9a9a;
+      }
+      .bz-inq-explore__card:hover .bz-inq-explore__n,
+      .bz-inq-explore__card:focus-visible .bz-inq-explore__n {
+        color: rgba(255, 255, 255, 0.55);
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:hover .bz-inq-explore__n,
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:focus-visible .bz-inq-explore__n {
+        color: rgba(17, 17, 17, 0.55);
+      }
+      .bz-inq-explore__eyebrow {
+        font-size: 0.6875rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        color: #8a8a8a;
+      }
+      .bz-inq-explore__card:hover .bz-inq-explore__eyebrow,
+      .bz-inq-explore__card:focus-visible .bz-inq-explore__eyebrow {
+        color: rgba(255, 255, 255, 0.62);
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:hover .bz-inq-explore__eyebrow,
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:focus-visible .bz-inq-explore__eyebrow {
+        color: rgba(17, 17, 17, 0.62);
+      }
+      .bz-inq-explore__title {
+        margin: 0;
+        font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+      }
+      .bz-inq-explore__body {
+        margin: 0.85rem 0 0;
+        flex: 1;
+        max-width: 22rem;
+        font-size: 0.9375rem;
+        line-height: 1.65;
+        color: var(--text-muted);
+      }
+      .bz-inq-explore__card:hover .bz-inq-explore__body,
+      .bz-inq-explore__card:focus-visible .bz-inq-explore__body {
+        color: rgba(255, 255, 255, 0.72);
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:hover .bz-inq-explore__body,
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:focus-visible .bz-inq-explore__body {
+        color: rgba(17, 17, 17, 0.72);
+      }
+      .bz-inq-explore__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-top: 1.35rem;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+      }
+      .bz-inq-explore__arrow {
+        font-size: 1rem;
+        transition: transform 0.25s ease;
+      }
+      .bz-inq-explore__card:hover .bz-inq-explore__arrow,
+      .bz-inq-explore__card:focus-visible .bz-inq-explore__arrow {
+        transform: translate(3px, -3px);
+      }
+      @media (min-width: 860px) {
+        .bz-inq-explore__grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        .bz-inq-explore__card {
+          min-height: 17.5rem;
+          border-bottom: 0;
+          border-right: 1px solid #ececec;
+        }
+        html[data-newon-shell-theme="dark"] .bz-inq-explore__card {
+          border-right-color: var(--border);
+        }
+        .bz-inq-explore__card:last-child {
+          border-right: 0;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bz-inq-explore__card:hover .bz-inq-explore__arrow,
+        .bz-inq-explore__card:focus-visible .bz-inq-explore__arrow {
+          transform: none;
+        }
+      }
+
+      @media (max-width: 799px) {
+        .bz-card,
+        .bz-eco-card,
+        .bz-why-card,
+        .bz-step {
+          padding: 1.4rem 1.2rem;
+        }
+      }
+      .bz-cap-grid {
+        display: grid;
+        gap: 0;
+        margin-top: 3rem;
+        padding: 0;
+        list-style: none;
+        border-top: 1px solid #ececec;
+      }
+      @media (min-width: 860px) {
+        .bz-cap-grid { grid-template-columns: 1fr 1fr; }
+      }
+      .bz-cap-item {
+        padding: 2rem 0 2.15rem;
+        border-bottom: 1px solid #ececec;
+      }
+      @media (min-width: 860px) {
+        .bz-cap-item:nth-child(odd) {
+          padding-right: 2.5rem;
+          border-right: 1px solid #ececec;
+        }
+        .bz-cap-item:nth-child(even) { padding-left: 2.5rem; }
+      }
+      html[data-newon-shell-theme="dark"] .bz-cap-grid,
+      html[data-newon-shell-theme="dark"] .bz-cap-item {
+        border-color: var(--border);
+      }
+      .bz-cap-item__n {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: var(--text-soft);
+      }
+      .bz-cap-item h3 {
+        margin: 0.7rem 0 0.8rem;
+        font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+        font-weight: 700;
+        letter-spacing: -0.035em;
+        word-break: keep-all;
+        color: var(--text);
+      }
+      .bz-cap-item p {
+        margin: 0;
+        max-width: 32rem;
+        font-size: 0.975rem;
+        line-height: 1.65;
+        color: var(--text-muted);
+        word-break: keep-all;
+      }
+      .bz-cap-item__keys {
+        margin-top: 1.35rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
+        color: var(--text-soft);
+      }
+      .bz-proof {
+        padding: 108px 0 96px;
+        background: #0a0a0a;
+        color: #fff;
+      }
+      html[data-newon-shell-theme="dark"] .bz-proof { background: #0a0a0a; }
+      .bz-proof .bz-label { color: rgba(255, 255, 255, 0.42); }
+      .bz-proof .bz-title {
+        max-width: 12ch;
+        color: #fff;
+        font-size: clamp(2.05rem, 4.8vw, 3.2rem);
+        line-height: 1.15;
+      }
+      .bz-proof .bz-lead {
+        margin: 1.1rem 0 0;
+        max-width: 34rem;
+        color: rgba(255, 255, 255, 0.68);
+      }
+      .bz-flow-track {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin: 3.25rem 0 0;
+        padding: 0;
+        list-style: none;
+        position: relative;
+      }
+      .bz-flow-track::before {
+        content: "";
+        position: absolute;
+        left: 11px;
+        top: 6px;
+        bottom: 18px;
+        width: 1px;
+        background: rgba(255, 255, 255, 0.16);
+      }
+      .bz-flow-track li {
+        position: relative;
+        padding: 0 0 1.65rem 2.35rem;
+      }
+      .bz-flow-track li:last-child { padding-bottom: 0; }
+      .bz-flow-track__dot {
+        position: absolute;
+        left: 4px;
+        top: 6px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.38);
+        background: #0a0a0a;
+        box-shadow: 0 0 0 4px #0a0a0a;
+      }
+      .bz-flow-track__n {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        color: rgba(255, 255, 255, 0.42);
+      }
+      .bz-flow-track__en {
+        display: block;
+        font-size: clamp(1.15rem, 2vw, 1.35rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: #fff;
+      }
+      .bz-flow-track__ko {
+        display: block;
+        margin-top: 0.2rem;
+        font-size: 0.8125rem;
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .bz-flow-track__ko:empty { display: none; }
+      @media (min-width: 860px) {
+        .bz-flow-track {
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+          gap: 0;
+          margin-top: 3.75rem;
+        }
+        .bz-flow-track::before {
+          left: 0;
+          right: 0;
+          top: 11px;
+          bottom: auto;
+          width: auto;
+          height: 1px;
+        }
+        .bz-flow-track li {
+          padding: 2.35rem 1.25rem 0 0;
+        }
+        .bz-flow-track__dot {
+          left: 0;
+          top: 4px;
+        }
+      }
+      .bz-ind-head {
+        display: grid;
+        gap: 1.25rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #ececec;
+      }
+      html[data-newon-shell-theme="dark"] .bz-ind-head {
+        border-bottom-color: var(--border);
+      }
+      @media (min-width: 900px) {
+        .bz-ind-head {
+          grid-template-columns: minmax(0, 0.52fr) minmax(0, 0.48fr);
+          gap: 4rem;
+          align-items: end;
+        }
+        .bz-ind-head .bz-title {
+          margin-bottom: 0;
+          max-width: 11.5ch;
+        }
+        .bz-ind-head .bz-lead {
+          margin: 0;
+          max-width: 28rem;
+          justify-self: end;
+        }
+      }
+      .bz-ind-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      @media (min-width: 900px) {
+        .bz-ind-list {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+      .bz-ind-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.95rem;
+        min-height: 6.25rem;
+        padding: 1.55rem 0 1.5rem;
+        border-bottom: 1px solid #ececec;
+        transition: border-color 0.2s ease;
+      }
+      html[data-newon-shell-theme="dark"] .bz-ind-list li {
+        border-bottom-color: var(--border);
+      }
+      @media (min-width: 900px) {
+        .bz-ind-list li:nth-child(3n + 2),
+        .bz-ind-list li:nth-child(3n) {
+          padding-left: 1.85rem;
+        }
+        .bz-ind-list li:nth-child(3n + 1),
+        .bz-ind-list li:nth-child(3n + 2) {
+          padding-right: 1.35rem;
+        }
+      }
+      .bz-ind-list li:hover {
+        border-bottom-color: #cfcfcf;
+      }
+      html[data-newon-shell-theme="dark"] .bz-ind-list li:hover {
+        border-bottom-color: rgba(255, 255, 255, 0.28);
+      }
+      .bz-ind-n {
+        flex: 0 0 auto;
+        min-width: 1.65rem;
+        padding-top: 0.28rem;
+        font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 0.6875rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        color: #b3b3b3;
+        transition: color 0.2s ease;
+      }
+      .bz-ind-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 0.32rem;
+        min-width: 0;
+      }
+      .bz-ind-en {
+        font-size: 0.65625rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #8a8a8a;
+        transition: color 0.2s ease;
+      }
+      .bz-ind-name {
+        font-size: clamp(1.2rem, 2.1vw, 1.55rem);
+        font-weight: 700;
+        letter-spacing: -0.035em;
+        line-height: 1.25;
+        color: var(--text);
+        word-break: keep-all;
+        transition: color 0.2s ease;
+      }
+      .bz-ind-list li:hover .bz-ind-n,
+      .bz-ind-list li:hover .bz-ind-en {
+        color: #6a6a6a;
+      }
+      .bz-ind-list li:hover .bz-ind-name {
+        color: #000;
+      }
+      html[data-newon-shell-theme="dark"] .bz-ind-list li:hover .bz-ind-n,
+      html[data-newon-shell-theme="dark"] .bz-ind-list li:hover .bz-ind-en {
+        color: rgba(255, 255, 255, 0.62);
+      }
+      html[data-newon-shell-theme="dark"] .bz-ind-list li:hover .bz-ind-name {
+        color: #fff;
+      }
+      @media (max-width: 899px) {
+        .bz-ind-list li {
+          min-height: 0;
+          padding: 1.2rem 0 1.25rem;
+        }
+        .bz-ind-name {
+          font-size: 1.2rem;
+        }
+      }
+      .bz-faq {
+        margin-top: 2.5rem;
+        border-top: 1px solid #ececec;
+      }
+      html[data-newon-shell-theme="dark"] .bz-faq { border-color: var(--border); }
+      .bz-faq-item { border-bottom: 1px solid #ececec; }
+      html[data-newon-shell-theme="dark"] .bz-faq-item { border-color: var(--border); }
+      .bz-faq-q {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        width: 100%;
+        min-height: 56px;
+        padding: 1rem 0;
+        border: 0;
+        background: transparent;
+        color: var(--text);
+        font: inherit;
+        font-size: 1.02rem;
+        font-weight: 600;
+        text-align: left;
+        cursor: pointer;
+        word-break: keep-all;
+      }
+      .bz-faq-icon {
+        position: relative;
+        flex: 0 0 14px;
+        width: 14px;
+        height: 14px;
+      }
+      .bz-faq-icon::before,
+      .bz-faq-icon::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 6px;
+        width: 14px;
+        height: 1.5px;
+        background: currentColor;
+        transition: transform 0.26s ease, opacity 0.26s ease;
+      }
+      .bz-faq-icon::after { transform: rotate(90deg); }
+      .bz-faq-item.is-open .bz-faq-icon::after { opacity: 0; }
+      .bz-faq-a {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.26s ease;
+      }
+      .bz-faq-item.is-open .bz-faq-a { grid-template-rows: 1fr; }
+      .bz-faq-a > p {
+        overflow: hidden;
+        min-height: 0;
+        margin: 0;
+        padding-bottom: 0;
+        max-width: 40rem;
+        font-size: 0.975rem;
+        line-height: 1.7;
+        color: var(--text-muted);
+        word-break: keep-all;
+      }
+      .bz-faq-item.is-open .bz-faq-a > p { padding-bottom: 1.15rem; }
+      @media (prefers-reduced-motion: reduce) {
+        .bz-faq-a,
+        .bz-faq-icon::before,
+        .bz-faq-icon::after { transition: none; }
+      }
+      .bz-rep {
+        background: #fff;
+        border-top: 1px solid #eaeaea;
+        border-bottom: 1px solid #eaeaea;
+      }
+      html[data-newon-shell-theme="dark"] .bz-rep {
+        background: var(--bg);
+        border-color: var(--border);
+      }
+      .bz-rep-grid {
+        display: grid;
+        gap: 2.75rem;
+        align-items: center;
+      }
+      @media (min-width: 900px) {
+        .bz-rep-grid {
+          grid-template-columns: 0.45fr 0.55fr;
+          gap: 4rem;
+        }
+      }
+      .bz-rep-copy .bz-title { max-width: 16ch; }
+      .bz-rep-name {
+        margin: 1.75rem 0 0;
+        font-size: 1.35rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+      }
+      .bz-rep-role {
+        margin: 0.35rem 0 0;
+        font-size: 0.9375rem;
+        color: var(--text-muted);
+      }
+      .bz-rep-mail {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        margin-top: 1.35rem;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: var(--text);
+        text-decoration: none;
+        border-bottom: 1px solid currentColor;
+      }
+      .bz-ncards {
+        position: relative;
+        width: min(100%, 26rem);
+        margin: 0 auto;
+        padding: 1.75rem 1.65rem 2.1rem 0.85rem;
+        overflow: visible;
+      }
+      @media (max-width: 899px) {
+        .bz-ncards {
+          width: min(100%, 22.5rem);
+          padding: 1.35rem 1.7rem 1.85rem;
+        }
+      }
+      html[data-newon-shell-theme="dark"] .bz-ncards {
+        background: #f2f2f2;
+        border-radius: 16px;
+      }
+      .bz-ncards__stage {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1024 / 588;
+      }
+      .bz-ncard {
+        position: absolute;
+        inset: 0;
+        display: block;
+        overflow: hidden;
+        border-radius: 3px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+      }
+      .bz-ncard img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .bz-ncard--back {
+        transform: translate(14px, 6px) rotate(5deg);
+        z-index: 0;
+      }
+      .bz-ncard--front {
+        transform: rotate(-1.5deg);
+        z-index: 1;
+      }
+      .bz-ncard--front:focus-visible {
+        outline: 2px solid var(--text);
+        outline-offset: 4px;
+      }
+      .bz-ncards:hover .bz-ncard--front,
+      .bz-ncards:focus-within .bz-ncard--front {
+        transform: translateY(-5px) rotate(-1.5deg);
+      }
+      .bz-ncards:hover .bz-ncard--back,
+      .bz-ncards:focus-within .bz-ncard--back {
+        transform: translate(18px, 2px) rotate(6.5deg);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bz-ncard {
+          transition: none;
+        }
+        .bz-ncards:hover .bz-ncard--front,
+        .bz-ncards:focus-within .bz-ncard--front {
+          transform: rotate(-1.5deg);
+        }
+        .bz-ncards:hover .bz-ncard--back,
+        .bz-ncards:focus-within .bz-ncard--back {
+          transform: translate(14px, 6px) rotate(5deg);
+        }
+      }
+      .bz-eco { background: #fff; }
+      html[data-newon-shell-theme="dark"] .bz-eco { background: var(--bg); }
+      .bz-eco-card {
+        padding: 1.5rem 1.35rem;
+        border: 1px solid #eaeaea;
+        border-radius: 12px;
+        background: #fff;
+      }
+      html[data-newon-shell-theme="dark"] .bz-eco-card {
+        background: var(--surface);
+        border-color: var(--border);
+      }
+      .bz-eco-card h3 {
+        margin: 0 0 1rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+      .bz-app-row { display: flex; flex-direction: column; gap: 0.35rem; }
+      .bz-app {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.55rem 0.35rem;
+        border-radius: 10px;
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9375rem;
+        transition: background 0.2s ease;
+      }
+      .bz-app:hover { background: rgba(0, 0, 0, 0.035); }
+      html[data-newon-shell-theme="dark"] .bz-app:hover { background: rgba(255, 255, 255, 0.05); }
+      .bz-app img {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        object-fit: contain;
+        background: var(--bg);
+      }
+      .bz-why-card {
+        padding: 1.5rem 1.35rem;
+        border: 1px solid #eaeaea;
+        border-radius: 12px;
+        background: #fff;
+      }
+      html[data-newon-shell-theme="dark"] .bz-why-card {
+        background: var(--surface);
+        border-color: var(--border);
+      }
+      .bz-num {
+        display: block;
+        margin-bottom: 0.85rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: var(--text-soft);
+      }
+      .bz-why-card h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+      .bz-why-card p {
+        margin: 0;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: var(--text-muted);
+      }
+      .bz-steps {
+        display: grid;
+        gap: 1.25rem;
+        margin: 2rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      @media (min-width: 900px) {
+        .bz-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
+      }
+      .bz-step {
+        position: relative;
+        padding: 1.5rem 1.35rem;
+        border: 1px solid #eaeaea;
+        border-radius: 12px;
+        background: #fff;
+      }
+      html[data-newon-shell-theme="dark"] .bz-step {
+        background: var(--surface);
+        border-color: var(--border);
+      }
+      .bz-step__n {
+        display: block;
+        margin-bottom: 0.85rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: var(--text-soft);
+      }
+      .bz-step h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+      .bz-step p {
+        margin: 0;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: var(--text-muted);
+      }
+      .bz-band {
+        background: #0a0a0a;
+        color: #fff;
+        border: 0;
+      }
+      .bz-band .bz-label { color: rgba(255, 255, 255, 0.42); }
+      .bz-band .bz-title { color: #fff; max-width: 18ch; }
+      .bz-band .bz-lead { color: rgba(255, 255, 255, 0.62); }
+      .bz-band .btn-primary {
+        margin-top: 1.75rem;
+        background: #fff;
+        color: #0a0a0a;
+      }
+      .bz-band .btn-primary:hover { background: #f0f0f0; }
+      .bz-form-wrap { max-width: 40rem; position: relative; }
+      .bz-form { display: grid; gap: 1rem; margin-top: 1.75rem; }
+      .bz-field { display: flex; flex-direction: column; gap: 0.4rem; }
+      .bz-field label { font-size: 0.8125rem; font-weight: 600; color: var(--text); }
+      .bz-field .bz-opt { font-weight: 500; color: var(--text-muted); }
+      .bz-req { margin-left: 0.12em; }
+      .bz-field input:not([type="checkbox"]):not([type="radio"]),
+      .bz-field select,
+      .bz-field textarea {
+        width: 100%;
+        min-height: 44px;
+        padding: 0.75rem 0.85rem;
+        border: 1px solid #eaeaea;
+        border-radius: 10px;
+        background: var(--bg);
+        color: var(--text);
+        font: inherit;
+        font-size: 0.9375rem;
+      }
+      html[data-newon-shell-theme="dark"] .bz-field input:not([type="checkbox"]):not([type="radio"]),
+      html[data-newon-shell-theme="dark"] .bz-field select,
+      html[data-newon-shell-theme="dark"] .bz-field textarea {
+        border-color: var(--border);
+      }
+      .bz-field textarea { min-height: 8.5rem; resize: vertical; }
+      @media (max-width: 720px) {
+        #bz-type {
+          max-width: 100%;
+          height: auto;
+          min-height: 44px;
+          padding-right: 2.5rem;
+          line-height: 1.35;
+          white-space: normal;
+          text-overflow: clip;
+        }
+        #bz-type option {
+          white-space: normal;
+          line-height: 1.35;
+        }
+      }
+      .bz-field-hint {
+        margin: 0;
+        font-size: 0.75rem;
+        line-height: 1.45;
+        color: var(--text-muted);
+      }
+      .bz-studio-selected {
+        margin: 0.75rem 0 0;
+        padding: 0.65rem 0.85rem;
+        border: 1px solid #eaeaea;
+        border-radius: 10px;
+        background: #fafafa;
+        font-size: 0.875rem;
+        color: var(--text);
+        overflow-wrap: anywhere;
+      }
+      html[data-newon-shell-theme="dark"] .bz-studio-selected {
+        border-color: var(--border);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .bz-form .btn,
+      .bz-form .bz-submit {
+        justify-self: stretch;
+        min-height: 52px;
+      }
+      .bz-form .btn[disabled],
+      .bz-form .bz-submit[disabled] { opacity: 0.7; cursor: wait; }
+      .bz-hp {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
+        border: 0;
+        padding: 0;
+      }
+      .bz-submit-spin {
+        display: none;
+        width: 0.7rem;
+        height: 0.7rem;
+        margin-right: 0.5rem;
+        border: 1.5px solid currentColor;
+        border-right-color: transparent;
+        border-radius: 50%;
+      }
+      .btn.is-busy .bz-submit-spin,
+      .bz-submit.is-busy .bz-submit-spin {
+        display: inline-block;
+        animation: bz-spin 0.7s linear infinite;
+      }
+      @keyframes bz-spin { to { transform: rotate(360deg); } }
+      @media (prefers-reduced-motion: reduce) {
+        .btn.is-busy .bz-submit-spin,
+        .bz-submit.is-busy .bz-submit-spin { animation: none; opacity: 0.55; }
+      }
+      .bz-fail { display: none; margin-top: 1.1rem; color: var(--text); }
+      .bz-fail.is-visible { display: block; }
+      .bz-reveal {
+        opacity: 1;
+        transform: none;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .bz-reveal.is-visible { opacity: 1; transform: none; }
+      @media (prefers-reduced-motion: reduce) {
+        .bz-reveal { opacity: 1; transform: none; }
+      }
+      .bz-services__grid { display: grid; gap: 0; margin-top: 2.25rem; border-top: 1px solid #e8e8e8; }
+      .bz-svc {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 0.85rem 1.35rem;
+        align-items: center;
+        padding: 1.15rem 0.1rem 1.2rem;
+        border: 0;
+        border-bottom: 1px solid #e8e8e8;
+        background: transparent;
+      }
+      html[data-newon-shell-theme="dark"] .bz-svc,
+      html[data-newon-shell-theme="dark"] .bz-services__grid { border-color: var(--border); }
+      .bz-svc__num {
+        margin: 0;
+        padding-top: 0.35rem;
+        align-self: start;
+        min-width: 1.6rem;
+        font-size: 0.6875rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: var(--text-soft);
+      }
+      .bz-svc__body { min-width: 0; }
+      .bz-svc__title {
+        margin: 0;
+        font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.25;
+      }
+      .bz-svc__desc {
+        margin: 0.3rem 0 0;
+        max-width: 38rem;
+        font-size: 0.875rem;
+        line-height: 1.55;
+        color: var(--text-muted);
+        word-break: keep-all;
+      }
+      .bz-svc__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin: 0.7rem 0 0;
+        padding: 0;
+      }
+      .bz-svc__tag {
+        display: inline-block;
+        padding: 0.2rem 0.5rem;
+        border: 1px solid #e8e8e8;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        word-break: keep-all;
+      }
+      html[data-newon-shell-theme="dark"] .bz-svc__tag { border-color: var(--border); }
+      .bz-svc__cta {
+        justify-self: end;
+        align-self: center;
+        min-height: 40px;
+        padding: 0.55rem 0.95rem;
+        font-size: 0.8125rem;
+        white-space: nowrap;
+        border-radius: 999px;
+      }
+      @media (max-width: 799px) {
+        .bz-svc { grid-template-columns: auto minmax(0, 1fr); }
+        .bz-svc__cta { grid-column: 1 / -1; justify-self: start; }
+      }
+
+      /* Inquiry hero HQ — match About first screen (20260829 inqhq1) */
+      .bz-hero.bz-hero--hq {
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        background: #ffffff !important;
+        border-bottom: 1px solid rgba(10, 10, 10, 0.12) !important;
+      }
+      .bz-hero.bz-hero--hq .bz-hero__stage {
+        align-items: stretch !important;
+        padding: clamp(0.85rem, 1.8vw, 1.35rem) 0 clamp(1.5rem, 3vw, 2.15rem) !important;
+      }
+      .bz-hero.bz-hero--hq .bz-hero__grid {
+        width: min(1180px, calc(100% - clamp(1.25rem, 4vw, 2rem) * 2)) !important;
+        margin: 0 auto !important;
+        grid-template-columns: 1fr !important;
+        gap: clamp(2rem, 4vw, 3.25rem) !important;
+        align-items: center !important;
+      }
+      @media (min-width: 960px) {
+        .bz-hero.bz-hero--hq .bz-hero__grid {
+          grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr) !important;
+        }
+      }
+      .bz-hero.bz-hero--hq .bz-hero__copy {
+        padding: 0 !important;
+        border-left: 0 !important;
+        max-width: 38rem;
+        align-items: flex-start;
+        justify-content: flex-start !important;
+      }
+      .bz-hero.bz-hero--hq .bz-hero__crumb {
+        display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem;
+        margin: 0 0 1.15rem; font-size: 0.8125rem; color: rgba(10, 10, 10, 0.5);
+      }
+      .bz-hero.bz-hero--hq .bz-hero__crumb a { color: inherit; text-decoration: none; }
+      .bz-hero.bz-hero--hq .bz-hero__crumb a:hover { color: #0a0a0a; }
+      .bz-hero.bz-hero--hq .bz-hero__crumb-sep { opacity: 0.5; }
+      .bz-hero.bz-hero--hq .bz-hero__kicker { display: none !important; }
+      .bz-hero.bz-hero--hq .bz-hero__eyebrow {
+        display: flex !important; flex-wrap: wrap; align-items: center; gap: 0.45rem 0.65rem;
+        margin: 0 0 0.95rem !important; font-size: 0.8125rem !important; font-weight: 700 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        color: rgba(10, 10, 10, 0.52) !important;
+      }
+      .bz-hero.bz-hero--hq .bz-hero__eyebrow-sep { opacity: 0.35; }
+      .bz-hero.bz-hero--hq .bz-hero__eyebrow-role { letter-spacing: 0.12em; color: rgba(10, 10, 10, 0.45); }
+      .bz-hero.bz-hero--hq .bz-hero__word {
+        margin: 0 0 1.05rem !important; font-size: clamp(2.6rem, 6vw, 4.25rem) !important;
+        font-weight: 720 !important; letter-spacing: -0.05em !important; line-height: 0.95 !important; color: #0a0a0a !important;
+      }
+      .bz-hero.bz-hero--hq .bz-hero__title {
+        margin: 0 0 0.95rem !important; max-width: 14em !important;
+        font-size: clamp(1.55rem, 3.2vw, 2.15rem) !important; font-weight: 700 !important;
+        letter-spacing: -0.035em !important; line-height: 1.2 !important; color: #0a0a0a !important;
+      }
+      .bz-hero.bz-hero--hq .bz-hero__lead {
+        margin: 0 0 1.15rem !important; max-width: 34rem !important;
+        font-size: clamp(1.02rem, 1.55vw, 1.125rem) !important; line-height: 1.68 !important;
+        color: rgba(10, 10, 10, 0.58) !important;
+      }
+      .bz-hero.bz-hero--hq .bz-hero__domains {
+        display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1.45rem; padding: 0; list-style: none;
+      }
+      .bz-hero.bz-hero--hq .bz-hero__domains li {
+        margin: 0; padding: 0.35rem 0.65rem; border: 1px solid rgba(10, 10, 10, 0.16);
+        font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+        color: rgba(10, 10, 10, 0.65);
+      }
+      .bz-hero.bz-hero--hq .bz-hero-actions { margin-top: 0 !important; gap: 0.7rem !important; }
+      .bz-hero.bz-hero--hq .bz-hero-actions .btn {
+        border-radius: 0 !important; min-height: 2.85rem; padding: 0.75rem 1.2rem !important; font-weight: 700 !important;
+      }
+      .bz-hero.bz-hero--hq .bz-hero__visual {
+        width: 100%; max-width: 32rem; margin-inline: auto; padding: 0 !important;
+        border: 0 !important; background: transparent !important; box-shadow: none !important;
+      }
+      @media (min-width: 960px) {
+        .bz-hero.bz-hero--hq .bz-hero__visual { max-width: none; margin-inline: 0; }
+      }
+      .bz-hero.bz-hero--hq .bz-hero__head,
+      .bz-hero.bz-hero--hq .bz-hero-index,
+      .bz-hero.bz-hero--hq .bz-hero__bar { display: none !important; }
+      .bz-hero.bz-hero--hq .bz-sv {
+        display: flex; flex-direction: column; width: 100%;
+        border: 1px solid rgba(10, 10, 10, 0.12); background: #fff;
+        box-shadow: 0 28px 70px -36px rgba(0, 0, 0, 0.42); overflow: hidden;
+        transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .bz-hero.bz-hero--hq .bz-sv:hover {
+        transform: translateY(-5px); box-shadow: 0 34px 80px -34px rgba(0, 0, 0, 0.48);
+      }
+      .bz-hero.bz-hero--hq .bz-sv__head {
+        display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+        padding: 0.9rem 1.1rem; border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+      }
+      .bz-hero.bz-hero--hq .bz-sv__live {
+        display: inline-flex; align-items: center; gap: 0.45rem;
+        font-size: 0.75rem; font-weight: 750; letter-spacing: 0.1em; color: rgba(10, 10, 10, 0.72);
+      }
+      .bz-hero.bz-hero--hq .bz-sv__live i {
+        width: 0.45rem; height: 0.45rem; background: #34d399;
+        box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2);
+      }
+      .bz-hero.bz-hero--hq .bz-sv__meta {
+        font-size: 0.75rem; font-weight: 750; letter-spacing: 0.12em; color: rgba(10, 10, 10, 0.4);
+      }
+      .bz-hero.bz-hero--hq .bz-sv__body { padding: 1.25rem 1.15rem 1.1rem; }
+      .bz-hero.bz-hero--hq .bz-sv__card {
+        display: block; overflow: hidden; box-shadow: 0 12px 32px -18px rgba(0, 0, 0, 0.45);
+      }
+      .bz-hero.bz-hero--hq .bz-sv__card img { display: block; width: 100%; height: auto; }
+      .bz-hero.bz-hero--hq .bz-sv__hint {
+        margin: 0.75rem 0 0; font-size: 0.8125rem; color: rgba(10, 10, 10, 0.55); text-align: center;
+      }
+      .bz-hero.bz-hero--hq .bz-sv__foot {
+        display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(10, 10, 10, 0.1);
+      }
+      .bz-hero.bz-hero--hq .bz-sv__foot span {
+        padding: 0.75rem 1rem; font-size: 0.75rem; font-weight: 750; letter-spacing: 0.1em; color: rgba(10, 10, 10, 0.55);
+      }
+      .bz-hero.bz-hero--hq .bz-sv__foot span:first-child { border-right: 1px solid rgba(10, 10, 10, 0.1); }
+
+    </style>
+    <link rel="stylesheet" href="/business-page.css?v=20261017p4a" />
+    <script src="/lang-nav.js?v=20261019ln1"></script>
+    <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
+    <link rel="stylesheet" href="/site-dark.css?v=20260924foot1" />
+    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
+  <link rel="stylesheet" href="/business-model-notice.css?v=1" />
+</head>
+  <body>
+    <a class="skip-link" href="#business-main">Ir al contenido</a>
+    <header class="gnav site-header gnav--five gnav--ventures" data-gnav>
+      <div class="gnav__bar">
+        <div class="gnav__inner">
+          <a class="gnav__brand" href="../../" aria-label="Newon">
+            <img class="gnav__logo" src="/logo-nav.png" alt="" width="40" height="40" decoding="async" />
+            <span class="gnav__wordmark">Newon</span>
+          </a>
+          <nav class="gnav__nav" aria-label="Main navigation">
+            <div class="gnav__nav-scroller">
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="consumer">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+      Aplicaciones<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="ai">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+      AI<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+            <div class="gnav-dd gnav-dd--active" data-gnav-dd data-gnav-menu="business">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-current="page">
+      Negocios y alianzas<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="studio">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+      Studio<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="company">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+      Empresa<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+          </div>
+          <div class="gnav-mega" data-gnav-mega="consumer" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">APPS</p>
+      <p class="gnav-mega__lead">Everyday apps and digital products</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
+      <a class="gnav-mega__row" href="../../ecosystem/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Ecosistema Newon</span>
+        <span class="gnav-mega__row-desc">Apps, IA, vida y negocio — una conexión Newon</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../apps/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Apps</span>
+        <span class="gnav-mega__row-desc">Aplicaciones que Newon crea y gestiona</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../#newon-plus-app" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Newon+</span>
+        <span class="gnav-mega__row-desc">Newon product ecosystem</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../games/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Games</span>
+        <span class="gnav-mega__row-desc">Juegos e interactivos</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../saas/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">SaaS</span>
+        <span class="gnav-mega__row-desc">Web subscription services</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../products/">Ver todos los productos →</a></p></div>
+      </div>
+    </div>
+          <div class="gnav-mega" data-gnav-mega="ai" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">AI</p>
+      <p class="gnav-mega__lead">Personal and business AI services</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
+      <a class="gnav-mega__row" href="../../ai/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">IA personal</span>
+        <span class="gnav-mega__row-desc">IA conectada a los servicios cotidianos de Newon</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../ai/enterprise/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">IA para empresas</span>
+        <span class="gnav-mega__row-desc">IA pensada para cómo trabaja la empresa</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../ai/">Explore Newon AI →</a></p></div>
+      </div>
+    </div>
+          <div class="gnav-mega" data-gnav-mega="babylog" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">BABYLOG</p>
+      <p class="gnav-mega__lead">Baby-care records and family sharing</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
+      <a class="gnav-mega__row" href="../../babylog/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Overview</span>
+        <span class="gnav-mega__row-desc">Every moment of a family’s growth, connected</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../babylog/platform/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Platform</span>
+        <span class="gnav-mega__row-desc">20 service screens from pregnancy to growing up</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../babylog/business/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Business</span>
+        <span class="gnav-mega__row-desc">6 business areas across family care</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../babylog/partnerships/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Partnerships</span>
+        <span class="gnav-mega__row-desc">8 core kinds of partners</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../babylog/contact/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Contact</span>
+        <span class="gnav-mega__row-desc">Talk to BABYLOG</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../babylog/">View BabyLog →</a></p></div>
+      </div>
+    </div>
+          <div class="gnav-mega" data-gnav-mega="petlog" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">PETLOG</p>
+      <p class="gnav-mega__lead">Plataforma integral para la vida con mascotas</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
+      <a class="gnav-mega__row" href="../../petlog/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Overview</span>
+        <span class="gnav-mega__row-desc">Cada momento con tu mascota, conectado</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../petlog/platform/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Platform</span>
+        <span class="gnav-mega__row-desc">18 áreas, de los registros a las compras y el cuidado</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../petlog/business/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Business</span>
+        <span class="gnav-mega__row-desc">20 líneas de negocio del sector mascotas</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../petlog/partnerships/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Partnerships</span>
+        <span class="gnav-mega__row-desc">14 tipos de socios</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../petlog/contact/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Contact</span>
+        <span class="gnav-mega__row-desc">Habla con PETLOG</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../petlog/">Ver PETLOG →</a></p></div>
+      </div>
+    </div>
+          <div class="gnav-mega" data-gnav-mega="myworld" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">MY WORLD</p>
+      <p class="gnav-mega__lead">Map-based travel records</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
+      <a class="gnav-mega__row" href="../../myworld/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Overview</span>
+        <span class="gnav-mega__row-desc">Every moment of travel, in one place</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../myworld/platform/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Platform</span>
+        <span class="gnav-mega__row-desc">20 services from records to booking and commerce</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../myworld/business/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Business</span>
+        <span class="gnav-mega__row-desc">20 business lines in 8 groups</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../myworld/partnerships/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Partnerships</span>
+        <span class="gnav-mega__row-desc">14 ways to partner in travel</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../myworld/contact/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Contact</span>
+        <span class="gnav-mega__row-desc">Talk to MY WORLD</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../myworld/">View My World →</a></p></div>
+      </div>
+    </div>
+          <div class="gnav-mega" data-gnav-mega="shareon" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">SHAREON</p>
+      <p class="gnav-mega__lead">Plataforma de uso compartido y alquiler para personas y empresas</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
+      <a class="gnav-mega__row" href="../../shareon/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Resumen</span>
+        <span class="gnav-mega__row-desc">Sin tenerlo, justo cuando lo necesitas</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../shareon/platform/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Plataforma</span>
+        <span class="gnav-mega__row-desc">Alquiler de objetos, equipos y espacios</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../shareon/business/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Negocio</span>
+        <span class="gnav-mega__row-desc">Catorce negocios y estructura de ingresos</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../shareon/partnerships/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Alianzas</span>
+        <span class="gnav-mega__row-desc">Catorce formas de colaborar</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../shareon/contact/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Contacto</span>
+        <span class="gnav-mega__row-desc">Consultas oficiales sobre SHAREON</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../shareon/">Ver SHAREON →</a></p></div>
+      </div>
+    </div>
+          <div class="gnav-mega" data-gnav-mega="lifestage" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">LIVON</p>
+      <p class="gnav-mega__lead">Services across life stages</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
+      <a class="gnav-mega__row" href="../../livon/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Overview</span>
+        <span class="gnav-mega__row-desc">Every moment of life, with LIVON</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../livon/platform/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Platform</span>
+        <span class="gnav-mega__row-desc">40 life areas and 8 core features</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../livon/business/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Business</span>
+        <span class="gnav-mega__row-desc">15 business areas and revenue models</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../livon/partnerships/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Partnerships</span>
+        <span class="gnav-mega__row-desc">20 ways to partner</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../livon/contact/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Contact</span>
+        <span class="gnav-mega__row-desc">Talk to LIVON</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../livon/">View LivOn →</a></p></div>
+      </div>
+    </div>
+          <div class="gnav-mega" data-gnav-mega="ongil" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">ONGIL</p>
+      <p class="gnav-mega__lead">Senior life and family connection</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
+      <a class="gnav-mega__row" href="../../ongil/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Overview</span>
+        <span class="gnav-mega__row-desc">A warm connection for every moment of growing older</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../ongil/platform/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Platform</span>
+        <span class="gnav-mega__row-desc">18 areas from daily life to care</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../ongil/business/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Business</span>
+        <span class="gnav-mega__row-desc">20 business lines for senior life</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../ongil/partnerships/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Partnerships</span>
+        <span class="gnav-mega__row-desc">14 kinds of partners</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../ongil/contact/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Contact</span>
+        <span class="gnav-mega__row-desc">Talk to ONGIL</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../ongil/">View Ongil →</a></p></div>
+      </div>
+    </div>
+          <div class="gnav-mega" data-gnav-mega="business" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">Negocios y alianzas</p>
+      <p class="gnav-mega__lead">Centro de negocios y alianzas de las seis plataformas de NEWON</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
+      <a class="gnav-mega__row" href="../../business/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Resumen</span>
+        <span class="gnav-mega__row-desc">Un centro de negocios sobre seis plataformas</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../business/platforms/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Plataformas</span>
+        <span class="gnav-mega__row-desc">Áreas de negocio y alianzas por plataforma</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../business/models/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Modelos de negocio</span>
+        <span class="gnav-mega__row-desc">Transacciones, SaaS, empresas, alianzas, licencias</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../business/partnerships/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Alianzas</span>
+        <span class="gnav-mega__row-desc">Formas de colaborar y cómo funciona</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../business/contact/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Contacto</span>
+        <span class="gnav-mega__row-desc">Consultas de negocios y alianzas</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../business/">Ver negocios y alianzas →</a></p></div>
+      </div>
+    </div>
+          <div class="gnav-mega" data-gnav-mega="studio" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">ESTUDIO</p>
+      <p class="gnav-mega__lead">Productos digitales y recursos de diseño propios</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
+      <a class="gnav-mega__row" href="../../studio/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Resumen</span>
+        <span class="gnav-mega__row-desc">Qué hace Studio y sus cuatro familias de productos</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../studio/store/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Tienda digital</span>
+        <span class="gnav-mega__row-desc">Plantillas, herramientas y software</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../studio/platforms/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Nuestras plataformas</span>
+        <span class="gnav-mega__row-desc">Productos para las seis plataformas</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../studio/business/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Productos para empresas</span>
+        <span class="gnav-mega__row-desc">Productos estándar y licencias por sector</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../studio/contact/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Contacto</span>
+        <span class="gnav-mega__row-desc">Consultas sobre productos, compras y licencias</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../studio/">Explorar el estudio →</a></p></div>
+      </div>
+    </div>
+          <div class="gnav-mega" data-gnav-mega="company" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">EMPRESA</p>
+      <p class="gnav-mega__lead">Acerca del propio Newon</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
+      <a class="gnav-mega__row" href="../../about/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">About Newon</span>
+        <span class="gnav-mega__row-desc">Acerca de Newon</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../portfolio/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Portfolio</span>
+        <span class="gnav-mega__row-desc">Productos y proyectos</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../news/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">News</span>
+        <span class="gnav-mega__row-desc">Actualizaciones oficiales</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../media/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Medios</span>
+        <span class="gnav-mega__row-desc">Vídeo · historias DE productos · visual</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../resources/blog/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Blog</span>
+        <span class="gnav-mega__row-desc">Construir registros e historias</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../market/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">06</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Market</span>
+        <span class="gnav-mega__row-desc">Market notes and signals</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../business/contact/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">07</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Contacto</span>
+        <span class="gnav-mega__row-desc">Contacta con nosotros</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../about/">Acerca de Newon →</a></p></div>
+      </div>
+    </div>
+          </nav>
+          <div class="gnav__util">
+            <a class="gnav__cta" href="../../business/contact/">Contact</a>
+            <div class="gnav__lang" data-lang-switcher>
+    <label class="visually-hidden" for="lang-select-gnav-hub">Idioma</label>
+    <select id="lang-select-gnav-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
+      <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Inglés</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Français</option><option value="de" data-short="DE">Alemán</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Indonesia</option>
+    </select>
+  </div>
+            <button type="button" class="gnav__theme" data-theme-toggle data-label-light="Modo claro" data-label-dark="Modo oscuro" title="Cambiar tema" aria-label="Modo oscuro"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-hub" aria-label="Menu">
+              <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
+            </button>
+          </div>
+        </div>
+        <nav class="gnav__ventures" aria-label="Negocios principales">
+          <div class="gnav__ventures-inner">
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="babylog">
+    <a class="gnav__link gnav-dd__label" href="../../babylog/">BABYLOG</a>
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-label="BABYLOG">
+      <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="petlog">
+    <a class="gnav__link gnav-dd__label" href="../../petlog/">PETLOG</a>
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-label="PETLOG">
+      <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="myworld">
+    <a class="gnav__link gnav-dd__label" href="../../myworld/">MY WORLD</a>
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-label="MY WORLD">
+      <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="shareon">
+    <a class="gnav__link gnav-dd__label" href="../../shareon/">SHAREON</a>
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-label="SHAREON">
+      <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="lifestage">
+    <a class="gnav__link gnav-dd__label" href="../../livon/">LIVON</a>
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-label="LIVON">
+      <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="ongil">
+    <a class="gnav__link gnav-dd__label" href="../../ongil/">ONGIL</a>
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-label="ONGIL">
+      <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+          </div>
+        </nav>
+      </div>
+      <div id="gnav-mobile-hub" class="gnav-mobile" hidden aria-hidden="true">
+      <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
+      <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="Menu">
+        <div class="gnav-mobile__scroll">
+          <div class="gnav-mobile__util-row">
+            <div class="gnav__lang" data-lang-switcher>
+    <label class="visually-hidden" for="lang-select-mobile-hub">Idioma</label>
+    <select id="lang-select-mobile-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
+      <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Inglés</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Français</option><option value="de" data-short="DE">Alemán</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Indonesia</option>
+    </select>
+  </div>
+            <button type="button" class="gnav__theme gnav__theme--mobile" data-theme-toggle data-label-light="Modo claro" data-label-dark="Modo oscuro" title="Cambiar tema" aria-label="Cambiar tema"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <div class="gnav-mobile__divider" aria-hidden="true"></div>
+          <div class="gnav-mobile__ventures" role="group" aria-label="Negocios principales">
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="../../babylog/">BABYLOG</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="BABYLOG"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../babylog/">Overview</a><a class="gnav-mobile__sublink" href="../../babylog/platform/">Platform</a><a class="gnav-mobile__sublink" href="../../babylog/business/">Business</a><a class="gnav-mobile__sublink" href="../../babylog/partnerships/">Partnerships</a><a class="gnav-mobile__sublink" href="../../babylog/contact/">Contact</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="../../petlog/">PETLOG</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="PETLOG"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../petlog/">Overview</a><a class="gnav-mobile__sublink" href="../../petlog/platform/">Platform</a><a class="gnav-mobile__sublink" href="../../petlog/business/">Business</a><a class="gnav-mobile__sublink" href="../../petlog/partnerships/">Partnerships</a><a class="gnav-mobile__sublink" href="../../petlog/contact/">Contact</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="../../myworld/">MY WORLD</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="MY WORLD"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../myworld/">Overview</a><a class="gnav-mobile__sublink" href="../../myworld/platform/">Platform</a><a class="gnav-mobile__sublink" href="../../myworld/business/">Business</a><a class="gnav-mobile__sublink" href="../../myworld/partnerships/">Partnerships</a><a class="gnav-mobile__sublink" href="../../myworld/contact/">Contact</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="../../shareon/">SHAREON</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="SHAREON"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../shareon/">Resumen</a><a class="gnav-mobile__sublink" href="../../shareon/platform/">Plataforma</a><a class="gnav-mobile__sublink" href="../../shareon/business/">Negocio</a><a class="gnav-mobile__sublink" href="../../shareon/partnerships/">Alianzas</a><a class="gnav-mobile__sublink" href="../../shareon/contact/">Contacto</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="../../livon/">LIVON</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="LIVON"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../livon/">Overview</a><a class="gnav-mobile__sublink" href="../../livon/platform/">Platform</a><a class="gnav-mobile__sublink" href="../../livon/business/">Business</a><a class="gnav-mobile__sublink" href="../../livon/partnerships/">Partnerships</a><a class="gnav-mobile__sublink" href="../../livon/contact/">Contact</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="../../ongil/">ONGIL</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="ONGIL"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../ongil/">Overview</a><a class="gnav-mobile__sublink" href="../../ongil/platform/">Platform</a><a class="gnav-mobile__sublink" href="../../ongil/business/">Business</a><a class="gnav-mobile__sublink" href="../../ongil/partnerships/">Partnerships</a><a class="gnav-mobile__sublink" href="../../ongil/contact/">Contact</a></div>
+      </div>
+        </div>
+          <div class="gnav-mobile__divider" aria-hidden="true"></div>
+          <div class="gnav-mobile__acc" data-gnav-acc>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="../../products/">Aplicaciones</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Aplicaciones"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../ecosystem/">Ecosistema Newon</a><a class="gnav-mobile__sublink" href="../../apps/">Apps</a><a class="gnav-mobile__sublink" href="../../#newon-plus-app">Newon+</a><a class="gnav-mobile__sublink" href="../../games/">Games</a><a class="gnav-mobile__sublink" href="../../saas/">SaaS</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="../../ai/">AI</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="AI"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../ai/">IA personal</a><a class="gnav-mobile__sublink" href="../../ai/enterprise/">IA para empresas</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="../../business/">Negocios y alianzas</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Negocios y alianzas"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../business/">Resumen</a><a class="gnav-mobile__sublink" href="../../business/platforms/">Plataformas</a><a class="gnav-mobile__sublink" href="../../business/models/">Modelos de negocio</a><a class="gnav-mobile__sublink" href="../../business/partnerships/">Alianzas</a><a class="gnav-mobile__sublink" href="../../business/contact/">Contacto</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="../../studio/">Studio</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Studio"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../studio/">Resumen</a><a class="gnav-mobile__sublink" href="../../studio/store/">Tienda digital</a><a class="gnav-mobile__sublink" href="../../studio/platforms/">Nuestras plataformas</a><a class="gnav-mobile__sublink" href="../../studio/business/">Productos para empresas</a><a class="gnav-mobile__sublink" href="../../studio/contact/">Contacto</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="../../about/">Empresa</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Empresa"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../about/">About Newon</a><a class="gnav-mobile__sublink" href="../../portfolio/">Portfolio</a><a class="gnav-mobile__sublink" href="../../news/">News</a><a class="gnav-mobile__sublink" href="../../media/">Medios</a><a class="gnav-mobile__sublink" href="../../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../../market/">Market</a><a class="gnav-mobile__sublink" href="../../business/contact/">Contacto</a></div>
+      </div>
+          <div class="gnav-mobile__divider" aria-hidden="true"></div>
+          <a class="gnav-mobile__cta btn btn-primary" href="../../business/contact/">Partnership inquiry</a>
+        </div>
+      </div>
+    </div>
+    </header>
+
+    <main id="business-main" class="bz-page" lang="en" data-bm-owner-copy="1">
+<aside class="bm-notice bm-notice--inquiry" role="note" data-bm-notice="inquiry" data-bm-l10n="draft"><strong class="bm-notice__label">Aviso</strong><p>Las consultas se aceptan para alianzas, adopción y colaboración. Newon no asume proyectos de desarrollo o producción a medida para clientes individuales.</p></aside>
+      <section class="bz-hero bz-hero--hq bz-reveal is-visible" aria-labelledby="bz-hero-title">
+        <div class="bz-hero__stage">
+          <div class="bz-inner bz-hero__grid">
+            <div class="bz-hero__copy">
+              <nav class="bz-hero__crumb bz-hero-enter" style="--d: 0" aria-label="Breadcrumb">
+                <a href="../">Business &amp; Partnerships</a>
+                <span class="bz-hero__crumb-sep" aria-hidden="true">/</span>
+                <span>INQUIRY</span>
+              </nav>
+              <p class="bz-hero__eyebrow bz-hero-enter" style="--d: 1">BUSINESS INQUIRY<span class="bz-hero__eyebrow-sep" aria-hidden="true">·</span><span class="bz-hero__eyebrow-role">Business &amp; partnership inquiries</span></p>
+              <p class="bz-hero__word bz-hero-enter" style="--d: 2" aria-hidden="true">Newon</p>
+              <h1 class="bz-hero__title bz-hero-enter" id="bz-hero-title" style="--d: 3">Connecting new<br />business possibilities.</h1>
+              <p class="bz-hero__lead bz-hero-enter" style="--d: 4">Built on NEWON's six digital platforms, we take inquiries about platform participation, business partnerships, enterprise service adoption and institutional collaboration.</p>
+              <ul class="bz-hero__domains bz-hero-enter" style="--d: 5" aria-label="Inquiry areas">
+                <li>Participation</li>
+                <li>Partnerships</li>
+                <li>Enterprise</li>
+                <li>Institutions</li>
+              </ul>
+              <div class="bz-hero-actions bz-hero-enter" style="--d: 6">
+                <a class="btn btn-primary" href="#inquiry">Make a business inquiry<span class="bz-hero__cta-go" aria-hidden="true">→</span></a>
+                <a class="btn btn-ghost" href="../">View Business &amp; Partnerships →</a>
+              </div>
+            </div>
+            <aside class="bz-hero__visual bz-hero-enter" style="--d: 3" aria-label="Abrir tarjeta digital Newon">
+              <div class="bz-sv">
+                <div class="bz-sv__head">
+                  <span class="bz-sv__live" aria-hidden="true"><i></i> DIGITAL CARD</span>
+                  <span class="bz-sv__meta">NEWON</span>
+                </div>
+                <div class="bz-sv__body">
+                  <a class="bz-sv__card" href="/card-n7x4k9/" aria-label="Abrir tarjeta digital Newon">
+                    <img src="/card-n7x4k9/newon-card-back.jpg" alt="Newon digital card" width="1024" height="588" decoding="async" fetchpriority="high" />
+                  </a>
+                  <p class="bz-sv__hint">Digital card · tap to open</p>
+                </div>
+                <div class="bz-sv__foot" aria-hidden="true">
+                  <span>NEWON</span>
+                  <span>EST. 2026</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="categories" class="bz-section bz-reveal" aria-labelledby="bz-cat-title">
+        <div class="bz-inner">
+          <header class="bz-sec-head">
+            <div class="bz-sec-head__copy">
+              <p class="bz-label">INQUIRY CATEGORIES</p>
+              <h2 class="bz-title" id="bz-cat-title">What would you like to discuss?</h2>
+            </div>
+            <p class="bz-lead bz-sec-head__lead">There are six inquiry types. We do not take custom web or app production, custom development, design agency work or production quotes.</p>
+          </header>
+          <ul class="bz-cap-grid">
+            <li class="bz-cap-item">
+              <span class="bz-cap-item__n">01</span>
+              <h3>Platform participation &amp; transactions</h3>
+              <p>For sellers and brands, service providers, rental businesses and space operators who want to list products, services or assets on a NEWON platform and take part in transactions. Listing and transaction features open according to each platform's launch stage and business verification.</p>
+              <p class="bz-cap-item__keys">Sellers · Service providers · Rental businesses</p>
+            </li>
+            <li class="bz-cap-item">
+              <span class="bz-cap-item__n">02</span>
+              <h3>Brand, service &amp; content partnerships</h3>
+              <p>Propose brand campaigns, service integrations, or expert and creator content relevant to platform users. Partnership format and terms are agreed according to each platform's operating standards.</p>
+              <p class="bz-cap-item__keys">Brand campaigns · Service links · Content</p>
+            </li>
+            <li class="bz-cap-item">
+              <span class="bz-cap-item__n">03</span>
+              <h3>Enterprise service adoption</h3>
+              <p>Ask about adopting NEWON's standardized products being prepared on each platform, such as SaaS for childcare and education institutions, SaaS for care and welfare facilities, or employee family-welfare solutions. We review against standard products, not custom development.</p>
+              <p class="bz-cap-item__keys">Institution SaaS · Employee welfare · Provider tools</p>
+            </li>
+            <li class="bz-cap-item">
+              <span class="bz-cap-item__n">04</span>
+              <h3>Public sector &amp; organization collaboration</h3>
+              <p>Local governments, public agencies, welfare and education institutions and organizations can propose public information services, local programs and public-interest collaboration. Public projects follow the applicable laws and procurement and contracting procedures.</p>
+              <p class="bz-cap-item__keys">Local government · Public agencies · Institutions</p>
+            </li>
+            <li class="bz-cap-item">
+              <span class="bz-cap-item__n">05</span>
+              <h3>Technology &amp; global partnerships</h3>
+              <p>Ask about collaboration that helps the platforms grow, such as technical integration, data protection and infrastructure, localization for overseas markets, and licensing.</p>
+              <p class="bz-cap-item__keys">Integration · Localization · Licensing</p>
+            </li>
+            <li class="bz-cap-item">
+              <span class="bz-cap-item__n">06</span>
+              <h3>Other business inquiries</h3>
+              <p>Send any NEWON business proposal that does not fit the types above. Outsourced development or production requests are not accepted under this type either.</p>
+              <p class="bz-cap-item__keys">NEWON business in general</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="platforms" class="bz-section bz-reveal" aria-labelledby="bz-plat-title">
+        <div class="bz-inner">
+          <p class="bz-label">SIX PLATFORMS</p>
+          <h2 class="bz-title" id="bz-plat-title">Business areas by platform</h2>
+          <p class="bz-lead">Inquiries are reviewed against NEWON's six platforms. Many of the business areas described are still in preparation or under review; each platform's business page shows the current status.</p>
+          <div class="bz-grid bz-grid--3">
+            <a class="bz-card" href="../../babylog/business/">
+              <h3>BABYLOG</h3>
+              <p>A family-life platform built around an app for pregnancy, birth, parenting and growth records, expanding into SaaS for childcare and education institutions, parenting-brand and employee family-welfare solutions, public parenting-support information, parenting products and services, and overseas licensing.</p>
+              <span class="bz-card__more">View business page →</span>
+            </a>
+            <a class="bz-card" href="../../petlog/business/">
+              <h3>PETLOG</h3>
+              <p>A pet-life platform built on daily and health records for pets, expanding into community and commerce, connections with qualified providers such as vets, groomers and carers, SaaS for pet businesses, public animal-welfare collaboration and global licensing.</p>
+              <span class="bz-card__more">View business page →</span>
+            </a>
+            <a class="bz-card" href="../../myworld/business/">
+              <h3>MY WORLD</h3>
+              <p>A travel platform that starts from map-based travel records and extends toward booking partnerships for stays, transport, packages and activities, travel commerce, SaaS for business travel and travel companies, and local tourism and tourism-agency collaboration.</p>
+              <span class="bz-card__more">View business page →</span>
+            </a>
+            <a class="bz-card" href="../../shareon/business/">
+              <h3>SHAREON</h3>
+              <p>A sharing-economy platform for renting and sharing physical assets between individuals and businesses (C2C, B2C, C2B, B2B), preparing to expand into rental-business and space-operator listings, business asset sharing, SaaS, public and global areas. The app has not launched, so no rentals, payments or settlements are operating yet.</p>
+              <span class="bz-card__more">View business page →</span>
+            </a>
+            <a class="bz-card" href="../../livon/business/">
+              <h3>LIVON</h3>
+              <p>A platform connecting life-stage information and services such as education, careers, housing and financial education. Rather than selling products directly, it focuses on information, user experience and solutions for organizations; most business areas are in preparation or at the concept stage. The app is being prepared for launch and LIVON is available on the web today.</p>
+              <span class="bz-card__more">View business page →</span>
+            </a>
+            <a class="bz-card" href="../../ongil/business/">
+              <h3>ONGIL</h3>
+              <p>A senior-life platform built on seniors' daily life, family connection, healthy living, and care and welfare information, expanding into tools for care providers, SaaS for care and welfare facilities, employee family-care welfare, public and local-government collaboration, and global licensing.</p>
+              <span class="bz-card__more">View business page →</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="who" class="bz-section bz-reveal" aria-labelledby="bz-who-title">
+        <div class="bz-inner">
+          <p class="bz-label">WHO CAN INQUIRE</p>
+          <h2 class="bz-title" id="bz-who-title">Who can send an inquiry</h2>
+          <ul class="bz-grid bz-grid--4">
+            <li class="bz-why-card">
+              <span class="bz-num">01</span>
+              <h3>Sole traders, experts &amp; creators</h3>
+              <p>Individual business owners, experts and creators considering platform listings, service provision or content collaboration. Some areas require business or qualification checks.</p>
+            </li>
+            <li class="bz-why-card">
+              <span class="bz-num">02</span>
+              <h3>Companies &amp; brands</h3>
+              <p>Companies, brands and sellers considering participation and transactions, brand and service partnerships, or enterprise service adoption.</p>
+            </li>
+            <li class="bz-why-card">
+              <span class="bz-num">03</span>
+              <h3>Public bodies &amp; organizations</h3>
+              <p>Local governments, public agencies, childcare, education and welfare institutions, and non-profits proposing public information or public-interest collaboration.</p>
+            </li>
+            <li class="bz-why-card">
+              <span class="bz-num">04</span>
+              <h3>Technology &amp; global partners</h3>
+              <p>Technology companies proposing integration or infrastructure collaboration, and overseas companies and institutions considering localization or licensing.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="how-we-work" class="bz-section bz-process bz-reveal" aria-labelledby="bz-process-title">
+        <div class="bz-inner bz-process__layout">
+          <aside class="bz-process__aside">
+            <p class="bz-label">INQUIRY PROCESS</p>
+            <h2 class="bz-title" id="bz-process-title">How inquiries are handled</h2>
+            <p class="bz-process__lead">Inquiries are reviewed in the order below. How long a review takes depends on the inquiry.</p>
+            <p class="bz-process__meta" aria-hidden="true"><span>04</span>STEPS</p>
+          </aside>
+          <ol class="bz-process__track">
+            <li>
+              <span class="bz-process__n" aria-hidden="true">01</span>
+              <div class="bz-process__body">
+                <h3 class="bz-process__en">Inquiry received</h3>
+                <p class="bz-process__ko">Inquiries sent with the form below or by email arrive at NEWON's official inquiry mailbox.</p>
+              </div>
+            </li>
+            <li>
+              <span class="bz-process__n" aria-hidden="true">02</span>
+              <div class="bz-process__body">
+                <h3 class="bz-process__en">Proposal review</h3>
+                <p class="bz-process__ko">We check the inquiry type, related platform and proposal against each platform's business direction and operating standards.</p>
+              </div>
+            </li>
+            <li>
+              <span class="bz-process__n" aria-hidden="true">03</span>
+              <div class="bz-process__body">
+                <h3 class="bz-process__en">Further information if needed</h3>
+                <p class="bz-process__ko">If the review needs it, we ask for more material or information by email.</p>
+              </div>
+            </li>
+            <li>
+              <span class="bz-process__n" aria-hidden="true">04</span>
+              <div class="bz-process__body">
+                <h3 class="bz-process__en">Discussing fit and terms</h3>
+                <p class="bz-process__ko">Where there is potential to work together, we discuss scope and terms. An inquiry does not guarantee partnership approval or a contract.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="inquiry" class="bz-section bz-reveal" aria-labelledby="bz-form-title"
+        data-form-title="Business inquiry"
+        data-form-lead="Please fill in the required fields (*). Your inquiry is delivered to NEWON's official inquiry mailbox (newon@newon.app)."
+        data-store-title="Purchase inquiry"
+        data-store-lead="Leave the product and your contact details and we will reply by email after checking."
+        data-store-ph="Tell us which product you would like and your question."
+        data-store-selected="Selected product"
+        data-store-type-hint="Inquiry type"
+        data-store-select-ph="Please select"
+        data-store-subject="NEWON store purchase inquiry"
+        data-default-ph="Describe your proposal, how you would like to work together, the related platform, and your company or organization. Please do not include sensitive personal information."
+      >
+        <div class="bz-inner bz-form-wrap">
+          <h2 class="bz-title" id="bz-form-title">Business inquiry</h2>
+          <p class="bz-lead" id="bz-form-lead">Please fill in the required fields (*). Your inquiry is delivered to NEWON's official inquiry mailbox (newon@newon.app).</p>
+          <p class="visually-hidden" id="bz-form-req">Required fields are marked with an asterisk.</p>
+          <form
+            class="bz-form"
+            id="bz-inquiry-form"
+            novalidate
+            data-analytics="business_inquiry"
+            data-submit="Send inquiry →"
+            data-submitting="Sending inquiry..."
+            data-subject="NEWON business inquiry"
+            aria-describedby="bz-form-lead bz-form-req"
+          >
+            <div class="bz-field">
+              <label for="bz-name">Contact name<span class="bz-req" aria-hidden="true">*</span></label>
+              <input id="bz-name" name="name" type="text" required autocomplete="name" placeholder="Enter your name" />
+            </div>
+            <div class="bz-field">
+              <label for="bz-email">Email<span class="bz-req" aria-hidden="true">*</span></label>
+              <input id="bz-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="name@company.com" />
+            </div>
+            <div class="bz-field">
+              <label for="bz-company">Company or organization <span class="bz-opt">(Optional)</span></label>
+              <input id="bz-company" name="company" type="text" autocomplete="organization" placeholder="If applicable" />
+            </div>
+            <div class="bz-field">
+              <label for="bz-phone">Phone <span class="bz-opt">(Optional)</span></label>
+              <input id="bz-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="A number we can reach" />
+            </div>
+            <div class="bz-field">
+              <label for="bz-type">Inquiry type<span class="bz-req" aria-hidden="true">*</span></label>
+              <select id="bz-type" name="type" required>
+                <option value="" disabled selected>Select an inquiry type</option>
+                <option value="Platform Participation &amp; Transactions" data-slug="platform-participation">Platform participation &amp; transactions</option>
+                <option value="Brand, Service &amp; Content Partnership" data-slug="brand-partnership">Brand, service &amp; content partnership</option>
+                <option value="Enterprise Service Adoption" data-slug="enterprise-adoption">Enterprise service adoption</option>
+                <option value="Public Sector &amp; Organization Partnership" data-slug="public-partnership">Public sector &amp; organization collaboration</option>
+                <option value="Technology &amp; Global Partnership" data-slug="tech-global">Technology &amp; global partnership</option>
+                <option value="Other Business Inquiry" data-slug="other">Other business inquiry</option>
+                <option value="Store / Digital Product" data-store-option="1" hidden disabled>Store product purchase</option>
+              </select>
+            </div>
+            <div class="bz-field">
+              <label for="bz-platform">Related platform <span class="bz-opt">(Optional)</span></label>
+              <select id="bz-platform" name="platform">
+                <option value="">Please select</option>
+                <option value="BABYLOG">BABYLOG</option>
+                <option value="PETLOG">PETLOG</option>
+                <option value="MY WORLD">MY WORLD</option>
+                <option value="SHAREON">SHAREON</option>
+                <option value="LIVON">LIVON</option>
+                <option value="ONGIL">ONGIL</option>
+                <option value="Multiple Platforms">Multiple platforms</option>
+                <option value="Not decided yet">Not decided yet</option>
+              </select>
+            </div>
+            <div class="bz-field">
+              <label for="bz-website">Company or service website <span class="bz-opt">(Optional)</span></label>
+              <input id="bz-website" name="website" type="url" inputmode="url" placeholder="https://" />
+            </div>
+            <div class="bz-field">
+              <label for="bz-message">Inquiry details<span class="bz-req" aria-hidden="true">*</span></label>
+              <textarea id="bz-message" name="message" required placeholder="Describe your proposal, how you would like to work together, the related platform, and your company or organization. Please do not include sensitive personal information."></textarea>
+            </div>
+            <div class="bz-field bz-field--check">
+              <div class="bz-consent">
+                <label class="bz-consent__label" for="bz-consent">
+                  <input id="bz-consent" name="consent" type="checkbox" value="yes" required aria-describedby="bz-consent-hint" />
+                  <span class="bz-consent__box" aria-hidden="true"></span>
+                  <span class="bz-consent__text">[Required] I agree to the collection and use of my personal information.</span>
+                </label>
+                <a class="bz-consent__link" href="../../privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy<span aria-hidden="true"> ↗</span></a>
+              </div>
+              <p class="bz-field-hint" id="bz-consent-hint">Purpose: reviewing and replying to your business inquiry · Items: name, email, inquiry type, inquiry details (and, if entered, company or organization, phone, related platform, website) · Retention: kept for as long as needed to review and reply to your inquiry; requests for access or deletion are handled in line with applicable law. Everything else follows the Privacy Policy.</p>
+            </div>
+            <div class="bz-hp" aria-hidden="true">
+              <input name="_honey" tabindex="-1" autocomplete="off" />
+            </div>
+            <button class="bz-submit" type="submit" id="bz-submit">
+              <span class="bz-submit-spin" aria-hidden="true"></span>
+              <span class="bz-submit-label">Send inquiry →</span>
+            </button>
+          </form>
+          <p class="bz-fail" id="bz-fail" role="alert" hidden>Your inquiry could not be sent. Please try again in a moment or email newon@newon.app directly.</p>
+        </div>
+      </section>
+
+      <section id="faq" class="bz-section bz-reveal" aria-labelledby="bz-faq-title">
+        <div class="bz-inner">
+          <p class="bz-label">FAQ</p>
+          <h2 class="bz-title" id="bz-faq-title">About business inquiries</h2>
+          <div class="bz-faq">
+            <div class="bz-faq-item">
+              <button type="button" class="bz-faq-q" aria-expanded="false">
+                <span>Can individuals send a business inquiry?</span>
+                <span class="bz-faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="bz-faq-a"><p>Yes. Sole traders, experts and creators can ask about listings, providing services or content collaboration. Some areas, such as professional services or vehicle and space rental, require business or qualification checks. For questions about using an app, please use that platform's contact page.</p></div>
+            </div>
+            <div class="bz-faq-item">
+              <button type="button" class="bz-faq-q" aria-expanded="false">
+                <span>Which platforms can I ask about?</span>
+                <span class="bz-faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="bz-faq-a"><p>We take participation, partnership, adoption and collaboration inquiries about six platforms: BABYLOG, PETLOG, MY WORLD, SHAREON, LIVON and ONGIL. Each platform's business page shows its business areas and current status.</p></div>
+            </div>
+            <div class="bz-faq-item">
+              <button type="button" class="bz-faq-q" aria-expanded="false">
+                <span>Can I propose something across several platforms?</span>
+                <span class="bz-faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="bz-faq-a"><p>Yes. Choose &quot;Multiple platforms&quot; under Related platform and describe which platforms you have in mind and how they would connect. If you have not decided yet, choose &quot;Not decided yet&quot;.</p></div>
+            </div>
+            <div class="bz-faq-item">
+              <button type="button" class="bz-faq-q" aria-expanded="false">
+                <span>How is participation different from a partnership?</span>
+                <span class="bz-faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="bz-faq-a"><p>Participation means sellers or service providers listing products, services or assets on a platform and transacting with its users. A partnership is a collaboration whose scope and terms are agreed separately with NEWON, such as a brand campaign, service integration, content, technology or public-sector collaboration.</p></div>
+            </div>
+            <div class="bz-faq-item">
+              <button type="button" class="bz-faq-q" aria-expanded="false">
+                <span>Can I ask about adopting an enterprise service?</span>
+                <span class="bz-faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="bz-faq-a"><p>Yes. You can ask about adopting standard products on each platform, such as SaaS for childcare and education institutions, SaaS for care and welfare facilities, or employee family-welfare solutions. Most are in preparation or under review; pricing and scope are shared after launch and confirmation.</p></div>
+            </div>
+            <div class="bz-faq-item">
+              <button type="button" class="bz-faq-q" aria-expanded="false">
+                <span>Can public bodies propose a collaboration?</span>
+                <span class="bz-faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="bz-faq-a"><p>Yes. Local governments, public agencies and welfare or education institutions can propose public information services, local programs and public-interest collaboration. Public projects follow the applicable laws and procurement and contracting procedures.</p></div>
+            </div>
+            <div class="bz-faq-item">
+              <button type="button" class="bz-faq-q" aria-expanded="false">
+                <span>What happens after I send an inquiry?</span>
+                <span class="bz-faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="bz-faq-a"><p>The inquiry is received, the proposal is reviewed, further information is requested if needed, and fit and terms are discussed. We reply to the email address you entered. An inquiry does not guarantee partnership approval or a contract.</p></div>
+            </div>
+            <div class="bz-faq-item">
+              <button type="button" class="bz-faq-q" aria-expanded="false">
+                <span>Can I commission outsourced web or app production?</span>
+                <span class="bz-faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="bz-faq-a"><p>No. NEWON does not operate client-specific outsourced web or app production, custom development or design agency services. NEWON's business centers on its six platforms and its own products, and this page only takes participation, partnership, adoption and collaboration inquiries related to those platforms.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="bz-section bz-rep bz-reveal" aria-labelledby="bz-rep-title">
+        <div class="bz-inner bz-rep-grid">
+          <div class="bz-rep-copy">
+            <p class="bz-label">DIRECT CONTACT</p>
+            <h2 class="bz-title" id="bz-rep-title">Or email us directly.</h2>
+            <p class="bz-lead">Instead of the form, you can write to newon@newon.app. Including your company or organization, the related platform and the inquiry type helps the review.</p>
+            <p class="bz-rep-name">Nawon Kyung</p>
+            <p class="bz-rep-role">CEO y desarrollador de aplicaciones</p>
+            <a class="bz-rep-mail" href="mailto:newon@newon.app">Email newon@newon.app →</a>
+          </div>
+          <div class="bz-ncards">
+            <div class="bz-ncards__stage">
+              <div class="bz-ncard bz-ncard--back" aria-hidden="true">
+                <img src="/card-n7x4k9/newon-card-back.jpg" alt="" width="1024" height="588" decoding="async" />
+              </div>
+              <a class="bz-ncard bz-ncard--front" href="/card-n7x4k9/" aria-label="Abrir tarjeta digital Newon">
+                <img src="/card-n7x4k9/newon-card-back.jpg" alt="Newon tarjeta de visita" width="1024" height="588" decoding="async" fetchpriority="high" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer site-footer--brand studio-footer--compact" data-site-footer>
+    <div class="container site-foot">
+      <a class="site-foot__brand" href="../../">
+        <img src="/logo-nav.png" alt="" width="34" height="34" />
+        <span>Newon</span>
+      </a>
+      <a class="site-foot__url" href="https://newon.app">https://newon.app</a>
+      <p class="site-foot__tagline">Un estudio de apps que conecta ideas con la realidad</p>
+      <nav class="site-foot__nav" aria-label="Footer"><a href="../../products/">Aplicaciones</a><a href="../../ai/">AI</a><a href="../../babylog/">BABYLOG</a><a href="../../petlog/">PETLOG</a><a href="../../myworld/">MY WORLD</a><a href="../../shareon/">SHAREON</a><a href="../../livon/">LIVON</a><a href="../../ongil/">ONGIL</a><a href="../../business/">Negocios y alianzas</a><a href="../../studio/">Studio</a><a href="../../about/">Empresa</a><a href="../../privacy/">Política de privacidad</a><a href="../../terms/">Términos del servicio</a></nav>
+      <div class="site-foot__icons" role="group" aria-label="Contacto y redes"><a class="site-foot__icon" href="mailto:newon@newon.app" aria-label="Enviar un correo a newon@newon.app"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" points="22,6 12,13 2,6"/></svg></a><a class="site-foot__icon" href="https://www.instagram.com/newon.app.global?igsh=MTdxZ3U3cjZyZ29p&amp;utm_source=qr" aria-label="Instagram de Newon · se abre en una pestaña nueva" target="_blank" rel="noopener noreferrer"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a class="site-foot__icon" href="https://youtube.com/@newonglobal?si=pviB1hC7yMuD_tXw" aria-label="YouTube de Newon · se abre en una pestaña nueva" target="_blank" rel="noopener noreferrer"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a class="site-foot__icon" href="https://www.threads.com/@newon.app.dev?invite=0" aria-label="Newon en Threads · se abre en una pestaña nueva" target="_blank" rel="noopener noreferrer"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18.263 11.097c-.03-3.486-1.92-5.586-5.111-5.586-2.13 0-3.922.963-4.863 2.499l2.062 1.438c.535-.843 1.272-1.543 2.628-1.543 1.528 0 2.318.85 2.544 2.431a15 15 0 0 0-2.236-.173c-4.125 0-6.068 1.867-6.068 4.336s1.943 3.99 4.804 3.99c3.139 0 5.013-2.115 5.781-4.735.798.361 1.348 1.204 1.348 2.47 0 3.387-3.907 5.232-7.22 5.232-4.885 0-8.077-3.207-8.077-8.424 0-6.392 4.223-10.487 9.9-10.487 3.808 0 5.69 1.671 6.97 3.914l2.108-1.475C21.44 2.078 18.331 0 13.663 0 6.227 0 1.168 5.277 1.168 12.934c0 7 4.953 11.066 10.856 11.066 4.878 0 9.809-2.846 9.809-7.716 0-2.545-1.46-4.231-3.569-5.187m-6.33 4.855c-1.077 0-2.026-.512-2.026-1.453 0-1.483 1.822-1.934 3.606-1.934.678 0 1.34.045 1.927.173-.422 1.927-1.671 3.215-3.508 3.214Z"/></svg></a><a class="site-foot__icon" href="https://m.blog.naver.com/newonapp" aria-label="Newon en Naver Blog · se abre en una nueva pestaña" target="_blank" rel="noopener noreferrer"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M5 2H19A3 3 0 0 1 22 5V19A3 3 0 0 1 19 22H5A3 3 0 0 1 2 19V5A3 3 0 0 1 5 2ZM8 6.5H10.2V10.5H16V17.5H8ZM11.8 12.7H14.2V15.3H11.8Z"/></svg></a><a class="site-foot__icon" href="https://www.tiktok.com/@newon.app?_r=1&amp;_t=ZS-95LGrSuOcfF" aria-label="TikTok de Newon · se abre en una pestaña nueva" target="_blank" rel="noopener noreferrer"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.28v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg></a></div>
+      <p class="site-foot__copy">© 2026 Newon. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+    <script src="/search.js?v=20260904a11y1" defer></script>
+    <script src="/site-chrome.js?v=20261019nav10" defer></script>
+    <script>
+      (function () {
+        var cur = "es";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+        var year = document.getElementById("year");
+        if (year) year.textContent = new Date().getFullYear();
+        var toggle = document.querySelector("[data-snav-toggle]");
+        var drawer = document.getElementById("snav-mobile-nav");
+        if (toggle && drawer) {
+          toggle.addEventListener("click", function () {
+            var open = !drawer.hasAttribute("hidden");
+            if (open) { drawer.setAttribute("hidden", ""); toggle.setAttribute("aria-expanded", "false"); }
+            else { drawer.removeAttribute("hidden"); toggle.setAttribute("aria-expanded", "true"); }
+          });
+        }
+
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+          );
+          document.querySelectorAll(".bz-reveal").forEach(function (el) {
+            var r = el.getBoundingClientRect();
+            if (r.top < (window.innerHeight || 800) * 0.92) {
+              el.classList.add("is-visible");
+            } else {
+              io.observe(el);
+            }
+          });
+        } else {
+          document.querySelectorAll(".bz-reveal").forEach(function (el) {
+            el.classList.add("is-visible");
+          });
+        }
+
+        document.querySelectorAll(".bz-faq-q").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var item = btn.closest(".bz-faq-item");
+            var open = !item.classList.contains("is-open");
+            item.classList.toggle("is-open", open);
+            btn.setAttribute("aria-expanded", open ? "true" : "false");
+          });
+        });
+
+        /* Inquiry form: preselect type (?type= / ?service= / ?slug=) and platform (?platform= or ?source=),
+           keep category/area/source on the payload, and keep the store purchase inflow (?category=Store). */
+        var typeEl = document.getElementById("bz-type");
+        var platformEl = document.getElementById("bz-platform");
+        var params = new URLSearchParams(window.location.search);
+        var inquirySection = document.getElementById("inquiry");
+        var formTitleEl = document.getElementById("bz-form-title");
+        var formLeadEl = document.getElementById("bz-form-lead");
+        var selectedEl = document.getElementById("bz-studio-selected");
+        var msgEl = document.getElementById("bz-message");
+        var typeMap = {"platform-participation":"Platform Participation & Transactions","Platform Participation & Transactions":"Platform Participation & Transactions","brand-partnership":"Brand, Service & Content Partnership","Brand, Service & Content Partnership":"Brand, Service & Content Partnership","enterprise-adoption":"Enterprise Service Adoption","Enterprise Service Adoption":"Enterprise Service Adoption","public-partnership":"Public Sector & Organization Partnership","Public Sector & Organization Partnership":"Public Sector & Organization Partnership","tech-global":"Technology & Global Partnership","Technology & Global Partnership":"Technology & Global Partnership","other":"Other Business Inquiry","Other Business Inquiry":"Other Business Inquiry","partnership":"Brand, Service & Content Partnership","Partnership":"Brand, Service & Content Partnership","product-service-collaboration":"Brand, Service & Content Partnership","service":"Brand, Service & Content Partnership","App Collaboration":"Brand, Service & Content Partnership","advertising-promotion":"Brand, Service & Content Partnership","promotion":"Brand, Service & Content Partnership","Advertising":"Brand, Service & Content Partnership","product-adoption":"Enterprise Service Adoption","PRODUCT / Product adoption":"Enterprise Service Adoption","enterprise-solution":"Enterprise Service Adoption","PRODUCT / Enterprise solution":"Enterprise Service Adoption","automation-product":"Enterprise Service Adoption","PRODUCT / Automation product":"Enterprise Service Adoption","ai-automation":"Enterprise Service Adoption","AI Automation":"Enterprise Service Adoption","sales-distribution":"Platform Participation & Transactions","PRODUCT / Sales & distribution":"Platform Participation & Transactions","platform-integration":"Technology & Global Partnership","PRODUCT / Platform integration":"Technology & Global Partnership","license":"Technology & Global Partnership","PRODUCT / License":"Technology & Global Partnership","Other":"Other Business Inquiry"};
+        var platformMap = {"babylog":"BABYLOG","BABYLOG":"BABYLOG","petlog":"PETLOG","PETLOG":"PETLOG","myworld":"MY WORLD","MY WORLD":"MY WORLD","my world":"MY WORLD","shareon":"SHAREON","SHAREON":"SHAREON","livon":"LIVON","LIVON":"LIVON","ongil":"ONGIL","ONGIL":"ONGIL","multiple":"Multiple Platforms","Multiple Platforms":"Multiple Platforms","multiple platforms":"Multiple Platforms","undecided":"Not decided yet","Not decided yet":"Not decided yet","not decided yet":"Not decided yet"};
+        var STORE_TYPE = "Store / Digital Product";
+        var pageLang = (document.documentElement.lang || "en").slice(0, 2);
+        function decodeParamSafe(v) {
+          try {
+            return decodeURIComponent(String(v || "").replace(/\+/g, " ")).trim();
+          } catch (e) {
+            return String(v || "").trim();
+          }
+        }
+        var qType = decodeParamSafe(params.get("type") || params.get("service") || params.get("slug") || "");
+        var qCategory = (params.get("category") || "").trim();
+        var qArea = (params.get("area") || "").trim();
+        var qSource = (params.get("source") || "").trim();
+        var qSlug = decodeParamSafe(params.get("slug") || "");
+        var qProduct = decodeParamSafe(params.get("product") || "");
+        var qPrice = decodeParamSafe(params.get("price") || "");
+        var qPlatform = decodeParamSafe(params.get("platform") || "");
+        function optionExists(sel, value) {
+          if (!sel || !value) return false;
+          return Array.prototype.some.call(sel.options, function (opt) {
+            return opt.value === value && !opt.disabled && !opt.hidden;
+          });
+        }
+        function isStoreInflow() {
+          if (/^store$/i.test(qCategory)) return true;
+          if (/^store[-_/]/i.test(qSource)) return true;
+          if (qProduct && qSlug) return true;
+          return false;
+        }
+        function resolveInquiryType() {
+          if (!qType) return "";
+          return typeMap[qType] || typeMap[qType.toLowerCase()] || (qSlug && typeMap[qSlug]) || "";
+        }
+        function resolvePlatform() {
+          if (qPlatform) {
+            var direct = platformMap[qPlatform] || platformMap[qPlatform.toLowerCase()];
+            if (direct) return direct;
+          }
+          var m = /(babylog|petlog|myworld|my-world|shareon|livon|ongil)/i.exec(qSource);
+          return m ? platformMap[m[1].toLowerCase().replace("-", "")] || "" : "";
+        }
+        function syncServiceHidden() {
+          var formEl = document.getElementById("bz-inquiry-form");
+          if (!formEl || !typeEl) return;
+          var opt = typeEl.options[typeEl.selectedIndex];
+          var tv = String(typeEl.value || "").trim();
+          var pairs = [
+            ["service", tv ? tv.replace(/^Store\s*\/\s*/i, "") : ""],
+            ["slug", (opt && opt.getAttribute("data-slug")) || ""],
+          ];
+          pairs.forEach(function (pair) {
+            var el = formEl.querySelector('input[name="' + pair[0] + '"]');
+            if (!pair[1]) {
+              if (el) el.value = "";
+              return;
+            }
+            if (!el) {
+              el = document.createElement("input");
+              el.type = "hidden";
+              el.name = pair[0];
+              formEl.appendChild(el);
+            }
+            el.value = pair[1];
+          });
+        }
+        function applyStoreMode() {
+          if (!inquirySection || !isStoreInflow()) return;
+          document.documentElement.setAttribute("data-inquiry-context", "store");
+          if (formTitleEl && inquirySection.getAttribute("data-store-title")) {
+            formTitleEl.textContent = inquirySection.getAttribute("data-store-title");
+          }
+          if (formLeadEl && inquirySection.getAttribute("data-store-lead")) {
+            formLeadEl.textContent = inquirySection.getAttribute("data-store-lead");
+          }
+          var formEl = document.getElementById("bz-inquiry-form");
+          if (formEl && inquirySection.getAttribute("data-store-subject")) {
+            formEl.setAttribute("data-subject", inquirySection.getAttribute("data-store-subject"));
+          }
+          if (typeEl) {
+            Array.prototype.forEach.call(typeEl.options, function (opt) {
+              if (!opt.value) {
+                var sph = inquirySection.getAttribute("data-store-select-ph");
+                if (sph) opt.textContent = sph;
+                opt.hidden = false;
+                opt.disabled = false;
+                return;
+              }
+              var keep = opt.getAttribute("data-store-option") === "1" || opt.getAttribute("data-slug") === "other";
+              opt.hidden = !keep;
+              opt.disabled = !keep;
+            });
+            var typeLabel = document.querySelector('label[for="bz-type"]');
+            var hint = inquirySection.getAttribute("data-store-type-hint");
+            if (typeLabel && hint) {
+              typeLabel.innerHTML = hint + '<span class="bz-req" aria-hidden="true">*</span>';
+            }
+            if (optionExists(typeEl, STORE_TYPE)) typeEl.value = STORE_TYPE;
+          }
+          if (msgEl) {
+            var productLabel = qProduct || qSlug || "Store product";
+            var priceLabel = qPrice ? (String(qPrice).indexOf("₩") === 0 ? qPrice : "₩" + Number(qPrice).toLocaleString("en-US")) : "";
+            var prefill =
+              pageLang === "ko"
+                ? "구매 문의\n상품: " + productLabel + (priceLabel ? "\n가격: " + priceLabel : "") + (qSlug ? "\nslug: " + qSlug : "")
+                : "Purchase inquiry\nProduct: " + productLabel + (priceLabel ? "\nPrice: " + priceLabel : "") + (qSlug ? "\nslug: " + qSlug : "");
+            if (!msgEl.value) msgEl.value = prefill;
+            if (inquirySection.getAttribute("data-store-ph")) {
+              msgEl.placeholder = inquirySection.getAttribute("data-store-ph");
+            }
+          }
+          if (selectedEl) {
+            var selLabel = inquirySection.getAttribute("data-store-selected") || "Selected product";
+            selectedEl.textContent = selLabel + ": " + (qProduct || qSlug || STORE_TYPE.replace(/^Store\s*\/\s*/, ""));
+            selectedEl.hidden = false;
+          }
+        }
+        if (typeEl) {
+          applyStoreMode();
+          var mapped = isStoreInflow() ? STORE_TYPE : resolveInquiryType();
+          if (mapped && optionExists(typeEl, mapped)) typeEl.value = mapped;
+          typeEl.addEventListener("change", function () {
+            syncServiceHidden();
+            if (selectedEl && document.documentElement.getAttribute("data-inquiry-context") === "store") {
+              var sv = typeEl.value || "";
+              if (/^Store\s*\//.test(sv) || qProduct) {
+                var storeLabel = inquirySection.getAttribute("data-store-selected") || "Selected product";
+                selectedEl.textContent = storeLabel + ": " + (qProduct || sv.replace(/^Store\s*\/\s*/, ""));
+                selectedEl.hidden = false;
+              } else {
+                selectedEl.hidden = true;
+              }
+            }
+          });
+        }
+        if (platformEl) {
+          var pv = resolvePlatform();
+          if (pv && optionExists(platformEl, pv)) platformEl.value = pv;
+        }
+        var form = document.getElementById("bz-inquiry-form");
+        if (form) {
+          var pairs = [
+            ["category", qCategory || (isStoreInflow() ? "Store" : "")],
+            ["area", qArea],
+            ["source", qSource],
+          ];
+          if (isStoreInflow()) {
+            pairs.push(["product", qProduct], ["slug", qSlug], ["price", qPrice]);
+          }
+          pairs.forEach(function (pair) {
+            if (!pair[1]) return;
+            var existing = form.querySelector('input[name="' + pair[0] + '"]');
+            if (existing) {
+              existing.value = pair[1];
+              return;
+            }
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = pair[0];
+            input.value = pair[1];
+            form.appendChild(input);
+          });
+          syncServiceHidden();
+          if (isStoreInflow()) {
+            ["slug", "product", "service"].forEach(function (name) {
+              var val = name === "slug" ? qSlug : qProduct;
+              if (!val) return;
+              var keep = form.querySelector('input[name="' + name + '"]');
+              if (!keep) {
+                keep = document.createElement("input");
+                keep.type = "hidden";
+                keep.name = name;
+                form.appendChild(keep);
+              }
+              keep.value = val;
+            });
+          }
+        }
+      })();
+    </script>
+    <script src="/business/inquiry.js?v=20260923inq1" defer></script>
+    <script src="/portfolio/portfolio.js" defer></script>
+    <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OX MONTH Web</title>
+    <meta http-equiv="refresh" content="0;url=/en/apps/ox-month/" />
+    <script src="/lang-nav.js"></script>
+    <script>
+      (function () {
+        try {
+          var pref = localStorage.getItem("newon-lang-dir");
+          var langs = ["ko","en","ja","es","pt-br","fr","de","hi","id"];
+          var dir = langs.indexOf(pref) >= 0 ? pref : "en";
+          location.replace("/" + dir + "/apps/ox-month/");
+        } catch (e) {
+          location.replace("/en/apps/ox-month/");
+        }
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,192 @@
+/* Business introduction pages (BabyLog · PetLog · My World · ShareOn) and the
+   shared partnership / app-download blocks on the LivOn and Ongil pages.
+   Information-only: no forms, inputs or service controls. Builds on business-pillar.css (.bp-*). */
+
+.bp-page.bi-page {
+  --bi-accent: #111;
+}
+
+.bi-page .bi-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.1rem 0 0;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: var(--bp-ink);
+  border: 1px solid var(--bp-line);
+  border-radius: 999px;
+  background: var(--bp-bg);
+}
+.bi-page .bi-status::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--bi-accent);
+}
+
+.bi-page .bp-mark .bi-mark-name {
+  color: var(--bi-accent);
+}
+
+.bi-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: 1fr;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 720px) {
+  .bi-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .bi-grid--2,
+  .bi-grid--4,
+  .bi-grid--6 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1000px) {
+  .bi-grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .bi-grid--6 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.bi-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.35rem 1.4rem 1.5rem;
+  border: 1px solid var(--bp-line);
+  border-top: 3px solid var(--bi-accent);
+  border-radius: 4px;
+  background: var(--bp-bg);
+}
+.bi-card__n {
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  color: var(--bp-faint);
+}
+.bi-card__t {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--bp-ink);
+}
+.bi-card__d {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--bp-muted);
+}
+
+.bi-note {
+  margin: 1.25rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--bp-muted);
+}
+
+.bi-download {
+  display: grid;
+  gap: 1.1rem;
+  padding: 1.6rem 1.5rem;
+  border: 1px solid var(--bp-line);
+  border-left: 4px solid var(--bi-accent);
+  border-radius: 4px;
+  background: var(--bp-hover);
+}
+.bi-download__title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--bp-ink);
+}
+.bi-download__body {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--bp-muted);
+}
+.bi-download__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.bi-download__info {
+  margin: 0;
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--bp-muted);
+  border-top: 1px solid var(--bp-line);
+}
+.bi-download__info strong {
+  color: var(--bp-ink);
+}
+
+/* Closing blocks appended to the LivOn / Ongil editorial pages */
+.bi-extra {
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+  background: var(--bp-bg);
+  color: var(--bp-ink);
+}
+.bi-extra .bp-lead {
+  max-width: 46rem;
+}
+.bi-extra + .bi-extra {
+  padding-top: 0;
+}
+
+.bi-page .bi-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Dark theme (Phase 03): intro / Business Hub pages previously rendered light cards with light text. */
+html[data-newon-shell-theme="dark"] .bp-page {
+  --bp-bg: #000000;
+  --bp-hover: rgba(255, 255, 255, 0.06);
+  --bp-ink: #f5f5f5;
+  --bp-muted: #b4b4b8;
+  --bp-faint: #a0a0a5;
+  --bp-line: rgba(255, 255, 255, 0.16);
+}
+html[data-newon-shell-theme="dark"] .bp-page .bi-card,
+html[data-newon-shell-theme="dark"] .bp-page .bp-other__card {
+  background: #0b0b0c;
+}
+html[data-newon-shell-theme="dark"] .bp-page .bp-btn--ghost {
+  color: var(--bp-ink);
+  border-color: var(--bp-line);
+  background: transparent;
+}
+html[data-newon-shell-theme="dark"] .bp-page .bp-btn--primary {
+  background: #f5f5f5;
+  color: #000;
+}
+html[data-newon-shell-theme="dark"] .bp-page .bp-cta {
+  background: #141416;
+  color: #fff;
+}
+html[data-newon-shell-theme="dark"] .bp-page .bp-cta .bp-label {
+  color: rgba(255, 255, 255, 0.72);
+}
+html[data-newon-shell-theme="dark"] .bp-page .bp-cta .bp-btn--primary {
+  background: #fff;
+  color: #000;
+}

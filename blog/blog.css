@@ -1,0 +1,7 @@
+.blog-post__head { margin-bottom: 2rem; }
+.blog-post__meta { font-size: 0.875rem; color: var(--text-soft); margin: 0.5rem 0 0; }
+.blog-post__body { line-height: 1.75; color: var(--text-muted); }
+.blog-post__body h2, .blog-post__body h3 { color: var(--text); margin: 2rem 0 0.75rem; }
+.blog-post__body p { margin: 0 0 1rem; }
+.blog-post__body ul { margin: 0 0 1rem 1.25rem; }
+.blog-post__body code { font-size: 0.9em; background: var(--border); padding: 0.1rem 0.35rem; border-radius: 4px; }
