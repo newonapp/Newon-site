@@ -1970,3 +1970,63 @@ html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babyl
 html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls-journey-sec .nls-rail__btn.is-on {
   border-top: 2px solid #ee7fa3 !important;
 }
+
+/* content upgrade 30 (2026-10-24): status board, cards on pale pink bands, FAQ accordion. Same tokens, no ornament. */
+#lifestage-detail.nls[data-story="babylog"] .bl-tint .bl-icard {
+  background: var(--bl-paper);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-board .bl-icard .nls-chips {
+  margin: 0.4rem 0 0.2rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-board .bl-icard > p:last-child {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  font-size: 0.86rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec > .bl-sub--lg {
+  margin: 2.4rem 0 1rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-rows__item .bl-biz__cta {
+  margin: 0.6rem 0 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-faq {
+  border-top: 1px solid var(--bl-wash-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-faq__item {
+  border-bottom: 1px solid var(--bl-wash-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-faq__item summary {
+  position: relative;
+  padding: 1.15rem 2.2rem 1.15rem 0;
+  font-size: 1.05rem;
+  font-weight: 650;
+  color: var(--bl-ink);
+  cursor: pointer;
+  list-style: none;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-faq__item summary::-webkit-details-marker {
+  display: none;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-faq__item summary::after {
+  content: "+";
+  position: absolute;
+  right: 0.2rem;
+  top: 1rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-faq__item[open] summary::after {
+  content: "\2212";
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-faq__item summary:focus-visible {
+  outline: 2px solid var(--bl-pt);
+  outline-offset: 2px;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-faq__item p {
+  margin: 0 0 1.2rem;
+  max-width: 46rem;
+  font-size: 0.97rem;
+  line-height: 1.7;
+  color: var(--bl-muted);
+}

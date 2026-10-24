@@ -9,6 +9,7 @@
  * BL-10 a per-card status badge (removed in V2) fails the check
  * BL-11 Korean text leaking into a fallback-locale page fails the check
  * BL-12 JSON-LD declaring an offered Service fails the check
+ * BL-13 content upgrade 30 data: 26 areas, 4 status columns, 7 inquiry purposes, no price
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -138,13 +139,31 @@ test("BL-9 the expansion copy has 32 groups, 12 + 15 partner types and no price 
     assert.equal(c.csGroups.length, 8);
     assert.equal(c.partnerships.cs.items.length, 12);
     assert.equal(c.partnerships.industry.items.length, 15);
-    assert.equal(c.platform.screens.groups.reduce((n, g) => n + g.items.length, 0), 21);
     assert.equal(c.business.groups.cats.reduce((n, x) => n + x.groups.length, 0), 32);
   }
   const src = fs.readFileSync(path.join(ROOT, "scripts", "babylog-expansion-copy.mjs"), "utf8");
   const body = src.slice(src.indexOf("const KO ="));
   for (const re of [/₩\s?\d/, /\d[\d,]*\s?원(?!칙)/, /\d+\s?%/, /19,?900/, /169,?000/, /179,?000/]) {
     assert.ok(!re.test(body), `expansion copy matches ${re}`);
+  }
+});
+
+test("BL-13 content upgrade 30: 26 long-term areas, four status columns, seven inquiry purposes and no price or internal figure", async () => {
+  const m = await import("../../scripts/babylog-content30.mjs");
+  for (const lang of ["ko", "en"]) {
+    const c = m.getContent30(lang);
+    const areas = c.platform.areas.groups.flatMap((g) => g.items);
+    assert.equal(areas.length, m.AREA_COUNT);
+    assert.equal(m.AREA_COUNT, 26);
+    assert.deepEqual(areas.map((a) => a.n), Array.from({ length: 26 }, (_, i) => String(i + 1).padStart(2, "0")));
+    assert.equal(c.status.columns.length, 4);
+    assert.equal(c.contact.purpose.items.length, 7);
+    assert.equal(c.business.phases.items.length, 5);
+  }
+  const src = fs.readFileSync(path.join(ROOT, "scripts", "babylog-content30.mjs"), "utf8");
+  const body = src.slice(src.indexOf("const KO ="));
+  for (const re of [/₩\s?\d/, /\d[\d,]*\s?원(?!칙)/, /\d+\s?%/, /19,?900/, /169,?000/, /179,?000/]) {
+    assert.ok(!re.test(body), `content30 copy matches ${re}`);
   }
 });
 

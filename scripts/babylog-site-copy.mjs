@@ -16,6 +16,7 @@
  */
 
 import { getExpansionCopy } from "./babylog-expansion-copy.mjs";
+import { getContent30 } from "./babylog-content30.mjs";
 
 export const BL_SLUG = "babylog";
 
@@ -116,29 +117,6 @@ const KO = {
       ctaMain: "BABYLOG 알아보기",
       ctaSub: "플랫폼 살펴보기",
     },
-    vision: {
-      kicker: "02 · About BABYLOG",
-      title: "아이의 성장과 함께,\n가족의 일상도 이어집니다.",
-      lines: [
-        "아이를 기다리는 순간부터 처음 만나는 날, 작은 변화를 기록하고 함께 성장하는 시간까지. 육아에는 수많은 순간과 선택이 있습니다.",
-        "BABYLOG는 아이의 성장과 가족의 일상에 필요한 기록과 정보를 더 쉽게 관리하고, 서로 연결할 수 있는 경험을 지향합니다.",
-        "지금은 iOS와 Android 앱에서 육아 기록, 성장·건강 기록, 일정 관리와 가족 공유를 제공합니다.",
-        "단순한 기록을 넘어 가족생활, 교육, 돌봄과 다양한 생활 서비스까지 이어지는 플랫폼으로 성장하고자 합니다.",
-      ],
-    },
-    journey: {
-      kicker: "04 · The Family Journey",
-      title: "가족의 시작부터\n아이의 성장까지.",
-      lead: "아이의 성장 단계마다 가족에게 필요한 것은 달라집니다. BABYLOG는 여섯 단계의 여정에 맞춰 기록과 정보, 서비스를 연결해 나갑니다.",
-      items: [
-        { id: "s1", n: "01", age: "임신 준비", name: "새로운 가족을 준비하는 첫걸음", lead: "새로운 가족을 맞을 준비를 시작하는 시기. 생활 습관과 검진 준비에 필요한 정보를 연결하는 방향을 지향합니다.", topics: ["임신 준비 체크리스트", "건강한 생활 습관", "검진 준비", "전문기관 안내"] },
-        { id: "s2", n: "02", age: "임신 기간", name: "임신 기간의 변화와 중요한 일정을 함께", lead: "임신 주차별 변화와 산전검사 일정을 앱에서 함께 관리하며, 가족이 출산을 준비하는 시기.", topics: ["임신 주차 정보", "산전검사 일정", "임신 기록", "출산 준비물"] },
-        { id: "s3", n: "03", age: "출산과 산후", name: "출산과 산후 회복의 모든 과정", lead: "아이를 맞이하고 부모의 회복과 새로운 생활을 준비하는 시기. 산후 정보와 지원제도를 연결하는 영역으로 확장해 나갑니다.", topics: ["출산 기록", "산후 회복", "산후조리 정보", "산후 지원제도"] },
-        { id: "s4", n: "04", age: "영아 돌봄", name: "수유·수면·기저귀, 영아의 하루", lead: "수유·수면·기저귀처럼 매일 반복되는 순간을 앱에서 기록하고 일별로 확인하는 시기.", topics: ["수유 기록", "수면 기록", "기저귀 기록", "일별 요약"] },
-        { id: "s5", n: "05", age: "아동 성장", name: "성장·건강·발달을 기록하는 시간", lead: "키·몸무게와 예방접종, 이유식 기록으로 아이의 성장을 시간의 흐름에 따라 살펴보는 시기.", topics: ["키·몸무게", "예방접종", "이유식", "발달 정보"] },
-        { id: "s6", n: "06", age: "가족의 일상", name: "놀이·교육·가족생활로 넓어지는 일상", lead: "놀이와 교육, 어린이집·유치원 생활로 아이의 세상이 넓어지는 시기. 가족과 기관이 함께 아이를 살피는 경험을 지향합니다.", topics: ["연령별 놀이", "어린이집·유치원", "가족 공동 육아", "보호자·기관 소통"] },
-      ],
-    },
     connect: {
       kicker: "03 · Our Mission",
       title: "아이와 가족의\n더 나은 일상을 위해.",
@@ -174,7 +152,7 @@ const KO = {
       lead: "BABYLOG는 NEWON의 핵심 플랫폼이며, NEWON의 다른 플랫폼과 같은 원칙으로 운영합니다.",
       items: [
         { n: "01", name: "자체 제품 중심", body: "고객별 외주가 아닌 표준화된 자체 SaaS·플랫폼·라이선스·자동화 제품을 중심으로 합니다." },
-        { n: "02", name: "SHAREON과의 역할 구분", body: "육아용품 공유·대여와 개인 간 거래는 SHAREON과 역할을 나누어 연계하며, 하나의 거래에 수수료가 이중으로 부과되지 않도록 설계하는 것을 원칙으로 합니다." },
+        { n: "02", name: "SHAREON과의 역할 구분", body: "육아용품 쇼핑·중고·공동구매는 BABYLOG 안에서, 대여는 공유·대여 전문인 SHAREON과 연계하는 것으로 역할을 나눕니다. 하나의 거래에 수수료가 이중으로 부과되지 않도록 설계하는 것을 원칙으로 합니다." },
         { n: "03", name: "LIVON·ONGIL과의 역할 구분", body: "출산 지원금·육아휴직 같은 생활 제도 안내는 LIVON이 맡고, 아이의 성장 이후 생애 단계와의 연결은 장기 방향으로 살펴봅니다." },
         { n: "04", name: "웹과 앱의 역할", body: "웹사이트는 브랜드·서비스·사업·협력 소개와 문의 연결을, 앱은 실제 기록과 관리 기능을 담당합니다." },
       ],
@@ -223,7 +201,7 @@ const KO = {
         lead: "육아는 가족이 함께하는 일입니다. 보호자와 가족이 같은 기록을 확인하고 이어갑니다.",
         items: [
           { name: "가족 공동 관리", lead: "앱에서 부모와 보호자가 같은 아이의 기록과 일정을 함께 확인합니다.", status: "released" },
-          { name: "보호자별 접근권한", lead: "보호자별 접근권한과, 아이가 자라며 스스로 관리하는 범위를 넓히는 구조를 단계적으로 설계해 나갑니다.", status: "direction" },
+          { name: "보호자별 접근권한", lead: "부모·조부모·보호자·청소년의 역할에 따라 볼 수 있는 범위를 나누는 구조를 단계적으로 설계합니다. 원칙은 아래 ‘역할과 권한’에서 확인할 수 있습니다.", status: "direction" },
         ],
       },
       {
@@ -262,8 +240,8 @@ const KO = {
         title: "가족에게 필요한\n상품과 서비스로.",
         lead: "가족에게 필요한 상품과 서비스를 더 쉽게 찾는 경험으로 확장해 나갑니다.",
         items: [
-          { name: "상품·서비스 탐색", lead: "육아용품·교육 상품과 산후조리·돌봄 등 가족 서비스 정보를 탐색하는 경험을 지향합니다.", status: "review" },
-          { name: "SHAREON 공유·대여 연계", lead: "육아용품 공유·대여와 개인 간 거래는 SHAREON과 역할을 나누어 연계하며, 하나의 거래에 수수료가 이중으로 부과되지 않도록 설계합니다.", status: "review" },
+          { name: "탐색·예약·마켓", lead: "앱의 탐색 영역 안에서 기관·서비스 정보와 예약, 육아용품 쇼핑·중고·공동구매를 이용하는 구조를 다음 버전에서 준비하고 있습니다. 웹사이트에서는 거래·예약을 제공하지 않습니다.", status: "review" },
+          { name: "SHAREON과의 역할 구분", lead: "쇼핑·중고·공동구매는 BABYLOG 마켓 안에서, 육아용품 대여는 공유·대여 전문인 SHAREON과 연계합니다. 결제·정산에 NEWON 공통 거래 인프라를 쓰는 방안은 계획이며 아직 구현되지 않았고, 하나의 거래에 수수료가 이중으로 부과되지 않도록 설계합니다.", status: "review" },
         ],
       },
       {
@@ -398,7 +376,7 @@ const KO = {
       ctaSub: "기업·기관 문의하기",
     },
     process: {
-      kicker: "01 · Partnership Process",
+      kicker: "Partnership Process",
       title: "제안에서 진행까지,\n다섯 단계.",
       lead: "협력은 아래 순서로 검토합니다. 문의가 협력 확정이나 계약 체결을 보장하지는 않습니다.",
       steps: [
@@ -414,7 +392,7 @@ const KO = {
       items: ["아동과 가족의 권리 존중", "개인정보 보호", "적격 서비스 제공자 확인", "투명한 거래 조건", "실제 제휴 여부의 정확한 표시", "공익 정보와 상업적 협력의 구분"],
     },
     types: {
-      kicker: "02 · Partnership Opportunities",
+      kicker: "Partnership Opportunities",
       title: "가족 중심의 플랫폼에서\n새로운 사업 기회를 연결합니다.",
       lead: "BABYLOG는 여섯 가지 협력 모델을 중심으로 파트너와 함께할 기회를 찾습니다. 아래 여덟 유형에서 가장 가까운 협력 방식을 확인해 주세요.",
       models: ["Family Services · 가족 서비스", "Parenting Commerce · 육아 커머스", "Childcare & Education SaaS · 보육·교육 SaaS", "Corporate Family Benefits · 기업 가족복지", "Public & Social Impact · 공공·사회적 가치", "Global Expansion · 글로벌 확장"],
@@ -436,13 +414,13 @@ const KO = {
         {
           code: "seller", n: "02", name: "육아 커머스 판매자",
           who: "육아 커머스 판매자, 유통 사업자, 육아용품 재사용·공유를 원하는 개인",
-          areas: "상품 소개, 공유·대여와 개인 간 거래(SHAREON 연계)",
+          areas: "상품 소개, 중고·공동구매(BABYLOG 마켓, 다음 버전 준비 중), 육아용품 대여(SHAREON 연계)",
           model: "Parenting Commerce — 같은 거래에 수수료가 중복되지 않는 거래 구조.",
           terms: "판매 가능 품목과 거래 안전 기준, 판매자 확인 방식을 협의합니다. 웹사이트에서 판매자 계정을 만들 수 없습니다.",
         },
         {
           code: "creator", n: "03", name: "콘텐츠 제작자",
-          who: "육아·놀이·학습·가족 콘텐츠를 만드는 제작자",
+          who: "육아·놀이·학습·가족 콘텐츠를 만드는 제작자, 교육 콘텐츠 기업과 출판사",
           areas: "연령별 놀이·독서·교육 콘텐츠 제공, 공동 기획",
           model: "Family Services — 가족과 육아 관련 콘텐츠·서비스 정보 연결.",
           terms: "저작권과 이용 범위, 연령 적합성, 콘텐츠 품질, 아동 사진·정보 사용 기준을 확인합니다.",
@@ -456,7 +434,7 @@ const KO = {
         },
         {
           code: "service", n: "05", name: "육아·돌봄 서비스 사업자",
-          who: "산후조리, 산후도우미, 아이돌봄, 가족 체험 서비스를 운영하는 적격 사업자",
+          who: "산후조리원, 산후도우미, 아이돌봄, 키즈 클래스·키즈카페, 가족 촬영, 가족 체험 서비스를 운영하는 적격 사업자",
           areas: "서비스 정보 소개, 적격 서비스 연결, 공동 프로그램",
           model: "Family Services — 가족과 육아 관련 서비스 정보 및 적격 사업자 연결.",
           terms: "사업자 확인, 안전과 자격 요건, 아이를 대상으로 하는 서비스의 기준을 확인합니다. 웹사이트에서 예약은 제공하지 않습니다.",
@@ -470,7 +448,7 @@ const KO = {
         },
         {
           code: "institution", n: "07", name: "교육·돌봄·공공기관",
-          who: "어린이집·유치원·돌봄기관, 정부기관과 지방자치단체",
+          who: "어린이집·유치원·학원·돌봄기관, 정부기관과 지방자치단체",
           areas: "기관 SaaS, 기관·보호자 소통, 공공 육아지원 정보 안내, 프로그램 협력",
           model: "Childcare & Education SaaS · Public & Social Impact — 기관 운영 효율화와 공공정보 접근성.",
           terms: "공공 조달·계약 절차, 아동 정보 보호 기준, 보안 요건을 확인합니다.",
@@ -498,7 +476,7 @@ const KO = {
       ctaSub: "파트너십 보기",
     },
     list: {
-      kicker: "01 · Contact Categories",
+      kicker: "Contact Categories",
       title: "어떤 이야기를\n나누고 싶으신가요?",
       lead: "열일곱 가지 문의 분야 중 가까운 유형을 선택해 주세요. 선택한 유형은 NEWON 공식 문의 양식에 함께 전달됩니다.",
       items: [
@@ -514,7 +492,7 @@ const KO = {
       go: "이 유형으로 문의하기 →",
     },
     guide: {
-      kicker: "02 · Contact Information",
+      kicker: "Contact Information",
       title: "문의 전에 알아 두세요.",
       items: [
         { n: "01", name: "NEWON", body: "문의는 NEWON 공식 문의 양식으로 이어지며, newon@newon.app으로도 보낼 수 있습니다. BABYLOG 웹페이지에서는 개인정보를 따로 받지 않습니다." },
@@ -587,29 +565,6 @@ const EN = {
       ctaMain: "Discover BABYLOG",
       ctaSub: "Explore the platform",
     },
-    vision: {
-      kicker: "02 · About BABYLOG",
-      title: "As a child grows,\na family's everyday life carries on.",
-      lines: [
-        "From the moment you wait for your child to the day you first meet, recording small changes and growing together. Parenting is full of moments and choices.",
-        "BABYLOG aims for an experience that makes the records and information a child's growth and a family's daily life need easier to manage and connect.",
-        "Today, the iOS and Android app offers parenting records, growth and health records, schedules and family sharing.",
-        "Beyond simple records, BABYLOG aims to grow into a platform that extends to family life, education, care and a wide range of everyday services.",
-      ],
-    },
-    journey: {
-      kicker: "04 · The Family Journey",
-      title: "From the start of a family\nto a child's growth.",
-      lead: "What a family needs changes at every stage of a child's growth. BABYLOG connects records, information and services along a six-stage journey.",
-      items: [
-        { id: "s1", n: "01", age: "Pregnancy Planning", name: "The first step toward a new family", lead: "When you start preparing for a new family. BABYLOG aims to connect the information needed for healthy habits and checkup preparation.", topics: ["Pregnancy planning checklist", "Healthy habits", "Checkup preparation", "Specialist institutions"] },
-        { id: "s2", n: "02", age: "Pregnancy", name: "Changes and key dates during pregnancy, together", lead: "When week-by-week changes and prenatal test schedules are managed together in the app as the family prepares for birth.", topics: ["Pregnancy week information", "Prenatal test schedule", "Pregnancy records", "Birth essentials"] },
-        { id: "s3", n: "03", age: "Birth & Postpartum", name: "Every step of birth and postpartum recovery", lead: "Welcoming the baby and preparing for the parents' recovery and a new daily life. BABYLOG is expanding into postpartum information and support programs.", topics: ["Birth records", "Postpartum recovery", "Postpartum care information", "Postpartum support programs"] },
-        { id: "s4", n: "04", age: "Baby Care", name: "Feeding, sleep, diapers: a baby's day", lead: "When feeding, sleep and diaper moments repeat every day and are logged and checked day by day in the app.", topics: ["Feeding records", "Sleep records", "Diaper records", "Daily summary"] },
-        { id: "s5", n: "05", age: "Child Growth", name: "A time to record growth, health and development", lead: "Following a child's growth over time through height and weight, vaccination and baby food records.", topics: ["Height · weight", "Vaccinations", "Baby food", "Development information"] },
-        { id: "s6", n: "06", age: "Family Life", name: "Widening through play, learning and family life", lead: "When play, learning and daycare or kindergarten life widen a child's world. BABYLOG aims for an experience in which families and institutions look after a child together.", topics: ["Play by age", "Daycare · kindergarten", "Shared parenting", "Guardian–institution communication"] },
-      ],
-    },
     connect: {
       kicker: "03 · Our Mission",
       title: "For a better everyday life\nfor children and families.",
@@ -645,7 +600,7 @@ const EN = {
       lead: "BABYLOG is a core NEWON platform and runs under the same principles as NEWON's other platforms.",
       items: [
         { n: "01", name: "In-house products first", body: "Standardized in-house SaaS, platforms, licenses and automation products — not per-client outsourcing." },
-        { n: "02", name: "Roles divided with SHAREON", body: "Sharing and renting baby goods and person-to-person trading link to SHAREON with roles kept separate, and the principle is that a single transaction is never charged fees twice." },
+        { n: "02", name: "Roles divided with SHAREON", body: "Baby goods shopping, used goods and group buying stay in BABYLOG, while rental links to SHAREON, the sharing and rental platform. The principle is that a single transaction is never charged fees twice." },
         { n: "03", name: "Roles divided with LIVON and ONGIL", body: "Guidance on life-stage systems such as childbirth support and parental leave is handled by LIVON, and links to life stages after childhood are a long-term direction." },
         { n: "04", name: "Roles of the web and the app", body: "The website introduces the brand, services, business and partnerships and routes inquiries; the app handles actual recording and management." },
       ],
@@ -694,7 +649,7 @@ const EN = {
         lead: "Parenting is something a family does together. Guardians and family check and continue the same records.",
         items: [
           { name: "Shared family management", lead: "In the app, parents and guardians look at the same child's records and schedules together.", status: "released" },
-          { name: "Permissions per guardian", lead: "Step by step, we are designing permissions for each guardian and ways to widen what a growing child manages on their own.", status: "direction" },
+          { name: "Permissions per guardian", lead: "Step by step, we are designing scopes of access by role: parents, grandparents, guardians and teens. See the principles under Roles & Permissions below.", status: "direction" },
         ],
       },
       {
@@ -733,8 +688,8 @@ const EN = {
         title: "Toward the products and services\na family needs.",
         lead: "Expanding into an experience that makes the products and services families need easier to find.",
         items: [
-          { name: "Explore products and services", lead: "BABYLOG aims for an experience for exploring baby goods, education products and family service information such as postpartum care and childcare.", status: "review" },
-          { name: "Sharing and rental with SHAREON", lead: "Sharing and renting baby goods and person-to-person trading link to SHAREON with roles kept separate, designed so that one transaction is never charged fees twice.", status: "review" },
+          { name: "Explore, booking and market", lead: "Institution and service information with booking, and baby goods shopping, used goods and group buying inside the app's explore area, are being prepared for the next version. The website offers no trading or booking.", status: "review" },
+          { name: "Roles divided with SHAREON", lead: "Shopping, used goods and group buying happen in the BABYLOG market, while renting baby goods links to SHAREON, the sharing and rental platform. Using NEWON's shared transaction infrastructure for payment and settlement is a plan that is not yet built, designed so one transaction is never charged fees twice.", status: "review" },
         ],
       },
       {
@@ -869,7 +824,7 @@ const EN = {
       ctaSub: "Business & institution inquiry",
     },
     process: {
-      kicker: "01 · Partnership Process",
+      kicker: "Partnership Process",
       title: "From proposal to delivery,\nfive steps.",
       lead: "Cooperation is reviewed in this order. An inquiry does not guarantee a confirmed partnership or a contract.",
       steps: [
@@ -885,7 +840,7 @@ const EN = {
       items: ["Respect for the rights of children and families", "Personal data protection", "Verification of qualified service providers", "Transparent transaction terms", "Accurate display of actual partnerships", "Separation of public-interest information and commercial cooperation"],
     },
     types: {
-      kicker: "02 · Partnership Opportunities",
+      kicker: "Partnership Opportunities",
       title: "Connecting new business opportunities\non a family-centered platform.",
       lead: "BABYLOG looks for opportunities with partners around six partnership models. Find the closest way of working together among the eight types below.",
       models: ["Family Services", "Parenting Commerce", "Childcare & Education SaaS", "Corporate Family Benefits", "Public & Social Impact", "Global Expansion"],
@@ -898,12 +853,12 @@ const EN = {
       },
       items: [
         { code: "brand", n: "01", name: "Parenting & family brands", who: "Brands that make or sell baby goods, baby food, children's clothing and household goods", areas: "Product information, platform listing, curated sales, brand campaigns and group buying, overseas distribution", model: "Parenting Commerce — widening product and service experiences between parenting brands and consumers.", terms: "We check product safety and labeling standards, brand credibility and standards for advertising to families and children." },
-        { code: "seller", n: "02", name: "Parenting commerce sellers", who: "Parenting commerce sellers, distributors, and individuals who want to reuse or share baby goods", areas: "Product introduction, sharing, rental and person-to-person trading (with SHAREON)", model: "Parenting Commerce — a transaction structure with no duplicate fees on one transaction.", terms: "Eligible items, trading safety rules and seller verification are agreed together. Seller accounts cannot be created on this website." },
-        { code: "creator", n: "03", name: "Content creators", who: "Creators of parenting, play, learning and family content", areas: "Play, reading and education content by age, joint planning", model: "Family Services — connecting parenting and family content and service information.", terms: "We check copyright and scope of use, age suitability, content quality and standards for using children's photos and information." },
+        { code: "seller", n: "02", name: "Parenting commerce sellers", who: "Parenting commerce sellers, distributors, and individuals who want to reuse or share baby goods", areas: "Product introduction, used goods and group buying (BABYLOG market, preparing for the next version), baby goods rental (with SHAREON)", model: "Parenting Commerce — a transaction structure with no duplicate fees on one transaction.", terms: "Eligible items, trading safety rules and seller verification are agreed together. Seller accounts cannot be created on this website." },
+        { code: "creator", n: "03", name: "Content creators", who: "Creators of parenting, play, learning and family content, education content companies and publishers", areas: "Play, reading and education content by age, joint planning", model: "Family Services — connecting parenting and family content and service information.", terms: "We check copyright and scope of use, age suitability, content quality and standards for using children's photos and information." },
         { code: "expert", n: "04", name: "Parenting & development experts", who: "Experts in child development, parent education, parenting and education, and specialist education institutions", areas: "Parent education, development information, postpartum emotional health and parenting stress information, education programs", model: "Family Services — connecting trusted parenting and development information and education.", terms: "We review how fields and qualifications are verified, and standards so content is not mistaken for medical or legal advice." },
-        { code: "service", n: "05", name: "Parenting & care service providers", who: "Qualified providers of postpartum care, postpartum helpers, childcare and family experiences", areas: "Service information, connecting qualified services, joint programs", model: "Family Services — connecting family and parenting service information and qualified providers.", terms: "We check business verification, safety and qualification requirements, and standards for services aimed at children. Booking is not offered on this website." },
+        { code: "service", n: "05", name: "Parenting & care service providers", who: "Qualified providers of postpartum care centers, postpartum helpers, childcare, kids' classes and kids cafes, family photography and family experiences", areas: "Service information, connecting qualified services, joint programs", model: "Family Services — connecting family and parenting service information and qualified providers.", terms: "We check business verification, safety and qualification requirements, and standards for services aimed at children. Booking is not offered on this website." },
         { code: "corporate", n: "06", name: "Companies & benefits managers", who: "Managers at companies that run employee family benefits and parent support programs", areas: "Corporate family-benefit solutions, parent support information, use of automation products", model: "Corporate Family Benefits — solutions supporting employees' parenting and family life.", terms: "We discuss how it connects to benefit programs, the scope of personal data handling and how eligibility is checked." },
-        { code: "institution", n: "07", name: "Education, care & public institutions", who: "Daycare centers, kindergartens and care institutions, government agencies and local governments", areas: "Institution SaaS, institution–guardian communication, public parenting support information, program cooperation", model: "Childcare & Education SaaS · Public & Social Impact — more efficient institution operations and access to public information.", terms: "We check public procurement and contracting procedures, child-data protection standards and security requirements." },
+        { code: "institution", n: "07", name: "Education, care & public institutions", who: "Daycare centers, kindergartens, academies and care institutions, government agencies and local governments", areas: "Institution SaaS, institution–guardian communication, public parenting support information, program cooperation", model: "Childcare & Education SaaS · Public & Social Impact — more efficient institution operations and access to public information.", terms: "We check public procurement and contracting procedures, child-data protection standards and security requirements." },
         { code: "global", n: "08", name: "Global & technology partners", who: "Overseas parenting and family service providers and institutions, and technology partners in security, data protection, accessibility and automation", areas: "Multilingual platform, SaaS licensing, localization, technology cooperation", model: "Global Expansion — country-specific parenting and family services and global platform cooperation.", terms: "We review local law, child and personal-data protection standards, language and cultural fit, and the scope of brand use." },
       ],
       cta: "Inquire as this type",
@@ -921,7 +876,7 @@ const EN = {
       ctaSub: "See partnerships",
     },
     list: {
-      kicker: "01 · Contact Categories",
+      kicker: "Contact Categories",
       title: "What would you like\nto talk about?",
       lead: "Choose the closest of the seventeen contact categories. The type you choose is passed along with the official NEWON inquiry form.",
       items: [
@@ -937,7 +892,7 @@ const EN = {
       go: "Inquire as this type →",
     },
     guide: {
-      kicker: "02 · Contact Information",
+      kicker: "Contact Information",
       title: "Before you get in touch.",
       items: [
         { n: "01", name: "NEWON", body: "Inquiries go to the official NEWON inquiry form and can also be sent to newon@newon.app. This BABYLOG page does not collect personal data itself." },
@@ -958,13 +913,23 @@ export function getBabylogCopy(lang) {
   const key = lang === "ko" ? "ko" : "en";
   if (!MERGED[key]) {
     const base = key === "ko" ? KO : EN;
-    const x = getExpansionCopy(key);
+    const x0 = getExpansionCopy(key);
+    const c30 = getContent30(key);
+    // content upgrade 30: the 26 long-term areas replace the earlier 21-service list, the plan's five priorities
+    // replace the earlier roadmap, and the vision / journey copy comes from the integrated business plan.
+    const x = {
+      ...x0,
+      platform: { ...x0.platform, screens: c30.platform.areas },
+      business: { ...x0.business, phases: c30.business.phases },
+    };
     MERGED[key] = {
       ...base,
       status: { ...base.status, ...x.status },
       ui: { ...base.ui, ...x.ui },
-      seo: Object.fromEntries(Object.entries(base.seo).map(([k, v]) => [k, { ...v, ...(x.seo[k] || {}) }])),
+      seo: Object.fromEntries(Object.entries(base.seo).map(([k, v]) => [k, { ...v, ...(x.seo[k] || {}), ...(c30.seo[k] || {}) }])),
+      overview: { ...base.overview, vision: c30.overview.vision, journey: c30.overview.journey },
       x,
+      c30,
     };
   }
   return MERGED[key];

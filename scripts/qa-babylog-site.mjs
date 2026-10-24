@@ -26,6 +26,7 @@ import { fileURLToPath } from "url";
 import { BL_NAV, PARTNER_CODES, CONTACT_CODES, BIZ_CODES } from "./babylog-site-copy.mjs";
 import { CS_PARTNER_CODES, IND_PARTNER_CODES, CONTACT_MORE_CODES, CONTACT_CS_CODES, CS_GROUP_CODES } from "./babylog-expansion-copy.mjs";
 import { BUSINESS } from "./six-businesses.mjs";
+import { AREA_COUNT } from "./babylog-content30.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
@@ -93,7 +94,7 @@ for (const p of pages) {
     return body.slice(i, j > 0 ? j : undefined);
   };
   if (p.nav.id === "overview") {
-    const need = ["bl-vision", "bl-connect", "bl-journey", "bl-daily", "bl-health", "bl-ecosystem", "bl-parent-eco", "bl-trust", "bl-opportunities", "bl-impact", "bl-newon", "bl-platforms", "bl-close"];
+    const need = ["bl-vision", "bl-connect", "bl-problem", "bl-who", "bl-diff", "bl-now", "bl-journey", "bl-daily", "bl-health", "bl-ecosystem", "bl-parent-eco", "bl-trust", "bl-opportunities", "bl-impact", "bl-newon", "bl-platforms", "bl-close"];
     const lack = need.filter((i) => !ids.has(i));
     const stages = count(body, /data-nls-decade-card=/g);
     const eco = count(body, /class="bl-net__item"/g);
@@ -109,19 +110,21 @@ for (const p of pages) {
     secOk = !lack.length && stages === 6 && eco === 4 && biz === 6 && cats === 8 && ctas === 2 && impOk && sol === 6 && values === 6 && core === 8 && pl === 6 && /story-babylog-title/.test(body);
     secInfo = `missing ${lack.join(",") || "-"}, stages ${stages}, values ${values}/6, core experience ${core}/8, ecosystem ${eco}, business links ${biz}, category links ${cats}, impact ${impOk}, trust ${sol}/6, platforms ${pl}, closing CTAs ${ctas}`;
   } else if (p.nav.id === "platform") {
-    const need = ["screens", "growth", "records", "family", "learning", "memories", "assist", "explore", "trust", "cs", ...CS_GROUP_CODES.map((c) => "cs-" + c)].map((x) => "bl-" + x).concat("bl-access", "bl-close");
+    const need = ["screens", "flow", "growth", "records", "family", "learning", "memories", "assist", "explore", "trust", "roles", "scenarios", "roadmap", "cs", ...CS_GROUP_CODES.map((c) => "cs-" + c), "access", "faq", "close"].map((x) => "bl-" + x);
     const lack = need.filter((i) => !ids.has(i));
     const screens = count(sect("bl-screens"), /class="bl-screen"/g);
     const csRail = count(sect("bl-cs"), /class="bl-rail__link"/g);
     // each public-welfare / child-safety area keeps its official-source and "what we do not do" rows
     const csGuard = CS_GROUP_CODES.every((c) => count(sect("bl-cs-" + c), /<dt>/g) === 2);
-    secOk = !lack.length && screens === 21 && csRail === 8 && csGuard && /bl-emergency/.test(sect("bl-cs")) && /story-babylog-title/.test(body);
-    secInfo = `missing ${lack.join(",") || "-"}, screens ${screens}/21, child-safety jump links ${csRail}/8, all 8 keep source+guard rows ${csGuard}`;
+    // content upgrade 30: the 26 long-term areas of the integrated business plan (was 21 services)
+    const faqs = count(sect("bl-faq"), /<details class="bl-faq__item">/g);
+    secOk = !lack.length && screens === AREA_COUNT && faqs >= 6 && csRail === 8 && csGuard && /bl-emergency/.test(sect("bl-cs")) && /story-babylog-title/.test(body);
+    secInfo = `missing ${lack.join(",") || "-"}, areas ${screens}/${AREA_COUNT}, faq ${faqs}, child-safety jump links ${csRail}/8, all 8 keep source+guard rows ${csGuard}`;
   } else if (p.nav.id === "business") {
     const arts = BIZ_CODES.map((c) => `biz-${c}`);
     const cats = Array.from({ length: 8 }, (_, i) => `cat-0${i + 1}`);
     const grps = Array.from({ length: 32 }, (_, i) => `grp-${String(i + 1).padStart(2, "0")}`);
-    const lack = [...arts, ...cats, ...grps, "bl-phases", "bl-groups"].filter((i) => !ids.has(i));
+    const lack = [...arts, ...cats, ...grps, "bl-phases", "bl-groups", "bl-payers", "bl-revenue", "bl-market", "bl-entry", "bl-rules"].filter((i) => !ids.has(i));
     const dts = count(sect("bl-biz"), /<dt>/g);
     const ctaLinks = count(sect("bl-biz"), /class="bl-biz__cta"/g);
     const csCards = count(body, /class="bl-grp bl-grp--cs"/g);
@@ -133,9 +136,10 @@ for (const p of pages) {
     secInfo = `missing ${lack.join(",") || "-"}, six-model dt ${dts}/36, public-welfare/child-safety cards ${csCards}/8, categories 07-08 emergency+forbidden ${cat9Plan}, phases ${phases}`;
   } else if (p.nav.id === "partnerships") {
     const arts = [...PARTNER_CODES, ...IND_PARTNER_CODES, ...CS_PARTNER_CODES].map((c) => `partner-${c}`);
-    const lack = arts.filter((i) => !ids.has(i));
-    const dts = count(body, /<dt>/g);
-    const steps = count(body, /class="bl-steps__item"/g);
+    const lack = arts.concat("bl-pvision", "bl-pilots", "bl-data", "bl-joint", "bl-pvalue").filter((i) => !ids.has(i));
+    // counts are scoped to the partner-type sections (content upgrade 30 adds pilot cards with their own rows)
+    const dts = ["bl-types", "bl-industry", "bl-cs-partners"].reduce((n, id) => n + count(sect(id), /<dt>/g), 0);
+    const steps = count(sect("bl-process"), /class="bl-steps__item"/g);
     const rail = count(body, /bl-rail__link/g);
     const principles = count(sect("bl-process"), /<li>/g);
     const models = count(sect("bl-types"), /<ul class="nls-chips">/g);
@@ -145,8 +149,10 @@ for (const p of pages) {
     const cards = [...body.matchAll(/class="bl-card[^"]*" href="([^"]+)"/g)].map((m) => m[1]);
     const codes = cards.map((c) => (c.match(/source=babylog-contact-([a-z]+)/) || [])[1]);
     const want = [...CONTACT_CODES, ...CONTACT_MORE_CODES, ...CONTACT_CS_CODES];
-    secOk = cards.length === 26 && JSON.stringify(codes) === JSON.stringify(want) && /bl-emergency/.test(sect("bl-contact-cs"));
-    secInfo = `cards ${cards.length}/26, codes ${codes.join(",")}`;
+    const purpose = sect("bl-contact-purpose");
+    const purposeOk = count(purpose, /class="bl-rows__item"/g) === 7 && /mailto:newon@newon\.app/.test(purpose) && /business\/contact\/\?type=/.test(purpose);
+    secOk = cards.length === 26 && JSON.stringify(codes) === JSON.stringify(want) && /bl-emergency/.test(sect("bl-contact-cs")) && purposeOk;
+    secInfo = `cards ${cards.length}/26, purposes ${purposeOk}, codes ${codes.join(",")}`;
   }
   rec(`sections ${tag}`, secOk, secInfo);
 

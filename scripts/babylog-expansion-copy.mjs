@@ -98,7 +98,7 @@ const KO = {
       kicker: "NEWON Ecosystem",
       title: "NEWON의 여섯 플랫폼 속\nBABYLOG의 자리.",
       lead: "각 플랫폼은 서로 다른 영역을 맡습니다.",
-      note: "LIVON은 출산 지원금·육아휴직 등 생활 제도를 안내하고, BABYLOG는 아이의 일상 기록과 육아 관리 경험을, SHAREON은 공유·대여 거래를 담당하는 방식으로 역할을 구분합니다.",
+      note: "LIVON은 임신·출산 지원 제도와 성인 전환 이후의 생활을, SHAREON은 육아용품 대여를, PETLOG는 반려동물과 함께하는 가족 생활을, ONGIL은 조부모 세대의 돌봄을, MY WORLD는 가족 여행의 추억을 맡습니다. 서로 다른 앱의 아동·건강·가족 데이터는 명시적 동의와 적법한 권한 없이 자동으로 공유하지 않습니다.",
       items: [
         { n: "01", name: "BABYLOG", body: "임신·출산·육아·성장·교육·가족생활·아동 안전" },
         { n: "02", name: "PETLOG", body: "반려동물 건강·생활·상품·서비스" },
@@ -130,54 +130,6 @@ const KO = {
   },
 
   platform: {
-    screens: {
-      kicker: "21 Services",
-      title: "스물한 개 서비스,\n다섯 개 영역.",
-      lead: "임신·출산부터 육아·성장, 가족·커뮤니티, 육아 생활, 공공정보·아동 안전까지. 앱에서 이용하는 기능은 현재형으로, 확장해 나갈 영역은 방향으로 소개합니다.",
-      groups: [
-        {
-          id: "s-a", name: "A · Pregnancy & Birth · 임신·출산", items: [
-            { n: "01", en: "Pregnancy Planning", name: "임신 준비", lead: "새로운 가족을 준비하는 과정의 일정과 정보를 체계적으로 살펴보도록 돕는 영역으로 확장해 나갑니다. 주요 영역: 임신 준비 체크리스트, 가임기 정보, 건강한 생활 습관, 검진 준비, 전문기관 안내.", status: "direction" },
-            { n: "02", en: "Pregnancy Management", name: "임신 관리", lead: "앱에서 임신 주차별 변화와 검진 일정, 출산 준비 과정을 함께 관리합니다. 태아 상태를 진단하지 않습니다. 주요 영역: 임신 주차 정보, 산전검사 일정, 임신 기록, 출산 준비물, 가족 일정.", status: "released" },
-            { n: "03", en: "Birth & Recovery", name: "출산·산후 회복", lead: "출산 이후 부모의 회복과 새로운 생활 준비에 필요한 정보를 연결하는 것을 지향합니다. 주요 영역: 출산 기록, 산후 회복 기록, 산후조리 정보, 산후 지원제도, 전문기관 정보.", status: "direction" },
-            { n: "04", en: "Birth Planning", name: "출산 준비·가족 계획", lead: "출산 전후 필요한 준비를 가족이 함께 확인하고 계획하는 경험으로 넓혀 갑니다. 주요 영역: 병원 준비물, 출산 일정, 육아용품 준비, 가족 역할 분담, 초기 육아 체크리스트.", status: "direction" },
-          ],
-        },
-        {
-          id: "s-b", name: "B · Baby Care & Child Growth · 육아·성장", items: [
-            { n: "05", en: "Feeding, Sleep & Diapers", name: "수유·수면·기저귀 기록", lead: "앱에서 반복되는 육아의 순간을 편리하게 기록하고 확인합니다. 주요 영역: 수유 기록, 수면 기록, 기저귀 기록, 일별 요약, 생활 패턴 확인.", status: "released" },
-            { n: "06", en: "Growth Records", name: "성장 기록", lead: "앱에서 키·몸무게와 월령별 성장 변화를 기록하고 가족과 함께 돌아봅니다. 사진·성장 추억 정리는 확장해 나갈 영역입니다.", status: "released" },
-            { n: "07", en: "Health & Vaccination", name: "건강·예방접종", lead: "앱에서 건강검진과 예방접종 등 중요한 일정을 놓치지 않도록 정리합니다. 의료적 진단이나 처방을 대신하지 않습니다. 주요 영역: 예방접종 일정, 검진 기록, 건강 기록, 병원 방문 기록, 공식 건강정보.", status: "released" },
-            { n: "08", en: "Development Information", name: "발달·성장 정보", lead: "아이의 발달을 이해할 수 있는 연령별 정보와 관찰 기록을 연결하는 것을 지향합니다. 주요 영역: 발달 정보, 월령별 놀이, 성장 체크리스트, 발달 관련 전문기관 안내.", status: "direction" },
-            { n: "09", en: "Baby Food & Nutrition", name: "이유식·영양·식단", lead: "앱에서 아이의 식생활 변화를 기록합니다. 식단 계획은 확장해 나갈 영역이며 개별 영양 처방은 하지 않습니다. 주요 영역: 이유식 기록, 식사 기록, 식단 계획, 식재료 정보, 알레르기 관련 정보.", status: "released" },
-            { n: "10", en: "Play, Learning & Education", name: "놀이·학습·교육", lead: "아이의 연령과 관심사에 맞는 놀이와 학습 경험을 소개하는 것을 지향합니다. 주요 영역: 연령별 놀이, 독서, 감각 활동, 교육 콘텐츠, 발달 단계별 활동 정보.", status: "direction" },
-          ],
-        },
-        {
-          id: "s-c", name: "C · Family & Community · 가족·커뮤니티", items: [
-            { n: "11", en: "Shared Parenting", name: "가족 공동 육아", lead: "앱에서 부모와 보호자가 함께 아이의 일상과 중요한 정보를 관리합니다. 주요 영역: 가족 구성원 관리, 공동 기록, 일정 공유, 가족 소통.", status: "released" },
-            { n: "12", en: "Family Schedule", name: "가족 일정·생활 관리", lead: "앱에서 아이의 일정과 가족의 일상적인 준비를 정리합니다. 주요 영역: 병원 일정, 교육 일정, 가족 일정, 준비물, 할 일, 알림.", status: "released" },
-            { n: "13", en: "Parent Community", name: "부모 커뮤니티", lead: "비슷한 성장 단계의 부모가 정보를 나누는 공간을 만들어 갑니다. 아동 사진·개인정보 보호 정책을 먼저 갖춥니다. 주요 영역: 연령별 커뮤니티, 지역별 정보, 육아 경험, 질문과 답변.", status: "review" },
-            { n: "14", en: "Parent Wellness & Education", name: "부모 웰니스·교육", lead: "부모의 건강한 일상과 양육 역량을 지원하는 정보와 교육을 연결하는 것을 지향합니다. 주요 영역: 부모 교육, 산후 정서 정보, 양육 스트레스 관리 정보, 상담기관 안내.", status: "direction" },
-          ],
-        },
-        {
-          id: "s-d", name: "D · Parenting Lifestyle · 육아 생활", items: [
-            { n: "15", en: "Shopping", name: "육아용품·쇼핑", lead: "아이와 가족에게 필요한 상품과 브랜드를 탐색하는 커머스 영역으로 확장해 나갑니다. 주요 영역: 육아용품, 유아 가구, 의류, 식품, 생활용품.", status: "review" },
-            { n: "16", en: "Sharing & Rental", name: "육아용품 공유·대여", lead: "사용 기간이 짧은 육아용품을 합리적으로 이용하도록 돕습니다. 공유·대여 거래는 SHAREON과 역할을 나누어 연결하며, 안전용품은 별도 기준을 둡니다.", status: "review" },
-            { n: "17", en: "Parenting Services", name: "육아 서비스", lead: "출산과 육아에 필요한 전문 서비스와 적격 제공기관 정보를 연결하는 것을 지향합니다. 주요 영역: 산후조리, 산후도우미, 육아 지원, 돌봄 서비스, 전문기관 정보.", status: "review" },
-            { n: "18", en: "Childcare & Education", name: "어린이집·유치원·교육기관", lead: "교육·돌봄기관의 공식 정보와 관련 일정을 이해하도록 돕는 영역으로 넓혀 갑니다. 입소 신청·예약은 제공하지 않습니다. 주요 영역: 어린이집, 유치원, 보육 정보, 입소·입학 안내, 기관 프로그램.", status: "review" },
-          ],
-        },
-        {
-          id: "s-e", name: "E · Public Information & Child Safety · 공공정보·아동 안전", items: [
-            { n: "19", en: "Parenting Support & Welfare", name: "육아지원·정부 복지", lead: "부모와 가족에게 필요한 공공 육아지원 제도와 공식 신청 경로를 안내하는 것을 지향합니다. 주요 영역: 출산지원, 양육지원, 보육료, 가족복지, 지역별 지원제도.", status: "direction" },
-            { n: "20", en: "Child Safety & Protection", name: "아동 안전·보호", lead: "아동의 안전한 생활과 보호를 위한 공식 정보와 교육 콘텐츠를 연결하는 공익 영역입니다. 주요 영역: 생활 안전, 사고 예방, 실종 예방, 아동학대 예방, 보호기관 정보.", status: "plan" },
-            { n: "21", en: "Child Welfare Information", name: "아동 보호·복지 정보", lead: "도움이 필요한 아동과 가족이 공식 제도와 기관 정보를 찾도록 돕는 공익 영역입니다. 주요 영역: 보호체계, 가정위탁, 입양 절차 정보, 자립지원, 검증된 공익기관 안내.", status: "plan" },
-          ],
-        },
-      ],
-    },
     cs: {
       kicker: "PUBLIC WELFARE & CHILD SAFETY",
       title: "아이의 안전과 권리를\n먼저 생각합니다.",
@@ -277,7 +229,7 @@ const KO = {
       title: "서른두 개 사업 분야,\n여덟 개 그룹.",
       lead: "임신·출산·육아부터 아동 건강·교육, 가족·커뮤니티, 커머스, 보육·교육기관, 기업·기술·글로벌, 공공·아동 안전, 아동복지·사회적 가치까지. BABYLOG가 산업과 고객, 플랫폼 가치를 기준으로 설계한 32개 사업 분야입니다.",
       fields: { customers: "대상 고객", value: "사업 내용", model: "사업 방식", revenue: "수익 모델", ops: "운영 조건", sources: "공식 정보 출처", subs: "주요 서비스" },
-      note: "수익 모델은 가격이 아닌 사업 구조의 유형입니다.",
+      note: "수익 모델은 가격이 아닌 사업 구조의 유형입니다. 32개 사업 분야는 산업과 고객 기준의 분류이고, 플랫폼 페이지의 26개 장기 사업 영역은 서비스 기획 단위입니다.",
       cats: [
         { id: "01", en: "Pregnancy, Birth & Parenting", name: "임신·출산·육아", model: "정보·기록 중심의 소비자 서비스. 의료기관과 공식 기관의 정보는 연결·안내 방식으로 설계합니다.", revenue: "개인 프리미엄 구독", groups: ["g01", "g02", "g03", "g04"] },
         { id: "02", en: "Child Health, Development & Education", name: "아동 건강·발달·교육", model: "건강·발달·영양 기록과 참고 정보, 놀이·교육 콘텐츠. 진단이 아닌 참고용으로 설계합니다.", revenue: "개인 프리미엄 구독, 교육 콘텐츠 이용권", groups: ["g05", "g06", "g07", "g08"] },
@@ -313,19 +265,6 @@ const KO = {
         ["g22", "Corporate Family Benefits", "기업 가족복지", ["육아 정보", "부모 지원", "가족복지 솔루션"], "임직원 복지를 운영하는 기업", "기업 임직원의 육아·가족생활 지원을 위한 표준화된 복지 솔루션 사업.", "이용 대상 확인과 개인정보 처리 범위는 계약에서 정합니다.", "review"],
         ["g23", "AI & Intelligent Parenting Tools", "AI·지능형 육아 도구", ["일정 정리", "기록 요약", "개인화 정보 탐색", "업무 자동화"], "보호자, 기관·사업자", "육아 관련 일반 정보 탐색, 기록 정리, 생활관리 보조를 지원하는 AI 기반 제품 사업.", "현재 앱에서 기록 요약과 일반 정보 안내를 이용할 수 있고, 개인화 탐색과 업무 자동화는 확장 영역입니다. 의료적 진단과 전문적 판단을 대신하지 않습니다.", "released"],
         ["g24", "Global Parenting Platform", "글로벌 육아 플랫폼", ["다국어 플랫폼", "국가별 육아 정보", "기관용 SaaS 확장"], "해외 가족·사업자, 전략적 파트너", "국가별 언어와 제도, 문화에 맞춘 글로벌 육아·가족 플랫폼 사업.", "현지 법규와 아동·개인정보 보호 기준을 확인합니다.", "direction"],
-      ],
-    },
-    phases: {
-      kicker: "Business Roadmap",
-      title: "다섯 단계로\n단계적으로 확장합니다.",
-      lead: "사업은 넓게 설계하되, 핵심 기록 경험을 먼저 완성하고 이용자 수요를 확인하는 순서로 확장합니다.",
-      note: "로드맵은 추진 순서이며 출시일이나 매출 목표가 아닙니다. 공공·아동복지 영역은 공식 기관 협력과 운영 체계가 확인되는 단계에서 진행합니다.",
-      items: [
-        { n: "01", name: "현재 플랫폼 기반", body: "수유·수면·성장·건강 기록과 가족 공유, 사용성과 데이터 안정성, 백업·복구 등 핵심 앱 경험을 다집니다." },
-        { n: "02", name: "서비스 경험 확대", body: "가족 공동 관리와 육아 일정, 공신력 있는 육아 콘텐츠와 지원 정보로 경험을 넓힙니다." },
-        { n: "03", name: "가족생활 생태계", body: "산후조리·돌봄·교육 등 육아 서비스와 커머스·공동구매로 가족생활 전반을 연결합니다." },
-        { n: "04", name: "기업·기관 솔루션", body: "보육·교육기관 SaaS와 기업 가족복지, 육아 브랜드 솔루션을 표준 제품으로 제공합니다." },
-        { n: "05", name: "글로벌 확장", body: "다국어 플랫폼과 SaaS 라이선싱, 지자체·공공 협력으로 더 많은 가족에게 닿습니다." },
       ],
     },
   },
@@ -386,7 +325,7 @@ const KO = {
       title: "서비스·기관·기업·공공·글로벌\n문의.",
       lead: "가족 서비스와 보육기관, 기업, 공공, 아동 안전·복지, 기술, 글로벌 관련 문의 분야(09–17)입니다.",
       items: [
-        { code: "services", n: "09", name: "가족·육아 서비스", lead: "산후조리·돌봄 등 가족 서비스 협력. 제공자의 자격 확인이 전제입니다." },
+        { code: "services", n: "09", name: "가족·육아 서비스", lead: "산후조리·돌봄·키즈 클래스·키즈카페·가족 촬영 등 가족 서비스·예약 업체 협력. 제공자의 자격 확인이 전제입니다." },
         { code: "education", n: "10", name: "어린이집·유치원", lead: "어린이집·유치원·교육기관 협력." },
         { code: "saas", n: "11", name: "보육기관 SaaS", lead: "보육·교육기관 운영 솔루션 도입·제안." },
         { code: "corporate", n: "12", name: "기업 가족복지", lead: "임직원 가족복지·B2B 솔루션 문의." },
@@ -488,7 +427,7 @@ const EN = {
       kicker: "NEWON Ecosystem",
       title: "BABYLOG's place among\nNEWON's six platforms.",
       lead: "Each platform covers a different area.",
-      note: "LIVON explains life-stage systems such as childbirth support and parental leave, BABYLOG handles a child's daily records and parenting management, and SHAREON handles sharing and rental transactions.",
+      note: "LIVON covers childbirth support programs and life after the move to adulthood, SHAREON covers renting baby goods, PETLOG covers family life with pets, ONGIL covers care for the grandparent generation, and MY WORLD covers family travel memories. Children's, health and family data from different apps is never shared automatically without explicit consent and lawful authority.",
       items: [
         { n: "01", name: "BABYLOG", body: "Pregnancy, birth, parenting, growth, education, family life, child safety" },
         { n: "02", name: "PETLOG", body: "Pet health, daily life, products, services" },
@@ -520,54 +459,6 @@ const EN = {
   },
 
   platform: {
-    screens: {
-      kicker: "21 Services",
-      title: "Twenty-one services,\nfive areas.",
-      lead: "From pregnancy and birth to baby care and growth, family and community, parenting lifestyle, and public information and child safety. Features in the app are described in the present tense; areas we are expanding into are described as direction.",
-      groups: [
-        {
-          id: "s-a", name: "A · Pregnancy & Birth", items: [
-            { n: "01", en: "Pregnancy Planning", name: "Pregnancy Planning", lead: "Expanding into an area that helps families look through the schedules and information needed to prepare for a new family. Key areas: planning checklist, fertility window information, healthy habits, checkup preparation, specialist institutions.", status: "direction" },
-            { n: "02", en: "Pregnancy Management", name: "Pregnancy Management", lead: "Manage weekly changes, checkup schedules and birth preparation together in the app. It does not diagnose the fetus. Key areas: pregnancy week information, prenatal tests, pregnancy records, birth essentials, family schedule.", status: "released" },
-            { n: "03", en: "Birth & Recovery", name: "Birth & Recovery", lead: "BABYLOG aims to connect information for parents' recovery and a new daily life after birth. Key areas: birth records, recovery records, postpartum care information, postpartum support programs, specialist institutions.", status: "direction" },
-            { n: "04", en: "Birth Planning", name: "Birth Planning", lead: "Widening into an experience in which families check and plan what is needed around birth. Key areas: hospital bag, birth schedule, baby goods, family role sharing, early parenting checklist.", status: "direction" },
-          ],
-        },
-        {
-          id: "s-b", name: "B · Baby Care & Child Growth", items: [
-            { n: "05", en: "Feeding, Sleep & Diapers", name: "Feeding, Sleep & Diapers", lead: "Log and check repeated parenting moments with ease in the app. Key areas: feeding, sleep and diaper records, daily summary, daily patterns.", status: "released" },
-            { n: "06", en: "Growth Records", name: "Growth Records", lead: "Record height, weight and month-by-month growth in the app and look back on it with family. Organizing photos and growth memories is an expansion area.", status: "released" },
-            { n: "07", en: "Health & Vaccination", name: "Health & Vaccination", lead: "Keep checkups and vaccinations from being missed in the app. It does not replace medical diagnosis or prescription. Key areas: vaccination schedule, checkup and health records, hospital visits, official health information.", status: "released" },
-            { n: "08", en: "Development Information", name: "Development Information", lead: "BABYLOG aims to connect age-based information and observation records that help families understand development. Key areas: development information, play by month, growth checklist, specialist institutions.", status: "direction" },
-            { n: "09", en: "Baby Food & Nutrition", name: "Baby Food & Nutrition", lead: "Record changes in a child's eating in the app. Meal planning is an expansion area, and there are no individual nutrition prescriptions. Key areas: baby food records, meal records, meal plans, ingredients, allergy information.", status: "released" },
-            { n: "10", en: "Play, Learning & Education", name: "Play, Learning & Education", lead: "BABYLOG aims to introduce play and learning that fit a child's age and interests. Key areas: play by age, reading, sensory activities, education content, activities by developmental stage.", status: "direction" },
-          ],
-        },
-        {
-          id: "s-c", name: "C · Family & Community", items: [
-            { n: "11", en: "Shared Parenting", name: "Shared Parenting", lead: "In the app, parents and guardians manage a child's daily life and key information together. Key areas: family members, shared records, shared schedules, family communication.", status: "released" },
-            { n: "12", en: "Family Schedule", name: "Family Schedule", lead: "Organize a child's schedule and the family's everyday preparation in the app. Key areas: hospital, education and family schedules, things to bring, to-dos, notifications.", status: "released" },
-            { n: "13", en: "Parent Community", name: "Parent Community", lead: "Building a space for parents at similar stages to share information, with policies protecting children's photos and personal data in place first. Key areas: communities by age, local information, experiences, Q&A.", status: "review" },
-            { n: "14", en: "Parent Wellness & Education", name: "Parent Wellness & Education", lead: "BABYLOG aims to connect information and education that support parents' wellbeing and parenting skills. Key areas: parent education, postpartum emotional health, parenting stress, counseling bodies.", status: "direction" },
-          ],
-        },
-        {
-          id: "s-d", name: "D · Parenting Lifestyle", items: [
-            { n: "15", en: "Shopping", name: "Shopping", lead: "Expanding into commerce for exploring the goods and brands children and families need. Key areas: baby goods, children's furniture, clothing, food, household goods.", status: "review" },
-            { n: "16", en: "Sharing & Rental", name: "Sharing & Rental", lead: "Helping families use short-lived baby goods sensibly. Sharing and rental link to SHAREON with roles kept separate, and safety items follow separate standards.", status: "review" },
-            { n: "17", en: "Parenting Services", name: "Parenting Services", lead: "BABYLOG aims to connect information on specialist services and qualified providers for birth and parenting. Key areas: postpartum care, postpartum helpers, parenting support, childcare, specialist institutions.", status: "review" },
-            { n: "18", en: "Childcare & Education", name: "Childcare & Education", lead: "Widening into an area that helps families understand official education and care institution information and schedules; no applications or booking. Key areas: daycare, kindergarten, childcare information, admission guidance, programs.", status: "review" },
-          ],
-        },
-        {
-          id: "s-e", name: "E · Public Information & Child Safety", items: [
-            { n: "19", en: "Parenting Support & Welfare", name: "Parenting Support & Welfare", lead: "BABYLOG aims to guide public parenting support programs and official application channels. Key areas: birth support, childrearing support, childcare fees, family welfare, local support programs.", status: "direction" },
-            { n: "20", en: "Child Safety & Protection", name: "Child Safety & Protection", lead: "A public-interest area connecting official information and education content for children's safety and protection. Key areas: everyday safety, accident prevention, missing-child prevention, abuse prevention, protection bodies.", status: "plan" },
-            { n: "21", en: "Child Welfare Information", name: "Child Welfare Information", lead: "A public-interest area that helps children and families in need find official systems and institutions. Key areas: protection system, foster care, adoption procedures, independence support, verified public-interest bodies.", status: "plan" },
-          ],
-        },
-      ],
-    },
     cs: {
       kicker: "PUBLIC WELFARE & CHILD SAFETY",
       title: "We put a child's safety\nand rights first.",
@@ -666,7 +557,7 @@ const EN = {
       title: "Thirty-two business lines,\neight groups.",
       lead: "From pregnancy, birth and parenting to child health and education, family and community, commerce, childcare and education institutions, enterprise, technology and global, public and child safety, and child welfare and social impact: 32 business lines BABYLOG has designed around industries, customers and platform value.",
       fields: { customers: "Target customers", value: "What it covers", model: "Business method", revenue: "Revenue model", ops: "Operating conditions", sources: "Official information sources", subs: "Key services" },
-      note: "Revenue models are types of business structure, not prices.",
+      note: "Revenue models are types of business structure, not prices. The 32 business lines are a classification by industry and customer, while the 26 long-term areas on the Platform page are service planning units.",
       cats: [
         { id: "01", en: "Pregnancy, Birth & Parenting", name: "Pregnancy, Birth & Parenting", model: "Information and record-centered consumer services. Information from medical and official bodies is designed as connection and guidance.", revenue: "Individual premium subscription", groups: ["g01", "g02", "g03", "g04"] },
         { id: "02", en: "Child Health, Development & Education", name: "Child Health, Development & Education", model: "Health, development and nutrition records with reference information, and play and education content, designed as reference rather than diagnosis.", revenue: "Individual premium subscription, education content passes", groups: ["g05", "g06", "g07", "g08"] },
@@ -702,19 +593,6 @@ const EN = {
         ["g22", "Corporate Family Benefits", "Corporate Family Benefits", ["Parenting information", "Parent support", "Family benefit solutions"], "Companies that run employee benefits", "A standardized benefits solution business supporting employees' parenting and family life.", "Eligibility checks and the scope of personal data handling are set in the contract.", "review"],
         ["g23", "AI & Intelligent Parenting Tools", "AI & Intelligent Parenting Tools", ["Schedule organization", "Record summaries", "Personalized information search", "Task automation"], "Guardians, institutions and providers", "An AI-based product business supporting general parenting information search, record organization and daily-life assistance.", "Record summaries and general information are available in the app today; personalized search and task automation are expansion areas. It does not replace medical diagnosis or professional judgment.", "released"],
         ["g24", "Global Parenting Platform", "Global Parenting Platform", ["Multilingual platform", "Country-specific parenting information", "Institution SaaS expansion"], "Families and providers abroad, strategic partners", "A global parenting and family platform business fitted to each country's language, systems and culture.", "Local laws and standards for children's and personal data are checked.", "direction"],
-      ],
-    },
-    phases: {
-      kicker: "Business Roadmap",
-      title: "Expanding step by step,\nin five stages.",
-      lead: "The business is designed broadly, but it expands in the order of completing the core recording experience first and confirming user demand.",
-      note: "The roadmap is an order of priorities, not release dates or revenue targets. The public and child welfare areas proceed at the stage where official cooperation and an operating system are confirmed.",
-      items: [
-        { n: "01", name: "Current platform foundation", body: "Strengthening the core app experience: feeding, sleep, growth and health records, family sharing, usability, data stability, backup and recovery." },
-        { n: "02", name: "Wider service experience", body: "Widening the experience with shared family management, parenting schedules, and trusted parenting content and support information." },
-        { n: "03", name: "Family life ecosystem", body: "Connecting family life as a whole with parenting services such as postpartum care, childcare and education, and with commerce and group buying." },
-        { n: "04", name: "Enterprise & institution solutions", body: "Providing childcare and education institution SaaS, corporate family benefits and parenting brand solutions as standard products." },
-        { n: "05", name: "Global expansion", body: "Reaching more families through a multilingual platform, SaaS licensing, and local government and public-sector cooperation." },
       ],
     },
   },
@@ -775,7 +653,7 @@ const EN = {
       title: "Service, institution, business,\npublic and global inquiries.",
       lead: "Contact categories 09–17: family services, childcare institutions, companies, the public sector, child safety and welfare, technology and global business.",
       items: [
-        { code: "services", n: "09", name: "Family services", lead: "Cooperation on family services such as postpartum care and childcare. Verifying provider qualifications is a precondition." },
+        { code: "services", n: "09", name: "Family services", lead: "Cooperation with family services and bookable businesses such as postpartum care, childcare, kids' classes, kids cafes and family photography. Verifying provider qualifications is a precondition." },
         { code: "education", n: "10", name: "Childcare & kindergarten", lead: "Cooperation with daycare centers, kindergartens and education institutions." },
         { code: "saas", n: "11", name: "Childcare institution SaaS", lead: "Adopting or proposing operations solutions for childcare and education institutions." },
         { code: "corporate", n: "12", name: "Corporate family benefits", lead: "Employee family benefits and B2B solutions." },
