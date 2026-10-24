@@ -1787,3 +1787,50 @@ html[data-newon-shell-theme="dark"] body #shareon-detail .nsh-close__art { opaci
 #shareon-detail .nsh-device--solo {
   grid-template-columns: minmax(0, 1fr) !important;
 }
+
+/* ───── V3 content (Oct 2026): status columns, FAQ, flow legend, three-output calculator. Same tokens and line language. ───── */
+#shareon-detail .nsh-phase { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem; }
+#shareon-detail .nsh-phase__col { display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; padding: 1.25rem; background: #fff; border: 1px solid var(--nsh-wash-line); }
+#shareon-detail .nsh-phase__col--a { box-shadow: inset 0 3px 0 var(--nsh-point); }
+#shareon-detail .nsh-phase__col--b .nsh-phase__dot { background: transparent; border: 2px dashed var(--nsh-point); box-sizing: border-box; }
+#shareon-detail .nsh-phase__col--c .nsh-phase__dot { background: var(--nsh-line-strong); }
+#shareon-detail .nsh-phase__col--d .nsh-phase__dot { background: transparent; border: 2px solid var(--nsh-point); box-sizing: border-box; }
+#shareon-detail .nsh-phase__lead { font-size: 0.82rem; line-height: 1.55; color: var(--nsh-faint); }
+#shareon-detail .nsh-phase__list li { padding: 0.6rem 0; border-top: 1px solid var(--nsh-line); font-size: 0.92rem; line-height: 1.55; color: var(--nsh-ink); }
+
+#shareon-detail .nsh-track__step.is-off .nsh-track__dot { background: var(--nsh-paper); border-style: dashed; }
+#shareon-detail .nsh-track__step.is-off { border-top-style: dashed; }
+#shareon-detail .nsh-flow__legend { display: flex; align-items: flex-start; gap: 0.7rem; margin-top: 2.5rem; }
+#shareon-detail .nsh-flow__key { flex: none; width: 11px; height: 11px; margin-top: 0.35em; border-radius: 50%; border: 2px dashed var(--nsh-point); box-sizing: border-box; }
+#shareon-detail .nsh-flow__booking { display: grid; gap: 0.9rem; margin-top: 2.5rem; }
+
+#shareon-detail .nsh-faq { border-top: 1px solid var(--nsh-ink); }
+#shareon-detail .nsh-faq__item { border-bottom: 1px solid var(--nsh-line); }
+#shareon-detail .nsh-faq__q { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.15rem 0; font-size: 1.02rem; font-weight: 700; letter-spacing: -0.02em; cursor: pointer; list-style: none; }
+#shareon-detail .nsh-faq__q::-webkit-details-marker { display: none; }
+#shareon-detail .nsh-faq__sign { position: relative; flex: none; width: 14px; height: 14px; }
+#shareon-detail .nsh-faq__sign::before,
+#shareon-detail .nsh-faq__sign::after { content: ""; position: absolute; left: 0; top: 6px; width: 14px; height: 2px; background: var(--nsh-point-ink); }
+#shareon-detail .nsh-faq__sign::after { transform: rotate(90deg); }
+#shareon-detail .nsh-faq__item[open] .nsh-faq__sign::after { display: none; }
+#shareon-detail .nsh-faq__q:hover { color: var(--nsh-point-ink); }
+#shareon-detail .nsh-faq__a { padding: 0 2rem 1.3rem 0; max-width: 44rem; font-size: 0.95rem; line-height: 1.75; color: var(--nsh-muted); }
+
+@media (min-width: 641px) {
+  #shareon-detail .nsh-calc__out { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #shareon-detail .nsh-calc__out dd { font-size: clamp(1.35rem, 2.3vw, 2rem); }
+  #shareon-detail .nsh-calc__out > div + div { padding-left: 1rem; }
+}
+@media (max-width: 640px) {
+  #shareon-detail .nsh-phase__col { padding: 1.1rem 1rem; }
+  #shareon-detail .nsh-faq__a { padding-right: 0; }
+}
+html[data-newon-shell-theme="dark"] body #shareon-detail :is(.nsh-phase__col, .nsh-phase__col *:not(.nsh-tgroup__count):not(.nsh-phase__dot)) { background: #121120 !important; }
+html[data-newon-shell-theme="dark"] body #shareon-detail .nsh-phase__col { border-color: rgba(119, 113, 232, 0.3) !important; }
+html[data-newon-shell-theme="dark"] body #shareon-detail .nsh-phase__list li { border-top-color: rgba(255, 255, 255, 0.12) !important; }
+html[data-newon-shell-theme="dark"] body #shareon-detail :is(.nsh-phase__col--b, .nsh-phase__col--d) .nsh-phase__dot { background: transparent !important; }
+html[data-newon-shell-theme="dark"] body #shareon-detail .nsh-phase__col--c .nsh-phase__dot { background: #6b6b6b !important; border-color: #6b6b6b !important; }
+html[data-newon-shell-theme="dark"] body #shareon-detail .nsh-faq { border-top-color: #7771e8 !important; }
+html[data-newon-shell-theme="dark"] body #shareon-detail .nsh-faq__item { border-bottom-color: rgba(255, 255, 255, 0.12) !important; }
+html[data-newon-shell-theme="dark"] body #shareon-detail .nsh-faq__sign::before,
+html[data-newon-shell-theme="dark"] body #shareon-detail .nsh-faq__sign::after { background: #b3afff !important; }

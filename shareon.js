@@ -1,4 +1,4 @@
-/* SHAREON pages — progressive enhancement only (category tabs, hypothetical revenue calculator). No network calls. */
+/* SHAREON pages — progressive enhancement only (revenue-model tabs, one-rental calculator). No network calls. */
 (function () {
   "use strict";
   var root = document.getElementById("shareon-detail");
@@ -43,7 +43,8 @@
     select(0, false);
   });
 
-  /* Calculator: GMV = count × average; fee = GMV × rate. Purely illustrative, values stay in the page. */
+  /* One-rental calculator: fee = rental fee × rate (deposit excluded); lender share = rental fee − fee; deposit shown apart.
+     Purely illustrative, values stay in the page. */
   Array.prototype.forEach.call(root.querySelectorAll("[data-nsh-calc]"), function (box) {
     var locale = box.getAttribute("data-lang") || "en-US";
     var fmt;
@@ -59,9 +60,11 @@
       if (el) el.textContent = fmt.format(Math.round(v));
     }
     function update() {
-      var gmv = val("count", 1e7) * val("avg", 1e8);
-      out("gmv", gmv);
-      out("fee", (gmv * val("rate", 100)) / 100);
+      var rent = val("rent", 1e8);
+      var fee = (rent * val("rate", 100)) / 100;
+      out("fee", fee);
+      out("payout", rent - fee);
+      out("deposit", val("deposit", 1e8));
     }
     box.addEventListener("input", update);
     var form = box.querySelector("form");

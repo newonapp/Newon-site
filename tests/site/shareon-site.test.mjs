@@ -1,5 +1,5 @@
 /**
- * Regression tests for the SHAREON business website (/{lang}/shareon/…), V2 (Oct 2026).
+ * Regression tests for the SHAREON business website (/{lang}/shareon/…), V3 content (Oct 2026).
  * Run: node --test tests/site/shareon-site.test.mjs   (reads the committed HTML; no build needed)
  */
 import test from "node:test";
@@ -35,22 +35,26 @@ test("five SHAREON pages exist in all nine locales with SEO basics", () => {
   }
 });
 
-test("counts are preserved: 18 services, 14 businesses, 14 partner types, 10 inquiry types", () => {
+test("counts follow the final plan: 18 areas, 10 revenue models, 10 partner types, 11 inquiry types, 7-step flow", () => {
   for (const c of [KO, EN]) {
     assert.equal(c.platform.services.length, 18);
-    assert.equal(c.business.core.items.length, 14);
-    assert.equal(c.partnerships.types.items.length, 14);
-    assert.equal(c.contact.items.length, 10);
-    assert.equal(c.business.revenue.rows.length, 6);
+    assert.equal(c.business.models.items.length, 10);
+    assert.equal(c.partnerships.types.items.length, 10);
+    assert.equal(c.contact.items.length, 11);
+    assert.equal(c.platform.flow.steps.length, 7);
+    // payment and settlement are the steps marked as not operating
+    assert.deepEqual(c.platform.flow.steps.filter((s) => s.off).map((s) => s.n), ["04", "07"]);
   }
   const ko = (p) => read(`ko/${p}/index.html`);
   assert.equal((ko("shareon/platform").match(/id="svc-\d\d"/g) || []).length, 18);
-  assert.equal((ko("shareon/business").match(/class="nsh-biz__item"/g) || []).length, 14);
-  assert.equal((ko("shareon/partnerships").match(/class="nsh-dir__row"/g) || []).length, 14);
-  assert.equal((ko("shareon/contact").match(/class="nsh-tiles__item"/g) || []).length, 10);
-  // inquiry types separate usage/trade from business/partnership inquiries
+  assert.equal((ko("shareon/business").match(/class="nsh-biz__item"/g) || []).length, 10);
+  assert.equal((ko("shareon/partnerships").match(/class="nsh-dir__row"/g) || []).length, 10);
+  assert.equal((ko("shareon/contact").match(/class="nsh-tiles__item"/g) || []).length, 11);
+  assert.equal((ko("shareon/platform").match(/class="nsh-track__step is-off"/g) || []).length, 2);
+  // inquiry types separate usage/joining from partner/institution/external inquiries, incl. press and investment
   const groups = KO.contact.items.map((it) => it.g);
   assert.deepEqual([...new Set(groups)], ["trade", "partner"]);
+  assert.ok(KO.contact.items.some((it) => it.slug === "media") && KO.contact.items.some((it) => it.slug === "investment"));
 });
 
 test("no per-card status badges; exactly one shared notice per page", () => {
@@ -62,6 +66,8 @@ test("no per-card status badges; exactly one shared notice per page", () => {
     }
   }
   assert.ok(KO.statusNote.includes("향후 개발 또는 운영 방향"));
+  // status is expressed by group columns, not per-card labels
+  assert.ok((read("ko/shareon/platform/index.html").match(/class="nsh-phase__col /g) || []).length >= 3);
 });
 
 test("no fee rates, prices or currency amounts are shown", () => {
@@ -116,6 +122,11 @@ test("inquiry links keep the NEWON form mechanism and internal links resolve", (
         const rel = m[1].replace(/^\//, "");
         const file = rel.endsWith("/") || rel === "" ? path.join(rel, "index.html") : rel;
         assert.ok(fs.existsSync(path.join(ROOT, file)), `${lang}/${p.path} → ${m[1]}`);
+        if (m[1].endsWith("/business/contact/")) {
+          const q = new URLSearchParams(m[2].slice(1).replace(/&amp;/g, "&"));
+          assert.equal(q.get("platform"), "shareon");
+          assert.ok(["general", "participation", "saas", "public", "technology", "other"].includes(q.get("type")), q.get("type"));
+        }
         if (m[1].endsWith("/business/inquiry/")) {
           const q = new URLSearchParams(m[2].slice(1).replace(/&amp;/g, "&"));
           assert.equal(q.get("type"), "partnership");
