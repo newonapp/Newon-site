@@ -19,6 +19,11 @@
     position: sticky;
     top: 6.2rem;
   }
+  /* A heading stays put only when nothing follows it in its column; otherwise the text below
+   * would scroll up underneath it and the two would overlap. */
+  #lifestage-detail.nls .nls-split .nls-head:not(:last-child) {
+    position: static;
+  }
 }
 
 #lifestage-detail.nls .nls-roster,

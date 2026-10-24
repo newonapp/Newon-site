@@ -69,7 +69,7 @@ import {
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 export const OGS_VER = "20261024ogs4";
-const NLS_VER = "20260924livon1"; // Life Stage assets are reused as-is
+const NLS_VER = "20261025ov1"; // Life Stage assets are reused as-is
 /** ONGIL first-screen background film (owner-provided, 2026-10-18). */
 const ONGIL_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260323_071151_38c3924f-c312-48af-a196-3fbb80e4226f.mp4";
 
@@ -962,7 +962,7 @@ function renderPage(lang, page) {
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
-    <link rel="stylesheet" href="/ongil-site.css?v=20261024content4" />`,
+    <link rel="stylesheet" href="/ongil-site.css?v=20261025ov1" />`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,
   });

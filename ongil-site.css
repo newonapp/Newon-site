@@ -103,6 +103,9 @@ html[data-theme="dark"] #lifestage-detail.ogs {
     top: 9rem;
     align-self: start;
   }
+  #lifestage-detail.ogs .nls-split .nls-head:not(:last-child) {
+    position: static;
+  }
   #lifestage-detail.ogs .ogs-split--wide {
     grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
   }

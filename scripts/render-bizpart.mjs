@@ -56,7 +56,7 @@ import {
 const esc = escapeHtml;
 const nl = (s) => esc(s || "").replace(/\n/g, "<br>");
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const NLS_VER = "20260924livon1"; // Life Stage assets are reused as-is
+const NLS_VER = "20261025ov1"; // Life Stage assets are reused as-is
 const BP_VER = "20261019bp1";
 
 /** /{lang}/business/{sub}/ */

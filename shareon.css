@@ -733,6 +733,8 @@
   z-index: 0;
 }
 #shareon-detail .nsh-duo__item > :not(.nsh-duo__big) { position: relative; z-index: 1; }
+/* the faint watermark number sat behind the card text; hidden so no text overlaps */
+#shareon-detail .nsh-duo__big { display: none; }
 #shareon-detail .nsh-duo__top { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 2rem; }
 #shareon-detail .nsh-duo__ico {
   display: grid;

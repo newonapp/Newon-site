@@ -35,7 +35,7 @@ import { FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const CSS_VER = "20261024c30";
-const NLS_VER = "20260924livon1"; // shared Life Stage film hero assets, reused as-is
+const NLS_VER = "20261025ov1"; // shared Life Stage film hero assets, reused as-is
 
 function localeFlat(lang) {
   const en = loadJson("en.json");
@@ -68,7 +68,7 @@ function renderPage(lang, page) {
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
-    <link rel="stylesheet" href="/shareon.css?v=20261024c30" />`,
+    <link rel="stylesheet" href="/shareon.css?v=20261025ov1" />`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>
     <script src="/shareon.js?v=${CSS_VER}" defer></script>`,

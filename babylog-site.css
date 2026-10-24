@@ -230,6 +230,10 @@
     position: sticky;
     top: calc(var(--gnav-h, 74px) + 5rem);
   }
+  /* no sticky heading when a lead or buttons follow it in the same column (they would overlap) */
+  #lifestage-detail.nls[data-story="babylog"] .bl-split > div:first-child .nls-head:not(:last-child) {
+    position: static;
+  }
 }
 #lifestage-detail.nls[data-story="babylog"] .bl-split .nls-head {
   margin-bottom: 0;

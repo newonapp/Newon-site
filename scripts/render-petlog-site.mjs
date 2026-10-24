@@ -36,7 +36,7 @@ import { NOTICE, PETLOG_FILM, STORE, PETLOG_MENU, OVERVIEW, PLATFORM, BUSINESS, 
 import { renderFlagshipSubnav, FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const NLS_VER = "20260924livon1";
+const NLS_VER = "20261025ov1";
 const esc = escapeHtml;
 const bl = (lang) => (lang === "ko" ? "ko" : "en");
 const nl = (s) => esc(s || "").replace(/\n/g, "<br>");

@@ -41,7 +41,7 @@ import { BL_NAV, BL_SLUG, getBabylogCopy, copyLangFor } from "./babylog-site-cop
 import { renderBabylogSection } from "./babylog-site-body.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const NLS_VER = "20260924livon1"; // Life Stage assets are reused as-is
+const NLS_VER = "20261025ov1"; // Life Stage assets are reused as-is
 const BL_VER = "20261019pink1";
 
 function localeFlat(lang) {
@@ -103,7 +103,7 @@ function renderPage(lang, nav) {
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/flagship-subnav.css?v=20261019fsn3" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
-    <link rel="stylesheet" href="/babylog-site.css?v=20261025mb1" />
+    <link rel="stylesheet" href="/babylog-site.css?v=20261025ov1" />
 ${jsonLd(lang.dir, nav, seo, canonical)}`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,

@@ -45,6 +45,9 @@
     position: sticky;
     top: 6.2rem;
   }
+  #ongil-detail.nls .nls-split .nls-head:not(:last-child) {
+    position: static;
+  }
 }
 
 #ongil-detail.nls .nls-roster,
