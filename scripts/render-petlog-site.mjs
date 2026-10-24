@@ -9,6 +9,7 @@
  * inquiry form (render-bsp.mjs → business/inquiry.js → FormSubmit).
  * No app feature (records, booking, orders, payment, sign-in, seller sign-up, posting) is built on the web.
  * Copy: scripts/petlog-site-content.mjs (ko + en; other locales show the English body, like the rest of the site).
+ * V3 (2026-10-24): 25 platform areas, 12 revenue models, scenarios, FAQ, PoC/data sections, inquiry purposes — content only.
  * V2: no per-card status badge (owner brief PART 04) — one shared notice per page in the existing .nls-note style.
  */
 import fs from "fs";
@@ -297,6 +298,17 @@ const PETLOG_CSS = `<style>
   html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-decade__mark { background: #16271d !important; color: var(--pl-gi) !important; }
   html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-decade__mark * { color: var(--pl-gi) !important; }
 
+  /* FAQ (platform) — native details/summary in the checklist rule language */
+  #lifestage-detail.nls--petlog .pl-faq { max-width: 56rem; border-bottom: 1px solid var(--nls-line); }
+  #lifestage-detail.nls--petlog .pl-faq details { border-top: 1px solid var(--nls-line); }
+  #lifestage-detail.nls--petlog .pl-faq summary { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.15rem 0; cursor: pointer; list-style: none; font-size: 1rem; font-weight: 700; line-height: 1.5; color: var(--nls-ink); }
+  #lifestage-detail.nls--petlog .pl-faq summary::-webkit-details-marker { display: none; }
+  #lifestage-detail.nls--petlog .pl-faq summary::after { content: "+"; flex: none; display: grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--pl-soft); color: var(--pl-gi); font-weight: 600; }
+  #lifestage-detail.nls--petlog .pl-faq details[open] summary::after { content: "−"; }
+  #lifestage-detail.nls--petlog .pl-faq summary:focus-visible { outline: 2px solid var(--pl-g); outline-offset: 2px; }
+  #lifestage-detail.nls--petlog .pl-faq details > .pl-p { padding: 0 2.6rem 1.3rem 0; }
+  #lifestage-detail.nls--petlog .pl-subhead { margin: 0 0 1.2rem; }
+
   /* closing band: ink stays, the main button takes the point colour */
   #lifestage-detail.nls--petlog .nls-close .nls-kicker { color: #7fd6a4; }
   #lifestage-detail.nls--petlog .nls-close .nls-btn:not(.nls-btn--ghost) { background: #278a53; border-color: #278a53; color: #fff; }
@@ -413,7 +425,12 @@ function iconFor(text) {
   for (const [re, k] of rules) if (re.test(t)) return k;
   return "paw";
 }
-const VALUE_ICONS = ["heart", "link", "sprout", "camera", "shield", "access"];
+const VALUE_ICONS = ["heart", "link", "sprout", "shield", "access"];
+/** One line icon per platform area (01–25), per revenue model and per partner type. */
+const AREA_ICONS = ["user", "pulse", "bowl", "calendar", "camera", "clinic", "scissors", "walk", "home", "book", "chat", "check", "cart", "cycle", "globe", "spark", "shield", "phone", "chart", "link", "building", "pin", "heart", "users", "star"];
+const LINE_ICONS = { "01": "cycle", "02": "scissors", "03": "walk", "04": "home", "05": "book", "06": "cart", "07": "bag", "08": "globe", "09": "phone", "10": "chart", "11": "star", "12": "megaphone" };
+const PARTNER_ICONS = { "01": "clinic", "02": "scissors", "03": "home", "04": "users", "05": "walk", "06": "book", "07": "bag", "08": "megaphone", "09": "pin", "10": "phone", "11": "umbrella", "12": "heart", "13": "star", "14": "building" };
+const BEYOND_ICONS = ["note", "scissors", "chat", "spark", "heart"];
 const TYPE_ICONS = { general: "mail", "app-support": "phone", content: "book", vet: "clinic", "booking-provider": "scissors", sitting: "walk", brand: "bag", "group-buying": "cart", "insurance-adoption": "umbrella", saas: "chart", public: "building", global: "globe" };
 
 /* ---------------------------------------------------------------- shared blocks */
@@ -549,7 +566,7 @@ const tiles = (cls, items, depth) =>
       const inner = `${s.icon ? ic(s.icon) : ""}<div class="pl-tile__body">${s.n ? `<span class="pl-n">${esc(s.n)}</span>` : ""}<strong>${esc(s.name)}<em aria-hidden="true">${s.href ? "→" : ""}</em></strong>${s.body ? `<p class="pl-p">${esc(s.body)}</p>` : ""}</div>`;
       return `<li>${
         s.href
-          ? `<a class="pl-tile${s.self ? " is-self" : ""}" href="${esc(href(depth, s.href))}"${s.on ? ' aria-current="page"' : ""}>${inner}</a>`
+          ? `<a class="pl-tile${s.self ? " is-self" : ""}" href="${esc(href(depth, s.href))}"${s.on ? ' aria-current="page"' : ""}${extAttr(s.href)}>${inner}</a>`
           : `<div class="pl-tile">${inner}</div>`
       }</li>`;
     })
@@ -614,39 +631,51 @@ const splitValue = (s) => {
 const storeIcon = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg>';
 
 /* ---------------------------------------------------------------- pages */
+const storePills = (label) =>
+  `<div class="pl-actions"><p class="pl-aside">${esc(label)}</p><a class="pl-pill" href="${esc(STORE.ios)}" target="_blank" rel="noopener noreferrer">App Store ${storeIcon}</a><a class="pl-pill" href="${esc(STORE.android)}" target="_blank" rel="noopener noreferrer">Google Play ${storeIcon}</a></div>`;
+
+/** FAQ list (native details/summary). items: [question, answer][] */
+const faqList = (items) =>
+  `<div class="pl-faq">${items.map(([q, a]) => `<details><summary>${esc(q)}</summary><p class="pl-p">${esc(a)}</p></details>`).join("")}</div>`;
+
 function overviewPage(lang) {
   const c = OVERVIEW[bl(lang)];
   const L = bl(lang);
   const D = 1;
   const journey = c.journey.items.map((it) => ({ id: it.id, n: it.n, tab: it.tab, mark: it.tab, label: it.label, name: it.name, lead: it.lead, chips: it.topics }));
-  const values = `<ul class="pl-values">${c.mission.body
+  const values = `<h3 class="pl-subhead">${esc(c.mission.valuesTitle)}</h3><ul class="pl-values">${c.mission.body
     .map((s, i) => {
       const [k, tag, body] = splitValue(s);
       return `<li>${ic(VALUE_ICONS[i] || "paw")}<span class="pl-n">${pad2(i + 1)}</span><h3 lang="en">${esc(k)}</h3><strong>${esc(tag)}</strong>${body ? `<p class="pl-p">${esc(body)}</p>` : ""}</li>`;
     })
     .join("")}</ul>`;
-  const store = `<div class="pl-actions"><p class="pl-aside">${esc(c.core.appLabel)}</p><a class="pl-pill" href="${esc(STORE.ios)}" target="_blank" rel="noopener noreferrer">App Store ${storeIcon}</a><a class="pl-pill" href="${esc(STORE.android)}" target="_blank" rel="noopener noreferrer">Google Play ${storeIcon}</a></div>`;
+  const problem = c.problem.items.map((x) => ({ n: x.n, label: x.label, icon: x.icon, name: x.name, lead: x.lead, points: [[c.problem.pointLabel, x.solve]] }));
+  const users = c.users.items.map(([t, d, k]) => [t, d, k]);
+  const scenes = c.scenes.items.map((x) => ({ n: x.n, icon: x.icon, name: x.name, lead: x.lead, points: [[c.scenes.nowLabel, x.now], [c.scenes.nextLabel, x.next]] }));
   const core = c.core.items.map((x) => ({ ...x, icon: iconFor(x.label) }));
-  const family = c.family.items.map((x, i) => [x.name, x.lead, ["users", "note", "heart"][i]]);
-  const beyond = c.beyond.items.map((x) => ({ ...x, icon: iconFor(x.label) }));
+  const diff = c.diff.items.map((x) => ({ n: x.n, icon: x.icon, name: x.name, lead: x.lead, points: [[c.diff.pointLabel, x.point]] }));
+  const beyond = c.beyond.items.map((x, i) => ({ ...x, icon: BEYOND_ICONS[i] }));
   const trust = c.trust.items.map((x) => [x.name, x.lead]);
   const fam = c.newon.items.map((x) => ({ name: x.name, body: x.body, href: x.href, self: x.name === "PETLOG" }));
   return wrap(`${hero({ wordmark: "PETLOG", titleHtml: c.heroTitle, lead: c.heroLead, main: [`${c.ctaMain} →`, "#nls-mission"], sub: [c.ctaSub, rel(D, "petlog/platform/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "overview" })}
   <div class="nls__wrap">
     <div id="nls-mission" class="nls-block" data-hs-section>
-      ${head(c.mission.kicker, c.mission.title, "")}
+      ${head(c.mission.kicker, c.mission.title, c.mission.lead)}
       ${values}
     </div>
+    ${section("nls-problem", { kicker: c.problem.kicker, title: c.problem.title, lead: c.problem.lead, tint: true, body: cards("row", problem, D) })}
     ${section("nls-about", { kicker: c.about.kicker, title: c.about.title, lead: c.about.lead, body: stepList(c.about.steps) })}
     ${railBlock("nls-journey", { kicker: c.journey.kicker, title: c.journey.title, lead: c.journey.lead, items: journey })}
-    ${section("nls-core", { kicker: c.core.kicker, title: c.core.title, lead: c.core.lead, body: `${cards("tile", core, D, 4)}${store}` })}
-    ${splitSection("nls-family", { kicker: c.family.kicker, title: c.family.title, lead: c.family.lead, body: checks(family) })}
-    ${section("nls-beyond", { kicker: c.beyond.kicker, title: c.beyond.title, lead: c.beyond.lead, noteText: NOTICE[L], tint: true, body: `${cards("col", beyond, D, 3)}<div class="pl-actions">${more([c.beyond.cta, "petlog/business/"], D)}</div>` })}
-    ${section("nls-trust", { kicker: c.trust.kicker, title: c.trust.title, body: checks(trust) })}
+    ${splitSection("nls-users", { kicker: c.users.kicker, title: c.users.title, lead: c.users.lead, body: checks(users) })}
+    ${section("nls-scenes", { kicker: c.scenes.kicker, title: c.scenes.title, lead: c.scenes.lead, tint: true, body: cards("tile", scenes, D, 2) })}
+    ${section("nls-core", { kicker: c.core.kicker, title: c.core.title, lead: c.core.lead, body: `${cards("tile", core, D, 4)}${storePills(c.core.appLabel)}` })}
+    ${section("nls-diff", { kicker: c.diff.kicker, title: c.diff.title, lead: c.diff.lead, tint: true, body: cards("col", diff, D, 3) })}
+    ${section("nls-beyond", { kicker: c.beyond.kicker, title: c.beyond.title, lead: c.beyond.lead, noteText: NOTICE[L], body: `${cards("tint", beyond, D, 3)}<div class="pl-actions">${more([c.beyond.cta, "petlog/platform/"], D)}</div>` })}
+    ${section("nls-trust", { kicker: c.trust.kicker, title: c.trust.title, tint: true, body: checks(trust) })}
     ${splitSection("nls-newon", { kicker: c.newon.kicker, title: c.newon.title, lead: c.newon.lead, body: tiles("pl-fam", fam, D) })}
     ${menuBlock(lang, D, "overview")}
-    ${closeBlock({ ...c.close, main: [c.close.ctaMain, "petlog/platform/"], sub: [c.close.ctaSub, "petlog/business/"] }, D)}
+    ${closeBlock({ ...c.close, main: [c.close.ctaMain, "petlog/platform/"], sub: [c.close.ctaSub, "petlog/contact/"] }, D)}
   </div>`);
 }
 
@@ -657,27 +686,49 @@ function platformPage(lang) {
   const card = (idx) => {
     const it = PLATFORM.items[idx];
     const link = it.cta === "app" ? [m.labels.app, STORE.ios] : [m.labels.cta, CONTACT_HREF(it.cta)];
-    return { n: pad2(idx + 1), label: it.label, icon: iconFor(it.label), name: it.name[L], lead: it.lead[L], points: [[m.labels.users, it.users[L]]], chips: it.f[L], link, anchor: it.label.toLowerCase().replace(/[^a-z]+/g, "-").replace(/^-|-$/g, "") };
+    return {
+      n: pad2(idx + 1),
+      label: it.label,
+      icon: AREA_ICONS[idx],
+      name: it.name[L],
+      lead: it.lead[L],
+      points: [[m.labels.users, it.users[L]], [m.labels.connect, it.connect[L]]],
+      chips: it.f[L],
+      link,
+      anchor: it.label.toLowerCase().replace(/[^a-z]+/g, "-").replace(/^-|-$/g, ""),
+    };
   };
   // a different layout per group so the page does not repeat one card grid
-  const LAYOUT = { records: ["tile", 4], "ai-family": ["wide", 2], community: ["row"], commerce: ["col", 3], booking: ["tint", 4], life: ["row"] };
+  const LAYOUT = { records: ["row"], services: ["tile", 3], community: ["col", 3], tech: ["tint", 3], welfare: ["wide", 2] };
   const groups = m.groups
     .map((g, gi) => {
       const [kind, cols] = LAYOUT[g.id] || ["tile", 3];
       return section(`nls-${g.id}`, { kicker: g.kicker, title: g.title, lead: g.lead, tint: gi % 2 === 1, body: cards(kind, g.items.map(card), D, cols) });
     })
     .join("\n");
-  const [now, next] = m.legend;
-  const legend = `<div class="pl-legend">
-      <div class="pl-panel pl-panel--now"><div class="pl-panel__head">${ic("phone")}<h3>${esc(now[0])}</h3></div>${chipList(now[1].split(" · "))}</div>
-      <div class="pl-panel pl-panel--next"><div class="pl-panel__head">${ic("sprout")}<h3>${esc(next[0])}</h3></div>${chipList(next[1].split(" · "), true)}</div>
-    </div>`;
+  const PANEL = { now: " pl-panel--now", dev: "", plan: " pl-panel--next", review: " pl-panel--next" };
+  const legend = `<div class="pl-legend">${m.legend
+    .map(
+      (p) => `<div class="pl-panel${PANEL[p.kind]}"><div class="pl-panel__head">${ic(p.icon)}<h3>${esc(p.title)}</h3></div><p class="pl-p">${esc(p.body)}</p>${chipList(
+        p.areas.map((no) => `${no} ${PLATFORM.items[Number(no) - 1].name[L]}`),
+        p.kind === "plan" || p.kind === "review"
+      )}</div>`
+    )
+    .join("")}</div>`;
+  const scen = m.scenarios;
+  const scenarios = scen.items.map((it) => ({ id: it.id, n: it.n, tab: it.tab, mark: it.tab, label: it.label, name: it.name, lead: it.lead, chips: it.chips }));
   const close = { ...m.close, main: [m.close.ctaMain, "petlog/business/"], sub: [m.close.ctaSub, STORE.ios] };
   return wrap(`${hero({ wordmark: "Platform", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "18개 서비스 보기 ↓" : "See 18 services ↓", "#nls-records"], sub: [lang === "ko" ? "PETLOG 소개" : "About PETLOG", rel(D, "petlog/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "platform" })}
   <div class="nls__wrap">
-    ${section("nls-legend", { kicker: m.legendKicker, title: m.legendTitle, noteText: NOTICE[L], body: legend })}
+    ${section("nls-legend", { kicker: m.legendKicker, title: m.legendTitle, lead: m.legendLead, noteText: NOTICE[L], body: legend })}
     ${groups}
+    ${railBlock("nls-scenarios", { kicker: scen.kicker, title: scen.title, lead: scen.lead, items: scenarios })}
+    ${splitSection("nls-roles", { kicker: m.roles.kicker, title: m.roles.title, lead: m.roles.lead, body: checks(m.roles.items) })}
+    ${section("nls-flow", { kicker: m.flow.kicker, title: m.flow.title, lead: m.flow.lead, tint: true, body: stepList(m.flow.steps) })}
+    ${section("nls-privacy", { kicker: m.privacy.kicker, title: m.privacy.title, body: checks(m.privacy.items) })}
+    ${section("nls-app", { kicker: m.app.kicker, title: m.app.title, lead: m.app.lead, tint: true, body: `${stepList(m.app.steps)}${storePills(m.app.storeLabel)}` })}
+    ${section("nls-faq", { kicker: m.faq.kicker, title: m.faq.title, body: faqList(m.faq.items) })}
     ${menuBlock(lang, D, "platform")}
     ${closeBlock(close, D)}
   </div>`);
@@ -688,54 +739,57 @@ function businessPage(lang) {
   const L = bl(lang);
   const D = 2;
   const line = (no) => BUSINESS.lines.find((x) => x.no === no);
-  const rail = BUSINESS.groups.map((g, i) => ({ id: g.id, n: pad2(i + 1), tab: g.tab, mark: String(g.lines.length).padStart(2, "0"), label: g.label, name: g[L], lead: L === "ko" ? g.koLead : g.enLead, chips: g.lines.map((no) => `${no} ${line(no).name[L]}`) }));
+  const rail = BUSINESS.groups.map((g, i) => ({ id: g.id, n: pad2(i + 1), tab: g.tab, mark: pad2(g.lines.length), label: g.label, name: g[L], lead: L === "ko" ? g.koLead : g.enLead, chips: g.lines.map((no) => `${no} ${line(no).name[L]}`) }));
   const lineCard = (no) => {
     const x = line(no);
     return {
       n: x.no,
       label: x.label,
-      icon: iconFor(x.label),
+      icon: LINE_ICONS[x.no] || "paw",
       name: x.name[L],
       lead: x.lead[L],
-      stage: m.stageLabel(x.stage),
       points: [
-        [m.labels.customers, x.customers[L]],
-        [m.labels.value, x.value[L]],
-        [m.labels.revenue, x.revenue[L]],
-        [m.labels.partners, x.partners[L]],
+        [m.labels.payer, x.payer[L]],
+        [m.labels.how, x.how[L]],
+        [m.labels.cond, x.cond[L]],
       ],
       link: [m.labels.cta, CONTACT_HREF(x.type)],
       anchor: `line-${x.no}`,
     };
   };
-  const LAYOUT = { life: ["tile", 2], commerce: ["row"], services: ["tint", 2], welfare: ["col", 3], enterprise: ["wide", 2], public: ["row"] };
+  const sp = m.subPanel;
+  const subPanel = `<div class="pl-sub">${head(sp.kicker, sp.title, sp.lead)}<div class="pl-legend">
+      <div class="pl-panel pl-panel--now"><div class="pl-panel__head">${ic("phone")}<h3>${esc(sp.now[0])}</h3></div><p class="pl-p">${esc(sp.now[1])}</p>${chipList(sp.now[2])}</div>
+      <div class="pl-panel pl-panel--next"><div class="pl-panel__head">${ic("sprout")}<h3>${esc(sp.next[0])}</h3></div><p class="pl-p">${esc(sp.next[1])}</p>${chipList(sp.next[2], true)}</div>
+    </div></div>`;
+  const saasPanel = `<div class="pl-sub">${head(m.saasKicker, m.saasTitle, m.saasLead)}${cards("col", m.saas.map(([t, d], i) => ({ n: pad2(i + 1), name: t, lead: d })), D, 5)}</div>`;
+  const LAYOUT = { subscription: ["row"], booking: ["tile", 2], commerce: ["wide", 2], lifestyle: ["col", 3], enterprise: ["row"] };
   const groupSections = BUSINESS.groups
     .map((g, gi) => {
       const [kind, cols] = LAYOUT[g.id] || ["tile", 2];
       let body = cards(kind, g.lines.map(lineCard), D, cols);
-      if (g.id === "enterprise")
-        body += `<div class="pl-sub">${head(m.saasKicker, m.saasTitle, m.saasLead)}${cards("col", m.saas.map(([t, d], i) => ({ n: pad2(i + 1), name: t, lead: d })), D, 5)}</div>`;
+      if (g.id === "subscription") body += subPanel;
+      if (g.id === "enterprise") body += saasPanel;
       return section(`nls-group-${g.id}`, { kicker: `${pad2(gi + 1)} · ${g.label.toUpperCase()}`, title: g[L], lead: L === "ko" ? g.koLead : g.enLead, tint: gi % 2 === 1, body });
     })
     .join("\n");
   const models = `<ul class="pl-models">${m.structure.map(([k, v], i) => `<li><span>${pad2(i + 1)}</span><b lang="en">${esc(k)}</b><p class="pl-p">${esc(v)}</p></li>`).join("")}</ul>`;
-  const hd = L === "ko" ? ["수익 모델", "내용", "단계"] : ["Revenue model", "What it is", "Stage"];
-  const revenue = `<ul class="pl-table"><li class="pl-table__hd" aria-hidden="true"><span>${hd[0]}</span><span>${hd[1]}</span><span style="justify-self:end">${hd[2]}</span></li>${m.revenue
-    .map(([t, d, stage], i) => `<li><span class="pl-table__name"><span class="pl-n">${pad2(i + 1)}</span>${esc(t)}</span><p class="pl-p">${esc(d)}</p><span class="pl-stage">${esc(stage)}</span></li>`)
+  const hd = m.revenueHead;
+  const revenue = `<ul class="pl-table"><li class="pl-table__hd" aria-hidden="true"><span>${esc(hd[0])}</span><span>${esc(hd[1])}</span><span style="justify-self:end">${esc(hd[2])}</span></li>${BUSINESS.lines
+    .map((x) => `<li><span class="pl-table__name"><span class="pl-n">${esc(x.no)}</span>${esc(x.name[L])}</span><p class="pl-p">${esc(x.sum[L])}</p><span class="pl-stage">${esc(m.statusLabel[x.status])}</span></li>`)
     .join("")}</ul>`;
-  const roadmap = m.roadmap.map(([t, d]) => {
-    const i = t.indexOf(" — ");
-    return i > 0 ? [t.slice(0, i), t.slice(i + 3), d] : [pad2(1), t, d];
-  });
   return wrap(`${hero({ wordmark: "Business", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "20개 사업 분야 보기 ↓" : "See 20 areas ↓", "#nls-groups"], sub: [m.close.ctaMain, rel(D, "petlog/partnerships/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "business" })}
   <div class="nls__wrap">
-    ${section("nls-structure", { kicker: m.structureKicker, title: m.structureTitle, noteText: NOTICE[L], body: models })}
+    ${section("nls-structure", { kicker: m.structureKicker, title: m.structureTitle, lead: m.structureLead, noteText: NOTICE[L], body: models })}
     ${railBlock("nls-groups", { kicker: m.groupsKicker, title: m.groupsTitle, lead: m.groupsLead, items: rail })}
     ${groupSections}
-    ${section("nls-revenue", { kicker: m.revenueKicker, title: m.revenueTitle, lead: m.revenueLead, body: revenue })}
-    ${section("nls-priority", { kicker: m.priorityKicker, title: m.priorityTitle, tint: true, body: stepList(m.priority.map(([t, d], i) => [pad2(i + 1), t, d])) })}
-    ${splitSection("nls-roadmap", { kicker: m.roadmapKicker, title: m.roadmapTitle, lead: m.roadmapNote, body: timeline(roadmap) })}
+    ${section("nls-revenue", { kicker: m.revenueKicker, title: m.revenueTitle, lead: m.revenueLead, tint: true, body: revenue })}
+    ${splitSection("nls-public", { kicker: m.publicKicker, title: m.publicTitle, lead: m.publicLead, body: checks(m.publicItems) })}
+    ${section("nls-market", { kicker: m.marketKicker, title: m.marketTitle, lead: m.marketLead, tint: true, body: checks(m.market) })}
+    ${section("nls-diff", { kicker: m.diffKicker, title: m.diffTitle, lead: m.diffLead, body: cards("tint", m.diff.map(([t, d, k], i) => ({ n: pad2(i + 1), icon: k, name: t, lead: d })), D, 4) })}
+    ${section("nls-priority", { kicker: m.gtmKicker, title: m.gtmTitle, lead: m.gtmLead, tint: true, body: stepList(m.gtm.map(([t, d], i) => [pad2(i + 1), t, d])) })}
+    ${splitSection("nls-roadmap", { kicker: m.roadmapKicker, title: m.roadmapTitle, lead: m.roadmapNote, body: timeline(m.roadmap) })}
     ${section("nls-trust", { kicker: m.trustKicker, title: m.trustTitle, tint: true, body: checks(m.trust) })}
     ${menuBlock(lang, D, "business")}
     ${closeBlock({ ...m.close, main: [m.close.ctaMain, "petlog/partnerships/"], sub: [m.close.ctaSub, "petlog/contact/"] }, D)}
@@ -748,21 +802,28 @@ function partnershipsPage(lang) {
   const D = 2;
   const card = (no) => {
     const p = PARTNERS.items.find((x) => x.no === no);
-    return { n: p.no, icon: iconFor(p.name.en), name: p.name[L], lead: p.value[L], points: [[m.labels.scope, p.scope[L]], [m.labels.how, p.how[L]], [m.labels.terms, p.terms[L]]], link: [m.labels.cta, CONTACT_HREF(p.type)], anchor: `partner-${p.no}` };
+    return { n: p.no, icon: PARTNER_ICONS[p.no] || iconFor(p.name.en), name: p.name[L], lead: p.value[L], points: [[m.labels.scope, p.scope[L]], [m.labels.how, p.how[L]], [m.labels.terms, p.terms[L]]], link: [m.labels.cta, CONTACT_HREF(p.type)], anchor: `partner-${p.no}` };
   };
   const LAYOUT = { care: ["tile", 3], brand: ["row"], public: ["tint", 2] };
   const groups = m.groups
     .map((g, gi) => {
       const [kind, cols] = LAYOUT[g.id] || ["tile", 3];
-      return section(`nls-p-${g.id}`, { kicker: g.kicker, title: g.title, lead: g.lead, tint: gi === 1, body: cards(kind, g.items.map(card), D, cols) });
+      return section(`nls-p-${g.id}`, { kicker: g.kicker, title: g.title, lead: g.lead, tint: gi % 2 === 0, body: cards(kind, g.items.map(card), D, cols) });
     })
     .join("\n");
   const offer = m.offer.map((o) => ({ ...o, icon: iconFor(PARTNERS.meta.en.offer.find((e) => e.n === o.n).name) }));
+  const [lw, lr, lp] = m.scenarioLabels;
+  const scenarios = m.scenarios.map((x) => ({ n: x.n, icon: x.icon, name: x.name, lead: x.lead, points: [[lw, x.who], [lr, x.role], [lp, x.pre]] }));
+  const poc = m.poc.map(([t, d], i) => [`STEP ${pad2(i + 1)}`, t, d]);
   return wrap(`${hero({ wordmark: "Partnerships", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "14개 협력 분야 ↓" : "14 partner types ↓", "#nls-p-care"], sub: [m.labels.cta, rel(D, "petlog/contact/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "partnerships" })}
   <div class="nls__wrap">
-    ${section("nls-offer", { kicker: m.offerKicker, title: m.offerTitle, body: cards("tint", offer, D, 4) })}
+    ${section("nls-offer", { kicker: m.offerKicker, title: m.offerTitle, lead: m.offerLead, body: cards("tint", offer, D, 4) })}
     ${groups}
+    ${section("nls-scenarios", { kicker: m.scenariosKicker, title: m.scenariosTitle, lead: m.scenariosLead, body: cards("row", scenarios, D) })}
+    ${splitSection("nls-poc", { kicker: m.pocKicker, title: m.pocTitle, lead: m.pocLead, tint: true, body: timeline(poc) })}
+    ${section("nls-data", { kicker: m.dataKicker, title: m.dataTitle, lead: m.dataLead, body: checks(m.data) })}
+    ${section("nls-joint", { kicker: m.jointKicker, title: m.jointTitle, tint: true, body: cards("col", m.joint, D, 3) })}
     ${splitSection("nls-principles", { kicker: m.principlesKicker, title: m.principlesTitle, body: checks(m.principles) })}
     ${section("nls-process", { kicker: m.processKicker, title: m.processTitle, noteText: m.processNote, tint: true, body: stepList(m.steps.map(([t, d], i) => [pad2(i + 1), t, d])) })}
     ${menuBlock(lang, D, "partnerships")}
@@ -773,7 +834,9 @@ function partnershipsPage(lang) {
 function contactPage(lang) {
   const c = CONTACT[bl(lang)];
   const D = 2;
+  const purposes = c.purposes.map((p, i) => ({ n: pad2(i + 1), name: p.name, body: p.body, href: p.href, icon: p.icon }));
   const items = c.types.map(([key, name, body], i) => ({ n: pad2(i + 1), name, body, href: `petlog/contact/?type=${key}#inquiry`, icon: TYPE_ICONS[key] || "mail" }));
+  const direct = c.direct.map((d) => ({ name: d.name, body: d.body, href: d.href === "ios" ? STORE.ios : d.href === "android" ? STORE.android : d.href }));
   const form = inquiryFormHtml(lang, D, {
     category: "PETLOG",
     interest: "PETLOG",
@@ -782,7 +845,9 @@ function contactPage(lang) {
   return wrap(`${hero({ wordmark: "Contact", titleHtml: c.heroTitle, lead: c.heroLead, main: [lang === "ko" ? "문의하기 ↓" : "Send an inquiry ↓", "#inquiry"], sub: [lang === "ko" ? "PETLOG 소개" : "About PETLOG", rel(D, "petlog/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "contact" })}
   <div class="nls__wrap">
-    ${section("nls-types", { kicker: c.kicker, title: c.listTitle, lead: c.listLead, body: tiles("pl-types", items, D) })}
+    ${section("nls-purpose", { kicker: c.purposeKicker, title: c.purposeTitle, lead: c.purposeLead, body: tiles("pl-types", purposes, D) })}
+    ${section("nls-types", { kicker: c.kicker, title: c.listTitle, lead: c.listLead, tint: true, body: tiles("pl-types", items, D) })}
+    ${section("nls-direct", { kicker: c.directKicker, title: c.directTitle, body: tiles("pl-fam", direct, D) })}
     ${section("nls-guide", { kicker: c.guideKicker, title: c.guideTitle, tint: true, body: checks(c.guide) })}
   </div>
   <div class="bp-page">${form}</div>

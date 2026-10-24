@@ -30,20 +30,29 @@ test("five PETLOG pages exist in all nine locales with SEO basics", () => {
   }
 });
 
-test("section counts follow the V2 plan: 6 journey stages, 18 services, 20 business areas in 6 groups, 14 partner types, 12 inquiry types", () => {
+test("section counts follow the V3 plan: 6 journey stages, 25 platform areas, 12 revenue models in 5 groups, 14 partner types, 12 inquiry types", () => {
   const count = (html, re) => (main(html).match(re) || []).length;
   for (const lang of ["ko", "en"]) {
     assert.equal(count(read(`${lang}/petlog/index.html`), /data-nls-decade-card=/g), 6, `${lang} journey`);
-    assert.equal(count(read(`${lang}/petlog/platform/index.html`), /<article class="pl-[a-z -]+" id="[a-z-]+"/g), 18, `${lang} services`);
+    const plat = read(`${lang}/petlog/platform/index.html`);
+    assert.equal(count(plat, /<article class="pl-[a-z -]+" id="petlog-[a-z-]+"/g), 25, `${lang} platform areas`);
+    assert.equal(count(plat, /<details>/g), PLATFORM.meta[lang].faq.items.length, `${lang} faq`);
     const biz = read(`${lang}/petlog/business/index.html`);
-    assert.equal(count(biz, /<article class="pl-[a-z -]+" id="line-\d\d"/g), 20, `${lang} business areas`);
-    assert.equal(count(biz, /data-nls-decade-card=/g), 6, `${lang} business groups`);
+    assert.equal(count(biz, /<article class="pl-[a-z -]+" id="line-\d\d"/g), 12, `${lang} revenue models`);
+    assert.equal(count(biz, /data-nls-decade-card=/g), 5, `${lang} revenue groups`);
     assert.equal(count(read(`${lang}/petlog/partnerships/index.html`), /<article class="pl-[a-z -]+" id="partner-\d\d"/g), 14, `${lang} partners`);
     const sel = read(`${lang}/petlog/contact/index.html`).match(/<select id="bz-type"[\s\S]*?<\/select>/)[0];
     assert.equal((sel.match(/<option value="[^"]+"/g) || []).length, 12, `${lang} inquiry types`);
   }
-  assert.deepEqual(BUSINESS.groups.flatMap((g) => g.lines), BUSINESS.lines.map((l) => l.no), "every area is in exactly one group, in order");
-  assert.equal(PLATFORM.items.length, 18);
+  assert.deepEqual(BUSINESS.groups.flatMap((g) => g.lines).sort(), BUSINESS.lines.map((l) => l.no), "every revenue model is in exactly one group");
+  assert.equal(PLATFORM.items.length, 25);
+  for (const lang of ["ko", "en"]) {
+    // the four status panels list every area exactly once, matching each area's own status
+    const listed = PLATFORM.meta[lang].legend.flatMap((p) => p.areas.map((no) => [no, p.kind]));
+    assert.deepEqual(listed.map(([no]) => no).sort(), PLATFORM.items.map((_, i) => String(i + 1).padStart(2, "0")), `${lang} legend covers 25 areas once`);
+    const KIND = { now: "app", dev: "dev", plan: "plan", review: "review" };
+    for (const [no, kind] of listed) assert.equal(PLATFORM.items[Number(no) - 1].status, KIND[kind], `${lang} area ${no} status`);
+  }
 });
 
 test("no unconfirmed price or fee; no per-card status badge; one shared notice; only shipped features marked as in the app", () => {
@@ -61,7 +70,8 @@ test("no unconfirmed price or fee; no per-card status badge; one shared notice; 
       assert.equal(html.split(NOTICE[lang]).length - 1, 1, `${lang}/${p} carries the shared notice once`);
     }
   }
-  assert.deepEqual(PLATFORM.items.filter((x) => x.status === "app").map((x) => x.label), ["Pet Profile", "Daily Life Log", "Health Records", "Vaccination & Medication", "Family Sharing", "App & Accessibility"]);
+  assert.deepEqual(PLATFORM.items.filter((x) => x.status === "app").map((x) => x.label), ["PETLOG Profile", "PETLOG Health", "PETLOG Life", "PETLOG Calendar", "PETLOG Note"]);
+  assert.deepEqual(BUSINESS.lines.filter((x) => x.status === "now").map((x) => x.no), ["01"], "only the store-listed subscription is shown as available now");
 });
 
 test("contact type links match the inquiry form options (preselected by the ?type= script)", () => {

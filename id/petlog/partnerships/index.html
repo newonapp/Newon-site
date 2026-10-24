@@ -3,20 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PETLOG Partnerships | Building a better pet life together</title>
-    <meta name="description" content="Fourteen partner types for PETLOG: vets and health specialists, groomers, hotels, daycare, sitters, trainers, food and goods brands, creators, travel and…" />
+    <title>PETLOG Partnerships | Collaboration models with pet businesses, brands, shelters and public bodies</title>
+    <meta name="description" content="Fourteen partner types for PETLOG — vets, groomers, hotels, daycare, sitters, trainers, pet brands, creators, travel and lodging, smart devices, insurers…" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://www.newon.app/id/petlog/partnerships/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.newon.app/id/petlog/partnerships/" />
     <meta property="og:locale" content="id_ID" />
-    <meta property="og:title" content="PETLOG Partnerships | Building a better pet life together" />
-    <meta property="og:description" content="Fourteen partner types for PETLOG: vets and health specialists, groomers, hotels, daycare, sitters, trainers, food and goods brands, creators, travel and…" />
+    <meta property="og:title" content="PETLOG Partnerships | Collaboration models with pet businesses, brands, shelters and public bodies" />
+    <meta property="og:description" content="Fourteen partner types for PETLOG — vets, groomers, hotels, daycare, sitters, trainers, pet brands, creators, travel and lodging, smart devices, insurers…" />
     <meta property="og:site_name" content="Newon" />
     <meta property="og:image" content="https://www.newon.app/logo.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="PETLOG Partnerships | Building a better pet life together" />
-    <meta name="twitter:description" content="Fourteen partner types for PETLOG: vets and health specialists, groomers, hotels, daycare, sitters, trainers, food and goods brands, creators, travel and…" />
+    <meta name="twitter:title" content="PETLOG Partnerships | Collaboration models with pet businesses, brands, shelters and public bodies" />
+    <meta name="twitter:description" content="Fourteen partner types for PETLOG — vets, groomers, hotels, daycare, sitters, trainers, pet brands, creators, travel and lodging, smart devices, insurers…" />
     <meta name="twitter:image" content="https://www.newon.app/logo.png" />
     <link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/petlog/partnerships/" />
     <link rel="alternate" hreflang="en" href="https://www.newon.app/en/petlog/partnerships/" />
@@ -28,7 +28,7 @@
     <link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/petlog/partnerships/" />
     <link rel="alternate" hreflang="id" href="https://www.newon.app/id/petlog/partnerships/" />
     <link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/petlog/partnerships/" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"PETLOG Partnerships | Building a better pet life together","description":"Fourteen partner types for PETLOG: vets and health specialists, groomers, hotels, daycare, sitters, trainers, food and goods brands, creators, travel and lodging, insurers, animal protection and welfare bodies, local government, and business, technology and global partners.","url":"https://www.newon.app/id/petlog/partnerships/","inLanguage":"id"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"PETLOG Partnerships | Collaboration models with pet businesses, brands, shelters and public bodies","description":"Fourteen partner types for PETLOG — vets, groomers, hotels, daycare, sitters, trainers, pet brands, creators, travel and lodging, smart devices, insurers, shelters and adoption bodies, funeral providers and local government — with PoC proposals, data principles and the process. Not signed partnerships.","url":"https://www.newon.app/id/petlog/partnerships/","inLanguage":"id"}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Newon","item":"https://www.newon.app/id/"},{"@type":"ListItem","position":2,"name":"PETLOG","item":"https://www.newon.app/id/petlog/"},{"@type":"ListItem","position":3,"name":"Partnerships","item":"https://www.newon.app/id/petlog/partnerships/"}]}</script>
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/logo.png" />
@@ -287,6 +287,17 @@
   html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey { background: var(--pl-card) !important; }
   html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-decade__mark { background: #16271d !important; color: var(--pl-gi) !important; }
   html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-decade__mark * { color: var(--pl-gi) !important; }
+
+  /* FAQ (platform) — native details/summary in the checklist rule language */
+  #lifestage-detail.nls--petlog .pl-faq { max-width: 56rem; border-bottom: 1px solid var(--nls-line); }
+  #lifestage-detail.nls--petlog .pl-faq details { border-top: 1px solid var(--nls-line); }
+  #lifestage-detail.nls--petlog .pl-faq summary { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.15rem 0; cursor: pointer; list-style: none; font-size: 1rem; font-weight: 700; line-height: 1.5; color: var(--nls-ink); }
+  #lifestage-detail.nls--petlog .pl-faq summary::-webkit-details-marker { display: none; }
+  #lifestage-detail.nls--petlog .pl-faq summary::after { content: "+"; flex: none; display: grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--pl-soft); color: var(--pl-gi); font-weight: 600; }
+  #lifestage-detail.nls--petlog .pl-faq details[open] summary::after { content: "−"; }
+  #lifestage-detail.nls--petlog .pl-faq summary:focus-visible { outline: 2px solid var(--pl-g); outline-offset: 2px; }
+  #lifestage-detail.nls--petlog .pl-faq details > .pl-p { padding: 0 2.6rem 1.3rem 0; }
+  #lifestage-detail.nls--petlog .pl-subhead { margin: 0 0 1.2rem; }
 
   /* closing band: ink stays, the main button takes the point colour */
   #lifestage-detail.nls--petlog .nls-close .nls-kicker { color: #7fd6a4; }
@@ -1063,106 +1074,167 @@
   <div class="nls__wrap">
     <div id="nls-offer" class="nls-block" data-hs-section>
     <header class="nls-head">
-    <p class="nls-kicker">WHY PETLOG</p>
-    <h2 class="nls-title">What PETLOG<br>can offer partners.</h2>
-    
+    <p class="nls-kicker">PARTNERSHIP VISION</p>
+    <h2 class="nls-title">Pet service partnerships<br>built on records.</h2>
+    <p class="nls-lead">PETLOG puts the records owners keep every day at the centre, and aims for partnerships where those records lead to trusted businesses, brands and bodies at the moment they are needed. These are models and possibilities, not signed partnerships.</p>
   </header>
     
     <div class="pl-grid" style="--cols:4"><article class="pl-card pl-card--tint">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span><span class="pl-n">01</span></div>
-        <h3>Reaching owners</h3><p class="pl-p">Reach owners who manage pet life around their records, at the moment they need you.</p>
+        <h3>Reaching owners</h3><p class="pl-p">Reach owners who manage pet life through their records, at the moment they need you.</p>
         <ul class="pl-chips"><li>Introductions</li><li>Booking links</li></ul>
       </article><article class="pl-card pl-card--tint">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.5 6.5a4 4 0 0 0 5 5l-8.3 8.3a2.1 2.1 0 0 1-3-3z"/><path d="M14.5 6.5L17 4l3 3-2.5 2.5"/></svg></span><span class="pl-n">02</span></div>
-        <h3>Operations tools</h3><p class="pl-p">Build PETLOG Business together, for bookings, customers and pet information.</p>
+        <h3>Operations tools</h3><p class="pl-p">Refine PETLOG Business together, for bookings, customers and pet information.</p>
         <ul class="pl-chips"><li>Booking</li><li>CRM</li></ul>
       </article><article class="pl-card pl-card--tint">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 10v4h3l8 4V6L7 10z"/><path d="M18 9.5a3.5 3.5 0 0 1 0 5"/></svg></span><span class="pl-n">03</span></div>
-        <h3>Joint campaigns</h3><p class="pl-p">Create pet life content and promotions with brands and creators.</p>
-        <ul class="pl-chips"><li>Content</li><li>Promotions</li></ul>
+        <h3>Joint campaigns</h3><p class="pl-p">Create pet life content and campaigns with brands, creators and public bodies.</p>
+        <ul class="pl-chips"><li>Content</li><li>Campaigns</li></ul>
       </article><article class="pl-card pl-card--tint">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5.2c0 4.8-3.3 8.3-7 9.8-3.7-1.5-7-5-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/></svg></span><span class="pl-n">04</span></div>
         <h3>Data principles</h3><p class="pl-p">Partnerships built on never sharing records without owner consent.</p>
         <ul class="pl-chips"><li>Consent-based</li><li>Privacy</li></ul>
       </article></div>
   </div>
-    <div id="nls-p-care" class="nls-block" data-hs-section>
+    <div id="nls-p-care" class="nls-block nls-block--band pl-tint" data-hs-section>
     <header class="nls-head">
     <p class="nls-kicker">VETERINARY, HEALTH &amp; CARE</p>
     <h2 class="nls-title">Veterinary and care partners</h2>
-    <p class="nls-lead">Vets and qualified grooming, hotel, daycare, sitting and training services owners can trust with their pets.</p>
+    <p class="nls-lead">Collaboration models with vets and qualified grooming, hotel, daycare, sitting and training services owners can trust.</p>
   </header>
     
     <div class="pl-grid" style="--cols:3"><article class="pl-card" id="partner-01">
-        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><span class="pl-n">01</span></div>
-        <h3>Vet clinics and health specialists</h3><p class="pl-p">Smoother communication based on owners' records, shared only when the owner agrees.</p>
-        <dl class="pl-meta"><div><dt>Scope</dt><dd>Clinic info, booking, operations tools</dd></div><div><dt>How</dt><dd>Clinic information, booking links, PETLOG Business</dd></div><div><dt>Conditions</dt><dd>After review of treatment, advertising and brokerage law</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=vet#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
+        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="3.5"/><path d="M12 8.2v7.6M8.2 12h7.6"/></svg></span><span class="pl-n">01</span></div>
+        <h3>Vet clinics</h3><p class="pl-p">Consultations can be smoother with the weight, medication and symptom records owners keep — shared only with the owner's consent.</p>
+        <dl class="pl-meta"><div><dt>Scope</dt><dd>Official clinic info, booking routes, consent-based record summaries</dd></div><div><dt>How</dt><dd>Information, booking-route links, joint work on a summary format</dd></div><div><dt>Preconditions</dt><dd>After review of veterinary, advertising and brokerage law; no fee tied to treatment costs</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=vet#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
       </article><article class="pl-card" id="partner-02">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="7" r="2.5"/><circle cx="6" cy="17" r="2.5"/><path d="M8.2 8.3L20 18M8.2 15.7L20 6"/></svg></span><span class="pl-n">02</span></div>
         <h3>Grooming salons</h3><p class="pl-p">New customers and lighter booking admin, with services and pricing policy shown to owners in advance.</p>
-        <dl class="pl-meta"><div><dt>Scope</dt><dd>Grooming bookings and customer management</dd></div><div><dt>How</dt><dd>Introductions, booking links, customer tools</dd></div><div><dt>Conditions</dt><dd>Business check, published services and pricing policy</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=booking-provider#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
+        <dl class="pl-meta"><div><dt>Scope</dt><dd>Grooming booking links, pet notes, rebooking</dd></div><div><dt>How</dt><dd>Introductions, booking pilot, operations tools</dd></div><div><dt>Preconditions</dt><dd>Grooming licence checks; published services and pricing policy</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=booking-provider#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
       </article><article class="pl-card" id="partner-03">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-5h4v5"/></svg></span><span class="pl-n">03</span></div>
-        <h3>Pet hotels</h3><p class="pl-p">Connecting trusted customers, with accepted pets and refund rules shown in advance to reduce disputes.</p>
-        <dl class="pl-meta"><div><dt>Scope</dt><dd>Boarding, bookings and operations</dd></div><div><dt>How</dt><dd>Introductions, booking links, operations tools</dd></div><div><dt>Conditions</dt><dd>Facility and business checks, clear refund rules</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=booking-provider#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
+        <h3>Pet hotels</h3><p class="pl-p">Trusted customers, with accepted pets and refund rules shown in advance to reduce disputes.</p>
+        <dl class="pl-meta"><div><dt>Scope</dt><dd>Boarding bookings, conditions and vaccination rules, activity logs</dd></div><div><dt>How</dt><dd>Introductions, booking links, operations tools</dd></div><div><dt>Preconditions</dt><dd>Boarding licence and facility checks; clear refund rules</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=booking-provider#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
       </article><article class="pl-card" id="partner-04">
-        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-5h4v5"/></svg></span><span class="pl-n">04</span></div>
-        <h3>Pet daycare</h3><p class="pl-p">Regular customers and schedule management; how care logs are shared is decided together.</p>
-        <dl class="pl-meta"><div><dt>Scope</dt><dd>Daycare and schedules</dd></div><div><dt>How</dt><dd>Programme introductions, booking, care logs</dd></div><div><dt>Conditions</dt><dd>Eligibility and safety standards</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=booking-provider#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
+        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M3 19.5c.8-3.4 3.2-5.2 6-5.2s5.2 1.8 6 5.2M15.5 14.3c2.5-.4 4.7 1 5.5 3.7"/></svg></span><span class="pl-n">04</span></div>
+        <h3>Pet daycare</h3><p class="pl-p">Regular customers and schedule management; how care logs are shared with owners is decided together.</p>
+        <dl class="pl-meta"><div><dt>Scope</dt><dd>Attendance schedules, programmes, care-log sharing</dd></div><div><dt>How</dt><dd>Programme introductions, booking, care logs</dd></div><div><dt>Preconditions</dt><dd>Eligibility and safety standards</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=booking-provider#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
       </article><article class="pl-card" id="partner-05">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="13" cy="4.6" r="1.7"/><path d="M10 21l2-6.5 2.5 2.5V21M12 14.5l-1-4 3-2 2 3.5h3M11 10.5L8 12v3"/></svg></span><span class="pl-n">05</span></div>
         <h3>Pet sitting and walking</h3><p class="pl-p">Owners who need care while away, with identity checks and liability rules in place first.</p>
-        <dl class="pl-meta"><div><dt>Scope</dt><dd>Home visits and walks</dd></div><div><dt>How</dt><dd>Care booking links, care logs</dd></div><div><dt>Conditions</dt><dd>Identity and qualification checks, liability and insurance</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=sitting#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
+        <dl class="pl-meta"><div><dt>Scope</dt><dd>Home visits and walks, care logs</dd></div><div><dt>How</dt><dd>Care booking links and care logs (under review)</dd></div><div><dt>Preconditions</dt><dd>Identity and qualification checks; liability and compensation process</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=sitting#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
       </article><article class="pl-card" id="partner-06">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5.2c3-1 6-1 8 1 2-2 5-2 8-1v14c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6.2v14"/></svg></span><span class="pl-n">06</span></div>
-        <h3>Trainers and behaviour experts</h3><p class="pl-p">Reaching owners through training demand and content, working with experts whose qualifications are checked.</p>
-        <dl class="pl-meta"><div><dt>Scope</dt><dd>Education and training</dd></div><div><dt>How</dt><dd>Education content, sessions</dd></div><div><dt>Conditions</dt><dd>Qualification checks, lawful scope</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=content#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
+        <h3>Trainers and behaviour experts</h3><p class="pl-p">Reaching owners through training demand and content; serious behaviour problems go directly to experts.</p>
+        <dl class="pl-meta"><div><dt>Scope</dt><dd>Training and socialisation, home and group classes, education content</dd></div><div><dt>How</dt><dd>Education content, class links</dd></div><div><dt>Preconditions</dt><dd>Qualification checks; safe training methods</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=sitting#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
       </article></div>
   </div>
-<div id="nls-p-brand" class="nls-block nls-block--band pl-tint" data-hs-section>
+<div id="nls-p-brand" class="nls-block" data-hs-section>
     <header class="nls-head">
-    <p class="nls-kicker">BRANDS, COMMERCE &amp; LIFESTYLE</p>
-    <h2 class="nls-title">Brand and commerce partners</h2>
-    <p class="nls-lead">Commerce and campaigns connecting pet brands and consumers, content and travel experiences.</p>
+    <p class="nls-kicker">BRANDS, CONTENT, TRAVEL &amp; DEVICES</p>
+    <h2 class="nls-title">Brand, content, travel and device partners</h2>
+    <p class="nls-lead">Collaboration models for commerce, content and integrations with pet brands, creators, pet-friendly travel businesses and smart-device companies.</p>
   </header>
     
     <div class="pl-rows"><article class="pl-row" id="partner-07">
-        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 8h14l-1.1 12H6.1z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></span><div><span class="pl-n">07</span><h3>Food and treat brands</h3><p class="pl-p">Reaching repeat buyers through group buys and subscriptions after a seller check; pet records are never shared automatically.</p></div></div>
-        <div class="pl-row__side"><dl class="pl-meta"><div><dt>Scope</dt><dd>Products and subscriptions</dd></div><div><dt>How</dt><dd>Listings, group buys, subscriptions, promotions</dd></div><div><dt>Conditions</dt><dd>Accurate labelling, regulated items excluded</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=brand#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a></div>
+        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 8h14l-1.1 12H6.1z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></span><div><span class="pl-n">07</span><h3>Food, treat and goods brands</h3><p class="pl-p">Products found by repeat buyers and the right owners; pet records are never shared with sellers automatically.</p></div></div>
+        <div class="pl-row__side"><dl class="pl-meta"><div><dt>Scope</dt><dd>Listings, promotions, group buys, recurring delivery</dd></div><div><dt>How</dt><dd>Listings, promotions, group-buy trials</dd></div><div><dt>Preconditions</dt><dd>Seller checks, accurate labelling, regulated items excluded</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=brand#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a></div>
       </article><article class="pl-row" id="partner-08">
-        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 8h14l-1.1 12H6.1z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></span><div><span class="pl-n">08</span><h3>Pet goods brands</h3><p class="pl-p">Being found by the right owners, on the basis of safety standards and accurate product information.</p></div></div>
-        <div class="pl-row__side"><dl class="pl-meta"><div><dt>Scope</dt><dd>Commerce and promotions</dd></div><div><dt>How</dt><dd>Listings, promotions, co-marketing</dd></div><div><dt>Conditions</dt><dd>Safety standards, accurate product information</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=brand#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a></div>
+        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 10v4h3l8 4V6L7 10z"/><path d="M18 9.5a3.5 3.5 0 0 1 0 5"/></svg></span><div><span class="pl-n">08</span><h3>Creators and education content</h3><p class="pl-p">Reaching owners through content, with ads and sponsorship clearly disclosed.</p></div></div>
+        <div class="pl-row__side"><dl class="pl-meta"><div><dt>Scope</dt><dd>Pet life content, short video, campaigns</dd></div><div><dt>How</dt><dd>Content partnerships, brand campaigns</dd></div><div><dt>Preconditions</dt><dd>Ad disclosure, community policy, no false medical information</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=content#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a></div>
       </article><article class="pl-row" id="partner-09">
-        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16v11H9.5L4 20z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span><div><span class="pl-n">09</span><h3>Pet creators</h3><p class="pl-p">Reaching owners through content, including short pet-life video, with advertising clearly disclosed.</p></div></div>
-        <div class="pl-row__side"><dl class="pl-meta"><div><dt>Scope</dt><dd>Content and campaigns</dd></div><div><dt>How</dt><dd>Content partnerships, brand campaigns</dd></div><div><dt>Conditions</dt><dd>Ad disclosure, community policy</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=content#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a></div>
+        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-6.2-5.6-6.2-11a6.2 6.2 0 0 1 12.4 0c0 5.4-6.2 11-6.2 11z"/><circle cx="12" cy="10" r="2.2"/></svg></span><div><span class="pl-n">09</span><h3>Travel, lodging and activities</h3><p class="pl-p">Reaching travellers with pets, with pet policies and safety rules shown in advance.</p></div></div>
+        <div class="pl-row__side"><dl class="pl-meta"><div><dt>Scope</dt><dd>Pet-friendly stays and activities, pet policies</dd></div><div><dt>How</dt><dd>Pet policies, booking partnerships (with direct contracts)</dd></div><div><dt>Preconditions</dt><dd>Published pet policies and safety rules; roles split with MY WORLD</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=booking-provider#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a></div>
       </article><article class="pl-row" id="partner-10">
-        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-5h4v5"/></svg></span><div><span class="pl-n">10</span><h3>Travel and lodging</h3><p class="pl-p">Reaching travellers with pets, with pet policies and safety rules shown in advance.</p></div></div>
-        <div class="pl-row__side"><dl class="pl-meta"><div><dt>Scope</dt><dd>Pet-friendly travel</dd></div><div><dt>How</dt><dd>Pet policies, booking links</dd></div><div><dt>Conditions</dt><dd>Published pet policies and safety rules</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=booking-provider#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a></div>
+        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 17.8h2"/></svg></span><div><span class="pl-n">10</span><h3>Smart-device and technology companies</h3><p class="pl-p">Device data can become more useful when it joins owners' daily records; proven products come before own hardware.</p></div></div>
+        <div class="pl-row__side"><dl class="pl-meta"><div><dt>Scope</dt><dd>Feeder, camera and GPS app links, technology</dd></div><div><dt>How</dt><dd>App integration and partnership review</dd></div><div><dt>Preconditions</dt><dd>Device certification, location and camera security, separate consent</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=global#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a></div>
       </article></div>
   </div>
-<div id="nls-p-public" class="nls-block" data-hs-section>
+<div id="nls-p-public" class="nls-block nls-block--band pl-tint" data-hs-section>
     <header class="nls-head">
-    <p class="nls-kicker">WELFARE, PUBLIC &amp; GLOBAL</p>
-    <h2 class="nls-title">Insurance, public and global partners</h2>
-    <p class="nls-lead">Lawful partnerships, animal welfare and access to public information, localisation abroad and business partnerships.</p>
+    <p class="nls-kicker">REGULATED &amp; PUBLIC-GOOD FIELDS</p>
+    <h2 class="nls-title">Insurance, shelter, funeral and public partners</h2>
+    <p class="nls-lead">Fields where regulation and the public good matter. Shelter, adoption and public work is not for profit and is kept separate from commercial partnerships such as insurance and funerals.</p>
   </header>
     
     <div class="pl-grid" style="--cols:2"><article class="pl-card pl-card--tint" id="partner-11">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12a9 9 0 0 1 18 0z"/><path d="M12 12v6a2 2 0 0 0 4 0"/></svg></span><span class="pl-n">11</span></div>
-        <h3>Licensed insurers</h3><p class="pl-p">Information partnerships that make cover easy to understand; solicitation and brokerage only with proper licences and contracts.</p>
-        <dl class="pl-meta"><div><dt>Scope</dt><dd>Insurance information, lawful partnerships</dd></div><div><dt>How</dt><dd>Insurance information within lawful scope</dd></div><div><dt>Conditions</dt><dd>Solicitation, brokerage and comparison rules</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=insurance-adoption#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
+        <h3>Licensed insurers</h3><p class="pl-p">Information partnerships that make cover easy to understand; sign-up and claims go to the insurer's official channel.</p>
+        <dl class="pl-meta"><div><dt>Scope</dt><dd>Pet insurance information, lawful cooperation</dd></div><div><dt>How</dt><dd>Insurance information within lawful scope</dd></div><div><dt>Preconditions</dt><dd>Solicitation, brokerage and comparison rules</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=insurance-adoption#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
       </article><article class="pl-card pl-card--tint" id="partner-12">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><span class="pl-n">12</span></div>
-        <h3>Animal protection and welfare bodies</h3><p class="pl-p">More responsible adoptions, by pointing to official shelter information, adoption processes and lost-animal information.</p>
-        <dl class="pl-meta"><div><dt>Scope</dt><dd>Adoption, protection and welfare information</dd></div><div><dt>How</dt><dd>Official shelter info, adoption guidance</dd></div><div><dt>Conditions</dt><dd>Animal-protection law</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=insurance-adoption#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
+        <h3>Shelters, rescue groups and adoption bodies</h3><p class="pl-p">More responsible adoption and fostering, by bringing official notices and procedures to owners — free of charge.</p>
+        <dl class="pl-meta"><div><dt>Scope</dt><dd>Animal, adoption and foster notices, volunteering</dd></div><div><dt>How</dt><dd>Notice links and adoption preparation (public good)</dd></div><div><dt>Preconditions</dt><dd>Animal-protection law, body checks, no adoption fee</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=insurance-adoption#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
       </article><article class="pl-card pl-card--tint" id="partner-13">
-        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M11 21v-3h2v3"/></svg></span><span class="pl-n">13</span></div>
-        <h3>Local government and public bodies</h3><p class="pl-p">Spreading responsible pet culture through registration guidance, education and local programmes.</p>
-        <dl class="pl-meta"><div><dt>Scope</dt><dd>Animal welfare and local programmes</dd></div><div><dt>How</dt><dd>Registration guidance, education, local programmes</dd></div><div><dt>Conditions</dt><dd>Official information ≠ official partnership</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=public#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
+        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 16.3l-4.8 2.6.9-5.4-3.9-3.8 5.4-.8z"/></svg></span><span class="pl-n">13</span></div>
+        <h3>Funeral and memorial providers</h3><p class="pl-p">Families saying goodbye can check trusted providers and costs in advance.</p>
+        <dl class="pl-meta"><div><dt>Scope</dt><dd>Registered provider info, consultations, memorial albums</dd></div><div><dt>How</dt><dd>Provider information and consultation links (under review)</dd></div><div><dt>Preconditions</dt><dd>Registered pet-funeral businesses only; labelling and brokerage review</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=insurance-adoption#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
       </article><article class="pl-card pl-card--tint" id="partner-14">
-        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.5 3.5 5.5 3.5 9s-1.1 6.5-3.5 9c-2.4-2.5-3.5-5.5-3.5-9s1.1-6.5 3.5-9z"/></svg></span><span class="pl-n">14</span></div>
-        <h3>Business, technology and global partners</h3><p class="pl-p">Bringing a proven pet life platform to companies and new markets, checking each country's law first.</p>
-        <dl class="pl-meta"><div><dt>Scope</dt><dd>Enterprise solutions, SaaS, localisation, licensing</dd></div><div><dt>How</dt><dd>Enterprise solutions, localisation, licensing, technology</dd></div><div><dt>Conditions</dt><dd>Local law, terms per contract</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=global#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
+        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M11 21v-3h2v3"/></svg></span><span class="pl-n">14</span></div>
+        <h3>Local government and public bodies</h3><p class="pl-p">Spreading responsible pet culture through registration, education and local programmes.</p>
+        <dl class="pl-meta"><div><dt>Scope</dt><dd>Registration guidance, lost and abandoned animal info, local programmes</dd></div><div><dt>How</dt><dd>Official information and campaigns</dd></div><div><dt>Preconditions</dt><dd>Official information is not official partnership</dd></div></dl><a class="pl-more" href="../../petlog/contact/?type=public#inquiry">Partnership inquiry <span aria-hidden="true">→</span></a>
+      </article></div>
+  </div>
+    <div id="nls-scenarios" class="nls-block" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">COLLABORATION SCENARIOS</p>
+    <h2 class="nls-title">Collaboration scenarios.</h2>
+    <p class="nls-lead">Examples of collaborations that could realistically be explored. All are proposals, not real cases.</p>
+  </header>
+    
+    <div class="pl-rows"><article class="pl-row">
+        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="7" r="2.5"/><circle cx="6" cy="17" r="2.5"/><path d="M8.2 8.3L20 18M8.2 15.7L20 6"/></svg></span><div><span class="pl-n">01</span><h3>A local grooming booking pilot</h3><p class="pl-p">Run the flow from booking request to completed visit, on a small scale, with a few groomers in one area.</p></div></div>
+        <div class="pl-row__side"><dl class="pl-meta"><div><dt>Partners</dt><dd>Local groomers and hotels</dd></div><div><dt>PETLOG's role</dt><dd>Connecting owners, passing on pet notes (within consent), designing reviews</dd></div><div><dt>Preconditions</dt><dd>After legal review, a PG contract and security checks</dd></div></dl></div>
+      </article><article class="pl-row">
+        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><div><span class="pl-n">02</span><h3>Linking shelter notices</h3><p class="pl-p">A public-good collaboration bringing official shelters' adoption and foster notices and volunteer calls to owners.</p></div></div>
+        <div class="pl-row__side"><dl class="pl-meta"><div><dt>Partners</dt><dd>Shelters, rescue groups, local government</dd></div><div><dt>PETLOG's role</dt><dd>Showing notices and adoption preparation, free of charge</dd></div><div><dt>Preconditions</dt><dd>The body's own checks; private rehoming blocked</dd></div></dl></div>
+      </article><article class="pl-row">
+        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 8h14l-1.1 12H6.1z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></span><div><span class="pl-n">03</span><h3>A food brand repeat-purchase trial</h3><p class="pl-p">Test demand for group buys and recurring delivery with frequently bought food and consumables.</p></div></div>
+        <div class="pl-row__side"><dl class="pl-meta"><div><dt>Partners</dt><dd>Food, treat and goods brands</dd></div><div><dt>PETLOG's role</dt><dd>Promotion placement, seller checks, ad disclosure</dd></div><div><dt>Preconditions</dt><dd>Regulated items excluded; no pet records shared</dd></div></dl></div>
+      </article><article class="pl-row">
+        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="3.5"/><path d="M12 8.2v7.6M8.2 12h7.6"/></svg></span><div><span class="pl-n">04</span><h3>Studying a record summary for visits</h3><p class="pl-p">Explore with clinics a format for showing weight, medication and symptom records at a visit, when the owner chooses.</p></div></div>
+        <div class="pl-row__side"><dl class="pl-meta"><div><dt>Partners</dt><dd>Vet clinics</dd></div><div><dt>PETLOG's role</dt><dd>Proposing a consent-based record summary format</dd></div><div><dt>Preconditions</dt><dd>Veterinary and privacy law review; no diagnosis feature</dd></div></dl></div>
+      </article></div>
+  </div>
+    <div id="nls-poc" class="nls-block nls-block--band pl-tint" data-hs-section>
+    <div class="pl-split">
+      <div class="pl-split__head"><header class="nls-head">
+    <p class="nls-kicker">POC &amp; PILOT</p>
+    <h2 class="nls-title">How we propose<br>PoCs and pilots.</h2>
+    <p class="nls-lead">Rather than a large contract up front, we propose starting with a small pilot with an agreed scope and measures.</p>
+  </header></div>
+      <div><ol class="pl-timeline"><li><span class="pl-dot" aria-hidden="true"></span><span class="pl-stage">STEP 01</span><h3>Set the scope</h3><p class="pl-p">Keep the area, number of businesses, period and services narrow.</p></li><li><span class="pl-dot" aria-hidden="true"></span><span class="pl-stage">STEP 02</span><h3>Agree the measures</h3><p class="pl-p">Decide in advance on measures such as completion rate per booking request, intent to return and operating burden.</p></li><li><span class="pl-dot" aria-hidden="true"></span><span class="pl-stage">STEP 03</span><h3>Check safeguards</h3><p class="pl-p">Confirm legal, payment and privacy requirements and the incident process before the pilot.</p></li><li><span class="pl-dot" aria-hidden="true"></span><span class="pl-stage">STEP 04</span><h3>Share results and decide</h3><p class="pl-p">Review the results together and decide whether to widen, change or stop.</p></li></ol></div>
+    </div>
+  </div>
+    <div id="nls-data" class="nls-block" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">DATA &amp; API</p>
+    <h2 class="nls-title">Data and API<br>possibilities.</h2>
+    <p class="nls-lead">No partner API or data integration is offered today. These are directions open to discussion; in any integration, records never leave without the owner's consent.</p>
+  </header>
+    
+    <ul class="pl-checks pl-checks--cards"><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M9 3v4M15 3v4"/><path d="M9.5 14.5l1.8 1.8 3.4-3.4"/></svg></span><div><h3>Booking and schedule sync (planned)</h3><p class="pl-p">Connecting a business's booking system with the PETLOG calendar; only the booking details the owner chooses are exchanged.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5.2c0 4.8-3.3 8.3-7 9.8-3.7-1.5-7-5-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/></svg></span><div><h3>Consent-based record sharing (under review)</h3><p class="pl-p">Passing a record summary the owner selects to a clinic or care business.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 17.8h2"/></svg></span><div><h3>Smart-device data (planned)</h3><p class="pl-p">Bringing records from manufacturers' feeders and GPS devices into the app, after certification and security checks.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M11 21v-3h2v3"/></svg></span><div><h3>Official notice information (planned)</h3><p class="pl-p">Showing official adoption and lost-pet information from shelters and local government, with its source.</p></div></li></ul>
+  </div>
+    <div id="nls-joint" class="nls-block nls-block--band pl-tint" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">JOINT SERVICES &amp; CAMPAIGNS</p>
+    <h2 class="nls-title">Joint services<br>and campaigns.</h2>
+    
+  </header>
+    
+    <div class="pl-cols" style="--cols:3"><article class="pl-col">
+        <div class="pl-col__head"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><span class="pl-n">01</span></div>
+        <h3>Responsible adoption campaigns</h3><p class="pl-p">Sharing adoption preparation and registration guidance with shelters and local government. Public-good campaigns are not for profit.</p>
+        
+      </article><article class="pl-col">
+        <div class="pl-col__head"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M9 3v4M15 3v4"/><path d="M9.5 14.5l1.8 1.8 3.4-3.4"/></svg></span><span class="pl-n">02</span></div>
+        <h3>Vaccination and health-habit campaigns</h3><p class="pl-p">Information campaigns with clinics and local government on vaccination timing and record habits, kept apart from any clinic's advertising.</p>
+        
+      </article><article class="pl-col">
+        <div class="pl-col__head"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 10v4h3l8 4V6L7 10z"/><path d="M18 9.5a3.5 3.5 0 0 1 0 5"/></svg></span><span class="pl-n">03</span></div>
+        <h3>Brand promotions and content</h3><p class="pl-p">Pet life content and promotions with pet brands and creators, with ads and sponsorship clearly disclosed.</p>
+        
       </article></div>
   </div>
     <div id="nls-principles" class="nls-block" data-hs-section>
@@ -1190,7 +1262,7 @@
     <h2 class="nls-title">PETLOG MENU</h2>
     
   </header>
-    <nav aria-label="PETLOG MENU"><ul class="pl-menu"><li><a class="pl-tile" href="../../petlog/"><div class="pl-tile__body"><span class="pl-n">01</span><strong>Overview · About PETLOG<em aria-hidden="true">→</em></strong><p class="pl-p">Brand story and a platform for a pet's whole life</p></div></a></li><li><a class="pl-tile" href="../../petlog/platform/"><div class="pl-tile__body"><span class="pl-n">02</span><strong>Platform · Services<em aria-hidden="true">→</em></strong><p class="pl-p">18 services from records, health and family to community, commerce and care</p></div></a></li><li><a class="pl-tile" href="../../petlog/business/"><div class="pl-tile__body"><span class="pl-n">03</span><strong>Business · Business<em aria-hidden="true">→</em></strong><p class="pl-p">20 business areas in 6 groups, and the business model</p></div></a></li><li><a class="pl-tile" href="../../petlog/partnerships/" aria-current="page"><div class="pl-tile__body"><span class="pl-n">04</span><strong>Partnerships · Partnerships<em aria-hidden="true">→</em></strong><p class="pl-p">14 partner types, from vets and care to brands and public bodies</p></div></a></li><li><a class="pl-tile" href="../../petlog/contact/"><div class="pl-tile__body"><span class="pl-n">05</span><strong>Contact · Contact<em aria-hidden="true">→</em></strong><p class="pl-p">From app support to business and public partnerships</p></div></a></li></ul></nav>
+    <nav aria-label="PETLOG MENU"><ul class="pl-menu"><li><a class="pl-tile" href="../../petlog/"><div class="pl-tile__body"><span class="pl-n">01</span><strong>Overview · About PETLOG<em aria-hidden="true">→</em></strong><p class="pl-p">What PETLOG is, owners' problems and our approach, status and vision</p></div></a></li><li><a class="pl-tile" href="../../petlog/platform/"><div class="pl-tile__body"><span class="pl-n">02</span><strong>Platform · Services<em aria-hidden="true">→</em></strong><p class="pl-p">25 long-term areas, user scenarios, privacy principles and FAQ</p></div></a></li><li><a class="pl-tile" href="../../petlog/business/"><div class="pl-tile__body"><span class="pl-n">03</span><strong>Business · Business<em aria-hidden="true">→</em></strong><p class="pl-p">Customers and payers, 12 revenue models, go-to-market and roadmap</p></div></a></li><li><a class="pl-tile" href="../../petlog/partnerships/" aria-current="page"><div class="pl-tile__body"><span class="pl-n">04</span><strong>Partnerships · Partnerships<em aria-hidden="true">→</em></strong><p class="pl-p">14 partner types, scenarios, PoC and data principles</p></div></a></li><li><a class="pl-tile" href="../../petlog/contact/"><div class="pl-tile__body"><span class="pl-n">05</span><strong>Contact · Contact<em aria-hidden="true">→</em></strong><p class="pl-p">From owners' questions to business, brand, shelter and public partnerships</p></div></a></li></ul></nav>
   </div>
     <div id="nls-close" class="nls-block nls-close nls-block--ink" data-hs-section>
     <p class="nls-kicker">NEXT STEP</p>

@@ -3,20 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PETLOG | Newon — Every moment with your pet, together in one place</title>
-    <meta name="description" content="PETLOG is NEWON's pet life platform for pets' daily and health records and shared family care." />
+    <title>PETLOG | Newon — From records to memories, one app for a pet's life</title>
+    <meta name="description" content="PETLOG is NEWON's pet life-cycle platform with profiles, daily and health records and shared family care for dogs and cats." />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://www.newon.app/en/petlog/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.newon.app/en/petlog/" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content="PETLOG | Newon — Every moment with your pet, together in one place" />
-    <meta property="og:description" content="PETLOG is NEWON's pet life platform for pets' daily and health records and shared family care." />
+    <meta property="og:title" content="PETLOG | Newon — From records to memories, one app for a pet's life" />
+    <meta property="og:description" content="PETLOG is NEWON's pet life-cycle platform with profiles, daily and health records and shared family care for dogs and cats." />
     <meta property="og:site_name" content="Newon" />
     <meta property="og:image" content="https://www.newon.app/logo.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="PETLOG | Newon — Every moment with your pet, together in one place" />
-    <meta name="twitter:description" content="PETLOG is NEWON's pet life platform for pets' daily and health records and shared family care." />
+    <meta name="twitter:title" content="PETLOG | Newon — From records to memories, one app for a pet's life" />
+    <meta name="twitter:description" content="PETLOG is NEWON's pet life-cycle platform with profiles, daily and health records and shared family care for dogs and cats." />
     <meta name="twitter:image" content="https://www.newon.app/logo.png" />
     <link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/petlog/" />
     <link rel="alternate" hreflang="en" href="https://www.newon.app/en/petlog/" />
@@ -28,7 +28,7 @@
     <link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/petlog/" />
     <link rel="alternate" hreflang="id" href="https://www.newon.app/id/petlog/" />
     <link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/petlog/" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"MobileApplication","name":"PETLOG","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","url":"https://www.newon.app/en/petlog/","description":"PETLOG is NEWON's pet life platform for pets' daily and health records and shared family care. Starting from everyday records, it aims to expand into commerce, professional services, business, public and global areas.","publisher":{"@type":"Organization","name":"Newon","url":"https://www.newon.app"},"sameAs":["https://apps.apple.com/kr/app/petlog-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-ai-%EB%B0%98%EB%A0%A4-%EA%B8%B0%EB%A1%9D/id6770971033","https://play.google.com/store/apps/details?id=com.newon.petlog&pcampaignid=web_share"]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"MobileApplication","name":"PETLOG","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","url":"https://www.newon.app/en/petlog/","description":"PETLOG is NEWON's pet life-cycle platform with profiles, daily and health records and shared family care for dogs and cats. It separates today's app features from plans for care services, a market, shelters and memorials.","publisher":{"@type":"Organization","name":"Newon","url":"https://www.newon.app"},"sameAs":["https://apps.apple.com/kr/app/petlog-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-ai-%EB%B0%98%EB%A0%A4-%EA%B8%B0%EB%A1%9D/id6770971033","https://play.google.com/store/apps/details?id=com.newon.petlog&pcampaignid=web_share"]}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Newon","item":"https://www.newon.app/en/"},{"@type":"ListItem","position":2,"name":"PETLOG","item":"https://www.newon.app/en/petlog/"}]}</script>
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/logo.png" />
@@ -287,6 +287,17 @@
   html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey { background: var(--pl-card) !important; }
   html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-decade__mark { background: #16271d !important; color: var(--pl-gi) !important; }
   html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-decade__mark * { color: var(--pl-gi) !important; }
+
+  /* FAQ (platform) — native details/summary in the checklist rule language */
+  #lifestage-detail.nls--petlog .pl-faq { max-width: 56rem; border-bottom: 1px solid var(--nls-line); }
+  #lifestage-detail.nls--petlog .pl-faq details { border-top: 1px solid var(--nls-line); }
+  #lifestage-detail.nls--petlog .pl-faq summary { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.15rem 0; cursor: pointer; list-style: none; font-size: 1rem; font-weight: 700; line-height: 1.5; color: var(--nls-ink); }
+  #lifestage-detail.nls--petlog .pl-faq summary::-webkit-details-marker { display: none; }
+  #lifestage-detail.nls--petlog .pl-faq summary::after { content: "+"; flex: none; display: grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--pl-soft); color: var(--pl-gi); font-weight: 600; }
+  #lifestage-detail.nls--petlog .pl-faq details[open] summary::after { content: "−"; }
+  #lifestage-detail.nls--petlog .pl-faq summary:focus-visible { outline: 2px solid var(--pl-g); outline-offset: 2px; }
+  #lifestage-detail.nls--petlog .pl-faq details > .pl-p { padding: 0 2.6rem 1.3rem 0; }
+  #lifestage-detail.nls--petlog .pl-subhead { margin: 0 0 1.2rem; }
 
   /* closing band: ink stays, the main button takes the point colour */
   #lifestage-detail.nls--petlog .nls-close .nls-kicker { color: #7fd6a4; }
@@ -1063,20 +1074,38 @@
   <div class="nls__wrap">
     <div id="nls-mission" class="nls-block" data-hs-section>
       <header class="nls-head">
-    <p class="nls-kicker">OUR MISSION</p>
-    <h2 class="nls-title">For a better everyday life<br>for pets and their owners.</h2>
-    
+    <p class="nls-kicker">WHAT IS PETLOG</p>
+    <h2 class="nls-title">From records to memories,<br>one app for a pet's life.</h2>
+    <p class="nls-lead">PETLOG is a pet life-cycle platform that keeps a pet's whole life in one account: from the day it joins the family, through growth, health and daily life, to old age and the memories after farewell. Today it runs as a records, health and family-care app for dog and cat owners; building on those records, it plans to widen step by step into care services, shopping, safety and shelter links.</p>
   </header>
-      <ul class="pl-values"><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><span class="pl-n">01</span><h3 lang="en">Care</h3><strong>health and daily life, with attention.</strong><p class="pl-p">We treat daily records and health history carefully, so small changes are not missed.</p></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span><span class="pl-n">02</span><h3 lang="en">Connection</h3><strong>family and services, together.</strong><p class="pl-p">Families care together, and the information and services they need stay close to their records.</p></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20v-8"/><path d="M12 12c0-4 3-6.5 7-6.5 0 4-3 6.5-7 6.5z"/><path d="M12 14.5c0-3-2.6-5.2-6-5.2 0 3 2.6 5.2 6 5.2z"/></svg></span><span class="pl-n">03</span><h3 lang="en">Growth</h3><strong>growing and changing together.</strong><p class="pl-p">From the early months to old age, we look at what each stage needs.</p></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7l1.4-2.5h4.2L15.5 7"/><circle cx="12" cy="13.5" r="3.4"/></svg></span><span class="pl-n">04</span><h3 lang="en">Memories</h3><strong>precious moments, for long.</strong><p class="pl-p">Time together, photos and records stay as the family's story.</p></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5.2c0 4.8-3.3 8.3-7 9.8-3.7-1.5-7-5-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/></svg></span><span class="pl-n">05</span><h3 lang="en">Trust</h3><strong>information and experience you can rely on.</strong><p class="pl-p">Evidence-checked information and clear principles protect owners' trust.</p></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="4.8" r="1.8"/><path d="M5 8.8l7 1.2 7-1.2M12 10v4.5m0 0L9 21m3-6.5L15 21"/></svg></span><span class="pl-n">06</span><h3 lang="en">Accessibility</h3><strong>easy for everyone.</strong><p class="pl-p">Large text and clear screens, aiming for a pet life service anyone can use.</p></li></ul>
+      <h3 class="pl-subhead">Five values PETLOG keeps</h3><ul class="pl-values"><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><span class="pl-n">01</span><h3 lang="en">Care</h3><strong>so small changes are not missed.</strong><p class="pl-p">Steady meal, walk, weight and medication records help owners notice changes in condition first.</p></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span><span class="pl-n">02</span><h3 lang="en">Connection</h3><strong>with family, close to the records.</strong><p class="pl-p">Families care from the same records, and future information and services stay close to them.</p></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20v-8"/><path d="M12 12c0-4 3-6.5 7-6.5 0 4-3 6.5-7 6.5z"/><path d="M12 14.5c0-3-2.6-5.2-6-5.2 0 3 2.6 5.2 6 5.2z"/></svg></span><span class="pl-n">03</span><h3 lang="en">Lifetime</h3><strong>from first meeting to last goodbye.</strong><p class="pl-p">The changing needs of the early months, adult years and old age, on one life record.</p></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5.2c0 4.8-3.3 8.3-7 9.8-3.7-1.5-7-5-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/></svg></span><span class="pl-n">04</span><h3 lang="en">Trust</h3><strong>checked information and clear rules.</strong><p class="pl-p">No diagnosis, ads kept apart from information, and no record shared without the owner's consent.</p></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="4.8" r="1.8"/><path d="M5 8.8l7 1.2 7-1.2M12 10v4.5m0 0L9 21m3-6.5L15 21"/></svg></span><span class="pl-n">05</span><h3 lang="en">Accessibility</h3><strong>easy for everyone.</strong><p class="pl-p">Large text and simple screens, so even first-time owners find the app easy.</p></li></ul>
     </div>
+    <div id="nls-problem" class="nls-block nls-block--band pl-tint" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">PROBLEM → SOLUTION</p>
+    <h2 class="nls-title">Three problems<br>owners really face.</h2>
+    <p class="nls-lead">Caring for one pet takes vet, grooming, food, walk and care information — and most of it is scattered.</p>
+  </header>
+    
+    <div class="pl-rows"><article class="pl-row">
+        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3.5"/></svg></span><div><span class="pl-n">01</span><p class="pl-label" lang="en">Scattered records</p><h3>Records are scattered everywhere</h3><p class="pl-p">Vaccination dates sit in a clinic booklet, food notes in a memo app, photos in the phone gallery. At the vet, &quot;since when?&quot; is hard to answer.</p></div></div>
+        <div class="pl-row__side"><dl class="pl-meta"><div><dt>PETLOG's approach</dt><dd>One profile per pet, with daily life, health and schedules gathered on it. This is available in the app today.</dd></div></dl></div>
+      </article><article class="pl-row">
+        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="7" r="2.5"/><circle cx="6" cy="17" r="2.5"/><path d="M8.2 8.3L20 18M8.2 15.7L20 6"/></svg></span><div><span class="pl-n">02</span><p class="pl-label" lang="en">Information gap</p><h3>Care services are hard to compare and trust</h3><p class="pl-p">Groomers, hotels and sitters differ in pricing policy, accepted pets and cancellation rules, and there are few ways to check who to trust. Monthly costs and large treatment bills add up.</p></div></div>
+        <div class="pl-row__side"><dl class="pl-meta"><div><dt>PETLOG's approach</dt><dd>Service discovery and booking with business checks and real reviews is planned. Booking and payment come only to the app after legal, payment-provider (PG) and security review.</dd></div></dl></div>
+      </article><article class="pl-row">
+        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><div><span class="pl-n">03</span><p class="pl-label" lang="en">Disconnected life stages</p><h3>Adoption, loss and farewell are disconnected</h3><p class="pl-p">Shelter adoption, reporting a lost pet, funerals and memorials each start from scratch somewhere else — usually at the most stressful moment.</p></div></div>
+        <div class="pl-row__side"><dl class="pl-meta"><div><dt>PETLOG's approach</dt><dd>Adoption, lost-pet and foster guidance linked to official shelters and bodies, and memorial records, are planned as later-life areas. Public-good features are meant to run without fees.</dd></div></dl></div>
+      </article></div>
+  </div>
     <div id="nls-about" class="nls-block" data-hs-section>
     <header class="nls-head">
-    <p class="nls-kicker">ABOUT PETLOG</p>
-    <h2 class="nls-title">Life with a pet is made of<br>countless moments.</h2>
-    <p class="nls-lead">The excitement of the first day as a family, walks together, daily meals and health care, growing up and precious memories. Life with a pet is full of moments to record and remember. PETLOG aims to connect these experiences on one platform.</p>
+    <p class="nls-kicker">OUR APPROACH</p>
+    <h2 class="nls-title">How NEWON<br>proposes to solve it.</h2>
+    <p class="nls-lead">Rather than adding many features at once, PETLOG first makes everyday records solid, then connects services on top of them one by one.</p>
   </header>
     
-    <ol class="pl-steps" style="--n:3"><li><span class="pl-dot" aria-hidden="true"></span><span class="pl-big">01</span><h3>It starts with records</h3><p class="pl-p">PETLOG begins with keeping daily records, health care and each day with your pet in one place.</p></li><li><span class="pl-dot" aria-hidden="true"></span><span class="pl-big">02</span><h3>It connects family and information</h3><p class="pl-p">Share records with family, and find the information pet life needs close to your records.</p></li><li><span class="pl-dot" aria-hidden="true"></span><span class="pl-big">03</span><h3>It grows into an ecosystem</h3><p class="pl-p">We are building an all-round pet life ecosystem that reaches commerce and professional services.</p></li></ol>
+    <ol class="pl-steps" style="--n:3"><li><span class="pl-dot" aria-hidden="true"></span><span class="pl-big">01</span><h3>Daily records come first</h3><p class="pl-p">Meal, walk, weight and vaccination records are free core features, so owners can build the habit without cost. This stage is in the app today.</p></li><li><span class="pl-dot" aria-hidden="true"></span><span class="pl-big">02</span><h3>Records lead to services</h3><p class="pl-p">Records and schedules are designed to lead naturally to finding and booking grooming, care, hotels and training. Planned.</p></li><li><span class="pl-dot" aria-hidden="true"></span><span class="pl-big">03</span><h3>A whole life in one account</h3><p class="pl-p">Widening into old-age care, lost-pet readiness, shelter links and memorials — the later part of a pet's life. Planned.</p></li></ol>
   </div>
     <div id="nls-journey" class="nls-block nls-block--band pl-tint nls-journey-sec" data-hs-section>
     <header class="nls-head">
@@ -1091,8 +1120,8 @@
           <p class="nls-decade__n">01</p>
           <p class="nls-decade__age" lang="en">FIRST MEETING</p>
           <h3>First meeting, a new family</h3>
-          <p class="nls-decade__lead">Welcoming a new family member and getting used to each other. Create a profile and start first vaccinations and daily records. Adoption and registration follow official guidance.</p>
-          <ul class="nls-chips"><li>Create a profile</li><li>First vaccinations</li><li>Registration</li><li>Supplies</li></ul>
+          <p class="nls-decade__lead">Welcoming a new family member and getting used to each other. Today you can create a profile and start first vaccinations and daily records. Links to official shelter adoption information are planned; registration follows the local authority's guidance.</p>
+          <ul class="nls-chips"><li>Create a profile</li><li>First vaccinations</li><li>Registration guidance</li><li>Adoption prep</li></ul>
         </div>
       </article><article class="nls-decade" data-nls-decade-card="grow" data-scene="grow">
         <div class="nls-decade__mark" aria-hidden="true"><b>GROW</b><em>02</em></div>
@@ -1118,7 +1147,7 @@
           <p class="nls-decade__n">04</p>
           <p class="nls-decade__age" lang="en">HEALTH &amp; WELLNESS</p>
           <h3>Health and prevention</h3>
-          <p class="nls-decade__lead">Helping you not miss check-ups, vaccinations and medication. Health records you keep help when you talk to your vet.</p>
+          <p class="nls-decade__lead">Helping you not miss check-ups, vaccinations and medication. Health records help when you talk to your vet; diagnosis and decisions stay with the vet.</p>
           <ul class="nls-chips"><li>Health records</li><li>Vaccination schedule</li><li>Medication</li><li>Vet visits</li></ul>
         </div>
       </article><article class="nls-decade" data-nls-decade-card="senior" data-scene="senior">
@@ -1136,17 +1165,52 @@
           <p class="nls-decade__n">06</p>
           <p class="nls-decade__age" lang="en">MEMORIES FOREVER</p>
           <h3>Time together, remembered</h3>
-          <p class="nls-decade__lead">Remembering your time together through photos and records. A life archive and memorial are areas PETLOG will add in the future.</p>
-          <ul class="nls-chips"><li>Photos and records</li><li>Life archive</li><li>Memorial</li></ul>
+          <p class="nls-decade__lead">Remembering your time together through photos and records. Photos and daily records are available today; a memorial album and registered funeral-provider information will be added after legal review.</p>
+          <ul class="nls-chips"><li>Photos and records</li><li>Memorial album</li><li>Funeral information</li></ul>
         </div>
       </article></div>
     
   </div>
+    <div id="nls-users" class="nls-block" data-hs-section>
+    <div class="pl-split">
+      <div class="pl-split__head"><header class="nls-head">
+    <p class="nls-kicker">WHO IT'S FOR</p>
+    <h2 class="nls-title">Who uses<br>PETLOG.</h2>
+    <p class="nls-lead">The first core users are dog and cat owners. Other species follow once their health, husbandry and legal requirements are checked.</p>
+  </header></div>
+      <div><ul class="pl-checks pl-checks--cards"><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c1-4 3.8-6 7-6s6 2 7 6"/></svg></span><div><h3>Dog and cat owners</h3><p class="pl-p">From owners living alone to households with their first pet — people who want daily records and health schedules in one place.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M3 19.5c.8-3.4 3.2-5.2 6-5.2s5.2 1.8 6 5.2M15.5 14.3c2.5-.4 4.7 1 5.5 3.7"/></svg></span><div><h3>Families who care together</h3><p class="pl-p">Families who split care, like a child walking the dog and a parent giving medicine. Invitations and change history show who recorded what.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><div><h3>Owners of senior pets</h3><p class="pl-p">People keeping steady weight, meal and medication records to discuss with their vet.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20v-8"/><path d="M12 12c0-4 3-6.5 7-6.5 0 4-3 6.5-7 6.5z"/><path d="M12 14.5c0-3-2.6-5.2-6-5.2 0 3 2.6 5.2 6 5.2z"/></svg></span><div><h3>Future adopters (planned)</h3><p class="pl-p">People looking for official shelter adoption notices and preparation guidance. Shelter links and adoption guidance are planned.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M11 21v-3h2v3"/></svg></span><div><h3>Pet businesses and bodies (planned)</h3><p class="pl-p">Groomers, hotels, trainers and shelters are the future users of business tools and partnership models. Partnership inquiries are welcome now.</p></div></li></ul></div>
+    </div>
+  </div>
+    <div id="nls-scenes" class="nls-block nls-block--band pl-tint" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">EVERYDAY SCENES</p>
+    <h2 class="nls-title">When owners<br>open PETLOG.</h2>
+    <p class="nls-lead">Real moments of use, showing what the app does today and what comes next.</p>
+  </header>
+    
+    <div class="pl-grid" style="--cols:2"><article class="pl-card">
+        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M9 3v4M15 3v4"/><path d="M9.5 14.5l1.8 1.8 3.4-3.4"/></svg></span><span class="pl-n">01</span></div>
+        <h3>The first month after adoption</h3><p class="pl-p">Several vaccinations in a row, and food and toilet habits to settle.</p>
+        <dl class="pl-meta"><div><dt>In the app today</dt><dd>Profile, vaccination schedule and reminders, meal and toilet logs</dd></div><div><dt>Next</dt><dd>Official shelter adoption information, basic training content</dd></div></dl>
+      </article><article class="pl-card">
+        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><span class="pl-n">02</span></div>
+        <h3>The day before a vet visit</h3><p class="pl-p">Knowing when symptoms began and how weight changed makes the consultation easier.</p>
+        <dl class="pl-meta"><div><dt>In the app today</dt><dd>Weight trend, symptom, visit and medication records</dd></div><div><dt>Next</dt><dd>Official clinic information and booking routes (after legal review)</dd></div></dl>
+      </article><article class="pl-card">
+        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-5h4v5"/></svg></span><span class="pl-n">03</span></div>
+        <h3>Away on a trip</h3><p class="pl-p">Family or a carer needs the exact food amounts and cautions.</p>
+        <dl class="pl-meta"><div><dt>In the app today</dt><dd>Family sharing of the same records</dd></div><div><dt>Next</dt><dd>Sharing only what a carer needs; hotel and care booking</dd></div></dl>
+      </article><article class="pl-card">
+        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><span class="pl-n">04</span></div>
+        <h3>Caring for a senior dog or cat</h3><p class="pl-p">More medication, and changes to watch every day.</p>
+        <dl class="pl-meta"><div><dt>In the app today</dt><dd>Medication log and reminders, weight and meal records</dd></div><div><dt>Next</dt><dd>Senior-life tips, a record-summary AI (no diagnosis)</dd></div></dl>
+      </article></div>
+  </div>
     <div id="nls-core" class="nls-block" data-hs-section>
     <header class="nls-head">
-    <p class="nls-kicker">CORE EXPERIENCE</p>
-    <h2 class="nls-title">The key experiences of pet life,<br>in one place.</h2>
-    <p class="nls-lead">Profiles, daily and health records, vaccination and vet schedules, and family care are available in the PETLOG app today. Pet life information and community are areas we are preparing.</p>
+    <p class="nls-kicker">AVAILABLE NOW</p>
+    <h2 class="nls-title">What you can do in<br>the PETLOG app today.</h2>
+    <p class="nls-lead">The PETLOG app is on the App Store and Google Play. Items 01–07 below are available in the app today; 08, pet life information and community, is in development.</p>
   </header>
     
     <div class="pl-grid" style="--cols:4"><article class="pl-card">
@@ -1175,62 +1239,81 @@
         <ul class="pl-chips"><li>Invite family</li><li>Change history</li></ul>
       </article><article class="pl-card">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7l1.4-2.5h4.2L15.5 7"/><circle cx="12" cy="13.5" r="3.4"/></svg></span><span class="pl-n">07</span></div>
-        <p class="pl-label" lang="en">Photos &amp; Memories</p><h3>Photos and memories</h3><p class="pl-p">Add photos to records to keep how your pet grows. A life archive and memorial space are part of the expansion plan.</p>
+        <p class="pl-label" lang="en">Photos &amp; Memories</p><h3>Photos and memories</h3><p class="pl-p">Add photos to records to keep how your pet grows. A memorial album and long-term storage are part of the expansion plan.</p>
         <ul class="pl-chips"><li>Photos</li><li>Growth records</li></ul>
       </article><article class="pl-card">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16v11H9.5L4 20z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span><span class="pl-n">08</span></div>
-        <p class="pl-label" lang="en">Info &amp; Community</p><h3>Pet life info and community</h3><p class="pl-p">We are preparing a community where owners share experience, and pet life information.</p>
+        <p class="pl-label" lang="en">Info &amp; Community</p><h3>Pet life info and community</h3><p class="pl-p">A community where owners share experience, and pet life information, are in development.</p>
         <ul class="pl-chips"><li>Pet life info</li><li>Community</li></ul>
       </article></div><div class="pl-actions"><p class="pl-aside">PETLOG app</p><a class="pl-pill" href="https://apps.apple.com/kr/app/petlog-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-ai-%EB%B0%98%EB%A0%A4-%EA%B8%B0%EB%A1%9D/id6770971033" target="_blank" rel="noopener noreferrer">App Store <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="pl-pill" href="https://play.google.com/store/apps/details?id=com.newon.petlog&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer">Google Play <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
   </div>
-    <div id="nls-family" class="nls-block" data-hs-section>
-    <div class="pl-split">
-      <div class="pl-split__head"><header class="nls-head">
-    <p class="nls-kicker">FOR EVERY PET FAMILY</p>
-    <h2 class="nls-title">Caring together,<br>remembering together.</h2>
-    <p class="nls-lead">PETLOG aims for an experience where owners and families understand their pet's daily life more easily and share the moments that matter.</p>
-  </header></div>
-      <div><ul class="pl-checks pl-checks--cards"><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M3 19.5c.8-3.4 3.2-5.2 6-5.2s5.2 1.8 6 5.2M15.5 14.3c2.5-.4 4.7 1 5.5 3.7"/></svg></span><div><h3>Care recorded together</h3><p class="pl-p">Invite family to log walks, meals and medication together. Seeing the same records keeps care from being doubled or missed.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3.5"/></svg></span><div><h3>Who cared, and when</h3><p class="pl-p">Member roles and change history show who recorded what. Sharing is based on the owner's consent.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><div><h3>For every pet family</h3><p class="pl-p">From owners living alone to families of several generations, an experience that lets everyone care for their pet in their own way.</p></div></li></ul></div>
-    </div>
-  </div>
-    <div id="nls-beyond" class="nls-block nls-block--band pl-tint" data-hs-section>
+    <div id="nls-diff" class="nls-block nls-block--band pl-tint" data-hs-section>
     <header class="nls-head">
-    <p class="nls-kicker">BEYOND PET RECORDS</p>
-    <h2 class="nls-title">From everyday records<br>to a pet life ecosystem.</h2>
-    <p class="nls-lead">Starting from pets' daily and health records, PETLOG aims to expand into commerce, vet, grooming and care services, business solutions, and public and global areas.</p>
+    <p class="nls-kicker">WHAT'S DIFFERENT</p>
+    <h2 class="nls-title">How it differs<br>from the usual options.</h2>
+    <p class="nls-lead">This comparison is PETLOG's differentiation hypothesis about types of service. It claims no advantage over any company and does not present unbuilt features as existing strengths.</p>
   </header>
-    <p class="nls-note pl-callout"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.1"/></svg><span>PETLOG is expanding from the pet life services it offers today into health, care, commerce, business and public areas. Some of the services and businesses introduced here are part of future development or partnership plans.</span></p>
+    
     <div class="pl-cols" style="--cols:3"><article class="pl-col">
-        <div class="pl-col__head"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16v11H9.5L4 20z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span><span class="pl-n">01</span></div>
-        <p class="pl-label" lang="en">Community &amp; Commerce</p><h3>Community and commerce</h3><p class="pl-p">Widening everyday connections through an owner community, pet goods commerce and group buying, on condition of seller checks and regulated-item limits.</p>
-        
+        <div class="pl-col__head"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3.5"/></svg></span><span class="pl-n">01</span></div>
+        <h3>Compared with record apps</h3><p class="pl-p">Apps that only store records rarely lead to the next action.</p>
+        <dl class="pl-meta"><div><dt>PETLOG's approach</dt><dd>Records connect to schedules and reminders, and are designed to lead to future service discovery and booking on the same profile.</dd></div></dl>
       </article><article class="pl-col">
-        <div class="pl-col__head"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6.5" cy="10" r="1.7"/><circle cx="10" cy="6" r="1.7"/><circle cx="14" cy="6" r="1.7"/><circle cx="17.5" cy="10" r="1.7"/><path d="M8 17.2c0-2.6 1.9-5.2 4-5.2s4 2.6 4 5.2c0 1.5-1.2 2.4-2.6 2-.9-.3-1.9-.3-2.8 0-1.4.4-2.6-.5-2.6-2z"/></svg></span><span class="pl-n">02</span></div>
-        <p class="pl-label" lang="en">Professional Services</p><h3>Vets, grooming and care</h3><p class="pl-p">Preparing to connect owners with vet information and qualified grooming, hotel and care providers. Booking and payment come to the app after legal, payment and security review.</p>
-        
+        <div class="pl-col__head"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 8h14l-1.1 12H6.1z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></span><span class="pl-n">02</span></div>
+        <h3>Compared with shopping apps</h3><p class="pl-p">When selling is the centre, owners' records and care context tend to drop out.</p>
+        <dl class="pl-meta"><div><dt>PETLOG's approach</dt><dd>Records and health are the free core; shopping is added on top. Pet records are never shared with sellers automatically.</dd></div></dl>
       </article><article class="pl-col">
-        <div class="pl-col__head"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.5 3.5 5.5 3.5 9s-1.1 6.5-3.5 9c-2.4-2.5-3.5-5.5-3.5-9s1.1-6.5 3.5-9z"/></svg></span><span class="pl-n">03</span></div>
-        <p class="pl-label" lang="en">Business, Public &amp; Global</p><h3>Business, public and global</h3><p class="pl-p">In the long term: operations SaaS and solutions for businesses, public animal welfare work, and a global platform suited to each country's language and pet culture.</p>
-        
-      </article></div><div class="pl-actions"><a class="pl-more" href="../petlog/business/">See all 20 business areas <span aria-hidden="true">→</span></a></div>
+        <div class="pl-col__head"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span><span class="pl-n">03</span></div>
+        <h3>Compared with single providers and communities</h3><p class="pl-p">Booking, reviews and information are spread across different places.</p>
+        <dl class="pl-meta"><div><dt>PETLOG's approach</dt><dd>A life-cycle structure from adoption to old age and after farewell in one account, including public-good areas such as adoption and lost pets.</dd></div></dl>
+      </article></div>
   </div>
-    <div id="nls-trust" class="nls-block" data-hs-section>
+    <div id="nls-beyond" class="nls-block" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">LONG-TERM VISION</p>
+    <h2 class="nls-title">From everyday records<br>to a pet's whole life.</h2>
+    <p class="nls-lead">The integrated business plan organises PETLOG's long-term business into 25 areas in five groups. The count is a planning unit: areas are added step by step inside one PETLOG app, not built as separate apps.</p>
+  </header>
+    <p class="nls-note pl-callout"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.1"/></svg><span>PETLOG is expanding step by step from the records, health and family-care features in its app today into care services, commerce, safety, public-good and business areas. Some services and businesses on this page are future development or partnership plans, not current operations.</span></p>
+    <div class="pl-grid" style="--cols:3"><article class="pl-card pl-card--tint">
+        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3.5"/></svg></span><span class="pl-n">01</span></div>
+        <p class="pl-label" lang="en">Records &amp; Care Core</p><h3>Records and care core</h3><p class="pl-p">Profile, health, life, calendar and notes. The basics are in the app today and underpin every other service.</p>
+        <ul class="pl-chips"><li>Profile</li><li>Health</li><li>Life</li><li>Calendar</li><li>Note</li></ul>
+      </article><article class="pl-card pl-card--tint">
+        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="7" r="2.5"/><circle cx="6" cy="17" r="2.5"/><path d="M8.2 8.3L20 18M8.2 15.7L20 6"/></svg></span><span class="pl-n">02</span></div>
+        <p class="pl-label" lang="en">Pet Services</p><h3>Pet services</h3><p class="pl-p">Vet information, grooming, sitting and walking, hotels and daycare, training. Booking is planned for the app only, after legal, PG and security review.</p>
+        <ul class="pl-chips"><li>Medical</li><li>Grooming</li><li>Care</li><li>Hotel</li><li>Training</li></ul>
+      </article><article class="pl-card pl-card--tint">
+        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16v11H9.5L4 20z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span><span class="pl-n">03</span></div>
+        <p class="pl-label" lang="en">Community &amp; Commerce</p><h3>Community and commerce</h3><p class="pl-p">Owner community (in development), provider checks and reviews, shopping, secondhand and group buying, subscription, pet-friendly travel.</p>
+        <ul class="pl-chips"><li>Community</li><li>Trust</li><li>Market</li><li>Subscription</li><li>Travel</li></ul>
+      </article><article class="pl-card pl-card--tint">
+        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5l1.7 5L19 10.2l-5.3 1.7L12 17l-1.7-5.1L5 10.2l5.3-1.7z"/><path d="M18.5 15.5l.7 1.7 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg></span><span class="pl-n">04</span></div>
+        <p class="pl-label" lang="en">Technology &amp; Business</p><h3>Technology and business</h3><p class="pl-p">Record-summary AI (in development), safety, smart-device links, business operations tools, corporate and institutional partnerships.</p>
+        <ul class="pl-chips"><li>AI</li><li>Safety</li><li>Devices</li><li>Business</li><li>Partners</li></ul>
+      </article><article class="pl-card pl-card--tint">
+        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><span class="pl-n">05</span></div>
+        <p class="pl-label" lang="en">Public Good &amp; Farewell</p><h3>Public good and farewell</h3><p class="pl-p">Shelter links, lost-pet search, adoption, fostering, funerals and memorials. Essential shelter, lost-pet, adoption and foster features are meant to be free.</p>
+        <ul class="pl-chips"><li>Shelter</li><li>Find</li><li>Adoption</li><li>Foster</li><li>Memorial</li></ul>
+      </article></div><div class="pl-actions"><a class="pl-more" href="../petlog/platform/">See all 25 areas <span aria-hidden="true">→</span></a></div>
+  </div>
+    <div id="nls-trust" class="nls-block nls-block--band pl-tint" data-hs-section>
     <header class="nls-head">
     <p class="nls-kicker">TRUST &amp; RESPONSIBILITY</p>
     <h2 class="nls-title">Trust matters,<br>for pets and their owners.</h2>
     
   </header>
     
-    <ul class="pl-checks pl-checks--cards"><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Accurate information and sources</h3><p class="pl-p">Pet life information is shared with its evidence and sources checked. Ads and sponsorship are always clearly marked.</p></div></li><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Protecting owners' privacy</h3><p class="pl-p">Owners' records and personal data belong to them and are never shared with businesses or sellers without consent.</p></div></li><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Responsible health information</h3><p class="pl-p">PETLOG does not diagnose disease or replace a vet's judgment. When something seems wrong, we suggest seeing a vet.</p></div></li><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Animal welfare and respect for life</h3><p class="pl-p">No trading of live animals and no illegal breeding or sales; we support responsible adoption.</p></div></li><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Qualified service providers</h3><p class="pl-p">Professional services such as care, grooming and funerals connect only providers whose qualifications and business requirements are checked.</p></div></li><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Transparent commerce and partnerships</h3><p class="pl-p">Sellers are checked, and partnerships and terms are shown accurately. Essential health records are never over-charged.</p></div></li></ul>
+    <ul class="pl-checks pl-checks--cards"><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Accurate information and sources</h3><p class="pl-p">Pet life information is shared with its evidence and sources checked. Ads and sponsorship are always clearly marked.</p></div></li><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Protecting owners' privacy</h3><p class="pl-p">Owners' records and personal data belong to them and are never shared with businesses or sellers without consent.</p></div></li><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Responsible health information</h3><p class="pl-p">PETLOG does not diagnose disease or replace a vet's judgment. When something seems wrong, we suggest seeing a vet.</p></div></li><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Animal welfare and respect for life</h3><p class="pl-p">No selling or secondhand trading of live animals and no illegal breeding or sales; we support responsible adoption.</p></div></li><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Qualified service providers</h3><p class="pl-p">Professional services such as care, grooming and funerals connect only providers whose qualifications and business requirements are checked.</p></div></li><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Transparent commerce and partnerships</h3><p class="pl-p">Sellers are checked, and partnerships and terms are shown accurately. Essential health records are never over-charged.</p></div></li></ul>
   </div>
     <div id="nls-newon" class="nls-block" data-hs-section>
     <div class="pl-split">
       <div class="pl-split__head"><header class="nls-head">
     <p class="nls-kicker">A NEWON PLATFORM</p>
     <h2 class="nls-title">PETLOG's place<br>in NEWON.</h2>
-    <p class="nls-lead">PETLOG is a core NEWON platform, covering pets' daily life, health, goods and services. Links between platforms are a direction for the ecosystem; no data is shared between platforms today.</p>
+    <p class="nls-lead">PETLOG covers pets among NEWON's six core platforms. The links below are planned directions; health, family and location data are never shared between platforms automatically, without the user's explicit consent and lawful authority.</p>
   </header></div>
-      <div><ul class="pl-fam"><li><a class="pl-tile is-self" href="../petlog/"><div class="pl-tile__body"><strong>PETLOG<em aria-hidden="true">→</em></strong><p class="pl-p">Pets' daily life, health, goods and services</p></div></a></li><li><a class="pl-tile" href="../portfolio/babylog/"><div class="pl-tile__body"><strong>BABYLOG<em aria-hidden="true">→</em></strong><p class="pl-p">Pregnancy, birth, parenting — families raising children and pets</p></div></a></li><li><a class="pl-tile" href="../portfolio/myworld/"><div class="pl-tile__body"><strong>MY WORLD<em aria-hidden="true">→</em></strong><p class="pl-p">Travel and experiences — linking to pet-friendly travel information</p></div></a></li><li><a class="pl-tile" href="../shareon/"><div class="pl-tile__body"><strong>SHAREON<em aria-hidden="true">→</em></strong><p class="pl-p">Sharing and renting things, equipment and space — separate from pet commerce</p></div></a></li><li><a class="pl-tile" href="../lifestage/"><div class="pl-tile__body"><strong>LIVON<em aria-hidden="true">→</em></strong><p class="pl-p">Information, programmes and guidance by life stage</p></div></a></li><li><a class="pl-tile" href="../ongil/"><div class="pl-tile__body"><strong>ONGIL<em aria-hidden="true">→</em></strong><p class="pl-p">Senior life, care and welfare — senior owners and their pets</p></div></a></li></ul></div>
+      <div><ul class="pl-fam"><li><a class="pl-tile is-self" href="../petlog/"><div class="pl-tile__body"><strong>PETLOG<em aria-hidden="true">→</em></strong><p class="pl-p">Pets' records, health, care and life-stage services</p></div></a></li><li><a class="pl-tile" href="../babylog/"><div class="pl-tile__body"><strong>BABYLOG<em aria-hidden="true">→</em></strong><p class="pl-p">Family life with children and pets together</p></div></a></li><li><a class="pl-tile" href="../myworld/"><div class="pl-tile__body"><strong>MY WORLD<em aria-hidden="true">→</em></strong><p class="pl-p">Recording and preparing pet-friendly travel</p></div></a></li><li><a class="pl-tile" href="../shareon/"><div class="pl-tile__body"><strong>SHAREON<em aria-hidden="true">→</em></strong><p class="pl-p">Renting carriers and gear — PETLOG sells, SHAREON rents</p></div></a></li><li><a class="pl-tile" href="../livon/"><div class="pl-tile__body"><strong>LIVON<em aria-hidden="true">→</em></strong><p class="pl-p">Getting pets ready around moves, births and other family events</p></div></a></li><li><a class="pl-tile" href="../ongil/"><div class="pl-tile__body"><strong>ONGIL<em aria-hidden="true">→</em></strong><p class="pl-p">Pet care for senior owners</p></div></a></li></ul></div>
     </div>
   </div>
     <div id="nls-petlog-menu" class="nls-block" data-hs-section>
@@ -1239,15 +1322,15 @@
     <h2 class="nls-title">PETLOG MENU</h2>
     
   </header>
-    <nav aria-label="PETLOG MENU"><ul class="pl-menu"><li><a class="pl-tile" href="../petlog/" aria-current="page"><div class="pl-tile__body"><span class="pl-n">01</span><strong>Overview · About PETLOG<em aria-hidden="true">→</em></strong><p class="pl-p">Brand story and a platform for a pet's whole life</p></div></a></li><li><a class="pl-tile" href="../petlog/platform/"><div class="pl-tile__body"><span class="pl-n">02</span><strong>Platform · Services<em aria-hidden="true">→</em></strong><p class="pl-p">18 services from records, health and family to community, commerce and care</p></div></a></li><li><a class="pl-tile" href="../petlog/business/"><div class="pl-tile__body"><span class="pl-n">03</span><strong>Business · Business<em aria-hidden="true">→</em></strong><p class="pl-p">20 business areas in 6 groups, and the business model</p></div></a></li><li><a class="pl-tile" href="../petlog/partnerships/"><div class="pl-tile__body"><span class="pl-n">04</span><strong>Partnerships · Partnerships<em aria-hidden="true">→</em></strong><p class="pl-p">14 partner types, from vets and care to brands and public bodies</p></div></a></li><li><a class="pl-tile" href="../petlog/contact/"><div class="pl-tile__body"><span class="pl-n">05</span><strong>Contact · Contact<em aria-hidden="true">→</em></strong><p class="pl-p">From app support to business and public partnerships</p></div></a></li></ul></nav>
+    <nav aria-label="PETLOG MENU"><ul class="pl-menu"><li><a class="pl-tile" href="../petlog/" aria-current="page"><div class="pl-tile__body"><span class="pl-n">01</span><strong>Overview · About PETLOG<em aria-hidden="true">→</em></strong><p class="pl-p">What PETLOG is, owners' problems and our approach, status and vision</p></div></a></li><li><a class="pl-tile" href="../petlog/platform/"><div class="pl-tile__body"><span class="pl-n">02</span><strong>Platform · Services<em aria-hidden="true">→</em></strong><p class="pl-p">25 long-term areas, user scenarios, privacy principles and FAQ</p></div></a></li><li><a class="pl-tile" href="../petlog/business/"><div class="pl-tile__body"><span class="pl-n">03</span><strong>Business · Business<em aria-hidden="true">→</em></strong><p class="pl-p">Customers and payers, 12 revenue models, go-to-market and roadmap</p></div></a></li><li><a class="pl-tile" href="../petlog/partnerships/"><div class="pl-tile__body"><span class="pl-n">04</span><strong>Partnerships · Partnerships<em aria-hidden="true">→</em></strong><p class="pl-p">14 partner types, scenarios, PoC and data principles</p></div></a></li><li><a class="pl-tile" href="../petlog/contact/"><div class="pl-tile__body"><span class="pl-n">05</span><strong>Contact · Contact<em aria-hidden="true">→</em></strong><p class="pl-p">From owners' questions to business, brand, shelter and public partnerships</p></div></a></li></ul></nav>
   </div>
     <div id="nls-close" class="nls-block nls-close nls-block--ink" data-hs-section>
     <p class="nls-kicker">NEXT STEP</p>
     <h2 class="nls-hero__title">So every day together<br>means even more.</h2>
-    <p class="nls-lead">Explore the pet life platform and businesses PETLOG is building.</p>
+    <p class="nls-lead">Explore PETLOG's 25 areas in detail, or send us a question or a partnership proposal.</p>
     <div class="nls-actions">
       <a class="nls-btn" href="../petlog/platform/">Explore the platform →</a>
-      <a class="nls-btn nls-btn--ghost" href="../petlog/business/">Our business</a>
+      <a class="nls-btn nls-btn--ghost" href="../petlog/contact/">Contact us</a>
     </div>
   </div>
   </div></section>
