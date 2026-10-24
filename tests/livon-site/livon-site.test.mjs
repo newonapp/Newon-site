@@ -34,7 +34,9 @@ test("Overview has the 10 required sections, one h1 and the required slogan", ()
   assert.equal(count(html, /<h1[\s>]/g), 1);
   assert.match(html, /인생의 모든 순간,<br>LIVON 하나로\./);
   for (const id of ["lvs-vision", "lvs-journey", "lvs-stage", "lvs-events", "lvs-daily", "lvs-family", "lvs-community", "lvs-ecosystem", "lvs-next"]) assert.ok(html.includes(`id="${id}"`), id);
-  assert.equal(count(html, /data-lvs-section="/g) + 1 /* hero */, 10);
+  // 2026-10 upgrade: + definition/problem, customers, differentiation, service status, long-term vision (21 areas)
+  for (const id of ["lvs-define", "lvs-customers", "lvs-diff", "lvs-now", "lvs-future"]) assert.ok(html.includes(`id="${id}"`), id);
+  assert.equal(count(html, /data-lvs-section="/g) + 1 /* hero */, 15);
   assert.equal(count(html, /class="lvs-event[ "]/g), 13);
   assert.equal(count(html, /data-lvs-event="/g), 13);
   assert.equal(LIFE_EVENTS.length, 13);
@@ -79,6 +81,51 @@ test("Platform: 40 categories in 5 groups of 8, 200+ topics, every required fiel
   for (const w of ["자격 종류", "응시 조건", "시험 일정", "접수", "합격", "발급", "갱신"]) assert.ok(cert.includes(w), "certificate " + w);
 });
 
+test("Platform: 21 core areas from the final business plan, status shown once (board), no per-card status badge", async () => {
+  const { AREAS, AREA_GROUPS, SCENARIOS } = await import("../../scripts/livon-site-content30.mjs");
+  assert.equal(AREAS.length, 21);
+  assert.deepEqual(AREAS.map((a) => a.en), ["Life Dashboard", "Life Stage", "Finance", "Housing", "Career", "Education", "Health", "Welfare", "Legal", "Family", "Relationships", "Lifestyle", "Mobility", "Travel", "Retirement", "Life Market", "Life Community", "Life Business", "Military", "Certification", "Pregnancy & Birth"]);
+  assert.deepEqual(AREA_GROUPS.flatMap((g) => g.ids).sort(), AREAS.map((a) => a.n));
+  for (const a of AREAS) {
+    for (const t of [a.ko, a.enx]) for (const k of ["name", "who", "problem", "connect", "now", "plan"]) assert.ok(t[k] && t[k].length > 1, `${a.n} ${k}`);
+    assert.ok(a.ko.features.length >= 5 && a.ko.features.length === a.enx.features.length, `${a.n} features`);
+    a.cats.forEach((n) => assert.ok(CATEGORIES.some((c) => c.n === n), `${a.n} cat ${n}`));
+    // an area marked "now" must be backed by real web content (a mapped category with LIVON web topics, or a live core feature)
+    if (a.st === "now" && a.cats.length) assert.ok(a.cats.some((n) => categoryStatus(CATEGORIES.find((c) => c.n === n)) === "web"), `${a.n} now without web content`);
+  }
+  for (const n of ["16", "18", "19"]) assert.equal(AREAS.find((a) => a.n === n).st, "planned", n);
+  assert.equal(SCENARIOS.length, 6);
+  for (const lang of ["ko", "en"]) {
+    const html = page(lang, "platform");
+    assert.equal(count(html, /class="lvs-cat lvs-zone" id="lvs-zone-\d\d"/g), 21);
+    const zones = html.match(/<div class="lvs-zgroups">[\s\S]*?(?=<div id="lvs-status")/)[0];
+    assert.doesNotMatch(zones, /lvs-pill|lvs-status/, "no per-card status badges in the 21 area cards");
+    assert.equal(count(html, /class="lvs-cgroup lvs-sgroup" data-group="(now|partial|planned|review)"/g), 4);
+    for (const id of ["lvs-flow", "lvs-areas", "lvs-status", "lvs-scenarios", "lvs-users", "lvs-links", "lvs-trust", "lvs-app", "lvs-faq"]) assert.ok(html.includes(`id="${id}"`), id);
+    assert.equal(count(html, /class="lvs-biz lvs-scn"/g), 6);
+  }
+});
+
+test("Business, Partnerships and Contact upgrade sections; contact purposes link only to existing channels", () => {
+  for (const lang of ["ko", "en"]) {
+    const b = page(lang, "business");
+    for (const id of ["lvs-model", "lvs-revenue", "lvs-plans", "lvs-fees", "lvs-market", "lvs-gtm", "lvs-roadmap", "lvs-rules"]) assert.ok(b.includes(`id="${id}"`), id);
+    const p = page(lang, "partnerships");
+    for (const id of ["lvs-pvision", "lvs-pmodels", "lvs-poc", "lvs-data", "lvs-campaigns", "lvs-value"]) assert.ok(p.includes(`id="${id}"`), id);
+    const c = page(lang, "contact");
+    assert.equal(count(c, /class="lvs-biz lvs-purpose"/g), 8);
+    const hrefs = [...c.match(/<div id="lvs-purpose"[\s\S]*?<div id="lvs-contact-tips"/)[0].matchAll(/href="([^"]+)"/g)].map((m) => m[1].replace(/&amp;/g, "&"));
+    const bizTypes = ["general", "participation", "commerce", "saas", "institution", "brand", "technology", "public", "global", "other"];
+    for (const h of hrefs) {
+      if (h.startsWith("mailto:")) { assert.equal(h, "mailto:newon@newon.app"); continue; }
+      const u = new URL(h, "https://www.newon.app");
+      if (u.pathname === `/${lang}/business/contact/`) { assert.ok(bizTypes.includes(u.searchParams.get("type")), h); assert.equal(u.searchParams.get("platform"), "livon"); }
+      else { assert.equal(u.pathname, `/${lang}/contact/`); assert.ok(read("company.js").match(/CONTACT_TYPES = \[([^\]]+)\]/)[1].includes(`"${u.searchParams.get("type")}"`), h); }
+    }
+    assert.match(c, lang === "ko" ? /민감정보를 적지 말아 주세요/ : /do not include personal or sensitive information/);
+  }
+});
+
 test("status is derived from the real LIVON web data, and every mapped id exists", () => {
   const cats = new Set(life.categories.map((c) => c.id));
   const svcs = new Set(life.serviceTypes.map((s) => s.id));
@@ -96,14 +143,15 @@ test("Business 15 areas, Partnerships 20 types, Contact 14 types — rendered wi
   assert.equal(BUSINESS.length, 15);
   assert.equal(PARTNERS.length, 20);
   assert.equal(CONTACT_TYPES.length, 14);
-  assert.equal(REVENUE.length, 6);
-  assert.equal(ROADMAP.length, 5);
+  assert.equal(REVENUE.length, 15);
+  assert.equal(ROADMAP.length, 8);
+  assert.deepEqual(ROADMAP.map((r) => r.n), ["P0", "P1", "P2", "P3", "P4", "P5", "P6", "P7"]);
   for (const b of BUSINESS) for (const k of ["what", "who", "value", "rev", "partners", "rule"]) assert.ok(b.ko2[k] && b.en2[k], `${b.n} ${k}`);
   for (const lang of ["ko", "en"]) {
     assert.equal(count(page(lang, "business"), /class="lvs-biz" id="lvs-biz-/g), 15);
     assert.equal(count(page(lang, "partnerships"), /id="lvs-partner-\d\d"/g), 20);
     assert.equal(count(page(lang, "contact"), /class="lvs-contact__item"/g), 14);
-    assert.equal(count(page(lang, "business"), /class="lvs-road__step"/g), 5);
+    assert.equal(count(page(lang, "business"), /class="lvs-road__step"/g), 8);
     assert.equal(count(page(lang, "business"), /<tbody>[\s\S]*?<\/tbody>/g), 1);
   }
 });
@@ -152,6 +200,7 @@ test("internal links on the LIVON pages resolve to existing files or anchors", (
     const main = html.match(/<section id="lifestage-detail"[\s\S]*<\/section>/)[0];
     for (const [, href] of main.matchAll(/href="([^"]+)"/g)) {
       if (/^https?:/.test(href)) continue;
+      if (href.startsWith("mailto:")) { assert.equal(href, "mailto:newon@newon.app"); continue; }
       const [pathPart, hash] = href.split("#");
       if (!pathPart) { assert.ok(html.includes(`id="${hash}"`), `${lang}/${p.id} #${hash}`); continue; }
       const clean = pathPart.split("?")[0];

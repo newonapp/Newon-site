@@ -22,6 +22,8 @@ export const LIVON_SITE_PAGES = [
   { id: "contact", n: "05", path: "contact/", en: "Contact", ko: "문의" },
 ];
 
+import { C30 } from "./livon-site-content30.mjs";
+
 /* ───────────────────────── status ───────────────────────── */
 export const STATUS = {
   web: { ko: "LIVON 웹 콘텐츠 제공 중 (일부)", en: "In the LIVON web service (partly)" },
@@ -703,21 +705,38 @@ export const BUSINESS = [
     { what: "Localisation and licensing for other countries' systems — reusing the information structure while rebuilding content from each country's official sources.", who: "Overseas companies and institutions", value: "Reusing a proven information structure", rev: "Global licensing (under review)", partners: "Global, technology and content partners", rule: "Each country's law, schemes and privacy rules followed" }),
 ];
 
+/* revenue models — plan §7 (12 models) + IR additions (event package, public SaaS, certificate courses). All proposals, none on sale.
+   g: sub = subscription, deal = transaction / connection, org = enterprise & institution, ad = advertising */
+const R = (n, g, ko, en, whoKo, whoEn, howKo, howEn) => ({ n, g, ko, en, whoKo, whoEn, howKo, howEn });
+export const REVENUE_GROUPS = { sub: { ko: "구독", en: "Subscription" }, deal: { ko: "거래·연결", en: "Transactions & links" }, org: { ko: "기업·기관", en: "Enterprise & public" }, ad: { ko: "광고", en: "Advertising" } };
 export const REVENUE = [
-  { n: "01", ko: "프리미엄 구독", en: "Premium subscription", whoKo: "개인 사용자", whoEn: "Individuals", howKo: "고급 관리·개인화·AI (가격은 제안 단계)", howEn: "Advanced management, personalisation, AI (pricing is a proposal)" },
-  { n: "02", ko: "기업 SaaS", en: "Enterprise SaaS", whoKo: "기업·기관", whoEn: "Companies and institutions", howKo: "정보 안내·운영 솔루션 (가격 미정)", howEn: "Information and operations solutions (no price set)" },
-  { n: "03", ko: "적법한 서비스 연결", en: "Lawful service links", whoKo: "서비스 사업자", whoEn: "Service providers", howKo: "표시된 제휴·광고·연결 (규제 분야 성과형 수수료 보류)", howEn: "Labelled partnerships, ads and referrals (regulated-field performance fees on hold)" },
-  { n: "04", ko: "콘텐츠·광고", en: "Content & advertising", whoKo: "브랜드·기관", whoEn: "Brands and institutions", howKo: "명확히 표시된 광고", howEn: "Clearly labelled advertising" },
-  { n: "05", ko: "공공·기관 사업", en: "Public & institutional work", whoKo: "지자체·기관", whoEn: "Local and public bodies", howKo: "정보 서비스·프로젝트 계약", howEn: "Information services and project contracts" },
-  { n: "06", ko: "글로벌 라이선스", en: "Global licensing", whoKo: "해외 기업·기관", whoEn: "Overseas companies and institutions", howKo: "다국어·현지화·라이선스", howEn: "Multilingual, localisation, licensing" },
+  R("01", "sub", "개인 프리미엄 구독", "Personal premium subscription", "개인 사용자", "Individuals", "고급 기록·통계·생활 관리 (가격 미정)", "Advanced records, statistics, life management (no price set)"),
+  R("02", "sub", "AI 구독", "AI subscription", "개인 사용자", "Individuals", "AI 사용량·고급 AI 기능 (공식 정보와 AI 추정 구분)", "AI usage and advanced AI features (official information kept apart from AI estimates)"),
+  R("03", "sub", "가족 구독", "Family subscription", "가구 대표", "Household lead", "가족 공동 일정·생활 관리", "Shared family calendar and household management"),
+  R("04", "sub", "판매자·업체 구독", "Seller & provider plans", "생활 서비스 업체·판매자", "Living-service providers and sellers", "업체 등록·예약·고객 관리 도구 (단계형)", "Listing, booking and customer tools (tiered)"),
+  R("05", "deal", "생활 서비스 연결 수수료", "Living-service fees", "이사·청소·정리·클래스 업체", "Moving, cleaning, tidying and class providers", "이용 완료 시점의 거래 수수료 (요율 미정, 업체 검증 후)", "A fee once the service is completed (rate not set; after provider checks)"),
+  R("06", "deal", "생활 마켓 수수료", "Market fees", "판매자", "Sellers", "생활용품 거래 수수료 (실제 판매자 확보 후)", "Fees on everyday goods (only once real sellers exist)"),
+  R("07", "deal", "디지털 상품", "Digital products", "개인 사용자", "Individuals", "학습 자료·템플릿·가이드 판매", "Study materials, templates and guides"),
+  R("08", "deal", "교육·자격증 강좌 제휴", "Education & certificate courses", "교육기관·강의 플랫폼", "Education providers and course platforms", "표시된 강좌 연결 수수료", "Labelled course referral fees"),
+  R("09", "deal", "전문가 서비스", "Professional services", "서비스 제공자", "Service providers", "허용되는 범위의 비규제 서비스만 (의료·법률·금융 제외)", "Only permitted, non-regulated services (no medical, legal or financial)"),
+  R("10", "deal", "파트너 서비스·제휴", "Partner services & affiliates", "생활 서비스 브랜드", "Living-service brands", "적법한 상품·서비스의 표시된 제휴·리드", "Labelled, lawful affiliate and lead arrangements"),
+  R("11", "deal", "생활 이벤트 패키지", "Life-event packages", "개인 또는 파트너", "Individuals or partners", "이사·출산 등 이벤트별 정보·체크리스트·서비스 묶음", "Bundles of guides, checklists and services for an event such as a move or birth"),
+  R("12", "org", "기업 임직원 생활복지", "Employee life benefits", "기업 인사·복지 부서", "HR and benefits teams", "직원 생애 이벤트 안내 (직원 수 기준 계약 검토)", "Life-event guidance for staff (per-employee contract under review)"),
+  R("13", "org", "기업·기관 SaaS", "Enterprise & public SaaS", "기업·지자체·공공기관", "Companies, local governments, public bodies", "기관용 정보 안내·운영 도구, 기관별 계약", "Information and operations tools; contract per institution"),
+  R("14", "org", "API·데이터 연계 (구상)", "API & data links (concept)", "HR·생활 앱, 기관", "HR and life apps, institutions", "콘텐츠 라이선스·기능 제공. 개인 식별 정보 제공 없음", "Content licensing and features; no personally identifying data"),
+  R("15", "ad", "광고·스폰서십", "Advertising & sponsorship", "브랜드·기관", "Brands and institutions", "명확히 표시된 스폰서 배치·콘텐츠", "Clearly labelled sponsored placements and content"),
 ];
 
+/* roadmap — plan §13 P0–P7 (targets, not promises) */
 export const ROADMAP = [
-  { n: "1", ko: "기존 LIVON 앱 안정화", en: "Stabilise the LIVON app", st: "now", bodyKo: "Life Stage·Today Feed·Explore·My Life·Community, 기존 데이터·API·익명 이용 흐름 검증. 무료·로그인 없는 핵심 기능을 먼저 안정화합니다.", bodyEn: "Verify Life Stage, Today Feed, Explore, My Life, Community, existing data, API and anonymous use — stabilising the free core that works without an account first." },
-  { n: "2", ko: "40개 생활 분야 체계화", en: "Structure the 40 categories", st: "next", bodyKo: "분야별 분류, 공식 정보 출처, 검색·필터, 생애 단계 연결. 공공 정보에는 출처·기준일·대상 지역을 붙입니다.", bodyEn: "Classification, official sources, search and filters, links to life stages — with source, date and region on public information." },
-  { n: "3", ko: "Life Event Explorer", en: "Life Event Explorer", st: "later", bodyKo: "군 입대·취업·독립·결혼·출산·은퇴 등 인생 사건별 정보 연결", bodyEn: "Information connected around events such as enlisting, a first job, moving out, marriage, birth and retirement" },
-  { n: "4", ko: "개인화·AI·커뮤니티", en: "Personalisation, AI, community", st: "later", bodyKo: "관심 분야, 개인화 정보, 생활정보 설명, 커뮤니티 품질. 계정·동기화는 기존 익명 이용자의 기록 보존을 전제로 검토합니다.", bodyEn: "Interests, personalised information, explanations, community quality. Accounts and sync are considered only if existing anonymous records are kept." },
-  { n: "5", ko: "기업·공공·글로벌", en: "Enterprise, public, global", st: "later", bodyKo: "기업용 정보 솔루션, 기관 협력, 공식 데이터 연계, 해외 현지화. 마켓은 실제 판매자가 생긴 뒤에 엽니다.", bodyEn: "Enterprise solutions, institutional work, official data links, localisation. The market opens only once real sellers exist." },
+  { n: "P0", ko: "기존 앱·익명 모드 안정화", en: "Stabilise the existing app and anonymous use", st: "now", bodyKo: "LIVON 웹과 기존 데이터·익명 이용 흐름을 안정화하고 앱 V1을 준비합니다. 완료 기준: 데이터 보존, 테스트 통과.", bodyEn: "Stabilise LIVON web, existing data and anonymous use, and prepare app V1. Done when data is preserved and tests pass." },
+  { n: "P1", ko: "21개 영역·생애 단계·대시보드", en: "21 areas, life stage, dashboard", st: "next", bodyKo: "21개 영역 체계와 생애 단계, 대시보드를 정리합니다. 완료 기준: 탐색과 개인화가 정상 작동.", bodyEn: "Build the 21-area structure, life stages and dashboard. Done when browsing and personalisation work." },
+  { n: "P2", ko: "군대·자격증·출산 일정", en: "Military, certificate and birth plans", st: "later", bodyKo: "병역·자격증·임신출산 일정과 체크리스트. 완료 기준: 실제 저장·알림·관리.", bodyEn: "Plans and checklists for military service, certificates and pregnancy. Done when saving, reminders and management really work." },
+  { n: "P3", ko: "통합 AI·목표·기록", en: "Integrated AI, goals, records", st: "later", bodyKo: "AI와 목표·문서·기록. 완료 기준: 권한·비용·정확성 검증.", bodyEn: "AI with goals, documents and records. Done when permissions, cost and accuracy are verified." },
+  { n: "P4", ko: "서비스·업체·후기", en: "Services, providers, reviews", st: "later", bodyKo: "생활 서비스·업체 탐색과 후기, 전용 채팅. 완료 기준: 탐색·신고·예약 흐름 검증.", bodyEn: "Service and provider search, reviews and dedicated chat. Done when search, reporting and booking flows are verified." },
+  { n: "P5", ko: "구독·디지털 상품·서비스 거래", en: "Subscriptions, digital products, transactions", st: "later", bodyKo: "유료 구독과 디지털 상품, 민간 생활 서비스 거래. 완료 기준: 결제·정산·환불 검증.", bodyEn: "Paid plans, digital products and living-service transactions. Done when payment, settlement and refunds are verified." },
+  { n: "P6", ko: "기업 SaaS·마켓·파트너십", en: "Enterprise SaaS, market, partnerships", st: "later", bodyKo: "기업·기관 솔루션과 마켓, 파트너십. 완료 기준: 실제 기업 고객 확보.", bodyEn: "Enterprise and institutional solutions, the market and partnerships. Done when real business customers are signed." },
+  { n: "P7", ko: "NEWON 연동·확장", en: "NEWON links and expansion", st: "later", bodyKo: "동의 기반 NEWON 앱 연결과 다국어 확장. 완료 기준: 다국어·현지 규제 검증.", bodyEn: "Consent-based links to NEWON apps and multilingual expansion. Done when languages and local regulation are verified." },
 ];
 
 /* ───────────────────────── Partnerships (20) ───────────────────────── */
@@ -927,6 +946,16 @@ export const COPY = {
     },
   },
 };
+
+/* 2026-10 content upgrade: 21 core areas (final business plan) on top of the 40 content categories */
+for (const k of ["ko", "en"]) {
+  const x = C30[k];
+  Object.assign(COPY[k], { notice: x.notice, stats: x.stats, seo: x.seo });
+}
+COPY.ko.overview.next.lead = "Platform에서는 21개 핵심 영역과 40개 생활 분야, 이용 시나리오와 신뢰 원칙을, Business에서는 사업 모델과 로드맵을, Partnerships와 Contact에서는 협업 모델·PoC 제안과 목적별 문의 창구를 볼 수 있습니다.";
+COPY.en.overview.next.lead = "Platform covers the 21 core areas, the 40 categories, scenarios and trust principles; Business the model and roadmap; Partnerships and Contact the collaboration models, PoC proposals and where to write for each purpose.";
+Object.assign(COPY.ko.business, { revTitle: "15개 수익 모델", revStatus: "제안 · 판매 전", revCols: ["수익 모델", "지불 주체", "수익 방식", "상태"], revNote: "현재 판매 중인 유료 상품은 없습니다. 구독·AI·기업·광고·연결 수익의 가격과 요율은 모두 제안 단계이며 적용되지 않았습니다. 공공 지원금·법정 급여에는 수수료를 부과하지 않으며, 유료 광고와 일반 정보는 항상 구분해 표시합니다.", roadTitle: C30.ko.business.roadTitle });
+Object.assign(COPY.en.business, { revTitle: "15 revenue models", revStatus: "Proposal · not on sale", revCols: ["Model", "Who pays", "How", "Status"], revNote: "No paid product is on sale today. Prices and rates for subscription, AI, enterprise, advertising and referral revenue are all proposals and not applied. No fees are charged on public benefits or statutory payments, and paid ads are always kept apart from general information.", roadTitle: C30.en.business.roadTitle });
 
 /** Short labels for the other site languages (long content falls back to English, as on the rest of the site). */
 export const SUBNAV_I18N = {
