@@ -38,6 +38,10 @@ const P = {
   check: '<path d="M5 12.5l4.2 4.2L19 7"/>',
   arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
   layers: '<path d="M12 3.5l9 4.8-9 4.8-9-4.8z"/><path d="M3 12.2l9 4.8 9-4.8M3 16.2l9 4.8 9-4.8"/>',
+  box: '<path d="M3.5 8L12 4l8.5 4v8.5L12 20.5l-8.5-4z"/><path d="M3.5 8L12 12l8.5-4M12 12v8.5M7.8 6l8.4 4"/>',
+  watch: '<rect x="7" y="7" width="10" height="10" rx="2.5"/><path d="M9 7l.6-3.5h4.8L15 7M9 17l.6 3.5h4.8L15 17M12 10v2.2l1.4 1"/>',
+  pill: '<rect x="3.2" y="8.6" width="17.6" height="6.8" rx="3.4" transform="rotate(-35 12 12)"/><path d="M9.6 8.6l4.8 6.8"/>',
+  bus: '<rect x="4.5" y="4" width="15" height="13" rx="2"/><path d="M4.5 11h15M8 17v2.5M16 17v2.5"/><path d="M8 14h.1M16 14h.1"/>',
 };
 
 /** Inline SVG for one icon key (falls back to "spark"). */
@@ -49,36 +53,46 @@ export function icon(name, cls = "ogs-ico") {
 /** Overview */
 export const FACT_ICONS = ["clock", "phone", "users", "shield"];
 export const VALUE_ICONS = ["compass", "link", "leaf", "shield", "hands", "star"];
-export const JOURNEY_ICONS = ["sun", "heart", "users", "homeShield", "hands", "book", "chat", "compass"];
-export const CORE_ICONS = ["calendar", "heart", "chat", "shield", "ticket"];
-export const PEOPLE_ICONS = ["person", "users", "lock"];
-export const LAYER_ICONS = ["home", "building", "bag", "landmark"];
+export const JOURNEY_ICONS = ["heart", "users", "chat", "bag", "building", "spark"];
+export const CORE_ICONS = ["sun", "route", "users", "ticket", "building"];
+export const PEOPLE_ICONS = ["person", "users", "hands", "lock"];
+export const LAYER_ICONS = ["home", "hands", "building", "globe"];
 export const NEXT_ICONS = ["users", "briefcase", "mail"];
 
 /** Platform areas, keyed by section id. */
 export const AREA_ICONS = {
+  "senior-profile": "person",
+  "health-record": "heart",
+  medication: "pill",
   "daily-life": "sun",
-  "health-wellness": "heart",
-  "family-connection": "users",
+  "family-care": "users",
+  "care-tasks": "calendar",
+  "care-matching": "hands",
   "home-care": "home",
   "care-facilities": "building",
-  "hospital-companion": "route",
-  "food-daily-needs": "bowl",
-  "senior-shopping": "bag",
-  "leisure-culture": "ticket",
-  learning: "book",
+  "medical-access": "route",
+  safety: "homeShield",
   community: "chat",
-  "welfare-information": "info",
-  "housing-safety": "homeShield",
-  "jobs-participation": "briefcase",
-  "family-care-tools": "calendar",
-  "ai-assistance": "spark",
-  "care-provider-tools": "clipboard",
-  "app-accessibility": "type",
+  activities: "ticket",
+  jobs: "briefcase",
+  welfare: "info",
+  mobility: "bus",
+  housing: "home",
+  "senior-market": "bag",
+  subscription: "layers",
+  "ongil-ai": "spark",
+  devices: "phone",
+  trust: "shield",
+  "business-saas": "clipboard",
+  partners: "link",
+  global: "globe",
+  "life-box": "box",
+  friends: "users",
+  "safe-band": "watch",
 };
 
-/** Platform group letters A–H. */
-export const GROUP_ICONS = { A: "sun", B: "heart", C: "users", D: "homeShield", E: "hands", F: "book", G: "chat", H: "layers" };
+/** Platform group letters A–F. */
+export const GROUP_ICONS = { A: "heart", B: "users", C: "chat", D: "bag", E: "building", F: "spark" };
 
 /** Business categories, keyed by category id. */
 export const CATEGORY_ICONS = {
@@ -93,7 +107,7 @@ export const CATEGORY_ICONS = {
 };
 
 /** Partnerships: 14 partner types in content order. */
-export const PARTNER_ICONS = ["home", "building", "building", "hands", "calendar", "route", "bowl", "bag", "book", "chat", "clipboard", "briefcase", "landmark", "globe"];
+export const PARTNER_ICONS = ["building", "home", "building", "hands", "landmark", "route", "watch", "phone", "shield", "bag", "box", "book", "briefcase", "globe"];
 export const PROCESS_ICONS = ["mail", "clipboard", "chat", "form", "spark"];
 
 /** Abstract "warm road" line illustration (온길 = a warm path): a soft winding path with stops. Decorative. */

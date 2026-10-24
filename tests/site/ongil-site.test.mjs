@@ -1,5 +1,5 @@
 /**
- * Regression tests for the ONGIL business website (/{ko,en}/ongil/…), V2 (Oct 2026).
+ * Regression tests for the ONGIL business website (/{ko,en}/ongil/…), V2 (Oct 2026); V4 content upgrade (2026-10-24): 28 areas.
  * Run: node --test tests/site/ongil-site.test.mjs   (reads the committed HTML; no build needed)
  */
 import test from "node:test";
@@ -47,29 +47,42 @@ test("five ONGIL pages exist in KO/EN with SEO basics; other locales keep forwar
   }
 });
 
-test("counts are preserved: 18 areas in 8 groups, 20 business groups in 8 categories, 14 partner types, 13 inquiry types", () => {
+test("counts: 28 areas (25 + 3 signature sections) in 6 groups, 20 business groups in 8 categories, 14 partner types, 14 inquiry types", () => {
   for (const c of [KO, EN]) {
-    assert.equal(c.platform.sections.length, 18);
-    assert.equal(c.platform.groupMap.length, 8);
+    assert.equal(c.platform.sections.length + c.platform.features.length, 28);
+    assert.deepEqual(c.platform.features.map((f) => f.id), ["life-box", "friends", "safe-band"]);
+    assert.equal(c.platform.groupMap.length, 6);
     for (const s of c.platform.sections) assert.ok(c.platform.groupMap.some((g) => g.id === s.grp), `${s.id} has a group`);
-    assert.deepEqual([...new Set(c.platform.sections.map((s) => s.grp))].sort(), ["A", "B", "C", "D", "E", "F", "G", "H"]);
+    assert.deepEqual([...new Set(c.platform.sections.map((s) => s.grp))].sort(), ["A", "B", "C", "D", "E"]);
+    // status is grouped (now / in development / planned / under review) and every item points to a real area
+    const areaIds = new Set([...c.platform.sections.map((s) => s.id), ...c.platform.features.map((f) => f.id)]);
+    assert.deepEqual(c.status.cols.map((k) => k.id), ["now", "dev", "plan", "review"]);
+    for (const col of c.status.cols) for (const it of col.items) assert.ok(areaIds.has(it.a), `${col.id}: ${it.a}`);
+    // Life Box, Friends and Safe Band are never listed as available now
+    for (const it of c.status.cols[0].items) assert.ok(!["life-box", "friends", "safe-band", "devices"].includes(it.a), it.a);
     assert.equal(c.business.groups.length, 20);
     assert.equal(c.business.categories.length, 8);
     for (const g of c.business.groups) assert.ok(c.business.categories.some((k) => k.id === g.cat), g.name);
+    assert.equal(c.business.revenue.length, 12);
     assert.equal(c.partnerships.items.length, 14);
     assert.equal(c.partnerships.process.length, 5);
     assert.equal(c.partnerships.principles.length, 7);
-    assert.equal(c.contact.types.length, 13);
+    assert.equal(c.contact.types.length, 14);
+    for (const t of c.contact.types) assert.ok(c.contact.groups.some((g) => g.id === t.grp), t.name);
     assert.equal(c.overview.mission.values.length, 6);
-    assert.equal(c.overview.journey.items.length, 8);
+    assert.equal(c.overview.journey.items.length, 6);
     assert.equal(c.overview.trust.points.length, 7);
     assert.equal(c.business.roadmap.length, 5);
   }
   const ko = (p) => read(`ko/${p}/index.html`);
-  assert.equal((ko("ongil/platform").match(/<article class="ogs-(?:row|card)" id="p-[a-z-]+"/g) || []).length, 18);
+  assert.equal((ko("ongil/platform").match(/<article class="ogs-(?:row|card)" id="p-[a-z-]+"/g) || []).length, 25);
+  for (const id of ["life-box", "friends", "safe-band"]) assert.ok(ko("ongil/platform").includes(`<section id="p-${id}"`), id);
   assert.equal((ko("ongil/business").match(/<article class="ogs-(?:row|card)" id="b-\d\d"/g) || []).length, 20);
   assert.equal((ko("ongil/partnerships").match(/<article class="ogs-card" id="pt-\d\d"/g) || []).length, 14);
-  assert.equal((ko("ongil/contact").match(/<li id="c-\d\d">/g) || []).length, 13);
+  assert.equal((ko("ongil/contact").match(/<li id="c-\d\d">/g) || []).length, 14);
+  // press and investor inquiry types exist (brief §3E)
+  const contact = text(ko("ongil/contact"));
+  assert.ok(contact.includes("언론·미디어") && contact.includes("투자 관련"));
 });
 
 test("no per-card status badges or status legend; exactly one shared notice per page", () => {
@@ -140,7 +153,7 @@ test("contact links use the existing inquiry page with known params, and mailto 
   for (const lang of SITE) {
     const html = read(`${lang}/ongil/contact/index.html`);
     const forms = [...own(html).matchAll(/href="(\/[a-z-]+\/business\/inquiry\/\?[^"]+)"/g)].map((m) => m[1].replace(/&amp;/g, "&"));
-    assert.ok(forms.length >= 12, `${lang} form links ${forms.length}`);
+    assert.ok(forms.length >= 10, `${lang} form links ${forms.length}`); // 8 form types + channel + closing CTA (V4: press/investor/personal types use email)
     for (const href of forms) {
       const u = new URL(href, "https://www.newon.app");
       assert.equal(u.pathname, `/${lang}/business/inquiry/`);
@@ -148,7 +161,7 @@ test("contact links use the existing inquiry page with known params, and mailto 
       assert.equal(u.searchParams.get("source"), `/${lang}/ongil/contact/`);
     }
     const mails = [...own(html).matchAll(/href="mailto:([^"?]+)\?subject=([^"]+)"/g)];
-    assert.ok(mails.length >= 3);
+    assert.ok(mails.length >= 6);
     for (const m of mails) {
       assert.equal(m[1], "newon@newon.app");
       assert.ok(decodeURIComponent(m[2]).startsWith("[ONGIL]"));
@@ -161,13 +174,13 @@ test("contact links use the existing inquiry page with known params, and mailto 
   assert.match(inq, /<option value="Brand, Service &amp; Content Partnership"/);
 });
 
-test("role separation with LivOn and MY WORLD is stated", () => {
+test("role separation with LIVON and MY WORLD is stated", () => {
   for (const c of [KO, EN]) {
     const all = JSON.stringify(c);
-    assert.ok(all.includes("LivOn") && all.includes("MY WORLD"));
+    assert.ok(all.includes("LIVON") && all.includes("MY WORLD"));
   }
   const t = text(read("ko/ongil/index.html"));
-  assert.ok(t.includes("LivOn이 다루") && t.includes("MY WORLD가"));
+  assert.ok(t.includes("LIVON이 다루") && t.includes("MY WORLD가"));
 });
 
 test("internal links on ONGIL pages resolve to files in the repo", () => {

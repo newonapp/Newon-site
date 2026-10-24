@@ -1917,6 +1917,105 @@ html[data-newon-shell-theme="dark"] body #lifestage-detail.ogs .nls__wrap .ogs-l
   background: linear-gradient(90deg, #1d1510 70%, transparent) !important;
 }
 
+/* ───────── V4 content upgrade (2026-10-24): column modifiers + FAQ disclosure (same visual language) ───────── */
+@media (min-width: 620px) {
+  #lifestage-detail.ogs .ogs-proc--3,
+  #lifestage-detail.ogs .ogs-proc--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #lifestage-detail.ogs .ogs-proc--3 li:last-child {
+    grid-column: 1 / -1;
+  }
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.ogs .ogs-proc--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.1rem;
+  }
+  #lifestage-detail.ogs .ogs-proc--3 li:last-child {
+    grid-column: auto;
+  }
+  #lifestage-detail.ogs .ogs-proc--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.1rem;
+  }
+}
+#lifestage-detail.ogs .ogs-cards--feature + .ogs-proc {
+  margin-top: 1rem;
+}
+@media (min-width: 1040px) {
+  #lifestage-detail.ogs .ogs-signal--6 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+#lifestage-detail.ogs .ogs-board__group {
+  margin: 1.8rem 0 0.8rem;
+  color: var(--ogs-apricot-ink);
+}
+#lifestage-detail.ogs .ogs-board__group:first-of-type {
+  margin-top: 0.4rem;
+}
+#lifestage-detail.ogs .ogs-board + .ogs-board__group {
+  margin-top: 2.2rem;
+}
+#lifestage-detail.ogs .ogs-rev--plain p {
+  font-weight: 500;
+}
+#lifestage-detail.ogs .ogs-faq {
+  display: grid;
+  gap: 0.6rem;
+}
+#lifestage-detail.ogs .ogs-faq details {
+  border: 1px solid var(--ogs-card-line);
+  border-radius: var(--ogs-r);
+  background: var(--ogs-card);
+}
+#lifestage-detail.ogs .ogs-faq details[open] {
+  border-color: var(--ogs-apricot);
+}
+#lifestage-detail.ogs .ogs-faq summary {
+  position: relative;
+  padding: 1.1rem 3rem 1.1rem 1.3rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  color: var(--nls-ink);
+  cursor: pointer;
+  list-style: none;
+}
+#lifestage-detail.ogs .ogs-faq summary::-webkit-details-marker {
+  display: none;
+}
+#lifestage-detail.ogs .ogs-faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 1.3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--ogs-apricot-ink);
+}
+#lifestage-detail.ogs .ogs-faq details[open] summary::after {
+  content: "\2212";
+}
+#lifestage-detail.ogs .ogs-faq summary:focus-visible {
+  outline: 2px solid var(--ogs-apricot);
+  outline-offset: 2px;
+  border-radius: var(--ogs-r);
+}
+#lifestage-detail.ogs .ogs-faq details p {
+  margin: 0;
+  padding: 0 1.3rem 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--nls-muted);
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.ogs .nls__wrap .ogs-faq details {
+  background-color: #121212 !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   #lifestage-detail.ogs .ogs-linkrows a,
   #lifestage-detail.ogs .ogs-linkrows__arrow,
