@@ -337,7 +337,6 @@ function overview(c, lang) {
   const o = c.overview;
   const body = [
     split("vision", o.vision.kicker, o.vision.title, o.vision.lead, o.vision.points),
-    stats("glance", o.glance),
     statements("values", o.values),
     sec("customers", `${head("customers", o.customers.kicker, o.customers.title, o.customers.lead)}${boardList(o.customers.items)}`, "tint"),
     grid3("scenes", o.scenes, o.scenes.items),
@@ -649,7 +648,6 @@ function business(c, lang) {
   return {
     hero: hero(c, lang, "business", b.hero, pageHref(lang, "partnerships"), inquiryHref(lang, "business")),
     body: [
-      stats("glance", b.glance),
       ledger("payers", b.payers, ["who", "use", "pay"]),
       sec("structure", `${head("structure", b.structure.kicker, b.structure.title, b.structure.lead)}${matrix(c, b.structure.rest)}`),
       models,

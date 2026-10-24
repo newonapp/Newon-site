@@ -219,17 +219,15 @@ function overviewHero(lang) {
 
 const leadNote = (t) => `<p class="lvs-notice">${icon("info", "lvs-notice__i")}<span>${e(t)}</span></p>`;
 
-/* 02 — split (headline / numbered principles) + stat tiles on a pale yellow wash */
+/* 02 — split (headline / numbered principles) on a pale yellow wash */
 function vision(lang) {
   const c = siteCopy(lang);
   const v = c.overview.vision;
-  const facts = c.stats.map(([n, k]) => `<li><strong>${e(n)}</strong><span>${e(k)}</span></li>`).join("");
   return `<div id="lvs-vision" class="nls-block lvs-sec" data-lvs-section="02">
     <div class="nls-split">
       ${head(v.kicker, v.title, v.lead)}
       ${points(v.points.map(([k, t], i) => [pad(i + 1), `<b>${e(k)}</b> ${e(t)}`]))}
     </div>
-    <ul class="lvs-facts">${facts}</ul>
   </div>`;
 }
 
