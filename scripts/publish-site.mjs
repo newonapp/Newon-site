@@ -85,6 +85,7 @@ const PUBLISH_ROOT_CORE = [
   "business-pillar.css",
   "business-intro.css",
   "babylog-site.css",
+  "petlog-site.css",
   "bizpart-site.css",
   "studio-site.css",
   "business-model-notice.css",

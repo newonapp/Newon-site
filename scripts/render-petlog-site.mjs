@@ -5,10 +5,11 @@
  * Design: the existing LivOn Life Stage page shell and film hero (/lifestage/) — same shell, same #lifestage-detail.nls
  * components (film hero, roster, journey rail, flow/board/signal/index/dir/pipe lists, ink close) and the same
  * home-lifestage.css / home-lifestage-layout.css / home-lifestage.js. The PETLOG green is used only for the
- * small kicker labels and status tags (scoped .nls--petlog rules below). The Contact form is the shared Newon
+ * small kicker labels and status tags (scoped .nls--petlog rules in /petlog-site.css). The Contact form is the shared Newon
  * inquiry form (render-bsp.mjs → business/inquiry.js → FormSubmit).
  * No app feature (records, booking, orders, payment, sign-in, seller sign-up, posting) is built on the web.
  * Copy: scripts/petlog-site-content.mjs (ko + en; other locales show the English body, like the rest of the site).
+ * V4 (2026-10-25): body redesign — styles moved to /petlog-site.css, one layout per section (content unchanged).
  * V3 (2026-10-24): 25 platform areas, 12 revenue models, scenarios, FAQ, PoC/data sections, inquiry purposes — content only.
  * V2: no per-card status badge (owner brief PART 04) — one shared notice per page in the existing .nls-note style.
  */
@@ -43,308 +44,21 @@ const nl = (s) => esc(s || "").replace(/\n/g, "<br>");
 const pad2 = (n) => String(n).padStart(2, "0");
 const rel = (depth, p) => (/^(https?:|mailto:|#|\/)/.test(p) ? p : "../".repeat(depth) + p);
 
-/* ---------------------------------------------------------------- design (2026-10-19 accent redesign)
- * The film hero, the shared sub-menu and the Life Stage shell stay exactly as they are. Everything below the hero
- * is PETLOG's own layout (pl-* classes, scoped to #lifestage-detail.nls--petlog): value tiles, a step timeline,
- * icon bento cards, feature rows, column lists, spec cards, a comparison list, a vertical roadmap, checklists and
- * link tiles — no screenshots or images, only inline line icons.
- * PETLOG green is a point colour only:
- *   #278A53 brand (rules, dots, CTA) · #1E6B41 text on white/tint (AA) · #F4F9F6 band tint · #E8F3EC icon/chip wash
- *   dark: #4FBF80 brand · #8FDDB0 text · #0D1612 band tint · rgba(111,207,151,.12) wash
+
+/* ---------------------------------------------------------------- design (2026-10-25 body redesign)
+ * The film hero, the shared sub-menu and the Life Stage shell stay exactly as they are (the two hero framing rules
+ * below are unchanged). Everything below the hero is PETLOG's own layout in /petlog-site.css (pl-* classes, scoped to
+ * #lifestage-detail.nls--petlog): a different layout per section — editorial definition rows, problem/solution pairs,
+ * a features bento, now/next scene cards, comparison rows, status board, data tables, directories, accordions —
+ * with 16px body text and PETLOG green as a point colour only. No screenshots, images or decorative shapes.
  */
-const PETLOG_CSS = `<style>
+const PETLOG_CSS_VER = "20261025rd1";
+const PETLOG_CSS = `<link rel="stylesheet" href="/petlog-site.css?v=${PETLOG_CSS_VER}" />
+    <style>
   /* Background film framing: show more of the right side (owner request 2026-10-19). */
   #lifestage-detail.nls[data-story="petlog"] .nls-film__video { object-position: 75% 50%; }
   /* the shared film fallback is the LIVON poster; PETLOG shows plain black until its film loads */
   #lifestage-detail.nls--petlog .nls-film__fallback { background: #050505; }
-
-  #lifestage-detail.nls--petlog {
-    --pl-g: #278a53; --pl-gi: #1e6b41; --pl-tint: #f4f9f6; --pl-soft: #e8f3ec; --pl-line: rgba(39, 138, 83, 0.28);
-    --pl-card: #ffffff; --pl-r: 10px;
-  }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog {
-    --pl-g: #4fbf80; --pl-gi: #8fddb0; --pl-tint: #0d1612; --pl-soft: rgba(111, 207, 151, 0.12); --pl-line: rgba(111, 207, 151, 0.32);
-    --pl-card: #111311;
-  }
-  #lifestage-detail.nls--petlog .nls-kicker { color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog :where(.pl-list, .pl-checks, .pl-steps, .pl-timeline, .pl-values, .pl-grid, .pl-rows, .pl-cols, .pl-chips, .pl-models, .pl-fam, .pl-menu, .pl-types, .pl-table, .pl-legend ul) { margin: 0; padding: 0; list-style: none; }
-  #lifestage-detail.nls--petlog :where(.pl-checks, .pl-steps, .pl-timeline, .pl-values, .pl-chips, .pl-fam, .pl-menu, .pl-types, .pl-legend ul) > li::before { content: none; }
-  #lifestage-detail.nls--petlog .nls-block--band.pl-tint { background: var(--pl-tint); }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-block--band.pl-tint { background: var(--pl-tint); }
-  #lifestage-detail.nls--petlog h3 { margin: 0; font-size: 1.08rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.4; color: var(--nls-ink); }
-  #lifestage-detail.nls--petlog .pl-p { margin: 0; font-size: 0.92rem; line-height: 1.62; color: var(--nls-muted); }
-
-  /* icon */
-  #lifestage-detail.nls--petlog .pl-ic { flex: none; display: inline-grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--pl-soft); color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .pl-ic svg { width: 1.3rem; height: 1.3rem; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-  #lifestage-detail.nls--petlog .pl-ic--lg { width: 3.2rem; height: 3.2rem; }
-  #lifestage-detail.nls--petlog .pl-ic--lg svg { width: 1.55rem; height: 1.55rem; }
-  #lifestage-detail.nls--petlog .pl-n { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; color: var(--pl-gi); font-variant-numeric: tabular-nums; }
-  #lifestage-detail.nls--petlog .pl-label { margin: 0; font-size: 0.72rem; font-weight: 650; letter-spacing: 0.1em; text-transform: uppercase; color: var(--nls-faint); }
-
-  /* chips + links */
-  #lifestage-detail.nls--petlog .pl-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-  #lifestage-detail.nls--petlog .pl-chips li { padding: 0.28rem 0.6rem; border-radius: 999px; background: var(--pl-soft); color: var(--pl-gi); font-size: 0.78rem; font-weight: 600; line-height: 1.3; }
-  #lifestage-detail.nls--petlog .pl-chips--line li { background: transparent; border: 1px solid var(--nls-line-strong, #d8d8d8); color: var(--nls-muted); }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .pl-chips--line li { border-color: rgba(255, 255, 255, 0.22); }
-  #lifestage-detail.nls--petlog .pl-more { display: inline-flex; align-items: center; gap: 0.3rem; margin-top: auto; padding-top: 0.4rem; width: fit-content; font-size: 0.88rem; font-weight: 650; color: var(--pl-gi); text-decoration: none; border-bottom: 1px solid var(--pl-line); }
-  #lifestage-detail.nls--petlog .pl-more:hover { border-bottom-color: var(--pl-g); }
-  #lifestage-detail.nls--petlog .pl-more:focus-visible, #lifestage-detail.nls--petlog .pl-tile:focus-visible { outline: 2px solid var(--pl-g); outline-offset: 3px; }
-  #lifestage-detail.nls--petlog .pl-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1.2rem; margin-top: 1.8rem; }
-  #lifestage-detail.nls--petlog .pl-pill { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 2.6rem; padding: 0.5rem 1.05rem; border: 1px solid var(--pl-line); border-radius: 999px; color: var(--pl-gi); font-size: 0.88rem; font-weight: 650; text-decoration: none; background: var(--pl-card); }
-  #lifestage-detail.nls--petlog .pl-pill:hover { border-color: var(--pl-g); background: var(--pl-soft); }
-  #lifestage-detail.nls--petlog .pl-pill svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-  #lifestage-detail.nls--petlog .pl-aside { margin: 0; font-size: 0.85rem; color: var(--nls-faint); }
-
-  /* callout (shared notice / process note) */
-  #lifestage-detail.nls--petlog .pl-callout { display: flex; gap: 0.8rem; align-items: flex-start; max-width: 52rem; margin: 0 0 2rem; padding: 1rem 1.15rem; border-left: 3px solid var(--pl-g); border-radius: 0 var(--pl-r) var(--pl-r) 0; background: var(--pl-tint); font-size: 0.9rem; line-height: 1.6; color: var(--nls-muted); }
-  #lifestage-detail.nls--petlog .nls-block--band.pl-tint .pl-callout { background: var(--pl-card); }
-  #lifestage-detail.nls--petlog .pl-callout svg { flex: none; width: 1.15rem; height: 1.15rem; margin-top: 0.15rem; fill: none; stroke: var(--pl-gi); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-
-  /* section head variants */
-  #lifestage-detail.nls--petlog .pl-split { display: grid; gap: 2rem; }
-  @media (min-width: 960px) {
-    #lifestage-detail.nls--petlog .pl-split { grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr); gap: 4rem; align-items: start; }
-    #lifestage-detail.nls--petlog .pl-split > .pl-split__head { position: sticky; top: calc(var(--gnav-h, 74px) + 4.5rem); }
-  }
-  #lifestage-detail.nls--petlog .pl-split .nls-head { margin-bottom: 0; }
-  #lifestage-detail.nls--petlog .pl-split .pl-checks { grid-template-columns: minmax(0, 1fr); }
-  #lifestage-detail.nls--petlog .pl-split__head .pl-callout { margin: 1.4rem 0 0; }
-
-  /* grid of cards */
-  #lifestage-detail.nls--petlog .pl-grid { display: grid; gap: 1rem; grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 640px) { #lifestage-detail.nls--petlog .pl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-grid { grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); } }
-  #lifestage-detail.nls--petlog .pl-card { display: flex; flex-direction: column; gap: 0.7rem; min-width: 0; margin: 0; padding: 1.45rem 1.35rem 1.5rem; border: 1px solid var(--nls-line); border-radius: var(--pl-r); background: var(--pl-card); transition: border-color 0.2s ease; }
-  #lifestage-detail.nls--petlog .pl-card:hover { border-color: var(--pl-line); }
-  #lifestage-detail.nls--petlog .pl-card__top { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; margin-bottom: 0.3rem; }
-  #lifestage-detail.nls--petlog .pl-card__top .pl-n { margin-right: auto; }
-  #lifestage-detail.nls--petlog .pl-card--tint { background: var(--pl-tint); border-color: transparent; }
-  #lifestage-detail.nls--petlog .nls-block--band.pl-tint .pl-card { border-color: transparent; background: var(--pl-card); }
-  #lifestage-detail.nls--petlog .pl-card--wide { padding: 1.8rem 1.7rem; }
-  @media (min-width: 640px) {
-    #lifestage-detail.nls--petlog .pl-card--wide { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 1.3rem; row-gap: 0.7rem; align-content: start; }
-    #lifestage-detail.nls--petlog .pl-card--wide > :not(.pl-card__icon) { grid-column: 2; }
-    #lifestage-detail.nls--petlog .pl-card--wide > .pl-card__icon { grid-row: 1 / span 8; }
-  }
-
-  /* key/value list inside cards and rows */
-  #lifestage-detail.nls--petlog .pl-meta { display: grid; gap: 0.5rem; margin: 0.2rem 0 0; padding: 0.85rem 0 0; border-top: 1px dashed var(--nls-line); }
-  #lifestage-detail.nls--petlog .pl-meta div { display: grid; grid-template-columns: minmax(4.8rem, auto) minmax(0, 1fr); gap: 0.75rem; font-size: 0.85rem; line-height: 1.5; }
-  html:not([lang="ko"]) #lifestage-detail.nls--petlog .pl-meta div { grid-template-columns: 6.6rem minmax(0, 1fr); }
-  #lifestage-detail.nls--petlog .pl-meta dt { font-weight: 650; color: var(--nls-ink); }
-  #lifestage-detail.nls--petlog .pl-meta dd { margin: 0; color: var(--nls-muted); }
-  #lifestage-detail.nls--petlog .pl-stage { flex: none; width: fit-content; justify-self: start; padding: 0.22rem 0.6rem; border-radius: 999px; border: 1px solid var(--pl-line); color: var(--pl-gi); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.02em; white-space: nowrap; }
-
-  /* feature rows */
-  #lifestage-detail.nls--petlog .pl-rows { border-bottom: 1px solid var(--nls-line); }
-  #lifestage-detail.nls--petlog .pl-row { display: grid; gap: 0.9rem 2rem; padding: 1.7rem 0; border-top: 1px solid var(--nls-line); }
-  #lifestage-detail.nls--petlog .pl-row__lead { display: flex; gap: 1rem; align-items: flex-start; }
-  #lifestage-detail.nls--petlog .pl-row__lead > div { display: grid; gap: 0.45rem; min-width: 0; }
-  #lifestage-detail.nls--petlog .pl-row__side { display: grid; gap: 0.8rem; align-content: start; }
-  #lifestage-detail.nls--petlog .pl-row__side .pl-meta { margin: 0; padding: 0; border: 0; }
-  @media (min-width: 900px) {
-    #lifestage-detail.nls--petlog .pl-row { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
-    #lifestage-detail.nls--petlog .pl-row__side { padding-left: 2rem; border-left: 1px solid var(--nls-line); }
-  }
-
-  /* column list (top rule, no box) */
-  #lifestage-detail.nls--petlog .pl-cols { display: grid; gap: 2rem 1.6rem; grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-cols { grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); } }
-  #lifestage-detail.nls--petlog .pl-col { display: flex; flex-direction: column; gap: 0.7rem; min-width: 0; margin: 0; padding-top: 1.2rem; border-top: 2px solid var(--pl-g); }
-  #lifestage-detail.nls--petlog .pl-col:nth-child(3n + 2) { border-top-color: color-mix(in srgb, var(--pl-g) 60%, transparent); }
-  #lifestage-detail.nls--petlog .pl-col:nth-child(3n + 3) { border-top-color: color-mix(in srgb, var(--pl-g) 35%, transparent); }
-  #lifestage-detail.nls--petlog .pl-col__head { display: flex; align-items: center; gap: 0.75rem; }
-
-  /* values (mission) */
-  #lifestage-detail.nls--petlog .pl-values { display: grid; gap: 1px; grid-template-columns: minmax(0, 1fr); background: var(--nls-line); border: 1px solid var(--nls-line); border-radius: var(--pl-r); overflow: hidden; }
-  @media (min-width: 640px) { #lifestage-detail.nls--petlog .pl-values { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-values { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  #lifestage-detail.nls--petlog .pl-values li { display: grid; gap: 0.55rem; align-content: start; padding: 1.6rem 1.45rem 1.7rem; background: var(--nls-paper, #fff); }
-  #lifestage-detail.nls--petlog .pl-values li:nth-child(2n) { background: var(--pl-tint); }
-  #lifestage-detail.nls--petlog .pl-values .pl-ic { margin-bottom: 0.4rem; background: var(--pl-card); box-shadow: inset 0 0 0 1px var(--pl-line); }
-  #lifestage-detail.nls--petlog .pl-values h3 { font-size: 1.25rem; }
-  #lifestage-detail.nls--petlog .pl-values strong { font-size: 0.95rem; font-weight: 650; color: var(--pl-gi); line-height: 1.45; }
-  #lifestage-detail.nls--petlog .pl-head-row { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem 3rem; margin-bottom: 2rem; }
-  #lifestage-detail.nls--petlog .pl-head-row .nls-head { margin-bottom: 0; }
-
-  /* horizontal step timeline */
-  #lifestage-detail.nls--petlog .pl-steps { display: grid; gap: 0; grid-template-columns: minmax(0, 1fr); counter-reset: none; }
-  #lifestage-detail.nls--petlog .pl-steps li { position: relative; display: grid; gap: 0.5rem; align-content: start; padding: 0 0 2rem 2.4rem; }
-  #lifestage-detail.nls--petlog .pl-steps li::after { content: ""; position: absolute; left: 0.55rem; top: 1.4rem; bottom: 0; width: 1px; background: var(--pl-line); }
-  #lifestage-detail.nls--petlog .pl-steps li:last-child::after { display: none; }
-  #lifestage-detail.nls--petlog .pl-steps .pl-dot { position: absolute; left: 0; top: 0.1rem; width: 1.15rem; height: 1.15rem; border-radius: 50%; border: 2px solid var(--pl-g); background: var(--nls-paper, #fff); }
-  #lifestage-detail.nls--petlog .pl-steps li:first-child .pl-dot { background: var(--pl-g); }
-  #lifestage-detail.nls--petlog .nls-block--band.pl-tint .pl-steps .pl-dot { background: var(--pl-tint); }
-  #lifestage-detail.nls--petlog .nls-block--band.pl-tint .pl-steps li:first-child .pl-dot { background: var(--pl-g); }
-  #lifestage-detail.nls--petlog .pl-steps .pl-big { font-size: clamp(2rem, 3.4vw, 2.6rem); font-weight: 700; letter-spacing: -0.05em; line-height: 1; color: var(--pl-gi); }
-  @media (min-width: 900px) {
-    #lifestage-detail.nls--petlog .pl-steps { grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 0 1.8rem; }
-    #lifestage-detail.nls--petlog .pl-steps li { padding: 2.2rem 0 0; }
-    #lifestage-detail.nls--petlog .pl-steps li::after { left: 1.6rem; right: -1.8rem; top: 0.66rem; bottom: auto; width: auto; height: 1px; }
-    #lifestage-detail.nls--petlog .pl-steps li:last-child::after { display: block; right: 0; background: linear-gradient(90deg, var(--pl-line), transparent); }
-  }
-
-  /* vertical timeline (roadmap) */
-  #lifestage-detail.nls--petlog .pl-timeline { position: relative; display: grid; gap: 0; max-width: 56rem; }
-  #lifestage-detail.nls--petlog .pl-timeline li { position: relative; display: grid; gap: 0.45rem; padding: 0 0 2.1rem 2.6rem; }
-  #lifestage-detail.nls--petlog .pl-timeline li::after { content: ""; position: absolute; left: 0.6rem; top: 1.5rem; bottom: 0.2rem; width: 2px; background: var(--pl-soft); }
-  #lifestage-detail.nls--petlog .pl-timeline li:last-child { padding-bottom: 0; }
-  #lifestage-detail.nls--petlog .pl-timeline li:last-child::after { display: none; }
-  #lifestage-detail.nls--petlog .pl-timeline .pl-dot { position: absolute; left: 0; top: 0.12rem; display: grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%; background: var(--pl-soft); }
-  #lifestage-detail.nls--petlog .pl-timeline .pl-dot::before { content: ""; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--pl-g); }
-  #lifestage-detail.nls--petlog .pl-timeline .pl-stage { width: fit-content; }
-  @media (min-width: 900px) {
-    #lifestage-detail.nls--petlog .pl-timeline li { grid-template-columns: 9rem minmax(0, 1fr); column-gap: 1.6rem; }
-    #lifestage-detail.nls--petlog .pl-timeline li > .pl-stage { grid-row: 1 / span 2; align-self: start; }
-  }
-
-  /* checklist */
-  #lifestage-detail.nls--petlog .pl-checks { display: grid; gap: 0 2.4rem; grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-checks { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  #lifestage-detail.nls--petlog .pl-checks li { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); gap: 0.75rem; align-items: start; padding: 1rem 0; border-top: 1px solid var(--nls-line); font-size: 0.95rem; line-height: 1.6; color: var(--nls-ink); }
-  #lifestage-detail.nls--petlog .pl-checks li > i { display: grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--pl-soft); color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .pl-checks li > i svg { width: 0.95rem; height: 0.95rem; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-  #lifestage-detail.nls--petlog .pl-checks--cards li { grid-template-columns: auto minmax(0, 1fr); padding: 1.3rem 0; }
-  #lifestage-detail.nls--petlog .pl-checks--cards li > div { display: grid; gap: 0.35rem; }
-
-  /* model tiles (business structure) */
-  #lifestage-detail.nls--petlog .pl-models { display: grid; gap: 1rem; grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 560px) { #lifestage-detail.nls--petlog .pl-models { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-models { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  #lifestage-detail.nls--petlog .pl-models li { display: grid; gap: 0.6rem; align-content: start; padding: 1.4rem 1.35rem 1.5rem; border-radius: var(--pl-r); background: var(--pl-tint); }
-  #lifestage-detail.nls--petlog .pl-models li::before { content: none; }
-  #lifestage-detail.nls--petlog .pl-models b { font-size: clamp(1.45rem, 2.4vw, 1.8rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .pl-models span { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; color: var(--nls-faint); }
-
-  /* legend panels (platform) */
-  #lifestage-detail.nls--petlog .pl-legend { display: grid; gap: 1rem; grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 860px) { #lifestage-detail.nls--petlog .pl-legend { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); } }
-  #lifestage-detail.nls--petlog .pl-panel { display: grid; gap: 1rem; align-content: start; padding: 1.6rem 1.5rem 1.7rem; border-radius: var(--pl-r); border: 1px solid var(--nls-line); }
-  #lifestage-detail.nls--petlog .pl-panel--now { background: var(--pl-tint); border-color: var(--pl-line); }
-  #lifestage-detail.nls--petlog .pl-panel--next { border-style: dashed; border-color: var(--nls-line-strong, #d8d8d8); }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .pl-panel--next { border-color: rgba(255, 255, 255, 0.22); }
-  #lifestage-detail.nls--petlog .pl-panel__head { display: flex; align-items: center; gap: 0.8rem; }
-
-  /* comparison list (revenue) */
-  #lifestage-detail.nls--petlog .pl-table { border-top: 2px solid var(--pl-g); }
-  #lifestage-detail.nls--petlog .pl-table li { display: grid; gap: 0.4rem 1.5rem; padding: 1.15rem 0; border-bottom: 1px solid var(--nls-line); grid-template-columns: minmax(0, 1fr) auto; }
-  #lifestage-detail.nls--petlog .pl-table li::before { content: none; }
-  #lifestage-detail.nls--petlog .pl-table .pl-table__name { display: flex; gap: 0.8rem; align-items: baseline; font-weight: 700; color: var(--nls-ink); }
-  #lifestage-detail.nls--petlog .pl-table .pl-p { grid-column: 1 / -1; }
-  #lifestage-detail.nls--petlog .pl-table .pl-stage { grid-column: 2; grid-row: 1; align-self: center; }
-  @media (min-width: 900px) {
-    #lifestage-detail.nls--petlog .pl-table li { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.8fr) 8rem; align-items: center; }
-    #lifestage-detail.nls--petlog .pl-table .pl-p { grid-column: 2; grid-row: 1; }
-    #lifestage-detail.nls--petlog .pl-table .pl-stage { grid-column: 3; justify-self: end; }
-  }
-  #lifestage-detail.nls--petlog .pl-table__hd { display: none; }
-  @media (min-width: 900px) {
-    #lifestage-detail.nls--petlog .pl-table li.pl-table__hd { display: grid; padding: 0.7rem 0; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--nls-faint); }
-  }
-
-  /* NEWON family tiles + PETLOG menu + contact types (link tiles) */
-  #lifestage-detail.nls--petlog .pl-fam { display: grid; gap: 0.75rem; grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 560px) { #lifestage-detail.nls--petlog .pl-fam { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  #lifestage-detail.nls--petlog .pl-tile { display: flex; flex-direction: column; gap: 0.4rem; height: 100%; padding: 1.15rem 1.15rem 1.2rem; border: 1px solid var(--nls-line); border-radius: var(--pl-r); background: var(--pl-card); color: inherit; text-decoration: none; transition: border-color 0.2s ease, background-color 0.2s ease; }
-  #lifestage-detail.nls--petlog a.pl-tile:hover { border-color: var(--pl-g); }
-  #lifestage-detail.nls--petlog .pl-tile strong { display: flex; justify-content: space-between; gap: 0.6rem; font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; color: var(--nls-ink); }
-  #lifestage-detail.nls--petlog .pl-tile strong em { font-style: normal; color: var(--pl-gi); font-weight: 600; }
-  #lifestage-detail.nls--petlog .pl-tile .pl-p { font-size: 0.86rem; line-height: 1.55; }
-  #lifestage-detail.nls--petlog .pl-tile[aria-current="page"], #lifestage-detail.nls--petlog .pl-tile.is-self { border-color: var(--pl-line); background: var(--pl-tint); box-shadow: inset 0 3px 0 var(--pl-g); }
-  #lifestage-detail.nls--petlog .pl-menu { display: grid; gap: 0.75rem; grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 640px) { #lifestage-detail.nls--petlog .pl-menu { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-menu { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
-  #lifestage-detail.nls--petlog .pl-types { display: grid; gap: 0.75rem; grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 640px) { #lifestage-detail.nls--petlog .pl-types { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-types { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  #lifestage-detail.nls--petlog .pl-types .pl-tile { flex-direction: row; align-items: flex-start; gap: 0.9rem; }
-  #lifestage-detail.nls--petlog .pl-tile__body { display: grid; gap: 0.35rem; min-width: 0; flex: 1; }
-  #lifestage-detail.nls--petlog .pl-types .pl-ic { width: 2.3rem; height: 2.3rem; }
-  #lifestage-detail.nls--petlog .pl-types .pl-ic svg { width: 1.15rem; height: 1.15rem; }
-
-  /* SaaS sub-panel (business) */
-  #lifestage-detail.nls--petlog .pl-sub { margin-top: 2.4rem; padding: clamp(1.4rem, 3vw, 2.2rem); border-radius: var(--pl-r); background: var(--pl-tint); }
-  #lifestage-detail.nls--petlog .nls-block--band.pl-tint .pl-sub { background: var(--pl-card); }
-  #lifestage-detail.nls--petlog .pl-sub .nls-head { margin-bottom: 1.4rem; }
-  #lifestage-detail.nls--petlog .pl-sub .nls-title { font-size: clamp(1.3rem, 2.3vw, 1.65rem); }
-  #lifestage-detail.nls--petlog .pl-sub .pl-cols { --cols: 5; }
-  @media (min-width: 760px) and (max-width: 1039px) { #lifestage-detail.nls--petlog .pl-sub .pl-cols { --cols: 2; } }
-
-  /* journey rail (shared component, PETLOG tint) */
-  #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail { border-radius: var(--pl-r) var(--pl-r) 0 0; overflow: hidden; }
-  #lifestage-detail.nls--petlog .nls-journey { border-radius: 0 0 var(--pl-r) var(--pl-r); overflow: hidden; background: var(--pl-card); }
-  #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn { background: var(--pl-card); }
-  #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn em { color: var(--nls-faint); }
-  #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on { background: var(--pl-soft); box-shadow: inset 0 -3px 0 var(--pl-g); color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on em { color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on span { color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .nls-decade { background: var(--pl-card); }
-  #lifestage-detail.nls--petlog .nls-decade__mark { background: var(--pl-soft); color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .nls-decade__mark em { color: var(--pl-gi); opacity: 0.7; }
-  #lifestage-detail.nls--petlog .nls-decade__n { color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .nls-decade .nls-chips li { border-color: var(--pl-line); color: var(--pl-gi); background: transparent; }
-  @media (min-width: 900px) {
-    #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail--petlog { grid-template-columns: repeat(var(--petlog-rail-n, 7), minmax(0, 1fr)); }
-  }
-  html[data-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn,
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn { background: var(--pl-card) !important; border-color: rgba(255, 255, 255, 0.1); }
-  html[data-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on,
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on { background: #16271d !important; color: var(--pl-gi); }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on > * { color: var(--pl-gi) !important; background: transparent !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn span { color: #f2f2f2; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-decade,
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey { background: var(--pl-card) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-decade__mark { background: #16271d !important; color: var(--pl-gi) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-decade__mark * { color: var(--pl-gi) !important; }
-
-  /* FAQ (platform) — native details/summary in the checklist rule language */
-  #lifestage-detail.nls--petlog .pl-faq { max-width: 56rem; border-bottom: 1px solid var(--nls-line); }
-  #lifestage-detail.nls--petlog .pl-faq details { border-top: 1px solid var(--nls-line); }
-  #lifestage-detail.nls--petlog .pl-faq summary { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.15rem 0; cursor: pointer; list-style: none; font-size: 1rem; font-weight: 700; line-height: 1.5; color: var(--nls-ink); }
-  #lifestage-detail.nls--petlog .pl-faq summary::-webkit-details-marker { display: none; }
-  #lifestage-detail.nls--petlog .pl-faq summary::after { content: "+"; flex: none; display: grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--pl-soft); color: var(--pl-gi); font-weight: 600; }
-  #lifestage-detail.nls--petlog .pl-faq details[open] summary::after { content: "−"; }
-  #lifestage-detail.nls--petlog .pl-faq summary:focus-visible { outline: 2px solid var(--pl-g); outline-offset: 2px; }
-  #lifestage-detail.nls--petlog .pl-faq details > .pl-p { padding: 0 2.6rem 1.3rem 0; }
-  #lifestage-detail.nls--petlog .pl-subhead { margin: 0 0 1.2rem; }
-
-  /* closing band: ink stays, the main button takes the point colour */
-  #lifestage-detail.nls--petlog .nls-close .nls-kicker { color: #7fd6a4; }
-  #lifestage-detail.nls--petlog .nls-close .nls-btn:not(.nls-btn--ghost) { background: #278a53; border-color: #278a53; color: #fff; }
-  #lifestage-detail.nls--petlog .nls-close .nls-btn:not(.nls-btn--ghost):hover { background: #1e6b41; border-color: #1e6b41; color: #fff; }
-
-  /* contact form accents */
-  #lifestage-detail.nls--petlog .bp-page .bp-label { color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .bp-page .bz-submit { background: #1e6b41; border-color: #1e6b41; color: #fff; }
-  #lifestage-detail.nls--petlog .bp-page .bz-submit:hover { background: #278a53; border-color: #278a53; }
-  #lifestage-detail.nls--petlog .bp-page :where(input, select, textarea):focus-visible { outline: 2px solid var(--pl-g); outline-offset: 1px; }
-  /* dark: the site-wide dark canvas (site-dark.css) paints every descendant black/white with !important —
-     PETLOG re-applies its quiet accents inside the content wrapper only (hero + sub-menu untouched). */
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :where(*) { background-color: transparent !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-block--band.pl-tint { background-color: var(--pl-tint) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-block--ink { background-color: #000 !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-card, .pl-tile, .pl-values li, .nls-journey, .nls-decade, .nls-journey-sec .nls-rail__btn) { background-color: var(--pl-card) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-card--tint, .pl-models li, .pl-panel--now, .pl-sub, .pl-callout, .pl-tile.is-self, .pl-tile[aria-current="page"], .pl-values li:nth-child(2n)) { background-color: var(--pl-tint) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-block--band.pl-tint :is(.pl-card, .pl-card--tint, .pl-callout, .pl-sub) { background-color: #000 !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-ic, .pl-chips li, .pl-checks li > i, .pl-timeline .pl-dot, .nls-decade__mark, .nls-journey-sec .nls-rail__btn.is-on) { background-color: var(--pl-soft) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.nls-kicker, .pl-n, .pl-ic, .pl-chips li, .pl-checks li > i, .pl-stage, .pl-more, .pl-pill, .pl-values strong, .pl-models b, .pl-steps .pl-big, .pl-tile strong em, .nls-decade__mark, .nls-decade__mark *, .nls-decade__n, .nls-decade .nls-chips li, .nls-journey-sec .nls-rail__btn.is-on, .nls-journey-sec .nls-rail__btn.is-on *) { color: var(--pl-gi) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-stage, .pl-pill, .nls-decade .nls-chips li, .pl-panel--now) { border-color: var(--pl-line) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-col, .pl-table) { border-top-color: var(--pl-g) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-col:nth-child(3n + 2) { border-top-color: rgba(79, 191, 128, 0.6) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-col:nth-child(3n + 3) { border-top-color: rgba(79, 191, 128, 0.35) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-callout { border-left-color: var(--pl-g) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-tile.is-self, .pl-tile[aria-current="page"]) { border-color: var(--pl-line) !important; border-top: 3px solid var(--pl-g) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-journey-sec .nls-rail__btn.is-on { border-bottom: 3px solid var(--pl-g) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-steps .pl-dot { border-color: var(--pl-g) !important; background-color: #000 !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-block--band.pl-tint .pl-steps .pl-dot { background-color: var(--pl-tint) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-steps li:first-child .pl-dot, html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-timeline .pl-dot::before { background-color: var(--pl-g) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-steps li::after { background-color: var(--pl-line) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-timeline li::after { background-color: var(--pl-soft) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-steps li:last-child::after { background: linear-gradient(90deg, var(--pl-line), transparent) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-close .nls-kicker { color: #7fd6a4 !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-close .nls-btn:not(.nls-btn--ghost) { background-color: #278a53 !important; border-color: #278a53 !important; color: #fff !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-close .nls-btn:not(.nls-btn--ghost):hover { background-color: #1e6b41 !important; border-color: #1e6b41 !important; }
 </style>`;
 
 /* ---------------------------------------------------------------- inline line icons (24×24, stroke) */
@@ -433,6 +147,12 @@ const PARTNER_ICONS = { "01": "clinic", "02": "scissors", "03": "home", "04": "u
 const BEYOND_ICONS = ["note", "scissors", "chat", "spark", "heart"];
 const TYPE_ICONS = { general: "mail", "app-support": "phone", content: "book", vet: "clinic", "booking-provider": "scissors", sitting: "walk", brand: "bag", "group-buying": "cart", "insurance-adoption": "umbrella", saas: "chart", public: "building", global: "globe" };
 
+const TRUST_ICONS = ["book", "shield", "pulse", "heart", "check", "bag"];
+/** "(향후)" / "(planned)" at the end of a name marks a future user type in the copy itself. */
+const isLater = (name) => /\((향후|planned)\)\s*$/i.test(String(name || ""));
+/** "지금 제공." / "Available today." / "in the app today" inside a step marks a current stage. */
+const isNow = (text) => /지금 제공|지금 앱에서 제공하는 단계|available today|in the app today/i.test(String(text || ""));
+
 /* ---------------------------------------------------------------- shared blocks */
 function head(kicker, title, lead) {
   return `<header class="nls-head">
@@ -452,9 +172,7 @@ const metaList = (points) => {
   return rows.length ? `<dl class="pl-meta">${rows.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>` : "";
 };
 
-/**
- * Section wrapper. tint → full-bleed pale-green band.
- */
+/** Section wrapper. tint → full-bleed pale-green band. */
 function section(id, { kicker, title, lead, noteText, tint, body, extraClass }) {
   return `<div id="${id}" class="nls-block${tint ? " nls-block--band pl-tint" : ""}${extraClass ? ` ${extraClass}` : ""}" data-hs-section>
     ${head(kicker, title, lead)}
@@ -462,6 +180,7 @@ function section(id, { kicker, title, lead, noteText, tint, body, extraClass }) 
     ${body}
   </div>`;
 }
+/** Statement left, content right (the heading never sticks, so nothing slides over text). */
 function splitSection(id, { kicker, title, lead, noteText, tint, body, aside }) {
   return `<div id="${id}" class="nls-block${tint ? " nls-block--band pl-tint" : ""}" data-hs-section>
     <div class="pl-split">
@@ -472,51 +191,41 @@ function splitSection(id, { kicker, title, lead, noteText, tint, body, aside }) 
 }
 
 /**
- * Cards in one of several PETLOG layouts.
- * kind: tile (icon card grid) · tint (tinted icon cards) · wide (2 large cards) · row (feature rows) · col (ruled columns)
- * card: { n, label?, icon?, name, lead, points?: [k, v][], chips?, stage?, link?: [label, href], anchor? }
+ * Item lists in one of three PETLOG layouts.
+ * kind: row (editorial rows, meta on the right) · grid (cards; cls adds pl-grid--2/3/bento/odd) · cols (ruled columns, no box)
+ * item: { n, label?, icon?, name, lead, points?: [k, v][], chips?, link?: [label, href], anchor?, later? }
  */
-function cards(kind, list, depth, cols) {
+function items(kind, list, depth, cls = "") {
   const id = (c) => (c.anchor ? ` id="${esc(c.anchor)}"` : "");
   const label = (c) => (c.label ? `<p class="pl-label" lang="en">${esc(c.label)}</p>` : "");
-  const stage = (c) => (c.stage ? `<span class="pl-stage">${esc(c.stage)}</span>` : "");
+  const n = (c) => (c.n ? `<span class="pl-n">${esc(c.n)}</span>` : "");
   if (kind === "row")
     return `<div class="pl-rows">${list
       .map(
         (c) => `<article class="pl-row"${id(c)}>
-        <div class="pl-row__lead">${ic(c.icon)}<div><span class="pl-n">${esc(c.n)}</span>${label(c)}<h3>${esc(c.name)}</h3><p class="pl-p">${esc(c.lead)}</p></div></div>
-        <div class="pl-row__side">${stage(c)}${metaList(c.points)}${chipList(c.chips)}${more(c.link, depth)}</div>
+        <div class="pl-row__lead"><div class="pl-row__tag">${n(c)}${label(c)}</div><h3>${esc(c.name)}</h3><p class="pl-p">${esc(c.lead)}</p></div>
+        <div class="pl-row__side">${metaList(c.points)}${chipList(c.chips)}${more(c.link, depth)}</div>
       </article>`
       )
       .join("")}</div>`;
-  if (kind === "col")
-    return `<div class="pl-cols" style="--cols:${cols || 3}">${list
+  if (kind === "cols")
+    return `<div class="pl-cols ${cls}">${list
       .map(
         (c) => `<article class="pl-col"${id(c)}>
-        <div class="pl-col__head">${c.icon ? ic(c.icon) : ""}<span class="pl-n">${esc(c.n)}</span>${stage(c)}</div>
-        ${label(c)}<h3>${esc(c.name)}</h3><p class="pl-p">${esc(c.lead)}</p>
+        ${c.icon ? ic(c.icon) : ""}<div class="pl-row__tag">${n(c)}${label(c)}</div><h3>${esc(c.name)}</h3><p class="pl-p">${esc(c.lead)}</p>
         ${metaList(c.points)}${chipList(c.chips)}${more(c.link, depth)}
       </article>`
       )
       .join("")}</div>`;
-  if (kind === "wide")
-    return `<div class="pl-grid" style="--cols:2">${list
-      .map(
-        (c) => `<article class="pl-card pl-card--wide pl-card--tint"${id(c)}>
-        <span class="pl-card__icon">${ic(c.icon, true)}</span>
-        <span class="pl-n">${esc(c.n)}</span>${label(c)}<h3>${esc(c.name)}</h3><p class="pl-p">${esc(c.lead)}</p>
-        ${stage(c)}${metaList(c.points)}${chipList(c.chips)}${more(c.link, depth)}
-      </article>`
-      )
-      .join("")}</div>`;
-  return `<div class="pl-grid" style="--cols:${cols || 3}">${list
-    .map(
-      (c) => `<article class="pl-card${kind === "tint" ? " pl-card--tint" : ""}"${id(c)}>
-        <div class="pl-card__top">${c.icon ? ic(c.icon) : ""}<span class="pl-n">${esc(c.n)}</span>${stage(c)}</div>
+  return `<div class="pl-grid ${cls}">${list
+    .map((c) => {
+      const foot = `${metaList(c.points)}${chipList(c.chips)}${more(c.link, depth)}`;
+      return `<article class="pl-card${c.later ? " pl-card--later" : ""}"${id(c)}>
+        <div class="pl-card__top">${c.icon ? ic(c.icon) : ""}${n(c)}</div>
         ${label(c)}<h3>${esc(c.name)}</h3><p class="pl-p">${esc(c.lead)}</p>
-        ${metaList(c.points)}${chipList(c.chips)}${more(c.link, depth)}
-      </article>`
-    )
+        ${foot ? `<div class="pl-foot">${foot}</div>` : ""}
+      </article>`;
+    })
     .join("")}</div>`;
 }
 
@@ -541,43 +250,55 @@ function hero({ wordmark, titleHtml, lead, main, sub }) {
   </div>`;
 }
 
-/** Horizontal step timeline. steps: [big, title, body][] */
-const stepList = (steps) =>
-  `<ol class="pl-steps" style="--n:${steps.length}">${steps
-    .map(([big, t, d]) => `<li><span class="pl-dot" aria-hidden="true"></span>${big ? `<span class="pl-big">${esc(big)}</span>` : ""}<h3>${esc(t)}</h3><p class="pl-p">${esc(d)}</p></li>`)
+/** Step sequence (real sequences only). steps: [big, title, body][]; a step whose copy says it is available today is marked. */
+const stepList = (steps, lg) =>
+  `<ol class="pl-steps${lg ? " pl-steps--lg" : ""}" style="--n:${steps.length}">${steps
+    .map(([big, t, d]) => `<li${isNow(d) ? ' class="is-on"' : ""}>${big ? `<span class="pl-big">${esc(big)}</span>` : ""}<h3>${esc(t)}</h3><p class="pl-p">${esc(d)}</p></li>`)
     .join("")}</ol>`;
 
-/** Vertical timeline. rows: [stage, title, body][] */
-const timeline = (rows) =>
-  `<ol class="pl-timeline">${rows
-    .map(([s, t, d]) => `<li><span class="pl-dot" aria-hidden="true"></span><span class="pl-stage">${esc(s)}</span><h3>${esc(t)}</h3><p class="pl-p">${esc(d)}</p></li>`)
+/** Numbered phase list (roadmap, PoC). rows: [code, title, body][] */
+const phases = (rows, step) =>
+  `<ol class="pl-phases${step ? " pl-phases--step" : ""}">${rows
+    .map(([s, t, d]) => `<li><span class="pl-code" lang="en">${esc(s)}</span><h3>${esc(t)}</h3><p class="pl-p">${esc(d)}</p></li>`)
     .join("")}</ol>`;
 
-/** Checklist. items: string[] or [title, body][] */
-const checks = (items) =>
-  typeof items[0] === "string"
-    ? `<ul class="pl-checks">${items.map((t) => `<li>${CHECK}<span>${esc(t)}</span></li>`).join("")}</ul>`
-    : `<ul class="pl-checks pl-checks--cards">${items.map(([t, d, k]) => `<li>${k ? ic(k) : CHECK}<div><h3>${esc(t)}</h3><p class="pl-p">${esc(d)}</p></div></li>`).join("")}</ul>`;
+/** Checklist. items: string[] */
+const checks = (list, two) => `<ul class="pl-checks${two ? " pl-checks--2" : ""}">${list.map((t) => `<li>${CHECK}<span>${esc(t)}</span></li>`).join("")}</ul>`;
+
+/** Icon rows. list: [title, body, icon][] */
+const people = (list, grid) =>
+  `<ul class="pl-people${grid ? ` pl-people--grid${grid === 3 ? " pl-people--3" : ""}` : ""}">${list
+    .map(([t, d, k]) => `<li${isLater(t) ? ' class="is-later"' : ""}>${ic(k || "check")}<div><h3>${esc(t)}</h3><p class="pl-p">${esc(d)}</p></div></li>`)
+    .join("")}</ul>`;
+
+/** Directory rows. list: { name, body, href, self?, icon? } */
+const directory = (list, depth, wide) =>
+  `<ul class="pl-dir${wide ? " pl-dir--wide" : ""}">${list
+    .map(
+      (s) => `<li><a${s.self ? ' class="is-self"' : ""} href="${esc(href(depth, s.href))}"${extAttr(s.href)}>${s.icon ? ic(s.icon) : ""}<div><strong${/^[A-Z ]+$/.test(s.name) ? ' lang="en"' : ""}>${esc(s.name)}</strong><p class="pl-p">${esc(s.body)}</p></div><em aria-hidden="true">→</em></a></li>`
+    )
+    .join("")}</ul>`;
 
 /** Link tiles. items: { n, name, body, href, on?, icon? } */
-const tiles = (cls, items, depth) =>
-  `<ul class="${cls}">${items
+const tiles = (cls, list, depth) =>
+  `<ul class="pl-tiles ${cls}">${list
     .map((s) => {
       const inner = `${s.icon ? ic(s.icon) : ""}<div class="pl-tile__body">${s.n ? `<span class="pl-n">${esc(s.n)}</span>` : ""}<strong>${esc(s.name)}<em aria-hidden="true">${s.href ? "→" : ""}</em></strong>${s.body ? `<p class="pl-p">${esc(s.body)}</p>` : ""}</div>`;
+      const row = s.icon ? " pl-tile--row" : "";
       return `<li>${
         s.href
-          ? `<a class="pl-tile${s.self ? " is-self" : ""}" href="${esc(href(depth, s.href))}"${s.on ? ' aria-current="page"' : ""}${extAttr(s.href)}>${inner}</a>`
-          : `<div class="pl-tile">${inner}</div>`
+          ? `<a class="pl-tile${row}" href="${esc(href(depth, s.href))}"${s.on ? ' aria-current="page"' : ""}${extAttr(s.href)}>${inner}</a>`
+          : `<div class="pl-tile${row}">${inner}</div>`
       }</li>`;
     })
     .join("")}</ul>`;
 
 /** Tab rail + cards (Life Stage "life journey" component; home-lifestage.js drives it). One rail per page. */
-function railBlock(id, { kicker, title, lead, noteText, items, ariaLabel }) {
-  const rail = items
+function railBlock(id, { kicker, title, lead, noteText, items: list, ariaLabel }) {
+  const rail = list
     .map((it, i) => `<button type="button" class="nls-rail__btn${i === 0 ? " is-on" : ""}" data-nls-decade="${esc(it.id)}" aria-pressed="${i === 0}"><em>${esc(it.n)}</em><span>${esc(it.tab)}</span></button>`)
     .join("");
-  const cardsHtml = items
+  const cardsHtml = list
     .map(
       (it, i) => `<article class="nls-decade${i === 0 ? " is-on" : ""}" data-nls-decade-card="${esc(it.id)}" data-scene="${esc(it.id)}">
         <div class="nls-decade__mark" aria-hidden="true"><b>${esc(it.mark)}</b><em>${esc(it.n)}</em></div>
@@ -593,18 +314,18 @@ function railBlock(id, { kicker, title, lead, noteText, items, ariaLabel }) {
     .join("");
   return `<div id="${id}" class="nls-block nls-block--band pl-tint nls-journey-sec" data-hs-section>
     ${head(kicker, title, lead)}
-    <div class="nls-rail nls-rail--petlog" style="--petlog-rail-n:${items.length}" role="group" aria-label="${esc(ariaLabel || kicker)}">${rail}</div>
+    <div class="nls-rail nls-rail--petlog" style="--petlog-rail-n:${list.length}" role="group" aria-label="${esc(ariaLabel || kicker)}">${rail}</div>
     <div class="nls-journey">${cardsHtml}</div>
     ${callout(noteText)}
   </div>`;
 }
 
 function menuBlock(lang, depth, active) {
-  const items = PETLOG_MENU.map((m) => ({ n: m.n, name: `${m.name} · ${m[bl(lang)]}`, body: bl(lang) === "ko" ? m.koLead : m.enLead, href: m.href, on: m.id === active }));
+  const list = PETLOG_MENU.map((m) => ({ n: m.n, name: `${m.name} · ${m[bl(lang)]}`, body: bl(lang) === "ko" ? m.koLead : m.enLead, href: m.href, on: m.id === active }));
   const label = lang === "ko" ? "PETLOG 메뉴" : "PETLOG MENU";
   return `<div id="nls-petlog-menu" class="nls-block" data-hs-section>
     ${head("PETLOG", label, "")}
-    <nav aria-label="${esc(label)}">${tiles("pl-menu", items, depth)}</nav>
+    <nav aria-label="${esc(label)}">${tiles("pl-tiles--5", list, depth)}</nav>
   </div>`;
 }
 
@@ -628,34 +349,78 @@ const splitValue = (s) => {
   const i = rest.indexOf(". ");
   return i > 0 ? [k, rest.slice(0, i + 1), rest.slice(i + 2)] : [k, rest, ""];
 };
+/** "Label: text" → [label, text] (label only when it is short); otherwise ["", text]. */
+const splitLabel = (s) => {
+  const i = s.indexOf(": ");
+  return i > 0 && i <= 45 ? [s.slice(0, i), s.slice(i + 2)] : ["", s];
+};
 const storeIcon = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg>';
 
 /* ---------------------------------------------------------------- pages */
 const storePills = (label) =>
   `<div class="pl-actions"><p class="pl-aside">${esc(label)}</p><a class="pl-pill" href="${esc(STORE.ios)}" target="_blank" rel="noopener noreferrer">App Store ${storeIcon}</a><a class="pl-pill" href="${esc(STORE.android)}" target="_blank" rel="noopener noreferrer">Google Play ${storeIcon}</a></div>`;
 
-/** FAQ list (native details/summary). items: [question, answer][] */
-const faqList = (items) =>
-  `<div class="pl-faq">${items.map(([q, a]) => `<details><summary>${esc(q)}</summary><p class="pl-p">${esc(a)}</p></details>`).join("")}</div>`;
+/** FAQ list (native details/summary). list: [question, answer][] */
+const faqList = (list) =>
+  `<div class="pl-faq">${list.map(([q, a]) => `<details><summary>${esc(q)}</summary><p class="pl-p">${esc(a)}</p></details>`).join("")}</div>`;
+
+/** Two status panels side by side (current vs later). */
+const panel = (kind, icon, title, body, chips, line) =>
+  `<div class="pl-panel${kind ? ` pl-panel--${kind}` : ""}"><div class="pl-panel__body"><div class="pl-panel__head">${ic(icon)}<h3>${esc(title)}</h3></div><p class="pl-p">${esc(body)}</p></div>${chipList(chips, line)}</div>`;
 
 function overviewPage(lang) {
   const c = OVERVIEW[bl(lang)];
   const L = bl(lang);
   const D = 1;
   const journey = c.journey.items.map((it) => ({ id: it.id, n: it.n, tab: it.tab, mark: it.tab, label: it.label, name: it.name, lead: it.lead, chips: it.topics }));
-  const values = `<h3 class="pl-subhead">${esc(c.mission.valuesTitle)}</h3><ul class="pl-values">${c.mission.body
-    .map((s, i) => {
+  const values = `<h3 class="pl-subhead">${esc(c.mission.valuesTitle)}</h3><dl class="pl-vlist">${c.mission.body
+    .map((s) => {
       const [k, tag, body] = splitValue(s);
-      return `<li>${ic(VALUE_ICONS[i] || "paw")}<span class="pl-n">${pad2(i + 1)}</span><h3 lang="en">${esc(k)}</h3><strong>${esc(tag)}</strong>${body ? `<p class="pl-p">${esc(body)}</p>` : ""}</li>`;
+      return `<div><dt lang="en">${esc(k)}</dt><dd><strong>${esc(tag)}</strong>${body ? `<p class="pl-p">${esc(body)}</p>` : ""}</dd></div>`;
     })
+    .join("")}</dl>`;
+  const problem = `<div class="pl-pairs">${c.problem.items
+    .map(
+      (x) => `<article class="pl-pair">
+        <div class="pl-pair__q"><p class="pl-label" lang="en">${esc(x.label)}</p><h3>${esc(x.name)}</h3><p class="pl-p">${esc(x.lead)}</p></div>
+        <div class="pl-pair__a"><b>${svg("check")}${esc(c.problem.pointLabel)}</b><p class="pl-p">${esc(x.solve)}</p></div>
+      </article>`
+    )
+    .join("")}</div>`;
+  const scenes = `<div class="pl-grid pl-grid--2">${c.scenes.items
+    .map(
+      (x) => `<article class="pl-card">
+        <div class="pl-card__top">${ic(x.icon)}</div>
+        <h3>${esc(x.name)}</h3><p class="pl-p">${esc(x.lead)}</p>
+        <dl class="pl-nn"><div><dt><i aria-hidden="true"></i>${esc(c.scenes.nowLabel)}</dt><dd>${esc(x.now)}</dd></div><div class="is-next"><dt><i aria-hidden="true"></i>${esc(c.scenes.nextLabel)}</dt><dd>${esc(x.next)}</dd></div></dl>
+      </article>`
+    )
+    .join("")}</div>`;
+  // bento: 01 and 06–08 take two columns (4-column grid: 2+1+1 / 1+1+2 / 2+2); 08 is in development (dashed)
+  const WIDE = new Set([0, 5, 6, 7]);
+  const last = c.core.items.length - 1;
+  const core = `<ul class="pl-core">${c.core.items
+    .map(
+      (x, i) => `<li${WIDE.has(i) ? ' class="is-wide"' : ""}><article class="pl-card${i === last ? " pl-card--later" : ""}">
+        <div class="pl-card__top">${ic(iconFor(x.label))}<span class="pl-n">${esc(x.n)}</span></div>
+        <p class="pl-label" lang="en">${esc(x.label)}</p><h3>${esc(x.name)}</h3><p class="pl-p">${esc(x.lead)}</p>${chipList(x.chips, i === last)}
+      </article></li>`
+    )
     .join("")}</ul>`;
-  const problem = c.problem.items.map((x) => ({ n: x.n, label: x.label, icon: x.icon, name: x.name, lead: x.lead, points: [[c.problem.pointLabel, x.solve]] }));
-  const users = c.users.items.map(([t, d, k]) => [t, d, k]);
-  const scenes = c.scenes.items.map((x) => ({ n: x.n, icon: x.icon, name: x.name, lead: x.lead, points: [[c.scenes.nowLabel, x.now], [c.scenes.nextLabel, x.next]] }));
-  const core = c.core.items.map((x) => ({ ...x, icon: iconFor(x.label) }));
-  const diff = c.diff.items.map((x) => ({ n: x.n, icon: x.icon, name: x.name, lead: x.lead, points: [[c.diff.pointLabel, x.point]] }));
-  const beyond = c.beyond.items.map((x, i) => ({ ...x, icon: BEYOND_ICONS[i] }));
-  const trust = c.trust.items.map((x) => [x.name, x.lead]);
+  const diff = `<div class="pl-compare">${c.diff.items
+    .map(
+      (x) => `<article class="pl-cmp">
+        <div class="pl-cmp__what">${ic(x.icon)}<div><h3>${esc(x.name)}</h3><p class="pl-p">${esc(x.lead)}</p></div></div>
+        <div class="pl-cmp__how"><b>${esc(c.diff.pointLabel)}</b><p class="pl-p">${esc(x.point)}</p></div>
+      </article>`
+    )
+    .join("")}</div>`;
+  const beyond = `<ol class="pl-ladder" tabindex="0" aria-label="${esc(c.beyond.kicker)}">${c.beyond.items
+    .map(
+      (x, i) => `<li>${ic(BEYOND_ICONS[i])}<div class="pl-row__tag"><span class="pl-n">${esc(x.n)}</span><p class="pl-label" lang="en">${esc(x.label)}</p></div><h3>${esc(x.name)}</h3><p class="pl-p pl-sm">${esc(x.lead)}</p>${chipList(x.chips)}</li>`
+    )
+    .join("")}</ol><div class="pl-actions">${more([c.beyond.cta, "petlog/platform/"], D)}</div>`;
+  const trust = people(c.trust.items.map((x, i) => [x.name, x.lead, TRUST_ICONS[i]]), 3);
   const fam = c.newon.items.map((x) => ({ name: x.name, body: x.body, href: x.href, self: x.name === "PETLOG" }));
   return wrap(`${hero({ wordmark: "PETLOG", titleHtml: c.heroTitle, lead: c.heroLead, main: [`${c.ctaMain} →`, "#nls-mission"], sub: [c.ctaSub, rel(D, "petlog/platform/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "overview" })}
@@ -664,16 +429,16 @@ function overviewPage(lang) {
       ${head(c.mission.kicker, c.mission.title, c.mission.lead)}
       ${values}
     </div>
-    ${section("nls-problem", { kicker: c.problem.kicker, title: c.problem.title, lead: c.problem.lead, tint: true, body: cards("row", problem, D) })}
-    ${section("nls-about", { kicker: c.about.kicker, title: c.about.title, lead: c.about.lead, body: stepList(c.about.steps) })}
+    ${section("nls-problem", { kicker: c.problem.kicker, title: c.problem.title, lead: c.problem.lead, tint: true, body: problem })}
+    ${section("nls-about", { kicker: c.about.kicker, title: c.about.title, lead: c.about.lead, body: stepList(c.about.steps, true) })}
     ${railBlock("nls-journey", { kicker: c.journey.kicker, title: c.journey.title, lead: c.journey.lead, items: journey })}
-    ${splitSection("nls-users", { kicker: c.users.kicker, title: c.users.title, lead: c.users.lead, body: checks(users) })}
-    ${section("nls-scenes", { kicker: c.scenes.kicker, title: c.scenes.title, lead: c.scenes.lead, tint: true, body: cards("tile", scenes, D, 2) })}
-    ${section("nls-core", { kicker: c.core.kicker, title: c.core.title, lead: c.core.lead, body: `${cards("tile", core, D, 4)}${storePills(c.core.appLabel)}` })}
-    ${section("nls-diff", { kicker: c.diff.kicker, title: c.diff.title, lead: c.diff.lead, tint: true, body: cards("col", diff, D, 3) })}
-    ${section("nls-beyond", { kicker: c.beyond.kicker, title: c.beyond.title, lead: c.beyond.lead, noteText: NOTICE[L], body: `${cards("tint", beyond, D, 3)}<div class="pl-actions">${more([c.beyond.cta, "petlog/platform/"], D)}</div>` })}
-    ${section("nls-trust", { kicker: c.trust.kicker, title: c.trust.title, tint: true, body: checks(trust) })}
-    ${splitSection("nls-newon", { kicker: c.newon.kicker, title: c.newon.title, lead: c.newon.lead, body: tiles("pl-fam", fam, D) })}
+    ${splitSection("nls-users", { kicker: c.users.kicker, title: c.users.title, lead: c.users.lead, body: people(c.users.items) })}
+    ${section("nls-scenes", { kicker: c.scenes.kicker, title: c.scenes.title, lead: c.scenes.lead, tint: true, body: scenes })}
+    ${section("nls-core", { kicker: c.core.kicker, title: c.core.title, lead: c.core.lead, body: `${core}${storePills(c.core.appLabel)}` })}
+    ${section("nls-diff", { kicker: c.diff.kicker, title: c.diff.title, lead: c.diff.lead, tint: true, body: diff })}
+    ${section("nls-beyond", { kicker: c.beyond.kicker, title: c.beyond.title, lead: c.beyond.lead, noteText: NOTICE[L], body: beyond })}
+    ${section("nls-trust", { kicker: c.trust.kicker, title: c.trust.title, tint: true, body: trust })}
+    ${splitSection("nls-newon", { kicker: c.newon.kicker, title: c.newon.title, lead: c.newon.lead, body: directory(fam, D, true) })}
     ${menuBlock(lang, D, "overview")}
     ${closeBlock({ ...c.close, main: [c.close.ctaMain, "petlog/platform/"], sub: [c.close.ctaSub, "petlog/contact/"] }, D)}
   </div>`);
@@ -699,24 +464,28 @@ function platformPage(lang) {
     };
   };
   // a different layout per group so the page does not repeat one card grid
-  const LAYOUT = { records: ["row"], services: ["tile", 3], community: ["col", 3], tech: ["tint", 3], welfare: ["wide", 2] };
+  const LAYOUT = {
+    records: ["row", "", false],
+    services: ["grid", "pl-grid--bento", true],
+    community: ["cols", "pl-cols--3", false],
+    tech: ["row", "", true],
+    welfare: ["grid", "pl-grid--2 pl-grid--odd", false],
+  };
   const groups = m.groups
-    .map((g, gi) => {
-      const [kind, cols] = LAYOUT[g.id] || ["tile", 3];
-      return section(`nls-${g.id}`, { kicker: g.kicker, title: g.title, lead: g.lead, tint: gi % 2 === 1, body: cards(kind, g.items.map(card), D, cols) });
+    .map((g) => {
+      const [kind, cls, tint] = LAYOUT[g.id] || ["grid", "pl-grid--3", false];
+      return section(`nls-${g.id}`, { kicker: g.kicker, title: g.title, lead: g.lead, tint, body: items(kind, g.items.map(card), D, cls) });
     })
     .join("\n");
-  const PANEL = { now: " pl-panel--now", dev: "", plan: " pl-panel--next", review: " pl-panel--next" };
-  const legend = `<div class="pl-legend">${m.legend
-    .map(
-      (p) => `<div class="pl-panel${PANEL[p.kind]}"><div class="pl-panel__head">${ic(p.icon)}<h3>${esc(p.title)}</h3></div><p class="pl-p">${esc(p.body)}</p>${chipList(
-        p.areas.map((no) => `${no} ${PLATFORM.items[Number(no) - 1].name[L]}`),
-        p.kind === "plan" || p.kind === "review"
-      )}</div>`
-    )
+  const KIND = { now: "now", dev: "", plan: "next", review: "next" };
+  const legend = `<div class="pl-board pl-board--table">${m.legend
+    .map((p) => panel(KIND[p.kind], p.icon, p.title, p.body, p.areas.map((no) => `${no} ${PLATFORM.items[Number(no) - 1].name[L]}`), p.kind === "plan" || p.kind === "review"))
     .join("")}</div>`;
   const scen = m.scenarios;
   const scenarios = scen.items.map((it) => ({ id: it.id, n: it.n, tab: it.tab, mark: it.tab, label: it.label, name: it.name, lead: it.lead, chips: it.chips }));
+  const roles = `<dl class="pl-roles">${m.roles.items
+    .map(([t, d, k]) => `<div${isLater(t) ? ' class="is-later"' : ""}><dt>${ic(k)}<span>${esc(t)}</span></dt><dd><p class="pl-p">${esc(d)}</p></dd></div>`)
+    .join("")}</dl>`;
   const close = { ...m.close, main: [m.close.ctaMain, "petlog/business/"], sub: [m.close.ctaSub, STORE.ios] };
   return wrap(`${hero({ wordmark: "Platform", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "18개 서비스 보기 ↓" : "See 18 services ↓", "#nls-records"], sub: [lang === "ko" ? "PETLOG 소개" : "About PETLOG", rel(D, "petlog/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "platform" })}
@@ -724,11 +493,11 @@ function platformPage(lang) {
     ${section("nls-legend", { kicker: m.legendKicker, title: m.legendTitle, lead: m.legendLead, noteText: NOTICE[L], body: legend })}
     ${groups}
     ${railBlock("nls-scenarios", { kicker: scen.kicker, title: scen.title, lead: scen.lead, items: scenarios })}
-    ${splitSection("nls-roles", { kicker: m.roles.kicker, title: m.roles.title, lead: m.roles.lead, body: checks(m.roles.items) })}
+    ${splitSection("nls-roles", { kicker: m.roles.kicker, title: m.roles.title, lead: m.roles.lead, body: roles })}
     ${section("nls-flow", { kicker: m.flow.kicker, title: m.flow.title, lead: m.flow.lead, tint: true, body: stepList(m.flow.steps) })}
-    ${section("nls-privacy", { kicker: m.privacy.kicker, title: m.privacy.title, body: checks(m.privacy.items) })}
-    ${section("nls-app", { kicker: m.app.kicker, title: m.app.title, lead: m.app.lead, tint: true, body: `${stepList(m.app.steps)}${storePills(m.app.storeLabel)}` })}
-    ${section("nls-faq", { kicker: m.faq.kicker, title: m.faq.title, body: faqList(m.faq.items) })}
+    ${splitSection("nls-privacy", { kicker: m.privacy.kicker, title: m.privacy.title, body: checks(m.privacy.items) })}
+    ${section("nls-app", { kicker: m.app.kicker, title: m.app.title, lead: m.app.lead, tint: true, body: `<div class="pl-start">${stepList(m.app.steps)}${storePills(m.app.storeLabel)}</div>` })}
+    ${splitSection("nls-faq", { kicker: m.faq.kicker, title: m.faq.title, body: faqList(m.faq.items) })}
     ${menuBlock(lang, D, "platform")}
     ${closeBlock(close, D)}
   </div>`);
@@ -758,39 +527,60 @@ function businessPage(lang) {
     };
   };
   const sp = m.subPanel;
-  const subPanel = `<div class="pl-sub">${head(sp.kicker, sp.title, sp.lead)}<div class="pl-legend">
-      <div class="pl-panel pl-panel--now"><div class="pl-panel__head">${ic("phone")}<h3>${esc(sp.now[0])}</h3></div><p class="pl-p">${esc(sp.now[1])}</p>${chipList(sp.now[2])}</div>
-      <div class="pl-panel pl-panel--next"><div class="pl-panel__head">${ic("sprout")}<h3>${esc(sp.next[0])}</h3></div><p class="pl-p">${esc(sp.next[1])}</p>${chipList(sp.next[2], true)}</div>
+  const subPanel = `<div class="pl-sub">${head(sp.kicker, sp.title, sp.lead)}<div class="pl-board pl-board--pair">
+      ${panel("now", "phone", sp.now[0], sp.now[1], sp.now[2])}
+      ${panel("next", "sprout", sp.next[0], sp.next[1], sp.next[2], true)}
     </div></div>`;
-  const saasPanel = `<div class="pl-sub">${head(m.saasKicker, m.saasTitle, m.saasLead)}${cards("col", m.saas.map(([t, d], i) => ({ n: pad2(i + 1), name: t, lead: d })), D, 5)}</div>`;
-  const LAYOUT = { subscription: ["row"], booking: ["tile", 2], commerce: ["wide", 2], lifestyle: ["col", 3], enterprise: ["row"] };
+  const saasPanel = `<div class="pl-sub">${head(m.saasKicker, m.saasTitle, m.saasLead)}<ul class="pl-products">${m.saas
+    .map(([t, d]) => `<li><b lang="en">${esc(t)}</b><p class="pl-p pl-sm">${esc(d)}</p></li>`)
+    .join("")}</ul></div>`;
+  const LAYOUT = {
+    subscription: ["row", "", false],
+    booking: ["grid", "pl-grid--2", true],
+    commerce: ["cols", "", false],
+    lifestyle: ["grid", "pl-grid--3 pl-grid--odd", true],
+    enterprise: ["row", "", false],
+  };
   const groupSections = BUSINESS.groups
     .map((g, gi) => {
-      const [kind, cols] = LAYOUT[g.id] || ["tile", 2];
-      let body = cards(kind, g.lines.map(lineCard), D, cols);
+      const [kind, cls, tint] = LAYOUT[g.id] || ["grid", "pl-grid--2", false];
+      let body = items(kind, g.lines.map(lineCard), D, cls);
       if (g.id === "subscription") body += subPanel;
       if (g.id === "enterprise") body += saasPanel;
-      return section(`nls-group-${g.id}`, { kicker: `${pad2(gi + 1)} · ${g.label.toUpperCase()}`, title: g[L], lead: L === "ko" ? g.koLead : g.enLead, tint: gi % 2 === 1, body });
+      return section(`nls-group-${g.id}`, { kicker: `${pad2(gi + 1)} · ${g.label.toUpperCase()}`, title: g[L], lead: L === "ko" ? g.koLead : g.enLead, tint, body });
     })
     .join("\n");
-  const models = `<ul class="pl-models">${m.structure.map(([k, v], i) => `<li><span>${pad2(i + 1)}</span><b lang="en">${esc(k)}</b><p class="pl-p">${esc(v)}</p></li>`).join("")}</ul>`;
+  const models = `<dl class="pl-dl pl-dl--code">${m.structure
+    .map(([k, v]) => {
+      const i = v.indexOf(" — ");
+      return `<div><dt lang="en">${esc(k)}</dt><dd>${i > 0 ? `<b>${esc(v.slice(0, i))}</b><p class="pl-p">${esc(v.slice(i + 3))}</p>` : `<p class="pl-p">${esc(v)}</p>`}</dd></div>`;
+    })
+    .join("")}</dl>`;
   const hd = m.revenueHead;
+  const STAGE = { now: " pl-stage--now", plan: "", review: " pl-stage--review" };
   const revenue = `<ul class="pl-table"><li class="pl-table__hd" aria-hidden="true"><span>${esc(hd[0])}</span><span>${esc(hd[1])}</span><span style="justify-self:end">${esc(hd[2])}</span></li>${BUSINESS.lines
-    .map((x) => `<li><span class="pl-table__name"><span class="pl-n">${esc(x.no)}</span>${esc(x.name[L])}</span><p class="pl-p">${esc(x.sum[L])}</p><span class="pl-stage">${esc(m.statusLabel[x.status])}</span></li>`)
+    .map((x) => `<li><span class="pl-table__name"><span class="pl-n">${esc(x.no)}</span>${esc(x.name[L])}</span><p class="pl-p">${esc(x.sum[L])}</p><span class="pl-stage${STAGE[x.status] || ""}">${esc(m.statusLabel[x.status])}</span></li>`)
     .join("")}</ul>`;
+  const market = `<ul class="pl-notes">${m.market.map(([t, d, k]) => `<li>${ic(k)}<h3>${esc(t)}</h3><p class="pl-p pl-sm">${esc(d)}</p></li>`).join("")}</ul>`;
+  const legal = `<dl class="pl-dl">${m.trust
+    .map((s) => {
+      const [k, v] = splitLabel(s);
+      return k ? `<div><dt>${esc(k)}</dt><dd><p class="pl-p">${esc(v)}</p></dd></div>` : `<div class="is-span"><dd><p class="pl-p">${esc(v)}</p></dd></div>`;
+    })
+    .join("")}</dl>`;
   return wrap(`${hero({ wordmark: "Business", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "20개 사업 분야 보기 ↓" : "See 20 areas ↓", "#nls-groups"], sub: [m.close.ctaMain, rel(D, "petlog/partnerships/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "business" })}
   <div class="nls__wrap">
-    ${section("nls-structure", { kicker: m.structureKicker, title: m.structureTitle, lead: m.structureLead, noteText: NOTICE[L], body: models })}
+    ${splitSection("nls-structure", { kicker: m.structureKicker, title: m.structureTitle, lead: m.structureLead, noteText: NOTICE[L], body: models })}
     ${railBlock("nls-groups", { kicker: m.groupsKicker, title: m.groupsTitle, lead: m.groupsLead, items: rail })}
     ${groupSections}
     ${section("nls-revenue", { kicker: m.revenueKicker, title: m.revenueTitle, lead: m.revenueLead, tint: true, body: revenue })}
-    ${splitSection("nls-public", { kicker: m.publicKicker, title: m.publicTitle, lead: m.publicLead, body: checks(m.publicItems) })}
-    ${section("nls-market", { kicker: m.marketKicker, title: m.marketTitle, lead: m.marketLead, tint: true, body: checks(m.market) })}
-    ${section("nls-diff", { kicker: m.diffKicker, title: m.diffTitle, lead: m.diffLead, body: cards("tint", m.diff.map(([t, d, k], i) => ({ n: pad2(i + 1), icon: k, name: t, lead: d })), D, 4) })}
-    ${section("nls-priority", { kicker: m.gtmKicker, title: m.gtmTitle, lead: m.gtmLead, tint: true, body: stepList(m.gtm.map(([t, d], i) => [pad2(i + 1), t, d])) })}
-    ${splitSection("nls-roadmap", { kicker: m.roadmapKicker, title: m.roadmapTitle, lead: m.roadmapNote, body: timeline(m.roadmap) })}
-    ${section("nls-trust", { kicker: m.trustKicker, title: m.trustTitle, tint: true, body: checks(m.trust) })}
+    ${splitSection("nls-public", { kicker: m.publicKicker, title: m.publicTitle, lead: m.publicLead, body: people(m.publicItems) })}
+    ${section("nls-market", { kicker: m.marketKicker, title: m.marketTitle, lead: m.marketLead, tint: true, body: market })}
+    ${section("nls-diff", { kicker: m.diffKicker, title: m.diffTitle, lead: m.diffLead, body: items("cols", m.diff.map(([t, d, k]) => ({ icon: k, name: t, lead: d })), D, "pl-cols--4") })}
+    ${section("nls-priority", { kicker: m.gtmKicker, title: m.gtmTitle, lead: m.gtmLead, tint: true, body: stepList(m.gtm.map(([t, d], i) => [pad2(i + 1), t, d]), true) })}
+    ${splitSection("nls-roadmap", { kicker: m.roadmapKicker, title: m.roadmapTitle, lead: m.roadmapNote, body: phases(m.roadmap) })}
+    ${splitSection("nls-trust", { kicker: m.trustKicker, title: m.trustTitle, tint: true, body: legal })}
     ${menuBlock(lang, D, "business")}
     ${closeBlock({ ...m.close, main: [m.close.ctaMain, "petlog/partnerships/"], sub: [m.close.ctaSub, "petlog/contact/"] }, D)}
   </div>`);
@@ -804,26 +594,26 @@ function partnershipsPage(lang) {
     const p = PARTNERS.items.find((x) => x.no === no);
     return { n: p.no, icon: PARTNER_ICONS[p.no] || iconFor(p.name.en), name: p.name[L], lead: p.value[L], points: [[m.labels.scope, p.scope[L]], [m.labels.how, p.how[L]], [m.labels.terms, p.terms[L]]], link: [m.labels.cta, CONTACT_HREF(p.type)], anchor: `partner-${p.no}` };
   };
-  const LAYOUT = { care: ["tile", 3], brand: ["row"], public: ["tint", 2] };
+  const LAYOUT = { care: ["grid", "pl-grid--3", true], brand: ["row", "", false], public: ["grid", "pl-grid--2", true] };
   const groups = m.groups
-    .map((g, gi) => {
-      const [kind, cols] = LAYOUT[g.id] || ["tile", 3];
-      return section(`nls-p-${g.id}`, { kicker: g.kicker, title: g.title, lead: g.lead, tint: gi % 2 === 0, body: cards(kind, g.items.map(card), D, cols) });
+    .map((g) => {
+      const [kind, cls, tint] = LAYOUT[g.id] || ["grid", "pl-grid--3", false];
+      return section(`nls-p-${g.id}`, { kicker: g.kicker, title: g.title, lead: g.lead, tint, body: items(kind, g.items.map(card), D, cls) });
     })
     .join("\n");
-  const offer = m.offer.map((o) => ({ ...o, icon: iconFor(PARTNERS.meta.en.offer.find((e) => e.n === o.n).name) }));
+  const offer = m.offer.map((o) => ({ name: o.name, lead: o.lead, chips: o.chips, icon: iconFor(PARTNERS.meta.en.offer.find((e) => e.n === o.n).name) }));
   const [lw, lr, lp] = m.scenarioLabels;
-  const scenarios = m.scenarios.map((x) => ({ n: x.n, icon: x.icon, name: x.name, lead: x.lead, points: [[lw, x.who], [lr, x.role], [lp, x.pre]] }));
+  const scenarios = m.scenarios.map((x) => ({ icon: x.icon, name: x.name, lead: x.lead, points: [[lw, x.who], [lr, x.role], [lp, x.pre]] }));
   const poc = m.poc.map(([t, d], i) => [`STEP ${pad2(i + 1)}`, t, d]);
   return wrap(`${hero({ wordmark: "Partnerships", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "14개 협력 분야 ↓" : "14 partner types ↓", "#nls-p-care"], sub: [m.labels.cta, rel(D, "petlog/contact/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "partnerships" })}
   <div class="nls__wrap">
-    ${section("nls-offer", { kicker: m.offerKicker, title: m.offerTitle, lead: m.offerLead, body: cards("tint", offer, D, 4) })}
+    ${section("nls-offer", { kicker: m.offerKicker, title: m.offerTitle, lead: m.offerLead, body: items("cols", offer, D, "pl-cols--4") })}
     ${groups}
-    ${section("nls-scenarios", { kicker: m.scenariosKicker, title: m.scenariosTitle, lead: m.scenariosLead, body: cards("row", scenarios, D) })}
-    ${splitSection("nls-poc", { kicker: m.pocKicker, title: m.pocTitle, lead: m.pocLead, tint: true, body: timeline(poc) })}
-    ${section("nls-data", { kicker: m.dataKicker, title: m.dataTitle, lead: m.dataLead, body: checks(m.data) })}
-    ${section("nls-joint", { kicker: m.jointKicker, title: m.jointTitle, tint: true, body: cards("col", m.joint, D, 3) })}
+    ${section("nls-scenarios", { kicker: m.scenariosKicker, title: m.scenariosTitle, lead: m.scenariosLead, body: items("grid", scenarios, D, "pl-grid--2") })}
+    ${splitSection("nls-poc", { kicker: m.pocKicker, title: m.pocTitle, lead: m.pocLead, tint: true, body: phases(poc, true) })}
+    ${section("nls-data", { kicker: m.dataKicker, title: m.dataTitle, lead: m.dataLead, body: people(m.data, true) })}
+    ${section("nls-joint", { kicker: m.jointKicker, title: m.jointTitle, tint: true, body: items("grid", m.joint.map((x) => ({ icon: x.icon, name: x.name, lead: x.lead })), D, "pl-grid--3 pl-grid--odd") })}
     ${splitSection("nls-principles", { kicker: m.principlesKicker, title: m.principlesTitle, body: checks(m.principles) })}
     ${section("nls-process", { kicker: m.processKicker, title: m.processTitle, noteText: m.processNote, tint: true, body: stepList(m.steps.map(([t, d], i) => [pad2(i + 1), t, d])) })}
     ${menuBlock(lang, D, "partnerships")}
@@ -834,8 +624,8 @@ function partnershipsPage(lang) {
 function contactPage(lang) {
   const c = CONTACT[bl(lang)];
   const D = 2;
-  const purposes = c.purposes.map((p, i) => ({ n: pad2(i + 1), name: p.name, body: p.body, href: p.href, icon: p.icon }));
-  const items = c.types.map(([key, name, body], i) => ({ n: pad2(i + 1), name, body, href: `petlog/contact/?type=${key}#inquiry`, icon: TYPE_ICONS[key] || "mail" }));
+  const purposes = c.purposes.map((p) => ({ name: p.name, body: p.body, href: p.href, icon: p.icon }));
+  const list = c.types.map(([key, name, body], i) => ({ n: pad2(i + 1), name, body, href: `petlog/contact/?type=${key}#inquiry`, icon: TYPE_ICONS[key] || "mail" }));
   const direct = c.direct.map((d) => ({ name: d.name, body: d.body, href: d.href === "ios" ? STORE.ios : d.href === "android" ? STORE.android : d.href }));
   const form = inquiryFormHtml(lang, D, {
     category: "PETLOG",
@@ -845,10 +635,10 @@ function contactPage(lang) {
   return wrap(`${hero({ wordmark: "Contact", titleHtml: c.heroTitle, lead: c.heroLead, main: [lang === "ko" ? "문의하기 ↓" : "Send an inquiry ↓", "#inquiry"], sub: [lang === "ko" ? "PETLOG 소개" : "About PETLOG", rel(D, "petlog/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "contact" })}
   <div class="nls__wrap">
-    ${section("nls-purpose", { kicker: c.purposeKicker, title: c.purposeTitle, lead: c.purposeLead, body: tiles("pl-types", purposes, D) })}
-    ${section("nls-types", { kicker: c.kicker, title: c.listTitle, lead: c.listLead, tint: true, body: tiles("pl-types", items, D) })}
-    ${section("nls-direct", { kicker: c.directKicker, title: c.directTitle, body: tiles("pl-fam", direct, D) })}
-    ${section("nls-guide", { kicker: c.guideKicker, title: c.guideTitle, tint: true, body: checks(c.guide) })}
+    ${splitSection("nls-purpose", { kicker: c.purposeKicker, title: c.purposeTitle, lead: c.purposeLead, body: directory(purposes, D) })}
+    ${section("nls-types", { kicker: c.kicker, title: c.listTitle, lead: c.listLead, tint: true, body: tiles("pl-tiles--3", list, D) })}
+    ${section("nls-direct", { kicker: c.directKicker, title: c.directTitle, body: tiles("pl-tiles--4", direct, D) })}
+    ${section("nls-guide", { kicker: c.guideKicker, title: c.guideTitle, tint: true, body: checks(c.guide, true) })}
   </div>
   <div class="bp-page">${form}</div>
   <div class="nls__wrap">
