@@ -21,7 +21,7 @@
   --ogs-wash: #fff3eb;
   --ogs-wash-line: rgba(168, 78, 36, 0.2);
   --ogs-soft: rgba(233, 148, 101, 0.15);
-  --ogs-mist: #f6f6f5;
+  --ogs-mist: #ffffff; /* owner: no grey backgrounds (was #f6f6f5) */
   --ogs-card: #ffffff;
   --ogs-ink: #171717;
   --ogs-muted: #474747;
@@ -103,6 +103,11 @@ html[data-theme="dark"] #lifestage-detail.ogs {
 }
 #lifestage-detail.ogs .ogs-mist {
   background: var(--ogs-mist);
+}
+/* with the grey gone, a hairline keeps the former grey bands apart from the sections around them */
+html:not([data-newon-shell-theme="dark"]) #lifestage-detail.ogs .nls-block--band.ogs-mist {
+  border-top: 1px solid var(--ogs-line);
+  border-bottom: 1px solid var(--ogs-line);
 }
 #lifestage-detail.ogs .ogs-sec--sig + .ogs-sec--sig {
   border-top: 1px solid var(--ogs-wash-line);
