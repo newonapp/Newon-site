@@ -36,7 +36,7 @@ const LEGACY = LIVON_LEGACY_PATH.replace(/\/$/, "");
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const NLS_VER = "20261025ov1";
-const LVS_VER = "20261024lvs5";
+const LVS_VER = "20261025rd1";
 
 function localeFlat(lang) {
   const en = loadJson("en.json");
