@@ -28,6 +28,11 @@
  * Status is shown by grouping (c.status: now / in development / planned / under review), never by per-card badges.
  * The film hero (video, text, buttons, size, veil) is untouched. Reuses the existing ogs-* patterns; the only new
  * CSS is a few column modifiers and the FAQ disclosure list (ongil-site.css, scoped).
+ *
+ * RD body redesign (2026-10-25): everything below the film hero and the shared sub-menu is re-laid out as an editorial,
+ * calm product site for seniors and families — one layout per content type (statement, paired rows, bento, comparison
+ * tables, phase board, real step sequences, directories, accordions), body text >= 16px, no section numbers, no
+ * decorative shapes. Copy, links, ids/anchors and status grouping are unchanged. Hero markup/CSS untouched.
  */
 import fs from "fs";
 import path from "path";
@@ -53,7 +58,6 @@ import { KO } from "./ongil-site-ko.mjs";
 import { EN } from "./ongil-site-en.mjs";
 import {
   icon,
-  roadArt,
   FACT_ICONS,
   VALUE_ICONS,
   JOURNEY_ICONS,
@@ -68,7 +72,7 @@ import {
 } from "./ongil-site-icons.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-export const OGS_VER = "20261024ogs4";
+export const OGS_VER = "20261025rd1";
 const NLS_VER = "20261025ov1"; // Life Stage assets are reused as-is
 /** ONGIL first-screen background film (owner-provided, 2026-10-18). */
 const ONGIL_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260323_071151_38c3924f-c312-48af-a196-3fbb80e4226f.mp4";
@@ -92,30 +96,41 @@ function rel(lang, p) {
   return `/${lang}/${p}`;
 }
 
-/* ───────── shared pieces ───────── */
+/* ───────── shared pieces (RD 2026-10-25: editorial body redesign; hero + sub-menu untouched) ───────── */
 
-/** Section heading in the Life Stage vocabulary (nls-head / nls-kicker / nls-title / nls-lead). */
-function head(id, kicker, title, lead, n = "", ico = "") {
-  return `<header class="nls-head">
-      <p class="nls-kicker ogs-kicker">${ico ? `<span class="ogs-kicker__ico">${icon(ico)}</span>` : ""}${n ? `<span class="ogs-kicker__n">${e(n)}</span>` : ""}${e(kicker)}</p>
-      <h2 class="nls-title" id="${id}-t">${nl(title)}</h2>
-      ${lead ? `<p class="nls-lead">${e(lead)}</p>` : ""}
+/** Kicker text that is plain English/ASCII gets lang="en" (screen readers pronounce it correctly). */
+const enAttr = (t) => (/^[\x20-\x7E·–—→↓]+$/.test(t || "") ? ' lang="en"' : "");
+
+/** Section heading. split = title left, lead right (desktop). Quiet sentence-case eyebrow, no numbers. */
+function head(id, kicker, title, lead, { split = false, wide = false } = {}) {
+  return `<header class="ogs-head${split ? " ogs-head--split" : ""}${wide ? " ogs-head--wide" : ""}">
+      <div class="ogs-head__main">
+        ${kicker ? `<p class="ogs-eyebrow"${enAttr(kicker)}>${e(kicker)}</p>` : ""}
+        <h2 class="ogs-h2" id="${id}-t">${nl(title)}</h2>
+      </div>
+      ${lead ? `<p class="ogs-lead">${e(lead)}</p>` : ""}
     </header>`;
 }
 
-/** One body section. tone: "" (white) · "tint" (apricot wash band) · "ink" (black band). */
+/** One body section. tone: "" (white) · "tint" (apricot wash, one key band) · "mist" (neutral band) · "ink" (black band). */
 function sec(id, inner, { tone = "", cls = "" } = {}) {
-  const t = tone === "tint" ? " nls-block--band ogs-tint" : tone === "ink" ? " nls-block--ink ogs-ink" : "";
+  const t =
+    tone === "tint" ? " nls-block--band ogs-band ogs-tint" : tone === "mist" ? " nls-block--band ogs-band ogs-mist" : tone === "ink" ? " nls-block--ink ogs-band ogs-ink" : "";
   return `<section id="${id}" class="nls-block ogs-sec${t}${cls ? " " + cls : ""}" data-hs-section aria-labelledby="${id}-t">
     ${inner}
   </section>`;
 }
 
 const note = (t, strong = false) => (t ? `<p class="nls-note ogs-note${strong ? " ogs-note--strong" : ""}">${e(t)}</p>` : "");
-/** The one shared notice per page (replaces the per-card status badges). Same look as .ogs-note. */
+/** The one shared notice per page (replaces the per-card status badges). */
 const notice = (c) => `<p class="nls-note ogs-note ogs-notice">${e(c.notice)}</p>`;
-/** Small apricot icon tile. */
+/** Apricot icon tile. */
 const tile = (name, mod = "") => `<span class="ogs-tile${mod ? " ogs-tile--" + mod : ""}">${icon(name)}</span>`;
+/** Small inline icon mark (no tile). */
+const mark = (name, mod = "") => `<span class="ogs-mark${mod ? " ogs-mark--" + mod : ""}">${icon(name)}</span>`;
+/** Small label above a value / heading. */
+const tag = (t, accent = false, n = "") =>
+  `<p class="ogs-tag${accent ? " ogs-tag--accent" : ""}">${n ? `<span class="ogs-tag__n">${e(n)}</span>` : ""}<span${enAttr(t)}>${e(t)}</span></p>`;
 
 /** First screen: the shared dark film hero, no video and no poster (gradient fallback in ongil-site.css). */
 function hero(c, h, { main, sub, compact }) {
@@ -159,26 +174,23 @@ function ctaLink(c, lang, key) {
   return `<a class="ogs-link" href="${pagePath(lang, "contact")}">${e(c.ui.inquiry)} →</a>`;
 }
 const backLink = (c) => `<a class="ogs-top" href="#ogs-index">${e(c.ui.back)} ↑</a>`;
+const footLinks = (...links) => `<div class="ogs-foot-links">${links.join("")}</div>`;
 
-const chips = (items) => `<ul class="nls-chips ogs-chips">${(items || []).map((t) => `<li>${e(t)}</li>`).join("")}</ul>`;
-
-/** Black closing band: road line art + centred title; the first action is the apricot CTA. */
+/** Black closing band: centred title; the first action is the apricot CTA. */
 function closeInk(c, lang, actions, x) {
   return sec(
     "ogs-close",
     `<div class="ogs-close">
-      <p class="nls-kicker" lang="en">${e(x.closeKicker || c.ui.closeKicker)}</p>
-      <h2 class="nls-hero__title" id="ogs-close-t">${x.closeTitleHtml}</h2>
-      <p class="nls-lead">${e(x.closeLead)}</p>
-      <div class="nls-actions">${actions
+      <p class="ogs-eyebrow"${enAttr(x.closeKicker || c.ui.closeKicker)}>${e(x.closeKicker || c.ui.closeKicker)}</p>
+      <h2 class="ogs-close__title" id="ogs-close-t">${x.closeTitleHtml}</h2>
+      <p class="ogs-close__lead">${e(x.closeLead)}</p>
+      <div class="ogs-actions">${actions
         .map(([label, href], i) => `<a class="nls-btn${i ? " nls-btn--ghost" : " ogs-btn--accent"}" href="${e(href)}">${e(label)}${i ? "" : " →"}</a>`)
         .join("")}</div>
     </div>`,
     { tone: "ink" }
   );
 }
-
-/* ───────── shared V4 pieces ───────── */
 
 /** Area number (01–28) by area id: 25 regular areas + the 3 signature features. */
 function areaIndex(c) {
@@ -188,62 +200,61 @@ function areaIndex(c) {
   return map;
 }
 
-/** Status board: four status groups (now / in development / planned / under review) instead of per-card badges.
- *  Reuses the 4-column .ogs-cats board. hrefFor(areaId) → link to the area. */
-function statusBoard(c, hrefFor) {
+/** Status board: now / in development / planned / under review as one four-column comparison panel.
+ *  "Available now" is the only highlighted column, so present and future never read alike. hrefFor(areaId) → link. */
+function phaseBoard(c, hrefFor) {
   const st = c.status;
   const nums = areaIndex(c);
-  return `<ol class="ogs-cats ogs-cats--status">${st.cols
+  return `<ol class="ogs-phase">${st.cols
     .map(
-      (col, ci) => `<li><div class="ogs-cats__top">${tile(col.icon)}<span class="ogs-cats__n">${pad(ci + 1)}</span></div><p class="ogs-cats__en">${e(col.ko)}</p>${c.lang === "ko" ? `<p class="ogs-cats__ko" lang="en">${e(col.en)}</p>` : ""}
-        <ul>${col.items.map((it) => `<li><a href="${e(hrefFor(it.a))}"><span>${e(nums[it.a] || "")}</span>${e(it.t)}</a></li>`).join("")}</ul></li>`
+      (col, ci) => `<li class="ogs-phase__col${ci === 0 ? " ogs-phase__col--now" : ""}">
+        <div class="ogs-phase__head">${mark(col.icon)}<div><p class="ogs-phase__t">${e(col.ko)}</p>${c.lang === "ko" ? `<p class="ogs-phase__en" lang="en">${e(col.en)}</p>` : ""}</div></div>
+        <ul>${col.items.map((it) => `<li><a href="${e(hrefFor(it.a))}"><span class="ogs-phase__n">${e(nums[it.a] || "")}</span><span class="ogs-phase__x">${e(it.t)}</span></a></li>`).join("")}</ul>
+      </li>`
     )
     .join("")}</ol>
       ${note(st.basis)}`;
 }
 
-/** Wide rows with a heading column and a definition column (problem → solution, alternatives, customers). */
-function dlRows(items, map) {
-  return `<div class="ogs-rows">${items
-    .map((it, i) => {
-      const m = map(it, i);
-      return `<article class="ogs-row">
-          <div class="ogs-row__head">${m.label ? `<p class="ogs-label"><span class="ogs-label__n">${pad(i + 1)}</span><span>${e(m.label)}</span></p>` : ""}<h3>${e(m.title)}</h3>${m.text ? `<p>${e(m.text)}</p>` : ""}</div>
-          <div class="ogs-row__body"><dl class="ogs-dl ogs-dl--rows">${m.rows.map(([k, v]) => `<div><dt>${e(k)}</dt><dd>${e(v)}</dd></div>`).join("")}</dl></div>
-        </article>`;
-    })
-    .join("")}</div>`;
+/** Check list (trust / privacy / data). Alert items are pulled out into one red callout at the end. */
+function checkList(points, cls = "") {
+  const plain = points.filter((p) => !p.alert);
+  const alerts = points.filter((p) => p.alert);
+  return `<ul class="ogs-checks${cls ? " " + cls : ""}">${plain
+    .map((p) => `<li>${mark("check")}<div><strong>${e(p.t)}</strong><p>${e(p.text)}</p></div></li>`)
+    .join("")}</ul>${alerts
+    .map((p) => `<div class="ogs-callout ogs-callout--alert">${mark("alert")}<div><strong>${e(p.t)}</strong><p>${e(p.text)}</p></div></div>`)
+    .join("")}`;
 }
 
-/** Check list (trust / privacy / fee principles); items with alert get the alert mark. */
-function checkList(points, cls = "ogs-checks--grid") {
-  return `<ol class="ogs-checks ${cls}">${points
-    .map(
-      (p, i) => `<li${p.alert ? ' class="ogs-checks__alert"' : ""}><span class="ogs-checks__mark">${icon(p.alert ? "alert" : "check")}</span><div><span class="ogs-checks__n">${pad(i + 1)}</span><p><strong>${e(p.t)}</strong> · ${e(p.text)}</p></div></li>`
-    )
+/** Real sequence only: numbered steps in columns (n = 3, 4 or 5). */
+function steps(list, icons, n) {
+  return `<ol class="ogs-steps ogs-steps--${n}">${list
+    .map((s, i) => `<li><div class="ogs-steps__top"><span class="ogs-steps__n">${e(s.n)}</span>${icons ? mark(icons[i % icons.length]) : ""}</div><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
     .join("")}</ol>`;
 }
 
-/** Numbered stepper cards (.ogs-proc); n = 3, 4 or 5 columns. */
-function procList(steps, icons, n) {
-  return `<ol class="ogs-proc ogs-proc--${n}">${steps
-    .map((s, i) => `<li><div class="ogs-proc__top"><span class="ogs-proc__n">${e(s.n)}</span>${tile(icons[i % icons.length], "round")}</div><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
-    .join("")}</ol>`;
-}
-
-/** Intro statement + facts panel (Overview A, Partnerships A). */
-function introBlock(c, ab, withNotice) {
+/** Large statement + lead + facts (Overview A, Partnerships A). */
+function introBlock(c, ab) {
   return `<div class="ogs-intro">
-      <div class="ogs-intro__text">
-        <p class="nls-kicker ogs-kicker" lang="en">${e(ab.kicker)}</p>
-        <p class="ogs-intro__statement" id="ogs-intro-t">${e(ab.statement)}</p>
-        <p class="nls-lead">${e(ab.lead)}</p>
-      </div>
-      <div class="ogs-panel">
-        <dl class="ogs-facts">${ab.facts.map((f, i) => `<div>${tile(FACT_ICONS[i % FACT_ICONS.length])}<dt>${e(f.k)}</dt><dd>${e(f.v)}</dd></div>`).join("")}</dl>
+      <p class="ogs-eyebrow" lang="en">${e(ab.kicker)}</p>
+      <h2 class="ogs-statement" id="ogs-intro-t">${e(ab.statement)}</h2>
+      <div class="ogs-intro__grid">
+        <p class="ogs-intro__lead">${e(ab.lead)}</p>
+        <dl class="ogs-facts">${ab.facts.map((f, i) => `<div><dt>${mark(FACT_ICONS[i % FACT_ICONS.length])}${e(f.k)}</dt><dd>${e(f.v)}</dd></div>`).join("")}</dl>
       </div>
     </div>
-    ${withNotice ? notice(c) : ""}`;
+    ${notice(c)}`;
+}
+
+/** Two-or-three column comparison table; on phones each row becomes a stacked block with inline labels. */
+function table(cls, cols, rows) {
+  return `<div class="ogs-table-wrap"><table class="ogs-table ${cls}">
+      <thead><tr>${cols.map((h, i) => (h ? `<th scope="col">${e(h)}</th>` : `<td aria-hidden="true"></td>`)).join("")}</tr></thead>
+      <tbody>${rows
+        .map((r) => `<tr><th scope="row">${r.head}</th>${r.cells.map((v, i) => `<td><span class="ogs-td-k" aria-hidden="true">${e(cols[i + 1])}</span>${v}</td>`).join("")}</tr>`)
+        .join("")}</tbody>
+    </table></div>`;
 }
 
 /* ───────── 01 Overview ───────── */
@@ -252,118 +263,130 @@ function overviewMain(c, S, lang) {
   const o = c.overview;
   const plat = (id) => `${pagePath(lang, "platform")}#p-${id}`;
 
-  // A · definition statement + facts panel, then the page's one shared notice
-  const intro = sec("ogs-intro", introBlock(c, o.about, true));
+  // A · large statement, lead + four facts, then the page's one shared notice
+  const intro = sec("ogs-intro", introBlock(c, o.about));
 
-  // B · problem → solution rows (tinted band)
+  // B · problem → ONGIL's way, as paired rows (no boxes)
   const pr = o.problems;
   const problems = sec(
     "ogs-problems",
-    `${head("ogs-problems", pr.label, pr.title, pr.lead, pr.n)}
-      ${dlRows(pr.items, (it) => ({ label: "Problem", title: it.problem, text: it.text, rows: [[pr.solutionLabel, it.how]] }))}`,
-    { tone: "tint", cls: "ogs-sec--rows" }
+    `${head("ogs-problems", pr.label, pr.title, pr.lead, { split: true })}
+      <ol class="ogs-pairs">${pr.items
+        .map(
+          (it) => `<li class="ogs-pair">
+          <div class="ogs-pair__q">${tag("Problem")}<h3>${e(it.problem)}</h3><p>${e(it.text)}</p></div>
+          <div class="ogs-pair__a">${tag(pr.solutionLabel, true)}<p>${e(it.how)}</p></div>
+        </li>`
+        )
+        .join("")}</ol>`
   );
 
-  // C · core values (open icon columns)
+  // C · six core values: large-type cards on a neutral band
   const mission = sec(
     "ogs-vision",
-    `${head("ogs-vision", o.mission.label, o.mission.title, o.mission.lead, o.mission.n)}
-      <ol class="ogs-values">${o.mission.values
+    `${head("ogs-vision", o.mission.label, o.mission.title, o.mission.lead, { split: true })}
+      <ul class="ogs-vals">${o.mission.values
         .map(
-          (v, i) => `<li><div class="ogs-values__top">${tile(VALUE_ICONS[i % VALUE_ICONS.length], "round")}<span class="ogs-values__n">${pad(i + 1)}</span></div><p class="ogs-values__en" lang="en">${e(v.en)}</p>${c.lang === "ko" ? `<p class="ogs-values__ko">${e(v.ko)}</p>` : ""}<p class="ogs-values__t">${e(v.text)}</p></li>`
+          (v, i) => `<li>${mark(VALUE_ICONS[i % VALUE_ICONS.length])}<p class="ogs-vals__en" lang="en">${e(v.en)}</p>${c.lang === "ko" ? `<p class="ogs-vals__ko">${e(v.ko)}</p>` : ""}<p class="ogs-vals__t">${e(v.text)}</p></li>`
         )
-        .join("")}</ol>`
+        .join("")}</ul>`,
+    { tone: "mist" }
   );
 
-  // D · 28 areas at a glance: six group tiles on the apricot wash band
+  // D · 28 areas at a glance: bento of the six groups (area ranges are the real area numbers)
   const journey = sec(
     "ogs-support",
-    `${head("ogs-support", o.journey.label, o.journey.title, o.journey.lead, o.journey.n)}
-      <ol class="ogs-signal ogs-signal--6">${o.journey.items
+    `${head("ogs-support", o.journey.label, o.journey.title, o.journey.lead, { split: true })}
+      <ul class="ogs-bento">${o.journey.items
         .map(
-          (s, i) => `<li><div class="ogs-signal__top">${tile(JOURNEY_ICONS[i % JOURNEY_ICONS.length])}<span class="ogs-signal__n">${e(s.n)}</span></div><div><p class="ogs-label"><span lang="en">${e(s.en)}</span></p>${c.lang === "ko" ? `<h3>${e(s.name)}</h3>` : ""}<p>${e(s.text)}</p></div></li>`
+          (s, i) => `<li class="ogs-bento__t ogs-bento__t--${i + 1}">
+          <div class="ogs-bento__top">${tile(JOURNEY_ICONS[i % JOURNEY_ICONS.length])}<span class="ogs-bento__n">${e(s.n)}</span></div>
+          <div class="ogs-bento__body">${c.lang === "ko" ? `<p class="ogs-bento__en" lang="en">${e(s.en)}</p><h3>${e(s.name)}</h3>` : `<h3>${e(s.en)}</h3>`}<p>${e(s.text)}</p></div>
+        </li>`
         )
-        .join("")}</ol>
-      <div class="ogs-foot-links"><a class="ogs-link" href="${pagePath(lang, "platform")}#ogs-index">${e(c.ui.toPlatform)} →</a></div>`,
-    { tone: "tint" }
+        .join("")}</ul>
+      ${footLinks(`<a class="ogs-link" href="${pagePath(lang, "platform")}#ogs-index">${e(c.ui.toPlatform)} →</a>`)}`
   );
 
-  // E · use cases: numbered stepper
+  // E · use cases: asymmetric split, a calm list of moments
   const core = sec(
     "ogs-journey",
-    `${head("ogs-journey", o.core.label, o.core.title, o.core.lead, o.core.n)}
-      <ol class="ogs-timeline">${o.core.steps
-        .map((s, i) => `<li><span class="ogs-timeline__dot" aria-hidden="true">${icon(CORE_ICONS[i % CORE_ICONS.length])}</span><span class="ogs-timeline__n">${e(s.n)}</span><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
-        .join("")}</ol>`
-  );
-
-  // F · core users: split heading + role cards (consent card highlighted)
-  const people = sec(
-    "ogs-who",
-    `<div class="nls-split">
-      ${head("ogs-who", o.people.label, o.people.title, o.people.lead, o.people.n)}
-      <ol class="ogs-roles">${o.people.items
-        .map((s, i) => `<li${i === o.people.items.length - 1 ? ' class="ogs-roles__key"' : ""}>${tile(PEOPLE_ICONS[i % PEOPLE_ICONS.length])}<div><span class="ogs-roles__n">${e(s.n)}</span><strong>${e(s.name)}</strong><p>${e(s.text)}</p></div></li>`)
-        .join("")}</ol>
-    </div>`,
-    { tone: "tint" }
-  );
-
-  // G · differentiation vs existing alternatives
-  const cp = o.compare;
-  const compare = sec(
-    "ogs-compare",
-    `${head("ogs-compare", cp.label, cp.title, cp.lead, cp.n)}
-      ${dlRows(cp.items, (it) => ({ label: cp.altLabel, title: it.alt, text: it.text, rows: [[cp.diffLabel, it.diff]] }))}`,
-    { cls: "ogs-sec--rows ogs-sec--rule" }
-  );
-
-  // H · current service status (grouped; no per-card badges)
-  const status = sec(
-    "ogs-status",
-    `${head("ogs-status", c.status.label, c.status.title, c.status.lead, "08")}
-      ${statusBoard(c, plat)}`,
-    { tone: "tint" }
-  );
-
-  // I · long-term vision: widening layer stack
-  const beyond = sec(
-    "ogs-ecosystem",
-    `${head("ogs-ecosystem", o.beyond.label, o.beyond.title, o.beyond.lead, o.beyond.n)}
-      <ol class="ogs-layers">${o.beyond.layers
-        .map((s, i) => `<li style="--ogs-w:${40 + i * 20}%"><span class="ogs-layers__n">${e(s.n)}</span>${tile(LAYER_ICONS[i % LAYER_ICONS.length], "round")}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
-        .join("")}</ol>
-      ${note(o.beyond.note)}`
-  );
-
-  // J · trust & responsibility
-  const trust = sec(
-    "ogs-family",
-    `<div class="nls-split ogs-split--wide">
-      ${head("ogs-family", o.trust.label, o.trust.title, o.trust.lead, o.trust.n)}
-      ${checkList(o.trust.points)}
+    `<div class="ogs-split">
+      ${head("ogs-journey", o.core.label, o.core.title, o.core.lead)}
+      <ul class="ogs-moments">${o.core.steps
+        .map((s, i) => `<li>${tile(CORE_ICONS[i % CORE_ICONS.length])}<div><h3>${e(s.name)}</h3><p>${e(s.text)}</p></div></li>`)
+        .join("")}</ul>
     </div>`
   );
 
-  // K · related Newon platforms
+  // F · three core users as columns; the consent rule as a full-width bar beneath
+  const ppl = o.people.items;
+  const people = sec(
+    "ogs-who",
+    `${head("ogs-who", o.people.label, o.people.title, o.people.lead, { split: true })}
+      <ul class="ogs-people">${ppl
+        .slice(0, -1)
+        .map((s, i) => `<li>${tile(PEOPLE_ICONS[i % PEOPLE_ICONS.length], "lg")}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
+        .join("")}</ul>
+      <div class="ogs-callout ogs-callout--key">${mark(PEOPLE_ICONS[3])}<div><strong>${e(ppl[ppl.length - 1].name)}</strong><p>${e(ppl[ppl.length - 1].text)}</p></div></div>`,
+    { tone: "mist" }
+  );
+
+  // G · differentiation vs existing alternatives: a two-column comparison table
+  const cp = o.compare;
+  const compare = sec(
+    "ogs-compare",
+    `${head("ogs-compare", cp.label, cp.title, cp.lead, { split: true })}
+      ${table(
+        "ogs-table--compare",
+        [cp.altLabel, cp.diffLabel],
+        cp.items.map((it) => ({ head: `<strong>${e(it.alt)}</strong><span>${e(it.text)}</span>`, cells: [`${mark("arrow")}<span>${e(it.diff)}</span>`] }))
+      )}`
+  );
+
+  // H · current service status: the key apricot band (now vs later kept clearly apart)
+  const status = sec(
+    "ogs-status",
+    `${head("ogs-status", c.status.label, c.status.title, c.status.lead, { split: true })}
+      ${phaseBoard(c, plat)}`,
+    { tone: "tint" }
+  );
+
+  // I · long-term vision: four expansion stages in order
+  const beyond = sec(
+    "ogs-ecosystem",
+    `${head("ogs-ecosystem", o.beyond.label, o.beyond.title, o.beyond.lead, { split: true })}
+      ${steps(o.beyond.layers, LAYER_ICONS, 4)}
+      ${note(o.beyond.note)}`
+  );
+
+  // J · trust & responsibility: two-column check list, emergency guidance as a red callout
+  const trust = sec(
+    "ogs-family",
+    `${head("ogs-family", o.trust.label, o.trust.title, o.trust.lead, { split: true })}
+      ${checkList(o.trust.points, "ogs-checks--2")}`,
+    { cls: "ogs-sec--rule" }
+  );
+
+  // K · related Newon platforms: link rows
   const newon = sec(
     "ogs-newon",
-    `${head("ogs-newon", o.newon.label, o.newon.title, o.newon.lead, o.newon.n)}
-      <ol class="ogs-linkrows">${o.newon.items
-        .map((s) => `<li><a href="${rel(lang, s.href)}"><span class="ogs-linkrows__n">${e(s.n)}</span><strong lang="en">${e(s.name)}</strong><span class="ogs-linkrows__t">${e(s.text)}</span><span class="ogs-linkrows__arrow" aria-hidden="true">${icon("arrow")}</span></a></li>`)
-        .join("")}</ol>`
+    `${head("ogs-newon", o.newon.label, o.newon.title, o.newon.lead, { split: true })}
+      <ul class="ogs-linkrows">${o.newon.items
+        .map((s) => `<li><a href="${rel(lang, s.href)}"><strong lang="en">${e(s.name)}</strong><span class="ogs-linkrows__t">${e(s.text)}</span><span class="ogs-linkrows__arrow" aria-hidden="true">${icon("arrow")}</span></a></li>`)
+        .join("")}</ul>`,
+    { tone: "mist" }
   );
 
   // L · black close with three next steps
   const next = sec(
     "ogs-next",
-    `
-      ${head("ogs-next", o.next.label, o.next.title, "", o.next.n)}
-      <ol class="ogs-next">${o.next.items
+    `<header class="ogs-head ogs-head--center"><div class="ogs-head__main"><p class="ogs-eyebrow" lang="en">${e(o.next.label)}</p><h2 class="ogs-h2" id="ogs-next-t">${nl(o.next.title)}</h2></div></header>
+      <ul class="ogs-next">${o.next.items
         .map(
-          (s, i) => `<li>${tile(NEXT_ICONS[i % NEXT_ICONS.length], "ink")}<span class="ogs-next__n">${pad(i + 1)}</span><p class="ogs-next__k">${e(s.k)}</p><p>${e(s.text)}</p><a class="nls-btn${i ? " nls-btn--ghost" : " ogs-btn--accent"}" href="${rel(lang, s.href)}">${e(s.cta)} →</a></li>`
+          (s, i) => `<li>${tile(NEXT_ICONS[i % NEXT_ICONS.length], "ink")}<p class="ogs-next__k">${e(s.k)}</p><p>${e(s.text)}</p><a class="nls-btn${i ? " nls-btn--ghost" : " ogs-btn--accent"}" href="${rel(lang, s.href)}">${e(s.cta)} →</a></li>`
         )
-        .join("")}</ol>`,
+        .join("")}</ul>`,
     { tone: "ink" }
   );
 
@@ -372,178 +395,174 @@ function overviewMain(c, S, lang) {
 
 /* ───────── 02 Platform ───────── */
 
-function areaBody(c, S, lang, s) {
-  return `${chips(s.services)}
-        <dl class="ogs-dl">
-          <div><dt>${e(c.ui.audience)}</dt><dd>${e(s.audience)}</dd></div>
-        </dl>
-        ${note(s.note)}
-        <div class="ogs-foot-links">${ctaLink(c, lang, s.cta)}${backLink(c)}</div>`;
-}
+/** Area label: area number (real 01–25 id) + English area name. */
+const areaTag = (s, n) => tag(s.label.replace(/^\d\d /, ""), true, n);
+const areaMeta = (c, s) =>
+  `<dl class="ogs-meta"><div><dt>${e(c.ui.audience)}</dt><dd>${e(s.audience)}</dd></div></dl>${note(s.note)}`;
+const ticks = (items, cls = "") => `<ul class="ogs-ticks${cls ? " " + cls : ""}">${(items || []).map((t) => `<li>${mark("check")}<span>${e(t)}</span></li>`).join("")}</ul>`;
+const chips = (items) => `<ul class="ogs-chips">${(items || []).map((t) => `<li>${e(t)}</li>`).join("")}</ul>`;
 
 /** One signature area (26 Life Box · 27 Friends · 28 Safe Band) as its own section. */
 function featureSection(c, lang, f, i) {
   const id = `p-${f.id}`;
   return sec(
     id,
-    `${head(id, `${f.kicker}`, f.title, f.lead, "", f.icon)}
-      <div class="ogs-cards ogs-cards--2 ogs-cards--feature">
-        <article class="ogs-card">
-          <div class="ogs-card__top">${tile(f.icon)}<p class="ogs-label"><span class="ogs-label__n">${e(f.n)}</span><span lang="en">${e(f.label)}</span></p></div>
+    `${head(id, f.kicker, f.title, f.lead, { split: true })}
+      <div class="ogs-feat">
+        <div class="ogs-feat__main">
+          <div class="ogs-feat__top">${tile(f.icon, "lg")}${tag(f.label, true, f.n)}</div>
           <h3>${e(f.listTitle)}</h3>
-          <dl class="ogs-dl ogs-dl--rows">${f.list.map((it) => `<div><dt>${e(it.t)}</dt><dd>${e(it.text)}</dd></div>`).join("")}</dl>
-        </article>
-        <article class="ogs-card">
-          <div class="ogs-card__top">${tile("shield")}<p class="ogs-label"><span lang="en">${e(f.label)}</span></p></div>
+          <dl class="ogs-feat__dl">${f.list.map((it) => `<div><dt>${e(it.t)}</dt><dd>${e(it.text)}</dd></div>`).join("")}</dl>
+        </div>
+        <div class="ogs-feat__side">
           <h3>${e(f.moreTitle)}</h3>
-          <ul class="nls-chips ogs-chips ogs-chips--check">${f.more.map((t) => `<li>${icon("check")}${e(t)}</li>`).join("")}</ul>
+          ${ticks(f.more)}
           ${note(f.note)}
-          <div class="ogs-foot-links">${ctaLink(c, lang, "partners")}${backLink(c)}</div>
-        </article>
+          ${footLinks(ctaLink(c, lang, "partners"), backLink(c))}
+        </div>
       </div>
-      ${procList(f.steps, ["spark", "link", "star"], 3)}`,
-    { tone: i % 2 === 0 ? "tint" : "" }
+      ${steps(f.steps, ["spark", "link", "star"], 3)}`,
+    { tone: "tint", cls: `ogs-sec--sig${i ? "" : " ogs-sec--sig-first"}` }
   );
 }
 
 function platformMain(c, S, lang) {
   const p = c.platform;
   const all = [...p.sections.map((s, i) => ({ ...s, n: pad(i + 1) })), ...p.features.map((f) => ({ id: f.id, grp: "F", n: f.n, title: f.title.split("\n")[1] || f.title, label: f.label }))];
-  // Groups A–F: a map of group tiles (letter badge, name, area numbers, count).
-  const groupRows = p.groupMap
+
+  // A · heading + notice, then a directory: the six groups (letter, name, count) each listing its areas
+  const dir = p.groupMap
     .map((g) => {
-      const nums = all.filter((s) => s.grp === g.id).map((s) => s.n);
-      return `<li><span class="ogs-legend__badge" lang="en">${e(g.id)}</span><strong lang="en">${e(g.en)}</strong><span class="ogs-legend__note">${c.lang === "ko" ? `${e(g.ko)} · ` : ""}${nums.join(" · ")}</span><b class="ogs-legend__count">${nums.length}</b></li>`;
+      const list = all.filter((s) => s.grp === g.id);
+      return `<li class="ogs-dir__g">
+        <div class="ogs-dir__h"><span class="ogs-dir__badge" lang="en">${e(g.id)}</span><div><strong lang="en">${e(g.en)}</strong>${c.lang === "ko" ? `<span>${e(g.ko)}</span>` : ""}</div><b class="ogs-dir__count">${list.length}</b></div>
+        <ol>${list.map((s) => `<li><a href="#p-${e(s.id)}"><span class="ogs-dir__n">${e(s.n)}</span><span class="ogs-dir__x"><strong>${e(s.title)}</strong><em lang="en">${e(s.label.replace(/^\d\d /, "").replace(/^ONGIL /, ""))}</em></span></a></li>`).join("")}</ol>
+      </li>`;
     })
     .join("");
-  const groupMap = `<div class="ogs-legend"><p class="ogs-legend__t">${e(c.ui.groupMapTitle)}</p><ul>${groupRows}</ul></div>`;
-  const idx = all
-    .map((s) => `<li><a href="#p-${e(s.id)}"><span>${e(s.n)}</span><strong>${e(s.title)}</strong><em lang="en">${e(s.label.replace(/^\d\d /, ""))}</em></a></li>`)
-    .join("");
-
-  // A · split: heading + notice + group map | 2-col numbered index of all 28 areas
   const index = sec(
     "ogs-index",
-    `<div class="nls-split ogs-split--index">
-      <div>
-        ${head("ogs-index", `${c.ui.onThisPage} · 28`, p.indexTitle, p.indexLead)}
-        ${notice(c)}
-        ${groupMap}
-      </div>
-      <ol class="ogs-index">${idx}</ol>
-    </div>`
+    `${head("ogs-index", `${c.ui.onThisPage} · 28`, p.indexTitle, p.indexLead, { split: true })}
+      ${notice(c)}
+      <p class="ogs-dir__title">${e(c.ui.groupMapTitle)}</p>
+      <ol class="ogs-dir">${dir}</ol>`
   );
 
-  // B · current offer vs development plan (status groups)
+  // B · current offer vs development plan (key apricot band)
   const status = sec(
     "ogs-status",
-    `${head("ogs-status", c.status.label, c.status.title, c.status.lead)}
-      ${statusBoard(c, (id) => `#p-${id}`)}`,
+    `${head("ogs-status", c.status.label, c.status.title, c.status.lead, { split: true })}
+      ${phaseBoard(c, (id) => `#p-${id}`)}`,
     { tone: "tint" }
   );
 
-  // C · groups A–E, rotating layouts: wide icon rows · 2-col cards on wash · 3-col cards with apricot rule
-  const layouts = ["rows", "cards2", "cards3", "rows", "cards2"];
+  // C · groups A–E, each with a layout of its own: split rows · cards on mist · three-column lines · cards · rows on mist
+  const layouts = ["rows", "cards", "lines", "cards", "rows"];
   const groups = p.groups
     .map((g, gi) => {
       const items = p.sections.slice(g.from, g.to);
       const layout = layouts[gi % layouts.length];
-      const label = (s, i) => `<p class="ogs-label"><span class="ogs-label__n">${pad(g.from + i + 1)}</span><span lang="en">${e(s.label.replace(/^\d\d /, ""))}</span></p>`;
+      const n = (i) => pad(g.from + i + 1);
       let body;
       if (layout === "rows") {
         body = `<div class="ogs-rows">${items
           .map(
             (s, i) => `<article class="ogs-row" id="p-${e(s.id)}" aria-labelledby="p-${e(s.id)}-t">
-          <div class="ogs-row__head">${tile(AREA_ICONS[s.id])}${label(s, i)}<h3 id="p-${e(s.id)}-t">${e(s.title)}</h3><p>${e(s.desc)}</p></div>
-          <div class="ogs-row__body"><p class="ogs-dt">${e(c.ui.services)}</p>${areaBody(c, S, lang, s)}</div>
+          <div class="ogs-row__head">${tile(AREA_ICONS[s.id] || JOURNEY_ICONS[gi])}${areaTag(s, n(i))}<h3 id="p-${e(s.id)}-t">${e(s.title)}</h3><p>${e(s.desc)}</p></div>
+          <div class="ogs-row__body"><p class="ogs-dt">${e(c.ui.services)}</p>${ticks(s.services, "ogs-ticks--2")}${areaMeta(c, s)}${footLinks(ctaLink(c, lang, s.cta), backLink(c))}</div>
+        </article>`
+          )
+          .join("")}</div>`;
+      } else if (layout === "lines") {
+        body = `<div class="ogs-lines">${items
+          .map(
+            (s, i) => `<article class="ogs-row" id="p-${e(s.id)}" aria-labelledby="p-${e(s.id)}-t">
+          <div class="ogs-lines__a">${mark(AREA_ICONS[s.id] || JOURNEY_ICONS[gi])}${areaTag(s, n(i))}<h3 id="p-${e(s.id)}-t">${e(s.title)}</h3></div>
+          <div class="ogs-lines__b"><p>${e(s.desc)}</p>${areaMeta(c, s)}</div>
+          <div class="ogs-lines__c"><p class="ogs-dt">${e(c.ui.services)}</p>${chips(s.services)}${footLinks(ctaLink(c, lang, s.cta), backLink(c))}</div>
         </article>`
           )
           .join("")}</div>`;
       } else {
-        const n = layout === "cards2" ? "2" : items.length === 4 ? "2" : "3";
-        body = `<div class="ogs-cards ogs-cards--${n}">${items
+        body = `<div class="ogs-cards ogs-cards--2">${items
           .map(
             (s, i) => `<article class="ogs-card" id="p-${e(s.id)}" aria-labelledby="p-${e(s.id)}-t">
-          <div class="ogs-card__top">${tile(AREA_ICONS[s.id])}${label(s, i)}</div><h3 id="p-${e(s.id)}-t">${e(s.title)}</h3><p class="ogs-card__desc">${e(s.desc)}</p>
-          ${areaBody(c, S, lang, s)}
+          <div class="ogs-card__top">${tile(AREA_ICONS[s.id] || JOURNEY_ICONS[gi])}${areaTag(s, n(i))}</div><h3 id="p-${e(s.id)}-t">${e(s.title)}</h3><p class="ogs-card__desc">${e(s.desc)}</p>
+          <p class="ogs-dt">${e(c.ui.services)}</p>${chips(s.services)}
+          ${areaMeta(c, s)}
+          ${footLinks(ctaLink(c, lang, s.cta), backLink(c))}
         </article>`
           )
           .join("")}</div>`;
       }
-      return sec(`ogs-area-${gi + 1}`, `${head(`ogs-area-${gi + 1}`, g.kicker, g.title, g.lead)}${body}`, {
-        tone: layout === "cards2" ? "tint" : "",
-        cls: layout === "cards3" ? "ogs-sec--rule" : "",
+      const tone = gi === 1 || gi === 4 ? "mist" : "";
+      return sec(`ogs-area-${gi + 1}`, `${head(`ogs-area-${gi + 1}`, g.kicker, g.title, g.lead, { split: true })}${body}`, {
+        tone,
+        cls: tone ? "" : "ogs-sec--rule",
       });
     })
     .join("\n");
 
-  // D · the three signature areas, each its own section
+  // D · the three signature areas: one continuous apricot zone, each its own section
   const features = p.features.map((f, i) => featureSection(c, lang, f, i)).join("\n");
 
-  // E · user scenarios: 2-col cards with "now / later"
+  // E · user scenarios: "now vs later" comparison table
   const sc = p.scenarios;
   const scenarios = sec(
     "ogs-scenarios",
-    `${head("ogs-scenarios", sc.label, sc.title, sc.lead)}
-      <div class="ogs-cards ogs-cards--2">${sc.items
-        .map(
-          (it, i) => `<article class="ogs-card">
-          <div class="ogs-card__top">${tile(["sun", "users", "chat", "clipboard"][i % 4])}<p class="ogs-label"><span class="ogs-label__n">${pad(i + 1)}</span><span>${e(it.who)}</span></p></div>
-          <h3>${e(it.title)}</h3><p class="ogs-card__desc">${e(it.text)}</p>
-          <dl class="ogs-dl ogs-dl--rows"><div><dt>${e(sc.nowLabel)}</dt><dd>${e(it.now)}</dd></div><div><dt>${e(sc.laterLabel)}</dt><dd>${e(it.later)}</dd></div></dl>
-        </article>`
-        )
-        .join("")}</div>`,
-    { cls: "ogs-sec--rule" }
+    `${head("ogs-scenarios", sc.label, sc.title, sc.lead, { split: true })}
+      ${table(
+        "ogs-table--nowlater",
+        ["", sc.nowLabel, sc.laterLabel],
+        sc.items.map((it) => ({ head: `<span class="ogs-table__who">${e(it.who)}</span><strong>${e(it.title)}</strong><span>${e(it.text)}</span>`, cells: [e(it.now), e(it.later)] }))
+      )}`
   );
 
-  // F · by user type: split heading + role cards
+  // F · by user type: four columns on mist; the last (institution accounts) carries the apricot rule
   const ro = p.roles;
   const roles = sec(
     "ogs-roles",
-    `<div class="nls-split">
-      ${head("ogs-roles", ro.label, ro.title, ro.lead)}
-      <ol class="ogs-roles">${ro.items
-        .map((s, i) => `<li${i === ro.items.length - 1 ? ' class="ogs-roles__key"' : ""}>${tile(["person", "users", "hands", "building"][i % 4])}<div><span class="ogs-roles__n">${e(s.n)}</span><strong>${e(s.name)}</strong><p>${e(s.text)}</p></div></li>`)
-        .join("")}</ol>
-    </div>`,
-    { tone: "tint" }
+    `${head("ogs-roles", ro.label, ro.title, ro.lead, { split: true })}
+      <ul class="ogs-people ogs-people--4">${ro.items
+        .map((s, i) => `<li${i === ro.items.length - 1 ? ' class="ogs-people__key"' : ""}>${tile(["person", "users", "hands", "building"][i % 4], "lg")}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
+        .join("")}</ul>`,
+    { tone: "mist" }
   );
 
-  // G · how the areas connect: shared systems as a layer stack
+  // G · how the areas connect: one spec panel listing the five shared systems
   const sy = p.systems;
   const systems = sec(
     "ogs-systems",
-    `${head("ogs-systems", sy.label, sy.title, sy.lead)}
-      <ol class="ogs-layers">${sy.layers
-        .map((s, i) => `<li style="--ogs-w:${36 + i * 16}%"><span class="ogs-layers__n">${e(s.n)}</span>${tile(["lock", "clipboard", "shield", "compass", "layers"][i % 5], "round")}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
-        .join("")}</ol>`
+    `${head("ogs-systems", sy.label, sy.title, sy.lead, { split: true })}
+      <ul class="ogs-spec">${sy.layers
+        .map((s, i) => `<li>${tile(["lock", "clipboard", "shield", "compass", "layers"][i % 5])}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
+        .join("")}</ul>`
   );
 
-  // H · privacy, security & trust
+  // H · privacy, security & trust: split, single-column check list + emergency callout
   const pv = p.privacy;
   const privacy = sec(
     "ogs-privacy",
-    `<div class="nls-split ogs-split--wide">
+    `<div class="ogs-split">
       ${head("ogs-privacy", pv.label, pv.title, pv.lead)}
-      ${checkList(pv.points)}
+      <div>${checkList(pv.points, "ogs-checks--2")}</div>
     </div>`,
     { cls: "ogs-sec--rule" }
   );
 
-  // I · using ONGIL / app guide: 4-step stepper
+  // I · using ONGIL / app guide: a real four-step sequence
   const ap = p.app;
   const app = sec(
     "ogs-app",
-    `${head("ogs-app", ap.label, ap.title, ap.lead)}
-      ${procList(ap.steps, ["form", "phone", "type", "route"], 4)}`,
-    { tone: "tint" }
+    `${head("ogs-app", ap.label, ap.title, ap.lead, { split: true })}
+      ${steps(ap.steps, ["form", "phone", "type", "route"], 4)}`,
+    { tone: "mist" }
   );
 
-  // J · FAQ (native disclosure, no script)
+  // J · FAQ (native disclosure, keyboard-operable, no script)
   const faq = sec(
     "ogs-faq",
-    `<div class="nls-split ogs-split--wide">
+    `<div class="ogs-split">
       ${head("ogs-faq", "FAQ", c.ui.faqTitle, "")}
       <div class="ogs-faq">${p.faq.map((f) => `<details><summary>${e(f.q)}</summary><p>${e(f.a)}</p></details>`).join("")}</div>
     </div>`
@@ -564,13 +583,13 @@ function platformMain(c, S, lang) {
 
 /* ───────── 03 Business ───────── */
 
-function groupDl(c, S, g) {
-  return `<dl class="ogs-dl ogs-dl--rows">
+function groupSpec(c, g) {
+  return `<dl class="ogs-specgrid">
           <div><dt>${e(c.ui.audience)}</dt><dd>${e(g.audience)}</dd></div>
           <div><dt>${e(c.ui.value)}</dt><dd>${e(g.value)}</dd></div>
           <div><dt>${e(c.ui.partners)}</dt><dd>${e(g.partners)}</dd></div>
           <div><dt>${e(c.ui.revenue)}</dt><dd>${e(g.revenue)}</dd></div>
-          <div><dt>${e(c.ui.regulation)}</dt><dd>${e(g.regulation)}</dd></div>
+          <div class="ogs-specgrid__wide"><dt>${e(c.ui.regulation)}</dt><dd>${e(g.regulation)}</dd></div>
         </dl>`;
 }
 
@@ -579,133 +598,130 @@ function businessMain(c, S, lang) {
   const byCat = Object.fromEntries(b.categories.map((k) => [k.id, []]));
   b.groups.forEach((g, i) => byCat[g.cat].push(i));
 
-  // A · 4-column category board (icon tiles) + the one shared notice
+  // A · category directory (8 categories → 20 numbered business groups) + the one shared notice
   const catBoard = b.categories
     .map(
-      (k, ci) => `<li><div class="ogs-cats__top">${tile(CATEGORY_ICONS[k.id])}<span class="ogs-cats__n">${pad(ci + 1)}</span></div><p class="ogs-cats__en" lang="en"><a href="#bc-${e(k.id)}">${e(k.en)}</a></p>${c.lang === "ko" ? `<p class="ogs-cats__ko">${e(k.ko)}</p>` : ""}
-        <ul>${byCat[k.id].map((i) => `<li><a href="#b-${pad(i + 1)}"><span>${pad(i + 1)}</span>${e(b.groups[i].name)}</a></li>`).join("")}</ul></li>`
+      (k) => `<li class="ogs-dir__g">
+        <div class="ogs-dir__h">${tile(CATEGORY_ICONS[k.id])}<div><strong lang="en"><a href="#bc-${e(k.id)}">${e(k.en)}</a></strong>${c.lang === "ko" ? `<span>${e(k.ko)}</span>` : ""}</div><b class="ogs-dir__count">${byCat[k.id].length}</b></div>
+        <ol>${byCat[k.id].map((i) => `<li><a href="#b-${pad(i + 1)}"><span class="ogs-dir__n">${pad(i + 1)}</span><span class="ogs-dir__x"><strong>${e(b.groups[i].name)}</strong></span></a></li>`).join("")}</ol>
+      </li>`
     )
     .join("");
   const index = sec(
     "ogs-index",
-    `${head("ogs-index", `${c.ui.category} · ${b.categories.length} / ${b.groups.length}`, b.indexTitle, b.indexLead)}
-      <ol class="ogs-cats">${catBoard}</ol>
+    `${head("ogs-index", `${c.ui.category} · ${b.categories.length} / ${b.groups.length}`, b.indexTitle, b.indexLead, { split: true })}
+      <ol class="ogs-dir ogs-dir--4">${catBoard}</ol>
       ${notice(c)}`
   );
 
-  // B · now vs proposed: no paid product today; 12 proposed revenue models with payer
+  // B · now vs proposed: a large statement (no paid product today) beside the 12 proposed models
   const revenue = sec(
     "ogs-revenue",
-    `<div class="nls-split">
+    `<div class="ogs-split ogs-split--even">
       <div>
-        ${head("ogs-revenue", b.revenueKicker, b.revenueTitle, b.models)}
+        ${head("ogs-revenue", b.revenueKicker, b.revenueTitle, b.models, { wide: true })}
         ${note(b.disclaimer)}
       </div>
-      <div>
-        <ol class="ogs-rev">${b.revenue.map((r, i) => `<li><span>${pad(i + 1)}</span><p>${e(r)}</p></li>`).join("")}</ol>
-        ${note(b.revenueNote)}
+      <div class="ogs-panel">
+        <ul class="ogs-dots">${b.revenue.map((r) => `<li>${e(r)}</li>`).join("")}</ul>
+        ${note(b.revenueNote, true)}
       </div>
     </div>`,
     { tone: "tint" }
   );
 
-  // C · customers and payers (B2C / B2B / B2B2C / B2G)
+  // C · customers and payers: a clean table (segment · who · how they use it · proposed payment)
   const cu = b.customers;
   const customers = sec(
     "ogs-customers",
-    `${head("ogs-customers", cu.label, cu.title, cu.lead)}
-      ${dlRows(cu.items, (it) => ({ label: it.k, title: it.name, text: "", rows: [[cu.useLabel, it.use], [cu.payLabel, it.pay]] }))}`,
-    { cls: "ogs-sec--rows" }
+    `${head("ogs-customers", cu.label, cu.title, cu.lead, { split: true })}
+      ${table(
+        "ogs-table--pay",
+        ["", cu.useLabel, cu.payLabel],
+        cu.items.map((it) => ({ head: `<span class="ogs-pill" lang="en">${e(it.k)}</span><strong>${e(it.name)}</strong>`, cells: [e(it.use), e(it.pay)] }))
+      )}`
   );
 
-  // D · market problems and opportunity hypotheses (2-col cards on wash)
+  // D · market problems → opportunity hypotheses: paired cards on mist
   const mk = b.market;
   const market = sec(
     "ogs-market",
-    `${head("ogs-market", mk.label, mk.title, mk.lead)}
-      <div class="ogs-cards ogs-cards--2">${mk.items
+    `${head("ogs-market", mk.label, mk.title, mk.lead, { split: true })}
+      <ul class="ogs-duo">${mk.items
         .map(
-          (it, i) => `<article class="ogs-card"><div class="ogs-card__top">${tile(["info", "users", "clipboard", "link"][i % 4])}<p class="ogs-label"><span class="ogs-label__n">${pad(i + 1)}</span></p></div>
-          <dl class="ogs-dl ogs-dl--rows"><div><dt>${e(mk.problemLabel)}</dt><dd>${e(it.problem)}</dd></div><div><dt>${e(mk.chanceLabel)}</dt><dd>${e(it.chance)}</dd></div></dl></article>`
+          (it, i) => `<li>${tile(["info", "users", "clipboard", "link"][i % 4])}
+          <div class="ogs-duo__q">${tag(mk.problemLabel)}<p>${e(it.problem)}</p></div>
+          <div class="ogs-duo__a">${tag(mk.chanceLabel, true)}<p>${e(it.chance)}</p></div></li>`
         )
-        .join("")}</div>
+        .join("")}</ul>
       ${note(mk.note)}`,
-    { tone: "tint" }
+    { tone: "mist" }
   );
 
-  // E · one section per category, alternating card grid / wide rows
-  let flip = 0;
+  // E · one section per category: category column on the left, its business groups (with spec grid) on the right
   const cats = b.categories
     .map((k, ci) => {
       const ids = byCat[k.id];
-      const rows = flip++ % 2 === 1;
-      const label = (i) => `<p class="ogs-label"><span class="ogs-label__n">${pad(i + 1)}</span><span lang="en">${e(k.en)}</span></p>`;
-      const foot = (g) => `<div class="ogs-foot-links">${ctaLink(c, lang, g.cta)}${backLink(c)}</div>`;
-      const body = rows
-        ? `<div class="ogs-rows">${ids
-            .map((i) => {
-              const g = b.groups[i];
-              return `<article class="ogs-row" id="b-${pad(i + 1)}" aria-labelledby="b-${pad(i + 1)}-t">
-          <div class="ogs-row__head">${label(i)}<h3 id="b-${pad(i + 1)}-t">${e(g.name)}</h3><p>${e(g.intro)}</p></div>
-          <div class="ogs-row__body">${groupDl(c, S, g)}${foot(g)}</div>
-        </article>`;
-            })
-            .join("")}</div>`
-        : `<div class="ogs-cards ogs-cards--${ids.length === 3 ? "3" : ids.length === 1 ? "1" : "2"}">${ids
-            .map((i) => {
-              const g = b.groups[i];
-              return `<article class="ogs-card" id="b-${pad(i + 1)}" aria-labelledby="b-${pad(i + 1)}-t">
-          ${label(i)}<h3 id="b-${pad(i + 1)}-t">${e(g.name)}</h3><p class="ogs-card__desc">${e(g.intro)}</p>
-          ${groupDl(c, S, g)}${foot(g)}
-        </article>`;
-            })
-            .join("")}</div>`;
       const title = c.lang === "ko" ? k.ko : k.en;
       const kicker = `${pad(ci + 1)} · ${k.en} · ${ids.length}`;
-      return sec(`bc-${k.id}`, `${head(`bc-${k.id}`, kicker, title, "", "", CATEGORY_ICONS[k.id])}${body}`, {
-        tone: !rows && ci % 4 === 2 ? "tint" : "",
-        cls: rows ? "ogs-sec--rows" : "",
-      });
+      const body = ids
+        .map((i) => {
+          const g = b.groups[i];
+          return `<article class="ogs-card" id="b-${pad(i + 1)}" aria-labelledby="b-${pad(i + 1)}-t">
+          ${tag(k.en, true, pad(i + 1))}<h3 id="b-${pad(i + 1)}-t">${e(g.name)}</h3><p class="ogs-card__desc">${e(g.intro)}</p>
+          ${groupSpec(c, g)}${footLinks(ctaLink(c, lang, g.cta), backLink(c))}
+        </article>`;
+        })
+        .join("");
+      return sec(
+        `bc-${k.id}`,
+        `<div class="ogs-cat">
+        <div class="ogs-cat__side">${tile(CATEGORY_ICONS[k.id], "lg")}${head(`bc-${k.id}`, kicker, title, "")}</div>
+        <div class="ogs-cat__list${ids.length > 1 ? " ogs-cat__list--multi" : ""}">${body}</div>
+      </div>`,
+        { tone: ci % 2 ? "mist" : "", cls: "ogs-sec--cat" }
+      );
     })
     .join("\n");
 
-  // F · fee principles (where fees are considered, where never)
+  // F · fee principles: where fees are considered (left) and where never (right)
   const fe = b.fees;
+  const feeItem = (p) => `<li>${mark(p.alert ? "alert" : "check")}<div><strong>${e(p.t)}</strong><p>${e(p.text)}</p></div></li>`;
   const fees = sec(
     "ogs-fees",
-    `<div class="nls-split ogs-split--wide">
-      ${head("ogs-fees", fe.label, fe.title, fe.lead)}
-      ${checkList(fe.points)}
-    </div>`,
+    `${head("ogs-fees", fe.label, fe.title, fe.lead, { split: true })}
+      <div class="ogs-fees">
+        <ul class="ogs-fees__col">${fe.points.filter((p) => !p.alert).map(feeItem).join("")}</ul>
+        <ul class="ogs-fees__col ogs-fees__col--never">${fe.points.filter((p) => p.alert).map(feeItem).join("")}</ul>
+      </div>`,
     { tone: "tint" }
   );
 
-  // G · go-to-market: 4-step stepper
+  // G · go-to-market: real four-step sequence
   const gt = b.gtm;
   const gtm = sec(
     "ogs-gtm",
-    `${head("ogs-gtm", gt.label, gt.title, gt.lead)}
-      ${procList(gt.steps, ["sun", "users", "link", "building"], 4)}
+    `${head("ogs-gtm", gt.label, gt.title, gt.lead, { split: true })}
+      ${steps(gt.steps, ["sun", "users", "link", "building"], 4)}
       ${note(gt.note)}`
   );
 
-  // H · growth roadmap: numbered horizontal timeline (plan priorities 1–5)
+  // H · growth roadmap: five priorities as an editorial vertical list
   const roadmap = sec(
     "ogs-roadmap",
-    `${head("ogs-roadmap", b.roadmapKicker, b.roadmapTitle, b.roadmapLead)}
-      <ol class="ogs-timeline ogs-timeline--road">${b.roadmap
-        .map((s) => `<li><span class="ogs-timeline__dot ogs-timeline__dot--n" aria-hidden="true">${e(s.n)}</span><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
-        .join("")}</ol>`,
-    { tone: "tint" }
+    `<div class="ogs-split">
+      ${head("ogs-roadmap", b.roadmapKicker, b.roadmapTitle, b.roadmapLead)}
+      <ol class="ogs-vlist">${b.roadmap.map((s) => `<li><span class="ogs-vlist__n">${e(s.n)}</span><div><h3>${e(s.name)}</h3><p>${e(s.text)}</p></div></li>`).join("")}</ol>
+    </div>`,
+    { tone: "mist" }
   );
 
-  // I · operating & legal principles: compact pills
+  // I · operating & legal principles: three-column text grid
   const lg = b.legal;
   const legal = sec(
     "ogs-legal",
-    `${head("ogs-legal", lg.label, lg.title, lg.lead)}
-      <ol class="ogs-rev ogs-rev--plain">${lg.points.map((r, i) => `<li><span>${pad(i + 1)}</span><p><strong>${e(r.t)}</strong> · ${e(r.text)}</p></li>`).join("")}</ol>`,
-    { cls: "ogs-sec--rule" }
+    `${head("ogs-legal", lg.label, lg.title, lg.lead, { split: true })}
+      <ul class="ogs-grid3">${lg.points.map((r) => `<li><strong>${e(r.t)}</strong><p>${e(r.text)}</p></li>`).join("")}</ul>`
   );
 
   const close = closeInk(
@@ -725,89 +741,107 @@ function businessMain(c, S, lang) {
 function partnershipsMain(c, S, lang) {
   const p = c.partnerships;
 
-  // A · partnership vision: statement + facts panel + the one shared notice
-  const vision = sec("ogs-intro", introBlock(c, p.vision, true));
+  // A · partnership vision: statement + facts + the one shared notice
+  const vision = sec("ogs-intro", introBlock(c, p.vision));
 
-  // B · tinted chip cloud of the 14 types
+  // B · the 14 types grouped by their six opportunity areas (pill links)
+  const opps = [];
+  p.items.forEach((it, i) => {
+    let g = opps.find((o) => o.opp === it.opp);
+    if (!g) opps.push((g = { opp: it.opp, list: [] }));
+    g.list.push(i);
+  });
   const index = sec(
     "ogs-index",
-    `${head("ogs-index", `${c.ui.onThisPage} · ${p.items.length}`, c.ui.partnerIndexTitle, p.indexLead)}
-      <ol class="ogs-cloud">${p.items.map((it, i) => `<li><a href="#pt-${pad(i + 1)}"><span>${pad(i + 1)}</span>${e(it.name)}</a></li>`).join("")}</ol>`,
-    { tone: "tint" }
+    `${head("ogs-index", `${c.ui.onThisPage} · ${p.items.length}`, c.ui.partnerIndexTitle, p.indexLead, { split: true })}
+      <ul class="ogs-opps">${opps
+        .map(
+          (g) => `<li><p class="ogs-opps__t" lang="en">${e(g.opp)}</p><ul class="ogs-cloud">${g.list
+            .map((i) => `<li><a href="#pt-${pad(i + 1)}"><span>${pad(i + 1)}</span>${e(p.items[i].name)}</a></li>`)
+            .join("")}</ul></li>`
+        )
+        .join("")}</ul>`,
+    { tone: "mist" }
   );
 
-  // C · 2-column partner cards with icon tiles (collaboration model per type)
+  // C · partner type cards (collaboration model per type)
   const items = sec(
     "ogs-partner-types",
     `${head("ogs-partner-types", "Partner Types", c.ui.partnerTypesTitle, "")}
       <div class="ogs-cards ogs-cards--2 ogs-cards--partners">${p.items
         .map(
           (it, i) => `<article class="ogs-card" id="pt-${pad(i + 1)}" aria-labelledby="pt-${pad(i + 1)}-t">
-          <div class="ogs-card__top">${tile(PARTNER_ICONS[i % PARTNER_ICONS.length])}<p class="ogs-label"><span class="ogs-label__n">${pad(i + 1)}</span><span lang="en">${e(it.opp)}</span></p></div>
+          <div class="ogs-card__top">${tile(PARTNER_ICONS[i % PARTNER_ICONS.length])}${tag(it.opp, true, pad(i + 1))}</div>
           <h3 id="pt-${pad(i + 1)}-t">${e(it.name)}</h3>
-          <dl class="ogs-dl ogs-dl--rows">
+          <dl class="ogs-stackdl">
             <div><dt>${e(c.ui.field)}</dt><dd>${e(it.field)}</dd></div>
             <div><dt>${e(c.ui.value)}</dt><dd>${e(it.value)}</dd></div>
             <div><dt>${e(c.ui.structure)}</dt><dd>${e(it.structure)}</dd></div>
             <div><dt>${e(c.ui.conditions)}</dt><dd>${e(it.conditions)}</dd></div>
           </dl>
-          <div class="ogs-foot-links"><a class="ogs-link" href="${pagePath(lang, "contact")}#ogs-types">${e(c.ui.propose)} →</a>${backLink(c)}</div>
+          ${footLinks(`<a class="ogs-link" href="${pagePath(lang, "contact")}#ogs-types">${e(c.ui.propose)} →</a>`, backLink(c))}
         </article>`
         )
         .join("")}</div>`
   );
 
-  // D · PoC & pilot proposals: wide rows
+  // D · PoC & pilot proposals: wide rows with a 2×2 spec grid
   const pc = p.pocs;
   const pocs = sec(
     "ogs-pocs",
-    `${head("ogs-pocs", pc.label, pc.title, pc.lead)}
-      ${dlRows(pc.items, (it) => ({ label: "PoC", title: it.name, text: it.partner, rows: [[pc.goalLabel, it.goal], [pc.scopeLabel, it.scope], [pc.metricLabel, it.metric], [pc.needLabel, it.need]] }))}`,
-    { tone: "tint", cls: "ogs-sec--rows" }
-  );
-
-  // E · data & API possibilities
-  const da = p.data;
-  const data = sec(
-    "ogs-data",
-    `<div class="nls-split ogs-split--wide">
-      ${head("ogs-data", da.label, da.title, da.lead)}
-      ${checkList(da.points, "ogs-checks--cards")}
-    </div>`
-  );
-
-  // F · joint services & campaigns: tiles on wash
-  const ca = p.campaigns;
-  const campaigns = sec(
-    "ogs-campaigns",
-    `${head("ogs-campaigns", ca.label, ca.title, ca.lead)}
-      <ol class="ogs-signal">${ca.items
-        .map((s, i) => `<li><div class="ogs-signal__top">${tile(["phone", "shield", "route", "heart"][i % 4])}<span class="ogs-signal__n">${pad(i + 1)}</span></div><div><h3>${e(s.name)}</h3><p>${e(s.text)}</p></div></li>`)
-        .join("")}</ol>`,
+    `${head("ogs-pocs", pc.label, pc.title, pc.lead, { split: true })}
+      <div class="ogs-rows ogs-rows--poc">${pc.items
+        .map(
+          (it) => `<article class="ogs-row">
+          <div class="ogs-row__head">${tag("PoC", true)}<h3>${e(it.name)}</h3><p>${e(it.partner)}</p></div>
+          <div class="ogs-row__body"><dl class="ogs-specgrid ogs-specgrid--2">
+            <div><dt>${e(pc.goalLabel)}</dt><dd>${e(it.goal)}</dd></div>
+            <div><dt>${e(pc.scopeLabel)}</dt><dd>${e(it.scope)}</dd></div>
+            <div><dt>${e(pc.metricLabel)}</dt><dd>${e(it.metric)}</dd></div>
+            <div><dt>${e(pc.needLabel)}</dt><dd>${e(it.need)}</dd></div>
+          </dl></div>
+        </article>`
+        )
+        .join("")}</div>`,
     { tone: "tint" }
   );
 
-  // G · process stepper + principles
+  // E · data & API possibilities: split with a check list
+  const da = p.data;
+  const data = sec(
+    "ogs-data",
+    `<div class="ogs-split">
+      ${head("ogs-data", da.label, da.title, da.lead)}
+      <div>${checkList(da.points, "ogs-checks--boxed")}</div>
+    </div>`
+  );
+
+  // F · joint services & campaigns: four open columns on mist
+  const ca = p.campaigns;
+  const campaigns = sec(
+    "ogs-campaigns",
+    `${head("ogs-campaigns", ca.label, ca.title, ca.lead, { split: true })}
+      <ul class="ogs-cols4">${ca.items.map((s, i) => `<li>${tile(["phone", "shield", "route", "heart"][i % 4], "lg")}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ul>`,
+    { tone: "mist" }
+  );
+
+  // G · process (real five-step sequence) + principles + note
   const process = sec(
     "ogs-process",
     `${head("ogs-process", "Process", p.processTitle, "")}
-      ${procList(p.process, PROCESS_ICONS, 5)}
-      <div class="ogs-note ogs-principles"><p class="ogs-dt">${e(c.ui.principlesTitle)}</p><ul class="nls-chips ogs-chips ogs-chips--check">${p.principles
-        .map((t) => `<li>${icon("check")}${e(t)}</li>`)
-        .join("")}</ul></div>
+      ${steps(p.process, PROCESS_ICONS, 5)}
+      <div class="ogs-principles"><p class="ogs-dt">${e(c.ui.principlesTitle)}</p>${ticks(p.principles, "ogs-ticks--pills")}</div>
       ${note(p.note)}`
   );
 
-  // H · expected value: role cards
+  // H · expected value: 2×2 large-text items
   const va = p.valueBlock;
   const value = sec(
     "ogs-value",
-    `<div class="nls-split">
-      ${head("ogs-value", va.label, va.title, "")}
-      <ol class="ogs-roles">${va.items
-        .map((s, i) => `<li${i === va.items.length - 1 ? ' class="ogs-roles__key"' : ""}>${tile(["building", "landmark", "briefcase", "heart"][i % 4])}<div><span class="ogs-roles__n">${pad(i + 1)}</span><strong>${e(s.name)}</strong><p>${e(s.text)}</p></div></li>`)
-        .join("")}</ol>
-    </div>`,
+    `${head("ogs-value", va.label, va.title, "", { split: true })}
+      <ul class="ogs-quad">${va.items
+        .map((s, i) => `<li>${tile(["building", "landmark", "briefcase", "heart"][i % 4])}<div><h3>${e(s.name)}</h3><p>${e(s.text)}</p></div></li>`)
+        .join("")}</ul>`,
     { cls: "ogs-sec--rule" }
   );
 
@@ -831,57 +865,56 @@ function contactMain(c, S, lang) {
     `/${lang}/business/inquiry/?service=partnership&source=${encodeURIComponent(`/${lang}/ongil/contact/`)}&topic=${encodeURIComponent(`ONGIL - ${topic}`)}`;
   const mailHref = (topic) => `mailto:${k.email}?subject=${encodeURIComponent(`[ONGIL] ${topic}`)}`;
 
-  // A · two large channel panels (email = apricot wash, form = white)
+  // A · two large channel panels (email on apricot wash, form on white)
   const channels = sec(
     "ogs-channels",
     `${head("ogs-channels", "Channels", k.channelsTitle, "")}
       <ul class="ogs-channels">${k.channels
-        .map((ch, i) => {
+        .map((ch) => {
           const href = ch.href ? `/${lang}/${ch.href.replace("source=/ongil/", `source=/${lang}/ongil/`)}` : `mailto:${ch.v}`;
-          return `<li><div class="ogs-channels__top">${tile(ch.href ? "form" : "mail", "lg")}<span class="ogs-channels__n">${pad(i + 1)}</span></div><p class="ogs-channels__k">${e(ch.k)}</p><a class="ogs-channels__v" href="${e(href)}">${e(ch.v)}${ch.href ? " →" : ""}</a><p>${e(ch.text)}</p></li>`;
+          return `<li>${tile(ch.href ? "form" : "mail", "lg")}<p class="ogs-channels__k">${e(ch.k)}</p><a class="ogs-channels__v" href="${e(href)}">${e(ch.v)}${ch.href ? " →" : ""}</a><p class="ogs-channels__t">${e(ch.text)}</p></li>`;
         })
         .join("")}</ul>`
   );
 
-  // B · inquiry types grouped by audience (people · institutions · press/investors); channel shown as an icon chip
+  // B · inquiry types grouped by audience; each a row with its channel and a large action link
   let n = 0;
   const groups = k.groups
     .map((g) => {
       const list = k.types.filter((t) => t.grp === g.id);
-      return `<p class="ogs-dt ogs-board__group">${e(c.lang === "ko" ? g.ko : g.en)}${c.lang === "ko" ? ` · <span lang="en">${e(g.en)}</span>` : ""}</p>
-      <ol class="ogs-board">${list
-        .map((t) => {
-          n++;
-          return `<li id="c-${pad(n)}">
-          <div class="ogs-board__meta"><span>${pad(n)}</span><em lang="en">${icon(t.channel === "mail" ? "mail" : "form")}${t.channel === "mail" ? "Email" : "Form"}</em></div>
-          <h3>${e(t.name)}</h3>
-          <p>${e(t.text)}</p>
-          <a class="ogs-link" href="${e(t.channel === "mail" ? mailHref(t.name) : formHref(t.name))}">${e(t.channel === "mail" ? k.mailCta : k.formCta)} →</a>
+      return `<div class="ogs-tgroup">
+        <div class="ogs-tgroup__h"><p class="ogs-tgroup__t">${e(c.lang === "ko" ? g.ko : g.en)}</p>${c.lang === "ko" ? `<p class="ogs-tgroup__en" lang="en">${e(g.en)}</p>` : ""}</div>
+        <ol class="ogs-tlist">${list
+          .map((t) => {
+            n++;
+            const mail = t.channel === "mail";
+            return `<li id="c-${pad(n)}">
+          <div class="ogs-tlist__x"><h3>${e(t.name)}</h3><p>${e(t.text)}</p></div>
+          <a class="ogs-tlist__go" href="${e(mail ? mailHref(t.name) : formHref(t.name))}"><span class="ogs-tlist__ch" lang="en">${icon(mail ? "mail" : "form")}${mail ? "Email" : "Form"}</span><span>${e(mail ? k.mailCta : k.formCta)} →</span></a>
         </li>`;
-        })
-        .join("")}</ol>`;
+          })
+          .join("")}</ol>
+      </div>`;
     })
     .join("\n");
   const types = sec(
     "ogs-types",
-    `${head("ogs-types", `Inquiry Types · ${k.types.length}`, c.ui.typesTitle, k.typesLead)}
+    `${head("ogs-types", `Inquiry Types · ${k.types.length}`, c.ui.typesTitle, k.typesLead, { split: true })}
       ${groups}
       ${notice(c)}`,
     { tone: "tint" }
   );
 
-  // C · split: what to include, privacy & emergency as callout cards
+  // C · before you get in touch: three callouts (emergency in red)
   const careTitle = c.lang === "ko" ? "문의 전에\n확인해 주세요." : "Before you\nget in touch.";
   const guard = sec(
     "ogs-guard",
-    `<div class="nls-split">
-      ${head("ogs-guard", "Privacy & Safety", careTitle, "")}
-      <ol class="ogs-checks ogs-checks--cards">
-        <li><span class="ogs-checks__mark">${icon("form")}</span><div><span class="ogs-checks__n">01</span><p>${e(k.include)}</p></div></li>
-        <li><span class="ogs-checks__mark">${icon("lock")}</span><div><span class="ogs-checks__n">02</span><p>${e(k.privacy)}</p></div></li>
-        <li class="ogs-checks__alert"><span class="ogs-checks__mark">${icon("alert")}</span><div><span class="ogs-checks__n">03</span><p><strong>${e(k.emergency)}</strong></p></div></li>
-      </ol>
-    </div>`
+    `${head("ogs-guard", "Privacy & Safety", careTitle, "", { split: true })}
+      <ul class="ogs-guard">
+        <li>${tile("form", "lg")}<p>${e(k.include)}</p></li>
+        <li>${tile("lock", "lg")}<p>${e(k.privacy)}</p></li>
+        <li class="ogs-guard__alert">${tile("alert", "lg")}<p><strong>${e(k.emergency)}</strong></p></li>
+      </ul>`
   );
 
   // D · black close: Contact → the official inquiry form
@@ -962,7 +995,7 @@ function renderPage(lang, page) {
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
-    <link rel="stylesheet" href="/ongil-site.css?v=20261025ov1" />`,
+    <link rel="stylesheet" href="/ongil-site.css?v=${OGS_VER}" />`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,
   });
