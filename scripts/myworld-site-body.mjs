@@ -153,7 +153,8 @@ function pager(lang, copy, current) {
     if (!id) return "<span></span>";
     const f = FLAGSHIP_PAGES.find((x) => x.id === id);
     const label = lang === "ko" ? `${f.en} · ${f.ko}` : f.en;
-    return `<a class="mws-pager__link mws-pager__link--${dir}" href="${pageHref(lang, id)}"><span class="mws-pager__dir">${dir === "prev" ? "←" : ""} ${esc(dir === "prev" ? copy.ui.prev : copy.ui.next)} ${dir === "next" ? "→" : ""}</span><span class="mws-pager__name"><span class="mws-pager__n">${f.n}</span>${esc(label)}</span></a>`;
+    /* 05 Contact opens the unified NEWON Contact page (owner 2026-10-26) */
+    return `<a class="mws-pager__link mws-pager__link--${dir}" href="${id === "contact" ? `/${lang}/contact/` : pageHref(lang, id)}"><span class="mws-pager__dir">${dir === "prev" ? "←" : ""} ${esc(dir === "prev" ? copy.ui.prev : copy.ui.next)} ${dir === "next" ? "→" : ""}</span><span class="mws-pager__name"><span class="mws-pager__n">${f.n}</span>${esc(label)}</span></a>`;
   };
   return `<nav class="mws-pager mws__wrap" aria-label="${esc(copy.ui.prev)} / ${esc(copy.ui.next)}">${nav(MYWORLD_PAGES[i - 1], "prev")}${nav(MYWORLD_PAGES[i + 1], "next")}</nav>`;
 }
