@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=20261025ov1" />
     <link rel="stylesheet" href="/flagship-subnav.css?v=20261019fsn3" />
-    <link rel="stylesheet" href="/shareon.css?v=20261025ov1" />
+    <link rel="stylesheet" href="/shareon.css?v=20261025rd1" />
     <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
 <script src="/theme-shell.js?v=20260904perf1"></script>
     <script src="/lang-nav.js?v=20260825studio"></script>
@@ -783,21 +783,18 @@
     <p class="nsh-status__note"><span class="nsh-status__pilot" lang="en">Pilot</span><span class="nsh-vh">안내: </span>SHAREON 앱은 개발 중이며 아직 출시되지 않았습니다. 이 페이지에 소개한 사업 영역과 기능 중 상당수는 향후 개발 또는 운영 방향에 포함되며, 실제 대여·예약 확정·결제·보증금·정산은 결제대행 계약과 법률 검토 전까지 운영하지 않습니다.</p>
   </div>
 <section class="nsh-sec" id="nsh-payers" aria-labelledby="nsh-payers-t">
-    <div class="nsh-wrap"><div class="nsh-ledger">
+    <div class="nsh-wrap"><div class="nsh-split nsh-split--wide">
       <header class="nsh-head nsh-head--side">
       <p class="nsh-kicker" lang="en">WHO PAYS</p>
       <h2 class="nsh-title" id="nsh-payers-t">누가 쓰고,<br />누가 비용을 내는가.</h2>
       <p class="nsh-lead">SHAREON의 핵심 수익은 유료 대여 거래의 플랫폼 수수료와 기업 자산 관리 구독으로 계획하고 있습니다. 아래는 설계 방향이며 아직 어떤 비용도 받고 있지 않습니다.</p>
     </header>
-      <div class="nsh-ledger__body">
-        <div class="nsh-table-wrap" role="region" aria-labelledby="nsh-payers-t" tabindex="0">
-          <table class="nsh-table">
-            <thead><tr><th scope="col">고객</th><th scope="col">이용 방식</th><th scope="col">지불 방식(계획)</th></tr></thead>
-            <tbody><tr><th scope="row">가끔 빌리는 개인</th><td>필요한 기간만 물건을 빌립니다.</td><td>대여료는 빌려주는 사람에게 갑니다. 플랫폼 수수료는 빌려주는 쪽이 부담하는 안을 검토합니다.</td></tr><tr><th scope="row">빌려주는 개인</th><td>쓰지 않는 물건을 등록해 대여료를 받습니다.</td><td>완료된 유료 대여의 거래 수수료, 선택형 판매자 구독</td></tr><tr><th scope="row">대여업체·공간 운영자</th><td>직접 입점해 장비·공간을 빌려줍니다.</td><td>기업·공간 대여 수수료, 기업 구독, 광고 표시가 붙는 상단 노출</td></tr><tr><th scope="row">대량·장기 대여 기업</th><td>행사·프로젝트용 장비를 대량 또는 오래 빌립니다.</td><td>장기·B2B 대여 계약</td></tr><tr><th scope="row">사내 자산을 가진 조직</th><td>직원·부서가 사내 장비를 나눠 씁니다.</td><td>사내 자산 공유 SaaS 구독(구상), 건별 수수료 없음</td></tr><tr><th scope="row">배송·보험 등 제휴사</th><td>대여에 필요한 부가 서비스를 연결합니다.</td><td>적법한 제휴 계약(규제·구조 검증 후)</td></tr></tbody>
-          </table>
-        </div>
-        
-      </div>
+      <div class="nsh-split__body"><div class="nsh-table-wrap" role="region" aria-labelledby="nsh-payers-t" tabindex="0">
+      <table class="nsh-table">
+        <thead><tr><th scope="col">고객</th><th scope="col">이용 방식</th><th scope="col">지불 방식(계획)</th></tr></thead>
+        <tbody><tr><th scope="row">가끔 빌리는 개인</th><td data-label="이용 방식">필요한 기간만 물건을 빌립니다.</td><td data-label="지불 방식(계획)">대여료는 빌려주는 사람에게 갑니다. 플랫폼 수수료는 빌려주는 쪽이 부담하는 안을 검토합니다.</td></tr><tr><th scope="row">빌려주는 개인</th><td data-label="이용 방식">쓰지 않는 물건을 등록해 대여료를 받습니다.</td><td data-label="지불 방식(계획)">완료된 유료 대여의 거래 수수료, 선택형 판매자 구독</td></tr><tr><th scope="row">대여업체·공간 운영자</th><td data-label="이용 방식">직접 입점해 장비·공간을 빌려줍니다.</td><td data-label="지불 방식(계획)">기업·공간 대여 수수료, 기업 구독, 광고 표시가 붙는 상단 노출</td></tr><tr><th scope="row">대량·장기 대여 기업</th><td data-label="이용 방식">행사·프로젝트용 장비를 대량 또는 오래 빌립니다.</td><td data-label="지불 방식(계획)">장기·B2B 대여 계약</td></tr><tr><th scope="row">사내 자산을 가진 조직</th><td data-label="이용 방식">직원·부서가 사내 장비를 나눠 씁니다.</td><td data-label="지불 방식(계획)">사내 자산 공유 SaaS 구독(구상), 건별 수수료 없음</td></tr><tr><th scope="row">배송·보험 등 제휴사</th><td data-label="이용 방식">대여에 필요한 부가 서비스를 연결합니다.</td><td data-label="지불 방식(계획)">적법한 제휴 계약(규제·구조 검증 후)</td></tr></tbody>
+      </table>
+    </div></div>
     </div></div>
   </section>
 <section class="nsh-sec" id="nsh-structure" aria-labelledby="nsh-structure-t">
@@ -806,27 +803,29 @@
       <h2 class="nsh-title" id="nsh-structure-t">C2C에서 시작해<br />B2C·C2B·B2B로.</h2>
       <p class="nsh-lead">외부 거래는 네 가지 구조로 나누고, 회사 안의 자산 이동은 별도로 다룹니다. 모두 운영 중이라는 뜻은 아닙니다.</p>
     </header><div class="nsh-matrix">
-      <p class="nsh-matrix__axis nsh-matrix__axis--x" aria-hidden="true"><span>빌리는 쪽 →</span><span>개인</span><span>기업</span></p>
-      <p class="nsh-matrix__axis nsh-matrix__axis--y" aria-hidden="true"><span>빌려주는 쪽 ↓</span><span>개인</span><span>기업</span></p>
+      <div class="nsh-matrix__corner" aria-hidden="true"><span>빌려주는 쪽 ↓</span><span>빌리는 쪽 →</span></div>
+      <p class="nsh-matrix__ax nsh-matrix__ax--c1" aria-hidden="true">개인</p>
+      <p class="nsh-matrix__ax nsh-matrix__ax--c2" aria-hidden="true">기업</p>
+      <p class="nsh-matrix__ax nsh-matrix__ax--r1" aria-hidden="true">개인</p>
+      <p class="nsh-matrix__ax nsh-matrix__ax--r2" aria-hidden="true">기업</p>
       <ul class="nsh-matrix__grid" role="list"><li class="nsh-matrix__cell"><p class="nsh-matrix__code" lang="en">C2C</p><h3 class="nsh-matrix__title">개인 → 개인</h3><p class="nsh-matrix__body">이웃이 가진 물건을 가까운 이웃이 빌립니다. SHAREON이 가장 먼저 집중하는 거래이며, 캠핑 장비·공구·유아 용품 같은 소형 물품이 중심입니다.</p></li><li class="nsh-matrix__cell"><p class="nsh-matrix__code" lang="en">C2B</p><h3 class="nsh-matrix__title">개인 → 기업</h3><p class="nsh-matrix__body">개인이 가진 촬영 장비 같은 물건을 기업이 업무·행사에 빌려 씁니다. 구인·요청 게시판이 아니라 개인이 공급자인 대여입니다.</p></li><li class="nsh-matrix__cell"><p class="nsh-matrix__code" lang="en">B2C</p><h3 class="nsh-matrix__title">기업 → 개인</h3><p class="nsh-matrix__body">카메라 대여점, 공간 운영자처럼 장비·공간을 가진 소상공인과 기업이 개인에게 빌려줍니다. 사업자 확인을 마친 뒤 열리는 거래입니다.</p></li><li class="nsh-matrix__cell"><p class="nsh-matrix__code" lang="en">B2B</p><h3 class="nsh-matrix__title">기업 → 기업</h3><p class="nsh-matrix__body">행사·촬영 장비처럼 기업이 가진 자산을 다른 기업에 빌려줍니다. 대량·장기 대여는 별도 계약 조건을 함께 검토합니다.</p></li></ul>
     </div>
-    <ul class="nsh-signal" role="list"><li class="nsh-signal__item"><span class="nsh-signal__n" aria-hidden="true">05</span><p class="nsh-signal__code" lang="en">Internal B2B</p><h3 class="nsh-signal__title">사내 자산 공유</h3><p class="nsh-signal__body">직원·부서 간 자산 이동은 외부 유료 거래와 구분합니다. 건별 수수료를 받기보다 SaaS 구독으로 수익화하는 것이 자연스럽다는 판단입니다.</p></li><li class="nsh-signal__item"><span class="nsh-signal__n" aria-hidden="true">06</span><p class="nsh-signal__code" lang="en">B2B2C · B2G</p><h3 class="nsh-signal__title">제휴와 기관 — 검토 단계</h3><p class="nsh-signal__body">대여업체와 배송·보험 사업자가 함께 개인 고객에게 제공하는 구조, 대학·기관의 공용 장비 공유는 협의 가능성 단계이며 별도 사업 영역으로 확정되지 않았습니다.</p></li></ul></div>
+    <ul class="nsh-signal" role="list"><li class="nsh-signal__item"><p class="nsh-signal__code" lang="en">Internal B2B</p><div><h3 class="nsh-signal__title">사내 자산 공유</h3><p class="nsh-signal__body">직원·부서 간 자산 이동은 외부 유료 거래와 구분합니다. 건별 수수료를 받기보다 SaaS 구독으로 수익화하는 것이 자연스럽다는 판단입니다.</p></div></li><li class="nsh-signal__item"><p class="nsh-signal__code" lang="en">B2B2C · B2G</p><div><h3 class="nsh-signal__title">제휴와 기관 — 검토 단계</h3><p class="nsh-signal__body">대여업체와 배송·보험 사업자가 함께 개인 고객에게 제공하는 구조, 대학·기관의 공용 장비 공유는 협의 가능성 단계이며 별도 사업 영역으로 확정되지 않았습니다.</p></div></li></ul></div>
   </section>
-<section class="nsh-sec nsh-sec--band" id="nsh-models" aria-labelledby="nsh-models-t">
+<section class="nsh-sec nsh-sec--tint" id="nsh-models" aria-labelledby="nsh-models-t">
     <div class="nsh-wrap"><header class="nsh-head">
       <p class="nsh-kicker" lang="en">10 REVENUE MODELS</p>
       <h2 class="nsh-title" id="nsh-models-t">열 개의 수익 모델,<br />세 묶음.</h2>
       <p class="nsh-lead">통합 계획과 IR에 정리된 수익 모델입니다. 모두 계획(검토) 단계이며 판매 중인 것은 없습니다. 묶음을 고르면 모델별 지불 주체와 방식을 볼 수 있습니다.</p>
     </header><div class="nsh-tabs" data-nsh-tabs><div class="nsh-tabs__list" role="tablist" aria-label="수익 모델 묶음" hidden data-nsh-tablist><button type="button" role="tab" class="nsh-tabs__tab" id="tab-m1" aria-controls="panel-m1" aria-selected="true" tabindex="0"><span class="nsh-tabs__n" aria-hidden="true">01</span><span class="nsh-tabs__label">거래 수수료</span></button><button type="button" role="tab" class="nsh-tabs__tab" id="tab-m2" aria-controls="panel-m2" aria-selected="false" tabindex="-1"><span class="nsh-tabs__n" aria-hidden="true">02</span><span class="nsh-tabs__label">구독</span></button><button type="button" role="tab" class="nsh-tabs__tab" id="tab-m3" aria-controls="panel-m3" aria-selected="false" tabindex="-1"><span class="nsh-tabs__n" aria-hidden="true">03</span><span class="nsh-tabs__label">광고·제휴·SaaS</span></button></div><div class="nsh-tabs__panel" id="panel-m1" role="region" aria-labelledby="panel-m1-t" data-nsh-panel>
         <div class="nsh-tabs__side">
-          <span class="nsh-tabs__big" aria-hidden="true">01</span>
-          <p class="nsh-tabs__en" lang="en">Transaction fees</p>
+          <p class="nsh-tabs__en" lang="en"><span aria-hidden="true">01 · </span>Transaction fees</p>
           <h3 class="nsh-tabs__title" id="panel-m1-t">거래 수수료</h3>
           <p class="nsh-tabs__count">5 / 10</p>
         </div>
         <ul class="nsh-biz" role="list"><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">01 · </span><span lang="en">C2C rental fee</span></p><h4 class="nsh-biz__title">개인 대여 수수료</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -837,7 +836,7 @@
               </dl>
             </li><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 8h3l1.6-2.2h6.8L17 8h3v11H4z"/><circle cx="12" cy="13.5" r="3.4"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 8h3l1.6-2.2h6.8L17 8h3v11H4z"/><circle cx="12" cy="13.5" r="3.4"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">02 · </span><span lang="en">Business rental fee</span></p><h4 class="nsh-biz__title">기업 대여 수수료</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -848,7 +847,7 @@
               </dl>
             </li><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 10h18"/><path d="M10 10v10"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 10h18"/><path d="M10 10v10"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">03 · </span><span lang="en">Space rental fee</span></p><h4 class="nsh-biz__title">공간 대여 수수료</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -859,7 +858,7 @@
               </dl>
             </li><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 10h17"/><path d="M8 3v4M16 3v4"/><path d="m9 14.5 2 2 4-4"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 10h17"/><path d="M8 3v4M16 3v4"/><path d="m9 14.5 2 2 4-4"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">04 · </span><span lang="en">Service booking fee</span></p><h4 class="nsh-biz__title">서비스 예약 수수료</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -870,7 +869,7 @@
               </dl>
             </li><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 9V4h10v5"/><rect x="4" y="9" width="16" height="7" rx="1.5"/><path d="M7 14h10v6H7z"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 9V4h10v5"/><rect x="4" y="9" width="16" height="7" rx="1.5"/><path d="M7 14h10v6H7z"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">05 · </span><span lang="en">Long-term &amp; B2B</span></p><h4 class="nsh-biz__title">장기·B2B 대여 계약</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -882,14 +881,13 @@
             </li></ul>
       </div><div class="nsh-tabs__panel" id="panel-m2" role="region" aria-labelledby="panel-m2-t" data-nsh-panel>
         <div class="nsh-tabs__side">
-          <span class="nsh-tabs__big" aria-hidden="true">02</span>
-          <p class="nsh-tabs__en" lang="en">Subscriptions</p>
+          <p class="nsh-tabs__en" lang="en"><span aria-hidden="true">02 · </span>Subscriptions</p>
           <h3 class="nsh-tabs__title" id="panel-m2-t">구독</h3>
           <p class="nsh-tabs__count">2 / 10</p>
         </div>
         <ul class="nsh-biz" role="list"><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h16"/><path d="M7 20V9l5-4 5 4v11"/><path d="M10 20v-5h4v5"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h16"/><path d="M7 20V9l5-4 5 4v11"/><path d="M10 20v-5h4v5"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">06 · </span><span lang="en">Seller subscription</span></p><h4 class="nsh-biz__title">개인 판매자 구독</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -900,7 +898,7 @@
               </dl>
             </li><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20V6l7-2v16"/><path d="M11 9h9v11"/><path d="M2 20h20"/><path d="M7 9h1M7 13h1M14.5 13h1M14.5 16h1"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20V6l7-2v16"/><path d="M11 9h9v11"/><path d="M2 20h20"/><path d="M7 9h1M7 13h1M14.5 13h1M14.5 16h1"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">07 · </span><span lang="en">Business subscription</span></p><h4 class="nsh-biz__title">기업 판매자 구독</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -912,14 +910,13 @@
             </li></ul>
       </div><div class="nsh-tabs__panel" id="panel-m3" role="region" aria-labelledby="panel-m3-t" data-nsh-panel>
         <div class="nsh-tabs__side">
-          <span class="nsh-tabs__big" aria-hidden="true">03</span>
-          <p class="nsh-tabs__en" lang="en">Ads, partners &amp; SaaS</p>
+          <p class="nsh-tabs__en" lang="en"><span aria-hidden="true">03 · </span>Ads, partners &amp; SaaS</p>
           <h3 class="nsh-tabs__title" id="panel-m3-t">광고·제휴·SaaS</h3>
           <p class="nsh-tabs__count">3 / 10</p>
         </div>
         <ul class="nsh-biz" role="list"><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5.5 5.5"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5.5 5.5"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">08 · </span><span lang="en">Ads &amp; promotion</span></p><h4 class="nsh-biz__title">광고·상단 노출</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -930,7 +927,7 @@
               </dl>
             </li><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.4 2.4 3.5 5.3 3.5 8.5s-1.1 6.1-3.5 8.5c-2.4-2.4-3.5-5.3-3.5-8.5s1.1-6.1 3.5-8.5z"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.4 2.4 3.5 5.3 3.5 8.5s-1.1 6.1-3.5 8.5c-2.4-2.4-3.5-5.3-3.5-8.5s1.1-6.1 3.5-8.5z"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">09 · </span><span lang="en">Delivery &amp; insurance</span></p><h4 class="nsh-biz__title">배송·보험 제휴</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -941,7 +938,7 @@
               </dl>
             </li><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7.5" height="7.5" rx="1"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1"/><path d="M17.25 13.5v7.5M13.5 17.25H21"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7.5" height="7.5" rx="1"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1"/><path d="M17.25 13.5v7.5M13.5 17.25H21"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">10 · </span><span lang="en">Internal asset SaaS</span></p><h4 class="nsh-biz__title">사내 자산 공유 SaaS</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -954,21 +951,15 @@
       </div></div></div>
   </section>
 <section class="nsh-sec" id="nsh-subs" aria-labelledby="nsh-subs-t">
-    <div class="nsh-wrap"><div class="nsh-ledger">
-      <header class="nsh-head nsh-head--side">
+    <div class="nsh-wrap"><header class="nsh-head">
       <p class="nsh-kicker" lang="en">SUBSCRIPTIONS</p>
       <h2 class="nsh-title" id="nsh-subs-t">구독은 현재 없음,<br />검토 중인 방향만.</h2>
       <p class="nsh-lead">구독은 기본 대여에 대한 입장료가 아니라 고급 운영 도구의 비용으로 설계합니다. 통합 계획과 IR에 월 요금 후보가 있지만 서로 다르고 승인되지 않아 공개하지 않습니다.</p>
-    </header>
-      <div class="nsh-ledger__body">
-        <div class="nsh-table-wrap" role="region" aria-labelledby="nsh-subs-t" tabindex="0">
-          <table class="nsh-table">
-            <thead><tr><th scope="col">구분</th><th scope="col">현재</th><th scope="col">검토 중인 방향</th></tr></thead>
-            <tbody><tr><th scope="row">개인 기본 이용</th><td>출시 전 · 유료 상품 없음</td><td>무료 유지 — 구독 없이 기본 등록과 대여</td></tr><tr><th scope="row">개인 판매자 고급 도구</th><td>없음</td><td>다수 물건 관리·통계를 위한 선택형 구독(가격 미정)</td></tr><tr><th scope="row">기업 기본 등록</th><td>없음</td><td>무료 등록 검토</td></tr><tr><th scope="row">기업 운영 구독</th><td>없음</td><td>자산·직원 규모별 단계형 구독(가격 미정)</td></tr><tr><th scope="row">다지점·대기업</th><td>없음</td><td>별도 계약</td></tr><tr><th scope="row">사내 자산 관리</th><td>없음</td><td>외부 거래 과금과 분리한 SaaS 구독(가격 미정)</td></tr></tbody>
-          </table>
-        </div>
-        
-      </div>
+    </header><div class="nsh-table-wrap" role="region" aria-labelledby="nsh-subs-t" tabindex="0">
+      <table class="nsh-table nsh-table--accent">
+        <thead><tr><th scope="col">구분</th><th scope="col">현재</th><th scope="col" class="is-accent">검토 중인 방향</th></tr></thead>
+        <tbody><tr><th scope="row">개인 기본 이용</th><td data-label="현재" class="is-muted">출시 전 · 유료 상품 없음</td><td data-label="검토 중인 방향" class="is-accent">무료 유지 — 구독 없이 기본 등록과 대여</td></tr><tr><th scope="row">개인 판매자 고급 도구</th><td data-label="현재" class="is-muted">없음</td><td data-label="검토 중인 방향" class="is-accent">다수 물건 관리·통계를 위한 선택형 구독(가격 미정)</td></tr><tr><th scope="row">기업 기본 등록</th><td data-label="현재" class="is-muted">없음</td><td data-label="검토 중인 방향" class="is-accent">무료 등록 검토</td></tr><tr><th scope="row">기업 운영 구독</th><td data-label="현재" class="is-muted">없음</td><td data-label="검토 중인 방향" class="is-accent">자산·직원 규모별 단계형 구독(가격 미정)</td></tr><tr><th scope="row">다지점·대기업</th><td data-label="현재" class="is-muted">없음</td><td data-label="검토 중인 방향" class="is-accent">별도 계약</td></tr><tr><th scope="row">사내 자산 관리</th><td data-label="현재" class="is-muted">없음</td><td data-label="검토 중인 방향" class="is-accent">외부 거래 과금과 분리한 SaaS 구독(가격 미정)</td></tr></tbody>
+      </table>
     </div></div>
   </section>
 <section class="nsh-sec nsh-sec--ink" id="nsh-calc" aria-labelledby="nsh-calc-t">
@@ -999,7 +990,7 @@
       <h2 class="nsh-title" id="nsh-small-t">작은 대여일수록<br />남는 몫이 작습니다.</h2>
       <p class="nsh-lead">동네 소형 물품 대여는 건당 금액이 작습니다. 이 사업의 수익성 문제를 숨기지 않고 설계 단계에서 다룹니다.</p>
     </header>
-    <ol class="nsh-statements" role="list"><li class="nsh-statements__item"><span class="nsh-statements__n" aria-hidden="true">01</span><h3 class="nsh-statements__title">보증금은 매출이 아닙니다</h3><p class="nsh-statements__body">보증금은 결제대행사를 통해 따로 처리되고 돌려줘야 하는 돈입니다. 수수료 계산에서 빼고, 법적·계약적 근거 없이 차감하지 않습니다.</p></li><li class="nsh-statements__item"><span class="nsh-statements__n" aria-hidden="true">02</span><h3 class="nsh-statements__title">건마다 붙는 비용이 있습니다</h3><p class="nsh-statements__body">카드 결제대행 수수료, 지급대행 비용, 부가세는 금액이 작아도 건마다 붙습니다. 내부 계산으로는 몇천 원대 소액 대여는 수수료를 받아도 손실이 될 수 있습니다.</p></li><li class="nsh-statements__item"><span class="nsh-statements__n" aria-hidden="true">03</span><h3 class="nsh-statements__title">그래서 원가 기준을 먼저 정합니다</h3><p class="nsh-statements__body">최소 수수료, 요율 하한, 결제 수단별 비용을 검토하고, 결제·환불·사기·고객지원 비용보다 수수료가 낮아지는 거래 구조는 허용하지 않는 방향입니다. 거래액, 매출, 공헌이익은 서로 다른 숫자로 따로 봅니다.</p></li></ol></div>
+    <ol class="nsh-trio nsh-trio--n" role="list"><li class="nsh-trio__item"><span class="nsh-trio__n" aria-hidden="true">01</span><h3 class="nsh-trio__title">보증금은 매출이 아닙니다</h3><p class="nsh-trio__body">보증금은 결제대행사를 통해 따로 처리되고 돌려줘야 하는 돈입니다. 수수료 계산에서 빼고, 법적·계약적 근거 없이 차감하지 않습니다.</p></li><li class="nsh-trio__item"><span class="nsh-trio__n" aria-hidden="true">02</span><h3 class="nsh-trio__title">건마다 붙는 비용이 있습니다</h3><p class="nsh-trio__body">카드 결제대행 수수료, 지급대행 비용, 부가세는 금액이 작아도 건마다 붙습니다. 내부 계산으로는 몇천 원대 소액 대여는 수수료를 받아도 손실이 될 수 있습니다.</p></li><li class="nsh-trio__item"><span class="nsh-trio__n" aria-hidden="true">03</span><h3 class="nsh-trio__title">그래서 원가 기준을 먼저 정합니다</h3><p class="nsh-trio__body">최소 수수료, 요율 하한, 결제 수단별 비용을 검토하고, 결제·환불·사기·고객지원 비용보다 수수료가 낮아지는 거래 구조는 허용하지 않는 방향입니다. 거래액, 매출, 공헌이익은 서로 다른 숫자로 따로 봅니다.</p></li></ol></div>
   </section>
 <section class="nsh-sec" id="nsh-saas" aria-labelledby="nsh-saas-t">
     <div class="nsh-wrap"><header class="nsh-head">
@@ -1007,7 +998,7 @@
       <h2 class="nsh-title" id="nsh-saas-t">기업·기관을 위한<br />자산 관리 도구.</h2>
       <p class="nsh-lead">SHAREON Business와 사내 자산 공유는 개인 거래 수수료와 별도인 반복 매출을 목표로 하는 구상입니다. 고객별 외주 개발이 아닌 표준 도구이며, 현재 출시된 제품은 없습니다.</p><div class="nsh-head__row"><a class="nsh-link" href="/ko/business/inquiry/?type=partnership&amp;source=shareon&amp;utm_source=shareon&amp;utm_content=saas#inquiry">도입 문의하기 <span aria-hidden="true">→</span></a></div>
     </header>
-    <ul class="nsh-modules" role="list"><li class="nsh-modules__item"><span class="nsh-modules__n" aria-hidden="true">01</span><h3 class="nsh-modules__name" lang="en">Asset Registry</h3><p class="nsh-modules__body">자산 등록과 관리 권한. 누가 어떤 장비를 등록·대여할 수 있는지 정합니다.</p></li><li class="nsh-modules__item"><span class="nsh-modules__n" aria-hidden="true">02</span><h3 class="nsh-modules__name" lang="en">Internal Booking</h3><p class="nsh-modules__body">직원·부서의 사내 예약과 중복 방지. 건별 거래 수수료가 없는 구조입니다.</p></li><li class="nsh-modules__item"><span class="nsh-modules__n" aria-hidden="true">03</span><h3 class="nsh-modules__name" lang="en">Check-out &amp; Return</h3><p class="nsh-modules__body">인수·반납과 상태 기록. 분실·파손 확인의 근거를 남깁니다.</p></li><li class="nsh-modules__item"><span class="nsh-modules__n" aria-hidden="true">04</span><h3 class="nsh-modules__name" lang="en">Utilisation</h3><p class="nsh-modules__body">자산 이용 현황. 오래 비어 있는 장비를 찾아냅니다.</p></li><li class="nsh-modules__item"><span class="nsh-modules__n" aria-hidden="true">05</span><h3 class="nsh-modules__name" lang="en">External Listing</h3><p class="nsh-modules__body">유휴 자산을 외부 대여로 전환. 이때는 외부 거래 규칙과 수수료가 적용됩니다.</p></li><li class="nsh-modules__item"><span class="nsh-modules__n" aria-hidden="true">06</span><h3 class="nsh-modules__name" lang="en">API &amp; License</h3><p class="nsh-modules__body">기업 시스템과의 연동과 라이선스. 가장 나중 단계의 장기 검토 항목입니다.</p></li></ul></div>
+    <ul class="nsh-modules" role="list"><li class="nsh-modules__item"><h3 class="nsh-modules__name" lang="en">Asset Registry</h3><p class="nsh-modules__body">자산 등록과 관리 권한. 누가 어떤 장비를 등록·대여할 수 있는지 정합니다.</p></li><li class="nsh-modules__item"><h3 class="nsh-modules__name" lang="en">Internal Booking</h3><p class="nsh-modules__body">직원·부서의 사내 예약과 중복 방지. 건별 거래 수수료가 없는 구조입니다.</p></li><li class="nsh-modules__item"><h3 class="nsh-modules__name" lang="en">Check-out &amp; Return</h3><p class="nsh-modules__body">인수·반납과 상태 기록. 분실·파손 확인의 근거를 남깁니다.</p></li><li class="nsh-modules__item"><h3 class="nsh-modules__name" lang="en">Utilisation</h3><p class="nsh-modules__body">자산 이용 현황. 오래 비어 있는 장비를 찾아냅니다.</p></li><li class="nsh-modules__item"><h3 class="nsh-modules__name" lang="en">External Listing</h3><p class="nsh-modules__body">유휴 자산을 외부 대여로 전환. 이때는 외부 거래 규칙과 수수료가 적용됩니다.</p></li><li class="nsh-modules__item"><h3 class="nsh-modules__name" lang="en">API &amp; License</h3><p class="nsh-modules__body">기업 시스템과의 연동과 라이선스. 가장 나중 단계의 장기 검토 항목입니다.</p></li></ul></div>
   </section>
 <section class="nsh-sec nsh-sec--tint" id="nsh-market" aria-labelledby="nsh-market-t">
     <div class="nsh-wrap"><div class="nsh-split">
@@ -1016,7 +1007,7 @@
       <h2 class="nsh-title" id="nsh-market-t">시장 문제와<br />차별화 가설.</h2>
       <p class="nsh-lead">아래는 사업 기회와 경쟁에 대한 가설입니다. 시장 규모나 점유율 같은 수치는 검증되지 않아 싣지 않습니다.</p>
     </header>
-      <ol class="nsh-rows" role="list"><li class="nsh-rows__item"><span class="nsh-rows__n" aria-hidden="true">01</span><div><h3 class="nsh-rows__title">기회 — 가끔 쓰는 물건의 구매 부담</h3><p class="nsh-rows__body">자주 쓰지 않는 물건을 사서 보관하는 비용과 공간 부담이 있습니다. 필요한 기간만 빌리는 선택지가 동네 안에 충분히 없다는 것이 출발 문제입니다.</p></div></li><li class="nsh-rows__item"><span class="nsh-rows__n" aria-hidden="true">02</span><div><h3 class="nsh-rows__title">공백 — 지금의 대안</h3><p class="nsh-rows__body">지역 커뮤니티 게시글과 지인 대여는 일정·보증·반납 확인이 당사자 몫이고, 오프라인 대여점은 위치와 품목이 한정되며, 중고 판매 중심 서비스는 소유권 이전이 기본입니다. 패션처럼 한 분야에 특화된 대여 서비스도 있습니다.</p></div></li><li class="nsh-rows__item"><span class="nsh-rows__n" aria-hidden="true">03</span><div><h3 class="nsh-rows__title">가설 — 대여 전용 거래 흐름</h3><p class="nsh-rows__body">예약 캘린더, 중복 방지, 인수·반납 기록, 보증금 조건, 분쟁 절차를 처음부터 대여에 맞춰 설계하면, 낯선 이웃끼리도 빌리고 돌려주기 쉬워진다는 가설입니다.</p></div></li><li class="nsh-rows__item"><span class="nsh-rows__n" aria-hidden="true">04</span><div><h3 class="nsh-rows__title">가설 — 개인·기업·사내를 잇는 하나의 플랫폼</h3><p class="nsh-rows__body">같은 거래 엔진으로 개인 간 대여, 기업 대여, 사내 자산 공유를 다루면 공급이 늘고 운영 도구를 재사용할 수 있다는 가설입니다.</p></div></li><li class="nsh-rows__item"><span class="nsh-rows__n" aria-hidden="true">05</span><div><h3 class="nsh-rows__title">위험 — 진입 장벽과 규제</h3><p class="nsh-rows__body">양면 시장의 초기 공급·수요 확보, 분쟁 처리 비용, 결제·보증금 관련 전자금융·통신판매중개 규제와 약관이 가장 큰 과제입니다.</p></div></li></ol>
+      <div class="nsh-split__body"><ul class="nsh-rows nsh-rows--role" role="list"><li class="nsh-rows__item"><div class="nsh-rows__text"><h3 class="nsh-rows__title"><span class="nsh-role">기회</span><span class="nsh-vh"> — </span><span class="nsh-role__rest">가끔 쓰는 물건의 구매 부담</span></h3><p class="nsh-rows__body">자주 쓰지 않는 물건을 사서 보관하는 비용과 공간 부담이 있습니다. 필요한 기간만 빌리는 선택지가 동네 안에 충분히 없다는 것이 출발 문제입니다.</p></div></li><li class="nsh-rows__item"><div class="nsh-rows__text"><h3 class="nsh-rows__title"><span class="nsh-role">공백</span><span class="nsh-vh"> — </span><span class="nsh-role__rest">지금의 대안</span></h3><p class="nsh-rows__body">지역 커뮤니티 게시글과 지인 대여는 일정·보증·반납 확인이 당사자 몫이고, 오프라인 대여점은 위치와 품목이 한정되며, 중고 판매 중심 서비스는 소유권 이전이 기본입니다. 패션처럼 한 분야에 특화된 대여 서비스도 있습니다.</p></div></li><li class="nsh-rows__item"><div class="nsh-rows__text"><h3 class="nsh-rows__title"><span class="nsh-role">가설</span><span class="nsh-vh"> — </span><span class="nsh-role__rest">대여 전용 거래 흐름</span></h3><p class="nsh-rows__body">예약 캘린더, 중복 방지, 인수·반납 기록, 보증금 조건, 분쟁 절차를 처음부터 대여에 맞춰 설계하면, 낯선 이웃끼리도 빌리고 돌려주기 쉬워진다는 가설입니다.</p></div></li><li class="nsh-rows__item"><div class="nsh-rows__text"><h3 class="nsh-rows__title"><span class="nsh-role">가설</span><span class="nsh-vh"> — </span><span class="nsh-role__rest">개인·기업·사내를 잇는 하나의 플랫폼</span></h3><p class="nsh-rows__body">같은 거래 엔진으로 개인 간 대여, 기업 대여, 사내 자산 공유를 다루면 공급이 늘고 운영 도구를 재사용할 수 있다는 가설입니다.</p></div></li><li class="nsh-rows__item"><div class="nsh-rows__text"><h3 class="nsh-rows__title"><span class="nsh-role">위험</span><span class="nsh-vh"> — </span><span class="nsh-role__rest">진입 장벽과 규제</span></h3><p class="nsh-rows__body">양면 시장의 초기 공급·수요 확보, 분쟁 처리 비용, 결제·보증금 관련 전자금융·통신판매중개 규제와 약관이 가장 큰 과제입니다.</p></div></li></ul></div>
     </div></div>
   </section>
 <section class="nsh-sec" id="nsh-entry" aria-labelledby="nsh-entry-t">
@@ -1025,27 +1016,24 @@
       <h2 class="nsh-title" id="nsh-entry-t">한 동네,<br />세 카테고리부터.</h2>
       <p class="nsh-lead">초기 진입 계획입니다. 지역과 일정은 확정되지 않았으며, 법률 검토와 결제대행 계약 상황에 따라 달라집니다.</p>
     </header>
-    <ol class="nsh-chain" role="list"><li class="nsh-chain__item"><span class="nsh-chain__n" aria-hidden="true">01</span><h3 class="nsh-chain__title">동네 한 곳을 고릅니다</h3><p class="nsh-chain__body">넓게 펼치기보다 한 동네에서 빌려줄 물건과 빌릴 이웃을 함께 모으는 것이 먼저입니다. 빌려주는 사람을 먼저 모으는 방식을 검토합니다.</p><span class="nsh-chain__arrow" aria-hidden="true">→</span></li><li class="nsh-chain__item"><span class="nsh-chain__n" aria-hidden="true">02</span><h3 class="nsh-chain__title">캠핑·공구·유아 용품</h3><p class="nsh-chain__body">분실·파손 위험이 비교적 낮고 직접 주고받기 쉬우며, 가끔 필요한 수요가 분명한 세 카테고리를 초기 후보로 검토합니다.</p><span class="nsh-chain__arrow" aria-hidden="true">→</span></li><li class="nsh-chain__item"><span class="nsh-chain__n" aria-hidden="true">03</span><h3 class="nsh-chain__title">결제 없이 흐름부터 검증</h3><p class="nsh-chain__body">파일럿을 하더라도 결제는 끈 상태로 요청→완료 성사율, 분쟁 발생, 재대여 여부를 먼저 봅니다. 결제·정산은 계약과 법률 검토를 마친 뒤 엽니다.</p></li></ol></div>
+    <ol class="nsh-steps nsh-steps--3" role="list"><li class="nsh-steps__item"><span class="nsh-steps__n" aria-hidden="true">01</span><h3 class="nsh-steps__title">동네 한 곳을 고릅니다</h3><p class="nsh-steps__body">넓게 펼치기보다 한 동네에서 빌려줄 물건과 빌릴 이웃을 함께 모으는 것이 먼저입니다. 빌려주는 사람을 먼저 모으는 방식을 검토합니다.</p></li><li class="nsh-steps__item"><span class="nsh-steps__n" aria-hidden="true">02</span><h3 class="nsh-steps__title">캠핑·공구·유아 용품</h3><p class="nsh-steps__body">분실·파손 위험이 비교적 낮고 직접 주고받기 쉬우며, 가끔 필요한 수요가 분명한 세 카테고리를 초기 후보로 검토합니다.</p></li><li class="nsh-steps__item"><span class="nsh-steps__n" aria-hidden="true">03</span><h3 class="nsh-steps__title">결제 없이 흐름부터 검증</h3><p class="nsh-steps__body">파일럿을 하더라도 결제는 끈 상태로 요청→완료 성사율, 분쟁 발생, 재대여 여부를 먼저 봅니다. 결제·정산은 계약과 법률 검토를 마친 뒤 엽니다.</p></li></ol></div>
   </section>
-<section class="nsh-sec nsh-sec--band" id="nsh-roadmap" aria-labelledby="nsh-roadmap-t">
+<section class="nsh-sec nsh-sec--tint" id="nsh-roadmap" aria-labelledby="nsh-roadmap-t">
     <div class="nsh-wrap"><div class="nsh-split">
       <header class="nsh-head nsh-head--side">
       <p class="nsh-kicker" lang="en">GROWTH ROADMAP</p>
       <h2 class="nsh-title" id="nsh-roadmap-t">카테고리보다,<br />거래가 먼저입니다.</h2>
       <p class="nsh-lead">통합 계획의 사업 우선순위입니다. 각 단계는 앞 단계의 검증을 전제로 하며 일정은 확정되지 않았습니다.</p><p class="nsh-now"><span class="nsh-now__dot" aria-hidden="true"></span>현재 위치: 1순위 — 예약 흐름을 개발 환경에서 개발·테스트 중이며 앱은 출시 전입니다.</p>
     </header>
-      <ol class="nsh-timeline" role="list"><li class="nsh-timeline__item is-now"><span class="nsh-timeline__dot" aria-hidden="true"></span><p class="nsh-timeline__n" lang="en">STEP 01</p><h3 class="nsh-timeline__title">공유·대여 예약 완성 <span class="nsh-tag">최우선</span></h3><p class="nsh-timeline__body">등록·탐색·시간·수량·예약·반납까지 실제로 동작하도록 만듭니다.</p></li><li class="nsh-timeline__item"><span class="nsh-timeline__dot" aria-hidden="true"></span><p class="nsh-timeline__n" lang="en">STEP 02</p><h3 class="nsh-timeline__title">보증금·안전·분쟁·결제·정산</h3><p class="nsh-timeline__body">실제 돈이 오가는 거래의 신뢰와 운영 체계를 갖춥니다. 결제대행 계약, 보안, 법률 검토를 마친 뒤에만 활성화합니다.</p></li><li class="nsh-timeline__item"><span class="nsh-timeline__dot" aria-hidden="true"></span><p class="nsh-timeline__n" lang="en">STEP 03</p><h3 class="nsh-timeline__title">기업 입점·사내 자산 SaaS</h3><p class="nsh-timeline__body">개인 거래 수수료와 별개인 반복 매출을 만드는 단계입니다.</p></li><li class="nsh-timeline__item"><span class="nsh-timeline__dot" aria-hidden="true"></span><p class="nsh-timeline__n" lang="en">STEP 04</p><h3 class="nsh-timeline__title">카테고리·지역·제휴 확대</h3><p class="nsh-timeline__body">검증된 거래 모델을 다른 물품·공간·기업, 배송·보험 제휴와 해외로 넓힙니다.</p></li></ol>
+      <div class="nsh-split__body"><ol class="nsh-timeline" role="list"><li class="nsh-timeline__item is-now"><p class="nsh-timeline__n" lang="en">STEP 01</p><div><h3 class="nsh-timeline__title">공유·대여 예약 완성 <span class="nsh-tag">최우선</span></h3><p class="nsh-timeline__body">등록·탐색·시간·수량·예약·반납까지 실제로 동작하도록 만듭니다.</p></div></li><li class="nsh-timeline__item"><p class="nsh-timeline__n" lang="en">STEP 02</p><div><h3 class="nsh-timeline__title">보증금·안전·분쟁·결제·정산</h3><p class="nsh-timeline__body">실제 돈이 오가는 거래의 신뢰와 운영 체계를 갖춥니다. 결제대행 계약, 보안, 법률 검토를 마친 뒤에만 활성화합니다.</p></div></li><li class="nsh-timeline__item"><p class="nsh-timeline__n" lang="en">STEP 03</p><div><h3 class="nsh-timeline__title">기업 입점·사내 자산 SaaS</h3><p class="nsh-timeline__body">개인 거래 수수료와 별개인 반복 매출을 만드는 단계입니다.</p></div></li><li class="nsh-timeline__item"><p class="nsh-timeline__n" lang="en">STEP 04</p><div><h3 class="nsh-timeline__title">카테고리·지역·제휴 확대</h3><p class="nsh-timeline__body">검증된 거래 모델을 다른 물품·공간·기업, 배송·보험 제휴와 해외로 넓힙니다.</p></div></li></ol></div>
     </div></div>
   </section>
 <section class="nsh-sec" id="nsh-principles" aria-labelledby="nsh-principles-t">
-    <div class="nsh-wrap"><div class="nsh-split">
-      <header class="nsh-head nsh-head--side">
+    <div class="nsh-wrap"><header class="nsh-head">
       <p class="nsh-kicker" lang="en">OPERATING &amp; LEGAL PRINCIPLES</p>
       <h2 class="nsh-title" id="nsh-principles-t">사업 운영·법률<br />원칙.</h2>
       <p class="nsh-lead">사업을 넓히기 전에 영역별로 확인해야 할 사항입니다. 법률 검토는 진행 계획 단계이며 아직 의견을 받지 않았습니다.</p>
-    </header>
-      <ul class="nsh-checks" role="list"><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3z" fill="none" stroke="#7771E8" stroke-width="1.6"/><path d="m7.5 12.5 3 3 6-7" fill="none" stroke="#554CC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>개인 간 거래는 계약·책임·소비자 보호 기준을 약관에 분명히 둡니다.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3z" fill="none" stroke="#7771E8" stroke-width="1.6"/><path d="m7.5 12.5 3 3 6-7" fill="none" stroke="#554CC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>사업자 입점은 사업자 확인과 전자상거래·통신판매중개 의무를 따릅니다.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3z" fill="none" stroke="#7771E8" stroke-width="1.6"/><path d="m7.5 12.5 3 3 6-7" fill="none" stroke="#554CC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>결제·정산은 결제대행 계약과 전자금융 관련 요건을 확인한 뒤에만 엽니다. NEWON은 대금을 보관하지 않습니다.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3z" fill="none" stroke="#7771E8" stroke-width="1.6"/><path d="m7.5 12.5 3 3 6-7" fill="none" stroke="#554CC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>보증금은 보관·반환·차감 근거를 정하고, 매출로 잡지 않습니다.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3z" fill="none" stroke="#7771E8" stroke-width="1.6"/><path d="m7.5 12.5 3 3 6-7" fill="none" stroke="#554CC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>파손·분실은 배상 기준, 증빙, 분쟁 절차를 거쳐 처리합니다.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3z" fill="none" stroke="#7771E8" stroke-width="1.6"/><path d="m7.5 12.5 3 3 6-7" fill="none" stroke="#554CC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>공간 대여는 용도·허가·시설 규정을, 보험 연계는 보험 모집 관련 규제를 먼저 확인합니다.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3z" fill="none" stroke="#7771E8" stroke-width="1.6"/><path d="m7.5 12.5 3 3 6-7" fill="none" stroke="#554CC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>기업 자산은 소유권과 직원 접근 권한을, 개인정보는 연락처·주소·거래 정보를 최소한으로 다룹니다.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3z" fill="none" stroke="#7771E8" stroke-width="1.6"/><path d="m7.5 12.5 3 3 6-7" fill="none" stroke="#554CC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>세금 신고 의무는 거래 당사자별로 검토하고, 해외 확장은 국가별 대여·결제 규정을 따릅니다.</p></li></ul>
-    </div></div>
+    </header><ul class="nsh-checks" role="list"><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>개인 간 거래는 계약·책임·소비자 보호 기준을 약관에 분명히 둡니다.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>사업자 입점은 사업자 확인과 전자상거래·통신판매중개 의무를 따릅니다.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>결제·정산은 결제대행 계약과 전자금융 관련 요건을 확인한 뒤에만 엽니다. NEWON은 대금을 보관하지 않습니다.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>보증금은 보관·반환·차감 근거를 정하고, 매출로 잡지 않습니다.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>파손·분실은 배상 기준, 증빙, 분쟁 절차를 거쳐 처리합니다.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>공간 대여는 용도·허가·시설 규정을, 보험 연계는 보험 모집 관련 규제를 먼저 확인합니다.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>기업 자산은 소유권과 직원 접근 권한을, 개인정보는 연락처·주소·거래 정보를 최소한으로 다룹니다.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>세금 신고 의무는 거래 당사자별로 검토하고, 해외 확장은 국가별 대여·결제 규정을 따릅니다.</p></li></ul></div>
   </section>
 <section class="nsh-sec nsh-sec--ink nsh-close" id="nsh-next" aria-labelledby="nsh-next-t">
     <div class="nsh-wrap nsh-close__in">
@@ -1075,7 +1063,7 @@
     <script src="/waitlist.js?v=20260904sec1" defer></script>
     <script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=20261025ov1" defer></script>
-    <script src="/shareon.js?v=20261024c30" defer></script>
+    <script src="/shareon.js?v=20261025rd1" defer></script>
     <script src="/site-chrome.js?v=20261017nav8" defer></script>
     <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
 </body>

@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=20261025ov1" />
     <link rel="stylesheet" href="/flagship-subnav.css?v=20261019fsn3" />
-    <link rel="stylesheet" href="/shareon.css?v=20261025ov1" />
+    <link rel="stylesheet" href="/shareon.css?v=20261025rd1" />
     <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
 <script src="/theme-shell.js?v=20260904perf1"></script>
     <script src="/lang-nav.js?v=20260825studio"></script>
@@ -783,21 +783,18 @@
     <p class="nsh-status__note"><span class="nsh-status__pilot" lang="en">Pilot</span><span class="nsh-vh">Notice: </span>The SHAREON app is in development and has not launched. Many of the areas and features introduced here are part of future development or operating plans; real rentals, booking confirmation, payment, deposits and settlement will not operate until a payment-provider contract and legal review are in place.</p>
   </div>
 <section class="nsh-sec" id="nsh-payers" aria-labelledby="nsh-payers-t">
-    <div class="nsh-wrap"><div class="nsh-ledger">
+    <div class="nsh-wrap"><div class="nsh-split nsh-split--wide">
       <header class="nsh-head nsh-head--side">
       <p class="nsh-kicker" lang="en">WHO PAYS</p>
       <h2 class="nsh-title" id="nsh-payers-t">Who uses it,<br />and who pays.</h2>
       <p class="nsh-lead">SHAREON plans its core revenue from platform fees on paid rentals and from subscriptions for business asset management. This is the design direction; no money is being charged yet.</p>
     </header>
-      <div class="nsh-ledger__body">
-        <div class="nsh-table-wrap" role="region" aria-labelledby="nsh-payers-t" tabindex="0">
-          <table class="nsh-table">
-            <thead><tr><th scope="col">Customer</th><th scope="col">How they use it</th><th scope="col">How they would pay (plan)</th></tr></thead>
-            <tbody><tr><th scope="row">People who borrow now and then</th><td>Borrow items for the period needed.</td><td>The rental fee goes to the lender. An option where the lender bears the platform fee is under review.</td></tr><tr><th scope="row">People who lend</th><td>List unused items and earn rental fees.</td><td>Transaction fee on completed paid rentals; optional seller subscription</td></tr><tr><th scope="row">Rental shops &amp; space operators</th><td>Join directly and rent out equipment or spaces.</td><td>Business and space rental fees, business subscription, top placement labelled as an ad</td></tr><tr><th scope="row">Companies renting in bulk or long term</th><td>Borrow equipment for events or projects in bulk or for long periods.</td><td>Long-term and B2B rental contracts</td></tr><tr><th scope="row">Organisations with internal assets</th><td>Employees and departments share internal equipment.</td><td>Internal asset-sharing SaaS subscription (concept), no per-trade fee</td></tr><tr><th scope="row">Delivery, insurance and similar partners</th><td>Connect extra services rentals need.</td><td>Lawful partnership contracts (after rules and structure are verified)</td></tr></tbody>
-          </table>
-        </div>
-        
-      </div>
+      <div class="nsh-split__body"><div class="nsh-table-wrap" role="region" aria-labelledby="nsh-payers-t" tabindex="0">
+      <table class="nsh-table">
+        <thead><tr><th scope="col">Customer</th><th scope="col">How they use it</th><th scope="col">How they would pay (plan)</th></tr></thead>
+        <tbody><tr><th scope="row">People who borrow now and then</th><td data-label="How they use it">Borrow items for the period needed.</td><td data-label="How they would pay (plan)">The rental fee goes to the lender. An option where the lender bears the platform fee is under review.</td></tr><tr><th scope="row">People who lend</th><td data-label="How they use it">List unused items and earn rental fees.</td><td data-label="How they would pay (plan)">Transaction fee on completed paid rentals; optional seller subscription</td></tr><tr><th scope="row">Rental shops &amp; space operators</th><td data-label="How they use it">Join directly and rent out equipment or spaces.</td><td data-label="How they would pay (plan)">Business and space rental fees, business subscription, top placement labelled as an ad</td></tr><tr><th scope="row">Companies renting in bulk or long term</th><td data-label="How they use it">Borrow equipment for events or projects in bulk or for long periods.</td><td data-label="How they would pay (plan)">Long-term and B2B rental contracts</td></tr><tr><th scope="row">Organisations with internal assets</th><td data-label="How they use it">Employees and departments share internal equipment.</td><td data-label="How they would pay (plan)">Internal asset-sharing SaaS subscription (concept), no per-trade fee</td></tr><tr><th scope="row">Delivery, insurance and similar partners</th><td data-label="How they use it">Connect extra services rentals need.</td><td data-label="How they would pay (plan)">Lawful partnership contracts (after rules and structure are verified)</td></tr></tbody>
+      </table>
+    </div></div>
     </div></div>
   </section>
 <section class="nsh-sec" id="nsh-structure" aria-labelledby="nsh-structure-t">
@@ -806,27 +803,29 @@
       <h2 class="nsh-title" id="nsh-structure-t">Starting with C2C,<br />then B2C, C2B and B2B.</h2>
       <p class="nsh-lead">External trades fall into four structures, and moving assets inside a company is handled separately. Not all of them are operating.</p>
     </header><div class="nsh-matrix">
-      <p class="nsh-matrix__axis nsh-matrix__axis--x" aria-hidden="true"><span>Borrower →</span><span>Person</span><span>Business</span></p>
-      <p class="nsh-matrix__axis nsh-matrix__axis--y" aria-hidden="true"><span>Lender ↓</span><span>Person</span><span>Business</span></p>
+      <div class="nsh-matrix__corner" aria-hidden="true"><span>Lender ↓</span><span>Borrower →</span></div>
+      <p class="nsh-matrix__ax nsh-matrix__ax--c1" aria-hidden="true">Person</p>
+      <p class="nsh-matrix__ax nsh-matrix__ax--c2" aria-hidden="true">Business</p>
+      <p class="nsh-matrix__ax nsh-matrix__ax--r1" aria-hidden="true">Person</p>
+      <p class="nsh-matrix__ax nsh-matrix__ax--r2" aria-hidden="true">Business</p>
       <ul class="nsh-matrix__grid" role="list"><li class="nsh-matrix__cell"><p class="nsh-matrix__code" lang="en">C2C</p><h3 class="nsh-matrix__title">Person → person</h3><p class="nsh-matrix__body">A neighbour borrows something another neighbour owns. This is the trade SHAREON focuses on first, centred on small items such as camping gear, tools and baby gear.</p></li><li class="nsh-matrix__cell"><p class="nsh-matrix__code" lang="en">C2B</p><h3 class="nsh-matrix__title">Person → business</h3><p class="nsh-matrix__body">A business borrows an individual’s equipment, such as a camera kit, for work or an event. This is a rental with an individual as supplier, not a wanted or request board.</p></li><li class="nsh-matrix__cell"><p class="nsh-matrix__code" lang="en">B2C</p><h3 class="nsh-matrix__title">Business → person</h3><p class="nsh-matrix__body">Small businesses and companies with equipment or spaces, such as camera rental shops or space operators, lend to individuals. Opens after business verification.</p></li><li class="nsh-matrix__cell"><p class="nsh-matrix__code" lang="en">B2B</p><h3 class="nsh-matrix__title">Business → business</h3><p class="nsh-matrix__body">A business lends assets such as event or filming equipment to another business. Bulk and long-term rentals are reviewed with separate contract terms.</p></li></ul>
     </div>
-    <ul class="nsh-signal" role="list"><li class="nsh-signal__item"><span class="nsh-signal__n" aria-hidden="true">05</span><p class="nsh-signal__code" lang="en">Internal B2B</p><h3 class="nsh-signal__title">Internal asset sharing</h3><p class="nsh-signal__body">Moving assets between employees and departments is kept apart from external paid trades. A SaaS subscription fits this better than a per-trade fee.</p></li><li class="nsh-signal__item"><span class="nsh-signal__n" aria-hidden="true">06</span><p class="nsh-signal__code" lang="en">B2B2C · B2G</p><h3 class="nsh-signal__title">Partners and institutions — under review</h3><p class="nsh-signal__body">Structures where a rental shop and a delivery or insurance company serve individuals together, and shared equipment at universities or institutions, are possibilities for discussion and not confirmed business areas.</p></li></ul></div>
+    <ul class="nsh-signal" role="list"><li class="nsh-signal__item"><p class="nsh-signal__code" lang="en">Internal B2B</p><div><h3 class="nsh-signal__title">Internal asset sharing</h3><p class="nsh-signal__body">Moving assets between employees and departments is kept apart from external paid trades. A SaaS subscription fits this better than a per-trade fee.</p></div></li><li class="nsh-signal__item"><p class="nsh-signal__code" lang="en">B2B2C · B2G</p><div><h3 class="nsh-signal__title">Partners and institutions — under review</h3><p class="nsh-signal__body">Structures where a rental shop and a delivery or insurance company serve individuals together, and shared equipment at universities or institutions, are possibilities for discussion and not confirmed business areas.</p></div></li></ul></div>
   </section>
-<section class="nsh-sec nsh-sec--band" id="nsh-models" aria-labelledby="nsh-models-t">
+<section class="nsh-sec nsh-sec--tint" id="nsh-models" aria-labelledby="nsh-models-t">
     <div class="nsh-wrap"><header class="nsh-head">
       <p class="nsh-kicker" lang="en">10 REVENUE MODELS</p>
       <h2 class="nsh-title" id="nsh-models-t">Ten revenue models<br />in three groups.</h2>
       <p class="nsh-lead">Revenue models set out in the integrated plan and the IR. All are at the planning (review) stage and none is on sale. Pick a group to see who pays and how.</p>
     </header><div class="nsh-tabs" data-nsh-tabs><div class="nsh-tabs__list" role="tablist" aria-label="Revenue model groups" hidden data-nsh-tablist><button type="button" role="tab" class="nsh-tabs__tab" id="tab-m1" aria-controls="panel-m1" aria-selected="true" tabindex="0"><span class="nsh-tabs__n" aria-hidden="true">01</span><span class="nsh-tabs__label">Transaction fees</span></button><button type="button" role="tab" class="nsh-tabs__tab" id="tab-m2" aria-controls="panel-m2" aria-selected="false" tabindex="-1"><span class="nsh-tabs__n" aria-hidden="true">02</span><span class="nsh-tabs__label">Subscriptions</span></button><button type="button" role="tab" class="nsh-tabs__tab" id="tab-m3" aria-controls="panel-m3" aria-selected="false" tabindex="-1"><span class="nsh-tabs__n" aria-hidden="true">03</span><span class="nsh-tabs__label">Ads, partners &amp; SaaS</span></button></div><div class="nsh-tabs__panel" id="panel-m1" role="region" aria-labelledby="panel-m1-t" data-nsh-panel>
         <div class="nsh-tabs__side">
-          <span class="nsh-tabs__big" aria-hidden="true">01</span>
-          <p class="nsh-tabs__en" lang="en">Transaction fees</p>
+          <p class="nsh-tabs__en" lang="en"><span aria-hidden="true">01 · </span>Transaction fees</p>
           <h3 class="nsh-tabs__title" id="panel-m1-t">Transaction fees</h3>
           <p class="nsh-tabs__count">5 / 10</p>
         </div>
         <ul class="nsh-biz" role="list"><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">01 · </span><span lang="en">C2C rental fee</span></p><h4 class="nsh-biz__title">Personal rental fee</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -837,7 +836,7 @@
               </dl>
             </li><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 8h3l1.6-2.2h6.8L17 8h3v11H4z"/><circle cx="12" cy="13.5" r="3.4"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 8h3l1.6-2.2h6.8L17 8h3v11H4z"/><circle cx="12" cy="13.5" r="3.4"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">02 · </span><span lang="en">Business rental fee</span></p><h4 class="nsh-biz__title">Business rental fee</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -848,7 +847,7 @@
               </dl>
             </li><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 10h18"/><path d="M10 10v10"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 10h18"/><path d="M10 10v10"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">03 · </span><span lang="en">Space rental fee</span></p><h4 class="nsh-biz__title">Space rental fee</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -859,7 +858,7 @@
               </dl>
             </li><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 10h17"/><path d="M8 3v4M16 3v4"/><path d="m9 14.5 2 2 4-4"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 10h17"/><path d="M8 3v4M16 3v4"/><path d="m9 14.5 2 2 4-4"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">04 · </span><span lang="en">Service booking fee</span></p><h4 class="nsh-biz__title">Service booking fee</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -870,7 +869,7 @@
               </dl>
             </li><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 9V4h10v5"/><rect x="4" y="9" width="16" height="7" rx="1.5"/><path d="M7 14h10v6H7z"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 9V4h10v5"/><rect x="4" y="9" width="16" height="7" rx="1.5"/><path d="M7 14h10v6H7z"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">05 · </span><span lang="en">Long-term &amp; B2B</span></p><h4 class="nsh-biz__title">Long-term &amp; B2B rental contracts</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -882,14 +881,13 @@
             </li></ul>
       </div><div class="nsh-tabs__panel" id="panel-m2" role="region" aria-labelledby="panel-m2-t" data-nsh-panel>
         <div class="nsh-tabs__side">
-          <span class="nsh-tabs__big" aria-hidden="true">02</span>
-          <p class="nsh-tabs__en" lang="en">Subscriptions</p>
+          <p class="nsh-tabs__en" lang="en"><span aria-hidden="true">02 · </span>Subscriptions</p>
           <h3 class="nsh-tabs__title" id="panel-m2-t">Subscriptions</h3>
           <p class="nsh-tabs__count">2 / 10</p>
         </div>
         <ul class="nsh-biz" role="list"><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h16"/><path d="M7 20V9l5-4 5 4v11"/><path d="M10 20v-5h4v5"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h16"/><path d="M7 20V9l5-4 5 4v11"/><path d="M10 20v-5h4v5"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">06 · </span><span lang="en">Seller subscription</span></p><h4 class="nsh-biz__title">Individual seller subscription</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -900,7 +898,7 @@
               </dl>
             </li><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20V6l7-2v16"/><path d="M11 9h9v11"/><path d="M2 20h20"/><path d="M7 9h1M7 13h1M14.5 13h1M14.5 16h1"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20V6l7-2v16"/><path d="M11 9h9v11"/><path d="M2 20h20"/><path d="M7 9h1M7 13h1M14.5 13h1M14.5 16h1"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">07 · </span><span lang="en">Business subscription</span></p><h4 class="nsh-biz__title">Business seller subscription</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -912,14 +910,13 @@
             </li></ul>
       </div><div class="nsh-tabs__panel" id="panel-m3" role="region" aria-labelledby="panel-m3-t" data-nsh-panel>
         <div class="nsh-tabs__side">
-          <span class="nsh-tabs__big" aria-hidden="true">03</span>
-          <p class="nsh-tabs__en" lang="en">Ads, partners &amp; SaaS</p>
+          <p class="nsh-tabs__en" lang="en"><span aria-hidden="true">03 · </span>Ads, partners &amp; SaaS</p>
           <h3 class="nsh-tabs__title" id="panel-m3-t">Ads, partners &amp; SaaS</h3>
           <p class="nsh-tabs__count">3 / 10</p>
         </div>
         <ul class="nsh-biz" role="list"><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5.5 5.5"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5.5 5.5"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">08 · </span><span lang="en">Ads &amp; promotion</span></p><h4 class="nsh-biz__title">Ads &amp; top placement</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -930,7 +927,7 @@
               </dl>
             </li><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.4 2.4 3.5 5.3 3.5 8.5s-1.1 6.1-3.5 8.5c-2.4-2.4-3.5-5.3-3.5-8.5s1.1-6.1 3.5-8.5z"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.4 2.4 3.5 5.3 3.5 8.5s-1.1 6.1-3.5 8.5c-2.4-2.4-3.5-5.3-3.5-8.5s1.1-6.1 3.5-8.5z"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">09 · </span><span lang="en">Delivery &amp; insurance</span></p><h4 class="nsh-biz__title">Delivery &amp; insurance partnerships</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -941,7 +938,7 @@
               </dl>
             </li><li class="nsh-biz__item">
               <div class="nsh-biz__top">
-                <span class="nsh-biz__ico"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7.5" height="7.5" rx="1"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1"/><path d="M17.25 13.5v7.5M13.5 17.25H21"/></svg></span>
+                <span class="nsh-ico-well"><svg class="nsh-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7.5" height="7.5" rx="1"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1"/><path d="M17.25 13.5v7.5M13.5 17.25H21"/></svg></span>
                 <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">10 · </span><span lang="en">Internal asset SaaS</span></p><h4 class="nsh-biz__title">Internal asset-sharing SaaS</h4></div>
               </div>
               <dl class="nsh-biz__dl">
@@ -954,21 +951,15 @@
       </div></div></div>
   </section>
 <section class="nsh-sec" id="nsh-subs" aria-labelledby="nsh-subs-t">
-    <div class="nsh-wrap"><div class="nsh-ledger">
-      <header class="nsh-head nsh-head--side">
+    <div class="nsh-wrap"><header class="nsh-head">
       <p class="nsh-kicker" lang="en">SUBSCRIPTIONS</p>
       <h2 class="nsh-title" id="nsh-subs-t">No subscriptions today,<br />only directions under review.</h2>
       <p class="nsh-lead">Subscriptions are designed as a charge for advanced operating tools, not an entry fee for basic rental. The integrated plan and the IR contain monthly price candidates, but they differ and are not approved, so they are not published.</p>
-    </header>
-      <div class="nsh-ledger__body">
-        <div class="nsh-table-wrap" role="region" aria-labelledby="nsh-subs-t" tabindex="0">
-          <table class="nsh-table">
-            <thead><tr><th scope="col">Item</th><th scope="col">Today</th><th scope="col">Direction under review</th></tr></thead>
-            <tbody><tr><th scope="row">Basic use by individuals</th><td>Before launch · no paid products</td><td>Stays free — basic listing and renting without a subscription</td></tr><tr><th scope="row">Advanced tools for individual sellers</th><td>None</td><td>Optional subscription for managing many items and statistics (price undecided)</td></tr><tr><th scope="row">Basic business listing</th><td>None</td><td>Free listing under review</td></tr><tr><th scope="row">Business operating subscription</th><td>None</td><td>Tiers by number of assets and staff (price undecided)</td></tr><tr><th scope="row">Multi-site &amp; large organisations</th><td>None</td><td>Separate contract</td></tr><tr><th scope="row">Internal asset management</th><td>None</td><td>SaaS subscription separate from external trade pricing (price undecided)</td></tr></tbody>
-          </table>
-        </div>
-        
-      </div>
+    </header><div class="nsh-table-wrap" role="region" aria-labelledby="nsh-subs-t" tabindex="0">
+      <table class="nsh-table nsh-table--accent">
+        <thead><tr><th scope="col">Item</th><th scope="col">Today</th><th scope="col" class="is-accent">Direction under review</th></tr></thead>
+        <tbody><tr><th scope="row">Basic use by individuals</th><td data-label="Today" class="is-muted">Before launch · no paid products</td><td data-label="Direction under review" class="is-accent">Stays free — basic listing and renting without a subscription</td></tr><tr><th scope="row">Advanced tools for individual sellers</th><td data-label="Today" class="is-muted">None</td><td data-label="Direction under review" class="is-accent">Optional subscription for managing many items and statistics (price undecided)</td></tr><tr><th scope="row">Basic business listing</th><td data-label="Today" class="is-muted">None</td><td data-label="Direction under review" class="is-accent">Free listing under review</td></tr><tr><th scope="row">Business operating subscription</th><td data-label="Today" class="is-muted">None</td><td data-label="Direction under review" class="is-accent">Tiers by number of assets and staff (price undecided)</td></tr><tr><th scope="row">Multi-site &amp; large organisations</th><td data-label="Today" class="is-muted">None</td><td data-label="Direction under review" class="is-accent">Separate contract</td></tr><tr><th scope="row">Internal asset management</th><td data-label="Today" class="is-muted">None</td><td data-label="Direction under review" class="is-accent">SaaS subscription separate from external trade pricing (price undecided)</td></tr></tbody>
+      </table>
     </div></div>
   </section>
 <section class="nsh-sec nsh-sec--ink" id="nsh-calc" aria-labelledby="nsh-calc-t">
@@ -999,7 +990,7 @@
       <h2 class="nsh-title" id="nsh-small-t">The smaller the rental,<br />the less is left.</h2>
       <p class="nsh-lead">Small-item rentals in a neighbourhood are low in value per trade. This profitability problem is handled openly at the design stage.</p>
     </header>
-    <ol class="nsh-statements" role="list"><li class="nsh-statements__item"><span class="nsh-statements__n" aria-hidden="true">01</span><h3 class="nsh-statements__title">Deposits are not revenue</h3><p class="nsh-statements__body">A deposit is handled separately through the payment provider and must be returned. It is left out of fee calculations and never deducted without legal or contractual grounds.</p></li><li class="nsh-statements__item"><span class="nsh-statements__n" aria-hidden="true">02</span><h3 class="nsh-statements__title">Every trade carries costs</h3><p class="nsh-statements__body">Card processing fees, payout costs and VAT apply to every trade, however small. Internal calculations show that a rental of a few thousand won can lose money even after the fee.</p></li><li class="nsh-statements__item"><span class="nsh-statements__n" aria-hidden="true">03</span><h3 class="nsh-statements__title">So a cost floor comes first</h3><p class="nsh-statements__body">Minimum fees, a rate floor and costs by payment method are under review, and trade structures where the fee falls below payment, refund, fraud and support costs are not to be allowed. Transaction value, revenue and contribution margin are tracked as different numbers.</p></li></ol></div>
+    <ol class="nsh-trio nsh-trio--n" role="list"><li class="nsh-trio__item"><span class="nsh-trio__n" aria-hidden="true">01</span><h3 class="nsh-trio__title">Deposits are not revenue</h3><p class="nsh-trio__body">A deposit is handled separately through the payment provider and must be returned. It is left out of fee calculations and never deducted without legal or contractual grounds.</p></li><li class="nsh-trio__item"><span class="nsh-trio__n" aria-hidden="true">02</span><h3 class="nsh-trio__title">Every trade carries costs</h3><p class="nsh-trio__body">Card processing fees, payout costs and VAT apply to every trade, however small. Internal calculations show that a rental of a few thousand won can lose money even after the fee.</p></li><li class="nsh-trio__item"><span class="nsh-trio__n" aria-hidden="true">03</span><h3 class="nsh-trio__title">So a cost floor comes first</h3><p class="nsh-trio__body">Minimum fees, a rate floor and costs by payment method are under review, and trade structures where the fee falls below payment, refund, fraud and support costs are not to be allowed. Transaction value, revenue and contribution margin are tracked as different numbers.</p></li></ol></div>
   </section>
 <section class="nsh-sec" id="nsh-saas" aria-labelledby="nsh-saas-t">
     <div class="nsh-wrap"><header class="nsh-head">
@@ -1007,7 +998,7 @@
       <h2 class="nsh-title" id="nsh-saas-t">Asset tools for<br />businesses and institutions.</h2>
       <p class="nsh-lead">SHAREON Business and internal asset sharing are concepts aimed at recurring revenue separate from personal rental fees. They are standard tools, not custom development, and no product has been released.</p><div class="nsh-head__row"><a class="nsh-link" href="/hi/business/inquiry/?type=partnership&amp;source=shareon&amp;utm_source=shareon&amp;utm_content=saas#inquiry">Ask about adoption <span aria-hidden="true">→</span></a></div>
     </header>
-    <ul class="nsh-modules" role="list"><li class="nsh-modules__item"><span class="nsh-modules__n" aria-hidden="true">01</span><h3 class="nsh-modules__name" lang="en">Asset Registry</h3><p class="nsh-modules__body">Register assets and set who may list and borrow which equipment.</p></li><li class="nsh-modules__item"><span class="nsh-modules__n" aria-hidden="true">02</span><h3 class="nsh-modules__name" lang="en">Internal Booking</h3><p class="nsh-modules__body">Internal bookings by staff and departments with double-booking checks; no per-trade fee.</p></li><li class="nsh-modules__item"><span class="nsh-modules__n" aria-hidden="true">03</span><h3 class="nsh-modules__name" lang="en">Check-out &amp; Return</h3><p class="nsh-modules__body">Pick-up, return and condition records as evidence for loss or damage.</p></li><li class="nsh-modules__item"><span class="nsh-modules__n" aria-hidden="true">04</span><h3 class="nsh-modules__name" lang="en">Utilisation</h3><p class="nsh-modules__body">How assets are used, so long-idle equipment stands out.</p></li><li class="nsh-modules__item"><span class="nsh-modules__n" aria-hidden="true">05</span><h3 class="nsh-modules__name" lang="en">External Listing</h3><p class="nsh-modules__body">Offer idle assets for external rental, under the external trade rules and fees.</p></li><li class="nsh-modules__item"><span class="nsh-modules__n" aria-hidden="true">06</span><h3 class="nsh-modules__name" lang="en">API &amp; License</h3><p class="nsh-modules__body">Integration with company systems and licensing: the last, long-term item.</p></li></ul></div>
+    <ul class="nsh-modules" role="list"><li class="nsh-modules__item"><h3 class="nsh-modules__name" lang="en">Asset Registry</h3><p class="nsh-modules__body">Register assets and set who may list and borrow which equipment.</p></li><li class="nsh-modules__item"><h3 class="nsh-modules__name" lang="en">Internal Booking</h3><p class="nsh-modules__body">Internal bookings by staff and departments with double-booking checks; no per-trade fee.</p></li><li class="nsh-modules__item"><h3 class="nsh-modules__name" lang="en">Check-out &amp; Return</h3><p class="nsh-modules__body">Pick-up, return and condition records as evidence for loss or damage.</p></li><li class="nsh-modules__item"><h3 class="nsh-modules__name" lang="en">Utilisation</h3><p class="nsh-modules__body">How assets are used, so long-idle equipment stands out.</p></li><li class="nsh-modules__item"><h3 class="nsh-modules__name" lang="en">External Listing</h3><p class="nsh-modules__body">Offer idle assets for external rental, under the external trade rules and fees.</p></li><li class="nsh-modules__item"><h3 class="nsh-modules__name" lang="en">API &amp; License</h3><p class="nsh-modules__body">Integration with company systems and licensing: the last, long-term item.</p></li></ul></div>
   </section>
 <section class="nsh-sec nsh-sec--tint" id="nsh-market" aria-labelledby="nsh-market-t">
     <div class="nsh-wrap"><div class="nsh-split">
@@ -1016,7 +1007,7 @@
       <h2 class="nsh-title" id="nsh-market-t">The market problem<br />and our hypotheses.</h2>
       <p class="nsh-lead">These are hypotheses about the opportunity and competition. Figures such as market size or share are not verified and are not shown.</p>
     </header>
-      <ol class="nsh-rows" role="list"><li class="nsh-rows__item"><span class="nsh-rows__n" aria-hidden="true">01</span><div><h3 class="nsh-rows__title">Opportunity — the cost of buying rarely used things</h3><p class="nsh-rows__body">Buying and storing things you rarely use costs money and space. The starting problem is that there are not enough ways to borrow for just the period needed within a neighbourhood.</p></div></li><li class="nsh-rows__item"><span class="nsh-rows__n" aria-hidden="true">02</span><div><h3 class="nsh-rows__title">Gap — today’s alternatives</h3><p class="nsh-rows__body">With community posts and friends, schedules, security and return checks are left to the people involved; high-street rental shops are limited in location and stock; second-hand selling services are built around transferring ownership. There are also rental services specialised in one field, such as fashion.</p></div></li><li class="nsh-rows__item"><span class="nsh-rows__n" aria-hidden="true">03</span><div><h3 class="nsh-rows__title">Hypothesis — a flow built for rental</h3><p class="nsh-rows__body">If booking calendars, double-booking prevention, pick-up and return records, deposit terms and disputes are designed for rental from the start, strangers in a neighbourhood will find it easier to lend and return.</p></div></li><li class="nsh-rows__item"><span class="nsh-rows__n" aria-hidden="true">04</span><div><h3 class="nsh-rows__title">Hypothesis — one platform for people, businesses and internal use</h3><p class="nsh-rows__body">Handling personal rentals, business rentals and internal sharing on the same engine should grow supply and let operating tools be reused.</p></div></li><li class="nsh-rows__item"><span class="nsh-rows__n" aria-hidden="true">05</span><div><h3 class="nsh-rows__title">Risk — barriers and regulation</h3><p class="nsh-rows__body">Building early supply and demand in a two-sided market, the cost of handling disputes, and e-finance and marketplace-intermediary rules and terms for payments and deposits are the biggest challenges.</p></div></li></ol>
+      <div class="nsh-split__body"><ul class="nsh-rows nsh-rows--role" role="list"><li class="nsh-rows__item"><div class="nsh-rows__text"><h3 class="nsh-rows__title"><span class="nsh-role">Opportunity</span><span class="nsh-vh"> — </span><span class="nsh-role__rest">the cost of buying rarely used things</span></h3><p class="nsh-rows__body">Buying and storing things you rarely use costs money and space. The starting problem is that there are not enough ways to borrow for just the period needed within a neighbourhood.</p></div></li><li class="nsh-rows__item"><div class="nsh-rows__text"><h3 class="nsh-rows__title"><span class="nsh-role">Gap</span><span class="nsh-vh"> — </span><span class="nsh-role__rest">today’s alternatives</span></h3><p class="nsh-rows__body">With community posts and friends, schedules, security and return checks are left to the people involved; high-street rental shops are limited in location and stock; second-hand selling services are built around transferring ownership. There are also rental services specialised in one field, such as fashion.</p></div></li><li class="nsh-rows__item"><div class="nsh-rows__text"><h3 class="nsh-rows__title"><span class="nsh-role">Hypothesis</span><span class="nsh-vh"> — </span><span class="nsh-role__rest">a flow built for rental</span></h3><p class="nsh-rows__body">If booking calendars, double-booking prevention, pick-up and return records, deposit terms and disputes are designed for rental from the start, strangers in a neighbourhood will find it easier to lend and return.</p></div></li><li class="nsh-rows__item"><div class="nsh-rows__text"><h3 class="nsh-rows__title"><span class="nsh-role">Hypothesis</span><span class="nsh-vh"> — </span><span class="nsh-role__rest">one platform for people, businesses and internal use</span></h3><p class="nsh-rows__body">Handling personal rentals, business rentals and internal sharing on the same engine should grow supply and let operating tools be reused.</p></div></li><li class="nsh-rows__item"><div class="nsh-rows__text"><h3 class="nsh-rows__title"><span class="nsh-role">Risk</span><span class="nsh-vh"> — </span><span class="nsh-role__rest">barriers and regulation</span></h3><p class="nsh-rows__body">Building early supply and demand in a two-sided market, the cost of handling disputes, and e-finance and marketplace-intermediary rules and terms for payments and deposits are the biggest challenges.</p></div></li></ul></div>
     </div></div>
   </section>
 <section class="nsh-sec" id="nsh-entry" aria-labelledby="nsh-entry-t">
@@ -1025,27 +1016,24 @@
       <h2 class="nsh-title" id="nsh-entry-t">One neighbourhood,<br />three categories first.</h2>
       <p class="nsh-lead">The early entry plan. The area and timing are not decided and depend on legal review and the payment-provider contract.</p>
     </header>
-    <ol class="nsh-chain" role="list"><li class="nsh-chain__item"><span class="nsh-chain__n" aria-hidden="true">01</span><h3 class="nsh-chain__title">Pick one neighbourhood</h3><p class="nsh-chain__body">Rather than spreading wide, first gather items to lend and neighbours to borrow in one place. Recruiting lenders first is being considered.</p><span class="nsh-chain__arrow" aria-hidden="true">→</span></li><li class="nsh-chain__item"><span class="nsh-chain__n" aria-hidden="true">02</span><h3 class="nsh-chain__title">Camping, tools and baby gear</h3><p class="nsh-chain__body">Three categories with relatively low loss and damage risk, easy hand-over and clear occasional demand are the early candidates.</p><span class="nsh-chain__arrow" aria-hidden="true">→</span></li><li class="nsh-chain__item"><span class="nsh-chain__n" aria-hidden="true">03</span><h3 class="nsh-chain__title">Test the flow without payment</h3><p class="nsh-chain__body">Even in a pilot, payment stays off while request-to-completion rates, disputes and repeat rentals are measured. Payment and settlement open only after contracts and legal review.</p></li></ol></div>
+    <ol class="nsh-steps nsh-steps--3" role="list"><li class="nsh-steps__item"><span class="nsh-steps__n" aria-hidden="true">01</span><h3 class="nsh-steps__title">Pick one neighbourhood</h3><p class="nsh-steps__body">Rather than spreading wide, first gather items to lend and neighbours to borrow in one place. Recruiting lenders first is being considered.</p></li><li class="nsh-steps__item"><span class="nsh-steps__n" aria-hidden="true">02</span><h3 class="nsh-steps__title">Camping, tools and baby gear</h3><p class="nsh-steps__body">Three categories with relatively low loss and damage risk, easy hand-over and clear occasional demand are the early candidates.</p></li><li class="nsh-steps__item"><span class="nsh-steps__n" aria-hidden="true">03</span><h3 class="nsh-steps__title">Test the flow without payment</h3><p class="nsh-steps__body">Even in a pilot, payment stays off while request-to-completion rates, disputes and repeat rentals are measured. Payment and settlement open only after contracts and legal review.</p></li></ol></div>
   </section>
-<section class="nsh-sec nsh-sec--band" id="nsh-roadmap" aria-labelledby="nsh-roadmap-t">
+<section class="nsh-sec nsh-sec--tint" id="nsh-roadmap" aria-labelledby="nsh-roadmap-t">
     <div class="nsh-wrap"><div class="nsh-split">
       <header class="nsh-head nsh-head--side">
       <p class="nsh-kicker" lang="en">GROWTH ROADMAP</p>
       <h2 class="nsh-title" id="nsh-roadmap-t">Trades before<br />categories.</h2>
       <p class="nsh-lead">The business priorities in the integrated plan. Each stage assumes the previous one has been proven, and no dates are fixed.</p><p class="nsh-now"><span class="nsh-now__dot" aria-hidden="true"></span>Where we are: priority 1 — the booking flow is being built and tested in development, and the app has not launched.</p>
     </header>
-      <ol class="nsh-timeline" role="list"><li class="nsh-timeline__item is-now"><span class="nsh-timeline__dot" aria-hidden="true"></span><p class="nsh-timeline__n" lang="en">STEP 01</p><h3 class="nsh-timeline__title">Complete sharing and rental booking <span class="nsh-tag">First</span></h3><p class="nsh-timeline__body">Make listing, exploring, hourly and quantity units, booking and return actually work.</p></li><li class="nsh-timeline__item"><span class="nsh-timeline__dot" aria-hidden="true"></span><p class="nsh-timeline__n" lang="en">STEP 02</p><h3 class="nsh-timeline__title">Deposits, safety, disputes, payment and settlement</h3><p class="nsh-timeline__body">Build trust and operations for trades where real money moves. Switched on only after the payment-provider contract, security and legal review.</p></li><li class="nsh-timeline__item"><span class="nsh-timeline__dot" aria-hidden="true"></span><p class="nsh-timeline__n" lang="en">STEP 03</p><h3 class="nsh-timeline__title">Business listings and internal asset SaaS</h3><p class="nsh-timeline__body">The stage that creates recurring revenue separate from personal rental fees.</p></li><li class="nsh-timeline__item"><span class="nsh-timeline__dot" aria-hidden="true"></span><p class="nsh-timeline__n" lang="en">STEP 04</p><h3 class="nsh-timeline__title">More categories, areas and partners</h3><p class="nsh-timeline__body">Extend the proven model to more items, spaces and businesses, delivery and insurance partners, and other countries.</p></li></ol>
+      <div class="nsh-split__body"><ol class="nsh-timeline" role="list"><li class="nsh-timeline__item is-now"><p class="nsh-timeline__n" lang="en">STEP 01</p><div><h3 class="nsh-timeline__title">Complete sharing and rental booking <span class="nsh-tag">First</span></h3><p class="nsh-timeline__body">Make listing, exploring, hourly and quantity units, booking and return actually work.</p></div></li><li class="nsh-timeline__item"><p class="nsh-timeline__n" lang="en">STEP 02</p><div><h3 class="nsh-timeline__title">Deposits, safety, disputes, payment and settlement</h3><p class="nsh-timeline__body">Build trust and operations for trades where real money moves. Switched on only after the payment-provider contract, security and legal review.</p></div></li><li class="nsh-timeline__item"><p class="nsh-timeline__n" lang="en">STEP 03</p><div><h3 class="nsh-timeline__title">Business listings and internal asset SaaS</h3><p class="nsh-timeline__body">The stage that creates recurring revenue separate from personal rental fees.</p></div></li><li class="nsh-timeline__item"><p class="nsh-timeline__n" lang="en">STEP 04</p><div><h3 class="nsh-timeline__title">More categories, areas and partners</h3><p class="nsh-timeline__body">Extend the proven model to more items, spaces and businesses, delivery and insurance partners, and other countries.</p></div></li></ol></div>
     </div></div>
   </section>
 <section class="nsh-sec" id="nsh-principles" aria-labelledby="nsh-principles-t">
-    <div class="nsh-wrap"><div class="nsh-split">
-      <header class="nsh-head nsh-head--side">
+    <div class="nsh-wrap"><header class="nsh-head">
       <p class="nsh-kicker" lang="en">OPERATING &amp; LEGAL PRINCIPLES</p>
       <h2 class="nsh-title" id="nsh-principles-t">Operating and legal<br />principles.</h2>
       <p class="nsh-lead">What must be checked area by area before the business grows. Legal review is planned and no opinion has been received yet.</p>
-    </header>
-      <ul class="nsh-checks" role="list"><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3z" fill="none" stroke="#7771E8" stroke-width="1.6"/><path d="m7.5 12.5 3 3 6-7" fill="none" stroke="#554CC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Trades between people set out contracts, responsibilities and consumer protection clearly in the terms.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3z" fill="none" stroke="#7771E8" stroke-width="1.6"/><path d="m7.5 12.5 3 3 6-7" fill="none" stroke="#554CC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Business listings follow business verification and e-commerce and marketplace-intermediary duties.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3z" fill="none" stroke="#7771E8" stroke-width="1.6"/><path d="m7.5 12.5 3 3 6-7" fill="none" stroke="#554CC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Payment and settlement open only after the payment-provider contract and e-finance requirements are confirmed. NEWON does not hold funds.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3z" fill="none" stroke="#7771E8" stroke-width="1.6"/><path d="m7.5 12.5 3 3 6-7" fill="none" stroke="#554CC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Deposits have defined holding, return and deduction grounds and are never counted as revenue.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3z" fill="none" stroke="#7771E8" stroke-width="1.6"/><path d="m7.5 12.5 3 3 6-7" fill="none" stroke="#554CC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Damage and loss are handled through compensation rules, evidence and a dispute process.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3z" fill="none" stroke="#7771E8" stroke-width="1.6"/><path d="m7.5 12.5 3 3 6-7" fill="none" stroke="#554CC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Space rental checks permitted use, permits and facility rules first; insurance links check insurance-selling rules first.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3z" fill="none" stroke="#7771E8" stroke-width="1.6"/><path d="m7.5 12.5 3 3 6-7" fill="none" stroke="#554CC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Business assets respect ownership and staff access rights; personal data such as contacts, addresses and trade details is kept to a minimum.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3z" fill="none" stroke="#7771E8" stroke-width="1.6"/><path d="m7.5 12.5 3 3 6-7" fill="none" stroke="#554CC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Tax duties are reviewed for each party to a trade, and overseas expansion follows each country’s rental and payment rules.</p></li></ul>
-    </div></div>
+    </header><ul class="nsh-checks" role="list"><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Trades between people set out contracts, responsibilities and consumer protection clearly in the terms.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Business listings follow business verification and e-commerce and marketplace-intermediary duties.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Payment and settlement open only after the payment-provider contract and e-finance requirements are confirmed. NEWON does not hold funds.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Deposits have defined holding, return and deduction grounds and are never counted as revenue.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Damage and loss are handled through compensation rules, evidence and a dispute process.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Space rental checks permitted use, permits and facility rules first; insurance links check insurance-selling rules first.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Business assets respect ownership and staff access rights; personal data such as contacts, addresses and trade details is kept to a minimum.</p></li><li class="nsh-checks__item"><svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Tax duties are reviewed for each party to a trade, and overseas expansion follows each country’s rental and payment rules.</p></li></ul></div>
   </section>
 <section class="nsh-sec nsh-sec--ink nsh-close" id="nsh-next" aria-labelledby="nsh-next-t">
     <div class="nsh-wrap nsh-close__in">
@@ -1075,7 +1063,7 @@
     <script src="/waitlist.js?v=20260904sec1" defer></script>
     <script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=20261025ov1" defer></script>
-    <script src="/shareon.js?v=20261024c30" defer></script>
+    <script src="/shareon.js?v=20261025rd1" defer></script>
     <script src="/site-chrome.js?v=20261017nav8" defer></script>
     <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
 </body>

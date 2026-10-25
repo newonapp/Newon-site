@@ -42,299 +42,12 @@
     <link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/flagship-subnav.css?v=20261019fsn3" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=20261025ov1" />
+    <link rel="stylesheet" href="/petlog-site.css?v=20261025rd1" />
     <style>
   /* Background film framing: show more of the right side (owner request 2026-10-19). */
   #lifestage-detail.nls[data-story="petlog"] .nls-film__video { object-position: 75% 50%; }
   /* the shared film fallback is the LIVON poster; PETLOG shows plain black until its film loads */
   #lifestage-detail.nls--petlog .nls-film__fallback { background: #050505; }
-
-  #lifestage-detail.nls--petlog {
-    --pl-g: #278a53; --pl-gi: #1e6b41; --pl-tint: #f4f9f6; --pl-soft: #e8f3ec; --pl-line: rgba(39, 138, 83, 0.28);
-    --pl-card: #ffffff; --pl-r: 10px;
-  }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog {
-    --pl-g: #4fbf80; --pl-gi: #8fddb0; --pl-tint: #0d1612; --pl-soft: rgba(111, 207, 151, 0.12); --pl-line: rgba(111, 207, 151, 0.32);
-    --pl-card: #111311;
-  }
-  #lifestage-detail.nls--petlog .nls-kicker { color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog :where(.pl-list, .pl-checks, .pl-steps, .pl-timeline, .pl-values, .pl-grid, .pl-rows, .pl-cols, .pl-chips, .pl-models, .pl-fam, .pl-menu, .pl-types, .pl-table, .pl-legend ul) { margin: 0; padding: 0; list-style: none; }
-  #lifestage-detail.nls--petlog :where(.pl-checks, .pl-steps, .pl-timeline, .pl-values, .pl-chips, .pl-fam, .pl-menu, .pl-types, .pl-legend ul) > li::before { content: none; }
-  #lifestage-detail.nls--petlog .nls-block--band.pl-tint { background: var(--pl-tint); }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-block--band.pl-tint { background: var(--pl-tint); }
-  #lifestage-detail.nls--petlog h3 { margin: 0; font-size: 1.08rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.4; color: var(--nls-ink); }
-  #lifestage-detail.nls--petlog .pl-p { margin: 0; font-size: 0.92rem; line-height: 1.62; color: var(--nls-muted); }
-
-  /* icon */
-  #lifestage-detail.nls--petlog .pl-ic { flex: none; display: inline-grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--pl-soft); color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .pl-ic svg { width: 1.3rem; height: 1.3rem; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-  #lifestage-detail.nls--petlog .pl-ic--lg { width: 3.2rem; height: 3.2rem; }
-  #lifestage-detail.nls--petlog .pl-ic--lg svg { width: 1.55rem; height: 1.55rem; }
-  #lifestage-detail.nls--petlog .pl-n { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; color: var(--pl-gi); font-variant-numeric: tabular-nums; }
-  #lifestage-detail.nls--petlog .pl-label { margin: 0; font-size: 0.72rem; font-weight: 650; letter-spacing: 0.1em; text-transform: uppercase; color: var(--nls-faint); }
-
-  /* chips + links */
-  #lifestage-detail.nls--petlog .pl-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-  #lifestage-detail.nls--petlog .pl-chips li { padding: 0.28rem 0.6rem; border-radius: 999px; background: var(--pl-soft); color: var(--pl-gi); font-size: 0.78rem; font-weight: 600; line-height: 1.3; }
-  #lifestage-detail.nls--petlog .pl-chips--line li { background: transparent; border: 1px solid var(--nls-line-strong, #d8d8d8); color: var(--nls-muted); }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .pl-chips--line li { border-color: rgba(255, 255, 255, 0.22); }
-  #lifestage-detail.nls--petlog .pl-more { display: inline-flex; align-items: center; gap: 0.3rem; margin-top: auto; padding-top: 0.4rem; width: fit-content; font-size: 0.88rem; font-weight: 650; color: var(--pl-gi); text-decoration: none; border-bottom: 1px solid var(--pl-line); }
-  #lifestage-detail.nls--petlog .pl-more:hover { border-bottom-color: var(--pl-g); }
-  #lifestage-detail.nls--petlog .pl-more:focus-visible, #lifestage-detail.nls--petlog .pl-tile:focus-visible { outline: 2px solid var(--pl-g); outline-offset: 3px; }
-  #lifestage-detail.nls--petlog .pl-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1.2rem; margin-top: 1.8rem; }
-  #lifestage-detail.nls--petlog .pl-pill { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 2.6rem; padding: 0.5rem 1.05rem; border: 1px solid var(--pl-line); border-radius: 999px; color: var(--pl-gi); font-size: 0.88rem; font-weight: 650; text-decoration: none; background: var(--pl-card); }
-  #lifestage-detail.nls--petlog .pl-pill:hover { border-color: var(--pl-g); background: var(--pl-soft); }
-  #lifestage-detail.nls--petlog .pl-pill svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-  #lifestage-detail.nls--petlog .pl-aside { margin: 0; font-size: 0.85rem; color: var(--nls-faint); }
-
-  /* callout (shared notice / process note) */
-  #lifestage-detail.nls--petlog .pl-callout { display: flex; gap: 0.8rem; align-items: flex-start; max-width: 52rem; margin: 0 0 2rem; padding: 1rem 1.15rem; border-left: 3px solid var(--pl-g); border-radius: 0 var(--pl-r) var(--pl-r) 0; background: var(--pl-tint); font-size: 0.9rem; line-height: 1.6; color: var(--nls-muted); }
-  #lifestage-detail.nls--petlog .nls-block--band.pl-tint .pl-callout { background: var(--pl-card); }
-  #lifestage-detail.nls--petlog .pl-callout svg { flex: none; width: 1.15rem; height: 1.15rem; margin-top: 0.15rem; fill: none; stroke: var(--pl-gi); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-
-  /* section head variants */
-  #lifestage-detail.nls--petlog .pl-split { display: grid; gap: 2rem; }
-  @media (min-width: 960px) {
-    #lifestage-detail.nls--petlog .pl-split { grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr); gap: 4rem; align-items: start; }
-    #lifestage-detail.nls--petlog .pl-split > .pl-split__head { position: sticky; top: calc(var(--gnav-h, 74px) + 4.5rem); }
-  }
-  #lifestage-detail.nls--petlog .pl-split .nls-head { margin-bottom: 0; }
-  #lifestage-detail.nls--petlog .pl-split .pl-checks { grid-template-columns: minmax(0, 1fr); }
-  #lifestage-detail.nls--petlog .pl-split__head .pl-callout { margin: 1.4rem 0 0; }
-
-  /* grid of cards */
-  #lifestage-detail.nls--petlog .pl-grid { display: grid; gap: 1rem; grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 640px) { #lifestage-detail.nls--petlog .pl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-grid { grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); } }
-  #lifestage-detail.nls--petlog .pl-card { display: flex; flex-direction: column; gap: 0.7rem; min-width: 0; margin: 0; padding: 1.45rem 1.35rem 1.5rem; border: 1px solid var(--nls-line); border-radius: var(--pl-r); background: var(--pl-card); transition: border-color 0.2s ease; }
-  #lifestage-detail.nls--petlog .pl-card:hover { border-color: var(--pl-line); }
-  #lifestage-detail.nls--petlog .pl-card__top { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; margin-bottom: 0.3rem; }
-  #lifestage-detail.nls--petlog .pl-card__top .pl-n { margin-right: auto; }
-  #lifestage-detail.nls--petlog .pl-card--tint { background: var(--pl-tint); border-color: transparent; }
-  #lifestage-detail.nls--petlog .nls-block--band.pl-tint .pl-card { border-color: transparent; background: var(--pl-card); }
-  #lifestage-detail.nls--petlog .pl-card--wide { padding: 1.8rem 1.7rem; }
-  @media (min-width: 640px) {
-    #lifestage-detail.nls--petlog .pl-card--wide { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 1.3rem; row-gap: 0.7rem; align-content: start; }
-    #lifestage-detail.nls--petlog .pl-card--wide > :not(.pl-card__icon) { grid-column: 2; }
-    #lifestage-detail.nls--petlog .pl-card--wide > .pl-card__icon { grid-row: 1 / span 8; }
-  }
-
-  /* key/value list inside cards and rows */
-  #lifestage-detail.nls--petlog .pl-meta { display: grid; gap: 0.5rem; margin: 0.2rem 0 0; padding: 0.85rem 0 0; border-top: 1px dashed var(--nls-line); }
-  #lifestage-detail.nls--petlog .pl-meta div { display: grid; grid-template-columns: minmax(4.8rem, auto) minmax(0, 1fr); gap: 0.75rem; font-size: 0.85rem; line-height: 1.5; }
-  html:not([lang="ko"]) #lifestage-detail.nls--petlog .pl-meta div { grid-template-columns: 6.6rem minmax(0, 1fr); }
-  #lifestage-detail.nls--petlog .pl-meta dt { font-weight: 650; color: var(--nls-ink); }
-  #lifestage-detail.nls--petlog .pl-meta dd { margin: 0; color: var(--nls-muted); }
-  #lifestage-detail.nls--petlog .pl-stage { flex: none; width: fit-content; justify-self: start; padding: 0.22rem 0.6rem; border-radius: 999px; border: 1px solid var(--pl-line); color: var(--pl-gi); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.02em; white-space: nowrap; }
-
-  /* feature rows */
-  #lifestage-detail.nls--petlog .pl-rows { border-bottom: 1px solid var(--nls-line); }
-  #lifestage-detail.nls--petlog .pl-row { display: grid; gap: 0.9rem 2rem; padding: 1.7rem 0; border-top: 1px solid var(--nls-line); }
-  #lifestage-detail.nls--petlog .pl-row__lead { display: flex; gap: 1rem; align-items: flex-start; }
-  #lifestage-detail.nls--petlog .pl-row__lead > div { display: grid; gap: 0.45rem; min-width: 0; }
-  #lifestage-detail.nls--petlog .pl-row__side { display: grid; gap: 0.8rem; align-content: start; }
-  #lifestage-detail.nls--petlog .pl-row__side .pl-meta { margin: 0; padding: 0; border: 0; }
-  @media (min-width: 900px) {
-    #lifestage-detail.nls--petlog .pl-row { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
-    #lifestage-detail.nls--petlog .pl-row__side { padding-left: 2rem; border-left: 1px solid var(--nls-line); }
-  }
-
-  /* column list (top rule, no box) */
-  #lifestage-detail.nls--petlog .pl-cols { display: grid; gap: 2rem 1.6rem; grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-cols { grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); } }
-  #lifestage-detail.nls--petlog .pl-col { display: flex; flex-direction: column; gap: 0.7rem; min-width: 0; margin: 0; padding-top: 1.2rem; border-top: 2px solid var(--pl-g); }
-  #lifestage-detail.nls--petlog .pl-col:nth-child(3n + 2) { border-top-color: color-mix(in srgb, var(--pl-g) 60%, transparent); }
-  #lifestage-detail.nls--petlog .pl-col:nth-child(3n + 3) { border-top-color: color-mix(in srgb, var(--pl-g) 35%, transparent); }
-  #lifestage-detail.nls--petlog .pl-col__head { display: flex; align-items: center; gap: 0.75rem; }
-
-  /* values (mission) */
-  #lifestage-detail.nls--petlog .pl-values { display: grid; gap: 1px; grid-template-columns: minmax(0, 1fr); background: var(--nls-line); border: 1px solid var(--nls-line); border-radius: var(--pl-r); overflow: hidden; }
-  @media (min-width: 640px) { #lifestage-detail.nls--petlog .pl-values { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-values { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  #lifestage-detail.nls--petlog .pl-values li { display: grid; gap: 0.55rem; align-content: start; padding: 1.6rem 1.45rem 1.7rem; background: var(--nls-paper, #fff); }
-  #lifestage-detail.nls--petlog .pl-values li:nth-child(2n) { background: var(--pl-tint); }
-  #lifestage-detail.nls--petlog .pl-values .pl-ic { margin-bottom: 0.4rem; background: var(--pl-card); box-shadow: inset 0 0 0 1px var(--pl-line); }
-  #lifestage-detail.nls--petlog .pl-values h3 { font-size: 1.25rem; }
-  #lifestage-detail.nls--petlog .pl-values strong { font-size: 0.95rem; font-weight: 650; color: var(--pl-gi); line-height: 1.45; }
-  #lifestage-detail.nls--petlog .pl-head-row { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem 3rem; margin-bottom: 2rem; }
-  #lifestage-detail.nls--petlog .pl-head-row .nls-head { margin-bottom: 0; }
-
-  /* horizontal step timeline */
-  #lifestage-detail.nls--petlog .pl-steps { display: grid; gap: 0; grid-template-columns: minmax(0, 1fr); counter-reset: none; }
-  #lifestage-detail.nls--petlog .pl-steps li { position: relative; display: grid; gap: 0.5rem; align-content: start; padding: 0 0 2rem 2.4rem; }
-  #lifestage-detail.nls--petlog .pl-steps li::after { content: ""; position: absolute; left: 0.55rem; top: 1.4rem; bottom: 0; width: 1px; background: var(--pl-line); }
-  #lifestage-detail.nls--petlog .pl-steps li:last-child::after { display: none; }
-  #lifestage-detail.nls--petlog .pl-steps .pl-dot { position: absolute; left: 0; top: 0.1rem; width: 1.15rem; height: 1.15rem; border-radius: 50%; border: 2px solid var(--pl-g); background: var(--nls-paper, #fff); }
-  #lifestage-detail.nls--petlog .pl-steps li:first-child .pl-dot { background: var(--pl-g); }
-  #lifestage-detail.nls--petlog .nls-block--band.pl-tint .pl-steps .pl-dot { background: var(--pl-tint); }
-  #lifestage-detail.nls--petlog .nls-block--band.pl-tint .pl-steps li:first-child .pl-dot { background: var(--pl-g); }
-  #lifestage-detail.nls--petlog .pl-steps .pl-big { font-size: clamp(2rem, 3.4vw, 2.6rem); font-weight: 700; letter-spacing: -0.05em; line-height: 1; color: var(--pl-gi); }
-  @media (min-width: 900px) {
-    #lifestage-detail.nls--petlog .pl-steps { grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 0 1.8rem; }
-    #lifestage-detail.nls--petlog .pl-steps li { padding: 2.2rem 0 0; }
-    #lifestage-detail.nls--petlog .pl-steps li::after { left: 1.6rem; right: -1.8rem; top: 0.66rem; bottom: auto; width: auto; height: 1px; }
-    #lifestage-detail.nls--petlog .pl-steps li:last-child::after { display: block; right: 0; background: linear-gradient(90deg, var(--pl-line), transparent); }
-  }
-
-  /* vertical timeline (roadmap) */
-  #lifestage-detail.nls--petlog .pl-timeline { position: relative; display: grid; gap: 0; max-width: 56rem; }
-  #lifestage-detail.nls--petlog .pl-timeline li { position: relative; display: grid; gap: 0.45rem; padding: 0 0 2.1rem 2.6rem; }
-  #lifestage-detail.nls--petlog .pl-timeline li::after { content: ""; position: absolute; left: 0.6rem; top: 1.5rem; bottom: 0.2rem; width: 2px; background: var(--pl-soft); }
-  #lifestage-detail.nls--petlog .pl-timeline li:last-child { padding-bottom: 0; }
-  #lifestage-detail.nls--petlog .pl-timeline li:last-child::after { display: none; }
-  #lifestage-detail.nls--petlog .pl-timeline .pl-dot { position: absolute; left: 0; top: 0.12rem; display: grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%; background: var(--pl-soft); }
-  #lifestage-detail.nls--petlog .pl-timeline .pl-dot::before { content: ""; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--pl-g); }
-  #lifestage-detail.nls--petlog .pl-timeline .pl-stage { width: fit-content; }
-  @media (min-width: 900px) {
-    #lifestage-detail.nls--petlog .pl-timeline li { grid-template-columns: 9rem minmax(0, 1fr); column-gap: 1.6rem; }
-    #lifestage-detail.nls--petlog .pl-timeline li > .pl-stage { grid-row: 1 / span 2; align-self: start; }
-  }
-
-  /* checklist */
-  #lifestage-detail.nls--petlog .pl-checks { display: grid; gap: 0 2.4rem; grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-checks { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  #lifestage-detail.nls--petlog .pl-checks li { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); gap: 0.75rem; align-items: start; padding: 1rem 0; border-top: 1px solid var(--nls-line); font-size: 0.95rem; line-height: 1.6; color: var(--nls-ink); }
-  #lifestage-detail.nls--petlog .pl-checks li > i { display: grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--pl-soft); color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .pl-checks li > i svg { width: 0.95rem; height: 0.95rem; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-  #lifestage-detail.nls--petlog .pl-checks--cards li { grid-template-columns: auto minmax(0, 1fr); padding: 1.3rem 0; }
-  #lifestage-detail.nls--petlog .pl-checks--cards li > div { display: grid; gap: 0.35rem; }
-
-  /* model tiles (business structure) */
-  #lifestage-detail.nls--petlog .pl-models { display: grid; gap: 1rem; grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 560px) { #lifestage-detail.nls--petlog .pl-models { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-models { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  #lifestage-detail.nls--petlog .pl-models li { display: grid; gap: 0.6rem; align-content: start; padding: 1.4rem 1.35rem 1.5rem; border-radius: var(--pl-r); background: var(--pl-tint); }
-  #lifestage-detail.nls--petlog .pl-models li::before { content: none; }
-  #lifestage-detail.nls--petlog .pl-models b { font-size: clamp(1.45rem, 2.4vw, 1.8rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .pl-models span { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; color: var(--nls-faint); }
-
-  /* legend panels (platform) */
-  #lifestage-detail.nls--petlog .pl-legend { display: grid; gap: 1rem; grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 860px) { #lifestage-detail.nls--petlog .pl-legend { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); } }
-  #lifestage-detail.nls--petlog .pl-panel { display: grid; gap: 1rem; align-content: start; padding: 1.6rem 1.5rem 1.7rem; border-radius: var(--pl-r); border: 1px solid var(--nls-line); }
-  #lifestage-detail.nls--petlog .pl-panel--now { background: var(--pl-tint); border-color: var(--pl-line); }
-  #lifestage-detail.nls--petlog .pl-panel--next { border-style: dashed; border-color: var(--nls-line-strong, #d8d8d8); }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .pl-panel--next { border-color: rgba(255, 255, 255, 0.22); }
-  #lifestage-detail.nls--petlog .pl-panel__head { display: flex; align-items: center; gap: 0.8rem; }
-
-  /* comparison list (revenue) */
-  #lifestage-detail.nls--petlog .pl-table { border-top: 2px solid var(--pl-g); }
-  #lifestage-detail.nls--petlog .pl-table li { display: grid; gap: 0.4rem 1.5rem; padding: 1.15rem 0; border-bottom: 1px solid var(--nls-line); grid-template-columns: minmax(0, 1fr) auto; }
-  #lifestage-detail.nls--petlog .pl-table li::before { content: none; }
-  #lifestage-detail.nls--petlog .pl-table .pl-table__name { display: flex; gap: 0.8rem; align-items: baseline; font-weight: 700; color: var(--nls-ink); }
-  #lifestage-detail.nls--petlog .pl-table .pl-p { grid-column: 1 / -1; }
-  #lifestage-detail.nls--petlog .pl-table .pl-stage { grid-column: 2; grid-row: 1; align-self: center; }
-  @media (min-width: 900px) {
-    #lifestage-detail.nls--petlog .pl-table li { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.8fr) 8rem; align-items: center; }
-    #lifestage-detail.nls--petlog .pl-table .pl-p { grid-column: 2; grid-row: 1; }
-    #lifestage-detail.nls--petlog .pl-table .pl-stage { grid-column: 3; justify-self: end; }
-  }
-  #lifestage-detail.nls--petlog .pl-table__hd { display: none; }
-  @media (min-width: 900px) {
-    #lifestage-detail.nls--petlog .pl-table li.pl-table__hd { display: grid; padding: 0.7rem 0; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--nls-faint); }
-  }
-
-  /* NEWON family tiles + PETLOG menu + contact types (link tiles) */
-  #lifestage-detail.nls--petlog .pl-fam { display: grid; gap: 0.75rem; grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 560px) { #lifestage-detail.nls--petlog .pl-fam { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  #lifestage-detail.nls--petlog .pl-tile { display: flex; flex-direction: column; gap: 0.4rem; height: 100%; padding: 1.15rem 1.15rem 1.2rem; border: 1px solid var(--nls-line); border-radius: var(--pl-r); background: var(--pl-card); color: inherit; text-decoration: none; transition: border-color 0.2s ease, background-color 0.2s ease; }
-  #lifestage-detail.nls--petlog a.pl-tile:hover { border-color: var(--pl-g); }
-  #lifestage-detail.nls--petlog .pl-tile strong { display: flex; justify-content: space-between; gap: 0.6rem; font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; color: var(--nls-ink); }
-  #lifestage-detail.nls--petlog .pl-tile strong em { font-style: normal; color: var(--pl-gi); font-weight: 600; }
-  #lifestage-detail.nls--petlog .pl-tile .pl-p { font-size: 0.86rem; line-height: 1.55; }
-  #lifestage-detail.nls--petlog .pl-tile[aria-current="page"], #lifestage-detail.nls--petlog .pl-tile.is-self { border-color: var(--pl-line); background: var(--pl-tint); box-shadow: inset 0 3px 0 var(--pl-g); }
-  #lifestage-detail.nls--petlog .pl-menu { display: grid; gap: 0.75rem; grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 640px) { #lifestage-detail.nls--petlog .pl-menu { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-menu { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
-  #lifestage-detail.nls--petlog .pl-types { display: grid; gap: 0.75rem; grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 640px) { #lifestage-detail.nls--petlog .pl-types { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-types { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  #lifestage-detail.nls--petlog .pl-types .pl-tile { flex-direction: row; align-items: flex-start; gap: 0.9rem; }
-  #lifestage-detail.nls--petlog .pl-tile__body { display: grid; gap: 0.35rem; min-width: 0; flex: 1; }
-  #lifestage-detail.nls--petlog .pl-types .pl-ic { width: 2.3rem; height: 2.3rem; }
-  #lifestage-detail.nls--petlog .pl-types .pl-ic svg { width: 1.15rem; height: 1.15rem; }
-
-  /* SaaS sub-panel (business) */
-  #lifestage-detail.nls--petlog .pl-sub { margin-top: 2.4rem; padding: clamp(1.4rem, 3vw, 2.2rem); border-radius: var(--pl-r); background: var(--pl-tint); }
-  #lifestage-detail.nls--petlog .nls-block--band.pl-tint .pl-sub { background: var(--pl-card); }
-  #lifestage-detail.nls--petlog .pl-sub .nls-head { margin-bottom: 1.4rem; }
-  #lifestage-detail.nls--petlog .pl-sub .nls-title { font-size: clamp(1.3rem, 2.3vw, 1.65rem); }
-  #lifestage-detail.nls--petlog .pl-sub .pl-cols { --cols: 5; }
-  @media (min-width: 760px) and (max-width: 1039px) { #lifestage-detail.nls--petlog .pl-sub .pl-cols { --cols: 2; } }
-
-  /* journey rail (shared component, PETLOG tint) */
-  #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail { border-radius: var(--pl-r) var(--pl-r) 0 0; overflow: hidden; }
-  #lifestage-detail.nls--petlog .nls-journey { border-radius: 0 0 var(--pl-r) var(--pl-r); overflow: hidden; background: var(--pl-card); }
-  #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn { background: var(--pl-card); }
-  #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn em { color: var(--nls-faint); }
-  #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on { background: var(--pl-soft); box-shadow: inset 0 -3px 0 var(--pl-g); color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on em { color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on span { color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .nls-decade { background: var(--pl-card); }
-  #lifestage-detail.nls--petlog .nls-decade__mark { background: var(--pl-soft); color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .nls-decade__mark em { color: var(--pl-gi); opacity: 0.7; }
-  #lifestage-detail.nls--petlog .nls-decade__n { color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .nls-decade .nls-chips li { border-color: var(--pl-line); color: var(--pl-gi); background: transparent; }
-  @media (min-width: 900px) {
-    #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail--petlog { grid-template-columns: repeat(var(--petlog-rail-n, 7), minmax(0, 1fr)); }
-  }
-  html[data-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn,
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn { background: var(--pl-card) !important; border-color: rgba(255, 255, 255, 0.1); }
-  html[data-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on,
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on { background: #16271d !important; color: var(--pl-gi); }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on > * { color: var(--pl-gi) !important; background: transparent !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn span { color: #f2f2f2; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-decade,
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-journey { background: var(--pl-card) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-decade__mark { background: #16271d !important; color: var(--pl-gi) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls-decade__mark * { color: var(--pl-gi) !important; }
-
-  /* FAQ (platform) — native details/summary in the checklist rule language */
-  #lifestage-detail.nls--petlog .pl-faq { max-width: 56rem; border-bottom: 1px solid var(--nls-line); }
-  #lifestage-detail.nls--petlog .pl-faq details { border-top: 1px solid var(--nls-line); }
-  #lifestage-detail.nls--petlog .pl-faq summary { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.15rem 0; cursor: pointer; list-style: none; font-size: 1rem; font-weight: 700; line-height: 1.5; color: var(--nls-ink); }
-  #lifestage-detail.nls--petlog .pl-faq summary::-webkit-details-marker { display: none; }
-  #lifestage-detail.nls--petlog .pl-faq summary::after { content: "+"; flex: none; display: grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--pl-soft); color: var(--pl-gi); font-weight: 600; }
-  #lifestage-detail.nls--petlog .pl-faq details[open] summary::after { content: "−"; }
-  #lifestage-detail.nls--petlog .pl-faq summary:focus-visible { outline: 2px solid var(--pl-g); outline-offset: 2px; }
-  #lifestage-detail.nls--petlog .pl-faq details > .pl-p { padding: 0 2.6rem 1.3rem 0; }
-  #lifestage-detail.nls--petlog .pl-subhead { margin: 0 0 1.2rem; }
-
-  /* closing band: ink stays, the main button takes the point colour */
-  #lifestage-detail.nls--petlog .nls-close .nls-kicker { color: #7fd6a4; }
-  #lifestage-detail.nls--petlog .nls-close .nls-btn:not(.nls-btn--ghost) { background: #278a53; border-color: #278a53; color: #fff; }
-  #lifestage-detail.nls--petlog .nls-close .nls-btn:not(.nls-btn--ghost):hover { background: #1e6b41; border-color: #1e6b41; color: #fff; }
-
-  /* contact form accents */
-  #lifestage-detail.nls--petlog .bp-page .bp-label { color: var(--pl-gi); }
-  #lifestage-detail.nls--petlog .bp-page .bz-submit { background: #1e6b41; border-color: #1e6b41; color: #fff; }
-  #lifestage-detail.nls--petlog .bp-page .bz-submit:hover { background: #278a53; border-color: #278a53; }
-  #lifestage-detail.nls--petlog .bp-page :where(input, select, textarea):focus-visible { outline: 2px solid var(--pl-g); outline-offset: 1px; }
-  /* dark: the site-wide dark canvas (site-dark.css) paints every descendant black/white with !important —
-     PETLOG re-applies its quiet accents inside the content wrapper only (hero + sub-menu untouched). */
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :where(*) { background-color: transparent !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-block--band.pl-tint { background-color: var(--pl-tint) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-block--ink { background-color: #000 !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-card, .pl-tile, .pl-values li, .nls-journey, .nls-decade, .nls-journey-sec .nls-rail__btn) { background-color: var(--pl-card) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-card--tint, .pl-models li, .pl-panel--now, .pl-sub, .pl-callout, .pl-tile.is-self, .pl-tile[aria-current="page"], .pl-values li:nth-child(2n)) { background-color: var(--pl-tint) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-block--band.pl-tint :is(.pl-card, .pl-card--tint, .pl-callout, .pl-sub) { background-color: #000 !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-ic, .pl-chips li, .pl-checks li > i, .pl-timeline .pl-dot, .nls-decade__mark, .nls-journey-sec .nls-rail__btn.is-on) { background-color: var(--pl-soft) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.nls-kicker, .pl-n, .pl-ic, .pl-chips li, .pl-checks li > i, .pl-stage, .pl-more, .pl-pill, .pl-values strong, .pl-models b, .pl-steps .pl-big, .pl-tile strong em, .nls-decade__mark, .nls-decade__mark *, .nls-decade__n, .nls-decade .nls-chips li, .nls-journey-sec .nls-rail__btn.is-on, .nls-journey-sec .nls-rail__btn.is-on *) { color: var(--pl-gi) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-stage, .pl-pill, .nls-decade .nls-chips li, .pl-panel--now) { border-color: var(--pl-line) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-col, .pl-table) { border-top-color: var(--pl-g) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-col:nth-child(3n + 2) { border-top-color: rgba(79, 191, 128, 0.6) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-col:nth-child(3n + 3) { border-top-color: rgba(79, 191, 128, 0.35) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-callout { border-left-color: var(--pl-g) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-tile.is-self, .pl-tile[aria-current="page"]) { border-color: var(--pl-line) !important; border-top: 3px solid var(--pl-g) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-journey-sec .nls-rail__btn.is-on { border-bottom: 3px solid var(--pl-g) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-steps .pl-dot { border-color: var(--pl-g) !important; background-color: #000 !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-block--band.pl-tint .pl-steps .pl-dot { background-color: var(--pl-tint) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-steps li:first-child .pl-dot, html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-timeline .pl-dot::before { background-color: var(--pl-g) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-steps li::after { background-color: var(--pl-line) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-timeline li::after { background-color: var(--pl-soft) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-steps li:last-child::after { background: linear-gradient(90deg, var(--pl-line), transparent) !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-close .nls-kicker { color: #7fd6a4 !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-close .nls-btn:not(.nls-btn--ghost) { background-color: #278a53 !important; border-color: #278a53 !important; color: #fff !important; }
-  html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-close .nls-btn:not(.nls-btn--ghost):hover { background-color: #1e6b41 !important; border-color: #1e6b41 !important; }
 </style>
     <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
 <script src="/theme-shell.js?v=20260904perf1"></script>
@@ -1078,7 +791,7 @@
     <h2 class="nls-title">From records to memories,<br>one app for a pet's life.</h2>
     <p class="nls-lead">PETLOG is a pet life-cycle platform that keeps a pet's whole life in one account: from the day it joins the family, through growth, health and daily life, to old age and the memories after farewell. Today it runs as a records, health and family-care app for dog and cat owners; building on those records, it plans to widen step by step into care services, shopping, safety and shelter links.</p>
   </header>
-      <h3 class="pl-subhead">Five values PETLOG keeps</h3><ul class="pl-values"><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><span class="pl-n">01</span><h3 lang="en">Care</h3><strong>so small changes are not missed.</strong><p class="pl-p">Steady meal, walk, weight and medication records help owners notice changes in condition first.</p></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span><span class="pl-n">02</span><h3 lang="en">Connection</h3><strong>with family, close to the records.</strong><p class="pl-p">Families care from the same records, and future information and services stay close to them.</p></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20v-8"/><path d="M12 12c0-4 3-6.5 7-6.5 0 4-3 6.5-7 6.5z"/><path d="M12 14.5c0-3-2.6-5.2-6-5.2 0 3 2.6 5.2 6 5.2z"/></svg></span><span class="pl-n">03</span><h3 lang="en">Lifetime</h3><strong>from first meeting to last goodbye.</strong><p class="pl-p">The changing needs of the early months, adult years and old age, on one life record.</p></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5.2c0 4.8-3.3 8.3-7 9.8-3.7-1.5-7-5-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/></svg></span><span class="pl-n">04</span><h3 lang="en">Trust</h3><strong>checked information and clear rules.</strong><p class="pl-p">No diagnosis, ads kept apart from information, and no record shared without the owner's consent.</p></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="4.8" r="1.8"/><path d="M5 8.8l7 1.2 7-1.2M12 10v4.5m0 0L9 21m3-6.5L15 21"/></svg></span><span class="pl-n">05</span><h3 lang="en">Accessibility</h3><strong>easy for everyone.</strong><p class="pl-p">Large text and simple screens, so even first-time owners find the app easy.</p></li></ul>
+      <h3 class="pl-subhead">Five values PETLOG keeps</h3><dl class="pl-vlist"><div><dt lang="en">Care</dt><dd><strong>so small changes are not missed.</strong><p class="pl-p">Steady meal, walk, weight and medication records help owners notice changes in condition first.</p></dd></div><div><dt lang="en">Connection</dt><dd><strong>with family, close to the records.</strong><p class="pl-p">Families care from the same records, and future information and services stay close to them.</p></dd></div><div><dt lang="en">Lifetime</dt><dd><strong>from first meeting to last goodbye.</strong><p class="pl-p">The changing needs of the early months, adult years and old age, on one life record.</p></dd></div><div><dt lang="en">Trust</dt><dd><strong>checked information and clear rules.</strong><p class="pl-p">No diagnosis, ads kept apart from information, and no record shared without the owner's consent.</p></dd></div><div><dt lang="en">Accessibility</dt><dd><strong>easy for everyone.</strong><p class="pl-p">Large text and simple screens, so even first-time owners find the app easy.</p></dd></div></dl>
     </div>
     <div id="nls-problem" class="nls-block nls-block--band pl-tint" data-hs-section>
     <header class="nls-head">
@@ -1087,15 +800,15 @@
     <p class="nls-lead">Caring for one pet takes vet, grooming, food, walk and care information — and most of it is scattered.</p>
   </header>
     
-    <div class="pl-rows"><article class="pl-row">
-        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3.5"/></svg></span><div><span class="pl-n">01</span><p class="pl-label" lang="en">Scattered records</p><h3>Records are scattered everywhere</h3><p class="pl-p">Vaccination dates sit in a clinic booklet, food notes in a memo app, photos in the phone gallery. At the vet, &quot;since when?&quot; is hard to answer.</p></div></div>
-        <div class="pl-row__side"><dl class="pl-meta"><div><dt>PETLOG's approach</dt><dd>One profile per pet, with daily life, health and schedules gathered on it. This is available in the app today.</dd></div></dl></div>
-      </article><article class="pl-row">
-        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="7" r="2.5"/><circle cx="6" cy="17" r="2.5"/><path d="M8.2 8.3L20 18M8.2 15.7L20 6"/></svg></span><div><span class="pl-n">02</span><p class="pl-label" lang="en">Information gap</p><h3>Care services are hard to compare and trust</h3><p class="pl-p">Groomers, hotels and sitters differ in pricing policy, accepted pets and cancellation rules, and there are few ways to check who to trust. Monthly costs and large treatment bills add up.</p></div></div>
-        <div class="pl-row__side"><dl class="pl-meta"><div><dt>PETLOG's approach</dt><dd>Service discovery and booking with business checks and real reviews is planned. Booking and payment come only to the app after legal, payment-provider (PG) and security review.</dd></div></dl></div>
-      </article><article class="pl-row">
-        <div class="pl-row__lead"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><div><span class="pl-n">03</span><p class="pl-label" lang="en">Disconnected life stages</p><h3>Adoption, loss and farewell are disconnected</h3><p class="pl-p">Shelter adoption, reporting a lost pet, funerals and memorials each start from scratch somewhere else — usually at the most stressful moment.</p></div></div>
-        <div class="pl-row__side"><dl class="pl-meta"><div><dt>PETLOG's approach</dt><dd>Adoption, lost-pet and foster guidance linked to official shelters and bodies, and memorial records, are planned as later-life areas. Public-good features are meant to run without fees.</dd></div></dl></div>
+    <div class="pl-pairs"><article class="pl-pair">
+        <div class="pl-pair__q"><p class="pl-label" lang="en">Scattered records</p><h3>Records are scattered everywhere</h3><p class="pl-p">Vaccination dates sit in a clinic booklet, food notes in a memo app, photos in the phone gallery. At the vet, &quot;since when?&quot; is hard to answer.</p></div>
+        <div class="pl-pair__a"><b><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>PETLOG's approach</b><p class="pl-p">One profile per pet, with daily life, health and schedules gathered on it. This is available in the app today.</p></div>
+      </article><article class="pl-pair">
+        <div class="pl-pair__q"><p class="pl-label" lang="en">Information gap</p><h3>Care services are hard to compare and trust</h3><p class="pl-p">Groomers, hotels and sitters differ in pricing policy, accepted pets and cancellation rules, and there are few ways to check who to trust. Monthly costs and large treatment bills add up.</p></div>
+        <div class="pl-pair__a"><b><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>PETLOG's approach</b><p class="pl-p">Service discovery and booking with business checks and real reviews is planned. Booking and payment come only to the app after legal, payment-provider (PG) and security review.</p></div>
+      </article><article class="pl-pair">
+        <div class="pl-pair__q"><p class="pl-label" lang="en">Disconnected life stages</p><h3>Adoption, loss and farewell are disconnected</h3><p class="pl-p">Shelter adoption, reporting a lost pet, funerals and memorials each start from scratch somewhere else — usually at the most stressful moment.</p></div>
+        <div class="pl-pair__a"><b><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>PETLOG's approach</b><p class="pl-p">Adoption, lost-pet and foster guidance linked to official shelters and bodies, and memorial records, are planned as later-life areas. Public-good features are meant to run without fees.</p></div>
       </article></div>
   </div>
     <div id="nls-about" class="nls-block" data-hs-section>
@@ -1105,7 +818,7 @@
     <p class="nls-lead">Rather than adding many features at once, PETLOG first makes everyday records solid, then connects services on top of them one by one.</p>
   </header>
     
-    <ol class="pl-steps" style="--n:3"><li><span class="pl-dot" aria-hidden="true"></span><span class="pl-big">01</span><h3>Daily records come first</h3><p class="pl-p">Meal, walk, weight and vaccination records are free core features, so owners can build the habit without cost. This stage is in the app today.</p></li><li><span class="pl-dot" aria-hidden="true"></span><span class="pl-big">02</span><h3>Records lead to services</h3><p class="pl-p">Records and schedules are designed to lead naturally to finding and booking grooming, care, hotels and training. Planned.</p></li><li><span class="pl-dot" aria-hidden="true"></span><span class="pl-big">03</span><h3>A whole life in one account</h3><p class="pl-p">Widening into old-age care, lost-pet readiness, shelter links and memorials — the later part of a pet's life. Planned.</p></li></ol>
+    <ol class="pl-steps pl-steps--lg" style="--n:3"><li class="is-on"><span class="pl-big">01</span><h3>Daily records come first</h3><p class="pl-p">Meal, walk, weight and vaccination records are free core features, so owners can build the habit without cost. This stage is in the app today.</p></li><li><span class="pl-big">02</span><h3>Records lead to services</h3><p class="pl-p">Records and schedules are designed to lead naturally to finding and booking grooming, care, hotels and training. Planned.</p></li><li><span class="pl-big">03</span><h3>A whole life in one account</h3><p class="pl-p">Widening into old-age care, lost-pet readiness, shelter links and memorials — the later part of a pet's life. Planned.</p></li></ol>
   </div>
     <div id="nls-journey" class="nls-block nls-block--band pl-tint nls-journey-sec" data-hs-section>
     <header class="nls-head">
@@ -1178,7 +891,7 @@
     <h2 class="nls-title">Who uses<br>PETLOG.</h2>
     <p class="nls-lead">The first core users are dog and cat owners. Other species follow once their health, husbandry and legal requirements are checked.</p>
   </header></div>
-      <div><ul class="pl-checks pl-checks--cards"><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c1-4 3.8-6 7-6s6 2 7 6"/></svg></span><div><h3>Dog and cat owners</h3><p class="pl-p">From owners living alone to households with their first pet — people who want daily records and health schedules in one place.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M3 19.5c.8-3.4 3.2-5.2 6-5.2s5.2 1.8 6 5.2M15.5 14.3c2.5-.4 4.7 1 5.5 3.7"/></svg></span><div><h3>Families who care together</h3><p class="pl-p">Families who split care, like a child walking the dog and a parent giving medicine. Invitations and change history show who recorded what.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><div><h3>Owners of senior pets</h3><p class="pl-p">People keeping steady weight, meal and medication records to discuss with their vet.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20v-8"/><path d="M12 12c0-4 3-6.5 7-6.5 0 4-3 6.5-7 6.5z"/><path d="M12 14.5c0-3-2.6-5.2-6-5.2 0 3 2.6 5.2 6 5.2z"/></svg></span><div><h3>Future adopters (planned)</h3><p class="pl-p">People looking for official shelter adoption notices and preparation guidance. Shelter links and adoption guidance are planned.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M11 21v-3h2v3"/></svg></span><div><h3>Pet businesses and bodies (planned)</h3><p class="pl-p">Groomers, hotels, trainers and shelters are the future users of business tools and partnership models. Partnership inquiries are welcome now.</p></div></li></ul></div>
+      <div><ul class="pl-people"><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c1-4 3.8-6 7-6s6 2 7 6"/></svg></span><div><h3>Dog and cat owners</h3><p class="pl-p">From owners living alone to households with their first pet — people who want daily records and health schedules in one place.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M3 19.5c.8-3.4 3.2-5.2 6-5.2s5.2 1.8 6 5.2M15.5 14.3c2.5-.4 4.7 1 5.5 3.7"/></svg></span><div><h3>Families who care together</h3><p class="pl-p">Families who split care, like a child walking the dog and a parent giving medicine. Invitations and change history show who recorded what.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><div><h3>Owners of senior pets</h3><p class="pl-p">People keeping steady weight, meal and medication records to discuss with their vet.</p></div></li><li class="is-later"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20v-8"/><path d="M12 12c0-4 3-6.5 7-6.5 0 4-3 6.5-7 6.5z"/><path d="M12 14.5c0-3-2.6-5.2-6-5.2 0 3 2.6 5.2 6 5.2z"/></svg></span><div><h3>Future adopters (planned)</h3><p class="pl-p">People looking for official shelter adoption notices and preparation guidance. Shelter links and adoption guidance are planned.</p></div></li><li class="is-later"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M11 21v-3h2v3"/></svg></span><div><h3>Pet businesses and bodies (planned)</h3><p class="pl-p">Groomers, hotels, trainers and shelters are the future users of business tools and partnership models. Partnership inquiries are welcome now.</p></div></li></ul></div>
     </div>
   </div>
     <div id="nls-scenes" class="nls-block nls-block--band pl-tint" data-hs-section>
@@ -1188,22 +901,22 @@
     <p class="nls-lead">Real moments of use, showing what the app does today and what comes next.</p>
   </header>
     
-    <div class="pl-grid" style="--cols:2"><article class="pl-card">
-        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M9 3v4M15 3v4"/><path d="M9.5 14.5l1.8 1.8 3.4-3.4"/></svg></span><span class="pl-n">01</span></div>
+    <div class="pl-grid pl-grid--2"><article class="pl-card">
+        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M9 3v4M15 3v4"/><path d="M9.5 14.5l1.8 1.8 3.4-3.4"/></svg></span></div>
         <h3>The first month after adoption</h3><p class="pl-p">Several vaccinations in a row, and food and toilet habits to settle.</p>
-        <dl class="pl-meta"><div><dt>In the app today</dt><dd>Profile, vaccination schedule and reminders, meal and toilet logs</dd></div><div><dt>Next</dt><dd>Official shelter adoption information, basic training content</dd></div></dl>
+        <dl class="pl-nn"><div><dt><i aria-hidden="true"></i>In the app today</dt><dd>Profile, vaccination schedule and reminders, meal and toilet logs</dd></div><div class="is-next"><dt><i aria-hidden="true"></i>Next</dt><dd>Official shelter adoption information, basic training content</dd></div></dl>
       </article><article class="pl-card">
-        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><span class="pl-n">02</span></div>
+        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span></div>
         <h3>The day before a vet visit</h3><p class="pl-p">Knowing when symptoms began and how weight changed makes the consultation easier.</p>
-        <dl class="pl-meta"><div><dt>In the app today</dt><dd>Weight trend, symptom, visit and medication records</dd></div><div><dt>Next</dt><dd>Official clinic information and booking routes (after legal review)</dd></div></dl>
+        <dl class="pl-nn"><div><dt><i aria-hidden="true"></i>In the app today</dt><dd>Weight trend, symptom, visit and medication records</dd></div><div class="is-next"><dt><i aria-hidden="true"></i>Next</dt><dd>Official clinic information and booking routes (after legal review)</dd></div></dl>
       </article><article class="pl-card">
-        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-5h4v5"/></svg></span><span class="pl-n">03</span></div>
+        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-5h4v5"/></svg></span></div>
         <h3>Away on a trip</h3><p class="pl-p">Family or a carer needs the exact food amounts and cautions.</p>
-        <dl class="pl-meta"><div><dt>In the app today</dt><dd>Family sharing of the same records</dd></div><div><dt>Next</dt><dd>Sharing only what a carer needs; hotel and care booking</dd></div></dl>
+        <dl class="pl-nn"><div><dt><i aria-hidden="true"></i>In the app today</dt><dd>Family sharing of the same records</dd></div><div class="is-next"><dt><i aria-hidden="true"></i>Next</dt><dd>Sharing only what a carer needs; hotel and care booking</dd></div></dl>
       </article><article class="pl-card">
-        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><span class="pl-n">04</span></div>
+        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span></div>
         <h3>Caring for a senior dog or cat</h3><p class="pl-p">More medication, and changes to watch every day.</p>
-        <dl class="pl-meta"><div><dt>In the app today</dt><dd>Medication log and reminders, weight and meal records</dd></div><div><dt>Next</dt><dd>Senior-life tips, a record-summary AI (no diagnosis)</dd></div></dl>
+        <dl class="pl-nn"><div><dt><i aria-hidden="true"></i>In the app today</dt><dd>Medication log and reminders, weight and meal records</dd></div><div class="is-next"><dt><i aria-hidden="true"></i>Next</dt><dd>Senior-life tips, a record-summary AI (no diagnosis)</dd></div></dl>
       </article></div>
   </div>
     <div id="nls-core" class="nls-block" data-hs-section>
@@ -1213,39 +926,31 @@
     <p class="nls-lead">The PETLOG app is on the App Store and Google Play. Items 01–07 below are available in the app today; 08, pet life information and community, is in development.</p>
   </header>
     
-    <div class="pl-grid" style="--cols:4"><article class="pl-card">
+    <ul class="pl-core"><li class="is-wide"><article class="pl-card">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c1-4 3.8-6 7-6s6 2 7 6"/></svg></span><span class="pl-n">01</span></div>
-        <p class="pl-label" lang="en">Pet Profile</p><h3>Pet profile</h3><p class="pl-p">Name, breed, age, weight and photos in one place. Every record builds on this profile.</p>
-        <ul class="pl-chips"><li>Basic info</li><li>Photos</li></ul>
-      </article><article class="pl-card">
+        <p class="pl-label" lang="en">Pet Profile</p><h3>Pet profile</h3><p class="pl-p">Name, breed, age, weight and photos in one place. Every record builds on this profile.</p><ul class="pl-chips"><li>Basic info</li><li>Photos</li></ul>
+      </article></li><li><article class="pl-card">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3.5"/></svg></span><span class="pl-n">02</span></div>
-        <p class="pl-label" lang="en">Daily Log</p><h3>Daily log</h3><p class="pl-p">Record everyday life and special moments with photos, and look back any time.</p>
-        <ul class="pl-chips"><li>Diary</li><li>Special moments</li></ul>
-      </article><article class="pl-card">
+        <p class="pl-label" lang="en">Daily Log</p><h3>Daily log</h3><p class="pl-p">Record everyday life and special moments with photos, and look back any time.</p><ul class="pl-chips"><li>Diary</li><li>Special moments</li></ul>
+      </article></li><li><article class="pl-card">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 12h17a8.5 8.5 0 0 1-17 0z"/><path d="M9 8.5c0-1.5 1-2 1-3.5M14 8.5c0-1.5 1-2 1-3.5"/></svg></span><span class="pl-n">03</span></div>
-        <p class="pl-label" lang="en">Meals, Walks &amp; Activity</p><h3>Meals, walks and activity</h3><p class="pl-p">Log meals, treats, walks, sleep and toilet to see daily rhythm and changes in condition.</p>
-        <ul class="pl-chips"><li>Meals and treats</li><li>Walks</li></ul>
-      </article><article class="pl-card">
+        <p class="pl-label" lang="en">Meals, Walks &amp; Activity</p><h3>Meals, walks and activity</h3><p class="pl-p">Log meals, treats, walks, sleep and toilet to see daily rhythm and changes in condition.</p><ul class="pl-chips"><li>Meals and treats</li><li>Walks</li></ul>
+      </article></li><li><article class="pl-card">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><span class="pl-n">04</span></div>
-        <p class="pl-label" lang="en">Weight &amp; Health</p><h3>Weight and health records</h3><p class="pl-p">Keep weight changes, visits, tests and allergies to check when needed. PETLOG does not diagnose.</p>
-        <ul class="pl-chips"><li>Weight</li><li>Visit history</li></ul>
-      </article><article class="pl-card">
+        <p class="pl-label" lang="en">Weight &amp; Health</p><h3>Weight and health records</h3><p class="pl-p">Keep weight changes, visits, tests and allergies to check when needed. PETLOG does not diagnose.</p><ul class="pl-chips"><li>Weight</li><li>Visit history</li></ul>
+      </article></li><li><article class="pl-card">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M9 3v4M15 3v4"/><path d="M9.5 14.5l1.8 1.8 3.4-3.4"/></svg></span><span class="pl-n">05</span></div>
-        <p class="pl-label" lang="en">Vaccination &amp; Vet Visits</p><h3>Vaccinations and vet visits</h3><p class="pl-p">Manage vaccinations, medication and vet appointments, with reminders so the next one is not missed.</p>
-        <ul class="pl-chips"><li>Vaccination schedule</li><li>Reminders</li></ul>
-      </article><article class="pl-card">
+        <p class="pl-label" lang="en">Vaccination &amp; Vet Visits</p><h3>Vaccinations and vet visits</h3><p class="pl-p">Manage vaccinations, medication and vet appointments, with reminders so the next one is not missed.</p><ul class="pl-chips"><li>Vaccination schedule</li><li>Reminders</li></ul>
+      </article></li><li class="is-wide"><article class="pl-card">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M3 19.5c.8-3.4 3.2-5.2 6-5.2s5.2 1.8 6 5.2M15.5 14.3c2.5-.4 4.7 1 5.5 3.7"/></svg></span><span class="pl-n">06</span></div>
-        <p class="pl-label" lang="en">Family Sharing</p><h3>Family care</h3><p class="pl-p">Invite family to log walks, meals and medication together, and see who recorded what, and when.</p>
-        <ul class="pl-chips"><li>Invite family</li><li>Change history</li></ul>
-      </article><article class="pl-card">
+        <p class="pl-label" lang="en">Family Sharing</p><h3>Family care</h3><p class="pl-p">Invite family to log walks, meals and medication together, and see who recorded what, and when.</p><ul class="pl-chips"><li>Invite family</li><li>Change history</li></ul>
+      </article></li><li class="is-wide"><article class="pl-card">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7l1.4-2.5h4.2L15.5 7"/><circle cx="12" cy="13.5" r="3.4"/></svg></span><span class="pl-n">07</span></div>
-        <p class="pl-label" lang="en">Photos &amp; Memories</p><h3>Photos and memories</h3><p class="pl-p">Add photos to records to keep how your pet grows. A memorial album and long-term storage are part of the expansion plan.</p>
-        <ul class="pl-chips"><li>Photos</li><li>Growth records</li></ul>
-      </article><article class="pl-card">
+        <p class="pl-label" lang="en">Photos &amp; Memories</p><h3>Photos and memories</h3><p class="pl-p">Add photos to records to keep how your pet grows. A memorial album and long-term storage are part of the expansion plan.</p><ul class="pl-chips"><li>Photos</li><li>Growth records</li></ul>
+      </article></li><li class="is-wide"><article class="pl-card pl-card--later">
         <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16v11H9.5L4 20z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span><span class="pl-n">08</span></div>
-        <p class="pl-label" lang="en">Info &amp; Community</p><h3>Pet life info and community</h3><p class="pl-p">A community where owners share experience, and pet life information, are in development.</p>
-        <ul class="pl-chips"><li>Pet life info</li><li>Community</li></ul>
-      </article></div><div class="pl-actions"><p class="pl-aside">PETLOG app</p><a class="pl-pill" href="https://apps.apple.com/kr/app/petlog-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-ai-%EB%B0%98%EB%A0%A4-%EA%B8%B0%EB%A1%9D/id6770971033" target="_blank" rel="noopener noreferrer">App Store <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="pl-pill" href="https://play.google.com/store/apps/details?id=com.newon.petlog&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer">Google Play <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+        <p class="pl-label" lang="en">Info &amp; Community</p><h3>Pet life info and community</h3><p class="pl-p">A community where owners share experience, and pet life information, are in development.</p><ul class="pl-chips pl-chips--line"><li>Pet life info</li><li>Community</li></ul>
+      </article></li></ul><div class="pl-actions"><p class="pl-aside">PETLOG app</p><a class="pl-pill" href="https://apps.apple.com/kr/app/petlog-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-ai-%EB%B0%98%EB%A0%A4-%EA%B8%B0%EB%A1%9D/id6770971033" target="_blank" rel="noopener noreferrer">App Store <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="pl-pill" href="https://play.google.com/store/apps/details?id=com.newon.petlog&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer">Google Play <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
   </div>
     <div id="nls-diff" class="nls-block nls-block--band pl-tint" data-hs-section>
     <header class="nls-head">
@@ -1254,18 +959,15 @@
     <p class="nls-lead">This comparison is PETLOG's differentiation hypothesis about types of service. It claims no advantage over any company and does not present unbuilt features as existing strengths.</p>
   </header>
     
-    <div class="pl-cols" style="--cols:3"><article class="pl-col">
-        <div class="pl-col__head"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3.5"/></svg></span><span class="pl-n">01</span></div>
-        <h3>Compared with record apps</h3><p class="pl-p">Apps that only store records rarely lead to the next action.</p>
-        <dl class="pl-meta"><div><dt>PETLOG's approach</dt><dd>Records connect to schedules and reminders, and are designed to lead to future service discovery and booking on the same profile.</dd></div></dl>
-      </article><article class="pl-col">
-        <div class="pl-col__head"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 8h14l-1.1 12H6.1z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></span><span class="pl-n">02</span></div>
-        <h3>Compared with shopping apps</h3><p class="pl-p">When selling is the centre, owners' records and care context tend to drop out.</p>
-        <dl class="pl-meta"><div><dt>PETLOG's approach</dt><dd>Records and health are the free core; shopping is added on top. Pet records are never shared with sellers automatically.</dd></div></dl>
-      </article><article class="pl-col">
-        <div class="pl-col__head"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span><span class="pl-n">03</span></div>
-        <h3>Compared with single providers and communities</h3><p class="pl-p">Booking, reviews and information are spread across different places.</p>
-        <dl class="pl-meta"><div><dt>PETLOG's approach</dt><dd>A life-cycle structure from adoption to old age and after farewell in one account, including public-good areas such as adoption and lost pets.</dd></div></dl>
+    <div class="pl-compare"><article class="pl-cmp">
+        <div class="pl-cmp__what"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3.5"/></svg></span><div><h3>Compared with record apps</h3><p class="pl-p">Apps that only store records rarely lead to the next action.</p></div></div>
+        <div class="pl-cmp__how"><b>PETLOG's approach</b><p class="pl-p">Records connect to schedules and reminders, and are designed to lead to future service discovery and booking on the same profile.</p></div>
+      </article><article class="pl-cmp">
+        <div class="pl-cmp__what"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 8h14l-1.1 12H6.1z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></span><div><h3>Compared with shopping apps</h3><p class="pl-p">When selling is the centre, owners' records and care context tend to drop out.</p></div></div>
+        <div class="pl-cmp__how"><b>PETLOG's approach</b><p class="pl-p">Records and health are the free core; shopping is added on top. Pet records are never shared with sellers automatically.</p></div>
+      </article><article class="pl-cmp">
+        <div class="pl-cmp__what"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span><div><h3>Compared with single providers and communities</h3><p class="pl-p">Booking, reviews and information are spread across different places.</p></div></div>
+        <div class="pl-cmp__how"><b>PETLOG's approach</b><p class="pl-p">A life-cycle structure from adoption to old age and after farewell in one account, including public-good areas such as adoption and lost pets.</p></div>
       </article></div>
   </div>
     <div id="nls-beyond" class="nls-block" data-hs-section>
@@ -1275,27 +977,7 @@
     <p class="nls-lead">The integrated business plan organises PETLOG's long-term business into 25 areas in five groups. The count is a planning unit: areas are added step by step inside one PETLOG app, not built as separate apps.</p>
   </header>
     <p class="nls-note pl-callout"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.1"/></svg><span>PETLOG is expanding step by step from the records, health and family-care features in its app today into care services, commerce, safety, public-good and business areas. Some services and businesses on this page are future development or partnership plans, not current operations.</span></p>
-    <div class="pl-grid" style="--cols:3"><article class="pl-card pl-card--tint">
-        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3.5"/></svg></span><span class="pl-n">01</span></div>
-        <p class="pl-label" lang="en">Records &amp; Care Core</p><h3>Records and care core</h3><p class="pl-p">Profile, health, life, calendar and notes. The basics are in the app today and underpin every other service.</p>
-        <ul class="pl-chips"><li>Profile</li><li>Health</li><li>Life</li><li>Calendar</li><li>Note</li></ul>
-      </article><article class="pl-card pl-card--tint">
-        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="7" r="2.5"/><circle cx="6" cy="17" r="2.5"/><path d="M8.2 8.3L20 18M8.2 15.7L20 6"/></svg></span><span class="pl-n">02</span></div>
-        <p class="pl-label" lang="en">Pet Services</p><h3>Pet services</h3><p class="pl-p">Vet information, grooming, sitting and walking, hotels and daycare, training. Booking is planned for the app only, after legal, PG and security review.</p>
-        <ul class="pl-chips"><li>Medical</li><li>Grooming</li><li>Care</li><li>Hotel</li><li>Training</li></ul>
-      </article><article class="pl-card pl-card--tint">
-        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16v11H9.5L4 20z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span><span class="pl-n">03</span></div>
-        <p class="pl-label" lang="en">Community &amp; Commerce</p><h3>Community and commerce</h3><p class="pl-p">Owner community (in development), provider checks and reviews, shopping, secondhand and group buying, subscription, pet-friendly travel.</p>
-        <ul class="pl-chips"><li>Community</li><li>Trust</li><li>Market</li><li>Subscription</li><li>Travel</li></ul>
-      </article><article class="pl-card pl-card--tint">
-        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5l1.7 5L19 10.2l-5.3 1.7L12 17l-1.7-5.1L5 10.2l5.3-1.7z"/><path d="M18.5 15.5l.7 1.7 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg></span><span class="pl-n">04</span></div>
-        <p class="pl-label" lang="en">Technology &amp; Business</p><h3>Technology and business</h3><p class="pl-p">Record-summary AI (in development), safety, smart-device links, business operations tools, corporate and institutional partnerships.</p>
-        <ul class="pl-chips"><li>AI</li><li>Safety</li><li>Devices</li><li>Business</li><li>Partners</li></ul>
-      </article><article class="pl-card pl-card--tint">
-        <div class="pl-card__top"><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><span class="pl-n">05</span></div>
-        <p class="pl-label" lang="en">Public Good &amp; Farewell</p><h3>Public good and farewell</h3><p class="pl-p">Shelter links, lost-pet search, adoption, fostering, funerals and memorials. Essential shelter, lost-pet, adoption and foster features are meant to be free.</p>
-        <ul class="pl-chips"><li>Shelter</li><li>Find</li><li>Adoption</li><li>Foster</li><li>Memorial</li></ul>
-      </article></div><div class="pl-actions"><a class="pl-more" href="../petlog/platform/">See all 25 areas <span aria-hidden="true">→</span></a></div>
+    <ol class="pl-ladder" tabindex="0" aria-label="LONG-TERM VISION"><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3.5"/></svg></span><div class="pl-row__tag"><span class="pl-n">01</span><p class="pl-label" lang="en">Records &amp; Care Core</p></div><h3>Records and care core</h3><p class="pl-p pl-sm">Profile, health, life, calendar and notes. The basics are in the app today and underpin every other service.</p><ul class="pl-chips"><li>Profile</li><li>Health</li><li>Life</li><li>Calendar</li><li>Note</li></ul></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="7" r="2.5"/><circle cx="6" cy="17" r="2.5"/><path d="M8.2 8.3L20 18M8.2 15.7L20 6"/></svg></span><div class="pl-row__tag"><span class="pl-n">02</span><p class="pl-label" lang="en">Pet Services</p></div><h3>Pet services</h3><p class="pl-p pl-sm">Vet information, grooming, sitting and walking, hotels and daycare, training. Booking is planned for the app only, after legal, PG and security review.</p><ul class="pl-chips"><li>Medical</li><li>Grooming</li><li>Care</li><li>Hotel</li><li>Training</li></ul></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16v11H9.5L4 20z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span><div class="pl-row__tag"><span class="pl-n">03</span><p class="pl-label" lang="en">Community &amp; Commerce</p></div><h3>Community and commerce</h3><p class="pl-p pl-sm">Owner community (in development), provider checks and reviews, shopping, secondhand and group buying, subscription, pet-friendly travel.</p><ul class="pl-chips"><li>Community</li><li>Trust</li><li>Market</li><li>Subscription</li><li>Travel</li></ul></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5l1.7 5L19 10.2l-5.3 1.7L12 17l-1.7-5.1L5 10.2l5.3-1.7z"/><path d="M18.5 15.5l.7 1.7 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg></span><div class="pl-row__tag"><span class="pl-n">04</span><p class="pl-label" lang="en">Technology &amp; Business</p></div><h3>Technology and business</h3><p class="pl-p pl-sm">Record-summary AI (in development), safety, smart-device links, business operations tools, corporate and institutional partnerships.</p><ul class="pl-chips"><li>AI</li><li>Safety</li><li>Devices</li><li>Business</li><li>Partners</li></ul></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><div class="pl-row__tag"><span class="pl-n">05</span><p class="pl-label" lang="en">Public Good &amp; Farewell</p></div><h3>Public good and farewell</h3><p class="pl-p pl-sm">Shelter links, lost-pet search, adoption, fostering, funerals and memorials. Essential shelter, lost-pet, adoption and foster features are meant to be free.</p><ul class="pl-chips"><li>Shelter</li><li>Find</li><li>Adoption</li><li>Foster</li><li>Memorial</li></ul></li></ol><div class="pl-actions"><a class="pl-more" href="../petlog/platform/">See all 25 areas <span aria-hidden="true">→</span></a></div>
   </div>
     <div id="nls-trust" class="nls-block nls-block--band pl-tint" data-hs-section>
     <header class="nls-head">
@@ -1304,7 +986,7 @@
     
   </header>
     
-    <ul class="pl-checks pl-checks--cards"><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Accurate information and sources</h3><p class="pl-p">Pet life information is shared with its evidence and sources checked. Ads and sponsorship are always clearly marked.</p></div></li><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Protecting owners' privacy</h3><p class="pl-p">Owners' records and personal data belong to them and are never shared with businesses or sellers without consent.</p></div></li><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Responsible health information</h3><p class="pl-p">PETLOG does not diagnose disease or replace a vet's judgment. When something seems wrong, we suggest seeing a vet.</p></div></li><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Animal welfare and respect for life</h3><p class="pl-p">No selling or secondhand trading of live animals and no illegal breeding or sales; we support responsible adoption.</p></div></li><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Qualified service providers</h3><p class="pl-p">Professional services such as care, grooming and funerals connect only providers whose qualifications and business requirements are checked.</p></div></li><li><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><h3>Transparent commerce and partnerships</h3><p class="pl-p">Sellers are checked, and partnerships and terms are shown accurately. Essential health records are never over-charged.</p></div></li></ul>
+    <ul class="pl-people pl-people--grid pl-people--3"><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5.2c3-1 6-1 8 1 2-2 5-2 8-1v14c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6.2v14"/></svg></span><div><h3>Accurate information and sources</h3><p class="pl-p">Pet life information is shared with its evidence and sources checked. Ads and sponsorship are always clearly marked.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5.2c0 4.8-3.3 8.3-7 9.8-3.7-1.5-7-5-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/></svg></span><div><h3>Protecting owners' privacy</h3><p class="pl-p">Owners' records and personal data belong to them and are never shared with businesses or sellers without consent.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><div><h3>Responsible health information</h3><p class="pl-p">PETLOG does not diagnose disease or replace a vet's judgment. When something seems wrong, we suggest seeing a vet.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><div><h3>Animal welfare and respect for life</h3><p class="pl-p">No selling or secondhand trading of live animals and no illegal breeding or sales; we support responsible adoption.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><h3>Qualified service providers</h3><p class="pl-p">Professional services such as care, grooming and funerals connect only providers whose qualifications and business requirements are checked.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 8h14l-1.1 12H6.1z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></span><div><h3>Transparent commerce and partnerships</h3><p class="pl-p">Sellers are checked, and partnerships and terms are shown accurately. Essential health records are never over-charged.</p></div></li></ul>
   </div>
     <div id="nls-newon" class="nls-block" data-hs-section>
     <div class="pl-split">
@@ -1313,7 +995,7 @@
     <h2 class="nls-title">PETLOG's place<br>in NEWON.</h2>
     <p class="nls-lead">PETLOG covers pets among NEWON's six core platforms. The links below are planned directions; health, family and location data are never shared between platforms automatically, without the user's explicit consent and lawful authority.</p>
   </header></div>
-      <div><ul class="pl-fam"><li><a class="pl-tile is-self" href="../petlog/"><div class="pl-tile__body"><strong>PETLOG<em aria-hidden="true">→</em></strong><p class="pl-p">Pets' records, health, care and life-stage services</p></div></a></li><li><a class="pl-tile" href="../babylog/"><div class="pl-tile__body"><strong>BABYLOG<em aria-hidden="true">→</em></strong><p class="pl-p">Family life with children and pets together</p></div></a></li><li><a class="pl-tile" href="../myworld/"><div class="pl-tile__body"><strong>MY WORLD<em aria-hidden="true">→</em></strong><p class="pl-p">Recording and preparing pet-friendly travel</p></div></a></li><li><a class="pl-tile" href="../shareon/"><div class="pl-tile__body"><strong>SHAREON<em aria-hidden="true">→</em></strong><p class="pl-p">Renting carriers and gear — PETLOG sells, SHAREON rents</p></div></a></li><li><a class="pl-tile" href="../livon/"><div class="pl-tile__body"><strong>LIVON<em aria-hidden="true">→</em></strong><p class="pl-p">Getting pets ready around moves, births and other family events</p></div></a></li><li><a class="pl-tile" href="../ongil/"><div class="pl-tile__body"><strong>ONGIL<em aria-hidden="true">→</em></strong><p class="pl-p">Pet care for senior owners</p></div></a></li></ul></div>
+      <div><ul class="pl-dir pl-dir--wide"><li><a class="is-self" href="../petlog/"><div><strong lang="en">PETLOG</strong><p class="pl-p">Pets' records, health, care and life-stage services</p></div><em aria-hidden="true">→</em></a></li><li><a href="../babylog/"><div><strong lang="en">BABYLOG</strong><p class="pl-p">Family life with children and pets together</p></div><em aria-hidden="true">→</em></a></li><li><a href="../myworld/"><div><strong lang="en">MY WORLD</strong><p class="pl-p">Recording and preparing pet-friendly travel</p></div><em aria-hidden="true">→</em></a></li><li><a href="../shareon/"><div><strong lang="en">SHAREON</strong><p class="pl-p">Renting carriers and gear — PETLOG sells, SHAREON rents</p></div><em aria-hidden="true">→</em></a></li><li><a href="../livon/"><div><strong lang="en">LIVON</strong><p class="pl-p">Getting pets ready around moves, births and other family events</p></div><em aria-hidden="true">→</em></a></li><li><a href="../ongil/"><div><strong lang="en">ONGIL</strong><p class="pl-p">Pet care for senior owners</p></div><em aria-hidden="true">→</em></a></li></ul></div>
     </div>
   </div>
     <div id="nls-petlog-menu" class="nls-block" data-hs-section>
@@ -1322,7 +1004,7 @@
     <h2 class="nls-title">PETLOG MENU</h2>
     
   </header>
-    <nav aria-label="PETLOG MENU"><ul class="pl-menu"><li><a class="pl-tile" href="../petlog/" aria-current="page"><div class="pl-tile__body"><span class="pl-n">01</span><strong>Overview · About PETLOG<em aria-hidden="true">→</em></strong><p class="pl-p">What PETLOG is, owners' problems and our approach, status and vision</p></div></a></li><li><a class="pl-tile" href="../petlog/platform/"><div class="pl-tile__body"><span class="pl-n">02</span><strong>Platform · Services<em aria-hidden="true">→</em></strong><p class="pl-p">25 long-term areas, user scenarios, privacy principles and FAQ</p></div></a></li><li><a class="pl-tile" href="../petlog/business/"><div class="pl-tile__body"><span class="pl-n">03</span><strong>Business · Business<em aria-hidden="true">→</em></strong><p class="pl-p">Customers and payers, 12 revenue models, go-to-market and roadmap</p></div></a></li><li><a class="pl-tile" href="../petlog/partnerships/"><div class="pl-tile__body"><span class="pl-n">04</span><strong>Partnerships · Partnerships<em aria-hidden="true">→</em></strong><p class="pl-p">14 partner types, scenarios, PoC and data principles</p></div></a></li><li><a class="pl-tile" href="../petlog/contact/"><div class="pl-tile__body"><span class="pl-n">05</span><strong>Contact · Contact<em aria-hidden="true">→</em></strong><p class="pl-p">From owners' questions to business, brand, shelter and public partnerships</p></div></a></li></ul></nav>
+    <nav aria-label="PETLOG MENU"><ul class="pl-tiles pl-tiles--5"><li><a class="pl-tile" href="../petlog/" aria-current="page"><div class="pl-tile__body"><span class="pl-n">01</span><strong>Overview · About PETLOG<em aria-hidden="true">→</em></strong><p class="pl-p">What PETLOG is, owners' problems and our approach, status and vision</p></div></a></li><li><a class="pl-tile" href="../petlog/platform/"><div class="pl-tile__body"><span class="pl-n">02</span><strong>Platform · Services<em aria-hidden="true">→</em></strong><p class="pl-p">25 long-term areas, user scenarios, privacy principles and FAQ</p></div></a></li><li><a class="pl-tile" href="../petlog/business/"><div class="pl-tile__body"><span class="pl-n">03</span><strong>Business · Business<em aria-hidden="true">→</em></strong><p class="pl-p">Customers and payers, 12 revenue models, go-to-market and roadmap</p></div></a></li><li><a class="pl-tile" href="../petlog/partnerships/"><div class="pl-tile__body"><span class="pl-n">04</span><strong>Partnerships · Partnerships<em aria-hidden="true">→</em></strong><p class="pl-p">14 partner types, scenarios, PoC and data principles</p></div></a></li><li><a class="pl-tile" href="../petlog/contact/"><div class="pl-tile__body"><span class="pl-n">05</span><strong>Contact · Contact<em aria-hidden="true">→</em></strong><p class="pl-p">From owners' questions to business, brand, shelter and public partnerships</p></div></a></li></ul></nav>
   </div>
     <div id="nls-close" class="nls-block nls-close nls-block--ink" data-hs-section>
     <p class="nls-kicker">NEXT STEP</p>
