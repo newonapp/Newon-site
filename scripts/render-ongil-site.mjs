@@ -361,6 +361,15 @@ function overviewMain(c, S, lang) {
       ${note(o.beyond.note)}`
   );
 
+  // I2 · global vision (2026-10-26, future plan): four open columns, links to the platform / business detail
+  const gv = o.global;
+  const globalVision = sec(
+    "ogs-global",
+    `${head("ogs-global", gv.label, gv.title, gv.lead, { split: true })}
+      <ul class="ogs-cols4">${gv.items.map((s, i) => `<li>${tile(["sun", "users", "hands", "shield"][i % 4], "lg")}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ul>`,
+    { cls: "ogs-sec--rule" }
+  );
+
   // J · trust & responsibility: two-column check list, emergency guidance as a red callout
   const trust = sec(
     "ogs-family",
@@ -391,7 +400,7 @@ function overviewMain(c, S, lang) {
     { tone: "ink" }
   );
 
-  return [intro, problems, mission, journey, core, people, compare, status, beyond, trust, newon, next].join("\n");
+  return [intro, problems, mission, journey, core, people, compare, status, beyond, globalVision, trust, newon, next].join("\n");
 }
 
 /* ───────── 02 Platform ───────── */
@@ -506,6 +515,19 @@ function platformMain(c, S, lang) {
   const groups = groupSecs.filter((g) => !g.after).map((g) => g.html).join("\n");
   const later = groupSecs.filter((g) => g.after).map((g) => g.html).join("\n");
 
+  // C2 · area 25 ONGIL Global unpacked (2026-10-26, planned / under review): directions in a spec panel + localization checks
+  const gl = p.global;
+  const globalSec = sec(
+    "ogs-global",
+    `<div class="ogs-split">
+      ${head("ogs-global", gl.kicker, gl.title, gl.lead)}
+      <ul class="ogs-spec">${gl.items.map((s, i) => `<li>${tile(["sun", "hands", "users", "shield", "heart"][i % 5])}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ul>
+    </div>
+      <p class="ogs-dir__title">${e(gl.localTitle)}</p>
+      ${checkList(gl.points, "ogs-checks--2")}`,
+    { cls: "ogs-sec--rule" }
+  );
+
   // D · the three signature areas: one continuous apricot zone, each its own section
   const features = p.features.map((f, i) => featureSection(c, lang, f, i)).join("\n");
 
@@ -581,7 +603,7 @@ function platformMain(c, S, lang) {
     ],
     p
   );
-  return [index, status, groups, features, later, scenarios, roles, systems, privacy, app, faq, close].filter(Boolean).join("\n");
+  return [index, status, groups, globalSec, features, later, scenarios, roles, systems, privacy, app, faq, close].filter(Boolean).join("\n");
 }
 
 /* ───────── 03 Business ───────── */
@@ -719,6 +741,21 @@ function businessMain(c, S, lang) {
     { tone: "mist" }
   );
 
+  // H2 · global go-to-market (2026-10-26): overseas customer groups and revenue models under review, then the five phases
+  const gb = b.global;
+  const globalSec = sec(
+    "ogs-global",
+    `${head("ogs-global", gb.label, gb.title, gb.lead, { split: true })}
+      ${table(
+        "ogs-table--pay",
+        ["", gb.valueLabel, gb.modelLabel],
+        gb.items.map((it) => ({ head: `<span class="ogs-pill" lang="en">${e(it.k)}</span><strong>${e(it.name)}</strong>`, cells: [e(it.value), e(it.model)] }))
+      )}
+      <p class="ogs-dir__title">${e(gb.phasesTitle)}</p>
+      ${steps(gb.phases, ["check", "compass", "route", "link", "layers"], 5)}
+      ${note(gb.note)}`
+  );
+
   // I · operating & legal principles: three-column text grid
   const lg = b.legal;
   const legal = sec(
@@ -736,7 +773,7 @@ function businessMain(c, S, lang) {
     ],
     b
   );
-  return [index, revenue, customers, market, cats, fees, gtm, roadmap, legal, close].join("\n");
+  return [index, revenue, customers, market, cats, fees, gtm, roadmap, globalSec, legal, close].join("\n");
 }
 
 /* ───────── 04 Partnerships ───────── */
@@ -786,6 +823,19 @@ function partnershipsMain(c, S, lang) {
         </article>`
         )
         .join("")}</div>`
+  );
+
+  // C2 · overseas partners (2026-10-26, possibilities under review): kind · field · conditions table, inquiry → unified Contact
+  const gp = p.global;
+  const globalSec = sec(
+    "ogs-global",
+    `${head("ogs-global", gp.label, gp.title, gp.lead, { split: true })}
+      ${table(
+        "ogs-table--pay",
+        [gp.typeLabel, c.ui.field, c.ui.conditions],
+        gp.items.map((it) => ({ head: `<strong>${e(it.name)}</strong>`, cells: [e(it.field), e(it.conditions)] }))
+      )}
+      <div class="ogs-actions"><a class="nls-btn ogs-btn--accent" href="/${lang}/contact/?type=partnership&amp;platform=ongil">${e(gp.cta)} →</a></div>`
   );
 
   // D · PoC & pilot proposals: wide rows with a 2×2 spec grid
@@ -857,7 +907,7 @@ function partnershipsMain(c, S, lang) {
     ],
     p
   );
-  return [vision, index, items, pocs, data, campaigns, process, value, close].join("\n");
+  return [vision, index, items, globalSec, pocs, data, campaigns, process, value, close].join("\n");
 }
 
 /* ───────── 05 Contact ───────── */

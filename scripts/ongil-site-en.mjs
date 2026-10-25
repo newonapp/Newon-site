@@ -256,6 +256,18 @@ export const EN = {
       ],
       note: "Long-Term Care Insurance services are used through the National Health Insurance Service's grading and designated institutions. ONGIL does not broker these services or collect co-payments, and NEWON does not hold customer funds.",
     },
+    /** Global vision (2026-10-26) — a future plan. No overseas service, target country or date. */
+    global: {
+      label: "Global Vision",
+      title: "Connecting older adults and families\nin ageing societies, across borders.",
+      lead: "ONGIL's long-term vision is to grow into a global senior life-care platform that connects older adults, their families and caregivers in ageing societies. No ONGIL service operates outside Korea today; after the first app release and validation in Korea, expansion will be reviewed step by step, country by country, against each country's rules.",
+      items: [
+        { name: "Ageing markets first", text: "Countries with fast population ageing and strong family-care needs are reviewed first. No target country or timeline has been set." },
+        { name: "Families far apart", text: "Family members in other regions or countries could share daily-life and care information safely, only as far as the older adult allows." },
+        { name: "Local care, connected", text: "Working with local care and welfare organizations to fit each country's care practices and systems is under review." },
+        { name: "Principles checked per country", text: "Rules on medical services, health data, location data and emergency response are reviewed country by country. Consent comes first everywhere." },
+      ],
+    },
     trust: {
       n: "10",
       label: "Trust & Responsibility",
@@ -570,6 +582,29 @@ export const EN = {
         note: "Because of GPS error, network failures and flat batteries, Safe Band is never presented as guaranteeing prevention of going missing or of accidents, or rescue. Location-information law, KC and radio certification are checked first.",
       },
     ],
+    /** Area 25 ONGIL Global, unpacked into expansion directions (2026-10-26) — planned / under review. */
+    global: {
+      kicker: "Area 25 · ONGIL Global",
+      title: "Services to take abroad\nand how each country shapes them.",
+      lead: "Area 25 ONGIL Global, broken down into the services it would expand. No service is offered outside Korea, and no target country or timeline has been set; the first app release and validation in Korea come first.",
+      items: [
+        { name: "Ageing markets first", text: "Countries with fast ageing and strong family-care needs are reviewed first, opening with the core daily tools (health, medication and day records) adapted to how older adults live there." },
+        { name: "Local care services", text: "Collaboration models with local care organizations, care homes and home-care providers would be built around each country's care system." },
+        { name: "Families across borders", text: "Families living in different regions or countries could share an older adult's daily-life and care information safely, only as far as they allow. Sharing stays off by default and consent can always be withdrawn." },
+        { name: "Health and safety, localized", text: "Health records, daily support, safety alerts and emergency-contact arrangements are reviewed against each country's systems and infrastructure." },
+        { name: "Senior community and social impact", text: "Friends, hobbies and leisure, community participation and support for older adults in hardship would be connected with local organizations." },
+      ],
+      localTitle: "Localization by country",
+      points: [
+        { t: "Language and easy screens", text: "Plain sentences, large type and high contrast in each language, with dates, units and forms of address adapted locally." },
+        { t: "Care culture", text: "Defaults for family connection and community features reflect how families share care and how people meet in each country." },
+        { t: "Privacy and cross-border transfer", text: "Each country's privacy law, sensitive-data rules and cross-border transfer consent are checked before deciding where data is stored." },
+        { t: "Care and welfare systems", text: "Public care and welfare information is shown only from local official sources; Korean schemes are never copied across." },
+        { t: "Payments and subscriptions", text: "No paid feature opens before local payment methods, currency, tax and auto-renewal notice rules are checked." },
+        { t: "Local partners", text: "Work with local organizations and companies starts with a small pilot, after eligibility and operating conditions are confirmed." },
+        { t: "Medical, location and emergency rules, per country", text: "Rules on medical services, health data, location data and emergency response differ by country and are reviewed country by country. Emergency guidance follows each country's official emergency numbers; ONGIL does not replace emergency response.", alert: true },
+      ],
+    },
     scenarios: {
       label: "User Scenarios",
       title: "How ONGIL fits\ninto a real day.",
@@ -774,6 +809,30 @@ export const EN = {
       { n: "04", name: "Life Box, personal subscription and AI", text: "Review recurring revenue while managing delivery, returns and AI costs first." },
       { n: "05", name: "Safe Band, smart devices and global", text: "Widen the long-term ecosystem while verifying certification, security, connectivity and local rules." },
     ],
+    /** Global go-to-market (2026-10-26) — no target country, timeline or revenue target. Revenue models are candidates under review. */
+    global: {
+      label: "Global Go-to-Market",
+      title: "From validation in Korea\nto the global senior market.",
+      lead: "ONGIL would not copy its Korean operating model abroad as is. The approach under review is to choose countries with fast ageing and strong family-care needs and redesign the service around local care systems and partners. ONGIL has no overseas service or overseas revenue today, and no target country, timeline or revenue target has been set.",
+      valueLabel: "How they would use it abroad",
+      modelLabel: "Revenue model under review",
+      items: [
+        { k: "B2C", name: "Family caregivers abroad", value: "Following a parent's daily life and care from another region or country, as far as the older adult allows", model: "Family subscription (under review)" },
+        { k: "B2B", name: "Local care homes and care organizations", value: "Visit schedules, care records, communication with families", model: "Services for institutions — SaaS or licensing (under review)" },
+        { k: "B2B", name: "Local home-care and daily-support providers", value: "Reaching older adults and families who need help", model: "Care partnerships (under review)" },
+        { k: "B2B2C", name: "Local employers", value: "Support for employees caring for their parents", model: "Employee-benefit programs (under review)" },
+        { k: "B2B", name: "Insurance, healthcare and smart-device companies", value: "Integration of certified care and safety devices", model: "Hardware integration (under review). No health data is shared" },
+      ],
+      phasesTitle: "Five phases of global expansion",
+      phases: [
+        { n: "01", name: "Validate in Korea", text: "The first app release in Korea tests daily use by older adults, demand for family connection and the operating model of institution pilots." },
+        { n: "02", name: "Research overseas markets", text: "Per country: ageing and family-care demand, competition, laws on medical services, health data, location data and emergencies, and localization needs." },
+        { n: "03", name: "Enter priority markets", text: "Suitable countries are chosen; language, care information and customer support are localized, followed by a limited launch. No country has been chosen." },
+        { n: "04", name: "Grow local partnerships", text: "Service scope and institution models widen together with local care organizations, welfare bodies and companies." },
+        { n: "05", name: "Expand as a global platform", text: "Proven country operating models support multi-country service and a wider partner ecosystem." },
+      ],
+      note: "Every phase is a plan, not a commitment. Overseas prices and plans are set only after each country's payment, tax and consumer-protection rules are checked; free essential safety information, no use of health data for advertising and no holding of customer funds apply in every country.",
+    },
     legal: {
       label: "Operating & Legal Principles",
       title: "Operating and legal\nprinciples.",
@@ -869,6 +928,23 @@ export const EN = {
         { t: "Certified device status", text: "Only the minimum needed for safety, such as SOS, battery and connection status." },
         { t: "What we will not link", text: "No use of health data for ads or insurance underwriting, no third-party sharing without consent, no unauthorized combining with other apps.", alert: true },
       ],
+    },
+    /** Overseas partners (2026-10-26) — collaboration possibilities under review. No overseas company or organization is contracted or in talks. */
+    global: {
+      label: "Global Partnerships",
+      title: "Overseas partners and fields\nwe would like to explore.",
+      lead: "Overseas collaboration is a possibility for after the first release and validation in Korea. No overseas company or organization is contracted or in talks today; below are the partner kinds and fields under review. Rules on medical services, health data, location data and emergency response are checked country by country first.",
+      typeLabel: "Partner kind",
+      items: [
+        { name: "Care homes and care organizations", field: "Localizing care-record and family-communication tools for institutions; home-care connection", conditions: "Local licensing and caregiver qualification checks; data-processing agreements" },
+        { name: "Senior welfare organizations", field: "Friends and leisure programs, digital-life classes, community participation", conditions: "Confirmed organizer; participant privacy" },
+        { name: "Medical and health-management organizations", field: "Organizing health records and sharing official health information (no diagnosis or prescription)", conditions: "Each country's medical law; sensitive health-data rules" },
+        { name: "Insurance and healthcare companies", field: "Safety and care services for families", conditions: "Health data never used for underwriting or advertising" },
+        { name: "Senior housing companies", field: "Daily records, family connection and community for residents", conditions: "Residents' own consent; data kept apart from the operator" },
+        { name: "Smart care-device companies", field: "Integration of certified SOS and sensor devices with local connectivity", conditions: "Each country's device certification, radio and location-data rules; no rescue guarantees" },
+        { name: "Non-profits and social-welfare groups", field: "Support for older adults in hardship; giving", conditions: "No revenue structure; privacy and safety of the older adults supported" },
+      ],
+      cta: "Ask about global partnerships",
     },
     campaigns: {
       label: "Joint Services & Campaigns",
