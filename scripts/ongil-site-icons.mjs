@@ -53,7 +53,7 @@ export function icon(name, cls = "ogs-ico") {
 /** Overview */
 export const FACT_ICONS = ["clock", "phone", "users", "shield"];
 export const VALUE_ICONS = ["compass", "link", "leaf", "shield", "hands", "star"];
-export const JOURNEY_ICONS = ["heart", "users", "chat", "bag", "building", "spark"];
+export const JOURNEY_ICONS = ["heart", "users", "chat", "bag", "building", "spark", "hands"];
 export const CORE_ICONS = ["sun", "route", "users", "ticket", "building"];
 export const PEOPLE_ICONS = ["person", "users", "hands", "lock"];
 export const LAYER_ICONS = ["home", "hands", "building", "globe"];
@@ -89,10 +89,11 @@ export const AREA_ICONS = {
   "life-box": "box",
   friends: "users",
   "safe-band": "watch",
+  giving: "hands",
 };
 
-/** Platform group letters A–F. */
-export const GROUP_ICONS = { A: "heart", B: "users", C: "chat", D: "bag", E: "building", F: "spark" };
+/** Platform group letters A–G. */
+export const GROUP_ICONS = { A: "heart", B: "users", C: "chat", D: "bag", E: "building", F: "spark", G: "hands" };
 
 /** Business categories, keyed by category id. */
 export const CATEGORY_ICONS = {
@@ -106,8 +107,8 @@ export const CATEGORY_ICONS = {
   "institutions-global": "globe",
 };
 
-/** Partnerships: 14 partner types in content order. */
-export const PARTNER_ICONS = ["building", "home", "building", "hands", "landmark", "route", "watch", "phone", "shield", "bag", "box", "book", "briefcase", "globe"];
+/** Partnerships: 16 partner types in content order (15–16: giving cooperation possibilities). */
+export const PARTNER_ICONS = ["building", "home", "building", "hands", "landmark", "route", "watch", "phone", "shield", "bag", "box", "book", "briefcase", "globe", "hands", "heart"];
 export const PROCESS_ICONS = ["mail", "clipboard", "chat", "form", "spark"];
 
 /** Abstract "warm road" line illustration (온길 = a warm path): a soft winding path with stops. Decorative. */

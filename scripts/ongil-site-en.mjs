@@ -1,6 +1,7 @@
 /**
  * ONGIL corporate website — English content. Same structure and the same honesty rules as ongil-site-ko.mjs
  * (V4 content upgrade, 2026-10-24): 28 long-term areas in 6 groups, with Life Box, Friends and Safe Band as their own sections;
+ * + area 29 Giving (group G, planned, 2026-10-25) — no donations are collected and it is not a revenue business;
  * status shown by grouping (now / in development / planned / under review), never by per-card badges;
  * only what the /ongil-start/ web preview actually does is described as available; the iOS/Android app is not released yet;
  * no medical diagnosis, medication changes or emergency judgement; no partners, results, contracts, prices or fee rates are claimed.
@@ -68,8 +69,8 @@ export const EN = {
       description: "ONGIL links older adults and families: health, daily life, care and safety.",
     },
     platform: {
-      title: "Platform | ONGIL — 28 long-term areas",
-      description: "ONGIL's 28 long-term areas incl. Life Box, Friends, Safe Band and what is live.",
+      title: "Platform | ONGIL — 29 long-term areas",
+      description: "ONGIL's 29 long-term areas incl. Life Box, Friends, Safe Band, Giving and what is live.",
     },
     business: {
       title: "Business | ONGIL — Senior life & care business",
@@ -88,7 +89,7 @@ export const EN = {
   status: {
     label: "Service Status",
     title: "What we offer today,\nand what comes next.",
-    lead: "The 28 areas are long-term planning units. They share common systems rather than each having its own app or server, and they open in stages, as grouped below.",
+    lead: "The 29 areas are long-term planning units. They share common systems rather than each having its own app or server, and they open in stages, as grouped below.",
     cols: [
       {
         id: "now", en: "Available now", ko: "Available now in the web preview", icon: "check",
@@ -123,6 +124,7 @@ export const EN = {
           { t: "Trust — reviews and verification", a: "trust" },
           { t: "Institution SaaS and Partners", a: "business-saas" },
           { t: "Subscription, Senior Market and Life Box", a: "life-box" },
+          { t: "Giving — support for older adults with welfare institutions", a: "giving" },
         ],
       },
       {
@@ -189,9 +191,9 @@ export const EN = {
     },
     journey: {
       n: "04",
-      label: "28 Areas at a Glance",
-      title: "28 areas,\nsix paths.",
-      lead: "ONGIL has 28 long-term business areas. They are not built all at once: the plan starts with the everyday basics and family care, then widens step by step.",
+      label: "29 Areas at a Glance",
+      title: "29 areas,\nseven paths.",
+      lead: "ONGIL has 29 long-term business areas. They are not built all at once: the plan starts with the everyday basics and family care, then widens step by step.",
       items: [
         { n: "01–04", en: "Core Care", name: "Core Care", text: "Senior Profile · Health Record · Medication · Daily Life. The older adult's account and permissions, health readings, medication, meals and sleep. Some record features are in the web preview today." },
         { n: "05–10", en: "Family & Care", name: "Family & Care", text: "Family Care · Care Tasks · Care Matching · Home Care · Care Facilities · Medical Access. Family check-ins and shared care, finding care providers, hospital escorts." },
@@ -199,6 +201,7 @@ export const EN = {
         { n: "18–21", en: "Commerce & Tech", name: "Commerce & Tech", text: "Senior Market · Subscription · ONGIL AI · Devices. Daily-living and assistive products, personal and family subscriptions, a voice assistant and smart devices." },
         { n: "22–25", en: "Trust & Business", name: "Trust & Business", text: "Trust · Business · Partners · Global. Review and verification principles, SaaS for care providers, partnerships with companies, welfare centers and local government, overseas markets." },
         { n: "26–28", en: "New Signature", name: "New Signature", text: "Life Box · Friends · Safe Band. Hobby and daily-goods subscription boxes, neighbourhood friends and gatherings, a consent-based location and SOS wristband concept. None of these are released products." },
+        { n: "29", en: "Giving", name: "Giving", text: "A planned way to connect giving for older adults facing hardship with welfare institutions and local communities. No donations are collected today." },
       ],
     },
     core: {
@@ -244,7 +247,7 @@ export const EN = {
       n: "09",
       label: "Long-term Vision",
       title: "From older adults' daily life\nto a wider care ecosystem.",
-      lead: "ONGIL's long-term direction is a comprehensive senior life platform connecting independent living, social relationships, safety and family care. It aims to connect people with the right information and organizations, not to be a care provider itself.",
+      lead: "ONGIL's long-term direction is a comprehensive senior life platform connecting independent living, social relationships, safety and family care. It aims to connect people with the right information and organizations, not to be a care provider itself. Beyond care and daily-life support, the plan also includes connecting giving for older adults facing economic or social hardship.",
       layers: [
         { n: "01", name: "Older adults and families", text: "Daily health and life records, family care and Friends come first, to create a reason to use ONGIL and to earn trust." },
         { n: "02", name: "Caregivers and private services", text: "Information and scheduling and record tools for home care, hospital escorts and daily support, starting with verified providers." },
@@ -287,7 +290,7 @@ export const EN = {
       label: "Closing",
       title: "Today and tomorrow,\na warm path together.",
       items: [
-        { k: "Older adults & families", text: "See what you can use today across the 28 areas and where ONGIL is heading.", cta: "Explore the platform", href: "platform/" },
+        { k: "Older adults & families", text: "See what you can use today across the 29 areas and where ONGIL is heading.", cta: "Explore the platform", href: "platform/" },
         { k: "Institutions, companies, investors", text: "See who uses ONGIL and who pays, the proposed revenue models and the phased growth path.", cta: "See the business", href: "business/" },
         { k: "Contact", text: "From questions by older adults and guardians to institution partnerships and press or investor inquiries, choose a type and we reply by email.", cta: "Contact us", href: "contact/" },
       ],
@@ -301,8 +304,8 @@ export const EN = {
       titleHtml: "The information and connections<br>seniors' daily life needs, in one place.",
       lead: "ONGIL aims to be a senior life platform connecting daily-life information, healthy living, family communication, safety, care and welfare information, leisure and community participation.",
     },
-    indexTitle: "28 areas,\nin 6 groups.",
-    indexLead: "The final 28 long-term business areas of the integrated business plan: the earlier 25 areas plus Life Box, Friends and Safe Band. The count is a planning unit; in practice common systems for health, safety, friends, subscriptions and devices are shared.",
+    indexTitle: "29 areas,\nin 7 groups.",
+    indexLead: "The 28 long-term business areas of the integrated business plan (the earlier 25 areas plus Life Box, Friends and Safe Band), with Giving added as a planned 29th area. The count is a planning unit; in practice common systems for health, safety, friends, subscriptions and devices are shared.",
     groupMap: [
       { id: "A", en: "Core Care", ko: "Core Care" },
       { id: "B", en: "Family & Care", ko: "Family & Care" },
@@ -310,6 +313,7 @@ export const EN = {
       { id: "D", en: "Commerce & Tech", ko: "Commerce & Tech" },
       { id: "E", en: "Trust & Business", ko: "Trust & Business" },
       { id: "F", en: "New Signature", ko: "New Signature" },
+      { id: "G", en: "Giving", ko: "Giving" },
     ],
     groups: [
       { from: 0, to: 4, kicker: "Areas 01–04 · Core Care", title: "Core Care —\nreasons to use it every day", lead: "The older adult's account and permissions, health readings, medication, meals and sleep. This is ONGIL's everyday base, and some record features can be tried in the web preview today." },
@@ -317,6 +321,8 @@ export const EN = {
       { from: 10, to: 17, kicker: "Areas 11–17 · Life & Society", title: "Life & Society —\nlife beyond the front door", lead: "Safety and local community, hobbies and courses, work and volunteering, welfare, transport and housing information. Public welfare information and emergency contact features stay free." },
       { from: 17, to: 21, kicker: "Areas 18–21 · Commerce & Tech", title: "Commerce & Tech —\neasy to choose, easy to ask", lead: "Daily-living and assistive products, personal and family subscriptions, a voice AI assistant and smart devices. No products or paid plans are on sale today." },
       { from: 21, to: 25, kicker: "Areas 22–25 · Trust & Business", title: "Trust & Business —\ntrust built with institutions", lead: "Review and verification principles, SaaS for care providers, partnerships with companies, welfare centers and local government, and overseas markets. No partnerships or contracts are confirmed yet." },
+      /* after: rendered after the New Signature sections (26–28) */
+      { from: 25, to: 26, after: true, kicker: "Area 29 · Giving", title: "Giving —\nsupport that reaches older adults in need", lead: "Beyond care and daily-life support, a planned way to connect giving for older adults facing economic or social hardship. The principles: voluntary participation by individuals, cooperation with trustworthy institutions, practical support, transparency in delivery and results, protecting recipients' privacy and safety, and widening social contribution over the long term." },
     ],
     sections: [
       {
@@ -486,6 +492,14 @@ export const EN = {
         services: ["Country rules and regulation review", "Localization", "Joint business with local partners", "SaaS and licensing (under review)"],
         audience: "Overseas care, telecom and insurance companies", cta: "partners",
       },
+      /* G · Giving (area 29, planned) — number fixed by n */
+      {
+        id: "giving", grp: "G", n: "29", label: "29 ONGIL Giving", title: "Connecting giving for older adults",
+        desc: "A planned area that connects users' voluntary giving with welfare institutions and local communities, so that needed support reaches older adults facing economic or social hardship. ONGIL would work with welfare institutions and communities to deliver practical help. No donations are collected and no support is run today, and no partner institutions are confirmed.",
+        services: ["Support for low-income older adults and those living alone", "Meals, daily necessities and heating", "Medical, health and care support", "Home improvements and everyday living support", "Help for older adults in an urgent crisis", "Links with welfare centers, social welfare organizations and nonprofits", "Ways to take part, and reports on the support delivered"],
+        audience: "Users who want to give, older adults who need help, welfare institutions and communities", cta: "partners",
+        note: "Recipients' personal information and safety are protected, and no identifiable stories or photos are used. Passing on donations in full is a long-term goal under review, not a promise.",
+      },
     ],
     features: [
       {
@@ -582,8 +596,8 @@ export const EN = {
     },
     systems: {
       label: "How It Connects",
-      title: "Five common systems\nlinking the 28 areas.",
-      lead: "The 28 areas are not separate apps; they share the systems below. A senior app needs simple, large screens, so the areas are found within a few screens rather than laid out as dozens of menus.",
+      title: "Five common systems\nlinking the 29 areas.",
+      lead: "The 29 areas are not separate apps; they share the systems below. A senior app needs simple, large screens, so the areas are found within a few screens rather than laid out as dozens of menus.",
       layers: [
         { n: "01", name: "Profile, consent and permissions", text: "Senior account, family and caregiver links, per-item sharing and consent history. Every area follows these permissions." },
         { n: "02", name: "Records and schedules", text: "Health readings, medication, daily life, appointments and care records share one record structure." },
@@ -627,6 +641,7 @@ export const EN = {
       { q: "Can I buy a Safe Band or a Life Box?", a: "Not yet. Both are business concepts, not released products, and prices and contents are not set." },
       { q: "Does ONGIL cost anything?", a: "There are no paid plans or products today. SOS and emergency contacts, finding friends and welfare information are planned to stay free." },
       { q: "Is my health data used for advertising?", a: "No. Health data is never used for ad targeting and is not combined with other Newon apps without explicit consent." },
+      { q: "Can I donate through ONGIL?", a: "Not yet. Giving is a planned way to help older adults in need together with welfare institutions and communities. No donations are collected today." },
     ],
     closeTitleHtml: "Building more comfortable days<br>and warmer connections.",
     closeLead: "Institutions and companies can see the business structure and collaboration models; older adults and families can find the contact options.",
@@ -639,8 +654,8 @@ export const EN = {
       titleHtml: "From seniors' daily life<br>to a future life-and-care ecosystem.",
       lead: "Building on seniors' daily life, family connection, healthy living and care and welfare information, ONGIL aims to grow into institution and enterprise solutions and the global senior life market.",
     },
-    indexTitle: "8 categories,\n20 business groups.",
-    indexLead: "ONGIL's business starts from free everyday features and widens into family subscriptions, service connection, physical products and institution, employer and public contracts. All 20 business groups below are proposals.",
+    indexTitle: "8 categories,\n21 business groups.",
+    indexLead: "ONGIL's business starts from free everyday features and widens into family subscriptions, service connection, physical products and institution, employer and public contracts. All 21 business groups below are proposals; group 21, giving, is a social-contribution model outside the revenue structure.",
     revenueKicker: "Now vs Proposed",
     revenueTitle: "Nothing is on sale\ntoday.",
     models: "ONGIL has no paid plans, products or transaction fees today (no paid features). The 12 revenue models below are candidates proposed in the integrated business plan and the IR. Prices, rates and plan line-ups are not shown on this page because customer validation, legal review and cost checks have not been done.",
@@ -719,6 +734,8 @@ export const EN = {
       { cat: "business-solutions", name: "Employer family-care benefits", intro: "A benefit bundle of family subscription, Life Box and care information to help employees support their parents.", audience: "Companies designing employee benefits", value: "Less care burden and attrition risk for employees", partners: "HR and benefits departments", revenue: "Annual per-employee benefit contract candidate", regulation: "Employee data kept apart from family data, consent-based use", cta: "partners" },
       { cat: "institutions-global", name: "Public-sector cooperation (B2G)", intro: "Tools for check-ins, information delivery and digital inclusion programs, reviewed with local governments and welfare institutions. Public information stays free.", audience: "Local governments, welfare centers, public bodies", value: "Better information delivery to local older adults", partners: "Local governments, public bodies", revenue: "Project-based commissioning and procurement candidates", regulation: "Public procurement, security standards, public data terms", cta: "partners" },
       { cat: "institutions-global", name: "Global and licensing", intro: "Licensing and joint business of senior UX and operations in overseas ageing markets. Launch and validation in Korea come first.", audience: "Overseas care, telecom and insurance companies", value: "Proven senior UX and operations", partners: "Global partners", revenue: "SaaS and licensing candidates", regulation: "Country-specific privacy and care rules, consent for cross-border transfer", cta: "contact" },
+      /* 21 · Giving — Welfare & Safety category, appended so existing anchors keep their numbers */
+      { cat: "welfare-safety", name: "Giving for older adults", intro: "A social-contribution and public-interest cooperation model that connects users' voluntary giving with welfare institutions and communities, so practical help such as meals, necessities, heating and home improvements reaches older adults in difficulty. It is a plan; no donations are collected today.", audience: "Users who want to give, older adults who need help", value: "Support that reaches those who need it, with clear reports on results", partners: "Welfare centers, social welfare organizations, nonprofits, corporate social responsibility teams (under review)", revenue: "Not a revenue business; donations are never treated as ONGIL income", regulation: "Review of donation-solicitation law, recipients' privacy and safety, standards for reporting results", cta: "partners" },
     ],
     fees: {
       label: "Fee Principles",
@@ -807,7 +824,7 @@ export const EN = {
       { n: "05", name: "Pilot", text: "We start small and refine with user feedback and metrics. Anything is announced only with both parties' consent." },
     ],
     principles: ["Older adults' dignity and choice", "Protecting personal and health data", "Consent-based family connection", "Verifying qualified care and medical providers", "Transparency about actual partnerships", "Consumer protection", "Accessibility and inclusion"],
-    indexLead: "Six opportunities: care institutions, welfare and public sector, care services, devices and telecom, senior lifestyle and employee benefits, and global.",
+    indexLead: "Seven opportunities: care institutions, welfare and public sector, care services, devices and telecom, senior lifestyle and employee benefits, global, and giving. Giving cooperation is a possibility under review.",
     items: [
       { opp: "Care Institutions", name: "Day-care centers", field: "Guardian check-in and daily-life pilot, facility information, guardian communication", value: "Less effort communicating with families, more guardian trust", structure: "Institution SaaS pilot (to be agreed)", conditions: "Long-term care designation check, user and guardian consent, data-processing agreement" },
       { opp: "Care Institutions", name: "Home-care and home-visit centers", field: "Visit schedules, tasks and care records, sharing with guardians", value: "Tidier visit records and less time answering guardians", structure: "Institution SaaS and tools (to be agreed); no brokerage income from insured services", conditions: "Designation and staff qualification checks, protecting care records" },
@@ -823,6 +840,8 @@ export const EN = {
       { opp: "Senior Lifestyle", name: "Education, culture and exercise operators", field: "Lifelong learning, digital classes, culture and exercise", value: "New learners and participants", structure: "Class connection (to be agreed)", conditions: "Instructor and operator information, safety rules" },
       { opp: "Employee Benefits", name: "Employers offering family-care benefits", field: "Support for employees' parents (family subscription, Life Box, information)", value: "Less care burden for employees", structure: "Annual per-employee benefit contract (to be agreed)", conditions: "Employee and family data kept apart, consent-based use" },
       { opp: "Global", name: "Global partners", field: "Joint business in overseas ageing markets (after validation in Korea)", value: "Senior UX and operating know-how", structure: "Licensing or joint business (to be agreed)", conditions: "Country regulation review, consent for cross-border data transfer" },
+      { opp: "Giving & Social Impact", name: "Welfare centers, social welfare organizations and nonprofits", field: "Giving links that bring meals, necessities, heating, home improvements and crisis help to older adults in need (possibility under review)", value: "More participation and resources for local support of older adults", structure: "No revenue structure · social-contribution cooperation (under review)", conditions: "Checking registration and operations, protecting recipients' privacy and safety, agreeing how results are reported" },
+      { opp: "Giving & Social Impact", name: "Corporate social responsibility teams", field: "Giving campaigns for older adults, employee giving, in-kind support (possibility under review)", value: "Social contribution that actually reaches local older adults", structure: "No revenue structure · social-contribution cooperation (under review)", conditions: "Recipients' identities kept private, dignity protected in any publicity, transparent reporting of support" },
     ],
     pocs: {
       label: "PoC & Pilot Proposals",

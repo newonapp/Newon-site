@@ -47,38 +47,44 @@ test("five ONGIL pages exist in KO/EN with SEO basics; other locales keep forwar
   }
 });
 
-test("counts: 28 areas (25 + 3 signature sections) in 6 groups, 20 business groups in 8 categories, 14 partner types, 14 inquiry types", () => {
+test("counts: 29 areas (25 + 3 signature sections + 29 Giving) in 7 groups, 21 business groups in 8 categories, 16 partner types, 14 inquiry types", () => {
   for (const c of [KO, EN]) {
-    assert.equal(c.platform.sections.length + c.platform.features.length, 28);
+    assert.equal(c.platform.sections.length + c.platform.features.length, 29); // 2026-10-25: + 29 Giving (planned)
     assert.deepEqual(c.platform.features.map((f) => f.id), ["life-box", "friends", "safe-band"]);
-    assert.equal(c.platform.groupMap.length, 6);
+    assert.equal(c.platform.groupMap.length, 7);
     for (const s of c.platform.sections) assert.ok(c.platform.groupMap.some((g) => g.id === s.grp), `${s.id} has a group`);
-    assert.deepEqual([...new Set(c.platform.sections.map((s) => s.grp))].sort(), ["A", "B", "C", "D", "E"]);
+    assert.deepEqual([...new Set(c.platform.sections.map((s) => s.grp))].sort(), ["A", "B", "C", "D", "E", "G"]);
+    // 29 Giving: its own group G, numbered 29, listed as planned (never as available now)
+    const giving = c.platform.sections.find((s) => s.id === "giving");
+    assert.equal(giving.n, "29");
+    assert.equal(giving.grp, "G");
+    assert.ok(c.status.cols.find((k) => k.id === "plan").items.some((it) => it.a === "giving"));
+    for (const col of c.status.cols.filter((k) => k.id !== "plan")) assert.ok(!col.items.some((it) => it.a === "giving"), col.id);
     // status is grouped (now / in development / planned / under review) and every item points to a real area
     const areaIds = new Set([...c.platform.sections.map((s) => s.id), ...c.platform.features.map((f) => f.id)]);
     assert.deepEqual(c.status.cols.map((k) => k.id), ["now", "dev", "plan", "review"]);
     for (const col of c.status.cols) for (const it of col.items) assert.ok(areaIds.has(it.a), `${col.id}: ${it.a}`);
     // Life Box, Friends and Safe Band are never listed as available now
     for (const it of c.status.cols[0].items) assert.ok(!["life-box", "friends", "safe-band", "devices"].includes(it.a), it.a);
-    assert.equal(c.business.groups.length, 20);
+    assert.equal(c.business.groups.length, 21);
     assert.equal(c.business.categories.length, 8);
     for (const g of c.business.groups) assert.ok(c.business.categories.some((k) => k.id === g.cat), g.name);
     assert.equal(c.business.revenue.length, 12);
-    assert.equal(c.partnerships.items.length, 14);
+    assert.equal(c.partnerships.items.length, 16);
     assert.equal(c.partnerships.process.length, 5);
     assert.equal(c.partnerships.principles.length, 7);
     assert.equal(c.contact.types.length, 14);
     for (const t of c.contact.types) assert.ok(c.contact.groups.some((g) => g.id === t.grp), t.name);
     assert.equal(c.overview.mission.values.length, 6);
-    assert.equal(c.overview.journey.items.length, 6);
+    assert.equal(c.overview.journey.items.length, 7);
     assert.equal(c.overview.trust.points.length, 7);
     assert.equal(c.business.roadmap.length, 5);
   }
   const ko = (p) => read(`ko/${p}/index.html`);
-  assert.equal((ko("ongil/platform").match(/<article class="ogs-(?:row|card)" id="p-[a-z-]+"/g) || []).length, 25);
+  assert.equal((ko("ongil/platform").match(/<article class="ogs-(?:row|card)" id="p-[a-z-]+"/g) || []).length, 26);
   for (const id of ["life-box", "friends", "safe-band"]) assert.ok(ko("ongil/platform").includes(`<section id="p-${id}"`), id);
-  assert.equal((ko("ongil/business").match(/<article class="ogs-(?:row|card)" id="b-\d\d"/g) || []).length, 20);
-  assert.equal((ko("ongil/partnerships").match(/<article class="ogs-card" id="pt-\d\d"/g) || []).length, 14);
+  assert.equal((ko("ongil/business").match(/<article class="ogs-(?:row|card)" id="b-\d\d"/g) || []).length, 21);
+  assert.equal((ko("ongil/partnerships").match(/<article class="ogs-card" id="pt-\d\d"/g) || []).length, 16);
   assert.equal((ko("ongil/contact").match(/<li id="c-\d\d">/g) || []).length, 14);
   // press and investor inquiry types exist (brief §3E)
   const contact = text(ko("ongil/contact"));

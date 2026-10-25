@@ -2,8 +2,8 @@
 /**
  * ONGIL corporate website — five pages for KO and EN:
  *   /{ko,en}/ongil/               01 Overview      (replaces the earlier single ONGIL introduction for these two locales)
- *   /{ko,en}/ongil/platform/      02 Platform      (28 long-term areas in 6 groups; Life Box · Friends · Safe Band as own sections)
- *   /{ko,en}/ongil/business/      03 Business      (20 business groups in 8 categories + payers, fee principles, GTM, roadmap)
+ *   /{ko,en}/ongil/platform/      02 Platform      (29 long-term areas in 7 groups; Life Box · Friends · Safe Band as own sections; 29 Giving after them)
+ *   /{ko,en}/ongil/business/      03 Business      (21 business groups in 8 categories + payers, fee principles, GTM, roadmap)
  *   /{ko,en}/ongil/partnerships/  04 Partnerships  (14 partner types + PoC proposals, data/API, campaigns)
  *   /{ko,en}/ongil/contact/       05 Contact       (14 inquiry types in 3 groups → the existing Newon email / business inquiry form)
  *
@@ -72,7 +72,7 @@ import {
 } from "./ongil-site-icons.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-export const OGS_VER = "20261025ng1";
+export const OGS_VER = "20261025dn1";
 const NLS_VER = "20261025ov1"; // Life Stage assets are reused as-is
 /** ONGIL first-screen background film (owner-provided, 2026-10-18). */
 const ONGIL_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260323_071151_38c3924f-c312-48af-a196-3fbb80e4226f.mp4";
@@ -192,10 +192,11 @@ function closeInk(c, lang, actions, x) {
   );
 }
 
-/** Area number (01–28) by area id: 25 regular areas + the 3 signature features. */
+/** Area number (01–29) by area id: 25 regular areas + the 3 signature features + 29 Giving (fixed n). */
+const areaN = (s, i) => s.n || pad(i + 1);
 function areaIndex(c) {
   const map = {};
-  c.platform.sections.forEach((s, i) => (map[s.id] = pad(i + 1)));
+  c.platform.sections.forEach((s, i) => (map[s.id] = areaN(s, i)));
   c.platform.features.forEach((f) => (map[f.id] = f.n));
   return map;
 }
@@ -428,7 +429,7 @@ function featureSection(c, lang, f, i) {
 
 function platformMain(c, S, lang) {
   const p = c.platform;
-  const all = [...p.sections.map((s, i) => ({ ...s, n: pad(i + 1) })), ...p.features.map((f) => ({ id: f.id, grp: "F", n: f.n, title: f.title.split("\n")[1] || f.title, label: f.label }))];
+  const all = [...p.sections.map((s, i) => ({ ...s, n: areaN(s, i) })), ...p.features.map((f) => ({ id: f.id, grp: "F", n: f.n, title: f.title.split("\n")[1] || f.title, label: f.label }))];
 
   // A · heading + notice, then a directory: the six groups (letter, name, count) each listing its areas
   const dir = p.groupMap
@@ -442,7 +443,7 @@ function platformMain(c, S, lang) {
     .join("");
   const index = sec(
     "ogs-index",
-    `${head("ogs-index", `${c.ui.onThisPage} · 28`, p.indexTitle, p.indexLead, { split: true })}
+    `${head("ogs-index", `${c.ui.onThisPage} · ${all.length}`, p.indexTitle, p.indexLead, { split: true })}
       ${notice(c)}
       <p class="ogs-dir__title">${e(c.ui.groupMapTitle)}</p>
       <ol class="ogs-dir">${dir}</ol>`
@@ -456,13 +457,14 @@ function platformMain(c, S, lang) {
     { tone: "tint" }
   );
 
-  // C · groups A–E, each with a layout of its own: split rows · cards on mist · three-column lines · cards · rows on mist
-  const layouts = ["rows", "cards", "lines", "cards", "rows"];
-  const groups = p.groups
+  // C · groups A–E, each with a layout of its own: split rows · cards on mist · three-column lines · cards · rows on mist.
+  //     A group marked `after` (G · 29 Giving) is rendered after the signature sections, as split rows.
+  const layouts = ["rows", "cards", "lines", "cards", "rows", "rows"];
+  const groupSecs = p.groups
     .map((g, gi) => {
       const items = p.sections.slice(g.from, g.to);
       const layout = layouts[gi % layouts.length];
-      const n = (i) => pad(g.from + i + 1);
+      const n = (i) => areaN(items[i], g.from + i);
       let body;
       if (layout === "rows") {
         body = `<div class="ogs-rows">${items
@@ -496,12 +498,13 @@ function platformMain(c, S, lang) {
           .join("")}</div>`;
       }
       const tone = gi === 1 || gi === 4 ? "mist" : "";
-      return sec(`ogs-area-${gi + 1}`, `${head(`ogs-area-${gi + 1}`, g.kicker, g.title, g.lead, { split: true })}${body}`, {
+      return { after: !!g.after, html: sec(`ogs-area-${gi + 1}`, `${head(`ogs-area-${gi + 1}`, g.kicker, g.title, g.lead, { split: true })}${body}`, {
         tone,
         cls: tone ? "" : "ogs-sec--rule",
-      });
-    })
-    .join("\n");
+      }) };
+    });
+  const groups = groupSecs.filter((g) => !g.after).map((g) => g.html).join("\n");
+  const later = groupSecs.filter((g) => g.after).map((g) => g.html).join("\n");
 
   // D · the three signature areas: one continuous apricot zone, each its own section
   const features = p.features.map((f, i) => featureSection(c, lang, f, i)).join("\n");
@@ -578,7 +581,7 @@ function platformMain(c, S, lang) {
     ],
     p
   );
-  return [index, status, groups, features, scenarios, roles, systems, privacy, app, faq, close].join("\n");
+  return [index, status, groups, features, later, scenarios, roles, systems, privacy, app, faq, close].filter(Boolean).join("\n");
 }
 
 /* ───────── 03 Business ───────── */
