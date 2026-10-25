@@ -1,20 +1,14 @@
 /**
  * MY WORLD business site — page bodies (scoped to #myworld-site.mws).
  *
- * Visual language = the clean white/black Life Stage system used by PETLOG and BABYLOG:
- * shared dark film hero, the shared five-menu bar (flagship-subnav) directly under it, then white
- * sections with hairlines, generous whitespace, big headings, small uppercase labels and numbered rows.
- * MY WORLD blue (#1769FF / #1257D6) is only a point colour.
- *
- * Content follows the MY WORLD final integrated business plan (25 areas, 13 revenue models) and the IR status labels.
- * Status is expressed by grouping (status sections, stage groups, a "now / next" text column) — never one badge per card.
- *
- * Every section on a page uses a different layout from its neighbours:
- *   split (heading + boxed numbered rows) · tabs (journey) · cols (big-number columns) · feature (tinted band +
- *   app screens) · rows2 (two-column numbered rows) · board (hairline grid) · cloud (chip cloud) · cards2
- *   (two-column signal cards) · nodes (connected flow) · road (boxed roadmap steps) · dir (plain directory rows) ·
- *   strip (app screenshots row) · gsplit (sticky group heading + service rows) · spec (business line rows) ·
- *   figures (tinted big-number grid) · statements · timeline · checks · links · faq.
+ * 2026-10-25 redesign (below the hero only): a calm editorial product site on the white NEWON canvas.
+ * MY WORLD blue (#1769FF / #1257D6) is a point colour. No ornaments (no globes, orbits, rings, route lines,
+ * blobs or watermark numbers). Each section's layout is chosen for its content, and neighbours differ:
+ *   split (statement left, rows right) · pairs (problem → answer) · bento · feats (hairline columns) ·
+ *   tabs (journey, partner groups) · rail (cards; scroll-snap on phones) · table (comparison / payers /
+ *   revenue) · band (tinted key section) · steps (real sequences only) · kanban (status) · quotes · faq.
+ * Numbers are shown only for real sequences or existing IDs (area 01–25, revenue model 01–13, partner 01–18,
+ * inquiry 01–16) — never as decoration.
  *
  * Information only: no booking, ordering, payment, sign-in, seller registration or record entry.
  */
@@ -31,7 +25,6 @@ const MAIL = "newon@newon.app";
 const pad = (n) => String(n).padStart(2, "0");
 const letter = (i) => String.fromCharCode(65 + i);
 const lines = (s) => esc(s).split("\n").join("<br />");
-const oneLine = (s) => esc(String(s).replace(/\n/g, " "));
 const pageHref = (lang, id) => `/${lang}/${myworldPagePath(id)}`;
 const mailHref = (copy, topic) =>
   `mailto:${MAIL}?subject=${encodeURIComponent(`${copy.ui.emailSubjectPrefix} ${topic}`)}`;
@@ -57,9 +50,6 @@ function itemCta(lang, copy, cta, topic) {
 function notes(copy, keys) {
   return `<aside class="mws-notes" aria-label="${esc(copy.ui.notesAria)}">${keys.map((k) => `<p class="mws-note">${esc(copy.ui[k])}</p>`).join("")}</aside>`;
 }
-function legend(copy) {
-  return `<p class="mws-legend"><span class="mws-legend__label">${esc(copy.ui.statusLabel)}</span>${["live", "partial", "planned", "review"].map((s) => badge(copy, s)).join("")}</p>`;
-}
 function head({ id, kicker, title, lead = "", note = "", cls = "" }) {
   return `<div class="mws-head${cls ? ` ${cls}` : ""}">
         ${kicker ? `<p class="mws-kicker">${esc(kicker)}</p>` : ""}
@@ -68,7 +58,7 @@ function head({ id, kicker, title, lead = "", note = "", cls = "" }) {
         ${note ? `<p class="mws-small">${esc(note)}</p>` : ""}
       </div>`;
 }
-/** Section shell. tone: "" (white) · "tint" (light MY WORLD tint band). */
+/** Section shell. tone: "" (white) · "tint" (light MY WORLD band). */
 function section({ id, tone = "", cls = "", inner }) {
   const c = ["mws-sec", tone ? `mws-sec--${tone}` : "", cls].filter(Boolean).join(" ");
   return `<section class="${c}" id="${id}" aria-labelledby="${id}-title">
@@ -77,50 +67,54 @@ function section({ id, tone = "", cls = "", inner }) {
     </div>
   </section>`;
 }
-/** Layout: heading on the left, boxed numbered rows on the right. */
-function split({ id, kicker, title, lead = "", note = "", rows, aside = "", tone = "", listCls = "mws-roster" }) {
+/** Asymmetric split: statement on the left, content on the right (no sticky heading). */
+function split({ id, kicker, title, lead = "", note = "", aside = "", body, tone = "", cls = "" }) {
   return section({
-    id, tone,
+    id, tone, cls,
     inner: `<div class="mws-split">
         <div class="mws-split__head">${head({ id, kicker, title, lead, note })}${aside}</div>
-        <ol class="${listCls}">${rows}</ol>
+        <div class="mws-split__body">${body}</div>
       </div>`,
   });
 }
-const rosterRow = (n, body, name = "") => `<li><span class="mws-roster__n">${n}</span><p>${name ? `<strong>${esc(name)}</strong> ` : ""}${esc(body)}</p></li>`;
-/* ---------- abstract line art (inline SVG, decorative, no images) ---------- */
-/** Line-drawn globe with dotted routes and pins — the MY WORLD "world map" motif. */
-function globeArt(uid, cls = "") {
-  return `<div class="mws-art${cls ? ` ${cls}` : ""}" aria-hidden="true"><svg viewBox="0 0 480 400" focusable="false">
-      <defs><pattern id="mws-dots-${uid}" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" class="mws-art__grid" /></pattern></defs>
-      <rect width="480" height="400" fill="url(#mws-dots-${uid})" />
-      <g class="mws-art__globe" fill="none">
-        <circle cx="240" cy="200" r="150" class="mws-art__disc" />
-        <ellipse cx="240" cy="200" rx="100" ry="150" />
-        <ellipse cx="240" cy="200" rx="48" ry="150" />
-        <path d="M240 50v300" />
-        <path d="M95 160h290M95 240h290M120 110h240M120 290h240" />
-        <path d="M90 200h300" />
-      </g>
-      <path class="mws-art__route" d="M150 262C178 168 252 140 318 168" />
-      <path class="mws-art__route" d="M318 168C352 186 362 232 330 272" />
-      <path class="mws-art__route mws-art__route--soft" d="M150 262C120 230 128 160 186 120" />
-      <g class="mws-art__pin" transform="translate(150 262)"><circle r="11" class="mws-art__halo" /><circle r="5.5" /></g>
-      <g class="mws-art__pin" transform="translate(318 168)"><circle r="11" class="mws-art__halo" /><circle r="5.5" /></g>
-      <g class="mws-art__pin mws-art__pin--open" transform="translate(330 272)"><circle r="6" /></g>
-      <g class="mws-art__pin mws-art__pin--open" transform="translate(186 120)"><circle r="6" /></g>
-    </svg></div>`;
+/** Definition rows: name in the left column, text on the right. */
+function defRows(items, { nameKey = "name", bodyKey = "body", cls = "" } = {}) {
+  return `<ul class="mws-defs${cls ? ` ${cls}` : ""}">${items.map((it) => `<li${it.self ? ' class="is-self"' : ""}><h3 class="mws-defs__name">${esc(it[nameKey])}</h3><p class="mws-defs__body">${esc(it[bodyKey] || it.body || it.role)}</p></li>`).join("")}</ul>`;
 }
-/** Six-stop route line for the journey tabs; stops up to `active` are filled. */
-function routeArt(count, active) {
-  const xs = Array.from({ length: count }, (_, i) => 14 + (i * 292) / (count - 1));
-  const ys = xs.map((_, i) => (i % 2 ? 22 : 44));
-  const d = xs.map((x, i) => (i === 0 ? `M${x} ${ys[i]}` : `S${x - 26} ${ys[i]} ${x} ${ys[i]}`)).join(" ");
-  const stops = xs
-    .map((x, i) => `<circle cx="${x}" cy="${ys[i]}" r="${i === active ? 7 : 4.5}" class="mws-route__stop${i < active ? " is-done" : ""}${i === active ? " is-on" : ""}" />`)
-    .join("");
-  return `<svg class="mws-route" viewBox="0 0 320 66" aria-hidden="true" focusable="false"><path d="${d}" class="mws-route__line" fill="none" />${stops}</svg>`;
+/** Hairline feature columns (no boxes). */
+function feats(items, { cols = 3, cls = "" } = {}) {
+  return `<ul class="mws-feats mws-feats--${cols}${cls ? ` ${cls}` : ""}">${items.map((it) => `<li><h3 class="mws-h3">${esc(it.name)}</h3><p class="mws-body">${esc(it.body || it.role)}</p>${it.tags ? `<p class="mws-tags">${esc(it.tags)}</p>` : ""}</li>`).join("")}</ul>`;
 }
+/** Numbered steps — only for real sequences. */
+function steps(items, { cls = "", en = false } = {}) {
+  return `<ol class="mws-steps${cls ? ` ${cls}` : ""}">${items.map((s, i) => `<li class="mws-step">
+        <span class="mws-step__n">${pad(i + 1)}</span>
+        ${en && s.en ? `<p class="mws-en">${esc(s.en)}</p>` : ""}
+        <h3 class="mws-h3">${esc(s.name)}</h3>
+        <p class="mws-body">${esc(s.body)}</p>
+      </li>`).join("")}</ol>`;
+}
+function roadSteps(copy, r) {
+  return `<ol class="mws-road">${r.items.map((s, i) => `<li class="mws-road__step${i === 0 ? " is-current" : ""}">
+        <p class="mws-road__stage">${esc(s.stage)}${i === 0 ? ` <span class="mws-current">${esc(copy.ui.currentStage)}</span>` : ""}</p>
+        <h3 class="mws-h3">${esc(s.name)}</h3>
+        <p class="mws-body">${esc(s.body)}</p>
+      </li>`).join("")}</ol>`;
+}
+function faqList(items) {
+  return `<ul class="mws-faq">${items.map((f) => `<li><details><summary><span class="mws-faq__text">${esc(f.q)}</span><span class="mws-faq__sign" aria-hidden="true"></span></summary><p class="mws-body">${esc(f.a)}</p></details></li>`).join("")}</ul>`;
+}
+function nowNext(copy, now, next) {
+  return `<dl class="mws-nn">
+          <div class="mws-nn__now"><dt>${esc(copy.ui.nowLabel)}</dt><dd>${esc(now)}</dd></div>
+          ${next ? `<div class="mws-nn__next"><dt>${esc(copy.ui.nextLabel)}</dt><dd>${esc(next)}</dd></div>` : ""}
+        </dl>`;
+}
+function storeButtons(copy, { ghost = false } = {}) {
+  return btn(GOOGLE_PLAY_URL, copy.ui.appCta, { external: true, ghost }) + btn(APP_STORE_URL, copy.ui.appStoreCta, { external: true, ghost: true });
+}
+const formHref = (lang, type) => `/${lang}/business/contact/?type=${type}&platform=myworld`;
+const dl = (pairs, cls = "mws-dl") => `<dl class="${cls}">${pairs.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>`;
 
 /* ---------- hero (shared flagship film hero — keep as is) ---------- */
 /** Hero — the same dark film hero as the other flagship pages (PETLOG · BABYLOG · LIVON):
@@ -168,7 +162,7 @@ function closeBand(lang, copy) {
   const n = copy.overview.next;
   return `<section class="mws-close" aria-labelledby="mws-close-title">
     <div class="mws__wrap mws-close__inner">
-      <p class="mws-close__kicker"><span class="mws-close__dot" aria-hidden="true"></span>${esc(n.kicker)}</p>
+      <p class="mws-close__kicker">${esc(n.kicker)}</p>
       <h2 class="mws-close__title" id="mws-close-title">${lines(n.title)}</h2>
       <p class="mws-close__lead">${esc(n.lead)}</p>
       <div class="mws-actions mws-actions--center">
@@ -181,37 +175,7 @@ function closeBand(lang, copy) {
   </section>`;
 }
 
-function roadSteps(copy, r) {
-  return `<ol class="mws-road">${r.items.map((s, i) => `<li class="mws-road__step${i === 0 ? " is-current" : ""}">
-        <span class="mws-road__n">${pad(i + 1)}</span>
-        <p class="mws-road__stage">${esc(s.stage)}${i === 0 ? ` <span class="mws-current">${esc(copy.ui.currentStage)}</span>` : ""}</p>
-        <h3 class="mws-h3">${esc(s.name)}</h3>
-        <p class="mws-body">${esc(s.body)}</p>
-      </li>`).join("")}</ol>`;
-}
-
-/* ---------- shared section helpers (existing classes only) ---------- */
 const STATUS_ORDER = ["live", "partial", "planned", "review"];
-/** "지금 앱에서 / 확장 계획" text column — status is written out, not shown as a per-card badge. */
-function nowNext(copy, now, next) {
-  return `<div class="mws-dl mws-dl--stack">
-          <div><dt>${esc(copy.ui.nowLabel)}</dt><dd>${esc(now)}</dd></div>
-          ${next ? `<div><dt>${esc(copy.ui.nextLabel)}</dt><dd>${esc(next)}</dd></div>` : ""}
-        </div>`;
-}
-function storeButtons(copy, { ghost = false } = {}) {
-  return btn(GOOGLE_PLAY_URL, copy.ui.appCta, { external: true, ghost }) + btn(APP_STORE_URL, copy.ui.appStoreCta, { external: true, ghost: true });
-}
-const formHref = (lang, type) => `/${lang}/business/contact/?type=${type}&platform=myworld`;
-function dirRows(items) {
-  return items.map((it, i) => `<li${it.self ? ' class="is-self"' : ""}><span class="mws-dir__n">${pad(i + 1)}</span><div><h3 class="mws-h4">${esc(it.name)}</h3><p class="mws-body">${esc(it.role || it.body)}</p></div></li>`).join("");
-}
-function faqRows(items) {
-  return items.map((f, i) => `<li><details><summary><span class="mws-faq__q">Q${i + 1}</span><span class="mws-faq__text">${esc(f.q)}</span></summary><p class="mws-body">${esc(f.a)}</p></details></li>`).join("");
-}
-function boardCompact(items, { answerLabel = "" } = {}) {
-  return `<ol class="mws-board mws-board--4 mws-board--compact">${items.map((it, i) => `<li class="mws-board__cell"><span class="mws-board__num">${pad(i + 1)}</span><h3 class="mws-h3">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p>${it.answer ? `<p class="mws-mini">${esc(answerLabel)}</p><p class="mws-body mws-body--ink">${esc(it.answer)}</p>` : ""}</li>`).join("")}</ol>`;
-}
 
 /* ================= 01 OVERVIEW ================= */
 function overview(lang, copy) {
@@ -220,71 +184,77 @@ function overview(lang, copy) {
     ctas: hbtn(pageHref(lang, "platform"), copy.ui.platformCta) + hbtn(pageHref(lang, "contact"), copy.ui.heroInquiryCta || copy.ui.contactCta, { ghost: true }),
   });
 
-  // NOW — slim status strip
+  // NOW — one quiet status line under the menu bar
   const now = `<div class="mws-now"><div class="mws__wrap mws-now__inner"><span class="mws-now__tag">${esc(o.now.kicker)}</span><p>${esc(o.now.text)}</p></div></div>`;
 
-  // Definition + key message — split + boxed rows (four business directions)
+  // Definition — big statement left, the four platform layers as definition rows right
   const d = o.define;
   const define = split({
-    id: "mws-define", kicker: d.kicker, title: d.title, lead: d.lead,
+    id: "mws-define", kicker: d.kicker, title: d.title, lead: d.lead, cls: "mws-sec--first",
     aside: `<div class="mws-actions">${btn(pageHref(lang, "platform"), copy.ui.platformCta)}${btn(pageHref(lang, "contact"), copy.ui.contactCta, { ghost: true })}</div>`,
-    rows: d.items.map((it, i) => rosterRow(pad(i + 1), it.body, it.name)).join(""),
+    body: defRows(d.items, { cls: "mws-defs--lead" }),
   });
 
-  // Problem → solution — two-column cards
+  // Problem → answer — paired cards: the problem on top, MY WORLD's answer underneath
   const pb = o.problems;
   const problems = section({
     id: "mws-problems",
-    inner: `${head({ id: "mws-problems", kicker: pb.kicker, title: pb.title, lead: pb.lead })}
-      <ul class="mws-cards2">${pb.items.map((it, i) => `<li class="mws-card2">
-        <div class="mws-card2__top"><span class="mws-card2__n">${pad(i + 1)}</span><span class="mws-tag">${esc(copy.ui.problemLabel)}</span></div>
-        <h3 class="mws-h3 mws-h3--lg">${esc(it.problem)}</h3>
-        <p class="mws-body">${esc(it.body)}</p>
-        <p class="mws-mini">${esc(copy.ui.answerLabel)}</p>
-        <p class="mws-body mws-body--ink">${esc(it.answer)}</p>
+    inner: `${head({ id: "mws-problems", kicker: pb.kicker, title: pb.title, lead: pb.lead, cls: "mws-head--wide" })}
+      <ul class="mws-pairs">${pb.items.map((it) => `<li class="mws-pair">
+        <div class="mws-pair__q">
+          <p class="mws-label">${esc(copy.ui.problemLabel)}</p>
+          <h3 class="mws-h3 mws-h3--lg">${esc(it.problem)}</h3>
+          <p class="mws-body">${esc(it.body)}</p>
+        </div>
+        <div class="mws-pair__a">
+          <p class="mws-label mws-label--blue">${esc(copy.ui.answerLabel)}</p>
+          <p class="mws-pair__answer">${esc(it.answer)}</p>
+        </div>
       </li>`).join("")}</ul>`,
   });
 
-  // Core values — bento
+  // Core values — bento: the map value as the large tile
   const v = o.values;
   const values = section({
-    id: "mws-values",
-    inner: `${head({ id: "mws-values", kicker: v.kicker, title: v.title, lead: v.lead, cls: "mws-head--wide" })}
-      <ol class="mws-bento">${v.items.map((c, i) => `<li class="mws-bento__cell${i === 0 ? " mws-bento__cell--lead" : ""}">
-        <div class="mws-bento__top"><span class="mws-bento__n">${pad(i + 1)}</span></div>
-        <div class="mws-bento__body">
+    id: "mws-values", tone: "tint",
+    inner: `${head({ id: "mws-values", kicker: v.kicker, title: v.title, lead: v.lead })}
+      <ul class="mws-bento">${v.items.map((c, i) => `<li class="mws-bento__cell${i === 0 ? " mws-bento__cell--lead" : ""}">
           <p class="mws-en">${esc(c.en)}</p>
-          <h3 class="mws-h3${i === 0 ? " mws-h3--lg" : ""}">${esc(c.name)}</h3>
+          <h3 class="mws-h3${i === 0 ? " mws-h3--xl" : " mws-h3--lg"}">${esc(c.name)}</h3>
           <p class="mws-body">${esc(c.lead)}</p>
           ${chips(c.chips, "mws-chips--soft")}
-        </div>
-      </li>`).join("")}</ol>`,
+      </li>`).join("")}</ul>`,
   });
 
-  // Customers — split + directory rows
+  // Customers — three hairline columns
   const cu = o.customers;
-  const customers = split({ id: "mws-customers", kicker: cu.kicker, title: cu.title, lead: cu.lead, note: cu.note, listCls: "mws-dir", rows: dirRows(cu.items) });
+  const customers = section({
+    id: "mws-customers",
+    inner: `${head({ id: "mws-customers", kicker: cu.kicker, title: cu.title, lead: cu.lead, note: cu.note, cls: "mws-head--wide" })}${feats(cu.items, { cols: 3 })}`,
+  });
 
-  // Journey — tabs; each panel states what the app does today
+  // Journey — segmented tabs (a real six-step sequence); each panel states what the app does today
   const j = o.journey;
   const tabs = j.items
     .map((s, i) => `<button type="button" class="mws-tab" role="tab" id="mws-tab-${s.id}" aria-controls="mws-panel-${s.id}" aria-selected="${i === 4}" tabindex="${i === 4 ? 0 : -1}"><span class="mws-tab__n">${pad(i + 1)}</span><span class="mws-tab__name">${esc(s.name)}</span>${s.status === "live" ? `<span class="mws-tab__live" aria-hidden="true"></span>` : ""}</button>`)
     .join("");
   const panels = j.items
-    .map((s, i) => `<div class="mws-panel" role="tabpanel" id="mws-panel-${s.id}" aria-labelledby="mws-tab-${s.id}"${i === 4 ? "" : " data-hidden"}>
-        <div class="mws-panel__visual mws-panel__visual--${s.status}" aria-hidden="true"><span class="mws-panel__n">${pad(i + 1)} / ${pad(j.items.length)}</span>${routeArt(j.items.length, i)}<span class="mws-panel__big" lang="en">${esc(s.en)}</span></div>
+    .map((s, i) => `<div class="mws-panel mws-panel--${s.status}" role="tabpanel" id="mws-panel-${s.id}" aria-labelledby="mws-tab-${s.id}"${i === 4 ? "" : " data-hidden"}>
         <div class="mws-panel__body">
           <p class="mws-en">${pad(i + 1)} · ${esc(s.en)}</p>
-          <h3 class="mws-h3 mws-h3--lg">${esc(s.head)}</h3>
-          <p class="mws-body">${esc(s.lead)}</p>
+          <h3 class="mws-h3 mws-h3--xl">${esc(s.head)}</h3>
+          <p class="mws-body mws-body--lg">${esc(s.lead)}</p>
           ${chips(s.chips)}
-          <p class="mws-meta mws-panel__status"><span>${esc(copy.ui.nowLabel)}</span>${esc(s.now)}</p>
+        </div>
+        <div class="mws-panel__now">
+          <p class="mws-label${s.status === "live" ? " mws-label--blue" : ""}">${esc(copy.ui.nowLabel)}</p>
+          <p class="mws-panel__nowtext">${esc(s.now)}</p>
         </div>
       </div>`)
     .join("");
   const journey = section({
     id: "mws-journey",
-    inner: `${head({ id: "mws-journey", kicker: j.kicker, title: j.title, lead: j.lead })}
+    inner: `${head({ id: "mws-journey", kicker: j.kicker, title: j.title, lead: j.lead, cls: "mws-head--wide" })}
       <div class="mws-tabs" data-mws-tabs>
         <div class="mws-tabs__list" role="tablist" aria-label="${esc(copy.ui.tabsAria)}">${tabs}</div>
         ${panels}
@@ -292,46 +262,55 @@ function overview(lang, copy) {
       <p class="mws-small">${esc(j.note)}</p>`,
   });
 
-  // Use cases — two-column numbered rows
+  // Use cases — card rail (grid on desktop, scroll-snap on phones)
   const sc = o.scenes;
   const scenes = section({
     id: "mws-scenes",
     inner: `${head({ id: "mws-scenes", kicker: sc.kicker, title: sc.title, lead: sc.lead })}
-      <ol class="mws-rows2">${sc.items.map((it, i) => `<li><span class="mws-rows2__n">${pad(i + 1)}</span><div><h3 class="mws-h3">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></div></li>`).join("")}</ol>`,
+      <ul class="mws-rail">${sc.items.map((it) => `<li class="mws-rail__card"><h3 class="mws-h3 mws-h3--lg">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></li>`).join("")}</ul>`,
   });
 
-  // Differentiation — compact board
+  // Differentiation — comparison table: the existing way vs MY WORLD
   const cp = o.compare;
   const compare = section({
     id: "mws-compare",
-    inner: `${head({ id: "mws-compare", kicker: cp.kicker, title: cp.title, lead: cp.lead, cls: "mws-head--wide" })}${boardCompact(cp.items, { answerLabel: copy.ui.brand })}`,
+    inner: `${head({ id: "mws-compare", kicker: cp.kicker, title: cp.title, lead: cp.lead, cls: "mws-head--wide" })}
+      <div class="mws-vs" role="table" aria-labelledby="mws-compare-title">
+        <div class="mws-vs__row mws-vs__row--head" role="row"><span role="columnheader">${esc(copy.ui.altLabel)}</span><span role="columnheader" lang="en">${esc(copy.ui.brand)}</span></div>
+        ${cp.items.map((it) => `<div class="mws-vs__row" role="row">
+          <div class="mws-vs__alt" role="cell"><h3 class="mws-h3">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></div>
+          <div class="mws-vs__us" role="cell"><span class="mws-vs__mark" aria-hidden="true">${icon("check")}</span><p>${esc(it.answer)}</p></div>
+        </div>`).join("")}
+      </div>`,
   });
 
-  // Current status — tinted band: what the app does today, then the other status groups
+  // Current status — full-bleed tinted band: what the app does today, then the other status groups
   const st = o.status;
   const status = section({
-    id: "mws-status", tone: "tint",
-    inner: `<div class="mws-feature mws-feature--solo">
-        <div class="mws-feature__copy">
+    id: "mws-status", tone: "band",
+    inner: `<div class="mws-live">
+        <div class="mws-live__head">
           ${head({ id: "mws-status", kicker: st.kicker, title: st.title, lead: st.lead })}
-          <p class="mws-feature__badge">${badge(copy, "live")}</p>
-          <ol class="mws-dir mws-dir--compact">${st.items.map((it, i) => `<li><span class="mws-dir__n">${pad(i + 1)}</span><div><h3 class="mws-h4">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></div></li>`).join("")}</ol>
           <div class="mws-actions">${storeButtons(copy)}</div>
         </div>
+        <div class="mws-live__panel">
+          <p class="mws-live__badge">${badge(copy, "live")}</p>
+          <ul class="mws-live__list">${st.items.map((it) => `<li><span class="mws-live__ico" aria-hidden="true">${icon("check")}</span><div><h3 class="mws-h4">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></div></li>`).join("")}</ul>
+        </div>
       </div>
-      <ol class="mws-cols mws-cols--3">${st.groups.map((g, i) => `<li class="mws-col"><span class="mws-col__n">${pad(i + 2)}</span><p class="mws-feature__badge">${badge(copy, g.status)}</p><h3 class="mws-h3">${esc(g.name)}</h3><p class="mws-body">${esc(g.body)}</p><p class="mws-col__tags">${g.chips.map(esc).join(" · ")}</p></li>`).join("")}</ol>`,
+      <ul class="mws-later">${st.groups.map((g) => `<li class="mws-later__col">${badge(copy, g.status)}<h3 class="mws-h3">${esc(g.name)}</h3><p class="mws-body">${esc(g.body)}</p><p class="mws-tags">${g.chips.map(esc).join(" · ")}</p></li>`).join("")}</ul>`,
   });
 
-  // Long-term vision — boxed priority steps
+  // Long-term vision — priority steps (a real order)
   const r = o.roadmap;
   const roadmap = section({
     id: "mws-roadmap",
     inner: `${head({ id: "mws-roadmap", kicker: r.kicker, title: r.title, lead: r.lead, note: r.note, cls: "mws-head--wide" })}${roadSteps(copy, r)}`,
   });
 
-  // NEWON — split + plain directory rows
+  // NEWON — split + compact platform list (MY WORLD highlighted)
   const nw = o.newon;
-  const newon = split({ id: "mws-newon", kicker: nw.kicker, title: nw.title, lead: nw.lead, note: nw.note, listCls: "mws-dir", rows: dirRows(nw.items) });
+  const newon = split({ id: "mws-newon", kicker: nw.kicker, title: nw.title, lead: nw.lead, note: nw.note, body: defRows(nw.items, { bodyKey: "role", cls: "mws-defs--grid" }) });
 
   return [h, now, define, problems, values, customers, journey, scenes, compare, status, roadmap, newon,
     `<div class="mws__wrap">${notes(copy, ["scopeNote", "planNote"])}</div>`, closeBand(lang, copy)].join("\n");
@@ -344,21 +323,19 @@ function platform(lang, copy) {
     ctas: hbtn(GOOGLE_PLAY_URL, copy.ui.appCta, { external: true }) + hbtn(pageHref(lang, "contact"), copy.ui.contactCta, { ghost: true }),
   });
 
-  // The app today — tinted band, feature tiles (no screenshots)
+  // The app today — tinted band, six icon tiles + store buttons
   const shots = section({
-    id: "mws-shots", tone: "tint",
+    id: "mws-shots", tone: "tint", cls: "mws-sec--first",
     inner: `<div class="mws-rowhead">${head({ id: "mws-shots", kicker: p.shotsKicker, title: p.shotsTitle })}<div class="mws-actions">${storeButtons(copy)}</div></div>
-      <div class="mws-today mws-today--solo">
-        <ol class="mws-tiles">${p.shots.map((s, i) => `<li class="mws-tile"><span class="mws-ico-box mws-ico-box--soft">${icon(s.icon)}</span><span class="mws-tile__n">${pad(i + 1)}</span><p class="mws-tile__text">${esc(s.text)}</p></li>`).join("")}</ol>
-      </div>`,
+      <ul class="mws-tiles">${p.shots.map((s) => `<li class="mws-tile"><span class="mws-ico-box">${icon(s.icon)}</span><p class="mws-tile__text">${esc(s.text)}</p></li>`).join("")}</ul>`,
   });
 
-  // Area map — board of the five groups with jump links (numbers = plan area numbers)
+  // Area map — five group columns with jump links (letters / numbers = the plan's group and area IDs)
   const index = section({
     id: "mws-index",
     inner: `${head({ id: "mws-index", kicker: p.indexKicker, title: p.indexTitle, lead: p.indexLead, cls: "mws-head--wide" })}
-      <ol class="mws-board mws-board--3">${p.groups.map((g, gi) => `<li class="mws-board__cell">
-        <div class="mws-board__top"><span class="mws-letter">${letter(gi)}</span><span class="mws-count">${pad(g.items.length)}</span></div>
+      <ol class="mws-toc">${p.groups.map((g, gi) => `<li class="mws-toc__col">
+        <div class="mws-toc__top"><span class="mws-letter">${letter(gi)}</span><span class="mws-count">${pad(g.items.length)}</span></div>
         <p class="mws-en">${esc(g.en)}</p>
         <h3 class="mws-h3"><a class="mws-title-link" href="#mws-group-${gi + 1}">${esc(g.name)}</a></h3>
         <p class="mws-body">${esc(g.lead)}</p>
@@ -366,83 +343,86 @@ function platform(lang, copy) {
       </li>`).join("")}</ol>`,
   });
 
-  // 25 areas — sticky group heading + area rows; status written in the "now / next" column
-  const svcRow = (s, n) => `<li class="mws-svc" id="mws-svc-${n}">
-      <div class="mws-svc__side"><span class="mws-ico-box">${icon(s.icon)}</span><span class="mws-svc__n">${pad(n)}</span></div>
-      <div class="mws-svc__main">
-        <div class="mws-svc__title"><div><p class="mws-en">${esc(s.en)}</p><h4 class="mws-h3 mws-h3--lg">${esc(s.name)}</h4></div></div>
+  // 25 areas — group header row + area rows (id · description · now/next); status written in the "now / next" block
+  const svcCard = (s, n) => `<li class="mws-area" id="mws-svc-${n}">
+      <div class="mws-area__id"><span class="mws-ico-box">${icon(s.icon)}</span><span class="mws-area__n">${pad(n)}</span></div>
+      <div class="mws-area__main">
+        <p class="mws-en">${esc(s.en)}</p>
+        <h4 class="mws-h3 mws-h3--lg">${esc(s.name)}</h4>
         <p class="mws-body">${esc(s.desc)}</p>
-        <div class="mws-svc__grid">
-          <div><p class="mws-mini">${esc(copy.ui.featuresLabel)}</p>${chips(s.features)}<p class="mws-mini">${esc(copy.ui.targetLabel)}</p><p class="mws-body mws-body--ink">${esc(s.target)}</p></div>
-          <div>${nowNext(copy, s.now, s.next)}<p class="mws-svc__cta">${itemCta(lang, copy, s.cta, s.name)}</p></div>
-        </div>
+        <p class="mws-label">${esc(copy.ui.featuresLabel)}</p>
+        ${chips(s.features)}
+        <p class="mws-area__target"><span class="mws-label">${esc(copy.ui.targetLabel)}</span>${esc(s.target)}</p>
+      </div>
+      <div class="mws-area__status">
+        ${nowNext(copy, s.now, s.next)}
+        <p class="mws-area__cta">${itemCta(lang, copy, s.cta, s.name)}</p>
       </div>
     </li>`;
-  const groups = p.groups.map((g, gi) => `<section class="mws-gsplit" id="mws-group-${gi + 1}" aria-labelledby="mws-group-${gi + 1}-title">
-      <div class="mws-gsplit__head"><span class="mws-letter mws-letter--lg">${letter(gi)}</span><p class="mws-en">${esc(g.en)}</p><h3 class="mws-gtitle" id="mws-group-${gi + 1}-title">${esc(g.name)}</h3><p class="mws-body">${esc(g.lead)}</p></div>
-      <ol class="mws-svcs">${g.items.map((n) => svcRow(p.items[n - 1], n)).join("")}</ol>
+  const groups = p.groups.map((g, gi) => `<section class="mws-agroup" id="mws-group-${gi + 1}" aria-labelledby="mws-group-${gi + 1}-title">
+      <div class="mws-agroup__head"><span class="mws-letter mws-letter--lg">${letter(gi)}</span><div><p class="mws-en">${esc(g.en)}</p><h3 class="mws-gtitle" id="mws-group-${gi + 1}-title">${esc(g.name)}</h3></div><p class="mws-body">${esc(g.lead)}</p></div>
+      <ol class="mws-areas">${g.items.map((n) => svcCard(p.items[n - 1], n)).join("")}</ol>
     </section>`).join("");
   const list = section({
     id: "mws-services",
-    inner: `<div class="mws-rowhead">${head({ id: "mws-services", kicker: `${p.items.length} AREAS`, title: `${copy.ui.brand} ${copy.nav[1].label}` })}</div>${groups}`,
+    inner: `${head({ id: "mws-services", kicker: `${p.items.length} AREAS`, title: `${copy.ui.brand} ${copy.nav[1].label}` })}${groups}`,
   });
 
-  // Now & next — areas regrouped by status (one label per group)
+  // Now & next — the 25 areas regrouped by status (one label per column)
   const sb = p.statusBoard;
   const byStatus = STATUS_ORDER.map((st) => ({ st, nums: p.items.map((s, i) => (s.status === st ? i + 1 : 0)).filter(Boolean) }));
   const statusBoard = section({
     id: "mws-now", tone: "tint",
     inner: `${head({ id: "mws-now", kicker: sb.kicker, title: sb.title, lead: sb.lead, cls: "mws-head--wide" })}
-      <ol class="mws-board mws-board--4">${byStatus.map(({ st, nums }) => `<li class="mws-board__cell">
-        <div class="mws-board__top">${badge(copy, st)}<span class="mws-count">${pad(nums.length)}</span></div>
+      <ol class="mws-kanban">${byStatus.map(({ st, nums }) => `<li class="mws-kanban__col mws-kanban__col--${st}">
+        <div class="mws-kanban__top">${badge(copy, st)}<span class="mws-count">${pad(nums.length)}</span></div>
         <p class="mws-body">${esc(sb.groups[st])}</p>
         <ul class="mws-jump">${nums.map((n) => `<li><a href="#mws-svc-${n}"><span>${pad(n)}</span>${esc(p.items[n - 1].name)}</a></li>`).join("")}</ul>
       </li>`).join("")}</ol>`,
   });
 
-  // How features connect — connected nodes
+  // How features connect — a six-step cycle
   const f = p.flow;
   const flow = section({
     id: "mws-flow",
-    inner: `${head({ id: "mws-flow", kicker: f.kicker, title: f.title, lead: f.lead, note: f.note })}
-      <ol class="mws-nodes">${f.items.map((it, i) => `<li class="mws-node"><span class="mws-node__dot" aria-hidden="true"></span><span class="mws-node__n">${pad(i + 1)}</span><h3 class="mws-h4">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></li>`).join("")}</ol>`,
+    inner: `${head({ id: "mws-flow", kicker: f.kicker, title: f.title, lead: f.lead, note: f.note, cls: "mws-head--wide" })}${steps(f.items, { cls: "mws-steps--cycle" })}`,
   });
 
-  // Scenarios — two-column cards
+  // Scenarios — 2×2 cards: persona, the steps as a chain, now / later
   const sc = p.scenarios;
   const scenarios = section({
     id: "mws-scenarios",
     inner: `${head({ id: "mws-scenarios", kicker: sc.kicker, title: sc.title, lead: sc.lead })}
-      <ul class="mws-cards2">${sc.items.map((it, i) => `<li class="mws-card2">
-        <div class="mws-card2__top"><span class="mws-card2__n">${pad(i + 1)}</span><span class="mws-tag">${esc(it.persona)}</span></div>
+      <ul class="mws-cards mws-cards--2">${sc.items.map((it) => `<li class="mws-card">
+        <p class="mws-tag">${esc(it.persona)}</p>
         <h3 class="mws-h3 mws-h3--lg">${esc(it.name)}</h3>
-        ${chips(it.steps)}
+        <ol class="mws-chain">${it.steps.map((s) => `<li>${esc(s)}</li>`).join("")}</ol>
         ${nowNext(copy, it.now, it.later)}
       </li>`).join("")}</ul>`,
   });
 
-  // User types — split + directory
+  // User types — split + definition rows
   const u = p.users;
-  const users = split({ id: "mws-users", kicker: u.kicker, title: u.title, lead: u.lead, note: u.note, listCls: "mws-dir", rows: dirRows(u.items) });
+  const users = split({ id: "mws-users", kicker: u.kicker, title: u.title, lead: u.lead, note: u.note, body: defRows(u.items, { bodyKey: "role" }) });
 
-  // Privacy & trust — compact board
+  // Privacy & trust — four hairline columns
   const t = p.trust;
   const trust = section({
     id: "mws-trust",
-    inner: `${head({ id: "mws-trust", kicker: t.kicker, title: t.title, lead: t.lead, cls: "mws-head--wide" })}${boardCompact(t.items)}`,
+    inner: `${head({ id: "mws-trust", kicker: t.kicker, title: t.title, lead: t.lead, cls: "mws-head--wide" })}${feats(t.items, { cols: 4, cls: "mws-feats--check" })}`,
   });
 
-  // App guide — tinted timeline
+  // App guide — tinted band, five numbered steps
   const g = p.guide;
   const guide = section({
     id: "mws-guide", tone: "tint",
     inner: `<div class="mws-rowhead">${head({ id: "mws-guide", kicker: g.kicker, title: g.title, lead: g.lead, note: g.note })}<div class="mws-actions">${storeButtons(copy)}</div></div>
-      <ol class="mws-timeline">${g.steps.map((s, i) => `<li><span class="mws-timeline__dot" aria-hidden="true"></span><span class="mws-timeline__n">${pad(i + 1)}</span><p class="mws-en">${esc(s.en)}</p><h3 class="mws-h3">${esc(s.name)}</h3><p class="mws-body">${esc(s.body)}</p></li>`).join("")}</ol>`,
+      ${steps(g.steps, { cls: "mws-steps--big", en: true })}`,
   });
 
   // FAQ — split + accordion
   const fq = p.faq;
-  const faq = split({ id: "mws-faq", kicker: fq.kicker, title: fq.title, listCls: "mws-faq", rows: faqRows(fq.items) });
+  const faq = split({ id: "mws-faq", kicker: fq.kicker, title: fq.title, body: faqList(fq.items) });
 
   return [h, shots, index, list, statusBoard, flow, scenarios, users, trust, guide, faq,
     `<div class="mws__wrap">${notes(copy, ["scopeNote", "planNote"])}</div>`, closeBand(lang, copy)].join("\n");
@@ -455,70 +435,64 @@ function business(lang, copy) {
     ctas: hbtn(pageHref(lang, "partnerships"), copy.ui.partnerCta, {}) + hbtn(pageHref(lang, "contact"), copy.ui.contactCta, { ghost: true }),
   });
 
-  // Model overview — split + boxed rows
+  // Model overview — four platform layers in the order the lead describes
   const m = b.model;
-  const model = split({
-    id: "mws-model", kicker: m.kicker, title: m.title, lead: m.lead,
-    rows: m.items.map((it, i) => rosterRow(pad(i + 1), it.body, it.name)).join(""),
+  const model = section({
+    id: "mws-model", cls: "mws-sec--first",
+    inner: `${head({ id: "mws-model", kicker: m.kicker, title: m.title, lead: m.lead, cls: "mws-head--wide" })}
+      <ol class="mws-layers">${m.items.map((it) => `<li class="mws-layer"><h3 class="mws-h3 mws-h3--lg">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></li>`).join("")}</ol>`,
   });
 
-  // Who pays — tinted big-number figures (structure label as the heading)
+  // Who pays — clean data table
   const py = b.payers;
   const payers = section({
     id: "mws-payers", tone: "tint",
-    inner: `${head({ id: "mws-payers", kicker: py.kicker, title: py.title, lead: py.lead, cls: "mws-head--wide" })}
-      <ol class="mws-figures">${py.items.map((it, i) => `<li>
-        <span class="mws-figures__n">${pad(i + 1)}</span>
-        <h3 class="mws-h3 mws-h3--lg" lang="en">${esc(it.name)}</h3>
-        <p class="mws-meta"><span>${esc(copy.ui.payerLabel)}</span>${esc(it.target)}</p>
-        <p class="mws-body">${esc(it.how)}</p>
-      </li>`).join("")}</ol>`,
+    inner: `<div class="mws-split mws-split--table">
+        <div class="mws-split__head">${head({ id: "mws-payers", kicker: py.kicker, title: py.title, lead: py.lead })}</div>
+        <div class="mws-split__body"><table class="mws-table mws-table--payers">
+          <caption class="mws-sr">${esc(py.title.replace(/\n/g, " "))}</caption>
+          <thead><tr><th scope="col"><span class="mws-sr" lang="en">${esc(py.kicker)}</span></th><th scope="col">${esc(copy.ui.payerLabel)}</th><th scope="col">${esc(copy.ui.revenueLabel)}</th></tr></thead>
+          <tbody>${py.items.map((it) => `<tr><th scope="row" lang="en">${esc(it.name)}</th><td data-label="${esc(copy.ui.payerLabel)}">${esc(it.target)}</td><td data-label="${esc(copy.ui.revenueLabel)}">${esc(it.how)}</td></tr>`).join("")}</tbody>
+        </table></div>
+      </div>`,
   });
 
-  // 8 groups · 20 business lines — 4-col board; each line jumps to its revenue model
+  // 8 groups · 20 business lines — tiles; each line jumps to its revenue model
   const groupsIdx = section({
     id: "mws-groups",
     inner: `${head({ id: "mws-groups", kicker: b.groupsKicker, title: b.groupsTitle, lead: b.groupsLead })}
-      <ol class="mws-board mws-board--4">${b.groups.map((g, gi) => `<li class="mws-board__cell">
-        <div class="mws-board__top"><span class="mws-letter">${letter(gi)}</span><span class="mws-count">${pad(g.lines.length)}</span></div>
+      <ol class="mws-gtiles">${b.groups.map((g) => `<li class="mws-gtile">
         <p class="mws-en">${esc(g.en)}</p>
         <h3 class="mws-h3">${esc(g.name)}</h3>
         <p class="mws-body">${esc(g.lead)}</p>
-        <ul class="mws-jump">${g.lines.map((n) => `<li><a href="#mws-rev-${b.lines[n - 1].rev}"><span>${pad(n)}</span>${esc(b.lines[n - 1].name)}</a></li>`).join("")}</ul>
+        <ul class="mws-golinks">${g.lines.map((n) => `<li><a href="#mws-rev-${b.lines[n - 1].rev}">${esc(b.lines[n - 1].name)}<span class="mws-golinks__to" aria-hidden="true">${pad(b.lines[n - 1].rev)}</span></a></li>`).join("")}</ul>
       </li>`).join("")}</ol>`,
   });
 
-  // 13 revenue models — grouped by activation stage (the group heading carries the status)
+  // 13 revenue models — grouped by activation stage (a real sequence); each stage is a table
   const rv = b.revenue;
-  const dl = (l) => [
-    [copy.ui.payerLabel, l.payer],
-    [copy.ui.revenueLabel, l.how],
-    [copy.ui.valueLabel, l.value],
-    [copy.ui.nowLabel, l.now],
-  ].map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("");
-  const revRow = (l, n) => `<li class="mws-spec" id="mws-rev-${n}">
-      <div class="mws-spec__side">
-        <span class="mws-spec__n">${pad(n)}</span>
-        <p class="mws-en">${esc(l.en)}</p>
-        <h4 class="mws-h3 mws-h3--lg">${esc(l.name)}</h4>
-      </div>
-      <div class="mws-spec__main"><dl class="mws-dl">${dl(l)}</dl></div>
-    </li>`;
-  const stages = rv.stages.map((g, gi) => `<section class="mws-sgroup" id="mws-stage-${gi + 1}" aria-labelledby="mws-stage-${gi + 1}-title">
-      <div class="mws-sgroup__head"><span class="mws-letter">${letter(gi)}</span><p class="mws-en">${esc(g.en)}</p><h3 class="mws-gtitle" id="mws-stage-${gi + 1}-title">${esc(g.name)}</h3><p class="mws-body">${esc(g.lead)}</p></div>
-      <ol class="mws-specs">${g.items.map((n) => revRow(rv.items[n - 1], n)).join("")}</ol>
+  const cols = [[copy.ui.payerLabel, "payer"], [copy.ui.revenueLabel, "how"], [copy.ui.valueLabel, "value"], [copy.ui.nowLabel, "now"]];
+  const stages = rv.stages.map((g, gi) => `<section class="mws-stage${gi === 0 ? " is-current" : ""}" id="mws-stage-${gi + 1}" aria-labelledby="mws-stage-${gi + 1}-title">
+      <div class="mws-stage__head"><p class="mws-stage__en">${esc(g.en)}</p><h3 class="mws-gtitle" id="mws-stage-${gi + 1}-title">${esc(g.name)}</h3><p class="mws-body">${esc(g.lead)}</p></div>
+      <table class="mws-table mws-table--rev">
+        <thead><tr><th scope="col"><span class="mws-sr">#</span></th><th scope="col"><span class="mws-sr">${esc(rv.kicker)}</span></th>${cols.map(([k]) => `<th scope="col">${esc(k)}</th>`).join("")}</tr></thead>
+        <tbody>${g.items.map((n) => {
+          const l = rv.items[n - 1];
+          return `<tr id="mws-rev-${n}"><td class="mws-table__n">${pad(n)}</td><th scope="row"><span class="mws-en">${esc(l.en)}</span><span class="mws-table__name">${esc(l.name)}</span></th>${cols.map(([k, key]) => `<td data-label="${esc(k)}">${esc(l[key])}</td>`).join("")}</tr>`;
+        }).join("")}</tbody>
+      </table>
     </section>`).join("");
   const revenue = section({
     id: "mws-revenue",
     inner: `${head({ id: "mws-revenue", kicker: rv.kicker, title: rv.title, lead: rv.lead, cls: "mws-head--wide" })}${stages}${notes(copy, ["priceNote", "partnerNote"])}`,
   });
 
-  // Subscription — tinted big-number columns
+  // Subscription — three plan cards (no prices)
   const su = b.subscription;
   const subscription = section({
     id: "mws-subscription", tone: "tint",
     inner: `${head({ id: "mws-subscription", kicker: su.kicker, title: su.title, lead: su.lead, cls: "mws-head--wide" })}
-      <ol class="mws-cols mws-cols--3 mws-cols--big">${su.items.map((it, i) => `<li class="mws-col"><span class="mws-col__n">${pad(i + 1)}</span><h3 class="mws-h3">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p><p class="mws-col__tags">${esc(it.tags)}</p></li>`).join("")}</ol>`,
+      <ul class="mws-plans">${su.items.map((it) => `<li class="mws-plan"><h3 class="mws-h3 mws-h3--lg">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p><p class="mws-tags">${esc(it.tags)}</p></li>`).join("")}</ul>`,
   });
 
   // Booking & brokerage principles — large statements
@@ -526,53 +500,52 @@ function business(lang, copy) {
   const deals = section({
     id: "mws-deals",
     inner: `${head({ id: "mws-deals", kicker: de.kicker, title: de.title })}
-      <ol class="mws-statements">${de.items.map((t, i) => `<li><span class="mws-statements__n">${pad(i + 1)}</span><p>${esc(t)}</p></li>`).join("")}</ol>`,
+      <ul class="mws-quotes">${de.items.map((t) => `<li><p>${esc(t)}</p></li>`).join("")}</ul>`,
   });
 
-  // Business & institution tools — split + modules
+  // Business & institution tools — tinted panel: heading + module grid
   const s = b.saas;
-  const saas = split({
-    id: "mws-saas", kicker: s.kicker, title: s.title, lead: s.lead, listCls: "mws-modules",
-    aside: `<p class="mws-saas__badge">${badge(copy, "review")}</p>`,
-    rows: s.items.map((it, i) => `<li><span class="mws-modules__n">${pad(i + 1)}</span><h3 class="mws-h4" lang="en">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></li>`).join(""),
+  const saas = section({
+    id: "mws-saas",
+    inner: `<div class="mws-panelbox">
+        <div class="mws-panelbox__head">${head({ id: "mws-saas", kicker: s.kicker, title: s.title, lead: s.lead })}<p class="mws-saas__badge">${badge(copy, "review")}</p></div>
+        <ul class="mws-modules">${s.items.map((it) => `<li><h3 class="mws-h4" lang="en">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></li>`).join("")}</ul>
+      </div>`,
   });
 
-  // Market opportunity — two-column cards
+  // Market opportunity — split + definition rows
   const mk = b.market;
-  const market = section({
-    id: "mws-market",
-    inner: `${head({ id: "mws-market", kicker: mk.kicker, title: mk.title, lead: mk.lead })}
-      <ul class="mws-cards2">${mk.items.map((it, i) => `<li class="mws-card2"><div class="mws-card2__top"><span class="mws-card2__n">${pad(i + 1)}</span></div><h3 class="mws-h3 mws-h3--lg">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></li>`).join("")}</ul>`,
-  });
+  const market = split({ id: "mws-market", kicker: mk.kicker, title: mk.title, lead: mk.lead, body: defRows(mk.items, { cls: "mws-defs--lead" }) });
 
-  // Differentiation hypotheses — compact board
+  // Differentiation hypotheses — 2×2 large-type cells
   const df = b.diff;
   const diff = section({
     id: "mws-diff",
-    inner: `${head({ id: "mws-diff", kicker: df.kicker, title: df.title, lead: df.lead, note: df.note, cls: "mws-head--wide" })}${boardCompact(df.items)}`,
+    inner: `${head({ id: "mws-diff", kicker: df.kicker, title: df.title, lead: df.lead, note: df.note, cls: "mws-head--wide" })}
+      <ul class="mws-cards mws-cards--2 mws-cards--line">${df.items.map((it) => `<li class="mws-card"><h3 class="mws-h3 mws-h3--lg">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></li>`).join("")}</ul>`,
   });
 
-  // Go-to-market — two-column rows + callout
+  // Go-to-market — four columns + beachhead pull statement
   const gt = b.gtm;
   const gtm = section({
     id: "mws-gtm",
     inner: `${head({ id: "mws-gtm", kicker: gt.kicker, title: gt.title, lead: gt.lead })}
-      <ol class="mws-rows2">${gt.items.map((it, i) => `<li><span class="mws-rows2__n">${pad(i + 1)}</span><div><h3 class="mws-h3">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></div></li>`).join("")}</ol>
-      <p class="mws-callout"><strong lang="en">BEACHHEAD</strong><span>${esc(gt.callout)}</span></p>`,
+      ${feats(gt.items, { cols: 4 })}
+      <figure class="mws-pull"><figcaption lang="en">BEACHHEAD</figcaption><blockquote><p>${esc(gt.callout)}</p></blockquote></figure>`,
   });
 
-  // Roadmap — tinted boxed steps
+  // Roadmap — tinted band, staged steps
   const r = b.roadmap;
   const roadmap = section({
     id: "mws-roadmap", tone: "tint",
     inner: `${head({ id: "mws-roadmap", kicker: r.kicker, title: r.title, lead: r.lead, note: r.note, cls: "mws-head--wide" })}${roadSteps(copy, r)}`,
   });
 
-  // Operations & legal — compact board
+  // Operations & legal — three compact hairline columns
   const t = b.trust;
   const trust = section({
     id: "mws-trust",
-    inner: `${head({ id: "mws-trust", kicker: t.kicker, title: t.title, lead: t.lead, cls: "mws-head--wide" })}${boardCompact(t.items)}
+    inner: `${head({ id: "mws-trust", kicker: t.kicker, title: t.title, lead: t.lead, cls: "mws-head--wide" })}${feats(t.items, { cols: 3, cls: "mws-feats--compact" })}
       <div class="mws-actions">${btn(pageHref(lang, "partnerships"), copy.ui.partnerCta)}${btn(formHref(lang, "general"), copy.ui.formCta, { ghost: true })}</div>`,
   });
 
@@ -587,64 +560,67 @@ function partnerships(lang, copy) {
     ctas: hbtn(mailHref(copy, copy.ui.partnerCta), copy.ui.partnerCta, {}) + hbtn(pageHref(lang, "business"), copy.ui.businessCta, { ghost: true }),
   });
 
-  // Vision — split + boxed rows
-  const why = split({
-    id: "mws-why", kicker: p.why.kicker, title: p.why.title,
-    rows: p.why.items.map((t, i) => rosterRow(pad(i + 1), t)).join(""),
+  // Vision — large-type statement: first statement leads, the others follow in columns
+  const why = section({
+    id: "mws-why", cls: "mws-sec--first",
+    inner: `${head({ id: "mws-why", kicker: p.why.kicker, title: p.why.title, cls: "mws-head--wide" })}
+      <div class="mws-vision"><p class="mws-vision__lead">${esc(p.why.items[0])}</p>
+        <ul class="mws-vision__rest">${p.why.items.slice(1).map((t) => `<li><p>${esc(t)}</p></li>`).join("")}</ul></div>`,
   });
 
-  // Models — 3 big-number columns
+  // Models — six hairline columns
   const models = section({
-    id: "mws-models",
-    inner: `${head({ id: "mws-models", kicker: p.models.kicker, title: p.models.title })}
-      <ol class="mws-cols mws-cols--3">${p.models.items.map((m, i) => `<li class="mws-col"><span class="mws-col__n">${pad(i + 1)}</span><h3 class="mws-h3">${esc(m.name)}</h3><p class="mws-body">${esc(m.body)}</p></li>`).join("")}</ol>`,
+    id: "mws-models", tone: "tint",
+    inner: `${head({ id: "mws-models", kicker: p.models.kicker, title: p.models.title })}${feats(p.models.items, { cols: 3, cls: "mws-feats--rule" })}`,
   });
 
-  // Partner types — grouped boxed cards
+  // Partner types — segmented tabs by group; cards with the five facts (partner numbers = existing IDs)
   const card = (t, n) => `<li class="mws-pcard" id="mws-partner-${n}">
       <div class="mws-pcard__top"><span class="mws-ico-box">${icon(t.icon)}</span><span class="mws-pcard__n">${pad(n)}</span></div>
       <p class="mws-tag">${esc(t.field)}</p>
       <h4 class="mws-h3">${esc(t.name)}</h4>
-      <dl class="mws-dl mws-dl--stack">${[
+      ${dl([
         [copy.ui.targetLabel, t.target],
         [copy.ui.collabLabel, t.collab],
         [copy.ui.valueLabel, t.value],
         [copy.ui.revenueLabel, t.revenue],
         [copy.ui.termsLabel, t.terms],
-      ].map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
+      ], "mws-dl mws-dl--stack")}
       <p class="mws-pcard__cta"><a class="mws-link" href="${esc(mailHref(copy, `${copy.ui.partnerCta} — ${t.name}`))}">${esc(copy.ui.partnerCta)} ${arrow}</a></p>
     </li>`;
+  const ptabs = p.groups.map((g, gi) => `<button type="button" class="mws-seg" role="tab" id="mws-ptab-${gi + 1}" aria-controls="mws-pgroup-${gi + 1}" aria-selected="${gi === 0}" tabindex="${gi === 0 ? 0 : -1}"><span>${esc(g.name)}</span><span class="mws-seg__count">${pad(g.items.length)}</span></button>`).join("");
   const types = section({
     id: "mws-partners",
     inner: `${head({ id: "mws-partners", kicker: p.typesKicker, title: p.typesTitle })}
-      ${p.groups.map((g, gi) => `<section class="mws-pgroup" id="mws-pgroup-${gi + 1}" aria-labelledby="mws-pgroup-${gi + 1}-title">
-        <div class="mws-pgroup__head"><span class="mws-letter">${letter(gi)}</span><h3 class="mws-gtitle" id="mws-pgroup-${gi + 1}-title">${esc(g.name)}</h3><p class="mws-en">${esc(g.en)}</p><span class="mws-count">${pad(g.items.length)}</span></div>
-        <ul class="mws-pcards">${g.items.map((n) => card(p.items[n - 1], n)).join("")}</ul>
-      </section>`).join("")}
+      <div class="mws-tabs mws-tabs--seg" data-mws-tabs>
+        <div class="mws-tabs__list mws-segs" role="tablist" aria-label="${esc(p.typesTitle)}">${ptabs}</div>
+        ${p.groups.map((g, gi) => `<section class="mws-pgroup" role="tabpanel" id="mws-pgroup-${gi + 1}" aria-labelledby="mws-pgroup-${gi + 1}-title"${gi === 0 ? "" : " data-hidden"}>
+          <div class="mws-pgroup__head"><span class="mws-letter">${letter(gi)}</span><h3 class="mws-gtitle" id="mws-pgroup-${gi + 1}-title">${esc(g.name)}</h3><p class="mws-en">${esc(g.en)}</p><span class="mws-count">${pad(g.items.length)}</span></div>
+          <ul class="mws-pcards">${g.items.map((n) => card(p.items[n - 1], n)).join("")}</ul>
+        </section>`).join("")}
+      </div>
       ${notes(copy, ["priceNote", "partnerNote"])}`,
   });
 
-  // Scenarios — two-column cards + campaign idea cloud
+  // Scenarios — editorial rows + campaign idea cloud
   const sc = p.scenarios;
   const scenarios = section({
     id: "mws-scenarios",
-    inner: `${head({ id: "mws-scenarios", kicker: sc.kicker, title: sc.title, lead: sc.lead })}
-      <ul class="mws-cards2">${sc.items.map((it, i) => `<li class="mws-card2">
-        <div class="mws-card2__top"><span class="mws-card2__n">${pad(i + 1)}</span><span class="mws-tag">${esc(it.partner)}</span></div>
-        <h3 class="mws-h3 mws-h3--lg">${esc(it.name)}</h3>
-        <p class="mws-body">${esc(it.body)}</p>
-        ${chips(it.chips)}
+    inner: `${head({ id: "mws-scenarios", kicker: sc.kicker, title: sc.title, lead: sc.lead, cls: "mws-head--wide" })}
+      <ul class="mws-xrows">${sc.items.map((it) => `<li>
+        <div class="mws-xrows__side"><p class="mws-tag">${esc(it.partner)}</p><h3 class="mws-h3 mws-h3--lg">${esc(it.name)}</h3></div>
+        <div class="mws-xrows__main"><p class="mws-body mws-body--lg">${esc(it.body)}</p>${chips(it.chips)}</div>
       </li>`).join("")}</ul>
-      <div class="mws-cloud"><p class="mws-mini">${esc(sc.campaignsTitle)}</p>${chips(sc.campaigns, "mws-chips--cloud")}</div>`,
+      <div class="mws-cloud"><p class="mws-label">${esc(sc.campaignsTitle)}</p>${chips(sc.campaigns, "mws-chips--cloud")}</div>`,
   });
 
-  // PoC & pilots — spec rows
+  // PoC & pilots — tinted band, spec cards
   const pc = p.poc;
   const pocRow = (it, i) => `<li class="mws-spec" id="mws-poc-${i + 1}">
-      <div class="mws-spec__side"><span class="mws-spec__n">${pad(i + 1)}</span><p class="mws-en">${esc(it.en)}</p><h3 class="mws-h3 mws-h3--lg">${esc(it.name)}</h3><p class="mws-tag">${esc(it.partner)}</p></div>
+      <div class="mws-spec__side"><p class="mws-en">${esc(it.en)}</p><h3 class="mws-h3 mws-h3--lg">${esc(it.name)}</h3><p class="mws-tag">${esc(it.partner)}</p></div>
       <div class="mws-spec__main">
-        <p class="mws-body mws-body--ink">${esc(it.intro)}</p>
-        <dl class="mws-dl">${[[copy.ui.scopeLabel, it.scope], [copy.ui.measureLabel, it.measure], [copy.ui.conditionLabel, it.premise]].map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
+        <p class="mws-body mws-body--ink mws-body--lg">${esc(it.intro)}</p>
+        ${dl([[copy.ui.scopeLabel, it.scope], [copy.ui.measureLabel, it.measure], [copy.ui.conditionLabel, it.premise]], "mws-dl mws-dl--3")}
         <p class="mws-spec__cta"><a class="mws-link" href="${esc(mailHref(copy, `PoC — ${it.name}`))}">${esc(copy.ui.partnerCta)} ${arrow}</a></p>
       </div>
     </li>`;
@@ -653,35 +629,34 @@ function partnerships(lang, copy) {
     inner: `${head({ id: "mws-poc", kicker: pc.kicker, title: pc.title, lead: pc.lead, cls: "mws-head--wide" })}<ol class="mws-specs">${pc.items.map(pocRow).join("")}</ol>`,
   });
 
-  // Data & API — three columns
+  // Data & API — three columns: possible · order · not done
   const da = p.data;
   const data = section({
     id: "mws-data",
-    inner: `${head({ id: "mws-data", kicker: da.kicker, title: da.title, lead: da.lead })}
-      <ol class="mws-cols mws-cols--3">${da.items.map((it, i) => `<li class="mws-col"><span class="mws-col__n">${pad(i + 1)}</span><h3 class="mws-h3">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p><p class="mws-col__tags">${esc(it.tags)}</p></li>`).join("")}</ol>`,
+    inner: `${head({ id: "mws-data", kicker: da.kicker, title: da.title, lead: da.lead, cls: "mws-head--wide" })}
+      <ul class="mws-cards mws-cards--3">${da.items.map((it, i) => `<li class="mws-card${i === da.items.length - 1 ? " mws-card--no" : ""}"><h3 class="mws-h3 mws-h3--lg">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p><p class="mws-tags">${esc(it.tags)}</p></li>`).join("")}</ul>`,
   });
 
-  // Process — tinted timeline
+  // Process — tinted band, six numbered steps
   const pr = p.process;
   const process = section({
     id: "mws-process", tone: "tint",
-    inner: `${head({ id: "mws-process", kicker: pr.kicker, title: pr.title })}
-      <ol class="mws-timeline">${pr.steps.map((s, i) => `<li><span class="mws-timeline__dot" aria-hidden="true"></span><span class="mws-timeline__n">${pad(i + 1)}</span><p class="mws-en">${esc(s.en)}</p><h3 class="mws-h3">${esc(s.name)}</h3><p class="mws-body">${esc(s.body)}</p></li>`).join("")}</ol>`,
+    inner: `${head({ id: "mws-process", kicker: pr.kicker, title: pr.title })}${steps(pr.steps, { cls: "mws-steps--grid", en: true })}`,
   });
 
-  // Partner value — compact board
+  // Partner value — four hairline columns
   const va = p.value;
   const value = section({
     id: "mws-value",
-    inner: `${head({ id: "mws-value", kicker: va.kicker, title: va.title, lead: va.lead, cls: "mws-head--wide" })}${boardCompact(va.items)}`,
+    inner: `${head({ id: "mws-value", kicker: va.kicker, title: va.title, lead: va.lead, cls: "mws-head--wide" })}${feats(va.items, { cols: 4 })}`,
   });
 
-  // Checklist — split + 2-col check grid
+  // Checklist — split + two-column checks
   const ck = p.checklist;
   const checklist = split({
-    id: "mws-checklist", kicker: ck.kicker, title: ck.title, listCls: "mws-checks",
+    id: "mws-checklist", kicker: ck.kicker, title: ck.title,
     aside: `<div class="mws-actions">${btn(mailHref(copy, copy.ui.partnerCta), copy.ui.partnerCta)}${btn(formHref(lang, "brand"), copy.ui.formCta, { ghost: true })}</div>`,
-    rows: ck.items.map((t) => `<li><span class="mws-checks__ico">${icon("check")}</span><p>${esc(t)}</p></li>`).join(""),
+    body: `<ul class="mws-checks">${ck.items.map((t) => `<li><span class="mws-checks__ico">${icon("check")}</span><p>${esc(t)}</p></li>`).join("")}</ul>`,
   });
 
   return [h, why, models, types, scenarios, poc, data, process, value, checklist, closeBand(lang, copy)].join("\n");
@@ -702,28 +677,27 @@ function contact(lang, copy) {
     return out.join("");
   };
 
-  // Inquiry types — grouped 3-col boards
+  // Inquiry types — per group: heading column + inquiry rows (icon · text · links)
   const types = section({
-    id: "mws-types",
+    id: "mws-types", cls: "mws-sec--first",
     inner: `${head({ id: "mws-types", kicker: c.typesKicker, title: c.typesTitle })}
       ${c.groups.map((g, gi) => `<section class="mws-cgroup" aria-labelledby="mws-cgroup-${gi + 1}-title">
-        <div class="mws-cgroup__head"><span class="mws-letter">${letter(gi)}</span><div><p class="mws-en">${esc(g.en)}</p><h3 class="mws-gtitle" id="mws-cgroup-${gi + 1}-title">${esc(g.name)}</h3></div><p class="mws-body">${esc(g.lead)}</p></div>
-        <ul class="mws-board mws-board--3">${g.items.map((n) => {
+        <div class="mws-cgroup__head"><span class="mws-letter">${letter(gi)}</span><p class="mws-en">${esc(g.en)}</p><h3 class="mws-gtitle" id="mws-cgroup-${gi + 1}-title">${esc(g.name)}</h3><p class="mws-body">${esc(g.lead)}</p></div>
+        <ul class="mws-inq">${g.items.map((n) => {
           const it = c.items[n - 1];
-          return `<li class="mws-board__cell"><div class="mws-board__top"><span class="mws-ico-box">${icon(it.icon)}</span><span class="mws-count">${pad(n)}</span></div><h4 class="mws-h3">${esc(it.name)}</h4><p class="mws-body">${esc(it.body)}</p><p class="mws-board__foot mws-board__foot--links">${links(it)}</p></li>`;
+          return `<li class="mws-inq__row"><span class="mws-ico-box">${icon(it.icon)}</span><div class="mws-inq__text"><h4 class="mws-h4"><span class="mws-inq__n">${pad(n)}</span>${esc(it.name)}</h4><p class="mws-body">${esc(it.body)}</p></div><p class="mws-inq__links">${links(it)}</p></li>`;
         }).join("")}</ul>
       </section>`).join("")}
       <p class="mws-callout"><strong>${esc(c.privacy.label)}</strong><span>${esc(copy.ui.sensitiveNote)}</span></p>`,
   });
 
-  // How — tinted 3 big-number columns
+  // How — tinted band, three numbered steps
   const how = section({
     id: "mws-how", tone: "tint",
-    inner: `${head({ id: "mws-how", kicker: c.how.kicker, title: c.how.title })}
-      <ol class="mws-cols mws-cols--3 mws-cols--big">${c.how.steps.map((s, i) => `<li class="mws-col"><span class="mws-col__n">${pad(i + 1)}</span><h3 class="mws-h3">${esc(s.name)}</h3><p class="mws-body">${esc(s.body)}</p></li>`).join("")}</ol>`,
+    inner: `${head({ id: "mws-how", kicker: c.how.kicker, title: c.how.title })}${steps(c.how.steps, { cls: "mws-steps--big mws-steps--3" })}`,
   });
 
-  // Channels — 2x2 link cards (unchanged destinations)
+  // Channels — 2×2 link tiles (unchanged destinations)
   const chHref = [`mailto:${MAIL}?subject=${encodeURIComponent(copy.ui.emailSubjectPrefix)}`, `/${lang}/contact/`, `/${lang}/myworld/delete-account/`, `/${lang}/privacy/`];
   const chIcon = ["chat", "building", "shield", "book"];
   const channels = section({
@@ -732,8 +706,8 @@ function contact(lang, copy) {
       <ul class="mws-links">${c.channels.items.map((ch, i) => `<li><a class="mws-links__a" href="${esc(chHref[i])}"><span class="mws-ico-box">${icon(chIcon[i])}</span><span class="mws-links__body"><span class="mws-links__name">${esc(ch.name)}</span><span class="mws-links__desc">${esc(ch.body)}</span></span><span class="mws-links__go" aria-hidden="true">→</span></a></li>`).join("")}</ul>`,
   });
 
-  // FAQ — split + accordion rows
-  const faq = split({ id: "mws-faq", kicker: c.faq.kicker, title: c.faq.title, listCls: "mws-faq", rows: faqRows(c.faq.items) });
+  // FAQ — split + accordion
+  const faq = split({ id: "mws-faq", kicker: c.faq.kicker, title: c.faq.title, body: faqList(c.faq.items) });
 
   return [h, types, how, channels, faq, `<div class="mws__wrap">${notes(copy, ["scopeNote"])}</div>`, closeBand(lang, copy)].join("\n");
 }
