@@ -151,7 +151,7 @@ function roleTitle(title) {
 }
 
 /** Large-type trio: three statements side by side, no boxes. `numbered` only for a real chain of reasoning. */
-function trio(id, t, { mod = "", numbered = false } = {}) {
+function trio(id, t, { mod = "", numbered = false, more = "" } = {}) {
   return sec(
     id,
     `${head(id, t.kicker, t.title, t.lead)}
@@ -159,7 +159,7 @@ function trio(id, t, { mod = "", numbered = false } = {}) {
       .map(
         (pt) => `<li class="nsh-trio__item">${numbered ? `<span class="nsh-trio__n" aria-hidden="true">${e(pt.n)}</span>` : ""}<h3 class="nsh-trio__title">${e(pt.title)}</h3><p class="nsh-trio__body">${e(pt.body)}</p></li>`
       )
-      .join("")}</ol>`,
+      .join("")}</ol>${more}`,
     mod
   );
 }
@@ -319,6 +319,8 @@ function overview(c, lang) {
     sec("diff", `${head("diff", o.diff.kicker, o.diff.title, o.diff.lead)}${table("diff", o.diff, ["alt", "pain", "ours"], { accent: "ours" })}`, "line"),
     phase("status", o.status, "tint"),
     steps("eco", o.eco, o.eco.items, { more: `<p class="nsh-more">${link(pageHref(lang, "business"), o.eco.cta)}</p>` }),
+    /* Global vision (2026-10-26): long-term direction only; details on Business #nsh-global */
+    trio("global", o.global, { mod: "tint", more: `<p class="nsh-more">${link(`${pageHref(lang, "business")}#nsh-global`, o.global.cta)}</p>` }),
     split(
       "newon",
       o.newon,
@@ -494,6 +496,19 @@ function platform(c, lang) {
   );
   const statusSec = phase("status", p.status);
 
+  /* Global expansion (2026-10-26): services to take abroad + per-country localisation; all under review */
+  const GL = p.global;
+  const globalSec = sec(
+    "global",
+    `${head("global", GL.kicker, GL.title, GL.lead)}${features(GL.items)}
+    <div class="nsh-flow__booking">
+      <h3 class="nsh-flow__bt">${e(GL.locTitle)}</h3>
+      ${table("global", GL.loc, ["item", "plan"])}
+      ${GL.locNote ? `<p class="nsh-note">${e(GL.locNote)}</p>` : ""}
+    </div>`,
+    "tint"
+  );
+
   const ap = p.app;
   const app = sec(
     "app",
@@ -526,6 +541,7 @@ function platform(c, lang) {
       links,
       trust,
       statusSec,
+      globalSec,
       app,
       faq("faq", p.faq, "tint"),
       closing("next", p.next, [
@@ -644,6 +660,17 @@ function business(c, lang) {
     { mod: "tint", extra: `<p class="nsh-now"><span class="nsh-now__dot" aria-hidden="true"></span>${e(rm.now)}</p>` }
   );
 
+  /* Global go-to-market (2026-10-26): five stages, customer groups abroad and revenue models under review */
+  const gb = b.global;
+  const globalSec = steps("global", gb, gb.steps, {
+    mod: "line",
+    more: `<div class="nsh-flow__booking">
+      <h3 class="nsh-flow__bt">${e(gb.marketTitle)}</h3>
+      ${table("global", gb.market, ["who", "use", "pay"])}
+      ${gb.note ? `<p class="nsh-note">${e(gb.note)}</p>` : ""}
+    </div>`,
+  });
+
   const pr = b.principles;
   const principles = sec("principles", `${head("principles", pr.kicker, pr.title, pr.lead)}${checks(pr.items)}`);
 
@@ -663,6 +690,7 @@ function business(c, lang) {
       market,
       steps("entry", b.entry, b.entry.items),
       roadmap,
+      globalSec,
       principles,
       closing("next", b.next, [
         [pageHref(lang, "partnerships"), b.next.ctas[0]],
@@ -719,6 +747,12 @@ function partnerships(c, lang) {
   const pilots = sec("pilots", `${head("pilots", p.pilots.kicker, p.pilots.title, p.pilots.lead)}${cards(p.pilots.items, "five")}`, "tint");
   const data = split("data", p.data, rows(p.data.rows));
   const campaigns = trio("campaigns", p.campaigns, { mod: "line" });
+  /* Overseas partner kinds (2026-10-26): possibilities only; inquiry goes to the unified NEWON Contact page */
+  const gp = p.global;
+  const globalSec = sec(
+    "global",
+    `${head("global", gp.kicker, gp.title, gp.lead, { extra: `<div class="nsh-head__row">${link(`/${lang}/contact/?type=partnership&platform=shareon`, gp.cta)}</div>` })}${table("global", gp, ["who", "collab", "check"])}`
+  );
   const process = steps("process", p.process, p.process.steps, { mod: "tint" });
   const value = sec("value", `${head("value", p.value.kicker, p.value.title, p.value.lead)}${features(p.value.items)}`);
 
@@ -730,6 +764,7 @@ function partnerships(c, lang) {
       pilots,
       data,
       campaigns,
+      globalSec,
       process,
       value,
       closing("next", p.next, [

@@ -127,6 +127,17 @@ export const EN = {
       ],
       cta: "See the business in detail",
     },
+    global: {
+      kicker: "GLOBAL VISION",
+      title: "Rental proven in one neighbourhood,\ntaken to neighbourhoods abroad.",
+      lead: "In the long run SHAREON aims to grow into a global sharing and rental platform that connects the things, spaces and resources people and businesses own with those who need them. No service is operating abroad today, and no countries or dates have been decided.",
+      points: [
+        { n: "01", title: "Every country starts with a neighbourhood", body: "Abroad, too, the first thing to prove is neighbours lending and returning small items within a city or local community. SHAREON does not turn into a resale or shopping service." },
+        { n: "02", title: "Different lives, different rules", body: "Categories fitted to local housing and rental demand, and trades designed around local payment methods, currencies and consumer-protection rules, country by country." },
+        { n: "03", title: "Home market first", body: "Market research abroad and the choice of a first market begin only after booking, return, dispute handling and payments have been proven at home." },
+      ],
+      cta: "See the global expansion stages",
+    },
     newon: {
       kicker: "NEWON ECOSYSTEM",
       title: "SHAREON’s place\nwithin NEWON.",
@@ -260,6 +271,29 @@ export const EN = {
         { tone: "b", title: "Switched on after contracts and legal review", lead: "Off today", items: ["Payment and payment confirmation", "Deposit handling", "Settlement and payouts", "Cancellation, refund and damage claims", "Reviews of real trades"] },
         { tone: "c", title: "Future plans", lead: "After rentals between people are stable", items: ["Business operating tools and internal asset management", "More spaces and storage", "Delivery, collection and insurance partners", "Global expansion"] },
       ],
+    },
+    global: {
+      kicker: "GLOBAL EXPANSION",
+      title: "Services to take abroad,\nand how each country is localised.",
+      lead: "The ‘Global expansion’ item in our future plans, broken down by service. The app has not launched and no feature is offered abroad; everything below is under review.",
+      items: [
+        { icon: "local", en: "Neighbourhood first", title: "Local sharing and rental", body: "In each country, small-item rental between people is proven first within a city or local community, using the same single listing, booking and return flow as at home." },
+        { icon: "everyday", en: "Local categories", title: "Categories that fit local life", body: "What people borrow most depends on housing, seasons and spending habits. From the 18 areas, the categories, rental units and hand-over methods that suit each country are chosen." },
+        { icon: "trust", en: "Trust, localised", title: "Trust tools fitted to local rules", body: "Identity checks, reviews, trade records, dispute handling and deposit conditions are adjusted to each country’s rules. Deposits are never counted as revenue in any country." },
+        { icon: "corporate", en: "Businesses & spaces", title: "Extending to businesses and spaces", body: "Business equipment rental, space sharing and business asset management follow only in countries where rental between people has taken hold." },
+      ],
+      locTitle: "What is localised per country",
+      loc: {
+        head: { item: "Area", plan: "What SHAREON adapts" },
+        rows: [
+          { item: "Language", plan: "App screens, rental-terms and cancellation-policy notices, and customer support in the local language" },
+          { item: "Local life", plan: "Categories and trade methods suited to housing, rental demand and whether people prefer meeting in person or delivery" },
+          { item: "Payments, currency & tax", plan: "Local payment methods and currencies, deposits handled through a payment provider, tax structure for each party to a trade" },
+          { item: "Law & privacy", plan: "Rental contracts, consumer protection and liability structure; rules for personal and location data" },
+          { item: "Local partners & support", plan: "Cooperation with local payment, insurance and delivery providers, and local customer support" },
+        ],
+      },
+      locNote: "Each country’s rules are set after a legal review in that country. No country has been decided.",
     },
     app: {
       kicker: "GETTING THE APP",
@@ -435,6 +469,29 @@ export const EN = {
         { n: "04", title: "More categories, areas and partners", body: "Extend the proven model to more items, spaces and businesses, delivery and insurance partners, and other countries." },
       ],
     },
+    global: {
+      kicker: "GLOBAL GO-TO-MARKET",
+      title: "Prove it at home,\nthen country by country.",
+      lead: "Going abroad comes after the trade flow and economics of neighbourhood rental are proven at home. Rather than launching in many countries at once, the approach under review is to prove small-item rental between people again in one city or area of each country. No countries, dates or revenue targets have been set.",
+      steps: [
+        { n: "01", title: "Prove it at home", body: "Check booking completion, disputes, repeat rentals and the economics of small trades in a neighbourhood pilot." },
+        { n: "02", title: "Research markets abroad", body: "Analyse rental demand, existing alternatives, rental, payment and consumer-protection rules, and localisation needs per country." },
+        { n: "03", title: "Enter a first market", body: "Choose a suitable country, localise language, payments and support, and start small with rental between people in one city." },
+        { n: "04", title: "Grow local partnerships", body: "Work with local rental businesses and payment, insurance and delivery providers to extend into business rental and space sharing." },
+        { n: "05", title: "Expand as a global platform", body: "Build on proven country models to connect rentals and partners across countries through one trade engine." },
+      ],
+      marketTitle: "Customer groups abroad and revenue models under review",
+      market: {
+        head: { who: "Customer group abroad", use: "How they use it", pay: "Revenue under review (plan)" },
+        rows: [
+          { who: "Local neighbours", use: "Borrow things they need now and then, and lend things they don’t use.", pay: "Transaction fee on completed paid rentals" },
+          { who: "Local rental shops & space operators", use: "List equipment and spaces directly and rent them out.", pay: "Business and space rental fees, business services" },
+          { who: "Companies & institutions with equipment or spaces", use: "Rent idle equipment out or share it internally.", pay: "B2B rental contracts, internal asset management solution" },
+          { who: "Local partner providers", use: "Connect services rentals need, such as payment, insurance and delivery.", pay: "Lawful partnership models (after regulatory review)" },
+        ],
+      },
+      note: "Rates and prices are not decided even at home; revenue models per country are set after local rules and payment costs are checked.",
+    },
     principles: {
       kicker: "OPERATING & LEGAL PRINCIPLES",
       title: "Operating and legal\nprinciples.",
@@ -524,6 +581,22 @@ export const EN = {
         { n: "02", title: "Seasonal gear features", body: "Bringing together relevant firms’ equipment for peak times such as camping season, moving season or event season." },
         { n: "03", title: "Links with NEWON services", body: "Connecting baby gear from BABYLOG, pet equipment from PETLOG and travel and camping gear from MY WORLD to rental is a long-term idea. There is no integration today." },
       ],
+    },
+    global: {
+      kicker: "GLOBAL PARTNERSHIPS",
+      title: "Who we could work with abroad,\nand on what.",
+      lead: "Kinds of partners and fields of cooperation to consider when going abroad. All are possibilities under review, and there are no contracted overseas partners. In every country the starting point is neighbourhood rental between people.",
+      head: { who: "Partner kind", collab: "Fields of cooperation to review", check: "What to check" },
+      rows: [
+        { who: "Local community platforms", collab: "Reaching neighbourhood users, running local pilots together", check: "Scope of personal-data sharing, local terms of use" },
+        { who: "Rental businesses", collab: "Listing local inventory, shaping rental categories per country", check: "Business verification, safety standards per item" },
+        { who: "Shared-space operators", collab: "Linking meeting rooms, filming spaces and storage to space rental", check: "Permitted use, licences and facility rules" },
+        { who: "Payment & settlement providers", collab: "Local payment methods and currencies, deposit handling, payouts", check: "Local e-money and payment requirements, security" },
+        { who: "Insurance & guarantee companies", collab: "Designing cover for damage or loss during a rental", check: "Insurance-distribution rules in each country" },
+        { who: "Logistics & delivery companies", collab: "Hand-over and collection for rentals where meeting is hard", check: "Liability segments, loss-handling standards" },
+        { who: "Business asset-management solution providers", collab: "Connecting internal asset tools, reaching local business customers", check: "Data-handling standards, scope of integration" },
+      ],
+      cta: "Overseas partnership inquiry",
     },
     process: {
       kicker: "HOW WE WORK TOGETHER",
