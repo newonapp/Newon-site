@@ -2461,3 +2461,7 @@ html[data-newon-shell-theme="dark"] body #lifestage-detail.ogs .ogs-foot p {
     transition: none !important;
   }
 }
+
+/* owner request 2026-10-26: no grey backgrounds or grey boxes — white background, boxes outlined instead */
+html:not([data-newon-shell-theme="dark"]) #lifestage-detail.ogs :is(.ogs-notice, .ogs-bento__t, .ogs-row__body, .ogs-principles, .ogs-mist .ogs-card .ogs-chips li) { border: 1px solid var(--ogs-line-2); }
+html:not([data-newon-shell-theme="dark"]) #lifestage-detail.ogs .ogs-table thead :is(th, td) { border-bottom: 1px solid var(--ogs-line-2); }

@@ -16,7 +16,7 @@ html[data-newon-shell-theme="dark"] .hub-page:has(#ecosystem-detail) {
   --eco-muted: #666666;
   --eco-soft: #8a8a8a;
   --eco-line: #e6e6e6;
-  --eco-wash: #f6f6f6;
+  --eco-wash: #ffffff; /* owner request 2026-10-26: no grey backgrounds or grey boxes — white background, boxes outlined instead */
   --eco-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --eco-max: 1200px;
   background: var(--eco-paper);
@@ -1581,3 +1581,6 @@ html[data-newon-shell-theme="dark"] #ecosystem-detail.eco .eco-block--close {
   }
 }
 /* ===== end unified film first screen ===== */
+
+/* owner request 2026-10-26: no grey backgrounds or grey boxes — white background, boxes outlined instead */
+html:not([data-newon-shell-theme="dark"]) #ecosystem-detail.eco .eco-member { border: 1px solid rgba(10, 10, 10, 0.12); }

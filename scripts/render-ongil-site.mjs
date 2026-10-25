@@ -72,7 +72,7 @@ import {
 } from "./ongil-site-icons.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-export const OGS_VER = "20261025dn1";
+export const OGS_VER = "20261026ng2";
 const NLS_VER = "20261025ov1"; // Life Stage assets are reused as-is
 /** ONGIL first-screen background film (owner-provided, 2026-10-18). */
 const ONGIL_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260323_071151_38c3924f-c312-48af-a196-3fbb80e4226f.mp4";

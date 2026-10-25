@@ -4266,3 +4266,7 @@ html[data-newon-shell-theme="dark"] .ri-research__card:hover .ri-research__card-
   color: var(--rs-muted);
 }
 
+
+/* owner request 2026-10-26: no grey boxes — the product grid is white; each card draws its own line */
+html:not([data-newon-shell-theme="dark"]) :is(.rs-product-grid, .rs-get) { background: #ffffff; }
+html:not([data-newon-shell-theme="dark"]) :is(.rs-product-grid, .rs-get) > * { box-shadow: 0 0 0 1px var(--rs-line); }

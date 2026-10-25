@@ -1112,7 +1112,7 @@ html[data-newon-shell-theme="dark"] .fsn[data-biz="studio"] {
   width: 9.5rem;
   font-weight: 700;
   color: var(--sts-ink);
-  background: #fafafa;
+  background: #ffffff;
 }
 #lifestage-detail.nls[data-story="studio"] .sts-table td {
   color: var(--nls-muted);
@@ -1141,7 +1141,7 @@ html[data-newon-shell-theme="dark"] .fsn[data-biz="studio"] {
   background: #fff;
 }
 #lifestage-detail.nls[data-story="studio"] .sts-two--scope .sts-two__col--b {
-  background: #fafafa;
+  background: #ffffff;
 }
 #lifestage-detail.nls[data-story="studio"] .sts-two__t {
   margin: 0 0 0.9rem;
@@ -1454,3 +1454,11 @@ html[data-newon-shell-theme="dark"] .fsn[data-biz="studio"] {
     min-height: max(100svh, 560px);
   }
 }
+
+/* owner request 2026-10-26: no grey backgrounds or grey boxes — white background, boxes outlined instead */
+html:not([data-newon-shell-theme="dark"]) #lifestage-detail.nls[data-story="studio"] .sts-two--scope .sts-two__col--b { box-shadow: inset 1px 0 0 rgba(10, 10, 10, 0.1); }
+
+/* owner request 2026-10-26: no grey boxes — gap-line grids get a white background, and the lines are drawn
+ * by each item instead, so an unfilled grid cell is white rather than a grey block */
+html:not([data-newon-shell-theme="dark"]) #lifestage-detail.nls[data-story="studio"] :is(.sts-cards, .nls-board, .sts-two, .nls-flow) { background: #ffffff; }
+html:not([data-newon-shell-theme="dark"]) #lifestage-detail.nls[data-story="studio"] :is(.sts-cards, .nls-board, .sts-two, .nls-flow) > * { box-shadow: 0 0 0 1px var(--sts-line); }

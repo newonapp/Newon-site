@@ -1053,3 +1053,8 @@ html[data-newon-shell-theme="dark"] .fsn[data-biz="bizpart"] {
     min-height: max(100svh, 560px);
   }
 }
+
+/* owner request 2026-10-26: no grey boxes — gap-line grids get a white background and each item draws its own
+ * line, so an unfilled grid cell can never show as a grey block */
+html:not([data-newon-shell-theme="dark"]) #lifestage-detail.nls[data-story="bizpart"] :is(.bpt-cards, .nls-board, .nls-flow) { background: #ffffff; }
+html:not([data-newon-shell-theme="dark"]) #lifestage-detail.nls[data-story="bizpart"] :is(.bpt-cards, .nls-board, .nls-flow) > * { box-shadow: 0 0 0 1px var(--bpt-line); }

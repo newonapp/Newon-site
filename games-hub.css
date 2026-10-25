@@ -38,7 +38,7 @@ html[data-newon-shell-theme="dark"] body:has([data-games-page]) header.gnav {
   --g-line: rgba(255, 255, 255, 0.12);
   --g-line-strong: rgba(255, 255, 255, 0.22);
   --g-light: #ffffff;
-  --g-light-alt: #fafaf8;
+  --g-light-alt: #ffffff; /* owner request 2026-10-26: no grey backgrounds or grey boxes — white background, boxes outlined instead */
   --g-light-ink: #0a0a0a;
   --g-light-muted: #666666;
   --g-ease: cubic-bezier(0.16, 1, 0.3, 1);

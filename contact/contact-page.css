@@ -470,7 +470,8 @@
   gap: 0.9rem;
   padding: 1.2rem 1.1rem;
   border-radius: 18px;
-  background: #f4f4f4 !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(10, 10, 10, 0.12);
 }
 .ct-page .ct-consent__title { margin: 0; font-size: 0.98rem; font-weight: 700; }
 .ct-consent__rows { display: grid; gap: 0.55rem; margin: 0; }
