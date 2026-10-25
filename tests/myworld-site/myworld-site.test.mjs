@@ -143,3 +143,26 @@ test("sitemap lists all 45 MY WORLD pages exactly once", () => {
     assert.equal(n, 1, `${l}/${p}`);
   }
 });
+
+test("global expansion: one section on overview, platform, business and partnerships; map first; five phases; plan wording", () => {
+  for (const c of [KO, EN]) {
+    assert.equal(c.business.global.phases.length, 5);
+    assert.equal(c.overview.global.items.length, 4);
+    assert.equal(c.partnerships.global.items.length, 7);
+  }
+  assert.match(KO.overview.global.items[0].name, /세계지도/);
+  assert.match(KO.platform.global.items[0].body, /세계지도에서 방문 국가를 칠하고/);
+  assert.deepEqual(KO.business.global.phases.map((s) => s.name), ["국내 검증", "해외 시장 조사", "우선 시장 진출", "현지 파트너십 확대", "글로벌 플랫폼 확장"]);
+  for (const l of LANGS) {
+    for (const p of PAGES.slice(0, 4)) {
+      const m = main(read(`${l}/${p}index.html`));
+      assert.equal((m.match(/id="mws-global"/g) || []).length, 1, `${l}/${p}`);
+    }
+    assert.doesNotMatch(main(read(`${l}/myworld/contact/index.html`)), /id="mws-global"/);
+    const part = main(read(`${l}/myworld/partnerships/index.html`));
+    assert.ok(part.includes(`href="/${l}/contact/?type=partnership&amp;platform=myworld"`), `${l} partnerships global inquiry`);
+  }
+  assert.match(KO.overview.global.note, /향후 계획/);
+  assert.match(KO.business.global.note, /정해지지 않았습니다/);
+  assert.match(KO.partnerships.global.note, /체결된 해외 제휴나 계약은 없습니다/);
+});

@@ -301,6 +301,10 @@ function overview(lang, copy) {
       <ul class="mws-later">${st.groups.map((g) => `<li class="mws-later__col">${badge(copy, g.status)}<h3 class="mws-h3">${esc(g.name)}</h3><p class="mws-body">${esc(g.body)}</p><p class="mws-tags">${g.chips.map(esc).join(" · ")}</p></li>`).join("")}</ul>`,
   });
 
+  // Global vision — split + definition rows (the world map leads; plan, not current service)
+  const gv = o.global;
+  const globalVision = split({ id: "mws-global", kicker: gv.kicker, title: gv.title, lead: gv.lead, note: gv.note, body: defRows(gv.items, { cls: "mws-defs--lead" }) });
+
   // Long-term vision — priority steps (a real order)
   const r = o.roadmap;
   const roadmap = section({
@@ -312,7 +316,7 @@ function overview(lang, copy) {
   const nw = o.newon;
   const newon = split({ id: "mws-newon", kicker: nw.kicker, title: nw.title, lead: nw.lead, note: nw.note, body: defRows(nw.items, { bodyKey: "role", cls: "mws-defs--grid" }) });
 
-  return [h, now, define, problems, values, customers, journey, scenes, compare, status, roadmap, newon,
+  return [h, now, define, problems, values, customers, journey, scenes, compare, status, globalVision, roadmap, newon,
     `<div class="mws__wrap">${notes(copy, ["scopeNote", "planNote"])}</div>`, closeBand(lang, copy)].join("\n");
 }
 
@@ -381,6 +385,14 @@ function platform(lang, copy) {
       </li>`).join("")}</ol>`,
   });
 
+  // Global expansion — split: localisation checks under the heading, services to take abroad as rows
+  const gl = p.global;
+  const globalExp = split({
+    id: "mws-global", kicker: gl.kicker, title: gl.title, lead: gl.lead, note: gl.note,
+    aside: `<p class="mws-label">${esc(gl.localLabel)}</p>${chips(gl.local)}`,
+    body: defRows(gl.items),
+  });
+
   // How features connect — a six-step cycle
   const f = p.flow;
   const flow = section({
@@ -424,7 +436,7 @@ function platform(lang, copy) {
   const fq = p.faq;
   const faq = split({ id: "mws-faq", kicker: fq.kicker, title: fq.title, body: faqList(fq.items) });
 
-  return [h, shots, index, list, statusBoard, flow, scenarios, users, trust, guide, faq,
+  return [h, shots, index, list, statusBoard, globalExp, flow, scenarios, users, trust, guide, faq,
     `<div class="mws__wrap">${notes(copy, ["scopeNote", "planNote"])}</div>`, closeBand(lang, copy)].join("\n");
 }
 
@@ -541,6 +553,14 @@ function business(lang, copy) {
     inner: `${head({ id: "mws-roadmap", kicker: r.kicker, title: r.title, lead: r.lead, note: r.note, cls: "mws-head--wide" })}${roadSteps(copy, r)}`,
   });
 
+  // Global strategy — customer groups / entry / revenue columns, then the five expansion phases (a real sequence)
+  const gs = b.global;
+  const globalStrat = section({
+    id: "mws-global",
+    inner: `${head({ id: "mws-global", kicker: gs.kicker, title: gs.title, lead: gs.lead, note: gs.note, cls: "mws-head--wide" })}${feats(gs.items, { cols: 3 })}
+      <p class="mws-label">${esc(gs.phasesLabel)}</p>${steps(gs.phases, { cls: "mws-steps--big", en: true })}`,
+  });
+
   // Operations & legal — three compact hairline columns
   const t = b.trust;
   const trust = section({
@@ -549,7 +569,7 @@ function business(lang, copy) {
       <div class="mws-actions">${btn(pageHref(lang, "partnerships"), copy.ui.partnerCta)}${btn(formHref(lang, "general"), copy.ui.formCta, { ghost: true })}</div>`,
   });
 
-  return [h, model, payers, groupsIdx, revenue, subscription, deals, saas, market, diff, gtm, roadmap, trust,
+  return [h, model, payers, groupsIdx, revenue, subscription, deals, saas, market, diff, gtm, roadmap, globalStrat, trust,
     `<div class="mws__wrap">${notes(copy, ["scopeNote", "planNote"])}</div>`, closeBand(lang, copy)].join("\n");
 }
 
@@ -614,6 +634,14 @@ function partnerships(lang, copy) {
       <div class="mws-cloud"><p class="mws-label">${esc(sc.campaignsTitle)}</p>${chips(sc.campaigns, "mws-chips--cloud")}</div>`,
   });
 
+  // Global partnerships — split: overseas partner kinds and collaboration possibilities; inquiry → unified Contact page
+  const gp = p.global;
+  const globalPart = split({
+    id: "mws-global", kicker: gp.kicker, title: gp.title, lead: gp.lead, note: gp.note,
+    aside: `<div class="mws-actions">${btn(`/${lang}/contact/?type=partnership&platform=myworld`, gp.cta)}${btn(mailHref(copy, gp.cta), copy.ui.mailCta, { ghost: true })}</div>`,
+    body: defRows(gp.items),
+  });
+
   // PoC & pilots — tinted band, spec cards
   const pc = p.poc;
   const pocRow = (it, i) => `<li class="mws-spec" id="mws-poc-${i + 1}">
@@ -659,7 +687,7 @@ function partnerships(lang, copy) {
     body: `<ul class="mws-checks">${ck.items.map((t) => `<li><span class="mws-checks__ico">${icon("check")}</span><p>${esc(t)}</p></li>`).join("")}</ul>`,
   });
 
-  return [h, why, models, types, scenarios, poc, data, process, value, checklist, closeBand(lang, copy)].join("\n");
+  return [h, why, models, types, scenarios, globalPart, poc, data, process, value, checklist, closeBand(lang, copy)].join("\n");
 }
 
 /* ================= 05 CONTACT ================= */
