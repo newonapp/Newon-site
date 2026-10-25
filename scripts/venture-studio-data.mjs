@@ -41,7 +41,7 @@ export const LEGACY_STATUS_MAP = {
  * Top-level nav order. Business and Partnerships are one menu since 2026-10-19 ("Business & Partnerships",
  * id "business", where Business used to be); the separate Partnerships item is gone.
  */
-export const TOP_NAV = ["consumer", "ai", "babylog", "petlog", "myworld", "shareon", "lifestage", "ongil", "business", "studio", "company"];
+export const TOP_NAV = ["consumer", "ai", "ongil", "lifestage", "shareon", "babylog", "petlog", "myworld", "business", "studio", "company"];
 
 /**
  * Mega menu destinations per top menu.

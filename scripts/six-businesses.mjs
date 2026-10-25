@@ -16,7 +16,7 @@
  */
 
 /** Top-level menu ids for the six businesses, in menu order. */
-export const SIX_IDS = ["babylog", "petlog", "myworld", "shareon", "lifestage", "ongil"];
+export const SIX_IDS = ["ongil", "lifestage", "shareon", "babylog", "petlog", "myworld"];
 
 /** Businesses whose intro page is rendered by render-business-intro.mjs. */
 export const NEW_INTRO_IDS = ["babylog", "petlog", "myworld", "shareon"];

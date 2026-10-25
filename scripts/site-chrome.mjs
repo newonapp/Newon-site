@@ -50,12 +50,12 @@ function navTopLabel(flat, flatEn, id) {
  * Brand names are not translated. LIVON / ONGIL keep their existing mega menus.
  */
 export const VENTURE_NAV = [
+  { id: "ongil", label: "ONGIL", path: "ongil/", mega: true },
+  { id: "lifestage", label: "LIVON", path: "livon/", mega: true },
+  { id: "shareon", label: "SHAREON", path: "shareon/", mega: true },
   { id: "babylog", label: "BABYLOG", path: "babylog/", mega: true },
   { id: "petlog", label: "PETLOG", path: "petlog/", mega: true },
   { id: "myworld", label: "MY WORLD", path: "myworld/", mega: true },
-  { id: "shareon", label: "SHAREON", path: "shareon/", mega: true },
-  { id: "lifestage", label: "LIVON", path: "livon/", mega: true },
-  { id: "ongil", label: "ONGIL", path: "ongil/", mega: true },
 ];
 const VENTURE_IDS = new Set(VENTURE_NAV.map((v) => v.id));
 /** Business-row items with their own mega menu: the label links to the business page, the chevron opens the menu. */
@@ -481,12 +481,12 @@ const FOOTER_TIKTOK_URL = "https://www.tiktok.com/@newon.app?_r=1&_t=ZS-95LGrSuO
 export const FOOTER_MENUS = [
   ["consumer", "products/"],
   ["ai", "ai/"],
+  ["ongil", "ongil/"],
+  ["lifestage", "livon/"],
+  ["shareon", "shareon/"],
   ["babylog", "babylog/"],
   ["petlog", "petlog/"],
   ["myworld", "myworld/"],
-  ["shareon", "shareon/"],
-  ["lifestage", "livon/"],
-  ["ongil", "ongil/"],
   ["business", "business/"],
   ["studio", "studio/"],
   ["company", "about/"],
