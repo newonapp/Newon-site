@@ -9,6 +9,7 @@
  * inquiry form (render-bsp.mjs → business/inquiry.js → FormSubmit).
  * No app feature (records, booking, orders, payment, sign-in, seller sign-up, posting) is built on the web.
  * Copy: scripts/petlog-site-content.mjs (ko + en; other locales show the English body, like the rest of the site).
+ * V5 (2026-10-25): giving (나눔·기부) as a planned area 26, a public-good item and partner type 15 — content only.
  * V4 (2026-10-25): body redesign — styles moved to /petlog-site.css, one layout per section (content unchanged).
  * V3 (2026-10-24): 25 platform areas, 12 revenue models, scenarios, FAQ, PoC/data sections, inquiry purposes — content only.
  * V2: no per-card status badge (owner brief PART 04) — one shared notice per page in the existing .nls-note style.
@@ -87,6 +88,7 @@ const ICON = {
   home: '<path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-5h4v5"/>',
   walk: '<circle cx="13" cy="4.6" r="1.7"/><path d="M10 21l2-6.5 2.5 2.5V21M12 14.5l-1-4 3-2 2 3.5h3M11 10.5L8 12v3"/>',
   pin: '<path d="M12 21s-6.2-5.6-6.2-11a6.2 6.2 0 0 1 12.4 0c0 5.4-6.2 11-6.2 11z"/><circle cx="12" cy="10" r="2.2"/>',
+  gift: '<rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M3 10h18M12 10v10"/><path d="M12 10c-1.2-2.8-4.6-3.6-4.6-1.4 0 1.4 4.6 1.4 4.6 1.4zM12 10c1.2-2.8 4.6-3.6 4.6-1.4 0 1.4-4.6 1.4-4.6 1.4z"/>',
   umbrella: '<path d="M3 12a9 9 0 0 1 18 0z"/><path d="M12 12v6a2 2 0 0 0 4 0"/>',
   star: '<path d="M12 4l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 16.3l-4.8 2.6.9-5.4-3.9-3.8 5.4-.8z"/>',
   building: '<rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M11 21v-3h2v3"/>',
@@ -140,10 +142,10 @@ function iconFor(text) {
   return "paw";
 }
 const VALUE_ICONS = ["heart", "link", "sprout", "shield", "access"];
-/** One line icon per platform area (01–25), per revenue model and per partner type. */
-const AREA_ICONS = ["user", "pulse", "bowl", "calendar", "camera", "clinic", "scissors", "walk", "home", "book", "chat", "check", "cart", "cycle", "globe", "spark", "shield", "phone", "chart", "link", "building", "pin", "heart", "users", "star"];
+/** One line icon per platform area (01–26), per revenue model and per partner type. */
+const AREA_ICONS = ["user", "pulse", "bowl", "calendar", "camera", "clinic", "scissors", "walk", "home", "book", "chat", "check", "cart", "cycle", "globe", "spark", "shield", "phone", "chart", "link", "building", "pin", "heart", "users", "star", "gift"];
 const LINE_ICONS = { "01": "cycle", "02": "scissors", "03": "walk", "04": "home", "05": "book", "06": "cart", "07": "bag", "08": "globe", "09": "phone", "10": "chart", "11": "star", "12": "megaphone" };
-const PARTNER_ICONS = { "01": "clinic", "02": "scissors", "03": "home", "04": "users", "05": "walk", "06": "book", "07": "bag", "08": "megaphone", "09": "pin", "10": "phone", "11": "umbrella", "12": "heart", "13": "star", "14": "building" };
+const PARTNER_ICONS = { "01": "clinic", "02": "scissors", "03": "home", "04": "users", "05": "walk", "06": "book", "07": "bag", "08": "megaphone", "09": "pin", "10": "phone", "11": "umbrella", "12": "heart", "13": "star", "14": "building", "15": "gift" };
 const BEYOND_ICONS = ["note", "scissors", "chat", "spark", "heart"];
 const TYPE_ICONS = { general: "mail", "app-support": "phone", content: "book", vet: "clinic", "booking-provider": "scissors", sitting: "walk", brand: "bag", "group-buying": "cart", "insurance-adoption": "umbrella", saas: "chart", public: "building", global: "globe" };
 
@@ -594,7 +596,7 @@ function partnershipsPage(lang) {
     const p = PARTNERS.items.find((x) => x.no === no);
     return { n: p.no, icon: PARTNER_ICONS[p.no] || iconFor(p.name.en), name: p.name[L], lead: p.value[L], points: [[m.labels.scope, p.scope[L]], [m.labels.how, p.how[L]], [m.labels.terms, p.terms[L]]], link: [m.labels.cta, CONTACT_HREF(p.type)], anchor: `partner-${p.no}` };
   };
-  const LAYOUT = { care: ["grid", "pl-grid--3", true], brand: ["row", "", false], public: ["grid", "pl-grid--2", true] };
+  const LAYOUT = { care: ["grid", "pl-grid--3", true], brand: ["row", "", false], public: ["grid", "pl-grid--2 pl-grid--odd", true] };
   const groups = m.groups
     .map((g) => {
       const [kind, cls, tint] = LAYOUT[g.id] || ["grid", "pl-grid--3", false];
@@ -605,7 +607,7 @@ function partnershipsPage(lang) {
   const [lw, lr, lp] = m.scenarioLabels;
   const scenarios = m.scenarios.map((x) => ({ icon: x.icon, name: x.name, lead: x.lead, points: [[lw, x.who], [lr, x.role], [lp, x.pre]] }));
   const poc = m.poc.map(([t, d], i) => [`STEP ${pad2(i + 1)}`, t, d]);
-  return wrap(`${hero({ wordmark: "Partnerships", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "14개 협력 분야 ↓" : "14 partner types ↓", "#nls-p-care"], sub: [m.labels.cta, rel(D, "petlog/contact/")] })}
+  return wrap(`${hero({ wordmark: "Partnerships", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "15개 협력 분야 ↓" : "15 partner types ↓", "#nls-p-care"], sub: [m.labels.cta, rel(D, "petlog/contact/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "partnerships" })}
   <div class="nls__wrap">
     ${section("nls-offer", { kicker: m.offerKicker, title: m.offerTitle, lead: m.offerLead, body: items("cols", offer, D, "pl-cols--4") })}

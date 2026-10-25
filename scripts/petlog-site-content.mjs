@@ -3,6 +3,7 @@
  * V3 (2026-10-24, "30 menus" content upgrade): content and information structure only; the film heroes, the shared
  * sub-menu and the PETLOG design language (pl-* components) are unchanged.
  *   Sources: PETLOG final integrated business plan (2026-10-20: 25 long-term areas, 12 revenue models, P0–P8),
+ *   plus area 26 Giving (2026-10-25 owner brief: animal rescue and protection giving, a future plan, non-revenue),
  *   the NEWON IR summary (2026-10-21; V/F/P/A labels) and the existing V2 site copy (owner-approved current features).
  *
  * Honesty rules (owner brief):
@@ -39,9 +40,9 @@ export const STORE = {
 
 export const PETLOG_MENU = [
   { id: "overview", n: "01", name: "Overview", href: "petlog/", ko: "소개", en: "About PETLOG", koLead: "PETLOG의 정의, 보호자의 문제와 해결 방식, 현재 상태와 비전", enLead: "What PETLOG is, owners' problems and our approach, status and vision" },
-  { id: "platform", n: "02", name: "Platform", href: "petlog/platform/", ko: "서비스", en: "Services", koLead: "25개 장기 영역, 이용 시나리오, 개인정보 원칙과 FAQ", enLead: "25 long-term areas, user scenarios, privacy principles and FAQ" },
+  { id: "platform", n: "02", name: "Platform", href: "petlog/platform/", ko: "서비스", en: "Services", koLead: "26개 장기 영역, 이용 시나리오, 개인정보 원칙과 FAQ", enLead: "26 long-term areas, user scenarios, privacy principles and FAQ" },
   { id: "business", n: "03", name: "Business", href: "petlog/business/", ko: "비즈니스", en: "Business", koLead: "고객·지불 구조, 12개 수익 모델, 진입 전략과 로드맵", enLead: "Customers and payers, 12 revenue models, go-to-market and roadmap" },
-  { id: "partnerships", n: "04", name: "Partnerships", href: "petlog/partnerships/", ko: "파트너십", en: "Partnerships", koLead: "14개 협력 유형, 협업 시나리오, PoC와 데이터 연계 원칙", enLead: "14 partner types, scenarios, PoC and data principles" },
+  { id: "partnerships", n: "04", name: "Partnerships", href: "petlog/partnerships/", ko: "파트너십", en: "Partnerships", koLead: "15개 협력 유형, 협업 시나리오, PoC와 데이터 연계 원칙", enLead: "15 partner types, scenarios, PoC and data principles" },
   { id: "contact", n: "05", name: "Contact", href: "petlog/contact/", ko: "문의", en: "Contact", koLead: "반려인 문의부터 업체·브랜드·보호소·기관 협력까지", enLead: "From owners' questions to business, brand, shelter and public partnerships" },
 ];
 
@@ -156,15 +157,15 @@ export const OVERVIEW = {
     beyond: {
       kicker: "LONG-TERM VISION",
       title: "일상의 기록에서,\n반려 생애 전체로.",
-      lead: "통합 사업계획서는 PETLOG의 장기 사업을 25개 영역, 다섯 묶음으로 정리합니다. 영역 수는 장기 기획 단위이며, 영역마다 별도 앱을 만드는 것이 아니라 하나의 PETLOG 앱 안에서 단계적으로 더해 갑니다.",
+      lead: "통합 사업계획서는 PETLOG의 장기 사업을 26개 영역, 다섯 묶음으로 정리합니다. 영역 수는 장기 기획 단위이며, 영역마다 별도 앱을 만드는 것이 아니라 하나의 PETLOG 앱 안에서 단계적으로 더해 갑니다.",
       items: [
         { n: "01", label: "Records & Care Core", name: "기록·관리 코어", lead: "프로필·건강·생활·캘린더·노트. 지금 앱에서 기본 기능을 제공하는 영역으로, 모든 서비스의 바탕이 됩니다.", chips: ["Profile", "Health", "Life", "Calendar", "Note"] },
         { n: "02", label: "Pet Services", name: "펫 서비스 연결", lead: "동물병원 정보, 미용, 펫시터·산책, 호텔·유치원, 훈련. 예약은 법률·PG·보안 검토 후 앱에서만 제공할 계획입니다.", chips: ["Medical", "Grooming", "Care", "Hotel", "Training"] },
         { n: "03", label: "Community & Commerce", name: "커뮤니티·거래", lead: "보호자 커뮤니티(개발 중), 업체 검증·후기, 쇼핑·중고·공동구매, 구독, 동반 여행.", chips: ["Community", "Trust", "Market", "Subscription", "Travel"] },
         { n: "04", label: "Technology & Business", name: "기술·사업", lead: "기록 요약 AI(개발 중), 안전 관리, 스마트 기기 연동, 업체용 운영 도구, 기업·기관 제휴.", chips: ["AI", "Safety", "Devices", "Business", "Partners"] },
-        { n: "05", label: "Public Good & Farewell", name: "공익·생애 마무리", lead: "보호소 연계, 실종 찾기, 입양, 임시보호, 장례·추모. 보호소·실종·입양·임시보호의 필수 기능은 무료를 원칙으로 합니다.", chips: ["Shelter", "Find", "Adoption", "Foster", "Memorial"] },
+        { n: "05", label: "Public Good & Farewell", name: "공익·생애 마무리", lead: "보호소 연계, 실종 찾기, 입양, 임시보호, 장례·추모, 나눔·기부. 반려동물의 평생 돌봄을 넘어 보호가 필요한 동물의 복지까지 잇는 영역으로, 필수 공익 기능은 무료를 원칙으로 합니다.", chips: ["Shelter", "Find", "Adoption", "Foster", "Memorial", "Giving"] },
       ],
-      cta: "25개 영역 자세히 보기",
+      cta: "26개 영역 자세히 보기",
     },
     trust: {
       kicker: "TRUST & RESPONSIBILITY",
@@ -194,7 +195,7 @@ export const OVERVIEW = {
     close: {
       kicker: "NEXT STEP",
       titleHtml: "함께하는 모든 날이<br>더 소중해지도록.",
-      lead: "PETLOG의 25개 영역을 자세히 살펴보거나, 궁금한 점과 협력 제안을 보내 주세요.",
+      lead: "PETLOG의 26개 영역을 자세히 살펴보거나, 궁금한 점과 협력 제안을 보내 주세요.",
       ctaMain: "플랫폼 살펴보기",
       ctaSub: "문의하기",
     },
@@ -308,15 +309,15 @@ export const OVERVIEW = {
     beyond: {
       kicker: "LONG-TERM VISION",
       title: "From everyday records\nto a pet's whole life.",
-      lead: "The integrated business plan organises PETLOG's long-term business into 25 areas in five groups. The count is a planning unit: areas are added step by step inside one PETLOG app, not built as separate apps.",
+      lead: "The integrated business plan organises PETLOG's long-term business into 26 areas in five groups. The count is a planning unit: areas are added step by step inside one PETLOG app, not built as separate apps.",
       items: [
         { n: "01", label: "Records & Care Core", name: "Records and care core", lead: "Profile, health, life, calendar and notes. The basics are in the app today and underpin every other service.", chips: ["Profile", "Health", "Life", "Calendar", "Note"] },
         { n: "02", label: "Pet Services", name: "Pet services", lead: "Vet information, grooming, sitting and walking, hotels and daycare, training. Booking is planned for the app only, after legal, PG and security review.", chips: ["Medical", "Grooming", "Care", "Hotel", "Training"] },
         { n: "03", label: "Community & Commerce", name: "Community and commerce", lead: "Owner community (in development), provider checks and reviews, shopping, secondhand and group buying, subscription, pet-friendly travel.", chips: ["Community", "Trust", "Market", "Subscription", "Travel"] },
         { n: "04", label: "Technology & Business", name: "Technology and business", lead: "Record-summary AI (in development), safety, smart-device links, business operations tools, corporate and institutional partnerships.", chips: ["AI", "Safety", "Devices", "Business", "Partners"] },
-        { n: "05", label: "Public Good & Farewell", name: "Public good and farewell", lead: "Shelter links, lost-pet search, adoption, fostering, funerals and memorials. Essential shelter, lost-pet, adoption and foster features are meant to be free.", chips: ["Shelter", "Find", "Adoption", "Foster", "Memorial"] },
+        { n: "05", label: "Public Good & Farewell", name: "Public good and farewell", lead: "Shelter links, lost-pet search, adoption, fostering, funerals and memorials, and giving. Beyond a pet's lifelong care, these areas reach the welfare of animals that need protection; essential public-good features are meant to be free.", chips: ["Shelter", "Find", "Adoption", "Foster", "Memorial", "Giving"] },
       ],
-      cta: "See all 25 areas",
+      cta: "See all 26 areas",
     },
     trust: {
       kicker: "TRUST & RESPONSIBILITY",
@@ -346,14 +347,14 @@ export const OVERVIEW = {
     close: {
       kicker: "NEXT STEP",
       titleHtml: "So every day together<br>means even more.",
-      lead: "Explore PETLOG's 25 areas in detail, or send us a question or a partnership proposal.",
+      lead: "Explore PETLOG's 26 areas in detail, or send us a question or a partnership proposal.",
       ctaMain: "Explore the platform",
       ctaSub: "Contact us",
     },
   },
 };
 
-/* ======================================================================= PLATFORM (25 long-term areas) */
+/* ======================================================================= PLATFORM (26 long-term areas) */
 // area: label, status (app|dev|plan|review), cta (contact type | "app"), ko/en: [name, lead, users, connect, features[]]
 const A = (label, status, cta, ko, en) => ({
   label,
@@ -368,17 +369,17 @@ const A = (label, status, cta, ko, en) => ({
 export const PLATFORM = {
   meta: {
     ko: {
-      title: "PETLOG Platform | 25개 영역으로 보는 반려동물 생애주기 플랫폼",
-      desc: "PETLOG의 25개 장기 영역 — 프로필·건강·생활·캘린더·노트는 지금 앱에서 제공하고, 커뮤니티·AI는 개발 중, 미용·돌봄·호텔·마켓·보호소·실종·입양·추모는 단계적 계획입니다. 이용 시나리오, 개인정보 원칙, FAQ를 안내합니다.",
+      title: "PETLOG Platform | 26개 영역으로 보는 반려동물 생애주기 플랫폼",
+      desc: "PETLOG의 26개 장기 영역 — 프로필·건강·생활·캘린더·노트는 지금 앱에서 제공하고, 커뮤니티·AI는 개발 중, 미용·돌봄·호텔·마켓·보호소·실종·입양·추모·나눔·기부는 단계적 계획입니다. 이용 시나리오, 개인정보 원칙, FAQ를 안내합니다.",
       heroTitle: "반려동물의 일상부터<br>건강과 추억까지, 하나의 경험으로.",
       heroLead: "PETLOG는 반려동물과 보호자의 일상에 필요한 기록과 정보, 가족의 소통과 생활 서비스를 연결하는 플랫폼을 지향합니다.",
       legendKicker: "PLATFORM OVERVIEW",
-      legendTitle: "25개 영역,\n지금과 다음을 나누어 봅니다.",
-      legendLead: "PETLOG의 기능은 하나의 앱 안에서 다섯 묶음, 25개 영역으로 확장됩니다. 아래 구분은 현재 앱과 공개된 자료로 확인한 상태이며, 확인되지 않은 영역은 계획 또는 검토로 표시했습니다.",
+      legendTitle: "26개 영역,\n지금과 다음을 나누어 봅니다.",
+      legendLead: "PETLOG의 기능은 하나의 앱 안에서 다섯 묶음, 26개 영역으로 확장됩니다. 아래 구분은 현재 앱과 공개된 자료로 확인한 상태이며, 확인되지 않은 영역은 계획 또는 검토로 표시했습니다.",
       legend: [
         { kind: "now", icon: "phone", title: "지금 앱에서 제공", body: "App Store·Google Play의 PETLOG 앱에서 기본 기능을 이용할 수 있습니다.", areas: ["01", "02", "03", "04", "05"] },
         { kind: "dev", icon: "tool", title: "개발 중", body: "운영 정책·안전 원칙과 함께 준비하고 있는 영역입니다.", areas: ["11", "16"] },
-        { kind: "plan", icon: "sprout", title: "향후 계획", body: "로드맵 순서에 따라 더해 갈 영역입니다. 확정된 일정은 아직 없습니다.", areas: ["07", "09", "10", "12", "13", "15", "17", "18", "19", "20", "21", "22", "23", "24"] },
+        { kind: "plan", icon: "sprout", title: "향후 계획", body: "로드맵 순서에 따라 더해 갈 영역입니다. 확정된 일정은 아직 없습니다.", areas: ["07", "09", "10", "12", "13", "15", "17", "18", "19", "20", "21", "22", "23", "24", "26"] },
         { kind: "review", icon: "shield", title: "검토 단계", body: "법률·영업 요건, 결제·가격 구조를 먼저 확인해야 하는 영역입니다.", areas: ["06", "08", "14", "25"] },
       ],
       labels: { users: "대상", connect: "연결 영역", cta: "관련 문의", app: "앱에서 보기" },
@@ -387,7 +388,7 @@ export const PLATFORM = {
         { id: "services", kicker: "02 · PET SERVICES", title: "펫 서비스 연결", lead: "병원·미용·돌봄·호텔·훈련처럼 보호자가 밖에서 찾는 서비스를 기록과 연결하는 영역입니다. 모두 향후 계획 또는 검토 단계이며, 예약·결제는 법률·결제대행(PG) 계약·보안 검토를 마치기 전에는 운영하지 않고 웹사이트에서는 제공하지 않습니다.", items: [5, 6, 7, 8, 9] },
         { id: "community", kicker: "03 · COMMUNITY & COMMERCE", title: "커뮤니티·거래", lead: "보호자끼리 경험을 나누고 필요한 상품과 여행 정보를 찾는 영역입니다. 커뮤니티는 개발 중이고 마켓·여행은 향후 계획, 구독 플랜 구성은 검토 단계입니다. 살아 있는 동물은 판매·거래 대상이 아닙니다.", items: [10, 11, 12, 13, 14] },
         { id: "tech", kicker: "04 · TECHNOLOGY & BUSINESS", title: "기술·사업", lead: "기록을 이해하기 쉽게 돕는 AI, 안전 관리와 기기 연동, 업체용 운영 도구와 제휴 영역입니다. AI는 개발 중이며 진단·처방·응급 판단을 하지 않습니다. 나머지는 향후 계획입니다.", items: [15, 16, 17, 18, 19] },
-        { id: "welfare", kicker: "05 · PUBLIC GOOD & FAREWELL", title: "공익·생애 마무리", lead: "보호소, 실종, 입양, 임시보호, 추모까지 반려동물 생애의 후반과 공익을 다루는 영역입니다. 보호소·실종·입양·임시보호의 필수 기능은 무료로 하고 검증된 공식 기관 정보부터 시작할 계획이며, 장례·추모는 법률 검토 단계입니다.", items: [20, 21, 22, 23, 24] },
+        { id: "welfare", kicker: "05 · PUBLIC GOOD & FAREWELL", title: "공익·생애 마무리", lead: "보호소, 실종, 입양, 임시보호, 추모, 나눔·기부까지 반려동물 생애의 후반과 공익을 다루는 영역입니다. 보호소·실종·입양·임시보호의 필수 기능은 무료로 하고 검증된 공식 기관 정보부터 시작할 계획이며, 장례·추모는 법률 검토 단계, 나눔·기부는 향후 계획입니다.", items: [20, 21, 22, 23, 24, 25] },
       ],
       scenarios: {
         kicker: "USER SCENARIOS",
@@ -473,17 +474,17 @@ export const PLATFORM = {
       },
     },
     en: {
-      title: "PETLOG Platform | A pet life-cycle platform in 25 areas",
-      desc: "PETLOG's 25 long-term areas — profile, health, life, calendar and notes are in the app today; community and AI are in development; grooming, care, hotels, a market, shelters, lost pets, adoption and memorials are staged plans. With scenarios, privacy principles and FAQ.",
+      title: "PETLOG Platform | A pet life-cycle platform in 26 areas",
+      desc: "PETLOG's 26 long-term areas — profile, health, life, calendar and notes are in the app today; community and AI are in development; grooming, care, hotels, a market, shelters, lost pets, adoption, memorials and giving are staged plans. With scenarios, privacy principles and FAQ.",
       heroTitle: "From daily life to health and memories,<br>one experience.",
       heroLead: "PETLOG aims to be a platform that connects the records and information pet life needs, family communication and everyday services.",
       legendKicker: "PLATFORM OVERVIEW",
-      legendTitle: "25 areas:\nwhat is here now, and what comes next.",
-      legendLead: "PETLOG grows inside one app into 25 areas in five groups. The status below is what the current app and published material confirm; anything unconfirmed is shown as planned or under review.",
+      legendTitle: "26 areas:\nwhat is here now, and what comes next.",
+      legendLead: "PETLOG grows inside one app into 26 areas in five groups. The status below is what the current app and published material confirm; anything unconfirmed is shown as planned or under review.",
       legend: [
         { kind: "now", icon: "phone", title: "In the app today", body: "The basics are available in the PETLOG app on the App Store and Google Play.", areas: ["01", "02", "03", "04", "05"] },
         { kind: "dev", icon: "tool", title: "In development", body: "Being prepared together with operating policies and safety rules.", areas: ["11", "16"] },
-        { kind: "plan", icon: "sprout", title: "Planned", body: "Added in roadmap order. No dates are fixed yet.", areas: ["07", "09", "10", "12", "13", "15", "17", "18", "19", "20", "21", "22", "23", "24"] },
+        { kind: "plan", icon: "sprout", title: "Planned", body: "Added in roadmap order. No dates are fixed yet.", areas: ["07", "09", "10", "12", "13", "15", "17", "18", "19", "20", "21", "22", "23", "24", "26"] },
         { kind: "review", icon: "shield", title: "Under review", body: "Legal and licensing requirements, or payment and pricing structure, must be settled first.", areas: ["06", "08", "14", "25"] },
       ],
       labels: { users: "For", connect: "Connects to", cta: "Ask about this", app: "Open the app" },
@@ -492,7 +493,7 @@ export const PLATFORM = {
         { id: "services", kicker: "02 · PET SERVICES", title: "Pet services", lead: "Connecting the services owners look for outside — vets, grooming, care, hotels, training — with their records. All are planned or under review; booking and payment do not run before legal, payment-provider (PG) contract and security review, and are never offered on the website.", items: [5, 6, 7, 8, 9] },
         { id: "community", kicker: "03 · COMMUNITY & COMMERCE", title: "Community and commerce", lead: "Owners sharing experience and finding goods and travel information. Community is in development, the market and travel are planned, and subscription plan structure is under review. Live animals are never sold or traded.", items: [10, 11, 12, 13, 14] },
         { id: "tech", kicker: "04 · TECHNOLOGY & BUSINESS", title: "Technology and business", lead: "AI that makes records easier to understand, safety and device links, business operations tools and partnerships. AI is in development and never diagnoses, prescribes or makes emergency decisions; the rest is planned.", items: [15, 16, 17, 18, 19] },
-        { id: "welfare", kicker: "05 · PUBLIC GOOD & FAREWELL", title: "Public good and farewell", lead: "Shelters, lost pets, adoption, fostering and memorials — the later part of a pet's life and the public good. Essential shelter, lost-pet, adoption and foster features are planned to be free and to start from verified official information; funerals and memorials are under legal review.", items: [20, 21, 22, 23, 24] },
+        { id: "welfare", kicker: "05 · PUBLIC GOOD & FAREWELL", title: "Public good and farewell", lead: "Shelters, lost pets, adoption, fostering, memorials and giving — the later part of a pet's life and the public good. Essential shelter, lost-pet, adoption and foster features are planned to be free and to start from verified official information; funerals and memorials are under legal review, and giving is a future plan.", items: [20, 21, 22, 23, 24, 25] },
       ],
       scenarios: {
         kicker: "USER SCENARIOS",
@@ -654,6 +655,9 @@ export const PLATFORM = {
     A("PETLOG Memorial", "review", "insurance-adoption",
       ["장례·추모", "반려동물과 이별한 가족을 위해 장례 정보, 등록된 장례업체 비교, 상담 연결, 비용 안내, 사진·영상으로 만드는 추모 앨범과 가족 전용 추모 공간을 다루는 영역입니다. 동물장묘업 등록·광고·중개 요건과 소비자 보호를 먼저 검토한 뒤 범위를 정합니다.", "보호자·장례업체", "노트(사진·기록) · 업체 검증", ["등록 업체 정보", "비용 안내", "추모 앨범", "가족 추모 공간"]],
       ["Funerals and memorials", "For families saying goodbye: funeral information, comparison of registered funeral providers, consultations, cost guidance, a photo and video memorial album and a private family memorial space. Scope is set only after review of pet-funeral registration, advertising and brokerage rules and consumer protection.", "Owners and funeral providers", "Note (photos and records) · Trust", ["Registered providers", "Cost guidance", "Memorial album", "Family memorial space"]]),
+    A("PETLOG Giving", "plan", "insurance-adoption",
+      ["동물 구조·보호 나눔·기부", "유기·학대 피해·구조 동물과 보호소에 필요한 지원을 연결하는 나눔·기부 영역입니다. 이용자는 자발적으로 참여하고, PETLOG는 신뢰할 수 있는 동물보호단체·보호소와 협력해 동물의 치료와 안전한 보호를 돕는 방향을 계획합니다. 지원 결과를 투명하게 안내하는 것을 목표로 하며, 보호 동물의 위치와 구조·봉사 참여자의 개인정보는 공개하지 않습니다. 지금은 기부를 받지 않습니다.", "이용자·동물보호단체·보호소", "보호소 · 입양 · 임시보호 · 기업·기관 제휴", ["유기·구조 동물 지원", "치료비·의료 지원", "사료·생필품 지원", "보호소·임시보호 지원", "학대 피해 동물 구조·회복", "노령·장애 동물 지원", "보호단체·보호소 연계", "참여·지원 결과 안내"]],
+      ["Animal rescue and protection giving", "Giving that connects the support abandoned, abused and rescued animals and shelters need. People take part voluntarily, and PETLOG plans to work with trusted animal-protection groups and shelters to help with animals' treatment and safe care. The aim is to report support results transparently, and the location of animals in care and the personal data of rescuers and volunteers are never published. No donations are collected today.", "Users, animal-protection groups and shelters", "Shelter · Adoption · Foster · Corporate and institutional partnerships", ["Abandoned and rescued animals", "Treatment and medical costs", "Food and daily supplies", "Shelters and foster care", "Rescue and recovery after abuse", "Senior and disabled animals", "Links with groups and shelters", "Taking part and support results"]]),
   ],
 };
 
@@ -675,7 +679,7 @@ export const BUSINESS = {
   meta: {
     ko: {
       title: "PETLOG Business | 반려동물 생애주기 사업 구조와 수익 모델",
-      desc: "PETLOG의 고객과 지불 주체, B2C·B2B·B2B2C·C2C·B2G 구조, 12개 수익 모델과 현재 상태, 구독·예약·커머스·업체 SaaS, 시장 기회, 진입 전략, P0~P8 로드맵과 법률 원칙을 소개합니다. 가격·수수료는 확정 전 제안입니다.",
+      desc: "PETLOG의 고객과 지불 주체, B2C·B2B·B2B2C·C2C·B2G 구조, 12개 수익 모델과 현재 상태, 구독·예약·커머스·업체 SaaS, 시장 기회, 진입 전략, P0~P8 로드맵, 공익·나눔 원칙과 법률 원칙을 소개합니다. 가격·수수료는 확정 전 제안입니다.",
       heroTitle: "반려동물의 일상에서,<br>펫 라이프 산업의 미래까지.",
       heroLead: "PETLOG는 반려동물의 일상·건강 기록을 기반으로 커뮤니티, 커머스, 전문 서비스, 기업 솔루션, 공공·글로벌 분야로 확장하는 종합 반려생활 생태계를 지향합니다.",
       structureKicker: "BUSINESS MODEL",
@@ -710,12 +714,13 @@ export const BUSINESS = {
       statusLabel: { now: "현재 제공", plan: "향후 계획", review: "검토 단계" },
       publicKicker: "PUBLIC GOOD",
       publicTitle: "공익 기능은\n수익 대상이 아닙니다.",
-      publicLead: "보호소·실종·입양·임시보호의 필수 기능은 거래 수익 모델에서 제외합니다. 모두 향후 계획입니다.",
+      publicLead: "보호소·실종·입양·임시보호의 필수 기능과 나눔·기부는 수익 모델에서 제외합니다. 모두 향후 계획입니다.",
       publicItems: [
         ["보호소 정보·공고·봉사 안내", "공식 보호소와 구조 단체의 기본 정보와 공고, 봉사 안내는 무료로 제공할 계획입니다.", "home"],
         ["실종 신고·찾기", "실종 신고 안내와 공식 기관 연결, 발견 제보 같은 핵심 기능은 무료를 유지할 계획입니다.", "pin"],
         ["입양 연결", "입양 성사에 수수료를 받지 않는 것을 원칙으로 합니다.", "heart"],
         ["임시보호·봉사 연결", "임시보호와 봉사 연결은 무료로 하고, 기관용 운영 도구는 별도로 검토합니다.", "users"],
+        ["동물 구조·보호 나눔·기부", "이용자의 자발적 나눔과 동물보호단체·보호소와 함께하는 치료·보호 지원, 기업의 동물복지 사회공헌(CSR) 협력을 사회공헌 모델로 검토합니다. 나눔·기부는 PETLOG의 수익 사업이 아니며, 지원 결과를 투명하게 안내하고 활동을 장기적으로 넓혀 가는 것을 목표로 합니다.", "gift"],
       ],
       marketKicker: "MARKET OPPORTUNITY",
       marketTitle: "큰 지출,\n흩어진 정보.",
@@ -784,7 +789,7 @@ export const BUSINESS = {
     },
     en: {
       title: "PETLOG Business | Business structure and revenue models of a pet life-cycle platform",
-      desc: "PETLOG's customers and payers, B2C, B2B, B2B2C, C2C and B2G structure, 12 revenue models and their status, subscription, booking, commerce and business SaaS, market opportunity, go-to-market, the P0–P8 roadmap and legal principles. Prices and fees are proposals.",
+      desc: "PETLOG's customers and payers, B2C, B2B, B2B2C, C2C and B2G structure, 12 revenue models and their status, subscription, booking, commerce and business SaaS, market opportunity, go-to-market, the P0–P8 roadmap, public-good and giving principles, and legal principles. Prices and fees are proposals.",
       heroTitle: "From pets' everyday life<br>to the future of the pet industry.",
       heroLead: "Built on pets' daily and health records, PETLOG aims to be an all-round pet life ecosystem expanding into community, commerce, professional services, business solutions, and public and global areas.",
       structureKicker: "BUSINESS MODEL",
@@ -819,12 +824,13 @@ export const BUSINESS = {
       statusLabel: { now: "Available now", plan: "Planned", review: "Under review" },
       publicKicker: "PUBLIC GOOD",
       publicTitle: "Public-good features\nare not revenue.",
-      publicLead: "Essential shelter, lost-pet, adoption and foster features are excluded from transaction revenue. All are planned.",
+      publicLead: "Essential shelter, lost-pet, adoption and foster features, and giving, are excluded from revenue. All are planned.",
       publicItems: [
         ["Shelter information, notices and volunteering", "Basic information, notices and volunteer guidance from official shelters and rescue groups are planned to be free.", "home"],
         ["Lost-pet reporting and search", "Core features — reporting guidance, links to official bodies, sightings — are planned to stay free.", "pin"],
         ["Adoption links", "No fee on adoptions, in principle.", "heart"],
         ["Fostering and volunteering", "Foster and volunteer links are free; tools for institutions are reviewed separately.", "users"],
+        ["Animal rescue and protection giving", "A social-contribution model under consideration: voluntary giving by users, treatment and care support with animal-protection groups and shelters, and animal-welfare CSR cooperation with companies. Giving is not a revenue business for PETLOG; the aim is to report support results transparently and widen the work over the long term.", "gift"],
       ],
       marketKicker: "MARKET OPPORTUNITY",
       marketTitle: "Big spending,\nscattered information.",
@@ -939,14 +945,14 @@ export const BUSINESS = {
   ],
 };
 
-/* ======================================================================= PARTNERSHIPS (14) */
+/* ======================================================================= PARTNERSHIPS (15) */
 // [no, koName, enName, koScope, enScope, koValue, enValue, koHow, enHow, koTerms, enTerms, contactType]
 const PT = (no, koN, enN, koS, enS, koV, enV, koH, enH, koT, enT, type) => ({ no, name: { ko: koN, en: enN }, scope: { ko: koS, en: enS }, value: { ko: koV, en: enV }, how: { ko: koH, en: enH }, terms: { ko: koT, en: enT }, type });
 export const PARTNERS = {
   meta: {
     ko: {
       title: "PETLOG Partnerships | 반려동물 업체·브랜드·보호소·기관과의 협업 모델",
-      desc: "동물병원, 미용실, 호텔, 유치원, 펫시터, 훈련사, 펫 브랜드, 크리에이터, 여행·숙박, 스마트 기기, 보험, 보호소·입양 기관, 장례업체, 지자체 등 14개 협력 유형과 PoC 제안, 데이터 연계 원칙, 협업 절차를 안내합니다. 체결된 제휴를 뜻하지 않습니다.",
+      desc: "동물병원, 미용실, 호텔, 유치원, 펫시터, 훈련사, 펫 브랜드, 크리에이터, 여행·숙박, 스마트 기기, 보험, 보호소·입양 기관, 장례업체, 지자체, 동물보호단체·비영리단체·기업 CSR 등 15개 협력 유형과 PoC 제안, 데이터 연계 원칙, 협업 절차를 안내합니다. 체결된 제휴를 뜻하지 않습니다.",
       heroTitle: "더 나은 반려생활을<br>함께 만들어갑니다.",
       heroLead: "PETLOG는 동물병원, 반려동물 브랜드, 미용·돌봄 서비스, 교육·복지기관, 기업과 기술 파트너 등 다양한 분야의 협력을 통해 반려생활 생태계의 가치를 확장하고자 합니다.",
       offerKicker: "PARTNERSHIP VISION",
@@ -961,7 +967,7 @@ export const PARTNERS = {
       groups: [
         { id: "care", kicker: "VETERINARY, HEALTH & CARE", title: "의료·돌봄 파트너", lead: "동물병원과 미용·호텔·유치원·펫시팅·훈련 등 보호자가 믿고 맡길 수 있는 적격 서비스와의 협업 모델입니다.", items: ["01", "02", "03", "04", "05", "06"] },
         { id: "brand", kicker: "BRANDS, CONTENT, TRAVEL & DEVICES", title: "브랜드·콘텐츠·여행·기기 파트너", lead: "반려동물 브랜드와 크리에이터, 동반 여행 업체, 스마트 기기 기업과 커머스·콘텐츠·연동을 함께 만드는 협업 모델입니다.", items: ["07", "08", "09", "10"] },
-        { id: "public", kicker: "REGULATED & PUBLIC-GOOD FIELDS", title: "보험·보호소·장례·공공 파트너", lead: "규제와 공익이 중요한 분야입니다. 보호소·입양·공공 협력은 수익 목적이 아니며, 보험·장례 같은 상업 제휴와 분리해 운영합니다.", items: ["11", "12", "13", "14"] },
+        { id: "public", kicker: "REGULATED & PUBLIC-GOOD FIELDS", title: "보험·보호소·장례·공공·나눔 파트너", lead: "규제와 공익이 중요한 분야입니다. 보호소·입양·공공·나눔 협력은 수익 목적이 아니며, 보험·장례 같은 상업 제휴와 분리해 운영합니다.", items: ["11", "12", "13", "14", "15"] },
       ],
       labels: { scope: "협력 내용", value: "기대 가치", how: "협력 방식", terms: "전제 조건", cta: "협력 문의" },
       scenariosKicker: "COLLABORATION SCENARIOS",
@@ -1025,7 +1031,7 @@ export const PARTNERS = {
     },
     en: {
       title: "PETLOG Partnerships | Collaboration models with pet businesses, brands, shelters and public bodies",
-      desc: "Fourteen partner types for PETLOG — vets, groomers, hotels, daycare, sitters, trainers, pet brands, creators, travel and lodging, smart devices, insurers, shelters and adoption bodies, funeral providers and local government — with PoC proposals, data principles and the process. Not signed partnerships.",
+      desc: "Fifteen partner types for PETLOG — vets, groomers, hotels, daycare, sitters, trainers, pet brands, creators, travel and lodging, smart devices, insurers, shelters and adoption bodies, funeral providers, local government, and animal-welfare groups, nonprofits and corporate CSR — with PoC proposals, data principles and the process. Not signed partnerships.",
       heroTitle: "Building a better pet life,<br>together.",
       heroLead: "PETLOG aims to widen the value of the pet life ecosystem by working with vets, pet brands, grooming and care services, education and welfare bodies, companies and technology partners.",
       offerKicker: "PARTNERSHIP VISION",
@@ -1040,7 +1046,7 @@ export const PARTNERS = {
       groups: [
         { id: "care", kicker: "VETERINARY, HEALTH & CARE", title: "Veterinary and care partners", lead: "Collaboration models with vets and qualified grooming, hotel, daycare, sitting and training services owners can trust.", items: ["01", "02", "03", "04", "05", "06"] },
         { id: "brand", kicker: "BRANDS, CONTENT, TRAVEL & DEVICES", title: "Brand, content, travel and device partners", lead: "Collaboration models for commerce, content and integrations with pet brands, creators, pet-friendly travel businesses and smart-device companies.", items: ["07", "08", "09", "10"] },
-        { id: "public", kicker: "REGULATED & PUBLIC-GOOD FIELDS", title: "Insurance, shelter, funeral and public partners", lead: "Fields where regulation and the public good matter. Shelter, adoption and public work is not for profit and is kept separate from commercial partnerships such as insurance and funerals.", items: ["11", "12", "13", "14"] },
+        { id: "public", kicker: "REGULATED & PUBLIC-GOOD FIELDS", title: "Insurance, shelter, funeral, public and giving partners", lead: "Fields where regulation and the public good matter. Shelter, adoption, public and giving work is not for profit and is kept separate from commercial partnerships such as insurance and funerals.", items: ["11", "12", "13", "14", "15"] },
       ],
       labels: { scope: "Scope", value: "Expected value", how: "How", terms: "Preconditions", cta: "Partnership inquiry" },
       scenariosKicker: "COLLABORATION SCENARIOS",
@@ -1118,6 +1124,7 @@ export const PARTNERS = {
     PT("12", "보호소·구조 단체·입양 기관", "Shelters, rescue groups and adoption bodies", "보호동물·입양·임시보호 공고, 봉사 안내", "Animal, adoption and foster notices, volunteering", "책임 있는 입양과 임시보호가 늘어나도록 공식 공고와 절차를 보호자에게 전합니다. 연결은 무료입니다.", "More responsible adoption and fostering, by bringing official notices and procedures to owners — free of charge.", "공고 정보 연계, 입양 준비 안내 (공익 협력)", "Notice links and adoption preparation (public good)", "동물보호법 준수, 기관 검증, 입양 수수료 없음", "Animal-protection law, body checks, no adoption fee", "insurance-adoption"),
     PT("13", "장례·추모 업체", "Funeral and memorial providers", "등록 업체 정보, 상담 연결, 추모 앨범", "Registered provider info, consultations, memorial albums", "이별한 가족이 믿을 수 있는 업체와 비용 정보를 미리 확인할 수 있습니다.", "Families saying goodbye can check trusted providers and costs in advance.", "업체 정보 안내, 상담 연결 (검토 단계)", "Provider information and consultation links (under review)", "동물장묘업 등록 업체만, 표시·중개 요건 검토", "Registered pet-funeral businesses only; labelling and brokerage review", "insurance-adoption"),
     PT("14", "지자체·공공기관", "Local government and public bodies", "동물등록 안내, 유실·유기동물 정보, 지역 프로그램", "Registration guidance, lost and abandoned animal info, local programmes", "동물등록과 교육, 지역 프로그램으로 책임 있는 반려문화를 함께 넓힙니다.", "Spreading responsible pet culture through registration, education and local programmes.", "공식 정보 안내·캠페인 협력", "Official information and campaigns", "공식 정보 제공과 공식 파트너 구분", "Official information is not official partnership", "public"),
+    PT("15", "동물보호단체·비영리단체·기업 CSR", "Animal-welfare groups, nonprofits and corporate CSR", "동물 구조·보호 나눔·기부 협력 — 보호소·동물병원과 함께하는 치료·보호 지원", "Animal rescue and protection giving — treatment and care support with shelters and vet clinics", "도움이 필요한 동물에게 치료·사료·보호 지원이 실제로 닿도록 함께 연결할 수 있습니다. 기업 CSR 담당 조직과는 동물복지 사회공헌 프로그램을 함께 검토할 수 있습니다.", "Helping treatment, food and care reach the animals that need them; with corporate CSR teams, animal-welfare social-contribution programmes can be explored together.", "나눔·기부 협력 가능성 검토 (향후 계획)", "Exploring giving partnerships (planned)", "신뢰할 수 있는 기관 확인, 지원 결과의 투명한 안내, 보호 동물·참여자 개인정보 보호, 수익 목적 아님", "Trusted bodies checked; support results reported transparently; animals' and participants' data protected; not for profit", "insurance-adoption"),
   ],
 };
 

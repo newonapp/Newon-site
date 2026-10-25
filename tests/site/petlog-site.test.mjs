@@ -30,26 +30,26 @@ test("five PETLOG pages exist in all nine locales with SEO basics", () => {
   }
 });
 
-test("section counts follow the V3 plan: 6 journey stages, 25 platform areas, 12 revenue models in 5 groups, 14 partner types, 12 inquiry types", () => {
+test("section counts follow the V3 plan: 6 journey stages, 26 platform areas, 12 revenue models in 5 groups, 15 partner types, 12 inquiry types", () => {
   const count = (html, re) => (main(html).match(re) || []).length;
   for (const lang of ["ko", "en"]) {
     assert.equal(count(read(`${lang}/petlog/index.html`), /data-nls-decade-card=/g), 6, `${lang} journey`);
     const plat = read(`${lang}/petlog/platform/index.html`);
-    assert.equal(count(plat, /<article class="pl-[a-z -]+" id="petlog-[a-z-]+"/g), 25, `${lang} platform areas`);
+    assert.equal(count(plat, /<article class="pl-[a-z -]+" id="petlog-[a-z-]+"/g), 26, `${lang} platform areas`);
     assert.equal(count(plat, /<details>/g), PLATFORM.meta[lang].faq.items.length, `${lang} faq`);
     const biz = read(`${lang}/petlog/business/index.html`);
     assert.equal(count(biz, /<article class="pl-[a-z -]+" id="line-\d\d"/g), 12, `${lang} revenue models`);
     assert.equal(count(biz, /data-nls-decade-card=/g), 5, `${lang} revenue groups`);
-    assert.equal(count(read(`${lang}/petlog/partnerships/index.html`), /<article class="pl-[a-z -]+" id="partner-\d\d"/g), 14, `${lang} partners`);
+    assert.equal(count(read(`${lang}/petlog/partnerships/index.html`), /<article class="pl-[a-z -]+" id="partner-\d\d"/g), 15, `${lang} partners`);
     const sel = read(`${lang}/petlog/contact/index.html`).match(/<select id="bz-type"[\s\S]*?<\/select>/)[0];
     assert.equal((sel.match(/<option value="[^"]+"/g) || []).length, 12, `${lang} inquiry types`);
   }
   assert.deepEqual(BUSINESS.groups.flatMap((g) => g.lines).sort(), BUSINESS.lines.map((l) => l.no), "every revenue model is in exactly one group");
-  assert.equal(PLATFORM.items.length, 25);
+  assert.equal(PLATFORM.items.length, 26);
   for (const lang of ["ko", "en"]) {
     // the four status panels list every area exactly once, matching each area's own status
     const listed = PLATFORM.meta[lang].legend.flatMap((p) => p.areas.map((no) => [no, p.kind]));
-    assert.deepEqual(listed.map(([no]) => no).sort(), PLATFORM.items.map((_, i) => String(i + 1).padStart(2, "0")), `${lang} legend covers 25 areas once`);
+    assert.deepEqual(listed.map(([no]) => no).sort(), PLATFORM.items.map((_, i) => String(i + 1).padStart(2, "0")), `${lang} legend covers 26 areas once`);
     const KIND = { now: "app", dev: "dev", plan: "plan", review: "review" };
     for (const [no, kind] of listed) assert.equal(PLATFORM.items[Number(no) - 1].status, KIND[kind], `${lang} area ${no} status`);
   }
