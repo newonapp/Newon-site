@@ -9,7 +9,7 @@
  * BL-10 a per-card status badge (removed in V2) fails the check
  * BL-11 Korean text leaking into a fallback-locale page fails the check
  * BL-12 JSON-LD declaring an offered Service fails the check
- * BL-13 content upgrade 30 data: 26 areas, 4 status columns, 7 inquiry purposes, no price
+ * BL-13 content upgrade 30 data: 27 areas, 4 status columns, 7 inquiry purposes, no price
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -131,13 +131,13 @@ test("BL-8 removing the emergency routing note from a child-safety page fails th
   }
 });
 
-test("BL-9 the expansion copy has 32 groups, 12 + 15 partner types and no price or internal figure", async () => {
+test("BL-9 the expansion copy has 32 groups, 13 + 15 partner types and no price or internal figure", async () => {
   const m = await import("../../scripts/babylog-expansion-copy.mjs");
   for (const lang of ["ko", "en"]) {
     const c = m.getExpansionCopy(lang);
     assert.equal(c.business.groups.items.length + c.csGroups.length, 32);
     assert.equal(c.csGroups.length, 8);
-    assert.equal(c.partnerships.cs.items.length, 12);
+    assert.equal(c.partnerships.cs.items.length, 13);
     assert.equal(c.partnerships.industry.items.length, 15);
     assert.equal(c.business.groups.cats.reduce((n, x) => n + x.groups.length, 0), 32);
   }
@@ -148,14 +148,14 @@ test("BL-9 the expansion copy has 32 groups, 12 + 15 partner types and no price 
   }
 });
 
-test("BL-13 content upgrade 30: 26 long-term areas, four status columns, seven inquiry purposes and no price or internal figure", async () => {
+test("BL-13 content upgrade 30: 27 long-term areas, four status columns, seven inquiry purposes and no price or internal figure", async () => {
   const m = await import("../../scripts/babylog-content30.mjs");
   for (const lang of ["ko", "en"]) {
     const c = m.getContent30(lang);
     const areas = c.platform.areas.groups.flatMap((g) => g.items);
     assert.equal(areas.length, m.AREA_COUNT);
-    assert.equal(m.AREA_COUNT, 26);
-    assert.deepEqual(areas.map((a) => a.n), Array.from({ length: 26 }, (_, i) => String(i + 1).padStart(2, "0")));
+    assert.equal(m.AREA_COUNT, 27);
+    assert.deepEqual(areas.map((a) => a.n), Array.from({ length: 27 }, (_, i) => String(i + 1).padStart(2, "0")));
     assert.equal(c.status.columns.length, 4);
     assert.equal(c.contact.purpose.items.length, 7);
     assert.equal(c.business.phases.items.length, 5);

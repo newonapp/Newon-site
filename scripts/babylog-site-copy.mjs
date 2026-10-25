@@ -915,7 +915,7 @@ export function getBabylogCopy(lang) {
     const base = key === "ko" ? KO : EN;
     const x0 = getExpansionCopy(key);
     const c30 = getContent30(key);
-    // content upgrade 30: the 26 long-term areas replace the earlier 21-service list, the plan's five priorities
+    // content upgrade 30: the 27 long-term areas (26 + Giving) replace the earlier 21-service list, the plan's five priorities
     // replace the earlier roadmap, and the vision / journey copy comes from the integrated business plan.
     const x = {
       ...x0,

@@ -433,7 +433,7 @@ function platformBody(C, lang) {
   const X = C.x.platform;
   const sc = X.screens;
 
-  // 26 areas in five groups: group label left, an open two-column list right (no card boxes)
+  // 27 long-term areas in five groups: group label left, an open two-column list right (no card boxes)
   const screenGroups = sc.groups
     .map(
       (g) => `<div class="bl-scr__grp" aria-labelledby="bl-${g.id}-t">

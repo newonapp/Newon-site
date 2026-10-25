@@ -13,7 +13,7 @@
  * The current Premium price is verified in the IR but is referred to the store screens, not printed.
  */
 
-export const AREA_COUNT = 26;
+export const AREA_COUNT = 27; // 26 areas of the integrated plan + 27 Giving for children and teens (planned, 2026-10-25)
 
 /* =========================================================================== KO */
 const KO = {
@@ -23,8 +23,8 @@ const KO = {
       desc: "BABYLOG는 임신부터 고등학교 졸업까지 아이의 성장·건강·교육·가족 생활과 추억을 잇는 NEWON의 가족 종합 플랫폼입니다. 현재 iOS·Android 앱에서 육아·성장·건강 기록, 일정, 가족 공유를 제공합니다.",
     },
     platform: {
-      title: "플랫폼 | BABYLOG — 26개 장기 사업 영역과 현재 제공 기능",
-      desc: "BABYLOG의 26개 장기 사업 영역, 영역별 기능과 사용자 시나리오, 부모·조부모·보호자·청소년 권한 원칙, 현재 제공 기능과 개발 계획, 아동 보호 공익 영역과 자주 묻는 질문을 안내합니다.",
+      title: "플랫폼 | BABYLOG — 27개 장기 사업 영역과 현재 제공 기능",
+      desc: "BABYLOG의 27개 장기 사업 영역, 영역별 기능과 사용자 시나리오, 부모·조부모·보호자·청소년 권한 원칙, 현재 제공 기능과 개발 계획, 아동 보호 공익 영역과 자주 묻는 질문을 안내합니다.",
     },
     business: {
       title: "비즈니스 | BABYLOG — 가족 플랫폼의 사업 구조와 수익 모델",
@@ -56,7 +56,7 @@ const KO = {
       {
         id: "plan", name: "향후 계획",
         basis: "통합 사업계획서의 로드맵 순서에 따라 진행합니다.",
-        items: ["학교·학습·진로", "Family Trust 검증 후기", "청소년 계정·성인 전환", "아동 안전·공식 신고 안내", "Books·Learning 콘텐츠", "교육·육아기관 SaaS", "가정위탁·입양·자립 공식 정보"],
+        items: ["학교·학습·진로", "Family Trust 검증 후기", "청소년 계정·성인 전환", "아동 안전·공식 신고 안내", "Books·Learning 콘텐츠", "교육·육아기관 SaaS", "가정위탁·입양·자립 공식 정보", "아동·청소년 나눔·기부"],
       },
       {
         id: "review", name: "검토 단계",
@@ -76,7 +76,7 @@ const KO = {
       lines: [
         "BABYLOG는 임신부터 고등학교 졸업까지 아이의 성장, 건강, 교육, 가족 생활과 추억을 하나로 잇는 NEWON의 가족 종합 플랫폼입니다. 영유아기의 기록에서 멈추지 않고, 아이가 자라는 동안 가족에게 필요한 기록·정보·서비스를 단계별로 연결하는 것을 목표로 합니다.",
         "지금은 iOS와 Android 앱에서 수유·수면·기저귀·식사 같은 육아 기록, 키·몸무게와 예방접종 같은 성장·건강 기록, 병원·교육 일정, 부모·조부모·보호자와의 가족 공유, 참고용 AI 기록 요약을 제공합니다.",
-        "통합 사업계획서는 교육, 커뮤니티, 예약, 쇼핑·중고·공동구매, 도서, 기관 서비스까지 26개 장기 사업 영역을 설계합니다. 이 영역들은 단계적으로 검증하며 열어 갈 계획이며, 아직 모두 제공되는 것은 아닙니다.",
+        "통합 사업계획서는 교육, 커뮤니티, 예약, 쇼핑·중고·공동구매, 도서, 기관 서비스, 아동·청소년 나눔·기부까지 27개 장기 사업 영역을 설계합니다. 이 영역들은 단계적으로 검증하며 열어 갈 계획이며, 아직 모두 제공되는 것은 아닙니다.",
         "실종 아동 찾기, 아동 보호, 가정위탁·입양 정보 같은 공익 영역은 상업 서비스와 분리하고 공식 기관 연계를 중심으로 준비합니다.",
       ],
     },
@@ -145,8 +145,8 @@ const KO = {
   /* ---------------------------------------------------------------- Platform */
   platform: {
     areas: {
-      kicker: "26 Long-term Areas",
-      title: "스물여섯 개 장기 사업 영역,\n다섯 개 그룹.",
+      kicker: "27 Long-term Areas",
+      title: "스물일곱 개 장기 사업 영역,\n다섯 개 그룹.",
       lead: "통합 사업계획서가 설계한 BABYLOG의 전체 확장 영역입니다. 영역 수는 장기 기획 단위이며 모두 구현되었다는 뜻이 아닙니다. 공통 계정·기록·거래 시스템을 함께 쓰므로 영역마다 별도의 앱이나 서버를 만들지 않습니다. 지금 앱에서 이용하는 기능은 현재형으로, 그 밖의 영역은 계획으로 적었습니다.",
       groups: [
         {
@@ -193,6 +193,7 @@ const KO = {
             { n: "24", en: "BABYLOG Hope", name: "후원·기부·봉사 연결", lead: "공식 기관의 필요 물품과 검증된 봉사 프로그램을 연결합니다. 법적 요건과 계약을 갖추기 전까지 BABYLOG가 기부금을 직접 모금·보관하지 않고 공식 채널로 안내합니다." },
             { n: "25", en: "BABYLOG Independence", name: "자립준비청년 지원", lead: "주거·장학금·취업·금융 교육·공식 상담기관·검증된 멘토링 정보를 연결하고, 성인 생활 관리는 LIVON과 이어지도록 합니다. 보호 이력은 커뮤니티나 광고 타기팅에 쓰지 않습니다." },
             { n: "26", en: "BABYLOG Welfare Business", name: "아동복지기관 SaaS·CSR", lead: "아동복지기관의 일정·프로그램·물품 수요·봉사·후원 관리와 기관 보고를 돕는 도구, 기업 사회공헌 연결을 검토합니다. 실종 신고·보호·위탁·입양 안내 자체는 계속 무료로 유지합니다." },
+            { n: "27", en: "BABYLOG Giving", name: "아동·청소년 나눔·기부", lead: "경제적 어려움이나 돌봄 공백을 겪는 아동·청소년의 건강한 성장과 자립을 돕는 나눔 서비스로 계획합니다. 이용자의 자발적 참여와 아동복지기관·비영리단체 연계로 저소득·위기 가정 아동, 결식 아동 식사·생필품, 교육비·학습용품, 의료·건강·재활, 아동복지시설·그룹홈, 보호대상 아동·자립준비청년을 지원하고 지원 결과를 안내하는 방향입니다. 지금은 기부를 받지 않으며, 아동의 이름·사진·사연 같은 개인정보와 신원은 공개하지 않습니다." },
           ],
         },
       ],
@@ -294,7 +295,7 @@ const KO = {
         { id: "now", name: "지금 운영 중", basis: "스토어에 구독 상품이 공개되어 있습니다. 유료 이용 실적은 측정 중이며 공개하지 않습니다.", items: ["개인 Premium 구독"] },
         { id: "next", name: "다음 단계 제안", basis: "다음 앱 버전의 기능 출시와 법률·결제 검토 후 검증합니다.", items: ["가족 구독", "AI 구독·리포트", "쇼핑 수수료", "중고 안전거래 수수료", "공동구매 수수료", "생활 서비스 예약 수수료"] },
         { id: "plan", name: "장기 계획", basis: "기관 인터뷰·파일럿과 원가 검증 이후의 단계입니다.", items: ["기관 SaaS", "기업·공공 제휴", "Books", "Toy Club", "Family Box", "Devices"] },
-        { id: "free", name: "수익화하지 않는 영역", basis: "공익 안내는 무료로 유지하고, 진료비에 비례한 수수료는 두지 않습니다.", items: ["실종 신고·안전 안내", "가정위탁·입양 정보", "아동복지시설 정보", "기부·봉사 안내", "자립준비청년 지원 정보", "병원 진료비 비례 수수료"] },
+        { id: "free", name: "수익화하지 않는 영역", basis: "공익 안내는 무료로 유지하고, 진료비에 비례한 수수료는 두지 않습니다.", items: ["실종 신고·안전 안내", "가정위탁·입양 정보", "아동복지시설 정보", "기부·봉사 안내", "아동·청소년 나눔·기부", "자립준비청년 지원 정보", "병원 진료비 비례 수수료"] },
       ],
       note: "광고는 향후 별도 수익원으로 검토할 수 있지만 아동 데이터를 기반으로 한 개인화 광고는 하지 않습니다. 기부금은 BABYLOG의 수익이 아닙니다.",
     },
@@ -330,7 +331,7 @@ const KO = {
     phases: {
       kicker: "Business Roadmap",
       title: "다섯 개의 우선순위로\n단계적으로 확장합니다.",
-      lead: "사업은 26개 영역으로 넓게 설계하되, 가족이 매일 쓰는 기능을 먼저 완성하고 수요를 확인하는 순서로 확장합니다.",
+      lead: "사업은 27개 영역으로 넓게 설계하되, 가족이 매일 쓰는 기능을 먼저 완성하고 수요를 확인하는 순서로 확장합니다.",
       note: "로드맵은 추진 순서이며 출시일이나 매출 목표가 아닙니다. 공익 영역의 실제 기관 연계·운영은 검증된 협력과 보호 체계가 확인되는 단계에서 진행합니다.",
       items: [
         { n: "01", name: "가족 계정·성장·건강·캘린더", body: "가족이 매일 쓰는 핵심 기록 플랫폼을 완성합니다. 현재 앱이 이 단계의 기반입니다." },
@@ -355,6 +356,7 @@ const KO = {
         { name: "중고·공동구매", lead: "소비자 보호, 결제·환불·분쟁 처리 기준과 판매자 확인을 먼저 갖춥니다." },
         { name: "상품·기기·콘텐츠", lead: "영유아 상품과 기기의 KC 인증, 장난감 대여의 위생·파손 기준, 도서·콘텐츠의 저작권과 디지털 결제 정책을 확인합니다." },
         { name: "기관 SaaS", lead: "기관별 접근 권한과 개인정보 처리 위탁 기준을 계약에 담습니다." },
+        { name: "아동·청소년 나눔·기부", lead: "향후 계획입니다. 아동복지기관·비영리단체와의 협력, 기업 사회공헌 연계 모델로 검토하며 수익 사업으로 운영하지 않습니다. 전달 과정과 지원 결과의 투명성을 지향하고, 아동의 개인정보와 신원을 보호합니다." },
       ],
     },
   },
@@ -453,8 +455,8 @@ const EN = {
       desc: "BABYLOG is NEWON's family platform connecting a child's growth, health, education, family life and memories from pregnancy to high-school graduation. Today the iOS and Android app offers parenting, growth and health records, schedules and family sharing.",
     },
     platform: {
-      title: "Platform | BABYLOG — 26 long-term areas and what the app offers today",
-      desc: "BABYLOG's 26 long-term areas, features and user scenarios, permission principles for parents, grandparents, guardians and teens, current features and development plans, public-interest child protection areas and FAQ.",
+      title: "Platform | BABYLOG — 27 long-term areas and what the app offers today",
+      desc: "BABYLOG's 27 long-term areas, features and user scenarios, permission principles for parents, grandparents, guardians and teens, current features and development plans, public-interest child protection areas and FAQ.",
     },
     business: {
       title: "Business | BABYLOG — Business structure and revenue models",
@@ -474,7 +476,7 @@ const EN = {
     columns: [
       { id: "now", name: "In the app today", basis: "Based on the BabyLog app listing published on the App Store and Google Play.", items: ["Child profile", "Pregnancy weeks and checkup schedule", "Feeding, sleep, diaper, meal and play records", "Height, weight, vaccination and health records", "Growth statistics", "Hospital, education and family schedules", "Family sharing (parents, grandparents, guardians)", "Reference-only AI record summary", "Premium subscription (in-app purchase)"] },
       { id: "next", name: "Preparing for the next version", basis: "Design scope of the next app version. No release date has been set.", items: ["Parent community", "Explore: institutions, services and booking", "Market: baby goods shopping, used goods and group buying", "Seller and business onboarding", "Role-based detailed permissions"] },
-      { id: "plan", name: "Planned", basis: "Follows the roadmap order of the integrated business plan.", items: ["School, learning and career", "Family Trust verified reviews", "Teen accounts and adult transition", "Child safety and official reporting guidance", "Books and Learning content", "Education and childcare institution SaaS", "Official foster care, adoption and independence information"] },
+      { id: "plan", name: "Planned", basis: "Follows the roadmap order of the integrated business plan.", items: ["School, learning and career", "Family Trust verified reviews", "Teen accounts and adult transition", "Child safety and official reporting guidance", "Books and Learning content", "Education and childcare institution SaaS", "Official foster care, adoption and independence information", "Giving for children and teens"] },
       { id: "review", name: "Under review", basis: "Areas that need business, legal and safety review first.", items: ["Toy Club toy rental subscription", "Family Box deliveries", "Smart parenting devices", "Expanded AI features", "Donation and volunteering links", "Child welfare institution SaaS and CSR", "Global expansion"] },
     ],
     note: "Features preparing for the next version, planned or under review are not released features, and their scope and timing may change.",
@@ -488,7 +490,7 @@ const EN = {
       lines: [
         "BABYLOG is NEWON's family platform that brings together a child's growth, health, education, family life and memories from pregnancy to high-school graduation. It does not stop at the baby years: the goal is to connect the records, information and services a family needs at each stage as the child grows.",
         "Today the iOS and Android app offers parenting records such as feeding, sleep, diapers and meals, growth and health records such as height, weight and vaccinations, hospital and education schedules, family sharing with parents, grandparents and guardians, and a reference-only AI record summary.",
-        "The integrated business plan designs 26 long-term areas, from education, community and booking to shopping, used goods, group buying, books and institution services. They will be opened step by step after validation; not all of them are available yet.",
+        "The integrated business plan designs 27 long-term areas, from education, community and booking to shopping, used goods, group buying, books, institution services and giving for children and teens. They will be opened step by step after validation; not all of them are available yet.",
         "Public-interest areas such as finding missing children, child protection, and foster care and adoption information are kept separate from commercial services and are prepared around links to official agencies.",
       ],
     },
@@ -556,8 +558,8 @@ const EN = {
 
   platform: {
     areas: {
-      kicker: "26 Long-term Areas",
-      title: "Twenty-six long-term areas,\nfive groups.",
+      kicker: "27 Long-term Areas",
+      title: "Twenty-seven long-term areas,\nfive groups.",
       lead: "The full expansion scope of BABYLOG designed in the integrated business plan. The number of areas is a long-term planning unit and does not mean everything is built. Areas share common account, record and transaction systems, so there is no separate app or server per area. Features available in the app today are written in the present tense; other areas are written as plans.",
       groups: [
         {
@@ -604,6 +606,7 @@ const EN = {
             { n: "24", en: "BABYLOG Hope", name: "Links to sponsorship, giving and volunteering", lead: "Connects official institutions' needed goods and verified volunteer programs. Until the legal requirements and contracts are in place, BABYLOG does not collect or hold donations itself and points to official channels." },
             { n: "25", en: "BABYLOG Independence", name: "Support for young people leaving care", lead: "Connects information on housing, scholarships, jobs, financial education, official counseling agencies and verified mentoring, with adult life management linked to LIVON. Care history is never used for community features or ad targeting." },
             { n: "26", en: "BABYLOG Welfare Business", name: "SaaS and CSR for child welfare institutions", lead: "Reviews tools that help child welfare institutions manage schedules, programs, needed goods, volunteering, sponsorship and reporting, and links to corporate social contribution. Guidance on missing-child reporting, protection, foster care and adoption itself stays free." },
+            { n: "27", en: "BABYLOG Giving", name: "Giving for children and teens", lead: "Planned as a giving service that helps children and teens facing economic hardship or gaps in care grow up healthy and independent. Through users' voluntary participation and links with child welfare institutions and nonprofits, it would support children in low-income and at-risk families, meals and daily necessities for children who go without, education costs and learning supplies, medical, health and rehabilitation care, child welfare facilities and group homes, and protected children and youth leaving care, and report on support results. No donations are accepted today, and children's personal information and identity, such as names, photos and stories, are never published." },
           ],
         },
       ],
@@ -704,7 +707,7 @@ const EN = {
         { id: "now", name: "Operating today", basis: "The subscription product is listed in the stores. Paid usage is being measured and is not published.", items: ["Individual Premium subscription"] },
         { id: "next", name: "Next-stage proposals", basis: "To be validated after next-version features launch and legal and payment reviews.", items: ["Family subscription", "AI subscription and reports", "Shopping fees", "Used-goods safe payment fees", "Group-buying fees", "Everyday service booking fees"] },
         { id: "plan", name: "Long-term plans", basis: "Stages that follow institution interviews, pilots and cost validation.", items: ["Institution SaaS", "Corporate and public partnerships", "Books", "Toy Club", "Family Box", "Devices"] },
-        { id: "free", name: "Not monetized", basis: "Public-interest guidance stays free, and there is no fee proportional to medical charges.", items: ["Missing-child reporting and safety guidance", "Foster care and adoption information", "Child welfare facility information", "Donation and volunteering guidance", "Information for young people leaving care", "Fees proportional to hospital charges"] },
+        { id: "free", name: "Not monetized", basis: "Public-interest guidance stays free, and there is no fee proportional to medical charges.", items: ["Missing-child reporting and safety guidance", "Foster care and adoption information", "Child welfare facility information", "Donation and volunteering guidance", "Giving for children and teens", "Information for young people leaving care", "Fees proportional to hospital charges"] },
       ],
       note: "Advertising may be reviewed later as a separate source of revenue, but there are no personalized ads based on children's data. Donations are not BABYLOG revenue.",
     },
@@ -740,7 +743,7 @@ const EN = {
     phases: {
       kicker: "Business Roadmap",
       title: "Expanding step by step\nthrough five priorities.",
-      lead: "The business is designed broadly across 26 areas, but expands by completing what families use every day first and checking demand.",
+      lead: "The business is designed broadly across 27 areas, but expands by completing what families use every day first and checking demand.",
       note: "The roadmap is an order of work, not a release date or a revenue target. Actual institution links and operations in public-interest areas proceed only once verified cooperation and protection systems are confirmed.",
       items: [
         { n: "01", name: "Family accounts, growth, health, calendar", body: "Complete the core recording platform families use every day. Today's app is the base of this stage." },
@@ -765,6 +768,7 @@ const EN = {
         { name: "Used goods and group buying", lead: "Consumer protection, payment, refund and dispute rules and seller verification come first." },
         { name: "Goods, devices and content", lead: "KC certification for infant products and devices, hygiene and damage rules for toy rental, and copyright and digital payment rules for books and content are checked." },
         { name: "Institution SaaS", lead: "Access rights per institution and personal data processing outsourcing terms are written into contracts." },
+        { name: "Giving for children and teens", lead: "A future plan, reviewed as a cooperation model with child welfare institutions and nonprofits and with corporate social contribution, and not run as a revenue business. It aims for transparent delivery and support results, and protects children's personal information and identity." },
       ],
     },
   },

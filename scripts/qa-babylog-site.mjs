@@ -102,7 +102,7 @@ for (const p of pages) {
     const cats = count(body, /class="bl-link[^"]*" href="[^"]*#cat-0[1-9]"/g);
     const ctas = count(body.slice(body.indexOf('id="bl-close"')), /class="nls-btn/g);
     const imp = sect("bl-impact");
-    const impOk = count(imp, /<li><span>0[1-4]<\/span>/g) === 4 && count(imp, /class="nls-btn/g) === 2 && /#cat-07/.test(imp) && /#bl-cs-partners/.test(imp) && /nls-note/.test(imp);
+    const impOk = count(imp, /<li><span>0[1-5]<\/span>/g) === 5 && count(imp, /class="nls-btn/g) === 2 && /#cat-07/.test(imp) && /#bl-cs-partners/.test(imp) && /nls-note/.test(imp);
     const sol = count(sect("bl-trust"), /class="bl-checks__item"/g);
     const values = count(sect("bl-connect"), /class="bl-val"/g);
     const core = count(sect("bl-daily"), /class="bl-bento__item/g);
@@ -116,7 +116,7 @@ for (const p of pages) {
     const csRail = count(sect("bl-cs"), /class="bl-rail__link"/g);
     // each public-welfare / child-safety area keeps its official-source and "what we do not do" rows
     const csGuard = CS_GROUP_CODES.every((c) => count(sect("bl-cs-" + c), /<dt>/g) === 2);
-    // content upgrade 30: the 26 long-term areas of the integrated business plan (was 21 services)
+    // content upgrade 30: the 26 long-term areas of the integrated business plan (was 21 services), + 27 Giving (2026-10-25)
     const faqs = count(sect("bl-faq"), /<details class="bl-faq__item">/g);
     secOk = !lack.length && screens === AREA_COUNT && faqs >= 6 && csRail === 8 && csGuard && /bl-emergency/.test(sect("bl-cs")) && /story-babylog-title/.test(body);
     secInfo = `missing ${lack.join(",") || "-"}, areas ${screens}/${AREA_COUNT}, faq ${faqs}, child-safety jump links ${csRail}/8, all 8 keep source+guard rows ${csGuard}`;
@@ -143,8 +143,8 @@ for (const p of pages) {
     const rail = count(body, /bl-rail__link/g);
     const principles = count(sect("bl-process"), /<li>/g);
     const models = count(sect("bl-types"), /<ul class="nls-chips">/g);
-    secOk = !lack.length && dts === 4 * 8 + 2 * 15 + 3 * 12 && steps === 5 && principles === 6 && models === 1 && rail === 8 + 15 + 12 && ids.has("bl-cs-partners") && ids.has("bl-industry");
-    secInfo = `missing ${lack.join(",") || "-"}, dt ${dts}/${4 * 8 + 2 * 15 + 3 * 12}, steps ${steps}, principles ${principles}/6, model chips ${models}, jump links ${rail}/35`;
+    secOk = !lack.length && dts === 4 * 8 + 2 * 15 + 3 * 13 && steps === 5 && principles === 6 && models === 1 && rail === 8 + 15 + 13 && ids.has("bl-cs-partners") && ids.has("bl-industry");
+    secInfo = `missing ${lack.join(",") || "-"}, dt ${dts}/${4 * 8 + 2 * 15 + 3 * 13}, steps ${steps}, principles ${principles}/6, model chips ${models}, jump links ${rail}/36`;
   } else {
     const cards = [...body.matchAll(/class="bl-card[^"]*" href="([^"]+)"/g)].map((m) => m[1]);
     const codes = cards.map((c) => (c.match(/source=babylog-contact-([a-z]+)/) || [])[1]);

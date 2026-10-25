@@ -3,7 +3,8 @@
  * categories, 17 contact categories; lines 25-32 are public welfare, child safety and social impact).
  *
  * Sources: the owner's "BABYLOG 최종 사업 확장 계획" (24 groups, 8 categories, 20 platform screens, 14 partner types,
- * 12 contact types, 5 priorities) and the child-safety expansion specification (groups 25-32, 12 partner types, 9 inquiry types).
+ * 12 contact types, 5 priorities) and the child-safety expansion specification (groups 25-32, 12 partner types, 9 inquiry types);
+ * 2026-10-25: a 13th child-protection partner type, giving for children and teens (under review).
  * 2026-10-18: names, descriptions and categories aligned with the owner's "BABYLOG 공식 웹사이트 최종 콘텐츠 구성안".
  * Owner wording is used where the specification gave wording; connecting text is a Claude draft and are NOT reviewed by the owner (see i18n-candidates/babylog-site-status.v1.json).
  *
@@ -21,7 +22,7 @@ export const GROUP_COUNT = 32;
 
 /** ids and stable codes — shared by ko and en */
 export const CS_GROUP_CODES = ["support", "safety", "missing", "abuse", "institutions", "adoption", "independence", "donation"];
-export const CS_PARTNER_CODES = Array.from({ length: 12 }, (_, i) => `cs${String(i + 1).padStart(2, "0")}`);
+export const CS_PARTNER_CODES = Array.from({ length: 13 }, (_, i) => `cs${String(i + 1).padStart(2, "0")}`);
 export const IND_PARTNER_CODES = Array.from({ length: 15 }, (_, i) => `p${String(i + 1).padStart(2, "0")}`);
 export const CONTACT_MORE_CODES = ["services", "education", "saas", "corporate", "public", "welfare", "tech", "global", "other"];
 export const CONTACT_CS_CODES = ["csprevent", "csedu", "csinst", "csprotect", "csadoption", "csdonation", "csindep", "cspublic", "cscsr"];
@@ -123,6 +124,7 @@ const KO = {
         { n: "02", name: "아동 보호·학대 예방", lead: "아동학대 예방 교육과 공식 신고체계, 아동 보호기관 정보를 연결하는 방향." },
         { n: "03", name: "가정위탁·입양 공식 정보", lead: "공식 제도와 절차, 담당기관을 정확하게 안내하는 방향. 사적 매칭이나 거래를 제공하지 않습니다." },
         { n: "04", name: "자립 지원·검증된 후원", lead: "자립준비청년 지원제도와 검증된 공익기관·사회공헌을 연결하는 방향." },
+        { n: "05", name: "아동·청소년 나눔·기부(계획)", lead: "기록과 가족 서비스를 넘어, 도움이 필요한 아동·청소년의 성장을 이용자의 자발적 나눔과 신뢰할 수 있는 아동복지기관 협력으로 돕는 방향. 아동의 신원은 공개하지 않습니다." },
       ],
       ctaBusiness: "공공복지·아동 안전 사업 알아보기",
       ctaPartner: "파트너십 문의하기",
@@ -229,7 +231,7 @@ const KO = {
       title: "서른두 개 사업 분야,\n여덟 개 그룹.",
       lead: "임신·출산·육아부터 아동 건강·교육, 가족·커뮤니티, 커머스, 보육·교육기관, 기업·기술·글로벌, 공공·아동 안전, 아동복지·사회적 가치까지. BABYLOG가 산업과 고객, 플랫폼 가치를 기준으로 설계한 32개 사업 분야입니다.",
       fields: { customers: "대상 고객", value: "사업 내용", model: "사업 방식", revenue: "수익 모델", ops: "운영 조건", sources: "공식 정보 출처", subs: "주요 서비스" },
-      note: "수익 모델은 가격이 아닌 사업 구조의 유형입니다. 32개 사업 분야는 산업과 고객 기준의 분류이고, 플랫폼 페이지의 26개 장기 사업 영역은 서비스 기획 단위입니다.",
+      note: "수익 모델은 가격이 아닌 사업 구조의 유형입니다. 32개 사업 분야는 산업과 고객 기준의 분류이고, 플랫폼 페이지의 27개 장기 사업 영역은 서비스 기획 단위입니다.",
       cats: [
         { id: "01", en: "Pregnancy, Birth & Parenting", name: "임신·출산·육아", model: "정보·기록 중심의 소비자 서비스. 의료기관과 공식 기관의 정보는 연결·안내 방식으로 설계합니다.", revenue: "개인 프리미엄 구독", groups: ["g01", "g02", "g03", "g04"] },
         { id: "02", en: "Child Health, Development & Education", name: "아동 건강·발달·교육", model: "건강·발달·영양 기록과 참고 정보, 놀이·교육 콘텐츠. 진단이 아닌 참고용으로 설계합니다.", revenue: "개인 프리미엄 구독, 교육 콘텐츠 이용권", groups: ["g05", "g06", "g07", "g08"] },
@@ -296,7 +298,7 @@ const KO = {
     },
     cs: {
       kicker: "CHILD SAFETY & SOCIAL IMPACT",
-      title: "아동 보호·공익을 함께할\n열두 유형의 기관.",
+      title: "아동 보호·공익을 함께할\n열세 유형의 기관.",
       lead: "보호와 지원이 필요한 아동을 위한 공식 정보를 정확하게 전하기 위해 협력할 기관을 찾습니다. 공익사업과 상업적 협력은 구분합니다.",
       railLabel: "아동 보호·공익 파트너 유형 바로가기",
       fields: { purpose: "협력 목적", value: "제공 가치", flow: "공식 협력 절차", terms: "운영·개인정보 보호 조건" },
@@ -315,6 +317,7 @@ const KO = {
         ["기업 CSR 담당자", "아동 보호·후원 분야의 사회공헌 협력 방향을 논의합니다.", "기업의 사회공헌을 공식 기관·프로그램으로 연결.", "기금 흐름의 투명성을 확인하고, 후원금을 BABYLOG 수익으로 처리하지 않으며, 별도 계약으로 정리합니다."],
         ["지자체·공공기관", "지역의 아동 보호·지원 정보를 안내합니다.", "지역 주민에게 지역 프로그램 정보 제공.", "공공 조달·계약 절차를 따르며 아동 개인정보를 수집하지 않습니다."],
         ["아동 안전교육 기관", "안전교육 자료와 프로그램을 안내합니다.", "보호자에게 검증된 안전교육 정보 제공.", "자료의 출처와 저작권을 확인하며, 아동 사진·개인정보 사용 기준을 따릅니다."],
+        ["아동·청소년 나눔·기부 협력(검토)", "아동복지기관, 보호시설, 교육기관, 비영리단체, 기업 CSR 담당 조직과 아동·청소년 나눔·기부의 협력 가능성을 검토합니다.", "도움이 필요한 아동·청소년에게 식사·학습·의료·자립 지원이 실제로 닿도록 신뢰할 수 있는 기관과 연결하는 방향.", "체결된 협력이 아닌 향후 계획의 검토 대상입니다. 지금은 기부를 받지 않으며, 아동의 이름·사진·사연 같은 개인정보와 신원을 받거나 공개하지 않습니다."],
       ],
     },
   },
@@ -452,6 +455,7 @@ const EN = {
         { n: "02", name: "Child protection and abuse prevention", lead: "A direction to connect abuse prevention education, official reporting systems and child protection agency information." },
         { n: "03", name: "Official foster care and adoption information", lead: "A direction to guide official systems, procedures and responsible bodies accurately, with no private matching or transactions." },
         { n: "04", name: "Independence support and verified giving", lead: "A direction to connect support systems for youth leaving care with verified public-interest bodies and corporate social contribution." },
+        { n: "05", name: "Giving for children and teens (planned)", lead: "A direction beyond growth records and family services: supporting the growth of children and teens who need help through users' voluntary giving and cooperation with trusted child welfare institutions. Children's identities are never disclosed." },
       ],
       ctaBusiness: "Explore public welfare and child safety",
       ctaPartner: "Partnership inquiry",
@@ -557,7 +561,7 @@ const EN = {
       title: "Thirty-two business lines,\neight groups.",
       lead: "From pregnancy, birth and parenting to child health and education, family and community, commerce, childcare and education institutions, enterprise, technology and global, public and child safety, and child welfare and social impact: 32 business lines BABYLOG has designed around industries, customers and platform value.",
       fields: { customers: "Target customers", value: "What it covers", model: "Business method", revenue: "Revenue model", ops: "Operating conditions", sources: "Official information sources", subs: "Key services" },
-      note: "Revenue models are types of business structure, not prices. The 32 business lines are a classification by industry and customer, while the 26 long-term areas on the Platform page are service planning units.",
+      note: "Revenue models are types of business structure, not prices. The 32 business lines are a classification by industry and customer, while the 27 long-term areas on the Platform page are service planning units.",
       cats: [
         { id: "01", en: "Pregnancy, Birth & Parenting", name: "Pregnancy, Birth & Parenting", model: "Information and record-centered consumer services. Information from medical and official bodies is designed as connection and guidance.", revenue: "Individual premium subscription", groups: ["g01", "g02", "g03", "g04"] },
         { id: "02", en: "Child Health, Development & Education", name: "Child Health, Development & Education", model: "Health, development and nutrition records with reference information, and play and education content, designed as reference rather than diagnosis.", revenue: "Individual premium subscription, education content passes", groups: ["g05", "g06", "g07", "g08"] },
@@ -624,7 +628,7 @@ const EN = {
     },
     cs: {
       kicker: "CHILD SAFETY & SOCIAL IMPACT",
-      title: "Twelve types of institutions\nfor child protection and public interest.",
+      title: "Thirteen types of institutions\nfor child protection and public interest.",
       lead: "We seek institutions to cooperate with in order to convey official information accurately for children who need protection and support. Public-interest work is kept separate from commercial cooperation.",
       railLabel: "Jump to child protection and public-interest partner types",
       fields: { purpose: "Purpose", value: "Value provided", flow: "Official cooperation process", terms: "Operating and privacy conditions" },
@@ -643,6 +647,7 @@ const EN = {
         ["Corporate CSR managers", "Discuss a direction for social contribution in child protection and sponsorship.", "Connecting corporate social contribution to official institutions and programs.", "Transparency of fund flows is confirmed, donations are not treated as BABYLOG revenue, and terms are settled under a separate contract."],
         ["Local governments and public bodies", "Guide local child protection and support information.", "Giving residents information on local programs.", "Public procurement and contract procedures are followed and no child personal data is collected."],
         ["Child safety education organizations", "Guide safety education material and programs.", "Giving guardians verified safety education information.", "Source and copyright of material are verified, and standards for using children's photos and personal data are followed."],
+        ["Giving for children and teens (under review)", "Review possible cooperation on giving for children and teens with child welfare institutions, protective facilities, education institutions, nonprofits and corporate CSR teams.", "A direction to connect with trusted institutions so that meals, learning, medical and independence support actually reach children and teens who need help.", "A possibility under review for a future plan, not a signed partnership. No donations are accepted today, and children's personal information and identity, such as names, photos and stories, are never received or published."],
       ],
     },
   },
