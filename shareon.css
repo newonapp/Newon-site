@@ -1375,3 +1375,10 @@ html[data-newon-shell-theme="dark"] body #shareon-detail :is(.nsh-flow__key, .ns
 html[data-newon-shell-theme="dark"] body #shareon-detail .nsh-faq__sign::before,
 html[data-newon-shell-theme="dark"] body #shareon-detail .nsh-faq__sign::after,
 html[data-newon-shell-theme="dark"] body #shareon-detail .nsh-family__item.is-self .nsh-family__name::after { background-color: #b9b5ff !important; }
+
+/* ---- Owner request (2026-10-25): no grey or grey-looking backgrounds in light mode.
+ * The pale violet tint read as grey, so sections and boxes are white; boxes keep a hairline instead. ---- */
+html:not([data-newon-shell-theme="dark"]) #shareon-detail { --nsh-tint: #ffffff; }
+html:not([data-newon-shell-theme="dark"]) #shareon-detail .nsh-sec--tint { border-top: 1px solid var(--nsh-line); border-bottom: 1px solid var(--nsh-line); }
+html:not([data-newon-shell-theme="dark"]) #shareon-detail :is(.nsh-catalog__aside .nsh-consider, .nsh-modules__item, .nsh-quad__item, .nsh-dir__row:target) { border: 1px solid var(--nsh-line); }
+html:not([data-newon-shell-theme="dark"]) #shareon-detail .nsh-cards--duo .nsh-card:nth-child(4n + 1) { border-color: var(--nsh-line); }

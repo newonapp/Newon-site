@@ -473,3 +473,9 @@ html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is
 html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(a.pl-tile:hover, .pl-tile[aria-current="page"]) { box-shadow: inset 0 0 0 1.5px var(--pl-g) !important; }
 html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-nn .is-next dt i { box-shadow: inset 0 0 0 1.5px var(--pl-faint) !important; }
 @media (min-width: 640px) and (max-width: 1039px) { #lifestage-detail.nls--petlog .pl-tiles--5 > li:last-child:nth-child(odd) { grid-column: 1 / -1; } }
+
+/* ---- Owner request (2026-10-25): no grey or grey-looking backgrounds in light mode.
+ * The pale green tint read as grey, so sections and boxes are white; boxes keep a hairline instead. ---- */
+html:not([data-newon-shell-theme="dark"]) #lifestage-detail.nls--petlog { --pl-tint: #ffffff; }
+html:not([data-newon-shell-theme="dark"]) #lifestage-detail.nls--petlog .nls-block--band.pl-tint { border-top: 1px solid rgba(23, 23, 23, 0.08); border-bottom: 1px solid rgba(23, 23, 23, 0.08); }
+html:not([data-newon-shell-theme="dark"]) #lifestage-detail.nls--petlog :is(.pl-callout, .pl-pair__a, .pl-cmp__how, .pl-ladder > li, .pl-sub, .pl-card--soft, .pl-core > li.is-wide .pl-card) { border: 1px solid var(--pl-line); }

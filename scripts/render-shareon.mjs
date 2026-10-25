@@ -34,7 +34,7 @@ import { SHAREON_PAGES } from "./shareon-copy.mjs";
 import { FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const CSS_VER = "20261025rd1";
+const CSS_VER = "20261025ng1";
 const NLS_VER = "20261025ov1"; // shared Life Stage film hero assets, reused as-is
 
 function localeFlat(lang) {

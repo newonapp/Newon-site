@@ -52,7 +52,7 @@ const rel = (depth, p) => (/^(https?:|mailto:|#|\/)/.test(p) ? p : "../".repeat(
  * a features bento, now/next scene cards, comparison rows, status board, data tables, directories, accordions —
  * with 16px body text and PETLOG green as a point colour only. No screenshots, images or decorative shapes.
  */
-const PETLOG_CSS_VER = "20261025rd1";
+const PETLOG_CSS_VER = "20261025ng1";
 const PETLOG_CSS = `<link rel="stylesheet" href="/petlog-site.css?v=${PETLOG_CSS_VER}" />
     <style>
   /* Background film framing: show more of the right side (owner request 2026-10-19). */

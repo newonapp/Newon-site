@@ -60,7 +60,7 @@ function renderPage(lang, page) {
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=20261025ov1" />
     <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
-    <link rel="stylesheet" href="/myworld-site.css?v=20261025rd1" />`,
+    <link rel="stylesheet" href="/myworld-site.css?v=20261025ng1" />`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=20261025ov1" defer></script>
     <script src="/myworld-site.js?v=${MWS_VER}" defer></script>`,

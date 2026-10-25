@@ -2613,3 +2613,9 @@ html[data-newon-shell-theme="dark"] body #myworld-site .mws-table td[data-label]
 #lifestage-detail.nls[data-story="myworld"] .nls-film__fallback {
   background: radial-gradient(ellipse 70% 55% at 50% 42%, #262626 0%, #111 55%, #0a0a0a 100%);
 }
+
+/* ---- Owner request (2026-10-25): no grey or grey-looking backgrounds in light mode.
+ * The pale blue tint read as grey, so sections and boxes are white; boxes keep a hairline instead. ---- */
+html:not([data-newon-shell-theme="dark"]) #myworld-site { --mws-tint: #ffffff; }
+html:not([data-newon-shell-theme="dark"]) #myworld-site .mws-sec--tint { border-top: 1px solid var(--mws-line); border-bottom: 1px solid var(--mws-line); }
+html:not([data-newon-shell-theme="dark"]) #myworld-site :is(.mws-tabs.is-ready .mws-tabs__list, .mws-panel__now, .mws-rail__card, .mws-nn > div, .mws-agroup__head, .mws-layer, .mws-panelbox, .mws-cloud, .mws-callout, .mws-faq__sign) { border: 1px solid var(--mws-line); }
