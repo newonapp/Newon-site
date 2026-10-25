@@ -74,7 +74,8 @@ for (const p of pages) {
   /* ---- menu ---- */
   const nav = (h.match(/<nav class="fsn" data-biz="babylog"[\s\S]*?<\/nav>/) || [""])[0];
   const links = [...nav.matchAll(/<a class="fsn__a" href="([^"]+)"( aria-current="page")?/g)];
-  const want = BL_NAV.map((n) => `/${p.lang}/babylog/${n.sub ? n.sub + "/" : ""}`);
+  /* 05 Contact opens the unified NEWON Contact page (owner, 2026-10-26) */
+  const want = BL_NAV.map((n) => (n.id === "contact" ? `/${p.lang}/contact/` : `/${p.lang}/babylog/${n.sub ? n.sub + "/" : ""}`));
   const gotHrefs = links.map((m) => m[1]);
   const cur = links.filter((m) => m[2]).map((m) => m[1]);
   rec(

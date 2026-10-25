@@ -66,7 +66,7 @@ test("BL-2 a price in a public BABYLOG page fails the check", () => {
 test("BL-3 a missing menu item fails the check", () => {
   const d = scratch();
   try {
-    mutate(d, "en/babylog/platform/index.html", (h) => h.replace(/<li><a class="fsn__a" href="\/en\/babylog\/contact\/"[^>]*>[\s\S]*?<\/a><\/li>/, ""));
+    mutate(d, "en/babylog/platform/index.html", (h) => h.replace(/<li><a class="fsn__a" href="\/en\/contact\/"[^>]*>[\s\S]*?<\/a><\/li>/, ""));
     const r = run(d);
     assert.notEqual(r.status, 0);
     assert.match(r.stdout, /FAIL menu en\/platform/);

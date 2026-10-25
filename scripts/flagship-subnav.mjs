@@ -23,7 +23,8 @@ export const FLAGSHIP_PAGES = [
   { id: "platform", n: "02", en: "Platform", ko: "플랫폼", sub: "platform/" },
   { id: "business", n: "03", en: "Business", ko: "비즈니스", sub: "business/" },
   { id: "partnerships", n: "04", en: "Partnerships", ko: "파트너십", sub: "partnerships/" },
-  { id: "contact", n: "05", en: "Contact", ko: "문의", sub: "contact/" },
+  /* owner 2026-10-26: the six businesses' 05 Contact opens the unified NEWON Contact page (/{lang}/contact/) */
+  { id: "contact", n: "05", en: "Contact", ko: "문의", sub: "contact/", global: true },
 ];
 
 /**
@@ -64,7 +65,7 @@ export function renderFlagshipSubnav({ biz, lang, active }) {
   const ko = lang === "ko";
   const items = (PAGES_FOR[biz] || FLAGSHIP_PAGES).map((p) => {
     const on = p.id === cur;
-    return `<li><a class="fsn__a" href="/${esc(lang)}/${SLUG[biz]}/${p.sub}"${on ? ' aria-current="page"' : ""}><span class="fsn__n">${p.n}</span><span class="fsn__en">${p.en}</span>${ko ? `<span class="fsn__ko">${p.ko}</span>` : ""}</a></li>`;
+    return `<li><a class="fsn__a" href="/${esc(lang)}/${p.global ? "" : `${SLUG[biz]}/`}${p.sub}"${on ? ' aria-current="page"' : ""}><span class="fsn__n">${p.n}</span><span class="fsn__en">${p.en}</span>${ko ? `<span class="fsn__ko">${p.ko}</span>` : ""}</a></li>`;
   }).join("");
   const label = ko ? `${BRAND_KO[biz] || BRAND[biz]} 메뉴` : `${BRAND[biz]} menu`;
   return `<nav class="fsn" data-biz="${biz}" aria-label="${esc(label)}">

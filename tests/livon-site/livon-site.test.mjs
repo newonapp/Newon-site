@@ -23,9 +23,11 @@ test("5 top menus, in order, on every page of every language, current page marke
     const html = page(lang, p.id);
     const nav = html.match(/<nav class="fsn" data-biz="livon"[\s\S]*?<\/nav>/)[0];
     assert.equal(count(nav, /<a class="fsn__a" href=/g), 5, `${lang}/${p.id}`);
-    for (const q of LIVON_SITE_PAGES) assert.ok(nav.includes(`href="/${lang}/livon/${q.path}"`), `${lang}/${p.id} → ${q.id}`);
+    // 05 Contact opens the unified NEWON Contact page (owner, 2026-10-26)
+    const hrefOf = (q) => (q.id === "contact" ? `/${lang}/contact/` : `/${lang}/livon/${q.path}`);
+    for (const q of LIVON_SITE_PAGES) assert.ok(nav.includes(`href="${hrefOf(q)}"`), `${lang}/${p.id} → ${q.id}`);
     assert.equal(count(nav, /aria-current="page"/g), 1);
-    assert.match(nav, new RegExp(`href="/${lang}/livon/${p.path}" aria-current="page"`));
+    assert.match(nav, new RegExp(`href="${hrefOf(p)}" aria-current="page"`));
   }
 });
 
