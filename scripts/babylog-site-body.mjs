@@ -394,6 +394,17 @@ function overviewBody(C, lang) {
     </div>
   </section>`;
 
+  // Global vision (future plan, 2026-10-26) — three open feature columns on the pale band
+  const GO = C.c30.global.overview;
+  const globalVision = block(
+    "bl-global",
+    `${titleBlock(GO.kicker, GO.title, GO.lead, 2, "bl-global-title")}
+    ${features(GO.items, ["sprout", "shield", "link"], 3, "bl-feat--3")}
+    <p class="nls-note">${esc(GO.note)}</p>
+    <p class="bl-biz__cta"><a class="bl-arrow" href="${pagePath(lang, "platform")}#bl-global">${esc(GO.more)} ${icon("arrow")}</a></p>`,
+    "tint"
+  );
+
   // NEWON connection — large statement, four principles in open columns
   const principles = o.newon.items.map((s) => `<li><h3>${esc(s.name)}</h3><p>${esc(s.body)}</p></li>`).join("");
   const newon = block("bl-newon", `<div class="bl-callout">${titleBlock(o.newon.kicker, o.newon.title, o.newon.lead, 2, "bl-newon-title")}<ol class="bl-pr">${principles}</ol></div>`);
@@ -412,7 +423,7 @@ function overviewBody(C, lang) {
       <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "partnerships")}">${esc(C.ui.toPartnershipsLearn)}</a>`;
   return {
     hero: hero(C, lang, "overview", o.hero, false),
-    main: [vision, connect, problem, who, journey, daily, health, ecosystem, parentEco, trust, diff, now, opportunities, impact, newon, platforms, closeBlock(C, lang, "overview", o, ctas)].join("\n"),
+    main: [vision, connect, problem, who, journey, daily, health, ecosystem, parentEco, trust, diff, now, opportunities, impact, globalVision, newon, platforms, closeBlock(C, lang, "overview", o, ctas)].join("\n"),
   };
 }
 
@@ -531,6 +542,16 @@ function platformBody(C, lang) {
   const csGrid = `<div class="bl-csgrid">${csCards}</div>`;
   const csNote = block("bl-cs-note", `<p class="nls-note">${esc(C.ui.sourcesNote)}</p>`, "", "bl-cs-end");
 
+  // Global services & localisation (future plan, 2026-10-26): services as rows, criteria as a check list
+  const GP = C.c30.global.platform;
+  const globalServices = block(
+    "bl-global",
+    `${titleBlock(GP.kicker, GP.title, GP.lead, 2, "bl-global-title")}
+    <div class="bl-split bl-split--wide"><div><h3 class="bl-sub bl-sub--lg">${esc(GP.servicesTitle)}</h3></div>${rows(GP.services, ["book", "users", "calendar", "home", "hand"], 4)}</div>
+    <div class="bl-split bl-split--wide"><div><h3 class="bl-sub bl-sub--lg">${esc(GP.locTitle)}</h3></div>${checks(GP.loc, 4)}</div>`,
+    "tint"
+  );
+
   const a = p.access;
   const b = BUSINESS.babylog;
   const access = block(
@@ -560,6 +581,7 @@ function platformBody(C, lang) {
       csIntro,
       csGrid,
       csNote,
+      globalServices,
       access,
       faq,
       closeBlock(C, lang, "platform", { closeKicker: p.closeKicker || C.contact.closeKicker, closeTitleHtml: p.closeTitleHtml || C.contact.closeTitleHtml, closeLead: p.closeLead || C.contact.closeLead }, ctas),
@@ -734,11 +756,26 @@ function businessBody(C, lang) {
   const entry = block("bl-entry", `${titleBlock(EN2.kicker, EN2.title, EN2.lead, 2, "bl-entry-title")}${steps(EN2.items, 3)}`);
   const RU = B30.rules;
   const rules = block("bl-rules", `<div class="bl-split bl-split--wide"><div>${titleBlock(RU.kicker, RU.title, RU.lead, 2, "bl-rules-title")}</div>${checks(RU.items)}</div>`, "tint");
+  // Global go-to-market (future plan, 2026-10-26): customer groups, revenue models under review, five steps
+  const GB = C.c30.global.business;
+  const globalGtm = block(
+    "bl-global",
+    `${titleBlock(GB.kicker, GB.title, GB.lead, 2, "bl-global-title")}
+    <h3 class="bl-sub bl-sub--lg">${esc(GB.customersTitle)}</h3>
+    ${features(GB.customers, ["users", "book", "building", "hand"], 4, "bl-feat--4")}
+    <h3 class="bl-sub bl-sub--lg">${esc(GB.revenueTitle)}</h3>
+    ${chips(GB.revenue)}
+    <p class="nls-note">${esc(GB.revenueNote)}</p>
+    <h3 class="bl-sub bl-sub--lg">${esc(GB.stepsTitle)}</h3>
+    ${steps(GB.steps, 4, "bl-steps--5")}
+    <p class="nls-note">${esc(GB.note)}</p>
+    <p class="bl-biz__cta"><a class="bl-arrow" href="#biz-f">${esc(GB.toModel)} ${icon("arrow")}</a> <a class="bl-arrow" href="#grp-24">${esc(GB.toLine)} ${icon("arrow")}</a></p>`
+  );
   const ctas = `<a class="nls-btn" href="${pagePath(lang, "partnerships")}">${esc(C.ui.toPartnerships)} →</a>
       <a class="nls-btn nls-btn--ghost" href="${inquiryHref(lang, "business", "")}">${esc(C.ui.inquiryCta)}</a>`;
   return {
     hero: hero(C, lang, "business", b.hero, true),
-    main: [intro, payers, revenue, market, entry, groups, phases, rules, closeBlock(C, lang, "business", b, ctas)].join("\n"),
+    main: [intro, payers, revenue, market, entry, groups, phases, rules, globalGtm, closeBlock(C, lang, "business", b, ctas)].join("\n"),
   };
 }
 
@@ -820,6 +857,33 @@ function partnershipsBody(C, lang) {
   );
   const joint = block("bl-joint", `${titleBlock(R30.joint.kicker, R30.joint.title, R30.joint.lead, 2, "bl-joint-title")}${icards(R30.joint.items, ["book", "shield", "building"], 3, "bl-icards--3")}`, "tint");
   const pvalue = block("bl-pvalue", `<div class="bl-split bl-split--wide"><div>${titleBlock(R30.value.kicker, R30.value.title, R30.value.lead, 2, "bl-pvalue-title")}</div>${checks(R30.value.items)}</div>`, "tint");
+  // Global partnerships (possibilities only, 2026-10-26): partner kinds as a table, shared principles, one inquiry
+  // button to the unified NEWON Contact page (BABYLOG preselected via ?platform=).
+  const GR = C.c30.global.partnerships;
+  const globalRows = GR.items
+    .map(
+      (it, i) => `<article class="bl-trow" aria-labelledby="bl-global-p${i + 1}">
+      <h3 id="bl-global-p${i + 1}" class="bl-trow__name">${esc(it[0])}</h3>
+      ${dl([
+        [GR.fields.area, esc(it[1])],
+        [GR.fields.check, esc(it[2])],
+      ], "bl-trow__cells")}
+    </article>`
+    )
+    .join("\n");
+  const globalPartners = block(
+    "bl-global",
+    `${titleBlock(GR.kicker, GR.title, GR.lead, 2, "bl-global-title")}
+    <div class="bl-ttable">
+      <div class="bl-ttable__head" aria-hidden="true"><span></span><span>${esc(GR.fields.area)}</span><span>${esc(GR.fields.check)}</span><span></span></div>
+      ${globalRows}
+    </div>
+    <div class="bl-principles bl-principles--panel"><h3 class="bl-sub bl-sub--lg">${esc(GR.principlesTitle)}</h3>
+    <ul class="bl-plist">${GR.principles.map((t) => `<li>${icon("lock")}<span>${esc(t)}</span></li>`).join("")}</ul></div>
+    <div class="nls-actions"><a class="nls-btn bl-btn-point" href="/${lang}/contact/?type=partnership&amp;platform=babylog">${esc(GR.cta)} →</a></div>
+    <p class="nls-note">${esc(GR.ctaNote)}</p>`,
+    "tint"
+  );
   const principleList = `<ul class="bl-plist">${p.principles.items.map((t) => `<li>${icon("check")}<span>${esc(t)}</span></li>`).join("")}</ul>`;
   const ctas = `<a class="nls-btn" href="${inquiryHref(lang, "partnerships", "")}">${esc(C.ui.inquiryCta)} →</a>
       <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "contact")}">${esc(C.ui.toInquiry)}</a>`;
@@ -858,6 +922,7 @@ function partnershipsBody(C, lang) {
     <div class="bl-biz__list bl-biz__list--3">${csCards}</div>`,
         "band"
       ),
+      globalPartners,
       block(
         "bl-process",
         `${titleBlock(p.process.kicker, p.process.title, p.process.lead, 2, "bl-process-title")}
