@@ -38,7 +38,9 @@ test("Overview has the 10 required sections, one h1 and the required slogan", ()
   for (const id of ["lvs-vision", "lvs-journey", "lvs-stage", "lvs-events", "lvs-daily", "lvs-family", "lvs-community", "lvs-ecosystem", "lvs-next"]) assert.ok(html.includes(`id="${id}"`), id);
   // 2026-10 upgrade: + definition/problem, customers, differentiation, service status, long-term vision (21 areas)
   for (const id of ["lvs-define", "lvs-customers", "lvs-diff", "lvs-now", "lvs-future"]) assert.ok(html.includes(`id="${id}"`), id);
-  assert.equal(count(html, /data-lvs-section="/g) + 1 /* hero */, 15);
+  // 2026-10 global expansion: + one short global-vision section (lvs-global)
+  assert.ok(html.includes(`id="lvs-global"`), "lvs-global");
+  assert.equal(count(html, /data-lvs-section="/g) + 1 /* hero */, 16);
   assert.equal(count(html, /class="lvs-event[ "]/g), 13);
   assert.equal(count(html, /data-lvs-event="/g), 13);
   assert.equal(LIFE_EVENTS.length, 13);
@@ -114,6 +116,14 @@ test("Business, Partnerships and Contact upgrade sections; contact purposes link
     for (const id of ["lvs-model", "lvs-revenue", "lvs-plans", "lvs-fees", "lvs-market", "lvs-gtm", "lvs-roadmap", "lvs-rules"]) assert.ok(b.includes(`id="${id}"`), id);
     const p = page(lang, "partnerships");
     for (const id of ["lvs-pvision", "lvs-pmodels", "lvs-poc", "lvs-data", "lvs-campaigns", "lvs-value"]) assert.ok(p.includes(`id="${id}"`), id);
+    // 2026-10 global expansion: one lvs-global section on Platform, Business and Partnerships; future plans only
+    for (const [id, html] of [["platform", page(lang, "platform")], ["business", b], ["partnerships", p]]) {
+      assert.equal(count(html, /id="lvs-global"/g), 1, `${lang}/${id} lvs-global`);
+      const g = html.match(/<div id="lvs-global"[\s\S]*?(?=<div id="|<div class="nls-block nls-close|<\/div>\s*<\/section>)/)[0];
+      assert.match(g, lang === "ko" ? /정하지 않았|체결된 해외 협약이나 파트너는 없/ : /have been set|no overseas agreement or partner/, `${lang}/${id} plan wording`);
+    }
+    assert.equal(count(b.match(/<div id="lvs-global"[\s\S]*?<div class="nls-block nls-close/)[0], /class="lvs-steps__item/g), 5, "5 global phases");
+    assert.match(p, new RegExp(`href="/${lang}/contact/\\?type=partnership&amp;platform=livon"`));
     const c = page(lang, "contact");
     assert.equal(count(c, /class="lvs-biz lvs-purpose"/g), 8);
     const hrefs = [...c.match(/<div id="lvs-purpose"[\s\S]*?<div id="lvs-contact-tips"/)[0].matchAll(/href="([^"]+)"/g)].map((m) => m[1].replace(/&amp;/g, "&"));

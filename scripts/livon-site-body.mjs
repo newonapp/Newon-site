@@ -487,6 +487,16 @@ function ecosystem(lang) {
     </div>`, SEC);
 }
 
+/* global vision (2026-10 owner brief) — the same split as the vision band: statement left, four directions right */
+function globalSec(lang) {
+  const g = c30(lang).global.overview;
+  return block("lvs-global", `<div class="nls-split lvs-split">
+      ${head(g.kicker, g.title, g.lead)}
+      ${defs(g.points)}
+    </div>
+    <p class="lvs-more-link"><a class="lvs-link" href="${e(pageHref(lang, "business"))}#lvs-global">${e(g.more)} ${arrow}</a></p>`, BAND);
+}
+
 /* closing ink band with one yellow call to action */
 function nextStep(lang) {
   const c = siteCopy(lang);
@@ -526,6 +536,7 @@ export function renderOverview(lang) {
     ${nowSec(lang)}
     ${futureSec(lang)}
     ${ecosystem(lang)}
+    ${globalSec(lang)}
     ${nextStep(lang)}`);
   return shell(lang, "overview", "lvs-overview-title", overviewHero(lang), body);
 }
@@ -633,6 +644,7 @@ export function renderPlatform(lang) {
       <p class="lvs-bento__sub">${e(sub)}</p>
       <p>${e(body)}</p>
     </article>`).join("");
+  const gp = c30(lang).global.platform;
   const faq = x.faq.map(([q, a]) => `<details class="lvs-acc"><summary>${e(q)}</summary><p>${e(a)}</p></details>`).join("");
   /* 40 categories — one tab per area (A–E) */
   const ctabs = tabs(p.groupsTitle, GROUPS.map((g) => [`lvs-group-${g.id}`, pick(lang, g.ko, g.en), g.range, g.id]));
@@ -688,6 +700,13 @@ export function renderPlatform(lang) {
       </div>`, { band: true })}
     ${block("lvs-trust", `${head(x.trustKicker, x.trustTitle, "")}
       ${checks(x.trust.map((t) => e(t)))}`)}
+    ${block("lvs-global", `${headSplit(gp.kicker, gp.title, gp.lead)}
+      ${feats(gp.services, 4, { mod: "rule" })}
+      <div class="lvs-gap">
+        <header class="nls-head lvs-subhead"><h3 class="lvs-h3">${e(gp.locTitle)}</h3><p class="nls-lead">${e(gp.locLead)}</p></header>
+        ${defs(gp.loc, "grid")}
+      </div>
+      <p class="nls-note">${e(gp.related)} ${catLinks(lang, ["13", "37"])}</p>`, { cls: "lvs-rule" })}
     ${block("lvs-app", `${head(x.appKicker, x.appTitle, "")}
       <div class="lvs-bento">${app}</div>`, { band: true })}
     ${block("lvs-faq", `<div class="nls-split lvs-split">
@@ -736,6 +755,7 @@ export function renderBusiness(lang) {
     </li>`
   ).join("");
   const plans = x.plans.map(([t, st, body], i) => `<li class="lvs-plan${i === 0 ? " is-now" : ""}"><p class="lvs-plan__st">${e(st)}</p><h3>${e(t)}</h3><p>${e(body)}</p></li>`).join("");
+  const gb = c30(lang).global.business;
   const principles = [b.verdictBody, pick(lang, "고객별 맞춤 외주가 아니라 표준화된 자체 솔루션과 플랫폼 제품을 만듭니다.", "Standard products and our own platform — not custom client work."), b.revNote];
   const body = `
     ${block("lvs-verdict", `<div class="lvs-statement">
@@ -776,6 +796,17 @@ export function renderBusiness(lang) {
       </div>`)}
     ${block("lvs-rules", `${head(b.ruleKicker, b.ruleTitle, "")}
       ${checks(b.ruleItems.concat(x.rulesExtra).map((t) => e(t)))}`, { band: true })}
+    ${block("lvs-global", `${headSplit(gb.kicker, gb.title, gb.lead)}
+      <header class="nls-head lvs-subhead"><h3 class="lvs-h3">${e(gb.custTitle)}</h3><p class="nls-lead">${e(gb.custLead)}</p></header>
+      ${feats(gb.customers, 4, { mod: "rule" })}
+      <div class="lvs-gap">
+        <header class="nls-head lvs-subhead"><h3 class="lvs-h3">${e(gb.phaseTitle)}</h3><p class="nls-lead">${e(gb.phaseLead)}</p></header>
+        ${steps(gb.phases, "5")}
+      </div>
+      <div class="nls-split lvs-split lvs-gap">
+        <header class="nls-head lvs-subhead"><h3 class="lvs-h3">${e(gb.revTitle)}</h3><p class="nls-lead">${e(gb.revLead)}</p></header>
+        ${defs(gb.revenue)}
+      </div>`)}
     <div class="nls-block nls-close nls-block--ink lvs-close">
       <p class="nls-kicker">Business</p>
       <h2 class="nls-hero__title">${nl(x.ctaTitle)}</h2>
@@ -822,6 +853,7 @@ export function renderPartnerships(lang) {
       ${dl([[mf.value, e(value)], [mf.cond, e(cond)]])}
     </article>`).join("");
   const pf = x.pocF;
+  const gq = c30(lang).global.partnerships;
   const pocs = x.pocs.map(([t, scope, period, measure, cond], i) => `<article class="lvs-biz lvs-poc" id="lvs-poc-${pad(i + 1)}">
       <h3>${e(t)}</h3>
       <p class="lvs-biz__what">${e(scope)}</p>
@@ -853,6 +885,9 @@ export function renderPartnerships(lang) {
       </div>`, { band: true })}
     ${block("lvs-steps", `${head(p.stepsKicker, p.stepsTitle, "")}
       ${steps(pick(lang, PARTNER_STEPS.ko, PARTNER_STEPS.en))}`)}
+    ${block("lvs-global", `${headSplit(gq.kicker, gq.title, gq.lead)}
+      ${feats(gq.items, 3, { mod: "card" })}
+      <p class="lvs-more-link"><a class="lvs-link" href="/${e(lang)}/contact/?type=partnership&amp;platform=livon">${e(gq.cta)} ${arrow}</a></p>`, { band: true })}
     <div class="nls-block nls-close nls-block--ink lvs-close">
       <p class="nls-kicker">Partnership</p>
       <h2 class="nls-hero__title">${nl(p.heroTitle)}</h2>
