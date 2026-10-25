@@ -103,7 +103,7 @@ function textHero(lang, kicker, title, lead, titleId) {
         <h1 id="${e(titleId)}" class="nls-film__slogan">${nl(title)}</h1>
         <p class="nls-film__lead">${e(lead)}</p>
         <div class="nls-film__actions">
-          <a class="nls-btn" href="/livon/">${e(c.tryWeb)} →</a>
+          <a class="nls-btn" href="${e(pageHref(lang, "platform"))}#lvs-app">${e(c.tryWeb)} →</a>
           <a class="nls-btn nls-btn--ghost" href="${e(contactHref)}"${isContact ? " data-nls-scroll" : ""}>${e(c.toContact)}${isContact ? " ↓" : ""}</a>
         </div>
       </div>
@@ -500,7 +500,7 @@ function nextStep(lang) {
     <p class="nls-lead">${e(n.lead)}</p>
     <p class="nls-note">${e(c.appStatus)}</p>
     <div class="nls-actions">
-      <a class="nls-btn lvs-btn-point" href="/livon/">${e(c.tryWeb)} →</a>
+      <a class="nls-btn lvs-btn-point" href="${e(pageHref(lang, "platform"))}#lvs-app">${e(c.tryWeb)} →</a>
       ${links}
     </div>
   </div>`;
@@ -539,7 +539,7 @@ function categoryCard(lang, x) {
   const cta =
     st === "planned"
       ? `<a class="lvs-link" href="${e(pageHref(lang, "contact"))}">${e(f.ctaPlanned)} ${arrow}</a>`
-      : `<a class="lvs-link" href="/livon/">${e(f.ctaWeb)} ${arrow}</a>`;
+      : `<a class="lvs-link" href="${e(pageHref(lang, "platform"))}#lvs-app">${e(f.ctaWeb)} ${arrow}</a>`;
   const nt = pick(lang, x.noteKo, x.noteEn);
   return `<article class="lvs-cat" id="lvs-cat-${e(x.n)}" data-status="${e(st)}">
     <div class="lvs-cat__meta"><span class="lvs-cat__n">${e(x.n)}</span><span class="lvs-cat__en">${e(x.en)}</span></div>
@@ -632,7 +632,6 @@ export function renderPlatform(lang) {
       <h3>${e(t)}</h3>
       <p class="lvs-bento__sub">${e(sub)}</p>
       <p>${e(body)}</p>
-      ${i === 0 ? `<p><a class="lvs-link" href="/livon/">${e(c.tryWeb)} ${arrow}</a></p>` : ""}
     </article>`).join("");
   const faq = x.faq.map(([q, a]) => `<details class="lvs-acc"><summary>${e(q)}</summary><p>${e(a)}</p></details>`).join("");
   /* 40 categories — one tab per area (A–E) */

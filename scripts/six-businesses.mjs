@@ -80,7 +80,7 @@ export const BUSINESS = {
     accent: "#F6D76B",
     launch: "coming",
     stores: null,
-    webStart: "transition",
+    webStart: "removed", // owner 2026-10-26: no web preview is promoted; app launch in preparation
     webStartHref: "/livon/",
   },
   ongil: {
@@ -88,7 +88,7 @@ export const BUSINESS = {
     accent: "#E99465",
     launch: "coming",
     stores: null,
-    webStart: "transition",
+    webStart: "removed", // owner 2026-10-26: no web preview is promoted; app launch in preparation
     webStartHref: "/ongil-start/",
   },
 };

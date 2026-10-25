@@ -160,14 +160,14 @@ const KO = {
     {
       n: "05",
       title: "LIVON — Life Stage",
-      body: "교육, 진로, 취업, 군 복무, 금융, 주거, 결혼, 출산, 가족, 건강, 복지, 은퇴까지 삶의 단계마다 필요한 정보가 여러 곳에 흩어진 문제를 다룹니다. 10대부터 70대 이상까지 지금의 생애 단계에서 출발하는 통합 라이프 플랫폼으로, 지금은 LIVON 웹에서 회원가입 없이 무료로 이용할 수 있고 LIVON 앱은 출시 준비 중입니다. 공공 제도는 공식 출처와 기준일을 함께 표시하며, 교육·채용·생활정보 분야의 기업과 공공기관 협력을 지향합니다.",
+      body: "교육, 진로, 취업, 군 복무, 금융, 주거, 결혼, 출산, 가족, 건강, 복지, 은퇴까지 삶의 단계마다 필요한 정보가 여러 곳에 흩어진 문제를 다룹니다. 10대부터 70대 이상까지 지금의 생애 단계에서 출발하는 통합 라이프 플랫폼으로, 현재 LIVON 앱 출시를 준비하고 있습니다. 공공 제도는 공식 출처와 기준일을 함께 표시하며, 교육·채용·생활정보 분야의 기업과 공공기관 협력을 지향합니다.",
       tags: ["생애 단계별 정보", "공공 제도 안내", "생활 기록", "교육·진로·복지"],
       href: "../livon/",
     },
     {
       n: "06",
       title: "ONGIL — Senior Life",
-      body: "시니어가 자신의 속도와 방식으로 일상을 이어 갈 수 있도록 생활정보와 가족 연결, 돌봄·복지 정보를 잇습니다. 시니어 본인과 가족이 주요 이용 대상이며, 지금은 로그인 없이 이 기기에만 저장되는 웹 체험판으로 일부 기능을 제공하고 iOS·Android 앱은 국내 첫 출시를 준비 중입니다. 돌봄 사업자, 복지기관, 기업·지자체와의 협력을 검토하고 있으며, 공식 제휴가 확정된 기관은 아직 없습니다.",
+      body: "시니어가 자신의 속도와 방식으로 일상을 이어 갈 수 있도록 생활정보와 가족 연결, 돌봄·복지 정보를 잇습니다. 시니어 본인과 가족이 주요 이용 대상이며, 현재 iOS·Android 앱의 국내 첫 출시를 준비하고 있습니다. 돌봄 사업자, 복지기관, 기업·지자체와의 협력을 검토하고 있으며, 공식 제휴가 확정된 기관은 아직 없습니다.",
       tags: ["일상생활", "건강 기록", "가족 연결", "돌봄·복지 안내"],
       href: "../ongil/",
     },
@@ -185,7 +185,7 @@ const KO = {
       badge: "플랫폼 운영",
       body: "BABYLOG, PETLOG, MY WORLD, SHAREON, LIVON, ONGIL 여섯 플랫폼을 직접 운영합니다. 각 플랫폼은 이용자에게 기록·정보·서비스를 제공하고, 그 영역에서 플랫폼 기반 사업이 자라는 토대가 됩니다.",
       notes: [
-        "이용 가능 — BABYLOG·PETLOG·MY WORLD 앱, LIVON 웹, ONGIL 웹 체험판",
+        "이용 가능 — BABYLOG·PETLOG·MY WORLD 앱",
         "준비 중 — SHAREON 앱, LIVON 앱, ONGIL 앱",
       ],
       links: [{ href: "#ab-build-title", label: "6개 플랫폼 보기 →" }],
@@ -321,7 +321,7 @@ const KO = {
     {
       year: "2026.09",
       title: "LIVON·ONGIL 공개",
-      body: "생애주기 플랫폼 LIVON과 시니어 라이프 플랫폼 ONGIL을 웹사이트에 소개하고, LIVON 웹을 무료로 열었습니다.",
+      body: "생애주기 플랫폼 LIVON과 시니어 라이프 플랫폼 ONGIL을 웹사이트에 소개했습니다. 두 플랫폼은 앱 출시를 준비하고 있습니다.",
     },
     {
       year: "NOW",
@@ -539,14 +539,14 @@ const EN = {
     {
       n: "05",
       title: "LIVON — Life Stage",
-      body: "LIVON deals with information scattered across many places at every stage of life — education, careers, jobs, military service, money, housing, marriage, birth, family, health, welfare and retirement. It is an integrated life platform that starts from your current life stage, from the teens to 70 and over. You can use LIVON on the web for free today without signing up; the LIVON app is in preparation. Public programmes are shown with their official source and reference date, and LIVON aims to work with companies and public bodies in education, recruitment and everyday information.",
+      body: "LIVON deals with information scattered across many places at every stage of life — education, careers, jobs, military service, money, housing, marriage, birth, family, health, welfare and retirement. It is an integrated life platform that starts from your current life stage, from the teens to 70 and over. The LIVON app is being prepared for launch. Public programmes are shown with their official source and reference date, and LIVON aims to work with companies and public bodies in education, recruitment and everyday information.",
       tags: ["Life-stage information", "Public programmes", "Life records", "Education, careers & welfare"],
       href: "../livon/",
     },
     {
       n: "06",
       title: "ONGIL — Senior Life",
-      body: "ONGIL connects everyday information, family connection and care and welfare information so that seniors can carry on their lives at their own pace and in their own way. It is built for seniors and their families. Today some features are offered in a web preview that needs no sign-in and stores data on this device only; the iOS and Android app is being prepared for its first release in Korea. Collaboration with care providers, welfare bodies, companies and local governments is under review, and no institution has a confirmed official partnership yet.",
+      body: "ONGIL connects everyday information, family connection and care and welfare information so that seniors can carry on their lives at their own pace and in their own way. It is built for seniors and their families. The iOS and Android app is being prepared for its first release in Korea. Collaboration with care providers, welfare bodies, companies and local governments is under review, and no institution has a confirmed official partnership yet.",
       tags: ["Daily life", "Health records", "Family connection", "Care & welfare guidance"],
       href: "../ongil/",
     },
@@ -563,7 +563,7 @@ const EN = {
       badge: "Platforms",
       body: "NEWON runs six platforms itself: BABYLOG, PETLOG, MY WORLD, SHAREON, LIVON and ONGIL. Each gives people records, information and services, and becomes the base on which platform business grows in its area.",
       notes: [
-        "Available — BABYLOG, PETLOG and MY WORLD apps, LIVON on the web, ONGIL web preview",
+        "Available — BABYLOG, PETLOG and MY WORLD apps",
         "In preparation — SHAREON app, LIVON app, ONGIL app",
       ],
       links: [{ href: "#ab-build-title", label: "See the six platforms →" }],
@@ -695,7 +695,7 @@ const EN = {
     {
       year: "2026.09",
       title: "LIVON and ONGIL introduced",
-      body: "The life-stage platform LIVON and the senior life platform ONGIL were introduced on the website, and LIVON opened on the web for free.",
+      body: "The life-stage platform LIVON and the senior life platform ONGIL were introduced on the website. Both platforms are preparing their app launch.",
     },
     {
       year: "NOW",

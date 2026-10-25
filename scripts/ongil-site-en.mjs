@@ -3,7 +3,7 @@
  * (V4 content upgrade, 2026-10-24): 28 long-term areas in 6 groups, with Life Box, Friends and Safe Band as their own sections;
  * + area 29 Giving (group G, planned, 2026-10-25) — no donations are collected and it is not a revenue business;
  * status shown by grouping (now / in development / planned / under review), never by per-card badges;
- * only what the /ongil-start/ web preview actually does is described as available; the iOS/Android app is not released yet;
+ * (owner 2026-10-26) no web preview is promoted: the status is 'app coming soon'; the iOS/Android app is not released yet;
  * no medical diagnosis, medication changes or emergency judgement; no partners, results, contracts, prices or fee rates are claimed.
  */
 
@@ -13,8 +13,8 @@ export const EN = {
   brandKo: "Ongil",
   positioning: "Senior Life & Care Platform",
   notice:
-    "ONGIL is growing from the senior daily-life features it offers today in its web preview into health and family care, friends and gatherings, care and welfare, safety devices, and enterprise and public-sector solutions. Many of the businesses and features on this page are part of future development or partnership plans; only the web preview features are available today.",
-  appNote: "The ONGIL app for iOS and Android is being prepared for its first release. Today some features are offered in a web preview that needs no sign-in and stores data on this device only.",
+    "ONGIL is preparing its app launch and plans to grow from senior daily-life features into health and family care, friends and gatherings, care and welfare, safety devices, and enterprise and public-sector solutions. Many of the businesses and features on this page are part of future development or partnership plans; no service is offered today.",
+  appNote: "The ONGIL app for iOS and Android is being prepared for its first release.",
   safetyNote: "ONGIL does not diagnose, prescribe or treat, and does not respond to emergencies. In Korea, call 119 for emergencies and 112 for missing persons or crime. Welfare counselling is available at 129 and emotional-support counselling at 109.",
   ui: {
     nav: [
@@ -88,11 +88,11 @@ export const EN = {
 
   status: {
     label: "Service Status",
-    title: "What we offer today,\nand what comes next.",
+    title: "What the app launch is preparing,\nand what comes next.",
     lead: "The 29 areas are long-term planning units. They share common systems rather than each having its own app or server, and they open in stages, as grouped below.",
     cols: [
       {
-        id: "now", en: "Available now", ko: "Available now in the web preview", icon: "check",
+        id: "now", en: "App Coming Soon · core features", ko: "App Coming Soon · core features", icon: "check",
         items: [
           { t: "Check-ins, schedule, routines, to-dos, notes, expenses", a: "daily-life" },
           { t: "Self-entered blood pressure, glucose, weight, pulse, symptom notes", a: "health-record" },
@@ -138,7 +138,7 @@ export const EN = {
         ],
       },
     ],
-    basis: "'Available now' lists only what the current public web preview actually does (no sign-in, stored on this device only). 'In development' is the scope being built before the first app release; timing depends on store review and legal review. Everything else is a staged plan from the business plan and does not mean it is complete.",
+    basis: "'App Coming Soon · core features' are the basics planned for the first app. 'In development' is the scope being built before the first app release. Nothing is offered as a service today; timing depends on store review and legal review. Everything else is a staged plan from the business plan and does not mean it is complete.",
   },
 
   /* ───────────────────────── 01 OVERVIEW ───────────────────────── */
@@ -155,7 +155,7 @@ export const EN = {
       statement: "A caring path between older adults and their families.",
       lead: "ONGIL is a comprehensive senior platform that brings together health, daily life, care, safety, family, friends, hobbies, welfare, long-term care and smart devices. It is not just a way to find a care worker: it helps older adults manage their own day and meet people nearby, lets families far away check in only as far as they are allowed, and leads to trustworthy care and welfare information when it is needed.",
       facts: [
-        { k: "Now", v: "Web preview · no sign-in, stored on this device only" },
+        { k: "Now", v: "ONGIL app coming soon" },
         { k: "Next", v: "iOS and Android app being prepared for first release" },
         { k: "Core users", v: "Older adults · guardians and family · caregivers (institutions are separate business customers)" },
         { k: "Principles", v: "Consent first · essential safety and welfare information free · health data never used for ads" },
@@ -195,7 +195,7 @@ export const EN = {
       title: "29 areas,\nseven paths.",
       lead: "ONGIL has 29 long-term business areas. They are not built all at once: the plan starts with the everyday basics and family care, then widens step by step.",
       items: [
-        { n: "01–04", en: "Core Care", name: "Core Care", text: "Senior Profile · Health Record · Medication · Daily Life. The older adult's account and permissions, health readings, medication, meals and sleep. Some record features are in the web preview today." },
+        { n: "01–04", en: "Core Care", name: "Core Care", text: "Senior Profile · Health Record · Medication · Daily Life. The older adult's account and permissions, health readings, medication, meals and sleep. Record features are being prepared for the app launch." },
         { n: "05–10", en: "Family & Care", name: "Family & Care", text: "Family Care · Care Tasks · Care Matching · Home Care · Care Facilities · Medical Access. Family check-ins and shared care, finding care providers, hospital escorts." },
         { n: "11–17", en: "Life & Society", name: "Life & Society", text: "Safety · Community · Activities · Jobs · Welfare · Mobility · Housing. Safety and local community, hobbies and courses, work and volunteering, welfare, transport and housing." },
         { n: "18–21", en: "Commerce & Tech", name: "Commerce & Tech", text: "Senior Market · Subscription · ONGIL AI · Devices. Daily-living and assistive products, personal and family subscriptions, a voice assistant and smart devices." },
@@ -208,13 +208,13 @@ export const EN = {
       n: "05",
       label: "Use Cases",
       title: "Moments when\nONGIL helps.",
-      lead: "Typical situations, noting what can be tried in the web preview today and what opens later in the app.",
+      lead: "Typical situations, noting what the first app will include and what opens later.",
       steps: [
-        { n: "01", name: "Morning check-in and medication", text: "The older adult notes mood and how they feel and marks the medicine taken. Recording works in the web preview today; passing it to family is being prepared in the app." },
+        { n: "01", name: "Morning check-in and medication", text: "The older adult notes mood and how they feel and marks the medicine taken. Recording and passing it to family are being prepared for the app launch." },
         { n: "02", name: "Getting ready for the doctor", text: "Blood-pressure and glucose records, symptom notes and the appointment come together on one screen to show the doctor. Hospital-escort connection is planned." },
         { n: "03", name: "Siblings sharing care", text: "One sibling takes hospital visits, another groceries, another the evening call. Shared family schedules and roles are planned after the first app release." },
         { n: "04", name: "Making new friends nearby", text: "Finding a walking group in the local park or a knitting circle at the welfare center. Friends is planned, starting with verified open gatherings." },
-        { n: "05", name: "A family looking into care centers", text: "Choosing area and type to find day-care centers and care homes, and saving favourites. Facility search is in the web preview today; ratings should be checked with official sources." },
+        { n: "05", name: "A family looking into care centers", text: "Choosing area and type to find day-care centers and care homes, and saving favourites. Facility search is being prepared for the app launch; ratings should be checked with official sources." },
       ],
     },
     people: {
@@ -262,7 +262,7 @@ export const EN = {
       title: "The more precious daily life is,\nthe more trust matters.",
       lead: "Seven commitments ONGIL keeps.",
       points: [
-        { t: "Privacy", text: "Web preview records are stored on this device without sign-in. Health data is never used for ad targeting and is not combined with other Newon apps without explicit consent." },
+        { t: "Privacy", text: "Health data is never used for ad targeting and is not combined with other Newon apps without explicit consent." },
         { t: "Limits of AI", text: "AI is a helper for summarizing records and reading out schedules. It does not diagnose illness, adjust medication or judge emergencies." },
         { t: "Choice and consent", text: "You decide what to record and who sees it. Withdrawing consent is designed to be just as easy." },
         { t: "Limits on location", text: "Location is reviewed only with separate consent, with limited purpose, duration and viewers, and an access log. Families never get unlimited tracking." },
@@ -290,7 +290,7 @@ export const EN = {
       label: "Closing",
       title: "Today and tomorrow,\na warm path together.",
       items: [
-        { k: "Older adults & families", text: "See what you can use today across the 29 areas and where ONGIL is heading.", cta: "Explore the platform", href: "platform/" },
+        { k: "Older adults & families", text: "See what the app launch is preparing across the 29 areas and where ONGIL is heading.", cta: "Explore the platform", href: "platform/" },
         { k: "Institutions, companies, investors", text: "See who uses ONGIL and who pays, the proposed revenue models and the phased growth path.", cta: "See the business", href: "business/" },
         { k: "Contact", text: "From questions by older adults and guardians to institution partnerships and press or investor inquiries, choose a type and we reply by email.", cta: "Contact us", href: "contact/" },
       ],
@@ -316,7 +316,7 @@ export const EN = {
       { id: "G", en: "Giving", ko: "Giving" },
     ],
     groups: [
-      { from: 0, to: 4, kicker: "Areas 01–04 · Core Care", title: "Core Care —\nreasons to use it every day", lead: "The older adult's account and permissions, health readings, medication, meals and sleep. This is ONGIL's everyday base, and some record features can be tried in the web preview today." },
+      { from: 0, to: 4, kicker: "Areas 01–04 · Core Care", title: "Core Care —\nreasons to use it every day", lead: "The older adult's account and permissions, health readings, medication, meals and sleep. This is ONGIL's everyday base, and record features are being prepared for the app launch." },
       { from: 4, to: 10, kicker: "Areas 05–10 · Family & Care", title: "Family & Care —\ncare that is shared", lead: "Family check-ins and shared care, visit records, finding care providers, hospital escorts. Long-term care benefits, medical acts and care-home admission are handled separately under the relevant rules and licences." },
       { from: 10, to: 17, kicker: "Areas 11–17 · Life & Society", title: "Life & Society —\nlife beyond the front door", lead: "Safety and local community, hobbies and courses, work and volunteering, welfare, transport and housing information. Public welfare information and emergency contact features stay free." },
       { from: 17, to: 21, kicker: "Areas 18–21 · Commerce & Tech", title: "Commerce & Tech —\neasy to choose, easy to ask", lead: "Daily-living and assistive products, personal and family subscriptions, a voice AI assistant and smart devices. No products or paid plans are on sale today." },
@@ -327,34 +327,34 @@ export const EN = {
     sections: [
       {
         id: "senior-profile", grp: "A", label: "01 Senior Profile", title: "Senior account, family links and permissions",
-        desc: "The older adult's profile sits at the center, connecting family and caregivers and setting what each can see. In the web preview today you can choose what to share with family and check a preview; sign-in, accounts and device-to-device family links are being prepared for the first app release.",
+        desc: "The older adult's profile sits at the center, connecting family and caregivers and setting what each can see. Choosing what to share with family, a preview, sign-in, accounts and device-to-device family links are being prepared for the first app release.",
         services: ["Senior profile", "Per-item sharing choices", "Preview of what family will see", "Three text sizes", "Sign-in and device sync (in development)", "Family and caregiver permissions (in development)"],
         audience: "Older adults and family who want to connect", cta: "contact",
         note: "The default is 'not shared'. There is no structure in which guardians or institutions automatically see everything.",
       },
       {
         id: "health-record", grp: "A", label: "02 Health Record", title: "Health readings and symptom notes",
-        desc: "Enter blood pressure, glucose, weight and pulse yourself, and note symptoms such as pain, dizziness or fatigue. Available in the web preview today. Numbers are never judged or diagnosed; period summaries will be widened in the app.",
+        desc: "Enter blood pressure, glucose, weight and pulse yourself, and note symptoms such as pain, dizziness or fatigue. Being prepared for the app launch. Numbers are never judged or diagnosed; period summaries will be widened in the app.",
         services: ["Self-entered blood pressure, glucose, weight, pulse", "Symptom and condition notes", "Records organized for appointments", "Temperature and trend charts (planned)", "Period summaries (planned)"],
         audience: "Older adults and families keeping up health habits", cta: "contact",
         note: "No medical advice, diagnosis or prescription. Health data is protected as sensitive information and never used for ad targeting.",
       },
       {
         id: "medication", grp: "A", label: "03 Medication", title: "Medication, hospital and check-up schedules",
-        desc: "Write down medicine names and times, mark doses taken, and record appointments and check-ups. Recording is in the web preview today; phone reminders and consent history are being prepared for the app release.",
+        desc: "Write down medicine names and times, mark doses taken, and record appointments and check-ups. Recording, phone reminders and consent history are being prepared for the app release.",
         services: ["Medication list and taken marks", "Hospital appointments", "Health check-up dates", "Visit notes", "Medication and schedule reminders (in development)"],
         audience: "Older adults taking several medicines, and family who help", cta: "contact",
         note: "ONGIL never adjusts medication, such as doses or stopping. Please ask a doctor or pharmacist about medicines.",
       },
       {
         id: "daily-life", grp: "A", label: "04 Daily Life", title: "Meals, fluids, sleep and the day",
-        desc: "Check-ins, schedule, routines, to-dos, notes and sleep on one large-text screen. Used in the web preview today without sign-in, with records stored on this device only. Meal and fluid logging is planned for the app.",
+        desc: "Check-ins, schedule, routines, to-dos, notes and sleep on one large-text screen. Being prepared for the app launch. Meal and fluid logging is planned for the app.",
         services: ["Daily check-in (mood, how you feel)", "Schedule, routines, to-dos", "Sleep log", "Notes and expense log (no advice or rating)", "Meal and fluid log (planned)", "Errand helper for cleaning, shopping, outings"],
         audience: "Older adults who want to manage their own day", cta: "contact",
       },
       {
         id: "family-care", grp: "B", label: "05 Family Care", title: "Family check-ins and shared care",
-        desc: "Family see the records and schedules the older adult allows, and exchange check-ins. Sharing settings are in the web preview today; family invitations, connection and consent withdrawal are being prepared for the app release.",
+        desc: "Family see the records and schedules the older adult allows, and exchange check-ins. Sharing settings, family invitations, connection and consent withdrawal are being prepared for the app release.",
         services: ["Viewing allowed records", "Exchanging check-ins", "Help-request notes", "Family invitations and connection (in development)", "Consent withdrawal and disconnecting (in development)"],
         audience: "Adult children living apart, families looking after parents together", cta: "contact",
         note: "Health records and location are never shared automatically. Family connection is built on respect, not surveillance.",
@@ -374,41 +374,41 @@ export const EN = {
       },
       {
         id: "home-care", grp: "B", label: "08 Home Care", title: "Home care, bathing and daily support",
-        desc: "Types of home care, such as home-visit care, bathing and nursing, and how to use them, in plain words. The care-type guide is in the web preview today; connection to private daily-support services such as housework and shopping is planned.",
+        desc: "Types of home care, such as home-visit care, bathing and nursing, and how to use them, in plain words. The care-type guide is being prepared for the app launch; connection to private daily-support services such as housework and shopping is planned.",
         services: ["Home-care type guide", "Long-term care procedure guide (official sources)", "Insured vs private services explained", "Private housework and daily support (planned)", "Consultation connection (after partner agreements)"],
         audience: "Older adults needing care at home, and their families", cta: "partners",
         note: "Long-term care benefits are used through the National Health Insurance Service grading and designated institutions. ONGIL does not provide care itself.",
       },
       {
         id: "care-facilities", grp: "B", label: "09 Care Facilities", title: "Finding care homes and day-care centers",
-        desc: "Choose an area and type to find nearby care and welfare facilities, check contacts and location, and save favourites. Available in the web preview today. Facility comparison and visit-consultation connection are planned.",
+        desc: "Choose an area and type to find nearby care and welfare facilities, check contacts and location, and save favourites. Being prepared for the app launch. Facility comparison and visit-consultation connection are planned.",
         services: ["Search by area and type", "Day care vs care home explained", "Contact and location", "Saved facilities", "Comparison items (planned)", "Visit consultation (planned)"],
         audience: "Families and older adults looking into facilities", cta: "contact",
         note: "Please re-check ratings and designation with official sources. Success fees for care-home admission are on hold pending legal and ethical review.",
       },
       {
         id: "medical-access", grp: "B", label: "10 Medical Access", title: "Hospitals, pharmacies, escorts and getting there",
-        desc: "Helping with appointment days, transport and escorts for older adults who need them. Appointment records are in the web preview today; connecting hospital-escort providers is planned after agreements with verified providers.",
+        desc: "Helping with appointment days, transport and escorts for older adults who need them. Appointment records are being prepared for the app launch; connecting hospital-escort providers is planned after agreements with verified providers.",
         services: ["Appointment records", "Escort service information", "Mobility support for people with limited mobility", "Escort provider connection (after partner agreements)", "Sharing appointments with family (in development)"],
         audience: "Older adults who find it hard to go to hospital alone, and their families", cta: "partners",
         note: "No medical acts or medical judgement, and no structure that could amount to patient inducement or medical brokering.",
       },
       {
         id: "safety", grp: "C", label: "11 Senior Safety", title: "Emergency contacts and preventing going missing",
-        desc: "The web preview lets you keep a list of who to contact in an emergency on this device. Home safety checks, scam prevention and missing-person prevention information are planned. ONGIL does not respond to emergencies.",
+        desc: "A list of who to contact in an emergency is being prepared for the app launch. Home safety checks, scam prevention and missing-person prevention information are planned. ONGIL does not respond to emergencies.",
         services: ["Emergency contact list (this device)", "Official emergency numbers (119, 112)", "Home safety checklist (planned)", "Phone and financial scam prevention (planned)", "Missing-person prevention information (planned)"],
         audience: "Older adults living alone, and their families", cta: "contact",
         note: "The emergency contact list does not call anyone automatically. SOS and emergency contact features stay free.",
       },
       {
         id: "community", grp: "C", label: "12 Senior Community", title: "Senior community and local connection",
-        desc: "In the web preview, posts and gathering plans can only be saved as drafts on this device, and nothing is posted to anyone else. An open community is planned once protections such as reporting, blocking and scam response are in place.",
+        desc: "Posts and gathering plans are being prepared for the app launch. An open community is planned once protections such as reporting, blocking and scam response are in place.",
         services: ["Draft posts (this device)", "Gathering plans and dates (drafts)", "Open community (planned)", "Report, block and scam response (planned)", "Local news (planned)"],
         audience: "Older adults who want to share interests with neighbours", cta: "contact",
       },
       {
         id: "activities", grp: "C", label: "13 Senior Activities", title: "Events, hobbies, courses, culture and exercise",
-        desc: "Find lifelong-learning courses and public information on tourism and places, and save what interests you. Available in the web preview today. Welfare-center events and cultural program sign-up links are planned.",
+        desc: "Find lifelong-learning courses and public information on tourism and places, and save what interests you. Being prepared for the app launch. Welfare-center events and cultural program sign-up links are planned.",
         services: ["Lifelong-learning courses", "Local tourism, culture and places", "Saving and sorting favourites", "Welfare-center events and programs (planned)", "Digital and smartphone classes (planned)"],
         audience: "Older adults who enjoy learning and leisure", cta: "contact",
         note: "Travel records and memories on a map belong to Newon's MY WORLD; ONGIL focuses on nearby leisure and culture.",
@@ -454,7 +454,7 @@ export const EN = {
       },
       {
         id: "ongil-ai", grp: "D", label: "20 ONGIL AI", title: "An assistant you can ask in plain words",
-        desc: "The web preview has an assistant that handles set requests such as 'add tomorrow's hospital appointment' and says honestly when it cannot help. Voice conversation, language-model connection, record summaries and plain-language explanations are under review.",
+        desc: "An assistant that handles set requests such as 'add tomorrow's hospital appointment', and says honestly when it cannot help, is being prepared for the app launch. Voice conversation, language-model connection, record summaries and plain-language explanations are under review.",
         services: ["Set requests (adding schedules and records)", "List of what it can do", "Voice schedule reading (under review)", "Record summaries and plain-language notices (under review)", "Drafting messages to family (under review)"],
         audience: "Older adults who find screens hard to use", cta: "contact",
         note: "AI does not diagnose illness, adjust medication or judge emergencies. Health data is not used for ads or model training.",
@@ -573,13 +573,13 @@ export const EN = {
     scenarios: {
       label: "User Scenarios",
       title: "How ONGIL fits\ninto a real day.",
-      lead: "Typical moments for older adults, families and caregivers, separating what the web preview can do today from what is planned.",
-      nowLabel: "Today",
+      lead: "Typical moments for older adults, families and caregivers, separating what the first app will include from what is planned.",
+      nowLabel: "App coming soon",
       laterLabel: "Later",
       items: [
-        { who: "A 78-year-old mother living alone", title: "Morning check-in and medication", text: "She notes her mood and condition, enters her blood pressure and marks the medicine she has taken.", now: "Check-in, blood-pressure and medication records can be tried in the web preview.", later: "Family connection, so her daughter in Seoul can see the items she allows, is being prepared for the app release." },
+        { who: "A 78-year-old mother living alone", title: "Morning check-in and medication", text: "She notes her mood and condition, enters her blood pressure and marks the medicine she has taken.", now: "Check-in, blood-pressure and medication records are being prepared for the app launch.", later: "Family connection, so her daughter in Seoul can see the items she allows, is being prepared for the app release." },
         { who: "Three siblings caring for their parents", title: "Sharing care", text: "The eldest takes hospital visits, the second does groceries, the youngest makes the evening call.", now: "Schedules and to-dos can be recorded on the parent's device.", later: "Shared family schedules and roles (Care Tasks) and a family subscription are planned." },
-        { who: "A 72-year-old father who moved after retiring", title: "Making friends in a new neighbourhood", text: "He finds a walking group and a calligraphy class at the nearby welfare center and joins.", now: "Lifelong-learning courses and local places can be explored in the web preview.", later: "Joining open gatherings and mutual-consent friend links (Friends) are planned." },
+        { who: "A 72-year-old father who moved after retiring", title: "Making friends in a new neighbourhood", text: "He finds a walking group and a calligraphy class at the nearby welfare center and joins.", now: "Exploring lifelong-learning courses and local places is being prepared for the app launch.", later: "Joining open gatherings and mutual-consent friend links (Friends) are planned." },
         { who: "A home-visit care worker", title: "Recording visits", text: "She checks today's visits and tasks, records the care given and shares it with guardians within allowed limits.", now: "Caregiver features are not offered yet.", later: "Planned step by step in Care Tasks and the institution SaaS." },
       ],
     },
@@ -623,17 +623,17 @@ export const EN = {
     },
     app: {
       label: "Using ONGIL",
-      title: "How to use ONGIL today,\nand the app release.",
+      title: "ONGIL app\ncoming soon.",
       lead: "ONGIL's actual features live in the app. This website introduces the service and takes no bookings, payments or records.",
       steps: [
-        { n: "01", name: "Web preview", text: "Some features can be tried without sign-in. Records stay on this device only and do not move with you to another device." },
+        { n: "01", name: "App Coming Soon", text: "The ONGIL app is being prepared for launch." },
         { n: "02", name: "First app release", text: "The iOS and Android app is being prepared for its first release. Timing depends on store review and legal review." },
         { n: "03", name: "Easy screens", text: "Large text, high contrast, wide touch targets, plain sentences, confirmation and undo by default." },
         { n: "04", name: "Step-by-step growth", text: "Health, daily life and family care are stabilized first, then Friends, welfare and institution links, subscriptions and devices." },
       ],
     },
     faq: [
-      { q: "Can I use ONGIL now?", a: "Some features can be tried in the web preview, without sign-in, with data stored on this device only. The iOS and Android app is being prepared for its first release." },
+      { q: "Can I use ONGIL now?", a: "Not yet. The iOS and Android app is being prepared for its first release." },
       { q: "Is ONGIL a caregiver-matching service?", a: "No. ONGIL is a comprehensive senior platform connecting health and daily records, family care, friends and gatherings, welfare information and safety. Finding care providers is one part of it, and it opens step by step with verified institutions." },
       { q: "Can family see all of my parent's records?", a: "No. Family see only the items the older adult allows. The default is 'not shared', and health records and location are never shared automatically." },
       { q: "Does the AI judge my health?", a: "No. The AI helps with schedules and organizing records. It does not diagnose, adjust medication or judge emergencies; please consult a medical professional." },
@@ -714,22 +714,22 @@ export const EN = {
       { id: "institutions-global", en: "Public & Global", ko: "Public & Global" },
     ],
     groups: [
-      { cat: "daily-wellness", name: "Senior daily life and health", intro: "The core service that creates a daily reason to use ONGIL through schedules, routines, health readings and medication records. Some features are offered free in the web preview today.", audience: "Older adults", value: "Keeping a familiar daily life, independently, for longer", partners: "Public-health and welfare-center health programs", revenue: "Free basics + personal subscription (advanced statistics and records) candidate", regulation: "Medical Service Act (no medical acts), separate consent for sensitive data, medical-device classification review", cta: "contact" },
-      { cat: "daily-wellness", name: "ONGIL AI assistant", intro: "An assistant that handles set requests in plain words (web preview). Voice conversation and language-model connection are decided after cost and safety are verified.", audience: "Older adults who find screens hard to use", value: "Getting things done more easily", partners: "AI and voice technology partners (under review)", revenue: "AI subscription candidate; managing AI cost is a precondition", regulation: "AI disclosure, no diagnosis, medication changes or emergency judgement, no training on sensitive data", cta: "contact" },
+      { cat: "daily-wellness", name: "Senior daily life and health", intro: "The core service that creates a daily reason to use ONGIL through schedules, routines, health readings and medication records. The app is being prepared for launch.", audience: "Older adults", value: "Keeping a familiar daily life, independently, for longer", partners: "Public-health and welfare-center health programs", revenue: "Free basics + personal subscription (advanced statistics and records) candidate", regulation: "Medical Service Act (no medical acts), separate consent for sensitive data, medical-device classification review", cta: "contact" },
+      { cat: "daily-wellness", name: "ONGIL AI assistant", intro: "An assistant that handles set requests in plain words (app coming soon). Voice conversation and language-model connection are decided after cost and safety are verified.", audience: "Older adults who find screens hard to use", value: "Getting things done more easily", partners: "AI and voice technology partners (under review)", revenue: "AI subscription candidate; managing AI cost is a precondition", regulation: "AI disclosure, no diagnosis, medication changes or emergency judgement, no training on sensitive data", cta: "contact" },
       { cat: "family-care", name: "Family guardian subscription", intro: "Family check-ins, schedules and shared care within what the older adult allows, offered as a subscription. The initial market is adult children in the capital region living apart from their parents.", audience: "Family guardians", value: "Reassurance built on respect, not surveillance", partners: "Telecom and insurance partners (under review)", revenue: "Family subscription candidate; conversion measured first through a free beta", regulation: "Third-party consent, lawful representation, auto-renewal, cancellation and refund notices", cta: "contact" },
       { cat: "family-care", name: "Home care and daily-support connection", intro: "Connecting qualified providers' private daily-support and housework services is under review. Long-Term Care Insurance services are guided only through official routes.", audience: "Older adults needing help at home, and families", value: "Finding trustworthy daily support", partners: "Home-care institutions, daily-support providers (verified)", revenue: "Private service connection fee candidate (paid by provider); no brokerage income from insured services", regulation: "Long-Term Care Insurance Act, Employment Security Act (placement review), staff qualification checks", cta: "partners" },
       { cat: "family-care", name: "Hospital escorts and mobility", intro: "Finding and connecting hospital-escort and mobility providers. Legality is never assumed from the fee structure; transport rules are checked first.", audience: "Older adults who cannot easily go to hospital alone", value: "Less worry and burden on appointment days", partners: "Escort providers, mobility support organizations", revenue: "Escort connection fee candidate (paid by provider)", regulation: "Passenger transport rules (paid transport check), no medical acts or patient inducement, escort insurance", cta: "partners" },
-      { cat: "care-facilities", name: "Care and welfare facility search", intro: "Making day-care centers, care homes and welfare centers easy to find (web preview). Searching is free for users, and official ratings are kept apart from ads.", audience: "Families looking into facilities", value: "Scattered facility information in one place", partners: "Day-care centers, care homes, welfare centers", revenue: "Institution information tools and consultation connection candidates; admission success fees on hold", regulation: "Separating official ratings and designation from ads, labelling law, limits on medical and care brokering", cta: "contact" },
+      { cat: "care-facilities", name: "Care and welfare facility search", intro: "Making day-care centers, care homes and welfare centers easy to find (app coming soon). Searching is free for users, and official ratings are kept apart from ads.", audience: "Families looking into facilities", value: "Scattered facility information in one place", partners: "Day-care centers, care homes, welfare centers", revenue: "Institution information tools and consultation connection candidates; admission success fees on hold", regulation: "Separating official ratings and designation from ads, labelling law, limits on medical and care brokering", cta: "contact" },
       { cat: "care-facilities", name: "ONGIL Trust reviews and verification", intro: "A trust structure comparing institutions objectively through official qualification checks, labelled genuine reviews and published prices and extra costs. Principles come before revenue here.", audience: "Families comparing institutions", value: "Information you can trust and compare", partners: "Care institutions and providers", revenue: "Not monetized directly; paid verification badges are prohibited", regulation: "No review manipulation, reporting and dispute handling, no health information in reviews", cta: "contact" },
       { cat: "commerce-lifestyle", name: "ONGIL Life Box", intro: "A subscription concept for hobby, activity, daily-care and wellness kits. Demand is checked with partner delivery first, then small-scale curation and an own brand are reviewed.", audience: "Older adults, families sending gifts, welfare centers and employers", value: "Hobbies you can start alone and daily goods without the hassle", partners: "Hobby-kit and daily-goods suppliers, logistics", revenue: "Subscription sales, judged on unit economics: price minus cost, logistics, payment, refund and support costs", regulation: "E-commerce law (withdrawal rights), product safety, auto-renewal notices, separating support goods for vulnerable groups", cta: "partners" },
       { cat: "commerce-lifestyle", name: "Senior daily-living market", intro: "A commerce direction for choosing daily-living, walking and safety products with large-text descriptions. Nothing is on sale today.", audience: "Older adults, families sending gifts", value: "Verified products and easy descriptions", partners: "Senior product brands, sellers", revenue: "Sales commission candidate (paid by seller)", regulation: "E-commerce law, labelling law (no exaggerated claims), insured assistive devices kept separate", cta: "partners" },
       { cat: "commerce-lifestyle", name: "Safe Band device and service", intro: "An SOS and location wristband with a monthly connectivity and location service, as a concept. Certified-device integration is verified first, using OEM or ODM rather than own manufacturing.", audience: "Family guardians, local governments and institutions", value: "A consent-based safety contact network", partners: "Wearable and telecom companies, certified device makers", revenue: "Device sale + monthly service candidate; institution device management by separate contract", regulation: "Location-information law (registration review), KC and radio certification, connectivity cost and after-sales, no rescue guarantees", cta: "partners" },
       { cat: "commerce-lifestyle", name: "Partner smart devices", intro: "A medium- to long-term direction to integrate partner devices such as tablets, AI speakers, environment sensors and emergency buttons. Cameras are low priority.", audience: "Older adults, families and institutions", value: "Easy devices and one contact network", partners: "Device makers, telecom companies", revenue: "Device bundle sales and rental candidates", regulation: "KC certification, radio, connectivity and after-sales, video privacy", cta: "partners" },
       { cat: "community-education", name: "ONGIL Friends", intro: "A differentiating concept connecting neighbourhood friends, walks and hobby groups. The principle is to keep finding friends and joining free gatherings free.", audience: "Older adults who want more relationships and activity", value: "Less isolation, new relationships", partners: "Welfare centers, community centers, local group organizers", revenue: "Finding friends is free; only paid programs are fee candidates, paid by the provider", regulation: "Identity, reporting and scam prevention, no location disclosure, organizer checks", cta: "partners" },
-      { cat: "community-education", name: "Hobby and culture classes", intro: "Information and class connection for lifelong learning, digital life, culture and exercise programs. Course search is in the web preview.", audience: "Older adults wanting learning and leisure", value: "New learning close to home", partners: "Lifelong-learning institutions, culture and exercise program operators", revenue: "Class connection fee candidate (paid by provider)", regulation: "Instructor and operator information, safety rules, cancellation and refunds", cta: "partners" },
+      { cat: "community-education", name: "Hobby and culture classes", intro: "Information and class connection for lifelong learning, digital life, culture and exercise programs. Course search is being prepared for the app launch.", audience: "Older adults wanting learning and leisure", value: "New learning close to home", partners: "Lifelong-learning institutions, culture and exercise program operators", revenue: "Class connection fee candidate (paid by provider)", regulation: "Instructor and operator information, safety rules, cancellation and refunds", cta: "partners" },
       { cat: "community-education", name: "Senior jobs and social activity", intro: "Connecting information on senior employment programs, volunteering and skill sharing. Whether this counts as job placement is reviewed first.", audience: "Older adults who want to stay active", value: "Social participation and purpose", partners: "Senior employment agencies, volunteer centers", revenue: "Institution cooperation first (monetization undecided)", regulation: "Employment Security Act (placement review), official program labelling", cta: "partners" },
       { cat: "welfare-safety", name: "Welfare and benefits guide", intro: "Official welfare and long-term care schemes explained in plain words. Public welfare information is provided free, with no fees.", audience: "Older adults and families looking into benefits", value: "Not missing support you are entitled to", partners: "Local governments, public bodies", revenue: "Free; cooperation only through public project contracts", regulation: "Official source labelling, no eligibility decisions on anyone's behalf", cta: "contact" },
-      { cat: "welfare-safety", name: "Safety and emergency contacts", intro: "The emergency contact list (web preview) and everyday safety information. SOS and emergency contacts are free regardless of subscription.", audience: "Older adults living alone, and families", value: "Peace of mind that someone can be reached", partners: "Local safety programs", revenue: "Free", regulation: "No emergency-response guarantees, official reporting (119, 112) first, handling false alarms", cta: "contact" },
+      { cat: "welfare-safety", name: "Safety and emergency contacts", intro: "The emergency contact list (app coming soon) and everyday safety information. SOS and emergency contacts are free regardless of subscription.", audience: "Older adults living alone, and families", value: "Peace of mind that someone can be reached", partners: "Local safety programs", revenue: "Free", regulation: "No emergency-response guarantees, official reporting (119, 112) first, handling false alarms", cta: "contact" },
       { cat: "business-solutions", name: "Institution SaaS", intro: "A tool for day-care centers, home-care centers and care homes to manage staff schedules, visits, care records and guardian communication. An institution dashboard prototype and institution consultations are in the execution plan.", audience: "Day-care centers, home-care centers, care homes, care providers", value: "Less repetitive work and more guardian trust", partners: "Care and welfare institutions", revenue: "Monthly institution subscription candidate (free listing + paid tiers), set after price experiments", regulation: "Long-term care record rules, data-processing agreements, security", cta: "partners" },
       { cat: "business-solutions", name: "Employer family-care benefits", intro: "A benefit bundle of family subscription, Life Box and care information to help employees support their parents.", audience: "Companies designing employee benefits", value: "Less care burden and attrition risk for employees", partners: "HR and benefits departments", revenue: "Annual per-employee benefit contract candidate", regulation: "Employee data kept apart from family data, consent-based use", cta: "partners" },
       { cat: "institutions-global", name: "Public-sector cooperation (B2G)", intro: "Tools for check-ins, information delivery and digital inclusion programs, reviewed with local governments and welfare institutions. Public information stays free.", audience: "Local governments, welfare centers, public bodies", value: "Better information delivery to local older adults", partners: "Local governments, public bodies", revenue: "Project-based commissioning and procurement candidates", regulation: "Public procurement, security standards, public data terms", cta: "partners" },
@@ -916,7 +916,7 @@ export const EN = {
       { id: "media", en: "Press · Investors", ko: "Press and investors" },
     ],
     types: [
-      { grp: "people", name: "Older adults' questions", text: "How to use the web preview, text size, how records are stored, and anything else older adults want to ask.", channel: "mail" },
+      { grp: "people", name: "Older adults' questions", text: "App launch news, text size, how records are stored, and anything else older adults want to ask.", channel: "mail" },
       { grp: "people", name: "Guardians and family", text: "Family connection and sharing scope, using ONGIL with your parents, and how personal data is handled.", channel: "mail" },
       { grp: "people", name: "Features, use and problems", text: "Difficulties using a feature, problem reports and app release news. Describing what was on screen helps.", channel: "mail" },
       { grp: "people", name: "Caregivers", text: "Features care workers would like, and feedback on visit records and guardian communication tools.", channel: "mail" },

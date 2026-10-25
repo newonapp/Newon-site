@@ -137,7 +137,7 @@ const KO = {
     petlog: "반려동물의 일상·건강 기록을 기반으로 커뮤니티·커머스, 동물병원·미용·돌봄 등 적격 사업자 연결, 반려동물 사업자용 SaaS, 동물복지 공공 협력과 글로벌 라이선싱으로 확장하는 반려생활 플랫폼입니다.",
     myworld: "세계지도 기반 여행 기록에서 출발해 숙박·교통·패키지·액티비티 예약 제휴, 여행 커머스, 기업 출장·여행업체 SaaS, 지역 관광·관광기관 협력으로 넓혀 가는 여행 플랫폼입니다.",
     shareon: "개인과 기업의 실물 자산 공유·대여(C2C·B2C·C2B·B2B)를 기반으로 대여업체·공간 운영자 입점, 기업 자산 공유, SaaS·공공·글로벌 분야로 확장을 준비하는 공유경제 플랫폼입니다. 앱 출시 전으로 실제 대여·결제·정산은 운영되지 않습니다.",
-    livon: "교육·커리어·주거·금융교육 등 생애 단계별 정보와 서비스를 연결하는 플랫폼입니다. 상품 직접 판매보다 정보·사용자 경험·기업용 솔루션 중심의 사업을 지향하며, 대부분의 사업 영역은 준비 또는 구상 단계입니다. 앱은 출시 준비 중이고 지금은 웹에서 이용할 수 있습니다.",
+    livon: "교육·커리어·주거·금융교육 등 생애 단계별 정보와 서비스를 연결하는 플랫폼입니다. 상품 직접 판매보다 정보·사용자 경험·기업용 솔루션 중심의 사업을 지향하며, 대부분의 사업 영역은 준비 또는 구상 단계입니다. 현재 앱 출시를 준비하고 있습니다.",
     ongil: "시니어의 일상, 가족 연결, 건강 생활, 돌봄·복지 정보를 기반으로 돌봄 사업자 도구, 요양·복지기관 SaaS, 기업 임직원 가족 돌봄 복지, 공공·지자체 협력, 글로벌 라이선스로 확장하는 시니어 라이프 플랫폼입니다.",
   },
 
@@ -311,7 +311,7 @@ const EN = {
     petlog: "A pet-life platform built on daily and health records for pets, expanding into community and commerce, connections with qualified providers such as vets, groomers and carers, SaaS for pet businesses, public animal-welfare collaboration and global licensing.",
     myworld: "A travel platform that starts from map-based travel records and extends toward booking partnerships for stays, transport, packages and activities, travel commerce, SaaS for business travel and travel companies, and local tourism and tourism-agency collaboration.",
     shareon: "A sharing-economy platform for renting and sharing physical assets between individuals and businesses (C2C, B2C, C2B, B2B), preparing to expand into rental-business and space-operator listings, business asset sharing, SaaS, public and global areas. The app has not launched, so no rentals, payments or settlements are operating yet.",
-    livon: "A platform connecting life-stage information and services such as education, careers, housing and financial education. Rather than selling products directly, it focuses on information, user experience and solutions for organizations; most business areas are in preparation or at the concept stage. The app is being prepared for launch and LIVON is available on the web today.",
+    livon: "A platform connecting life-stage information and services such as education, careers, housing and financial education. Rather than selling products directly, it focuses on information, user experience and solutions for organizations; most business areas are in preparation or at the concept stage. The app is being prepared for launch.",
     ongil: "A senior-life platform built on seniors' daily life, family connection, healthy living, and care and welfare information, expanding into tools for care providers, SaaS for care and welfare facilities, employee family-care welfare, public and local-government collaboration, and global licensing.",
   },
 
