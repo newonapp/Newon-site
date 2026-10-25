@@ -34,7 +34,7 @@ import {
 import { clampSeoDescription } from "./seo-meta.mjs";
 import { renderGlobalHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { inquiryFormHtml } from "./render-bsp.mjs";
-import { NOTICE, PETLOG_FILM, STORE, PETLOG_MENU, OVERVIEW, PLATFORM, BUSINESS, PARTNERS, CONTACT } from "./petlog-site-content.mjs";
+import { NOTICE, PETLOG_FILM, STORE, PETLOG_MENU, OVERVIEW, PLATFORM, BUSINESS, PARTNERS, CONTACT, GLOBAL } from "./petlog-site-content.mjs";
 import { renderFlagshipSubnav, FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
@@ -345,6 +345,8 @@ function closeBlock(c, depth) {
 
 const wrap = (inner) => `<section id="lifestage-detail" class="nls nls--petlog" data-story="petlog" aria-labelledby="story-lifestage-title">${inner}</section>`;
 const CONTACT_HREF = (type) => `petlog/contact/?type=${type}#inquiry`;
+/** Global partnership inquiries go to the unified NEWON Contact page (partnership type, PETLOG preselected). */
+const GLOBAL_CONTACT_HREF = "contact/?type=partnership&platform=petlog";
 /** "Care — tagline. body" → [key, tagline, body] */
 const splitValue = (s) => {
   const [k, rest = ""] = s.split(" — ");
@@ -361,6 +363,15 @@ const storeIcon = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"
 /* ---------------------------------------------------------------- pages */
 const storePills = (label) =>
   `<div class="pl-actions"><p class="pl-aside">${esc(label)}</p><a class="pl-pill" href="${esc(STORE.ios)}" target="_blank" rel="noopener noreferrer">App Store ${storeIcon}</a><a class="pl-pill" href="${esc(STORE.android)}" target="_blank" rel="noopener noreferrer">Google Play ${storeIcon}</a></div>`;
+
+/** Label/text rows ("Label: text"; a row without a short label spans both columns). */
+const dlRows = (list) =>
+  `<dl class="pl-dl">${list
+    .map((s) => {
+      const [k, v] = splitLabel(s);
+      return k ? `<div><dt>${esc(k)}</dt><dd><p class="pl-p">${esc(v)}</p></dd></div>` : `<div class="is-span"><dd><p class="pl-p">${esc(v)}</p></dd></div>`;
+    })
+    .join("")}</dl>`;
 
 /** FAQ list (native details/summary). list: [question, answer][] */
 const faqList = (list) =>
@@ -424,6 +435,7 @@ function overviewPage(lang) {
     .join("")}</ol><div class="pl-actions">${more([c.beyond.cta, "petlog/platform/"], D)}</div>`;
   const trust = people(c.trust.items.map((x, i) => [x.name, x.lead, TRUST_ICONS[i]]), 3);
   const fam = c.newon.items.map((x) => ({ name: x.name, body: x.body, href: x.href, self: x.name === "PETLOG" }));
+  const g = GLOBAL.overview[L];
   return wrap(`${hero({ wordmark: "PETLOG", titleHtml: c.heroTitle, lead: c.heroLead, main: [`${c.ctaMain} →`, "#nls-mission"], sub: [c.ctaSub, rel(D, "petlog/platform/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "overview" })}
   <div class="nls__wrap">
@@ -441,6 +453,7 @@ function overviewPage(lang) {
     ${section("nls-beyond", { kicker: c.beyond.kicker, title: c.beyond.title, lead: c.beyond.lead, noteText: NOTICE[L], body: beyond })}
     ${section("nls-trust", { kicker: c.trust.kicker, title: c.trust.title, tint: true, body: trust })}
     ${splitSection("nls-newon", { kicker: c.newon.kicker, title: c.newon.title, lead: c.newon.lead, body: directory(fam, D, true) })}
+    ${splitSection("nls-global", { kicker: g.kicker, title: g.title, lead: g.lead, tint: true, body: people(g.items), aside: `<div class="pl-actions">${more([g.cta, "petlog/business/#nls-global"], D)}</div>` })}
     ${menuBlock(lang, D, "overview")}
     ${closeBlock({ ...c.close, main: [c.close.ctaMain, "petlog/platform/"], sub: [c.close.ctaSub, "petlog/contact/"] }, D)}
   </div>`);
@@ -489,11 +502,14 @@ function platformPage(lang) {
     .map(([t, d, k]) => `<div${isLater(t) ? ' class="is-later"' : ""}><dt>${ic(k)}<span>${esc(t)}</span></dt><dd><p class="pl-p">${esc(d)}</p></dd></div>`)
     .join("")}</dl>`;
   const close = { ...m.close, main: [m.close.ctaMain, "petlog/business/"], sub: [m.close.ctaSub, STORE.ios] };
+  const gp = GLOBAL.platform[L];
+  const globalBody = `${items("cols", gp.items.map(([label, name, lead, chips, icon], i) => ({ n: pad2(i + 1), label, icon, name, lead, chips })), D, "pl-cols--3")}<div class="pl-sub">${head(gp.localKicker, gp.localTitle, "")}${dlRows(gp.local)}</div>`;
   return wrap(`${hero({ wordmark: "Platform", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "18개 서비스 보기 ↓" : "See 18 services ↓", "#nls-records"], sub: [lang === "ko" ? "PETLOG 소개" : "About PETLOG", rel(D, "petlog/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "platform" })}
   <div class="nls__wrap">
     ${section("nls-legend", { kicker: m.legendKicker, title: m.legendTitle, lead: m.legendLead, noteText: NOTICE[L], body: legend })}
     ${groups}
+    ${section("nls-global", { kicker: gp.kicker, title: gp.title, lead: gp.lead, body: globalBody })}
     ${railBlock("nls-scenarios", { kicker: scen.kicker, title: scen.title, lead: scen.lead, items: scenarios })}
     ${splitSection("nls-roles", { kicker: m.roles.kicker, title: m.roles.title, lead: m.roles.lead, body: roles })}
     ${section("nls-flow", { kicker: m.flow.kicker, title: m.flow.title, lead: m.flow.lead, tint: true, body: stepList(m.flow.steps) })}
@@ -564,12 +580,12 @@ function businessPage(lang) {
     .map((x) => `<li><span class="pl-table__name"><span class="pl-n">${esc(x.no)}</span>${esc(x.name[L])}</span><p class="pl-p">${esc(x.sum[L])}</p><span class="pl-stage${STAGE[x.status] || ""}">${esc(m.statusLabel[x.status])}</span></li>`)
     .join("")}</ul>`;
   const market = `<ul class="pl-notes">${m.market.map(([t, d, k]) => `<li>${ic(k)}<h3>${esc(t)}</h3><p class="pl-p pl-sm">${esc(d)}</p></li>`).join("")}</ul>`;
-  const legal = `<dl class="pl-dl">${m.trust
-    .map((s) => {
-      const [k, v] = splitLabel(s);
-      return k ? `<div><dt>${esc(k)}</dt><dd><p class="pl-p">${esc(v)}</p></dd></div>` : `<div class="is-span"><dd><p class="pl-p">${esc(v)}</p></dd></div>`;
-    })
-    .join("")}</dl>`;
+  const legal = dlRows(m.trust);
+  const gb = GLOBAL.business[L];
+  const globalBody = `${stepList(gb.steps.map(([t, d], i) => [pad2(i + 1), t, d]))}<div class="pl-sub">${head(gb.subKicker, gb.subTitle, gb.subLead)}<div class="pl-board pl-board--pair">
+      ${panel("next", "users", gb.customers[0], gb.customers[1], gb.customers[2], true)}
+      ${panel("next", "chart", gb.revenue[0], gb.revenue[1], gb.revenue[2], true)}
+    </div></div>`;
   return wrap(`${hero({ wordmark: "Business", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "20개 사업 분야 보기 ↓" : "See 20 areas ↓", "#nls-groups"], sub: [m.close.ctaMain, rel(D, "petlog/partnerships/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "business" })}
   <div class="nls__wrap">
@@ -582,6 +598,7 @@ function businessPage(lang) {
     ${section("nls-diff", { kicker: m.diffKicker, title: m.diffTitle, lead: m.diffLead, body: items("cols", m.diff.map(([t, d, k]) => ({ icon: k, name: t, lead: d })), D, "pl-cols--4") })}
     ${section("nls-priority", { kicker: m.gtmKicker, title: m.gtmTitle, lead: m.gtmLead, tint: true, body: stepList(m.gtm.map(([t, d], i) => [pad2(i + 1), t, d]), true) })}
     ${splitSection("nls-roadmap", { kicker: m.roadmapKicker, title: m.roadmapTitle, lead: m.roadmapNote, body: phases(m.roadmap) })}
+    ${section("nls-global", { kicker: gb.kicker, title: gb.title, lead: gb.lead, body: globalBody })}
     ${splitSection("nls-trust", { kicker: m.trustKicker, title: m.trustTitle, tint: true, body: legal })}
     ${menuBlock(lang, D, "business")}
     ${closeBlock({ ...m.close, main: [m.close.ctaMain, "petlog/partnerships/"], sub: [m.close.ctaSub, "petlog/contact/"] }, D)}
@@ -607,11 +624,14 @@ function partnershipsPage(lang) {
   const [lw, lr, lp] = m.scenarioLabels;
   const scenarios = m.scenarios.map((x) => ({ icon: x.icon, name: x.name, lead: x.lead, points: [[lw, x.who], [lr, x.role], [lp, x.pre]] }));
   const poc = m.poc.map(([t, d], i) => [`STEP ${pad2(i + 1)}`, t, d]);
+  const gq = GLOBAL.partners[L];
+  const globalBody = `${items("cols", gq.items.map(([name, lead, field, icon], i) => ({ n: pad2(i + 1), icon, name, lead, points: [[gq.fieldLabel, field]] })), D, "pl-cols--4")}<div class="pl-actions">${more([gq.cta, GLOBAL_CONTACT_HREF], D)}</div>`;
   return wrap(`${hero({ wordmark: "Partnerships", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "15개 협력 분야 ↓" : "15 partner types ↓", "#nls-p-care"], sub: [m.labels.cta, rel(D, "petlog/contact/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "partnerships" })}
   <div class="nls__wrap">
     ${section("nls-offer", { kicker: m.offerKicker, title: m.offerTitle, lead: m.offerLead, body: items("cols", offer, D, "pl-cols--4") })}
     ${groups}
+    ${section("nls-global", { kicker: gq.kicker, title: gq.title, lead: gq.lead, body: globalBody })}
     ${section("nls-scenarios", { kicker: m.scenariosKicker, title: m.scenariosTitle, lead: m.scenariosLead, body: items("grid", scenarios, D, "pl-grid--2") })}
     ${splitSection("nls-poc", { kicker: m.pocKicker, title: m.pocTitle, lead: m.pocLead, tint: true, body: phases(poc, true) })}
     ${section("nls-data", { kicker: m.dataKicker, title: m.dataTitle, lead: m.dataLead, body: people(m.data, true) })}

@@ -1249,3 +1249,151 @@ export const CONTACT = {
     ],
   },
 };
+
+/* ======================================================================= GLOBAL (2026-10-26 owner brief §6: global expansion)
+ * Added content only: one section per page (Overview · Platform · Business · Partnerships). Everything here is a future
+ * plan or review item (business-plan roadmap P8 "going abroad"). No country, date, revenue target, user number or named
+ * partner is given; app distribution countries and languages stay as each store shows them. Inquiries go to the unified
+ * NEWON Contact page (/{lang}/contact/?type=partnership&platform=petlog). */
+export const GLOBAL = {
+  overview: {
+    ko: {
+      kicker: "GLOBAL VISION",
+      title: "한 마리의 기록에서,\n세계의 반려생활로.",
+      lead: "PETLOG는 반려동물의 건강과 생활, 돌봄, 서비스 이용, 동물복지를 국가와 언어를 넘어 잇는 글로벌 펫 라이프 플랫폼을 장기 비전으로 둡니다. 해외 확장은 로드맵 P8 단계의 향후 계획이며, 진출 국가와 일정은 아직 정해지지 않았습니다.",
+      items: [
+        ["어디서나 같은 기록 원칙", "프로필·건강·생활 기록과 가족 공동 관리를 바탕으로 언어·단위·양육 문화에 맞춘 현지화를 검토합니다. 진단하지 않고, 동의 없이 공유하지 않는 원칙은 나라가 달라도 같습니다.", "note"],
+        ["현지 펫케어와의 연결", "각 나라의 동물병원·미용·호텔·돌봄 서비스와 공식 정보를 보호자의 기록 가까이에서 잇는 협력을 단계적으로 검토합니다.", "link"],
+        ["국경을 넘는 동물복지", "현지 보호단체·보호소와 함께 유기·구조동물을 돕는 사회공헌 모델을 검토합니다. 필수 공익 기능의 무료 원칙은 해외에서도 지키는 것을 목표로 합니다.", "heart"],
+      ],
+      cta: "글로벌 확장 전략 보기",
+    },
+    en: {
+      kicker: "GLOBAL VISION",
+      title: "From one pet's records\nto pet life worldwide.",
+      lead: "PETLOG's long-term vision is a global pet life platform that connects pets' health, daily life, care, services and animal welfare across countries and languages. Going abroad is a future plan at roadmap stage P8; no countries or dates have been set.",
+      items: [
+        ["The same record principles everywhere", "Building on profile, health and life records and shared family care, we are reviewing localisation for language, units and pet-keeping culture. No diagnosis and no sharing without consent stay the same in every country.", "note"],
+        ["Links to local pet care", "Step by step, we are reviewing partnerships that bring each country's vet clinics, groomers, hotels, care services and official information close to owners' records.", "link"],
+        ["Animal welfare across borders", "We are reviewing a social-contribution model that supports abandoned and rescued animals with local animal-welfare groups and shelters. The aim is to keep essential public-good features free abroad too.", "heart"],
+      ],
+      cta: "See the global strategy",
+    },
+  },
+  platform: {
+    ko: {
+      kicker: "GLOBAL EXPANSION · PLANNED",
+      title: "해외에서 넓혀 갈 서비스와\n국가별 현지화 방향.",
+      lead: "해외에서도 별도 앱이 아니라 하나의 PETLOG 앱 안에서 나라별로 필요한 기능을 더하는 방식을 검토합니다. 아래 여섯 방향은 모두 향후 계획 또는 검토 단계입니다.",
+      items: [
+        ["Local Pet Life", "국가별 반려생활 서비스", "반려동물 기록·건강 관리·일정·생활 정보를 각 나라의 문화와 양육 환경에 맞춰 제공하는 방향입니다. 지금 앱의 기록·관리 코어가 출발점입니다.", ["Profile", "Health", "Calendar"], "note"],
+        ["Global Pet Care", "글로벌 펫케어 연계", "현지 동물병원 정보, 미용, 호텔, 훈련, 돌봄 서비스 기업과의 협력을 검토합니다. 자격·영업 요건을 확인한 제공자만 연결하는 원칙은 해외에서도 같습니다.", ["Medical", "Grooming", "Hotel", "Training", "Care"], "scissors"],
+        ["Pet Marketplace", "반려동물 마켓플레이스", "국가별 반려동물 용품, 서비스 예약, 커뮤니티와 관련 거래 모델을 단계적으로 검토합니다. 살아 있는 동물은 어느 나라에서도 거래 대상이 아닙니다.", ["Market", "Community", "Trust"], "bag"],
+        ["Welfare & Rescue", "동물복지·구조 지원", "유기동물·구조동물·보호소 지원 같은 동물복지 사회공헌 프로그램을 현지 보호단체와 연계하는 방향을 검토합니다.", ["Shelter", "Adoption", "Giving"], "heart"],
+        ["Health & Travel Rules", "국가별 건강·안전 정보", "예방접종, 동물등록 제도, 국가 간 이동·여행 규정을 현지 공식 정보와 연결하는 방향을 검토합니다. PETLOG는 공식 출처를 안내할 뿐 판단을 대신하지 않습니다.", ["Health", "Safety", "Travel"], "shield"],
+        ["Revenue by Market", "국가별 수익 모델", "프리미엄 구독, 서비스 예약 제휴, 플랫폼 거래, 기업 입점, B2B 파트너십을 시장별로 검토합니다. 요금과 수수료는 나라별 검증 전에는 정하지 않습니다.", ["Subscription", "Business", "Partners"], "chart"],
+      ],
+      localKicker: "LOCALISATION",
+      localTitle: "나라마다 먼저 확인할 것.",
+      local: [
+        "언어·단위: 화면 언어뿐 아니라 체중 단위, 날짜 형식, 품종 이름 표기를 현지 기준에 맞춥니다.",
+        "양육 문화: 실내·실외 생활, 산책 문화, 많이 기르는 동물종처럼 나라마다 다른 양육 환경을 기능 구성에 반영합니다.",
+        "법률·개인정보: 국가별 동물보호·수의 관련 법령과 개인정보 보호 규정을 출시 전에 검토하고, 보호자 기록은 동의 범위 안에서만 다룹니다.",
+        "결제·통화: 현지 결제수단·통화·세금과 소비자 보호 기준을 갖춘 뒤에만 구독·예약·거래를 엽니다.",
+        "공식 정보·현지 파트너: 접종·등록·이동 규정은 현지 공식 기관 정보를 기준으로 하고, 서비스 연계는 서면 계약을 맺은 현지 파트너와만 진행합니다.",
+      ],
+    },
+    en: {
+      kicker: "GLOBAL EXPANSION · PLANNED",
+      title: "Services to expand abroad,\nand how each country is localised.",
+      lead: "Abroad too, the plan under review is to add what each country needs inside the one PETLOG app rather than build separate apps. All six directions below are planned or under review.",
+      items: [
+        ["Local Pet Life", "Pet life services by country", "Pet records, health care, schedules and daily-life information shaped to each country's culture and pet-keeping environment. The records and care core in the app today is the starting point.", ["Profile", "Health", "Calendar"], "note"],
+        ["Global Pet Care", "Links to global pet care", "Reviewing partnerships with local vet information, grooming, hotels, training and care businesses. Connecting only providers whose qualifications and licensing are checked applies abroad as well.", ["Medical", "Grooming", "Hotel", "Training", "Care"], "scissors"],
+        ["Pet Marketplace", "Pet marketplace", "Pet goods, service booking, community and related trading models by country, reviewed step by step. Live animals are never traded, in any country.", ["Market", "Community", "Trust"], "bag"],
+        ["Welfare & Rescue", "Animal welfare and rescue support", "Reviewing animal-welfare social-contribution programmes — for abandoned and rescued animals and shelters — together with local animal-protection groups.", ["Shelter", "Adoption", "Giving"], "heart"],
+        ["Health & Travel Rules", "Health and safety information by country", "Reviewing links from vaccination, pet registration and cross-border travel rules to local official information. PETLOG points to official sources and never makes the decision for owners.", ["Health", "Safety", "Travel"], "shield"],
+        ["Revenue by Market", "Revenue models by country", "Premium subscription, booking partnerships, platform transactions, business listings and B2B partnerships, reviewed market by market. No price or commission is set before each country is validated.", ["Subscription", "Business", "Partners"], "chart"],
+      ],
+      localKicker: "LOCALISATION",
+      localTitle: "What we check first in each country.",
+      local: [
+        "Language and units: not only the interface language but weight units, date formats and breed names follow local conventions.",
+        "Pet-keeping culture: indoor and outdoor life, walking habits and the species people keep differ by country and shape the features offered.",
+        "Law and privacy: each country's animal-protection, veterinary and data-protection rules are reviewed before launch, and owners' records are handled only within their consent.",
+        "Payments and currency: subscriptions, booking and trading open only once local payment methods, currency, tax and consumer-protection standards are in place.",
+        "Official information and local partners: vaccination, registration and travel rules follow local official sources, and service links run only with local partners under a written agreement.",
+      ],
+    },
+  },
+  business: {
+    ko: {
+      kicker: "GLOBAL GO-TO-MARKET",
+      title: "국내에서 검증하고,\n나라별로 넓혀 갑니다.",
+      lead: "해외 진출은 로드맵 P8의 향후 계획입니다. 국내에서 기록 습관과 예약·업체 모델을 먼저 검증한 뒤 아래 다섯 단계로 확장하며, 우선 진출 국가·일정·매출 목표는 정하지 않았습니다.",
+      steps: [
+        ["국내 검증", "무료 기록 습관, 구독 전환, 지역 예약 파일럿으로 사용성과 보호자 수요, 업체 운영 모델을 검증합니다."],
+        ["해외 시장 조사", "국가별 반려가구 수요, 펫케어 경쟁 환경, 동물보호·수의·개인정보 법령과 현지화 요구를 분석합니다."],
+        ["우선 시장 진출", "조사 결과로 적합한 국가를 고른 뒤 언어·기록 단위·고객 지원을 현지화해 제한적으로 출시합니다."],
+        ["현지 파트너십 확대", "현지 동물병원·펫케어 기업·보호단체와 협력해 서비스 범위와 사업 모델을 넓힙니다."],
+        ["글로벌 플랫폼 확장", "검증된 국가별 운영 모델을 바탕으로 다국가 서비스와 펫케어 파트너 생태계를 넓힙니다."],
+      ],
+      subKicker: "OVERSEAS CUSTOMERS · REVENUE",
+      subTitle: "해외 고객군과\n검토 대상 수익 모델.",
+      subLead: "국내 사업 구조(B2C·B2B·B2B2C·B2G)를 나라별로 다시 검증합니다. 아래는 모두 검토 대상입니다.",
+      customers: ["해외 고객군 (검토)", "나라별 시장 조사로 수요를 확인할 고객 후보입니다. 개인 보호자는 무료 기록에서 시작합니다.", ["강아지·고양이 보호 가족", "반려동물과 해외로 이주·여행하는 보호자", "현지 펫케어 업체", "펫 브랜드·펫보험사", "현지 보호소·보호단체"]],
+      revenue: ["수익 모델 (검토)", "국내 12개 수익 모델 가운데 시장에 맞는 모델을 고릅니다. 요금·수수료는 나라별 검증 전 정하지 않으며, 공익 기능과 나눔·기부는 해외에서도 수익 대상이 아닙니다.", ["프리미엄 구독", "서비스 예약 제휴", "플랫폼 거래", "기업 입점", "B2B 파트너십"]],
+    },
+    en: {
+      kicker: "GLOBAL GO-TO-MARKET",
+      title: "Validate at home,\nthen grow country by country.",
+      lead: "Going abroad is a future plan at roadmap stage P8. Daily-record habits and the booking and business models are validated in Korea first, then expansion follows the five stages below; no priority country, date or revenue target has been set.",
+      steps: [
+        ["Validate at home", "Free record habits, subscription conversion and local booking pilots validate usability, owner demand and the provider operating model."],
+        ["Research markets abroad", "Analyse each country's pet-household demand, pet-care competition, animal-protection, veterinary and data-protection law, and localisation needs."],
+        ["Enter priority markets", "Choose suitable countries from the research, localise language, record units and customer support, and launch on a limited basis."],
+        ["Grow local partnerships", "Work with local vet clinics, pet-care businesses and animal-welfare groups to widen services and business models."],
+        ["Expand as a global platform", "Build on proven country operating models to grow multi-country services and a pet-care partner ecosystem."],
+      ],
+      subKicker: "OVERSEAS CUSTOMERS · REVENUE",
+      subTitle: "Overseas customers and\nrevenue models under review.",
+      subLead: "The structure used at home (B2C, B2B, B2B2C, B2G) is validated again in each country. Everything below is under review.",
+      customers: ["Overseas customers (under review)", "Candidate customers whose demand country research will confirm. Individual owners start with free records.", ["Dog and cat families", "Owners moving or travelling abroad with pets", "Local pet-care businesses", "Pet brands and pet insurers", "Local shelters and welfare groups"]],
+      revenue: ["Revenue models (under review)", "From the 12 revenue models at home, the ones that fit each market are chosen. No price or commission is set before each country is validated, and public-good features and giving are not revenue sources abroad either.", ["Premium subscription", "Booking partnerships", "Platform transactions", "Business listings", "B2B partnerships"]],
+    },
+  },
+  partners: {
+    ko: {
+      kicker: "GLOBAL PARTNERSHIPS",
+      title: "해외 협력 가능성과\n협업 분야.",
+      lead: "해외 진출 단계에서 함께 검토하고 싶은 현지 파트너의 종류입니다. 체결된 제휴가 아닌 협력 가능성을 검토하는 대상이며, 국내와 같은 자격 확인과 데이터 보호 원칙을 따릅니다.",
+      fieldLabel: "협업 분야",
+      items: [
+        ["동물병원·수의 관련 기관", "현지 진료 문화와 수의 규정에 맞는 정보 안내 방식을 함께 찾습니다.", "공식 병원 정보, 예약 경로 안내, 동의 기반 기록 요약 형식", "clinic"],
+        ["펫케어 서비스 기업", "현지 보호자가 믿고 맡길 수 있는 서비스 연결 방식을 검토합니다.", "미용·산책·방문 돌봄 연결, 제공자 확인 기준", "scissors"],
+        ["반려동물 용품 브랜드", "현지 보호자에게 맞는 상품이 기록 맥락에서 발견되도록 협력합니다.", "현지 입점, 기획전, 정기배송", "bag"],
+        ["펫보험 기업", "현지 자격을 갖춘 보험사와 보장 내용을 이해하기 쉽게 전합니다.", "보장 이해 정보, 가입·청구는 보험사 공식 창구 안내", "umbrella"],
+        ["반려동물 호텔·훈련·돌봄 업체", "위탁과 교육이 필요한 순간을 보호자의 일정과 잇습니다.", "위탁·훈련 예약 연결, 접종 요건 안내, 활동 기록 공유", "home"],
+        ["동물보호단체·보호소", "현지 유기·구조동물을 돕는 공익 협력을 검토합니다.", "보호동물·입양·임시보호 공고, 치료·보호 지원 나눔", "heart"],
+        ["현지 펫테크 기업", "현지에서 쓰이는 기기와 기술을 PETLOG 기록과 연결합니다.", "스마트 기기 연동, 현지화 기술, 데이터 보안", "tool"],
+      ],
+      cta: "해외 협력 문의하기",
+    },
+    en: {
+      kicker: "GLOBAL PARTNERSHIPS",
+      title: "Partnership possibilities abroad,\nand fields of work.",
+      lead: "The kinds of local partners PETLOG would like to explore as it goes abroad. They are possibilities under review, not signed partnerships, and the same eligibility checks and data-protection principles apply as at home.",
+      fieldLabel: "Fields of work",
+      items: [
+        ["Vet clinics and veterinary bodies", "Finding ways to present information that fit local clinical practice and veterinary rules.", "Official clinic info, booking routes, consent-based record summaries", "clinic"],
+        ["Pet-care service companies", "Reviewing how to connect services local owners can trust.", "Grooming, walking and home-visit links, provider checks", "scissors"],
+        ["Pet goods brands", "Helping the right products reach local owners in the context of their records.", "Local listings, promotions, recurring delivery", "bag"],
+        ["Pet insurers", "Explaining cover clearly with locally licensed insurers.", "Cover information; sign-up and claims via the insurer's own channels", "umbrella"],
+        ["Pet hotels, trainers and carers", "Linking boarding and training to owners' schedules.", "Boarding and training booking links, vaccination rules, activity logs", "home"],
+        ["Animal-welfare groups and shelters", "Reviewing public-good work that helps abandoned and rescued animals locally.", "Animal, adoption and foster notices; treatment and care giving", "heart"],
+        ["Local pet-tech companies", "Connecting the devices and technology used locally with PETLOG records.", "Smart-device links, localisation technology, data security", "tool"],
+      ],
+      cta: "Global partnership inquiry",
+    },
+  },
+};
