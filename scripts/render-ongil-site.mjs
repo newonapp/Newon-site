@@ -1272,7 +1272,8 @@ function renderPage(lang, page) {
     <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
     <link rel="stylesheet" href="/ongil-site.css?v=${OGS_VER}" />${page === "contact" ? `\n    <link rel="stylesheet" href="${BIZ_CONTACT_CSS}" />` : ""}`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
-    <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,
+    <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>
+    <script>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t;try{t=document.getElementById(decodeURIComponent(h));}catch(x){return;}if(!t)return;var d=t.closest("details")||t.querySelector("details.ogs-acc"),c=false;while(d){if(!d.open){d.open=true;c=true;}d=d.parentElement&&d.parentElement.closest("details");}if(c)t.scrollIntoView();}window.addEventListener("hashchange",o);if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",o);else o();})();</script>`,
   });
   const out = page === "overview" ? path.join(ROOT, lang, "ongil", "index.html") : path.join(ROOT, lang, "ongil", page, "index.html");
   ensureDir(out);
