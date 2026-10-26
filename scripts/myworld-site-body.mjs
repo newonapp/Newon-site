@@ -127,6 +127,51 @@ function storeButtons(copy, { ghost = false } = {}) {
 }
 const dl = (pairs, cls = "mws-dl") => `<dl class="${cls}">${pairs.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>`;
 
+/* ---------- v4 visual atoms (2026-10-26) ----------
+   Product-like mockups are built in HTML/CSS from existing copy only and always carry the "예시 화면 /
+   Illustrative screen" caption — no metrics, users, prices or partners are shown in them. */
+const tl = (s) => esc(String(s).replace(/\n/g, " "));
+/** Phone-style app screen. */
+function phone(copy, { label, status = "", body, cls = "" }) {
+  return `<figure class="mws-mock mws-mock--phone${cls ? ` ${cls}` : ""}" aria-label="${esc(copy.ui.mockLabel)} · ${tl(label)}">
+      <div class="mws-mock__screen">
+        <div class="mws-mock__bar"><span class="mws-mock__brand" lang="en">${esc(copy.ui.brand)}</span>${status ? badge(copy, status) : ""}</div>
+        ${body}
+      </div>
+      <figcaption class="mws-mock__cap">${esc(copy.ui.mockLabel)}</figcaption>
+    </figure>`;
+}
+/** Desktop-window mockup (business tools). */
+function windowMock(copy, { label, status = "", side, body }) {
+  return `<figure class="mws-mock mws-mock--window" aria-label="${esc(copy.ui.mockLabel)} · ${tl(label)}">
+      <div class="mws-mock__win">
+        <div class="mws-mock__bar"><span class="mws-mock__brand" lang="en">${esc(copy.ui.brand)}</span><span class="mws-mock__path">${tl(label)}</span>${status ? badge(copy, status) : ""}</div>
+        <div class="mws-mock__cols"><div class="mws-mock__side">${side}</div><div class="mws-mock__main">${body}</div></div>
+      </div>
+      <figcaption class="mws-mock__cap">${esc(copy.ui.mockLabel)}</figcaption>
+    </figure>`;
+}
+const mockRows = (rows) => `<ul class="mws-mock__rows">${rows.map(([ic, text, sub]) => `<li><span class="mws-mock__ico">${icon(ic)}</span><span class="mws-mock__txt"><span>${esc(text)}</span>${sub ? `<small>${esc(sub)}</small>` : ""}</span></li>`).join("")}</ul>`;
+/** Icon cards (bento). The first card can be the large lead. */
+function iconCards(items, icons, { cls = "", lead = true, nameKey = "name", bodyKey = "body" } = {}) {
+  return `<ul class="mws-icards${cls ? ` ${cls}` : ""}">${items.map((it, i) => `<li class="mws-icard${lead && i === 0 ? " mws-icard--lead" : ""}">
+        <span class="mws-icard__ico">${icon(icons[i % icons.length])}</span>
+        ${it.en ? `<p class="mws-en">${esc(it.en)}</p>` : ""}
+        <h3 class="mws-h3${lead && i === 0 ? " mws-h3--xl" : " mws-h3--lg"}">${esc(it[nameKey])}</h3>
+        <p class="mws-body">${esc(it[bodyKey] || it.body || it.role || it.lead)}</p>
+        ${it.chips ? chips(it.chips, "mws-chips--soft") : ""}
+        ${it.tags ? `<p class="mws-tags">${esc(it.tags)}</p>` : ""}
+      </li>`).join("")}</ul>`;
+}
+/** Horizontal snap rail (all widths). Keyboard: the rail is a focusable scroll region. */
+function snapRail(copy, title, cards) {
+  return `<div class="mws-snap" role="region" tabindex="0" aria-label="${tl(title)} — ${esc(copy.ui.railAria)}"><ul class="mws-snap__list">${cards}</ul></div>`;
+}
+/** Full-bleed accent band (one per page). */
+function accent({ id, inner, cls = "" }) {
+  return section({ id, tone: "accent", cls, inner });
+}
+
 /* ---------- hero (shared flagship film hero — keep as is) ---------- */
 /** Hero — the same dark film hero as the other flagship pages (PETLOG · BABYLOG · LIVON):
  *  wordmark, slogan, lead and two buttons. No art, kicker or stats. */
@@ -200,10 +245,31 @@ function overview(lang, copy) {
 
   // Definition — big statement left, the four platform layers as definition rows right
   const d = o.define;
-  const define = split({
-    id: "mws-define", kicker: d.kicker, title: d.title, lead: d.lead, cls: "mws-sec--first",
-    aside: `<div class="mws-actions">${btn(pageHref(lang, "platform"), copy.ui.platformCta)}${btn(pageHref(lang, "contact"), copy.ui.contactCta, { ghost: true })}</div>`,
-    body: defRows(d.items, { cls: "mws-defs--lead" }),
+  // Left column: an illustrative record screen built from the live feature names (fills the former empty half-column)
+  const st0 = o.status;
+  const recIcons = ["globe", "pin", "map", "book", "grid", "spark"];
+  const v0 = o.values.items[0];
+  const recordPhone = phone(copy, {
+    label: d.items[0].name, status: "live", cls: "mws-mock--define",
+    body: `<div class="mws-mock__hero"><p class="mws-mock__eyebrow" lang="en">${esc(v0.en)}</p><p class="mws-mock__title">${esc(v0.name)}</p>${chips(v0.chips, "mws-mock__chips")}</div>
+        ${mockRows(st0.items.map((it, i) => [recIcons[i % recIcons.length], it.name]))}`,
+  });
+  const layerStatus = ["live", "partial", "review", "review"];
+  const layerIcons = ["map", "plane", "bag", "building"];
+  const define = section({
+    id: "mws-define", cls: "mws-sec--first",
+    inner: `<div class="mws-split mws-split--mock">
+        <div class="mws-split__head">${head({ id: "mws-define", kicker: d.kicker, title: d.title, lead: d.lead })}
+          <div class="mws-actions">${btn(pageHref(lang, "platform"), copy.ui.platformCta)}${btn(pageHref(lang, "contact"), copy.ui.contactCta, { ghost: true })}</div>
+        </div>
+        <div class="mws-split__body">
+          <ol class="mws-layerlist">${d.items.map((it, i) => `<li class="mws-layerlist__item mws-layerlist__item--${layerStatus[i] || "review"}">
+            <span class="mws-layerlist__ico">${icon(layerIcons[i % layerIcons.length])}</span>
+            <div class="mws-layerlist__main"><h3 class="mws-h3 mws-h3--lg">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p>${it.tags ? `<p class="mws-layerlist__tag"><span class="mws-layerlist__dot" aria-hidden="true"></span>${esc(it.tags)}</p>` : ""}</div>
+          </li>`).join("")}</ol>
+        </div>
+        <div class="mws-split__mock">${recordPhone}</div>
+      </div>`,
   });
 
   // Problem → answer — paired cards: the problem on top, MY WORLD's answer underneath
@@ -230,6 +296,7 @@ function overview(lang, copy) {
     id: "mws-values", tone: "tint",
     inner: `${head({ id: "mws-values", kicker: v.kicker, title: v.title, lead: v.lead })}
       <ul class="mws-bento">${v.items.map((c, i) => `<li class="mws-bento__cell${i === 0 ? " mws-bento__cell--lead" : ""}">
+          <span class="mws-bento__ico">${icon(["map", "wallet", "flag", "shield", "chat"][i % 5])}</span>
           <p class="mws-en">${esc(c.en)}</p>
           <h3 class="mws-h3${i === 0 ? " mws-h3--xl" : " mws-h3--lg"}">${esc(c.name)}</h3>
           <p class="mws-body">${esc(c.lead)}</p>
@@ -241,7 +308,8 @@ function overview(lang, copy) {
   const cu = o.customers;
   const customers = section({
     id: "mws-customers",
-    inner: `${head({ id: "mws-customers", kicker: cu.kicker, title: cu.title, lead: cu.lead, note: cu.note, cls: "mws-head--wide" })}${feats(cu.items, { cols: 3 })}`,
+    inner: `${head({ id: "mws-customers", kicker: cu.kicker, title: cu.title, lead: cu.lead, note: cu.note, cls: "mws-head--wide" })}
+      <ul class="mws-people">${cu.items.map((it, i) => `<li class="mws-people__item${i === 0 ? " mws-people__item--lead" : ""}"><span class="mws-people__ico">${icon(["users", "book", "users", "camera", "briefcase", "building"][i % 6])}</span><div><h3 class="mws-h3${i === 0 ? " mws-h3--xl" : ""}">${esc(it.name)}</h3><p class="mws-body">${esc(it.body || it.role)}</p></div></li>`).join("")}</ul>`,
   });
 
   // Journey — segmented tabs (a real six-step sequence); each panel states what the app does today
@@ -279,7 +347,7 @@ function overview(lang, copy) {
   const scenes = section({
     id: "mws-scenes",
     inner: `${head({ id: "mws-scenes", kicker: sc.kicker, title: sc.title, lead: sc.lead })}
-      <ul class="mws-rail">${sc.items.map((it) => `<li class="mws-rail__card"><h3 class="mws-h3 mws-h3--lg">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></li>`).join("")}</ul>`,
+      ${snapRail(copy, sc.title, sc.items.map((it, i) => `<li class="mws-snap__card"><span class="mws-snap__ico">${icon(["plane", "calendar", "flag", "suitcase", "users", "bed"][i % 6])}</span><h3 class="mws-h3 mws-h3--lg">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></li>`).join(""))}`,
   });
 
   // Differentiation — comparison table: the existing way vs MY WORLD
@@ -315,7 +383,10 @@ function overview(lang, copy) {
 
   // Global vision — split + definition rows (the world map leads; plan, not current service)
   const gv = o.global;
-  const globalVision = split({ id: "mws-global", kicker: gv.kicker, title: gv.title, lead: gv.lead, note: gv.note, body: defRows(gv.items, { cls: "mws-defs--lead" }) });
+  const globalVision = section({
+    id: "mws-global",
+    inner: `${head({ id: "mws-global", kicker: gv.kicker, title: gv.title, lead: gv.lead, note: gv.note, cls: "mws-head--wide" })}${iconCards(gv.items, ["map", "chat", "users", "briefcase"], { cls: "mws-icards--quad" })}`,
+  });
 
   // Long-term vision — priority steps (a real order)
   const r = o.roadmap;
@@ -328,7 +399,7 @@ function overview(lang, copy) {
   const nw = o.newon;
   const newon = section({
     id: "mws-newon",
-    inner: `${head({ id: "mws-newon", kicker: nw.kicker, title: nw.title, lead: nw.lead, note: nw.note })}${defRows(nw.items, { bodyKey: "role", cls: "mws-defs--grid mws-defs--grid3" })}`,
+    inner: `${head({ id: "mws-newon", kicker: nw.kicker, title: nw.title, lead: nw.lead, note: nw.note })}${defRows(nw.items, { bodyKey: "role", cls: "mws-defs--grid mws-defs--grid3 mws-defs--dir" })}`,
   });
 
   // FAQ — split + accordion
@@ -345,11 +416,25 @@ function platform(lang, copy) {
     ctas: hbtn(GOOGLE_PLAY_URL, copy.ui.appCta, { external: true }) + hbtn(pageHref(lang, "contact"), copy.ui.contactCta, { ghost: true }),
   });
 
-  // The app today — tinted band, six icon tiles + store buttons
+  // The app today — asymmetric split: an illustrative trip-record screen (areas 02 + 03, both live) beside the six live capabilities
+  const a2 = p.items[1], a3 = p.items[2];
+  const tripPhone = phone(copy, {
+    label: a2.name, status: "live", cls: "mws-mock--trip",
+    body: `<div class="mws-mock__hero"><p class="mws-mock__eyebrow" lang="en">${esc(a2.en)}</p><p class="mws-mock__title">${esc(a2.name)}</p></div>
+        ${mockRows(a2.features.map((f, i) => [["camera", "pin", "map", "book"][i % 4], f]))}
+        <div class="mws-mock__card"><p class="mws-mock__eyebrow" lang="en">${esc(a3.en)}</p><p class="mws-mock__sub">${esc(a3.name)}</p>
+          <ul class="mws-mock__grid">${a3.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul></div>`,
+  });
   const shots = section({
-    id: "mws-shots", tone: "tint", cls: "mws-sec--first",
-    inner: `<div class="mws-rowhead">${head({ id: "mws-shots", kicker: p.shotsKicker, title: p.shotsTitle })}<div class="mws-actions">${storeButtons(copy)}</div></div>
-      <ul class="mws-tiles">${p.shots.map((s) => `<li class="mws-tile"><span class="mws-ico-box">${icon(s.icon)}</span><div><p class="mws-tile__text">${esc(s.text)}</p>${s.body ? `<p class="mws-tile__body">${esc(s.body)}</p>` : ""}</div></li>`).join("")}</ul>`,
+    id: "mws-shots", cls: "mws-sec--first",
+    inner: `<div class="mws-showcase">
+        <div class="mws-showcase__mock">${tripPhone}</div>
+        <div class="mws-showcase__main">
+          ${head({ id: "mws-shots", kicker: p.shotsKicker, title: p.shotsTitle })}
+          <ul class="mws-caps">${p.shots.map((s) => `<li><span class="mws-ico-box">${icon(s.icon)}</span><div><p class="mws-tile__text">${esc(s.text)}</p>${s.body ? `<p class="mws-tile__body">${esc(s.body)}</p>` : ""}</div></li>`).join("")}</ul>
+          <div class="mws-actions">${storeButtons(copy)}</div>
+        </div>
+      </div>`,
   });
 
   // Area map — five group columns with jump links (letters / numbers = the plan's group and area IDs)
@@ -413,7 +498,7 @@ function platform(lang, copy) {
   const gl = p.global;
   const globalExp = split({
     id: "mws-global", kicker: gl.kicker, title: gl.title, lead: gl.lead, note: gl.note,
-    aside: `<p class="mws-label">${esc(gl.localLabel)}</p>${chips(gl.local)}`,
+    aside: `<div class="mws-checkcard"><p class="mws-label mws-label--blue">${esc(gl.localLabel)}</p><ul class="mws-checkcard__list">${gl.local.map((t) => `<li><span class="mws-checks__ico">${icon("check")}</span>${esc(t)}</li>`).join("")}</ul></div>`,
     body: defRows(gl.items),
   });
 
@@ -421,7 +506,7 @@ function platform(lang, copy) {
   const f = p.flow;
   const flow = section({
     id: "mws-flow",
-    inner: `${head({ id: "mws-flow", kicker: f.kicker, title: f.title, lead: f.lead, note: f.note, cls: "mws-head--wide" })}${steps(f.items, { cls: "mws-steps--cycle" })}`,
+    inner: `${head({ id: "mws-flow", kicker: f.kicker, title: f.title, lead: f.lead, note: f.note, cls: "mws-head--wide" })}${steps(f.items, { cls: "mws-steps--cycle mws-steps--line" })}`,
   });
 
   // Scenarios — 2×2 cards: persona, the steps as a chain, now / later
@@ -441,7 +526,8 @@ function platform(lang, copy) {
   const u = p.users;
   const users = section({
     id: "mws-users",
-    inner: `${head({ id: "mws-users", kicker: u.kicker, title: u.title, lead: u.lead, note: u.note })}${defRows(u.items, { bodyKey: "role", cls: "mws-defs--grid mws-defs--grid3" })}`,
+    inner: `${head({ id: "mws-users", kicker: u.kicker, title: u.title, lead: u.lead, note: u.note, cls: "mws-head--wide" })}
+      <ul class="mws-roles">${u.items.map((it, i) => `<li><span class="mws-roles__ico">${icon(["pin", "spark", "users", "camera", "briefcase", "building"][i % 6])}</span><h3 class="mws-h3">${esc(it.name)}</h3><p class="mws-body">${esc(it.role || it.body)}</p></li>`).join("")}</ul>`,
   });
 
   // Privacy & trust — four hairline columns
@@ -453,8 +539,8 @@ function platform(lang, copy) {
 
   // App guide — tinted band, five numbered steps
   const g = p.guide;
-  const guide = section({
-    id: "mws-guide", tone: "tint",
+  const guide = accent({
+    id: "mws-guide",
     inner: `<div class="mws-rowhead">${head({ id: "mws-guide", kicker: g.kicker, title: g.title, lead: g.lead, note: g.note })}<div class="mws-actions">${storeButtons(copy)}</div></div>
       ${steps(g.steps, { cls: "mws-steps--big", en: true })}`,
   });
@@ -478,7 +564,7 @@ function business(lang, copy) {
   const model = section({
     id: "mws-model", cls: "mws-sec--first",
     inner: `${head({ id: "mws-model", kicker: m.kicker, title: m.title, lead: m.lead, cls: "mws-head--wide" })}
-      <ol class="mws-layers">${m.items.map((it) => `<li class="mws-layer"><h3 class="mws-h3 mws-h3--lg">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></li>`).join("")}</ol>`,
+      <ol class="mws-layers">${m.items.map((it, i) => `<li class="mws-layer"><span class="mws-layer__ico">${icon(["map", "plane", "bag", "building"][i % 4])}</span><h3 class="mws-h3 mws-h3--lg">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p>${i < m.items.length - 1 ? `<span class="mws-layer__to" aria-hidden="true">${icon("arrow")}</span>` : ""}</li>`).join("")}</ol>`,
   });
 
   // Who pays — clean data table
@@ -533,7 +619,7 @@ function business(lang, copy) {
 
   // Booking & brokerage principles — large statements
   const de = b.deals;
-  const deals = section({
+  const deals = accent({
     id: "mws-deals",
     inner: `${head({ id: "mws-deals", kicker: de.kicker, title: de.title })}
       <ul class="mws-quotes">${de.items.map((t) => `<li><p>${esc(t)}</p></li>`).join("")}</ul>`,
@@ -543,9 +629,13 @@ function business(lang, copy) {
   const s = b.saas;
   const saas = section({
     id: "mws-saas",
-    inner: `<div class="mws-panelbox">
-        <div class="mws-panelbox__head">${head({ id: "mws-saas", kicker: s.kicker, title: s.title, lead: s.lead })}<p class="mws-saas__badge">${badge(copy, "review")}</p></div>
-        <ul class="mws-modules">${s.items.map((it) => `<li><h3 class="mws-h4" lang="en">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></li>`).join("")}</ul>
+    inner: `<div class="mws-saas2">
+        <div class="mws-saas2__head">${head({ id: "mws-saas", kicker: s.kicker, title: s.title, lead: s.lead })}</div>
+        ${windowMock(copy, {
+          label: s.kicker, status: "review",
+          side: `<ul class="mws-mock__nav">${s.items.map((it, i) => `<li${i === 0 ? ' class="is-on"' : ""} lang="en">${esc(it.name)}</li>`).join("")}</ul>`,
+          body: `<ul class="mws-modules">${s.items.map((it) => `<li><h3 class="mws-h4" lang="en">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></li>`).join("")}</ul>`,
+        })}
       </div>
       <div class="mws-who">
         <h3 class="mws-h3 mws-who__title">${esc(s.whoTitle)}</h3>
@@ -560,7 +650,11 @@ function business(lang, copy) {
 
   // Market opportunity — split + definition rows
   const mk = b.market;
-  const market = split({ id: "mws-market", kicker: mk.kicker, title: mk.title, lead: mk.lead, body: defRows(mk.items, { cls: "mws-defs--lead" }) });
+  const market = section({
+    id: "mws-market",
+    inner: `${head({ id: "mws-market", kicker: mk.kicker, title: mk.title, lead: mk.lead, cls: "mws-head--wide" })}
+      <ol class="mws-statements">${mk.items.map((it) => `<li><h3 class="mws-statements__h">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></li>`).join("")}</ol>`,
+  });
 
   // Differentiation hypotheses — 2×2 large-type cells
   const df = b.diff;
@@ -617,17 +711,31 @@ function partnerships(lang, copy) {
   });
 
   // Vision — large-type statement: first statement leads, the others follow in columns
+  // + an illustrative plan screen: how a clearly labelled partner card would sit inside a trip plan (planned, not live)
+  const plan = copy.overview.journey.items[1];
+  const m0 = p.models.items[0];
+  const adLabel = copy.overview.values.items[4].chips[0];
+  const planPhone = phone(copy, {
+    label: plan.name, cls: "mws-mock--plan",
+    body: `<div class="mws-mock__hero"><p class="mws-mock__eyebrow" lang="en">${esc(plan.en)}</p><p class="mws-mock__title">${esc(plan.head)}</p></div>
+        ${mockRows(plan.chips.slice(0, 4).map((c, i) => [["calendar", "check", "wallet", "flag"][i % 4], c]))}
+        <div class="mws-mock__card mws-mock__card--partner"><p class="mws-mock__tags"><span class="mws-mock__flag">${esc(adLabel)}</span>${badge(copy, "planned")}</p><p class="mws-mock__sub">${esc(m0.name)}</p><p class="mws-mock__note">${esc(m0.tags)}</p></div>`,
+  });
   const why = section({
     id: "mws-why", cls: "mws-sec--first",
-    inner: `${head({ id: "mws-why", kicker: p.why.kicker, title: p.why.title, cls: "mws-head--wide" })}
-      <div class="mws-vision"><p class="mws-vision__lead">${esc(p.why.items[0])}</p>
-        <ul class="mws-vision__rest">${p.why.items.slice(1).map((t) => `<li><p>${esc(t)}</p></li>`).join("")}</ul></div>`,
+    inner: `<div class="mws-whygrid">
+        <div class="mws-whygrid__main">${head({ id: "mws-why", kicker: p.why.kicker, title: p.why.title, cls: "mws-head--wide" })}
+          <div class="mws-vision"><p class="mws-vision__lead">${esc(p.why.items[0])}</p>
+            <ul class="mws-vision__rest">${p.why.items.slice(1).map((t) => `<li><p>${esc(t)}</p></li>`).join("")}</ul></div>
+        </div>
+        <div class="mws-whygrid__mock">${planPhone}</div>
+      </div>`,
   });
 
   // Models — six hairline columns
   const models = section({
-    id: "mws-models", tone: "tint",
-    inner: `${head({ id: "mws-models", kicker: p.models.kicker, title: p.models.title })}${feats(p.models.items, { cols: 3, cls: "mws-feats--rule" })}`,
+    id: "mws-models",
+    inner: `${head({ id: "mws-models", kicker: p.models.kicker, title: p.models.title })}${iconCards(p.models.items, ["ticket", "bag", "book", "flag", "code", "globe"], { cls: "mws-icards--six" })}`,
   });
 
   // Partner types — segmented tabs by group; cards with the five facts (partner numbers = existing IDs)
@@ -673,10 +781,14 @@ function partnerships(lang, copy) {
 
   // Global partnerships — split: overseas partner kinds and collaboration possibilities; inquiry → unified Contact page
   const gp = p.global;
-  const globalPart = split({
-    id: "mws-global", kicker: gp.kicker, title: gp.title, lead: gp.lead, note: gp.note,
-    aside: `<div class="mws-actions">${btn(ask(lang, "partnership", "partnerships"), gp.cta)}</div>`,
-    body: defRows(gp.items),
+  const globalPart = section({
+    id: "mws-global",
+    inner: `<div class="mws-rowhead">${head({ id: "mws-global", kicker: gp.kicker, title: gp.title, lead: gp.lead, note: gp.note, cls: "mws-head--wide" })}<div class="mws-actions">${btn(ask(lang, "partnership", "partnerships"), gp.cta)}</div></div>
+      <table class="mws-table mws-table--glob">
+        <caption class="mws-sr">${tl(gp.title)}</caption>
+        <thead><tr><th scope="col">${esc(copy.ui.partnersLabel)}</th><th scope="col">${esc(copy.ui.collabLabel)}</th></tr></thead>
+        <tbody>${gp.items.map((it, i) => `<tr><th scope="row"><span class="mws-table__ico">${icon(["globe", "flag", "ticket", "bed", "book", "pin", "code"][i % 7])}</span>${esc(it.name)}</th><td data-label="${esc(copy.ui.collabLabel)}">${esc(it.body)}</td></tr>`).join("")}</tbody>
+      </table>`,
   });
 
   // PoC & pilots — tinted band, spec cards
@@ -704,8 +816,8 @@ function partnerships(lang, copy) {
 
   // Process — tinted band, six numbered steps
   const pr = p.process;
-  const process = section({
-    id: "mws-process", tone: "tint",
+  const process = accent({
+    id: "mws-process",
     inner: `${head({ id: "mws-process", kicker: pr.kicker, title: pr.title })}${steps(pr.steps, { cls: "mws-steps--big mws-steps--6", en: true })}`,
   });
 
@@ -713,7 +825,7 @@ function partnerships(lang, copy) {
   const va = p.value;
   const value = section({
     id: "mws-value",
-    inner: `${head({ id: "mws-value", kicker: va.kicker, title: va.title, lead: va.lead, cls: "mws-head--wide" })}${feats(va.items, { cols: 4 })}`,
+    inner: `${head({ id: "mws-value", kicker: va.kicker, title: va.title, lead: va.lead, cls: "mws-head--wide" })}${iconCards(va.items, ["flag", "map", "shield", "check"], { cls: "mws-icards--four", lead: false })}`,
   });
 
   // Checklist — split + two-column checks
