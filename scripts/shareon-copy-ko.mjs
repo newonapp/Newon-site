@@ -27,6 +27,9 @@ export const KO = {
     { id: "partnerships", n: "04", en: "Partnerships", label: "파트너십" },
     { id: "contact", n: "05", en: "Contact", label: "문의" },
   ],
+  /* v4 (2026-10-26): label on HTML/CSS product mockups — illustrative screens, never real data */
+  illus: "예시 화면",
+  memoTitle: "파트너십 제안 메모",
   considerLabel: "확인할 점",
   partnershipInquiry: "파트너십 문의하기",
   matrix: { provider: "빌려주는 쪽", renter: "빌리는 쪽", person: "개인", business: "기업" },

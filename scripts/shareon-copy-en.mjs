@@ -17,6 +17,9 @@ export const EN = {
     { id: "partnerships", n: "04", en: "Partnerships", label: "Partnerships" },
     { id: "contact", n: "05", en: "Contact", label: "Contact" },
   ],
+  /* v4 (2026-10-26): label on HTML/CSS product mockups — illustrative screens, never real data */
+  illus: "Illustrative",
+  memoTitle: "Partnership proposal memo",
   considerLabel: "To check",
   partnershipInquiry: "Partnership inquiry",
   matrix: { provider: "Lender", renter: "Borrower", person: "Person", business: "Business" },

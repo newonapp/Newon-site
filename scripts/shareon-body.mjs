@@ -187,15 +187,35 @@ function roleTitle(title) {
 }
 
 /** Large-type trio: three statements side by side, no boxes. `numbered` only for a real chain of reasoning. */
-function trio(id, t, { mod = "", numbered = false, more = "" } = {}) {
+function trio(id, t, { mod = "", numbered = false, more = "", cls = "", headCls = "" } = {}) {
   return sec(
     id,
-    `${rowHead(id, t)}
-    <ol class="nsh-trio${numbered ? " nsh-trio--n" : ""}" role="list">${t.points
+    `${rowHead(id, t, { cls: headCls })}
+    <ol class="nsh-trio${numbered ? " nsh-trio--n" : ""}${cls ? ` ${cls}` : ""}" role="list">${t.points
       .map(
         (pt) => `<li class="nsh-trio__item">${numbered ? `<span class="nsh-trio__n" aria-hidden="true">${e(pt.n)}</span>` : ""}<h3 class="nsh-trio__title">${e(pt.title)}</h3><p class="nsh-trio__body">${e(pt.body)}</p></li>`
       )
       .join("")}</ol>${more}`,
+    mod
+  );
+}
+
+/** v4 · asymmetric stack: heading block on the left (title, lead, link), icon statements stacked on the right. */
+function stack(id, t, icons, { mod = "", more = "" } = {}) {
+  return sec(
+    id,
+    `<div class="nsh-stack">
+      <header class="nsh-head nsh-stack__head">
+        ${t.kicker ? `<p class="nsh-kicker" lang="en">${e(t.kicker)}</p>` : ""}
+        <h2 class="nsh-title" id="nsh-${e(id)}-t">${nl(t.title)}</h2>
+        ${t.lead ? `<p class="nsh-lead">${e(t.lead)}</p>` : ""}${more}
+      </header>
+      <ol class="nsh-stack__list" role="list">${t.points
+        .map(
+          (pt, i) => `<li class="nsh-stack__item"><span class="nsh-ico-well">${icon(icons[i % icons.length])}</span><div><h3 class="nsh-stack__t">${e(pt.title)}</h3><p class="nsh-stack__b">${e(pt.body)}</p></div></li>`
+        )
+        .join("")}</ol>
+    </div>`,
     mod
   );
 }
@@ -250,6 +270,30 @@ function matrix(c, rest) {
         (it) => `<li class="nsh-signal__item"><p class="nsh-signal__code" lang="en">${e(it.en)}</p><div><h3 class="nsh-signal__title">${e(it.title)}</h3><p class="nsh-signal__body">${e(
           it.body
         )}</p></div></li>`
+      )
+      .join("")}</ul>`;
+}
+
+/** v4 · Business: the four trade structures as a supplier → renter strip (the Overview keeps the 2 × 2 matrix). */
+function flows(c, rest) {
+  const m = c.matrix;
+  const side = (ch) => (ch === "C" ? m.person : m.business);
+  const order = ["C2C", "B2C", "C2B", "B2B"];
+  const by = Object.fromEntries(c.trades.map((it) => [it.en, it]));
+  return `<ol class="nsh-flows" role="list">${order
+    .map((code, i) => {
+      const it = by[code];
+      return `<li class="nsh-flows__item${i === 0 ? " is-first" : ""}">
+        <p class="nsh-flows__code" lang="en">${e(code)}</p>
+        <p class="nsh-flows__route"><span class="nsh-flows__who"><small>${e(m.provider)}</small>${e(side(code[0]))}</span><span class="nsh-flows__arrow" aria-hidden="true">→</span><span class="nsh-flows__who"><small>${e(m.renter)}</small>${e(side(code[2]))}</span></p>
+        <h3 class="nsh-vh">${e(it.title)}</h3>
+        <p class="nsh-flows__body">${e(it.body)}</p>
+      </li>`;
+    })
+    .join("")}</ol>
+    <ul class="nsh-signal nsh-signal--row" role="list">${rest
+      .map(
+        (it) => `<li class="nsh-signal__item"><p class="nsh-signal__code" lang="en">${e(it.en)}</p><div><h3 class="nsh-signal__title">${e(it.title)}</h3><p class="nsh-signal__body">${e(it.body)}</p></div></li>`
       )
       .join("")}</ul>`;
 }
@@ -323,6 +367,25 @@ function faq(id, t, mod = "") {
   );
 }
 
+/* ───────── v4 (2026-10-26): illustrative product mockups (HTML/CSS only, labelled, never real data) ───────── */
+
+const TAB_ICONS = ["home", "search", "plus", "chat", "user"];
+/** "Home · 홈" → "홈" (KO), "Home" → "Home" (EN) */
+const tabLabel = (name) => (String(name).includes(" · ") ? String(name).split(" · ")[1] : String(name));
+
+/** Static bottom tab bar of the app (decorative copy of the five tab names). */
+function phoneBar(c, active = 0) {
+  return `<ul class="nsh-phone__tabs" role="list">${c.platform.links.items
+    .slice(0, 5)
+    .map((it, i) => `<li class="${i === active ? "is-on" : ""}">${icon(TAB_ICONS[i])}<span>${e(tabLabel(it.name))}</span></li>`)
+    .join("")}</ul>`;
+}
+
+/** Caption under a mockup: "예시 화면 · …" / "Illustrative · …" */
+function illusCap(c, text = "") {
+  return `<figcaption class="nsh-illus"><span class="nsh-illus__k">${e(c.illus)}</span>${text ? `<span>${e(text)}</span>` : ""}</figcaption>`;
+}
+
 function checks(items) {
   return `<ul class="nsh-checks" role="list">${items.map((t) => `<li class="nsh-checks__item">${CHECK_SVG}<p>${e(t)}</p></li>`).join("")}</ul>`;
 }
@@ -332,17 +395,36 @@ function checks(items) {
 function overview(c, lang) {
   const o = c.overview;
   const v = o.vision;
+  const camp = o.categories.items.find((it) => it.icon === "camping") || o.categories.items[0];
+  const scene = o.scenes.items.find((it) => it.icon === "camping") || o.scenes.items[0];
   /* v3: statement row → three problems as wide rows → the five stretches of one rental */
   const vision = sec(
     "vision",
     `${rowHead("vision", v, { cls: "nsh-head--lead" })}
     ${rows(v.points, { showN: true, cls: "nsh-rows--cols" })}
-    <div class="nsh-chain-box">
-      <h3 class="nsh-chain__h">${e(v.chainTitle)}</h3>
-      <ol class="nsh-chain" role="list">${v.chain
-        .map((st, i) => `<li class="nsh-chain__item"><p class="nsh-chain__n"><span aria-hidden="true">${String(i + 1).padStart(2, "0")}</span> <span lang="en">${e(st.en)}</span></p><p class="nsh-chain__t">${e(st.title)}</p><p class="nsh-chain__b">${e(st.body)}</p></li>`)
-        .join("")}</ol>
-      <p class="nsh-note">${e(v.chainNote)}</p>
+    <div class="nsh-journey">
+      <figure class="nsh-mock nsh-journey__mock">
+        <div class="nsh-phone" aria-hidden="true">
+          <div class="nsh-phone__screen">
+            <p class="nsh-phone__brand" lang="en">SHAREON</p>
+            <div class="nsh-phone__card">
+              <div class="nsh-phone__row"><span class="nsh-ico-well nsh-ico-well--sm">${icon(camp.icon)}</span><div><p class="nsh-phone__tag">${e(camp.title)}</p><p class="nsh-phone__name">${e(scene.title)}</p></div></div>
+              <p class="nsh-phone__meta">${e(camp.body)}</p>
+            </div>
+            <ol class="nsh-phone__steps">${v.chain.map((st, i) => `<li class="${i < 2 ? "is-done" : i === 2 ? "is-on" : ""}"><span lang="en">${e(st.en)}</span></li>`).join("")}</ol>
+            <div class="nsh-phone__req"><p class="nsh-phone__req-t">${e(v.chain[2].title)}</p><p>${e(v.chain[2].body)}</p></div>
+          </div>
+          ${phoneBar(c, 1)}
+        </div>
+        ${illusCap(c, v.chainTitle)}
+      </figure>
+      <div class="nsh-chain-box">
+        <h3 class="nsh-chain__h">${e(v.chainTitle)}</h3>
+        <ol class="nsh-chain" role="list">${v.chain
+          .map((st, i) => `<li class="nsh-chain__item"><p class="nsh-chain__n"><span aria-hidden="true">${String(i + 1).padStart(2, "0")}</span> <span lang="en">${e(st.en)}</span></p><p class="nsh-chain__t">${e(st.title)}</p><p class="nsh-chain__b">${e(st.body)}</p></li>`)
+          .join("")}</ol>
+        <p class="nsh-note">${e(v.chainNote)}</p>
+      </div>
     </div>`
   );
   const cu = o.customers;
@@ -356,14 +438,14 @@ function overview(c, lang) {
   const cat = o.categories;
   const categories = sec(
     "categories",
-    `${rowHead("categories", cat)}${spec(cat.items, { cols: 3, useLabel: cat.useLabel, cls: "nsh-spec--cat" })}
+    `${rowHead("categories", cat, { cls: "nsh-head--display" })}${spec(cat.items, { cols: 3, useLabel: cat.useLabel, cls: "nsh-spec--cat" })}
     <div class="nsh-foot"><p class="nsh-note">${e(cat.note)}</p>${link(`${pageHref(lang, "platform")}#nsh-index`, cat.cta)}</div>`,
     "tint"
   );
   const role = sec("role", `${rowHead("role", o.role)}${doDont(o.role)}`, "accent");
   const body = [
     vision,
-    trio("values", o.values, { mod: "tint" }),
+    trio("values", o.values, { mod: "tint", cls: "nsh-trio--panel", headCls: "nsh-head--center" }),
     customers,
     sec(
       "scenes",
@@ -388,7 +470,7 @@ function overview(c, lang) {
     phase("status", o.status, "tint"),
     steps("eco", o.eco, o.eco.items, { more: `<p class="nsh-more">${link(pageHref(lang, "business"), o.eco.cta)}</p>` }),
     /* Global vision (2026-10-26): long-term direction only; details on Business #nsh-global */
-    trio("global", o.global, { mod: "tint", more: `<p class="nsh-more">${link(`${pageHref(lang, "business")}#nsh-global`, o.global.cta)}</p>` }),
+    stack("global", o.global, ["local", "global", "trust"], { mod: "tint", more: `<p class="nsh-more">${link(`${pageHref(lang, "business")}#nsh-global`, o.global.cta)}</p>` }),
     split(
       "newon",
       o.newon,
@@ -546,20 +628,48 @@ function platform(c, lang) {
     "tint"
   );
 
-  const users = sec("users", `${rowHead("users", p.users)}${table("users", p.users, ["who", "does", "tabs", "check"])}`);
+  const users = sec("users", `${rowHead("users", p.users, { cls: "nsh-head--display" })}${table("users", p.users, ["who", "does", "tabs", "check"])}`);
 
-  /* Five tabs + one shared engine: tab tiles over a wide engine bar */
+  /* v4 · five tabs + one shared engine: an illustrative phone whose bottom tab bar is a real ARIA tab set
+     (shareon.js); without JS every tab screen stays visible. Each screen lists the user types (from the
+     user-type table) whose main menus include that tab. */
   const L = p.links;
   const tabsItems = L.items.slice(0, -1);
   const engine = L.items[L.items.length - 1];
+  const usersOf = (name) => p.users.rows.filter((r) => String(r.tabs).includes(tabLabel(name)));
   const links = sec(
     "links",
-    `${rowHead("links", L)}
-    <ul class="nsh-appbar" role="list">${tabsItems
-      .map((it) => `<li class="nsh-appbar__tab"><h3 class="nsh-appbar__name" lang="en">${e(it.name)}</h3><p class="nsh-appbar__body">${e(it.body)}</p></li>`)
-      .join("")}
-      <li class="nsh-appbar__engine"><h3 class="nsh-appbar__name" lang="en">${e(engine.name)}</h3><p class="nsh-appbar__body">${e(engine.body)}</p></li>
-    </ul>`
+    `<div class="nsh-device">
+      <div class="nsh-device__text">
+        ${head("links", L.kicker, L.title, L.lead)}
+        <ul class="nsh-device__list" role="list">${tabsItems
+          .map((it, i) => `<li><span class="nsh-device__ico">${icon(TAB_ICONS[i])}</span><p><strong lang="en">${e(it.name)}</strong>${e(it.body)}</p></li>`)
+          .join("")}</ul>
+        <div class="nsh-engine"><span class="nsh-ico-well nsh-ico-well--solid">${icon("saas")}</span><div><h3 class="nsh-engine__t" lang="en">${e(engine.name)}</h3><p class="nsh-engine__b">${e(engine.body)}</p></div></div>
+      </div>
+      <figure class="nsh-mock nsh-device__mock">
+        <div class="nsh-phone nsh-phone--tabs" data-nsh-tabs>
+          <div class="nsh-phone__screen">${tabsItems
+            .map((it, i) => {
+              const who = usersOf(it.name);
+              return `<div class="nsh-phone__panel" id="ptab-${i + 1}" aria-labelledby="ptab-${i + 1}-t">
+              <p class="nsh-phone__brand" lang="en">SHAREON</p>
+              <p class="nsh-phone__title" id="ptab-${i + 1}-t" lang="en">${e(it.name)}</p>
+              <span class="nsh-phone__glyph" aria-hidden="true">${icon(TAB_ICONS[i])}</span>
+              ${who.length ? `<p class="nsh-phone__k">${e(p.users.head.who)}</p><ul class="nsh-phone__who" role="list">${who.map((w) => `<li><strong>${e(w.who)}</strong><span>${e(w.does)}</span></li>`).join("")}</ul>` : ""}
+            </div>`;
+            })
+            .join("")}</div>
+          <div class="nsh-phone__tabs nsh-phone__tabs--live" role="tablist" aria-label="${e(String(L.title).replace(/\n/g, " "))}" hidden data-nsh-tablist>${tabsItems
+            .map(
+              (it, i) =>
+                `<button type="button" role="tab" id="ptab-${i + 1}-b" aria-controls="ptab-${i + 1}" aria-selected="${i === 0 ? "true" : "false"}" tabindex="${i === 0 ? "0" : "-1"}">${icon(TAB_ICONS[i])}<span>${e(tabLabel(it.name))}</span></button>`
+            )
+            .join("")}</div>
+        </div>
+        <figcaption class="nsh-illus"><span class="nsh-illus__k">${e(c.illus)}</span><span>${e(p.users.head.tabs)}</span><span class="nsh-illus__hint">${c.contentLang === "ko" ? "아래 탭을 눌러 화면을 바꿔 보세요." : "Select a tab below the screen to switch it."}</span></figcaption>
+      </figure>
+    </div>`
   );
 
   const T = p.trust;
@@ -717,9 +827,22 @@ function business(c, lang) {
   const saas = sec(
     "saas",
     `${rowHead("saas", s, { extra: `<div class="nsh-head__row">${link(inquiryHref(lang, "saas"), s.cta)}</div>` })}
-    <ul class="nsh-modules" role="list">${s.items
-      .map((it) => `<li class="nsh-modules__item"><h3 class="nsh-modules__name" lang="en">${e(it.name)}</h3><p class="nsh-modules__body">${e(it.body)}</p></li>`)
-      .join("")}</ul>`
+    <figure class="nsh-mock nsh-dash">
+      <div class="nsh-dash__win">
+        <div class="nsh-dash__bar"><p class="nsh-dash__brand" lang="en"><span class="nsh-dash__mark" aria-hidden="true">${icon("saas")}</span>SHAREON Business</p></div>
+        <div class="nsh-dash__body">
+          <ul class="nsh-dash__nav" role="list" aria-hidden="true">${s.items
+            .map((it, i) => `<li class="${i === 0 ? "is-on" : ""}">${icon(SAAS_ICONS[i % SAAS_ICONS.length])}<span lang="en">${e(it.name)}</span></li>`)
+            .join("")}</ul>
+          <ul class="nsh-modules" role="list">${s.items
+            .map(
+              (it, i) => `<li class="nsh-modules__item"><span class="nsh-ico-well nsh-ico-well--sm">${icon(SAAS_ICONS[i % SAAS_ICONS.length])}</span><h3 class="nsh-modules__name" lang="en">${e(it.name)}</h3><p class="nsh-modules__body">${e(it.body)}</p></li>`
+            )
+            .join("")}</ul>
+        </div>
+      </div>
+      ${illusCap(c, String(s.title).replace(/\n/g, " "))}
+    </figure>`
   );
 
   /* Roadmap — four priorities side by side (current one highlighted), then the P0–P7 development stages table */
@@ -767,11 +890,11 @@ function business(c, lang) {
       split(
         "payers",
         b.payers,
-        `${table("payers", b.payers, ["who", "use", "pay"])}<div class="nsh-flow__booking"><h3 class="nsh-flow__bt">${e(b.payers.logicTitle)}</h3>${spec(b.payers.logic, { cols: 4 })}</div>`
+        `${table("payers", b.payers, ["who", "use", "pay"])}<div class="nsh-flow__booking"><h3 class="nsh-flow__bt">${e(b.payers.logicTitle)}</h3>${spec(b.payers.logic, { cols: 4, cls: "nsh-spec--tiles" })}</div>`
       ),
-      sec("structure", `${rowHead("structure", b.structure)}${matrix(c, b.structure.rest)}`),
+      sec("structure", `${rowHead("structure", b.structure)}${flows(c, b.structure.rest)}`),
       models,
-      sec("subs", `${rowHead("subs", b.subs)}${table("subs", b.subs, ["item", "now", "plan"], { accent: "plan", muted: "now" })}`),
+      sec("subs", `${rowHead("subs", b.subs, { cls: "nsh-head--display" })}${table("subs", b.subs, ["item", "now", "plan"], { accent: "plan", muted: "now" })}`),
       calc,
       trio("small", b.small, { numbered: true }),
       payment,
@@ -789,6 +912,7 @@ function business(c, lang) {
   };
 }
 
+const SAAS_ICONS = ["corporate", "calendar", "return", "search", "global", "saas"];
 const MINUS_SVG = `<svg class="nsh-dd__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M6 12h12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`;
 const CHECK_SVG = `<svg class="nsh-checks__ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
@@ -835,7 +959,8 @@ function partnerships(c, lang) {
   );
 
   const pilots = sec("pilots", `${rowHead("pilots", p.pilots)}${cards(p.pilots.items, "five")}`, "tint");
-  const data = split("data", p.data, rows(p.data.rows, { showN: true, cls: "nsh-rows--cols" }));
+  /* v4: data & API candidates as an asymmetric icon stack (all planning stage, per the lead) */
+  const data = stack("data", { ...p.data, points: p.data.rows }, ["calendar", "return", "trust", "saas", "doc"]);
   /* v3: partnership principles on the page's one violet band; what to send, grouped by partner kind */
   const ru = p.rules;
   const rulesSec = sec(
@@ -848,14 +973,21 @@ function partnerships(c, lang) {
   const pp = p.prepare;
   const prepare = sec(
     "prepare",
-    `${rowHead("prepare", pp)}<div class="nsh-prep">${pp.groups
-      .map(
-        (g) => `<section class="nsh-prep__col" aria-label="${e(g.title)}"><div class="nsh-prep__top"><span class="nsh-ico-well nsh-ico-well--sm">${icon(g.icon)}</span><h3 class="nsh-prep__t">${e(g.title)}</h3></div>${checks(g.items)}</section>`
-      )
-      .join("")}</div>
-    <p class="nsh-more">${link(inquiryHref(lang, "partnership"), c.partnershipInquiry)}</p>`
+    `${rowHead("prepare", pp)}
+    <figure class="nsh-mock nsh-memo">
+      <div class="nsh-memo__sheet">
+        <div class="nsh-memo__head"><span class="nsh-memo__ico" aria-hidden="true">${icon("doc")}</span><p class="nsh-memo__t">${e(c.memoTitle)}</p><p class="nsh-memo__to" lang="en">SHAREON · NEWON</p></div>
+        <div class="nsh-prep">${pp.groups
+          .map(
+            (g, i) => `<section class="nsh-prep__col" aria-label="${e(g.title)}"><div class="nsh-prep__top"><span class="nsh-memo__n" aria-hidden="true">${String.fromCharCode(65 + i)}</span><span class="nsh-ico-well nsh-ico-well--sm">${icon(g.icon)}</span><h3 class="nsh-prep__t">${e(g.title)}</h3></div>${checks(g.items)}</section>`
+          )
+          .join("")}</div>
+        <div class="nsh-memo__foot">${link(inquiryHref(lang, "partnership"), c.partnershipInquiry)}</div>
+      </div>
+      ${illusCap(c)}
+    </figure>`
   );
-  const campaigns = trio("campaigns", p.campaigns);
+  const campaigns = trio("campaigns", p.campaigns, { cls: "nsh-trio--poster", headCls: "nsh-head--center" });
   /* Overseas partner kinds (2026-10-26): possibilities only; inquiry goes to the unified NEWON Contact page */
   const gp = p.global;
   const globalSec = sec(
