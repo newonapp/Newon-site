@@ -44,10 +44,16 @@
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=20261025ov1" />
     <link rel="stylesheet" href="/petlog-site.css?v=20261027v5" />
     <style>
-  /* Background film framing: show more of the right side (owner request 2026-10-19). */
-  #lifestage-detail.nls[data-story="petlog"] .nls-film__video { object-position: 75% 50%; }
-  /* the shared film fallback is the LIVON poster; PETLOG shows plain black until its film loads */
-  #lifestage-detail.nls--petlog .nls-film__fallback { background: #050505; }
+  /* Background film (owner 2026-10-27): the hillside film BABYLOG used, framed the same way it was there —
+     square render of a 9:8 plate laid at 112.5% height, with its still plate as the fallback. */
+  #lifestage-detail.nls--petlog .nls-film__fallback {
+    background: url("https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/3ca5d10d-ea2f-4907-876f-33bde169469e.jpg") center 50% / cover no-repeat, #0a0a0a;
+  }
+  #lifestage-detail.nls[data-story="petlog"] .nls-film__video { top: -6.25%; bottom: auto; height: 112.5%; object-position: center 50%; }
+  @media (max-width: 820px) {
+    #lifestage-detail.nls[data-story="petlog"] .nls-film__video { object-position: 18% 50%; }
+    #lifestage-detail.nls--petlog .nls-film__fallback { background-position: 18% 50%; }
+  }
 </style>
     <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
 <script src="/theme-shell.js?v=20260904perf1"></script>
@@ -763,8 +769,8 @@
       <section id="lifestage-detail" class="nls nls--petlog" data-story="petlog" aria-labelledby="story-lifestage-title"><div class="nls-film" data-nls-film data-hs-section>
     <div class="nls-film__stage">
       <div class="nls-film__fallback" aria-hidden="true"></div>
-      <video class="nls-film__video" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_204221_5339e40b-e73d-4ab0-9c65-79c18c66fd50.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" aria-hidden="true">
-        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_204221_5339e40b-e73d-4ab0-9c65-79c18c66fd50.mp4" type="video/mp4" />
+      <video class="nls-film__video" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/d2cb5bef-f92b-4e91-ae93-8dc6555e56ac.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" aria-hidden="true">
+        <source src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/d2cb5bef-f92b-4e91-ae93-8dc6555e56ac.mp4" type="video/mp4" />
       </video>
       <div class="nls-film__lockup">
         <div class="nls-film__veil" aria-hidden="true"></div>

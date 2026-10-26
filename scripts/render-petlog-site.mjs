@@ -65,10 +65,16 @@ const rel = (depth, p) => (/^(https?:|mailto:|#|\/)/.test(p) ? p : "../".repeat(
 const PETLOG_CSS_VER = "20261027v5";
 const PETLOG_CSS = `<link rel="stylesheet" href="/petlog-site.css?v=${PETLOG_CSS_VER}" />
     <style>
-  /* Background film framing: show more of the right side (owner request 2026-10-19). */
-  #lifestage-detail.nls[data-story="petlog"] .nls-film__video { object-position: 75% 50%; }
-  /* the shared film fallback is the LIVON poster; PETLOG shows plain black until its film loads */
-  #lifestage-detail.nls--petlog .nls-film__fallback { background: #050505; }
+  /* Background film (owner 2026-10-27): the hillside film BABYLOG used, framed the same way it was there —
+     square render of a 9:8 plate laid at 112.5% height, with its still plate as the fallback. */
+  #lifestage-detail.nls--petlog .nls-film__fallback {
+    background: url("https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/3ca5d10d-ea2f-4907-876f-33bde169469e.jpg") center 50% / cover no-repeat, #0a0a0a;
+  }
+  #lifestage-detail.nls[data-story="petlog"] .nls-film__video { top: -6.25%; bottom: auto; height: 112.5%; object-position: center 50%; }
+  @media (max-width: 820px) {
+    #lifestage-detail.nls[data-story="petlog"] .nls-film__video { object-position: 18% 50%; }
+    #lifestage-detail.nls--petlog .nls-film__fallback { background-position: 18% 50%; }
+  }
 </style>`;
 
 /* ---------------------------------------------------------------- inline line icons (24×24, stroke) */

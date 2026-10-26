@@ -207,8 +207,8 @@ for (const p of pages) {
     // Contact page (ONGIL-style kit): the emergency routing is the red "before you get in touch" callout
     const emerg = p.nav.id === "overview" ? true : /bl-emergency|bct-guard__alert/.test(body);
     const ext = [...body.matchAll(/ href="(https?:[^"]+)"/g)].map((m) => m[1]).filter((u) => !/apps\.apple\.com|play\.google\.com/.test(u));
-    // The owner-chosen first-screen background film (landscape, no children) is the only allowed media.
-    const bodyNoHeroFilm = body.replace(/<video class="nls-film__video"[\s\S]*?<\/video>/, "");
+    // The owner-chosen first-screen background films (three crossfading clips, owner 2026-10-27) are the only allowed media.
+    const bodyNoHeroFilm = body.replace(/<video class="nls-film__video[^"]*"[\s\S]*?<\/video>/g, "");
     const img = count(bodyNoHeroFilm, /<img\b|<picture\b|<video\b|background-image/gi);
     const claims = /(공식 파트너|official partner|협약 체결|제휴 기관 목록)/i.test(text(body));
     rec(`child-safety ${tag}`, hasPlan && emerg && ext.length === 0 && img === 0 && !claims, `plan label ${hasPlan}, emergency note ${emerg}, external links ${ext.length}, images ${img}, partner claims ${claims}`);

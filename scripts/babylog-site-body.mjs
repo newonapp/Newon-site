@@ -93,18 +93,23 @@ function block(id, inner, tone = "", cls = "") {
   return `<section id="${id}" class="nls-block bl-sec${t}${cls ? " " + cls : ""}" data-hs-section aria-labelledby="${id}-title">${inner}</section>`;
 }
 
-/** BABYLOG first-screen background (owner-provided, 2026-10-25): one seamless 5 s loop of the hillside scene,
- *  with its still plate as the paint-before-play fallback. Background only; text and layout unchanged. */
-const BABYLOG_FILM = "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/d2cb5bef-f92b-4e91-ae93-8dc6555e56ac.mp4";
+/** BABYLOG first-screen background (owner-provided, 2026-10-27): three films that crossfade in turn
+ *  (1.2 s fade), all looping, muted and inline. Background only; text and layout unchanged. */
+const BABYLOG_FILMS = [
+  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260629_030107_874273ea-684a-4e90-bb96-8fdfde48d53d.mp4",
+  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260629_032424_3c9c2a9d-807b-4482-80e6-dd6d9dfd4545.mp4",
+  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260627_094019_4214ea73-b963-46a4-8327-61489192de99.mp4",
+];
+const filmTag = (src, i) => `<video class="nls-film__video bl-film__clip${i === 0 ? " is-on" : ""}" src="${src}" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" aria-hidden="true">
+        <source src="${src}" type="video/mp4" />
+      </video>`;
 
 /** Compact or full dark hero. No video, no external media. */
 function hero(C, lang, page, h, compact) {
   return `<div class="nls-film bl-film${compact ? " bl-film--compact" : ""}" data-nls-film data-hs-section>
     <div class="nls-film__stage">
       <div class="nls-film__fallback" aria-hidden="true"></div>
-      <video class="nls-film__video" src="${BABYLOG_FILM}" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" aria-hidden="true">
-        <source src="${BABYLOG_FILM}" type="video/mp4" />
-      </video>
+      ${BABYLOG_FILMS.map(filmTag).join("\n      ")}
       <div class="nls-film__lockup">
         <div class="nls-film__veil" aria-hidden="true"></div>
         <p class="nls-film__wordmark">${esc(C.ui.wordmark)}</p>
