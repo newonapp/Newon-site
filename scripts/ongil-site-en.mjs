@@ -818,6 +818,26 @@ export const EN = {
     revenueFocusTitle: "The order in which revenue is tested",
     revenueFocus: "Institution SaaS, private service connection fees, family subscription and Life Box are tested as the main revenue candidates; Safe Band is considered as a device business only after safety and operations are proven. Ads and commercial recommendations are kept apart so they never compromise the objectivity of care and health information.",
     revenueCols: ["Revenue model candidate", "Payer"],
+    tiers: {
+      label: "Subscription Structure",
+      title: "Subscriptions start free\nand step up only as needed.",
+      lead: "For individuals, families and institutions alike, a free starting level is being reviewed. Plan names and prices are not set; the actual features, number of accounts, usage limits and contract terms are fixed only after operating costs and customer validation.",
+      groups: [
+        { t: "Personal and family digital subscription", who: "Older adults and families", steps: [
+          { k: "Free", text: "Basic records, schedule and safety. SOS, emergency contacts and the welfare guide stay free regardless of subscription" },
+          { k: "Personal level", text: "Advanced statistics, records and reminders" },
+          { k: "Family level", text: "Shared family management and advanced features" },
+          { k: "AI level", text: "Extended AI voice and daily help" },
+        ] },
+        { t: "Business and institution subscription", who: "Care and welfare institutions", steps: [
+          { k: "Free listing", text: "Basic institution information" },
+          { k: "Small institutions", text: "A level aimed at small organisations" },
+          { k: "Growth level", text: "Staff, schedule and task management" },
+          { k: "Advanced level", text: "Many staff members and advanced analytics" },
+          { k: "Separate contract", text: "Multi-site, public and large institutions" },
+        ] },
+      ],
+    },
     customers: {
       label: "Who Pays",
       title: "Who uses ONGIL,\nand who pays.",

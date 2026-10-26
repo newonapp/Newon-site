@@ -3367,3 +3367,46 @@ html[data-newon-shell-theme="dark"] body #lifestage-detail.ogs .nls__wrap .ogs-t
     grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
   }
 }
+/* business: subscription ladders */
+#lifestage-detail.ogs .ogs-tiers {
+  margin-top: 0;
+}
+#lifestage-detail.ogs .ogs-ladder {
+  margin-top: 0.85rem;
+  border-top: 1px solid var(--ogs-line);
+}
+#lifestage-detail.ogs .ogs-ladder li {
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--ogs-line);
+}
+#lifestage-detail.ogs .ogs-ladder li:last-child {
+  border-bottom: 0;
+}
+#lifestage-detail.ogs .ogs-ladder__n {
+  font-size: 0.9375rem;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.6;
+  color: var(--ogs-apricot-ink);
+}
+#lifestage-detail.ogs .ogs-ladder strong {
+  display: block;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--ogs-ink);
+}
+#lifestage-detail.ogs .ogs-ladder p {
+  margin-top: 0.1rem !important;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ogs-muted);
+}
+#lifestage-detail.ogs .ogs-ways__i .ogs-tag {
+  margin-bottom: 0.35rem;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.ogs .nls__wrap .ogs-ladder__n {
+  color: #f0a97f !important;
+}

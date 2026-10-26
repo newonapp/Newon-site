@@ -736,6 +736,19 @@ function businessMain(c, S, lang) {
     { tone: "tint" }
   );
 
+  // B2 · subscription structure (v3): two ladders (personal/family · institutions), no names or prices
+  const tr = b.tiers;
+  const tiers = sec(
+    "ogs-tiers",
+    `${head("ogs-tiers", tr.label, tr.title, tr.lead, { split: true })}
+      <div class="ogs-ways ogs-tiers">${tr.groups
+        .map(
+          (g, gi) => `<div class="ogs-ways__i${gi ? "" : " ogs-ways__i--key"}"><p class="ogs-tag ogs-tag--accent">${e(g.who)}</p><h3>${e(g.t)}</h3>
+          <ol class="ogs-ladder">${g.steps.map((s, i) => `<li><span class="ogs-ladder__n">${i + 1}</span><div><strong>${e(s.k)}</strong><p>${e(s.text)}</p></div></li>`).join("")}</ol></div>`
+        )
+        .join("")}</div>`
+  );
+
   // C · customers and payers: a clean table (segment · who · how they use it · proposed payment)
   const cu = b.customers;
   const customers = sec(
@@ -862,7 +875,7 @@ function businessMain(c, S, lang) {
     ],
     b
   );
-  return [index, revenue, customers, market, cats, fees, gtm, roadmap, globalSec, legal, close].join("\n");
+  return [index, revenue, tiers, customers, market, cats, fees, gtm, roadmap, globalSec, legal, close].join("\n");
 }
 
 /* ───────── 04 Partnerships ───────── */
