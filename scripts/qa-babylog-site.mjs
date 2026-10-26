@@ -140,11 +140,12 @@ for (const p of pages) {
     // counts are scoped to the partner-type sections (content upgrade 30 adds pilot cards with their own rows)
     const dts = ["bl-types", "bl-industry", "bl-cs-partners"].reduce((n, id) => n + count(sect(id), /<dt>/g), 0);
     const steps = count(sect("bl-process"), /class="bl-steps__item"/g);
-    const rail = count(body, /bl-rail__link/g);
+    // design pass v5: the 8 + 15 + 13 partner entries are all visible in place (no jump-chip rail); count the entries
+    const rail = count(body, /<article id="partner-/g);
     const principles = count(sect("bl-process"), /<li>/g);
     const models = count(sect("bl-types"), /<ul class="nls-chips">/g);
     secOk = !lack.length && dts === 4 * 8 + 2 * 15 + 3 * 13 && steps === 5 && principles === 6 && models === 1 && rail === 8 + 15 + 13 && ids.has("bl-cs-partners") && ids.has("bl-industry");
-    secInfo = `missing ${lack.join(",") || "-"}, dt ${dts}/${4 * 8 + 2 * 15 + 3 * 13}, steps ${steps}, principles ${principles}/6, model chips ${models}, jump links ${rail}/36`;
+    secInfo = `missing ${lack.join(",") || "-"}, dt ${dts}/${4 * 8 + 2 * 15 + 3 * 13}, steps ${steps}, principles ${principles}/6, model chips ${models}, partner entries ${rail}/36`;
   } else {
     // Contact (owner 2026-10-26): ONGIL-style page (biz-contact-kit.mjs). The 26 contact categories (01–26, in order)
     // and the 7 inquiry purposes are rows whose single "문의하기" opens /{lang}/contact/?platform=babylog&type=…
