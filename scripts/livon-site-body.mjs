@@ -32,7 +32,7 @@ import {
   siteCopy,
   isKo,
 } from "./livon-site-data.mjs";
-import { AREAS, AREA_GROUPS, REVIEW_ITEMS, FLOW, SCENARIOS, CONTACT_PURPOSE_HREF, CONTACT_PURPOSE_ICON, c30 } from "./livon-site-content30.mjs";
+import { AREAS, AREA_GROUPS, REVIEW_ITEMS, FLOW, SCENARIOS, CONTACT_PURPOSE_HREF, CONTACT_PURPOSE_ICON, c30, v3 } from "./livon-site-content30.mjs";
 
 const FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_102608_5fa1187d-9ac6-44fb-82ab-54376200abc0.mp4";
 
@@ -167,9 +167,10 @@ const CONTACT_ICON = { svc: "chat", info: "book", biz: "handshake" };
 const arrow = icon("arrow", "lvs-arr");
 
 /* ── building blocks (one small vocabulary, a different layout per section) ── */
-/* section frame: white (lvs-sec) or full-bleed pale-yellow band (lvs-wash) */
-const block = (id, inner, { band = false, cls = "", attr = "" } = {}) =>
-  `<div${id ? ` id="${e(id)}"` : ""} class="nls-block ${band ? "nls-block--band lvs-wash" : "lvs-sec"}${cls ? ` ${cls}` : ""}"${attr}>
+/* section frame: white (lvs-sec), white with a hairline on top (rule), a full-bleed pale-yellow band (band, used
+   sparingly) or the page's one full-bleed butter-yellow band (accent) */
+const block = (id, inner, { band = false, accent = false, rule = false, cls = "", attr = "" } = {}) =>
+  `<div${id ? ` id="${e(id)}"` : ""} class="nls-block ${accent ? "nls-block--band lvs-accent" : band ? "nls-block--band lvs-wash" : "lvs-sec"}${rule ? " lvs-rule" : ""}${cls ? ` ${cls}` : ""}"${attr}>
     ${inner}
   </div>`;
 /* editorial head: title on the left, lead on the right */
@@ -245,7 +246,13 @@ function overviewHero(lang) {
 
 const leadNote = (t) => `<p class="lvs-notice lvs-notice--lead">${icon("info", "lvs-notice__i")}<span>${e(t)}</span></p>`;
 const SEC = { attr: " data-lvs-section" };
+const RULE = { rule: true, attr: " data-lvs-section" };
 const BAND = { band: true, attr: " data-lvs-section" };
+const ACCENT = { accent: true, attr: " data-lvs-section" };
+/* accordion list (FAQ) — two columns on wide screens */
+const faqList = (items, mod = "") => `<div class="lvs-faq${mod ? ` lvs-faq--${mod}` : ""}">${items.map(([q, a]) => `<details class="lvs-acc"><summary>${e(q)}</summary><p>${e(a)}</p></details>`).join("")}</div>`;
+/* compact key → value grid (no boxes; hairlines only) */
+const matrix = (rows, cols = 3, mod = "") => `<dl class="lvs-matrix lvs-matrix--${cols}${mod ? ` lvs-matrix--${mod}` : ""}">${rows.map(([k, v]) => `<div><dt>${e(k)}</dt><dd>${e(v)}</dd></div>`).join("")}</dl>`;
 
 /* what LIVON is — editorial head, then problem → common way → LIVON as a three-column comparison */
 function defineSec(lang) {
@@ -255,7 +262,11 @@ function defineSec(lang) {
     <div class="lvs-table-wrap"><table class="lvs-table lvs-table--vs">
       <thead><tr>${d.cols.map((t, i) => `<th scope="col"${i === 2 ? ' class="lvs-table__hl"' : ""}>${e(t)}</th>`).join("")}</tr></thead>
       <tbody>${rows}</tbody>
-    </table></div>`, SEC);
+    </table></div>
+    <div class="lvs-examples">
+      <p class="lvs-k">${e(v3(lang).examples.title)}</p>
+      <ul>${v3(lang).examples.items.map(([t, b]) => `<li><strong>${e(t)}</strong><p>${e(b)}</p></li>`).join("")}</ul>
+    </div>`, SEC);
 }
 
 /* vision — statement on the left, five principles as term rows on the right */
@@ -264,7 +275,7 @@ function vision(lang) {
   return block("lvs-vision", `<div class="nls-split lvs-split">
       ${head(v.kicker, v.title, v.lead)}
       ${defs(v.points)}
-    </div>`, BAND);
+    </div>`, ACCENT);
 }
 
 /* five chapters of a life — a real sequence, shown as one stepped row */
@@ -305,7 +316,17 @@ function lifeStage(lang) {
   return block("lvs-stage", `${headSplit(c.kicker, c.title, c.lead)}
     <div class="nls-rail" role="group" aria-label="${e(life.hero.pathLabel)}">${rail}</div>
     <div class="nls-journey">${cards}</div>
-    <p class="nls-note">${e(life.ui.journeyNote)}</p>`, { cls: "nls-journey-sec lvs-rule", attr: " data-lvs-section" });
+    <p class="nls-note">${e(life.ui.journeyNote)}</p>
+    ${stageRec(lang)}`, { cls: "nls-journey-sec lvs-rule", attr: " data-lvs-section" });
+}
+
+/* seven stages → where each starts (plan §3); a scroll-snap rail on phones */
+function stageRec(lang) {
+  const r = v3(lang).stageRec;
+  return `<div class="lvs-srec">
+      <header class="lvs-srec__head"><h3 class="lvs-h4">${e(r.title)}</h3><span class="lvs-pill lvs-pill--planned">${e(r.tag)}</span><p>${e(r.note)}</p></header>
+      <ol class="lvs-srec__list">${r.rows.map(([t, b], i) => `<li><span>${pad(i + 1)}</span><strong>${e(t)}</strong><p>${e(b)}</p></li>`).join("")}</ol>
+    </div>`;
 }
 
 /** 40-cell map: 5 rows (areas) × 8 categories. */
@@ -404,23 +425,25 @@ function familySec(lang) {
       <ol class="lvs-tiles">${tiles}</ol>
     </section>`;
   }).join("");
-  return block("lvs-family", `${head(c.kicker, c.title, c.lead)}
+  return block("lvs-family", `${headSplit(c.kicker, c.title, c.lead)}
     <div class="lvs-stack">${groups}</div>
-    ${legend(lang)}`, BAND);
+    ${legend(lang)}`, RULE);
 }
 
 /* who it is for — four columns */
 function customers(lang) {
   const k = c30(lang).customers;
   return block("lvs-customers", `${headSplit(k.kicker, k.title, k.lead)}
-    ${feats(k.items, 4, { icons: ["person", "users", "building", "handshake"] })}`, SEC);
+    ${feats(k.items, 4, { icons: ["person", "users", "building", "handshake"] })}`, RULE);
 }
 
 /* why LIVON — each existing way of doing it against what LIVON does */
 function diffSec(lang) {
   const k = c30(lang).diff;
-  return block("lvs-diff", `${head(k.kicker, k.title, k.lead)}
-    ${vsRows(k.items)}`, { cls: "lvs-rule", attr: " data-lvs-section" });
+  return block("lvs-diff", `<div class="nls-split lvs-split lvs-split--wide">
+      ${head(k.kicker, k.title, k.lead)}
+      ${vsRows(k.items)}
+    </div>`, RULE);
 }
 
 /* community / AI / official information — bento: one large tile and two stacked */
@@ -461,40 +484,46 @@ function futureSec(lang) {
       <ol class="lvs-index__list">${items}</ol>
     </section>`;
   }).join("");
-  return block("lvs-future", `${head(k.kicker, k.title, k.lead)}
+  const t = v3(lang).trio;
+  const trio = t.items.map(([n, en, name, body]) => `<li><a href="${e(zoneHref(lang, n))}"><span class="lvs-trio__n">${e(n)} · ${e(en)}</span><strong>${e(name)}</strong><p>${e(body)}</p>${arrow}</a></li>`).join("");
+  return block("lvs-future", `${headSplit(k.kicker, k.title, k.lead)}
     <div class="lvs-index">${rows}</div>
+    <div class="lvs-trio">
+      <header class="lvs-trio__head"><h3 class="lvs-h3">${e(t.title)}</h3><p>${e(t.lead)}</p></header>
+      <ol class="lvs-trio__list">${trio}</ol>
+    </div>
     <div class="lvs-prio">
       <h3 class="lvs-h3">${e(k.prioTitle)}</h3>
       ${steps(k.prio, "prio")}
     </div>
-    <p class="lvs-more-link"><a class="lvs-link" href="${e(pageHref(lang, "platform"))}#lvs-areas">${e(k.more)} ${arrow}</a></p>`, BAND);
+    <p class="lvs-more-link"><a class="lvs-link" href="${e(pageHref(lang, "platform"))}#lvs-areas">${e(k.more)} ${arrow}</a></p>`, RULE);
 }
 
 /* ecosystem — four tracks, then NEWON (text and examples) beside the app list */
 function ecosystem(lang) {
   const c = siteCopy(lang).overview.eco;
   const tracks = c.tracks.map(([t, b], i) => `<li${i === 0 ? ' class="is-self"' : ""}><h3>${e(t)}</h3><p>${e(b)}</p></li>`).join("");
-  const apps = [["LIVON", c.livon]].concat(Object.values(NEWON_APPS).map((a) => [a.name, pick(lang, a.ko, a.en)]));
-  const dir = apps.map(([n, t], i) => `<li${i === 0 ? ' class="is-self"' : ""}><strong>${e(n)}</strong><p>${e(t)}</p></li>`).join("");
+  const x = v3(lang).eco;
+  const apps = [["livon", "LIVON", c.livon]].concat(Object.entries(NEWON_APPS).map(([k, a]) => [k, a.name, pick(lang, a.ko, a.en)]));
+  const dir = apps.map(([k, n, t], i) => `<tr${i === 0 ? ' class="is-self"' : ""}><th scope="row">${e(n)}</th><td data-label="${e(x.cols[1])}">${e(t)}</td><td data-label="${e(x.cols[2])}">${e(x.when[k])}</td></tr>`).join("");
   return block("lvs-ecosystem", `${head(c.kicker, c.title, c.lead)}
     <ol class="lvs-tracks">${tracks}</ol>
-    <div class="nls-split lvs-split lvs-gap">
-      <div>
-        <header class="nls-head"><h3 class="lvs-h3">${e(c.newonTitle)}</h3><p class="nls-lead">${e(c.newonLead)}</p></header>
-        ${pick(lang, PLATFORM_EXAMPLES.ko, PLATFORM_EXAMPLES.en).map((t) => `<p class="lvs-quote">${e(t)}</p>`).join("")}
-      </div>
-      <ul class="lvs-apps">${dir}</ul>
-    </div>`, SEC);
+    <div class="lvs-gap">
+      <header class="nls-head lvs-subhead"><h3 class="lvs-h3">${e(c.newonTitle)}</h3><p class="nls-lead">${e(c.newonLead)} ${e(x.lead2)}</p></header>
+      <div class="lvs-table-wrap"><table class="lvs-table lvs-table--apps">
+        <thead><tr>${x.cols.map((t) => `<th scope="col">${e(t)}</th>`).join("")}</tr></thead>
+        <tbody>${dir}</tbody>
+      </table></div>
+      <div class="lvs-quotes">${pick(lang, PLATFORM_EXAMPLES.ko, PLATFORM_EXAMPLES.en).map((t) => `<p class="lvs-quote">${e(t)}</p>`).join("")}</div>
+    </div>`, RULE);
 }
 
 /* global vision (2026-10 owner brief) — the same split as the vision band: statement left, four directions right */
 function globalSec(lang) {
   const g = c30(lang).global.overview;
-  return block("lvs-global", `<div class="nls-split lvs-split">
-      ${head(g.kicker, g.title, g.lead)}
-      ${defs(g.points)}
-    </div>
-    <p class="lvs-more-link"><a class="lvs-link" href="${e(pageHref(lang, "business"))}#lvs-global">${e(g.more)} ${arrow}</a></p>`, BAND);
+  return block("lvs-global", `${headSplit(g.kicker, g.title, g.lead)}
+    ${defs(g.points, "grid")}
+    <p class="lvs-more-link"><a class="lvs-link" href="${e(pageHref(lang, "business"))}#lvs-global">${e(g.more)} ${arrow}</a></p>`, RULE);
 }
 
 /* closing ink band with one yellow call to action */
@@ -638,14 +667,42 @@ export function renderPlatform(lang) {
     </article>`;
   }).join("");
   const users = x.users.map(([t, now, later]) => `<div class="lvs-compare__row"><h3>${e(t)}</h3><p class="is-now">${e(now)}</p><p>${e(later)}</p></div>`).join("");
-  const app = x.app.map(([t, sub, body], i) => `<article class="lvs-bento__item${i === 0 ? " lvs-bento__item--lg" : ""}">
-      <span class="lvs-feats__i">${icon(["home", "list", "grid"][i])}</span>
+  /* the first two notes as a pair of cards; the third (the planned tab bar) leads the five-tab strip below */
+  const app = x.app.slice(0, 2).map(([t, sub, body], i) => `<article class="lvs-bento__item${i === 0 ? " lvs-bento__item--hl" : ""}">
+      <span class="lvs-feats__i">${icon(["home", "list"][i])}</span>
       <h3>${e(t)}</h3>
       <p class="lvs-bento__sub">${e(sub)}</p>
       <p>${e(body)}</p>
     </article>`).join("");
+  const appTabsLead = x.app[2];
   const gp = c30(lang).global.platform;
-  const faq = x.faq.map(([q, a]) => `<details class="lvs-acc"><summary>${e(q)}</summary><p>${e(a)}</p></details>`).join("");
+  const y3 = v3(lang);
+  /* LIVON AI (plan §5) */
+  const ai = y3.ai;
+  const aiSec = block("lvs-ai", `${headSplit(ai.kicker, ai.title, ai.lead)}
+      <p class="lvs-pill lvs-pill--planned lvs-pill--lead">${e(ai.tag)}</p>
+      <ul class="lvs-aigrid">${ai.items.map(([t, b]) => `<li><strong>${e(t)}</strong><p>${e(b)}</p></li>`).join("")}</ul>
+      ${feats(ai.rules, 4, { mod: "rule" })}`, { rule: true });
+  /* three independent areas, step by step (plan §4) — tabs; without JS every panel is listed */
+  const td = y3.trioDetail;
+  const tdTabs = tabs(td.title.replace(/\n/g, " "), td.panels.map((q) => [`lvs-trio-${q.id}`, q.tab, `${q.id} · ${byArea[q.id].en}`, ""]));
+  const tdPanels = td.panels.map((q) => `<section class="lvs-group lvs-n3" id="lvs-trio-${e(q.id)}" aria-labelledby="lvs-trio-${e(q.id)}-t" data-lvs-panel>
+      <header class="lvs-n3__head">
+        <p class="lvs-meta">${e(q.id)} · ${e(byArea[q.id].en)}</p>
+        <h3 class="lvs-group__title" id="lvs-trio-${e(q.id)}-t">${e(areaT(lang, byArea[q.id]).name)}</h3>
+        <p class="lvs-group__lead"><b>${e(td.who)}</b> ${e(q.who)}</p>
+        <p class="lvs-n3__rule">${icon("shield", "lvs-notice__i")}<span>${e(q.rule)}</span></p>
+        <a class="lvs-link" href="#lvs-zone-${e(q.id)}">${e(td.more)} ${arrow}</a>
+      </header>
+      <ol class="lvs-n3__rows" aria-label="${e(td.cols[q.head])} · ${e(td.cols.fn)}">${q.rows.map(([k, v], i) => `<li><span>${pad(i + 1)}</span><strong>${e(k)}</strong><p>${e(v)}</p></li>`).join("")}</ol>
+    </section>`).join("");
+  const trioSec = block("lvs-trio", `${headSplit(td.kicker, td.title, td.lead)}
+      <p class="lvs-pill lvs-pill--planned lvs-pill--lead">${e(td.tag)}</p>
+      <div class="lvs-tabs" data-lvs-tabs>
+        ${tdTabs}
+        <div class="lvs-n3s">${tdPanels}</div>
+      </div>`);
+  const at = y3.appTabs;
   /* 40 categories — one tab per area (A–E) */
   const ctabs = tabs(p.groupsTitle, GROUPS.map((g) => [`lvs-group-${g.id}`, pick(lang, g.ko, g.en), g.range, g.id]));
   const groups = GROUPS.map((g) => {
@@ -664,26 +721,25 @@ export function renderPlatform(lang) {
   }).join("");
   const body = `
     ${leadNote(c.notice)}
-    ${block("lvs-flow", `${head(x.flowKicker, x.flowTitle, x.flowLead)}
-      ${steps(flow, "5")}`)}
+    ${block("lvs-flow", `${headSplit(x.flowKicker, x.flowTitle, x.flowLead)}
+      ${steps(flow, "5")}`, { accent: true })}
     ${block("lvs-core", `${head(p.coreKicker, p.coreTitle, "")}
-      <div class="lvs-corelist">${core}</div>`, { band: true })}
+      <div class="lvs-corelist">${core}</div>`, { rule: true })}
     ${block("lvs-areas", `${headSplit(x.areasKicker, x.areasTitle, x.areasLead)}
       <div class="lvs-tabs" data-lvs-tabs>
         ${ztabs}
         <div class="lvs-zgroups">${zgroups}</div>
-      </div>`)}
+      </div>`, { rule: true })}
     ${block("lvs-status", `${headSplit(x.statusKicker, x.statusTitle, x.statusLead)}
       <div class="lvs-board lvs-board--4">${board}</div>
       <p class="lvs-notice">${icon("info", "lvs-notice__i")}<span><b>${e(x.appRow[0])}</b> · ${e(x.appRow[1])}</span></p>`, { band: true })}
-    ${block("lvs-scenarios", `${head(x.scnKicker, x.scnTitle, x.scnLead)}
-      <div class="lvs-scngrid">${scn}</div>`)}
+    ${trioSec}
+    ${block("lvs-scenarios", `${headSplit(x.scnKicker, x.scnTitle, x.scnLead)}
+      <div class="lvs-scngrid">${scn}</div>`, { rule: true })}
     ${block("lvs-users", `${head(x.usersKicker, x.usersTitle, "")}
-      <div class="lvs-compare">${users}</div>`, { band: true })}
-    ${block("lvs-links", `<div class="nls-split lvs-split">
-        ${head(x.linkKicker, x.linkTitle, "")}
-        ${defs(x.links, "stack")}
-      </div>`)}
+      <div class="lvs-compare">${users}</div>`, { rule: true })}
+    ${block("lvs-links", `${head(x.linkKicker, x.linkTitle, "")}
+      ${defs(x.links, "grid3")}`, { rule: true })}
     ${block("lvs-map", `${headSplit(x.catsKicker, x.catsTitle, x.catsLead)}
       ${lifeMap(lang, [], p.groupsTitle)}
       ${legend(lang)}`, { band: true })}
@@ -697,9 +753,10 @@ export function renderPlatform(lang) {
           ${head(p.officialKicker, p.officialTitle, "")}
         </div>
         ${defs(p.officialItems, "grid")}
-      </div>`, { band: true })}
+      </div>`, { rule: true })}
     ${block("lvs-trust", `${head(x.trustKicker, x.trustTitle, "")}
-      ${checks(x.trust.map((t) => e(t)))}`)}
+      ${checks(x.trust.map((t) => e(t)))}`, { rule: true })}
+    ${aiSec}
     ${block("lvs-global", `${headSplit(gp.kicker, gp.title, gp.lead)}
       ${feats(gp.services, 4, { mod: "rule" })}
       <div class="lvs-gap">
@@ -708,11 +765,14 @@ export function renderPlatform(lang) {
       </div>
       <p class="nls-note">${e(gp.related)} ${catLinks(lang, ["13", "37"])}</p>`, { cls: "lvs-rule" })}
     ${block("lvs-app", `${head(x.appKicker, x.appTitle, "")}
-      <div class="lvs-bento">${app}</div>`, { band: true })}
-    ${block("lvs-faq", `<div class="nls-split lvs-split">
-        ${head(x.faqKicker, x.faqTitle, "")}
-        <div class="lvs-faq">${faq}</div>
-      </div>`)}`;
+      <div class="lvs-bento lvs-bento--pair">${app}</div>
+      <div class="lvs-apptabs">
+        <header class="lvs-apptabs__head"><span class="lvs-feats__i">${icon("grid")}</span><div><h3 class="lvs-h4">${e(appTabsLead[0])}</h3><p>${e(appTabsLead[2])}</p></div></header>
+        <ol aria-label="${e(appTabsLead[1])}">${at.rows.map(([t, b]) => `<li><strong>${e(t)}</strong><p>${e(b)}</p></li>`).join("")}</ol>
+        <p class="nls-note">${e(at.note)}</p>
+      </div>`, { band: true })}
+    ${block("lvs-faq", `${head(x.faqKicker, x.faqTitle, "")}
+      ${faqList(x.faq, "2")}`, { rule: true })}`;
   return shell(lang, "platform", "lvs-platform-title", textHero(lang, "Platform", p.heroTitle, p.heroLead, "lvs-platform-title"), body);
 }
 
@@ -743,17 +803,22 @@ export function renderBusiness(lang) {
     (r) => `<tr><th scope="row">${e(pick(lang, r.ko, r.en))}<small class="lvs-table__g">${e(r.n)} · ${e(pick(lang, REVENUE_GROUPS[r.g].ko, REVENUE_GROUPS[r.g].en))}</small></th><td data-label="${e(b.revCols[1])}">${e(pick(lang, r.whoKo, r.whoEn))}</td><td data-label="${e(b.revCols[2])}">${e(pick(lang, r.howKo, r.howEn))}</td><td data-label="${e(b.revCols[3])}"><span class="lvs-pill lvs-pill--concept">${e(b.revStatus)}</span></td></tr>`
   ).join("");
   const stRoad = { now: b.roadNow, next: b.roadNext, later: b.roadLater };
-  /* roadmap — vertical timeline; the current step is filled yellow */
-  const road = ROADMAP.map(
-    (r) => `<li class="lvs-road__step" data-st="${e(r.st)}">
-      <span class="lvs-road__n">${e(r.n)}</span>
-      <div class="lvs-road__copy">
-        <p class="lvs-pill lvs-pill--${r.st === "now" ? "now" : "later"}">${e(stRoad[r.st])}</p>
-        <h3>${e(pick(lang, r.ko, r.en))}</h3>
-        <p>${e(pick(lang, r.bodyKo, r.bodyEn))}</p>
-      </div>
-    </li>`
-  ).join("");
+  const y3 = v3(lang);
+  /* roadmap — eight steps in a 4 × 2 grid; scope and the completion test are split out of the same sentence */
+  const road = ROADMAP.map((r) => {
+    const body = pick(lang, r.bodyKo, r.bodyEn);
+    const m = body.match(/^(.*?)\s*(?:완료 기준:\s*|Done when\s*)(.*)$/);
+    const scope = m ? m[1] : body;
+    const done = m ? m[2].replace(/\.$/, "") : "";
+    return `<li class="lvs-road__step" data-st="${e(r.st)}">
+      <div class="lvs-road__top"><span class="lvs-road__n">${e(r.n)}</span><p class="lvs-pill lvs-pill--${r.st === "now" ? "now" : "later"}">${e(stRoad[r.st])}</p></div>
+      <h3>${e(pick(lang, r.ko, r.en))}</h3>
+      <p>${e(scope)}</p>
+      ${done ? `<p class="lvs-road__done"><b>${e(y3.road.done)}</b> ${e(done)}</p>` : ""}
+    </li>`;
+  }).join("");
+  const tr = y3.trioRev;
+  const trioRev = tr.items.map(([en, name, free, paid]) => `<li><p class="lvs-meta">${e(en)}</p><h3>${e(name)}</h3><dl><div class="is-free"><dt>${e(tr.free)}</dt><dd>${e(free)}</dd></div><div><dt>${e(tr.paid)}</dt><dd>${e(paid)}</dd></div></dl></li>`).join("");
   const plans = x.plans.map(([t, st, body], i) => `<li class="lvs-plan${i === 0 ? " is-now" : ""}"><p class="lvs-plan__st">${e(st)}</p><h3>${e(t)}</h3><p>${e(body)}</p></li>`).join("");
   const gb = c30(lang).global.business;
   const principles = [b.verdictBody, pick(lang, "고객별 맞춤 외주가 아니라 표준화된 자체 솔루션과 플랫폼 제품을 만듭니다.", "Standard products and our own platform — not custom client work."), b.revNote];
@@ -762,23 +827,28 @@ export function renderBusiness(lang) {
         <p class="nls-kicker">Principle</p>
         <h2 class="nls-title lvs-statement__title">${e(b.verdictTitle)}</h2>
         ${feats(principles.map((t) => ["", t]), 3, { mod: "plain" })}
-      </div>`)}
+      </div>`, { accent: true })}
     ${block("lvs-model", `<div class="nls-split lvs-split">
         ${head(x.modelKicker, x.modelTitle, x.modelLead)}
         ${defs(x.structure)}
-      </div>`, { band: true })}
+      </div>`)}
     ${block("lvs-revenue", `${headSplit(x.revKicker, b.revTitle, x.revLead)}
       <p class="lvs-pill lvs-pill--concept">${e(b.revStatus)}</p>
       <div class="lvs-table-wrap"><table class="lvs-table">
         <thead><tr>${b.revCols.map((t) => `<th scope="col">${e(t)}</th>`).join("")}</tr></thead>
         <tbody>${revRows}</tbody>
-      </table></div>`)}
-    ${block("lvs-plans", `${head(x.plansKicker, x.plansTitle, x.plansLead)}
+      </table></div>
+      <p class="lvs-notice">${icon("arrow", "lvs-notice__i")}<span>${e(y3.revPriority)}</span></p>`, { rule: true })}
+    ${block("lvs-plans", `${headSplit(x.plansKicker, x.plansTitle, x.plansLead)}
       <ol class="lvs-plans">${plans}</ol>
       <p class="lvs-notice">${icon("building", "lvs-notice__i")}<span>${e(x.plansBiz)}</span></p>`, { band: true })}
     ${block("lvs-fees", `<div class="nls-split lvs-split">
         ${head(x.feeKicker, x.feeTitle, x.feeLead)}
-        ${defs(x.fees, "tags")}
+        ${defs(x.fees.concat([y3.feeExpert]), "tags")}
+      </div>
+      <div class="lvs-gap lvs-trev">
+        <header class="nls-head lvs-subhead"><h3 class="lvs-h3">${e(tr.title)}</h3><p class="nls-lead">${e(tr.lead)}</p></header>
+        <ol class="lvs-trev__list">${trioRev}</ol>
       </div>`)}
     ${block("lvs-biz", `${headSplit(b.kicker, b.title, b.lead)}
       <div class="lvs-accs">${areas}</div>`, { band: true })}
@@ -789,13 +859,16 @@ export function renderBusiness(lang) {
         ${vsRows(x.diffs)}
       </div>`)}
     ${block("lvs-gtm", `${head(x.gtmKicker, x.gtmTitle, "")}
-      ${steps(x.gtm)}`, { band: true })}
-    ${block("lvs-roadmap", `<div class="nls-split lvs-split">
-        ${head(b.roadKicker, b.roadTitle, x.roadLead)}
-        <ol class="lvs-road">${road}</ol>
-      </div>`)}
+      ${steps(x.gtm)}`, { rule: true })}
+    ${block("lvs-roadmap", `${headSplit(b.roadKicker, b.roadTitle, x.roadLead)}
+      <ol class="lvs-road">${road}</ol>
+      <p class="lvs-notice">${icon("shield", "lvs-notice__i")}<span>${e(y3.road.note)}</span></p>`, { rule: true })}
     ${block("lvs-rules", `${head(b.ruleKicker, b.ruleTitle, "")}
-      ${checks(b.ruleItems.concat(x.rulesExtra).map((t) => e(t)))}`, { band: true })}
+      ${checks(b.ruleItems.concat(x.rulesExtra).map((t) => e(t)))}
+      <div class="lvs-gap">
+        <header class="nls-head lvs-subhead"><h3 class="lvs-h3">${e(y3.review.title)}</h3><p class="nls-lead">${e(y3.review.lead)}</p></header>
+        ${matrix(y3.review.rows, 4)}
+      </div>`, { band: true })}
     ${block("lvs-global", `${headSplit(gb.kicker, gb.title, gb.lead)}
       <header class="nls-head lvs-subhead"><h3 class="lvs-h3">${e(gb.custTitle)}</h3><p class="nls-lead">${e(gb.custLead)}</p></header>
       ${feats(gb.customers, 4, { mod: "rule" })}
@@ -806,7 +879,7 @@ export function renderBusiness(lang) {
       <div class="nls-split lvs-split lvs-gap">
         <header class="nls-head lvs-subhead"><h3 class="lvs-h3">${e(gb.revTitle)}</h3><p class="nls-lead">${e(gb.revLead)}</p></header>
         ${defs(gb.revenue)}
-      </div>`)}
+      </div>`, { rule: true })}
     <div class="nls-block nls-close nls-block--ink lvs-close">
       <p class="nls-kicker">Business</p>
       <h2 class="nls-hero__title">${nl(x.ctaTitle)}</h2>
@@ -844,7 +917,7 @@ export function renderPartnerships(lang) {
     [p.f.rev, pc.rev],
     [p.f.cond, pc.cond],
     [p.f.officialTag, `${pc.officialRev} ${pc.officialCond}`],
-  ]);
+  ], "grid");
   const x = c30(lang).partnerships;
   const mf = x.modelsF;
   const models = x.models.map(([t, who, what, value, cond], i) => `<article class="lvs-biz lvs-pmodel" id="lvs-pmodel-${pad(i + 1)}">
@@ -859,32 +932,40 @@ export function renderPartnerships(lang) {
       <p class="lvs-biz__what">${e(scope)}</p>
       ${dl([[pf.period, e(period)], [pf.measure, e(measure)], [pf.cond, e(cond)]])}
     </article>`).join("");
+  const y3 = v3(lang);
+  const cItems = Object.fromEntries(c30(lang).contact.items.map(([id, t, , include]) => [id, [t, include]]));
   const body = `
     ${block("lvs-pvision", `<div class="lvs-statement">
         ${head(x.visionKicker, x.visionTitle, x.visionLead)}
         ${feats(x.vision, 3, { mod: "rule" })}
-      </div>`)}
+      </div>`, { accent: true })}
     ${block("lvs-pmodels", `${head(x.modelsKicker, x.modelsTitle, "")}
-      <div class="lvs-pmodels">${models}</div>`, { band: true })}
+      <div class="lvs-pmodels">${models}</div>`)}
     ${block("lvs-partners", `${headSplit(p.kicker, p.title, p.sourceNote)}
-      <div class="lvs-pgroups">${groups}</div>`)}
+      <div class="lvs-pgroups">${groups}</div>`, { rule: true })}
     ${block("lvs-poc", `${head(x.pocKicker, x.pocTitle, x.pocLead)}
       <p class="lvs-pill lvs-pill--concept">${e(pick(lang, "제안 · 진행 중인 파일럿 없음", "Proposal · no pilot running"))}</p>
       <div class="lvs-pocs">${pocs}</div>`, { band: true })}
-    ${block("lvs-data", `<div class="nls-split lvs-split">
-        ${head(x.dataKicker, x.dataTitle, x.dataLead)}
-        <ul class="lvs-list">${x.data.map((t) => `<li>${e(t)}</li>`).join("")}</ul>
-      </div>`)}
+    ${block("lvs-data", `${headSplit(x.dataKicker, x.dataTitle, x.dataLead)}
+      <ul class="lvs-list lvs-list--2">${x.data.map((t) => `<li>${e(t)}</li>`).join("")}</ul>`, { rule: true })}
     ${block("lvs-campaigns", `${head(x.campKicker, x.campTitle, "")}
-      ${feats(x.camps, x.camps.length > 3 ? 4 : 3, { mod: "card" })}`, { band: true })}
-    ${block("lvs-value", `${headSplit(x.valueKicker, x.valueTitle, "")}
-      ${feats(x.values, 4, { icons: ["building", "home", "book", "shield"] })}`)}
-    ${block("lvs-terms", `<div class="nls-split lvs-split">
-        <header class="nls-head"><p class="nls-kicker">Terms</p><h2 class="nls-title">${e(p.sourceTitle)}</h2></header>
-        ${terms}
+      ${feats(x.camps, x.camps.length > 3 ? 4 : 3, { mod: "card" })}`, { rule: true })}
+    ${block("lvs-value", `${head(x.valueKicker, x.valueTitle, "")}
+      ${feats(x.values, 4, { icons: ["building", "home", "book", "shield"] })}`, { rule: true })}
+    ${block("lvs-terms", `${headSplit("Terms", p.sourceTitle, y3.pTermsLead)}
+      ${terms}
+      <div class="lvs-gap">
+        <h3 class="lvs-h4">${e(y3.pChecksTitle)}</h3>
+        ${matrix(y3.pChecks, 4)}
       </div>`, { band: true })}
     ${block("lvs-steps", `${head(p.stepsKicker, p.stepsTitle, "")}
-      ${steps(pick(lang, PARTNER_STEPS.ko, PARTNER_STEPS.en))}`)}
+      ${steps(pick(lang, PARTNER_STEPS.ko, PARTNER_STEPS.en))}
+      <div class="lvs-gap lvs-pinc">
+        <h3 class="lvs-h4">${e(y3.pInclude.title)}</h3>
+        ${matrix(y3.pInclude.ids.map((id) => cItems[id]), 4)}
+      </div>`, { rule: true })}
+    ${block("lvs-pfaq", `${head(y3.pFaq.kicker, y3.pFaq.title, "")}
+      ${faqList(y3.pFaq.items, "2")}`, { rule: true })}
     ${block("lvs-global", `${headSplit(gq.kicker, gq.title, gq.lead)}
       ${feats(gq.items, 3, { mod: "card" })}
       <p class="lvs-more-link"><a class="lvs-link" href="/${e(lang)}/contact/?type=partnership&amp;platform=livon">${e(gq.cta)} ${arrow}</a></p>`, { band: true })}
@@ -924,23 +1005,33 @@ export function renderContact(lang) {
       </div>
     </article>`;
   }).join("");
+  const y3 = v3(lang);
+  const ch = y3.channels;
+  const CH_HREF = { unified: `/${lang}/contact/?type=support`, business: `/${lang}/business/contact/?type=general&platform=livon`, mail: "mailto:newon@newon.app" };
+  const CH_ICON = { unified: "chat", business: "building", mail: "mail", none: "info" };
+  const channels = ch.items.map(([id, t, b]) => {
+    const href = CH_HREF[id];
+    return `<li class="lvs-chan${href ? "" : " is-off"}" data-chan="${e(id)}"><span class="lvs-feats__i">${icon(CH_ICON[id])}</span><h3>${e(t)}</h3><p>${e(b)}</p>${href ? `<a class="lvs-link" href="${e(href)}">${e(href.startsWith("mailto:") ? "newon@newon.app" : ch.go)} ${arrow}</a>` : ""}</li>`;
+  }).join("");
   const body = `
     ${block("lvs-contact", `${head(k.kicker, k.title, "")}
       <div class="lvs-cgroups">${groups}</div>`)}
     ${block("lvs-purpose", `${headSplit(x.purposeKicker, x.purposeTitle, x.purposeLead)}
       <p class="lvs-notice lvs-notice--strong">${icon("shield", "lvs-notice__i")}<span>${e(x.privacy)}</span></p>
       <div class="lvs-purposes">${purposes}</div>`, { band: true })}
-    ${block("lvs-contact-tips", `<div class="nls-split lvs-split">
-        <header class="nls-head"><p class="nls-kicker">Before you write</p><h2 class="nls-title">${e(k.tipsTitle)}</h2></header>
-        <div>
-          <ul class="lvs-list">${k.tips.map((t) => `<li>${e(t)}</li>`).join("")}</ul>
-          <div class="lvs-notes">
-            ${k.note ? `<p class="lvs-notice">${icon("info", "lvs-notice__i")}<span>${e(k.note)}</span></p>` : ""}
-            <p class="lvs-notice">${icon("building", "lvs-notice__i")}<span>${e(k.bizNote)} <a href="/${e(lang)}/business/inquiry/">NEWON Business →</a></span></p>
-            <p class="lvs-notice">${icon("mail", "lvs-notice__i")}<span>${e(x.mailNote)} · <a href="mailto:newon@newon.app">newon@newon.app</a></span></p>
-          </div>
+    ${block("lvs-channels", `${headSplit(ch.kicker, ch.title, ch.lead)}
+      <ul class="lvs-chans">${channels}</ul>`, { rule: true })}
+    ${block("lvs-contact-tips", `${head("Before you write", k.tipsTitle, "")}
+      <div class="lvs-tips">
+        <ul class="lvs-list">${k.tips.map((t) => `<li>${e(t)}</li>`).join("")}</ul>
+        <div class="lvs-notes">
+          ${k.note ? `<p class="lvs-notice">${icon("info", "lvs-notice__i")}<span>${e(k.note)}</span></p>` : ""}
+          <p class="lvs-notice">${icon("building", "lvs-notice__i")}<span>${e(k.bizNote)} <a href="/${e(lang)}/business/inquiry/">NEWON Business →</a></span></p>
+          <p class="lvs-notice">${icon("mail", "lvs-notice__i")}<span>${e(x.mailNote)} · <a href="mailto:newon@newon.app">newon@newon.app</a></span></p>
         </div>
-      </div>`)}`;
+      </div>`, { rule: true })}
+    ${block("lvs-cfaq", `${head(y3.cFaq.kicker, y3.cFaq.title, "")}
+      ${faqList(y3.cFaq.items, "2")}`, { rule: true })}`;
   return shell(lang, "contact", "lvs-contact-title", textHero(lang, "Contact", k.heroTitle, k.heroLead, "lvs-contact-title"), body);
 }
 

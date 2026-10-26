@@ -130,7 +130,7 @@ export const C30 = {
     notice: "21개 핵심 영역은 장기 사업 계획이고, 40개 생활 분야는 정보 콘텐츠 분류입니다. 모두 제공 중인 기능이라는 뜻이 아니며, 앱 출시를 준비 중인 것과 계획을 나눠 표시합니다.",
     stats: [["21", "핵심 사업 영역 (장기 계획)"], ["40", "생활 분야 (콘텐츠 분류)"], ["34", "생애 이벤트 가이드 (앱 출시 준비 중)"], ["228", "생활 주제 가이드 (앱 출시 준비 중)"]],
     seo: {
-      overview: { title: "LIVON | NEWON — 삶의 순간에 맞는 서비스 연결", desc: "이사·취업·결혼·임신·출산·병역·은퇴. 인생의 중요한 변화와 일상생활을 공식 정보·체크리스트·일정으로 연결하는 생애 이벤트 중심 플랫폼 LIVON. 지금은 LIVON 웹에서 무료로 이용할 수 있고 앱은 준비 중입니다." },
+      overview: { title: "LIVON | NEWON — 삶의 순간에 맞는 서비스 연결", desc: "이사·취업·결혼·임신·출산·병역·은퇴. 인생의 중요한 변화와 일상생활을 공식 정보·체크리스트·일정으로 연결하는 생애 이벤트 중심 플랫폼 LIVON. LIVON 앱은 출시를 준비하고 있습니다." },
       platform: { title: "LIVON Platform | 21개 핵심 영역과 40개 생활 분야 — NEWON", desc: "Life Dashboard부터 군대·자격증·임신·출산까지 21개 핵심 영역의 대상·문제·기능·연결, 생애 이벤트 시나리오, 신뢰 원칙, 지금 제공 기능과 계획, FAQ." },
       business: { title: "LIVON Business | 사업 모델·수익 구조·로드맵 — NEWON", desc: "LIVON의 고객과 지불 주체, B2C·B2B·B2B2C·B2G 구조, 구독·연결·기업 수익 모델(모두 제안 단계), 진입 전략, P0–P7 로드맵과 운영 원칙." },
       partnerships: { title: "LIVON Partnerships | 협업 모델과 PoC 제안 — NEWON", desc: "기업 인사·복지, 생활 서비스, 교육기관, 지자체·공공기관과의 협업 모델, 임직원 생활복지 PoC 등 파일럿 제안, 데이터·API 연계 원칙과 진행 절차." },
@@ -328,7 +328,7 @@ export const C30 = {
     notice: "The 21 core areas are a long-term business plan and the 40 life categories are a content classification — not finished features. What the app launch is preparing is shown apart from what is planned.",
     stats: [["21", "Core business areas (long-term plan)"], ["40", "Life categories (content classification)"], ["34", "Life-event guides (app coming soon)"], ["228", "Life-topic guides (app coming soon)"]],
     seo: {
-      overview: { title: "LIVON | NEWON — Services matched to life's moments", desc: "Moving, a first job, marriage, pregnancy and birth, military service, retirement — LIVON links life's big changes and everyday life with official information, checklists and plans. Free on the web today; the app is in preparation." },
+      overview: { title: "LIVON | NEWON — Services matched to life's moments", desc: "Moving, a first job, marriage, pregnancy and birth, military service, retirement — LIVON links life's big changes and everyday life with official information, checklists and plans. The LIVON app is being prepared for launch." },
       platform: { title: "LIVON Platform | 21 core areas and 40 life categories — NEWON", desc: "From Life Dashboard to military service, certificates and pregnancy: the users, problems, features and links of 21 core areas, life-event scenarios, trust principles, what works today and FAQ." },
       business: { title: "LIVON Business | Business model, revenue and roadmap — NEWON", desc: "Who uses and who pays, the B2C, B2B, B2B2C and B2G structure, subscription, connection and enterprise revenue models (all proposals), go-to-market, the P0–P7 roadmap and operating principles." },
       partnerships: { title: "LIVON Partnerships | Collaboration models and PoC proposals — NEWON", desc: "Collaboration models with HR and benefits teams, living services, education providers, local governments and public bodies, PoC proposals such as an employee life-benefit pilot, data and API principles and the process." },
@@ -537,4 +537,247 @@ export const CONTACT_PURPOSE_ICON = { personal: "person", feature: "chat", welfa
 
 export function c30(lang) {
   return lang === "ko" ? C30.ko : C30.en;
+}
+
+/* ───────── 2026-10 design pass v3 — added depth (KO + EN; other languages use EN).
+   Every line paraphrases the LIVON final business plan (2026-10-20; section noted per block) or existing site copy.
+   All of it is a long-term plan unless it says otherwise: no prices, rates, figures, dates or partners. ───────── */
+export const V3 = {
+  ko: {
+    /* plan §1 — two worked examples of the service flow */
+    examples: {
+      title: "예를 들면 (장기 계획 기준)",
+      items: [
+        ["전역을 앞두고 있다면", "병역·전역 일정, 복학, 취업, 자격증, 청년 지원 제도를 따로 찾지 않고 하나의 흐름으로 이어 봅니다."],
+        ["출산을 준비한다면", "검진 일정, 휴직 제도, 지원금, 출산 준비를 함께 챙기고, 출생 이후의 육아·성장 기록은 BABYLOG로 이어 갑니다."],
+      ],
+    },
+    /* plan §3 (Life Stage table) */
+    stageRec: {
+      title: "단계별로 먼저 열어 볼 영역",
+      tag: "계획",
+      note: "나이만으로 상황을 추측하지 않습니다. 직접 고른 관심사·목표·상황을 우선합니다.",
+      rows: [["청소년·학생", "학교·진로·교육·자격증"], ["대학생", "학업·장학금·병역·독립"], ["사회초년생", "취업·주거·저축·복지"], ["직장인", "경력·재무·건강·생활"], ["결혼·출산", "가족·주거·임신·출산"], ["중장년", "경력 전환·자격증·부모 돌봄"], ["은퇴·노후", "연금·복지·건강·생활"]],
+    },
+    /* plan §4 and conclusion — the three areas run as independent services */
+    trio: {
+      title: "하위 메뉴가 아니라, 독립 영역으로",
+      lead: "군대·병역, 자격증·시험, 임신·출산은 장기 계획에서 독립된 서비스로 설계하고 취업·주거·가족·복지 영역과 연결합니다.",
+      items: [
+        ["19", "Military", "군대·병역·전역", "입대 준비부터 전역 후 사회 복귀까지. 필수 병역 정보는 무료로 두고, 군사 보안 정보는 다루지 않습니다."],
+        ["20", "Certification", "자격증·시험·면허", "자격증 검색과 응시 자격, 시험 일정, 학습 계획, 취득·갱신 관리를 거쳐 관련 직무 정보까지 잇습니다."],
+        ["21", "Pregnancy & Birth", "임신·출산", "임신 준비부터 출산·산후 회복까지. 의료 진단이 아니라 일정·기록·공식 제도·생활 지원 중심입니다."],
+      ],
+    },
+    /* plan §12 — roles of the six NEWON platforms */
+    eco: {
+      lead2: "LIVON은 다른 다섯 앱의 전문 기능을 모두 복제하지 않고, 필요한 순간에 해당 앱으로 연결하는 허브 역할을 맡습니다.",
+      cols: ["플랫폼", "고유 전문 영역", "LIVON에서 연결되는 순간"],
+      when: { livon: "전체 허브 — 인생 전반과 일상생활", babylog: "출산·가족 단계", petlog: "반려 생활", myworld: "여행과 생활", shareon: "생활용품 대여", ongil: "은퇴·노후" },
+    },
+    /* plan §5 — LIVON AI */
+    ai: {
+      kicker: "LIVON AI", title: "21개 영역을 잇는\n통합 AI (계획)",
+      lead: "아직 연결되지 않은 장기 계획입니다. 영역마다 쌓인 기록 가운데 사용자가 허용한 정보만 쓰도록 설계하고, 공식 정보와 AI 추정 결과를 분명히 나눠 보여 줄 계획입니다.",
+      tag: "계획 · 아직 제공하지 않음",
+      items: [["Life AI", "인생 목표·생활 계획"], ["Finance AI", "예산·지출 요약"], ["Career AI", "이력서·면접·경력 계획"], ["Study AI", "학습·시험 준비"], ["Military AI", "입대·전역 체크리스트"], ["Birth AI", "임신·출산 일정과 공식 정보"], ["Housing AI", "이사·계약 준비"], ["Welfare AI", "지원 제도 후보 탐색"], ["Health AI", "건강 기록 요약"], ["Legal AI", "일반 법률 정보·서류 요약"], ["Retirement AI", "은퇴 일정·노후 계획"]],
+      rules: [["허용한 정보만", "각 영역의 기록 가운데 사용자가 허용한 정보만 이용합니다."], ["공식 정보와 구분", "공식 정보와 AI 추정 결과를 화면에서 명확히 구분합니다."], ["대신하지 않는 것", "진단·처방, 법률 자문, 투자 추천을 대신하지 않습니다."], ["검토할 것", "오답 고지, 민감정보 처리, 모델 비용을 출시 전에 검토합니다."]],
+    },
+    /* plan §4 — stage-by-stage design of the three independent areas */
+    trioDetail: {
+      kicker: "Independent Areas", title: "군대·자격증·임신출산,\n단계별 설계",
+      lead: "세 영역에 단계별로 담을 핵심 기능입니다. 모두 장기 계획이며, 지금의 제공 상태는 위 상태표와 같습니다.",
+      tag: "장기 계획",
+      cols: { stage: "단계", svc: "서비스", fn: "핵심 기능" },
+      who: "대상",
+      panels: [
+        { id: "19", tab: "군대·병역", who: "입대 예정자, 복무자와 가족, 전역 예정자, 예비군 관련 공식 정보가 필요한 사람", head: "stage",
+          rows: [["병역 준비", "병역판정검사와 공식 병역 정보"], ["입대 준비", "입영 일정·준비물·체크리스트"], ["복무 중", "허용된 범위의 개인 일정·목표 기록"], ["군인 금융", "공식 적금·지원 제도 안내"], ["군인 복지", "휴가·복지·할인 정보"], ["가족", "공유할 수 있는 일정과 연락"], ["전역 준비", "전역일·복학·취업 체크리스트"], ["전역 후", "자격증·취업·지원금·진로"], ["예비군", "공식 일정과 안내 경로"]],
+          rule: "군사 보안 정보나 부대 위치 같은 민감한 정보는 수집·공유하지 않고, 복무 중 기기 사용 규정을 고려합니다." },
+        { id: "20", tab: "자격증·시험", who: "자격증 검색부터 합격·취업 연결까지 관리하려는 학생·구직자·직장인", head: "svc",
+          rows: [["자격증 탐색", "분야·직업별 검색"], ["응시 자격", "공식 자격 요건 확인"], ["시험 일정", "접수·시험·발표·갱신"], ["학습 계획", "공부 시간과 진행률"], ["AI 학습", "요약·문제 설명·복습"], ["모의시험", "자체 제작하거나 허가된 문제"], ["학습 자료", "템플릿·요약집·노트"], ["교육기관", "강의·학원 탐색"], ["자격 관리", "취득·갱신 일정"], ["취업 연결", "관련 직무·채용 정보"]],
+          rule: "국가자격, 국가공인 민간자격, 기타 민간자격을 구분하고 공식 출처를 표시합니다." },
+        { id: "21", tab: "임신·출산", who: "임신 준비부터 출산·산후 회복까지 함께 챙기려는 부부와 가족", head: "stage",
+          rows: [["임신 준비", "준비 일정과 건강 정보"], ["임신 기간", "주차별 기록·일정"], ["산전 검진", "검진 일정과 메모"], ["출산 준비", "병원·준비물·서류"], ["출산 지원", "정부·지자체 지원 제도"], ["휴가·휴직", "출산전후휴가·육아휴직"], ["산후 생활", "회복 일정과 생활 지원"], ["가족 공유", "배우자·가족 공동 일정"], ["상품·서비스", "일반 준비용품과 생활 지원"], ["BABYLOG 연결", "출생 이후 육아·성장 관리"]],
+          rule: "의료 진단 앱이 아닙니다. 임신부터 고등학교 졸업까지의 깊이 있는 가족·자녀 관리는 BABYLOG가 맡습니다." },
+      ],
+      more: "영역 카드 보기",
+    },
+    /* plan §11 — bottom tabs */
+    appTabs: {
+      title: "계획: 앱 하단 5개 탭",
+      rows: [["홈", "오늘의 생활·일정·인생 단계·관심 서비스"], ["탐색", "21개 분야·지원 제도·서비스·업체·마켓"], ["AI", "통합 AI·분야별 대화·개인 목표"], ["커뮤니티", "질문·경험 공유·후기"], ["마이", "프로필·저장·기록·구독·설정"]],
+      note: "회원가입 없이 공개 정보를 탐색하는 익명 모드를 유지하고, 개인 기록·구매·구독처럼 계정이 꼭 필요한 순간에만 로그인을 요청하는 방향입니다.",
+    },
+    /* plan §7 (priority line) */
+    revPriority: "먼저 검증할 순서: 개인 구독, 디지털 자료, 민간 생활 서비스 거래, 기업 SaaS. 그다음 마켓플레이스와 기업 제휴를 넓힙니다.",
+    /* plan §6 */
+    feeExpert: ["전문가 서비스", "자격 확인·업무 범위·가격 표시·후기·신고 기능을 갖춘 뒤 검토합니다. 의료·법률·금융 같은 규제 분야에는 일반 플랫폼 수수료를 자동으로 적용하지 않습니다."],
+    /* plan §4 — monetisation of the three independent areas */
+    trioRev: {
+      title: "독립 영역의 수익화 원칙 (검토)",
+      lead: "세 영역 모두 공식 정보와 기본 정보는 무료로 두고, 그 위의 부가 서비스만 수익화를 검토합니다. 가격과 요율은 정하지 않았습니다.",
+      free: "무료로 유지", paid: "검토 중인 수익",
+      items: [["Military", "군대·병역", "필수 병역 정보", "전역 후 교육·취업 콘텐츠, 생활 구독, 적법한 제휴 상품"], ["Certification", "자격증·시험", "자격증·시험 기본 정보", "AI 학습 구독, 디지털 학습 자료, 교육 콘텐츠 수수료, 교육기관 SaaS"], ["Pregnancy & Birth", "임신·출산", "공식 지원금·기본 정보", "고급 가족 관리 구독, 일반 출산 준비용품, 적법한 비의료 생활 서비스 제휴"]],
+    },
+    /* plan §13 */
+    road: { scope: "범위", done: "완료 기준", note: "기존 LIVON 앱의 코드·사용자 데이터·API·Git 이력·백업을 보존하고, 지금까지 개발된 기능과 앞으로 구현할 기능은 따로 점검해 구분합니다." },
+    /* plan §14 */
+    review: {
+      title: "운영·보안·법률 검토 항목", lead: "기능을 열기 전에 분야별로 먼저 확인할 사항입니다.",
+      rows: [["개인정보", "생애주기·가족·민감정보 최소 수집"], ["금융", "금융상품 모집·자문·중개 규제"], ["의료", "의료행위·환자 알선·광고 제한"], ["법률", "변호사법과 전문가 소개 구조"], ["부동산", "공인중개사법과 중개 범위"], ["군대", "군사 보안, 병역 정보의 정확성"], ["자격증", "공식 시험 정보와 저작권"], ["임신·출산", "의료 정보, 건강정보 보호"], ["전자상거래", "판매자·환불·분쟁·정산"], ["구독", "자동결제·해지, 앱스토어 정책"], ["AI", "오답 고지, 민감정보, 모델 비용"], ["기업 SaaS", "접근 권한·위탁·보안"]],
+    },
+    /* partnerships — practical detail drawn from the contact purposes (existing copy) and plan §14 */
+    pInclude: { title: "제안하실 때 알려 주시면 좋은 내용", ids: ["welfare", "service", "public", "tech"] },
+    pTermsLead: "협력 유형마다 세부 조건은 다르지만, 아래 네 가지는 모든 협력에 공통으로 적용합니다.",
+    pChecksTitle: "협력 전에 함께 확인하는 것",
+    pChecks: [["개인정보", "생애주기·가족·건강 같은 민감정보는 최소한만 다룹니다."], ["전자상거래", "판매자 확인, 환불·분쟁·정산 체계를 먼저 갖춥니다."], ["기업 SaaS", "접근 권한, 위탁, 보안을 연계 전에 정합니다."], ["규제 분야", "금융상품 모집·중개, 의료 광고·환자 알선, 변호사법, 공인중개사법을 검토합니다."]],
+    pFaq: {
+      kicker: "Partnership FAQ", title: "협력 전에 자주 묻는 질문",
+      items: [
+        ["지금 체결된 파트너나 진행 중인 파일럿이 있나요?", "없습니다. 이 페이지의 협업 모델과 PoC는 모두 제안이며, 실제 협약이 체결되지 않은 기관을 파트너로 표시하지 않습니다."],
+        ["공공기관의 공개 정보를 쓰면 제휴인가요?", "아닙니다. 정부·공공기관은 협약이 없는 한 제휴사가 아니라 공개된 정보의 출처로만 표시합니다."],
+        ["유료 노출이나 스폰서 콘텐츠는 어떻게 표시되나요?", "대가를 받은 노출은 항상 광고·제휴로 표시하고, 일반 정보·실제 후기와 구분합니다."],
+        ["이용자 정보를 제공받을 수 있나요?", "개인을 알아볼 수 있는 정보는 제휴사에 넘기지 않는 것을 원칙으로 합니다. 필요한 경우에도 동의 기반으로, 집계된 정보만 다룹니다."],
+        ["금융·보험·의료·법률 분야도 협력할 수 있나요?", "일반 정보와 공식 창구 안내 범위에서 검토합니다. LIVON은 상품 모집·판매·중개, 진단, 법률 대리를 하지 않으며 규제 검토가 먼저입니다."],
+        ["다른 NEWON 플랫폼과 함께 협력하면 수수료가 두 번 붙나요?", "아닙니다. 같은 거래에 NEWON의 두 플랫폼이 수수료를 중복으로 받지 않습니다."],
+      ],
+    },
+    /* contact — channel chooser and FAQ (existing copy) */
+    channels: {
+      kicker: "Where to write", title: "어떤 창구로 보내면 되나요?",
+      lead: "문의 성격에 따라 세 창구 가운데 하나를 고르면 됩니다. LIVON 전용 문의 시스템이나 회원가입은 없습니다.",
+      items: [
+        ["unified", "NEWON 문의", "개인 이용, 기능·사용 문의, 정보 오류 제보, 언론·미디어 문의"],
+        ["business", "NEWON Business 문의", "기업 복지 협력, 생활 서비스 제휴, 공공기관·지자체 협력, 기술·API 연계"],
+        ["mail", "공식 이메일", "투자 관련 문의"],
+        ["none", "LIVON이 답하기 어려운 문의", "개인의 법률·의료·금융 자문은 해당 공식 기관을, 개인 간 중고 거래는 SHAREON을 안내합니다."],
+      ],
+      go: "열기",
+    },
+    cFaq: {
+      kicker: "Contact FAQ", title: "문의 전에 확인해 주세요",
+      items: [
+        ["LIVON 앱은 언제 나오나요?", "앱은 준비 중이며 출시 일정은 확정되지 않았습니다. 출시되면 이 사이트와 NEWON 공식 채널에서 안내합니다."],
+        ["문의하려면 회원가입이 필요한가요?", "아니요. LIVON 전용 문의 시스템이나 회원가입은 없고, NEWON 공식 문의 창구를 그대로 사용합니다."],
+        ["개인 상황에 맞는 법률·의료·금융 상담을 받을 수 있나요?", "답변드리기 어렵습니다. LIVON은 일반 정보와 공식 상담 창구 안내만 제공하며, 해당 공식 기관을 알려 드립니다."],
+        ["요금이나 수수료를 미리 알 수 있나요?", "요금·수수료는 아직 제안 단계라 확정 안내를 드릴 수 없습니다. 현재 판매 중인 유료 상품은 없습니다."],
+        ["상품 구매나 예약을 문의할 수 있나요?", "마켓은 준비 중이라 상품·예약·결제 문의는 받지 않습니다. 개인 간 중고 거래는 SHAREON을 이용해 주세요."],
+        ["정보 오류는 어떻게 알려 드리면 되나요?", "해당 페이지나 주제와 함께, 근거가 되는 공식 출처를 알려 주시면 확인하는 데 도움이 됩니다."],
+      ],
+    },
+  },
+  en: {
+    examples: {
+      title: "For example (long-term plan)",
+      items: [
+        ["About to be discharged", "Service and discharge dates, returning to school, jobs, certificates and youth support are followed as one flow instead of searched one by one."],
+        ["Preparing for a birth", "Check-ups, leave, benefits and birth preparations are handled together, and parenting and growth records after the birth carry on in BABYLOG."],
+      ],
+    },
+    stageRec: {
+      title: "Where each stage starts",
+      tag: "Planned",
+      note: "We never guess a situation from age alone — the interests, goals and situation you choose come first.",
+      rows: [["Teens & students", "School, career paths, learning, certificates"], ["University students", "Studies, scholarships, military service, moving out"], ["New workers", "Jobs, housing, saving, welfare"], ["Employees", "Career, money, health, daily life"], ["Marriage & birth", "Family, housing, pregnancy, birth"], ["Mid-life", "Career change, certificates, caring for parents"], ["Retirement & later life", "Pensions, welfare, health, daily life"]],
+    },
+    trio: {
+      title: "Independent areas, not sub-menus",
+      lead: "Military service, certificates and exams, and pregnancy and birth are designed as independent services in the long-term plan, linked to work, housing, family and welfare.",
+      items: [
+        ["19", "Military", "Military service", "From preparing to enlist to returning to civilian life. Essential service information stays free; no military security information is handled."],
+        ["20", "Certification", "Certificates & exams", "From finding a certificate and its eligibility to exam dates, study plans, holding and renewing it, and related jobs."],
+        ["21", "Pregnancy & Birth", "Pregnancy & birth", "From planning a pregnancy to birth and postnatal recovery — dates, records, official schemes and living support, not medical diagnosis."],
+      ],
+    },
+    eco: {
+      lead2: "LIVON does not copy the specialist features of the other five apps; it acts as the hub that points to the right app at the right moment.",
+      cols: ["Platform", "Its own speciality", "When LIVON points to it"],
+      when: { livon: "The hub — life as a whole and everyday living", babylog: "Birth and family stages", petlog: "Life with pets", myworld: "Travel and living", shareon: "Renting everyday items", ongil: "Retirement and later life" },
+    },
+    ai: {
+      kicker: "LIVON AI", title: "One AI across\nthe 21 areas (planned)",
+      lead: "A long-term plan that is not connected yet. It is designed to use only the records you allow from each area, and to keep official information clearly apart from AI estimates.",
+      tag: "Planned · not available yet",
+      items: [["Life AI", "Life goals and plans"], ["Finance AI", "Budget and spending summaries"], ["Career AI", "CVs, interviews, career plans"], ["Study AI", "Study and exam preparation"], ["Military AI", "Enlistment and discharge checklists"], ["Birth AI", "Pregnancy dates and official information"], ["Housing AI", "Moving and contract preparation"], ["Welfare AI", "Finding schemes that may fit"], ["Health AI", "Health record summaries"], ["Legal AI", "General legal information, document summaries"], ["Retirement AI", "Retirement timelines and later-life plans"]],
+      rules: [["Only what you allow", "Only the records you allow from each area are used."], ["Kept apart from official information", "Official information and AI estimates are clearly separated on screen."], ["What it never replaces", "It does not diagnose or prescribe, give legal advice or recommend investments."], ["To review first", "Error notices, sensitive data and model costs are reviewed before launch."]],
+    },
+    trioDetail: {
+      kicker: "Independent Areas", title: "Military, certificates, birth —\ndesigned step by step",
+      lead: "The key functions planned for each step of the three areas. All are long-term plans; what is available today is shown in the status board above.",
+      tag: "Long-term plan",
+      cols: { stage: "Step", svc: "Service", fn: "Key functions" },
+      who: "For",
+      panels: [
+        { id: "19", tab: "Military service", who: "People due to enlist, service members and families, those about to be discharged, and anyone needing official reserve-forces information", head: "stage",
+          rows: [["Before service", "The examination and official service information"], ["Enlisting", "Enlistment dates, packing and checklists"], ["During service", "Permitted personal plans and goals"], ["Service-member finance", "Official savings and support schemes"], ["Service-member welfare", "Leave, welfare and discounts"], ["Family", "Plans and contact that can be shared"], ["Before discharge", "Discharge date, school and job checklists"], ["After discharge", "Certificates, jobs, benefits, career paths"], ["Reserve forces", "Official dates and where to look"]],
+          rule: "No military security information or unit locations are collected or shared, and rules on device use during service are respected." },
+        { id: "20", tab: "Certificates & exams", who: "Students, job seekers and employees managing a certificate from search to passing and work", head: "svc",
+          rows: [["Finding certificates", "Search by field and job"], ["Eligibility", "Official requirements"], ["Exam dates", "Registration, exam, results, renewal"], ["Study plans", "Study time and progress"], ["AI study", "Summaries, explanations, review"], ["Mock tests", "Our own or licensed questions"], ["Study materials", "Templates, summaries, notes"], ["Training providers", "Courses and academies"], ["Holding a certificate", "Issue and renewal dates"], ["Into work", "Related jobs and openings"]],
+          rule: "National, accredited private and other private qualifications are marked apart, with the official source shown." },
+        { id: "21", tab: "Pregnancy & birth", who: "Couples and families looking after everything from planning a pregnancy to postnatal recovery", head: "stage",
+          rows: [["Planning", "Preparation dates and health information"], ["Pregnancy", "Week-by-week notes and dates"], ["Antenatal check-ups", "Check-up dates and notes"], ["Getting ready", "Hospital, essentials, documents"], ["Birth support", "National and local schemes"], ["Leave", "Maternity and parental leave"], ["After the birth", "Recovery dates and living support"], ["Family sharing", "A calendar shared with your partner and family"], ["Goods & services", "Everyday essentials and living support"], ["On to BABYLOG", "Parenting and growth after the birth"]],
+          rule: "Not a medical diagnosis app. In-depth family and child management from pregnancy to the end of high school belongs to BABYLOG." },
+      ],
+      more: "See the area card",
+    },
+    appTabs: {
+      title: "Planned: five tabs in the app",
+      rows: [["Home", "Today's life, plans, life stage, services you follow"], ["Explore", "21 areas, support schemes, services, providers, market"], ["AI", "One AI, area-by-area chat, personal goals"], ["Community", "Questions, shared experience, reviews"], ["My", "Profile, saved items, records, plans, settings"]],
+      note: "Anonymous browsing of public information stays; an account is asked for only when it is really needed, such as for personal records, purchases or a paid plan.",
+    },
+    revPriority: "What to validate first: personal plans, digital resources, living-service transactions and enterprise SaaS — then the marketplace and corporate partnerships.",
+    feeExpert: ["Professional services", "Considered only once credentials, scope of work, price display, reviews and reporting are in place. General platform fees are never applied automatically in regulated fields such as medicine, law or finance."],
+    trioRev: {
+      title: "How the independent areas could earn (under review)",
+      lead: "In all three, official and basic information stays free; only add-on services on top are reviewed for revenue. No prices or rates have been set.",
+      free: "Stays free", paid: "Revenue under review",
+      items: [["Military", "Military service", "Essential service information", "Education and job content after discharge, living plans, lawful affiliate products"], ["Certification", "Certificates & exams", "Basic certificate and exam information", "AI study plans, digital study materials, education content fees, SaaS for training providers"], ["Pregnancy & Birth", "Pregnancy & birth", "Official benefits and basic information", "Advanced family plans, everyday birth essentials, lawful non-medical living services"]],
+    },
+    road: { scope: "Scope", done: "Done when", note: "The existing LIVON app's code, user data, APIs, Git history and backups are preserved, and what has been built so far is audited separately from what is still to come." },
+    review: {
+      title: "Operations, security and legal review", lead: "What is checked, field by field, before a feature opens.",
+      rows: [["Privacy", "Minimal collection of life-stage, family and sensitive data"], ["Finance", "Rules on soliciting, advising on and brokering financial products"], ["Medicine", "Medical practice, patient referral and advertising limits"], ["Law", "The Attorney-at-Law Act and how professionals are introduced"], ["Real estate", "The Licensed Real Estate Agents Act and brokerage scope"], ["Military", "Military security and accurate service information"], ["Certificates", "Official exam information and copyright"], ["Pregnancy & birth", "Medical information and health-data protection"], ["E-commerce", "Sellers, refunds, disputes, settlement"], ["Subscriptions", "Automatic payment, cancellation, app-store rules"], ["AI", "Error notices, sensitive data, model costs"], ["Enterprise SaaS", "Access rights, outsourcing, security"]],
+    },
+    pInclude: { title: "Helpful to include in a proposal", ids: ["welfare", "service", "public", "tech"] },
+    pTermsLead: "Details differ by type, but these four points apply to every partnership.",
+    pChecksTitle: "What we check together before starting",
+    pChecks: [["Privacy", "Sensitive life-stage, family and health data is kept to a minimum."], ["E-commerce", "Seller checks, refunds, disputes and settlement come first."], ["Enterprise SaaS", "Access rights, outsourcing and security are agreed before any link."], ["Regulated fields", "Financial solicitation and brokerage, medical advertising and referral, attorney and real-estate brokerage law are reviewed."]],
+    pFaq: {
+      kicker: "Partnership FAQ", title: "Questions before working together",
+      items: [
+        ["Are there signed partners or running pilots?", "No. The collaboration models and PoCs on this page are proposals, and no organisation is shown as a partner without a signed agreement."],
+        ["Does using a public body's open information make it a partner?", "No. Government and public bodies are shown only as the source of public information unless an agreement exists."],
+        ["How are paid placements or sponsored content shown?", "Anything paid for is always labelled as an ad or partnership and kept apart from general information and real reviews."],
+        ["Can partners receive user data?", "As a rule, no information that identifies a person is passed to partners. Where data is needed at all, it is consent-based and aggregated."],
+        ["Can finance, insurance, medical or legal providers work with LIVON?", "Within general information and official-channel guidance only. LIVON does not solicit, sell or broker products, diagnose or represent anyone legally, and regulatory review comes first."],
+        ["Is a fee charged twice when two NEWON platforms are involved?", "No. Two NEWON platforms never both charge a fee on the same transaction."],
+      ],
+    },
+    channels: {
+      kicker: "Where to write", title: "Which channel should I use?",
+      lead: "Pick one of three channels by the kind of question. There is no separate LIVON contact system or sign-up.",
+      items: [
+        ["unified", "NEWON contact", "Using LIVON, features, reporting an error, press and media"],
+        ["business", "NEWON Business inquiry", "Employee benefits, living-service partnerships, public bodies, technology and API links"],
+        ["mail", "Official e-mail", "Investment inquiries"],
+        ["none", "What LIVON cannot answer", "Personal legal, medical or financial advice — we point to the official body; personal used-goods trading — please use SHAREON."],
+      ],
+      go: "Open",
+    },
+    cFaq: {
+      kicker: "Contact FAQ", title: "Before you write",
+      items: [
+        ["When will the LIVON app be released?", "The app is in preparation and no release date has been set. It will be announced on this site and NEWON's official channels."],
+        ["Do I need an account to get in touch?", "No. There is no separate LIVON contact system or sign-up; NEWON's official contact page is used as it is."],
+        ["Can I get legal, medical or financial advice for my situation?", "We cannot answer those. LIVON gives general information and points to official counselling channels, and we will tell you which body to contact."],
+        ["Can I find out prices or fees in advance?", "Prices and fees are still proposals, so we cannot confirm them. No paid product is on sale today."],
+        ["Can I ask about buying or booking something?", "The market is in preparation, so product, booking and payment requests are not handled. For personal used-goods trading, please use SHAREON."],
+        ["How do I report wrong information?", "Tell us the page or topic together with the official source it should match — that helps us check it."],
+      ],
+    },
+  },
+};
+export function v3(lang) {
+  return lang === "ko" ? V3.ko : V3.en;
 }
