@@ -2409,3 +2409,623 @@ html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babyl
   background: transparent !important;
   color: #f49ab8 !important;
 }
+
+/* ======================================================================================
+ * Design pass v3 (2026-10-26) — owner: "more varied and cleaner, less whitespace, more detail".
+ * Denser rhythm (section 2.75–4.5rem, head→content ≈1.5rem, card padding 1.25–1.5rem, grid gaps ≈1rem),
+ * white surfaces with hairline separators, boxes defined by a thin outline (no grey or pale fills),
+ * one pale-pink accent band per page (.bl-accent), header rows instead of empty half-columns, no sticky headings,
+ * plus the new data tables, area detail accordions, menu strip, stage key and preparation checklist.
+ * ==================================================================================== */
+#lifestage-detail.nls[data-story="babylog"] {
+  --bl-gap: clamp(0.9rem, 1.4vw, 1.15rem);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec,
+#lifestage-detail.nls[data-story="babylog"] .bl-sec[class*="bl-v-"] {
+  padding-block: clamp(2.75rem, 5vw, 4.5rem);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec[class*="bl-v-"] {
+  padding-block: clamp(2.5rem, 4.2vw, 3.75rem);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec.bl-accent {
+  background: var(--bl-wash);
+  border-top: 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-accent + .bl-sec {
+  border-top-color: transparent;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec .nls-head {
+  max-width: 46rem;
+  margin-bottom: clamp(1.25rem, 2.2vw, 1.75rem);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec .nls-kicker {
+  margin-bottom: 0.55rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec .nls-title {
+  font-size: clamp(1.7rem, 2.7vw, 2.35rem);
+  line-height: 1.28;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec .nls-lead {
+  max-width: 44rem;
+  margin-top: 0.7rem;
+  font-size: clamp(1rem, 1.2vw, 1.0938rem);
+  line-height: 1.7;
+}
+/* header row: title left, lead right — the section starts with content, not a tall stacked heading */
+@media (min-width: 1024px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-sec > .nls-head:has(.nls-lead) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: end;
+    max-width: none;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-sec > .nls-head:has(.nls-lead) .nls-kicker { grid-column: 1; }
+  #lifestage-detail.nls[data-story="babylog"] .bl-sec > .nls-head:has(.nls-lead) .nls-title { grid-column: 1; }
+  #lifestage-detail.nls[data-story="babylog"] .bl-sec > .nls-head:has(.nls-lead) .nls-lead {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: end;
+    margin: 0;
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec > .bl-sub--lg,
+#lifestage-detail.nls[data-story="babylog"] .bl-subhead {
+  margin: clamp(2rem, 3.4vw, 2.75rem) 0 1rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-subhead .bl-sub--lg {
+  margin: 0;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-subhead .nls-lead {
+  margin-top: 0.4rem;
+  font-size: 1rem;
+}
+@media (min-width: 1024px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-subhead {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: end;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-subhead .nls-lead { margin: 0; }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sub {
+  margin: 1.1rem 0 0.55rem;
+}
+
+/* splits: tighter, never sticky (no heading slides over content) */
+#lifestage-detail.nls[data-story="babylog"] .bl-split {
+  gap: 1.5rem;
+}
+@media (min-width: 960px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-split {
+    gap: clamp(2rem, 4vw, 3.5rem);
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-split > div:first-child .nls-head,
+  #lifestage-detail.nls[data-story="babylog"] .bl-scr__label {
+    position: static;
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-split--top {
+  margin-bottom: clamp(1.25rem, 2.2vw, 1.75rem);
+}
+
+/* outlined boxes on white (they were white-on-tint before) */
+#lifestage-detail.nls[data-story="babylog"] :is(.bl-scene, .bl-grp, .bl-guide__item, .bl-model, .bl-icard, .bl-solo, .bl-duo__item, .bl-cat__meta) {
+  border: 1px solid var(--bl-line);
+  background: var(--bl-paper);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-accent :is(.bl-scene, .bl-model, .bl-icard, .bl-guide__item) {
+  border-color: var(--bl-wash-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-model:hover {
+  border-color: var(--bl-pt);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-icards--who .bl-icard:first-child {
+  border-color: transparent;
+}
+#lifestage-detail.nls[data-story="babylog"] :is(.bl-icard, .bl-duo__item, .bl-solo) .bl-ico-wrap,
+#lifestage-detail.nls[data-story="babylog"] .bl-bento__item.is-wide .bl-ico-wrap {
+  background: var(--bl-wash-2);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-accent .bl-ico-wrap,
+#lifestage-detail.nls[data-story="babylog"] .bl-accent .bl-checks__mark {
+  background: var(--bl-paper);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-bento__item.is-wide {
+  border-color: var(--bl-wash-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-accent :is(.bl-val, .bl-feat__item, .bl-checks__item, .bl-steps__item:not(:first-child), .bl-rows, .bl-rows__item, .bl-catrow, .bl-split--index) {
+  border-color: var(--bl-wash-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-principles--panel {
+  border: 1px solid var(--bl-line);
+  background: var(--bl-paper);
+}
+
+/* card and item paddings / gaps */
+#lifestage-detail.nls[data-story="babylog"] :is(.bl-icard, .bl-bento__item, .bl-guide__item, .bl-feat--boxed .bl-feat__item) {
+  padding: clamp(1.25rem, 1.8vw, 1.5rem);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-scene { padding: 1.25rem 1.25rem 1.35rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-duo__item { padding: clamp(1.4rem, 2.4vw, 1.9rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-solo { padding: clamp(1.4rem, 2.6vw, 2rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-biz { padding: clamp(1.25rem, 2vw, 1.6rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-grp { padding: 1.25rem 1.3rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-cscard { padding: clamp(1.35rem, 2.2vw, 1.75rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-board__col { padding: 1.3rem 1.25rem 1.25rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-model { padding: 1.35rem 3rem 1.35rem 1.4rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-model__code { margin-bottom: 0.7rem; font-size: 1.9rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-model__go { top: 1.4rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-principles--panel { padding: clamp(1.3rem, 2.4vw, 1.75rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-ctaband { padding: clamp(1.5rem, 3.4vw, 2.5rem); gap: 1.5rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-card { min-height: 0; padding: 1.2rem 1.25rem; }
+#lifestage-detail.nls[data-story="babylog"] :is(.bl-bento__item, .bl-icard, .bl-feat__item, .bl-val, .bl-guide__item) .bl-ico-wrap {
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-bottom: 0.7rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-values { gap: 1.25rem clamp(1.5rem, 3vw, 2.25rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-val { padding-top: 1.1rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-val h3 { font-size: clamp(1.2rem, 1.6vw, 1.35rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-feat { gap: 1.25rem clamp(1.25rem, 2.4vw, 2rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-feat__item { padding-top: 1.1rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-feat__item h3 { font-size: 1.125rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-pr { gap: 1.25rem clamp(1.25rem, 2.4vw, 2rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-pr li { padding-top: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-steps { gap: 1.25rem var(--bl-gap); }
+#lifestage-detail.nls[data-story="babylog"] .bl-steps__item { padding-top: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-steps__n { margin-bottom: 0.45rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-steps__item h3 { font-size: 1.125rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-vsteps .bl-steps__item { padding: 1.1rem 0; }
+#lifestage-detail.nls[data-story="babylog"] :is(.bl-rows__item, .bl-checks__item, .bl-trow, .bl-table__row) { padding-block: 1.05rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-rows__item :is(h3, h4) { font-size: 1.0938rem; }
+#lifestage-detail.nls[data-story="babylog"] :is(.bl-vs__row, .bl-net__item) { padding-block: 1.15rem; }
+@media (min-width: 860px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-vs__row { padding-block: 1.2rem; }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-net__item h3 { font-size: clamp(1.15rem, 1.6vw, 1.35rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-vs__a { font-size: clamp(1.0625rem, 1.4vw, 1.1875rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-screen { padding-block: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-scr { margin-top: 1.25rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-scr__grp { padding: 1.25rem 0 1.4rem; }
+@media (min-width: 960px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-scr__grp { grid-template-columns: minmax(0, 13rem) minmax(0, 1fr); gap: clamp(1.75rem, 3vw, 2.75rem); }
+  #lifestage-detail.nls[data-story="babylog"] .bl-scr__label { padding-top: 1rem; }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-csgrid { padding-top: clamp(1.5rem, 3vw, 2.25rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-cs-end { padding-block: 1.25rem clamp(2.5rem, 4vw, 3.5rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-cat { margin-top: clamp(2rem, 3.4vw, 2.75rem); padding-top: clamp(1.5rem, 2.6vw, 2rem); gap: 1.25rem clamp(1.5rem, 3vw, 2.5rem); border-top-color: var(--bl-line); }
+#lifestage-detail.nls[data-story="babylog"] .bl-cat__meta { margin-top: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-cat__count { border: 1px solid var(--bl-wash-line); }
+#lifestage-detail.nls[data-story="babylog"] .bl-table__group + .bl-table__group { margin-top: 1.75rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-table__row { border-bottom-color: var(--bl-line); }
+#lifestage-detail.nls[data-story="babylog"] .bl-table__name .bl-biz__tag { background: var(--bl-wash-2); }
+#lifestage-detail.nls[data-story="babylog"] .bl-biz__list { margin-top: 1.25rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-rail { margin-top: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-rail + .bl-biz__list,
+#lifestage-detail.nls[data-story="babylog"] .bl-rail + .bl-ttable { margin-top: 1.5rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-principles { margin-top: clamp(1.75rem, 3vw, 2.25rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-split.bl-split--index { margin-top: clamp(2rem, 3.4vw, 2.75rem); padding-top: clamp(1.5rem, 2.6vw, 2rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-impact { padding-block: clamp(3rem, 5.5vw, 5rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-impact .nls-title { font-size: clamp(1.7rem, 2.7vw, 2.35rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-impact .bl-impact__notes { margin-top: clamp(1.75rem, 3vw, 2.5rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-ilist li { padding-block: 1.05rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-callout .nls-title { font-size: clamp(1.8rem, 3vw, 2.6rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-notice { margin-bottom: 1.25rem; }
+#lifestage-detail.nls[data-story="babylog"] :is(.bl-icards, .bl-scenes, .bl-steps, .bl-feat--boxed, .bl-board) + .nls-note { margin-top: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-board__note { margin-top: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-sec > .bl-biz__cta { padding-top: 0.5rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-faq__item summary { padding-block: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-faq__item summary::after { top: 0.8rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-faq__item { border-bottom-color: var(--bl-line); }
+#lifestage-detail.nls[data-story="babylog"] .bl-faq__item p { margin-bottom: 1.1rem; }
+
+/* Overview · About: title + key statement in one row, the rest in columns */
+#lifestage-detail.nls[data-story="babylog"] .bl-intro .nls-head { margin-bottom: 0.9rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-intro .bl-statement__lead { margin: 0; max-width: 46rem; font-size: clamp(1.15rem, 1.7vw, 1.375rem); line-height: 1.6; }
+@media (min-width: 1024px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: end;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-intro .nls-head { margin: 0; }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: clamp(1.5rem, 2.6vw, 2rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--bl-line);
+}
+@media (min-width: 860px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-cols.bl-cols--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #lifestage-detail.nls[data-story="babylog"] .bl-cols.bl-cols--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cols .bl-statement__p { margin: 0; font-size: 1rem; line-height: 1.72; }
+
+/* check grid: 3 / 4 columns where a full-width list reads better than a split */
+@media (min-width: 960px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-checks.bl-checks--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 1100px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-checks.bl-checks--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-checks { column-gap: clamp(1.25rem, 2.4vw, 2rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-checks__item { gap: 0.75rem; }
+
+/* rows in two columns (Platform global services, Contact purposes) */
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-rows.bl-rows--2,
+  #lifestage-detail.nls[data-story="babylog"] .bl-rows.bl-rows--purpose {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(1.5rem, 3vw, 2.5rem);
+    border-top: 0;
+  }
+  #lifestage-detail.nls[data-story="babylog"] :is(.bl-rows--2, .bl-rows--purpose) .bl-rows__item {
+    border-top: 1px solid var(--bl-line);
+    border-bottom: 0;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-accent .bl-rows--purpose .bl-rows__item { border-top-color: var(--bl-wash-line); }
+}
+@media (min-width: 760px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-rows--purpose .bl-rows__item { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
+  #lifestage-detail.nls[data-story="babylog"] .bl-rows--purpose .bl-rows__go { grid-column: 2; padding-left: 0; }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-rows--purpose .bl-rows__go .bl-arrow { min-height: 36px; }
+
+/* Data tables (v3) */
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable-wrap {
+  border-top: 1px solid var(--bl-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9688rem;
+  line-height: 1.6;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable :is(th, td) {
+  padding: 0.8rem 1rem 0.8rem 0;
+  border-bottom: 1px solid var(--bl-line);
+  color: var(--bl-ink);
+  text-align: left;
+  vertical-align: top;
+  font-weight: 400;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable thead th {
+  padding-block: 0.7rem;
+  color: var(--bl-faint);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable tbody th {
+  font-weight: 700;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable td { color: var(--bl-muted); }
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable td strong { color: var(--bl-ink); font-weight: 700; }
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable__n {
+  margin-right: 0.35rem;
+  color: var(--bl-pt-ink);
+  font-size: 0.8125rem;
+  font-weight: 750;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable--limits td:nth-child(2) { color: var(--bl-ink); }
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable--limits tbody th { width: 17%; }
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable--limits td:nth-child(2) { width: 45%; }
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable--cmp tbody th { width: 20%; color: var(--bl-faint); font-weight: 600; }
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable--cmp td:nth-child(2) { width: 24%; }
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable--dev tbody th { width: 4.5rem; color: var(--bl-pt-ink); }
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable--dev td:nth-child(2) { color: var(--bl-ink); width: 52%; }
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable--models tbody th { width: 21%; }
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable--models td:nth-child(3) { width: 17%; color: var(--bl-ink); font-size: 0.9063rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable--kv tbody th { width: 38%; }
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable--write tbody th { width: 26%; }
+/* phones: stack rows, each cell labelled (key–value tables stay two columns) */
+@media (max-width: 759px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-dtable-wrap:not(.bl-dtable--kv) thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-dtable-wrap:not(.bl-dtable--kv) :is(table, tbody, tr, th, td) {
+    display: block;
+    width: auto !important;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-dtable-wrap:not(.bl-dtable--kv) tr {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--bl-line);
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-dtable-wrap:not(.bl-dtable--kv) :is(th, td) {
+    padding: 0.15rem 0;
+    border: 0;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-dtable-wrap:not(.bl-dtable--kv) tbody th { font-size: 1.0313rem; }
+  #lifestage-detail.nls[data-story="babylog"] .bl-dtable-wrap:not(.bl-dtable--kv) td::before {
+    content: attr(data-label);
+    display: block;
+    margin-top: 0.4rem;
+    color: var(--bl-faint);
+    font-size: 0.8125rem;
+    font-weight: 700;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-dtable--kv :is(th, td) { padding-right: 0.75rem; }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable-wrap + .nls-note { margin-top: 0.9rem; }
+
+/* Platform · area detail accordions inside the 27-area list */
+#lifestage-detail.nls[data-story="babylog"] .bl-xmore {
+  margin-top: 0.6rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-xmore summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 36px;
+  color: var(--bl-pt-ink);
+  font-size: 0.9063rem;
+  font-weight: 650;
+  list-style: none;
+  cursor: pointer;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-xmore summary::-webkit-details-marker { display: none; }
+#lifestage-detail.nls[data-story="babylog"] .bl-xmore summary::after {
+  content: "+";
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-xmore[open] summary::after { content: "\2212"; }
+#lifestage-detail.nls[data-story="babylog"] .bl-xmore summary:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+#lifestage-detail.nls[data-story="babylog"] .bl-screen .bl-xmore p.bl-xmore__now {
+  margin: 0.35rem 0 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--bl-pt);
+  color: var(--bl-ink);
+  font-size: 0.9063rem;
+  line-height: 1.6;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-xmore .bl-dtable { font-size: 0.9375rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-xmore .bl-dtable :is(th, td) { padding-block: 0.5rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-screen .bl-xmore p.nls-note {
+  margin: 0.6rem 0 0.25rem;
+  color: var(--bl-faint);
+  font-size: 0.875rem;
+}
+
+/* Platform · proposed app menu strip (five tabs, one row on desktop, scroll-snap rail on phones) */
+#lifestage-detail.nls[data-story="babylog"] .bl-menu { margin-top: clamp(2rem, 3.4vw, 2.75rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-tabs {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(12.5rem, 72%);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  border: 1px solid var(--bl-wash-line);
+  border-radius: var(--bl-r-md);
+  background: var(--bl-paper);
+}
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-tabs { grid-auto-flow: row; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-tabs__item {
+  padding: 1rem 1.1rem 1.1rem;
+  border-left: 1px solid var(--bl-wash-line);
+  scroll-snap-align: start;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-tabs__item:first-child { border-left: 0; box-shadow: inset 0 3px 0 var(--bl-pt); }
+#lifestage-detail.nls[data-story="babylog"] .bl-tabs__item h4 { font-size: 1.0625rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-tabs__item p { margin: 0.35rem 0 0; color: var(--bl-muted); font-size: 0.9375rem; line-height: 1.6; }
+#lifestage-detail.nls[data-story="babylog"] .bl-tabs + .nls-note { margin-top: 0.9rem; }
+
+/* Overview · platforms: the BABYLOG link line */
+#lifestage-detail.nls[data-story="babylog"] .bl-plat { padding: 1.1rem 1.05rem 1.15rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-plat .bl-plat__link {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--bl-line);
+  color: var(--bl-ink);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-plat__link span {
+  display: block;
+  color: var(--bl-pt-ink);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+/* tags (non-interactive labels) */
+#lifestage-detail.nls[data-story="babylog"] .bl-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-tags li {
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--bl-wash-line);
+  border-radius: 6px;
+  color: var(--bl-ink);
+  font-size: 0.8438rem;
+  line-height: 1.5;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-relarea { margin-top: 0.35rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-relarea .bl-sub { margin: 0.75rem 0 0.4rem; }
+
+/* Business · revenue: compact kinds, stage key */
+#lifestage-detail.nls[data-story="babylog"] .bl-feat--compact .bl-feat__item .bl-ico-wrap { display: none; }
+#lifestage-detail.nls[data-story="babylog"] .bl-stagekey {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--bl-gap);
+  margin-top: 1.25rem;
+}
+@media (min-width: 720px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-stagekey { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1100px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-stagekey { grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.6fr); }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-stagekey__item {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--bl-line);
+  border-radius: var(--bl-r-sm);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-stagekey__item.is-free { border-color: var(--bl-pt); }
+#lifestage-detail.nls[data-story="babylog"] .bl-stagekey__item h4 { font-size: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-stagekey__item.is-free h4 { color: var(--bl-pt-ink); }
+#lifestage-detail.nls[data-story="babylog"] .bl-stagekey__item p { margin: 0.3rem 0 0; color: var(--bl-muted); font-size: 0.9063rem; line-height: 1.6; }
+#lifestage-detail.nls[data-story="babylog"] .bl-stagekey__item .bl-tags { margin-top: 0.65rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-stagekey + .nls-note { margin-top: 1rem; }
+
+/* Business · operating & legal: two-up definition rows */
+#lifestage-detail.nls[data-story="babylog"] .bl-ldl {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin: 0;
+}
+@media (min-width: 960px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-ldl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-ldl__row {
+  display: grid;
+  grid-template-columns: minmax(7rem, 0.42fr) minmax(0, 1fr);
+  gap: 0.25rem 1rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-ldl dt { color: var(--bl-ink); font-size: 1rem; font-weight: 700; line-height: 1.5; }
+#lifestage-detail.nls[data-story="babylog"] .bl-ldl dd { margin: 0; color: var(--bl-muted); font-size: 0.9688rem; line-height: 1.65; }
+@media (max-width: 559px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-ldl__row { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Partnerships · principles + preparation checklist side by side */
+#lifestage-detail.nls[data-story="babylog"] .bl-duo2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--bl-gap);
+  margin-top: clamp(1.75rem, 3vw, 2.25rem);
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-duo2 { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); align-items: start; }
+  #lifestage-detail.nls[data-story="babylog"] .bl-duo2 .bl-plist { grid-template-columns: minmax(0, 1fr); }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-duo2 .bl-principles { margin-top: 0; }
+#lifestage-detail.nls[data-story="babylog"] .bl-duo2 .bl-plist li { padding-block: 0.7rem; border-bottom-color: var(--bl-line); }
+#lifestage-detail.nls[data-story="babylog"] .bl-prep__list { margin-top: 0.5rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-prep__item {
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  gap: 0.6rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-prep__n { color: var(--bl-pt-ink); font-size: 0.9375rem; font-weight: 750; line-height: 1.5; }
+#lifestage-detail.nls[data-story="babylog"] .bl-prep__item h4 { font-size: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-prep__item p { margin: 0.2rem 0 0; color: var(--bl-muted); font-size: 0.9375rem; line-height: 1.6; }
+#lifestage-detail.nls[data-story="babylog"] .bl-prep > .nls-note { margin-top: 0.8rem; }
+
+/* dark mode for the v3 pieces (site-dark.css forces colours with !important) */
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-sec.bl-accent {
+  background-color: #120a0e !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap :is(.bl-tabs, .bl-stagekey__item, .bl-principles--panel) {
+  background-color: #111 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap :is(.bl-dtable td, .bl-ldl dd, .bl-tabs__item p, .bl-stagekey__item p, .bl-prep__item p, .bl-cols .bl-statement__p, .bl-plat__link) {
+  color: #c8c8c8 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap :is(.bl-dtable thead th, .bl-dtable--cmp tbody th, .bl-dtable td::before, .bl-xmore .nls-note) {
+  color: #a8a8a8 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap :is(.bl-dtable tbody th, .bl-dtable td strong, .bl-dtable--limits td:nth-child(2), .bl-dtable--dev td:nth-child(2), .bl-dtable--models td:nth-child(3), .bl-ldl dt, .bl-xmore__now, .bl-tags li) {
+  color: #f2f2f2 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap :is(.bl-dtable__n, .bl-dtable--dev tbody th, .bl-xmore summary, .bl-plat__link span, .bl-prep__n, .bl-stagekey__item.is-free h4) {
+  color: #f49ab8 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .bl-dtable-wrap {
+  border-top-color: rgba(255, 255, 255, 0.4) !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] :is(.bl-xmore__now, .bl-stagekey__item.is-free) {
+  border-color: #ee7fa3 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .bl-tabs__item:first-child {
+  box-shadow: inset 0 3px 0 #ee7fa3 !important;
+}
+/* the area lead is no longer the last paragraph once a detail accordion follows it */
+#lifestage-detail.nls[data-story="babylog"] .bl-screen > div > p:not(.nls-kicker) {
+  margin: 0.45rem 0 0;
+  color: var(--bl-muted);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-screen > div > p:not(.nls-kicker) {
+  color: #c8c8c8 !important;
+}
+
+/* Platform · paired short chapters (records | family, memories | assist) */
+#lifestage-detail.nls[data-story="babylog"] .bl-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  border-top: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-pair > .bl-sec + .bl-sec { border-top: 1px solid var(--bl-line); }
+#lifestage-detail.nls[data-story="babylog"] .bl-pair > .bl-sec:first-child { border-top: 0; }
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #lifestage-detail.nls[data-story="babylog"] .bl-pair > .bl-sec { border-top: 0; }
+  #lifestage-detail.nls[data-story="babylog"] .bl-pair > .bl-sec:first-child { padding-right: clamp(1.5rem, 3vw, 2.5rem); }
+  #lifestage-detail.nls[data-story="babylog"] .bl-pair > .bl-sec + .bl-sec {
+    padding-left: clamp(1.5rem, 3vw, 2.5rem);
+    border-left: 1px solid var(--bl-line);
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-pair > .bl-sec > .nls-head:has(.nls-lead) { display: block; }
+  #lifestage-detail.nls[data-story="babylog"] .bl-pair > .bl-sec > .nls-head:has(.nls-lead) .nls-lead { margin-top: 0.7rem; }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-pair .bl-solo { grid-template-columns: minmax(0, 1fr); gap: 0.6rem; }
+
+/* NEWON connection statement: header row too */
+@media (min-width: 1024px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-callout > .nls-head:has(.nls-lead) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: end;
+    max-width: none;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-callout > .nls-head:has(.nls-lead) .nls-lead { grid-column: 2; grid-row: 1 / span 2; margin: 0; }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-close .nls-note { margin-inline: auto; }
+#lifestage-detail.nls[data-story="babylog"] .bl-cscard .nls-chips li { background: var(--bl-paper); }
+#lifestage-detail.nls[data-story="babylog"] .bl-dl__row { padding-block: 0.65rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-dl { margin-top: 0.9rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-biz__head { margin-bottom: 0.8rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-pcard .bl-biz__cta { padding-top: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-duo__item .bl-ico-wrap { width: 2.4rem; height: 2.4rem; margin-bottom: 0.6rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-duo__item h3 { font-size: clamp(1.2rem, 1.7vw, 1.375rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-duo__item p { font-size: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] :is(.bl-dtable th, .bl-dtable td, .bl-ldl dt, .bl-ldl dd, .bl-dl dt, .bl-dl dd, .bl-tags li) {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-impact .nls-btn:not(.nls-btn--ghost) { background: #fff; border-color: #fff; }
+/* Business · product structure: two key–value tables side by side */
+#lifestage-detail.nls[data-story="babylog"] .bl-tiers { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.5rem clamp(1.5rem, 3vw, 2.5rem); }
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-tiers .bl-sub--lg { margin: 0 0 0.75rem; font-size: 1.125rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-tiers + .nls-note { margin-top: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable--roles tbody th { width: 14%; color: var(--bl-ink); }
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable--roles td:nth-child(2) { width: 32%; color: var(--bl-ink); }

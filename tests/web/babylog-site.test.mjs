@@ -10,6 +10,7 @@
  * BL-11 Korean text leaking into a fallback-locale page fails the check
  * BL-12 JSON-LD declaring an offered Service fails the check
  * BL-13 content upgrade 30 data: 27 areas, 4 status columns, 7 inquiry purposes, no price
+ * BL-14 design pass v3 data: details only for existing areas, 12 revenue models, P0–P9, no price, no Korean in en
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -200,5 +201,24 @@ test("BL-12 JSON-LD declaring an offered Service fails the check", () => {
     assert.match(r.stdout, /FAIL seo en\/business/);
   } finally {
     fs.rmSync(d, { recursive: true, force: true });
+  }
+});
+
+test("BL-14 design pass v3: area details map to existing areas, 12 revenue models, P0–P9, no price or internal figure", async () => {
+  const m = await import("../../scripts/babylog-content-v3.mjs");
+  const c30 = await import("../../scripts/babylog-content30.mjs");
+  for (const lang of ["ko", "en"]) {
+    const c = m.getContentV3(lang);
+    const areaNs = new Set(c30.getContent30(lang).platform.areas.groups.flatMap((g) => g.items.map((a) => a.n)));
+    for (const n of Object.keys(c.platform.detail.areas)) assert.ok(areaNs.has(n), `detail for unknown area ${n}`);
+    assert.equal(c.business.models.items.length, 12);
+    assert.deepEqual(c.platform.dev.items.map((r) => r[0]), Array.from({ length: 10 }, (_, i) => `P${i}`));
+    assert.equal(c.platform.menu.items.length, 5);
+  }
+  assert.ok(!/[\uac00-\ud7a3]/.test(JSON.stringify(m.getContentV3("en"))), "English v3 copy contains Korean");
+  const src = fs.readFileSync(path.join(ROOT, "scripts", "babylog-content-v3.mjs"), "utf8");
+  const body = src.slice(src.indexOf("const KO ="));
+  for (const re of [/₩\s?\d/, /\d[\d,]*\s?원(?!칙)/, /\d+\s?%/, /19,?900/, /169,?000/, /179,?000/]) {
+    assert.ok(!re.test(body), `v3 copy matches ${re}`);
   }
 });

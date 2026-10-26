@@ -81,9 +81,11 @@ function scopeNote(C) {
   return `<p class="nls-note bl-scope">${esc(C.ui.scope)}</p>`;
 }
 
-/** Section. tone: "" (paper) | "tint" (pale pink full-bleed band) | "band" (paper full-bleed band). */
+/** Section. tone: "" (paper) | "accent" (the page's pale pink full-bleed band, used once or twice per page) |
+ *  "band" (paper full-bleed band). Design pass v3 (2026-10-26): white surfaces by default, sections separated by a
+ *  hairline; the earlier alternating "tint" bands are gone (owner: no grey/pale boxes, cleaner). */
 function block(id, inner, tone = "", cls = "") {
-  const t = tone === "tint" ? " nls-block--band bl-tint" : tone === "band" ? " nls-block--band" : "";
+  const t = tone === "accent" ? " nls-block--band bl-accent" : tone === "band" ? " nls-block--band" : "";
   return `<section id="${id}" class="nls-block bl-sec${t}${cls ? " " + cls : ""}" data-hs-section aria-labelledby="${id}-title">${inner}</section>`;
 }
 
@@ -160,6 +162,18 @@ function dl(rows, cls = "") {
   return `<dl class="bl-dl${cls ? " " + cls : ""}">${rows
     .map(([k, v]) => `<div class="bl-dl__row"><dt>${esc(k)}</dt><dd>${v}</dd></div>`)
     .join("")}</dl>`;
+}
+
+/** Data table (v3): real <table>; on phones each row stacks and every cell carries its column label.
+ *  rows: arrays of cell strings (already escaped HTML allowed via raw: true); the first cell is the row header. */
+function dtable(heads, rows, cls = "", { raw = false, caption = "" } = {}) {
+  const cell = (v) => (raw ? v : esc(v));
+  return `<div class="bl-dtable-wrap${cls ? " " + cls : ""}"><table class="bl-dtable">${caption ? `<caption class="bl-dtable__cap">${esc(caption)}</caption>` : ""}
+    <thead><tr>${heads.map((h) => `<th scope="col">${esc(h)}</th>`).join("")}</tr></thead>
+    <tbody>${rows
+      .map((r) => `<tr>${r.map((v, i) => (i === 0 ? `<th scope="row" data-label="${esc(heads[0])}">${cell(v)}</th>` : `<td data-label="${esc(heads[i])}">${cell(v)}</td>`)).join("")}</tr>`)
+      .join("")}</tbody>
+  </table></div>`;
 }
 
 /** Jump chips (anchor links only; no hidden tabs). n is shown only when it is an existing ID (category 01–08, area 25–32). */
@@ -245,15 +259,19 @@ function overviewBody(C, lang) {
   const X = C.x.overview;
 
   // About — statement split: title left; the first line set large, the rest as calm body copy
-  const roster = o.vision.lines.map((p, i) => `<p class="${i === 0 ? "bl-statement__lead" : "bl-statement__p"}">${esc(p)}</p>`).join("");
-  const vision = block("bl-vision", `<div class="bl-split bl-split--statement"><div>${titleBlock(o.vision.kicker, o.vision.title, "", 2, "bl-vision-title")}</div><div class="bl-statement">${roster}</div></div>`);
+  const [visionLead, ...visionRest] = o.vision.lines;
+  const vision = block(
+    "bl-vision",
+    `<div class="bl-intro">${titleBlock(o.vision.kicker, o.vision.title, "", 2, "bl-vision-title")}<p class="bl-statement__lead">${esc(visionLead)}</p></div>
+    <div class="bl-cols bl-cols--${visionRest.length}">${visionRest.map((p) => `<p class="bl-statement__p">${esc(p)}</p>`).join("")}</div>`
+  );
 
   // Mission — six values as an open three-column feature list on the pale band
   const valueIcons = ["heart", "sprout", "link", "hand", "shield", "access"];
   const values = o.connect.items
     .map((it, i) => `<article class="bl-val">${ico(valueIcons[i % 6])}<h3>${esc(it.name)}</h3><p>${esc(it.lead)}</p></article>`)
     .join("");
-  const connect = block("bl-connect", `${titleBlock(o.connect.kicker, o.connect.title, o.connect.lead, 2, "bl-connect-title")}<div class="bl-values">${values}</div>`, "tint");
+  const connect = block("bl-connect", `${titleBlock(o.connect.kicker, o.connect.title, o.connect.lead, 2, "bl-connect-title")}<div class="bl-values">${values}</div>`, "accent");
 
   const O30 = C.c30.overview;
   // Problem → solution — two-column comparison (labels come from the existing kicker "Problem → Solution")
@@ -273,19 +291,16 @@ function overviewBody(C, lang) {
     `${titleBlock(O30.who.kicker, O30.who.title, O30.who.lead, 2, "bl-who-title")}
     ${icards(O30.who.customers, ["baby", "users", "book", "building"], 3, "bl-icards--who")}
     <h3 class="bl-sub bl-sub--lg">${esc(O30.who.momentsTitle)}</h3>
-    <ul class="bl-scenes">${moments}</ul>`,
-    "tint"
+    <ul class="bl-scenes">${moments}</ul>`
   );
   // Differentiation hypotheses — "existing alternative → BABYLOG" table
-  const diffRows = O30.diff.items
-    .map((it) => {
-      const [a, b] = it.name.split("→").map((s) => s.trim());
-      return `<li class="bl-cmp__row">${
-        b ? `<h3 class="bl-cmp__name"><span class="bl-cmp__a">${esc(a)}</span><span class="bl-cmp__arrow" aria-hidden="true">${icon("arrow")}</span><span class="bl-cmp__b">${esc(b)}</span></h3>` : `<h3 class="bl-cmp__name"><span class="bl-cmp__b">${esc(it.name)}</span></h3>`
-      }<p>${esc(it.lead)}</p></li>`;
-    })
-    .join("");
-  const diff = block("bl-diff", `<div class="bl-split bl-split--wide"><div>${titleBlock(O30.diff.kicker, O30.diff.title, O30.diff.lead, 2, "bl-diff-title")}</div><ul class="bl-cmp">${diffRows}</ul></div>`, "tint");
+  // Differentiation hypotheses — comparison table "existing alternative | BABYLOG | what differs" (v3)
+  const DF = C.v3.overview.diffFields;
+  const diffRows = O30.diff.items.map((it) => {
+    const [a, b] = it.name.split("→").map((s) => s.trim());
+    return [esc(b ? a : ""), `<strong>${esc(b || it.name)}</strong>`, esc(it.lead)];
+  });
+  const diff = block("bl-diff", `${titleBlock(O30.diff.kicker, O30.diff.title, O30.diff.lead, 2, "bl-diff-title")}${dtable([DF.a, DF.b, DF.why], diffRows, "bl-dtable--cmp", { raw: true })}`);
   // Current service status — four-stage board
   const now = block(
     "bl-now",
@@ -333,7 +348,7 @@ function overviewBody(C, lang) {
   const daily = block("bl-daily", `${titleBlock(X.daily.kicker, X.daily.title, X.daily.lead, 2, "bl-daily-title")}<div class="bl-bento">${bento}</div>`);
 
   // For families — four open feature columns on the pale band
-  const health = block("bl-health", `${titleBlock(X.health.kicker, X.health.title, X.health.lead, 2, "bl-health-title")}${features(X.health.items, ["users", "lock", "calendar", "shield"], 3, "bl-feat--4")}`, "tint");
+  const health = block("bl-health", `${titleBlock(X.health.kicker, X.health.title, X.health.lead, 2, "bl-health-title")}${features(X.health.items, ["users", "lock", "calendar", "shield"], 3, "bl-feat--4")}`);
 
   // Beyond parenting — split: statement left, the four sides as a large-type list right (no hub diagram)
   const net = o.ecosystem.items.map((it) => `<article class="bl-net__item"><h3>${esc(it.name)}</h3><p>${esc(it.lead)}</p></article>`).join("");
@@ -343,10 +358,16 @@ function overviewBody(C, lang) {
   );
 
   // Lifestyle & services — four tiles
-  const parentEco = block("bl-parent-eco", `${titleBlock(X.parentEco.kicker, X.parentEco.title, X.parentEco.lead, 2, "bl-parent-eco-title")}${icards(X.parentEco.items, ["bag", "hand", "book", "chat"], 3, "bl-icards--4 bl-icards--rail")}`, "tint");
+  const parentEco = block("bl-parent-eco", `${titleBlock(X.parentEco.kicker, X.parentEco.title, X.parentEco.lead, 2, "bl-parent-eco-title")}${icards(X.parentEco.items, ["bag", "hand", "book", "chat"], 3, "bl-icards--4 bl-icards--rail")}`);
 
   // Trust — split with check list
-  const trust = block("bl-trust", `<div class="bl-split bl-split--wide"><div>${titleBlock(X.trust.kicker, X.trust.title, X.trust.lead, 2, "bl-trust-title")}</div>${checks(X.trust.items)}</div>`);
+  const LM = C.v3.overview.limits;
+  const trust = block(
+    "bl-trust",
+    `${titleBlock(X.trust.kicker, X.trust.title, X.trust.lead, 2, "bl-trust-title")}${checks(X.trust.items, 3, "bl-checks--3")}
+    <div class="bl-subhead"><h3 class="bl-sub bl-sub--lg">${nl(LM.title)}</h3><p class="nls-lead">${esc(LM.lead)}</p></div>
+    ${dtable([LM.fields.area, LM.fields.no, LM.fields.instead], LM.items, "bl-dtable--limits")}`
+  );
 
   // Business opportunities — six model tiles (A–F are the IDs used on the Business page) + 8-category index
   const models = C.business.categories
@@ -369,7 +390,7 @@ function overviewBody(C, lang) {
       <p class="nls-lead">${esc(X.groupsIndex.lead)}</p></div>
       <ol class="bl-catlist">${catIndex}</ol>
     </div>`,
-    "tint"
+    "accent"
   );
 
   // Child safety & social impact — dark band (kept)
@@ -401,8 +422,7 @@ function overviewBody(C, lang) {
     `${titleBlock(GO.kicker, GO.title, GO.lead, 2, "bl-global-title")}
     ${features(GO.items, ["sprout", "shield", "link"], 3, "bl-feat--3")}
     <p class="nls-note">${esc(GO.note)}</p>
-    <p class="bl-biz__cta"><a class="bl-arrow" href="${pagePath(lang, "platform")}#bl-global">${esc(GO.more)} ${icon("arrow")}</a></p>`,
-    "tint"
+    <p class="bl-biz__cta"><a class="bl-arrow" href="${pagePath(lang, "platform")}#bl-global">${esc(GO.more)} ${icon("arrow")}</a></p>`
   );
 
   // NEWON connection — large statement, four principles in open columns
@@ -410,8 +430,12 @@ function overviewBody(C, lang) {
   const newon = block("bl-newon", `<div class="bl-callout">${titleBlock(o.newon.kicker, o.newon.title, o.newon.lead, 2, "bl-newon-title")}<ol class="bl-pr">${principles}</ol></div>`);
 
   // NEWON ecosystem — six platform tiles, BABYLOG highlighted
+  const PLK = C.v3.overview.links;
   const plats = X.platforms.items
-    .map((s2, i) => `<li class="bl-plat${i === 0 ? " is-self" : ""}"><h3>${esc(s2.name)}</h3><p>${esc(s2.body)}</p></li>`)
+    .map((s2, i) => {
+      const link = PLK.items[s2.name];
+      return `<li class="bl-plat${i === 0 ? " is-self" : ""}"><h3>${esc(s2.name)}</h3><p>${esc(s2.body)}</p>${link ? `<p class="bl-plat__link"><span>${esc(PLK.label)}</span>${esc(link)}</p>` : ""}</li>`;
+    })
     .join("");
   const platforms = block(
     "bl-platforms",
@@ -423,26 +447,37 @@ function overviewBody(C, lang) {
       <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "partnerships")}">${esc(C.ui.toPartnershipsLearn)}</a>`;
   return {
     hero: hero(C, lang, "overview", o.hero, false),
-    main: [vision, connect, problem, who, journey, daily, health, ecosystem, parentEco, trust, diff, now, opportunities, impact, globalVision, newon, platforms, closeBlock(C, lang, "overview", o, ctas)].join("\n"),
+    main: [vision, connect, problem, who, journey, daily, health, ecosystem, parentEco, diff, trust, now, opportunities, impact, globalVision, newon, platforms, closeBlock(C, lang, "overview", o, ctas)].join("\n"),
   };
 }
 
 /* ------------------------------------------------------------------ Platform */
 const SECTION_LAYOUT = {
   growth: { tone: "", render: (s) => steps(s.items, 3, "bl-steps--3") },
-  records: { tone: "tint", split: true, render: (s) => rows(s.items, ["calendar", "heart", "chart"]) },
-  family: { tone: "", render: (s) => duo(s.items, ["users", "lock"]) },
-  learning: { tone: "tint", render: (s) => icards(s.items, ["calendar", "book", "building"], 3, "bl-icards--3") },
-  memories: { tone: "", split: true, render: (s) => features(s.items, ["photo", "book"], 3, "bl-feat--2") },
-  assist: { tone: "tint", render: (s) => s.items.map((it) => `<div class="bl-solo">${ico("sparkle")}<div><h3>${esc(it.name)}</h3><p>${esc(it.lead)}</p></div></div>`).join("") },
+  records: { tone: "", pair: true, render: (s) => rows(s.items, ["calendar", "heart", "chart"]) },
+  family: { tone: "", pair: true, render: (s) => rows(s.items, ["users", "lock"]) },
+  learning: { tone: "", render: (s) => icards(s.items, ["calendar", "book", "building"], 3, "bl-icards--3") },
+  memories: { tone: "", pair: true, render: (s) => rows(s.items, ["photo", "book"]) },
+  assist: { tone: "", pair: true, render: (s) => s.items.map((it) => `<div class="bl-solo">${ico("sparkle")}<div><h3>${esc(it.name)}</h3><p>${esc(it.lead)}</p></div></div>`).join("") },
   explore: { tone: "", render: (s) => duo(s.items, ["compass", "link"], 3, "bl-duo--line") },
-  trust: { tone: "tint", split: true, wide: true, render: (s) => checks(s.items) },
+  trust: { tone: "", render: (s) => checks(s.items, 3, "bl-checks--4") },
 };
 
 function platformBody(C, lang) {
   const p = C.platform;
   const X = C.x.platform;
   const sc = X.screens;
+  const AD = C.v3.platform.detail;
+  const areaMore = (n) => {
+    const d = AD.areas[n];
+    if (!d) return "";
+    const f = d.fields || AD.fields;
+    return `<details class="bl-xmore"><summary>${esc(AD.summary)}</summary>
+          <p class="bl-xmore__now">${esc(d.now)}</p>
+          ${dtable([f.k, f.v], d.rows, "bl-dtable--kv")}
+          <p class="nls-note">${esc(d.note)}</p>
+        </details>`;
+  };
 
   // 27 long-term areas in five groups: group label left, an open two-column list right (no card boxes)
   const screenGroups = sc.groups
@@ -455,7 +490,7 @@ function platformBody(C, lang) {
         <p class="bl-screen__n" aria-hidden="true">${esc(it.n)}</p>
         <div><p class="nls-kicker">${esc(it.en)}</p>
         <h4>${esc(it.name)}</h4>
-        <p>${esc(it.lead)}</p></div>
+        <p>${esc(it.lead)}</p>${areaMore(it.n)}</div>
       </article>`
         )
         .join("")}</div>
@@ -471,12 +506,18 @@ function platformBody(C, lang) {
 
   const P30 = C.c30.platform;
   const sections = p.sections.map((s) => (s.id === "trust" ? { ...s, items: [...s.items, ...P30.trustExtra] } : s));
+  const MN = C.v3.platform.menu;
   const flow = block(
     "bl-flow",
     `${titleBlock(P30.flow.kicker, P30.flow.title, P30.flow.lead, 2, "bl-flow-title")}
     ${steps(P30.flow.items, 3, "bl-steps--5")}
-    <p class="nls-note">${esc(P30.flow.note)}</p>`,
-    "tint"
+    <p class="nls-note">${esc(P30.flow.note)}</p>
+    <div class="bl-menu">
+      <div class="bl-subhead"><h3 class="bl-sub bl-sub--lg">${esc(MN.title)}</h3><p class="nls-lead">${esc(MN.lead)}</p></div>
+      <ol class="bl-tabs">${MN.items.map((it) => `<li class="bl-tabs__item"><h4>${esc(it.name)}</h4><p>${esc(it.lead)}</p></li>`).join("")}</ol>
+      <p class="nls-note">${esc(MN.note)}</p>
+    </div>`,
+    "accent"
   );
   const roles = block(
     "bl-roles",
@@ -488,13 +529,15 @@ function platformBody(C, lang) {
     "bl-scenarios",
     `${titleBlock(P30.scenarios.kicker, P30.scenarios.title, P30.scenarios.lead, 2, "bl-scenarios-title")}<ul class="bl-scenes bl-scenes--5">${P30.scenarios.items
       .map((it) => `<li class="bl-scene"><h3>${esc(it.name)}</h3><p>${esc(it.lead)}</p></li>`)
-      .join("")}</ul>`,
-    "tint"
+      .join("")}</ul>`
   );
   const roadmap = block(
     "bl-roadmap",
     `${titleBlock(P30.roadmap.kicker, P30.roadmap.title, P30.roadmap.lead, 2, "bl-roadmap-title")}
-    ${board(C.c30.status.columns, C.c30.status.note)}`
+    ${board(C.c30.status.columns, C.c30.status.note)}
+    <div class="bl-subhead"><h3 class="bl-sub bl-sub--lg">${esc(C.v3.platform.dev.title)}</h3><p class="nls-lead">${esc(C.v3.platform.dev.lead)}</p></div>
+    ${dtable([C.v3.platform.dev.fields.stage, C.v3.platform.dev.fields.scope, C.v3.platform.dev.fields.goal], C.v3.platform.dev.items, "bl-dtable--dev")}
+    <p class="nls-note">${esc(C.v3.platform.dev.note)}</p>`
   );
   const faqItems = P30.faq.items
     .map(
@@ -503,16 +546,24 @@ function platformBody(C, lang) {
       }</p></details>`
     )
     .join("");
-  const faq = block("bl-faq", `<div class="bl-split bl-split--faq"><div>${titleBlock(P30.faq.kicker, P30.faq.title, "", 2, "bl-faq-title")}</div><div class="bl-faq">${faqItems}</div></div>`, "tint");
+  const faq = block("bl-faq", `<div class="bl-split bl-split--faq"><div>${titleBlock(P30.faq.kicker, P30.faq.title, "", 2, "bl-faq-title")}</div><div class="bl-faq">${faqItems}</div></div>`);
 
-  const secs = sections
-    .map((s) => {
-      const L = SECTION_LAYOUT[s.id] || { tone: "", render: (x) => icards(x.items, ["sparkle"], 3, "bl-icards--3") };
-      const head = titleBlock(s.kicker, s.title, s.lead, 2, `bl-${s.id}-title`);
-      const inner = L.split ? `<div class="bl-split${L.wide ? " bl-split--wide" : ""}"><div>${head}</div>${L.render(s)}</div>` : `${head}${L.render(s)}`;
-      return block(`bl-${s.id}`, inner, L.tone, `bl-v-${s.id}`);
-    })
-    .join("\n");
+  // Platform chapters: short chapters sit side by side in pairs (records | family, memories | assist) — v3
+  const chapter = (s) => {
+    const L = SECTION_LAYOUT[s.id] || { tone: "", render: (x) => icards(x.items, ["sparkle"], 3, "bl-icards--3") };
+    const head = titleBlock(s.kicker, s.title, s.lead, 2, `bl-${s.id}-title`);
+    const inner = L.split ? `<div class="bl-split${L.wide ? " bl-split--wide" : ""}"><div>${head}</div>${L.render(s)}</div>` : `${head}${L.render(s)}`;
+    return { pair: !!L.pair, html: block(`bl-${s.id}`, inner, L.tone, `bl-v-${s.id}`) };
+  };
+  const chapters = sections.map(chapter);
+  const secsOut = [];
+  for (let i = 0; i < chapters.length; i++) {
+    if (chapters[i].pair && chapters[i + 1]?.pair) {
+      secsOut.push(`<div class="bl-pair">${chapters[i].html}${chapters[i + 1].html}</div>`);
+      i++;
+    } else secsOut.push(chapters[i].html);
+  }
+  const secs = secsOut.join("\n");
 
   // Public-welfare / child-safety areas 25–32: intro band, then the eight areas as a two-column card grid
   const F2 = X.cs.fields;
@@ -520,8 +571,7 @@ function platformBody(C, lang) {
     "bl-cs",
     `${titleBlock(X.cs.kicker, X.cs.title, X.cs.lead, 2, "bl-cs-title")}
     ${csNotices(C, true)}
-    ${jump(X.cs.railLabel, C.x.csGroups.map((g) => [`#bl-cs-${g.id}`, g.n, g.en]), "bl-rail--chips")}`,
-    "tint"
+    ${jump(X.cs.railLabel, C.x.csGroups.map((g) => [`#bl-cs-${g.id}`, g.n, g.en]), "bl-rail--chips")}`
   );
   const csIcons = ["building", "shield", "compass", "hand", "home", "heart", "sprout", "sparkle"];
   const csCards = C.x.csGroups
@@ -547,9 +597,8 @@ function platformBody(C, lang) {
   const globalServices = block(
     "bl-global",
     `${titleBlock(GP.kicker, GP.title, GP.lead, 2, "bl-global-title")}
-    <div class="bl-split bl-split--wide"><div><h3 class="bl-sub bl-sub--lg">${esc(GP.servicesTitle)}</h3></div>${rows(GP.services, ["book", "users", "calendar", "home", "hand"], 4)}</div>
-    <div class="bl-split bl-split--wide"><div><h3 class="bl-sub bl-sub--lg">${esc(GP.locTitle)}</h3></div>${checks(GP.loc, 4)}</div>`,
-    "tint"
+    <h3 class="bl-sub bl-sub--lg">${esc(GP.servicesTitle)}</h3>${rows(GP.services, ["book", "users", "calendar", "home", "hand"], 4, "bl-rows--2")}
+    <h3 class="bl-sub bl-sub--lg">${esc(GP.locTitle)}</h3>${checks(GP.loc, 4, "bl-checks--3")}`
   );
 
   const a = p.access;
@@ -701,8 +750,7 @@ function businessBody(C, lang) {
     ${scopeNote(C)}
     <p class="nls-note">${esc(G.note)}</p>
     ${jump(C.ui.cats, G.cats.map((c) => [`#cat-${c.id}`, c.id, copyLangFor(lang) === "ko" ? c.name : c.en]), "bl-rail--cats bl-rail--chips")}
-    ${catHtml}`,
-    "tint"
+    ${catHtml}`
   );
   const ph = C.x.business.phases;
   const phases = block(
@@ -733,15 +781,43 @@ function businessBody(C, lang) {
     <div class="bl-table">
       <div class="bl-table__headrow" aria-hidden="true"><span></span><span>${esc(PY.fields.users)}</span><span>${esc(PY.fields.payer)}</span></div>
       ${payerGroups}
-    </div>`,
-    "tint"
+    </div>`
   );
   const RV = B30.revenue;
+  const RM = C.v3.business.models;
+  const stageKey = RV.columns
+    .map(
+      (c) => `<div class="bl-stagekey__item${c.id === "free" ? " is-free" : ""}"><h4>${esc(c.id === "free" ? RM.freeTitle : c.name)}</h4><p>${esc(c.basis)}</p>${
+        c.id === "free" ? `<ul class="bl-tags">${c.items.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>` : ""
+      }</div>`
+    )
+    .join("");
   const revenue = block(
     "bl-revenue",
     `${titleBlock(RV.kicker, RV.title, RV.lead, 2, "bl-revenue-title")}
-    ${features(RV.kinds, ["users", "bag", "building"], 3, "bl-feat--3")}
-    ${board(RV.columns, RV.note)}`
+    ${features(RV.kinds, ["users", "bag", "building"], 3, "bl-feat--3 bl-feat--compact")}
+    <h3 class="bl-sub bl-sub--lg">${esc(RM.title)}</h3>
+    ${dtable([RM.fields.name, RM.fields.how, RM.fields.stage, RM.fields.check], RM.items.map(([n, name, how, stage, check]) => [`<span class="bl-dtable__n">${esc(n)}</span> ${esc(name)}`, esc(how), esc(stage), esc(check)]), "bl-dtable--models", { raw: true })}
+    <div class="bl-stagekey">${stageKey}</div>
+    <p class="nls-note">${esc(RV.note)}</p>`
+  );
+  // Product structure hypothesis (plan §20; names only, no prices) and the NEWON role split (plan §23) — v3
+  const TR = C.v3.business.tiers;
+  const tiers = block(
+    "bl-tiers",
+    `${titleBlock(TR.kicker, TR.title, TR.lead, 2, "bl-tiers-title")}
+    <div class="bl-tiers">
+      <div><h3 class="bl-sub bl-sub--lg">${esc(TR.familyTitle)}</h3>${dtable([TR.fields.name, TR.fields.what], TR.family, "bl-dtable--kv")}</div>
+      <div><h3 class="bl-sub bl-sub--lg">${esc(TR.orgTitle)}</h3>${dtable([TR.fields.name, TR.fields.what], TR.org, "bl-dtable--kv")}</div>
+    </div>
+    <p class="nls-note">${esc(TR.note)}</p>`
+  );
+  const RO = C.v3.business.roles;
+  const roles = block(
+    "bl-newon-roles",
+    `${titleBlock(RO.kicker, RO.title, RO.lead, 2, "bl-newon-roles-title")}
+    ${dtable([RO.fields.platform, RO.fields.link, RO.fields.split], RO.items, "bl-dtable--roles")}
+    <p class="nls-note">${esc(RO.note)}</p>`
   );
   const MK = B30.market;
   const market = block(
@@ -749,13 +825,17 @@ function businessBody(C, lang) {
     `<div class="bl-split bl-split--wide"><div>${titleBlock(MK.kicker, MK.title, MK.lead, 2, "bl-market-title")}</div>${rows(MK.items, ["chart", "link", "shield", "alert"])}</div>
     <h3 class="bl-sub bl-sub--lg">${esc(MK.diffTitle)}</h3>
     ${icards(MK.diff, null, 4, "bl-icards--3 bl-icards--quote")}
-    <p class="nls-note">${esc(MK.diffNote)}</p>`,
-    "tint"
+    <p class="nls-note">${esc(MK.diffNote)}</p>`
   );
   const EN2 = B30.entry;
-  const entry = block("bl-entry", `${titleBlock(EN2.kicker, EN2.title, EN2.lead, 2, "bl-entry-title")}${steps(EN2.items, 3)}`);
+  const entry = block("bl-entry", `${titleBlock(EN2.kicker, EN2.title, EN2.lead, 2, "bl-entry-title")}${steps(EN2.items, 3)}`, "accent");
   const RU = B30.rules;
-  const rules = block("bl-rules", `<div class="bl-split bl-split--wide"><div>${titleBlock(RU.kicker, RU.title, RU.lead, 2, "bl-rules-title")}</div>${checks(RU.items)}</div>`, "tint");
+  const ruleItems = [...RU.items.slice(0, -1), ...C.v3.business.rulesExtra, RU.items[RU.items.length - 1]];
+  const rules = block(
+    "bl-rules",
+    `${titleBlock(RU.kicker, RU.title, RU.lead, 2, "bl-rules-title")}
+    <dl class="bl-ldl">${ruleItems.map((it) => `<div class="bl-ldl__row"><dt>${esc(it.name)}</dt><dd>${esc(it.lead)}</dd></div>`).join("")}</dl>`
+  );
   // Global go-to-market (future plan, 2026-10-26): customer groups, revenue models under review, five steps
   const GB = C.c30.global.business;
   const globalGtm = block(
@@ -775,7 +855,7 @@ function businessBody(C, lang) {
       <a class="nls-btn nls-btn--ghost" href="${inquiryHref(lang, "business", "")}">${esc(C.ui.inquiryCta)}</a>`;
   return {
     hero: hero(C, lang, "business", b.hero, true),
-    main: [intro, payers, revenue, market, entry, groups, phases, rules, globalGtm, closeBlock(C, lang, "business", b, ctas)].join("\n"),
+    main: [intro, payers, market, revenue, tiers, entry, groups, phases, rules, roles, globalGtm, closeBlock(C, lang, "business", b, ctas)].join("\n"),
   };
 }
 
@@ -784,6 +864,7 @@ function partnershipsBody(C, lang) {
   const p = C.partnerships;
   const T = p.types;
   const typeIcons = ["store", "bag", "book", "heart", "hand", "building", "home", "globe"];
+  const TA = C.v3.partnerships.typeAreas;
   const cards = T.items
     .map((it, i) => {
       const r = [
@@ -798,6 +879,7 @@ function partnershipsBody(C, lang) {
         <div><h3 id="partner-${it.code}-title" class="bl-biz__title">${esc(it.name)}</h3></div>
       </header>
       ${dl(r, "bl-dl--grid")}
+      ${TA.items[it.code] ? `<div class="bl-relarea"><p class="bl-sub">${esc(TA.label)}</p><ul class="bl-tags">${TA.items[it.code].map((t) => `<li>${esc(t)}</li>`).join("")}</ul></div>` : ""}
       <p class="bl-biz__cta"><a class="nls-btn bl-btn-point" href="${inquiryHref(lang, "partnerships", it.code)}">${esc(T.cta)} →</a></p>
     </article>`;
     })
@@ -845,8 +927,7 @@ function partnershipsBody(C, lang) {
       3,
       { label: PL.cta, href: (it) => inquiryHref(lang, "partnerships", it.code) }
     )}</div>
-    <p class="nls-note">${esc(C.ui.noPartner)}</p>`,
-    "tint"
+    <p class="nls-note">${esc(C.ui.noPartner)}</p>`
   );
   const DA = R30.data;
   const data = block(
@@ -855,8 +936,8 @@ function partnershipsBody(C, lang) {
     <div class="bl-principles bl-principles--panel"><h3 class="bl-sub bl-sub--lg">${esc(DA.principlesTitle)}</h3>
     <ul class="bl-plist">${DA.principles.map((t) => `<li>${icon("lock")}<span>${esc(t)}</span></li>`).join("")}</ul></div>`
   );
-  const joint = block("bl-joint", `${titleBlock(R30.joint.kicker, R30.joint.title, R30.joint.lead, 2, "bl-joint-title")}${icards(R30.joint.items, ["book", "shield", "building"], 3, "bl-icards--3")}`, "tint");
-  const pvalue = block("bl-pvalue", `<div class="bl-split bl-split--wide"><div>${titleBlock(R30.value.kicker, R30.value.title, R30.value.lead, 2, "bl-pvalue-title")}</div>${checks(R30.value.items)}</div>`, "tint");
+  const joint = block("bl-joint", `${titleBlock(R30.joint.kicker, R30.joint.title, R30.joint.lead, 2, "bl-joint-title")}${icards(R30.joint.items, ["book", "shield", "building"], 3, "bl-icards--3")}`);
+  const pvalue = block("bl-pvalue", `${titleBlock(R30.value.kicker, R30.value.title, R30.value.lead, 2, "bl-pvalue-title")}${checks(R30.value.items, 3, "bl-checks--4")}`, "accent");
   // Global partnerships (possibilities only, 2026-10-26): partner kinds as a table, shared principles, one inquiry
   // button to the unified NEWON Contact page (BABYLOG preselected via ?platform=).
   const GR = C.c30.global.partnerships;
@@ -881,9 +962,9 @@ function partnershipsBody(C, lang) {
     <div class="bl-principles bl-principles--panel"><h3 class="bl-sub bl-sub--lg">${esc(GR.principlesTitle)}</h3>
     <ul class="bl-plist">${GR.principles.map((t) => `<li>${icon("lock")}<span>${esc(t)}</span></li>`).join("")}</ul></div>
     <div class="nls-actions"><a class="nls-btn bl-btn-point" href="/${lang}/contact/?type=partnership&amp;platform=babylog">${esc(GR.cta)} →</a></div>
-    <p class="nls-note">${esc(GR.ctaNote)}</p>`,
-    "tint"
+    <p class="nls-note">${esc(GR.ctaNote)}</p>`
   );
+  const PP = C.v3.partnerships.prepare;
   const principleList = `<ul class="bl-plist">${p.principles.items.map((t) => `<li>${icon("check")}<span>${esc(t)}</span></li>`).join("")}</ul>`;
   const ctas = `<a class="nls-btn" href="${inquiryHref(lang, "partnerships", "")}">${esc(C.ui.inquiryCta)} →</a>
       <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "contact")}">${esc(C.ui.toInquiry)}</a>`;
@@ -898,8 +979,7 @@ function partnershipsBody(C, lang) {
     <p class="nls-note">${esc(C.ui.noPartner)}</p></div>
     ${jump(T.railLabel, T.items.map((it) => [`#partner-${it.code}`, "", it.name]), "bl-rail--chips")}
     <div class="bl-biz__list bl-biz__list--2">${cards}</div>
-    <p class="nls-note">${esc(C.ui.noPrice)}</p>`,
-        "tint"
+    <p class="nls-note">${esc(C.ui.noPrice)}</p>`
       ),
       block(
         "bl-industry",
@@ -919,17 +999,24 @@ function partnershipsBody(C, lang) {
     ${csNotices(C, true)}
     <p class="nls-note bl-flow-note">${esc(C.ui.csPartnerNote)} ${esc(cs.fields.flow)}: ${esc(cs.flowText)}</p>
     ${jump(cs.railLabel, cs.items.map((it, i) => [`#partner-${CS_PARTNER_CODES[i]}`, "", it[0]]), "bl-rail--chips")}
-    <div class="bl-biz__list bl-biz__list--3">${csCards}</div>`,
-        "band"
+    <div class="bl-biz__list bl-biz__list--3">${csCards}</div>`
       ),
       globalPartners,
       block(
         "bl-process",
         `${titleBlock(p.process.kicker, p.process.title, p.process.lead, 2, "bl-process-title")}
     ${steps(p.process.steps.map((s) => ({ n: s.n, name: s.name, body: s.body })), 3, "bl-steps--5")}
-    <div class="bl-principles bl-principles--panel"><h3 class="bl-sub bl-sub--lg">${esc(p.principles.title)}</h3>
-    ${principleList}</div>`
+    <div class="bl-duo2">
+      <div class="bl-principles bl-principles--panel"><h3 class="bl-sub bl-sub--lg">${esc(p.principles.title)}</h3>
+      ${principleList}</div>
+      <div class="bl-principles bl-principles--panel bl-prep"><h3 class="bl-sub bl-sub--lg">${esc(PP.title)}</h3>
+      <div class="bl-prep__list">${PP.items.map((it, i) => `<div class="bl-prep__item"><span class="bl-prep__n" aria-hidden="true">${i + 1}</span><div><h4>${esc(it.name)}</h4><p>${esc(it.lead)}</p></div></div>`).join("")}</div>
+      <p class="nls-note">${esc(PP.note)}</p></div>
+    </div>`
       ),
+      block("bl-pfaq", `<div class="bl-split bl-split--faq"><div>${titleBlock(C.v3.partnerships.faq.kicker, C.v3.partnerships.faq.title, "", 2, "bl-pfaq-title")}</div><div class="bl-faq">${C.v3.partnerships.faq.items
+        .map((f) => `<details class="bl-faq__item"><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`)
+        .join("")}</div></div>`),
       pvalue,
       closeBlock(C, lang, "partnerships", p, ctas),
     ].join("\n"),
@@ -949,6 +1036,8 @@ function contactBody(C, lang) {
       </a></li>`;
   const guideIcons = ["mail", "link", "chat", "lock"];
   const K30 = C.c30.contact;
+  const KW = C.v3.contact.write;
+  const KF = C.v3.contact.faq;
   const PU = K30.purpose;
   const purposeHref = (to, i) => {
     if (to.startsWith("babylog:")) return inquiryHref(lang, "contact", to.slice(8));
@@ -959,14 +1048,14 @@ function contactBody(C, lang) {
   const purposeIcons = ["chat", "info", "store", "building", "link", "photo", "chart"];
   const purpose = block(
     "bl-contact-purpose",
-    `<div class="bl-split bl-split--wide"><div>${titleBlock(PU.kicker, PU.title, PU.lead, 2, "bl-contact-purpose-title")}</div>
+    `${titleBlock(PU.kicker, PU.title, PU.lead, 2, "bl-contact-purpose-title")}
     <ul class="bl-rows bl-rows--purpose">${PU.items
       .map(
         (it, i) => `<li class="bl-rows__item">${ico(purposeIcons[i % 7])}<div><h3>${esc(it.name)}</h3><p>${esc(it.lead)}</p></div>
         <p class="bl-rows__go"><a class="bl-arrow" href="${purposeHref(it.to, i)}">${esc(it.go)} ${icon("arrow")}</a></p></li>`
       )
-      .join("")}</ul></div>`,
-    "tint"
+      .join("")}</ul>`,
+    "accent"
   );
   const guide = [...c.guide.items, K30.sensitive]
     .map((it, i) => `<li class="bl-guide__item">${ico(guideIcons[i % 4])}<h3>${esc(it.name)}</h3><p>${esc(it.body)}</p></li>`)
@@ -980,8 +1069,7 @@ function contactBody(C, lang) {
       block("bl-contact-list", `${titleBlock(c.list.kicker, c.list.title, c.list.lead, 2, "bl-contact-list-title")}<ul class="bl-cards">${c.list.items.map((it) => card(it)).join("")}</ul>`),
       block(
         "bl-contact-more",
-        `${titleBlock(CX.more.kicker, CX.more.title, CX.more.lead, 2, "bl-contact-more-title")}<ul class="bl-cards bl-cards--rows">${CX.more.items.map((it) => card(it, " bl-card--row")).join("")}</ul>`,
-        "tint"
+        `${titleBlock(CX.more.kicker, CX.more.title, CX.more.lead, 2, "bl-contact-more-title")}<ul class="bl-cards bl-cards--rows">${CX.more.items.map((it) => card(it, " bl-card--row")).join("")}</ul>`
       ),
       block(
         "bl-contact-cs",
@@ -989,12 +1077,15 @@ function contactBody(C, lang) {
     ${csNotices(C, true)}
     <ul class="bl-cards bl-cards--cs">${CX.cs.items.map((it) => card(it)).join("")}</ul>`
       ),
+      block("bl-contact-write", `${titleBlock(KW.kicker, KW.title, KW.lead, 2, "bl-contact-write-title")}${dtable([KW.fields.purpose, KW.fields.what], KW.items, "bl-dtable--kv bl-dtable--write")}`),
       block(
         "bl-guide",
         `${titleBlock(c.guide.kicker, c.guide.title, "", 2, "bl-guide-title")}<ol class="bl-guide">${guide}</ol>
-    <p class="nls-note">${esc(C.ui.privacyNote)} <a class="bl-link" href="/${lang}/privacy/">${esc(C.ui.privacyLink)}</a></p>`,
-        "tint"
+    <p class="nls-note">${esc(C.ui.privacyNote)} <a class="bl-link" href="/${lang}/privacy/">${esc(C.ui.privacyLink)}</a></p>`
       ),
+      block("bl-contact-faq", `<div class="bl-split bl-split--faq"><div>${titleBlock(KF.kicker, KF.title, "", 2, "bl-contact-faq-title")}</div><div class="bl-faq">${KF.items
+        .map((f) => `<details class="bl-faq__item"><summary>${esc(f.q)}</summary><p>${esc(f.a)}${f.link === "delete" ? ` <a class="bl-link" href="/${lang}/${BL_SLUG}/delete-account/">${esc(KF.deleteLink)}</a>` : ""}</p></details>`)
+        .join("")}</div></div>`),
       closeBlock(C, lang, "contact", c, ctas),
     ].join("\n"),
   };
