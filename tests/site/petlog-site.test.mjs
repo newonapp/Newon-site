@@ -33,13 +33,16 @@ test("five PETLOG pages exist in all nine locales with SEO basics", () => {
 test("section counts follow the V3 plan: 6 journey stages, 26 platform areas, 12 revenue models in 5 groups, 15 partner types, 12 inquiry types", () => {
   const count = (html, re) => (main(html).match(re) || []).length;
   for (const lang of ["ko", "en"]) {
-    assert.equal(count(read(`${lang}/petlog/index.html`), /data-nls-decade-card=/g), 6, `${lang} journey`);
+    // v5 (owner 2026-10-27): the six stages are always visible as one lifeline (no one-at-a-time tab rail)
+    assert.equal(count(read(`${lang}/petlog/index.html`), /data-pl-stage=/g), 6, `${lang} journey`);
     const plat = read(`${lang}/petlog/platform/index.html`);
     assert.equal(count(plat, /<article class="pl-[a-z -]+" id="petlog-[a-z-]+"/g), 26, `${lang} platform areas`);
     assert.equal(count(plat, /<details>/g), PLATFORM.meta[lang].faq.items.length, `${lang} faq`);
     const biz = read(`${lang}/petlog/business/index.html`);
     assert.equal(count(biz, /<article class="pl-[a-z -]+" id="line-\d\d"/g), 12, `${lang} revenue models`);
-    assert.equal(count(biz, /data-nls-decade-card=/g), 5, `${lang} revenue groups`);
+    assert.equal(count(biz, /data-pl-group=/g), 5, `${lang} revenue groups`);
+    // every revenue model is linked from the revenue map
+    for (const l of BUSINESS.lines) assert.ok(main(biz).includes(`href="#line-${l.no}"`), `${lang} map links line ${l.no}`);
     assert.equal(count(read(`${lang}/petlog/partnerships/index.html`), /<article class="pl-[a-z -]+" id="partner-\d\d"/g), 15, `${lang} partners`);
     // Contact (owner 2026-10-26, ONGIL-style kit): the 12 inquiry types are rows, each with one "문의하기"
     const types = read(`${lang}/petlog/contact/index.html`).split('id="bct-types"')[1].split("</section>")[0];
