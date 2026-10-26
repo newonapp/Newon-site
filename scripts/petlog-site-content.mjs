@@ -1410,8 +1410,8 @@ export const GLOBAL = {
 
 /* ======================================================================= V3 (2026-10-26 design pass v3: denser layouts, more detail)
  * Added detail only, all taken from the PETLOG integrated business plan (2026-10-20) or from copy already on these pages:
- *   overview  — structure figures (counts already used on the site: 26 areas = 5 in the app + 2 in development + 15 planned
- *               + 4 under review; 12 revenue models; 15 partner types), two more everyday scenes, table headings.
+ *   overview  — two more everyday scenes, table headings, life-stage table, "what PETLOG does not do" (no figures strip:
+ *               owner removed big-number stat sections on 2026-10-25).
  *   platform  — plan §27 app tab structure (a proposal), per-area planned scope from plan §3–§25 tables, plan §17 AI
  *               functions, plan §22 lost-pet policy table.
  *   business  — plan §15/§25 plan-tier composition (names only, no price), plan §20/§25 SaaS targets and tiers (no price),
@@ -1422,16 +1422,6 @@ export const GLOBAL = {
 export const V3 = {
   overview: {
     ko: {
-      factsTitle: "숫자로 보는 PETLOG의 구조",
-      facts: [
-        ["26", "장기 사업 영역", "다섯 묶음으로 나눈 장기 기획 단위"],
-        ["5", "지금 앱에서 제공", "프로필·건강·생활·캘린더·노트"],
-        ["2", "개발 중", "보호자 커뮤니티, 기록 요약 AI"],
-        ["19", "향후 계획·검토 단계", "돌봄·마켓·안전·공익·추모 등"],
-        ["12", "수익 모델", "구독·예약·커머스·업체 SaaS·제휴"],
-        ["15", "협력 유형", "의료·돌봄·브랜드·보호소·공공"],
-      ],
-      factsNote: "영역·모델·유형의 수는 기획 단위이며, 운영 중인 서비스나 체결된 제휴의 수를 뜻하지 않습니다.",
       bandNote: "장기적으로는 기록·건강·일상 기능으로 보호자의 신뢰를 얻고, 그 위에서 예약·거래·구독·업체용 도구로 사업을 넓히는 순서를 계획합니다.",
       usersHead: ["사용자", "이렇게 씁니다", "상태"],
       usersNow: "지금 앱에서",
@@ -1443,16 +1433,6 @@ export const V3 = {
       diffHead: ["비교 대상", "흔히 겪는 한계", "PETLOG의 접근"],
     },
     en: {
-      factsTitle: "PETLOG's structure in figures",
-      facts: [
-        ["26", "Long-term areas", "Planning units in five groups"],
-        ["5", "In the app today", "Profile, health, life, calendar, notes"],
-        ["2", "In development", "Owner community, record-summary AI"],
-        ["19", "Planned or under review", "Care, market, safety, public good, memorials and more"],
-        ["12", "Revenue models", "Subscription, booking, commerce, business SaaS, partnerships"],
-        ["15", "Partner types", "Veterinary, care, brands, shelters, public bodies"],
-      ],
-      factsNote: "These counts are planning units; they are not the number of services running or partnerships signed.",
       bandNote: "Over the long term, the plan is to earn owners' trust with records, health and daily-life features first, then grow the business on top through booking, trading, subscription and tools for businesses.",
       usersHead: ["User", "How they use PETLOG", "Status"],
       usersNow: "In the app today",

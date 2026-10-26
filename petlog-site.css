@@ -2,7 +2,7 @@
  * Scoped to #lifestage-detail.nls--petlog. The film hero (.nls-film) and the flagship sub-menu (.fsn) are not styled here.
  * Rendered by scripts/render-petlog-site.mjs.
  * 2026-10-26 design pass v3: less whitespace (sections ~2.6rem mobile → ~4.3rem desktop, header→content ~1.5rem, cards
- * ~1.25–1.6rem, grid gaps ~0.9–1.25rem), wide header rows, figures strip, real tables, one green accent band per page,
+ * ~1.25–1.6rem, grid gaps ~0.9–1.25rem), wide header rows, real tables, one green accent band per page,
  * snap rails on phones. Light mode: white surfaces with hairline outlines (no grey fills); PETLOG green as the point colour.
  *   light: #278A53 brand · #1E6B41 text on white (AA) · #E6F2EA small accent tint (icons, chips only)
  *   dark:  #4FBF80 brand · #8FDDB0 text · #0C1511 band tint · rgba(111,207,151,.12) wash
@@ -112,19 +112,6 @@ html:not([lang="ko"]) #lifestage-detail.nls--petlog .pl-meta div { grid-template
   #lifestage-detail.nls--petlog .pl-duo--guide { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
   #lifestage-detail.nls--petlog .pl-duo > .pl-duo__b { padding-left: clamp(2rem, 4vw, 3.5rem); border-left: 1px solid var(--pl-rule); margin-left: calc(-1 * clamp(2rem, 4vw, 3.5rem) / 2); }
 }
-
-/* ------------------------------------------------------------------ figures strip (overview) */
-#lifestage-detail.nls--petlog .pl-facts-wrap { margin: 0 0 clamp(1.8rem, 3vw, 2.4rem); }
-#lifestage-detail.nls--petlog .pl-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; border: 1px solid var(--pl-rule); border-radius: var(--pl-r-lg); overflow: hidden; }
-#lifestage-detail.nls--petlog .pl-facts > div { display: grid; gap: 0.2rem; align-content: start; padding: 1rem 1.1rem 1.1rem; border-right: 1px solid var(--pl-rule); border-bottom: 1px solid var(--pl-rule); }
-#lifestage-detail.nls--petlog .pl-facts dt { font-size: clamp(1.9rem, 1.5rem + 1.3vw, 2.6rem); font-weight: 750; letter-spacing: -0.04em; line-height: 1.1; color: var(--pl-gi); font-variant-numeric: tabular-nums; }
-#lifestage-detail.nls--petlog .pl-facts dd { display: grid; gap: 0.15rem; margin: 0; }
-#lifestage-detail.nls--petlog .pl-facts dd b { font-size: 0.9375rem; font-weight: 700; color: var(--pl-ink); }
-#lifestage-detail.nls--petlog .pl-facts dd span { font-size: 0.875rem; line-height: 1.5; color: var(--pl-muted); }
-#lifestage-detail.nls--petlog .pl-facts > div:nth-child(2) dt { color: var(--pl-g); }
-@media (max-width: 759px) { #lifestage-detail.nls--petlog .pl-facts > div:nth-child(2n) { border-right: 0; } #lifestage-detail.nls--petlog .pl-facts > div:nth-last-child(-n + 2) { border-bottom: 0; } }
-@media (min-width: 760px) and (max-width: 1099px) { #lifestage-detail.nls--petlog .pl-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } #lifestage-detail.nls--petlog .pl-facts > div:nth-child(3n) { border-right: 0; } #lifestage-detail.nls--petlog .pl-facts > div:nth-last-child(-n + 3) { border-bottom: 0; } }
-@media (min-width: 1100px) { #lifestage-detail.nls--petlog .pl-facts { grid-template-columns: repeat(6, minmax(0, 1fr)); } #lifestage-detail.nls--petlog .pl-facts > div { border-bottom: 0; } #lifestage-detail.nls--petlog .pl-facts > div:last-child { border-right: 0; } }
 
 /* values (mission): five ruled columns */
 #lifestage-detail.nls--petlog .pl-values { display: grid; gap: 0 var(--pl-gap); margin: 0; grid-template-columns: minmax(0, 1fr); }
@@ -554,11 +541,11 @@ html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nl
 html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-block--band.pl-accent { background-color: var(--pl-band) !important; color: #fff !important; }
 html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-block--ink { background-color: #000 !important; color: #fff !important; }
 /* text roles */
-html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-p, .nls-lead, .pl-meta dd, .nls-decade__lead, .pl-callout, .pl-nn .is-next dd, .pl-chips--line li, .pl-stage--review, .pl-people li.is-later h3, .pl-roles .is-later dt, .pl-xt, .pl-facts dd span) { color: var(--pl-muted) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-p, .nls-lead, .pl-meta dd, .nls-decade__lead, .pl-callout, .pl-nn .is-next dd, .pl-chips--line li, .pl-stage--review, .pl-people li.is-later h3, .pl-roles .is-later dt, .pl-xt) { color: var(--pl-muted) !important; }
 html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-label, .pl-aside, .pl-fine, .pl-nn .is-next dt, .nls-journey-sec .nls-rail__btn em, .pl-people li.is-later .pl-ic, .pl-roles .is-later .pl-ic, .pl-panel--next .pl-ic) { color: var(--pl-faint) !important; }
-html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.nls-kicker, .pl-n, .pl-ic, .pl-chips li:not(.x), .pl-stage, .pl-more, .pl-pill, .pl-values dt, .pl-facts dt, .pl-models dt, .pl-pcard__a b, .pl-steps .pl-big, .pl-phases .pl-code, .pl-xt .pl-code, .pl-xt thead th, .pl-products b, .pl-tile strong em, .pl-dir em, .pl-dir a.is-self strong, .pl-tile[aria-current="page"] strong, .pl-nn dt, .pl-faq summary::after, .pl-table li.pl-table__hd, .pl-tgroup__h, .nls-decade__mark, .nls-decade__mark *, .nls-decade__n, .nls-decade .nls-chips li, .nls-journey-sec .nls-rail__btn.is-on, .nls-journey-sec .nls-rail__btn.is-on *, .pl-callout svg) { color: var(--pl-gi) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.nls-kicker, .pl-n, .pl-ic, .pl-chips li:not(.x), .pl-stage, .pl-more, .pl-pill, .pl-values dt, .pl-models dt, .pl-pcard__a b, .pl-steps .pl-big, .pl-phases .pl-code, .pl-xt .pl-code, .pl-xt thead th, .pl-products b, .pl-tile strong em, .pl-dir em, .pl-dir a.is-self strong, .pl-tile[aria-current="page"] strong, .pl-nn dt, .pl-faq summary::after, .pl-table li.pl-table__hd, .pl-tgroup__h, .nls-decade__mark, .nls-decade__mark *, .nls-decade__n, .nls-decade .nls-chips li, .nls-journey-sec .nls-rail__btn.is-on, .nls-journey-sec .nls-rail__btn.is-on *, .pl-callout svg) { color: var(--pl-gi) !important; }
 html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-chips--line li { color: var(--pl-muted) !important; }
-html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-pcard__a .pl-p, .pl-nn dd, .pl-xt tbody th, .pl-xt b, .pl-xt__strong, .pl-facts dd b, .pl-values strong, .pl-models dd b) { color: var(--pl-ink) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-pcard__a .pl-p, .pl-nn dd, .pl-xt tbody th, .pl-xt b, .pl-xt__strong, .pl-values strong, .pl-models dd b) { color: var(--pl-ink) !important; }
 html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-nn .is-next dd) { color: var(--pl-muted) !important; }
 html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-xt--prio th[scope="row"] { color: var(--pl-gi) !important; }
 /* surfaces */

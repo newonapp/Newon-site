@@ -308,12 +308,6 @@ const xtable = (headCells, rows, cls = "", caption = "") =>
     .map((r) => `<tr>${r.map((c, i) => (i === 0 ? `<th scope="row">${cell(c)}</th>` : `<td data-label="${esc(headCells[i])}">${cell(c)}</td>`)).join("")}</tr>`)
     .join("")}</tbody></table></div>`;
 
-/** Figures strip. list: [figure, label, detail][] (counts already used on the site; not service or user numbers). */
-const facts = (title, list, note) =>
-  `<div class="pl-facts-wrap"><h3 class="pl-subhead">${esc(title)}</h3><dl class="pl-facts">${list
-    .map(([f, k, d]) => `<div><dt>${esc(f)}</dt><dd><b>${esc(k)}</b><span>${esc(d)}</span></dd></div>`)
-    .join("")}</dl>${note ? `<p class="pl-fine">${esc(note)}</p>` : ""}</div>`;
-
 /** Sub-block inside a section (title + body), outlined. */
 const sub = (kicker, title, lead, body, cls = "") => `<div class="pl-sub${cls ? ` ${cls}` : ""}">${head(kicker, title, lead, true)}${body}</div>`;
 
@@ -468,7 +462,7 @@ function overviewPage(lang) {
   return wrap(`${hero({ wordmark: "PETLOG", titleHtml: c.heroTitle, lead: c.heroLead, main: [`${c.ctaMain} →`, "#nls-mission"], sub: [c.ctaSub, rel(D, "petlog/platform/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "overview" })}
   <div class="nls__wrap">
-    ${section("nls-mission", { kicker: c.mission.kicker, title: c.mission.title, lead: c.mission.lead, body: `${facts(X.factsTitle, X.facts, X.factsNote)}${values}` })}
+    ${section("nls-mission", { kicker: c.mission.kicker, title: c.mission.title, lead: c.mission.lead, body: values })}
     ${section("nls-problem", { kicker: c.problem.kicker, title: c.problem.title, lead: c.problem.lead, tint: true, body: problem })}
     ${section("nls-about", { kicker: c.about.kicker, title: c.about.title, lead: c.about.lead, accent: true, body: `${stepList(c.about.steps, true)}<p class="pl-band-note">${esc(X.bandNote)}</p>` })}
     ${railBlock("nls-journey", { kicker: c.journey.kicker, title: c.journey.title, lead: c.journey.lead, items: journey })}
