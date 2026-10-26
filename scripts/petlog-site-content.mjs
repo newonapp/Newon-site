@@ -463,6 +463,8 @@ export const PLATFORM = {
           ["강아지·고양이 외 다른 동물도 다루나요?", "PETLOG는 강아지·고양이를 중심으로 설계되어 있습니다. 다른 동물종은 종별 건강·사육·법률 요건을 확인한 뒤 확장할 계획입니다."],
           ["보호소 입양이나 실종 찾기에도 비용이 드나요?", "보호소 연계·실종 찾기·입양·임시보호의 필수 기능은 무료를 원칙으로 계획하고 있으며, 입양 성사에 수수료를 받지 않습니다. 이 영역들은 아직 앱에서 제공하지 않는 향후 계획입니다."],
           ["웹사이트에서 기록하거나 예약할 수 있나요?", "아니요. 이 웹사이트는 PETLOG를 소개하고 문의를 받는 곳이며, 기록과 모든 서비스 이용은 앱에서 합니다."],
+          ["구독하지 않아도 기록할 수 있나요?", "네. 기본 프로필·건강·생활 기록은 무료로 두는 것을 원칙으로 합니다. 스토어에 공개된 PETLOG Premium 구독의 가격과 혜택은 각 스토어 표시를 기준으로 합니다."],
+          ["커뮤니티와 AI 기능은 언제 쓸 수 있나요?", "두 영역 모두 개발 중입니다. 커뮤니티는 운영 정책과 신고·차단 도구를, AI는 진단하지 않는 안전 원칙을 함께 준비하고 있으며 확정된 일정은 아직 없습니다."],
         ],
       },
       close: {
@@ -568,6 +570,8 @@ export const PLATFORM = {
           ["Does PETLOG cover animals other than dogs and cats?", "PETLOG is designed around dogs and cats. Other species are planned once their health, husbandry and legal requirements are checked."],
           ["Do shelter adoption or lost-pet search cost anything?", "Essential shelter, lost-pet, adoption and foster features are planned to be free, with no fee on adoptions. These areas are not yet in the app; they are planned."],
           ["Can I record or book on the website?", "No. This website introduces PETLOG and takes inquiries; records and every service are used in the app."],
+          ["Can I keep records without subscribing?", "Yes. Basic profile, health and life records are meant to stay free. Price and benefits of the PETLOG Premium subscription listed on the stores are as each store shows them."],
+          ["When will community and AI be available?", "Both are in development. Community is being prepared with operating policies and report and block tools, and AI with safety rules that rule out diagnosis; no date is fixed yet."],
         ],
       },
       close: {
@@ -777,6 +781,9 @@ export const BUSINESS = {
         "AI: 진단하지 않으며, 응급 상황은 수의사·응급 진료기관으로 안내하고 잘못된 답변을 줄이는 장치를 둡니다.",
         "결제·정산: 환불·분쟁 기준과 결제대행 계약을 갖추기 전에는 결제를 열지 않습니다. NEWON은 거래 대금을 직접 보관하지 않고 PG·지급대행을 이용하는 구조를 원칙으로 합니다.",
         "보험: 모집·중개 자격과 계약을 갖춘 구조에서만 다룹니다.",
+        "훈련: 훈련사의 자격과 안전한 훈련 방법, 사고 시 책임 기준을 확인합니다.",
+        "기업 SaaS: 업체가 다루는 고객 정보와 직원별 접근 권한을 관리합니다.",
+        "글로벌: 진출 전에 국가별 동물복지·거래 규정을 확인합니다.",
         "구독료와 거래 수수료를 함께 적용할 때 업체 부담이 과하지 않은지 검증하고, 꼭 필요한 건강 기록에는 과도한 비용을 매기지 않습니다.",
       ],
       close: {
@@ -887,6 +894,9 @@ export const BUSINESS = {
         "AI: no diagnosis; emergencies are pointed to vets and emergency clinics, with safeguards against wrong answers.",
         "Payments and settlement: payments do not open before refund and dispute rules and a payment-provider contract are in place. In principle NEWON does not hold transaction funds itself but uses PG and payout services.",
         "Insurance: handled only within a structure with the required solicitation and brokerage licences and contracts.",
+        "Training: trainers' qualifications, safe methods and liability rules are checked.",
+        "Business SaaS: customer data handled by businesses and each staff member's access rights are managed.",
+        "Global: each country's animal-welfare and trade rules are checked before entering it.",
         "Where subscription and transaction fees apply together, the burden on businesses is checked, and essential health records are never over-charged.",
       ],
       close: {
@@ -1396,4 +1406,534 @@ export const GLOBAL = {
       cta: "Global partnership inquiry",
     },
   },
+};
+
+/* ======================================================================= V3 (2026-10-26 design pass v3: denser layouts, more detail)
+ * Added detail only, all taken from the PETLOG integrated business plan (2026-10-20) or from copy already on these pages:
+ *   overview  — structure figures (counts already used on the site: 26 areas = 5 in the app + 2 in development + 15 planned
+ *               + 4 under review; 12 revenue models; 15 partner types), two more everyday scenes, table headings.
+ *   platform  — plan §27 app tab structure (a proposal), per-area planned scope from plan §3–§25 tables, plan §17 AI
+ *               functions, plan §22 lost-pet policy table.
+ *   business  — plan §15/§25 plan-tier composition (names only, no price), plan §20/§25 SaaS targets and tiers (no price),
+ *               plan §24 fee principles without any rate, plan §31 priorities mapped to the plan §29 stages.
+ *   partners  — commercial vs public-good comparison (existing principles), inquiry preparation (plan §30 licence fields).
+ *   contact   — inquiry types grouped by audience, what happens after an inquiry (existing "review, then email reply").
+ * No price, rate, user number, date, country or partner name is added. Planned items stay labelled as plans. */
+export const V3 = {
+  overview: {
+    ko: {
+      factsTitle: "숫자로 보는 PETLOG의 구조",
+      facts: [
+        ["26", "장기 사업 영역", "다섯 묶음으로 나눈 장기 기획 단위"],
+        ["5", "지금 앱에서 제공", "프로필·건강·생활·캘린더·노트"],
+        ["2", "개발 중", "보호자 커뮤니티, 기록 요약 AI"],
+        ["19", "향후 계획·검토 단계", "돌봄·마켓·안전·공익·추모 등"],
+        ["12", "수익 모델", "구독·예약·커머스·업체 SaaS·제휴"],
+        ["15", "협력 유형", "의료·돌봄·브랜드·보호소·공공"],
+      ],
+      factsNote: "영역·모델·유형의 수는 기획 단위이며, 운영 중인 서비스나 체결된 제휴의 수를 뜻하지 않습니다.",
+      bandNote: "장기적으로는 기록·건강·일상 기능으로 보호자의 신뢰를 얻고, 그 위에서 예약·거래·구독·업체용 도구로 사업을 넓히는 순서를 계획합니다.",
+      usersHead: ["사용자", "이렇게 씁니다", "상태"],
+      usersNow: "지금 앱에서",
+      usersLater: "향후 계획",
+      scenes: [
+        { n: "05", icon: "pin", name: "실종이 걱정될 때", lead: "반려동물이 사라지는 일은 예고 없이 일어납니다. 생김새와 특징, 연락처를 미리 정리해 두면 신고와 찾기에 도움이 됩니다.", now: "사진·품종·체중을 담은 프로필 정리", next: "공식 신고 안내, 보호자 연락망, 확인된 발견 제보(무료 원칙)" },
+        { n: "06", icon: "scissors", name: "처음 가는 미용실·호텔을 고를 때", lead: "업체마다 가격 정책과 수용 조건, 취소 규정이 달라 미리 확인할 것이 많습니다.", now: "예방접종·알레르기·주의사항 기록 정리", next: "사업자 확인과 실제 후기를 바탕으로 한 탐색·예약(검토 후 앱에서만)" },
+      ],
+      diffHead: ["비교 대상", "흔히 겪는 한계", "PETLOG의 접근"],
+    },
+    en: {
+      factsTitle: "PETLOG's structure in figures",
+      facts: [
+        ["26", "Long-term areas", "Planning units in five groups"],
+        ["5", "In the app today", "Profile, health, life, calendar, notes"],
+        ["2", "In development", "Owner community, record-summary AI"],
+        ["19", "Planned or under review", "Care, market, safety, public good, memorials and more"],
+        ["12", "Revenue models", "Subscription, booking, commerce, business SaaS, partnerships"],
+        ["15", "Partner types", "Veterinary, care, brands, shelters, public bodies"],
+      ],
+      factsNote: "These counts are planning units; they are not the number of services running or partnerships signed.",
+      bandNote: "Over the long term, the plan is to earn owners' trust with records, health and daily-life features first, then grow the business on top through booking, trading, subscription and tools for businesses.",
+      usersHead: ["User", "How they use PETLOG", "Status"],
+      usersNow: "In the app today",
+      usersLater: "Planned",
+      scenes: [
+        { n: "05", icon: "pin", name: "Worried about losing your pet", lead: "A pet can go missing without warning. Having its looks, features and contacts ready helps with reporting and searching.", now: "A profile with photos, breed and weight", next: "Official reporting guidance, an owner contact list, verified sightings (meant to be free)" },
+        { n: "06", icon: "scissors", name: "Choosing a new groomer or hotel", lead: "Each business has its own pricing policy, accepted pets and cancellation rules, so there is a lot to check first.", now: "Vaccination, allergy and caution records in one place", next: "Finding and booking based on business checks and real reviews (in the app only, after review)" },
+      ],
+      diffHead: ["Compared with", "Common limits", "PETLOG's approach"],
+    },
+  },
+  platform: {
+    ko: {
+      planLabel: "세부 구성",
+      legendExtra: "각 영역의 '세부 구성'은 사업계획서의 장기 기획 범위이며, 지금 앱에 있는 기능 목록이 아닙니다.",
+      tabs: {
+        kicker: "APP STRUCTURE · PROPOSAL",
+        title: "26개 영역을\n다섯 개 탭으로 묶습니다.",
+        lead: "사업계획서가 제안하는 앱 하단 탭 구성입니다. 26개 영역을 한 화면에 늘어놓지 않고, 반려동물 정보와 보호자의 관심사에 맞춰 필요한 메뉴를 보여 주는 방향입니다. 제안 단계이며 지금 앱 화면과 다를 수 있습니다.",
+        items: [
+          ["01", "홈", "Home", "오늘의 반려동물 상태, 일정, 추천 서비스"],
+          ["02", "펫로그", "PETLOG", "건강·급식·산책·수면·일기·캘린더"],
+          ["03", "발견", "Discover", "병원·미용·돌봄·호텔·훈련·마켓·여행·보호소·장례"],
+          ["04", "커뮤니티", "Community", "정보·후기·지역 모임·실종·보호 활동"],
+          ["05", "마이", "My", "반려동물·가족 계정·예약·주문·구독·기기"],
+        ],
+      },
+      plan: [
+        "여러 반려동물 관리 · 식이 정보(사료·주의 음식) · 성격·산책·돌봄 주의사항 · 질환 기록",
+        "증상 기록(구토·설사·식욕·행동 변화) · 검진 결과 보관 · 치아·스케일링 일정 · 피부·털 관리 · 노령동물 만성질환 기록 · 의료 문서 보관",
+        "물 섭취 · 목욕·위생 · 놀이·훈련 · 돌봄 일정",
+        "미용·호텔·훈련 일정 · 산책·할 일 · 가족 일정과 예약을 한 달력에",
+        "사진·영상 · 생일·입양 기념일 · 여행 기록 · 성장 앨범·포토북(선택형 유료 검토)",
+        "공식 정보로 병원 비교(시설·서비스) · 방문 일정 알림 · 적법한 범위의 전문가 상담 연결",
+        "서비스 가격 확인 · 발톱·털 관리 · 미용실용 예약·고객 관리 도구",
+        "정기 돌봄(반복 예약) · 보호자·응급 연락망 · 신고·분쟁·배상 절차",
+        "숙박·장기 돌봄 · 유치원 등원·활동 기록 · 비용·이용 조건 · 이용 후기",
+        "산책 교육 · 행동 교육 · 교육 콘텐츠 · 심각한 문제는 전문가 연결",
+        "강아지·고양이 정보 · 건강 경험 · 교육 경험 · 보호소·봉사 정보 · 성장 사진·기념일",
+        "취소·환불 조건 · 영업 요건 확인 · 광고와 검증 상태 구분",
+        "반려동물 관리 자료(디지털 상품) · 고가 장비 렌털은 SHAREON과 연계",
+        "Free · Plus · Family · AI Pro 구성 제안(요금 미확정) · 사료 정기배송과 별도",
+        "캠핑장·체험 · 교통 정보 · 예약 연결은 직접 계약이 있을 때만",
+        "아래 'AI 도우미가 다루려는 열 가지 일' 참고",
+        "보호자 연락망 · 위치 확인 기기 연계(별도 동의)",
+        "급식 기록 연동 · 관찰·알림 · 위치 확인·실종 예방 · 급수 기록",
+        "미용실·호텔·유치원·펫시터·훈련사·판매자·보호소·장례업체용 · 동물병원은 적법한 범위의 일정·고객 도구",
+        "반려동물 친화 관광사업자 · 보호소·공공기관 · 보험은 규제 준수 구조에서만",
+        "보호소 행사 · 구조 단체 정보 · 동물복지 수준 확인 체계",
+        "아래 '실종 찾기의 운영 원칙' 참고",
+        "입양 책임·준비 안내 · 불법 판매가 입양으로 위장되지 않도록 관리",
+        "지원 물품 · 기관의 검증 절차 · 기관용 운영 도구는 별도 검토",
+        "장례 일정·상담 연결 · 기본·추가 비용 표시 · 기념 상품(액자·앨범)",
+        "",
+      ],
+      ai: {
+        kicker: "PETLOG AI · IN DEVELOPMENT",
+        title: "AI 도우미가\n다루려는 열 가지 일.",
+        lead: "사업계획서의 AI 기능 구상입니다. 기록 요약 AI는 개발 중이고, 나머지는 단계적으로 검토합니다. 어떤 기능도 진단·처방·응급 판단을 하지 않으며, 응급 가능성이 있으면 수의사나 응급 진료기관으로 안내합니다.",
+        head: ["기능", "하는 일"],
+        rows: [
+          ["Health AI", "쌓인 건강 기록을 진료 상담 전에 보기 쉽게 요약합니다."],
+          ["Life AI", "급식·산책·수면 같은 생활 패턴을 정리합니다."],
+          ["Calendar AI", "접종·투약·병원 일정과 할 일을 추천합니다."],
+          ["Training AI", "일반적인 훈련·교육 정보를 안내하고, 위험한 방법을 단정적으로 권하지 않습니다."],
+          ["Nutrition AI", "일반적인 영양 정보를 안내합니다."],
+          ["Travel AI", "동반 여행의 준비물과 조건을 정리합니다."],
+          ["Market AI", "생활용품을 추천하며, 광고는 분명히 구분합니다."],
+          ["Care AI", "돌봄을 맡길 때 전할 체크리스트를 만듭니다."],
+          ["Senior Pet AI", "노령동물의 생활 관리를 돕는 도움말을 제공합니다."],
+          ["Memorial AI", "추억 앨범과 기록 정리를 돕습니다."],
+        ],
+      },
+      find: {
+        kicker: "PETLOG FIND · POLICY",
+        title: "실종 찾기의\n운영 원칙.",
+        lead: "실종 반려동물 찾기는 향후 계획입니다. 핵심 기능은 무료로 유지하고, 보호자의 개인정보와 위치를 먼저 보호하는 원칙을 정해 두었습니다.",
+        head: ["기능", "원칙"],
+        rows: [
+          ["실종 신고 안내", "무료"],
+          ["공식 기관 연결", "무료"],
+          ["반려동물 등록 정보", "보호자 동의를 바탕으로만 확인"],
+          ["발견 제보", "검증·신고 체계를 갖춘 뒤 연결"],
+          ["위치 공개", "정밀 주소와 개인정보는 공개하지 않음"],
+          ["GPS 연계", "선택형 기기 기능, 별도 동의"],
+          ["사기 방지", "허위 제보·금전 요구를 신고할 수 있게 함"],
+        ],
+      },
+    },
+    en: {
+      planLabel: "Planned scope",
+      legendExtra: "Each area's 'Planned scope' is the long-term range in the business plan, not a list of features in the app today.",
+      tabs: {
+        kicker: "APP STRUCTURE · PROPOSAL",
+        title: "26 areas,\ngathered into five tabs.",
+        lead: "The bottom-tab structure proposed in the business plan. Rather than laying out 26 areas on one screen, the app is meant to show the menus each owner needs, based on the pet's information and the owner's interests. It is a proposal and may differ from today's app screens.",
+        items: [
+          ["01", "Home", "Home", "Today's condition, schedule and suggested services"],
+          ["02", "PETLOG", "PETLOG", "Health, meals, walks, sleep, diary and calendar"],
+          ["03", "Discover", "Discover", "Vets, grooming, care, hotels, training, market, travel, shelters, funerals"],
+          ["04", "Community", "Community", "Information, reviews, local groups, lost pets, protection work"],
+          ["05", "My", "My", "Pets, family account, bookings, orders, subscription, devices"],
+        ],
+      },
+      plan: [
+        "Several pets · Diet (food, foods to avoid) · Temperament, walk and care cautions · Conditions",
+        "Symptoms (vomiting, diarrhoea, appetite, behaviour) · Check-up results · Dental and scaling dates · Skin and coat · Chronic conditions in senior pets · Medical documents",
+        "Water intake · Bathing and hygiene · Play and training · Care schedule",
+        "Grooming, hotel and training dates · Walks and to-dos · Family plans and bookings in one calendar",
+        "Photos and video · Birthdays and adoption anniversaries · Travel records · Growth albums and photo books (optional paid, under review)",
+        "Comparing clinics on official information (facilities, services) · Visit reminders · Lawful expert consultation links",
+        "Service prices · Nails and coat care · Booking and customer tools for salons",
+        "Regular care (repeat booking) · Owner and emergency contacts · Report, dispute and compensation process",
+        "Overnight and long stays · Daycare attendance and activity logs · Costs and conditions · Reviews",
+        "Walk training · Behaviour training · Education content · Serious problems go to experts",
+        "Dog and cat information · Health experience · Training experience · Shelter and volunteer information · Growth photos and anniversaries",
+        "Cancellation and refund terms · Licensing checks · Ads kept apart from verification status",
+        "Pet care guides (digital products) · Rental of costly gear linked to SHAREON",
+        "Proposed Free, Plus, Family and AI Pro structure (no price set) · Separate from food delivery",
+        "Campsites and activities · Transport · Booking links only with direct contracts",
+        "See 'Ten jobs for the AI assistant' below",
+        "Owner contact list · Links to location devices (separate consent)",
+        "Feeding logs · Watching and alerts · Location and loss prevention · Water logs",
+        "For groomers, hotels, daycare, sitters, trainers, sellers, shelters and funeral providers · For clinics, lawful scheduling and customer tools only",
+        "Pet-friendly tourism businesses · Shelters and public bodies · Insurance only within regulated structures",
+        "Shelter events · Rescue group information · A way to check welfare standards",
+        "See 'Lost-pet search policy' below",
+        "Adoption responsibilities and preparation · Illegal sales kept from posing as adoption",
+        "Supplied items · Each body's own checks · Tools for institutions reviewed separately",
+        "Funeral dates and consultations · Basic and extra costs shown · Keepsakes (frames, albums)",
+        "",
+      ],
+      ai: {
+        kicker: "PETLOG AI · IN DEVELOPMENT",
+        title: "Ten jobs for\nthe AI assistant.",
+        lead: "The AI functions outlined in the business plan. The record-summary AI is in development; the rest are reviewed step by step. None of them diagnoses, prescribes or makes emergency decisions, and where an emergency is possible they point to a vet or an emergency clinic.",
+        head: ["Function", "What it does"],
+        rows: [
+          ["Health AI", "Summarises health records so they are easy to read before a vet visit."],
+          ["Life AI", "Organises daily patterns such as meals, walks and sleep."],
+          ["Calendar AI", "Suggests vaccination, medication and vet dates and to-dos."],
+          ["Training AI", "Gives general training information and never prescribes risky methods."],
+          ["Nutrition AI", "Gives general nutrition information."],
+          ["Travel AI", "Prepares packing lists and conditions for pet-friendly trips."],
+          ["Market AI", "Suggests everyday supplies, with ads clearly marked."],
+          ["Care AI", "Builds a checklist to hand over when someone else cares for your pet."],
+          ["Senior Pet AI", "Offers tips for daily care of senior pets."],
+          ["Memorial AI", "Helps put together memory albums and records."],
+        ],
+      },
+      find: {
+        kicker: "PETLOG FIND · POLICY",
+        title: "Lost-pet search\npolicy.",
+        lead: "Lost-pet search is planned. Core features are meant to stay free, and the rules put owners' personal data and location first.",
+        head: ["Feature", "Rule"],
+        rows: [
+          ["Reporting guidance", "Free"],
+          ["Links to official bodies", "Free"],
+          ["Pet registration details", "Checked only with the owner's consent"],
+          ["Sighting reports", "Connected only once checks and reporting are in place"],
+          ["Location", "Exact addresses and personal data are never published"],
+          ["GPS links", "An optional device feature, with separate consent"],
+          ["Fraud prevention", "False reports and demands for money can be reported"],
+        ],
+      },
+    },
+  },
+  business: {
+    ko: {
+      tiersHead: ["플랜(제안)", "구성 방향"],
+      tiers: [
+        ["Free", "기본 프로필·건강·생활 기록"],
+        ["Plus", "고급 기록·통계·저장"],
+        ["Family", "가족 공동 관리, 여러 반려동물"],
+        ["AI Pro", "AI 기능·고급 분석·개인화"],
+      ],
+      tiersNote: "요금은 정하지 않았으며, 개인 구독과 사료 정기배송은 별도 상품으로 구분합니다.",
+      saasTargetsTitle: "업종별로 필요한 기능",
+      saasTargetsHead: ["대상", "주요 기능"],
+      saasTargets: [
+        ["미용실", "예약·고객·반려동물 관리"],
+        ["호텔·유치원", "객실·등원·활동 기록"],
+        ["펫시터", "예약·일정·돌봄 일지"],
+        ["훈련사", "상담·교육·수업 관리"],
+        ["펫용품 판매자", "상품·주문·정산"],
+        ["동물병원", "적법한 범위의 일정·고객 도구(의료 기록 업무는 더 엄격한 보안·법률 검토)"],
+        ["보호소", "공식 입양·봉사 운영"],
+        ["장례업체", "서비스·예약·상담 관리"],
+      ],
+      saasTiersTitle: "업체 규모별 플랜 구성(제안)",
+      saasTiers: [
+        ["Business Free", "기본 업체 등록"],
+        ["Starter", "소규모 미용·돌봄 업체"],
+        ["Growth", "호텔·유치원, 직원이 여럿인 업체"],
+        ["Pro", "고급 통계·운영 관리"],
+        ["Enterprise", "여러 지점을 둔 대형 업체(별도 계약)"],
+      ],
+      feeTitle: "수수료 설계 원칙",
+      fee: [
+        "보호소·실종·입양·임시보호의 필수 기능에는 수수료를 받지 않습니다.",
+        "동물병원 진료비에 비례한 소개 수수료는 관련 법률 검토 전까지 보류합니다.",
+        "보험은 모집·중개 규제와 계약 조건에 따라 별도로 검토합니다.",
+        "한 거래에 NEWON 플랫폼 간 수수료를 중복으로 부과하지 않습니다.",
+        "일반 쇼핑의 결제·정산과 SHAREON의 공유·대여 거래는 구분해 운영합니다.",
+        "구독료와 거래 수수료를 함께 적용할 때 업체 부담이 과하지 않은지 먼저 검증합니다.",
+      ],
+      prioKicker: "PRIORITIES",
+      prioTitle: "사업 우선순위",
+      prioHead: ["순위", "범위", "목표", "단계"],
+      prio: [
+        ["1순위", "프로필·건강·생활·캘린더", "매일 쓰고 기록이 쌓이는 핵심 앱을 완성합니다.", "P1"],
+        ["2순위", "미용·돌봄·호텔·훈련 예약", "실제 수요가 있는 서비스 거래와 업체 입점을 검증합니다.", "P2–P3"],
+        ["3순위", "쇼핑·중고·공동구매·구독", "반복 구매와 거래 수익을 확보합니다.", "P4"],
+        ["4순위", "보호소·실종·입양·임시보호", "공익·안전 기능과 신뢰를 쌓습니다.", "P5"],
+        ["5순위", "업체 SaaS·AI·스마트 기기·장례·글로벌", "전문 서비스와 장기 수익 모델을 넓힙니다.", "P6–P8"],
+      ],
+      phasesTitle: "개발·사업화 단계",
+    },
+    en: {
+      tiersHead: ["Plan (proposed)", "What it covers"],
+      tiers: [
+        ["Free", "Basic profile, health and life records"],
+        ["Plus", "Advanced records, statistics and storage"],
+        ["Family", "Shared family care, several pets"],
+        ["AI Pro", "AI features, advanced analysis, personalisation"],
+      ],
+      tiersNote: "No prices are set, and the personal subscription is a separate product from recurring food delivery.",
+      saasTargetsTitle: "What each kind of business needs",
+      saasTargetsHead: ["For", "Main functions"],
+      saasTargets: [
+        ["Groomers", "Bookings, customers and pet details"],
+        ["Hotels and daycare", "Rooms, attendance and activity logs"],
+        ["Pet sitters", "Bookings, schedules and care logs"],
+        ["Trainers", "Consultations, lessons and class management"],
+        ["Pet-goods sellers", "Products, orders and settlement"],
+        ["Vet clinics", "Lawful scheduling and customer tools (clinical record work needs stricter security and legal review)"],
+        ["Shelters", "Official adoption and volunteer operations"],
+        ["Funeral providers", "Services, bookings and consultations"],
+      ],
+      saasTiersTitle: "Tiers by business size (proposed)",
+      saasTiers: [
+        ["Business Free", "Basic business listing"],
+        ["Starter", "Small grooming and care businesses"],
+        ["Growth", "Hotels, daycare and businesses with several staff"],
+        ["Pro", "Advanced statistics and operations"],
+        ["Enterprise", "Large and multi-site businesses (separate contract)"],
+      ],
+      feeTitle: "Fee design principles",
+      fee: [
+        "No fee on essential shelter, lost-pet, adoption and foster features.",
+        "Referral fees proportional to vet treatment costs are on hold until the relevant law is reviewed.",
+        "Insurance is reviewed separately under solicitation and brokerage rules and contract terms.",
+        "No transaction is charged platform fees twice across NEWON platforms.",
+        "Payment and settlement for general shopping are kept separate from SHAREON's sharing and rental trades.",
+        "Where subscription and transaction fees apply together, the burden on businesses is checked first.",
+      ],
+      prioKicker: "PRIORITIES",
+      prioTitle: "Business priorities",
+      prioHead: ["Priority", "Scope", "Goal", "Stage"],
+      prio: [
+        ["1st", "Profile, health, life, calendar", "Complete the core app people use every day, where records build up.", "P1"],
+        ["2nd", "Grooming, care, hotel and training booking", "Validate service trading with real demand, and business listings.", "P2–P3"],
+        ["3rd", "Shopping, secondhand, group buying, subscription", "Secure repeat purchases and transaction revenue.", "P4"],
+        ["4th", "Shelters, lost pets, adoption, fostering", "Build public-good and safety features, and trust.", "P5"],
+        ["5th", "Business SaaS, AI, smart devices, funerals, global", "Widen professional services and long-term revenue models.", "P6–P8"],
+      ],
+      phasesTitle: "Development and commercialisation stages",
+    },
+  },
+  partners: {
+    ko: {
+      cmpKicker: "COMMERCIAL vs PUBLIC GOOD",
+      cmpTitle: "상업 제휴와 공익 협력은\n따로 운영합니다.",
+      cmpLead: "같은 PETLOG 안에서도 수익을 목적으로 하는 제휴와 공익 협력은 목적과 비용, 표시 방식이 다릅니다.",
+      cmpHead: ["구분", "상업 제휴", "공익 협력"],
+      cmp: [
+        ["대상", "동물병원·미용·호텔·유치원·돌봄·브랜드·여행·기기·보험·장례", "보호소·구조 단체·입양 기관·지자체·동물보호단체"],
+        ["목적", "서비스 연결과 거래·제휴", "책임 있는 입양, 실종 찾기, 구조·보호 지원"],
+        ["비용", "계약 조건에 따른 수수료·광고·SaaS(요율 미확정)", "필수 기능 무료, 입양 성사 수수료 없음"],
+        ["표시", "광고·협찬·제휴 여부를 분명히 표시", "공식 기관 정보는 출처와 함께 안내하며, 공식 정보 제공을 제휴로 표시하지 않음"],
+        ["전제", "영업 요건·자격 확인, 서면 계약", "기관 검증 절차, 동물보호법 준수"],
+      ],
+      prepTitle: "문의 전에 준비해 주시면 좋은 것",
+      prep: [
+        "회사·기관 소개와 회신받을 담당자 이메일",
+        "15개 협력 유형 가운데 가장 가까운 분야",
+        "제안하는 협력 범위와 PETLOG에 기대하는 역할",
+        "생각하고 있는 지역·기간·대상 서비스",
+        "해당 분야의 영업 등록·자격 보유 여부(예: 동물미용업, 동물위탁관리업, 동물장묘업)",
+        "보호자 정보가 필요한 협력이라면 그 범위와 보호 방식",
+      ],
+    },
+    en: {
+      cmpKicker: "COMMERCIAL vs PUBLIC GOOD",
+      cmpTitle: "Commercial partnerships and public-good work\nrun separately.",
+      cmpLead: "Within PETLOG, partnerships run for revenue and public-good cooperation differ in purpose, cost and how they are shown.",
+      cmpHead: ["", "Commercial partnerships", "Public-good cooperation"],
+      cmp: [
+        ["Who", "Vets, groomers, hotels, daycare, carers, brands, travel, devices, insurers, funeral providers", "Shelters, rescue groups, adoption bodies, local government, animal-welfare groups"],
+        ["Purpose", "Connecting services, trading and partnerships", "Responsible adoption, finding lost pets, rescue and care support"],
+        ["Cost", "Fees, ads or SaaS under contract terms (rates not set)", "Essential features free; no fee on adoptions"],
+        ["How it is shown", "Ads, sponsorship and partnerships clearly disclosed", "Official information shown with its source; providing it is never presented as a partnership"],
+        ["Preconditions", "Licences and qualifications checked; written agreement", "The body's own checks; animal-protection law"],
+      ],
+      prepTitle: "Helpful to have ready before you write",
+      prep: [
+        "An introduction to your company or body, and the email for our reply",
+        "The closest of the 15 partner types",
+        "The scope you propose and the role you expect from PETLOG",
+        "The area, period and services you have in mind",
+        "Whether you hold the licence or registration your field needs (for example grooming, boarding or pet-funeral registration)",
+        "If owners' data is involved, its scope and how it would be protected",
+      ],
+    },
+  },
+  contact: {
+    ko: {
+      groups: [
+        ["반려인", ["general", "app-support", "content"]],
+        ["의료·돌봄 업체", ["vet", "booking-provider", "sitting"]],
+        ["커머스·브랜드", ["brand", "group-buying"]],
+        ["보험·보호소·공공기관", ["insurance-adoption", "public"]],
+        ["기업·기술·글로벌", ["saas", "global"]],
+      ],
+      afterKicker: "AFTER YOU SEND",
+      afterTitle: "문의 후에는\n이렇게 진행됩니다.",
+      after: [
+        ["접수", "문의 양식이나 newon@newon.app으로 받은 내용을 확인합니다."],
+        ["검토", "문의 유형에 맞춰 내용을 살펴봅니다. 협력 제안은 적합성과 법률·안전 요건, 사업자·판매자 자격을 함께 검토합니다."],
+        ["회신", "검토 후 남겨 주신 이메일로 회신드립니다. 문의 접수는 파트너십 체결을 뜻하지 않습니다."],
+      ],
+    },
+    en: {
+      groups: [
+        ["Owners", ["general", "app-support", "content"]],
+        ["Veterinary and care businesses", ["vet", "booking-provider", "sitting"]],
+        ["Commerce and brands", ["brand", "group-buying"]],
+        ["Insurers, shelters and public bodies", ["insurance-adoption", "public"]],
+        ["Business, technology and global", ["saas", "global"]],
+      ],
+      afterKicker: "AFTER YOU SEND",
+      afterTitle: "What happens\nafter you write.",
+      after: [
+        ["Received", "We check what arrives through the form or at newon@newon.app."],
+        ["Reviewed", "We look at it by inquiry type. Partnership proposals are reviewed for fit, legal and safety requirements, and business or seller eligibility."],
+        ["Reply", "After review we reply to the email you left. Sending an inquiry does not create a partnership."],
+      ],
+    },
+  },
+};
+
+V3.overview.ko.stages = {
+  kicker: "LIFE STAGES",
+  title: "생애 다섯 단계와\nPETLOG의 영역.",
+  lead: "사업계획서는 반려동물의 생애를 다섯 단계로 나누고, 단계마다 필요한 영역을 잇습니다. 지금 앱에서 쓸 수 있는 것과 앞으로의 계획을 나누어 적었습니다.",
+  head: ["단계", "이때 필요한 것", "관련 영역", "지금 앱에서"],
+  rows: [
+    ["가족 맞이", "프로필 만들기, 첫 접종 일정, 입양 준비 안내", "Profile · Calendar · Adoption(계획)", "프로필·접종 일정"],
+    ["건강·성장", "체중·성장 기록, 예방접종·투약, 병원 정보", "Health · Note · Medical(검토)", "건강·사진 기록"],
+    ["생활·예약", "식사·산책 기록, 미용·돌봄·호텔·훈련 찾기", "Life · Grooming · Care · Hotel · Training(계획·검토)", "생활 기록·가족 공유"],
+    ["안전·보호", "긴급 연락처, 실종 대비, 보호소·임시보호 정보", "Safety · Find · Shelter · Foster(계획)", "프로필에 특징 정리"],
+    ["이별·추모", "추억 기록, 등록 장례업체 정보, 추모 공간", "Note · Memorial(검토)", "사진·일상 기록"],
+  ],
+};
+V3.overview.en.stages = {
+  kicker: "LIFE STAGES",
+  title: "Five life stages\nand PETLOG's areas.",
+  lead: "The business plan divides a pet's life into five stages and links the areas each one needs. What the app offers today is kept apart from what is planned.",
+  head: ["Stage", "What is needed", "Related areas", "In the app today"],
+  rows: [
+    ["Welcoming", "A profile, the first vaccination schedule, adoption preparation", "Profile · Calendar · Adoption (planned)", "Profile, vaccination dates"],
+    ["Health and growth", "Weight and growth records, vaccinations and medication, clinic information", "Health · Note · Medical (under review)", "Health and photo records"],
+    ["Daily life and booking", "Meal and walk logs; finding grooming, care, hotels and training", "Life · Grooming · Care · Hotel · Training (planned or under review)", "Life logs, family sharing"],
+    ["Safety and protection", "Emergency contacts, lost-pet readiness, shelter and foster information", "Safety · Find · Shelter · Foster (planned)", "Features noted on the profile"],
+    ["Farewell and memory", "Keeping memories, registered funeral providers, a memorial space", "Note · Memorial (under review)", "Photos and daily records"],
+  ],
+};
+V3.overview.ko.notTitle = "PETLOG가 하지 않는 것";
+V3.overview.ko.not = [
+  "질병을 진단하거나 처방하지 않습니다. 이상이 의심되면 동물병원 상담을 권합니다.",
+  "살아 있는 동물을 판매하거나 중고거래 상품으로 올리지 않습니다.",
+  "보호자 동의 없이 반려동물 기록을 업체·판매자·다른 앱과 공유하지 않습니다.",
+  "웹사이트에서 회원가입·기록·예약·결제를 받지 않습니다. 모든 기능은 앱에서 이용합니다.",
+  "보호소·실종·입양·임시보호의 필수 기능에 수수료를 받지 않습니다.",
+  "서면 계약 전에는 어떤 기관이나 업체도 파트너로 표시하지 않습니다.",
+];
+V3.overview.en.notTitle = "What PETLOG does not do";
+V3.overview.en.not = [
+  "It does not diagnose or prescribe; when something seems wrong, it suggests seeing a vet.",
+  "It does not sell live animals or list them for secondhand trading.",
+  "It does not share pet records with businesses, sellers or other apps without the owner's consent.",
+  "The website takes no sign-up, records, booking or payment; everything is used in the app.",
+  "It charges no fee for essential shelter, lost-pet, adoption and foster features.",
+  "It shows no body or business as a partner before a written agreement.",
+];
+V3.business.ko.measure = {
+  title: "단계마다 확인할 것",
+  head: ["단계", "확인할 것"],
+  rows: [
+    ["무료 기록 습관", "매일 기록하는 사용자가 늘어나는지, 30일 뒤에도 계속 쓰는지"],
+    ["구독 전환", "플랜 이름과 구성이 이해하기 쉬운지, 유료 전환이 일어나는지"],
+    ["지역 예약 파일럿", "예약 요청 대비 이용 완료율, 재이용 의향, 업체의 운영 부담"],
+    ["업체·기관 확대", "파일럿 결과로 확인한 수요, 업체용 도구와 기관 협력의 필요"],
+  ],
+};
+V3.business.en.measure = {
+  title: "What each stage checks",
+  head: ["Stage", "What we check"],
+  rows: [
+    ["A free record habit", "Whether daily users grow, and whether they still use it after 30 days"],
+    ["Subscription conversion", "Whether plan names and structure are clear, and whether paid conversion happens"],
+    ["Local booking pilot", "Completion rate per booking request, intent to return, operating burden on businesses"],
+    ["Businesses and institutions", "Demand confirmed by the pilot; the need for business tools and institutional cooperation"],
+  ],
+};
+V3.partners.ko.faqKicker = "PARTNER FAQ";
+V3.partners.ko.faqTitle = "협력 문의에서\n자주 묻는 질문.";
+V3.partners.ko.faq = [
+  ["문의하면 바로 PETLOG 파트너로 소개되나요?", "아니요. 협력 범위와 조건을 협의해 서면 계약을 맺기 전에는 파트너로 표시하지 않습니다. 이 페이지의 분야는 함께하고자 하는 협력 유형입니다."],
+  ["수수료나 광고 단가는 어떻게 정하나요?", "요율과 단가는 아직 정하지 않았습니다. 시장 검증과 파일럿을 거쳐 협의하고, 합의한 조건은 서면 계약으로 정합니다."],
+  ["파트너가 보호자 정보를 받을 수 있나요?", "보호자가 동의한 범위의 정보만 전달하는 것을 원칙으로 합니다. 예약에는 예약에 필요한 정보만, 판매에는 주문 처리에 필요한 정보만 오갑니다."],
+  ["보호소·지자체 협력에도 비용이 드나요?", "공고 정보 연계, 입양 준비 안내 같은 공익 협력은 수익 목적이 아니며 무료로 운영할 계획입니다."],
+  ["API로 연동할 수 있나요?", "지금은 파트너용 API나 데이터 연동을 제공하지 않습니다. 예약·일정 연동, 동의 기반 기록 공유 같은 방향을 협의할 수 있습니다."],
+  ["보험사와는 어떤 방식으로 협력하나요?", "보장 내용을 이해하기 쉽게 설명하는 정보 협력을 검토하며, 가입과 청구는 보험사의 공식 창구로 안내합니다. 모집·중개·비교추천 규제를 지키는 구조에서만 다룹니다."],
+  ["장례·추모 업체도 협력할 수 있나요?", "동물장묘업 등록 업체를 대상으로, 업체 정보 안내와 상담 연결을 법률 검토 후 검토합니다. 표시·중개 요건과 소비자 보호를 먼저 확인합니다."],
+  ["해외 기업도 문의할 수 있나요?", "네. 해외 진출은 로드맵 P8의 향후 계획이며, 해외 협력 문의는 NEWON 통합 문의 페이지로 받습니다."],
+];
+V3.partners.en.faqKicker = "PARTNER FAQ";
+V3.partners.en.faqTitle = "Common questions\nfrom partners.";
+V3.partners.en.faq = [
+  ["Am I listed as a PETLOG partner once I write?", "No. Nobody is shown as a partner before scope and terms are agreed in a written agreement. The fields on this page are the kinds of partners we want to work with."],
+  ["How are fees or ad prices set?", "Rates and prices are not set yet. They are discussed after market validation and pilots, and agreed terms go into a written agreement."],
+  ["Can partners receive owners' data?", "In principle only what the owner agrees to share: a booking gets what the booking needs, and a sale only what processing the order needs."],
+  ["Does shelter or local government cooperation cost anything?", "Public-good work such as notice links and adoption preparation is not for profit and is planned to be free."],
+  ["Can we integrate through an API?", "No partner API or data integration is offered today. Directions such as booking and schedule sync or consent-based record sharing can be discussed."],
+  ["How would insurers work with PETLOG?", "Information partnerships that explain cover clearly are being considered; sign-up and claims go to the insurer's own channels, and everything stays within solicitation, brokerage and comparison rules."],
+  ["Can funeral and memorial providers work with PETLOG?", "For registered pet-funeral businesses, provider information and consultation links are considered after legal review, with labelling, brokerage and consumer-protection rules checked first."],
+  ["Can companies abroad get in touch?", "Yes. Going abroad is a future plan at roadmap stage P8, and global partnership inquiries go to the unified NEWON Contact page."],
+];
+V3.contact.ko.faqKicker = "CONTACT FAQ";
+V3.contact.ko.faqTitle = "문의 전에 많이 묻는 것";
+V3.contact.ko.faq = [
+  ["어떤 유형을 골라야 할지 모르겠어요.", "가장 가까운 유형을 고르거나 '일반 문의·기타 제안'으로 보내 주세요. 내용을 보고 알맞게 검토합니다."],
+  ["답변은 어떻게 받나요?", "검토 후 문의 양식에 남겨 주신 이메일로 회신드립니다."],
+  ["반려동물이 아픈데 문의해도 되나요?", "PETLOG는 진단할 수 없습니다. 가까운 동물병원에 문의해 주시고, 응급 상황이면 바로 응급 진료기관에 연락해 주세요."],
+  ["웹사이트에서 예약하거나 입점 신청을 할 수 있나요?", "아니요. 예약·결제·입점 신청·상품 판매는 웹사이트에서 제공하지 않습니다. 입점·협력 의사는 문의 양식으로 알려 주세요."],
+  ["투자나 언론 문의는 어디로 보내나요?", "투자 관련 문의는 NEWON 공식 문의 페이지에서, 취재·인터뷰 요청은 newon@newon.app에서 받습니다."],
+];
+V3.contact.en.faqKicker = "CONTACT FAQ";
+V3.contact.en.faqTitle = "Common questions before writing";
+V3.contact.en.faq = [
+  ["I'm not sure which type to choose.", "Pick the closest type, or send it as 'General and other proposals'. We review it based on what you write."],
+  ["How will I get an answer?", "After review we reply to the email you left in the form."],
+  ["My pet is unwell — can I ask here?", "PETLOG cannot diagnose. Please contact a nearby vet, or an emergency clinic right away in an emergency."],
+  ["Can I book or apply as a seller on the website?", "No. Booking, payment, seller applications and sales are not offered on this website. Tell us about listing or partnership interest through the form."],
+  ["Where do investment or press inquiries go?", "Investment inquiries go to NEWON's official contact page, and interview or press requests to newon@newon.app."],
+];
+
+V3.business.ko.links = {
+  kicker: "ACROSS NEWON",
+  title: "NEWON 플랫폼과\n나누는 역할.",
+  lead: "기능이 겹치지 않도록 플랫폼마다 맡는 일을 나눕니다. 아래 연결은 계획된 방향이며, 건강·가족·위치 정보는 명시적 동의와 적법한 권한 없이 자동으로 공유하지 않고, 한 거래에 플랫폼 간 수수료를 중복 부과하지 않습니다.",
+  head: ["플랫폼", "PETLOG와의 연계", "역할 구분"],
+  rows: [
+    ["SHAREON", "이동장·장비·펫용품 대여", "판매·중고·공동구매는 PETLOG, 공유·대여는 SHAREON"],
+    ["MY WORLD", "반려동물 동반 여행", "여행 기록은 MY WORLD, 동반 조건과 반려동물 준비는 PETLOG"],
+    ["BABYLOG", "아이와 반려동물이 함께하는 가족생활", "아이 기록은 BABYLOG, 반려동물 기록은 PETLOG"],
+    ["LIVON", "가족 생활·반려동물 관련 일정", "이사·출산 같은 생활 일정은 LIVON, 반려동물 준비는 PETLOG"],
+    ["ONGIL", "어르신의 반려동물 관리·돌봄", "어르신 생활은 ONGIL, 반려동물 돌봄 기록은 PETLOG"],
+  ],
+};
+V3.business.en.links = {
+  kicker: "ACROSS NEWON",
+  title: "Roles shared\nwith NEWON platforms.",
+  lead: "Each platform takes its own job so features do not overlap. These links are planned directions; health, family and location data are never shared automatically without explicit consent and lawful authority, and no transaction is charged platform fees twice.",
+  head: ["Platform", "Link with PETLOG", "Who does what"],
+  rows: [
+    ["SHAREON", "Renting carriers, gear and pet goods", "PETLOG sells, trades secondhand and runs group buys; SHAREON shares and rents"],
+    ["MY WORLD", "Pet-friendly travel", "MY WORLD keeps travel records; PETLOG covers pet policies and preparation"],
+    ["BABYLOG", "Family life with children and pets", "BABYLOG records the child; PETLOG records the pet"],
+    ["LIVON", "Family life events involving pets", "LIVON covers moves, births and other life events; PETLOG gets the pet ready"],
+    ["ONGIL", "Pet care for senior owners", "ONGIL covers senior daily life; PETLOG keeps the pet's care records"],
+  ],
 };

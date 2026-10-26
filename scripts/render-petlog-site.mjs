@@ -9,6 +9,8 @@
  * inquiry form (render-bsp.mjs → business/inquiry.js → FormSubmit).
  * No app feature (records, booking, orders, payment, sign-in, seller sign-up, posting) is built on the web.
  * Copy: scripts/petlog-site-content.mjs (ko + en; other locales show the English body, like the rest of the site).
+ * V6 (2026-10-26, design pass v3): tighter spacing, wide header rows, figures strip, comparison/data tables, one green
+ *   accent band per page, mobile snap rails; more detail from the business plan (V3 export) — hero and sub-menu unchanged.
  * V5 (2026-10-25): giving (나눔·기부) as a planned area 26, a public-good item and partner type 15 — content only.
  * V4 (2026-10-25): body redesign — styles moved to /petlog-site.css, one layout per section (content unchanged).
  * V3 (2026-10-24): 25 platform areas, 12 revenue models, scenarios, FAQ, PoC/data sections, inquiry purposes — content only.
@@ -34,7 +36,7 @@ import {
 import { clampSeoDescription } from "./seo-meta.mjs";
 import { renderGlobalHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { inquiryFormHtml } from "./render-bsp.mjs";
-import { NOTICE, PETLOG_FILM, STORE, PETLOG_MENU, OVERVIEW, PLATFORM, BUSINESS, PARTNERS, CONTACT, GLOBAL } from "./petlog-site-content.mjs";
+import { NOTICE, PETLOG_FILM, STORE, PETLOG_MENU, OVERVIEW, PLATFORM, BUSINESS, PARTNERS, CONTACT, GLOBAL, V3 } from "./petlog-site-content.mjs";
 import { renderFlagshipSubnav, FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
 import { toUnifiedContact } from "./unified-contact-links.mjs";
 
@@ -54,7 +56,7 @@ const rel = (depth, p) => (/^(https?:|mailto:|#|\/)/.test(p) ? p : "../".repeat(
  * a features bento, now/next scene cards, comparison rows, status board, data tables, directories, accordions —
  * with 16px body text and PETLOG green as a point colour only. No screenshots, images or decorative shapes.
  */
-const PETLOG_CSS_VER = "20261025ng1";
+const PETLOG_CSS_VER = "20261026v3";
 const PETLOG_CSS = `<link rel="stylesheet" href="/petlog-site.css?v=${PETLOG_CSS_VER}" />
     <style>
   /* Background film framing: show more of the right side (owner request 2026-10-19). */
@@ -157,8 +159,9 @@ const isLater = (name) => /\((향후|planned)\)\s*$/i.test(String(name || ""));
 const isNow = (text) => /지금 제공|지금 앱에서 제공하는 단계|available today|in the app today/i.test(String(text || ""));
 
 /* ---------------------------------------------------------------- shared blocks */
-function head(kicker, title, lead) {
-  return `<header class="nls-head">
+/** Section header. row → on wide screens the kicker and title sit on the left and the lead on the right (no empty half). */
+function head(kicker, title, lead, row) {
+  return `<header class="nls-head${row && lead ? " pl-head--row" : ""}">
     ${kicker ? `<p class="nls-kicker">${esc(kicker)}</p>` : ""}
     <h2 class="nls-title">${nl(title)}</h2>
     ${lead ? `<p class="nls-lead">${esc(lead)}</p>` : ""}
@@ -174,22 +177,19 @@ const metaList = (points) => {
   const rows = (points || []).filter(([, v]) => v && v !== "—");
   return rows.length ? `<dl class="pl-meta">${rows.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>` : "";
 };
+/** "(향후)" / "(planned)" suffix removed for display where a status column already says it. */
+const bare = (name) => String(name || "").replace(/\s*\((향후|planned)\)\s*$/i, "");
 
-/** Section wrapper. tint → full-bleed pale-green band. */
-function section(id, { kicker, title, lead, noteText, tint, body, extraClass }) {
-  return `<div id="${id}" class="nls-block${tint ? " nls-block--band pl-tint" : ""}${extraClass ? ` ${extraClass}` : ""}" data-hs-section>
-    ${head(kicker, title, lead)}
+/**
+ * Section wrapper. tint → full-bleed band with hairlines (white in light mode); accent → the page's one full-bleed
+ * PETLOG-green band; row (default) → wide header row.
+ */
+function section(id, { kicker, title, lead, noteText, tint, accent, body, extraClass, row = true }) {
+  const band = accent ? " nls-block--band pl-accent" : tint ? " nls-block--band pl-tint" : "";
+  return `<div id="${id}" class="nls-block${band}${extraClass ? ` ${extraClass}` : ""}" data-hs-section>
+    ${head(kicker, title, lead, row)}
     ${callout(noteText)}
     ${body}
-  </div>`;
-}
-/** Statement left, content right (the heading never sticks, so nothing slides over text). */
-function splitSection(id, { kicker, title, lead, noteText, tint, body, aside }) {
-  return `<div id="${id}" class="nls-block${tint ? " nls-block--band pl-tint" : ""}" data-hs-section>
-    <div class="pl-split">
-      <div class="pl-split__head">${head(kicker, title, lead)}${callout(noteText)}${aside || ""}</div>
-      <div>${body}</div>
-    </div>
   </div>`;
 }
 
@@ -203,10 +203,10 @@ function items(kind, list, depth, cls = "") {
   const label = (c) => (c.label ? `<p class="pl-label" lang="en">${esc(c.label)}</p>` : "");
   const n = (c) => (c.n ? `<span class="pl-n">${esc(c.n)}</span>` : "");
   if (kind === "row")
-    return `<div class="pl-rows">${list
+    return `<div class="pl-rows ${cls}">${list
       .map(
         (c) => `<article class="pl-row"${id(c)}>
-        <div class="pl-row__lead"><div class="pl-row__tag">${n(c)}${label(c)}</div><h3>${esc(c.name)}</h3><p class="pl-p">${esc(c.lead)}</p></div>
+        <div class="pl-row__lead"><div class="pl-row__tag">${c.icon ? ic(c.icon) : ""}${n(c)}${label(c)}</div><h3>${esc(c.name)}</h3><p class="pl-p">${esc(c.lead)}</p></div>
         <div class="pl-row__side">${metaList(c.points)}${chipList(c.chips)}${more(c.link, depth)}</div>
       </article>`
       )
@@ -215,7 +215,7 @@ function items(kind, list, depth, cls = "") {
     return `<div class="pl-cols ${cls}">${list
       .map(
         (c) => `<article class="pl-col"${id(c)}>
-        ${c.icon ? ic(c.icon) : ""}<div class="pl-row__tag">${n(c)}${label(c)}</div><h3>${esc(c.name)}</h3><p class="pl-p">${esc(c.lead)}</p>
+        <div class="pl-row__tag">${c.icon ? ic(c.icon) : ""}${n(c)}${label(c)}</div><h3>${esc(c.name)}</h3><p class="pl-p">${esc(c.lead)}</p>
         ${metaList(c.points)}${chipList(c.chips)}${more(c.link, depth)}
       </article>`
       )
@@ -224,8 +224,8 @@ function items(kind, list, depth, cls = "") {
     .map((c) => {
       const foot = `${metaList(c.points)}${chipList(c.chips)}${more(c.link, depth)}`;
       return `<article class="pl-card${c.later ? " pl-card--later" : ""}"${id(c)}>
-        <div class="pl-card__top">${c.icon ? ic(c.icon) : ""}${n(c)}</div>
-        ${label(c)}<h3>${esc(c.name)}</h3><p class="pl-p">${esc(c.lead)}</p>
+        <div class="pl-card__top">${c.icon ? ic(c.icon) : ""}${n(c)}${label(c)}</div>
+        <h3>${esc(c.name)}</h3><p class="pl-p">${esc(c.lead)}</p>
         ${foot ? `<div class="pl-foot">${foot}</div>` : ""}
       </article>`;
     })
@@ -259,7 +259,7 @@ const stepList = (steps, lg) =>
     .map(([big, t, d]) => `<li${isNow(d) ? ' class="is-on"' : ""}>${big ? `<span class="pl-big">${esc(big)}</span>` : ""}<h3>${esc(t)}</h3><p class="pl-p">${esc(d)}</p></li>`)
     .join("")}</ol>`;
 
-/** Numbered phase list (roadmap, PoC). rows: [code, title, body][] */
+/** Numbered phase list (roadmap, vertical steps). rows: [code, title, body][] */
 const phases = (rows, step) =>
   `<ol class="pl-phases${step ? " pl-phases--step" : ""}">${rows
     .map(([s, t, d]) => `<li><span class="pl-code" lang="en">${esc(s)}</span><h3>${esc(t)}</h3><p class="pl-p">${esc(d)}</p></li>`)
@@ -274,9 +274,9 @@ const people = (list, grid) =>
     .map(([t, d, k]) => `<li${isLater(t) ? ' class="is-later"' : ""}>${ic(k || "check")}<div><h3>${esc(t)}</h3><p class="pl-p">${esc(d)}</p></div></li>`)
     .join("")}</ul>`;
 
-/** Directory rows. list: { name, body, href, self?, icon? } */
-const directory = (list, depth, wide) =>
-  `<ul class="pl-dir${wide ? " pl-dir--wide" : ""}">${list
+/** Directory rows. list: { name, body, href, self?, icon? }; grid → two/three-column link list. */
+const directory = (list, depth, grid) =>
+  `<ul class="pl-dir${grid ? ` pl-dir--grid pl-dir--${grid}` : ""}">${list
     .map(
       (s) => `<li><a${s.self ? ' class="is-self"' : ""} href="${esc(href(depth, s.href))}"${extAttr(s.href)}>${s.icon ? ic(s.icon) : ""}<div><strong${/^[A-Z ]+$/.test(s.name) ? ' lang="en"' : ""}>${esc(s.name)}</strong><p class="pl-p">${esc(s.body)}</p></div><em aria-hidden="true">→</em></a></li>`
     )
@@ -295,6 +295,27 @@ const tiles = (cls, list, depth) =>
       }</li>`;
     })
     .join("")}</ul>`;
+
+/**
+ * Data / comparison table (real <table>; on narrow screens each row becomes a labelled block).
+ * cells: string, or { html } for trusted markup built here. The first cell of each row is the row header.
+ */
+const cell = (c) => (c && typeof c === "object" ? c.html : esc(c));
+const xtable = (headCells, rows, cls = "", caption = "") =>
+  `<div class="pl-xt-wrap"><table class="pl-xt${cls ? ` ${cls}` : ""}">${caption ? `<caption>${esc(caption)}</caption>` : ""}<thead><tr>${headCells
+    .map((h) => `<th scope="col">${esc(h)}</th>`)
+    .join("")}</tr></thead><tbody>${rows
+    .map((r) => `<tr>${r.map((c, i) => (i === 0 ? `<th scope="row">${cell(c)}</th>` : `<td data-label="${esc(headCells[i])}">${cell(c)}</td>`)).join("")}</tr>`)
+    .join("")}</tbody></table></div>`;
+
+/** Figures strip. list: [figure, label, detail][] (counts already used on the site; not service or user numbers). */
+const facts = (title, list, note) =>
+  `<div class="pl-facts-wrap"><h3 class="pl-subhead">${esc(title)}</h3><dl class="pl-facts">${list
+    .map(([f, k, d]) => `<div><dt>${esc(f)}</dt><dd><b>${esc(k)}</b><span>${esc(d)}</span></dd></div>`)
+    .join("")}</dl>${note ? `<p class="pl-fine">${esc(note)}</p>` : ""}</div>`;
+
+/** Sub-block inside a section (title + body), outlined. */
+const sub = (kicker, title, lead, body, cls = "") => `<div class="pl-sub${cls ? ` ${cls}` : ""}">${head(kicker, title, lead, true)}${body}</div>`;
 
 /** Tab rail + cards (Life Stage "life journey" component; home-lifestage.js drives it). One rail per page. */
 function railBlock(id, { kicker, title, lead, noteText, items: list, ariaLabel }) {
@@ -316,7 +337,7 @@ function railBlock(id, { kicker, title, lead, noteText, items: list, ariaLabel }
     )
     .join("");
   return `<div id="${id}" class="nls-block nls-block--band pl-tint nls-journey-sec" data-hs-section>
-    ${head(kicker, title, lead)}
+    ${head(kicker, title, lead, true)}
     <div class="nls-rail nls-rail--petlog" style="--petlog-rail-n:${list.length}" role="group" aria-label="${esc(ariaLabel || kicker)}">${rail}</div>
     <div class="nls-journey">${cardsHtml}</div>
     ${callout(noteText)}
@@ -365,9 +386,9 @@ const storeIcon = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"
 const storePills = (label) =>
   `<div class="pl-actions"><p class="pl-aside">${esc(label)}</p><a class="pl-pill" href="${esc(STORE.ios)}" target="_blank" rel="noopener noreferrer">App Store ${storeIcon}</a><a class="pl-pill" href="${esc(STORE.android)}" target="_blank" rel="noopener noreferrer">Google Play ${storeIcon}</a></div>`;
 
-/** Label/text rows ("Label: text"; a row without a short label spans both columns). */
-const dlRows = (list) =>
-  `<dl class="pl-dl">${list
+/** Label/text rows ("Label: text"; a row without a short label spans both columns). two → two columns on wide screens. */
+const dlRows = (list, two) =>
+  `<dl class="pl-dl${two ? " pl-dl--2" : ""}">${list
     .map((s) => {
       const [k, v] = splitLabel(s);
       return k ? `<div><dt>${esc(k)}</dt><dd><p class="pl-p">${esc(v)}</p></dd></div>` : `<div class="is-span"><dd><p class="pl-p">${esc(v)}</p></dd></div>`;
@@ -378,33 +399,43 @@ const dlRows = (list) =>
 const faqList = (list) =>
   `<div class="pl-faq">${list.map(([q, a]) => `<details><summary>${esc(q)}</summary><p class="pl-p">${esc(a)}</p></details>`).join("")}</div>`;
 
-/** Two status panels side by side (current vs later). */
+/** Status panel (current vs later). */
 const panel = (kind, icon, title, body, chips, line) =>
   `<div class="pl-panel${kind ? ` pl-panel--${kind}` : ""}"><div class="pl-panel__body"><div class="pl-panel__head">${ic(icon)}<h3>${esc(title)}</h3></div><p class="pl-p">${esc(body)}</p></div>${chipList(chips, line)}</div>`;
+
+/** Status pill used inside a status column. */
+const stage = (now, label) => ({ html: `<span class="pl-stage${now ? " pl-stage--now" : ""}">${esc(label)}</span>` });
 
 function overviewPage(lang) {
   const c = OVERVIEW[bl(lang)];
   const L = bl(lang);
+  const X = V3.overview[L];
   const D = 1;
   const journey = c.journey.items.map((it) => ({ id: it.id, n: it.n, tab: it.tab, mark: it.tab, label: it.label, name: it.name, lead: it.lead, chips: it.topics }));
-  const values = `<h3 class="pl-subhead">${esc(c.mission.valuesTitle)}</h3><dl class="pl-vlist">${c.mission.body
+  const values = `<h3 class="pl-subhead">${esc(c.mission.valuesTitle)}</h3><dl class="pl-values">${c.mission.body
     .map((s) => {
       const [k, tag, body] = splitValue(s);
-      return `<div><dt lang="en">${esc(k)}</dt><dd><strong>${esc(tag)}</strong>${body ? `<p class="pl-p">${esc(body)}</p>` : ""}</dd></div>`;
+      return `<div><dt lang="en">${esc(k)}</dt><dd><strong>${esc(tag)}</strong>${body ? `<p class="pl-p pl-sm">${esc(body)}</p>` : ""}</dd></div>`;
     })
     .join("")}</dl>`;
-  const problem = `<div class="pl-pairs">${c.problem.items
+  const problem = `<div class="pl-pcards">${c.problem.items
     .map(
-      (x) => `<article class="pl-pair">
-        <div class="pl-pair__q"><p class="pl-label" lang="en">${esc(x.label)}</p><h3>${esc(x.name)}</h3><p class="pl-p">${esc(x.lead)}</p></div>
-        <div class="pl-pair__a"><b>${svg("check")}${esc(c.problem.pointLabel)}</b><p class="pl-p">${esc(x.solve)}</p></div>
+      (x) => `<article class="pl-pcard">
+        <div class="pl-pcard__q"><div class="pl-card__top">${ic(x.icon)}<span class="pl-n">${esc(x.n)}</span></div><p class="pl-label" lang="en">${esc(x.label)}</p><h3>${esc(x.name)}</h3><p class="pl-p">${esc(x.lead)}</p></div>
+        <div class="pl-pcard__a"><b>${svg("check")}${esc(c.problem.pointLabel)}</b><p class="pl-p">${esc(x.solve)}</p></div>
       </article>`
     )
     .join("")}</div>`;
-  const scenes = `<div class="pl-grid pl-grid--2">${c.scenes.items
+  const users = xtable(
+    X.usersHead,
+    c.users.items.map(([t, d, k]) => [{ html: `<span class="pl-xt__name">${ic(k)}<span>${esc(bare(t))}</span></span>` }, d, stage(!isLater(t), isLater(t) ? X.usersLater : X.usersNow)]),
+    "pl-xt--users"
+  );
+  const sceneList = [...c.scenes.items, ...X.scenes];
+  const scenes = `<div class="pl-grid pl-grid--3 pl-snap">${sceneList
     .map(
       (x) => `<article class="pl-card">
-        <div class="pl-card__top">${ic(x.icon)}</div>
+        <div class="pl-card__top">${ic(x.icon)}<span class="pl-n">${esc(x.n)}</span></div>
         <h3>${esc(x.name)}</h3><p class="pl-p">${esc(x.lead)}</p>
         <dl class="pl-nn"><div><dt><i aria-hidden="true"></i>${esc(c.scenes.nowLabel)}</dt><dd>${esc(x.now)}</dd></div><div class="is-next"><dt><i aria-hidden="true"></i>${esc(c.scenes.nextLabel)}</dt><dd>${esc(x.next)}</dd></div></dl>
       </article>`
@@ -421,14 +452,11 @@ function overviewPage(lang) {
       </article></li>`
     )
     .join("")}</ul>`;
-  const diff = `<div class="pl-compare">${c.diff.items
-    .map(
-      (x) => `<article class="pl-cmp">
-        <div class="pl-cmp__what">${ic(x.icon)}<div><h3>${esc(x.name)}</h3><p class="pl-p">${esc(x.lead)}</p></div></div>
-        <div class="pl-cmp__how"><b>${esc(c.diff.pointLabel)}</b><p class="pl-p">${esc(x.point)}</p></div>
-      </article>`
-    )
-    .join("")}</div>`;
+  const diff = xtable(
+    X.diffHead,
+    c.diff.items.map((x) => [{ html: `<span class="pl-xt__name">${ic(x.icon)}<span>${esc(x.name)}</span></span>` }, x.lead, { html: `<span class="pl-xt__strong">${esc(x.point)}</span>` }]),
+    "pl-xt--cmp"
+  );
   const beyond = `<ol class="pl-ladder" tabindex="0" aria-label="${esc(c.beyond.kicker)}">${c.beyond.items
     .map(
       (x, i) => `<li>${ic(BEYOND_ICONS[i])}<div class="pl-row__tag"><span class="pl-n">${esc(x.n)}</span><p class="pl-label" lang="en">${esc(x.label)}</p></div><h3>${esc(x.name)}</h3><p class="pl-p pl-sm">${esc(x.lead)}</p>${chipList(x.chips)}</li>`
@@ -440,21 +468,19 @@ function overviewPage(lang) {
   return wrap(`${hero({ wordmark: "PETLOG", titleHtml: c.heroTitle, lead: c.heroLead, main: [`${c.ctaMain} →`, "#nls-mission"], sub: [c.ctaSub, rel(D, "petlog/platform/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "overview" })}
   <div class="nls__wrap">
-    <div id="nls-mission" class="nls-block" data-hs-section>
-      ${head(c.mission.kicker, c.mission.title, c.mission.lead)}
-      ${values}
-    </div>
+    ${section("nls-mission", { kicker: c.mission.kicker, title: c.mission.title, lead: c.mission.lead, body: `${facts(X.factsTitle, X.facts, X.factsNote)}${values}` })}
     ${section("nls-problem", { kicker: c.problem.kicker, title: c.problem.title, lead: c.problem.lead, tint: true, body: problem })}
-    ${section("nls-about", { kicker: c.about.kicker, title: c.about.title, lead: c.about.lead, body: stepList(c.about.steps, true) })}
+    ${section("nls-about", { kicker: c.about.kicker, title: c.about.title, lead: c.about.lead, accent: true, body: `${stepList(c.about.steps, true)}<p class="pl-band-note">${esc(X.bandNote)}</p>` })}
     ${railBlock("nls-journey", { kicker: c.journey.kicker, title: c.journey.title, lead: c.journey.lead, items: journey })}
-    ${splitSection("nls-users", { kicker: c.users.kicker, title: c.users.title, lead: c.users.lead, body: people(c.users.items) })}
+    ${section("nls-stages", { kicker: X.stages.kicker, title: X.stages.title, lead: X.stages.lead, body: xtable(X.stages.head, X.stages.rows.map(([a, b, cc, d]) => [a, b, { html: `<span class="pl-xt__en">${esc(cc)}</span>` }, d]), "pl-xt--stages") })}
+    ${section("nls-users", { kicker: c.users.kicker, title: c.users.title, lead: c.users.lead, body: users })}
     ${section("nls-scenes", { kicker: c.scenes.kicker, title: c.scenes.title, lead: c.scenes.lead, tint: true, body: scenes })}
     ${section("nls-core", { kicker: c.core.kicker, title: c.core.title, lead: c.core.lead, body: `${core}${storePills(c.core.appLabel)}` })}
     ${section("nls-diff", { kicker: c.diff.kicker, title: c.diff.title, lead: c.diff.lead, tint: true, body: diff })}
     ${section("nls-beyond", { kicker: c.beyond.kicker, title: c.beyond.title, lead: c.beyond.lead, noteText: NOTICE[L], body: beyond })}
-    ${section("nls-trust", { kicker: c.trust.kicker, title: c.trust.title, tint: true, body: trust })}
-    ${splitSection("nls-newon", { kicker: c.newon.kicker, title: c.newon.title, lead: c.newon.lead, body: directory(fam, D, true) })}
-    ${splitSection("nls-global", { kicker: g.kicker, title: g.title, lead: g.lead, tint: true, body: people(g.items), aside: `<div class="pl-actions">${more([g.cta, "petlog/business/#nls-global"], D)}</div>` })}
+    ${section("nls-trust", { kicker: c.trust.kicker, title: c.trust.title, tint: true, body: `${trust}${sub("", X.notTitle, "", checks(X.not, true), "pl-sub--flat")}` })}
+    ${section("nls-newon", { kicker: c.newon.kicker, title: c.newon.title, lead: c.newon.lead, body: directory(fam, D, 3) })}
+    ${section("nls-global", { kicker: g.kicker, title: g.title, lead: g.lead, tint: true, body: `${items("cols", g.items.map(([name, lead, icon], i) => ({ n: pad2(i + 1), icon, name, lead })), D, "pl-cols--3")}<div class="pl-actions">${more([g.cta, "petlog/business/#nls-global"], D)}</div>` })}
     ${menuBlock(lang, D, "overview")}
     ${closeBlock({ ...c.close, main: [c.close.ctaMain, "petlog/platform/"], sub: [c.close.ctaSub, "petlog/contact/"] }, D)}
   </div>`);
@@ -463,6 +489,7 @@ function overviewPage(lang) {
 function platformPage(lang) {
   const m = PLATFORM.meta[bl(lang)];
   const L = bl(lang);
+  const X = V3.platform[L];
   const D = 2;
   const card = (idx) => {
     const it = PLATFORM.items[idx];
@@ -473,7 +500,7 @@ function platformPage(lang) {
       icon: AREA_ICONS[idx],
       name: it.name[L],
       lead: it.lead[L],
-      points: [[m.labels.users, it.users[L]], [m.labels.connect, it.connect[L]]],
+      points: [[m.labels.users, it.users[L]], [m.labels.connect, it.connect[L]], [X.planLabel, X.plan[idx]]],
       chips: it.f[L],
       link,
       anchor: it.label.toLowerCase().replace(/[^a-z]+/g, "-").replace(/^-|-$/g, ""),
@@ -484,19 +511,28 @@ function platformPage(lang) {
     records: ["row", "", false],
     services: ["grid", "pl-grid--bento", true],
     community: ["cols", "pl-cols--3", false],
-    tech: ["row", "", true],
-    welfare: ["grid", "pl-grid--2 pl-grid--odd", false],
+    tech: ["row", "pl-rows--icon", true],
+    welfare: ["grid", "pl-grid--3", false],
+  };
+  const ai = X.ai;
+  const find = X.find;
+  const extra = {
+    tech: sub(ai.kicker, ai.title, ai.lead, xtable(ai.head, ai.rows.map(([k, v]) => [{ html: `<span lang="en">${esc(k)}</span>` }, v]), "pl-xt--2 pl-xt--split")),
+    welfare: sub(find.kicker, find.title, find.lead, xtable(find.head, find.rows, "pl-xt--2 pl-xt--split")),
   };
   const groups = m.groups
     .map((g) => {
       const [kind, cls, tint] = LAYOUT[g.id] || ["grid", "pl-grid--3", false];
-      return section(`nls-${g.id}`, { kicker: g.kicker, title: g.title, lead: g.lead, tint, body: items(kind, g.items.map(card), D, cls) });
+      return section(`nls-${g.id}`, { kicker: g.kicker, title: g.title, lead: g.lead, tint, body: `${items(kind, g.items.map(card), D, cls)}${extra[g.id] || ""}` });
     })
     .join("\n");
   const KIND = { now: "now", dev: "", plan: "next", review: "next" };
   const legend = `<div class="pl-board pl-board--table">${m.legend
     .map((p) => panel(KIND[p.kind], p.icon, p.title, p.body, p.areas.map((no) => `${no} ${PLATFORM.items[Number(no) - 1].name[L]}`), p.kind === "plan" || p.kind === "review"))
-    .join("")}</div>`;
+    .join("")}</div><p class="pl-fine">${esc(X.legendExtra)}</p>`;
+  const tabs = `<ol class="pl-tabs5">${X.tabs.items
+    .map(([n, name, en, d]) => `<li><span class="pl-n">${esc(n)}</span><h3>${esc(name)}</h3>${name !== en ? `<p class="pl-label" lang="en">${esc(en)}</p>` : ""}<p class="pl-p pl-sm">${esc(d)}</p></li>`)
+    .join("")}</ol>`;
   const scen = m.scenarios;
   const scenarios = scen.items.map((it) => ({ id: it.id, n: it.n, tab: it.tab, mark: it.tab, label: it.label, name: it.name, lead: it.lead, chips: it.chips }));
   const roles = `<dl class="pl-roles">${m.roles.items
@@ -504,19 +540,25 @@ function platformPage(lang) {
     .join("")}</dl>`;
   const close = { ...m.close, main: [m.close.ctaMain, "petlog/business/"], sub: [m.close.ctaSub, STORE.ios] };
   const gp = GLOBAL.platform[L];
-  const globalBody = `${items("cols", gp.items.map(([label, name, lead, chips, icon], i) => ({ n: pad2(i + 1), label, icon, name, lead, chips })), D, "pl-cols--3")}<div class="pl-sub">${head(gp.localKicker, gp.localTitle, "")}${dlRows(gp.local)}</div>`;
+  const globalBody = `${items("cols", gp.items.map(([label, name, lead, chips, icon], i) => ({ n: pad2(i + 1), label, icon, name, lead, chips })), D, "pl-cols--3")}${sub(gp.localKicker, gp.localTitle, "", dlRows(gp.local, true))}`;
+  const appFaq = `<div id="nls-app" class="nls-block nls-block--band pl-tint" data-hs-section>
+    <div class="pl-duo pl-duo--app">
+      <div class="pl-duo__a">${head(m.app.kicker, m.app.title, m.app.lead)}${phases(m.app.steps, true)}${storePills(m.app.storeLabel)}</div>
+      <div class="pl-duo__b" id="nls-faq">${head(m.faq.kicker, m.faq.title, "")}${faqList(m.faq.items)}</div>
+    </div>
+  </div>`;
   return wrap(`${hero({ wordmark: "Platform", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "18개 서비스 보기 ↓" : "See 18 services ↓", "#nls-records"], sub: [lang === "ko" ? "PETLOG 소개" : "About PETLOG", rel(D, "petlog/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "platform" })}
   <div class="nls__wrap">
     ${section("nls-legend", { kicker: m.legendKicker, title: m.legendTitle, lead: m.legendLead, noteText: NOTICE[L], body: legend })}
+    ${section("nls-tabs", { kicker: X.tabs.kicker, title: X.tabs.title, lead: X.tabs.lead, tint: true, body: tabs })}
     ${groups}
-    ${section("nls-global", { kicker: gp.kicker, title: gp.title, lead: gp.lead, body: globalBody })}
+    ${section("nls-global", { kicker: gp.kicker, title: gp.title, lead: gp.lead, tint: true, body: globalBody })}
     ${railBlock("nls-scenarios", { kicker: scen.kicker, title: scen.title, lead: scen.lead, items: scenarios })}
-    ${splitSection("nls-roles", { kicker: m.roles.kicker, title: m.roles.title, lead: m.roles.lead, body: roles })}
-    ${section("nls-flow", { kicker: m.flow.kicker, title: m.flow.title, lead: m.flow.lead, tint: true, body: stepList(m.flow.steps) })}
-    ${splitSection("nls-privacy", { kicker: m.privacy.kicker, title: m.privacy.title, body: checks(m.privacy.items) })}
-    ${section("nls-app", { kicker: m.app.kicker, title: m.app.title, lead: m.app.lead, tint: true, body: `<div class="pl-start">${stepList(m.app.steps)}${storePills(m.app.storeLabel)}</div>` })}
-    ${splitSection("nls-faq", { kicker: m.faq.kicker, title: m.faq.title, body: faqList(m.faq.items) })}
+    ${section("nls-roles", { kicker: m.roles.kicker, title: m.roles.title, lead: m.roles.lead, body: roles })}
+    ${section("nls-flow", { kicker: m.flow.kicker, title: m.flow.title, lead: m.flow.lead, accent: true, body: stepList(m.flow.steps) })}
+    ${section("nls-privacy", { kicker: m.privacy.kicker, title: m.privacy.title, body: checks(m.privacy.items, true) })}
+    ${appFaq}
     ${menuBlock(lang, D, "platform")}
     ${closeBlock(close, D)}
   </div>`);
@@ -525,6 +567,7 @@ function platformPage(lang) {
 function businessPage(lang) {
   const m = BUSINESS.meta[bl(lang)];
   const L = bl(lang);
+  const X = V3.business[L];
   const D = 2;
   const line = (no) => BUSINESS.lines.find((x) => x.no === no);
   const rail = BUSINESS.groups.map((g, i) => ({ id: g.id, n: pad2(i + 1), tab: g.tab, mark: pad2(g.lines.length), label: g.label, name: g[L], lead: L === "ko" ? g.koLead : g.enLead, chips: g.lines.map((no) => `${no} ${line(no).name[L]}`) }));
@@ -546,18 +589,30 @@ function businessPage(lang) {
     };
   };
   const sp = m.subPanel;
-  const subPanel = `<div class="pl-sub">${head(sp.kicker, sp.title, sp.lead)}<div class="pl-board pl-board--pair">
+  const subPanel = sub(
+    sp.kicker,
+    sp.title,
+    sp.lead,
+    `<div class="pl-board pl-board--pair">
       ${panel("now", "phone", sp.now[0], sp.now[1], sp.now[2])}
-      ${panel("next", "sprout", sp.next[0], sp.next[1], sp.next[2], true)}
-    </div></div>`;
-  const saasPanel = `<div class="pl-sub">${head(m.saasKicker, m.saasTitle, m.saasLead)}<ul class="pl-products">${m.saas
-    .map(([t, d]) => `<li><b lang="en">${esc(t)}</b><p class="pl-p pl-sm">${esc(d)}</p></li>`)
-    .join("")}</ul></div>`;
+      <div class="pl-panel pl-panel--next"><div class="pl-panel__body"><div class="pl-panel__head">${ic("sprout")}<h3>${esc(sp.next[0])}</h3></div><p class="pl-p">${esc(sp.next[1])}</p></div>${xtable(X.tiersHead, X.tiers.map(([k, v]) => [{ html: `<span lang="en">${esc(k)}</span>` }, v]), "pl-xt--2 pl-xt--mini")}<p class="pl-fine">${esc(X.tiersNote)}</p></div>
+    </div>`
+  );
+  const saasPanel = sub(
+    m.saasKicker,
+    m.saasTitle,
+    m.saasLead,
+    `<ul class="pl-products">${m.saas.map(([t, d]) => `<li><b lang="en">${esc(t)}</b><p class="pl-p pl-sm">${esc(d)}</p></li>`).join("")}</ul>
+    <div class="pl-duo pl-duo--even">
+      <div><h4 class="pl-minihead">${esc(X.saasTargetsTitle)}</h4>${xtable(X.saasTargetsHead, X.saasTargets, "pl-xt--2 pl-xt--mini")}</div>
+      <div><h4 class="pl-minihead">${esc(X.saasTiersTitle)}</h4>${xtable([X.tiersHead[0], X.tiersHead[1]], X.saasTiers.map(([k, v]) => [{ html: `<span lang="en">${esc(k)}</span>` }, v]), "pl-xt--2 pl-xt--mini")}</div>
+    </div>`
+  );
   const LAYOUT = {
     subscription: ["row", "", false],
     booking: ["grid", "pl-grid--2", true],
     commerce: ["cols", "", false],
-    lifestyle: ["grid", "pl-grid--3 pl-grid--odd", true],
+    lifestyle: ["grid", "pl-grid--3", true],
     enterprise: ["row", "", false],
   };
   const groupSections = BUSINESS.groups
@@ -569,38 +624,48 @@ function businessPage(lang) {
       return section(`nls-group-${g.id}`, { kicker: `${pad2(gi + 1)} · ${g.label.toUpperCase()}`, title: g[L], lead: L === "ko" ? g.koLead : g.enLead, tint, body });
     })
     .join("\n");
-  const models = `<dl class="pl-dl pl-dl--code">${m.structure
+  const models = `<dl class="pl-models">${m.structure
     .map(([k, v]) => {
       const i = v.indexOf(" — ");
-      return `<div><dt lang="en">${esc(k)}</dt><dd>${i > 0 ? `<b>${esc(v.slice(0, i))}</b><p class="pl-p">${esc(v.slice(i + 3))}</p>` : `<p class="pl-p">${esc(v)}</p>`}</dd></div>`;
+      return `<div><dt lang="en">${esc(k)}</dt><dd>${i > 0 ? `<b>${esc(v.slice(0, i))}</b><p class="pl-p pl-sm">${esc(v.slice(i + 3))}</p>` : `<p class="pl-p pl-sm">${esc(v)}</p>`}</dd></div>`;
     })
     .join("")}</dl>`;
   const hd = m.revenueHead;
   const STAGE = { now: " pl-stage--now", plan: "", review: " pl-stage--review" };
   const revenue = `<ul class="pl-table"><li class="pl-table__hd" aria-hidden="true"><span>${esc(hd[0])}</span><span>${esc(hd[1])}</span><span style="justify-self:end">${esc(hd[2])}</span></li>${BUSINESS.lines
     .map((x) => `<li><span class="pl-table__name"><span class="pl-n">${esc(x.no)}</span>${esc(x.name[L])}</span><p class="pl-p">${esc(x.sum[L])}</p><span class="pl-stage${STAGE[x.status] || ""}">${esc(m.statusLabel[x.status])}</span></li>`)
-    .join("")}</ul>`;
+    .join("")}</ul>${sub("", X.feeTitle, "", checks(X.fee, true), "pl-sub--flat")}`;
   const market = `<ul class="pl-notes">${m.market.map(([t, d, k]) => `<li>${ic(k)}<h3>${esc(t)}</h3><p class="pl-p pl-sm">${esc(d)}</p></li>`).join("")}</ul>`;
-  const legal = dlRows(m.trust);
+  const legal = dlRows(m.trust, true);
   const gb = GLOBAL.business[L];
-  const globalBody = `${stepList(gb.steps.map(([t, d], i) => [pad2(i + 1), t, d]))}<div class="pl-sub">${head(gb.subKicker, gb.subTitle, gb.subLead)}<div class="pl-board pl-board--pair">
+  const globalBody = `${stepList(gb.steps.map(([t, d], i) => [pad2(i + 1), t, d]))}${sub(
+    gb.subKicker,
+    gb.subTitle,
+    gb.subLead,
+    `<div class="pl-board pl-board--pair">
       ${panel("next", "users", gb.customers[0], gb.customers[1], gb.customers[2], true)}
       ${panel("next", "chart", gb.revenue[0], gb.revenue[1], gb.revenue[2], true)}
-    </div></div>`;
+    </div>`
+  )}`;
+  const roadmap = `<div class="pl-duo pl-duo--road">
+      <div><h3 class="pl-subhead">${esc(X.prioTitle)}</h3>${xtable(X.prioHead, X.prio.map(([r, s, goal, p]) => [r, { html: `<b>${esc(s)}</b>` }, goal, { html: `<span class="pl-code" lang="en">${esc(p)}</span>` }]), "pl-xt--prio")}</div>
+      <div><h3 class="pl-subhead">${esc(X.phasesTitle)}</h3>${phases(m.roadmap)}</div>
+    </div>`;
   return wrap(`${hero({ wordmark: "Business", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "20개 사업 분야 보기 ↓" : "See 20 areas ↓", "#nls-groups"], sub: [m.close.ctaMain, rel(D, "petlog/partnerships/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "business" })}
   <div class="nls__wrap">
-    ${splitSection("nls-structure", { kicker: m.structureKicker, title: m.structureTitle, lead: m.structureLead, noteText: NOTICE[L], body: models })}
+    ${section("nls-structure", { kicker: m.structureKicker, title: m.structureTitle, lead: m.structureLead, noteText: NOTICE[L], body: models })}
     ${railBlock("nls-groups", { kicker: m.groupsKicker, title: m.groupsTitle, lead: m.groupsLead, items: rail })}
     ${groupSections}
     ${section("nls-revenue", { kicker: m.revenueKicker, title: m.revenueTitle, lead: m.revenueLead, tint: true, body: revenue })}
-    ${splitSection("nls-public", { kicker: m.publicKicker, title: m.publicTitle, lead: m.publicLead, body: people(m.publicItems) })}
-    ${section("nls-market", { kicker: m.marketKicker, title: m.marketTitle, lead: m.marketLead, tint: true, body: market })}
-    ${section("nls-diff", { kicker: m.diffKicker, title: m.diffTitle, lead: m.diffLead, body: items("cols", m.diff.map(([t, d, k]) => ({ icon: k, name: t, lead: d })), D, "pl-cols--4") })}
-    ${section("nls-priority", { kicker: m.gtmKicker, title: m.gtmTitle, lead: m.gtmLead, tint: true, body: stepList(m.gtm.map(([t, d], i) => [pad2(i + 1), t, d]), true) })}
-    ${splitSection("nls-roadmap", { kicker: m.roadmapKicker, title: m.roadmapTitle, lead: m.roadmapNote, body: phases(m.roadmap) })}
+    ${section("nls-public", { kicker: m.publicKicker, title: m.publicTitle, lead: m.publicLead, accent: true, body: people(m.publicItems, 3) })}
+    ${section("nls-market", { kicker: m.marketKicker, title: m.marketTitle, lead: m.marketLead, body: market })}
+    ${section("nls-links", { kicker: X.links.kicker, title: X.links.title, lead: X.links.lead, body: xtable(X.links.head, X.links.rows.map(([a, b, cc]) => [{ html: `<span lang="en">${esc(a)}</span>` }, b, cc]), "pl-xt--links") })}
+    ${section("nls-diff", { kicker: m.diffKicker, title: m.diffTitle, lead: m.diffLead, tint: true, body: items("cols", m.diff.map(([t, d, k]) => ({ icon: k, name: t, lead: d })), D, "pl-cols--4") })}
+    ${section("nls-priority", { kicker: m.gtmKicker, title: m.gtmTitle, lead: m.gtmLead, body: `${stepList(m.gtm.map(([t, d], i) => [pad2(i + 1), t, d]), true)}${sub("", X.measure.title, "", xtable(X.measure.head, X.measure.rows, "pl-xt--2"), "pl-sub--flat")}` })}
+    ${section("nls-roadmap", { kicker: m.roadmapKicker, title: m.roadmapTitle, lead: m.roadmapNote, tint: true, body: roadmap })}
     ${section("nls-global", { kicker: gb.kicker, title: gb.title, lead: gb.lead, body: globalBody })}
-    ${splitSection("nls-trust", { kicker: m.trustKicker, title: m.trustTitle, tint: true, body: legal })}
+    ${section("nls-trust", { kicker: m.trustKicker, title: m.trustTitle, tint: true, body: legal })}
     ${menuBlock(lang, D, "business")}
     ${closeBlock({ ...m.close, main: [m.close.ctaMain, "petlog/partnerships/"], sub: [m.close.ctaSub, "petlog/contact/"] }, D)}
   </div>`);
@@ -609,36 +674,43 @@ function businessPage(lang) {
 function partnershipsPage(lang) {
   const m = PARTNERS.meta[bl(lang)];
   const L = bl(lang);
+  const X = V3.partners[L];
   const D = 2;
   const card = (no) => {
     const p = PARTNERS.items.find((x) => x.no === no);
     return { n: p.no, icon: PARTNER_ICONS[p.no] || iconFor(p.name.en), name: p.name[L], lead: p.value[L], points: [[m.labels.scope, p.scope[L]], [m.labels.how, p.how[L]], [m.labels.terms, p.terms[L]]], link: [m.labels.cta, CONTACT_HREF(p.type)], anchor: `partner-${p.no}` };
   };
-  const LAYOUT = { care: ["grid", "pl-grid--3", true], brand: ["row", "", false], public: ["grid", "pl-grid--2 pl-grid--odd", true] };
+  const LAYOUT = { care: ["grid", "pl-grid--3", true], brand: ["row", "pl-rows--icon", false], public: ["grid", "pl-grid--3 pl-grid--odd", true] };
   const groups = m.groups
     .map((g) => {
       const [kind, cls, tint] = LAYOUT[g.id] || ["grid", "pl-grid--3", false];
       return section(`nls-p-${g.id}`, { kicker: g.kicker, title: g.title, lead: g.lead, tint, body: items(kind, g.items.map(card), D, cls) });
     })
     .join("\n");
-  const offer = m.offer.map((o) => ({ name: o.name, lead: o.lead, chips: o.chips, icon: iconFor(PARTNERS.meta.en.offer.find((e) => e.n === o.n).name) }));
+  const offer = m.offer.map((o) => ({ n: o.n, name: o.name, lead: o.lead, chips: o.chips, icon: iconFor(PARTNERS.meta.en.offer.find((e) => e.n === o.n).name) }));
   const [lw, lr, lp] = m.scenarioLabels;
-  const scenarios = m.scenarios.map((x) => ({ icon: x.icon, name: x.name, lead: x.lead, points: [[lw, x.who], [lr, x.role], [lp, x.pre]] }));
-  const poc = m.poc.map(([t, d], i) => [`STEP ${pad2(i + 1)}`, t, d]);
+  const scenarios = m.scenarios.map((x) => ({ n: x.n, icon: x.icon, name: x.name, lead: x.lead, points: [[lw, x.who], [lr, x.role], [lp, x.pre]] }));
   const gq = GLOBAL.partners[L];
   const globalBody = `${items("cols", gq.items.map(([name, lead, field, icon], i) => ({ n: pad2(i + 1), icon, name, lead, points: [[gq.fieldLabel, field]] })), D, "pl-cols--4")}<div class="pl-actions">${more([gq.cta, GLOBAL_CONTACT_HREF], D)}</div>`;
+  const compare = xtable(X.cmpHead, X.cmp, "pl-xt--cmp3");
+  const principles = `<div class="pl-duo pl-duo--even">
+      <div>${head(m.principlesKicker, m.principlesTitle, "")}${checks(m.principles)}</div>
+      <div class="pl-duo__b">${head("CHECKLIST", X.prepTitle, "")}${checks(X.prep)}</div>
+    </div>`;
   return wrap(`${hero({ wordmark: "Partnerships", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "15개 협력 분야 ↓" : "15 partner types ↓", "#nls-p-care"], sub: [m.labels.cta, rel(D, "petlog/contact/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "partnerships" })}
   <div class="nls__wrap">
     ${section("nls-offer", { kicker: m.offerKicker, title: m.offerTitle, lead: m.offerLead, body: items("cols", offer, D, "pl-cols--4") })}
     ${groups}
-    ${section("nls-global", { kicker: gq.kicker, title: gq.title, lead: gq.lead, body: globalBody })}
-    ${section("nls-scenarios", { kicker: m.scenariosKicker, title: m.scenariosTitle, lead: m.scenariosLead, body: items("grid", scenarios, D, "pl-grid--2") })}
-    ${splitSection("nls-poc", { kicker: m.pocKicker, title: m.pocTitle, lead: m.pocLead, tint: true, body: phases(poc, true) })}
+    ${section("nls-compare", { kicker: X.cmpKicker, title: X.cmpTitle, lead: X.cmpLead, body: compare })}
+    ${section("nls-global", { kicker: gq.kicker, title: gq.title, lead: gq.lead, tint: true, body: globalBody })}
+    ${section("nls-scenarios", { kicker: m.scenariosKicker, title: m.scenariosTitle, lead: m.scenariosLead, body: items("grid", scenarios, D, "pl-grid--2 pl-snap") })}
+    ${section("nls-poc", { kicker: m.pocKicker, title: m.pocTitle, lead: m.pocLead, tint: true, body: stepList(m.poc.map(([t, d], i) => [`STEP ${pad2(i + 1)}`, t, d])) })}
     ${section("nls-data", { kicker: m.dataKicker, title: m.dataTitle, lead: m.dataLead, body: people(m.data, true) })}
-    ${section("nls-joint", { kicker: m.jointKicker, title: m.jointTitle, tint: true, body: items("grid", m.joint.map((x) => ({ icon: x.icon, name: x.name, lead: x.lead })), D, "pl-grid--3 pl-grid--odd") })}
-    ${splitSection("nls-principles", { kicker: m.principlesKicker, title: m.principlesTitle, body: checks(m.principles) })}
-    ${section("nls-process", { kicker: m.processKicker, title: m.processTitle, noteText: m.processNote, tint: true, body: stepList(m.steps.map(([t, d], i) => [pad2(i + 1), t, d])) })}
+    ${section("nls-joint", { kicker: m.jointKicker, title: m.jointTitle, tint: true, body: items("cols", m.joint.map((x) => ({ n: x.n, icon: x.icon, name: x.name, lead: x.lead })), D, "pl-cols--3") })}
+    <div id="nls-principles" class="nls-block" data-hs-section>${principles}</div>
+    ${section("nls-pfaq", { kicker: X.faqKicker, title: X.faqTitle, tint: true, body: faqList(X.faq), extraClass: "pl-faqsec" })}
+    ${section("nls-process", { kicker: m.processKicker, title: m.processTitle, noteText: m.processNote, accent: true, body: stepList(m.steps.map(([t, d], i) => [pad2(i + 1), t, d])) })}
     ${menuBlock(lang, D, "partnerships")}
     ${closeBlock({ ...m.close, main: [m.close.ctaMain, "petlog/contact/"], sub: [m.close.ctaSub, "partnerships/"] }, D)}
   </div>`);
@@ -646,9 +718,17 @@ function partnershipsPage(lang) {
 
 function contactPage(lang) {
   const c = CONTACT[bl(lang)];
+  const X = V3.contact[bl(lang)];
   const D = 2;
   const purposes = c.purposes.map((p) => ({ name: p.name, body: p.body, href: p.href, icon: p.icon }));
-  const list = c.types.map(([key, name, body], i) => ({ n: pad2(i + 1), name, body, href: `petlog/contact/?type=${key}#inquiry`, icon: TYPE_ICONS[key] || "mail" }));
+  const typeTile = (key) => {
+    const i = c.types.findIndex(([k]) => k === key);
+    const [, name, body] = c.types[i];
+    return { n: pad2(i + 1), name, body, href: `petlog/contact/?type=${key}#inquiry`, icon: TYPE_ICONS[key] || "mail" };
+  };
+  const typeGroups = `<div class="pl-tgroups">${X.groups
+    .map(([name, keys]) => `<div class="pl-tgroup"><h3 class="pl-tgroup__h">${esc(name)}</h3>${tiles("pl-tiles--3", keys.map(typeTile), D)}</div>`)
+    .join("")}</div>`;
   const direct = c.direct.map((d) => ({ name: d.name, body: d.body, href: d.href === "ios" ? STORE.ios : d.href === "android" ? STORE.android : d.href }));
   const form = inquiryFormHtml(lang, D, {
     category: "PETLOG",
@@ -658,10 +738,16 @@ function contactPage(lang) {
   return wrap(`${hero({ wordmark: "Contact", titleHtml: c.heroTitle, lead: c.heroLead, main: [lang === "ko" ? "문의하기 ↓" : "Send an inquiry ↓", "#inquiry"], sub: [lang === "ko" ? "PETLOG 소개" : "About PETLOG", rel(D, "petlog/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "contact" })}
   <div class="nls__wrap">
-    ${splitSection("nls-purpose", { kicker: c.purposeKicker, title: c.purposeTitle, lead: c.purposeLead, body: directory(purposes, D) })}
-    ${section("nls-types", { kicker: c.kicker, title: c.listTitle, lead: c.listLead, tint: true, body: tiles("pl-tiles--3", list, D) })}
+    ${section("nls-purpose", { kicker: c.purposeKicker, title: c.purposeTitle, lead: c.purposeLead, body: directory(purposes, D, 2) })}
+    ${section("nls-types", { kicker: c.kicker, title: c.listTitle, lead: c.listLead, tint: true, body: typeGroups })}
     ${section("nls-direct", { kicker: c.directKicker, title: c.directTitle, body: tiles("pl-tiles--4", direct, D) })}
-    ${section("nls-guide", { kicker: c.guideKicker, title: c.guideTitle, tint: true, body: checks(c.guide, true) })}
+    <div id="nls-guide" class="nls-block nls-block--band pl-tint" data-hs-section>
+      <div class="pl-duo pl-duo--guide">
+        <div>${head(X.afterKicker, X.afterTitle, "")}${phases(X.after.map(([t, d], i) => [pad2(i + 1), t, d]), true)}</div>
+        <div class="pl-duo__b">${head(c.guideKicker, c.guideTitle, "")}${checks(c.guide)}</div>
+      </div>
+    </div>
+    ${section("nls-cfaq", { kicker: X.faqKicker, title: X.faqTitle, body: faqList(X.faq), extraClass: "pl-faqsec" })}
   </div>
   <div class="bp-page">${form}</div>
   <div class="nls__wrap">
