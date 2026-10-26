@@ -3029,3 +3029,575 @@ html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babyl
 #lifestage-detail.nls[data-story="babylog"] .bl-tiers + .nls-note { margin-top: 1rem; }
 #lifestage-detail.nls[data-story="babylog"] .bl-dtable--roles tbody th { width: 14%; color: var(--bl-ink); }
 #lifestage-detail.nls[data-story="babylog"] .bl-dtable--roles td:nth-child(2) { width: 32%; color: var(--bl-ink); }
+
+/* ======================================================================================
+ * Design pass v4 (2026-10-26) — owner: "every menu screen high-quality, varied, visually attractive; keep the
+ * first screen". Product-page feel: stronger type contrast, illustrative app screens built in HTML/CSS (labelled
+ * "예시 화면 / Illustrative"), progressive tab sets (models, categories, area groups, partner types), status chips
+ * on the stage board, one dark timeline band (Business), mobile snap rails. White surfaces, outlines, pink as point.
+ * No ornaments, no stat strips, no sticky headings. The hero (.nls-film) and the .fsn menu are untouched.
+ * ==================================================================================== */
+#lifestage-detail.nls[data-story="babylog"] {
+  --bl-shadow: 0 1px 2px rgba(23, 23, 23, 0.04), 0 12px 32px -12px rgba(184, 51, 106, 0.18);
+  --bl-shadow-sm: 0 1px 2px rgba(23, 23, 23, 0.05), 0 6px 18px -10px rgba(23, 23, 23, 0.16);
+}
+:is(html[data-newon-shell-theme="dark"], html[data-theme="dark"]) #lifestage-detail.nls[data-story="babylog"] {
+  --bl-shadow: none;
+  --bl-shadow-sm: none;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec,
+#lifestage-detail.nls[data-story="babylog"] .bl-sec[class*="bl-v-"] {
+  padding-block: clamp(2.5rem, 5.2vw, 4.75rem);
+}
+/* type contrast: larger display titles, a small eyebrow led by a short pink rule */
+#lifestage-detail.nls[data-story="babylog"] .bl-sec > .nls-head .nls-title,
+#lifestage-detail.nls[data-story="babylog"] .bl-sec .bl-intro .nls-title,
+#lifestage-detail.nls[data-story="babylog"] .bl-sec .bl-split .nls-title {
+  font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+  line-height: 1.22;
+  letter-spacing: -0.04em;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec .nls-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec .nls-head > .nls-kicker::before {
+  content: "";
+  flex: none;
+  width: 1.25rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--bl-pt);
+}
+#lifestage-detail.nls[data-story="babylog"] [data-bl-tabs] [role="tabpanel"] { scroll-margin-top: 7rem; }
+#lifestage-detail.nls[data-story="babylog"] [data-bl-tabs] [hidden] { display: none !important; }
+
+/* ---- Illustrative phone screen ------------------------------------------------------------ */
+#lifestage-detail.nls[data-story="babylog"] .bl-mock {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__device {
+  width: min(100%, 20.5rem);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--bl-line-strong);
+  border-radius: 2rem;
+  background: var(--bl-paper);
+  box-shadow: var(--bl-shadow);
+  overflow: hidden;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1.05rem 1.25rem 0.85rem;
+  border-bottom: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__brand {
+  color: var(--bl-ink);
+  font-size: 0.9375rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__chip {
+  padding: 0.15rem 0.55rem;
+  border: 1px solid var(--bl-pt);
+  border-radius: 999px;
+  color: var(--bl-pt-ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__screen {
+  flex: 1;
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__title {
+  margin: 0 0 0.75rem;
+  color: var(--bl-ink);
+  font-size: 1.25rem;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__list li {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-top: 1px solid var(--bl-line);
+  color: var(--bl-ink);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__list li:first-child { border-top: 0; }
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__ico {
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  background: var(--bl-wash-2);
+  color: var(--bl-pt-ink);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__cap {
+  max-width: 20.5rem;
+  color: var(--bl-faint);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  text-align: center;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__tabbar {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-top: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__tab {
+  padding: 0.7rem 0.2rem 0.8rem;
+  border-top: 2px solid transparent;
+  color: var(--bl-faint);
+  font-size: 0.75rem;
+  font-weight: 650;
+  text-align: center;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__tab.is-on { border-top-color: var(--bl-pt); color: var(--bl-pt-ink); }
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__pane { display: none; }
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__pane.is-on { display: block; }
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__chips { display: flex; flex-direction: column; gap: 0.5rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__chips li {
+  padding: 0.8rem 0.95rem;
+  border: 1px solid var(--bl-line);
+  border-radius: 0.9rem;
+  color: var(--bl-ink);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-mock__chips li:first-child { border-color: var(--bl-wash-line); background: var(--bl-wash); }
+#lifestage-detail.nls[data-story="babylog"] .bl-mock--menu .bl-mock__screen { min-height: 17.5rem; }
+
+/* Overview · About: statement + phone */
+#lifestage-detail.nls[data-story="babylog"] .bl-hero2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.25rem;
+  align-items: center;
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-hero2 { grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr); gap: clamp(2.5rem, 5vw, 4.5rem); }
+  #lifestage-detail.nls[data-story="babylog"] .bl-hero2 .bl-intro { display: block; }
+  #lifestage-detail.nls[data-story="babylog"] .bl-hero2 .bl-intro .nls-head { margin-bottom: 1.25rem; }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-hero2 .bl-statement__lead {
+  color: var(--bl-ink);
+  font-size: clamp(1.15rem, 1.6vw, 1.3125rem);
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: -0.02em;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-cols.bl-cols--stack { grid-template-columns: minmax(0, 1fr); max-width: 40rem; gap: 0.75rem; }
+
+/* Overview · Mission: centred editorial head over a hairline 3 × 2 grid */
+#lifestage-detail.nls[data-story="babylog"] .bl-head-center > .nls-head {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center !important;
+  max-width: 44rem !important;
+  margin-inline: auto;
+  text-align: center;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-head-center > .nls-head .nls-lead { margin: 0.8rem auto 0 !important; }
+#lifestage-detail.nls[data-story="babylog"] .bl-head-center .bl-values {
+  gap: 0;
+  border: 1px solid var(--bl-line);
+  border-radius: var(--bl-r-lg);
+  overflow: hidden;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-head-center .bl-val {
+  padding: clamp(1.35rem, 2.4vw, 1.9rem);
+  border: 0;
+  border-top: 1px solid var(--bl-line);
+  margin-top: -1px;
+}
+@media (min-width: 760px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-head-center .bl-val { border-left: 1px solid var(--bl-line); margin-left: -1px; }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-head-center .bl-val .bl-ico-wrap { width: 2.75rem; height: 2.75rem; margin-bottom: 0.9rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-head-center .bl-val h3 { font-size: clamp(1.25rem, 1.8vw, 1.5rem); }
+
+/* Overview · Who: typical moments as a snap rail on phones */
+@media (max-width: 759px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-scenes,
+  #lifestage-detail.nls[data-story="babylog"] .bl-board,
+  #lifestage-detail.nls[data-story="babylog"] .bl-icards--rail {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 82%;
+    grid-template-columns: none;
+    gap: 0.75rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+  }
+  #lifestage-detail.nls[data-story="babylog"] :is(.bl-scenes, .bl-board, .bl-icards--rail) > * { scroll-snap-align: start; }
+}
+
+/* Overview · core experience bento: hover lift, larger lead tiles */
+#lifestage-detail.nls[data-story="babylog"] :is(.bl-bento__item, .bl-icard, .bl-scene, .bl-model, .bl-plat, .bl-grp, .bl-cscard, .bl-biz) {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+@media (hover: hover) {
+  #lifestage-detail.nls[data-story="babylog"] :is(.bl-bento__item, .bl-icard, .bl-scene, .bl-plat, .bl-grp, .bl-cscard):hover {
+    border-color: var(--bl-wash-line);
+    box-shadow: var(--bl-shadow-sm);
+    transform: translateY(-2px);
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-bento__item.is-wide h3 { font-size: clamp(1.25rem, 1.8vw, 1.5rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-bento__item.is-wide p { font-size: 1rem; }
+
+/* Overview · comparison table: the BABYLOG column carries the accent */
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable--cmp td:nth-child(2) strong { color: var(--bl-pt-ink); }
+#lifestage-detail.nls[data-story="babylog"] .bl-dtable--cmp thead th:nth-child(2) { color: var(--bl-pt-ink); }
+@media (min-width: 760px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-dtable--cmp td:nth-child(2) { padding-left: 1rem; border-left: 2px solid var(--bl-wash-line); }
+  #lifestage-detail.nls[data-story="babylog"] .bl-dtable--cmp thead th:nth-child(2) { padding-left: 1rem; }
+}
+
+/* Stage board: status chips (text, not colour alone) + item count */
+#lifestage-detail.nls[data-story="babylog"] .bl-board__t {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom-color: var(--bl-line) !important;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-stage {
+  display: inline-flex;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--bl-line-strong);
+  border-radius: 999px;
+  color: var(--bl-ink);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-board__col[data-stage="now"] .bl-stage { border-color: var(--bl-pt-ink); background: var(--bl-pt-ink); color: #fff; }
+#lifestage-detail.nls[data-story="babylog"] .bl-board__col[data-stage="next"] .bl-stage { border-color: var(--bl-pt); color: var(--bl-pt-ink); }
+#lifestage-detail.nls[data-story="babylog"] .bl-board__col[data-stage="review"] .bl-stage { border-style: dashed; color: var(--bl-muted); }
+#lifestage-detail.nls[data-story="babylog"] .bl-board__count {
+  color: var(--bl-faint);
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-board__col.is-now { background: var(--bl-paper); box-shadow: var(--bl-shadow-sm); }
+
+/* ---- Progressive tab sets (enhanced by inline JS; plain chips + all panels without it) ------- */
+#lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail { margin: 0 0 clamp(1.25rem, 2.4vw, 1.75rem); }
+#lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail .bl-rail__list {
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  border-bottom: 1px solid var(--bl-line);
+  scrollbar-width: none;
+}
+#lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail .bl-rail__list::-webkit-scrollbar { display: none; }
+#lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail .bl-rail__list > li { flex: none; scroll-snap-align: start; }
+#lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail .bl-rail__link {
+  position: relative;
+  min-height: 48px;
+  padding: 0.6rem 1rem 0.75rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--bl-muted);
+  font-weight: 650;
+  white-space: nowrap;
+}
+#lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail .bl-rail__link::after {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 2px;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+#lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail .bl-rail__link:hover { color: var(--bl-ink); background: transparent; }
+#lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail .bl-rail__link[aria-selected="true"] { color: var(--bl-ink); }
+#lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail .bl-rail__link[aria-selected="true"]::after { background: var(--bl-pt); }
+#lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail .bl-rail__link:focus-visible { outline-offset: -2px; }
+
+/* models A–F and categories 01–08: card-like tabs in a grid on wide screens */
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs > :is(.bl-rail--models, .bl-rail--cats) .bl-rail__list {
+    display: grid;
+    gap: 0.6rem;
+    overflow: visible;
+    border-bottom: 0;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail--models .bl-rail__list { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail--cats .bl-rail__list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs > :is(.bl-rail--models, .bl-rail--cats) .bl-rail__link {
+    width: 100%;
+    height: 100%;
+    align-items: flex-start;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-r-sm);
+    white-space: normal;
+    line-height: 1.4;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs > :is(.bl-rail--models, .bl-rail--cats) .bl-rail__link::after { display: none; }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs > :is(.bl-rail--models, .bl-rail--cats) .bl-rail__link:hover { border-color: var(--bl-wash-line); }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs > :is(.bl-rail--models, .bl-rail--cats) .bl-rail__link[aria-selected="true"] {
+    border-color: var(--bl-pt);
+    box-shadow: inset 0 0 0 1px var(--bl-pt);
+  }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-rail--models .bl-rail__link { flex-wrap: wrap; column-gap: 0.5rem; row-gap: 0.1rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-rail--models .bl-rail__link span { letter-spacing: 0; }
+#lifestage-detail.nls[data-story="babylog"] .bl-rail--models .bl-rail__code { font-size: 1.125rem !important; font-weight: 800 !important; }
+#lifestage-detail.nls[data-story="babylog"] .bl-rail--models .bl-rail__en { color: var(--bl-faint) !important; font-size: 0.75rem !important; font-weight: 700 !important; }
+#lifestage-detail.nls[data-story="babylog"] .bl-rail--models .bl-rail__name { color: inherit !important; font-size: 0.9375rem !important; font-weight: 650 !important; }
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail--models .bl-rail__link { flex-direction: column; }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail--models .bl-rail__name { color: var(--bl-ink) !important; }
+}
+
+/* Business · model panel: identity left, the six fields right */
+#lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-biz__list { display: block; margin-top: 0; }
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-model-card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    grid-template-rows: auto auto 1fr;
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    box-shadow: var(--bl-shadow-sm);
+  }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-model-card > .bl-biz__head { grid-column: 1; }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-model-card > .nls-chips { grid-column: 1; align-content: flex-start; }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-model-card > .bl-biz__cta { grid-column: 1; align-self: end; }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-model-card > .bl-dl { grid-column: 2; grid-row: 1 / span 3; margin-top: 0; }
+}
+#lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-model-card .bl-biz__title { font-size: clamp(1.4rem, 2.2vw, 1.85rem); }
+#lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-model-card .bl-biz__code { width: 3.25rem; height: 3.25rem; font-size: 1.5rem; }
+
+/* Business · categories as tabs: the panel keeps its side (method, revenue, rules) + group cards */
+#lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-cats > .bl-cat { margin-top: 0; padding-top: clamp(1.25rem, 2.4vw, 1.75rem); border-top: 0; }
+#lifestage-detail.nls[data-story="babylog"] .bl-rail--cats .bl-rail__link span { min-width: 1.5rem; }
+
+/* Platform · area groups as tabs */
+#lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-scr { margin-top: 0; border-top: 0; }
+#lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-scr__grp { padding-top: 0.5rem; border-top: 0; }
+@media (min-width: 960px) {
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-scr__grp { grid-template-columns: minmax(0, 1fr); }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-scr__label { display: none; }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-scr__list { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(1.25rem, 2.4vw, 2rem); }
+}
+@media (min-width: 760px) and (max-width: 959px) {
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-scr__label { display: none; }
+}
+
+/* Platform · menu proposal: phone with bottom tabs + the five menus as a selectable list */
+#lifestage-detail.nls[data-story="babylog"] .bl-menu__split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-menu__split { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(2rem, 4vw, 3.5rem); }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-menu .bl-tabs {
+  display: block;
+  overflow: visible;
+  border-radius: var(--bl-r-lg);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-menu .bl-tabs__item {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-left: 0;
+  border-top: 1px solid var(--bl-wash-line);
+  box-shadow: none;
+  cursor: default;
+  transition: background 0.2s ease;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-menu .bl-tabs__item:first-child { border-top: 0; box-shadow: none; }
+#lifestage-detail.nls[data-story="babylog"] .bl-menu .bl-tabs__item.is-on { box-shadow: inset 3px 0 0 var(--bl-pt); }
+#lifestage-detail.nls[data-story="babylog"] .bl-tabs__n { color: var(--bl-pt-ink); font-size: 0.875rem; font-weight: 750; line-height: 1.6; }
+#lifestage-detail.nls[data-story="babylog"] .bl-menu .bl-tabs__item p { margin-top: 0.2rem; }
+
+/* Business phases · Partnerships process: timeline (real sequences) */
+#lifestage-detail.nls[data-story="babylog"] .bl-steps--timeline .bl-steps__item {
+  position: relative;
+  padding-top: 1.4rem;
+  border-top-width: 2px;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-steps--timeline .bl-steps__n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  height: 1.75rem;
+  margin-bottom: 0.85rem;
+  padding: 0 0.6rem;
+  border: 1px solid var(--bl-pt);
+  border-radius: 999px;
+  font-size: 0.8125rem;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-steps--timeline .bl-steps__item:first-child .bl-steps__n { background: var(--bl-pt-ink); border-color: var(--bl-pt-ink); color: #fff; }
+
+/* dark full-bleed band (Business phases) */
+#lifestage-detail.nls[data-story="babylog"] .bl-sec.bl-ink {
+  background: #0b0b0b;
+  border-top: 0;
+  color: #f5f5f5;
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-sec.bl-ink + .bl-sec { border-top-color: transparent; }
+#lifestage-detail.nls[data-story="babylog"] .bl-ink :is(.nls-title, h3) { color: #fff; }
+#lifestage-detail.nls[data-story="babylog"] .bl-ink .nls-kicker,
+#lifestage-detail.nls[data-story="babylog"] .bl-ink .bl-steps__n { color: #f49ab8; }
+#lifestage-detail.nls[data-story="babylog"] .bl-ink .nls-head > .nls-kicker::before { background: #ee7fa3; }
+#lifestage-detail.nls[data-story="babylog"] .bl-ink :is(.nls-lead, .bl-steps__item p:last-child) { color: #cfcfcf; }
+#lifestage-detail.nls[data-story="babylog"] .bl-ink .nls-note { color: #a8a8a8; }
+#lifestage-detail.nls[data-story="babylog"] .bl-ink .bl-steps__item { border-top-color: rgba(255, 255, 255, 0.28); }
+#lifestage-detail.nls[data-story="babylog"] .bl-ink .bl-steps__item:first-child { border-top-color: #ee7fa3; }
+#lifestage-detail.nls[data-story="babylog"] .bl-ink .bl-steps--timeline .bl-steps__n { border-color: rgba(244, 154, 184, 0.7); }
+#lifestage-detail.nls[data-story="babylog"] .bl-ink .bl-steps--timeline .bl-steps__item:first-child .bl-steps__n { background: #f49ab8; border-color: #f49ab8; color: #0a0a0a; }
+
+/* Partnerships · type panel: identity + related areas + one inquiry button left, terms right */
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-pcard {
+    display: grid;
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+    grid-template-rows: auto auto 1fr;
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    box-shadow: var(--bl-shadow-sm);
+  }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-pcard > .bl-biz__head { grid-column: 1; }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-pcard > .bl-relarea { grid-column: 1; }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-pcard > .bl-biz__cta { grid-column: 1; align-self: end; }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-pcard > .bl-dl { grid-column: 2; grid-row: 1 / span 3; margin-top: 0; }
+}
+#lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-pcard .bl-biz__head { align-items: flex-start; flex-direction: column; gap: 0.9rem; }
+#lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-pcard .bl-biz__title { font-size: clamp(1.4rem, 2.2vw, 1.85rem); }
+#lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-pcard .bl-ico-wrap { width: 3.25rem; height: 3.25rem; }
+#lifestage-detail.nls[data-story="babylog"] .is-tabs .bl-pcard .bl-ico-wrap .bl-ico { width: 1.6rem; height: 1.6rem; }
+
+/* Partnerships · child-safety partner cards: snap rail on phones */
+@media (max-width: 759px) {
+  #lifestage-detail.nls[data-story="babylog"] #bl-cs-partners .bl-biz__list--3 {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 86%;
+    grid-template-columns: none;
+    gap: 0.75rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.5rem;
+  }
+  #lifestage-detail.nls[data-story="babylog"] #bl-cs-partners .bl-biz__list--3 > * { scroll-snap-align: start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #lifestage-detail.nls[data-story="babylog"] :is(.bl-bento__item, .bl-icard, .bl-scene, .bl-model, .bl-plat, .bl-grp, .bl-cscard, .bl-biz, .bl-mock__tab, .bl-rail__link, .bl-tabs__item) { transition: none; }
+  #lifestage-detail.nls[data-story="babylog"] :is(.bl-bento__item, .bl-icard, .bl-scene, .bl-plat, .bl-grp, .bl-cscard):hover { transform: none; }
+}
+
+/* dark mode for the v4 pieces */
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap :is(.bl-mock__device, .bl-board__col.is-now, .is-tabs .bl-model-card, .is-tabs .bl-pcard) {
+  background-color: #111 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-sec.bl-ink { background-color: #050505 !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap :is(.bl-mock__ico) { background-color: #2a1520 !important; color: #f49ab8 !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-mock__chips li:first-child { background-color: #1d1016 !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-board__col[data-stage="now"] .bl-stage { background-color: #f49ab8 !important; color: #0a0a0a !important; border-color: #f49ab8 !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap :is(.bl-mock__title, .bl-mock__brand, .bl-mock__list li, .bl-mock__chips li, .bl-stage, .is-tabs > .bl-rail .bl-rail__link[aria-selected="true"], .bl-ink h3, .bl-ink .nls-title) { color: #f2f2f2 !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap :is(.bl-mock__cap, .bl-board__count, .bl-mock__tab, .is-tabs > .bl-rail .bl-rail__link, .bl-rail--models .bl-rail__en) { color: #a8a8a8 !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap :is(.bl-mock__chip, .bl-mock__tab.is-on, .bl-tabs__n, .bl-rail--models .bl-rail__code, .bl-dtable--cmp td:nth-child(2) strong, .bl-dtable--cmp thead th:nth-child(2), .bl-steps--timeline .bl-steps__n) { color: #f49ab8 !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-steps--timeline .bl-steps__item:first-child .bl-steps__n { background-color: #f49ab8 !important; color: #0a0a0a !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] :is(.bl-mock__device, .bl-mock__bar, .bl-mock__list li, .bl-mock__tabbar, .bl-mock__chips li, .bl-head-center .bl-values, .bl-head-center .bl-val, .bl-stage, .is-tabs > .bl-rail .bl-rail__list) { border-color: #333 !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] :is(.bl-mock__chip, .bl-mock__tab.is-on, .bl-board__col[data-stage="next"] .bl-stage, .is-tabs > :is(.bl-rail--models, .bl-rail--cats) .bl-rail__link[aria-selected="true"]) { border-color: #ee7fa3 !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail .bl-rail__link[aria-selected="true"]::after { background: #ee7fa3 !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .bl-menu .bl-tabs__item.is-on { box-shadow: inset 3px 0 0 #ee7fa3 !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .bl-sec .nls-head > .nls-kicker::before { background: #ee7fa3 !important; }
+
+/* v4 · split sections: heading column + content column (Overview families, Partnerships vision / joint) */
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .bl-sec.bl-v4-split {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    column-gap: clamp(2.5rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .bl-v4-split > .nls-head { display: block !important; margin: 0; }
+  #lifestage-detail.nls[data-story="babylog"] .bl-v4-split > .nls-head .nls-lead { margin-top: 1rem !important; }
+  #lifestage-detail.nls[data-story="babylog"] .bl-v4-split > :not(.nls-head) { grid-column: 2; }
+  #lifestage-detail.nls[data-story="babylog"] .bl-v4-split--rev > .nls-head { grid-column: 2; grid-row: 1; }
+  #lifestage-detail.nls[data-story="babylog"] .bl-v4-split--rev > :not(.nls-head) { grid-column: 1; grid-row: 1; }
+  #lifestage-detail.nls[data-story="babylog"] .bl-v4-split .bl-feat { grid-template-columns: minmax(0, 1fr) !important; gap: 0; }
+  #lifestage-detail.nls[data-story="babylog"] .bl-v4-split .bl-icards { grid-template-columns: minmax(0, 1fr) !important; }
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-v4-split .bl-feat__item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 1rem;
+  padding-block: 1.15rem;
+  border-top: 1px solid var(--bl-line);
+}
+#lifestage-detail.nls[data-story="babylog"] .bl-v4-split .bl-feat__item:last-child { border-bottom: 1px solid var(--bl-line); }
+#lifestage-detail.nls[data-story="babylog"] .bl-v4-split .bl-feat__item .bl-ico-wrap { grid-row: 1 / span 2; margin: 0; }
+#lifestage-detail.nls[data-story="babylog"] .bl-v4-split .bl-feat__item h3 { font-size: clamp(1.125rem, 1.5vw, 1.3125rem); }
+#lifestage-detail.nls[data-story="babylog"] .bl-v4-split .bl-feat__item p { margin-top: 0.3rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-v4-split .bl-icard { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] .bl-v4-split .bl-icard .bl-ico-wrap { grid-row: 1 / span 2; margin: 0; }
+#lifestage-detail.nls[data-story="babylog"] .bl-v4-split .bl-icard p { margin-top: 0.3rem; }
+
+/* tab rails: spacing under the scope note; partner types wrap into a 4 × 2 grid on wide screens */
+#lifestage-detail.nls[data-story="babylog"] .bl-scope + .bl-tabset { margin-top: clamp(1.5rem, 2.6vw, 2rem); }
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail--types .bl-rail__list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.6rem;
+    overflow: visible;
+    border-bottom: 0;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail--types .bl-rail__link {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-r-sm);
+    white-space: normal;
+  }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail--types .bl-rail__link::after { display: none; }
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail--types .bl-rail__link[aria-selected="true"] { border-color: var(--bl-pt); box-shadow: inset 0 0 0 1px var(--bl-pt); }
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] :is(.bl-v4-split .bl-feat__item, .is-tabs > .bl-rail--types .bl-rail__link) { border-color: #333 !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail--types .bl-rail__link[aria-selected="true"] { border-color: #ee7fa3 !important; }
+#lifestage-detail.nls[data-story="babylog"] .bl-models-chips + .bl-tabset { margin-top: clamp(1.25rem, 2.4vw, 1.75rem); }
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail--tabs:not(.bl-rail--cats):not(.bl-rail--types) .bl-rail__list { flex-wrap: wrap; overflow: visible; }
+}

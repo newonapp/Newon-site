@@ -187,6 +187,30 @@ function jump(label, items, cls = "") {
     .join("")}</ol></nav>`;
 }
 
+/* --- design pass v4 (2026-10-26): illustrative screens and progressive tab sets ----------------------------- */
+/** Short labels for the new visuals only (no new facts). */
+const V4 = {
+  ko: { mock: "예시 화면", mockNote: "이해를 돕기 위한 예시 화면이며 실제 앱 화면과 다를 수 있습니다." },
+  en: { mock: "Illustrative", mockNote: "An illustrative screen to explain the idea; the actual app may look different." },
+};
+const v4 = (lang) => V4[copyLangFor(lang) === "ko" ? "ko" : "en"];
+
+/** Phone-shaped illustrative screen (HTML/CSS only, aria-hidden visuals stay out; the content is real copy). */
+function phone(lang, { title, label, body, tabbar = "", cls = "", decorative = false }) {
+  return `<figure class="bl-mock${cls ? " " + cls : ""}">
+    <div class="bl-mock__device"${decorative ? ' aria-hidden="true"' : ""}>
+      <div class="bl-mock__bar"><span class="bl-mock__brand">BabyLog</span><span class="bl-mock__chip">${esc(v4(lang).mock)}</span></div>
+      <div class="bl-mock__screen">${title ? `<p class="bl-mock__title">${esc(title)}</p>` : ""}${label ? `<p class="bl-mock__label">${esc(label)}</p>` : ""}${body}</div>
+      ${tabbar}
+    </div>
+    <figcaption class="bl-mock__cap">${esc(v4(lang).mockNote)}</figcaption>
+  </figure>`;
+}
+
+/** Progressive tab set: the markup is an anchor rail + panels (all visible without JS); /babylog-site inline JS
+ *  turns [data-bl-tabs] into an ARIA tablist (arrow keys, Home/End) and opens the panel a #hash points into. */
+const tabsAttr = (label) => ` data-bl-tabs data-bl-tabs-label="${esc(label)}"`;
+
 /* --- reusable item layouts (redesign 2026-10-25: fewer boxes, larger type, numbers only for real sequences) --- */
 /** Numbered sequence (real order only). No connector line or dots: a top rule per step, the first in pink. */
 function steps(items, h = 3, cls = "") {
@@ -236,7 +260,7 @@ function duo(items, icons, h = 3, cls = "") {
 function board(columns, note = "") {
   const cols = columns
     .map(
-      (c, i) => `<article class="bl-board__col${i === 0 ? " is-now" : ""}"><h3 class="bl-board__t">${esc(c.name)}</h3><ul class="bl-board__list">${(c.items || [])
+      (c, i) => `<article class="bl-board__col${i === 0 ? " is-now" : ""}" data-stage="${esc(c.id || "")}"><h3 class="bl-board__t"><span class="bl-stage">${esc(c.name)}</span><span class="bl-board__count" aria-hidden="true">${(c.items || []).length}</span></h3><ul class="bl-board__list">${(c.items || [])
         .map((t) => `<li>${esc(t)}</li>`)
         .join("")}</ul><p class="bl-board__basis">${esc(c.basis)}</p></article>`
     )
@@ -264,10 +288,22 @@ function overviewBody(C, lang) {
 
   // About — statement split: title left; the first line set large, the rest as calm body copy
   const [visionLead, ...visionRest] = o.vision.lines;
+  // v4: editorial statement left, an illustrative phone screen right listing what the app offers today
+  const nowCol = C.c30.status.columns[0];
+  const nowIcons = ["baby", "calendar", "heart", "chart", "chart", "calendar", "users", "sparkle", "lock"];
+  const todayList = `<ul class="bl-mock__list">${nowCol.items
+    .slice(0, 7)
+    .map((t, i) => `<li>${icon(nowIcons[i % nowIcons.length], "bl-mock__ico")}<span>${esc(t)}</span></li>`)
+    .join("")}</ul>`;
   const vision = block(
     "bl-vision",
-    `<div class="bl-intro">${titleBlock(o.vision.kicker, o.vision.title, "", 2, "bl-vision-title")}<p class="bl-statement__lead">${esc(visionLead)}</p></div>
-    <div class="bl-cols bl-cols--${visionRest.length}">${visionRest.map((p) => `<p class="bl-statement__p">${esc(p)}</p>`).join("")}</div>`
+    `<div class="bl-hero2">
+      <div class="bl-hero2__text">
+        <div class="bl-intro">${titleBlock(o.vision.kicker, o.vision.title, "", 2, "bl-vision-title")}<p class="bl-statement__lead">${esc(visionLead)}</p></div>
+        <div class="bl-cols bl-cols--stack">${visionRest.map((p) => `<p class="bl-statement__p">${esc(p)}</p>`).join("")}</div>
+      </div>
+      ${phone(lang, { title: nowCol.name, body: todayList, cls: "bl-mock--today" })}
+    </div>`
   );
 
   // Mission — six values as an open three-column feature list on the pale band
@@ -275,7 +311,7 @@ function overviewBody(C, lang) {
   const values = o.connect.items
     .map((it, i) => `<article class="bl-val">${ico(valueIcons[i % 6])}<h3>${esc(it.name)}</h3><p>${esc(it.lead)}</p></article>`)
     .join("");
-  const connect = block("bl-connect", `${titleBlock(o.connect.kicker, o.connect.title, o.connect.lead, 2, "bl-connect-title")}<div class="bl-values">${values}</div>`, "accent");
+  const connect = block("bl-connect", `${titleBlock(o.connect.kicker, o.connect.title, o.connect.lead, 2, "bl-connect-title")}<div class="bl-values">${values}</div>`, "", "bl-head-center");
 
   const O30 = C.c30.overview;
   // Problem → solution — two-column comparison (labels come from the existing kicker "Problem → Solution")
@@ -352,7 +388,7 @@ function overviewBody(C, lang) {
   const daily = block("bl-daily", `${titleBlock(X.daily.kicker, X.daily.title, X.daily.lead, 2, "bl-daily-title")}<div class="bl-bento">${bento}</div>`);
 
   // For families — four open feature columns on the pale band
-  const health = block("bl-health", `${titleBlock(X.health.kicker, X.health.title, X.health.lead, 2, "bl-health-title")}${features(X.health.items, ["users", "lock", "calendar", "shield"], 3, "bl-feat--4")}`);
+  const health = block("bl-health", `${titleBlock(X.health.kicker, X.health.title, X.health.lead, 2, "bl-health-title")}${features(X.health.items, ["users", "lock", "calendar", "shield"], 3, "bl-feat--4")}`, "", "bl-v4-split");
 
   // Beyond parenting — split: statement left, the four sides as a large-type list right (no hub diagram)
   const net = o.ecosystem.items.map((it) => `<article class="bl-net__item"><h3>${esc(it.name)}</h3><p>${esc(it.lead)}</p></article>`).join("");
@@ -486,7 +522,7 @@ function platformBody(C, lang) {
   // 27 long-term areas in five groups: group label left, an open two-column list right (no card boxes)
   const screenGroups = sc.groups
     .map(
-      (g) => `<div class="bl-scr__grp" aria-labelledby="bl-${g.id}-t">
+      (g) => `<div class="bl-scr__grp" id="bl-scr-${g.id}" role="group" aria-labelledby="bl-${g.id}-t">
       <div class="bl-scr__label"><h3 class="bl-group__t" id="bl-${g.id}-t">${esc(g.name)}</h3></div>
       <div class="bl-scr__list">${g.items
         .map(
@@ -505,7 +541,10 @@ function platformBody(C, lang) {
     "bl-screens",
     `${titleBlock(sc.kicker, sc.title, sc.lead, 2, "bl-screens-title")}
     ${scopeNote(C)}
-    <div class="bl-scr">${screenGroups}</div>`
+    <div class="bl-tabset bl-tabset--scr"${tabsAttr(sc.kicker)}>
+      ${jump(sc.kicker, sc.groups.map((g) => [`#bl-scr-${g.id}`, "", `${g.name.split(" · ")[0]} · ${g.name.split(" · ").slice(copyLangFor(lang) === "ko" ? -1 : 1).join(" · ")} (${g.items.length})`]), "bl-rail--chips bl-rail--tabs")}
+      <div class="bl-scr">${screenGroups}</div>
+    </div>`
   );
 
   const P30 = C.c30.platform;
@@ -518,7 +557,23 @@ function platformBody(C, lang) {
     <p class="nls-note">${esc(P30.flow.note)}</p>
     <div class="bl-menu">
       <div class="bl-subhead"><h3 class="bl-sub bl-sub--lg">${esc(MN.title)}</h3><p class="nls-lead">${esc(MN.lead)}</p></div>
-      <ol class="bl-tabs">${MN.items.map((it) => `<li class="bl-tabs__item"><h4>${esc(it.name)}</h4><p>${esc(it.lead)}</p></li>`).join("")}</ol>
+      <div class="bl-menu__split">
+        ${phone(lang, {
+          title: MN.items[0].name,
+          body: MN.items
+            .map(
+              (it, i) => `<div class="bl-mock__pane${i === 0 ? " is-on" : ""}" data-bl-pane="${i}"><ul class="bl-mock__chips">${it.lead
+                .split(/[·,]\s*/)
+                .map((t) => `<li>${esc(t.trim())}</li>`)
+                .join("")}</ul></div>`
+            )
+            .join(""),
+          tabbar: `<div class="bl-mock__tabbar" aria-hidden="true">${MN.items.map((it, i) => `<span class="bl-mock__tab${i === 0 ? " is-on" : ""}" data-bl-tab="${i}">${esc(it.name)}</span>`).join("")}</div>`,
+          cls: "bl-mock--menu",
+          decorative: true,
+        })}
+        <ol class="bl-tabs" data-bl-menu>${MN.items.map((it, i) => `<li class="bl-tabs__item${i === 0 ? " is-on" : ""}" data-bl-menu-item="${i}"><span class="bl-tabs__n" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span><div><h4>${esc(it.name)}</h4><p>${esc(it.lead)}</p></div></li>`).join("")}</ol>
+      </div>
       <p class="nls-note">${esc(MN.note)}</p>
     </div>`,
     "accent"
@@ -691,7 +746,12 @@ function businessBody(C, lang) {
     `<div class="bl-split bl-split--top">${titleBlock(b.intro.kicker, b.intro.title, b.intro.lead, 2, "bl-biz-title")}
     <div class="bl-aside">${icon("info", "bl-aside__ico")}<p class="nls-note">${esc(C.ui.noOutsourcing)}</p>
     <p class="nls-note">${esc(C.ui.noPrice)}</p></div></div>
-    <div class="bl-biz__list">${cards}</div>`
+    <div class="bl-tabset bl-tabset--models"${tabsAttr(b.intro.kicker)}>
+      <nav class="bl-rail bl-rail--chips bl-rail--models" aria-label="${esc(b.intro.kicker)}"><ol class="bl-rail__list">${b.categories
+        .map((cat) => `<li><a class="bl-rail__link" href="#biz-${cat.id}"><span class="bl-rail__code" aria-hidden="true">${esc(cat.code)}</span><span class="bl-rail__en">${esc(cat.en)}</span><span class="bl-rail__name">${esc(cat.name)}</span></a></li>`)
+        .join("")}</ol></nav>
+      <div class="bl-biz__list">${cards}</div>
+    </div>`
   );
 
   const G = C.x.business.groups;
@@ -753,14 +813,20 @@ function businessBody(C, lang) {
     `${titleBlock(G.kicker, G.title, G.lead, 2, "bl-groups-title")}
     ${scopeNote(C)}
     <p class="nls-note">${esc(G.note)}</p>
-    ${jump(C.ui.cats, G.cats.map((c) => [`#cat-${c.id}`, c.id, copyLangFor(lang) === "ko" ? c.name : c.en]), "bl-rail--cats bl-rail--chips")}
-    ${catHtml}`
+    <div class="bl-tabset bl-tabset--cats"${tabsAttr(C.ui.cats)}>
+    ${jump(C.ui.cats, G.cats.map((c) => [`#cat-${c.id}`, c.id, copyLangFor(lang) === "ko" ? c.name : c.en]), "bl-rail--cats bl-rail--chips bl-rail--tabs")}
+    <div class="bl-cats">${catHtml}</div>
+    </div>`
   );
   const ph = C.x.business.phases;
+  // v4: the five phases as a horizontal timeline on a dark full-bleed band (a real sequence)
   const phases = block(
     "bl-phases",
-    `<div class="bl-split bl-split--wide"><div>${titleBlock(ph.kicker, ph.title, ph.lead, 2, "bl-phases-title")}<p class="nls-note">${esc(ph.note)}</p></div>
-    ${vsteps(ph.items, 3)}</div>`
+    `${titleBlock(ph.kicker, ph.title, ph.lead, 2, "bl-phases-title")}
+    ${steps(ph.items, 3, "bl-steps--5 bl-steps--timeline")}
+    <p class="nls-note">${esc(ph.note)}</p>`,
+    "band",
+    "bl-ink"
   );
   const B30 = C.c30.business;
   const PY = B30.payers;
@@ -920,7 +986,7 @@ function partnershipsBody(C, lang) {
     })
     .join("\n");
   const R30 = C.c30.partnerships;
-  const pvision = block("bl-pvision", `${titleBlock(R30.vision.kicker, R30.vision.title, R30.vision.lead, 2, "bl-pvision-title")}${features(R30.vision.items, ["heart", "shield", "hand"], 3, "bl-feat--3 bl-feat--lg")}`);
+  const pvision = block("bl-pvision", `${titleBlock(R30.vision.kicker, R30.vision.title, R30.vision.lead, 2, "bl-pvision-title")}${features(R30.vision.items, ["heart", "shield", "hand"], 3, "bl-feat--3 bl-feat--lg")}`, "", "bl-v4-split");
   const PL = R30.pilots;
   const pilots = block(
     "bl-pilots",
@@ -940,7 +1006,7 @@ function partnershipsBody(C, lang) {
     <div class="bl-principles bl-principles--panel"><h3 class="bl-sub bl-sub--lg">${esc(DA.principlesTitle)}</h3>
     <ul class="bl-plist">${DA.principles.map((t) => `<li>${icon("lock")}<span>${esc(t)}</span></li>`).join("")}</ul></div>`
   );
-  const joint = block("bl-joint", `${titleBlock(R30.joint.kicker, R30.joint.title, R30.joint.lead, 2, "bl-joint-title")}${icards(R30.joint.items, ["book", "shield", "building"], 3, "bl-icards--3")}`);
+  const joint = block("bl-joint", `${titleBlock(R30.joint.kicker, R30.joint.title, R30.joint.lead, 2, "bl-joint-title")}${icards(R30.joint.items, ["book", "shield", "building"], 3, "bl-icards--3")}`, "", "bl-v4-split bl-v4-split--rev");
   const pvalue = block("bl-pvalue", `${titleBlock(R30.value.kicker, R30.value.title, R30.value.lead, 2, "bl-pvalue-title")}${checks(R30.value.items, 3, "bl-checks--4")}`, "accent");
   // Global partnerships (possibilities only, 2026-10-26): partner kinds as a table, shared principles, one inquiry
   // button to the unified NEWON Contact page (BABYLOG preselected via ?platform=).
@@ -981,8 +1047,10 @@ function partnershipsBody(C, lang) {
         `${titleBlock(T.kicker, T.title, T.lead, 2, "bl-types-title")}
     <div class="bl-models-chips">${chips(T.models)}
     <p class="nls-note">${esc(C.ui.noPartner)}</p></div>
-    ${jump(T.railLabel, T.items.map((it) => [`#partner-${it.code}`, "", it.name]), "bl-rail--chips")}
+    <div class="bl-tabset bl-tabset--types"${tabsAttr(T.railLabel)}>
+    ${jump(T.railLabel, T.items.map((it) => [`#partner-${it.code}`, "", it.name]), "bl-rail--chips bl-rail--tabs bl-rail--types")}
     <div class="bl-biz__list bl-biz__list--2">${cards}</div>
+    </div>
     <p class="nls-note">${esc(C.ui.noPrice)}</p>`
       ),
       block(
@@ -1009,7 +1077,7 @@ function partnershipsBody(C, lang) {
       block(
         "bl-process",
         `${titleBlock(p.process.kicker, p.process.title, p.process.lead, 2, "bl-process-title")}
-    ${steps(p.process.steps.map((s) => ({ n: s.n, name: s.name, body: s.body })), 3, "bl-steps--5")}
+    ${steps(p.process.steps.map((s) => ({ n: s.n, name: s.name, body: s.body })), 3, "bl-steps--5 bl-steps--timeline")}
     <div class="bl-duo2">
       <div class="bl-principles bl-principles--panel"><h3 class="bl-sub bl-sub--lg">${esc(p.principles.title)}</h3>
       ${principleList}</div>

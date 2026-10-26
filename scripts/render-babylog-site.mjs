@@ -46,6 +46,43 @@ const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8
 const NLS_VER = "20261025ov1"; // Life Stage assets are reused as-is
 const BL_VER = "20261019pink1";
 
+/** Design pass v4 (2026-10-26): progressive tab sets + the Platform menu mock, inline (no new asset file).
+ *  Without JS every panel stays visible and the rails remain plain anchor links. */
+const BL_TABS_JS = `<script>(function(){
+var root=document.querySelector('#lifestage-detail[data-story="babylog"]');if(!root)return;
+var sets=[].slice.call(root.querySelectorAll('[data-bl-tabs]')),api=[];
+sets.forEach(function(set,si){
+  var list=set.querySelector('.bl-rail ol');if(!list)return;
+  var links=[].slice.call(list.querySelectorAll('a[href^="#"]'));
+  var panels=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  if(!links.length||panels.some(function(p){return !p;}))return;
+  set.classList.add('is-tabs');
+  list.setAttribute('role','tablist');list.setAttribute('aria-label',set.getAttribute('data-bl-tabs-label')||'');
+  [].forEach.call(list.children,function(li){li.setAttribute('role','presentation');});
+  links.forEach(function(a,i){a.id=a.id||('bl-tab-'+si+'-'+i);a.setAttribute('role','tab');a.setAttribute('aria-controls',panels[i].id);
+    panels[i].setAttribute('role','tabpanel');if(!panels[i].getAttribute('aria-labelledby'))panels[i].setAttribute('aria-labelledby',a.id);});
+  function show(i,focus){links.forEach(function(a,j){var on=j===i;a.setAttribute('aria-selected',on?'true':'false');a.tabIndex=on?0:-1;a.classList.toggle('is-on',on);panels[j].hidden=!on;});if(focus)links[i].focus();}
+  links.forEach(function(a,i){
+    a.addEventListener('click',function(e){e.preventDefault();show(i);});
+    a.addEventListener('keydown',function(e){var n=links.length,j=null,k=e.key;
+      if(k==='ArrowRight'||k==='ArrowDown')j=(i+1)%n;else if(k==='ArrowLeft'||k==='ArrowUp')j=(i-1+n)%n;else if(k==='Home')j=0;else if(k==='End')j=n-1;
+      if(j!==null){e.preventDefault();show(j,true);}});
+  });
+  show(0);api.push({panels:panels,show:show});
+});
+function openHash(){var h=location.hash.slice(1),t=null;if(!h)return;try{t=document.getElementById(decodeURIComponent(h));}catch(e){}if(!t)return;var hit=false;
+  api.forEach(function(s){s.panels.forEach(function(p,i){if(p===t||p.contains(t)){s.show(i);hit=true;}});});
+  if(hit)requestAnimationFrame(function(){t.scrollIntoView({block:'start'});});}
+openHash();addEventListener('hashchange',openHash);
+var menu=root.querySelector('[data-bl-menu]'),mock=root.querySelector('.bl-mock--menu');
+if(menu&&mock){var items=[].slice.call(menu.querySelectorAll('[data-bl-menu-item]'));
+  var pick=function(i){items.forEach(function(li,j){li.classList.toggle('is-on',i===j);});
+    [].forEach.call(mock.querySelectorAll('[data-bl-pane]'),function(p){p.classList.toggle('is-on',+p.getAttribute('data-bl-pane')===i);});
+    [].forEach.call(mock.querySelectorAll('[data-bl-tab]'),function(p){p.classList.toggle('is-on',+p.getAttribute('data-bl-tab')===i);});
+    var t=mock.querySelector('.bl-mock__title'),h=items[i].querySelector('h4');if(t&&h)t.textContent=h.textContent;};
+  items.forEach(function(li,i){li.addEventListener('mouseenter',function(){pick(i);});li.addEventListener('click',function(){pick(i);});});}
+})();</script>`;
+
 function localeFlat(lang) {
   const en = loadJson("en.json");
   const loc = lang.dir === "en" ? en : fillMissing(loadJson(lang.file), en);
@@ -105,10 +142,10 @@ function renderPage(lang, nav) {
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/flagship-subnav.css?v=20261019fsn3" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
-    <link rel="stylesheet" href="/babylog-site.css?v=20261026v3" />${nav.id === "contact" ? `\n    <link rel="stylesheet" href="${BIZ_CONTACT_CSS}" />` : ""}
+    <link rel="stylesheet" href="/babylog-site.css?v=20261026v4" />${nav.id === "contact" ? `\n    <link rel="stylesheet" href="${BIZ_CONTACT_CSS}" />` : ""}
 ${jsonLd(lang.dir, nav, seo, canonical)}`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
-    <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,
+    <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>${nav.id === "contact" ? "" : `\n    ${BL_TABS_JS}`}`,
   });
   const out = path.join(ROOT, lang.dir, BL_SLUG, nav.sub, "index.html");
   ensureDir(out);
