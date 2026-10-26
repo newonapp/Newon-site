@@ -1,0 +1,269 @@
+/*
+ * NEWON moving first screens — film backdrop for the editorial heroes
+ * (About, News, Media, Ideas, Products, Market, SaaS, Tools, Resources + hubs,
+ * Store items, Portfolio projects, 404: HUMAN). Markup: scripts/apply-hero-motion.mjs.
+ *
+ * Same treatment as the Business / Studio / Contact film heroes: full-bleed muted
+ * autoplay loop under a dark scrim, white copy. Content and layout stay as they are.
+ * Like those heroes, the film keeps playing under prefers-reduced-motion
+ * (film-keep.js); this sheet adds no transitions of its own.
+ *
+ * `.hm-film:not(#hm)` = class + id-level specificity so the colour switch wins over the
+ * page sheets (about-page.css, site-dark.css) in light and dark mode.
+ */
+
+.hm-film:not(#hm) {
+  position: relative;
+  isolation: isolate;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.hm-film__stage {
+  position: absolute;
+  z-index: -1;
+  top: calc(-1 * var(--hm-lift, 0px));
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  overflow: hidden;
+  background: #0b0d10 center 50% / cover no-repeat;
+  pointer-events: none;
+}
+
+/* Poster = the film's first frame, so the hero is never blank while the video loads.
+   !important + id-level specificity: site-dark.css blanks every div background in dark mode. */
+.hm-film:not(#hm) .hm-film__stage {
+  background-color: #0b0d10 !important;
+  background-position: center 50% !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+.hm-film--home:not(#hm) .hm-film__stage { background-image: url("/assets/hero-film/poster.jpg") !important; }
+.hm-film--eco:not(#hm) .hm-film__stage { background-image: url("/assets/hero-film/ecosystem-poster.jpg") !important; }
+.hm-film--ai:not(#hm) .hm-film__stage { background-image: url("/assets/hero-film/ai-poster.jpg") !important; }
+.hm-film--livon:not(#hm) .hm-film__stage { background-image: url("/assets/hero-film/livon-poster.jpg") !important; }
+.hm-film--biz:not(#hm) .hm-film__stage { background-image: url("/assets/hero-film/business-poster.jpg") !important; }
+.hm-film--ongil:not(#hm) .hm-film__stage { background-image: url("/assets/hero-film/ongil-poster.jpg") !important; }
+
+.hm-film__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 50%;
+  pointer-events: none;
+}
+
+.hm-film__video::-webkit-media-controls,
+.hm-film__video::-webkit-media-controls-enclosure,
+.hm-film__video::-webkit-media-controls-start-playback-button,
+.hm-film__video::-webkit-media-controls-play-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Dark scrim: deeper on the copy side (left), always dark enough for white text. */
+.hm-film__scrim {
+  position: absolute;
+  inset: 0;
+}
+
+.hm-film:not(#hm) .hm-film__scrim {
+  background:
+    linear-gradient(90deg, rgba(5, 7, 11, 0.34) 0%, rgba(5, 7, 11, 0.2) 52%, rgba(5, 7, 11, 0.06) 100%),
+    rgba(5, 7, 11, 0.5) !important;
+}
+
+.hm-film:not(#hm) .hm-film__video {
+  background: transparent !important;
+}
+
+/* Portfolio projects: centred copy with a meta table, so an even scrim. */
+.pf-project-hero.hm-film:not(#hm) .hm-film__scrim {
+  background: rgba(5, 7, 11, 0.6) !important;
+}
+
+@media (max-width: 760px) {
+  .hm-film:not(#hm) .hm-film__scrim {
+    background: rgba(5, 7, 11, 0.6) !important;
+  }
+}
+
+/* ---------- Copy: white on film (cards inside the hero keep their own look) ---------- */
+
+.hm-film:not(#hm) :where(
+    .ab-brand__crumb, .ab-brand__primary,
+    .ox-hero-copy,
+    .co-inner,
+    .hub-title, .hub-lead, .hub-eyebrow,
+    .mh-hero__inner,
+    .nr-inner,
+    .pf-wrap,
+    .ns-hero__copy,
+    .bp-hero__copy,
+    .bs-hero__grid > div:first-child,
+    .plus-hero__copy,
+    .tools-hero__eyebrow, .tools-hero__title, .tools-hero__lead
+  ) {
+  color: rgba(255, 255, 255, 0.86) !important;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.32);
+}
+
+.hm-film:not(#hm) :where(
+    .ab-brand__crumb, .ab-brand__primary,
+    .ox-hero-copy,
+    .co-inner,
+    .mh-hero__inner,
+    .nr-inner,
+    .pf-wrap,
+    .ns-hero__copy,
+    .bp-hero__copy,
+    .bs-hero__grid > div:first-child,
+    .plus-hero__copy
+  ) :where(p, span, li, dt, dd, a, div, nav, ol, ul, dl, small, strong, em, b, i, label, time) {
+  color: inherit !important;
+}
+
+/* Chips, badges and rules inside the copy: hairlines on the film instead of white boxes. */
+.hm-film:not(#hm) :is(.ab-brand__domains li, .ab-brand__meaning, .ox-badge, .pf-badge, .pf-meta, .ns-rail) {
+  border-color: rgba(255, 255, 255, 0.34) !important;
+  background-color: transparent !important;
+}
+
+.hm-film:not(#hm) .ox-badge-dot {
+  background-color: #fff !important;
+}
+
+.hm-film:not(#hm) :is(h1, h2, .ab-brand__word, .hub-title, .tools-hero__title) {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff;
+  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.34);
+}
+
+/* Small labels a touch softer than the lead, still well above 4.5:1 on the scrim. */
+.hm-film:not(#hm) :is(
+    .ab-brand__eyebrow, .ab-brand__crumb, .co-eyebrow, .hub-eyebrow, .mh-eyebrow, .nr-kicker, .nr-hero__tags,
+    .pf-back, .pf-meta dt, .ns-kicker, .bp-eyebrow, .bs-eyebrow, .plus-eyebrow, .tools-hero__eyebrow, .ox-hero-reach-summary
+  ) {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.hm-film:not(#hm) .pf-meta dd,
+.hm-film:not(#hm) .ab-brand__meaning-k,
+.hm-film:not(#hm) .ox-store-release__label,
+.hm-film:not(#hm) .ox-hero-value {
+  color: #fff !important;
+}
+
+/* Breadcrumb strip that sits on the lifted film (hero-motion.js adds .hm-lifted to <main>). */
+.hm-lifted :is(.bp-crumb, .co-crumb, .rs-crumb, .bs-crumb) {
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+.hm-lifted :is(.bp-crumb, .co-crumb, .rs-crumb, .bs-crumb) :is(a, span, li, ol, div) {
+  color: rgba(255, 255, 255, 0.84) !important;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hm-lifted :is(.bp-crumb, .co-crumb, .rs-crumb, .bs-crumb) [aria-current],
+.hm-lifted :is(.bp-crumb, .co-crumb, .rs-crumb, .bs-crumb) li:last-child,
+.hm-lifted :is(.bp-crumb, .co-crumb, .rs-crumb, .bs-crumb) .bs-inner > span:last-child {
+  color: #fff !important;
+}
+
+/* ---------- Buttons ---------- */
+
+.hm-film.hm-film:not(#hm) :is(
+    .ab-btn--primary, .co-btn--primary, .btn-primary, .bp-btn--primary, .bs-btn--primary, .plus-btn--primary
+  ) {
+  background: #fff !important;
+  background-color: #fff !important;
+  color: #0b0d10 !important;
+  border-color: #fff !important;
+  text-shadow: none;
+}
+
+.hm-film.hm-film:not(#hm) :is(
+    .ab-btn--primary, .co-btn--primary, .btn-primary, .bp-btn--primary, .bs-btn--primary, .plus-btn--primary
+  ):is(:hover, :focus-visible) {
+  background: rgba(255, 255, 255, 0.86) !important;
+  background-color: rgba(255, 255, 255, 0.86) !important;
+  color: #0b0d10 !important;
+}
+
+.hm-film.hm-film:not(#hm) :is(
+    .ab-btn--primary, .co-btn--primary, .btn-primary, .bp-btn--primary, .bs-btn--primary, .plus-btn--primary
+  ) * {
+  color: inherit !important;
+}
+
+.hm-film.hm-film:not(#hm) :is(
+    .ab-btn--ghost, .btn-ghost, .bp-btn--ghost, .bs-btn--ghost, .plus-btn--ghost, .ox-store-badge
+  ) {
+  background: rgba(255, 255, 255, 0.06) !important;
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.72) !important;
+  text-shadow: none;
+}
+
+.hm-film.hm-film:not(#hm) :is(
+    .ab-btn--ghost, .btn-ghost, .bp-btn--ghost, .bs-btn--ghost, .plus-btn--ghost, .ox-store-badge
+  ):is(:hover, :focus-visible) {
+  background: #fff !important;
+  background-color: #fff !important;
+  color: #0b0d10 !important;
+  border-color: #fff !important;
+}
+
+.hm-film.hm-film:not(#hm) :is(
+    .ab-btn--ghost, .btn-ghost, .bp-btn--ghost, .bs-btn--ghost, .plus-btn--ghost, .ox-store-badge
+  ) * {
+  color: inherit !important;
+}
+
+/* ---------- Ornaments: watermark words and pale panels go; the film is the visual ---------- */
+
+.hm-film:not(#hm) :is(.bp-hero__visual--mark, .plus-hero__visual, .ns-board__mark, .ns-hero__bg) {
+  display: none !important;
+}
+
+.hm-film:not(#hm) .ns-board {
+  min-height: 0;
+}
+
+.hm-film:not(#hm) .ox-hero-frame {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* ---------- Dark mode: site-dark.css paints every block black (!important); inside a film hero
+   only the cards keep that, the layout wrappers go clear so the film shows through. ---------- */
+
+html[data-newon-shell-theme="dark"] .hm-film:not(#hm) *:not(
+    .hm-film__stage, .hm-film__stage *,
+    .ab-sv, .ab-sv *, .ns-board, .ns-board *, .bs-sv, .bs-sv *,
+    .tools-cmd, .tools-cmd *, .tools-search__shell, .tools-search__shell *, .tools-search__panel, .tools-search__panel *,
+    .ab-btn--primary, .co-btn--primary, .btn-primary, .bp-btn--primary, .bs-btn--primary, .plus-btn--primary,
+    .ab-btn--ghost, .btn-ghost, .bp-btn--ghost, .bs-btn--ghost, .plus-btn--ghost, .ox-store-badge,
+    .ox-badge-dot, .pf-project-hero__icon, img
+  ) {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+html[data-newon-shell-theme="dark"] .hm-lifted :is(.bp-crumb, .co-crumb, .rs-crumb, .bs-crumb),
+html[data-newon-shell-theme="dark"] .hm-lifted :is(.bp-crumb, .co-crumb, .rs-crumb, .bs-crumb) * {
+  background: transparent !important;
+  background-color: transparent !important;
+}

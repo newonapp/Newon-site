@@ -51,6 +51,8 @@ const PUBLISH_ROOT_CORE = [
   "home-hero-3d.css",
   "home-hero-3d.js",
   "film-keep.js",
+  "hero-motion.css",
+  "hero-motion.js",
   "home-lifestage.css",
   "home-lifestage-layout.css",
   "home-lifestage.js",
@@ -629,6 +631,11 @@ runBuild();
 runPortfolio();
 // gen-portfolio refreshes project pages. Put the Nawon hub back on /{lang}/portfolio/.
 spawnSync(process.execPath, [path.join(ROOT, "scripts", "render-company.mjs"), "--only=portfolio"], {
+  cwd: ROOT,
+  stdio: "inherit",
+}).status === 0 || process.exit(1);
+// gen-portfolio rewrote the project pages: give their first screens the film backdrop again.
+spawnSync(process.execPath, [path.join(ROOT, "scripts", "apply-hero-motion.mjs")], {
   cwd: ROOT,
   stdio: "inherit",
 }).status === 0 || process.exit(1);

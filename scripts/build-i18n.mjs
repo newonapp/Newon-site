@@ -764,6 +764,8 @@ runScript("render-blog.mjs");
 runScript("render-bizpart.mjs");
 // NEWON Studio eleven screens + redirect stubs for the retired Studio URLs (runs after every other page renderer)
 runScript("render-studio-site.mjs");
+// Moving first screens: film backdrop on the editorial heroes (after every page renderer)
+runScript("apply-hero-motion.mjs");
 runScript("generate-search-index.mjs");
 runScript("generate-admin-data.mjs");
 writeRobotsTxt();
