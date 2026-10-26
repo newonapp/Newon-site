@@ -3410,3 +3410,1064 @@ html[data-newon-shell-theme="dark"] body #lifestage-detail.ogs .nls__wrap .ogs-t
 html[data-newon-shell-theme="dark"] body #lifestage-detail.ogs .nls__wrap .ogs-ladder__n {
   color: #f0a97f !important;
 }
+
+/* ═════════════════════════ V4 visual pass (2026-10-26) ═════════════════════════
+   Owner: every menu screen high-quality, varied and visually attractive; first screen untouched.
+   New pieces: illustrative app screens in HTML/CSS (labelled "예시 화면" / "Illustrative", no real data), coloured
+   status chips (text label always present), typographic value grid, numbered scene rail, open role columns, status
+   rows, group map, accordions (native <details>), AI example conversation, proposal sheet, subscription stairs and
+   business data sheets. One apricot band per page. Nothing below targets .nls-film or .fsn.
+   Scoped with #lifestage-detail[data-story="ongil"] (same specificity as #lifestage-detail.ogs) so that
+   build-biz-contact-css.mjs, which derives the Contact kit from #lifestage-detail.ogs rules, does not pick these up. */
+
+/* ── status chips ── */
+#lifestage-detail[data-story="ongil"] .ogs-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: max-content;
+  max-width: 100%;
+  padding: 0.24rem 0.7rem 0.26rem;
+  border: 1px solid var(--ogs-line-2);
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 750;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  color: var(--ogs-ink);
+  background: var(--ogs-card);
+  white-space: nowrap;
+}
+#lifestage-detail[data-story="ongil"] .ogs-chip::before {
+  content: "";
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  border: 1.5px solid currentColor;
+}
+#lifestage-detail[data-story="ongil"] .ogs-chip--now {
+  border-color: var(--ogs-apricot);
+  background: var(--ogs-apricot);
+  color: #1a1a1a;
+}
+#lifestage-detail[data-story="ongil"] .ogs-chip--now::before {
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+}
+#lifestage-detail[data-story="ongil"] .ogs-chip--dev {
+  border-color: var(--ogs-apricot);
+  color: var(--ogs-apricot-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-chip--dev::before {
+  background: var(--ogs-apricot);
+  border-color: var(--ogs-apricot);
+}
+#lifestage-detail[data-story="ongil"] .ogs-chip--plan {
+  color: var(--ogs-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-chip--review {
+  border-style: dashed;
+  color: var(--ogs-muted);
+}
+#lifestage-detail[data-story="ongil"] .ogs-phase__head .ogs-chip {
+  margin-bottom: 0.55rem;
+}
+
+/* ── illustrative phone screen ── */
+#lifestage-detail[data-story="ongil"] .ogs-device {
+  margin: 0;
+  min-width: 0;
+}
+#lifestage-detail[data-story="ongil"] .ogs-device__label {
+  margin-bottom: 0.7rem !important;
+  font-size: 0.8125rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  color: var(--ogs-faint);
+}
+#lifestage-detail[data-story="ongil"] .ogs-device__phone {
+  max-width: 22.5rem;
+  padding: 1.1rem 1rem 0.75rem;
+  border: 1px solid var(--ogs-line-2);
+  border-radius: 34px;
+  background: var(--ogs-card);
+  box-shadow: 0 24px 60px -32px rgba(23, 23, 23, 0.28), 0 2px 6px -2px rgba(23, 23, 23, 0.06);
+}
+#lifestage-detail[data-story="ongil"] .ogs-device__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.1rem 0.35rem 0.8rem;
+}
+#lifestage-detail[data-story="ongil"] .ogs-device__brand {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--ogs-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-device__bar .ogs-chip {
+  font-size: 0.75rem;
+  padding: 0.18rem 0.6rem 0.2rem;
+}
+#lifestage-detail[data-story="ongil"] .ogs-device__title {
+  padding: 0.15rem 0.35rem 0.65rem;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+  color: var(--ogs-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-device__rows {
+  display: grid;
+  gap: 0.5rem;
+}
+#lifestage-detail[data-story="ongil"] .ogs-device__rows li {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3.5rem;
+  padding: 0.55rem 0.85rem 0.55rem 0.55rem;
+  border: 1px solid var(--ogs-line);
+  border-radius: 16px;
+  font-size: 0.9875rem;
+  font-weight: 650;
+  line-height: 1.4;
+  color: var(--ogs-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-device__rows .ogs-mark {
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0.45rem;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background: var(--ogs-soft);
+}
+#lifestage-detail[data-story="ongil"] .ogs-device__rows li:first-child {
+  border-color: var(--ogs-apricot);
+}
+#lifestage-detail[data-story="ongil"] .ogs-device__tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin: 0.85rem -0.35rem 0;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--ogs-line);
+}
+#lifestage-detail[data-story="ongil"] .ogs-device__tabs li {
+  display: grid;
+  justify-items: center;
+  gap: 0.2rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ogs-faint);
+}
+#lifestage-detail[data-story="ongil"] .ogs-device__tabs .ogs-mark {
+  width: 1.3rem;
+  height: 1.3rem;
+  color: var(--ogs-faint);
+}
+#lifestage-detail[data-story="ongil"] .ogs-device__tabs li.is-on,
+#lifestage-detail[data-story="ongil"] .ogs-device__tabs li.is-on .ogs-mark {
+  color: var(--ogs-apricot-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-device figcaption {
+  max-width: 22.5rem;
+  margin-top: 0.85rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--ogs-faint);
+}
+
+/* ── Overview A: statement + illustrative screen ── */
+#lifestage-detail[data-story="ongil"] .ogs-intro--device {
+  display: grid;
+  gap: 2.5rem;
+}
+@media (min-width: 1000px) {
+  #lifestage-detail[data-story="ongil"] .ogs-intro--device {
+    grid-template-columns: minmax(0, 1fr) 22.5rem;
+    gap: 4.5rem;
+    align-items: start;
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-intro--device .ogs-intro__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.75rem;
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-intro--device .ogs-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 2rem;
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-intro--device .ogs-facts > div:nth-last-child(2) {
+    border-bottom: 1px solid var(--ogs-line);
+  }
+}
+@media (max-width: 999px) {
+  #lifestage-detail[data-story="ongil"] .ogs-intro--device .ogs-device {
+    justify-self: center;
+    width: 100%;
+    max-width: 22.5rem;
+  }
+}
+
+/* ── Overview B: numbered problem rows ── */
+@media (min-width: 900px) {
+  #lifestage-detail[data-story="ongil"] .ogs-pairs--n .ogs-pair {
+    grid-template-columns: 3.5rem minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+}
+#lifestage-detail[data-story="ongil"] .ogs-pair__n {
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--ogs-apricot-ink);
+}
+@media (max-width: 899px) {
+  #lifestage-detail[data-story="ongil"] .ogs-pair__n {
+    font-size: 1.125rem;
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-pairs--n .ogs-pair {
+    gap: 0.75rem;
+  }
+}
+
+/* ── Overview C: typographic value grid (hairline grid, no boxes) ── */
+#lifestage-detail[data-story="ongil"] .ogs-words {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  border-top: 1px solid var(--ogs-line-2);
+}
+@media (min-width: 700px) {
+  #lifestage-detail[data-story="ongil"] .ogs-words {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2.5rem;
+  }
+}
+@media (min-width: 1100px) {
+  #lifestage-detail[data-story="ongil"] .ogs-words {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+#lifestage-detail[data-story="ongil"] .ogs-words li {
+  padding: 1.5rem 0 1.6rem;
+  border-bottom: 1px solid var(--ogs-line);
+}
+#lifestage-detail[data-story="ongil"] .ogs-words__h {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+#lifestage-detail[data-story="ongil"] .ogs-words__en {
+  order: -1;
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+  color: var(--ogs-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-words__ko {
+  margin-top: 0.45rem !important;
+  font-size: 1rem;
+  font-weight: 750;
+  color: var(--ogs-apricot-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-words__t {
+  max-width: 30rem;
+  margin-top: 0.7rem !important;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ogs-muted);
+}
+#lifestage-detail[data-story="ongil"] .ogs-words li:hover .ogs-words__en {
+  color: var(--ogs-apricot-ink);
+}
+
+/* ── Overview E: numbered scenes (five columns, rail on phones) ── */
+#lifestage-detail[data-story="ongil"] .ogs-scenes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0 1.5rem;
+}
+@media (min-width: 760px) {
+  #lifestage-detail[data-story="ongil"] .ogs-scenes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem 1.5rem;
+  }
+}
+@media (min-width: 1100px) {
+  #lifestage-detail[data-story="ongil"] .ogs-scenes {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+#lifestage-detail[data-story="ongil"] .ogs-scenes li {
+  padding-top: 1.1rem;
+  border-top: 2px solid var(--ogs-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-scenes li:first-child {
+  border-top-color: var(--ogs-apricot);
+}
+#lifestage-detail[data-story="ongil"] .ogs-scenes__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.6rem;
+}
+#lifestage-detail[data-story="ongil"] .ogs-scenes__n {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--ogs-apricot-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-scenes h3 {
+  font-size: 1.1875rem;
+}
+#lifestage-detail[data-story="ongil"] .ogs-scenes p {
+  margin-top: 0.6rem !important;
+  font-size: 1rem;
+  line-height: 1.68;
+  color: var(--ogs-muted);
+}
+@media (max-width: 759px) {
+  #lifestage-detail[data-story="ongil"] .ogs-scenes.ogs-rail > li {
+    flex: 0 0 78%;
+    padding: 1.1rem 1.1rem 1.25rem;
+    border: 1px solid var(--ogs-line-2);
+    border-top: 2px solid var(--ogs-ink);
+    border-radius: 0 0 var(--ogs-r) var(--ogs-r);
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-scenes.ogs-rail > li:first-child {
+    border-top-color: var(--ogs-apricot);
+  }
+}
+
+/* ── people / roles: open columns divided by hairlines (no boxes) ── */
+#lifestage-detail[data-story="ongil"] .ogs-people--open {
+  gap: 0;
+  border-top: 1px solid var(--ogs-line-2);
+}
+#lifestage-detail[data-story="ongil"] .ogs-people--open > li {
+  padding: 1.6rem 1.75rem 1.75rem 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+@media (min-width: 900px) {
+  #lifestage-detail[data-story="ongil"] .ogs-people--open > li + li {
+    padding-left: 1.75rem;
+    border-left: 1px solid var(--ogs-line);
+  }
+}
+@media (min-width: 620px) and (max-width: 1099px) {
+  #lifestage-detail[data-story="ongil"] .ogs-people--4.ogs-people--open > li:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-people--4.ogs-people--open > li:nth-child(n + 3) {
+    border-top: 1px solid var(--ogs-line);
+  }
+}
+#lifestage-detail[data-story="ongil"] .ogs-people--open .ogs-people__key {
+  border: 0;
+  box-shadow: inset 0 3px 0 var(--ogs-apricot);
+}
+#lifestage-detail[data-story="ongil"] .ogs-people__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#lifestage-detail[data-story="ongil"] .ogs-people__n {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--ogs-faint);
+}
+#lifestage-detail[data-story="ongil"] .ogs-people--open h3 {
+  margin-top: 1.1rem;
+}
+@media (max-width: 899px) {
+  #lifestage-detail[data-story="ongil"] .ogs-people--open:not(.ogs-rail) > li + li {
+    border-top: 1px solid var(--ogs-line);
+  }
+}
+@media (max-width: 759px) {
+  #lifestage-detail[data-story="ongil"] .ogs-people--open.ogs-rail {
+    border-top: 0;
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-people--open.ogs-rail > li {
+    padding: 1.25rem;
+    border: 1px solid var(--ogs-line-2);
+    border-radius: var(--ogs-r);
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-people--open.ogs-rail > li.ogs-people__key {
+    border-color: var(--ogs-apricot);
+    box-shadow: none;
+  }
+}
+
+/* ── Overview G: comparison — ONGIL column carries a light apricot tint ── */
+@media (min-width: 760px) {
+  #lifestage-detail[data-story="ongil"] .ogs-table--compare tbody td {
+    background: var(--ogs-wash);
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-table--compare thead th:last-child {
+    background: var(--ogs-wash);
+  }
+}
+
+/* ── Overview H: status band — columns get a stronger head ── */
+#lifestage-detail[data-story="ongil"] .ogs-phase__col {
+  background: var(--ogs-card);
+}
+#lifestage-detail[data-story="ongil"] .ogs-phase__head {
+  grid-template-columns: minmax(0, 1fr);
+}
+#lifestage-detail[data-story="ongil"] .ogs-phase__head > .ogs-mark {
+  display: none;
+}
+
+/* ── Platform A: group map (one row per group, areas as link chips) ── */
+#lifestage-detail[data-story="ongil"] .ogs-gmap {
+  border-top: 1px solid var(--ogs-line-2);
+}
+#lifestage-detail[data-story="ongil"] .ogs-gmap__g {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1.1rem 0 1.2rem;
+  border-bottom: 1px solid var(--ogs-line);
+}
+@media (min-width: 900px) {
+  #lifestage-detail[data-story="ongil"] .ogs-gmap__g {
+    grid-template-columns: 16rem minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+}
+#lifestage-detail[data-story="ongil"] .ogs-gmap__h {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr) auto;
+  gap: 0.85rem;
+  align-items: center;
+}
+#lifestage-detail[data-story="ongil"] .ogs-gmap__h strong {
+  display: block;
+  font-size: 1.0625rem;
+  color: var(--ogs-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-gmap__h span:not(.ogs-dir__badge) {
+  display: block;
+  font-size: 0.9375rem;
+  color: var(--ogs-faint);
+}
+#lifestage-detail[data-story="ongil"] .ogs-gmap__count {
+  font-size: 1.25rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--ogs-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-gmap__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+#lifestage-detail[data-story="ongil"] .ogs-gmap__list a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  min-height: 44px;
+  box-sizing: border-box;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--ogs-line-2);
+  border-radius: 12px;
+  color: var(--ogs-ink);
+  text-decoration: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+#lifestage-detail[data-story="ongil"] .ogs-gmap__list a:hover,
+#lifestage-detail[data-story="ongil"] .ogs-gmap__list a:focus-visible {
+  border-color: var(--ogs-apricot);
+  background: var(--ogs-wash);
+}
+#lifestage-detail[data-story="ongil"] .ogs-gmap__x strong {
+  font-size: 0.9875rem;
+  font-weight: 650;
+}
+#lifestage-detail[data-story="ongil"] .ogs-gmap__x em {
+  margin-left: 0.45rem;
+  font-size: 0.8125rem;
+  font-style: normal;
+  color: var(--ogs-faint);
+}
+
+/* ── Platform B: status rows ── */
+#lifestage-detail[data-story="ongil"] .ogs-phrows {
+  border-top: 1px solid var(--ogs-line-2);
+}
+#lifestage-detail[data-story="ongil"] .ogs-phrows__r {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1.2rem 0 1.25rem;
+  border-bottom: 1px solid var(--ogs-line);
+}
+@media (min-width: 900px) {
+  #lifestage-detail[data-story="ongil"] .ogs-phrows__r {
+    grid-template-columns: 16rem minmax(0, 1fr);
+    gap: 2rem;
+  }
+}
+#lifestage-detail[data-story="ongil"] .ogs-phrows__r--now {
+  box-shadow: inset 3px 0 0 var(--ogs-apricot);
+  padding-left: 1.1rem;
+}
+#lifestage-detail[data-story="ongil"] .ogs-phrows__k {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: start;
+}
+#lifestage-detail[data-story="ongil"] .ogs-phrows__k p {
+  margin-top: 0.5rem !important;
+  font-size: 0.9375rem;
+  font-weight: 650;
+  line-height: 1.45;
+  color: var(--ogs-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-phrows__items {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0 1.75rem;
+}
+@media (min-width: 700px) {
+  #lifestage-detail[data-story="ongil"] .ogs-phrows__items {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+#lifestage-detail[data-story="ongil"] .ogs-phrows__items a {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 0.35rem;
+  min-height: 44px;
+  box-sizing: border-box;
+  padding: 0.55rem 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ogs-ink);
+  text-decoration: none;
+}
+#lifestage-detail[data-story="ongil"] .ogs-phrows__items a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--ogs-apricot);
+  text-underline-offset: 0.25em;
+}
+
+/* ── accordions (Platform group B, Partnerships partner types) ── */
+#lifestage-detail[data-story="ongil"] .ogs-accs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0 2.5rem;
+  border-top: 1px solid var(--ogs-line-2);
+}
+@media (min-width: 900px) {
+  #lifestage-detail[data-story="ongil"] .ogs-accs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+#lifestage-detail[data-story="ongil"] .ogs-accs > article {
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid var(--ogs-line);
+  border-radius: 0;
+  background: transparent;
+}
+#lifestage-detail[data-story="ongil"] .ogs-acc summary {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 2rem minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: center;
+  min-height: 44px;
+  padding: 1.05rem 3rem 1.05rem 0;
+  cursor: pointer;
+  list-style: none;
+}
+#lifestage-detail[data-story="ongil"] .ogs-acc summary::-webkit-details-marker {
+  display: none;
+}
+#lifestage-detail[data-story="ongil"] .ogs-acc summary::after {
+  content: "+";
+  position: absolute;
+  right: 0.1rem;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  margin-top: -1rem;
+  border: 1px solid var(--ogs-line-2);
+  border-radius: 999px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--ogs-apricot-ink);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+#lifestage-detail[data-story="ongil"] .ogs-acc[open] summary::after {
+  content: "\2212";
+  border-color: var(--ogs-apricot);
+}
+#lifestage-detail[data-story="ongil"] .ogs-acc summary:focus-visible {
+  outline: 3px solid var(--ogs-apricot-ink);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+#lifestage-detail[data-story="ongil"] .ogs-acc summary .ogs-tile {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+#lifestage-detail[data-story="ongil"] .ogs-acc summary > .ogs-mark {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+#lifestage-detail[data-story="ongil"] .ogs-acc__n {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--ogs-apricot-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-acc__x {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+}
+#lifestage-detail[data-story="ongil"] .ogs-acc__t {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--ogs-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-acc__en {
+  font-size: 0.8125rem;
+  font-weight: 650;
+  color: var(--ogs-faint);
+}
+#lifestage-detail[data-story="ongil"] .ogs-acc summary:hover .ogs-acc__t {
+  color: var(--ogs-apricot-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-acc__body {
+  padding: 0 0 1.4rem;
+}
+#lifestage-detail[data-story="ongil"] .ogs-acc__body .ogs-card__desc {
+  margin: 0 0 1rem !important;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ogs-muted);
+}
+#lifestage-detail[data-story="ongil"] .ogs-acc__body .ogs-foot-links {
+  margin-top: 1rem;
+}
+
+/* ── Platform: AI example conversation (illustrative) ── */
+#lifestage-detail[data-story="ongil"] .ogs-chat {
+  margin: 0;
+  padding: 1.1rem 1.1rem 1.2rem;
+  border: 1px solid var(--ogs-line-2);
+  border-radius: 24px;
+  background: var(--ogs-card);
+}
+#lifestage-detail[data-story="ongil"] .ogs-chat__list {
+  display: grid;
+  gap: 0.7rem;
+}
+#lifestage-detail[data-story="ongil"] .ogs-chat__list > div {
+  display: grid;
+  justify-items: start;
+  gap: 0.3rem;
+}
+#lifestage-detail[data-story="ongil"] .ogs-chat__list > div:nth-child(even) {
+  justify-items: end;
+}
+#lifestage-detail[data-story="ongil"] .ogs-chat__list dt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 750;
+  color: var(--ogs-faint);
+}
+#lifestage-detail[data-story="ongil"] .ogs-chat__list dt .ogs-mark {
+  width: 1rem;
+  height: 1rem;
+}
+#lifestage-detail[data-story="ongil"] .ogs-chat__list dd {
+  max-width: 85%;
+  padding: 0.6rem 0.95rem;
+  border: 1px solid var(--ogs-line);
+  border-radius: 18px 18px 18px 6px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ogs-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-chat__list > div:nth-child(even) dd {
+  border-color: var(--ogs-wash-line);
+  border-radius: 18px 18px 6px 18px;
+  background: var(--ogs-wash);
+}
+
+/* ── Platform: app structure — tab list beside an illustrative screen ── */
+#lifestage-detail[data-story="ongil"] .ogs-appmap {
+  display: grid;
+  gap: 2rem;
+}
+@media (min-width: 1000px) {
+  #lifestage-detail[data-story="ongil"] .ogs-appmap {
+    grid-template-columns: minmax(0, 1fr) 21rem;
+    gap: 4rem;
+    align-items: start;
+  }
+}
+#lifestage-detail[data-story="ongil"] .ogs-tablist {
+  border-top: 1px solid var(--ogs-line-2);
+}
+#lifestage-detail[data-story="ongil"] .ogs-tablist li {
+  display: grid;
+  grid-template-columns: 2rem 1.5rem minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: start;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--ogs-line);
+}
+#lifestage-detail[data-story="ongil"] .ogs-tablist__n {
+  padding-top: 0.15rem;
+  font-size: 0.9375rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--ogs-apricot-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-tablist h3 {
+  font-size: 1.125rem;
+}
+#lifestage-detail[data-story="ongil"] .ogs-tablist p {
+  margin-top: 0.25rem !important;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ogs-muted);
+}
+#lifestage-detail[data-story="ongil"] .ogs-tablist .ogs-tabbar__more {
+  font-size: 0.9375rem;
+  color: var(--ogs-apricot-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-appmap .ogs-callout {
+  margin-top: 1.25rem;
+}
+@media (max-width: 999px) {
+  #lifestage-detail[data-story="ongil"] .ogs-appmap .ogs-device {
+    justify-self: center;
+    width: 100%;
+    max-width: 22.5rem;
+  }
+}
+
+/* ── Platform D: signature areas — the middle one mirrors its columns ── */
+@media (min-width: 900px) {
+  #lifestage-detail[data-story="ongil"] .ogs-sec--sig-rev .ogs-feat {
+    direction: rtl;
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-sec--sig-rev .ogs-feat > * {
+    direction: ltr;
+  }
+}
+
+/* ── Business: category index without boxes (top accent rule per category) ── */
+#lifestage-detail[data-story="ongil"][data-ogs-page="business"] .ogs-dir--4 > .ogs-dir__g {
+  padding: 1rem 0 0.5rem;
+  border: 0;
+  border-top: 2px solid var(--ogs-ink);
+  border-radius: 0;
+  background: transparent;
+}
+#lifestage-detail[data-story="ongil"][data-ogs-page="business"] .ogs-dir--4 > .ogs-dir__g:first-child {
+  border-top-color: var(--ogs-apricot);
+}
+
+/* ── Business B2: subscription stairs (free start, step-up levels; no names or prices) ── */
+#lifestage-detail[data-story="ongil"] .ogs-tiers--stairs {
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 1rem;
+}
+@media (min-width: 900px) {
+  #lifestage-detail[data-story="ongil"] .ogs-tiers--stairs .ogs-ladder {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    align-items: end;
+    gap: 0.75rem;
+    border-top: 0;
+    margin-top: 1rem;
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-tiers--stairs .ogs-ladder li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.4rem;
+    align-content: start;
+    padding: 0.9rem 1rem 1rem;
+    border: 1px solid var(--ogs-line-2);
+    border-top: 3px solid var(--ogs-apricot);
+    border-radius: 4px 4px 14px 14px;
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-tiers--stairs .ogs-ladder li:nth-child(1) { min-height: 7.5rem; }
+  #lifestage-detail[data-story="ongil"] .ogs-tiers--stairs .ogs-ladder li:nth-child(2) { min-height: 9rem; }
+  #lifestage-detail[data-story="ongil"] .ogs-tiers--stairs .ogs-ladder li:nth-child(3) { min-height: 10.5rem; }
+  #lifestage-detail[data-story="ongil"] .ogs-tiers--stairs .ogs-ladder li:nth-child(4) { min-height: 12rem; }
+  #lifestage-detail[data-story="ongil"] .ogs-tiers--stairs .ogs-ladder li:nth-child(5) { min-height: 13.5rem; }
+  #lifestage-detail[data-story="ongil"] .ogs-tiers--stairs .ogs-ladder li:first-child {
+    border-top-color: var(--ogs-ink);
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-tiers--stairs .ogs-ways__i {
+    display: grid;
+    grid-template-columns: 14rem minmax(0, 1fr);
+    column-gap: 2rem;
+    align-items: end;
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-tiers--stairs .ogs-ways__i > :not(.ogs-ladder) {
+    grid-column: 1;
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-tiers--stairs .ogs-ways__i > .ogs-ladder {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+}
+
+/* ── Business E: business groups as data sheets (no boxes, ink top rule, hairline spec rows) ── */
+#lifestage-detail[data-story="ongil"][data-ogs-page="business"] .ogs-cat .ogs-card {
+  padding: 1.1rem 0 0.75rem;
+  border: 0;
+  border-top: 2px solid var(--ogs-ink);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+#lifestage-detail[data-story="ongil"][data-ogs-page="business"] .ogs-cat__list:not(.ogs-cat__list--multi) .ogs-card,
+#lifestage-detail[data-story="ongil"][data-ogs-page="business"] .ogs-cat:not(.ogs-cat--top) .ogs-card:first-child {
+  border-top-color: var(--ogs-apricot);
+}
+#lifestage-detail[data-story="ongil"][data-ogs-page="business"] .ogs-cat .ogs-specgrid {
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+}
+
+/* ── Partnerships: before-you-propose sheet ── */
+#lifestage-detail[data-story="ongil"] .ogs-sheetwrap {
+  display: grid;
+  gap: 1.25rem;
+}
+@media (min-width: 1000px) {
+  #lifestage-detail[data-story="ongil"] .ogs-sheetwrap {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-sheetwrap > .ogs-callout {
+    margin-top: 0;
+  }
+}
+#lifestage-detail[data-story="ongil"] .ogs-sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  padding: 0.5rem 1.4rem;
+  border: 1px solid var(--ogs-line-2);
+  border-top: 3px solid var(--ogs-apricot);
+  border-radius: 6px 6px var(--ogs-r) var(--ogs-r);
+  background: var(--ogs-card);
+}
+@media (min-width: 700px) {
+  #lifestage-detail[data-story="ongil"] .ogs-sheet {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
+  }
+}
+#lifestage-detail[data-story="ongil"] .ogs-sheet li {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr) 1.25rem;
+  gap: 0.6rem;
+  align-items: start;
+  padding: 0.95rem 0;
+  border-bottom: 1px dashed var(--ogs-line-2);
+}
+#lifestage-detail[data-story="ongil"] .ogs-sheet__n {
+  font-size: 0.875rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.7;
+  color: var(--ogs-apricot-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-sheet strong {
+  font-size: 1.0625rem;
+  color: var(--ogs-ink);
+}
+#lifestage-detail[data-story="ongil"] .ogs-sheet p {
+  margin-top: 0.2rem !important;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ogs-muted);
+}
+#lifestage-detail[data-story="ongil"] .ogs-sheet .ogs-mark {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.2rem;
+}
+
+/* ── Partnerships A: facts as a four-column row (differs from the Overview intro) ── */
+@media (min-width: 1000px) {
+  #lifestage-detail[data-story="ongil"][data-ogs-page="partnerships"] .ogs-intro__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+  #lifestage-detail[data-story="ongil"][data-ogs-page="partnerships"] .ogs-facts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0 1.5rem;
+  }
+  #lifestage-detail[data-story="ongil"][data-ogs-page="partnerships"] .ogs-facts > div {
+    border-bottom: 0;
+    border-top: 2px solid var(--ogs-ink);
+  }
+  #lifestage-detail[data-story="ongil"][data-ogs-page="partnerships"] .ogs-facts > div:first-child {
+    border-top-color: var(--ogs-apricot);
+  }
+}
+
+/* restrained reveal: nothing moves when the viewer prefers reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  #lifestage-detail[data-story="ongil"] .ogs-gmap__list a,
+  #lifestage-detail[data-story="ongil"] .ogs-words__en {
+    transition: color 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+  }
+}
+
+/* ── dark shell theme for the v4 pieces ── */
+html[data-newon-shell-theme="dark"] body #lifestage-detail[data-story="ongil"] .nls__wrap :is(.ogs-device__phone, .ogs-chat, .ogs-sheet, .ogs-chip, .ogs-phase__col) {
+  background-color: #141414 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail[data-story="ongil"] .nls__wrap :is(.ogs-device__rows .ogs-mark, .ogs-chat__list > div:nth-child(even) dd, .ogs-table--compare tbody td, .ogs-table--compare thead th:last-child, .ogs-gmap__list a:hover) {
+  background-color: #1f1610 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail[data-story="ongil"] .nls__wrap .ogs-chip--now {
+  background-color: #e99465 !important;
+  border-color: #e99465 !important;
+  color: #1a1a1a !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail[data-story="ongil"] .nls__wrap .ogs-chip--now::before {
+  background-color: #1a1a1a !important;
+  border-color: #1a1a1a !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail[data-story="ongil"] .nls__wrap .ogs-chip--dev::before {
+  background-color: #e99465 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail[data-story="ongil"] .nls__wrap :is(.ogs-words__en, .ogs-device__title, .ogs-device__brand, .ogs-device__rows li, .ogs-acc__t, .ogs-gmap__count, .ogs-gmap__x strong, .ogs-phrows__k p, .ogs-phrows__items a, .ogs-chat__list dd, .ogs-sheet strong, .ogs-chip--plan) {
+  color: #f5f5f5 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail[data-story="ongil"] .nls__wrap :is(.ogs-words__ko, .ogs-pair__n, .ogs-scenes__n, .ogs-acc__n, .ogs-tablist__n, .ogs-sheet__n, .ogs-device__tabs li.is-on, .ogs-device__tabs li.is-on .ogs-mark, .ogs-chip--dev, .ogs-tablist .ogs-tabbar__more) {
+  color: #f0a97f !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail[data-story="ongil"] .nls__wrap :is(.ogs-device__label, .ogs-device figcaption, .ogs-acc__en, .ogs-gmap__x em, .ogs-gmap__h span:not(.ogs-dir__badge), .ogs-people__n, .ogs-chat__list dt, .ogs-device__tabs li, .ogs-chip--review) {
+  color: rgba(245, 245, 245, 0.64) !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail[data-story="ongil"] .nls__wrap :is(.ogs-scenes li, .ogs-tiers--stairs .ogs-ladder li:first-child) {
+  border-top-color: #f5f5f5 !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail[data-story="ongil"] .nls__wrap :is(.ogs-scenes li:first-child, .ogs-device__rows li:first-child, .ogs-sheet, .ogs-acc[open] summary) {
+  border-color: #e99465;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail[data-story="ongil"][data-ogs-page="business"] .nls__wrap :is(.ogs-cat .ogs-card, .ogs-dir--4 > .ogs-dir__g) {
+  background-color: transparent !important;
+  border-top-color: rgba(255, 255, 255, 0.7) !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail[data-story="ongil"] .nls__wrap .ogs-accs > article {
+  background-color: transparent !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail[data-story="ongil"] .nls__wrap .ogs-people--open > li {
+  background-color: transparent !important;
+}
+
+/* v4 refinements (round 2) */
+@media (min-width: 900px) {
+  #lifestage-detail[data-story="ongil"] .ogs-accs {
+    display: block;
+    columns: 2;
+    column-gap: 2.5rem;
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-accs > article {
+    break-inside: avoid;
+  }
+}
+#lifestage-detail[data-story="ongil"] .ogs-chat__list > div:nth-child(even) {
+  justify-items: start;
+}
+#lifestage-detail[data-story="ongil"] .ogs-chat__list > div:nth-child(even) dd {
+  border-radius: 18px 18px 18px 6px;
+}
+@media (min-width: 700px) {
+  #lifestage-detail[data-story="ongil"] .ogs-chat__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem 1rem;
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-chat__list dd {
+    max-width: 100%;
+  }
+}
+#lifestage-detail[data-story="ongil"] .ogs-tiers--stairs .ogs-ways__i {
+  padding: 1.25rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--ogs-line-2);
+  border-radius: 0;
+  background: transparent;
+}
+#lifestage-detail[data-story="ongil"] .ogs-tiers--stairs .ogs-ways__i--key {
+  border-top: 2px solid var(--ogs-apricot);
+}
+@media (min-width: 900px) {
+  #lifestage-detail[data-story="ongil"] .ogs-tiers--stairs .ogs-ways__i {
+    align-items: start;
+    grid-template-rows: auto 1fr;
+  }
+  #lifestage-detail[data-story="ongil"] .ogs-tiers--stairs .ogs-ways__i > .ogs-ladder {
+    align-self: end;
+    margin-top: 0;
+  }
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail[data-story="ongil"] .nls__wrap .ogs-tiers--stairs .ogs-ways__i {
+  background-color: transparent !important;
+}
+@media (max-width: 759px) {
+  #lifestage-detail[data-story="ongil"] .ogs-scenes.ogs-rail {
+    display: flex;
+  }
+}
+/* dark: v4 open (unboxed) pieces must beat the older card-surface rule, whose :is() carries high specificity */
+html[data-newon-shell-theme="dark"] body #lifestage-detail[data-story="ongil"] .nls__wrap.nls__wrap :is(.ogs-accs.ogs-accs.ogs-accs > article, .ogs-people--open.ogs-people--open.ogs-people--open > li, .ogs-cat.ogs-cat.ogs-cat .ogs-card) {
+  background-color: transparent !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail[data-story="ongil"] .nls__wrap :is(.ogs-chip--plan, .ogs-chip--review)::before {
+  background-color: transparent !important;
+  border-color: rgba(245, 245, 245, 0.7) !important;
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail[data-story="ongil"] .nls__wrap .ogs-acc summary::after {
+  background-color: transparent !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  color: #f0a97f !important;
+}
+#lifestage-detail[data-story="ongil"] .ogs-device__rows li > span {
+  display: block;
+}
+#lifestage-detail[data-story="ongil"] .ogs-device__rows li > span::first-letter {
+  text-transform: uppercase;
+}

@@ -66,6 +66,10 @@ export const KO = {
       contact: "문의 유형 보기 ↓",
     },
     notesLabel: "안내",
+    /* v4 (2026-10-26): labels for the illustrative HTML/CSS app screens — not real data */
+    illus: "예시 화면",
+    illusNote: "앱 구성을 보여 드리기 위한 예시 화면이며, 실제 기록이나 사용자 정보가 아닙니다.",
+    today: "오늘",
     typesTitle: "문의 유형",
     partnerTypesTitle: "함께하고 싶은 16개 파트너 유형",
     partnerIndexTitle: "8개 협력 기회,\n16개 파트너 유형.",

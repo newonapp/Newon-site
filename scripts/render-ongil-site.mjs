@@ -39,6 +39,12 @@
  * accordions) and more detail from the integrated business plan (health scope, care delivery, AI and devices, app
  * structure, development stages, partnership timing, proposal checklist, contact routing / next steps / FAQ).
  * Hero + shared sub-menu markup unchanged; contact links still pass through unified-contact-links.mjs.
+ *
+ * V4 visual pass (2026-10-26, Overview · Platform · Business · Partnerships only; Contact untouched): illustrative app
+ * screens built in HTML/CSS from existing copy (labelled 예시 화면 / Illustrative, no data), coloured status chips with
+ * text labels, typographic value grid, numbered scene rail, open role columns, Platform group map + status rows,
+ * accordions (native <details>) for Platform group B and the 16 partner types, AI example conversation, app-structure
+ * tab list beside a screen, proposal sheet, subscription stairs and business data sheets (CSS). One apricot band per page.
  */
 import fs from "fs";
 import path from "path";
@@ -85,7 +91,7 @@ import { BIZ_CONTACT_CSS } from "./biz-contact-kit.mjs";
 const ask = (lang, type, page, topic = "") => unifiedContactHref(lang, "ongil", { type, topic, source: `ongil-${page}` });
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-export const OGS_VER = "20261026v3";
+export const OGS_VER = "20261026v4";
 const NLS_VER = "20261025ov1"; // Life Stage assets are reused as-is
 /** ONGIL first-screen background film (owner-provided, 2026-10-18). */
 const ONGIL_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260323_071151_38c3924f-c312-48af-a196-3fbb80e4226f.mp4";
@@ -223,12 +229,27 @@ function phaseBoard(c, hrefFor) {
   return `<ol class="ogs-phase">${st.cols
     .map(
       (col, ci) => `<li class="ogs-phase__col${ci === 0 ? " ogs-phase__col--now" : ""}">
-        <div class="ogs-phase__head">${mark(col.icon)}<div><p class="ogs-phase__t">${e(col.ko)}</p>${c.lang === "ko" ? `<p class="ogs-phase__en" lang="en">${e(col.en)}</p>` : ""}</div></div>
+        <div class="ogs-phase__head">${mark(col.icon)}<div>${chip(col.id, col.en.split(" · ")[0])}${col.ko !== col.en.split(" · ")[0] ? `<p class="ogs-phase__t">${e(col.ko)}</p>` : ""}</div></div>
         <ul>${col.items.map((it) => `<li><a href="${e(hrefFor(it.a))}"><span class="ogs-phase__n">${e(nums[it.a] || "")}</span><span class="ogs-phase__x">${e(it.t)}</span></a></li>`).join("")}</ul>
       </li>`
     )
     .join("")}</ol>
       ${note(st.basis)}`;
+}
+
+/** v4 Platform variant of the status board: four labelled rows (chip + items as links), so the two pages differ. */
+function phaseRows(c, hrefFor) {
+  const nums = areaIndex(c);
+  return `<div class="ogs-phrows">${c.status.cols
+    .map((col) => {
+      const short = col.en.split(" · ")[0];
+      return `<div class="ogs-phrows__r ogs-phrows__r--${col.id}">
+        <div class="ogs-phrows__k">${mark(col.icon)}<div>${chip(col.id, short)}${col.ko !== short ? `<p>${e(col.ko)}</p>` : ""}</div></div>
+        <ul class="ogs-phrows__items">${col.items.map((it) => `<li><a href="${e(hrefFor(it.a))}"><span class="ogs-phase__n">${e(nums[it.a] || "")}</span>${e(it.t)}</a></li>`).join("")}</ul>
+      </div>`;
+    })
+    .join("")}</div>
+      ${note(c.status.basis)}`;
 }
 
 /** Check list (trust / privacy / data). Alert items are pulled out into one red callout at the end. */
@@ -250,15 +271,14 @@ function steps(list, icons, n) {
 }
 
 /** Large statement + lead + facts (Overview A, Partnerships A). */
-function introBlock(c, ab) {
-  return `<div class="ogs-intro">
-      <p class="ogs-eyebrow" lang="en">${e(ab.kicker)}</p>
+function introBlock(c, ab, aside = "") {
+  const text = `<p class="ogs-eyebrow" lang="en">${e(ab.kicker)}</p>
       <h2 class="ogs-statement" id="ogs-intro-t">${e(ab.statement)}</h2>
       <div class="ogs-intro__grid">
         <p class="ogs-intro__lead">${e(ab.lead)}</p>
         <dl class="ogs-facts">${ab.facts.map((f, i) => `<div><dt>${mark(FACT_ICONS[i % FACT_ICONS.length])}${e(f.k)}</dt><dd>${e(f.v)}</dd></div>`).join("")}</dl>
-      </div>
-    </div>
+      </div>`;
+  return `${aside ? `<div class="ogs-intro ogs-intro--device"><div class="ogs-intro__text">${text}</div>${aside}</div>` : `<div class="ogs-intro">${text}</div>`}
     ${notice(c)}`;
 }
 
@@ -280,6 +300,30 @@ const RAIL = ' ogs-rail" tabindex="0';
 const faqList = (items, two = false) =>
   `<div class="ogs-faq${two ? " ogs-faq--2" : ""}">${items.map((f) => `<details><summary>${e(f.q)}</summary><p>${e(f.a)}</p></details>`).join("")}</div>`;
 
+/* ───────── v4 visual pass (2026-10-26): illustrative screens, status chips, accordions ───────── */
+
+/** Status chip — the label text always carries the meaning (never colour alone). kind: now · dev · plan · review. */
+const chip = (kind, t) => `<span class="ogs-chip ogs-chip--${kind}">${e(t)}</span>`;
+
+/** Illustrative phone screen built in HTML/CSS ("예시 화면" / "Illustrative"); rows and tabs come from existing copy only. */
+function device(c, { title, status, rows, tabs, active = 0, cls = "" }) {
+  return `<figure class="ogs-device${cls ? " " + cls : ""}">
+      <p class="ogs-device__label">${e(c.ui.illus)}</p>
+      <div class="ogs-device__phone">
+        <div class="ogs-device__bar"><span class="ogs-device__brand" lang="en">${e(c.brand)}</span>${status ? chip(status[0], status[1]) : ""}</div>
+        ${title ? `<p class="ogs-device__title">${e(title)}</p>` : ""}
+        <ul class="ogs-device__rows">${rows
+          .map((r) => `<li>${mark(r.icon || "check")}<span>${e(r.t)}</span>${r.k ? `<em>${e(r.k)}</em>` : ""}</li>`)
+          .join("")}</ul>
+        ${tabs ? `<ol class="ogs-device__tabs">${tabs.map((t, i) => `<li${i === active ? ' class="is-on"' : ""}>${mark(t.icon)}<span>${e(t.t)}</span></li>`).join("")}</ol>` : ""}
+      </div>
+      <figcaption>${e(c.ui.illusNote)}</figcaption>
+    </figure>`;
+}
+
+/** Accordion row (native details, keyboard-operable without script). */
+const acc = (summary, body, open = false) => `<details class="ogs-acc"${open ? " open" : ""}><summary>${summary}</summary><div class="ogs-acc__body">${body}</div></details>`;
+
 /* ───────── 01 Overview ───────── */
 
 function overviewMain(c, S, lang) {
@@ -287,16 +331,30 @@ function overviewMain(c, S, lang) {
   const plat = (id) => `${pagePath(lang, "platform")}#p-${id}`;
 
   // A · large statement, lead + four facts, then the page's one shared notice
-  const intro = sec("ogs-intro", introBlock(c, o.about));
+  const now = c.status.cols[0];
+  const intro = sec(
+    "ogs-intro",
+    introBlock(
+      c,
+      o.about,
+      device(c, {
+        title: c.ui.today,
+        status: ["now", now.en.split(" · ")[0]],
+        rows: now.items.slice(0, 5).map((it) => ({ t: it.t, icon: AREA_ICONS[it.a] || "check" })),
+        tabs: c.platform.appMap.tabs,
+      })
+    )
+  );
 
   // B · problem → ONGIL's way, as paired rows (no boxes)
   const pr = o.problems;
   const problems = sec(
     "ogs-problems",
     `${head("ogs-problems", pr.label, pr.title, pr.lead, { split: true })}
-      <ol class="ogs-pairs">${pr.items
+      <ol class="ogs-pairs ogs-pairs--n">${pr.items
         .map(
-          (it) => `<li class="ogs-pair">
+          (it, i) => `<li class="ogs-pair">
+          <span class="ogs-pair__n" aria-hidden="true">${pad(i + 1)}</span>
           <div class="ogs-pair__q">${tag("Problem")}<h3>${e(it.problem)}</h3><p>${e(it.text)}</p></div>
           <div class="ogs-pair__a">${tag(pr.solutionLabel, true)}<p>${e(it.how)}</p></div>
         </li>`
@@ -308,12 +366,11 @@ function overviewMain(c, S, lang) {
   const mission = sec(
     "ogs-vision",
     `${head("ogs-vision", o.mission.label, o.mission.title, o.mission.lead, { split: true })}
-      <ul class="ogs-vals${RAIL}">${o.mission.values
+      <ul class="ogs-words">${o.mission.values
         .map(
-          (v, i) => `<li>${mark(VALUE_ICONS[i % VALUE_ICONS.length])}<p class="ogs-vals__en" lang="en">${e(v.en)}</p>${c.lang === "ko" ? `<p class="ogs-vals__ko">${e(v.ko)}</p>` : ""}<p class="ogs-vals__t">${e(v.text)}</p></li>`
+          (v, i) => `<li><div class="ogs-words__h">${mark(VALUE_ICONS[i % VALUE_ICONS.length])}<p class="ogs-words__en" lang="en">${e(v.en)}</p></div>${c.lang === "ko" ? `<p class="ogs-words__ko">${e(v.ko)}</p>` : ""}<p class="ogs-words__t">${e(v.text)}</p></li>`
         )
-        .join("")}</ul>`,
-    { tone: "mist" }
+        .join("")}</ul>`
   );
 
   // D · 28 areas at a glance: bento of the six groups (area ranges are the real area numbers)
@@ -335,9 +392,9 @@ function overviewMain(c, S, lang) {
   const core = sec(
     "ogs-journey",
     `${head("ogs-journey", o.core.label, o.core.title, o.core.lead, { split: true })}
-      <ul class="ogs-moments ogs-moments--grid${RAIL}">${o.core.steps
-        .map((s, i) => `<li>${tile(CORE_ICONS[i % CORE_ICONS.length])}<div><h3>${e(s.name)}</h3><p>${e(s.text)}</p></div></li>`)
-        .join("")}</ul>`
+      <ol class="ogs-scenes${RAIL}">${o.core.steps
+        .map((s, i) => `<li><div class="ogs-scenes__top"><span class="ogs-scenes__n">${e(s.n)}</span>${mark(CORE_ICONS[i % CORE_ICONS.length])}</div><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
+        .join("")}</ol>`
   );
 
   // F · three core users as columns; the consent rule as a full-width bar beneath
@@ -345,9 +402,9 @@ function overviewMain(c, S, lang) {
   const people = sec(
     "ogs-who",
     `${head("ogs-who", o.people.label, o.people.title, o.people.lead, { split: true })}
-      <ul class="ogs-people${RAIL}">${ppl
+      <ul class="ogs-people ogs-people--open${RAIL}">${ppl
         .slice(0, -1)
-        .map((s, i) => `<li>${tile(PEOPLE_ICONS[i % PEOPLE_ICONS.length], "lg")}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
+        .map((s, i) => `<li><div class="ogs-people__top">${tile(PEOPLE_ICONS[i % PEOPLE_ICONS.length], "lg")}<span class="ogs-people__n">${e(s.n)}</span></div><h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
         .join("")}</ul>
       <div class="ogs-callout ogs-callout--key">${mark(PEOPLE_ICONS[3])}<div><strong>${e(ppl[ppl.length - 1].name)}</strong><p>${e(ppl[ppl.length - 1].text)}</p></div></div>`,
     { tone: "mist" }
@@ -469,7 +526,7 @@ function featureSection(c, lang, f, i) {
         </div>
       </div>
       ${steps(f.steps, ["spark", "link", "star"], 3)}`,
-    { tone: "tint", cls: `ogs-sec--sig${i ? "" : " ogs-sec--sig-first"}` }
+    { tone: "tint", cls: `ogs-sec--sig${i ? "" : " ogs-sec--sig-first"}${i === 1 ? " ogs-sec--sig-rev" : ""}` }
   );
 }
 
@@ -481,9 +538,9 @@ function platformMain(c, S, lang) {
   const dir = p.groupMap
     .map((g) => {
       const list = all.filter((s) => s.grp === g.id);
-      return `<li class="ogs-dir__g">
-        <div class="ogs-dir__h"><span class="ogs-dir__badge" lang="en">${e(g.id)}</span><div><strong lang="en">${e(g.en)}</strong>${c.lang === "ko" ? `<span>${e(g.ko)}</span>` : ""}</div><b class="ogs-dir__count">${list.length}</b></div>
-        <ol>${list.map((s) => `<li><a href="#p-${e(s.id)}"><span class="ogs-dir__n">${e(s.n)}</span><span class="ogs-dir__x"><strong>${e(s.title)}</strong><em lang="en">${e(s.label.replace(/^\d\d /, "").replace(/^ONGIL /, ""))}</em></span></a></li>`).join("")}</ol>
+      return `<li class="ogs-gmap__g">
+        <div class="ogs-gmap__h"><span class="ogs-dir__badge" lang="en">${e(g.id)}</span><div><strong lang="en">${e(g.en)}</strong>${c.lang === "ko" ? `<span>${e(g.ko)}</span>` : ""}</div><b class="ogs-gmap__count">${list.length}</b></div>
+        <ol class="ogs-gmap__list">${list.map((s) => `<li><a href="#p-${e(s.id)}"><span class="ogs-dir__n">${e(s.n)}</span><span class="ogs-gmap__x"><strong>${e(s.title)}</strong><em lang="en">${e(s.label.replace(/^\d\d /, "").replace(/^ONGIL /, ""))}</em></span></a></li>`).join("")}</ol>
       </li>`;
     })
     .join("");
@@ -492,20 +549,20 @@ function platformMain(c, S, lang) {
     `${head("ogs-index", `${c.ui.onThisPage} · ${all.length}`, p.indexTitle, p.indexLead, { split: true })}
       ${notice(c)}
       <p class="ogs-dir__title">${e(c.ui.groupMapTitle)}</p>
-      <ol class="ogs-dir">${dir}</ol>`
+      <ol class="ogs-gmap">${dir}</ol>`
   );
 
   // B · current offer vs development plan (key apricot band)
   const status = sec(
     "ogs-status",
     `${head("ogs-status", c.status.label, c.status.title, c.status.lead, { split: true })}
-      ${phaseBoard(c, (id) => `#p-${id}`)}`,
-    { tone: "tint" }
+      ${phaseRows(c, (id) => `#p-${id}`)}`,
+    { cls: "ogs-sec--rule" }
   );
 
   // C · groups A–E, each with a layout of its own: split rows · cards on mist · three-column lines · cards · rows on mist.
   //     A group marked `after` (G · 29 Giving) is rendered after the signature sections, as split rows.
-  const layouts = ["rows", "cards", "lines", "cards", "rows", "rows"];
+  const layouts = ["rows", "acc", "lines", "cards", "rows", "rows"];
   const groupSecs = p.groups
     .map((g, gi) => {
       const items = p.sections.slice(g.from, g.to);
@@ -519,6 +576,17 @@ function platformMain(c, S, lang) {
           <div class="ogs-row__head">${tile(AREA_ICONS[s.id] || JOURNEY_ICONS[gi])}${areaTag(s, n(i))}<h3 id="p-${e(s.id)}-t">${e(s.title)}</h3><p>${e(s.desc)}</p></div>
           <div class="ogs-row__body"><p class="ogs-dt">${e(c.ui.services)}</p>${ticks(s.services, "ogs-ticks--2")}${areaMeta(c, s)}${footLinks(ctaLink(c, lang, s.cta), backLink(c))}</div>
         </article>`
+          )
+          .join("")}</div>`;
+      } else if (layout === "acc") {
+        // v4: six areas as a two-column accordion (summary: number, title, area name; first one open)
+        body = `<div class="ogs-accs">${items
+          .map(
+            (s, i) => `<article class="ogs-row" id="p-${e(s.id)}" aria-labelledby="p-${e(s.id)}-t">${acc(
+              `${mark(AREA_ICONS[s.id] || JOURNEY_ICONS[gi])}<span class="ogs-acc__n">${e(n(i))}</span><span class="ogs-acc__x"><span class="ogs-acc__t" id="p-${e(s.id)}-t">${e(s.title)}</span><span class="ogs-acc__en" lang="en">${e(s.label.replace(/^\d\d /, ""))}</span></span>`,
+              `<p class="ogs-card__desc">${e(s.desc)}</p><p class="ogs-dt">${e(c.ui.services)}</p>${chips(s.services)}${areaMeta(c, s)}${footLinks(ctaLink(c, lang, s.cta), backLink(c))}`,
+              i === 0
+            )}</article>`
           )
           .join("")}</div>`;
       } else if (layout === "lines") {
@@ -543,7 +611,7 @@ function platformMain(c, S, lang) {
           )
           .join("")}</div>`;
       }
-      const tone = gi === 1 || gi === 4 ? "mist" : "";
+      const tone = gi === 4 ? "mist" : "";
       return { after: !!g.after, html: sec(`ogs-area-${gi + 1}`, `${head(`ogs-area-${gi + 1}`, g.kicker, g.title, g.lead, { split: true })}${body}`, {
         tone,
         cls: tone ? "" : "ogs-sec--rule",
@@ -571,7 +639,10 @@ function platformMain(c, S, lang) {
       <div class="ogs-pair2 ogs-pair2--ai">
         <div>
           <p class="ogs-dir__title">${e(ad.aiTitle)}</p>
-          <dl class="ogs-ex">${ad.ai.map((a) => `<div><dt>${e(a.t)}</dt><dd>${e(a.ex)}</dd></div>`).join("")}</dl>
+          <figure class="ogs-chat">
+            <p class="ogs-device__label">${e(c.ui.illus)}</p>
+            <dl class="ogs-chat__list">${ad.ai.map((a) => `<div><dt>${mark("chat")}${e(a.t)}</dt><dd>${e(a.ex)}</dd></div>`).join("")}</dl>
+          </figure>
           ${note(ad.aiNote)}
         </div>
         <div>
@@ -619,7 +690,7 @@ function platformMain(c, S, lang) {
   const roles = sec(
     "ogs-roles",
     `${head("ogs-roles", ro.label, ro.title, ro.lead, { split: true })}
-      <ul class="ogs-people ogs-people--4${RAIL}">${ro.items
+      <ul class="ogs-people ogs-people--4 ogs-people--open${RAIL}">${ro.items
         .map((s, i) => `<li${i === ro.items.length - 1 ? ' class="ogs-people__key"' : ""}>${tile(["person", "users", "hands", "building"][i % 4], "lg")}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
         .join("")}</ul>`,
     { tone: "mist" }
@@ -640,12 +711,17 @@ function platformMain(c, S, lang) {
   const appMap = sec(
     "ogs-appmap",
     `${head("ogs-appmap", am.kicker, am.title, am.lead, { split: true })}
-      <ol class="ogs-tabbar">${am.tabs
-        .map((t) => `<li>${mark(t.icon)}<h3>${e(t.t)}</h3><p>${e(t.text)}</p>${t.more ? `<p class="ogs-tabbar__more">+ ${e(t.more)}</p>` : ""}</li>`)
-        .join("")}</ol>
-      <div class="ogs-callout ogs-callout--key">${mark("alert")}<div><p>${e(am.sos)}</p></div></div>
+      <div class="ogs-appmap">
+        <div>
+          <ol class="ogs-tablist">${am.tabs
+            .map((t, i) => `<li><span class="ogs-tablist__n">${pad(i + 1)}</span>${mark(t.icon)}<div><h3>${e(t.t)}</h3><p>${e(t.text)}</p>${t.more ? `<p class="ogs-tabbar__more">+ ${e(t.more)}</p>` : ""}</div></li>`)
+            .join("")}</ol>
+          <div class="ogs-callout ogs-callout--key">${mark("alert")}<div><p>${e(am.sos)}</p></div></div>
+        </div>
+        ${device(c, { title: am.tabs[0].t, rows: am.tabs[0].text.split(/·|,/).map((t) => ({ t: t.trim(), icon: "check" })), tabs: am.tabs, cls: "ogs-device--tabs" })}
+      </div>
       <div class="ogs-principles"><p class="ogs-dt">${e(am.principlesTitle)}</p>${ticks(am.principles, "ogs-ticks--pills")}</div>`,
-    { tone: "tint" }
+    { cls: "ogs-sec--rule" }
   );
 
   // H · privacy, security & trust: split, single-column check list + emergency callout
@@ -748,7 +824,7 @@ function businessMain(c, S, lang) {
   const tiers = sec(
     "ogs-tiers",
     `${head("ogs-tiers", tr.label, tr.title, tr.lead, { split: true })}
-      <div class="ogs-ways ogs-tiers">${tr.groups
+      <div class="ogs-ways ogs-tiers ogs-tiers--stairs">${tr.groups
         .map(
           (g, gi) => `<div class="ogs-ways__i${gi ? "" : " ogs-ways__i--key"}"><p class="ogs-tag ogs-tag--accent">${e(g.who)}</p><h3>${e(g.t)}</h3>
           <ol class="ogs-ladder">${g.steps.map((s, i) => `<li><span class="ogs-ladder__n">${i + 1}</span><div><strong>${e(s.k)}</strong><p>${e(s.text)}</p></div></li>`).join("")}</ol></div>`
@@ -823,7 +899,7 @@ function businessMain(c, S, lang) {
         <ul class="ogs-fees__col ogs-fees__col--never">${fe.points.filter((p) => p.alert).map(feeItem).join("")}</ul>
       </div>
       ${note(fe.econNote)}`,
-    { tone: "tint" }
+    { cls: "ogs-sec--rule" }
   );
 
   // G · go-to-market: real four-step sequence
@@ -917,19 +993,19 @@ function partnershipsMain(c, S, lang) {
   const items = sec(
     "ogs-partner-types",
     `${head("ogs-partner-types", "Partner Types", c.ui.partnerTypesTitle, "")}
-      <div class="ogs-cards ogs-cards--2 ogs-cards--partners">${p.items
+      <div class="ogs-accs ogs-accs--partners">${p.items
         .map(
-          (it, i) => `<article class="ogs-card" id="pt-${pad(i + 1)}" aria-labelledby="pt-${pad(i + 1)}-t">
-          <div class="ogs-card__top">${tile(PARTNER_ICONS[i % PARTNER_ICONS.length])}${tag(it.opp, true, pad(i + 1))}</div>
-          <h3 id="pt-${pad(i + 1)}-t">${e(it.name)}</h3>
-          <dl class="ogs-stackdl">
+          (it, i) => `<article class="ogs-card" id="pt-${pad(i + 1)}" aria-labelledby="pt-${pad(i + 1)}-t">${acc(
+            `${tile(PARTNER_ICONS[i % PARTNER_ICONS.length])}<span class="ogs-acc__n">${pad(i + 1)}</span><span class="ogs-acc__x"><span class="ogs-acc__t" id="pt-${pad(i + 1)}-t">${e(it.name)}</span><span class="ogs-acc__en" lang="en">${e(it.opp)}</span></span>`,
+            `<dl class="ogs-stackdl">
             <div><dt>${e(c.ui.field)}</dt><dd>${e(it.field)}</dd></div>
             <div><dt>${e(c.ui.value)}</dt><dd>${e(it.value)}</dd></div>
             <div><dt>${e(c.ui.structure)}</dt><dd>${e(it.structure)}</dd></div>
             <div><dt>${e(c.ui.conditions)}</dt><dd>${e(it.conditions)}</dd></div>
           </dl>
-          ${footLinks(`<a class="ogs-link" href="${e(ask(lang, "partnership", "partnerships"))}">${e(c.ui.propose)} →</a>`, backLink(c))}
-        </article>`
+          ${footLinks(`<a class="ogs-link" href="${e(ask(lang, "partnership", "partnerships"))}">${e(c.ui.propose)} →</a>`, backLink(c))}`,
+            i < 2
+          )}</article>`
         )
         .join("")}</div>`
   );
@@ -990,8 +1066,10 @@ function partnershipsMain(c, S, lang) {
   const proposal = sec(
     "ogs-proposal",
     `${head("ogs-proposal", pp.label, pp.title, pp.lead, { split: true })}
-      <dl class="ogs-ex ogs-ex--3">${pp.items.map((it) => `<div><dt>${mark("check")}${e(it.t)}</dt><dd>${e(it.text)}</dd></div>`).join("")}</dl>
-      <div class="ogs-callout ogs-callout--alert">${mark("lock")}<div><strong>${e(pp.dont.t)}</strong><p>${e(pp.dont.text)}</p></div></div>`,
+      <div class="ogs-sheetwrap">
+        <ol class="ogs-sheet">${pp.items.map((it, i) => `<li><span class="ogs-sheet__n">${pad(i + 1)}</span><div><strong>${e(it.t)}</strong><p>${e(it.text)}</p></div>${mark("check")}</li>`).join("")}</ol>
+        <div class="ogs-callout ogs-callout--alert">${mark("lock")}<div><strong>${e(pp.dont.t)}</strong><p>${e(pp.dont.text)}</p></div></div>
+      </div>`,
     { cls: "ogs-sec--rule" }
   );
 

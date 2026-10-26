@@ -57,6 +57,10 @@ export const EN = {
       contact: "See inquiry types ↓",
     },
     notesLabel: "Notes",
+    /* v4 (2026-10-26): labels for the illustrative HTML/CSS app screens — not real data */
+    illus: "Illustrative",
+    illusNote: "An illustrative screen showing how the app is organised — not real records or user information.",
+    today: "Today",
     typesTitle: "Inquiry types",
     partnerTypesTitle: "The 16 partner types we would like to work with",
     partnerIndexTitle: "8 partnership opportunities,\n16 partner types.",
