@@ -8,6 +8,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { BIZPART_PATHS, LEGACY_REDIRECTS } from "../../scripts/render-bizpart.mjs";
+import { LEGACY_BUSINESS_TYPES } from "../../scripts/contact-taxonomy.mjs";
 import { BP_PLATFORMS, BP_FILMS, BP_PAGE_FILM, BP_NAV, BP_INQUIRY_TYPES, BP_INQUIRY_PLATFORMS } from "../../scripts/bizpart-content.mjs";
 import { renderFlagshipSubnav } from "../../scripts/flagship-subnav.mjs";
 
@@ -24,7 +25,8 @@ const STUDIO_FILM = "hf_20260622_202655_a7f5aca0-2f80-4bc9-bcb5-96ac95662003.mp4
 const PARTNER_FILM = "hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4";
 
 test("five screens in nine locales: one h1, canonical, 9+1 hreflang, JSON-LD, merged menu, sub-menu", () => {
-  assert.deepEqual(BIZPART_PATHS, ["business", "business/platforms", "business/models", "business/partnerships", "business/contact"]);
+  // 05 Contact is retired into the unified /{lang}/contact/ (2026-10-26); the sub-menu keeps all five items
+  assert.deepEqual(BIZPART_PATHS, ["business", "business/platforms", "business/models", "business/partnerships"]);
   for (const lang of LANGS) {
     for (const p of BIZPART_PATHS) {
       const rel = pageRel(lang, p);
@@ -53,7 +55,7 @@ test("hero films: owner-chosen film (hf_20260314_131748) on all five Business & 
   assert.ok(read("scripts/studio-film-copy.mjs").includes(STUDIO_FILM), "Studio film constant (home Studio card)");
   assert.ok(read("ko/studio/index.html").includes("hf_20260819_212700_3bb9329b"), "Studio page film (owner choice 2026-10-19)");
   assert.ok(read("scripts/bsp-content.mjs").includes(PARTNER_FILM), "Partnerships hero film");
-  for (const nav of BP_NAV) {
+  for (const nav of BP_NAV.filter((n) => n.id !== "contact")) {
     const want = BP_PAGE_FILM[nav.id] === "studio" ? STUDIO_FILM : PARTNER_FILM;
     const other = want === STUDIO_FILM ? PARTNER_FILM : STUDIO_FILM;
     for (const lang of ["ko", "en", "de"]) {
@@ -156,31 +158,30 @@ test("screen contents: 6 platforms, 4 approaches, 6 ecosystem roles, 6 models, 6
   }
   assert.match(read(pageRel("ko", "business")), /여섯 개의 플랫폼,<br>더 넓은 비즈니스의 가능성\./);
   assert.match(read(pageRel("ko", "business")), /<title>NEWON Business &amp; Partnerships \| 플랫폼 비즈니스·기업 제휴<\/title>/);
-  assert.match(read(pageRel("ko", "business/contact")), /<title>Business Contact \| NEWON<\/title>/);
+  assert.match(read(pageRel("ko", "business/contact")), /<link rel="canonical" href="https:\/\/www\.newon\.app\/ko\/contact\/" \/>/);
 });
 
-test("Business Contact: existing inquiry mechanism, platform + type selects, consent, honeypot, no extra data", () => {
+test("Business Contact (retired 2026-10-26): redirect stub to /{lang}/contact/ mapping every old type and platform code", () => {
   assert.equal(BP_INQUIRY_TYPES.length, 10);
   assert.equal(BP_INQUIRY_PLATFORMS.length, 8);
+  for (const t of BP_INQUIRY_TYPES) assert.ok(LEGACY_BUSINESS_TYPES[t.code], `old type ${t.code} mapped`);
   for (const lang of LANGS) {
     const html = read(pageRel(lang, "business/contact"));
-    const form = html.match(/<form[\s\S]*?<\/form>/)[0];
-    assert.match(form, /<form class="bz-form" id="bz-inquiry-form" novalidate/);
-    assert.doesNotMatch(form.split(">")[0], /\saction=/, `${lang} no action URL`);
-    for (const name of ["name", "company", "email", "platform", "type", "message", "consent", "_honey", "category"]) assert.ok(form.includes(`name="${name}"`), `${lang} field ${name}`);
-    for (const name of ["phone", "budget", "website", "timeline", "stage"]) assert.ok(!form.includes(`name="${name}"`), `${lang} must not collect ${name}`);
-    assert.match(form, /name="consent" type="checkbox" value="yes" required/);
-    assert.match(form, /id="bz-email" name="email" type="email" required/);
-    assert.match(form, /<select id="bpt-platform" name="platform" required>/);
-    assert.match(form, /<select id="bz-type" name="type" required>/);
-    const types = [...form.match(/<select id="bz-type"[\s\S]*?<\/select>/)[0].matchAll(/data-code="([a-z]+)"/g)].map((m) => m[1]);
-    assert.deepEqual(types, BP_INQUIRY_TYPES.map((t) => t.code));
-    const plats = [...form.match(/<select id="bpt-platform"[\s\S]*?<\/select>/)[0].matchAll(/data-code="([a-z]+)"/g)].map((m) => m[1]);
-    assert.deepEqual(plats, ["babylog", "petlog", "myworld", "shareon", "livon", "ongil", "multiple", "general"]);
-    assert.ok(html.includes('/business/inquiry.js?v='), `${lang} reuses inquiry.js`);
-    assert.ok(html.includes('id="bz-fail"') && html.includes('id="bz-submit"'), `${lang} submit + failure message`);
-    assert.ok(html.includes("mailto:newon@newon.app"), `${lang} contact e-mail`);
-    assert.ok(!/외주|맞춤 개발|유지보수 의뢰/.test(form), `${lang} no outsourcing types`);
+    assert.match(html, /<meta name="robots" content="noindex, follow" \/>/, `${lang} noindex`);
+    assert.ok(html.includes(`<link rel="canonical" href="https://www.newon.app/${lang}/contact/" />`), `${lang} canonical`);
+    assert.ok(html.includes(`<meta http-equiv="refresh" content="0;url=/${lang}/contact/?type=business`), `${lang} refresh`);
+    assert.ok(html.includes(`"lang":"${lang}","kind":"business-contact"`), `${lang} maps in its own language`);
+    assert.ok(!html.includes("bz-inquiry-form"), `${lang} no second form`);
+  }
+  // the unified form carries what the Business form collected: company → organization, platform, type
+  const unified = read("ko/contact/index.html");
+  for (const name of ["organization", "platform", "inquiry_type", "name", "email", "message", "privacy_consent", "_honey"]) assert.ok(unified.includes(`name="${name}"`), `unified ${name}`);
+  // the store purchase inflow still uses business/inquiry + inquiry.js + the success page
+  for (const lang of LANGS) {
+    const html = read(`${lang}/business/inquiry/index.html`);
+    assert.ok(html.includes('id="bz-inquiry-form"') && html.includes("/business/inquiry.js?v="), `${lang} store inquiry form kept`);
+    assert.ok(/=== "store"/.test(html) && html.includes('"kind":"business-inquiry"'), `${lang} forwards everything but the store inflow`);
+    assert.ok(exists(`${lang}/business/inquiry/success/index.html`), `${lang} success page kept`);
   }
   // inquiry.js keeps working for the six business sites and adds the platform line to the e-mail fallback only
   const js = read("business/inquiry.js");
@@ -193,6 +194,7 @@ test("retired URLs are noindex redirect stubs to the right new screen (lang + ro
   const xml = read("sitemap.xml");
   const targets = new Set(Object.values(LEGACY_REDIRECTS));
   for (const t of targets) {
+    if (t === "business/contact/") continue; // retired 05 Contact stub → /{lang}/contact/ (checked above)
     if (t.startsWith("business/")) assert.ok(BIZPART_PATHS.includes(t.replace(/\/$/, "")), `${t} is a new screen`);
     else assert.match(t, /^(babylog|petlog|myworld|shareon|livon|ongil)\/partnerships\/$/, `${t} is a platform page`);
   }

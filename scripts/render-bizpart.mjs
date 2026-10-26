@@ -13,9 +13,10 @@
  * (home-lifestage CSS/JS), the shared five-menu bar (flagship-subnav, `bizpart` config) directly under the
  * film hero, and /bizpart-site.css (babylog-site.css re-scoped to data-story="bizpart"). Black/white only.
  *
- * Contact reuses the existing inquiry mechanism unchanged in behaviour: form#bz-inquiry-form +
- * /business/inquiry.js (FormSubmit, honeypot, validation, e-mail fallback, shared success page).
- * /{lang}/business/inquiry/ (used by the six business sites) is not touched.
+ * 05 Contact (2026-10-26, owner spec 1): retired into the unified NEWON Contact page — /{lang}/business/contact/ is a
+ * redirect stub to /{lang}/contact/ with the old ?type=/?platform= values mapped (scripts/contact-legacy-stubs.mjs);
+ * the menu item stays and every inquiry button links straight to /{lang}/contact/. contactBody() is kept unused for
+ * reference / rollback.
  *
  * Old URLs: every retired Business / Partnerships page becomes a static redirect stub (GitHub Pages has no
  * server 301): noindex + canonical to the new page + meta refresh + location.replace. See LEGACY_REDIRECTS.
@@ -41,6 +42,8 @@ import {
 import { clampSeoDescription } from "./seo-meta.mjs";
 import { renderStudioHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { renderFlagshipSubnav } from "./flagship-subnav.mjs";
+import { legacyContactUrl } from "./contact-taxonomy.mjs";
+import { contactLegacyLangStub, contactLegacyRootStub } from "./contact-legacy-stubs.mjs";
 import {
   BP_SLUG,
   BP_NAV,
@@ -63,10 +66,18 @@ const BP_VER = "20261019bp1";
 export const bpPath = (lang, sub = "") => `/${lang}/${BP_SLUG}/${sub ? sub + "/" : ""}`;
 const navOf = (id) => BP_NAV.find((n) => n.id === id);
 const pageHref = (lang, id) => bpPath(lang, navOf(id).sub);
-const contactHref = (lang, q = "") => `${pageHref(lang, "contact")}${q ? "?" + q : ""}#bpt-form`;
+/**
+ * Inquiry buttons open the unified NEWON Contact page (owner spec 1, 2026-10-26) with the old Business type code
+ * mapped (contact-taxonomy LEGACY_BUSINESS_TYPES) and source=business.
+ */
+const contactHref = (lang, q = "") => legacyContactUrl(lang, "business-contact", `${q ? q + "&" : ""}source=business`, true);
 
-/** Paths (without /{lang}/) of the five screens — sitemap + tests. */
-export const BIZPART_PATHS = BP_NAV.map((n) => (n.sub ? `${BP_SLUG}/${n.sub}` : BP_SLUG));
+/** Screens that are still pages; 05 Contact is a redirect stub to /{lang}/contact/ (the menu item stays). */
+const PAGE_NAV = BP_NAV.filter((n) => n.id !== "contact");
+/** Paths (without /{lang}/) of the screens that are pages — sitemap + tests. */
+export const BIZPART_PATHS = PAGE_NAV.map((n) => (n.sub ? `${BP_SLUG}/${n.sub}` : BP_SLUG));
+/** /{lang}/business/contact/ — retired into /{lang}/contact/ (query mapped, see contact-legacy-stubs.mjs). */
+export const BIZPART_CONTACT_PATH = `${BP_SLUG}/contact`;
 
 /* ------------------------------------------------------------------------------------------------
  * Old URL → new screen. Keys are paths below /{lang}/ (and below the site root for the root stubs);
@@ -147,7 +158,7 @@ const ROOT_ONLY_REDIRECTS = { "business/workflow-automation": MO };
 /** True when a path (with or without the /{lang}/ prefix) is a retired URL. */
 export function isLegacyBizpartPath(p) {
   const clean = String(p || "").replace(/^\/+|\/+$/g, "").replace(/^(ko|en|ja|es|pt-br|fr|de|hi|id)(\/|$)/, "");
-  return Object.prototype.hasOwnProperty.call(LEGACY_REDIRECTS, clean) || Object.prototype.hasOwnProperty.call(ROOT_ONLY_REDIRECTS, clean);
+  return clean === BIZPART_CONTACT_PATH || Object.prototype.hasOwnProperty.call(LEGACY_REDIRECTS, clean) || Object.prototype.hasOwnProperty.call(ROOT_ONLY_REDIRECTS, clean);
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -711,7 +722,10 @@ function writeFile(rel, html, written) {
 
 export function renderBizpart() {
   const written = [];
-  for (const nav of BP_NAV) for (const lang of LANGS) written.push(renderPage(lang, nav));
+  for (const nav of PAGE_NAV) for (const lang of LANGS) written.push(renderPage(lang, nav));
+  // 05 Contact → unified /{lang}/contact/ (old ?type= codes mapped, query kept). Never forced to /ko/.
+  for (const lang of LANGS) writeFile(path.join(lang.dir, BIZPART_CONTACT_PATH, "index.html"), contactLegacyLangStub(lang, "business-contact"), written);
+  writeFile(path.join(BIZPART_CONTACT_PATH, "index.html"), contactLegacyRootStub(BIZPART_CONTACT_PATH), written);
   // Old /{lang}/… URLs → new screens.
   for (const [from, to] of Object.entries(LEGACY_REDIRECTS)) {
     for (const lang of LANGS) writeFile(path.join(lang.dir, from, "index.html"), langStub(lang, to), written);
@@ -720,7 +734,7 @@ export function renderBizpart() {
   for (const [from, to] of Object.entries({ ...LEGACY_REDIRECTS, ...ROOT_ONLY_REDIRECTS })) {
     writeFile(path.join(from, "index.html"), rootStub(to), written);
   }
-  for (const nav of BP_NAV) if (nav.sub) writeFile(path.join(BP_SLUG, nav.sub, "index.html"), rootStub(`${BP_SLUG}/${nav.sub}/`), written);
+  for (const nav of PAGE_NAV) if (nav.sub) writeFile(path.join(BP_SLUG, nav.sub, "index.html"), rootStub(`${BP_SLUG}/${nav.sub}/`), written);
   const pub = path.join(ROOT, "_publish");
   if (fs.existsSync(pub)) {
     for (const rel of written) {

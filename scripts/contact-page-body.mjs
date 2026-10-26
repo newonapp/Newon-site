@@ -8,13 +8,21 @@ import { escapeHtml } from "./hub-utils.mjs";
 import {
   CONTACT_INBOX,
   CONTACT_HERO_FILM,
-  CONTACT_PLATFORM_IDS,
   CONTACT_PURPOSE_IDS,
   CONTACT_MESSAGE_MAX,
   CONTACT_MESSAGE_MIN,
-  CONTACT_TYPE_ALIASES,
-  CONTACT_ORG_CATEGORIES,
 } from "./contact-page-copy.mjs";
+import {
+  CONTACT_PLATFORM_IDS,
+  CONTACT_PLATFORM_ALIASES,
+  CONTACT_INQUIRERS,
+  CONTACT_INQUIRY_TYPES,
+  CONTACT_TYPE_PRESETS,
+  CONTACT_TOPICS,
+  CONTACT_TOPIC_STATUS,
+  CONTACT_CONDITIONAL_FIELDS,
+  CONTACT_PROPOSAL_INQUIRIES,
+} from "./contact-taxonomy.mjs";
 
 const e = (s) => escapeHtml(String(s ?? ""));
 const br = (s) => e(s).replace(/\n/g, "<br />");
@@ -110,10 +118,33 @@ function field({ id, name, text, c, required = false, type = "text", attrs = "",
         </div>`;
 }
 
+/** ko labels for ko, en labels for every other locale (same fallback as the page copy). */
+const L = (item, c) => (c._lang === "ko" ? item.ko : item.en);
+function topicText(t, c) {
+  const st = t.status && CONTACT_TOPIC_STATUS[t.status] ? CONTACT_TOPIC_STATUS[t.status][c._lang === "ko" ? "ko" : "en"] : "";
+  return st ? `${L(t, c)} · ${st}` : L(t, c);
+}
+
+/** A conditional field wrapper: hidden until contact-page.js shows it (CONTACT_CONDITIONAL_FIELDS). */
+function when(name, html) {
+  return `<div class="ct-cond" data-ct-when="${name}" hidden>
+          ${html}
+        </div>`;
+}
+
 function formSection(c, lang) {
-  const typeOptions = [opt("", c.typePlaceholder), ...c.categories.map((cat) => opt(cat.id, cat.title))].join("");
+  const typeOptions = [opt("", c.typePlaceholder), ...CONTACT_INQUIRY_TYPES.map((t) => opt(t.id, L(t, c)))].join("");
   const purposeOptions = [opt("", c.purposePlaceholder), ...CONTACT_PURPOSE_IDS.map((id) => opt(id, c.purposes[id]))].join("");
   const platformOptions = [opt("", c.platformPlaceholder), ...CONTACT_PLATFORM_IDS.map((id) => opt(id, c.platforms[id]))].join("");
+  const topicOptions = [
+    opt("", c.topicPlaceholder),
+    ...Object.entries(CONTACT_TOPICS).map(
+      ([pid, list]) => `<optgroup label="${e(c.platforms[pid])}" data-ct-platform="${e(pid)}">${list.map((t) => opt(t.id, topicText(t, c))).join("")}</optgroup>`
+    ),
+  ].join("");
+  const inquirerRadios = CONTACT_INQUIRERS.map(
+    (x) => `<label class="ct-seg__opt"><input type="radio" name="inquirer" value="${e(x.id)}" required /><span>${e(L(x, c))}</span></label>`
+  ).join("\n            ");
   const steps = c.formSteps
     .map(([n, t, d]) => `<li><span class="ct-steps__n">${e(n)}</span><div><strong>${e(t)}</strong><p>${e(d)}</p></div></li>`)
     .join("");
@@ -125,9 +156,19 @@ function formSection(c, lang) {
     lang,
     messageMin: CONTACT_MESSAGE_MIN,
     messageMax: CONTACT_MESSAGE_MAX,
-    aliases: CONTACT_TYPE_ALIASES,
-    orgCategories: CONTACT_ORG_CATEGORIES,
+    presets: CONTACT_TYPE_PRESETS,
     platforms: CONTACT_PLATFORM_IDS,
+    platformAliases: CONTACT_PLATFORM_ALIASES,
+    platformLabels: Object.fromEntries(CONTACT_PLATFORM_IDS.map((id) => [id, c.platforms[id]])),
+    inquirers: CONTACT_INQUIRERS.map((x) => ({ id: x.id, label: L(x, c) })),
+    inquiries: CONTACT_INQUIRY_TYPES.map((x) => ({ id: x.id, label: L(x, c) })),
+    categories: c.categories.map((cat) => ({ id: cat.id, label: cat.title })),
+    topics: Object.fromEntries(
+      Object.entries(CONTACT_TOPICS).map(([pid, list]) => [pid, list.map((t) => ({ id: t.id, label: topicText(t, c), status: t.status, inquiry: t.inquiry, ref: t.ref }))])
+    ),
+    rules: CONTACT_CONDITIONAL_FIELDS,
+    proposal: CONTACT_PROPOSAL_INQUIRIES,
+    orgLabels: c.orgLabels,
     t: {
       submit: c.submit,
       submitting: c.submitting,
@@ -135,12 +176,22 @@ function formSection(c, lang) {
       errSummary: c.errSummary,
       errRequired: c.errRequired,
       errType: c.errType,
+      errInquirer: c.errInquirer,
       errEmail: c.errEmail,
       errUrl: c.errUrl,
       errPhone: c.errPhone,
       errMessageMin: c.errMessageMin,
       errMessageMax: c.errMessageMax,
       errConsent: c.errConsent,
+      failBody: c.failBody,
+      failServerBody: c.failServerBody,
+      failNetBody: c.failNetBody,
+      duplicate: c.duplicate,
+      successMetaLabel: c.successMetaLabel,
+      orgLabel: c.orgLabel,
+      errorDetailLabel: c.errorDetailLabel,
+      messageLabel: c.messageLabel,
+      messageLabelProposal: c.messageLabelProposal,
       copied: c.copied,
       copyFail: c.copyFail,
       mailSubject: c.mailSubject,
@@ -150,6 +201,8 @@ function formSection(c, lang) {
 
   const select = (id, name, options, required, extraAttrs = "") =>
     `<select class="ct-input ct-select" id="${id}" name="${name}"${required ? " required" : ""} data-ct-desc=""${extraAttrs}>${options}</select>`;
+  const textarea = (id, name, rows, maxlength, placeholder) =>
+    `<textarea class="ct-input ct-textarea ct-textarea--short" id="${id}" name="${name}" rows="${rows}" maxlength="${maxlength}" data-ct-desc="" placeholder="${e(placeholder)}"></textarea>`;
 
   return `<section id="contact-form" class="ct-sec ct-sec--dark ct-sec--lift ct-formsec" aria-labelledby="ct-form-title">
   <div class="ct-wrap ct-formsec__grid">
@@ -165,22 +218,25 @@ function formSection(c, lang) {
         <p class="ct-note" id="ct-req-note">${e(c.formRequiredNote)}</p>
         <div class="ct-alert" id="ct-form-alert" role="alert" tabindex="-1" hidden></div>
 
-        <fieldset class="ct-field ct-persona">
-          <legend class="ct-label">${e(c.personaLegend)} <span class="ct-opt">${e(c.optional)}</span></legend>
-          <div class="ct-seg">
-            <label class="ct-seg__opt"><input type="radio" name="persona" value="personal" checked /><span>${e(c.personaPersonal)}</span></label>
-            <label class="ct-seg__opt"><input type="radio" name="persona" value="organization" /><span>${e(c.personaOrg)}</span></label>
+        <fieldset class="ct-field ct-persona" id="ct-inquirer" data-ct-field="inquirer" data-ct-desc="">
+          <legend class="ct-label">${e(c.personaLegend)} <span class="ct-req" aria-hidden="true">*</span></legend>
+          <div class="ct-seg ct-seg--6">
+            ${inquirerRadios}
           </div>
+          <p class="ct-err" id="ct-inquirer-err" hidden></p>
         </fieldset>
 
         ${field({ id: "ct-type", name: "inquiry_type", text: c.typeLabel, c, required: true, control: select("ct-type", "inquiry_type", typeOptions, true) })}
 
         <div class="ct-org" data-ct-org hidden>
-          ${field({ id: "ct-org-name", name: "organization", text: c.orgLabel, c, attrs: `autocomplete="organization" maxlength="160" placeholder="${e(c.orgPlaceholder)}"` })}
+          ${when("organization", field({ id: "ct-org-name", name: "organization", text: c.orgLabel, c, attrs: `autocomplete="organization" maxlength="160" placeholder="${e(c.orgPlaceholder)}"` }))}
           <div class="ct-row">
-            ${field({ id: "ct-purpose", name: "business_purpose", text: c.purposeLabel, c, control: select("ct-purpose", "business_purpose", purposeOptions, false) })}
-            ${field({ id: "ct-website", name: "website", text: c.websiteLabel, c, type: "url", attrs: `inputmode="url" autocomplete="url" maxlength="300" placeholder="https://"` })}
+            ${when("position", field({ id: "ct-position", name: "position", text: c.positionLabel, c, attrs: `autocomplete="organization-title" maxlength="80" placeholder="${e(c.positionPlaceholder)}"` }))}
+            ${when("website", field({ id: "ct-website", name: "website", text: c.websiteLabel, c, type: "url", attrs: `inputmode="url" autocomplete="url" maxlength="300" placeholder="https://"` }))}
           </div>
+          ${when("business_purpose", field({ id: "ct-purpose", name: "business_purpose", text: c.purposeLabel, c, control: select("ct-purpose", "business_purpose", purposeOptions, false) }))}
+          ${when("partnership_goal", field({ id: "ct-goal", name: "partnership_goal", text: c.partnershipGoalLabel, c, attrs: `maxlength="200" placeholder="${e(c.partnershipGoalPlaceholder)}"` }))}
+          ${when("investor_info", field({ id: "ct-investor", name: "investor_info", text: c.investorInfoLabel, c, hint: c.investorInfoHint, attrs: `maxlength="300" placeholder="${e(c.investorInfoPlaceholder)}"` }))}
         </div>
 
         <div class="ct-row">
@@ -192,10 +248,18 @@ function formSection(c, lang) {
           ${field({ id: "ct-platform", name: "platform", text: c.platformLabel, c, control: select("ct-platform", "platform", platformOptions, false) })}
         </div>
 
+        ${when("topic", field({ id: "ct-topic", name: "topic", text: c.topicLabel, c, hint: c.topicHint, control: select("ct-topic", "topic", topicOptions, false).replace('data-ct-desc=""', 'aria-describedby="ct-topic-hint" data-ct-desc="ct-topic-hint"') }))}
+
+        <div class="ct-org ct-org--detail" data-ct-detail hidden>
+          ${when("environment", field({ id: "ct-env", name: "environment", text: c.environmentLabel, c, attrs: `maxlength="200" placeholder="${e(c.environmentPlaceholder)}"` }))}
+          ${when("error_detail", field({ id: "ct-error", name: "error_detail", text: c.errorDetailLabel, c, control: textarea("ct-error", "error_detail", 4, 1500, c.errorDetailPlaceholder) }))}
+          ${when("reference_id", field({ id: "ct-refid", name: "reference_id", text: c.referenceIdLabel, c, hint: c.referenceIdHint, attrs: `maxlength="80" autocomplete="off"` }))}
+        </div>
+
         ${field({ id: "ct-subject", name: "subject", text: c.subjectLabel, c, required: true, attrs: `maxlength="150" placeholder="${e(c.subjectPlaceholder)}"` })}
 
         <div class="ct-field ct-field--message" data-ct-field="message">
-          ${label("ct-message", c.messageLabel, c, true)}
+          <label class="ct-label" for="ct-message"><span data-ct-message-label>${e(c.messageLabel)}</span> <span class="ct-req" aria-hidden="true">*</span></label>
           <textarea class="ct-input ct-textarea" id="ct-message" name="message" rows="9" required maxlength="${CONTACT_MESSAGE_MAX}" minlength="${CONTACT_MESSAGE_MIN}" aria-describedby="ct-message-hint ct-message-count" data-ct-desc="ct-message-hint ct-message-count" placeholder="${e(c.messagePlaceholder)}"></textarea>
           <div class="ct-meta">
             <p class="ct-hint" id="ct-message-hint">${e(c.messageHint)}</p>
@@ -232,12 +296,13 @@ function formSection(c, lang) {
         <span class="ct-result__mark" aria-hidden="true">✓</span>
         <h3 class="ct-result__title">${e(c.successTitle)}</h3>
         <p class="ct-result__body">${e(c.successBody)}</p>
+        <p class="ct-result__body ct-result__meta" data-ct-success-meta hidden></p>
         <button type="button" class="ct-btn ct-btn--ghost" data-ct-again>${e(c.successAgain)}</button>
       </div>
 
       <div class="ct-result ct-result--fail" data-ct-fail role="alert" tabindex="-1" hidden>
         <h3 class="ct-result__title">${e(c.failTitle)}</h3>
-        <p class="ct-result__body">${e(c.failBody)}</p>
+        <p class="ct-result__body" data-ct-fail-body>${e(c.failBody)}</p>
         <div class="ct-result__actions">
           <button type="button" class="ct-btn" data-ct-retry>${e(c.failRetry)}</button>
           <a class="ct-btn ct-btn--ghost" data-ct-mailto href="mailto:${CONTACT_INBOX}">${e(c.failMail)} · ${CONTACT_INBOX}</a>

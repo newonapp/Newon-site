@@ -13,39 +13,16 @@ export const CONTACT_HERO_FILM = {
   poster: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261021_093215_b7826239-e451-4e15-b42b-d6bcf9497a32.png",
 };
 
-/** Category ids, in brief order. */
-export const CONTACT_CATEGORY_IDS = ["personal", "business", "public", "partnership", "investment", "media"];
-
 /**
- * Older ?type= values that already link into /{lang}/contact/ (LIVON, home, company pages, the previous form)
- * → the matching new category. Unknown values select nothing.
+ * Categories, URL presets, platforms and the three-level inquiry taxonomy live in ./contact-taxonomy.mjs
+ * (shared with the redirect stubs and the six platforms' links). Re-exported here for older imports.
  */
-export const CONTACT_TYPE_ALIASES = {
-  personal: "personal",
-  support: "personal",
-  "app-support": "personal",
-  general: "personal",
-  business: "business",
-  project: "business",
-  enterprise: "business",
-  public: "public",
-  institution: "public",
-  government: "public",
-  partnership: "partnership",
-  partner: "partnership",
-  technology: "partnership",
-  investment: "investment",
-  invest: "investment",
-  ir: "investment",
-  media: "media",
-  press: "media",
-  other: "media",
-};
+export {
+  CONTACT_CATEGORY_IDS,
+  CONTACT_TYPE_ALIASES,
+  CONTACT_PLATFORM_IDS,
+} from "./contact-taxonomy.mjs";
 
-/** Persona = organization switches to these categories when the visitor has not chosen a persona yet. */
-export const CONTACT_ORG_CATEGORIES = ["business", "public", "partnership", "investment"];
-
-export const CONTACT_PLATFORM_IDS = ["newon", "livon", "ongil", "shareon", "babylog", "petlog", "myworld", "other"];
 export const CONTACT_PURPOSE_IDS = ["alliance", "listing", "joint", "tech", "institution", "investment", "other"];
 
 export const CONTACT_MESSAGE_MAX = 3000;
@@ -122,13 +99,29 @@ const KO = {
   ],
   formRequiredNote: "* 표시는 필수 입력 항목입니다.",
   personaLegend: "문의자 구분",
-  personaPersonal: "개인",
-  personaOrg: "기업·단체",
   typeLabel: "문의 유형",
   typePlaceholder: "문의 유형을 선택해 주세요",
   orgLabel: "기업명 또는 기관명",
+  orgLabels: { company: "기업명", organization: "기관·단체명", investor: "투자자 또는 투자기관명", media: "매체명" },
   orgPlaceholder: "예: 뉴온 주식회사",
-  purposeLabel: "협력 분야",
+  positionLabel: "직책",
+  positionPlaceholder: "예: 사업개발 매니저",
+  partnershipGoalLabel: "제휴 목적",
+  partnershipGoalPlaceholder: "예: 이용자 대상 공동 프로모션, 서비스 연동",
+  investorInfoLabel: "투자자·투자기관 정보",
+  investorInfoPlaceholder: "예: 투자 단계, 관심 분야",
+  investorInfoHint: "공개할 수 있는 범위에서만 적어 주세요.",
+  topicLabel: "상세 항목",
+  topicPlaceholder: "선택해 주세요",
+  topicHint: "‘출시 준비 중’은 앱 출시를 준비하고 있는 기능, ‘향후 계획’은 아직 만들지 않은 장기 계획입니다. 두 항목 모두 지금 이용할 수 있는 기능이 아닙니다.",
+  environmentLabel: "이용 환경 및 앱 버전",
+  environmentPlaceholder: "예: iPhone 15 · iOS 18 · 앱 1.0.0 / Chrome 130",
+  errorDetailLabel: "오류 발생 상황",
+  errorDetailPlaceholder: "언제, 어떤 화면에서, 무엇을 했을 때 어떤 문제가 생겼는지 적어 주세요.",
+  referenceIdLabel: "거래·예약 식별번호",
+  referenceIdHint: "앱에 표시된 거래·예약 번호가 있을 때만 적어 주세요. 해당 기능이 아직 제공되지 않으면 비워 두세요. 카드·계좌 번호는 적지 마세요.",
+  messageLabelProposal: "제안 내용",
+  purposeLabel: "희망 협력 방식",
   purposePlaceholder: "선택해 주세요",
   purposes: {
     alliance: "기업 제휴",
@@ -161,7 +154,7 @@ const KO = {
   subjectPlaceholder: "문의 제목을 입력해 주세요",
   messageLabel: "문의 내용",
   messagePlaceholder: "문의하실 내용이나 협력 제안을 자세히 작성해 주세요.",
-  messageHint: "민감한 개인정보(주민등록번호, 계좌·카드 번호 등)는 적지 말아 주세요.",
+  messageHint: "비밀번호, 주민등록번호, 계좌·카드 번호, 진료·의료 기록 등 민감한 정보는 적지 말아 주세요.",
   counterSuffix: "자",
   referenceLabel: "참고 URL",
   referenceHint: "제안서·회사소개서 등은 파일 첨부 대신 열람 가능한 링크로 남겨 주세요.",
@@ -172,7 +165,7 @@ const KO = {
     ["수집 목적", "문의 확인·회신 및 처리 기록"],
     [
       "수집 항목",
-      "[필수] 문의 유형, 이름 또는 담당자명, 이메일 주소, 문의 제목, 문의 내용, 개인정보 수집·이용 동의 여부 · [선택] 문의자 구분, 기업명 또는 기관명, 협력 분야, 연락처, 관련 플랫폼, 회사 홈페이지, 참고 URL · [자동] 문의를 보낸 페이지 주소, 언어, 제출 시각",
+      "[필수] 문의자 구분, 문의 유형, 이름 또는 담당자명, 이메일 주소, 문의 제목, 문의 내용, 개인정보 수집·이용 동의 여부 · [해당 시 필수] 기업명·기관명·매체명(기업·기관·단체·언론), 오류 발생 상황(오류 신고) · [선택] 관련 플랫폼, 상세 항목, 직책, 회사 홈페이지, 희망 협력 방식, 제휴 목적, 투자자·투자기관 정보, 이용 환경 및 앱 버전, 거래·예약 식별번호, 연락처, 참고 URL · [자동] 문의를 보낸 페이지 주소, 유입 경로, 언어, 제출 시각",
     ],
     [
       "처리 방식",
@@ -196,12 +189,17 @@ const KO = {
   successAgain: "새 문의 작성하기",
   failTitle: "문의를 보내지 못했습니다.",
   failBody: "네트워크 상태를 확인한 뒤 다시 시도해 주세요. 입력하신 내용은 그대로 남아 있습니다. 계속 전송되지 않으면 이메일로 직접 보내 주세요.",
+  failServerBody: "문의 전송 서비스에서 접수 확인을 받지 못했습니다. 입력하신 내용은 그대로 남아 있습니다. 잠시 후 다시 시도하거나 이메일로 직접 보내 주세요.",
+  failNetBody: "인터넷 연결이 끊겼거나 응답이 늦어 문의를 보내지 못했습니다. 입력하신 내용은 그대로 남아 있습니다. 연결을 확인한 뒤 다시 시도해 주세요.",
+  duplicate: "같은 내용의 문의가 방금 접수되었습니다. 추가로 전할 내용이 있다면 내용을 고쳐 다시 보내 주세요.",
+  successMetaLabel: "접수 분류",
   failRetry: "다시 시도하기",
   failMail: "이메일로 보내기",
   tooFast: "잠시 후 다시 시도해 주세요.",
   errSummary: "입력 내용을 확인해 주세요. 표시된 항목을 수정한 뒤 다시 보내 주세요.",
   errRequired: "필수 입력 항목입니다.",
   errType: "문의 유형을 선택해 주세요.",
+  errInquirer: "문의자 구분을 선택해 주세요.",
   errEmail: "이메일 주소 형식을 확인해 주세요. 예: name@example.com",
   errUrl: "http:// 또는 https://로 시작하는 주소를 입력해 주세요.",
   errPhone: "숫자, +, -, 괄호, 공백으로 7~20자 이내로 입력해 주세요.",
@@ -314,13 +312,29 @@ const EN = {
   ],
   formRequiredNote: "Fields marked * are required.",
   personaLegend: "I am contacting you as",
-  personaPersonal: "An individual",
-  personaOrg: "A company or organization",
   typeLabel: "Inquiry type",
   typePlaceholder: "Choose an inquiry type",
   orgLabel: "Company or organization name",
+  orgLabels: { company: "Company name", organization: "Institution or organization name", investor: "Investor or investment firm", media: "Media outlet" },
   orgPlaceholder: "e.g. Newon Inc.",
-  purposeLabel: "Area of cooperation",
+  positionLabel: "Job title",
+  positionPlaceholder: "e.g. Business development manager",
+  partnershipGoalLabel: "Purpose of the partnership",
+  partnershipGoalPlaceholder: "e.g. joint promotion for users, service integration",
+  investorInfoLabel: "Investor or firm details",
+  investorInfoPlaceholder: "e.g. investment stage, areas of interest",
+  investorInfoHint: "Only share what you are able to make public.",
+  topicLabel: "Detail topic",
+  topicPlaceholder: "Please select",
+  topicHint: "\"Launch in preparation\" marks features of an app that is preparing to launch; \"future plan\" marks long-term plans that are not built yet. Neither is available to use today.",
+  environmentLabel: "Device, browser and app version",
+  environmentPlaceholder: "e.g. iPhone 15 · iOS 18 · app 1.0.0 / Chrome 130",
+  errorDetailLabel: "What happened",
+  errorDetailPlaceholder: "When, on which screen, and what you did when the problem appeared.",
+  referenceIdLabel: "Transaction or booking reference",
+  referenceIdHint: "Only if the app shows a transaction or booking number. Leave it empty if the feature is not offered yet. Never enter card or bank account numbers.",
+  messageLabelProposal: "Proposal details",
+  purposeLabel: "Preferred form of cooperation",
   purposePlaceholder: "Please select",
   purposes: {
     alliance: "Corporate alliance",
@@ -353,7 +367,7 @@ const EN = {
   subjectPlaceholder: "Enter a subject",
   messageLabel: "Message",
   messagePlaceholder: "Describe your question or cooperation proposal in detail.",
-  messageHint: "Please do not include sensitive personal information such as ID, bank or card numbers.",
+  messageHint: "Please do not include sensitive information such as passwords, ID numbers, bank or card numbers, or medical records.",
   counterSuffix: "",
   referenceLabel: "Reference URL",
   referenceHint: "Instead of attaching files, please share a viewable link to your proposal or company profile.",
@@ -364,7 +378,7 @@ const EN = {
     ["Purpose", "Reviewing and replying to your inquiry, and keeping a record of how it was handled"],
     [
       "Items",
-      "[Required] inquiry type, name or contact person, email address, subject, message, whether you agreed to this notice · [Optional] who you are contacting us as, company or organization name, area of cooperation, phone, related platform, company website, reference URL · [Automatic] the page address the inquiry was sent from, language, time of submission",
+      "[Required] who you are contacting us as, inquiry type, name or contact person, email address, subject, message, whether you agreed to this notice · [Required when it applies] company, organization or media outlet name (companies, institutions, press), what happened (bug reports) · [Optional] related platform, detail topic, job title, company website, preferred form of cooperation, purpose of the partnership, investor or firm details, device and app version, transaction or booking reference, phone, reference URL · [Automatic] the page address the inquiry was sent from, the link it came from, language, time of submission",
     ],
     [
       "How it is handled",
@@ -388,12 +402,17 @@ const EN = {
   successAgain: "Write another inquiry",
   failTitle: "We could not send your inquiry.",
   failBody: "Please check your connection and try again — everything you entered is still here. If it keeps failing, please email us directly.",
+  failServerBody: "The delivery service did not confirm your inquiry. Everything you entered is still here — please try again in a moment or email us directly.",
+  failNetBody: "Your connection dropped or the response took too long, so the inquiry was not sent. Everything you entered is still here — check your connection and try again.",
+  duplicate: "An inquiry with the same content was just received. If you have more to add, please edit your message and send it again.",
+  successMetaLabel: "Filed as",
   failRetry: "Try again",
   failMail: "Send by email",
   tooFast: "Please wait a moment and try again.",
   errSummary: "Please check your entries. Correct the marked fields and send again.",
   errRequired: "This field is required.",
   errType: "Please choose an inquiry type.",
+  errInquirer: "Please choose who you are contacting us as.",
   errEmail: "Please check the email format, e.g. name@example.com",
   errUrl: "Please enter an address starting with http:// or https://.",
   errPhone: "Use 7–20 characters: digits, +, -, brackets and spaces.",

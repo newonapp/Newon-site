@@ -422,6 +422,8 @@
   background-position: right 1rem center !important;
 }
 .ct-page .ct-textarea { min-height: 13rem; resize: vertical; }
+.ct-page .ct-textarea--short { min-height: 7.5rem; }
+.ct-cond { min-width: 0; }
 .ct-page .ct-input[aria-invalid="true"] {
   border-color: var(--ct-err);
   box-shadow: 0 0 0 1px var(--ct-err);
@@ -441,7 +443,8 @@
 
 /* persona — segmented pills (radio) */
 .ct-seg { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
-.ct-seg__opt { position: relative; display: block; }
+.ct-seg--6 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ct-seg__opt { position: relative; display: block; min-width: 0; }
 .ct-seg__opt input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
 .ct-page .ct-seg__opt span {
   display: flex;
@@ -562,6 +565,7 @@
 }
 .ct-page .ct-result__title { margin: 0; font-size: clamp(1.3rem, 2.2vw, 1.75rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.3; }
 .ct-page .ct-result__body { margin: 0; font-size: 1rem; line-height: 1.7; }
+.ct-page .ct-result__meta { font-size: 0.92rem; font-weight: 600; }
 .ct-result__actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 .ct-result--fail { margin-top: 1.2rem; padding: 1.2rem 1.1rem; border: 1px solid var(--ct-err); border-radius: 18px; }
 .ct-page .ct-result--fail .ct-result__title { color: var(--ct-err) !important; }
@@ -667,6 +671,7 @@ html:not(.ct-js) .ct-page .np-reveal { opacity: 1; transform: none; }
   .ct-sec--lift { border-radius: 50px 50px 0 0; }
   .ct-cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ct-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ct-seg--6 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .ct-formcard { padding: 2rem 1.8rem 2.1rem; }
   .ct-info__row { grid-template-columns: 6.5rem minmax(0, 1fr); }
   .ct-info__actions { grid-column: 2; }

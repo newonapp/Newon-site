@@ -203,7 +203,7 @@ export const STORY_KO = {
     ctaAbout: "회사 소개",
     ctaAboutHref: "about/",
     ctaInquiry: "사업 문의",
-    ctaInquiryHref: "business/inquiry/",
+    ctaInquiryHref: "contact/?type=business&source=home#contact-form",
   },
 };
 
@@ -394,7 +394,7 @@ export const STORY_EN = {
     ctaAbout: "About Newon",
     ctaAboutHref: "about/",
     ctaInquiry: "Business inquiry",
-    ctaInquiryHref: "business/inquiry/",
+    ctaInquiryHref: "contact/?type=business&source=home#contact-form",
   },
 };
 

@@ -4,6 +4,7 @@
  *   /business/         — Studio-style service overview (explore)
  *   /business/inquiry/ — Business Inquiry: six-platform business · partnership inquiries + form
  */
+import { legacyRedirectScript } from "./contact-taxonomy.mjs";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -169,6 +170,8 @@ for (const { dir, file, htmlLang } of LANGS) {
   // Inquiry hub — /business/inquiry/
   let inquiry = inquiryTemplate;
   inquiry = inquiry.replace(/\{\{LANG_DIR\}\}/g, dir);
+  // Forward to the unified /{lang}/contact/ (store purchase inflow excepted) — scripts/contact-taxonomy.mjs
+  inquiry = inquiry.replace("{{CONTACT_FORWARD}}", () => legacyRedirectScript(dir, "business-inquiry"));
   inquiry = inquiry.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
   inquiry = inquiry.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(dir));
   inquiry = inquiry.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");

@@ -9,47 +9,40 @@
     <meta name="robots" content="noindex, follow" />
     <link rel="canonical" href="https://www.newon.app/fr/business/inquiry/" />
     <script>
-      /* /business/inquiry/ is folded into the official business inquiry page /business/contact/.
-         Forward visitors (query + hash mapped), except the store purchase inflow (?category=Store),
-         which keeps using this page's form. Studio inquiries (?category=Studio) go to Studio Contact.
+      /* /business/inquiry/ is folded into the unified NEWON Contact page /{lang}/contact/ (owner spec 1, 2026-10-26).
+         Forward visitors (query mapped by scripts/contact-taxonomy.mjs, unknown values kept in `legacy`), except the
+         store purchase inflow (?category=Store), which keeps using this page's form and its success page.
          Scoped to this exact path so pages that reuse this template are never redirected. */
       (function () {
-        try {
-          var m = location.pathname.match(/^\/([a-z]{2}(?:-[a-z]{2})?)\/business\/inquiry\/?(?:index\.html)?$/i);
-          if (!m) return;
-          var lang = m[1].toLowerCase();
-          var q = new URLSearchParams(location.search);
-          var cat = (q.get("category") || "").toLowerCase();
-          var typ = q.get("type") || "";
-          if (cat === "store" || /^store\s*\//i.test(typ)) return;
-          var out = new URLSearchParams();
-          var codes = ["general", "participation", "commerce", "saas", "institution", "brand", "technology", "public", "global", "other"];
-          var byValue = {
-            "platform participation & transactions": "participation",
-            "brand, service & content partnership": "brand",
-            "enterprise service adoption": "saas",
-            "public sector & organization partnership": "public",
-            "technology & global partnership": "technology",
-            "other business inquiry": "other",
-            "partnership": "brand"
-          };
-          var t = typ.toLowerCase();
-          var code = codes.indexOf(t) > -1 ? t : byValue[t] || "";
-          var svc = (q.get("service") || "").toLowerCase();
-          if (!code && (svc === "partnership" || cat === "partnership")) code = "brand";
-          if (!code && /ai\s*automation|saas/.test(svc)) code = "saas";
-          if (code) out.set("type", code);
-          var src = q.get("source") || "";
-          var plat = (q.get("platform") || "").toLowerCase().replace(/\s+/g, "");
-          if (!plat) { var pm = src.toLowerCase().match(/babylog|petlog|myworld|shareon|livon|ongil/); if (pm) plat = pm[0]; }
-          if (plat) out.set("platform", plat);
-          var topic = q.get("topic") || "";
-          if (src || topic) out.set("source", (src + (topic ? " | " + topic : "")).slice(0, 80));
-          var dest = cat === "studio" ? "/" + lang + "/studio/contact/" : "/" + lang + "/business/contact/";
-          var qs = out.toString();
-          var hash = location.hash && location.hash !== "#inquiry" ? location.hash : (location.hash ? (cat === "studio" ? "#sts-form" : "#bpt-form") : "");
-          location.replace(dest + (qs ? "?" + qs : "") + hash);
-        } catch (e) {}
+        var m = location.pathname.match(/^\/([a-z]{2}(?:-[a-z]{2})?)\/business\/inquiry\/?(?:index\.html)?$/i);
+        if (!m) return;
+        var q = new URLSearchParams(location.search);
+        if ((q.get("category") || "").toLowerCase() === "store" || /^store\s*\//i.test(q.get("type") || "")) return;
+        (function(){var D={"lang":"fr","kind":"business-inquiry","biz":{"general":{"type":"business","topic":"newon-business","inquiry":"general"},"participation":{"type":"business","inquiry":"listing"},"commerce":{"type":"partnership"},"saas":{"type":"business","topic":"newon-saas"},"institution":{"type":"public"},"brand":{"type":"partnership"},"technology":{"type":"partnership"},"public":{"type":"public"},"global":{"type":"partnership","topic":"newon-global"},"other":{"type":"business","inquiry":"other"}},"studio":{"product":{"type":"personal","topic":"newon-studio"},"purchase":{"type":"personal","topic":"newon-studio"},"usage":{"type":"personal","topic":"newon-studio-support"},"support":{"type":"personal","topic":"newon-studio-support"},"business":{"type":"business","topic":"newon-studio-business"},"license":{"type":"business","topic":"newon-studio-license"}},"def":{"type":"business","topic":"newon-business","source":"business-inquiry"},"presets":["personal","support","app-support","business","project","enterprise","public","institution","government","partnership","partner","technology","investment","invest","ir","media","press","general","other"],"platforms":["newon","livon","ongil","shareon","babylog","petlog","myworld","other"],"aliases":{"my-world":"myworld","my_world":"myworld"},"topics":["livon-lifecycle","livon-welfare","livon-living","livon-account","livon-ai","livon-experts","livon-bug","livon-partnership","ongil-senior","ongil-guardian","ongil-caregiver","ongil-health","ongil-welfare","ongil-services","ongil-bug","ongil-partnership","shareon-sharing","shareon-booking","shareon-trade","shareon-deposit","shareon-payment","shareon-dispute","shareon-report","shareon-provider","shareon-business","shareon-partnership","babylog-pregnancy","babylog-parenting","babylog-growth","babylog-family","babylog-school","babylog-safety","babylog-institution","babylog-bug","babylog-partnership","petlog-records","petlog-health","petlog-booking","petlog-providers","petlog-shelter","petlog-business","petlog-bug","petlog-partnership","myworld-map","myworld-visits","myworld-trips","myworld-travel-services","myworld-booking","myworld-agencies","myworld-tourism","myworld-bug","myworld-partnership","newon-company","newon-business","newon-saas","newon-studio","newon-studio-license","newon-studio-support","newon-studio-business","newon-partnership","newon-global","newon-ir","newon-press","newon-privacy"]};
+try{var q=new URLSearchParams(location.search),o=new URLSearchParams(),k=D.kind;
+var t=(q.get("type")||"").toLowerCase().trim(),c=(q.get("category")||"").toLowerCase().trim(),m=null;
+if(k==="studio-contact"||c==="studio")m=D.studio[t]||null;
+if(!m&&k!=="studio-contact")m=D.biz[t]||null;
+if(!m&&D.presets.indexOf(t)!==-1)m={type:t};
+var mt=!!m;
+if(!m&&k==="business-inquiry"&&(/partner/.test(t)||/partner/.test(c)||/partner/.test((q.get("service")||"").toLowerCase())))m={type:"partnership"};
+if(!m&&k==="business-inquiry"&&c==="studio")m={type:"business",topic:"newon-studio"};
+m=m||{};var ty=m.type||D.def.type,tp=m.topic||"",iq=m.inquiry||"";
+var p=(q.get("platform")||q.get("area")||"").toLowerCase().replace(/\s+/g,"");p=D.aliases[p]||p;
+if(p==="multiple"||p==="general"||p==="store"||p==="business")p="newon";
+if(D.platforms.indexOf(p)===-1){var src0=(q.get("source")||"").toLowerCase().match(/babylog|petlog|myworld|shareon|livon|ongil/);p=src0?src0[0]:"";}
+if(k==="studio-contact"||c==="studio")p="newon";
+var qt=(q.get("topic")||"").toLowerCase();if(D.topics.indexOf(qt)!==-1)tp=qt;
+if(!tp&&!m.type&&!p)tp=D.def.topic;
+if(tp&&p&&p!=="newon"&&tp.indexOf(p+"-")!==0&&tp.indexOf("newon-")===0)tp="";
+if(!p&&tp)p=tp.split("-")[0];
+o.set("type",ty);if(iq)o.set("inquiry",iq);if(p)o.set("platform",p);if(tp)o.set("topic",tp);
+o.set("source",(q.get("source")||D.def.source).slice(0,120));
+var keep=[];q.forEach(function(v,key){if(["type","platform","topic","source"].indexOf(key)===-1&&v)keep.push(key+"="+v);});
+if(t&&!mt)keep.unshift("type="+t);
+if(keep.length)o.set("legacy",(D.kind+": "+keep.join("&")).slice(0,200));
+location.replace("/"+D.lang+"/contact/?"+o.toString()+(location.hash?"#contact-form":""));}
+catch(e){location.replace("/"+D.lang+"/contact/");}})();
       })();
     </script>
     <meta property="og:type" content="website" />

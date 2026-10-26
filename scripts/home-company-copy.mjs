@@ -107,7 +107,7 @@ const KO = {
     lead2:
       "플랫폼 입점, 기업 솔루션, 브랜드·콘텐츠, 공공기관 협력, 기술 제휴에 관한 문의를 기다립니다. newon@newon.app",
     aboutCta: "파트너십 문의하기 ↗",
-    aboutHref: "business/collaboration/partnership/",
+    aboutHref: "contact/?type=partnership&source=home#contact-form",
     inquiryCta: "문의하기 ↗",
     inquiryHref: "contact/",
   },
@@ -179,7 +179,7 @@ const EN = {
     lead2:
       "We welcome inquiries about platform listing, business solutions, brands and content, public partnerships, and technology. newon@newon.app",
     aboutCta: "Partnership inquiry ↗",
-    aboutHref: "business/collaboration/partnership/",
+    aboutHref: "contact/?type=partnership&source=home#contact-form",
     inquiryCta: "Contact us ↗",
     inquiryHref: "contact/",
   },

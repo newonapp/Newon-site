@@ -8,6 +8,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { CONTACT_CATEGORY_IDS, CONTACT_TYPE_ALIASES, CONTACT_HERO_FILM } from "../../scripts/contact-page-copy.mjs";
+import { CONTACT_INQUIRY_IDS, CONTACT_INQUIRER_IDS, CONTACT_TYPE_PRESETS } from "../../scripts/contact-taxonomy.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 const LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
@@ -58,15 +59,19 @@ test("six categories in brief order; each card links into the form with its type
     const cats = [...m.matchAll(/data-ct-cat="([a-z]+)"/g)].map((x) => x[1]);
     assert.deepEqual(cats, CONTACT_CATEGORY_IDS, lang);
     for (const id of CONTACT_CATEGORY_IDS) assert.match(m, new RegExp(`href="\\?type=${id}#contact-form" data-ct-pick="${id}"`), `${lang} ${id}`);
+    // the form's "문의 유형" is the second level of the taxonomy; categories are presets of level 1 + 2
     const opts = [...form(page(lang)).matchAll(/<select class="ct-input ct-select" id="ct-type"[\s\S]*?<\/select>/g)][0][0];
-    assert.deepEqual([...opts.matchAll(/value="([a-z]*)"/g)].map((x) => x[1]), ["", ...CONTACT_CATEGORY_IDS]);
+    assert.deepEqual([...opts.matchAll(/value="([a-z]*)"/g)].map((x) => x[1]), ["", ...CONTACT_INQUIRY_IDS]);
+    for (const id of CONTACT_CATEGORY_IDS) assert.ok(CONTACT_TYPE_PRESETS[id] && CONTACT_TYPE_PRESETS[id].category === id, `${id} preset`);
   }
   const t = text(main(page("ko")));
   for (const s of ["개인 문의", "기업 문의", "기관·공공 문의", "파트너십 문의", "투자 문의", "언론·기타 문의", "B2B·B2B2C 협력", "시범사업 및 PoC", "IR 자료 요청"]) assert.ok(t.includes(s), s);
 });
 
-test("legacy ?type= values that already link to /contact/ map to a category", () => {
-  for (const legacy of ["support", "business", "partnership", "media", "other", "project"]) {
+test("legacy ?type= values that already link to /contact/ map to a category (spec 1 names institution, general too)", () => {
+  assert.equal(CONTACT_TYPE_ALIASES.institution, "public");
+  assert.equal(CONTACT_TYPE_ALIASES.general, "media");
+  for (const legacy of ["support", "business", "partnership", "media", "other", "project", "investment", "ir", "press"]) {
     assert.ok(CONTACT_CATEGORY_IDS.includes(CONTACT_TYPE_ALIASES[legacy]), legacy);
   }
 });
@@ -74,24 +79,26 @@ test("legacy ?type= values that already link to /contact/ map to a category", ()
 test("form: required and optional fields, persona/org fields, no file upload, honeypot", () => {
   for (const lang of LANGS) {
     const f = form(page(lang));
-    for (const name of ["inquiry_type", "name", "email", "subject", "message", "privacy_consent"]) {
+    for (const name of ["inquirer", "inquiry_type", "name", "email", "subject", "message", "privacy_consent"]) {
       assert.match(f, new RegExp(`name="${name}"[^>]*\\brequired\\b`), `${lang} ${name} required`);
     }
-    for (const name of ["organization", "phone", "platform", "website", "reference_url", "business_purpose"]) {
-      const tag = (f.match(new RegExp(`<(?:input|select)[^>]*name="${name}"[^>]*>`)) || [""])[0];
+    for (const name of ["organization", "position", "phone", "platform", "topic", "website", "reference_url", "business_purpose", "partnership_goal", "investor_info", "environment", "reference_id"]) {
+      const tag = (f.match(new RegExp(`<(?:input|select|textarea)[^>]*name="${name}"[^>]*>`)) || [""])[0];
       assert.ok(tag, `${lang} ${name} present`);
       assert.ok(!/\brequired\b/.test(tag), `${lang} ${name} optional`);
     }
-    assert.match(f, /name="persona" value="personal" checked/);
-    assert.match(f, /name="persona" value="organization"/);
+    // level 1 = six inquirer radios, none preselected (required; organization fields follow the choice)
+    assert.deepEqual([...f.matchAll(/name="inquirer" value="([a-z]+)" required/g)].map((m) => m[1]), CONTACT_INQUIRER_IDS);
+    assert.ok(!/name="inquirer"[^>]*checked/.test(f), `${lang} no inquirer preselected`);
     assert.match(f, /<div class="ct-org" data-ct-org hidden>[\s\S]*name="organization"[\s\S]*name="business_purpose"/);
+    assert.match(f, /<div class="ct-org ct-org--detail" data-ct-detail hidden>[\s\S]*name="environment"[\s\S]*name="error_detail"[\s\S]*name="reference_id"/);
     assert.ok(!/type="file"/.test(f), `${lang} no file input`);
     assert.match(f, /maxlength="3000"/);
     assert.ok(f.includes('name="_honey"'), `${lang} honeypot`);
     assert.ok(!/<form[^>]*\baction=/.test(f), `${lang} no form action`);
   }
   const ko = text(form(page("ko")));
-  for (const s of ["NEWON 전체", "LIVON", "ONGIL", "SHAREON", "BABYLOG", "PETLOG", "MY WORLD", "기업 제휴", "서비스 입점", "공동 사업", "기술 협력", "기관 서비스", "투자", "문의 보내기 →"]) assert.ok(ko.includes(s), s);
+  for (const s of ["NEWON 전체", "LIVON", "ONGIL", "SHAREON", "BABYLOG", "PETLOG", "MY WORLD", "기업 제휴", "서비스 입점", "공동 사업", "기술 협력", "기관 서비스", "투자", "문의 보내기 →", "기관·단체", "투자자", "오류 신고", "개인정보·계정 관련", "보증금 · 향후 계획", "반려동물 기록 · 출시 준비 중"]) assert.ok(ko.includes(s), s);
   assert.match(form(page("ko")), /placeholder="문의하실 내용이나 협력 제안을 자세히 작성해 주세요\."/);
 });
 
@@ -99,7 +106,7 @@ test("consent notice: purpose, items, FormSubmit handling, published retention w
   const t = text(form(page("ko")));
   for (const s of [
     "문의 확인·회신 및 처리 기록",
-    "[자동] 문의를 보낸 페이지 주소, 언어, 제출 시각",
+    "[자동] 문의를 보낸 페이지 주소, 유입 경로, 언어, 제출 시각",
     "FormSubmit(formsubmit.co)",
     "30일간 보관",
     "NEWON 웹사이트는 별도의 서버나 데이터베이스에 문의 내용을 저장하지 않습니다.",

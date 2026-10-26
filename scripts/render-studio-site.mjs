@@ -15,9 +15,9 @@
  * the shared five-menu bar (flagship-subnav, `studio` config) and /studio-site.css (bizpart-site.css
  * re-scoped to data-story="studio", class prefix sts-, plus Studio content components). Black/white only.
  *
- * Contact reuses the existing inquiry mechanism unchanged in behaviour: form#bz-inquiry-form +
- * /business/inquiry.js (FormSubmit, honeypot, validation, e-mail fallback, shared success page).
- * /{lang}/business/inquiry/ is not touched.
+ * 05 Contact (2026-10-26, owner spec 1): retired into the unified NEWON Contact page — /{lang}/studio/contact/ is a
+ * redirect stub to /{lang}/contact/ (old ?type=/?area= mapped; scripts/contact-legacy-stubs.mjs); the menu item stays
+ * and every inquiry button links straight to /{lang}/contact/. contactBody() is kept unused for reference / rollback.
  *
  * Old URLs (design-service and pillar pages of the previous Studio) become static redirect stubs:
  * noindex + canonical + meta refresh + location.replace (LEGACY_STUDIO_REDIRECTS).
@@ -45,6 +45,8 @@ import { renderStudioHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { renderFlagshipSubnav } from "./flagship-subnav.mjs";
 import { ST_SLUG, ST_NAV, ST_FILM, ST_PLATFORMS, ST_STORE_HREF, ST_INQUIRY_TYPES, ST_INQUIRY_AREAS } from "./studio-site-content.mjs";
 import { KO } from "./studio-site-copy-ko.mjs";
+import { legacyContactUrl } from "./contact-taxonomy.mjs";
+import { contactLegacyLangStub, contactLegacyRootStub } from "./contact-legacy-stubs.mjs";
 import { EN } from "./studio-site-copy-en.mjs";
 
 const esc = escapeHtml;
@@ -61,14 +63,26 @@ export const stPath = (lang, sub = "") => `/${lang}/${ST_SLUG}/${sub ? sub + "/"
 const navOf = (id) => ST_NAV.find((n) => n.id === id);
 const pageHref = (lang, id) => stPath(lang, navOf(id).sub);
 const platHref = (lang, id) => stPath(lang, `platforms/${id}`);
-const contactHref = (lang, q = "") => `${pageHref(lang, "contact")}${q ? "?" + q : ""}#sts-form`;
+/**
+ * Inquiry buttons open the unified NEWON Contact page (owner spec 1, 2026-10-26): old Studio type code mapped
+ * (contact-taxonomy LEGACY_STUDIO_TYPES → platform=newon + a newon-studio* topic), the product area in `source`.
+ */
+const contactHref = (lang, q = "") => {
+  const p = new URLSearchParams(q);
+  const area = p.get("area");
+  p.delete("area");
+  p.set("source", area ? `studio-${area}` : "studio");
+  return legacyContactUrl(lang, "studio-contact", p, true);
+};
 
 /** Every screen: { id, sub (below /{lang}/studio/), active (sub-menu id), platform? } */
 export const STUDIO_SCREENS = [
-  ...ST_NAV.map((n) => ({ id: n.id, sub: n.sub, active: n.id })),
+  ...ST_NAV.filter((n) => n.id !== "contact").map((n) => ({ id: n.id, sub: n.sub, active: n.id })),
   ...ST_PLATFORMS.map((p) => ({ id: p.id, sub: `platforms/${p.id}`, active: "platforms", platform: p })),
 ];
-/** Paths (without /{lang}/) of the eleven screens — sitemap + tests. */
+/** /{lang}/studio/contact/ — retired into /{lang}/contact/ (query mapped, see contact-legacy-stubs.mjs); the menu item stays. */
+export const STUDIO_CONTACT_PATH = `${ST_SLUG}/contact`;
+/** Paths (without /{lang}/) of the ten screens that are pages — sitemap + tests. */
 export const STUDIO_SITE_PATHS = STUDIO_SCREENS.map((s) => (s.sub ? `${ST_SLUG}/${s.sub}` : ST_SLUG));
 
 /* ------------------------------------------------------------------------------------------------
@@ -112,7 +126,7 @@ export const LEGACY_STUDIO_REDIRECTS = {
 /** True when a path (with or without the /{lang}/ prefix) is a retired Studio URL. */
 export function isLegacyStudioPath(p) {
   const clean = String(p || "").replace(/^\/+|\/+$/g, "").replace(/^(ko|en|ja|es|pt-br|fr|de|hi|id)(\/|$)/, "");
-  return Object.prototype.hasOwnProperty.call(LEGACY_STUDIO_REDIRECTS, clean);
+  return clean === STUDIO_CONTACT_PATH || Object.prototype.hasOwnProperty.call(LEGACY_STUDIO_REDIRECTS, clean);
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -791,6 +805,9 @@ function writeFile(rel, html, written) {
 export function renderStudioSite() {
   const written = [];
   for (const screen of STUDIO_SCREENS) for (const lang of LANGS) written.push(renderPage(lang, screen));
+  // 05 Contact → unified /{lang}/contact/ (old ?type=/?area= mapped, query kept). Never forced to /ko/.
+  for (const lang of LANGS) writeFile(path.join(lang.dir, STUDIO_CONTACT_PATH, "index.html"), contactLegacyLangStub(lang, "studio-contact"), written);
+  writeFile(path.join(STUDIO_CONTACT_PATH, "index.html"), contactLegacyRootStub(STUDIO_CONTACT_PATH), written);
   for (const [from, to] of Object.entries(LEGACY_STUDIO_REDIRECTS)) {
     for (const lang of LANGS) writeFile(path.join(lang.dir, from, "index.html"), langStub(lang, to), written);
     writeFile(path.join(from, "index.html"), rootStub(to), written);

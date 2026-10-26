@@ -8,6 +8,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { STUDIO_SCREENS, STUDIO_SITE_PATHS, LEGACY_STUDIO_REDIRECTS, getStudioCopy } from "../../scripts/render-studio-site.mjs";
+import { LEGACY_STUDIO_TYPES } from "../../scripts/contact-taxonomy.mjs";
 import { ST_PLATFORMS, ST_FILM, ST_INQUIRY_TYPES } from "../../scripts/studio-site-content.mjs";
 import { STUDIO_PAGE_FILM_SRC, STUDIO_FILM_SRC } from "../../scripts/studio-film-copy.mjs";
 import { MEGA_DESTINATIONS } from "../../scripts/venture-studio-data.mjs";
@@ -24,14 +25,13 @@ const section = (html, id) => (own(html).match(new RegExp(`<section id="${id}"[\
 const rel = (lang, p) => `${lang}/${p}/index.html`;
 const OWNER_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260819_212700_3bb9329b-5c50-4257-a09b-ca85cf3654a3.mp4";
 
-test("eleven screens in nine locales: one h1, canonical, 9+1 hreflang, JSON-LD, studio section, five-item sub-menu", () => {
-  assert.equal(STUDIO_SCREENS.length, 11);
+test("ten screens in nine locales (05 Contact retired into /{lang}/contact/): one h1, canonical, 9+1 hreflang, JSON-LD, studio section, five-item sub-menu", () => {
+  assert.equal(STUDIO_SCREENS.length, 10);
   assert.deepEqual(STUDIO_SITE_PATHS, [
     "studio",
     "studio/store",
     "studio/platforms",
     "studio/business",
-    "studio/contact",
     ...["babylog", "petlog", "myworld", "shareon", "livon", "ongil"].map((p) => `studio/platforms/${p}`),
   ]);
   for (const lang of LANGS) {
@@ -121,8 +121,13 @@ test("old Studio URLs are redirect stubs (noindex, canonical, refresh, location.
     const root = read(`${from}/index.html`);
     assert.ok(root.includes(`content="0;url=/ko/${to}"`) && root.includes("noindex"), `/${from}/ root stub`);
   }
-  // /studio/contact/ stays a real page (now the Contact screen)
-  assert.ok(!/http-equiv="refresh"/.test(read("ko/studio/contact/index.html")));
+  // /studio/contact/ is retired into the unified /{lang}/contact/ (2026-10-26): stub in every language
+  for (const lang of LANGS) {
+    const html = read(rel(lang, "studio/contact"));
+    assert.ok(html.includes(`<link rel="canonical" href="https://www.newon.app/${lang}/contact/" />`), `${lang} studio/contact canonical`);
+    assert.match(html, /noindex/);
+    assert.ok(html.includes(`"lang":"${lang}","kind":"studio-contact"`), `${lang} studio/contact maps`);
+  }
   const xml = read("sitemap.xml");
   for (const from of Object.keys(LEGACY_STUDIO_REDIRECTS)) for (const lang of LANGS) assert.ok(!xml.includes(`<loc>https://www.newon.app/${lang}/${from}/</loc>`), `${lang}/${from} not in sitemap`);
 });
@@ -167,7 +172,7 @@ test("ko / en copy: no prices, currency, percentages, quotes or invented track r
 
 test("FAQ, use-case and content counts follow the brief; platform pages are not copies of each other", () => {
   const faqCount = (html) => Number((own(html).match(/data-sts-faq="(\d+)"/) || [])[1]);
-  const want = { studio: [6, 8], "studio/store": [6, 8], "studio/business": [8, 10], "studio/contact": [6, 8], "studio/platforms": [4, 6] };
+  const want = { studio: [6, 8], "studio/store": [6, 8], "studio/business": [8, 10], "studio/platforms": [4, 6] };
   for (const lang of ["ko", "en", "de"]) {
     for (const [p, [lo, hi]] of Object.entries(want)) {
       const n = faqCount(read(rel(lang, p)));
@@ -222,23 +227,19 @@ test("regulated areas: care, health and finance products stay on records (no dia
   }
 });
 
-test("Contact reuses the existing inquiry mechanism with ?type= / ?area= prefill; the shared inquiry page is untouched", () => {
-  for (const lang of LANGS) {
-    const html = read(rel(lang, "studio/contact"));
-    assert.ok(html.includes('<form class="bz-form" id="bz-inquiry-form" novalidate data-analytics="studio_inquiry"'), `${lang} form`);
-    assert.ok(html.includes('<script src="/business/inquiry.js?v='), `${lang} inquiry.js`);
-    assert.ok(html.includes('<input type="hidden" name="category" value="NEWON Studio" />'), `${lang} category`);
-    assert.ok(html.includes('name="_honey"'), `${lang} honeypot`);
-    const sel = html.match(/<select id="bz-type"[\s\S]*?<\/select>/)[0];
-    assert.deepEqual([...sel.matchAll(/data-code="([^"]+)"/g)].map((m) => m[1]), ST_INQUIRY_TYPES.map((t) => t.code), `${lang} types`);
-    assert.ok(html.includes('pre("bz-type", p.get("type"));') && html.includes('pre("sts-area", p.get("area") || p.get("platform"));'), `${lang} prefill`);
-    for (const t of ST_INQUIRY_TYPES) assert.ok(html.includes(`href="?type=${t.code}#sts-form"`), `${lang} type card ${t.code}`);
-  }
-  // links into the Contact screen use known type codes
-  const codes = new Set(ST_INQUIRY_TYPES.map((t) => t.code));
-  for (const lang of ["ko", "en"]) {
+test("Studio inquiry buttons open the unified /{lang}/contact/ with every old type code mapped; the shared inquiry page is untouched", () => {
+  for (const t of ST_INQUIRY_TYPES) assert.ok(LEGACY_STUDIO_TYPES[t.code], `old Studio type ${t.code} mapped`);
+  for (const lang of ["ko", "en", "ja"]) {
     for (const p of STUDIO_SITE_PATHS) {
-      for (const m of read(rel(lang, p)).matchAll(/href="\/[a-z-]+\/studio\/contact\/\?type=([a-z]+)/g)) assert.ok(codes.has(m[1]), `${lang}/${p} ?type=${m[1]}`);
+      const html = read(rel(lang, p));
+      assert.ok(!/href="\/[a-z-]+\/studio\/contact\/\?/.test(own(html)), `${lang}/${p} no old Contact links in the body`);
+      for (const m of own(html).matchAll(/href="(\/[a-z-]+\/contact\/\?[^"]+)"/g)) {
+        const u = new URL(m[1].replace(/&amp;/g, "&"), "https://x");
+        assert.ok(u.pathname === `/${lang}/contact/`, `${lang}/${p} same language`);
+        assert.equal(u.searchParams.get("platform"), "newon", `${lang}/${p} platform`);
+        assert.match(u.searchParams.get("topic") || "", /^newon-studio/, `${lang}/${p} topic`);
+        assert.match(u.searchParams.get("source") || "", /^studio/, `${lang}/${p} source`);
+      }
     }
   }
   assert.ok(read("ko/business/inquiry/index.html").includes('id="bz-inquiry-form"'), "shared inquiry form still there");

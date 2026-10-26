@@ -43,7 +43,7 @@
 <script>document.documentElement.classList.add("ct-js")</script>
     <link rel="preload" as="image" href="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261021_093215_b7826239-e451-4e15-b42b-d6bcf9497a32.png" />
     <link rel="stylesheet" href="/home-portfolio.css?v=20261019np13" />
-    <link rel="stylesheet" href="/contact/contact-page.css?v=20261024ct1" />
+    <link rel="stylesheet" href="/contact/contact-page.css?v=20261026ct2" />
     <script src="/theme-shell.js?v=20260904perf1"></script>
     <script src="/analytics.js?v=20260904sec1" defer></script>
     <script src="/lang-nav.js?v=20260821stay2"></script>
@@ -851,42 +851,77 @@
         <p class="ct-note" id="ct-req-note">Fields marked * are required.</p>
         <div class="ct-alert" id="ct-form-alert" role="alert" tabindex="-1" hidden></div>
 
-        <fieldset class="ct-field ct-persona">
-          <legend class="ct-label">I am contacting you as <span class="ct-opt">optional</span></legend>
-          <div class="ct-seg">
-            <label class="ct-seg__opt"><input type="radio" name="persona" value="personal" checked /><span>An individual</span></label>
-            <label class="ct-seg__opt"><input type="radio" name="persona" value="organization" /><span>A company or organization</span></label>
+        <fieldset class="ct-field ct-persona" id="ct-inquirer" data-ct-field="inquirer" data-ct-desc="">
+          <legend class="ct-label">I am contacting you as <span class="ct-req" aria-hidden="true">*</span></legend>
+          <div class="ct-seg ct-seg--6">
+            <label class="ct-seg__opt"><input type="radio" name="inquirer" value="personal" required /><span>Individual</span></label>
+            <label class="ct-seg__opt"><input type="radio" name="inquirer" value="company" required /><span>Company</span></label>
+            <label class="ct-seg__opt"><input type="radio" name="inquirer" value="organization" required /><span>Institution</span></label>
+            <label class="ct-seg__opt"><input type="radio" name="inquirer" value="investor" required /><span>Investor</span></label>
+            <label class="ct-seg__opt"><input type="radio" name="inquirer" value="media" required /><span>Press</span></label>
+            <label class="ct-seg__opt"><input type="radio" name="inquirer" value="other" required /><span>Other</span></label>
           </div>
+          <p class="ct-err" id="ct-inquirer-err" hidden></p>
         </fieldset>
 
         <div class="ct-field" data-ct-field="inquiry_type">
           <label class="ct-label" for="ct-type">Inquiry type <span class="ct-req" aria-hidden="true">*</span></label>
-          <select class="ct-input ct-select" id="ct-type" name="inquiry_type" required data-ct-desc=""><option value="">Choose an inquiry type</option><option value="personal">Personal inquiries</option><option value="business">Business inquiries</option><option value="public">Institutions &amp; public sector</option><option value="partnership">Partnership inquiries</option><option value="investment">Investment inquiries</option><option value="media">Press &amp; other inquiries</option></select>
+          <select class="ct-input ct-select" id="ct-type" name="inquiry_type" required data-ct-desc=""><option value="">Choose an inquiry type</option><option value="general">General inquiry</option><option value="service">Using a service</option><option value="support">Account &amp; technical support</option><option value="bug">Report a bug</option><option value="partnership">Partnership &amp; alliance</option><option value="listing">Listing or providing a service</option><option value="investment">Investment &amp; IR</option><option value="advertising">Advertising &amp; promotion</option><option value="institution">Institutional cooperation</option><option value="privacy">Personal data &amp; account requests</option><option value="other">Other</option></select>
           
           <p class="ct-err" id="ct-type-err" hidden></p>
         </div>
 
         <div class="ct-org" data-ct-org hidden>
+          <div class="ct-cond" data-ct-when="organization" hidden>
           <div class="ct-field" data-ct-field="organization">
           <label class="ct-label" for="ct-org-name">Company or organization name <span class="ct-opt">optional</span></label>
           <input class="ct-input" id="ct-org-name" name="organization" type="text" data-ct-desc="" autocomplete="organization" maxlength="160" placeholder="e.g. Newon Inc." />
           
           <p class="ct-err" id="ct-org-name-err" hidden></p>
         </div>
-          <div class="ct-row">
-            <div class="ct-field" data-ct-field="business_purpose">
-          <label class="ct-label" for="ct-purpose">Area of cooperation <span class="ct-opt">optional</span></label>
-          <select class="ct-input ct-select" id="ct-purpose" name="business_purpose" data-ct-desc=""><option value="">Please select</option><option value="alliance">Corporate alliance</option><option value="listing">Service listing</option><option value="joint">Joint business</option><option value="tech">Technology cooperation</option><option value="institution">Institutional services</option><option value="investment">Investment</option><option value="other">Other</option></select>
-          
-          <p class="ct-err" id="ct-purpose-err" hidden></p>
         </div>
-            <div class="ct-field" data-ct-field="website">
+          <div class="ct-row">
+            <div class="ct-cond" data-ct-when="position" hidden>
+          <div class="ct-field" data-ct-field="position">
+          <label class="ct-label" for="ct-position">Job title <span class="ct-opt">optional</span></label>
+          <input class="ct-input" id="ct-position" name="position" type="text" data-ct-desc="" autocomplete="organization-title" maxlength="80" placeholder="e.g. Business development manager" />
+          
+          <p class="ct-err" id="ct-position-err" hidden></p>
+        </div>
+        </div>
+            <div class="ct-cond" data-ct-when="website" hidden>
+          <div class="ct-field" data-ct-field="website">
           <label class="ct-label" for="ct-website">Company website <span class="ct-opt">optional</span></label>
           <input class="ct-input" id="ct-website" name="website" type="url" data-ct-desc="" inputmode="url" autocomplete="url" maxlength="300" placeholder="https://" />
           
           <p class="ct-err" id="ct-website-err" hidden></p>
         </div>
+        </div>
           </div>
+          <div class="ct-cond" data-ct-when="business_purpose" hidden>
+          <div class="ct-field" data-ct-field="business_purpose">
+          <label class="ct-label" for="ct-purpose">Preferred form of cooperation <span class="ct-opt">optional</span></label>
+          <select class="ct-input ct-select" id="ct-purpose" name="business_purpose" data-ct-desc=""><option value="">Please select</option><option value="alliance">Corporate alliance</option><option value="listing">Service listing</option><option value="joint">Joint business</option><option value="tech">Technology cooperation</option><option value="institution">Institutional services</option><option value="investment">Investment</option><option value="other">Other</option></select>
+          
+          <p class="ct-err" id="ct-purpose-err" hidden></p>
+        </div>
+        </div>
+          <div class="ct-cond" data-ct-when="partnership_goal" hidden>
+          <div class="ct-field" data-ct-field="partnership_goal">
+          <label class="ct-label" for="ct-goal">Purpose of the partnership <span class="ct-opt">optional</span></label>
+          <input class="ct-input" id="ct-goal" name="partnership_goal" type="text" data-ct-desc="" maxlength="200" placeholder="e.g. joint promotion for users, service integration" />
+          
+          <p class="ct-err" id="ct-goal-err" hidden></p>
+        </div>
+        </div>
+          <div class="ct-cond" data-ct-when="investor_info" hidden>
+          <div class="ct-field" data-ct-field="investor_info">
+          <label class="ct-label" for="ct-investor">Investor or firm details <span class="ct-opt">optional</span></label>
+          <input class="ct-input" id="ct-investor" name="investor_info" type="text" aria-describedby="ct-investor-hint" data-ct-desc="ct-investor-hint" maxlength="300" placeholder="e.g. investment stage, areas of interest" />
+          <p class="ct-hint" id="ct-investor-hint">Only share what you are able to make public.</p>
+          <p class="ct-err" id="ct-investor-err" hidden></p>
+        </div>
+        </div>
         </div>
 
         <div class="ct-row">
@@ -918,6 +953,42 @@
         </div>
         </div>
 
+        <div class="ct-cond" data-ct-when="topic" hidden>
+          <div class="ct-field" data-ct-field="topic">
+          <label class="ct-label" for="ct-topic">Detail topic <span class="ct-opt">optional</span></label>
+          <select class="ct-input ct-select" id="ct-topic" name="topic" aria-describedby="ct-topic-hint" data-ct-desc="ct-topic-hint"><option value="">Please select</option><optgroup label="LIVON" data-ct-platform="livon"><option value="livon-lifecycle">Life stages · launch in preparation</option><option value="livon-welfare">Welfare &amp; public services · launch in preparation</option><option value="livon-living">Everyday-life services · future plan</option><option value="livon-account">Accounts · future plan</option><option value="livon-ai">AI features · future plan</option><option value="livon-experts">Experts &amp; institutions · future plan</option><option value="livon-bug">Bugs</option><option value="livon-partnership">Partnerships</option></optgroup><optgroup label="ONGIL" data-ct-platform="ongil"><option value="ongil-senior">Older adults · launch in preparation</option><option value="ongil-guardian">Family &amp; guardians · future plan</option><option value="ongil-caregiver">Care providers · future plan</option><option value="ongil-health">Health &amp; safety · launch in preparation</option><option value="ongil-welfare">Welfare &amp; care institutions · future plan</option><option value="ongil-services">Linked services · future plan</option><option value="ongil-bug">Bugs</option><option value="ongil-partnership">Partnerships</option></optgroup><optgroup label="SHAREON" data-ct-platform="shareon"><option value="shareon-sharing">Sharing &amp; rental · launch in preparation</option><option value="shareon-booking">Rental requests · launch in preparation</option><option value="shareon-trade">Trades · launch in preparation</option><option value="shareon-deposit">Deposits · future plan</option><option value="shareon-payment">Payment &amp; settlement · future plan</option><option value="shareon-dispute">Disputes · future plan</option><option value="shareon-report">Reporting a user or listing</option><option value="shareon-provider">Individual providers · launch in preparation</option><option value="shareon-business">Business listings · future plan</option><option value="shareon-partnership">Partnerships</option></optgroup><optgroup label="BABYLOG" data-ct-platform="babylog"><option value="babylog-pregnancy">Pregnancy &amp; birth · future plan</option><option value="babylog-parenting">Parenting · launch in preparation</option><option value="babylog-growth">Growth &amp; health · launch in preparation</option><option value="babylog-family">Family accounts · future plan</option><option value="babylog-school">School &amp; education · future plan</option><option value="babylog-safety">Child safety · future plan</option><option value="babylog-institution">Institutional cooperation</option><option value="babylog-bug">Bugs</option><option value="babylog-partnership">Partnerships</option></optgroup><optgroup label="PETLOG" data-ct-platform="petlog"><option value="petlog-records">Pet records · launch in preparation</option><option value="petlog-health">Health · launch in preparation</option><option value="petlog-booking">Booking &amp; care · future plan</option><option value="petlog-providers">Vets, grooming &amp; training · future plan</option><option value="petlog-shelter">Shelters &amp; rescued animals · future plan</option><option value="petlog-business">Business listings · future plan</option><option value="petlog-bug">Bugs</option><option value="petlog-partnership">Partnerships</option></optgroup><optgroup label="MY WORLD" data-ct-platform="myworld"><option value="myworld-map">World map · launch in preparation</option><option value="myworld-visits">Visit records · launch in preparation</option><option value="myworld-trips">Travel records · launch in preparation</option><option value="myworld-travel-services">Travel services · future plan</option><option value="myworld-booking">Booking · future plan</option><option value="myworld-agencies">Travel businesses · future plan</option><option value="myworld-tourism">Tourism organizations</option><option value="myworld-bug">Bugs</option><option value="myworld-partnership">Partnerships</option></optgroup><optgroup label="All of NEWON" data-ct-platform="newon"><option value="newon-company">NEWON in general</option><option value="newon-business">NEWON Business cooperation</option><option value="newon-saas">Enterprise SaaS &amp; solutions · future plan</option><option value="newon-studio">NEWON Studio products &amp; purchase</option><option value="newon-studio-license">NEWON Studio licences</option><option value="newon-studio-support">NEWON Studio download &amp; usage support</option><option value="newon-studio-business">NEWON Studio business products · future plan</option><option value="newon-partnership">Partnership proposals</option><option value="newon-global">Global cooperation · future plan</option><option value="newon-ir">Investment &amp; IR materials</option><option value="newon-press">Press &amp; coverage</option><option value="newon-privacy">Personal-data access &amp; deletion requests</option></optgroup></select>
+          <p class="ct-hint" id="ct-topic-hint">&quot;Launch in preparation&quot; marks features of an app that is preparing to launch; &quot;future plan&quot; marks long-term plans that are not built yet. Neither is available to use today.</p>
+          <p class="ct-err" id="ct-topic-err" hidden></p>
+        </div>
+        </div>
+
+        <div class="ct-org ct-org--detail" data-ct-detail hidden>
+          <div class="ct-cond" data-ct-when="environment" hidden>
+          <div class="ct-field" data-ct-field="environment">
+          <label class="ct-label" for="ct-env">Device, browser and app version <span class="ct-opt">optional</span></label>
+          <input class="ct-input" id="ct-env" name="environment" type="text" data-ct-desc="" maxlength="200" placeholder="e.g. iPhone 15 · iOS 18 · app 1.0.0 / Chrome 130" />
+          
+          <p class="ct-err" id="ct-env-err" hidden></p>
+        </div>
+        </div>
+          <div class="ct-cond" data-ct-when="error_detail" hidden>
+          <div class="ct-field" data-ct-field="error_detail">
+          <label class="ct-label" for="ct-error">What happened <span class="ct-opt">optional</span></label>
+          <textarea class="ct-input ct-textarea ct-textarea--short" id="ct-error" name="error_detail" rows="4" maxlength="1500" data-ct-desc="" placeholder="When, on which screen, and what you did when the problem appeared."></textarea>
+          
+          <p class="ct-err" id="ct-error-err" hidden></p>
+        </div>
+        </div>
+          <div class="ct-cond" data-ct-when="reference_id" hidden>
+          <div class="ct-field" data-ct-field="reference_id">
+          <label class="ct-label" for="ct-refid">Transaction or booking reference <span class="ct-opt">optional</span></label>
+          <input class="ct-input" id="ct-refid" name="reference_id" type="text" aria-describedby="ct-refid-hint" data-ct-desc="ct-refid-hint" maxlength="80" autocomplete="off" />
+          <p class="ct-hint" id="ct-refid-hint">Only if the app shows a transaction or booking number. Leave it empty if the feature is not offered yet. Never enter card or bank account numbers.</p>
+          <p class="ct-err" id="ct-refid-err" hidden></p>
+        </div>
+        </div>
+        </div>
+
         <div class="ct-field" data-ct-field="subject">
           <label class="ct-label" for="ct-subject">Subject <span class="ct-req" aria-hidden="true">*</span></label>
           <input class="ct-input" id="ct-subject" name="subject" type="text" required data-ct-desc="" maxlength="150" placeholder="Enter a subject" />
@@ -926,10 +997,10 @@
         </div>
 
         <div class="ct-field ct-field--message" data-ct-field="message">
-          <label class="ct-label" for="ct-message">Message <span class="ct-req" aria-hidden="true">*</span></label>
+          <label class="ct-label" for="ct-message"><span data-ct-message-label>Message</span> <span class="ct-req" aria-hidden="true">*</span></label>
           <textarea class="ct-input ct-textarea" id="ct-message" name="message" rows="9" required maxlength="3000" minlength="10" aria-describedby="ct-message-hint ct-message-count" data-ct-desc="ct-message-hint ct-message-count" placeholder="Describe your question or cooperation proposal in detail."></textarea>
           <div class="ct-meta">
-            <p class="ct-hint" id="ct-message-hint">Please do not include sensitive personal information such as ID, bank or card numbers.</p>
+            <p class="ct-hint" id="ct-message-hint">Please do not include sensitive information such as passwords, ID numbers, bank or card numbers, or medical records.</p>
             <p class="ct-count" id="ct-message-count" data-ct-count><span data-ct-count-n>0</span> / 3,000</p>
           </div>
           <p class="ct-err" id="ct-message-err" hidden></p>
@@ -944,7 +1015,7 @@
 
         <div class="ct-consent" data-ct-field="consent">
           <h3 class="ct-consent__title">Collection and use of personal information</h3>
-          <dl class="ct-consent__rows" id="ct-consent-notice"><div><dt>Purpose</dt><dd>Reviewing and replying to your inquiry, and keeping a record of how it was handled</dd></div><div><dt>Items</dt><dd>[Required] inquiry type, name or contact person, email address, subject, message, whether you agreed to this notice · [Optional] who you are contacting us as, company or organization name, area of cooperation, phone, related platform, company website, reference URL · [Automatic] the page address the inquiry was sent from, language, time of submission</dd></div><div><dt>How it is handled</dt><dd>What you enter is delivered to NEWON's official email (newon@newon.app) through FormSubmit (formsubmit.co), an email forwarding service operated outside Korea. According to FormSubmit's documentation, submissions are kept by that service for 30 days. The NEWON website does not store your inquiry on any server or database of its own.</dd></div><div><dt>Retention</dt><dd>Kept for as long as needed to review and reply to your inquiry; requests for access or deletion are handled in line with applicable law. Everything else follows the Privacy Policy.</dd></div><div><dt>Your right to refuse</dt><dd>You may refuse to agree to the collection and use of your personal information. If you do not agree, this form cannot be sent, but you can still email newon@newon.app directly.</dd></div></dl>
+          <dl class="ct-consent__rows" id="ct-consent-notice"><div><dt>Purpose</dt><dd>Reviewing and replying to your inquiry, and keeping a record of how it was handled</dd></div><div><dt>Items</dt><dd>[Required] who you are contacting us as, inquiry type, name or contact person, email address, subject, message, whether you agreed to this notice · [Required when it applies] company, organization or media outlet name (companies, institutions, press), what happened (bug reports) · [Optional] related platform, detail topic, job title, company website, preferred form of cooperation, purpose of the partnership, investor or firm details, device and app version, transaction or booking reference, phone, reference URL · [Automatic] the page address the inquiry was sent from, the link it came from, language, time of submission</dd></div><div><dt>How it is handled</dt><dd>What you enter is delivered to NEWON's official email (newon@newon.app) through FormSubmit (formsubmit.co), an email forwarding service operated outside Korea. According to FormSubmit's documentation, submissions are kept by that service for 30 days. The NEWON website does not store your inquiry on any server or database of its own.</dd></div><div><dt>Retention</dt><dd>Kept for as long as needed to review and reply to your inquiry; requests for access or deletion are handled in line with applicable law. Everything else follows the Privacy Policy.</dd></div><div><dt>Your right to refuse</dt><dd>You may refuse to agree to the collection and use of your personal information. If you do not agree, this form cannot be sent, but you can still email newon@newon.app directly.</dd></div></dl>
           <p class="ct-consent__link"><a href="/pt-br/privacy/">Read the Privacy Policy <span aria-hidden="true">↗</span></a></p>
           <label class="ct-check" for="ct-consent">
             <input type="checkbox" id="ct-consent" name="privacy_consent" value="yes" required aria-describedby="ct-consent-notice" data-ct-desc="ct-consent-notice" />
@@ -968,12 +1039,13 @@
         <span class="ct-result__mark" aria-hidden="true">✓</span>
         <h3 class="ct-result__title">Your inquiry has been received.</h3>
         <p class="ct-result__body">Your inquiry has been received. We will get back to you at the email address you provided.</p>
+        <p class="ct-result__body ct-result__meta" data-ct-success-meta hidden></p>
         <button type="button" class="ct-btn ct-btn--ghost" data-ct-again>Write another inquiry</button>
       </div>
 
       <div class="ct-result ct-result--fail" data-ct-fail role="alert" tabindex="-1" hidden>
         <h3 class="ct-result__title">We could not send your inquiry.</h3>
-        <p class="ct-result__body">Please check your connection and try again — everything you entered is still here. If it keeps failing, please email us directly.</p>
+        <p class="ct-result__body" data-ct-fail-body>Please check your connection and try again — everything you entered is still here. If it keeps failing, please email us directly.</p>
         <div class="ct-result__actions">
           <button type="button" class="ct-btn" data-ct-retry>Try again</button>
           <a class="ct-btn ct-btn--ghost" data-ct-mailto href="mailto:newon@newon.app">Send by email · newon@newon.app</a>
@@ -981,7 +1053,7 @@
       </div>
     </div>
   </div>
-  <script type="application/json" id="ct-config">{"endpoint":"https://formsubmit.co/ajax/newon@newon.app","inbox":"newon@newon.app","lang":"pt-br","messageMin":10,"messageMax":3000,"aliases":{"personal":"personal","support":"personal","app-support":"personal","general":"personal","business":"business","project":"business","enterprise":"business","public":"public","institution":"public","government":"public","partnership":"partnership","partner":"partnership","technology":"partnership","investment":"investment","invest":"investment","ir":"investment","media":"media","press":"media","other":"media"},"orgCategories":["business","public","partnership","investment"],"platforms":["newon","livon","ongil","shareon","babylog","petlog","myworld","other"],"t":{"submit":"Send inquiry →","submitting":"Sending your inquiry…","tooFast":"Please wait a moment and try again.","errSummary":"Please check your entries. Correct the marked fields and send again.","errRequired":"This field is required.","errType":"Please choose an inquiry type.","errEmail":"Please check the email format, e.g. name@example.com","errUrl":"Please enter an address starting with http:// or https://.","errPhone":"Use 7–20 characters: digits, +, -, brackets and spaces.","errMessageMin":"Please write at least 10 characters.","errMessageMax":"Please keep your message within 3,000 characters.","errConsent":"You need to agree to the collection and use of personal information to send this form.","copied":"Email address copied.","copyFail":"Could not copy. Please select newon@newon.app and copy it.","mailSubject":"NEWON inquiry","counterSuffix":""}}</script>
+  <script type="application/json" id="ct-config">{"endpoint":"https://formsubmit.co/ajax/newon@newon.app","inbox":"newon@newon.app","lang":"pt-br","messageMin":10,"messageMax":3000,"presets":{"personal":{"category":"personal","inquirer":"personal"},"support":{"category":"personal","inquirer":"personal","inquiry":"support"},"app-support":{"category":"personal","inquirer":"personal","inquiry":"support"},"business":{"category":"business","inquirer":"company"},"project":{"category":"business","inquirer":"company"},"enterprise":{"category":"business","inquirer":"company"},"public":{"category":"public","inquirer":"organization","inquiry":"institution"},"institution":{"category":"public","inquirer":"organization","inquiry":"institution"},"government":{"category":"public","inquirer":"organization","inquiry":"institution"},"partnership":{"category":"partnership","inquirer":"company","inquiry":"partnership"},"partner":{"category":"partnership","inquirer":"company","inquiry":"partnership"},"technology":{"category":"partnership","inquirer":"company","inquiry":"partnership"},"investment":{"category":"investment","inquirer":"investor","inquiry":"investment"},"invest":{"category":"investment","inquirer":"investor","inquiry":"investment"},"ir":{"category":"investment","inquirer":"investor","inquiry":"investment"},"media":{"category":"media","inquirer":"media"},"press":{"category":"media","inquirer":"media"},"general":{"category":"media","inquirer":"other","inquiry":"general"},"other":{"category":"media","inquirer":"other","inquiry":"other"}},"platforms":["newon","livon","ongil","shareon","babylog","petlog","myworld","other"],"platformAliases":{"my-world":"myworld","my_world":"myworld"},"platformLabels":{"newon":"All of NEWON","livon":"LIVON","ongil":"ONGIL","shareon":"SHAREON","babylog":"BABYLOG","petlog":"PETLOG","myworld":"MY WORLD","other":"Other"},"inquirers":[{"id":"personal","label":"Individual"},{"id":"company","label":"Company"},{"id":"organization","label":"Institution"},{"id":"investor","label":"Investor"},{"id":"media","label":"Press"},{"id":"other","label":"Other"}],"inquiries":[{"id":"general","label":"General inquiry"},{"id":"service","label":"Using a service"},{"id":"support","label":"Account & technical support"},{"id":"bug","label":"Report a bug"},{"id":"partnership","label":"Partnership & alliance"},{"id":"listing","label":"Listing or providing a service"},{"id":"investment","label":"Investment & IR"},{"id":"advertising","label":"Advertising & promotion"},{"id":"institution","label":"Institutional cooperation"},{"id":"privacy","label":"Personal data & account requests"},{"id":"other","label":"Other"}],"categories":[{"id":"personal","label":"Personal inquiries"},{"id":"business","label":"Business inquiries"},{"id":"public","label":"Institutions & public sector"},{"id":"partnership","label":"Partnership inquiries"},{"id":"investment","label":"Investment inquiries"},{"id":"media","label":"Press & other inquiries"}],"topics":{"livon":[{"id":"livon-lifecycle","label":"Life stages · launch in preparation","status":"prep","inquiry":"service","ref":false},{"id":"livon-welfare","label":"Welfare & public services · launch in preparation","status":"prep","inquiry":"service","ref":false},{"id":"livon-living","label":"Everyday-life services · future plan","status":"planned","inquiry":"service","ref":false},{"id":"livon-account","label":"Accounts · future plan","status":"planned","inquiry":"support","ref":false},{"id":"livon-ai","label":"AI features · future plan","status":"planned","inquiry":"service","ref":false},{"id":"livon-experts","label":"Experts & institutions · future plan","status":"planned","inquiry":"listing","ref":false},{"id":"livon-bug","label":"Bugs","status":null,"inquiry":"bug","ref":false},{"id":"livon-partnership","label":"Partnerships","status":null,"inquiry":"partnership","ref":false}],"ongil":[{"id":"ongil-senior","label":"Older adults · launch in preparation","status":"prep","inquiry":"service","ref":false},{"id":"ongil-guardian","label":"Family & guardians · future plan","status":"planned","inquiry":"service","ref":false},{"id":"ongil-caregiver","label":"Care providers · future plan","status":"planned","inquiry":"listing","ref":false},{"id":"ongil-health","label":"Health & safety · launch in preparation","status":"prep","inquiry":"service","ref":false},{"id":"ongil-welfare","label":"Welfare & care institutions · future plan","status":"planned","inquiry":"institution","ref":false},{"id":"ongil-services","label":"Linked services · future plan","status":"planned","inquiry":"listing","ref":false},{"id":"ongil-bug","label":"Bugs","status":null,"inquiry":"bug","ref":false},{"id":"ongil-partnership","label":"Partnerships","status":null,"inquiry":"partnership","ref":false}],"shareon":[{"id":"shareon-sharing","label":"Sharing & rental · launch in preparation","status":"prep","inquiry":"service","ref":false},{"id":"shareon-booking","label":"Rental requests · launch in preparation","status":"prep","inquiry":"service","ref":true},{"id":"shareon-trade","label":"Trades · launch in preparation","status":"prep","inquiry":"service","ref":true},{"id":"shareon-deposit","label":"Deposits · future plan","status":"planned","inquiry":"service","ref":true},{"id":"shareon-payment","label":"Payment & settlement · future plan","status":"planned","inquiry":"service","ref":true},{"id":"shareon-dispute","label":"Disputes · future plan","status":"planned","inquiry":"service","ref":true},{"id":"shareon-report","label":"Reporting a user or listing","status":null,"inquiry":"service","ref":true},{"id":"shareon-provider","label":"Individual providers · launch in preparation","status":"prep","inquiry":"listing","ref":false},{"id":"shareon-business","label":"Business listings · future plan","status":"planned","inquiry":"listing","ref":false},{"id":"shareon-partnership","label":"Partnerships","status":null,"inquiry":"partnership","ref":false}],"babylog":[{"id":"babylog-pregnancy","label":"Pregnancy & birth · future plan","status":"planned","inquiry":"service","ref":false},{"id":"babylog-parenting","label":"Parenting · launch in preparation","status":"prep","inquiry":"service","ref":false},{"id":"babylog-growth","label":"Growth & health · launch in preparation","status":"prep","inquiry":"service","ref":false},{"id":"babylog-family","label":"Family accounts · future plan","status":"planned","inquiry":"support","ref":false},{"id":"babylog-school","label":"School & education · future plan","status":"planned","inquiry":"service","ref":false},{"id":"babylog-safety","label":"Child safety · future plan","status":"planned","inquiry":"service","ref":false},{"id":"babylog-institution","label":"Institutional cooperation","status":null,"inquiry":"institution","ref":false},{"id":"babylog-bug","label":"Bugs","status":null,"inquiry":"bug","ref":false},{"id":"babylog-partnership","label":"Partnerships","status":null,"inquiry":"partnership","ref":false}],"petlog":[{"id":"petlog-records","label":"Pet records · launch in preparation","status":"prep","inquiry":"service","ref":false},{"id":"petlog-health","label":"Health · launch in preparation","status":"prep","inquiry":"service","ref":false},{"id":"petlog-booking","label":"Booking & care · future plan","status":"planned","inquiry":"service","ref":true},{"id":"petlog-providers","label":"Vets, grooming & training · future plan","status":"planned","inquiry":"listing","ref":false},{"id":"petlog-shelter","label":"Shelters & rescued animals · future plan","status":"planned","inquiry":"institution","ref":false},{"id":"petlog-business","label":"Business listings · future plan","status":"planned","inquiry":"listing","ref":false},{"id":"petlog-bug","label":"Bugs","status":null,"inquiry":"bug","ref":false},{"id":"petlog-partnership","label":"Partnerships","status":null,"inquiry":"partnership","ref":false}],"myworld":[{"id":"myworld-map","label":"World map · launch in preparation","status":"prep","inquiry":"service","ref":false},{"id":"myworld-visits","label":"Visit records · launch in preparation","status":"prep","inquiry":"service","ref":false},{"id":"myworld-trips","label":"Travel records · launch in preparation","status":"prep","inquiry":"service","ref":false},{"id":"myworld-travel-services","label":"Travel services · future plan","status":"planned","inquiry":"service","ref":false},{"id":"myworld-booking","label":"Booking · future plan","status":"planned","inquiry":"service","ref":true},{"id":"myworld-agencies","label":"Travel businesses · future plan","status":"planned","inquiry":"listing","ref":false},{"id":"myworld-tourism","label":"Tourism organizations","status":null,"inquiry":"institution","ref":false},{"id":"myworld-bug","label":"Bugs","status":null,"inquiry":"bug","ref":false},{"id":"myworld-partnership","label":"Partnerships","status":null,"inquiry":"partnership","ref":false}],"newon":[{"id":"newon-company","label":"NEWON in general","status":null,"inquiry":"general","ref":false},{"id":"newon-business","label":"NEWON Business cooperation","status":null,"inquiry":null,"ref":false},{"id":"newon-saas","label":"Enterprise SaaS & solutions · future plan","status":"planned","inquiry":"service","ref":false},{"id":"newon-studio","label":"NEWON Studio products & purchase","status":"available","inquiry":"service","ref":false},{"id":"newon-studio-license","label":"NEWON Studio licences","status":null,"inquiry":"service","ref":false},{"id":"newon-studio-support","label":"NEWON Studio download & usage support","status":null,"inquiry":"support","ref":false},{"id":"newon-studio-business","label":"NEWON Studio business products · future plan","status":"planned","inquiry":"service","ref":false},{"id":"newon-partnership","label":"Partnership proposals","status":null,"inquiry":"partnership","ref":false},{"id":"newon-global","label":"Global cooperation · future plan","status":"planned","inquiry":"partnership","ref":false},{"id":"newon-ir","label":"Investment & IR materials","status":null,"inquiry":"investment","ref":false},{"id":"newon-press","label":"Press & coverage","status":null,"inquiry":"general","ref":false},{"id":"newon-privacy","label":"Personal-data access & deletion requests","status":null,"inquiry":"privacy","ref":false}]},"rules":{"organization":{"inquirers":["company","organization","investor","media"],"requiredFor":["company","organization","media"]},"position":{"inquirers":["company","organization","investor","media"]},"website":{"inquirers":["company","organization","investor","media"]},"business_purpose":{"inquirers":["company","organization"],"inquiries":["partnership","listing","advertising","institution"]},"partnership_goal":{"inquiries":["partnership","listing","advertising","institution"]},"investor_info":{"inquirers":["investor"],"inquiries":["investment"]},"environment":{"inquiries":["service","support","bug"]},"error_detail":{"inquiries":["bug"],"requiredFor":["bug"]},"reference_id":{"ref":true}},"proposal":["partnership","listing","advertising","institution","investment"],"orgLabels":{"company":"Company name","organization":"Institution or organization name","investor":"Investor or investment firm","media":"Media outlet"},"t":{"submit":"Send inquiry →","submitting":"Sending your inquiry…","tooFast":"Please wait a moment and try again.","errSummary":"Please check your entries. Correct the marked fields and send again.","errRequired":"This field is required.","errType":"Please choose an inquiry type.","errInquirer":"Please choose who you are contacting us as.","errEmail":"Please check the email format, e.g. name@example.com","errUrl":"Please enter an address starting with http:// or https://.","errPhone":"Use 7–20 characters: digits, +, -, brackets and spaces.","errMessageMin":"Please write at least 10 characters.","errMessageMax":"Please keep your message within 3,000 characters.","errConsent":"You need to agree to the collection and use of personal information to send this form.","failBody":"Please check your connection and try again — everything you entered is still here. If it keeps failing, please email us directly.","failServerBody":"The delivery service did not confirm your inquiry. Everything you entered is still here — please try again in a moment or email us directly.","failNetBody":"Your connection dropped or the response took too long, so the inquiry was not sent. Everything you entered is still here — check your connection and try again.","duplicate":"An inquiry with the same content was just received. If you have more to add, please edit your message and send it again.","successMetaLabel":"Filed as","orgLabel":"Company or organization name","errorDetailLabel":"What happened","messageLabel":"Message","messageLabelProposal":"Proposal details","copied":"Email address copied.","copyFail":"Could not copy. Please select newon@newon.app and copy it.","mailSubject":"NEWON inquiry","counterSuffix":""}}</script>
 </section>
 <section id="contact-info" class="ct-sec ct-sec--light ct-sec--lift ct-info" aria-labelledby="ct-info-title">
   <div class="ct-wrap">
@@ -1128,7 +1200,7 @@
     <script type="application/json" id="co-i18n">{}</script>
     <script src="/company.js?v=20260904a11y1" defer></script>
 <script src="/film-keep.js?v=20260924play2" defer></script>
-    <script src="/contact/contact-page.js?v=20261024ct1" defer></script>
+    <script src="/contact/contact-page.js?v=20261026ct2" defer></script>
     <script src="/site-chrome.js?v=20261017nav8" defer></script>
     <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
 </body>

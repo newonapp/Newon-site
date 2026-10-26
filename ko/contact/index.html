@@ -43,7 +43,7 @@
 <script>document.documentElement.classList.add("ct-js")</script>
     <link rel="preload" as="image" href="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261021_093215_b7826239-e451-4e15-b42b-d6bcf9497a32.png" />
     <link rel="stylesheet" href="/home-portfolio.css?v=20261019np13" />
-    <link rel="stylesheet" href="/contact/contact-page.css?v=20261024ct1" />
+    <link rel="stylesheet" href="/contact/contact-page.css?v=20261026ct2" />
     <script src="/theme-shell.js?v=20260904perf1"></script>
     <script src="/analytics.js?v=20260904sec1" defer></script>
     <script src="/lang-nav.js?v=20260821stay2"></script>
@@ -851,42 +851,77 @@
         <p class="ct-note" id="ct-req-note">* 표시는 필수 입력 항목입니다.</p>
         <div class="ct-alert" id="ct-form-alert" role="alert" tabindex="-1" hidden></div>
 
-        <fieldset class="ct-field ct-persona">
-          <legend class="ct-label">문의자 구분 <span class="ct-opt">선택</span></legend>
-          <div class="ct-seg">
-            <label class="ct-seg__opt"><input type="radio" name="persona" value="personal" checked /><span>개인</span></label>
-            <label class="ct-seg__opt"><input type="radio" name="persona" value="organization" /><span>기업·단체</span></label>
+        <fieldset class="ct-field ct-persona" id="ct-inquirer" data-ct-field="inquirer" data-ct-desc="">
+          <legend class="ct-label">문의자 구분 <span class="ct-req" aria-hidden="true">*</span></legend>
+          <div class="ct-seg ct-seg--6">
+            <label class="ct-seg__opt"><input type="radio" name="inquirer" value="personal" required /><span>개인</span></label>
+            <label class="ct-seg__opt"><input type="radio" name="inquirer" value="company" required /><span>기업</span></label>
+            <label class="ct-seg__opt"><input type="radio" name="inquirer" value="organization" required /><span>기관·단체</span></label>
+            <label class="ct-seg__opt"><input type="radio" name="inquirer" value="investor" required /><span>투자자</span></label>
+            <label class="ct-seg__opt"><input type="radio" name="inquirer" value="media" required /><span>언론</span></label>
+            <label class="ct-seg__opt"><input type="radio" name="inquirer" value="other" required /><span>기타</span></label>
           </div>
+          <p class="ct-err" id="ct-inquirer-err" hidden></p>
         </fieldset>
 
         <div class="ct-field" data-ct-field="inquiry_type">
           <label class="ct-label" for="ct-type">문의 유형 <span class="ct-req" aria-hidden="true">*</span></label>
-          <select class="ct-input ct-select" id="ct-type" name="inquiry_type" required data-ct-desc=""><option value="">문의 유형을 선택해 주세요</option><option value="personal">개인 문의</option><option value="business">기업 문의</option><option value="public">기관·공공 문의</option><option value="partnership">파트너십 문의</option><option value="investment">투자 문의</option><option value="media">언론·기타 문의</option></select>
+          <select class="ct-input ct-select" id="ct-type" name="inquiry_type" required data-ct-desc=""><option value="">문의 유형을 선택해 주세요</option><option value="general">일반 문의</option><option value="service">서비스 이용</option><option value="support">계정·기술 지원</option><option value="bug">오류 신고</option><option value="partnership">제휴·파트너십</option><option value="listing">입점·서비스 제공</option><option value="investment">투자·IR</option><option value="advertising">광고·홍보</option><option value="institution">기관 협력</option><option value="privacy">개인정보·계정 관련</option><option value="other">기타</option></select>
           
           <p class="ct-err" id="ct-type-err" hidden></p>
         </div>
 
         <div class="ct-org" data-ct-org hidden>
+          <div class="ct-cond" data-ct-when="organization" hidden>
           <div class="ct-field" data-ct-field="organization">
           <label class="ct-label" for="ct-org-name">기업명 또는 기관명 <span class="ct-opt">선택</span></label>
           <input class="ct-input" id="ct-org-name" name="organization" type="text" data-ct-desc="" autocomplete="organization" maxlength="160" placeholder="예: 뉴온 주식회사" />
           
           <p class="ct-err" id="ct-org-name-err" hidden></p>
         </div>
-          <div class="ct-row">
-            <div class="ct-field" data-ct-field="business_purpose">
-          <label class="ct-label" for="ct-purpose">협력 분야 <span class="ct-opt">선택</span></label>
-          <select class="ct-input ct-select" id="ct-purpose" name="business_purpose" data-ct-desc=""><option value="">선택해 주세요</option><option value="alliance">기업 제휴</option><option value="listing">서비스 입점</option><option value="joint">공동 사업</option><option value="tech">기술 협력</option><option value="institution">기관 서비스</option><option value="investment">투자</option><option value="other">기타</option></select>
-          
-          <p class="ct-err" id="ct-purpose-err" hidden></p>
         </div>
-            <div class="ct-field" data-ct-field="website">
+          <div class="ct-row">
+            <div class="ct-cond" data-ct-when="position" hidden>
+          <div class="ct-field" data-ct-field="position">
+          <label class="ct-label" for="ct-position">직책 <span class="ct-opt">선택</span></label>
+          <input class="ct-input" id="ct-position" name="position" type="text" data-ct-desc="" autocomplete="organization-title" maxlength="80" placeholder="예: 사업개발 매니저" />
+          
+          <p class="ct-err" id="ct-position-err" hidden></p>
+        </div>
+        </div>
+            <div class="ct-cond" data-ct-when="website" hidden>
+          <div class="ct-field" data-ct-field="website">
           <label class="ct-label" for="ct-website">회사 홈페이지 <span class="ct-opt">선택</span></label>
           <input class="ct-input" id="ct-website" name="website" type="url" data-ct-desc="" inputmode="url" autocomplete="url" maxlength="300" placeholder="https://" />
           
           <p class="ct-err" id="ct-website-err" hidden></p>
         </div>
+        </div>
           </div>
+          <div class="ct-cond" data-ct-when="business_purpose" hidden>
+          <div class="ct-field" data-ct-field="business_purpose">
+          <label class="ct-label" for="ct-purpose">희망 협력 방식 <span class="ct-opt">선택</span></label>
+          <select class="ct-input ct-select" id="ct-purpose" name="business_purpose" data-ct-desc=""><option value="">선택해 주세요</option><option value="alliance">기업 제휴</option><option value="listing">서비스 입점</option><option value="joint">공동 사업</option><option value="tech">기술 협력</option><option value="institution">기관 서비스</option><option value="investment">투자</option><option value="other">기타</option></select>
+          
+          <p class="ct-err" id="ct-purpose-err" hidden></p>
+        </div>
+        </div>
+          <div class="ct-cond" data-ct-when="partnership_goal" hidden>
+          <div class="ct-field" data-ct-field="partnership_goal">
+          <label class="ct-label" for="ct-goal">제휴 목적 <span class="ct-opt">선택</span></label>
+          <input class="ct-input" id="ct-goal" name="partnership_goal" type="text" data-ct-desc="" maxlength="200" placeholder="예: 이용자 대상 공동 프로모션, 서비스 연동" />
+          
+          <p class="ct-err" id="ct-goal-err" hidden></p>
+        </div>
+        </div>
+          <div class="ct-cond" data-ct-when="investor_info" hidden>
+          <div class="ct-field" data-ct-field="investor_info">
+          <label class="ct-label" for="ct-investor">투자자·투자기관 정보 <span class="ct-opt">선택</span></label>
+          <input class="ct-input" id="ct-investor" name="investor_info" type="text" aria-describedby="ct-investor-hint" data-ct-desc="ct-investor-hint" maxlength="300" placeholder="예: 투자 단계, 관심 분야" />
+          <p class="ct-hint" id="ct-investor-hint">공개할 수 있는 범위에서만 적어 주세요.</p>
+          <p class="ct-err" id="ct-investor-err" hidden></p>
+        </div>
+        </div>
         </div>
 
         <div class="ct-row">
@@ -918,6 +953,42 @@
         </div>
         </div>
 
+        <div class="ct-cond" data-ct-when="topic" hidden>
+          <div class="ct-field" data-ct-field="topic">
+          <label class="ct-label" for="ct-topic">상세 항목 <span class="ct-opt">선택</span></label>
+          <select class="ct-input ct-select" id="ct-topic" name="topic" aria-describedby="ct-topic-hint" data-ct-desc="ct-topic-hint"><option value="">선택해 주세요</option><optgroup label="LIVON" data-ct-platform="livon"><option value="livon-lifecycle">생애주기 · 출시 준비 중</option><option value="livon-welfare">복지·행정 · 출시 준비 중</option><option value="livon-living">생활 서비스 · 향후 계획</option><option value="livon-account">계정 · 향후 계획</option><option value="livon-ai">AI · 향후 계획</option><option value="livon-experts">전문가·기관 연계 · 향후 계획</option><option value="livon-bug">오류</option><option value="livon-partnership">제휴</option></optgroup><optgroup label="ONGIL" data-ct-platform="ongil"><option value="ongil-senior">어르신 · 출시 준비 중</option><option value="ongil-guardian">보호자 · 향후 계획</option><option value="ongil-caregiver">돌봄 제공자 · 향후 계획</option><option value="ongil-health">건강·안전 · 출시 준비 중</option><option value="ongil-welfare">복지·요양기관 · 향후 계획</option><option value="ongil-services">서비스 연계 · 향후 계획</option><option value="ongil-bug">오류</option><option value="ongil-partnership">제휴</option></optgroup><optgroup label="SHAREON" data-ct-platform="shareon"><option value="shareon-sharing">공유·대여 · 출시 준비 중</option><option value="shareon-booking">예약 · 출시 준비 중</option><option value="shareon-trade">거래 · 출시 준비 중</option><option value="shareon-deposit">보증금 · 향후 계획</option><option value="shareon-payment">결제·정산 · 향후 계획</option><option value="shareon-dispute">분쟁 · 향후 계획</option><option value="shareon-report">신고</option><option value="shareon-provider">개인 제공자 · 출시 준비 중</option><option value="shareon-business">기업 입점 · 향후 계획</option><option value="shareon-partnership">제휴</option></optgroup><optgroup label="BABYLOG" data-ct-platform="babylog"><option value="babylog-pregnancy">임신·출산 · 향후 계획</option><option value="babylog-parenting">육아 · 출시 준비 중</option><option value="babylog-growth">성장·건강 · 출시 준비 중</option><option value="babylog-family">가족 계정 · 향후 계획</option><option value="babylog-school">학교·교육 · 향후 계획</option><option value="babylog-safety">아동 안전 · 향후 계획</option><option value="babylog-institution">기관 협력</option><option value="babylog-bug">오류</option><option value="babylog-partnership">제휴</option></optgroup><optgroup label="PETLOG" data-ct-platform="petlog"><option value="petlog-records">반려동물 기록 · 출시 준비 중</option><option value="petlog-health">건강 · 출시 준비 중</option><option value="petlog-booking">예약·돌봄 · 향후 계획</option><option value="petlog-providers">병원·미용·훈련 · 향후 계획</option><option value="petlog-shelter">보호소·구조동물 · 향후 계획</option><option value="petlog-business">기업 입점 · 향후 계획</option><option value="petlog-bug">오류</option><option value="petlog-partnership">제휴</option></optgroup><optgroup label="MY WORLD" data-ct-platform="myworld"><option value="myworld-map">세계 지도 · 출시 준비 중</option><option value="myworld-visits">방문 기록 · 출시 준비 중</option><option value="myworld-trips">여행 기록 · 출시 준비 중</option><option value="myworld-travel-services">여행 서비스 · 향후 계획</option><option value="myworld-booking">예약 · 향후 계획</option><option value="myworld-agencies">여행 업체 · 향후 계획</option><option value="myworld-tourism">관광기관</option><option value="myworld-bug">오류</option><option value="myworld-partnership">제휴</option></optgroup><optgroup label="NEWON 전체" data-ct-platform="newon"><option value="newon-company">NEWON 회사·서비스 전반</option><option value="newon-business">NEWON Business 사업 협력</option><option value="newon-saas">기업용 SaaS·솔루션 도입 · 향후 계획</option><option value="newon-studio">NEWON Studio 제품·구매</option><option value="newon-studio-license">NEWON Studio 라이선스</option><option value="newon-studio-support">NEWON Studio 다운로드·사용 지원</option><option value="newon-studio-business">NEWON Studio 기업용 제품 · 향후 계획</option><option value="newon-partnership">파트너십 제안</option><option value="newon-global">글로벌 협력 · 향후 계획</option><option value="newon-ir">투자·IR 자료</option><option value="newon-press">언론·보도</option><option value="newon-privacy">개인정보 열람·삭제 요청</option></optgroup></select>
+          <p class="ct-hint" id="ct-topic-hint">‘출시 준비 중’은 앱 출시를 준비하고 있는 기능, ‘향후 계획’은 아직 만들지 않은 장기 계획입니다. 두 항목 모두 지금 이용할 수 있는 기능이 아닙니다.</p>
+          <p class="ct-err" id="ct-topic-err" hidden></p>
+        </div>
+        </div>
+
+        <div class="ct-org ct-org--detail" data-ct-detail hidden>
+          <div class="ct-cond" data-ct-when="environment" hidden>
+          <div class="ct-field" data-ct-field="environment">
+          <label class="ct-label" for="ct-env">이용 환경 및 앱 버전 <span class="ct-opt">선택</span></label>
+          <input class="ct-input" id="ct-env" name="environment" type="text" data-ct-desc="" maxlength="200" placeholder="예: iPhone 15 · iOS 18 · 앱 1.0.0 / Chrome 130" />
+          
+          <p class="ct-err" id="ct-env-err" hidden></p>
+        </div>
+        </div>
+          <div class="ct-cond" data-ct-when="error_detail" hidden>
+          <div class="ct-field" data-ct-field="error_detail">
+          <label class="ct-label" for="ct-error">오류 발생 상황 <span class="ct-opt">선택</span></label>
+          <textarea class="ct-input ct-textarea ct-textarea--short" id="ct-error" name="error_detail" rows="4" maxlength="1500" data-ct-desc="" placeholder="언제, 어떤 화면에서, 무엇을 했을 때 어떤 문제가 생겼는지 적어 주세요."></textarea>
+          
+          <p class="ct-err" id="ct-error-err" hidden></p>
+        </div>
+        </div>
+          <div class="ct-cond" data-ct-when="reference_id" hidden>
+          <div class="ct-field" data-ct-field="reference_id">
+          <label class="ct-label" for="ct-refid">거래·예약 식별번호 <span class="ct-opt">선택</span></label>
+          <input class="ct-input" id="ct-refid" name="reference_id" type="text" aria-describedby="ct-refid-hint" data-ct-desc="ct-refid-hint" maxlength="80" autocomplete="off" />
+          <p class="ct-hint" id="ct-refid-hint">앱에 표시된 거래·예약 번호가 있을 때만 적어 주세요. 해당 기능이 아직 제공되지 않으면 비워 두세요. 카드·계좌 번호는 적지 마세요.</p>
+          <p class="ct-err" id="ct-refid-err" hidden></p>
+        </div>
+        </div>
+        </div>
+
         <div class="ct-field" data-ct-field="subject">
           <label class="ct-label" for="ct-subject">문의 제목 <span class="ct-req" aria-hidden="true">*</span></label>
           <input class="ct-input" id="ct-subject" name="subject" type="text" required data-ct-desc="" maxlength="150" placeholder="문의 제목을 입력해 주세요" />
@@ -926,10 +997,10 @@
         </div>
 
         <div class="ct-field ct-field--message" data-ct-field="message">
-          <label class="ct-label" for="ct-message">문의 내용 <span class="ct-req" aria-hidden="true">*</span></label>
+          <label class="ct-label" for="ct-message"><span data-ct-message-label>문의 내용</span> <span class="ct-req" aria-hidden="true">*</span></label>
           <textarea class="ct-input ct-textarea" id="ct-message" name="message" rows="9" required maxlength="3000" minlength="10" aria-describedby="ct-message-hint ct-message-count" data-ct-desc="ct-message-hint ct-message-count" placeholder="문의하실 내용이나 협력 제안을 자세히 작성해 주세요."></textarea>
           <div class="ct-meta">
-            <p class="ct-hint" id="ct-message-hint">민감한 개인정보(주민등록번호, 계좌·카드 번호 등)는 적지 말아 주세요.</p>
+            <p class="ct-hint" id="ct-message-hint">비밀번호, 주민등록번호, 계좌·카드 번호, 진료·의료 기록 등 민감한 정보는 적지 말아 주세요.</p>
             <p class="ct-count" id="ct-message-count" data-ct-count><span data-ct-count-n>0</span> / 3,000자</p>
           </div>
           <p class="ct-err" id="ct-message-err" hidden></p>
@@ -944,7 +1015,7 @@
 
         <div class="ct-consent" data-ct-field="consent">
           <h3 class="ct-consent__title">개인정보 수집·이용 안내</h3>
-          <dl class="ct-consent__rows" id="ct-consent-notice"><div><dt>수집 목적</dt><dd>문의 확인·회신 및 처리 기록</dd></div><div><dt>수집 항목</dt><dd>[필수] 문의 유형, 이름 또는 담당자명, 이메일 주소, 문의 제목, 문의 내용, 개인정보 수집·이용 동의 여부 · [선택] 문의자 구분, 기업명 또는 기관명, 협력 분야, 연락처, 관련 플랫폼, 회사 홈페이지, 참고 URL · [자동] 문의를 보낸 페이지 주소, 언어, 제출 시각</dd></div><div><dt>처리 방식</dt><dd>입력하신 내용은 국외에서 운영되는 이메일 전달 서비스 FormSubmit(formsubmit.co)을 통해 NEWON 공식 이메일(newon@newon.app)로 전달됩니다. FormSubmit 안내에 따르면 제출 내용은 해당 서비스에 30일간 보관됩니다. NEWON 웹사이트는 별도의 서버나 데이터베이스에 문의 내용을 저장하지 않습니다.</dd></div><div><dt>보유 및 이용 기간</dt><dd>문의 확인과 회신에 필요한 기간 동안 보관하며, 열람·삭제 등을 요청하시면 관련 법령에 따라 조치합니다. 그 밖의 사항은 개인정보처리방침을 따릅니다.</dd></div><div><dt>동의 거부 권리</dt><dd>개인정보 수집·이용에 동의하지 않을 권리가 있습니다. 동의하지 않으시면 이 문의 양식으로는 접수할 수 없으며, newon@newon.app으로 직접 이메일을 보내 문의하실 수 있습니다.</dd></div></dl>
+          <dl class="ct-consent__rows" id="ct-consent-notice"><div><dt>수집 목적</dt><dd>문의 확인·회신 및 처리 기록</dd></div><div><dt>수집 항목</dt><dd>[필수] 문의자 구분, 문의 유형, 이름 또는 담당자명, 이메일 주소, 문의 제목, 문의 내용, 개인정보 수집·이용 동의 여부 · [해당 시 필수] 기업명·기관명·매체명(기업·기관·단체·언론), 오류 발생 상황(오류 신고) · [선택] 관련 플랫폼, 상세 항목, 직책, 회사 홈페이지, 희망 협력 방식, 제휴 목적, 투자자·투자기관 정보, 이용 환경 및 앱 버전, 거래·예약 식별번호, 연락처, 참고 URL · [자동] 문의를 보낸 페이지 주소, 유입 경로, 언어, 제출 시각</dd></div><div><dt>처리 방식</dt><dd>입력하신 내용은 국외에서 운영되는 이메일 전달 서비스 FormSubmit(formsubmit.co)을 통해 NEWON 공식 이메일(newon@newon.app)로 전달됩니다. FormSubmit 안내에 따르면 제출 내용은 해당 서비스에 30일간 보관됩니다. NEWON 웹사이트는 별도의 서버나 데이터베이스에 문의 내용을 저장하지 않습니다.</dd></div><div><dt>보유 및 이용 기간</dt><dd>문의 확인과 회신에 필요한 기간 동안 보관하며, 열람·삭제 등을 요청하시면 관련 법령에 따라 조치합니다. 그 밖의 사항은 개인정보처리방침을 따릅니다.</dd></div><div><dt>동의 거부 권리</dt><dd>개인정보 수집·이용에 동의하지 않을 권리가 있습니다. 동의하지 않으시면 이 문의 양식으로는 접수할 수 없으며, newon@newon.app으로 직접 이메일을 보내 문의하실 수 있습니다.</dd></div></dl>
           <p class="ct-consent__link"><a href="/ko/privacy/">개인정보처리방침 보기 <span aria-hidden="true">↗</span></a></p>
           <label class="ct-check" for="ct-consent">
             <input type="checkbox" id="ct-consent" name="privacy_consent" value="yes" required aria-describedby="ct-consent-notice" data-ct-desc="ct-consent-notice" />
@@ -968,12 +1039,13 @@
         <span class="ct-result__mark" aria-hidden="true">✓</span>
         <h3 class="ct-result__title">문의가 접수되었습니다.</h3>
         <p class="ct-result__body">문의가 정상적으로 접수되었습니다. 남겨주신 이메일을 통해 안내드리겠습니다.</p>
+        <p class="ct-result__body ct-result__meta" data-ct-success-meta hidden></p>
         <button type="button" class="ct-btn ct-btn--ghost" data-ct-again>새 문의 작성하기</button>
       </div>
 
       <div class="ct-result ct-result--fail" data-ct-fail role="alert" tabindex="-1" hidden>
         <h3 class="ct-result__title">문의를 보내지 못했습니다.</h3>
-        <p class="ct-result__body">네트워크 상태를 확인한 뒤 다시 시도해 주세요. 입력하신 내용은 그대로 남아 있습니다. 계속 전송되지 않으면 이메일로 직접 보내 주세요.</p>
+        <p class="ct-result__body" data-ct-fail-body>네트워크 상태를 확인한 뒤 다시 시도해 주세요. 입력하신 내용은 그대로 남아 있습니다. 계속 전송되지 않으면 이메일로 직접 보내 주세요.</p>
         <div class="ct-result__actions">
           <button type="button" class="ct-btn" data-ct-retry>다시 시도하기</button>
           <a class="ct-btn ct-btn--ghost" data-ct-mailto href="mailto:newon@newon.app">이메일로 보내기 · newon@newon.app</a>
@@ -981,7 +1053,7 @@
       </div>
     </div>
   </div>
-  <script type="application/json" id="ct-config">{"endpoint":"https://formsubmit.co/ajax/newon@newon.app","inbox":"newon@newon.app","lang":"ko","messageMin":10,"messageMax":3000,"aliases":{"personal":"personal","support":"personal","app-support":"personal","general":"personal","business":"business","project":"business","enterprise":"business","public":"public","institution":"public","government":"public","partnership":"partnership","partner":"partnership","technology":"partnership","investment":"investment","invest":"investment","ir":"investment","media":"media","press":"media","other":"media"},"orgCategories":["business","public","partnership","investment"],"platforms":["newon","livon","ongil","shareon","babylog","petlog","myworld","other"],"t":{"submit":"문의 보내기 →","submitting":"문의를 보내는 중입니다…","tooFast":"잠시 후 다시 시도해 주세요.","errSummary":"입력 내용을 확인해 주세요. 표시된 항목을 수정한 뒤 다시 보내 주세요.","errRequired":"필수 입력 항목입니다.","errType":"문의 유형을 선택해 주세요.","errEmail":"이메일 주소 형식을 확인해 주세요. 예: name@example.com","errUrl":"http:// 또는 https://로 시작하는 주소를 입력해 주세요.","errPhone":"숫자, +, -, 괄호, 공백으로 7~20자 이내로 입력해 주세요.","errMessageMin":"문의 내용을 10자 이상 적어 주세요.","errMessageMax":"문의 내용은 3,000자 이내로 적어 주세요.","errConsent":"개인정보 수집·이용에 동의해야 문의를 보낼 수 있습니다.","copied":"이메일 주소를 복사했습니다.","copyFail":"복사하지 못했습니다. newon@newon.app을 직접 선택해 복사해 주세요.","mailSubject":"NEWON 문의","counterSuffix":"자"}}</script>
+  <script type="application/json" id="ct-config">{"endpoint":"https://formsubmit.co/ajax/newon@newon.app","inbox":"newon@newon.app","lang":"ko","messageMin":10,"messageMax":3000,"presets":{"personal":{"category":"personal","inquirer":"personal"},"support":{"category":"personal","inquirer":"personal","inquiry":"support"},"app-support":{"category":"personal","inquirer":"personal","inquiry":"support"},"business":{"category":"business","inquirer":"company"},"project":{"category":"business","inquirer":"company"},"enterprise":{"category":"business","inquirer":"company"},"public":{"category":"public","inquirer":"organization","inquiry":"institution"},"institution":{"category":"public","inquirer":"organization","inquiry":"institution"},"government":{"category":"public","inquirer":"organization","inquiry":"institution"},"partnership":{"category":"partnership","inquirer":"company","inquiry":"partnership"},"partner":{"category":"partnership","inquirer":"company","inquiry":"partnership"},"technology":{"category":"partnership","inquirer":"company","inquiry":"partnership"},"investment":{"category":"investment","inquirer":"investor","inquiry":"investment"},"invest":{"category":"investment","inquirer":"investor","inquiry":"investment"},"ir":{"category":"investment","inquirer":"investor","inquiry":"investment"},"media":{"category":"media","inquirer":"media"},"press":{"category":"media","inquirer":"media"},"general":{"category":"media","inquirer":"other","inquiry":"general"},"other":{"category":"media","inquirer":"other","inquiry":"other"}},"platforms":["newon","livon","ongil","shareon","babylog","petlog","myworld","other"],"platformAliases":{"my-world":"myworld","my_world":"myworld"},"platformLabels":{"newon":"NEWON 전체","livon":"LIVON","ongil":"ONGIL","shareon":"SHAREON","babylog":"BABYLOG","petlog":"PETLOG","myworld":"MY WORLD","other":"기타"},"inquirers":[{"id":"personal","label":"개인"},{"id":"company","label":"기업"},{"id":"organization","label":"기관·단체"},{"id":"investor","label":"투자자"},{"id":"media","label":"언론"},{"id":"other","label":"기타"}],"inquiries":[{"id":"general","label":"일반 문의"},{"id":"service","label":"서비스 이용"},{"id":"support","label":"계정·기술 지원"},{"id":"bug","label":"오류 신고"},{"id":"partnership","label":"제휴·파트너십"},{"id":"listing","label":"입점·서비스 제공"},{"id":"investment","label":"투자·IR"},{"id":"advertising","label":"광고·홍보"},{"id":"institution","label":"기관 협력"},{"id":"privacy","label":"개인정보·계정 관련"},{"id":"other","label":"기타"}],"categories":[{"id":"personal","label":"개인 문의"},{"id":"business","label":"기업 문의"},{"id":"public","label":"기관·공공 문의"},{"id":"partnership","label":"파트너십 문의"},{"id":"investment","label":"투자 문의"},{"id":"media","label":"언론·기타 문의"}],"topics":{"livon":[{"id":"livon-lifecycle","label":"생애주기 · 출시 준비 중","status":"prep","inquiry":"service","ref":false},{"id":"livon-welfare","label":"복지·행정 · 출시 준비 중","status":"prep","inquiry":"service","ref":false},{"id":"livon-living","label":"생활 서비스 · 향후 계획","status":"planned","inquiry":"service","ref":false},{"id":"livon-account","label":"계정 · 향후 계획","status":"planned","inquiry":"support","ref":false},{"id":"livon-ai","label":"AI · 향후 계획","status":"planned","inquiry":"service","ref":false},{"id":"livon-experts","label":"전문가·기관 연계 · 향후 계획","status":"planned","inquiry":"listing","ref":false},{"id":"livon-bug","label":"오류","status":null,"inquiry":"bug","ref":false},{"id":"livon-partnership","label":"제휴","status":null,"inquiry":"partnership","ref":false}],"ongil":[{"id":"ongil-senior","label":"어르신 · 출시 준비 중","status":"prep","inquiry":"service","ref":false},{"id":"ongil-guardian","label":"보호자 · 향후 계획","status":"planned","inquiry":"service","ref":false},{"id":"ongil-caregiver","label":"돌봄 제공자 · 향후 계획","status":"planned","inquiry":"listing","ref":false},{"id":"ongil-health","label":"건강·안전 · 출시 준비 중","status":"prep","inquiry":"service","ref":false},{"id":"ongil-welfare","label":"복지·요양기관 · 향후 계획","status":"planned","inquiry":"institution","ref":false},{"id":"ongil-services","label":"서비스 연계 · 향후 계획","status":"planned","inquiry":"listing","ref":false},{"id":"ongil-bug","label":"오류","status":null,"inquiry":"bug","ref":false},{"id":"ongil-partnership","label":"제휴","status":null,"inquiry":"partnership","ref":false}],"shareon":[{"id":"shareon-sharing","label":"공유·대여 · 출시 준비 중","status":"prep","inquiry":"service","ref":false},{"id":"shareon-booking","label":"예약 · 출시 준비 중","status":"prep","inquiry":"service","ref":true},{"id":"shareon-trade","label":"거래 · 출시 준비 중","status":"prep","inquiry":"service","ref":true},{"id":"shareon-deposit","label":"보증금 · 향후 계획","status":"planned","inquiry":"service","ref":true},{"id":"shareon-payment","label":"결제·정산 · 향후 계획","status":"planned","inquiry":"service","ref":true},{"id":"shareon-dispute","label":"분쟁 · 향후 계획","status":"planned","inquiry":"service","ref":true},{"id":"shareon-report","label":"신고","status":null,"inquiry":"service","ref":true},{"id":"shareon-provider","label":"개인 제공자 · 출시 준비 중","status":"prep","inquiry":"listing","ref":false},{"id":"shareon-business","label":"기업 입점 · 향후 계획","status":"planned","inquiry":"listing","ref":false},{"id":"shareon-partnership","label":"제휴","status":null,"inquiry":"partnership","ref":false}],"babylog":[{"id":"babylog-pregnancy","label":"임신·출산 · 향후 계획","status":"planned","inquiry":"service","ref":false},{"id":"babylog-parenting","label":"육아 · 출시 준비 중","status":"prep","inquiry":"service","ref":false},{"id":"babylog-growth","label":"성장·건강 · 출시 준비 중","status":"prep","inquiry":"service","ref":false},{"id":"babylog-family","label":"가족 계정 · 향후 계획","status":"planned","inquiry":"support","ref":false},{"id":"babylog-school","label":"학교·교육 · 향후 계획","status":"planned","inquiry":"service","ref":false},{"id":"babylog-safety","label":"아동 안전 · 향후 계획","status":"planned","inquiry":"service","ref":false},{"id":"babylog-institution","label":"기관 협력","status":null,"inquiry":"institution","ref":false},{"id":"babylog-bug","label":"오류","status":null,"inquiry":"bug","ref":false},{"id":"babylog-partnership","label":"제휴","status":null,"inquiry":"partnership","ref":false}],"petlog":[{"id":"petlog-records","label":"반려동물 기록 · 출시 준비 중","status":"prep","inquiry":"service","ref":false},{"id":"petlog-health","label":"건강 · 출시 준비 중","status":"prep","inquiry":"service","ref":false},{"id":"petlog-booking","label":"예약·돌봄 · 향후 계획","status":"planned","inquiry":"service","ref":true},{"id":"petlog-providers","label":"병원·미용·훈련 · 향후 계획","status":"planned","inquiry":"listing","ref":false},{"id":"petlog-shelter","label":"보호소·구조동물 · 향후 계획","status":"planned","inquiry":"institution","ref":false},{"id":"petlog-business","label":"기업 입점 · 향후 계획","status":"planned","inquiry":"listing","ref":false},{"id":"petlog-bug","label":"오류","status":null,"inquiry":"bug","ref":false},{"id":"petlog-partnership","label":"제휴","status":null,"inquiry":"partnership","ref":false}],"myworld":[{"id":"myworld-map","label":"세계 지도 · 출시 준비 중","status":"prep","inquiry":"service","ref":false},{"id":"myworld-visits","label":"방문 기록 · 출시 준비 중","status":"prep","inquiry":"service","ref":false},{"id":"myworld-trips","label":"여행 기록 · 출시 준비 중","status":"prep","inquiry":"service","ref":false},{"id":"myworld-travel-services","label":"여행 서비스 · 향후 계획","status":"planned","inquiry":"service","ref":false},{"id":"myworld-booking","label":"예약 · 향후 계획","status":"planned","inquiry":"service","ref":true},{"id":"myworld-agencies","label":"여행 업체 · 향후 계획","status":"planned","inquiry":"listing","ref":false},{"id":"myworld-tourism","label":"관광기관","status":null,"inquiry":"institution","ref":false},{"id":"myworld-bug","label":"오류","status":null,"inquiry":"bug","ref":false},{"id":"myworld-partnership","label":"제휴","status":null,"inquiry":"partnership","ref":false}],"newon":[{"id":"newon-company","label":"NEWON 회사·서비스 전반","status":null,"inquiry":"general","ref":false},{"id":"newon-business","label":"NEWON Business 사업 협력","status":null,"inquiry":null,"ref":false},{"id":"newon-saas","label":"기업용 SaaS·솔루션 도입 · 향후 계획","status":"planned","inquiry":"service","ref":false},{"id":"newon-studio","label":"NEWON Studio 제품·구매","status":"available","inquiry":"service","ref":false},{"id":"newon-studio-license","label":"NEWON Studio 라이선스","status":null,"inquiry":"service","ref":false},{"id":"newon-studio-support","label":"NEWON Studio 다운로드·사용 지원","status":null,"inquiry":"support","ref":false},{"id":"newon-studio-business","label":"NEWON Studio 기업용 제품 · 향후 계획","status":"planned","inquiry":"service","ref":false},{"id":"newon-partnership","label":"파트너십 제안","status":null,"inquiry":"partnership","ref":false},{"id":"newon-global","label":"글로벌 협력 · 향후 계획","status":"planned","inquiry":"partnership","ref":false},{"id":"newon-ir","label":"투자·IR 자료","status":null,"inquiry":"investment","ref":false},{"id":"newon-press","label":"언론·보도","status":null,"inquiry":"general","ref":false},{"id":"newon-privacy","label":"개인정보 열람·삭제 요청","status":null,"inquiry":"privacy","ref":false}]},"rules":{"organization":{"inquirers":["company","organization","investor","media"],"requiredFor":["company","organization","media"]},"position":{"inquirers":["company","organization","investor","media"]},"website":{"inquirers":["company","organization","investor","media"]},"business_purpose":{"inquirers":["company","organization"],"inquiries":["partnership","listing","advertising","institution"]},"partnership_goal":{"inquiries":["partnership","listing","advertising","institution"]},"investor_info":{"inquirers":["investor"],"inquiries":["investment"]},"environment":{"inquiries":["service","support","bug"]},"error_detail":{"inquiries":["bug"],"requiredFor":["bug"]},"reference_id":{"ref":true}},"proposal":["partnership","listing","advertising","institution","investment"],"orgLabels":{"company":"기업명","organization":"기관·단체명","investor":"투자자 또는 투자기관명","media":"매체명"},"t":{"submit":"문의 보내기 →","submitting":"문의를 보내는 중입니다…","tooFast":"잠시 후 다시 시도해 주세요.","errSummary":"입력 내용을 확인해 주세요. 표시된 항목을 수정한 뒤 다시 보내 주세요.","errRequired":"필수 입력 항목입니다.","errType":"문의 유형을 선택해 주세요.","errInquirer":"문의자 구분을 선택해 주세요.","errEmail":"이메일 주소 형식을 확인해 주세요. 예: name@example.com","errUrl":"http:// 또는 https://로 시작하는 주소를 입력해 주세요.","errPhone":"숫자, +, -, 괄호, 공백으로 7~20자 이내로 입력해 주세요.","errMessageMin":"문의 내용을 10자 이상 적어 주세요.","errMessageMax":"문의 내용은 3,000자 이내로 적어 주세요.","errConsent":"개인정보 수집·이용에 동의해야 문의를 보낼 수 있습니다.","failBody":"네트워크 상태를 확인한 뒤 다시 시도해 주세요. 입력하신 내용은 그대로 남아 있습니다. 계속 전송되지 않으면 이메일로 직접 보내 주세요.","failServerBody":"문의 전송 서비스에서 접수 확인을 받지 못했습니다. 입력하신 내용은 그대로 남아 있습니다. 잠시 후 다시 시도하거나 이메일로 직접 보내 주세요.","failNetBody":"인터넷 연결이 끊겼거나 응답이 늦어 문의를 보내지 못했습니다. 입력하신 내용은 그대로 남아 있습니다. 연결을 확인한 뒤 다시 시도해 주세요.","duplicate":"같은 내용의 문의가 방금 접수되었습니다. 추가로 전할 내용이 있다면 내용을 고쳐 다시 보내 주세요.","successMetaLabel":"접수 분류","orgLabel":"기업명 또는 기관명","errorDetailLabel":"오류 발생 상황","messageLabel":"문의 내용","messageLabelProposal":"제안 내용","copied":"이메일 주소를 복사했습니다.","copyFail":"복사하지 못했습니다. newon@newon.app을 직접 선택해 복사해 주세요.","mailSubject":"NEWON 문의","counterSuffix":"자"}}</script>
 </section>
 <section id="contact-info" class="ct-sec ct-sec--light ct-sec--lift ct-info" aria-labelledby="ct-info-title">
   <div class="ct-wrap">
@@ -1128,7 +1200,7 @@
     <script type="application/json" id="co-i18n">{}</script>
     <script src="/company.js?v=20260904a11y1" defer></script>
 <script src="/film-keep.js?v=20260924play2" defer></script>
-    <script src="/contact/contact-page.js?v=20261024ct1" defer></script>
+    <script src="/contact/contact-page.js?v=20261026ct2" defer></script>
     <script src="/site-chrome.js?v=20261017nav8" defer></script>
     <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
 </body>

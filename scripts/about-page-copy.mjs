@@ -392,7 +392,7 @@ const KO = {
   ideaLead:
     "입점, 제휴, 기업·기관 협력은 Business & Partnerships에서 안내합니다. 플랫폼별 협력 가능성은 각 플랫폼의 Partnerships 페이지에서 확인할 수 있습니다.",
   ideaCta: "협력 문의하기 →",
-  ideaHref: "../business/contact/",
+  ideaHref: "../contact/?type=partnership&source=about#contact-form",
   ideaHint: "BABYLOG · PETLOG · MY WORLD · SHAREON · LIVON · ONGIL",
   closeEyebrow: "NEWON",
   closeTitleHtml: "일상의 다양한 영역을<br />하나로 연결합니다.",
@@ -765,7 +765,7 @@ const EN = {
   ideaLead:
     "Listings, partnerships and collaboration with companies and institutions are handled through Business & Partnerships. Each platform's Partnerships page shows how you could work with it.",
   ideaCta: "Partnership inquiry →",
-  ideaHref: "../business/contact/",
+  ideaHref: "../contact/?type=partnership&source=about#contact-form",
   ideaHint: "BABYLOG · PETLOG · MY WORLD · SHAREON · LIVON · ONGIL",
   closeEyebrow: "NEWON",
   closeTitleHtml: "Connecting many areas<br />of everyday life.",

@@ -14,6 +14,7 @@ import { COMPANY_PAGES, COMPANY_NAV_LABELS, COMPANY_HUB_REDIRECTS } from "./comp
 import { getCompanyCopy } from "./company-copy.mjs";
 import { contactPageBody, contactPageStructuredData } from "./contact-page-body.mjs";
 import { getContactPageCopy, CONTACT_HERO_FILM } from "./contact-page-copy.mjs";
+import { contactAliasStub } from "./contact-legacy-stubs.mjs";
 import { getCompanyProjects, getPortfolioFilters } from "./company-portfolio-data.mjs";
 import {
   NEWS_PRODUCTS,
@@ -35,7 +36,7 @@ const template = fs.readFileSync(path.join(ROOT, "templates", "company.html"), "
 const TIMELINE_ABOUT_LIMIT = 16;
 const TIMELINE_NEWS_LIMIT = 24;
 /** Cache key for /contact/contact-page.css and /contact/contact-page.js. */
-const CONTACT_ASSET_V = "20261024ct1";
+const CONTACT_ASSET_V = "20261026ct2";
 
 function loadJson(file) {
   return JSON.parse(fs.readFileSync(path.join(ROOT, "locales", file), "utf8"));
@@ -80,10 +81,11 @@ function langListJson() {
 }
 
 /** Root redirect preferring localStorage lang, default en. */
-function writeRootLangRedirect(relPath, title = "Newon") {
+function writeRootLangRedirect(relPath, title = "Newon", keepQuery = false) {
   const list = langListJson();
   const targetPath = relPath.replace(/^\/+|\/+$/g, "");
-  const html = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="canonical" href="${SITE_ORIGIN}/en/${targetPath}/"/><title>${escapeHtml(title)}</title><script>(function(){var L=${list};var d="en";try{var v=localStorage.getItem("newon-lang-dir");if(v&&L.indexOf(v)!==-1)d=v;}catch(e){}location.replace("/"+d+"/${targetPath}/"+(location.hash||""));})();</script></head><body style="font-family:system-ui,sans-serif;padding:1.5rem"><p><a href="/en/${targetPath}/">${escapeHtml(title)}</a> · <a href="/ko/${targetPath}/">${escapeHtml(title)}</a></p></body></html>\n`;
+  const tail = keepQuery ? '+(location.search||"")+(location.hash||"")' : '+(location.hash||"")';
+  const html = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="canonical" href="${SITE_ORIGIN}/en/${targetPath}/"/><title>${escapeHtml(title)}</title><script>(function(){var L=${list};var d="en";try{var v=localStorage.getItem("newon-lang-dir");if(v&&L.indexOf(v)!==-1)d=v;}catch(e){}location.replace("/"+d+"/${targetPath}/"${tail});})();</script></head><body style="font-family:system-ui,sans-serif;padding:1.5rem"><p><a href="/en/${targetPath}/">${escapeHtml(title)}</a> · <a href="/ko/${targetPath}/">${escapeHtml(title)}</a></p></body></html>\n`;
   writeFile(path.join(ROOT, ...targetPath.split("/"), "index.html"), html);
 }
 
@@ -1422,7 +1424,8 @@ function renderCompany() {
         const target = `/${dir}/${redir.to}/`;
         writeFile(
           path.join(ROOT, dir, ...redir.from.split("/"), "index.html"),
-          metaRefreshHtml(target, `Redirect · ${redir.from}`)
+          // company/contact keeps its query (?type= / ?platform= preselection) on the way to the unified page
+          redir.to === "contact" ? contactAliasStub(dir, `Redirect · ${redir.from}`) : metaRefreshHtml(target, `Redirect · ${redir.from}`)
         );
         pageCount += 1;
       }
@@ -1457,13 +1460,13 @@ function renderCompany() {
     writeRootLangRedirect("portfolio", "Portfolio");
     writeRootLangRedirect("news", "News");
     writeRootLangRedirect("ideas", "Ideas");
-    writeRootLangRedirect("contact", "Contact");
+    writeRootLangRedirect("contact", "Contact", true);
     writeRootLangRedirect("company", "Newon Company");
     writeRootLangRedirect("company/about", "About Newon");
     writeRootLangRedirect("company/portfolio", "Portfolio");
     writeRootLangRedirect("company/news", "News");
     writeRootLangRedirect("company/idea", "Idea");
-    writeRootLangRedirect("company/contact", "Contact");
+    writeRootLangRedirect("company/contact", "Contact", true);
   }
 
   const pubRoot = path.join(ROOT, "_publish");

@@ -306,6 +306,7 @@ var t=(q.get("type")||"").toLowerCase().trim(),c=(q.get("category")||"").toLower
 if(k==="studio-contact"||c==="studio")m=D.studio[t]||null;
 if(!m&&k!=="studio-contact")m=D.biz[t]||null;
 if(!m&&D.presets.indexOf(t)!==-1)m={type:t};
+var mt=!!m;
 if(!m&&k==="business-inquiry"&&(/partner/.test(t)||/partner/.test(c)||/partner/.test((q.get("service")||"").toLowerCase())))m={type:"partnership"};
 if(!m&&k==="business-inquiry"&&c==="studio")m={type:"business",topic:"newon-studio"};
 m=m||{};var ty=m.type||D.def.type,tp=m.topic||"",iq=m.inquiry||"";
@@ -320,10 +321,58 @@ if(!p&&tp)p=tp.split("-")[0];
 o.set("type",ty);if(iq)o.set("inquiry",iq);if(p)o.set("platform",p);if(tp)o.set("topic",tp);
 o.set("source",(q.get("source")||D.def.source).slice(0,120));
 var keep=[];q.forEach(function(v,key){if(["type","platform","topic","source"].indexOf(key)===-1&&v)keep.push(key+"="+v);});
-if(t&&!m.type&&D.presets.indexOf(t)===-1)keep.unshift("type="+t);
+if(t&&!mt)keep.unshift("type="+t);
 if(keep.length)o.set("legacy",(D.kind+": "+keep.join("&")).slice(0,200));
 location.replace("/"+D.lang+"/contact/?"+o.toString()+(location.hash?"#contact-form":""));}
 catch(e){location.replace("/"+D.lang+"/contact/");}})();`;
+}
+
+/**
+ * Node twin of legacyRedirectScript for renderers: old page kind + old query → unified URL (tests check both agree).
+ * `query` = URLSearchParams or query string.
+ */
+export function legacyContactUrl(lang, kind, query = "", hash = "") {
+  const q = typeof query === "string" ? new URLSearchParams(query) : query;
+  const def = LEGACY_PAGE_DEFAULTS[kind];
+  const t = String(q.get("type") || "").toLowerCase().trim();
+  const c = String(q.get("category") || "").toLowerCase().trim();
+  let m = null;
+  if (kind === "studio-contact" || c === "studio") m = LEGACY_STUDIO_TYPES[t] || null;
+  if (!m && kind !== "studio-contact") m = LEGACY_BUSINESS_TYPES[t] || null;
+  if (!m && Object.prototype.hasOwnProperty.call(CONTACT_TYPE_PRESETS, t)) m = { type: t };
+  const mt = !!m;
+  if (!m && kind === "business-inquiry" && (/partner/.test(t) || /partner/.test(c) || /partner/.test(String(q.get("service") || "").toLowerCase()))) m = { type: "partnership" };
+  if (!m && kind === "business-inquiry" && c === "studio") m = { type: "business", topic: "newon-studio" };
+  m = m || {};
+  const ty = m.type || def.type;
+  let tp = m.topic || "";
+  const iq = m.inquiry || "";
+  let p = String(q.get("platform") || q.get("area") || "").toLowerCase().replace(/\s+/g, "");
+  p = CONTACT_PLATFORM_ALIASES[p] || p;
+  if (["multiple", "general", "store", "business"].includes(p)) p = "newon";
+  if (!CONTACT_PLATFORM_IDS.includes(p)) {
+    const s = String(q.get("source") || "").toLowerCase().match(/babylog|petlog|myworld|shareon|livon|ongil/);
+    p = s ? s[0] : "";
+  }
+  if (kind === "studio-contact" || c === "studio") p = "newon";
+  const qt = String(q.get("topic") || "").toLowerCase();
+  if (CONTACT_TOPIC_IDS.includes(qt)) tp = qt;
+  if (!tp && !m.type && !p) tp = def.topic;
+  if (tp && p && p !== "newon" && tp.indexOf(p + "-") !== 0 && tp.indexOf("newon-") === 0) tp = "";
+  if (!p && tp) p = tp.split("-")[0];
+  const o = new URLSearchParams();
+  o.set("type", ty);
+  if (iq) o.set("inquiry", iq);
+  if (p) o.set("platform", p);
+  if (tp) o.set("topic", tp);
+  o.set("source", String(q.get("source") || def.source).slice(0, 120));
+  const keep = [];
+  q.forEach((v, key) => {
+    if (!["type", "platform", "topic", "source"].includes(key) && v) keep.push(key + "=" + v);
+  });
+  if (t && !mt) keep.unshift("type=" + t);
+  if (keep.length) o.set("legacy", (kind + ": " + keep.join("&")).slice(0, 200));
+  return `/${lang}/contact/?${o.toString()}${hash ? "#contact-form" : ""}`;
 }
 
 /** The unified page URL a page-level button should use (for renderers). */
