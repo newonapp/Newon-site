@@ -1,0 +1,5088 @@
+{
+ "version": 1,
+ "site": "https://www.newon.app",
+ "indexing": true,
+ "pages": [
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-overview",
+   "sourceId": "life",
+   "slug": "life",
+   "path": "/livon/life/",
+   "h1": "라이프 스테이지",
+   "title": "라이프 스테이지: 10대부터 70대 이상까지 | LIVON",
+   "description": "10대부터 70대 이상까지 7개 연령대별로 그 시기에 필요한 주제, 단계별 가이드, 체크리스트와 공식 정보를 살펴볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/",
+   "canonical": "https://www.newon.app/livon/life/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-stage",
+   "sourceId": "10",
+   "slug": "10s",
+   "path": "/livon/life/10s/",
+   "h1": "10대 · 성장과 발견",
+   "title": "10대 라이프 스테이지: 성장과 발견 | LIVON",
+   "description": "나를 알아가며 가능성을 넓히는 시기. 학교생활과 진로, 공부와 관계, 건강과 첫 용돈 관리까지. 지금 필요한 생활 정보를 한곳에서 탐색하세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "10대",
+     "path": "/livon/life/10s/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/10s/",
+   "canonical": "https://www.newon.app/livon/life/10s/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-stage",
+   "sourceId": "20",
+   "slug": "20s",
+   "path": "/livon/life/20s/",
+   "h1": "20대 · 독립과 도전",
+   "title": "20대 라이프 스테이지: 독립과 도전 | LIVON",
+   "description": "가능성을 현실로 만들어가는 시기. 커리어부터 독립, 돈, 관계, 건강까지. 지금 필요한 생활 정보를 한곳에서 탐색하세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "20대",
+     "path": "/livon/life/20s/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/20s/",
+   "canonical": "https://www.newon.app/livon/life/20s/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-stage",
+   "sourceId": "30",
+   "slug": "30s",
+   "path": "/livon/life/30s/",
+   "h1": "30대 · 성장과 균형",
+   "title": "30대 라이프 스테이지: 성장과 균형 | LIVON",
+   "description": "일과 삶의 기반을 단단히 다지는 시기. 커리어 성장과 이직, 자산과 주거, 결혼·출산·육아까지. 선택의 순간에 필요한 정보를 한곳에서 살펴보세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "30대",
+     "path": "/livon/life/30s/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/30s/",
+   "canonical": "https://www.newon.app/livon/life/30s/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-stage",
+   "sourceId": "40",
+   "slug": "40s",
+   "path": "/livon/life/40s/",
+   "h1": "40대 · 안정과 확장",
+   "title": "40대 라이프 스테이지: 안정과 확장 | LIVON",
+   "description": "가족과 나의 다음을 함께 준비하는 시기. 커리어 전환과 자산, 자녀 교육과 부모 돌봄, 건강과 노후 준비까지. 필요한 정보를 차분히 정리해 보세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "40대",
+     "path": "/livon/life/40s/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/40s/",
+   "canonical": "https://www.newon.app/livon/life/40s/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-stage",
+   "sourceId": "50",
+   "slug": "50s",
+   "path": "/livon/life/50s/",
+   "h1": "50대 · 전환과 재발견",
+   "title": "50대 라이프 스테이지: 전환과 재발견 | LIVON",
+   "description": "제2의 커리어와 은퇴를 설계하는 시기. 은퇴 준비와 연금, 건강과 가족 돌봄, 새로운 일과 취미까지. 다음 단계를 위한 정보를 한곳에서 탐색하세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "50대",
+     "path": "/livon/life/50s/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/50s/",
+   "canonical": "https://www.newon.app/livon/life/50s/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-stage",
+   "sourceId": "60",
+   "slug": "60s",
+   "path": "/livon/life/60s/",
+   "h1": "60대 · 새로운 시작",
+   "title": "60대 라이프 스테이지: 새로운 시작 | LIVON",
+   "description": "나다운 은퇴 생활을 새롭게 여는 시기. 연금과 자산, 건강과 운동, 일자리와 사회활동, 디지털 생활까지. 지금 필요한 정보를 차근차근 살펴보세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "60대",
+     "path": "/livon/life/60s/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/60s/",
+   "canonical": "https://www.newon.app/livon/life/60s/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-stage",
+   "sourceId": "70",
+   "slug": "70s",
+   "path": "/livon/life/70s/",
+   "h1": "70대+ · 여유와 연결",
+   "title": "70대+ 라이프 스테이지: 여유와 연결 | LIVON",
+   "description": "편안한 일상과 따뜻한 연결을 이어가는 시기. 건강과 의료 생활정보, 돌봄과 복지, 가족과 여가, 디지털 도움까지. 필요한 정보를 쉽고 편하게 찾아보세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "70대+",
+     "path": "/livon/life/70s/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/70s/",
+   "canonical": "https://www.newon.app/livon/life/70s/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "10s.school-life",
+   "slug": "school-life",
+   "path": "/livon/life/10s/school-life/",
+   "h1": "학교생활 적응하기",
+   "title": "학교생활 적응하기 · 10대 | LIVON",
+   "description": "새 학기, 반 친구, 수업과 과제처럼 학교에서 매일 마주하는 일을 편하게 이어가는 방법을 정리합니다. 등교·수업·과제·휴식의 리듬을 일정하게 만들면 학교생활이 훨씬 가벼워집니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "10대",
+     "path": "/livon/life/10s/"
+    },
+    {
+     "name": "학교생활 적응하기",
+     "path": "/livon/life/10s/school-life/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/10s/school-life/",
+   "canonical": "https://www.newon.app/livon/life/10s/school-life/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "10s.career-explore",
+   "slug": "career-explore",
+   "path": "/livon/life/10s/career-explore/",
+   "h1": "진로 탐색 시작하기",
+   "title": "진로 탐색 시작하기 · 10대 | LIVON",
+   "description": "좋아하는 것과 잘하는 것을 살펴보고, 직업과 전공 정보를 찾아보며 나에게 맞는 방향을 천천히 정리합니다. 지금의 선택은 확정이 아니라 탐색의 시작입니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "10대",
+     "path": "/livon/life/10s/"
+    },
+    {
+     "name": "진로 탐색 시작하기",
+     "path": "/livon/life/10s/career-explore/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/10s/career-explore/",
+   "canonical": "https://www.newon.app/livon/life/10s/career-explore/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "10s.college-prep",
+   "slug": "college-prep",
+   "path": "/livon/life/10s/college-prep/",
+   "h1": "대학·입시 준비",
+   "title": "대학·입시 준비 · 10대 | LIVON",
+   "description": "전형 종류와 준비 일정을 이해하고, 공식 입시 정보를 확인하며 나에게 맞는 준비 계획을 세웁니다. 모집요강은 매년 바뀔 수 있어 반드시 대학 공식 발표를 확인해야 합니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "10대",
+     "path": "/livon/life/10s/"
+    },
+    {
+     "name": "대학·입시 준비",
+     "path": "/livon/life/10s/college-prep/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/10s/college-prep/",
+   "canonical": "https://www.newon.app/livon/life/10s/college-prep/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "10s.study-method",
+   "slug": "study-method",
+   "path": "/livon/life/10s/study-method/",
+   "h1": "나에게 맞는 공부 습관",
+   "title": "나에게 맞는 공부 습관 · 10대 | LIVON",
+   "description": "목표와 가능한 시간을 기준으로 공부 계획을 세우고, 꾸준히 이어갈 수 있는 습관을 만듭니다. 큰 목표는 하루에 할 수 있는 작은 단위로 나눠야 이어가기 쉽습니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "10대",
+     "path": "/livon/life/10s/"
+    },
+    {
+     "name": "나에게 맞는 공부 습관",
+     "path": "/livon/life/10s/study-method/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/10s/study-method/",
+   "canonical": "https://www.newon.app/livon/life/10s/study-method/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "10s.friends",
+   "slug": "friends",
+   "path": "/livon/life/10s/friends/",
+   "h1": "친구와 관계",
+   "title": "친구와 관계 · 10대 | LIVON",
+   "description": "친구 관계, 가족과의 대화, 온라인 관계에서 생기는 고민을 건강하게 다루는 방법을 정리합니다. 생각이 달라 생기는 갈등은 대화로 풀어 갈 수 있습니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "10대",
+     "path": "/livon/life/10s/"
+    },
+    {
+     "name": "친구와 관계",
+     "path": "/livon/life/10s/friends/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/10s/friends/",
+   "canonical": "https://www.newon.app/livon/life/10s/friends/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "10s.health-teen",
+   "slug": "health-teen",
+   "path": "/livon/life/10s/health-teen/",
+   "h1": "성장기 건강 관리",
+   "title": "성장기 건강 관리 · 10대 | LIVON",
+   "description": "잠, 식사, 운동, 마음 건강처럼 성장기에 챙기면 좋은 생활 습관을 정리합니다. 증상이나 치료는 의료진과 상담하세요. 규칙적인 수면은 집중력과 기분에 큰 영향을 줍니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "10대",
+     "path": "/livon/life/10s/"
+    },
+    {
+     "name": "성장기 건강 관리",
+     "path": "/livon/life/10s/health-teen/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/10s/health-teen/",
+   "canonical": "https://www.newon.app/livon/life/10s/health-teen/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "10s.money-basics-teen",
+   "slug": "money-basics-teen",
+   "path": "/livon/life/10s/money-basics-teen/",
+   "h1": "용돈 관리와 금융 기초",
+   "title": "용돈 관리와 금융 기초 · 10대 | LIVON",
+   "description": "용돈 기록, 저축 목표, 현명한 소비처럼 처음 배우는 돈 관리 습관을 정리합니다. 쓴 돈을 적어 보면 소비 습관이 보입니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "10대",
+     "path": "/livon/life/10s/"
+    },
+    {
+     "name": "용돈 관리와 금융 기초",
+     "path": "/livon/life/10s/money-basics-teen/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/10s/money-basics-teen/",
+   "canonical": "https://www.newon.app/livon/life/10s/money-basics-teen/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "10s.part-time-prep",
+   "slug": "part-time-prep",
+   "path": "/livon/life/10s/part-time-prep/",
+   "h1": "첫 아르바이트 준비",
+   "title": "첫 아르바이트 준비 · 10대 | LIVON",
+   "description": "첫 아르바이트를 시작하기 전에 알아 둘 근로 기본 정보와 준비 과정을 정리합니다. 구체적인 권리 판단은 공식 기관에 확인하세요. 근무 시간·임금·업무 내용을 미리 확인하고 서면으로 남기는 것이 좋습니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "10대",
+     "path": "/livon/life/10s/"
+    },
+    {
+     "name": "첫 아르바이트 준비",
+     "path": "/livon/life/10s/part-time-prep/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/10s/part-time-prep/",
+   "canonical": "https://www.newon.app/livon/life/10s/part-time-prep/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "20s.first-job",
+   "slug": "first-job",
+   "path": "/livon/life/20s/first-job/",
+   "h1": "첫 취업 준비",
+   "title": "첫 취업 준비 · 20대 | LIVON",
+   "description": "직무 탐색부터 지원서, 면접, 입사 준비까지 첫 취업 과정을 단계별로 정리합니다. 회사보다 직무를 먼저 정하면 준비 방향이 선명해집니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "20대",
+     "path": "/livon/life/20s/"
+    },
+    {
+     "name": "첫 취업 준비",
+     "path": "/livon/life/20s/first-job/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/20s/first-job/",
+   "canonical": "https://www.newon.app/livon/life/20s/first-job/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "20s.career-design",
+   "slug": "career-design",
+   "path": "/livon/life/20s/career-design/",
+   "h1": "커리어 설계",
+   "title": "커리어 설계 · 20대 | LIVON",
+   "description": "첫 직장 이후 역량을 키우고 방향을 점검하며 장기적인 커리어를 설계하는 방법을 정리합니다. 처음 방향이 달라져도 경험은 다음 선택의 기반이 됩니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "20대",
+     "path": "/livon/life/20s/"
+    },
+    {
+     "name": "커리어 설계",
+     "path": "/livon/life/20s/career-design/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/20s/career-design/",
+   "canonical": "https://www.newon.app/livon/life/20s/career-design/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "20s.self-dev-20",
+   "slug": "self-dev-20",
+   "path": "/livon/life/20s/self-dev-20/",
+   "h1": "20대 자기계발",
+   "title": "20대 자기계발 · 20대 | LIVON",
+   "description": "외국어, 자격증, 독서, 온라인 강의처럼 나에게 필요한 배움을 고르고 꾸준히 이어가는 방법을 정리합니다. 무엇을 위해 배우는지 정하면 끝까지 하기 쉽습니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "20대",
+     "path": "/livon/life/20s/"
+    },
+    {
+     "name": "20대 자기계발",
+     "path": "/livon/life/20s/self-dev-20/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/20s/self-dev-20/",
+   "canonical": "https://www.newon.app/livon/life/20s/self-dev-20/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "20s.first-independence",
+   "slug": "first-independence",
+   "path": "/livon/life/20s/first-independence/",
+   "h1": "첫 독립 준비",
+   "title": "첫 독립 준비 · 20대 | LIVON",
+   "description": "독립 목적과 예산을 정하고 집 찾기, 계약, 이사, 생활 인프라 설정까지 첫 독립의 전 과정을 정리합니다. 보증금·월세·관리비·생활비를 합친 월 주거예산을 먼저 계산하세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "20대",
+     "path": "/livon/life/20s/"
+    },
+    {
+     "name": "첫 독립 준비",
+     "path": "/livon/life/20s/first-independence/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/20s/first-independence/",
+   "canonical": "https://www.newon.app/livon/life/20s/first-independence/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "20s.salary-management",
+   "slug": "salary-management",
+   "path": "/livon/life/20s/salary-management/",
+   "h1": "월급 관리",
+   "title": "월급 관리 · 20대 | LIVON",
+   "description": "첫 월급부터 고정비·저축·비상금·투자 공부까지, 월급을 계획적으로 관리하는 기본 틀을 정리합니다. 특정 상품 추천은 하지 않습니다. 월급날 저축을 먼저 떼어 두면 저축이 꾸준해집니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "20대",
+     "path": "/livon/life/20s/"
+    },
+    {
+     "name": "월급 관리",
+     "path": "/livon/life/20s/salary-management/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/20s/salary-management/",
+   "canonical": "https://www.newon.app/livon/life/20s/salary-management/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "20s.health-20",
+   "slug": "health-20",
+   "path": "/livon/life/20s/health-20/",
+   "h1": "20대 건강 관리",
+   "title": "20대 건강 관리 · 20대 | LIVON",
+   "description": "바쁜 일상 속에서 수면·식사·운동·마음 건강을 챙기는 기본 습관을 정리합니다. 진단과 치료는 의료진과 상담하세요. 불규칙한 생활이 이어지면 컨디션이 쉽게 떨어집니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "20대",
+     "path": "/livon/life/20s/"
+    },
+    {
+     "name": "20대 건강 관리",
+     "path": "/livon/life/20s/health-20/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/20s/health-20/",
+   "canonical": "https://www.newon.app/livon/life/20s/health-20/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "20s.travel-20",
+   "slug": "travel-20",
+   "path": "/livon/life/20s/travel-20/",
+   "h1": "여행 준비",
+   "title": "여행 준비 · 20대 | LIVON",
+   "description": "예산과 일정에 맞는 여행지를 고르고, 이동·숙소·준비물을 정리하는 과정을 안내합니다. 교통·숙소·식비·활동비를 나눠 예산을 세웁니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "20대",
+     "path": "/livon/life/20s/"
+    },
+    {
+     "name": "여행 준비",
+     "path": "/livon/life/20s/travel-20/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/20s/travel-20/",
+   "canonical": "https://www.newon.app/livon/life/20s/travel-20/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "20s.youth-policy",
+   "slug": "youth-policy",
+   "path": "/livon/life/20s/youth-policy/",
+   "h1": "청년 지원정책 찾기",
+   "title": "청년 지원정책 찾기 · 20대 | LIVON",
+   "description": "주거·취업·금융·자산형성 등 청년 대상 지원 제도를 공식 포털에서 찾고 신청을 준비하는 방법을 정리합니다. LIVON은 자격을 판단하지 않습니다. 청년 정책은 중앙·지자체별로 다양해 통합 포털에서 검색하는 것이 효율적입니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "20대",
+     "path": "/livon/life/20s/"
+    },
+    {
+     "name": "청년 지원정책 찾기",
+     "path": "/livon/life/20s/youth-policy/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/20s/youth-policy/",
+   "canonical": "https://www.newon.app/livon/life/20s/youth-policy/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "30s.career-growth-30",
+   "slug": "career-growth-30",
+   "path": "/livon/life/30s/career-growth-30/",
+   "h1": "커리어 성장",
+   "title": "커리어 성장 · 30대 | LIVON",
+   "description": "전문성을 쌓고 역할을 넓히며, 리더십과 협업 역량까지 키워 가는 30대 커리어 성장 방법을 정리합니다. 한 분야의 깊이와 인접 분야의 넓이를 함께 키우면 선택지가 늘어납니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "30대",
+     "path": "/livon/life/30s/"
+    },
+    {
+     "name": "커리어 성장",
+     "path": "/livon/life/30s/career-growth-30/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/30s/career-growth-30/",
+   "canonical": "https://www.newon.app/livon/life/30s/career-growth-30/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "30s.job-change-30",
+   "slug": "job-change-30",
+   "path": "/livon/life/30s/job-change-30/",
+   "h1": "이직 준비",
+   "title": "이직 준비 · 30대 | LIVON",
+   "description": "이직 이유를 정리하고 경력기술서, 지원, 협상, 퇴사·입사 준비까지 이직 과정을 단계별로 정리합니다. 옮기려는 이유가 분명해야 다음 선택이 흔들리지 않습니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "30대",
+     "path": "/livon/life/30s/"
+    },
+    {
+     "name": "이직 준비",
+     "path": "/livon/life/30s/job-change-30/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/30s/job-change-30/",
+   "canonical": "https://www.newon.app/livon/life/30s/job-change-30/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "30s.asset-30",
+   "slug": "asset-30",
+   "path": "/livon/life/30s/asset-30/",
+   "h1": "30대 자산 관리",
+   "title": "30대 자산 관리 · 30대 | LIVON",
+   "description": "소득 증가와 지출 변화에 맞춰 저축·비상금·부채·보험을 점검하고 자산 목표를 세우는 방법을 정리합니다. 특정 상품은 추천하지 않습니다. 자산에서 부채를 뺀 순자산을 정기적으로 확인하세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "30대",
+     "path": "/livon/life/30s/"
+    },
+    {
+     "name": "30대 자산 관리",
+     "path": "/livon/life/30s/asset-30/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/30s/asset-30/",
+   "canonical": "https://www.newon.app/livon/life/30s/asset-30/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "30s.housing-30",
+   "slug": "housing-30",
+   "path": "/livon/life/30s/housing-30/",
+   "h1": "30대 주거 계획",
+   "title": "30대 주거 계획 · 30대 | LIVON",
+   "description": "전·월세 갱신, 내 집 마련 준비, 공공 주거 지원 확인까지 가족 계획에 맞는 주거 전략을 정리합니다. 결혼·출산 계획에 따라 필요한 공간과 지역이 달라집니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "30대",
+     "path": "/livon/life/30s/"
+    },
+    {
+     "name": "30대 주거 계획",
+     "path": "/livon/life/30s/housing-30/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/30s/housing-30/",
+   "canonical": "https://www.newon.app/livon/life/30s/housing-30/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "30s.marriage-30",
+   "slug": "marriage-30",
+   "path": "/livon/life/30s/marriage-30/",
+   "h1": "결혼 준비",
+   "title": "결혼 준비 · 30대 | LIVON",
+   "description": "우선순위와 예산을 함께 정하고, 일정·준비 항목·행정 절차까지 결혼 준비를 단계별로 정리합니다. 서로의 우선순위와 예산을 먼저 맞추면 준비가 훨씬 수월합니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "30대",
+     "path": "/livon/life/30s/"
+    },
+    {
+     "name": "결혼 준비",
+     "path": "/livon/life/30s/marriage-30/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/30s/marriage-30/",
+   "canonical": "https://www.newon.app/livon/life/30s/marriage-30/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "30s.parenting-30",
+   "slug": "parenting-30",
+   "path": "/livon/life/30s/parenting-30/",
+   "h1": "영유아 육아",
+   "title": "영유아 육아 · 30대 | LIVON",
+   "description": "보육 시설, 육아 지원, 가족 일정 관리처럼 영유아 육아에 필요한 정보를 정리합니다. 아이 건강 판단은 의료진과 상담하세요. 어린이집 정보와 입소 대기는 공식 포털에서 확인합니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "30대",
+     "path": "/livon/life/30s/"
+    },
+    {
+     "name": "영유아 육아",
+     "path": "/livon/life/30s/parenting-30/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/30s/parenting-30/",
+   "canonical": "https://www.newon.app/livon/life/30s/parenting-30/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "30s.health-30",
+   "slug": "health-30",
+   "path": "/livon/life/30s/health-30/",
+   "h1": "30대 건강 관리",
+   "title": "30대 건강 관리 · 30대 | LIVON",
+   "description": "업무와 가정 사이에서 수면·운동·검진·마음 건강을 챙기는 방법을 정리합니다. 진단과 치료는 의료진과 상담하세요. 국가건강검진 대상과 주기는 공식 안내를 확인하세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "30대",
+     "path": "/livon/life/30s/"
+    },
+    {
+     "name": "30대 건강 관리",
+     "path": "/livon/life/30s/health-30/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/30s/health-30/",
+   "canonical": "https://www.newon.app/livon/life/30s/health-30/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "30s.family-care-30",
+   "slug": "family-care-30",
+   "path": "/livon/life/30s/family-care-30/",
+   "h1": "가족 일정·생활 관리",
+   "title": "가족 일정·생활 관리 · 30대 | LIVON",
+   "description": "가족 구성원의 일정, 가계, 집안일, 기념일을 함께 관리하는 방법을 정리합니다. 가족 일정과 할 일을 한곳에 모으면 놓치는 일이 줄어듭니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "30대",
+     "path": "/livon/life/30s/"
+    },
+    {
+     "name": "가족 일정·생활 관리",
+     "path": "/livon/life/30s/family-care-30/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/30s/family-care-30/",
+   "canonical": "https://www.newon.app/livon/life/30s/family-care-30/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "40s.career-shift-40",
+   "slug": "career-shift-40",
+   "path": "/livon/life/40s/career-shift-40/",
+   "h1": "커리어 전환 준비",
+   "title": "커리어 전환 준비 · 40대 | LIVON",
+   "description": "지금까지의 경력을 정리하고 새로운 역할·직무·분야로 전환하기 위한 준비 과정을 정리합니다. 쌓아 온 경험 중 다른 분야에서도 쓰이는 역량을 찾아보세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "40대",
+     "path": "/livon/life/40s/"
+    },
+    {
+     "name": "커리어 전환 준비",
+     "path": "/livon/life/40s/career-shift-40/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/40s/career-shift-40/",
+   "canonical": "https://www.newon.app/livon/life/40s/career-shift-40/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "40s.asset-40",
+   "slug": "asset-40",
+   "path": "/livon/life/40s/asset-40/",
+   "h1": "40대 자산 점검",
+   "title": "40대 자산 점검 · 40대 | LIVON",
+   "description": "자녀 교육비, 주거, 노후 준비가 겹치는 시기에 자산과 지출을 점검하고 우선순위를 정하는 방법을 정리합니다. 교육·주거·노후 자금의 우선순위와 시기를 함께 봐야 합니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "40대",
+     "path": "/livon/life/40s/"
+    },
+    {
+     "name": "40대 자산 점검",
+     "path": "/livon/life/40s/asset-40/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/40s/asset-40/",
+   "canonical": "https://www.newon.app/livon/life/40s/asset-40/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "40s.housing-40",
+   "slug": "housing-40",
+   "path": "/livon/life/40s/housing-40/",
+   "h1": "40대 주거 관리",
+   "title": "40대 주거 관리 · 40대 | LIVON",
+   "description": "갈아타기·리모델링·수리처럼 가족 변화에 맞춘 주거 관리 방법과 비교 기준을 정리합니다. 자녀 성장과 부모님 돌봄 계획이 주거 선택에 영향을 줍니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "40대",
+     "path": "/livon/life/40s/"
+    },
+    {
+     "name": "40대 주거 관리",
+     "path": "/livon/life/40s/housing-40/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/40s/housing-40/",
+   "canonical": "https://www.newon.app/livon/life/40s/housing-40/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "40s.kids-education-40",
+   "slug": "kids-education-40",
+   "path": "/livon/life/40s/kids-education-40/",
+   "h1": "자녀 교육",
+   "title": "자녀 교육 · 40대 | LIVON",
+   "description": "자녀의 진로·학업·생활을 함께 살피며 대화하고 교육 정보를 찾는 방법을 정리합니다. 자녀의 관심과 고민을 먼저 들어 보세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "40대",
+     "path": "/livon/life/40s/"
+    },
+    {
+     "name": "자녀 교육",
+     "path": "/livon/life/40s/kids-education-40/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/40s/kids-education-40/",
+   "canonical": "https://www.newon.app/livon/life/40s/kids-education-40/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "40s.parent-care-40",
+   "slug": "parent-care-40",
+   "path": "/livon/life/40s/parent-care-40/",
+   "h1": "부모님 돌봄 준비",
+   "title": "부모님 돌봄 준비 · 40대 | LIVON",
+   "description": "부모님의 생활과 건강 변화를 함께 살피고, 돌봄 제도와 가족 역할을 정리합니다. 의료 판단은 의료진과 상담하세요. 돌봄 계획은 부모님과 함께 정하는 것이 가장 중요합니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "40대",
+     "path": "/livon/life/40s/"
+    },
+    {
+     "name": "부모님 돌봄 준비",
+     "path": "/livon/life/40s/parent-care-40/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/40s/parent-care-40/",
+   "canonical": "https://www.newon.app/livon/life/40s/parent-care-40/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "40s.health-check-40",
+   "slug": "health-check-40",
+   "path": "/livon/life/40s/health-check-40/",
+   "h1": "40대 건강검진",
+   "title": "40대 건강검진 · 40대 | LIVON",
+   "description": "국가건강검진 대상 확인, 검진기관 찾기, 결과 관리까지 정기 검진을 챙기는 방법을 정리합니다. 결과 해석은 의료진과 상담하세요. 검진 대상과 주기는 국민건강보험 공식 안내에서 확인하세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "40대",
+     "path": "/livon/life/40s/"
+    },
+    {
+     "name": "40대 건강검진",
+     "path": "/livon/life/40s/health-check-40/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/40s/health-check-40/",
+   "canonical": "https://www.newon.app/livon/life/40s/health-check-40/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "40s.exercise-40",
+   "slug": "exercise-40",
+   "path": "/livon/life/40s/exercise-40/",
+   "h1": "40대 운동 루틴",
+   "title": "40대 운동 루틴 · 40대 | LIVON",
+   "description": "체력과 생활 패턴에 맞는 운동을 고르고 무리 없이 꾸준히 이어가는 루틴을 만듭니다. 건강 상태에 따라 의료진 상담을 먼저 받으세요. 처음에는 강도보다 꾸준함에 집중하세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "40대",
+     "path": "/livon/life/40s/"
+    },
+    {
+     "name": "40대 운동 루틴",
+     "path": "/livon/life/40s/exercise-40/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/40s/exercise-40/",
+   "canonical": "https://www.newon.app/livon/life/40s/exercise-40/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "40s.retirement-prep-40",
+   "slug": "retirement-prep-40",
+   "path": "/livon/life/40s/retirement-prep-40/",
+   "h1": "노후 준비 시작",
+   "title": "노후 준비 시작 · 40대 | LIVON",
+   "description": "노후 생활비 추정, 연금 현황 확인, 건강과 일에 대한 계획까지 40대에 시작하는 노후 준비를 정리합니다. 특정 상품은 추천하지 않습니다. 노후 준비는 기간이 길수록 부담이 줄어듭니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "40대",
+     "path": "/livon/life/40s/"
+    },
+    {
+     "name": "노후 준비 시작",
+     "path": "/livon/life/40s/retirement-prep-40/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/40s/retirement-prep-40/",
+   "canonical": "https://www.newon.app/livon/life/40s/retirement-prep-40/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "50s.second-career-50",
+   "slug": "second-career-50",
+   "path": "/livon/life/50s/second-career-50/",
+   "h1": "제2의 커리어 설계",
+   "title": "제2의 커리어 설계 · 50대 | LIVON",
+   "description": "지금까지의 경력과 경험을 바탕으로 은퇴 전후에 이어갈 새로운 일과 역할을 설계합니다. 오랜 경력에서 쌓은 전문성과 관계는 새로운 일의 기반이 됩니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "50대",
+     "path": "/livon/life/50s/"
+    },
+    {
+     "name": "제2의 커리어 설계",
+     "path": "/livon/life/50s/second-career-50/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/50s/second-career-50/",
+   "canonical": "https://www.newon.app/livon/life/50s/second-career-50/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "50s.retirement-50",
+   "slug": "retirement-50",
+   "path": "/livon/life/50s/retirement-50/",
+   "h1": "은퇴 준비",
+   "title": "은퇴 준비 · 50대 | LIVON",
+   "description": "은퇴 시기와 생활 모습, 생활비와 연금, 건강과 관계까지 은퇴 전 점검할 항목을 정리합니다. 은퇴 후 하루를 어떻게 보낼지 구체적으로 그려 보세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "50대",
+     "path": "/livon/life/50s/"
+    },
+    {
+     "name": "은퇴 준비",
+     "path": "/livon/life/50s/retirement-50/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/50s/retirement-50/",
+   "canonical": "https://www.newon.app/livon/life/50s/retirement-50/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "50s.asset-50",
+   "slug": "asset-50",
+   "path": "/livon/life/50s/asset-50/",
+   "h1": "50대 자산 정리",
+   "title": "50대 자산 정리 · 50대 | LIVON",
+   "description": "은퇴를 앞두고 자산·부채를 정리하고 생활비 구조를 점검하는 방법을 정리합니다. 특정 상품은 추천하지 않습니다. 은퇴 전 부채 상환 계획을 세워 두면 부담이 줄어듭니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "50대",
+     "path": "/livon/life/50s/"
+    },
+    {
+     "name": "50대 자산 정리",
+     "path": "/livon/life/50s/asset-50/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/50s/asset-50/",
+   "canonical": "https://www.newon.app/livon/life/50s/asset-50/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "50s.pension-50",
+   "slug": "pension-50",
+   "path": "/livon/life/50s/pension-50/",
+   "h1": "연금 확인과 계획",
+   "title": "연금 확인과 계획 · 50대 | LIVON",
+   "description": "국민연금·퇴직연금·개인연금 현황을 확인하고 수령 시기와 방식을 이해하는 방법을 정리합니다. 개인별 판단은 공식 기관 상담을 이용하세요. 국민연금 가입 기간과 예상 정보는 공식 채널에서 확인할 수 있습니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "50대",
+     "path": "/livon/life/50s/"
+    },
+    {
+     "name": "연금 확인과 계획",
+     "path": "/livon/life/50s/pension-50/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/50s/pension-50/",
+   "canonical": "https://www.newon.app/livon/life/50s/pension-50/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "50s.health-50",
+   "slug": "health-50",
+   "path": "/livon/life/50s/health-50/",
+   "h1": "50대 건강 관리",
+   "title": "50대 건강 관리 · 50대 | LIVON",
+   "description": "정기 검진, 생활 습관, 마음 건강을 챙기며 건강한 중년을 보내는 방법을 정리합니다. 진단과 치료는 의료진과 상담하세요. 검진 대상과 항목은 국민건강보험 공식 안내를 확인하세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "50대",
+     "path": "/livon/life/50s/"
+    },
+    {
+     "name": "50대 건강 관리",
+     "path": "/livon/life/50s/health-50/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/50s/health-50/",
+   "canonical": "https://www.newon.app/livon/life/50s/health-50/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "50s.family-care-50",
+   "slug": "family-care-50",
+   "path": "/livon/life/50s/family-care-50/",
+   "h1": "부모님과 가족 돌봄",
+   "title": "부모님과 가족 돌봄 · 50대 | LIVON",
+   "description": "부모님 돌봄과 가족 지원을 함께 계획하고, 장기요양·복지 제도와 Ongil을 확인하는 방법을 정리합니다. 돌봄 계획은 부모님의 의사를 존중해 함께 정합니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "50대",
+     "path": "/livon/life/50s/"
+    },
+    {
+     "name": "부모님과 가족 돌봄",
+     "path": "/livon/life/50s/family-care-50/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/50s/family-care-50/",
+   "canonical": "https://www.newon.app/livon/life/50s/family-care-50/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "50s.hobby-50",
+   "slug": "hobby-50",
+   "path": "/livon/life/50s/hobby-50/",
+   "h1": "새로운 취미",
+   "title": "새로운 취미 · 50대 | LIVON",
+   "description": "은퇴 전후 삶을 풍성하게 할 취미를 찾고 배움과 모임으로 이어가는 방법을 정리합니다. 예전에 좋아했던 활동을 다시 시작해 보세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "50대",
+     "path": "/livon/life/50s/"
+    },
+    {
+     "name": "새로운 취미",
+     "path": "/livon/life/50s/hobby-50/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/50s/hobby-50/",
+   "canonical": "https://www.newon.app/livon/life/50s/hobby-50/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "50s.housing-plan-50",
+   "slug": "housing-plan-50",
+   "path": "/livon/life/50s/housing-plan-50/",
+   "h1": "은퇴 후 주거 계획",
+   "title": "은퇴 후 주거 계획 · 50대 | LIVON",
+   "description": "은퇴 후 살고 싶은 지역과 주거 형태, 생활 편의와 안전을 고려한 주거 계획을 정리합니다. 병원·교통·가족과의 거리를 함께 고려하세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "50대",
+     "path": "/livon/life/50s/"
+    },
+    {
+     "name": "은퇴 후 주거 계획",
+     "path": "/livon/life/50s/housing-plan-50/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/50s/housing-plan-50/",
+   "canonical": "https://www.newon.app/livon/life/50s/housing-plan-50/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "60s.retired-life-60",
+   "slug": "retired-life-60",
+   "path": "/livon/life/60s/retired-life-60/",
+   "h1": "은퇴 후 일상 설계",
+   "title": "은퇴 후 일상 설계 · 60대 | LIVON",
+   "description": "은퇴 후 하루와 한 주의 리듬을 만들고, 일·배움·취미·관계를 균형 있게 채우는 방법을 정리합니다. 규칙적인 기상과 활동 시간이 은퇴 후 생활에 활력을 줍니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "60대",
+     "path": "/livon/life/60s/"
+    },
+    {
+     "name": "은퇴 후 일상 설계",
+     "path": "/livon/life/60s/retired-life-60/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/60s/retired-life-60/",
+   "canonical": "https://www.newon.app/livon/life/60s/retired-life-60/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "60s.pension-60",
+   "slug": "pension-60",
+   "path": "/livon/life/60s/pension-60/",
+   "h1": "연금 수령과 관리",
+   "title": "연금 수령과 관리 · 60대 | LIVON",
+   "description": "연금 수령 현황과 생활비를 비교하고, 공식 기관에서 연금 관련 정보를 확인하는 방법을 정리합니다. 연금 수령 관련 정보는 공식 기관에서 확인하세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "60대",
+     "path": "/livon/life/60s/"
+    },
+    {
+     "name": "연금 수령과 관리",
+     "path": "/livon/life/60s/pension-60/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/60s/pension-60/",
+   "canonical": "https://www.newon.app/livon/life/60s/pension-60/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "60s.health-60",
+   "slug": "health-60",
+   "path": "/livon/life/60s/health-60/",
+   "h1": "60대 건강관리",
+   "title": "60대 건강관리 · 60대 | LIVON",
+   "description": "정기 검진, 복약·진료 일정 관리, 생활 습관으로 건강을 챙기는 방법을 정리합니다. 진단과 치료는 의료진과 상담하세요. 검진 대상과 주기는 공식 안내를 확인하고 결과는 의료진과 상담하세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "60대",
+     "path": "/livon/life/60s/"
+    },
+    {
+     "name": "60대 건강관리",
+     "path": "/livon/life/60s/health-60/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/60s/health-60/",
+   "canonical": "https://www.newon.app/livon/life/60s/health-60/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "60s.exercise-60",
+   "slug": "exercise-60",
+   "path": "/livon/life/60s/exercise-60/",
+   "h1": "60대 운동",
+   "title": "60대 운동 · 60대 | LIVON",
+   "description": "걷기·스트레칭·근력 운동처럼 안전하게 꾸준히 할 수 있는 운동을 정리합니다. 건강 상태에 따라 의료진 상담을 먼저 받으세요. 통증이나 어지러움이 있으면 멈추고 의료진과 상담하세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "60대",
+     "path": "/livon/life/60s/"
+    },
+    {
+     "name": "60대 운동",
+     "path": "/livon/life/60s/exercise-60/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/60s/exercise-60/",
+   "canonical": "https://www.newon.app/livon/life/60s/exercise-60/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "60s.social-60",
+   "slug": "social-60",
+   "path": "/livon/life/60s/social-60/",
+   "h1": "사회활동과 봉사",
+   "title": "사회활동과 봉사 · 60대 | LIVON",
+   "description": "봉사·사회공헌·지역 모임처럼 사회와 연결되는 활동을 찾고 참여하는 방법을 정리합니다. 노인일자리·사회활동 사업은 공식 기관에서 확인하세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "60대",
+     "path": "/livon/life/60s/"
+    },
+    {
+     "name": "사회활동과 봉사",
+     "path": "/livon/life/60s/social-60/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/60s/social-60/",
+   "canonical": "https://www.newon.app/livon/life/60s/social-60/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "60s.job-60",
+   "slug": "job-60",
+   "path": "/livon/life/60s/job-60/",
+   "h1": "60대 일자리",
+   "title": "60대 일자리 · 60대 | LIVON",
+   "description": "노인일자리·재취업·경력 활용 일자리를 공식 기관에서 찾고 준비하는 방법을 정리합니다. 시니어 일자리 정보는 공식 기관과 고용 포털에서 확인하세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "60대",
+     "path": "/livon/life/60s/"
+    },
+    {
+     "name": "60대 일자리",
+     "path": "/livon/life/60s/job-60/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/60s/job-60/",
+   "canonical": "https://www.newon.app/livon/life/60s/job-60/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "60s.care-60",
+   "slug": "care-60",
+   "path": "/livon/life/60s/care-60/",
+   "h1": "돌봄 준비",
+   "title": "돌봄 준비 · 60대 | LIVON",
+   "description": "나와 배우자, 부모님의 돌봄 필요를 미리 살피고 공식 제도와 Ongil을 확인하는 방법을 정리합니다. 원하는 돌봄 방식을 가족과 미리 이야기해 두세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "60대",
+     "path": "/livon/life/60s/"
+    },
+    {
+     "name": "돌봄 준비",
+     "path": "/livon/life/60s/care-60/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/60s/care-60/",
+   "canonical": "https://www.newon.app/livon/life/60s/care-60/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "60s.digital-60",
+   "slug": "digital-60",
+   "path": "/livon/life/60s/digital-60/",
+   "h1": "디지털 생활 익히기",
+   "title": "디지털 생활 익히기 · 60대 | LIVON",
+   "description": "스마트폰·온라인 민원·키오스크처럼 일상에 필요한 디지털 기능을 천천히 익히는 방법을 정리합니다. 한 번에 하나씩, 여러 번 반복하면 익숙해집니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "60대",
+     "path": "/livon/life/60s/"
+    },
+    {
+     "name": "디지털 생활 익히기",
+     "path": "/livon/life/60s/digital-60/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/60s/digital-60/",
+   "canonical": "https://www.newon.app/livon/life/60s/digital-60/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "70s.health-70",
+   "slug": "health-70",
+   "path": "/livon/life/70s/health-70/",
+   "h1": "매일의 건강관리",
+   "title": "매일의 건강관리 · 70대+ | LIVON",
+   "description": "식사·수면·운동·복약 일정처럼 매일 챙길 건강 습관을 쉽게 정리합니다. 진단과 치료는 의료진과 상담하세요. 일정한 식사와 수면 시간이 건강의 기본입니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "70대+",
+     "path": "/livon/life/70s/"
+    },
+    {
+     "name": "매일의 건강관리",
+     "path": "/livon/life/70s/health-70/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/70s/health-70/",
+   "canonical": "https://www.newon.app/livon/life/70s/health-70/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "70s.medical-info-70",
+   "slug": "medical-info-70",
+   "path": "/livon/life/70s/medical-info-70/",
+   "h1": "병원 이용 생활정보",
+   "title": "병원 이용 생활정보 · 70대+ | LIVON",
+   "description": "병원 예약·방문 준비·진료 기록처럼 병원 이용을 편하게 하는 생활정보를 정리합니다. LIVON은 진단이나 치료를 안내하지 않습니다. 증상·복용 약·궁금한 점을 메모해 가면 진료가 수월합니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "70대+",
+     "path": "/livon/life/70s/"
+    },
+    {
+     "name": "병원 이용 생활정보",
+     "path": "/livon/life/70s/medical-info-70/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/70s/medical-info-70/",
+   "canonical": "https://www.newon.app/livon/life/70s/medical-info-70/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "70s.care-70",
+   "slug": "care-70",
+   "path": "/livon/life/70s/care-70/",
+   "h1": "돌봄 서비스 알아보기",
+   "title": "돌봄 서비스 알아보기 · 70대+ | LIVON",
+   "description": "방문 돌봄·장기요양·생활 돌봄 정보를 공식 기관과 Ongil에서 확인하는 방법을 정리합니다. 장기요양 등급과 서비스는 공식 기관에서 확인하세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "70대+",
+     "path": "/livon/life/70s/"
+    },
+    {
+     "name": "돌봄 서비스 알아보기",
+     "path": "/livon/life/70s/care-70/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/70s/care-70/",
+   "canonical": "https://www.newon.app/livon/life/70s/care-70/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "70s.welfare-70",
+   "slug": "welfare-70",
+   "path": "/livon/life/70s/welfare-70/",
+   "h1": "복지 서비스 찾기",
+   "title": "복지 서비스 찾기 · 70대+ | LIVON",
+   "description": "받을 수 있는 복지 서비스를 공식 포털과 주민센터·복지관에서 확인하는 방법을 정리합니다. LIVON은 대상 여부를 판단하지 않습니다. 복지로·정부24에서 복지 서비스를 검색할 수 있습니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "70대+",
+     "path": "/livon/life/70s/"
+    },
+    {
+     "name": "복지 서비스 찾기",
+     "path": "/livon/life/70s/welfare-70/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/70s/welfare-70/",
+   "canonical": "https://www.newon.app/livon/life/70s/welfare-70/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "70s.life-support-70",
+   "slug": "life-support-70",
+   "path": "/livon/life/70s/life-support-70/",
+   "h1": "생활 지원 찾기",
+   "title": "생활 지원 찾기 · 70대+ | LIVON",
+   "description": "장보기·가사·식사·이동처럼 일상에 필요한 생활 지원을 찾는 방법을 정리합니다. 어떤 도움이 언제 필요한지 적어 두면 찾기 쉽습니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "70대+",
+     "path": "/livon/life/70s/"
+    },
+    {
+     "name": "생활 지원 찾기",
+     "path": "/livon/life/70s/life-support-70/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/70s/life-support-70/",
+   "canonical": "https://www.newon.app/livon/life/70s/life-support-70/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "70s.family-70",
+   "slug": "family-70",
+   "path": "/livon/life/70s/family-70/",
+   "h1": "가족과 소통하기",
+   "title": "가족과 소통하기 · 70대+ | LIVON",
+   "description": "가족과의 연락, 일정 공유, 함께하는 시간을 편하게 이어가는 방법을 정리합니다. 정해진 시간에 연락하면 서로 안심이 됩니다.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "70대+",
+     "path": "/livon/life/70s/"
+    },
+    {
+     "name": "가족과 소통하기",
+     "path": "/livon/life/70s/family-70/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/70s/family-70/",
+   "canonical": "https://www.newon.app/livon/life/70s/family-70/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "70s.hobby-70",
+   "slug": "hobby-70",
+   "path": "/livon/life/70s/hobby-70/",
+   "h1": "즐거운 취미",
+   "title": "즐거운 취미 · 70대+ | LIVON",
+   "description": "문화 프로그램·배움·창작처럼 일상에 즐거움을 더하는 취미를 찾는 방법을 정리합니다. 복지관·주민센터·도서관 프로그램을 먼저 살펴보세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "70대+",
+     "path": "/livon/life/70s/"
+    },
+    {
+     "name": "즐거운 취미",
+     "path": "/livon/life/70s/hobby-70/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/70s/hobby-70/",
+   "canonical": "https://www.newon.app/livon/life/70s/hobby-70/"
+  },
+  {
+   "index": true,
+   "lastmod": "2026-09-28",
+   "type": "life-topic",
+   "sourceId": "70s.digital-help-70",
+   "slug": "digital-help-70",
+   "path": "/livon/life/70s/digital-help-70/",
+   "h1": "디지털 도움 받기",
+   "title": "디지털 도움 받기 · 70대+ | LIVON",
+   "description": "스마트폰 사용, 영상통화, 키오스크, 온라인 민원을 천천히 익히고 도움을 받는 방법을 정리합니다. 가장 필요한 기능 하나부터 익혀 보세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/life/"
+    },
+    {
+     "name": "70대+",
+     "path": "/livon/life/70s/"
+    },
+    {
+     "name": "디지털 도움 받기",
+     "path": "/livon/life/70s/digital-help-70/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life/70s/digital-help-70/",
+   "canonical": "https://www.newon.app/livon/life/70s/digital-help-70/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event-overview",
+   "sourceId": "life-events",
+   "slug": "life-events",
+   "path": "/livon/life-events/",
+   "h1": "Life Event",
+   "title": "Life Event: 삶의 변화에 맞춘 준비 | LIVON",
+   "description": "첫 취업, 독립, 육아, 은퇴 준비처럼 삶에서 마주치는 일(라이프 이벤트)을 기준으로 관련 주제와 준비할 것을 모았어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/",
+   "canonical": "https://www.newon.app/livon/life-events/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "enroll",
+   "slug": "enroll",
+   "path": "/livon/life-events/enroll/",
+   "h1": "입학",
+   "title": "입학 · Life Event | LIVON",
+   "description": "새 학교·학기 시작에 맞춰 일정과 준비를 정리합니다. 10대·20대에 해당하는 관련 주제 3개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "입학",
+     "path": "/livon/life-events/enroll/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/enroll/",
+   "canonical": "https://www.newon.app/livon/life-events/enroll/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "advance",
+   "slug": "advance",
+   "path": "/livon/life-events/advance/",
+   "h1": "진학",
+   "title": "진학 · Life Event | LIVON",
+   "description": "다음 단계 진학을 위한 일정·전형·탐색을 모읍니다. 10대·20대에 해당하는 관련 주제 4개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "진학",
+     "path": "/livon/life-events/advance/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/advance/",
+   "canonical": "https://www.newon.app/livon/life-events/advance/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "graduate",
+   "slug": "graduate",
+   "path": "/livon/life-events/graduate/",
+   "h1": "졸업",
+   "title": "졸업 · Life Event | LIVON",
+   "description": "졸업 이후 취업·진학·독립 갈래를 정리합니다. 20대·30대에 해당하는 관련 주제 3개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "졸업",
+     "path": "/livon/life-events/graduate/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/graduate/",
+   "canonical": "https://www.newon.app/livon/life-events/graduate/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "first-job",
+   "slug": "first-job",
+   "path": "/livon/life-events/first-job/",
+   "h1": "첫 취업",
+   "title": "첫 취업 · Life Event | LIVON",
+   "description": "이력·면접·입사 준비를 단계별로 연결합니다. 20대·30대에 해당하는 관련 주제 4개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "첫 취업",
+     "path": "/livon/life-events/first-job/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/first-job/",
+   "canonical": "https://www.newon.app/livon/life-events/first-job/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "job-change",
+   "slug": "job-change",
+   "path": "/livon/life-events/job-change/",
+   "h1": "이직",
+   "title": "이직 · Life Event | LIVON",
+   "description": "이직 동기·조건·타임라인을 정리합니다. 20대·30대·40대·50대에 해당하는 관련 주제 8개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "이직",
+     "path": "/livon/life-events/job-change/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/job-change/",
+   "canonical": "https://www.newon.app/livon/life-events/job-change/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "startup",
+   "slug": "startup",
+   "path": "/livon/life-events/startup/",
+   "h1": "창업",
+   "title": "창업 · Life Event | LIVON",
+   "description": "아이디어 검증부터 준비 단계까지 가이드합니다. 사업자 등록·결제는 연결하지 않습니다. 20대·30대·40대·50대에 해당하는 관련 주제 9개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "창업",
+     "path": "/livon/life-events/startup/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/startup/",
+   "canonical": "https://www.newon.app/livon/life-events/startup/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "independent",
+   "slug": "independent",
+   "path": "/livon/life-events/independent/",
+   "h1": "독립",
+   "title": "독립 · Life Event | LIVON",
+   "description": "자취·독립 준비 체크리스트와 생활 서비스를 연결합니다. 20대·30대에 해당하는 관련 주제 4개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "독립",
+     "path": "/livon/life-events/independent/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/independent/",
+   "canonical": "https://www.newon.app/livon/life-events/independent/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "childbirth",
+   "slug": "childbirth",
+   "path": "/livon/life-events/childbirth/",
+   "h1": "출산",
+   "title": "출산 · Life Event | LIVON",
+   "description": "출산 전후 생활 준비 항목을 정리합니다. 20대·30대·40대에 해당하는 관련 주제 3개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "출산",
+     "path": "/livon/life-events/childbirth/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/childbirth/",
+   "canonical": "https://www.newon.app/livon/life-events/childbirth/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "parenting",
+   "slug": "parenting",
+   "path": "/livon/life-events/parenting/",
+   "h1": "육아",
+   "title": "육아 · Life Event | LIVON",
+   "description": "일상 육아 정보와 커뮤니티·서비스를 연결합니다. 20대·30대·40대에 해당하는 관련 주제 3개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "육아",
+     "path": "/livon/life-events/parenting/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/parenting/",
+   "canonical": "https://www.newon.app/livon/life-events/parenting/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "child-edu",
+   "slug": "child-edu",
+   "path": "/livon/life-events/child-edu/",
+   "h1": "자녀 교육",
+   "title": "자녀 교육 · Life Event | LIVON",
+   "description": "학습·진로 탐색을 부모 관점에서 정리합니다. 30대·40대·50대에 해당하는 관련 주제 3개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "자녀 교육",
+     "path": "/livon/life-events/child-edu/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/child-edu/",
+   "canonical": "https://www.newon.app/livon/life-events/child-edu/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "family-care",
+   "slug": "family-care",
+   "path": "/livon/life-events/family-care/",
+   "h1": "가족 돌봄",
+   "title": "가족 돌봄 · Life Event | LIVON",
+   "description": "가족 돌봄 정보와 Ongil 연결 안내를 제공합니다. 30대·40대·50대·60대에 해당하는 관련 주제 3개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "가족 돌봄",
+     "path": "/livon/life-events/family-care/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/family-care/",
+   "canonical": "https://www.newon.app/livon/life-events/family-care/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "parent-care",
+   "slug": "parent-care",
+   "path": "/livon/life-events/parent-care/",
+   "h1": "부모 돌봄",
+   "title": "부모 돌봄 · Life Event | LIVON",
+   "description": "시니어 생활·돌봄 연결을 안내합니다. 40대·50대·60대에 해당하는 관련 주제 3개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "부모 돌봄",
+     "path": "/livon/life-events/parent-care/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/parent-care/",
+   "canonical": "https://www.newon.app/livon/life-events/parent-care/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "retire-prep",
+   "slug": "retire-prep",
+   "path": "/livon/life-events/retire-prep/",
+   "h1": "은퇴",
+   "title": "은퇴 · Life Event | LIVON",
+   "description": "은퇴 전 재정·시간·관계 계획을 돕습니다. 50대·60대에 해당하는 관련 주제 8개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "은퇴",
+     "path": "/livon/life-events/retire-prep/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/retire-prep/",
+   "canonical": "https://www.newon.app/livon/life-events/retire-prep/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "later-life",
+   "slug": "later-life",
+   "path": "/livon/life-events/later-life/",
+   "h1": "노후 준비",
+   "title": "노후 준비 · Life Event | LIVON",
+   "description": "건강·관계·지역 활동 중심으로 노후 생활을 설계합니다. 60대·70대+에 해당하는 관련 주제 4개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "노후 준비",
+     "path": "/livon/life-events/later-life/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/later-life/",
+   "canonical": "https://www.newon.app/livon/life-events/later-life/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "newlywed",
+   "slug": "newlywed",
+   "path": "/livon/life-events/newlywed/",
+   "h1": "신혼생활",
+   "title": "신혼생활 · Life Event | LIVON",
+   "description": "결혼 후 함께 사는 생활에서 가계·가사·일정을 맞추는 방법을 모읍니다. 20대·30대에 해당하는 관련 주제 3개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "신혼생활",
+     "path": "/livon/life-events/newlywed/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/newlywed/",
+   "canonical": "https://www.newon.app/livon/life-events/newlywed/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "first-salary",
+   "slug": "first-salary",
+   "path": "/livon/life-events/first-salary/",
+   "h1": "첫 월급",
+   "title": "첫 월급 · Life Event | LIVON",
+   "description": "첫 월급을 받은 뒤 고정비·저축·지출 기록을 처음 정리할 때 봅니다. 20대·30대에 해당하는 관련 주제 3개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "첫 월급",
+     "path": "/livon/life-events/first-salary/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/first-salary/",
+   "canonical": "https://www.newon.app/livon/life-events/first-salary/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "saving",
+   "slug": "saving",
+   "path": "/livon/life-events/saving/",
+   "h1": "저축 시작",
+   "title": "저축 시작 · Life Event | LIVON",
+   "description": "저축 목표를 세우고 비상금부터 꾸준히 모으는 방법을 정리합니다. 20대·30대·40대에 해당하는 관련 주제 3개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "저축 시작",
+     "path": "/livon/life-events/saving/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/saving/",
+   "canonical": "https://www.newon.app/livon/life-events/saving/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "checkup",
+   "slug": "checkup",
+   "path": "/livon/life-events/checkup/",
+   "h1": "건강검진",
+   "title": "건강검진 · Life Event | LIVON",
+   "description": "건강검진 대상 확인부터 결과 상담까지 필요한 준비를 정리합니다. 30대·40대·50대·60대에 해당하는 관련 주제 3개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "건강검진",
+     "path": "/livon/life-events/checkup/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/checkup/",
+   "canonical": "https://www.newon.app/livon/life-events/checkup/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "habit-health",
+   "slug": "habit-health",
+   "path": "/livon/life-events/habit-health/",
+   "h1": "생활습관 개선",
+   "title": "생활습관 개선 · Life Event | LIVON",
+   "description": "수면·식사·운동처럼 매일의 습관을 조금씩 바꾸는 방법을 모읍니다. 20대·30대·40대·50대에 해당하는 관련 주제 4개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "생활습관 개선",
+     "path": "/livon/life-events/habit-health/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/habit-health/",
+   "canonical": "https://www.newon.app/livon/life-events/habit-health/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "life-event",
+   "sourceId": "parent-health",
+   "slug": "parent-health",
+   "path": "/livon/life-events/parent-health/",
+   "h1": "부모 건강관리",
+   "title": "부모 건강관리 · Life Event | LIVON",
+   "description": "부모님의 진료·검진 일정과 건강 기록을 함께 챙기는 방법을 모읍니다. 40대·50대·60대에 해당하는 관련 주제 3개와 준비 체크리스트를 볼 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "Life Event",
+     "path": "/livon/life-events/"
+    },
+    {
+     "name": "부모 건강관리",
+     "path": "/livon/life-events/parent-health/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/life-events/parent-health/",
+   "canonical": "https://www.newon.app/livon/life-events/parent-health/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-home",
+   "sourceId": "help",
+   "slug": "help",
+   "path": "/livon/help/",
+   "h1": "LIVON 도움말",
+   "title": "LIVON 도움말",
+   "description": "LIVON을 회원가입 없이 쓰는 방법, 내 정보가 저장되는 곳, 맞춤 설정과 추천, 커뮤니티, LIVON AI에 대해 자주 묻는 질문과 답이에요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/",
+   "canonical": "https://www.newon.app/livon/help/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "no-signup",
+   "slug": "no-signup",
+   "path": "/livon/help/no-signup/",
+   "h1": "회원가입 없이 왜 쓸 수 있나요?",
+   "title": "회원가입 없이 왜 쓸 수 있나요? | LIVON 도움말",
+   "description": "LIVON은 지금 계정 없이 쓰는 서비스예요. 고른 설정과 저장한 내용은 서버가 아니라 이 브라우저에 보관돼요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "시작하기",
+     "path": "/livon/help/#start"
+    },
+    {
+     "name": "회원가입 없이 왜 쓸 수 있나요?",
+     "path": "/livon/help/no-signup/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/no-signup/",
+   "canonical": "https://www.newon.app/livon/help/no-signup/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "what-is-livon",
+   "slug": "what-is-livon",
+   "path": "/livon/help/what-is-livon/",
+   "h1": "LIVON은 어떤 서비스인가요?",
+   "title": "LIVON은 어떤 서비스인가요? | LIVON 도움말",
+   "description": "삶의 단계와 상황에 맞는 정보·서비스·할 일을 한곳에서 찾고 관리하는 서비스예요. 메뉴는 일곱 가지예요. 홈, 라이프 스테이지(연령대별 주제), 오늘의 발견(오늘 볼 만한 정보), 내 생활(저장·할 일·목표·기록), 탐색(검색과 분야별 찾기), 커뮤니티(글과 댓글)…",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "시작하기",
+     "path": "/livon/help/#start"
+    },
+    {
+     "name": "LIVON은 어떤 서비스인가요?",
+     "path": "/livon/help/what-is-livon/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/what-is-livon/",
+   "canonical": "https://www.newon.app/livon/help/what-is-livon/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "account-status",
+   "slug": "account-status",
+   "path": "/livon/help/account-status/",
+   "h1": "로그인이나 NEWON+ 계정은 쓸 수 있나요?",
+   "title": "로그인이나 NEWON+ 계정은 쓸 수 있나요? | LIVON 도움말",
+   "description": "아직 쓸 수 없어요. 지금 LIVON에는 로그인도, NEWON+ 계정 연결도 없어요. 그래서 계정으로 내용을 불러오거나 여러 기기에서 같은 내용을 보는 기능도 없어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "시작하기",
+     "path": "/livon/help/#start"
+    },
+    {
+     "name": "로그인이나 NEWON+ 계정은 쓸 수 있나요?",
+     "path": "/livon/help/account-status/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/account-status/",
+   "canonical": "https://www.newon.app/livon/help/account-status/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "local-data-storage",
+   "slug": "local-data-storage",
+   "path": "/livon/help/local-data-storage/",
+   "h1": "내 정보는 어디에 저장되나요?",
+   "title": "내 정보는 어디에 저장되나요? | LIVON 도움말",
+   "description": "지금 쓰는 기기의 이 브라우저 안에 저장돼요. LIVON 서버에는 저장되지 않아요. 맞춤 설정, 저장한 항목, 할 일·목표·기록, 커뮤니티 글과 댓글, LIVON AI 대화 기록이 모두 여기에 해당해요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "저장·데이터",
+     "path": "/livon/help/#data"
+    },
+    {
+     "name": "내 정보는 어디에 저장되나요?",
+     "path": "/livon/help/local-data-storage/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/local-data-storage/",
+   "canonical": "https://www.newon.app/livon/help/local-data-storage/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "what-is-stored",
+   "slug": "what-is-stored",
+   "path": "/livon/help/what-is-stored/",
+   "h1": "이 기기에 저장되는 것과 서버에 저장되지 않는 것",
+   "title": "이 기기에 저장되는 것과 서버에 저장되지 않는 것 | LIVON 도움말",
+   "description": "LIVON에서 직접 고르거나 쓴 내용은 전부 이 브라우저에 있고, 서버에는 아무것도 보관하지 않아요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "저장·데이터",
+     "path": "/livon/help/#data"
+    },
+    {
+     "name": "이 기기에 저장되는 것과 서버에 저장되지 않는 것",
+     "path": "/livon/help/what-is-stored/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/what-is-stored/",
+   "canonical": "https://www.newon.app/livon/help/what-is-stored/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "other-device",
+   "slug": "other-device",
+   "path": "/livon/help/other-device/",
+   "h1": "다른 기기에서는 왜 안 보이나요?",
+   "title": "다른 기기에서는 왜 안 보이나요? | LIVON 도움말",
+   "description": "내용이 기기마다 따로 저장되고, 기기 사이에 옮겨 주는 동기화가 없기 때문이에요. 휴대폰에서 저장한 내용은 휴대폰의 그 브라우저에만 있어요. 컴퓨터에서 열면 처음 쓰는 상태로 보여요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "저장·데이터",
+     "path": "/livon/help/#data"
+    },
+    {
+     "name": "다른 기기에서는 왜 안 보이나요?",
+     "path": "/livon/help/other-device/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/other-device/",
+   "canonical": "https://www.newon.app/livon/help/other-device/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "clear-browser-data",
+   "slug": "clear-browser-data",
+   "path": "/livon/help/clear-browser-data/",
+   "h1": "브라우저 기록을 지우면 어떻게 되나요?",
+   "title": "브라우저 기록을 지우면 어떻게 되나요? | LIVON 도움말",
+   "description": "‘쿠키 및 사이트 데이터’를 지우면 LIVON에 저장한 내용도 함께 지워져요. 되돌릴 수 없어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "저장·데이터",
+     "path": "/livon/help/#data"
+    },
+    {
+     "name": "브라우저 기록을 지우면 어떻게 되나요?",
+     "path": "/livon/help/clear-browser-data/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/clear-browser-data/",
+   "canonical": "https://www.newon.app/livon/help/clear-browser-data/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "storage-blocked",
+   "slug": "storage-blocked",
+   "path": "/livon/help/storage-blocked/",
+   "h1": "‘저장이 막혀 있어요’ 안내는 무슨 뜻인가요?",
+   "title": "‘저장이 막혀 있어요’ 안내는 무슨 뜻인가요? | LIVON 도움말",
+   "description": "브라우저 설정 때문에 LIVON이 내용을 보관할 수 없다는 뜻이에요. 쓰는 동안에는 동작하지만 창을 닫으면 사라져요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "저장·데이터",
+     "path": "/livon/help/#data"
+    },
+    {
+     "name": "‘저장이 막혀 있어요’ 안내는 무슨 뜻인가요?",
+     "path": "/livon/help/storage-blocked/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/storage-blocked/",
+   "canonical": "https://www.newon.app/livon/help/storage-blocked/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "move-device",
+   "slug": "move-device",
+   "path": "/livon/help/move-device/",
+   "h1": "다른 기기로 내용을 옮길 수 있나요?",
+   "title": "다른 기기로 내용을 옮길 수 있나요? | LIVON 도움말",
+   "description": "아직 옮길 수 없어요. 자동으로 옮기는 기능도, 파일을 다시 불러오는 기능도 지금은 없어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "저장·데이터",
+     "path": "/livon/help/#data"
+    },
+    {
+     "name": "다른 기기로 내용을 옮길 수 있나요?",
+     "path": "/livon/help/move-device/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/move-device/",
+   "canonical": "https://www.newon.app/livon/help/move-device/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "save-items",
+   "slug": "save-items",
+   "path": "/livon/help/save-items/",
+   "h1": "‘저장’은 어떻게 동작하나요?",
+   "title": "‘저장’은 어떻게 동작하나요? | LIVON 도움말",
+   "description": "주제·정보·커뮤니티 글의 ‘저장’을 누르면 내 생활 › 저장에 모여요. 이 브라우저에만 보관돼요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "저장·데이터",
+     "path": "/livon/help/#data"
+    },
+    {
+     "name": "‘저장’은 어떻게 동작하나요?",
+     "path": "/livon/help/save-items/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/save-items/",
+   "canonical": "https://www.newon.app/livon/help/save-items/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "why-ask-profile",
+   "slug": "why-ask-profile",
+   "path": "/livon/help/why-ask-profile/",
+   "h1": "연령대·관심 분야·Life Event는 왜 묻나요?",
+   "title": "연령대·관심 분야·Life Event는 왜 묻나요? | LIVON 도움말",
+   "description": "관련 있는 정보를 먼저 보여 주려고 물어요. 세 가지 모두 선택 사항이고, 이 기기 안에서 순서를 정하는 데만 써요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "맞춤 설정",
+     "path": "/livon/help/#personalization"
+    },
+    {
+     "name": "연령대·관심 분야·Life Event는 왜 묻나요?",
+     "path": "/livon/help/why-ask-profile/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/why-ask-profile/",
+   "canonical": "https://www.newon.app/livon/help/why-ask-profile/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "personalization-storage",
+   "slug": "personalization-storage",
+   "path": "/livon/help/personalization-storage/",
+   "h1": "맞춤 설정은 어디에 저장되나요?",
+   "title": "맞춤 설정은 어디에 저장되나요? | LIVON 도움말",
+   "description": "고른 연령대·관심 분야·Life Event는 이 브라우저에만 저장돼요. 서버로 보내지 않아요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "맞춤 설정",
+     "path": "/livon/help/#personalization"
+    },
+    {
+     "name": "맞춤 설정은 어디에 저장되나요?",
+     "path": "/livon/help/personalization-storage/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/personalization-storage/",
+   "canonical": "https://www.newon.app/livon/help/personalization-storage/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "personalization-reset",
+   "slug": "personalization-reset",
+   "path": "/livon/help/personalization-reset/",
+   "h1": "맞춤 설정을 초기화하면 무엇이 지워지나요?",
+   "title": "맞춤 설정을 초기화하면 무엇이 지워지나요? | LIVON 도움말",
+   "description": "연령대·관심 분야·Life Event 세 가지만 지워져요. 저장한 항목, 할 일, 목표, 기록, 커뮤니티 글은 그대로예요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "맞춤 설정",
+     "path": "/livon/help/#personalization"
+    },
+    {
+     "name": "맞춤 설정을 초기화하면 무엇이 지워지나요?",
+     "path": "/livon/help/personalization-reset/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/personalization-reset/",
+   "canonical": "https://www.newon.app/livon/help/personalization-reset/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "other-life-stages",
+   "slug": "other-life-stages",
+   "path": "/livon/help/other-life-stages/",
+   "h1": "연령대를 고르면 다른 연령대 정보는 못 보나요?",
+   "title": "연령대를 고르면 다른 연령대 정보는 못 보나요? | LIVON 도움말",
+   "description": "볼 수 있어요. 연령대는 먼저 보여 줄 순서만 바꾸고, 다른 연령대의 주제를 숨기지 않아요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "맞춤 설정",
+     "path": "/livon/help/#personalization"
+    },
+    {
+     "name": "연령대를 고르면 다른 연령대 정보는 못 보나요?",
+     "path": "/livon/help/other-life-stages/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/other-life-stages/",
+   "canonical": "https://www.newon.app/livon/help/other-life-stages/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "recommendation-ai",
+   "slug": "recommendation-ai",
+   "path": "/livon/help/recommendation-ai/",
+   "h1": "추천에 AI가 쓰이나요?",
+   "title": "추천에 AI가 쓰이나요? | LIVON 도움말",
+   "description": "아니요. 추천은 정해진 규칙으로 이 기기 안에서 계산해요. AI도, 서버도 쓰지 않아요. 규칙은 단순해요. 고른 Life Event와 맞으면 가장 먼저, 그다음 연령대, 그다음 관심 분야 순으로 올려요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "맞춤 설정",
+     "path": "/livon/help/#personalization"
+    },
+    {
+     "name": "추천에 AI가 쓰이나요?",
+     "path": "/livon/help/recommendation-ai/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/recommendation-ai/",
+   "canonical": "https://www.newon.app/livon/help/recommendation-ai/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "how-recommendation-works",
+   "slug": "how-recommendation-works",
+   "path": "/livon/help/how-recommendation-works/",
+   "h1": "추천은 어떻게 정해지나요?",
+   "title": "추천은 어떻게 정해지나요? | LIVON 도움말",
+   "description": "내가 고른 Life Event, 연령대, 관심 분야와 맞는 정보를 그 순서대로 먼저 보여 줘요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "맞춤 설정",
+     "path": "/livon/help/#personalization"
+    },
+    {
+     "name": "추천은 어떻게 정해지나요?",
+     "path": "/livon/help/how-recommendation-works/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/how-recommendation-works/",
+   "canonical": "https://www.newon.app/livon/help/how-recommendation-works/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "onboarding-skip",
+   "slug": "onboarding-skip",
+   "path": "/livon/help/onboarding-skip/",
+   "h1": "‘나중에 할게요’를 누르면 어떻게 되나요?",
+   "title": "‘나중에 할게요’를 누르면 어떻게 되나요? | LIVON 도움말",
+   "description": "맞춤 설정 없이 바로 쓸 수 있어요. 건너뛰어도 막히는 기능은 없고, 안내도 다시 뜨지 않아요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "맞춤 설정",
+     "path": "/livon/help/#personalization"
+    },
+    {
+     "name": "‘나중에 할게요’를 누르면 어떻게 되나요?",
+     "path": "/livon/help/onboarding-skip/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/onboarding-skip/",
+   "canonical": "https://www.newon.app/livon/help/onboarding-skip/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "what-is-life-event",
+   "slug": "what-is-life-event",
+   "path": "/livon/help/what-is-life-event/",
+   "h1": "Life Event가 무엇인가요?",
+   "title": "Life Event가 무엇인가요? | LIVON 도움말",
+   "description": "첫 취업, 독립, 육아, 은퇴 준비처럼 지금 준비하거나 겪고 있는 일이에요. 고르면 그 일과 관련된 정보를 먼저 보여 줘요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "맞춤 설정",
+     "path": "/livon/help/#personalization"
+    },
+    {
+     "name": "Life Event가 무엇인가요?",
+     "path": "/livon/help/what-is-life-event/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/what-is-life-event/",
+   "canonical": "https://www.newon.app/livon/help/what-is-life-event/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "what-is-life-stage",
+   "slug": "what-is-life-stage",
+   "path": "/livon/help/what-is-life-stage/",
+   "h1": "라이프 스테이지가 무엇인가요?",
+   "title": "라이프 스테이지가 무엇인가요? | LIVON 도움말",
+   "description": "10대부터 70대 이상까지 7개 연령대로 나눠, 그 시기에 필요한 주제를 모아 둔 메뉴예요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/help/#life-stage"
+    },
+    {
+     "name": "라이프 스테이지가 무엇인가요?",
+     "path": "/livon/help/what-is-life-stage/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/what-is-life-stage/",
+   "canonical": "https://www.newon.app/livon/help/what-is-life-stage/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "life-stage-topics",
+   "slug": "life-stage-topics",
+   "path": "/livon/help/life-stage-topics/",
+   "h1": "주제 페이지에서는 무엇을 볼 수 있나요?",
+   "title": "주제 페이지에서는 무엇을 볼 수 있나요? | LIVON 도움말",
+   "description": "주제의 요약, 단계별 체크리스트, 그리고 연결된 정책·서비스·교육 정보를 볼 수 있어요. 체크리스트에 표시한 진행 상태는 이 브라우저에 저장돼요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "라이프 스테이지",
+     "path": "/livon/help/#life-stage"
+    },
+    {
+     "name": "주제 페이지에서는 무엇을 볼 수 있나요?",
+     "path": "/livon/help/life-stage-topics/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/life-stage-topics/",
+   "canonical": "https://www.newon.app/livon/help/life-stage-topics/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "what-is-today",
+   "slug": "what-is-today",
+   "path": "/livon/help/what-is-today/",
+   "h1": "오늘의 발견은 무엇인가요?",
+   "title": "오늘의 발견은 무엇인가요? | LIVON 도움말",
+   "description": "가 볼 만한 장소, 체험, 배움, 계절 이야기처럼 일상에서 해 볼 만한 것을 모아 보여 주는 메뉴예요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "오늘의 발견",
+     "path": "/livon/help/#today"
+    },
+    {
+     "name": "오늘의 발견은 무엇인가요?",
+     "path": "/livon/help/what-is-today/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/what-is-today/",
+   "canonical": "https://www.newon.app/livon/help/what-is-today/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "what-is-my-life",
+   "slug": "what-is-my-life",
+   "path": "/livon/help/what-is-my-life/",
+   "h1": "내 생활에서는 무엇을 할 수 있나요?",
+   "title": "내 생활에서는 무엇을 할 수 있나요? | LIVON 도움말",
+   "description": "저장한 항목을 모아 보고, 일정·할 일·목표·기록과 루틴을 직접 관리하고, 관심사와 맞춤 설정을 바꿀 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "내 생활",
+     "path": "/livon/help/#my-life"
+    },
+    {
+     "name": "내 생활에서는 무엇을 할 수 있나요?",
+     "path": "/livon/help/what-is-my-life/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/what-is-my-life/",
+   "canonical": "https://www.newon.app/livon/help/what-is-my-life/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "explore-search",
+   "slug": "explore-search",
+   "path": "/livon/help/explore-search/",
+   "h1": "탐색에서는 무엇을 찾을 수 있나요?",
+   "title": "탐색에서는 무엇을 찾을 수 있나요? | LIVON 도움말",
+   "description": "라이프 스테이지 주제, 오늘의 발견, 서비스, 정책·지원과 공식 기관, 교육, 장소, 그리고 이 기기에 쓴 커뮤니티 공개 글을 한 번에 찾아요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "탐색·검색",
+     "path": "/livon/help/#explore"
+    },
+    {
+     "name": "탐색에서는 무엇을 찾을 수 있나요?",
+     "path": "/livon/help/explore-search/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/explore-search/",
+   "canonical": "https://www.newon.app/livon/help/explore-search/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "official-badge",
+   "slug": "official-badge",
+   "path": "/livon/help/official-badge/",
+   "h1": "‘공식 출처’ 표시는 무슨 뜻인가요?",
+   "title": "‘공식 출처’ 표시는 무슨 뜻인가요? | LIVON 도움말",
+   "description": "그 정보의 출처가 정부·공공기관 같은 공식 기관의 사이트라는 뜻이에요. LIVON이 내용을 보증하거나 신청을 대신해 준다는 뜻은 아니에요. 지원 대상, 금액, 기간은 바뀔 수 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "탐색·검색",
+     "path": "/livon/help/#explore"
+    },
+    {
+     "name": "‘공식 출처’ 표시는 무슨 뜻인가요?",
+     "path": "/livon/help/official-badge/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/official-badge/",
+   "canonical": "https://www.newon.app/livon/help/official-badge/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "live-data",
+   "slug": "live-data",
+   "path": "/livon/help/live-data/",
+   "h1": "실시간 공공 데이터가 연결되어 있나요?",
+   "title": "실시간 공공 데이터가 연결되어 있나요? | LIVON 도움말",
+   "description": "데이터 서버가 연결되어 응답할 때만, 일부 영역에서 보여요. 그 밖의 정보는 LIVON이 정리해 둔 안내와 공식 사이트 링크예요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "탐색·검색",
+     "path": "/livon/help/#explore"
+    },
+    {
+     "name": "실시간 공공 데이터가 연결되어 있나요?",
+     "path": "/livon/help/live-data/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/live-data/",
+   "canonical": "https://www.newon.app/livon/help/live-data/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "community-post-storage",
+   "slug": "community-post-storage",
+   "path": "/livon/help/community-post-storage/",
+   "h1": "내가 쓴 글은 어디에 저장되나요?",
+   "title": "내가 쓴 글은 어디에 저장되나요? | LIVON 도움말",
+   "description": "글, 댓글, 공감은 이 브라우저에만 저장돼요. 서버에 올라가지 않고, 다른 사람에게 보이지 않아요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "커뮤니티",
+     "path": "/livon/help/#community"
+    },
+    {
+     "name": "내가 쓴 글은 어디에 저장되나요?",
+     "path": "/livon/help/community-post-storage/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/community-post-storage/",
+   "canonical": "https://www.newon.app/livon/help/community-post-storage/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "community-no-other-posts",
+   "slug": "community-no-other-posts",
+   "path": "/livon/help/community-no-other-posts/",
+   "h1": "다른 사람 글은 왜 없나요?",
+   "title": "다른 사람 글은 왜 없나요? | LIVON 도움말",
+   "description": "커뮤니티 서버가 아직 연결되지 않아서예요. 지금은 이 기기에서 쓴 글만 보여요. 보기용으로 만든 가짜 글이나 가짜 사용자는 넣지 않았어요. 그래서 처음에는 피드가 비어 있어요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "커뮤니티",
+     "path": "/livon/help/#community"
+    },
+    {
+     "name": "다른 사람 글은 왜 없나요?",
+     "path": "/livon/help/community-no-other-posts/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/community-no-other-posts/",
+   "canonical": "https://www.newon.app/livon/help/community-no-other-posts/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "community-following",
+   "slug": "community-following",
+   "path": "/livon/help/community-following/",
+   "h1": "팔로잉은 왜 비어 있나요?",
+   "title": "팔로잉은 왜 비어 있나요? | LIVON 도움말",
+   "description": "팔로우는 계정이 있어야 하는 기능인데, 지금은 계정이 없어서 쓸 수 없어요. 팔로우할 다른 사용자가 없기 때문에 팔로잉 탭에는 글이 나오지 않아요. 가짜 팔로우 목록도 만들지 않아요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "커뮤니티",
+     "path": "/livon/help/#community"
+    },
+    {
+     "name": "팔로잉은 왜 비어 있나요?",
+     "path": "/livon/help/community-following/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/community-following/",
+   "canonical": "https://www.newon.app/livon/help/community-following/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "community-report",
+   "slug": "community-report",
+   "path": "/livon/help/community-report/",
+   "h1": "신고하면 운영자에게 전달되나요?",
+   "title": "신고하면 운영자에게 전달되나요? | LIVON 도움말",
+   "description": "아니요. 지금 신고는 이 브라우저에만 기록돼요. 운영자나 서버로 전송되지 않아요. 신고를 받아 검토하는 서버가 아직 연결되지 않았어요. 그래서 신고해도 글이 가려지거나 조치되지 않아요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "커뮤니티",
+     "path": "/livon/help/#community"
+    },
+    {
+     "name": "신고하면 운영자에게 전달되나요?",
+     "path": "/livon/help/community-report/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/community-report/",
+   "canonical": "https://www.newon.app/livon/help/community-report/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "community-for-you",
+   "slug": "community-for-you",
+   "path": "/livon/help/community-for-you/",
+   "h1": "For You 순서는 어떻게 정해지나요?",
+   "title": "For You 순서는 어떻게 정해지나요? | LIVON 도움말",
+   "description": "맞춤 설정에 맞는 글을 먼저 보여 줘요. 맞춤 설정이 없으면 최신순과 같아요. 내가 고른 Life Event가 붙은 글이 가장 앞에 오고, 다음이 같은 연령대의 글, 다음이 관심 분야와 맞는 글이에요. 먼저 올라온 글에는 이유가 한 줄로 표시돼요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "커뮤니티",
+     "path": "/livon/help/#community"
+    },
+    {
+     "name": "For You 순서는 어떻게 정해지나요?",
+     "path": "/livon/help/community-for-you/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/community-for-you/",
+   "canonical": "https://www.newon.app/livon/help/community-for-you/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "community-guidelines",
+   "slug": "community-guidelines",
+   "path": "/livon/help/community-guidelines/",
+   "h1": "커뮤니티에 쓰면 안 되는 내용이 있나요?",
+   "title": "커뮤니티에 쓰면 안 되는 내용이 있나요? | LIVON 도움말",
+   "description": "서로 존중하고, 개인정보와 스팸·불법·유해한 내용은 올리지 않는 것이 기본이에요. 실명, 전화번호, 이메일, 주소, 계좌처럼 나나 다른 사람을 알아볼 수 있는 정보는 적지 않는 것이 좋아요. 건강이나 돈처럼 민감한 이야기는 필요한 만큼만 적어 주세요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "커뮤니티",
+     "path": "/livon/help/#community"
+    },
+    {
+     "name": "커뮤니티에 쓰면 안 되는 내용이 있나요?",
+     "path": "/livon/help/community-guidelines/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/community-guidelines/",
+   "canonical": "https://www.newon.app/livon/help/community-guidelines/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "community-post-types",
+   "slug": "community-post-types",
+   "path": "/livon/help/community-post-types/",
+   "h1": "글 유형 여섯 가지는 어떻게 다른가요?",
+   "title": "글 유형 여섯 가지는 어떻게 다른가요? | LIVON 도움말",
+   "description": "질문, 경험 공유, 생활 정보, 후기, 생활 팁, 일상 이야기 6가지예요. 글의 성격에 맞게 고르면 돼요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "커뮤니티",
+     "path": "/livon/help/#community"
+    },
+    {
+     "name": "글 유형 여섯 가지는 어떻게 다른가요?",
+     "path": "/livon/help/community-post-types/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/community-post-types/",
+   "canonical": "https://www.newon.app/livon/help/community-post-types/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "ai-status",
+   "slug": "ai-status",
+   "path": "/livon/help/ai-status/",
+   "h1": "LIVON AI는 지금 사용할 수 있나요?",
+   "title": "LIVON AI는 지금 사용할 수 있나요? | LIVON 도움말",
+   "description": "아직 답변을 받을 수 없어요. LIVON AI는 AI 서버에 연결되어야 동작하는데, 지금은 연결되어 있지 않아요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "LIVON AI",
+     "path": "/livon/help/#ai"
+    },
+    {
+     "name": "LIVON AI는 지금 사용할 수 있나요?",
+     "path": "/livon/help/ai-status/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/ai-status/",
+   "canonical": "https://www.newon.app/livon/help/ai-status/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "ai-what-it-uses",
+   "slug": "ai-what-it-uses",
+   "path": "/livon/help/ai-what-it-uses/",
+   "h1": "LIVON AI는 어떤 정보를 사용하나요?",
+   "title": "LIVON AI는 어떤 정보를 사용하나요? | LIVON 도움말",
+   "description": "보낸 질문, 직접 가져온 화면 맥락, 관련 LIVON 정보 몇 건, 최근 대화만 사용해요. 연결된 뒤에 적용되는 방식이에요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "LIVON AI",
+     "path": "/livon/help/#ai"
+    },
+    {
+     "name": "LIVON AI는 어떤 정보를 사용하나요?",
+     "path": "/livon/help/ai-what-it-uses/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/ai-what-it-uses/",
+   "canonical": "https://www.newon.app/livon/help/ai-what-it-uses/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "ai-personalization",
+   "slug": "ai-personalization",
+   "path": "/livon/help/ai-personalization/",
+   "h1": "맞춤 설정이 AI로 전송되나요?",
+   "title": "맞춤 설정이 AI로 전송되나요? | LIVON 도움말",
+   "description": "아니요. 처음 설정에서 고른 연령대·관심 분야·Life Event는 AI로 자동 전송되지 않아요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "LIVON AI",
+     "path": "/livon/help/#ai"
+    },
+    {
+     "name": "맞춤 설정이 AI로 전송되나요?",
+     "path": "/livon/help/ai-personalization/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/ai-personalization/",
+   "canonical": "https://www.newon.app/livon/help/ai-personalization/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "ts-cannot-save",
+   "slug": "ts-cannot-save",
+   "path": "/livon/help/ts-cannot-save/",
+   "h1": "저장이 안 돼요",
+   "title": "저장이 안 돼요 | LIVON 도움말",
+   "description": "브라우저가 저장을 막고 있거나 저장 공간이 가득 찼을 수 있어요. 저장을 눌러도 남지 않거나, 새로고침하면 사라져요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "문제 해결",
+     "path": "/livon/help/#troubleshooting"
+    },
+    {
+     "name": "저장이 안 돼요",
+     "path": "/livon/help/ts-cannot-save/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/ts-cannot-save/",
+   "canonical": "https://www.newon.app/livon/help/ts-cannot-save/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "ts-data-disappeared",
+   "slug": "ts-data-disappeared",
+   "path": "/livon/help/ts-data-disappeared/",
+   "h1": "저장한 내용이 사라졌어요",
+   "title": "저장한 내용이 사라졌어요 | LIVON 도움말",
+   "description": "대부분 브라우저의 사이트 데이터가 지워졌거나, 다른 브라우저·다른 기기로 보고 있는 경우예요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "문제 해결",
+     "path": "/livon/help/#troubleshooting"
+    },
+    {
+     "name": "저장한 내용이 사라졌어요",
+     "path": "/livon/help/ts-data-disappeared/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/ts-data-disappeared/",
+   "canonical": "https://www.newon.app/livon/help/ts-data-disappeared/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "ts-other-device",
+   "slug": "ts-other-device",
+   "path": "/livon/help/ts-other-device/",
+   "h1": "다른 기기에서 내용이 안 보여요",
+   "title": "다른 기기에서 내용이 안 보여요 | LIVON 도움말",
+   "description": "정상이에요. 내용은 기기마다 따로 저장되고, 기기 사이의 동기화는 아직 없어요. 휴대폰에서 저장한 내용이 컴퓨터에서 보이지 않아요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "문제 해결",
+     "path": "/livon/help/#troubleshooting"
+    },
+    {
+     "name": "다른 기기에서 내용이 안 보여요",
+     "path": "/livon/help/ts-other-device/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/ts-other-device/",
+   "canonical": "https://www.newon.app/livon/help/ts-other-device/"
+  },
+  {
+   "index": true,
+   "lastmod": null,
+   "type": "help-article",
+   "sourceId": "ts-ai-not-working",
+   "slug": "ts-ai-not-working",
+   "path": "/livon/help/ts-ai-not-working/",
+   "h1": "AI가 동작하지 않아요",
+   "title": "AI가 동작하지 않아요 | LIVON 도움말",
+   "description": "LIVON AI 서버가 연결되지 않아 답변을 받을 수 없는 상태예요. 기기나 브라우저의 문제가 아니에요.",
+   "breadcrumbs": [
+    {
+     "name": "LIVON",
+     "path": "/livon/"
+    },
+    {
+     "name": "도움말",
+     "path": "/livon/help/"
+    },
+    {
+     "name": "문제 해결",
+     "path": "/livon/help/#troubleshooting"
+    },
+    {
+     "name": "AI가 동작하지 않아요",
+     "path": "/livon/help/ts-ai-not-working/"
+    }
+   ],
+   "url": "https://www.newon.app/livon/help/ts-ai-not-working/",
+   "canonical": "https://www.newon.app/livon/help/ts-ai-not-working/"
+  }
+ ],
+ "excluded": [
+  {
+   "type": "life-topic",
+   "sourceId": "10s.self-growth",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/self-growth"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.hobby-teen",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/hobby-teen"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.digital-teen",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/digital-teen"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.youth-support",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/youth-support"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.university-life",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/university-life"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.housing-20",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/housing-20"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.love-relationship",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/love-relationship"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.startup-20",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/startup-20"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.hobby-culture-20",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/hobby-culture-20"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.startup-30",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/startup-30"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.birth-30",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/birth-30"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.relationship-30",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/relationship-30"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.travel-30",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/travel-30"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.self-dev-30",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/self-dev-30"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.invest-40",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/invest-40"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.family-40",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/family-40"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.leisure-40",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/leisure-40"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.self-dev-40",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/self-dev-40"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.exercise-50",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/exercise-50"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.kids-independence-50",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/kids-independence-50"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.travel-50",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/travel-50"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.social-50",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/social-50"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.asset-60",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/asset-60"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.hobby-60",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/hobby-60"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.travel-60",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/travel-60"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.family-60",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/family-60"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.housing-60",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/housing-60"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.exercise-70",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/exercise-70"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.pension-70",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/pension-70"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.housing-70",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/housing-70"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.travel-70",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/travel-70"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.social-70",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/social-70"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.assignment-calendar",
+   "reason": "relations,not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/assignment-calendar"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.job-interview-notes",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/job-interview-notes"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.subject-career-map",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/subject-career-map"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.admission-calendar",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/admission-calendar"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.major-comparison",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/major-comparison"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.exam-review",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/exam-review"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.small-project",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/small-project"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.relationship-boundaries",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/relationship-boundaries"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.sleep-diary",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/sleep-diary"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.club-choice",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/club-choice"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.saving-goal",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/saving-goal"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.account-security",
+   "reason": "relations,not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/account-security"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.parttime-contract",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/parttime-contract"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.counseling-prep",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/counseling-prep"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.scholarship-plan",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/scholarship-plan"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.resume-portfolio",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/resume-portfolio"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.interview-practice",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/interview-practice"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.first-workplace",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/first-workplace"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.work-feedback",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/work-feedback"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.course-choice",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/course-choice"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.independence-budget",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/independence-budget"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.moving-preparation",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/moving-preparation"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.living-expenses",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/living-expenses"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.rental-check",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/rental-check"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.housing-application",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/housing-application"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.emergency-fund",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/emergency-fund"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.saving-plan",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/saving-plan"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.investment-basics",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/investment-basics"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.checkup-prep",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/checkup-prep"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.relationship-conversation",
+   "reason": "relations,not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/relationship-conversation"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.travel-budget",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/travel-budget"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.idea-validation",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/idea-validation"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.business-plan",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/business-plan"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.startup-cost",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/startup-cost"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.registration-prep",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/registration-prep"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.first-customers",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/first-customers"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.culture-calendar",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/culture-calendar"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.policy-documents",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/policy-documents"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.achievement-record",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/achievement-record"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.job-offer-compare",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/job-offer-compare"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.handover-plan",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/handover-plan"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.first-customers",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/first-customers"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.pilot-operation",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/pilot-operation"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.household-cashflow",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/household-cashflow"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.financial-goals",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/financial-goals"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.home-viewing",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/home-viewing"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.wedding-budget",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/wedding-budget"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.birth-support",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/birth-support"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.postpartum-support",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/postpartum-support"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.childcare-choice",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/childcare-choice"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.return-to-work",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/return-to-work"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.appointment-notes",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/appointment-notes"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.social-time",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/social-time"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.family-travel",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/family-travel"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.learning-routine",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/learning-routine"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.shared-housework",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/shared-housework"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.transferable-skills",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/transferable-skills"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.retraining-choice",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/retraining-choice"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.debt-calendar",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/debt-calendar"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.investment-risk",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/investment-risk"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.home-maintenance",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/home-maintenance"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.education-dialogue",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/education-dialogue"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.education-budget",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/education-budget"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.care-needs",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/care-needs"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.care-family-plan",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/care-family-plan"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.checkup-followup",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/checkup-followup"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.exercise-schedule",
+   "reason": "relations,not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/exercise-schedule"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.family-meeting",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/family-meeting"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.weekend-rest",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/weekend-rest"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.retirement-gap",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/retirement-gap"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.digital-work-skills",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/digital-work-skills"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.career-profile",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/career-profile"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.work-options",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/work-options"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.retirement-transition",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/retirement-transition"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.income-bridge",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/income-bridge"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.asset-inventory",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/asset-inventory"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.pension-records",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/pension-records"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.pension-questions",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/pension-questions"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.health-records",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/health-records"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.mental-wellbeing",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/mental-wellbeing"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.exercise-class",
+   "reason": "relations,not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/exercise-class"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.longtermcare-prep",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/longtermcare-prep"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.caregiver-rest",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/caregiver-rest"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.adult-child-budget",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/adult-child-budget"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.long-stay-travel",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/long-stay-travel"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.hobby-project",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/hobby-project"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.volunteer-start",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/volunteer-start"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.downsizing-plan",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/downsizing-plan"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.weekly-rhythm",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/weekly-rhythm"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.pension-claim",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/pension-claim"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.pension-monthly-plan",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/pension-monthly-plan"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.retirement-spending",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/retirement-spending"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.financial-scam-check",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/financial-scam-check"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.regular-care",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/regular-care"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.walking-plan",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/walking-plan"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.community-learning",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/community-learning"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.accessible-travel",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/accessible-travel"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.regular-gathering",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/regular-gathering"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.senior-job-application",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/senior-job-application"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.workload-check",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/workload-check"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.grandchild-boundaries",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/grandchild-boundaries"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.home-accessibility",
+   "reason": "relations,not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/home-accessibility"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.future-care-wishes",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/future-care-wishes"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.online-documents",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/online-documents"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.smartphone-security",
+   "reason": "relations,not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/smartphone-security"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.daily-health-notes",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/daily-health-notes"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.medicine-list",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/medicine-list"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.hospital-visit",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/hospital-visit"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.medical-documents",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/medical-documents"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.movement-support",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/movement-support"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.care-service-compare",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/care-service-compare"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.care-backup",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/care-backup"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.welfare-consult",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/welfare-consult"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.application-followup",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/application-followup"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.pension-notices",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/pension-notices"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.meal-support",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/meal-support"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.mobility-support",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/mobility-support"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.fall-hazards",
+   "reason": "relations,not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/fall-hazards"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.housing-repair-help",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/housing-repair-help"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.family-contact-plan",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/family-contact-plan"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.easy-hobby",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/easy-hobby"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.short-outing",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/short-outing"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.local-center",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/local-center"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.kiosk-practice",
+   "reason": "relations,not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/kiosk-practice"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.message-safety",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/message-safety"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.school-health-help",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/school-health-help"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "10s.payment-check",
+   "reason": "not-featured",
+   "where": "/livon/life/10s/ (listed) · app #life/10s/payment-check"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "20s.stress-support",
+   "reason": "not-featured",
+   "where": "/livon/life/20s/ (listed) · app #life/20s/stress-support"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.moving-family",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/moving-family"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "30s.rest-and-work",
+   "reason": "not-featured",
+   "where": "/livon/life/30s/ (listed) · app #life/30s/rest-and-work"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.annual-expenses",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/annual-expenses"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.investment-documents",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/investment-documents"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.screening-schedule",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/screening-schedule"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "40s.retirement-life-goals",
+   "reason": "not-featured",
+   "where": "/livon/life/40s/ (listed) · app #life/40s/retirement-life-goals"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.financial-doc-review",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/financial-doc-review"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "50s.retirement-neighborhood",
+   "reason": "not-featured",
+   "where": "/livon/life/50s/ (listed) · app #life/50s/retirement-neighborhood"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.checkup-consult",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/checkup-consult"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.care-provider-questions",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/care-provider-questions"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "60s.housing-options",
+   "reason": "not-featured",
+   "where": "/livon/life/60s/ (listed) · app #life/60s/housing-options"
+  },
+  {
+   "type": "life-topic",
+   "sourceId": "70s.living-budget",
+   "reason": "not-featured",
+   "where": "/livon/life/70s/ (listed) · app #life/70s/living-budget"
+  },
+  {
+   "type": "life-event",
+   "sourceId": "resign",
+   "reason": "few-topics",
+   "where": "/livon/life-events/ (listed)"
+  },
+  {
+   "type": "life-event",
+   "sourceId": "move",
+   "reason": "few-topics",
+   "where": "/livon/life-events/ (listed)"
+  },
+  {
+   "type": "life-event",
+   "sourceId": "dating",
+   "reason": "few-topics",
+   "where": "/livon/life-events/ (listed)"
+  },
+  {
+   "type": "life-event",
+   "sourceId": "marriage",
+   "reason": "few-topics",
+   "where": "/livon/life-events/ (listed)"
+  },
+  {
+   "type": "life-event",
+   "sourceId": "pregnancy",
+   "reason": "few-topics",
+   "where": "/livon/life-events/ (listed)"
+  },
+  {
+   "type": "life-event",
+   "sourceId": "home-buy",
+   "reason": "few-topics",
+   "where": "/livon/life-events/ (listed)"
+  },
+  {
+   "type": "life-event",
+   "sourceId": "campus-life",
+   "reason": "few-topics",
+   "where": "/livon/life-events/ (listed)"
+  },
+  {
+   "type": "life-event",
+   "sourceId": "cert",
+   "reason": "few-topics",
+   "where": "/livon/life-events/ (listed)"
+  },
+  {
+   "type": "life-event",
+   "sourceId": "freelance",
+   "reason": "no-content",
+   "where": "/livon/life-events/ (listed)"
+  },
+  {
+   "type": "life-event",
+   "sourceId": "car",
+   "reason": "no-content",
+   "where": "/livon/life-events/ (listed)"
+  },
+  {
+   "type": "life-event",
+   "sourceId": "abroad",
+   "reason": "no-content",
+   "where": "/livon/life-events/ (listed)"
+  },
+  {
+   "type": "life-event",
+   "sourceId": "loan",
+   "reason": "few-topics",
+   "where": "/livon/life-events/ (listed)"
+  },
+  {
+   "type": "life-event",
+   "sourceId": "first-trip",
+   "reason": "few-topics",
+   "where": "/livon/life-events/ (listed)"
+  },
+  {
+   "type": "life-event",
+   "sourceId": "long-trip",
+   "reason": "no-content",
+   "where": "/livon/life-events/ (listed)"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "contact-support",
+   "reason": "internal-help-only",
+   "where": "app #help/a/contact-support"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "future-account",
+   "reason": "internal-help-only",
+   "where": "app #help/a/future-account"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "onboarding-restart",
+   "reason": "internal-help-only",
+   "where": "app #help/a/onboarding-restart"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "recommendation-reason",
+   "reason": "internal-help-only",
+   "where": "app #help/a/recommendation-reason"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "life-event-no-guide",
+   "reason": "internal-help-only",
+   "where": "app #help/a/life-event-no-guide"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "onboarding-resume",
+   "reason": "internal-help-only",
+   "where": "app #help/a/onboarding-resume"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "change-preferences",
+   "reason": "internal-help-only",
+   "where": "app #help/a/change-preferences"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "today-personalization",
+   "reason": "internal-help-only",
+   "where": "app #help/a/today-personalization"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "my-life-reset-scope",
+   "reason": "internal-help-only",
+   "where": "app #help/a/my-life-reset-scope"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "search-difference",
+   "reason": "internal-help-only",
+   "where": "app #help/a/search-difference"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "community-report-duplicate",
+   "reason": "internal-help-only",
+   "where": "app #help/a/community-report-duplicate"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "community-autosave",
+   "reason": "internal-help-only",
+   "where": "app #help/a/community-autosave"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "community-draft-vs-autosave",
+   "reason": "internal-help-only",
+   "where": "app #help/a/community-draft-vs-autosave"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "community-delete-post",
+   "reason": "internal-help-only",
+   "where": "app #help/a/community-delete-post"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "community-reaction-count",
+   "reason": "internal-help-only",
+   "where": "app #help/a/community-reaction-count"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "community-share-link",
+   "reason": "internal-help-only",
+   "where": "app #help/a/community-share-link"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "community-display-name",
+   "reason": "internal-help-only",
+   "where": "app #help/a/community-display-name"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "community-reset",
+   "reason": "internal-help-only",
+   "where": "app #help/a/community-reset"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "community-related-info",
+   "reason": "internal-help-only",
+   "where": "app #help/a/community-related-info"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "community-comments",
+   "reason": "internal-help-only",
+   "where": "app #help/a/community-comments"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "community-search-filter",
+   "reason": "internal-help-only",
+   "where": "app #help/a/community-search-filter"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "ai-save-to-my-life",
+   "reason": "internal-help-only",
+   "where": "app #help/a/ai-save-to-my-life"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "ts-recommendation-off",
+   "reason": "internal-help-only",
+   "where": "app #help/a/ts-recommendation-off"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "ts-onboarding-not-showing",
+   "reason": "internal-help-only",
+   "where": "app #help/a/ts-onboarding-not-showing"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "ts-community-post-missing",
+   "reason": "internal-help-only",
+   "where": "app #help/a/ts-community-post-missing"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "ts-community-link",
+   "reason": "internal-help-only",
+   "where": "app #help/a/ts-community-link"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "ts-following-empty",
+   "reason": "internal-help-only",
+   "where": "app #help/a/ts-following-empty"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "ts-report-not-sent",
+   "reason": "internal-help-only",
+   "where": "app #help/a/ts-report-not-sent"
+  },
+  {
+   "type": "help-article",
+   "sourceId": "ts-search-no-result",
+   "reason": "internal-help-only",
+   "where": "app #help/a/ts-search-no-result"
+  }
+ ],
+ "excludedAreas": [
+  {
+   "area": "my-life",
+   "reason": "personal area: a visitor's own data in the browser — nothing public to index"
+  },
+  {
+   "area": "onboarding",
+   "reason": "a personal setup dialog, not content"
+  },
+  {
+   "area": "personalization",
+   "reason": "a visitor's preferences"
+  },
+  {
+   "area": "community-local",
+   "reason": "posts exist only in the writer's browser — never generated, never indexed"
+  },
+  {
+   "area": "community-curated",
+   "reason": "group and challenge names only: too thin for a page"
+  },
+  {
+   "area": "today",
+   "reason": "places and seasonal picks whose hours, prices and dates change: existing redirect stubs stay noindex"
+  },
+  {
+   "area": "explore",
+   "reason": "records are pointers to official sites: a page per record would be thin; the official site is the right result"
+  },
+  {
+   "area": "search-results",
+   "reason": "query and filter states (#ex-results?q=, #cm-home?q=, #help/search?q=) are not pages"
+  },
+  {
+   "area": "livon-ai",
+   "reason": "an interactive tool with no public content"
+  },
+  {
+   "area": "admin",
+   "reason": "local tool, removed from the published site"
+  },
+  {
+   "area": "data-manager",
+   "reason": "local tool, removed from the published site"
+  }
+ ]
+}

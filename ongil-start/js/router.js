@@ -1,0 +1,105 @@
+/*
+ * ONGIL router — hash based, same convention the shell already used (html[data-og-view] + main > [data-og-screen]).
+ *
+ * Pure part (no DOM):   VIEWS · ROUTE_ALIASES · resolveView(hash) · hashFor(view)
+ * Browser part:         createRouter({ win, doc, onChange })
+ *
+ * Old deep links keep working: #ongil-home, #learn, #profile, #settings, #support, #share.
+ * A hash that is not a route (for example an in-page anchor) leaves the current view as it is.
+ * A view may have sections: "#life/calendar" is the view "life" with the section "calendar" (Phase 2B).
+ */
+export const VIEWS = Object.freeze(['home', 'life', 'health', 'family', 'care', 'enjoy', 'community', 'store', 'saved', 'account']);
+export const PRIMARY_VIEWS = Object.freeze(['home', 'life', 'health', 'family', 'care', 'enjoy', 'community', 'store']);
+export const GLOBAL_VIEWS = Object.freeze(['saved', 'account']);
+/* internal views have an address but no place in any menu (Phase 9: the local operations view) */
+export const INTERNAL_VIEWS = Object.freeze(['admin']);
+/* overlays are panels on top of the current view, not views */
+export const OVERLAYS = Object.freeze(['search', 'notifications', 'assistant']);
+
+export const ROUTE_ALIASES = Object.freeze({
+  '': 'home',
+  'ongil-home': 'home',
+  home: 'home',
+  life: 'life',
+  health: 'health',
+  family: 'family',
+  share: 'family',
+  care: 'care',
+  enjoy: 'enjoy',
+  learn: 'enjoy',
+  community: 'community',
+  store: 'store',
+  saved: 'saved',
+  account: 'account',
+  profile: 'account',
+  settings: 'account',
+  support: 'home',
+  admin: 'admin',
+});
+
+const CANONICAL = Object.freeze({ home: 'ongil-home' });
+
+export function resolveView(hash) {
+  const key = String(hash || '').replace(/^#/, '').split('/')[0];
+  return Object.prototype.hasOwnProperty.call(ROUTE_ALIASES, key) ? ROUTE_ALIASES[key] : null;
+}
+/*
+ * A section is lower-case letters, digits, "-" and "_", starting with a letter. Community V2 widened it (BEFORE:
+ * letters and "-" only, 31 characters) so that a post on this device has an address: "#community/post-cp_…". Every
+ * screen still checks its own sections; anything it does not know falls back to the screen itself.
+ */
+export const SECTION_RE = /^[a-z][a-z0-9_-]{0,60}$/;
+/* the part after the first "/": "#life/calendar" → "calendar"; none → "" */
+export function sectionOf(hash) {
+  const parts = String(hash || '').replace(/^#/, '').split('/');
+  return parts.length === 2 && SECTION_RE.test(parts[1]) ? parts[1] : '';
+}
+
+export function hashFor(view) {
+  if (!VIEWS.includes(view) && !INTERNAL_VIEWS.includes(view)) return '#ongil-home';
+  return `#${CANONICAL[view] || view}`;
+}
+
+export function createRouter({ win, doc, onChange }) {
+  const html = doc.documentElement;
+  let current = null;
+  let currentSection = '';
+
+  function apply(view, { userInitiated, section = '' }) {
+    const previous = current;
+    const previousSection = currentSection;
+    current = view;
+    currentSection = section;
+    html.dataset.ogView = view;
+    for (const screen of doc.querySelectorAll('main > [data-og-screen]')) {
+      const on = screen.getAttribute('data-og-screen') === view;
+      screen.hidden = !on;
+    }
+    if (previous !== view) {
+      if (previous !== null) win.scrollTo(0, 0);
+      if (typeof onChange === 'function') onChange({ view, previous, userInitiated, section, sectionOnly: false });
+    } else if (previousSection !== section && typeof onChange === 'function') {
+      /* same view, another section: no scroll reset, the view decides where to go */
+      onChange({ view, previous, userInitiated, section, sectionOnly: true });
+    }
+  }
+
+  function sync(userInitiated) {
+    const view = resolveView(win.location.hash);
+    if (view === null) {
+      if (current === null) apply('home', { userInitiated: false });
+      return;
+    }
+    apply(view, { userInitiated, section: sectionOf(win.location.hash) });
+  }
+
+  function go(view) {
+    const target = hashFor(view);
+    if (win.location.hash === target) sync(true);
+    else win.location.hash = target;
+  }
+
+  win.addEventListener('hashchange', () => sync(true));
+
+  return Object.freeze({ start: () => sync(false), go, current: () => current, section: () => currentSection });
+}

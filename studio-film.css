@@ -1,0 +1,263 @@
+/* Newon Studio first-screen film. Scoped to #studio-film. Does not restyle Business. */
+.hub-page:has(#studio-film) {
+  padding: 0;
+  max-width: none;
+  overflow-x: clip;
+}
+
+#studio-film.st-film {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  width: 100vw;
+  max-width: 100vw;
+  margin: calc(-1 * var(--gnav-h, 74px)) 0 0 calc(50% - 50vw);
+  min-height: 100svh;
+  height: 100svh;
+  max-height: 100svh;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+}
+
+#studio-film.st-film .st-film__stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+#studio-film.st-film .st-film__fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #000;
+}
+
+#studio-film.st-film .st-film__video {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 48%;
+  pointer-events: none;
+}
+
+#studio-film.st-film .st-film__video::-webkit-media-controls,
+#studio-film.st-film .st-film__video::-webkit-media-controls-enclosure,
+#studio-film.st-film .st-film__video::-webkit-media-controls-start-playback-button,
+#studio-film.st-film .st-film__video::-webkit-media-controls-play-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+
+#studio-film.st-film .st-film__lockup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(56rem, calc(100vw - 1.6rem));
+  margin: 0;
+  padding: 1.4rem 1rem 1.6rem;
+  transform: translate(-50%, -48%);
+  text-align: center;
+}
+
+#studio-film.st-film .st-film__veil {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  z-index: 0;
+  width: min(52rem, 124%);
+  height: min(32rem, 160%);
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(
+      ellipse 58% 52% at 50% 46%,
+      rgba(8, 16, 18, 0.28) 0%,
+      rgba(8, 16, 18, 0.1) 48%,
+      rgba(8, 16, 18, 0) 78%
+    );
+  pointer-events: none;
+}
+
+#studio-film.st-film .st-film__wordmark,
+#studio-film.st-film .st-film__slogan,
+#studio-film.st-film .st-film__lead,
+#studio-film.st-film .st-film__actions {
+  position: relative;
+  z-index: 1;
+}
+
+#studio-film.st-film .st-film__wordmark {
+  margin: 0 0 2.15rem;
+  color: #fff;
+  font-family: "Noto Sans", "Noto Sans KR", "Pretendard", sans-serif;
+  font-size: clamp(6.2rem, 22vw, 12.5rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+}
+
+#studio-film.st-film .st-film__slogan {
+  margin: 0;
+  color: #fff;
+  font-family: "Noto Sans KR", "Noto Sans", "Pretendard", sans-serif;
+  font-size: clamp(1.45rem, 3.2vw, 2.35rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.28;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.36);
+}
+
+#studio-film.st-film .st-film__lead {
+  margin: 0.95rem 0 0;
+  max-width: 34rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: "Noto Sans KR", "Noto Sans", "Pretendard", sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  font-weight: 430;
+  letter-spacing: -0.02em;
+  line-height: 1.62;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.34);
+}
+
+#studio-film.st-film .st-film__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.35rem;
+}
+
+#studio-film.st-film .st-film__actions .btn {
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+#studio-film.st-film .st-film__actions .btn-primary {
+  background: #fff;
+  color: #111;
+  border-color: #fff;
+}
+
+#studio-film.st-film .st-film__actions .btn-ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.72);
+}
+
+#studio-film.st-film .st-film__actions .btn-primary:hover,
+#studio-film.st-film .st-film__actions .btn-primary:focus-visible {
+  opacity: 1;
+  background: #f3f3f3;
+  border-color: #f3f3f3;
+  color: #111;
+}
+
+#studio-film.st-film .st-film__actions .btn-ghost:hover,
+#studio-film.st-film .st-film__actions .btn-ghost:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+  color: #fff;
+}
+
+#studio-film.st-film .st-film__wordmark,
+#studio-film.st-film .st-film__slogan,
+#studio-film.st-film .st-film__lead,
+#studio-film.st-film .st-film__actions {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+#studio-film.st-film.is-ready .st-film__wordmark,
+#studio-film.st-film.is-ready .st-film__slogan,
+#studio-film.st-film.is-ready .st-film__lead,
+#studio-film.st-film.is-ready .st-film__actions {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#studio-film.st-film.is-ready .st-film__wordmark {
+  transition-delay: 0.12s;
+}
+
+#studio-film.st-film.is-ready .st-film__slogan {
+  transition-delay: 0.3s;
+}
+
+#studio-film.st-film.is-ready .st-film__lead {
+  transition-delay: 0.48s;
+}
+
+#studio-film.st-film.is-ready .st-film__actions {
+  transition-delay: 0.64s;
+}
+
+@media (max-width: 760px) {
+  #studio-film.st-film .st-film__lockup {
+    top: 52%;
+    width: min(56rem, calc(100vw - 1.2rem));
+    padding: 1rem 0.4rem 1.2rem;
+    transform: translate(-50%, -46%);
+  }
+
+  #studio-film.st-film .st-film__wordmark {
+    font-size: clamp(4rem, 22vw, 6.6rem);
+    margin-bottom: 1.65rem;
+  }
+
+  #studio-film.st-film .st-film__slogan {
+    font-size: clamp(1.28rem, 5.8vw, 1.75rem);
+  }
+
+  #studio-film.st-film .st-film__lead {
+    max-width: min(26rem, 100%);
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-height: 720px) {
+  #studio-film.st-film .st-film__lockup {
+    top: 50%;
+    padding-block: 0.7rem;
+  }
+
+  #studio-film.st-film .st-film__wordmark {
+    font-size: clamp(3.8rem, 15vw, 7.4rem);
+    margin-bottom: 1.45rem;
+  }
+
+  #studio-film.st-film .st-film__actions {
+    margin-top: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  #studio-film.st-film .st-film__wordmark,
+  #studio-film.st-film .st-film__slogan,
+  #studio-film.st-film .st-film__lead,
+  #studio-film.st-film .st-film__actions,
+  #studio-film.st-film.is-ready .st-film__wordmark,
+  #studio-film.st-film.is-ready .st-film__slogan,
+  #studio-film.st-film.is-ready .st-film__lead,
+  #studio-film.st-film.is-ready .st-film__actions {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
