@@ -42,7 +42,7 @@
     <link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/flagship-subnav.css?v=20261019fsn3" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=20261025ov1" />
-    <link rel="stylesheet" href="/petlog-site.css?v=20261026v3" />
+    <link rel="stylesheet" href="/petlog-site.css?v=20261026v4" />
     <style>
   /* Background film framing: show more of the right side (owner request 2026-10-19). */
   #lifestage-detail.nls[data-story="petlog"] .nls-film__video { object-position: 75% 50%; }
@@ -786,7 +786,7 @@
 </nav>
   <div class="nls__wrap">
     <div id="nls-structure" class="nls-block" data-hs-section>
-    <header class="nls-head pl-head--row">
+    <header class="nls-head pl-head--hero">
     <p class="nls-kicker">BUSINESS MODEL</p>
     <h2 class="nls-title">누가 쓰고,<br>누가 지불하는가.</h2>
     <p class="nls-lead">PETLOG의 사업은 무료 기록 습관에서 출발해 구독, 서비스 예약, 거래, 업체·기관 서비스로 이어지는 구조입니다. 아래 지불 구조는 사업 설계이며, 현재 앱에서 판매 상품으로 공개된 것은 개인 구독(Premium)입니다.</p>
@@ -946,7 +946,13 @@
     <p class="nls-kicker">PETLOG BUSINESS · SAAS</p>
     <h2 class="nls-title">여러 업체가 함께 쓰는<br>표준 운영 도구.</h2>
     <p class="nls-lead">고객별 맞춤 앱·웹을 만드는 외주가 아니라, 반려 서비스 업체가 공통으로 쓰는 자체 SaaS로 설계합니다. 사업계획서는 기본 등록 무료부터 Starter·Growth·Pro·Enterprise까지 단계별 플랜을 제안하며, 요금은 업체 인터뷰와 파일럿으로 검증한 뒤 정합니다.</p>
-  </header><ul class="pl-products"><li><b lang="en">PETLOG Booking</b><p class="pl-p pl-sm">예약·일정 관리. 업체의 예약 가능 시간과 일정을 한 화면에서 관리합니다.</p></li><li><b lang="en">PETLOG CRM</b><p class="pl-p pl-sm">고객·반려동물 정보 관리. 보호자가 동의한 범위의 정보만 업체가 확인하는 구조로 설계합니다.</p></li><li><b lang="en">PETLOG Care</b><p class="pl-p pl-sm">돌봄 일정·서비스 기록. 미용·위탁·돌봄 내용을 기록해 보호자와 공유합니다.</p></li><li><b lang="en">PETLOG Business</b><p class="pl-p pl-sm">운영 현황. 예약과 서비스 이용 흐름을 한눈에 보는 운영 화면입니다.</p></li><li><b lang="en">PETLOG Automation</b><p class="pl-p pl-sm">예약 알림·반복 업무 자동화. 예약 안내와 반복 업무를 줄입니다.</p></li></ul>
+  </header><figure class="pl-console">
+    <div class="pl-console__bar"><b lang="en">PETLOG Business</b><p class="pl-mockcap"><span>예시 화면 · 제안</span>실제 앱 화면과 다를 수 있습니다.</p></div>
+    <div class="pl-console__body">
+      <ul class="pl-console__nav" aria-hidden="true"><li class="is-on"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M9 3v4M15 3v4"/><path d="M9.5 14.5l1.8 1.8 3.4-3.4"/></svg><span lang="en">Booking</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M3 19.5c.8-3.4 3.2-5.2 6-5.2s5.2 1.8 6 5.2M15.5 14.3c2.5-.4 4.7 1 5.5 3.7"/></svg><span lang="en">CRM</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3.5"/></svg><span lang="en">Care</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20V4M4 20h16"/><path d="M8.5 16v-4M12.5 16V8M16.5 16v-6"/></svg><span lang="en">Business</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 12a7.5 7.5 0 0 1 13.2-4.9M19.5 12a7.5 7.5 0 0 1-13.2 4.9"/><path d="M18 3.5v4h-4M6 20.5v-4h4"/></svg><span lang="en">Automation</span></li></ul>
+      <ul class="pl-console__main"><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M9 3v4M15 3v4"/><path d="M9.5 14.5l1.8 1.8 3.4-3.4"/></svg></span><div><b lang="en">PETLOG Booking</b><p class="pl-p pl-sm">예약·일정 관리. 업체의 예약 가능 시간과 일정을 한 화면에서 관리합니다.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M3 19.5c.8-3.4 3.2-5.2 6-5.2s5.2 1.8 6 5.2M15.5 14.3c2.5-.4 4.7 1 5.5 3.7"/></svg></span><div><b lang="en">PETLOG CRM</b><p class="pl-p pl-sm">고객·반려동물 정보 관리. 보호자가 동의한 범위의 정보만 업체가 확인하는 구조로 설계합니다.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3.5"/></svg></span><div><b lang="en">PETLOG Care</b><p class="pl-p pl-sm">돌봄 일정·서비스 기록. 미용·위탁·돌봄 내용을 기록해 보호자와 공유합니다.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20V4M4 20h16"/><path d="M8.5 16v-4M12.5 16V8M16.5 16v-6"/></svg></span><div><b lang="en">PETLOG Business</b><p class="pl-p pl-sm">운영 현황. 예약과 서비스 이용 흐름을 한눈에 보는 운영 화면입니다.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 12a7.5 7.5 0 0 1 13.2-4.9M19.5 12a7.5 7.5 0 0 1-13.2 4.9"/><path d="M18 3.5v4h-4M6 20.5v-4h4"/></svg></span><div><b lang="en">PETLOG Automation</b><p class="pl-p pl-sm">예약 알림·반복 업무 자동화. 예약 안내와 반복 업무를 줄입니다.</p></div></li></ul>
+    </div>
+  </figure>
     <div class="pl-duo pl-duo--even">
       <div><h4 class="pl-minihead">업종별로 필요한 기능</h4><div class="pl-xt-wrap"><table class="pl-xt pl-xt--2 pl-xt--mini"><thead><tr><th scope="col">대상</th><th scope="col">주요 기능</th></tr></thead><tbody><tr><th scope="row">미용실</th><td data-label="주요 기능">예약·고객·반려동물 관리</td></tr><tr><th scope="row">호텔·유치원</th><td data-label="주요 기능">객실·등원·활동 기록</td></tr><tr><th scope="row">펫시터</th><td data-label="주요 기능">예약·일정·돌봄 일지</td></tr><tr><th scope="row">훈련사</th><td data-label="주요 기능">상담·교육·수업 관리</td></tr><tr><th scope="row">펫용품 판매자</th><td data-label="주요 기능">상품·주문·정산</td></tr><tr><th scope="row">동물병원</th><td data-label="주요 기능">적법한 범위의 일정·고객 도구(의료 기록 업무는 더 엄격한 보안·법률 검토)</td></tr><tr><th scope="row">보호소</th><td data-label="주요 기능">공식 입양·봉사 운영</td></tr><tr><th scope="row">장례업체</th><td data-label="주요 기능">서비스·예약·상담 관리</td></tr></tbody></table></div></div>
       <div><h4 class="pl-minihead">업체 규모별 플랜 구성(제안)</h4><div class="pl-xt-wrap"><table class="pl-xt pl-xt--2 pl-xt--mini"><thead><tr><th scope="col">플랜(제안)</th><th scope="col">구성 방향</th></tr></thead><tbody><tr><th scope="row"><span lang="en">Business Free</span></th><td data-label="구성 방향">기본 업체 등록</td></tr><tr><th scope="row"><span lang="en">Starter</span></th><td data-label="구성 방향">소규모 미용·돌봄 업체</td></tr><tr><th scope="row"><span lang="en">Growth</span></th><td data-label="구성 방향">호텔·유치원, 직원이 여럿인 업체</td></tr><tr><th scope="row"><span lang="en">Pro</span></th><td data-label="구성 방향">고급 통계·운영 관리</td></tr><tr><th scope="row"><span lang="en">Enterprise</span></th><td data-label="구성 방향">여러 지점을 둔 대형 업체(별도 계약)</td></tr></tbody></table></div></div>
@@ -959,7 +965,7 @@
     <p class="nls-lead">수수료율·광고 단가·구독료는 시장 검증 전 제안이며, 거래액·매출 전망은 공개하지 않습니다. 거래 수수료는 이용 완료·구매 확정 시점에만 발생하는 구조로 설계합니다.</p>
   </header>
     
-    <ul class="pl-table"><li class="pl-table__hd" aria-hidden="true"><span>수익 모델</span><span>내용</span><span style="justify-self:end">현재 상태</span></li><li><span class="pl-table__name"><span class="pl-n">01</span>개인·가족 구독</span><p class="pl-p">Premium 구독이 스토어에 공개되어 있습니다. 플랜 개편은 검토 단계입니다.</p><span class="pl-stage pl-stage--now">현재 제공</span></li><li><span class="pl-table__name"><span class="pl-n">02</span>미용·목욕 예약</span><p class="pl-p">이용 완료 시 업체가 내는 거래 수수료. 지역 파일럿 이후.</p><span class="pl-stage">향후 계획</span></li><li><span class="pl-table__name"><span class="pl-n">03</span>펫시터·산책 예약</span><p class="pl-p">돌봄 제공자의 거래 수수료. 책임·영업 요건 검토가 먼저.</p><span class="pl-stage pl-stage--review">검토 단계</span></li><li><span class="pl-table__name"><span class="pl-n">04</span>호텔·유치원 예약</span><p class="pl-p">숙박·등원 예약의 거래 수수료.</p><span class="pl-stage">향후 계획</span></li><li><span class="pl-table__name"><span class="pl-n">05</span>훈련·교육</span><p class="pl-p">훈련 수업·교육 콘텐츠 거래 수수료.</p><span class="pl-stage">향후 계획</span></li><li><span class="pl-table__name"><span class="pl-n">06</span>쇼핑·중고·공동구매</span><p class="pl-p">판매자가 내는 상품 거래 수수료. 요율은 가설.</p><span class="pl-stage">향후 계획</span></li><li><span class="pl-table__name"><span class="pl-n">07</span>실물 정기배송</span><p class="pl-p">사료·소모품 정기배송. 앱 구독과 별도.</p><span class="pl-stage">향후 계획</span></li><li><span class="pl-table__name"><span class="pl-n">08</span>여행·체험</span><p class="pl-p">동반 숙소·체험 제휴. 직접 계약이 있을 때만.</p><span class="pl-stage pl-stage--review">검토 단계</span></li><li><span class="pl-table__name"><span class="pl-n">09</span>스마트 기기</span><p class="pl-p">기기 판매 또는 제휴 수익.</p><span class="pl-stage pl-stage--review">검토 단계</span></li><li><span class="pl-table__name"><span class="pl-n">10</span>업체용 SaaS</span><p class="pl-p">업체 운영 도구 구독. 요금은 파일럿 후 결정.</p><span class="pl-stage">향후 계획</span></li><li><span class="pl-table__name"><span class="pl-n">11</span>장례·추모</span><p class="pl-p">등록 장례업체 연결과 기념 상품. 법률 검토 후.</p><span class="pl-stage pl-stage--review">검토 단계</span></li><li><span class="pl-table__name"><span class="pl-n">12</span>기업·브랜드 제휴</span><p class="pl-p">브랜드 광고·캠페인, 보험 정보 제휴, 기업 솔루션.</p><span class="pl-stage">향후 계획</span></li></ul><div class="pl-sub pl-sub--flat"><header class="nls-head">
+    <div class="pl-seg" role="group" aria-label="현재 상태" data-pl-filter="pl-revenue-list" hidden><button type="button" data-v="all" aria-pressed="true">전체 <span>12</span></button><button type="button" data-v="now" aria-pressed="false"><i class="pl-dot pl-dot--now" aria-hidden="true"></i>현재 제공 <span>1</span></button><button type="button" data-v="plan" aria-pressed="false"><i class="pl-dot pl-dot--plan" aria-hidden="true"></i>향후 계획 <span>7</span></button><button type="button" data-v="review" aria-pressed="false"><i class="pl-dot pl-dot--review" aria-hidden="true"></i>검토 단계 <span>4</span></button></div><ul class="pl-table" id="pl-revenue-list"><li class="pl-table__hd" aria-hidden="true"><span>수익 모델</span><span>내용</span><span style="justify-self:end">현재 상태</span></li><li data-status="now"><span class="pl-table__name"><span class="pl-n">01</span>개인·가족 구독</span><p class="pl-p">Premium 구독이 스토어에 공개되어 있습니다. 플랜 개편은 검토 단계입니다.</p><span class="pl-stage pl-stage--now">현재 제공</span></li><li data-status="plan"><span class="pl-table__name"><span class="pl-n">02</span>미용·목욕 예약</span><p class="pl-p">이용 완료 시 업체가 내는 거래 수수료. 지역 파일럿 이후.</p><span class="pl-stage">향후 계획</span></li><li data-status="review"><span class="pl-table__name"><span class="pl-n">03</span>펫시터·산책 예약</span><p class="pl-p">돌봄 제공자의 거래 수수료. 책임·영업 요건 검토가 먼저.</p><span class="pl-stage pl-stage--review">검토 단계</span></li><li data-status="plan"><span class="pl-table__name"><span class="pl-n">04</span>호텔·유치원 예약</span><p class="pl-p">숙박·등원 예약의 거래 수수료.</p><span class="pl-stage">향후 계획</span></li><li data-status="plan"><span class="pl-table__name"><span class="pl-n">05</span>훈련·교육</span><p class="pl-p">훈련 수업·교육 콘텐츠 거래 수수료.</p><span class="pl-stage">향후 계획</span></li><li data-status="plan"><span class="pl-table__name"><span class="pl-n">06</span>쇼핑·중고·공동구매</span><p class="pl-p">판매자가 내는 상품 거래 수수료. 요율은 가설.</p><span class="pl-stage">향후 계획</span></li><li data-status="plan"><span class="pl-table__name"><span class="pl-n">07</span>실물 정기배송</span><p class="pl-p">사료·소모품 정기배송. 앱 구독과 별도.</p><span class="pl-stage">향후 계획</span></li><li data-status="review"><span class="pl-table__name"><span class="pl-n">08</span>여행·체험</span><p class="pl-p">동반 숙소·체험 제휴. 직접 계약이 있을 때만.</p><span class="pl-stage pl-stage--review">검토 단계</span></li><li data-status="review"><span class="pl-table__name"><span class="pl-n">09</span>스마트 기기</span><p class="pl-p">기기 판매 또는 제휴 수익.</p><span class="pl-stage pl-stage--review">검토 단계</span></li><li data-status="plan"><span class="pl-table__name"><span class="pl-n">10</span>업체용 SaaS</span><p class="pl-p">업체 운영 도구 구독. 요금은 파일럿 후 결정.</p><span class="pl-stage">향후 계획</span></li><li data-status="review"><span class="pl-table__name"><span class="pl-n">11</span>장례·추모</span><p class="pl-p">등록 장례업체 연결과 기념 상품. 법률 검토 후.</p><span class="pl-stage pl-stage--review">검토 단계</span></li><li data-status="plan"><span class="pl-table__name"><span class="pl-n">12</span>기업·브랜드 제휴</span><p class="pl-p">브랜드 광고·캠페인, 보험 정보 제휴, 기업 솔루션.</p><span class="pl-stage">향후 계획</span></li></ul><div class="pl-sub pl-sub--flat"><header class="nls-head">
     
     <h2 class="nls-title">수수료 설계 원칙</h2>
     
@@ -975,7 +981,7 @@
     <ul class="pl-people pl-people--grid pl-people--3"><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-5h4v5"/></svg></span><div><h3>보호소 정보·공고·봉사 안내</h3><p class="pl-p">공식 보호소와 구조 단체의 기본 정보와 공고, 봉사 안내는 무료로 제공할 계획입니다.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-6.2-5.6-6.2-11a6.2 6.2 0 0 1 12.4 0c0 5.4-6.2 11-6.2 11z"/><circle cx="12" cy="10" r="2.2"/></svg></span><div><h3>실종 신고·찾기</h3><p class="pl-p">실종 신고 안내와 공식 기관 연결, 발견 제보 같은 핵심 기능은 무료를 유지할 계획입니다.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.5-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.5 12 20 12 20z"/></svg></span><div><h3>입양 연결</h3><p class="pl-p">입양 성사에 수수료를 받지 않는 것을 원칙으로 합니다.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M3 19.5c.8-3.4 3.2-5.2 6-5.2s5.2 1.8 6 5.2M15.5 14.3c2.5-.4 4.7 1 5.5 3.7"/></svg></span><div><h3>임시보호·봉사 연결</h3><p class="pl-p">임시보호와 봉사 연결은 무료로 하고, 기관용 운영 도구는 별도로 검토합니다.</p></div></li><li><span class="pl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M3 10h18M12 10v10"/><path d="M12 10c-1.2-2.8-4.6-3.6-4.6-1.4 0 1.4 4.6 1.4 4.6 1.4zM12 10c1.2-2.8 4.6-3.6 4.6-1.4 0 1.4-4.6 1.4-4.6 1.4z"/></svg></span><div><h3>동물 구조·보호 나눔·기부</h3><p class="pl-p">이용자의 자발적 나눔과 동물보호단체·보호소와 함께하는 치료·보호 지원, 기업의 동물복지 사회공헌(CSR) 협력을 사회공헌 모델로 검토합니다. 나눔·기부는 PETLOG의 수익 사업이 아니며, 지원 결과를 투명하게 안내하고 활동을 장기적으로 넓혀 가는 것을 목표로 합니다.</p></div></li></ul>
   </div>
     <div id="nls-market" class="nls-block" data-hs-section>
-    <header class="nls-head pl-head--row">
+    <header class="nls-head pl-head--stack">
     <p class="nls-kicker">MARKET OPPORTUNITY</p>
     <h2 class="nls-title">큰 지출,<br>흩어진 정보.</h2>
     <p class="nls-lead">공개 통계가 보여 주는 반려생활의 구조입니다. 아래 수치는 출처가 있는 이용·지출 지표이며, PETLOG의 시장 규모나 매출 전망이 아닙니다.</p>
@@ -1080,7 +1086,45 @@
       <a class="nls-btn nls-btn--ghost" href="/ko/contact/?platform=petlog&amp;type=business&amp;source=petlog-business">사업 문의</a>
     </div>
   </div>
-  </div></section>
+  </div><script>
+(function () {
+  document.querySelectorAll("[data-pl-tabs]").forEach(function (root) {
+    var tabs = [].slice.call(root.querySelectorAll('[role="tab"]'));
+    function pick(t, focus) {
+      tabs.forEach(function (x) {
+        var on = x === t;
+        x.setAttribute("aria-selected", on); x.tabIndex = on ? 0 : -1; x.classList.toggle("is-on", on);
+        var p = document.getElementById(x.getAttribute("aria-controls")); if (p) p.hidden = !on;
+      });
+      var n = t.id.replace("pl-tab-", "");
+      root.querySelectorAll("[data-pl-mirror]").forEach(function (m) { m.classList.toggle("is-on", m.getAttribute("data-pl-mirror") === n); });
+      if (focus) t.focus();
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { pick(t); });
+      t.addEventListener("keydown", function (e) {
+        var k = e.key, j = -1;
+        if (k === "ArrowDown" || k === "ArrowRight") j = (i + 1) % tabs.length;
+        else if (k === "ArrowUp" || k === "ArrowLeft") j = (i - 1 + tabs.length) % tabs.length;
+        else if (k === "Home") j = 0; else if (k === "End") j = tabs.length - 1;
+        if (j >= 0) { e.preventDefault(); pick(tabs[j], true); }
+      });
+    });
+  });
+  document.querySelectorAll("[data-pl-filter]").forEach(function (bar) {
+    var list = document.getElementById(bar.getAttribute("data-pl-filter"));
+    var btns = [].slice.call(bar.querySelectorAll("button"));
+    bar.hidden = false;
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var v = b.getAttribute("data-v");
+        btns.forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+        list.querySelectorAll("[data-status]").forEach(function (r) { r.hidden = v !== "all" && r.getAttribute("data-status") !== v; });
+      });
+    });
+  });
+})();
+</script></section>
     </main>
     <footer class="site-footer site-footer--brand studio-footer--compact" data-site-footer>
     <div class="container site-foot">
