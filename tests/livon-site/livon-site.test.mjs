@@ -7,7 +7,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   LIVON_SITE_PAGES, CATEGORIES, GROUPS, categoryStatus, LIFE_EVENTS, CORE_FEATURES, BUSINESS,
-  PARTNERS, CONTACT_TYPES, COPY, REVENUE, ROADMAP,
+  PARTNERS, CONTACT_TYPES, COPY, REVENUE, REVENUE_GROUPS, ROADMAP,
 } from "../../scripts/livon-site-data.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "../..");
@@ -166,7 +166,10 @@ test("Business 15 areas, Partnerships 20 types, Contact 14 types — rendered wi
     assert.equal(count(page(lang, "partnerships"), /id="lvs-partner-\d\d"/g), 20);
     assert.equal(count(page(lang, "contact").split('id="bct-types"')[1].split("</section>")[0], /class="bct-tlist__go"/g), 14);
     assert.equal(count(page(lang, "business"), /class="lvs-road__step"/g), 8);
-    assert.equal(count(page(lang, "business"), /<tbody>[\s\S]*?<\/tbody>/g), 1);
+    // v4: the 15 revenue models are one table per revenue group (tabs) — every model still rendered exactly once
+    const bodies = page(lang, "business").match(/<tbody>[\s\S]*?<\/tbody>/g) || [];
+    assert.equal(bodies.length, Object.keys(REVENUE_GROUPS).length);
+    assert.equal(bodies.reduce((n, t) => n + count(t, /<tr>/g), 0), REVENUE.length);
   }
 });
 

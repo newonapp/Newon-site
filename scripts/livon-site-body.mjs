@@ -262,19 +262,71 @@ const faqList = (items, mod = "") => `<div class="lvs-faq${mod ? ` lvs-faq--${mo
 /* compact key → value grid (no boxes; hairlines only) */
 const matrix = (rows, cols = 3, mod = "") => `<dl class="lvs-matrix lvs-matrix--${cols}${mod ? ` lvs-matrix--${mod}` : ""}">${rows.map(([k, v]) => `<div><dt>${e(k)}</dt><dd>${e(v)}</dd></div>`).join("")}</dl>`;
 
-/* what LIVON is — editorial head, then problem → common way → LIVON as a three-column comparison */
+/* ── v4 (2026-10-26): product-like screens built in HTML/CSS. Always captioned "예시 화면 · 계획" — they show the
+   planned app's structure from existing copy (plan §3, §11), never users, metrics or results. The screen itself is
+   aria-hidden; the caption says what it is and every line on it is also written out in the page text. ── */
+const illus = (lang) => pick(lang, "예시 화면 · 앱 출시 준비 중", "Illustrative · App Coming Soon");
+const TAB_ICON = ["home", "search", "spark", "chat", "person"];
+function tabbar(lang, on = 0) {
+  return `<ul class="lvs-ui__tabs">${v3(lang).appTabs.rows.map(([t], i) => `<li${i === on ? ' class="is-on"' : ""}>${icon(TAB_ICON[i], "lvs-ui__ti")}<span>${e(t)}</span></li>`).join("")}</ul>`;
+}
+function phone(lang, caption, screen, mod = "") {
+  return `<figure class="lvs-phone${mod ? ` lvs-phone--${mod}` : ""}">
+      <div class="lvs-phone__frame" aria-hidden="true">
+        <div class="lvs-ui">
+          <div class="lvs-ui__bar"><b>LIVON</b><span>${e(stLabel(lang, "live"))}</span></div>
+          <div class="lvs-ui__body">${screen}</div>
+          ${tabbar(lang, mod === "explore" ? 1 : 0)}
+        </div>
+      </div>
+      <figcaption class="lvs-phone__cap"><span class="lvs-pill lvs-pill--concept">${e(illus(lang))}</span><span>${e(caption)}</span></figcaption>
+    </figure>`;
+}
+/* Overview — the planned Home tab: pick a life stage, see the areas to open first (plan §3 rows) */
+function homeScreen(lang) {
+  const r = v3(lang).stageRec;
+  const on = 2;
+  const areas = r.rows[on][1].split("·");
+  const ex = v3(lang).examples.items[0];
+  return phone(lang, pick(lang, "계획 중인 홈 탭 — 인생 단계를 고르면 먼저 열어 볼 영역이 정리됩니다.", "The planned Home tab — choose a life stage and the areas to open first are lined up."), `
+          <p class="lvs-ui__k">${e(pick(lang, "인생 단계", "Life stage"))}</p>
+          <ul class="lvs-ui__chips">${r.rows.map(([t], i) => `<li${i === on ? ' class="is-on"' : ""}>${e(t)}</li>`).join("")}</ul>
+          <div class="lvs-ui__card">
+            <p class="lvs-ui__h">${e(r.title)}</p>
+            <ol class="lvs-ui__rows">${areas.map((t, i) => `<li><span>${pad(i + 1)}</span><strong>${e(t)}</strong>${icon("arrow", "lvs-ui__chev")}</li>`).join("")}</ol>
+          </div>
+          <div class="lvs-ui__card lvs-ui__card--note">
+            <p class="lvs-ui__h">${e(ex[0])}</p>
+            <p>${e(ex[1])}</p>
+          </div>`, "home");
+}
+
+/* Platform — the planned Explore tab: the 21 areas in their five groups (counts are the real group sizes) */
+function exploreScreen(lang) {
+  const at = v3(lang).appTabs.rows[1];
+  return phone(lang, pick(lang, "계획 중인 탐색 탭 — 21개 분야를 다섯 묶음으로 찾아봅니다.", "The planned Explore tab — the 21 areas, found through five groups."), `
+          <p class="lvs-ui__search">${icon("search", "lvs-ui__ti")}<span>${e(at[1])}</span></p>
+          <ol class="lvs-ui__groups">${AREA_GROUPS.map((g, i) => `<li${i === 0 ? ' class="is-on"' : ""}><div><strong>${e(pick(lang, g.ko, g.en))}</strong><span>${e(g.ids.map((n) => areaT(lang, byArea[n]).name).slice(0, 3).join(" · "))}${g.ids.length > 3 ? " …" : ""}</span></div><b>${g.ids.length}</b></li>`).join("")}</ol>`, "explore");
+}
+
+/* what LIVON is — editorial head and worked examples beside the planned Home screen, then the comparison table */
 function defineSec(lang) {
   const d = c30(lang).define;
   const rows = d.rows.map(([p, now, l]) => `<tr><th scope="row">${e(p)}</th><td data-label="${e(d.cols[1])}">${e(now)}</td><td class="lvs-table__hl" data-label="${e(d.cols[2])}">${e(l)}</td></tr>`).join("");
-  return block("lvs-define", `${headSplit(d.kicker, d.title, d.lead)}
-    <div class="lvs-table-wrap"><table class="lvs-table lvs-table--vs">
+  return block("lvs-define", `<div class="lvs-showcase">
+      <div class="lvs-showcase__copy">
+        <header class="nls-head">${d.kicker ? `<p class="nls-kicker">${e(d.kicker)}</p>` : ""}<h2 class="nls-title">${nl(d.title)}</h2>${d.lead ? `<p class="nls-lead">${e(d.lead)}</p>` : ""}</header>
+        <div class="lvs-examples">
+          <p class="lvs-k">${e(v3(lang).examples.title)}</p>
+          <ul>${v3(lang).examples.items.map(([t, b]) => `<li><strong>${e(t)}</strong><p>${e(b)}</p></li>`).join("")}</ul>
+        </div>
+      </div>
+      ${homeScreen(lang)}
+    </div>
+    <div class="lvs-table-wrap lvs-gap"><table class="lvs-table lvs-table--vs">
       <thead><tr>${d.cols.map((t, i) => `<th scope="col"${i === 2 ? ' class="lvs-table__hl"' : ""}>${e(t)}</th>`).join("")}</tr></thead>
       <tbody>${rows}</tbody>
-    </table></div>
-    <div class="lvs-examples">
-      <p class="lvs-k">${e(v3(lang).examples.title)}</p>
-      <ul>${v3(lang).examples.items.map(([t, b]) => `<li><strong>${e(t)}</strong><p>${e(b)}</p></li>`).join("")}</ul>
-    </div>`, SEC);
+    </table></div>`, SEC);
 }
 
 /* vision — statement on the left, five principles as term rows on the right */
@@ -729,8 +781,13 @@ export function renderPlatform(lang) {
   }).join("");
   const body = `
     ${leadNote(c.notice)}
-    ${block("lvs-flow", `${headSplit(x.flowKicker, x.flowTitle, x.flowLead)}
-      ${steps(flow, "5")}`, { accent: true })}
+    ${block("lvs-flow", `<div class="lvs-showcase lvs-showcase--flow">
+        <div class="lvs-showcase__copy">
+          ${head(x.flowKicker, x.flowTitle, x.flowLead)}
+          ${steps(flow, "flow")}
+        </div>
+        ${exploreScreen(lang)}
+      </div>`, { accent: true })}
     ${block("lvs-core", `${head(p.coreKicker, p.coreTitle, "")}
       <div class="lvs-corelist">${core}</div>`, { rule: true })}
     ${block("lvs-areas", `${headSplit(x.areasKicker, x.areasTitle, x.areasLead)}
@@ -747,7 +804,7 @@ export function renderPlatform(lang) {
     ${block("lvs-users", `${head(x.usersKicker, x.usersTitle, "")}
       <div class="lvs-compare">${users}</div>`, { rule: true })}
     ${block("lvs-links", `${head(x.linkKicker, x.linkTitle, "")}
-      ${defs(x.links, "grid3")}`, { rule: true })}
+      ${feats(x.links, 3, { mod: "card", icons: ["grid", "calendar", "shield", "handshake", "spark", "link"] })}`, { rule: true })}
     ${block("lvs-map", `${headSplit(x.catsKicker, x.catsTitle, x.catsLead)}
       ${lifeMap(lang, [], p.groupsTitle)}
       ${legend(lang)}`, { band: true })}
@@ -776,7 +833,7 @@ export function renderPlatform(lang) {
       <div class="lvs-bento lvs-bento--pair">${app}</div>
       <div class="lvs-apptabs">
         <header class="lvs-apptabs__head"><span class="lvs-feats__i">${icon("grid")}</span><div><h3 class="lvs-h4">${e(appTabsLead[0])}</h3><p>${e(appTabsLead[2])}</p></div></header>
-        <ol aria-label="${e(appTabsLead[1])}">${at.rows.map(([t, b]) => `<li><strong>${e(t)}</strong><p>${e(b)}</p></li>`).join("")}</ol>
+        <ol aria-label="${e(appTabsLead[1])}">${at.rows.map(([t, b], i) => `<li>${icon(TAB_ICON[i], "lvs-apptabs__i")}<strong>${e(t)}</strong><p>${e(b)}</p></li>`).join("")}</ol>
         <p class="nls-note">${e(at.note)}</p>
       </div>`, { band: true })}
     ${block("lvs-faq", `${head(x.faqKicker, x.faqTitle, "")}
@@ -809,7 +866,7 @@ export function renderBusiness(lang) {
   }).join("");
   const revRows = REVENUE.map(
     (r) => `<tr><th scope="row">${e(pick(lang, r.ko, r.en))}<small class="lvs-table__g">${e(r.n)} · ${e(pick(lang, REVENUE_GROUPS[r.g].ko, REVENUE_GROUPS[r.g].en))}</small></th><td data-label="${e(b.revCols[1])}">${e(pick(lang, r.whoKo, r.whoEn))}</td><td data-label="${e(b.revCols[2])}">${e(pick(lang, r.howKo, r.howEn))}</td><td data-label="${e(b.revCols[3])}"><span class="lvs-pill lvs-pill--concept">${e(b.revStatus)}</span></td></tr>`
-  ).join("");
+  );
   const stRoad = { now: b.roadNow, next: b.roadNext, later: b.roadLater };
   const y3 = v3(lang);
   /* roadmap — eight steps in a 4 × 2 grid; scope and the completion test are split out of the same sentence */
@@ -836,16 +893,23 @@ export function renderBusiness(lang) {
         <h2 class="nls-title lvs-statement__title">${e(b.verdictTitle)}</h2>
         ${feats(principles.map((t) => ["", t]), 3, { mod: "plain" })}
       </div>`, { accent: true })}
-    ${block("lvs-model", `<div class="nls-split lvs-split">
-        ${head(x.modelKicker, x.modelTitle, x.modelLead)}
-        ${defs(x.structure)}
-      </div>`)}
+    ${block("lvs-model", `${headSplit(x.modelKicker, x.modelTitle, x.modelLead)}
+      <ul class="lvs-segs">${x.structure.map(([k, v]) => {
+        const [code, who] = k.split(" · ");
+        const off = /^C2C/.test(code);
+        return `<li class="lvs-seg${off ? " is-off" : ""}"><p class="lvs-seg__code">${e(code)}</p><h3>${e(who || k)}</h3><p>${e(v)}</p></li>`;
+      }).join("")}</ul>`, { rule: true })}
     ${block("lvs-revenue", `${headSplit(x.revKicker, b.revTitle, x.revLead)}
       <p class="lvs-pill lvs-pill--concept">${e(b.revStatus)}</p>
-      <div class="lvs-table-wrap"><table class="lvs-table">
-        <thead><tr>${b.revCols.map((t) => `<th scope="col">${e(t)}</th>`).join("")}</tr></thead>
-        <tbody>${revRows}</tbody>
-      </table></div>
+      <div class="lvs-tabs lvs-tabs--rev" data-lvs-tabs>
+        ${tabs(b.revTitle, Object.keys(REVENUE_GROUPS).map((g) => [`lvs-rev-${g}`, pick(lang, REVENUE_GROUPS[g].ko, REVENUE_GROUPS[g].en), String(REVENUE.filter((r) => r.g === g).length), ""]))}
+        ${Object.keys(REVENUE_GROUPS).map((g) => `<section class="lvs-group lvs-revgroup" id="lvs-rev-${g}" aria-label="${e(pick(lang, REVENUE_GROUPS[g].ko, REVENUE_GROUPS[g].en))}" data-lvs-panel>
+          <div class="lvs-table-wrap"><table class="lvs-table">
+            <thead><tr>${b.revCols.map((t) => `<th scope="col">${e(t)}</th>`).join("")}</tr></thead>
+            <tbody>${revRows.filter((_, i) => REVENUE[i].g === g).join("")}</tbody>
+          </table></div>
+        </section>`).join("")}
+      </div>
       <p class="lvs-notice">${icon("arrow", "lvs-notice__i")}<span>${e(y3.revPriority)}</span></p>`, { rule: true })}
     ${block("lvs-plans", `${headSplit(x.plansKicker, x.plansTitle, x.plansLead)}
       <ol class="lvs-plans">${plans}</ol>
@@ -879,7 +943,7 @@ export function renderBusiness(lang) {
       </div>`, { band: true })}
     ${block("lvs-global", `${headSplit(gb.kicker, gb.title, gb.lead)}
       <header class="nls-head lvs-subhead"><h3 class="lvs-h3">${e(gb.custTitle)}</h3><p class="nls-lead">${e(gb.custLead)}</p></header>
-      ${feats(gb.customers, 4, { mod: "rule" })}
+      ${feats(gb.customers, 4, { mod: "card", icons: ["users", "home", "building", "handshake"] })}
       <div class="lvs-gap">
         <header class="nls-head lvs-subhead"><h3 class="lvs-h3">${e(gb.phaseTitle)}</h3><p class="nls-lead">${e(gb.phaseLead)}</p></header>
         ${steps(gb.phases, "5")}
@@ -914,9 +978,12 @@ export function renderPartnerships(lang) {
         ${y.official ? `<p class="lvs-pill lvs-pill--concept">${e(p.f.officialTag)}</p>` : ""}
       </div>
     </article>`;
+  /* partner types — one tab per group (v4); without JS the tab row is a jump menu and every group is listed */
+  const PG_ICON = ["book", "home", "coin", "users", "building"];
+  const pgTabs = tabs(p.title.replace(/\n/g, " "), PARTNER_GROUPS.map((g, gi) => [`lvs-pgroup-${gi}`, pick(lang, g.ko, g.en), String(g.ids.length), ""]));
   const groups = PARTNER_GROUPS.map(
-    (g, gi) => `<section class="lvs-pgroup" aria-labelledby="lvs-pgroup-${gi}">
-      <h3 id="lvs-pgroup-${gi}" class="lvs-pgroup__title">${e(pick(lang, g.ko, g.en))} <span class="lvs-count">${g.ids.length}</span></h3>
+    (g, gi) => `<section class="lvs-pgroup lvs-group" id="lvs-pgroup-${gi}" aria-labelledby="lvs-pgroup-${gi}-t" data-lvs-panel>
+      <header class="lvs-pgroup__head"><span class="lvs-feats__i">${icon(PG_ICON[gi] || "handshake")}</span><h3 id="lvs-pgroup-${gi}-t" class="lvs-pgroup__title">${e(pick(lang, g.ko, g.en))} <span class="lvs-count">${g.ids.length}</span></h3></header>
       <div class="lvs-partners">${g.ids.map((n) => card(byP[n])).join("")}</div>
     </section>`
   ).join("");
@@ -935,11 +1002,7 @@ export function renderPartnerships(lang) {
     </article>`).join("");
   const pf = x.pocF;
   const gq = c30(lang).global.partnerships;
-  const pocs = x.pocs.map(([t, scope, period, measure, cond], i) => `<article class="lvs-biz lvs-poc" id="lvs-poc-${pad(i + 1)}">
-      <h3>${e(t)}</h3>
-      <p class="lvs-biz__what">${e(scope)}</p>
-      ${dl([[pf.period, e(period)], [pf.measure, e(measure)], [pf.cond, e(cond)]])}
-    </article>`).join("");
+  const pocs = x.pocs.map(([t, scope, period, measure, cond], i) => `<tr class="lvs-poc-row" id="lvs-poc-${pad(i + 1)}"><th scope="row">${e(t)}</th><td data-label="${e(pf.scope)}">${e(scope)}</td><td data-label="${e(pf.period)}">${e(period)}</td><td data-label="${e(pf.measure)}">${e(measure)}</td><td data-label="${e(pf.cond)}">${e(cond)}</td></tr>`).join("");
   const y3 = v3(lang);
   const cItems = Object.fromEntries(c30(lang).contact.items.map(([id, t, , include]) => [id, [t, include]]));
   const body = `
@@ -950,10 +1013,16 @@ export function renderPartnerships(lang) {
     ${block("lvs-pmodels", `${head(x.modelsKicker, x.modelsTitle, "")}
       <div class="lvs-pmodels">${models}</div>`)}
     ${block("lvs-partners", `${headSplit(p.kicker, p.title, p.sourceNote)}
-      <div class="lvs-pgroups">${groups}</div>`, { rule: true })}
+      <div class="lvs-tabs lvs-tabs--partners" data-lvs-tabs>
+        ${pgTabs}
+        <div class="lvs-pgroups">${groups}</div>
+      </div>`, { rule: true })}
     ${block("lvs-poc", `${head(x.pocKicker, x.pocTitle, x.pocLead)}
       <p class="lvs-pill lvs-pill--concept">${e(pick(lang, "제안 · 진행 중인 파일럿 없음", "Proposal · no pilot running"))}</p>
-      <div class="lvs-pocs">${pocs}</div>`, { band: true })}
+      <div class="lvs-table-wrap"><table class="lvs-table lvs-table--poc">
+        <thead><tr><th scope="col">${e(pick(lang, "파일럿 제안", "Pilot proposal"))}</th><th scope="col">${e(pf.scope)}</th><th scope="col">${e(pf.period)}</th><th scope="col">${e(pf.measure)}</th><th scope="col">${e(pf.cond)}</th></tr></thead>
+        <tbody>${pocs}</tbody>
+      </table></div>`, { band: true })}
     ${block("lvs-data", `${headSplit(x.dataKicker, x.dataTitle, x.dataLead)}
       <ul class="lvs-list lvs-list--2">${x.data.map((t) => `<li>${e(t)}</li>`).join("")}</ul>`, { rule: true })}
     ${block("lvs-campaigns", `${head(x.campKicker, x.campTitle, "")}
