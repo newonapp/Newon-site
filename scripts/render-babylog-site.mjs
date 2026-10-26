@@ -143,7 +143,7 @@ function renderPage(lang, nav) {
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/flagship-subnav.css?v=20261019fsn3" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
-    <link rel="stylesheet" href="/babylog-site.css?v=20261027v6b" />${nav.id === "contact" ? `\n    <link rel="stylesheet" href="${BIZ_CONTACT_CSS}" />` : ""}
+    <link rel="stylesheet" href="/babylog-site.css?v=20261027v6c" />${nav.id === "contact" ? `\n    <link rel="stylesheet" href="${BIZ_CONTACT_CSS}" />` : ""}
 ${jsonLd(lang.dir, nav, seo, canonical)}`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script>(function(){var c=[].slice.call(document.querySelectorAll('#lifestage-detail[data-story="babylog"] .bl-film__clip'));if(c.length<2)return;var i=0;function p(v){try{v.muted=true;var r=v.play();if(r&&r.catch)r.catch(function(){});}catch(e){}}c.forEach(p);setInterval(function(){if(document.hidden)return;var n=(i+1)%c.length;p(c[n]);c[n].classList.add("is-on");c[i].classList.remove("is-on");i=n;},8000);})();</script>

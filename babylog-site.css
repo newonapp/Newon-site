@@ -4289,3 +4289,10 @@ html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babyl
 @media (min-width: 960px) {
   #lifestage-detail.nls[data-story="babylog"] .bl6-x.is-tabs { grid-template-columns: minmax(0, 19rem) minmax(0, 1fr); }
 }
+
+/* Overview · who (owner 2026-10-27): the coloured first card uses the same box and type sizes as its neighbours;
+   only its colour differs. */
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icards--who .bl-icard:first-child { min-height: 0; justify-content: flex-start; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icards--who .bl-icard:first-child h3 { font-size: 19px; line-height: 1.38; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icards--who .bl-icard:first-child p { font-size: 15.8px; line-height: 1.7; max-width: none; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icards--who .bl-icard:first-child .bl-ico-wrap { margin-bottom: 11.2px; }
