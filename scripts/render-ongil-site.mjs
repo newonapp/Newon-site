@@ -91,7 +91,7 @@ import { BIZ_CONTACT_CSS } from "./biz-contact-kit.mjs";
 const ask = (lang, type, page, topic = "") => unifiedContactHref(lang, "ongil", { type, topic, source: `ongil-${page}` });
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-export const OGS_VER = "20261026v4";
+export const OGS_VER = "20261027v5";
 const NLS_VER = "20261025ov1"; // Life Stage assets are reused as-is
 /** ONGIL first-screen background film (owner-provided, 2026-10-18). */
 const ONGIL_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260323_071151_38c3924f-c312-48af-a196-3fbb80e4226f.mp4";
@@ -579,12 +579,13 @@ function platformMain(c, S, lang) {
           )
           .join("")}</div>`;
       } else if (layout === "acc") {
-        // v4: six areas as a two-column accordion (summary: number, title, area name; first one open)
-        body = `<div class="ogs-accs">${items
+        // v5: six areas as one full-width accordion — the summary row carries the description so closed rows fill the
+        //     width; the opened body splits into services (left) and target/notes/links (right), aligned under the summary
+        body = `<div class="ogs-accs ogs-accs--wide">${items
           .map(
             (s, i) => `<article class="ogs-row" id="p-${e(s.id)}" aria-labelledby="p-${e(s.id)}-t">${acc(
-              `${mark(AREA_ICONS[s.id] || JOURNEY_ICONS[gi])}<span class="ogs-acc__n">${e(n(i))}</span><span class="ogs-acc__x"><span class="ogs-acc__t" id="p-${e(s.id)}-t">${e(s.title)}</span><span class="ogs-acc__en" lang="en">${e(s.label.replace(/^\d\d /, ""))}</span></span>`,
-              `<p class="ogs-card__desc">${e(s.desc)}</p><p class="ogs-dt">${e(c.ui.services)}</p>${chips(s.services)}${areaMeta(c, s)}${footLinks(ctaLink(c, lang, s.cta), backLink(c))}`,
+              `${mark(AREA_ICONS[s.id] || JOURNEY_ICONS[gi])}<span class="ogs-acc__n">${e(n(i))}</span><span class="ogs-acc__x"><span class="ogs-acc__t" id="p-${e(s.id)}-t">${e(s.title)}</span><span class="ogs-acc__en" lang="en">${e(s.label.replace(/^\d\d /, ""))}</span></span><span class="ogs-acc__p">${e(s.desc)}</span>`,
+              `<div class="ogs-acc__cols"><div><p class="ogs-dt">${e(c.ui.services)}</p>${chips(s.services)}</div><div>${areaMeta(c, s)}${footLinks(ctaLink(c, lang, s.cta), backLink(c))}</div></div>`,
               i === 0
             )}</article>`
           )
@@ -664,7 +665,7 @@ function platformMain(c, S, lang) {
   const globalSec = sec(
     "ogs-global",
     `${head("ogs-global", gl.kicker, gl.title, gl.lead, { split: true })}
-      <ul class="ogs-cards3">${gl.items.map((s, i) => `<li>${tile(["sun", "hands", "users", "shield", "heart"][i % 5])}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ul>
+      <ul class="ogs-cards3${gl.items.length === 5 ? " ogs-cards3--5" : ""}">${gl.items.map((s, i) => `<li>${tile(["sun", "hands", "users", "shield", "heart"][i % 5])}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ul>
       <p class="ogs-dir__title">${e(gl.localTitle)}</p>
       ${checkList(gl.points, "ogs-checks--2")}`,
     { cls: "ogs-sec--rule" }
@@ -881,7 +882,7 @@ function businessMain(c, S, lang) {
         `bc-${k.id}`,
         `<div class="ogs-cat${top ? " ogs-cat--top" : ""}">
         <div class="ogs-cat__side">${tile(CATEGORY_ICONS[k.id], top ? "" : "lg")}${head(`bc-${k.id}`, kicker, title, "")}</div>
-        <div class="ogs-cat__list${ids.length > 1 ? " ogs-cat__list--multi" : ""}${top && ids.length > 2 ? " ogs-cat__list--3" : ""}">${body}</div>
+        <div class="ogs-cat__list${ids.length > 1 ? " ogs-cat__list--multi" : ""}${top && ids.length % 3 === 0 ? " ogs-cat__list--3" : ""}">${body}</div>
       </div>`,
         { cls: "ogs-sec--cat" }
       );
@@ -969,7 +970,7 @@ function partnershipsMain(c, S, lang) {
   // A · partnership vision: statement + facts + the one shared notice
   const vision = sec("ogs-intro", introBlock(c, p.vision));
 
-  // B · the 14 types grouped by their six opportunity areas (pill links)
+  // B · the 16 types in their eight opportunity areas — v5: one even 4 × 4 index grid (number, opportunity, type)
   const opps = [];
   p.items.forEach((it, i) => {
     let g = opps.find((o) => o.opp === it.opp);
@@ -979,13 +980,15 @@ function partnershipsMain(c, S, lang) {
   const index = sec(
     "ogs-index",
     `${head("ogs-index", `${c.ui.onThisPage} · ${p.items.length}`, c.ui.partnerIndexTitle, p.indexLead, { split: true })}
-      <ul class="ogs-opps">${opps
-        .map(
-          (g) => `<li><p class="ogs-opps__t" lang="en">${e(g.opp)}</p><ul class="ogs-cloud">${g.list
-            .map((i) => `<li><a href="#pt-${pad(i + 1)}"><span>${pad(i + 1)}</span>${e(p.items[i].name)}</a></li>`)
-            .join("")}</ul></li>`
+      <ol class="ogs-ptidx">${opps
+        .map((g) =>
+          g.list
+            .map(
+              (i) => `<li><a href="#pt-${pad(i + 1)}"><span class="ogs-ptidx__n">${pad(i + 1)}</span><span class="ogs-ptidx__x"><em lang="en">${e(g.opp)}</em><strong>${e(p.items[i].name)}</strong></span><span class="ogs-ptidx__go" aria-hidden="true">↓</span></a></li>`
+            )
+            .join("")
         )
-        .join("")}</ul>`,
+        .join("")}</ol>`,
     { tone: "mist" }
   );
 
@@ -993,12 +996,11 @@ function partnershipsMain(c, S, lang) {
   const items = sec(
     "ogs-partner-types",
     `${head("ogs-partner-types", "Partner Types", c.ui.partnerTypesTitle, "")}
-      <div class="ogs-accs ogs-accs--partners">${p.items
+      <div class="ogs-accs ogs-accs--wide ogs-accs--partners">${p.items
         .map(
           (it, i) => `<article class="ogs-card" id="pt-${pad(i + 1)}" aria-labelledby="pt-${pad(i + 1)}-t">${acc(
-            `${tile(PARTNER_ICONS[i % PARTNER_ICONS.length])}<span class="ogs-acc__n">${pad(i + 1)}</span><span class="ogs-acc__x"><span class="ogs-acc__t" id="pt-${pad(i + 1)}-t">${e(it.name)}</span><span class="ogs-acc__en" lang="en">${e(it.opp)}</span></span>`,
-            `<dl class="ogs-stackdl">
-            <div><dt>${e(c.ui.field)}</dt><dd>${e(it.field)}</dd></div>
+            `${tile(PARTNER_ICONS[i % PARTNER_ICONS.length])}<span class="ogs-acc__n">${pad(i + 1)}</span><span class="ogs-acc__x"><span class="ogs-acc__t" id="pt-${pad(i + 1)}-t">${e(it.name)}</span><span class="ogs-acc__en" lang="en">${e(it.opp)}</span></span><span class="ogs-acc__p"><b>${e(c.ui.field)}</b>${e(it.field)}</span>`,
+            `<dl class="ogs-stackdl ogs-stackdl--3">
             <div><dt>${e(c.ui.value)}</dt><dd>${e(it.value)}</dd></div>
             <div><dt>${e(c.ui.structure)}</dt><dd>${e(it.structure)}</dd></div>
             <div><dt>${e(c.ui.conditions)}</dt><dd>${e(it.conditions)}</dd></div>
