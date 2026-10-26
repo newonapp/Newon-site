@@ -121,19 +121,20 @@ test("Business, Partnerships and Contact upgrade sections; contact purposes link
       assert.match(g, lang === "ko" ? /정하지 않았|체결된 해외 협약이나 파트너는 없/ : /have been set|no overseas agreement or partner/, `${lang}/${id} plan wording`);
     }
     assert.equal(count(b.match(/<div id="lvs-global"[\s\S]*?<div class="nls-block nls-close/)[0], /class="lvs-steps__item/g), 5, "5 global phases");
-    assert.match(p, new RegExp(`href="/${lang}/contact/\\?type=partnership&amp;platform=livon"`));
+    assert.match(p, new RegExp(`href="/${lang}/contact/\\?platform=livon&amp;type=partnership&amp;topic=livon-partnership&amp;source=livon-partnerships"`));
+    // Contact (owner 2026-10-26, ONGIL-style kit): the 8 inquiry purposes are rows whose one "문의하기" opens the
+    // unified NEWON Contact page with LIVON and a valid type preselected
     const c = page(lang, "contact");
-    assert.equal(count(c, /class="lvs-biz lvs-purpose"/g), 8);
-    const hrefs = [...c.match(/<div id="lvs-purpose"[\s\S]*?<div id="lvs-contact-tips"/)[0].matchAll(/href="([^"]+)"/g)].map((m) => m[1].replace(/&amp;/g, "&"));
-    const bizTypes = ["general", "participation", "commerce", "saas", "institution", "brand", "technology", "public", "global", "other"];
+    const route = c.split('id="bct-route"')[1].split("</section>")[0];
+    assert.equal(count(route, /<li[ >]/g), 9); // 8 purposes + "what LIVON cannot answer"
+    const hrefs = [...route.matchAll(/href="([^"]+)"/g)].map((m) => m[1].replace(/&amp;/g, "&"));
+    assert.equal(hrefs.length, 8);
     for (const h of hrefs) {
-      if (h.startsWith("mailto:")) { assert.equal(h, "mailto:newon@newon.app"); continue; }
       const u = new URL(h, "https://www.newon.app");
-      // owner 2026-10-26: every inquiry button opens the unified NEWON Contact page with LIVON preselected
       assert.equal(u.pathname, `/${lang}/contact/`, h);
-      if (u.searchParams.has("platform")) assert.equal(u.searchParams.get("platform"), "livon", h);
-      const t = u.searchParams.get("type");
-      if (t) assert.ok(bizTypes.includes(t) || read("company.js").match(/CONTACT_TYPES = \[([^\]]+)\]/)[1].includes(`"${t}"`), h);
+      assert.equal(u.searchParams.get("platform"), "livon", h);
+      assert.ok(["personal", "business", "public", "partnership", "investment", "media"].includes(u.searchParams.get("type")), h);
+      assert.equal(u.searchParams.get("source"), "livon-contact", h);
     }
     assert.match(c, lang === "ko" ? /민감정보를 적지 말아 주세요/ : /do not include personal or sensitive information/);
   }
@@ -163,7 +164,7 @@ test("Business 15 areas, Partnerships 20 types, Contact 14 types — rendered wi
   for (const lang of ["ko", "en"]) {
     assert.equal(count(page(lang, "business"), /class="lvs-biz" id="lvs-biz-/g), 15);
     assert.equal(count(page(lang, "partnerships"), /id="lvs-partner-\d\d"/g), 20);
-    assert.equal(count(page(lang, "contact"), /class="lvs-contact__item"/g), 14);
+    assert.equal(count(page(lang, "contact").split('id="bct-types"')[1].split("</section>")[0], /class="bct-tlist__go"/g), 14);
     assert.equal(count(page(lang, "business"), /class="lvs-road__step"/g), 8);
     assert.equal(count(page(lang, "business"), /<tbody>[\s\S]*?<\/tbody>/g), 1);
   }

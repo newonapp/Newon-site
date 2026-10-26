@@ -33,6 +33,7 @@ import { renderShareonPage, getShareonCopy } from "./shareon-body.mjs";
 import { SHAREON_PAGES } from "./shareon-copy.mjs";
 import { FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
 import { toUnifiedContact } from "./unified-contact-links.mjs";
+import { BIZ_CONTACT_CSS } from "./biz-contact-kit.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const CSS_VER = "20261026v3";
@@ -64,12 +65,12 @@ function renderPage(lang, page) {
     HREFLANG_BLOCK: hreflangBlock(page.path),
     SKIP_LABEL: pick(flat, flatEn, "common.skipToContent") || "Skip to content",
     CHROME_HEADER: header,
-    MAIN_CONTENT: page.id === "contact" ? toUnifiedContact(renderShareonPage(lang.dir, page.id), lang.dir, "shareon") : renderShareonPage(lang.dir, page.id),
+    MAIN_CONTENT: toUnifiedContact(renderShareonPage(lang.dir, page.id), lang.dir, "shareon", page.id),
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
-    <link rel="stylesheet" href="/shareon.css?v=${CSS_VER}" />`,
+    <link rel="stylesheet" href="/shareon.css?v=${CSS_VER}" />${page.id === "contact" ? `\n    <link rel="stylesheet" href="${BIZ_CONTACT_CSS}" />` : ""}`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>
     <script src="/shareon.js?v=${CSS_VER}" defer></script>`,

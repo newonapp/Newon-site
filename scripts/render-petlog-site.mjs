@@ -35,10 +35,14 @@ import {
 } from "./hub-utils.mjs";
 import { clampSeoDescription } from "./seo-meta.mjs";
 import { renderGlobalHeader, renderStudioFooter } from "./site-chrome.mjs";
-import { inquiryFormHtml } from "./render-bsp.mjs";
 import { NOTICE, PETLOG_FILM, STORE, PETLOG_MENU, OVERVIEW, PLATFORM, BUSINESS, PARTNERS, CONTACT, GLOBAL, V3 } from "./petlog-site-content.mjs";
 import { renderFlagshipSubnav, FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
-import { toUnifiedContact } from "./unified-contact-links.mjs";
+import { toUnifiedContact, unifiedContactHref } from "./unified-contact-links.mjs";
+import { renderBizContact, ctaLabel, BIZ_CONTACT_CSS } from "./biz-contact-kit.mjs";
+import { petlogContactModel, PETLOG_TYPE } from "./biz-contact-data.mjs";
+
+/** Inquiry action → unified NEWON Contact page, PETLOG preselected (owner, 2026-10-26). */
+const ask = (lang, type, page) => unifiedContactHref(lang, "petlog", { type, source: `petlog-${page}` });
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const NLS_VER = "20261025ov1";
@@ -360,9 +364,10 @@ function closeBlock(c, depth) {
 }
 
 const wrap = (inner) => `<section id="lifestage-detail" class="nls nls--petlog" data-story="petlog" aria-labelledby="story-lifestage-title">${inner}</section>`;
-const CONTACT_HREF = (type) => `petlog/contact/?type=${type}#inquiry`;
+/** Inquiry buttons → unified NEWON Contact page (PETLOG preselected); platform rows keep their inquiry type. */
+const CONTACT_HREF = (lang, type, page) => ask(lang, page === "platform" ? PETLOG_TYPE[type] || "personal" : page === "business" ? "business" : "partnership", page);
 /** Global partnership inquiries go to the unified NEWON Contact page (partnership type, PETLOG preselected). */
-const GLOBAL_CONTACT_HREF = "contact/?type=partnership&platform=petlog";
+const GLOBAL_CONTACT_HREF = (lang) => ask(lang, "partnership", "partnerships");
 /** "Care — tagline. body" → [key, tagline, body] */
 const splitValue = (s) => {
   const [k, rest = ""] = s.split(" — ");
@@ -476,7 +481,7 @@ function overviewPage(lang) {
     ${section("nls-newon", { kicker: c.newon.kicker, title: c.newon.title, lead: c.newon.lead, body: directory(fam, D, 3) })}
     ${section("nls-global", { kicker: g.kicker, title: g.title, lead: g.lead, tint: true, body: `${items("cols", g.items.map(([name, lead, icon], i) => ({ n: pad2(i + 1), icon, name, lead })), D, "pl-cols--3")}<div class="pl-actions">${more([g.cta, "petlog/business/#nls-global"], D)}</div>` })}
     ${menuBlock(lang, D, "overview")}
-    ${closeBlock({ ...c.close, main: [c.close.ctaMain, "petlog/platform/"], sub: [c.close.ctaSub, "petlog/contact/"] }, D)}
+    ${closeBlock({ ...c.close, main: [c.close.ctaMain, "petlog/platform/"], sub: [c.close.ctaSub, ask(lang, "personal", "overview")] }, D)}
   </div>`);
 }
 
@@ -487,7 +492,7 @@ function platformPage(lang) {
   const D = 2;
   const card = (idx) => {
     const it = PLATFORM.items[idx];
-    const link = it.cta === "app" ? [m.labels.app, STORE.ios] : [m.labels.cta, CONTACT_HREF(it.cta)];
+    const link = it.cta === "app" ? [m.labels.app, STORE.ios] : [m.labels.cta, CONTACT_HREF(lang, it.cta, "platform")];
     return {
       n: pad2(idx + 1),
       label: it.label,
@@ -578,7 +583,7 @@ function businessPage(lang) {
         [m.labels.how, x.how[L]],
         [m.labels.cond, x.cond[L]],
       ],
-      link: [m.labels.cta, CONTACT_HREF(x.type)],
+      link: [m.labels.cta, CONTACT_HREF(lang, x.type, "business")],
       anchor: `line-${x.no}`,
     };
   };
@@ -661,7 +666,7 @@ function businessPage(lang) {
     ${section("nls-global", { kicker: gb.kicker, title: gb.title, lead: gb.lead, body: globalBody })}
     ${section("nls-trust", { kicker: m.trustKicker, title: m.trustTitle, tint: true, body: legal })}
     ${menuBlock(lang, D, "business")}
-    ${closeBlock({ ...m.close, main: [m.close.ctaMain, "petlog/partnerships/"], sub: [m.close.ctaSub, "petlog/contact/"] }, D)}
+    ${closeBlock({ ...m.close, main: [m.close.ctaMain, "petlog/partnerships/"], sub: [m.close.ctaSub, ask(lang, "business", "business")] }, D)}
   </div>`);
 }
 
@@ -672,7 +677,7 @@ function partnershipsPage(lang) {
   const D = 2;
   const card = (no) => {
     const p = PARTNERS.items.find((x) => x.no === no);
-    return { n: p.no, icon: PARTNER_ICONS[p.no] || iconFor(p.name.en), name: p.name[L], lead: p.value[L], points: [[m.labels.scope, p.scope[L]], [m.labels.how, p.how[L]], [m.labels.terms, p.terms[L]]], link: [m.labels.cta, CONTACT_HREF(p.type)], anchor: `partner-${p.no}` };
+    return { n: p.no, icon: PARTNER_ICONS[p.no] || iconFor(p.name.en), name: p.name[L], lead: p.value[L], points: [[m.labels.scope, p.scope[L]], [m.labels.how, p.how[L]], [m.labels.terms, p.terms[L]]], link: [m.labels.cta, CONTACT_HREF(lang, p.type, "partnerships")], anchor: `partner-${p.no}` };
   };
   const LAYOUT = { care: ["grid", "pl-grid--3", true], brand: ["row", "pl-rows--icon", false], public: ["grid", "pl-grid--3 pl-grid--odd", true] };
   const groups = m.groups
@@ -685,13 +690,13 @@ function partnershipsPage(lang) {
   const [lw, lr, lp] = m.scenarioLabels;
   const scenarios = m.scenarios.map((x) => ({ n: x.n, icon: x.icon, name: x.name, lead: x.lead, points: [[lw, x.who], [lr, x.role], [lp, x.pre]] }));
   const gq = GLOBAL.partners[L];
-  const globalBody = `${items("cols", gq.items.map(([name, lead, field, icon], i) => ({ n: pad2(i + 1), icon, name, lead, points: [[gq.fieldLabel, field]] })), D, "pl-cols--4")}<div class="pl-actions">${more([gq.cta, GLOBAL_CONTACT_HREF], D)}</div>`;
+  const globalBody = `${items("cols", gq.items.map(([name, lead, field, icon], i) => ({ n: pad2(i + 1), icon, name, lead, points: [[gq.fieldLabel, field]] })), D, "pl-cols--4")}<div class="pl-actions">${more([gq.cta, GLOBAL_CONTACT_HREF(lang)], D)}</div>`;
   const compare = xtable(X.cmpHead, X.cmp, "pl-xt--cmp3");
   const principles = `<div class="pl-duo pl-duo--even">
       <div>${head(m.principlesKicker, m.principlesTitle, "")}${checks(m.principles)}</div>
       <div class="pl-duo__b">${head("CHECKLIST", X.prepTitle, "")}${checks(X.prep)}</div>
     </div>`;
-  return wrap(`${hero({ wordmark: "Partnerships", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "15개 협력 분야 ↓" : "15 partner types ↓", "#nls-p-care"], sub: [m.labels.cta, rel(D, "petlog/contact/")] })}
+  return wrap(`${hero({ wordmark: "Partnerships", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "15개 협력 분야 ↓" : "15 partner types ↓", "#nls-p-care"], sub: [m.labels.cta, ask(lang, "partnership", "partnerships")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "partnerships" })}
   <div class="nls__wrap">
     ${section("nls-offer", { kicker: m.offerKicker, title: m.offerTitle, lead: m.offerLead, body: items("cols", offer, D, "pl-cols--4") })}
@@ -706,44 +711,20 @@ function partnershipsPage(lang) {
     ${section("nls-pfaq", { kicker: X.faqKicker, title: X.faqTitle, tint: true, body: faqList(X.faq), extraClass: "pl-faqsec" })}
     ${section("nls-process", { kicker: m.processKicker, title: m.processTitle, noteText: m.processNote, accent: true, body: stepList(m.steps.map(([t, d], i) => [pad2(i + 1), t, d])) })}
     ${menuBlock(lang, D, "partnerships")}
-    ${closeBlock({ ...m.close, main: [m.close.ctaMain, "petlog/contact/"], sub: [m.close.ctaSub, "partnerships/"] }, D)}
+    ${closeBlock({ ...m.close, main: [m.close.ctaMain, ask(lang, "partnership", "partnerships")], sub: [m.close.ctaSub, "partnerships/"] }, D)}
   </div>`);
 }
 
+/* ONGIL-style Contact page (owner, 2026-10-26): film hero + menu unchanged; the embedded inquiry form was removed —
+   the unified NEWON Contact page is now the form. Body = the shared Contact kit (biz-contact-kit.mjs, PETLOG green);
+   every inquiry action is one "문의하기" → /{lang}/contact/?platform=petlog&type=… The PETLOG menu tiles stay. */
 function contactPage(lang) {
   const c = CONTACT[bl(lang)];
-  const X = V3.contact[bl(lang)];
   const D = 2;
-  const purposes = c.purposes.map((p) => ({ name: p.name, body: p.body, href: p.href, icon: p.icon }));
-  const typeTile = (key) => {
-    const i = c.types.findIndex(([k]) => k === key);
-    const [, name, body] = c.types[i];
-    return { n: pad2(i + 1), name, body, href: `petlog/contact/?type=${key}#inquiry`, icon: TYPE_ICONS[key] || "mail" };
-  };
-  const typeGroups = `<div class="pl-tgroups">${X.groups
-    .map(([name, keys]) => `<div class="pl-tgroup"><h3 class="pl-tgroup__h">${esc(name)}</h3>${tiles("pl-tiles--3", keys.map(typeTile), D)}</div>`)
-    .join("")}</div>`;
-  const direct = c.direct.map((d) => ({ name: d.name, body: d.body, href: d.href === "ios" ? STORE.ios : d.href === "android" ? STORE.android : d.href }));
-  const form = inquiryFormHtml(lang, D, {
-    category: "PETLOG",
-    interest: "PETLOG",
-    copy: { label: "PETLOG", title: c.formTitle, subject: c.subject, types: c.types.map(([k, n]) => [k, n]), type: c.typeLabel, message: c.messageLabel, messagePh: c.messagePh, submit: lang === "ko" ? "문의 보내기" : "Send inquiry" },
-  });
-  return wrap(`${hero({ wordmark: "Contact", titleHtml: c.heroTitle, lead: c.heroLead, main: [lang === "ko" ? "문의하기 ↓" : "Send an inquiry ↓", "#inquiry"], sub: [lang === "ko" ? "PETLOG 소개" : "About PETLOG", rel(D, "petlog/")] })}
+  const L = bl(lang);
+  return wrap(`${hero({ wordmark: "Contact", titleHtml: c.heroTitle, lead: c.heroLead, main: [ctaLabel(L), ask(lang, "personal", "contact")], sub: [L === "ko" ? "PETLOG 소개" : "About PETLOG", rel(D, "petlog/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "contact" })}
-  <div class="nls__wrap">
-    ${section("nls-purpose", { kicker: c.purposeKicker, title: c.purposeTitle, lead: c.purposeLead, body: directory(purposes, D, 2) })}
-    ${section("nls-types", { kicker: c.kicker, title: c.listTitle, lead: c.listLead, tint: true, body: typeGroups })}
-    ${section("nls-direct", { kicker: c.directKicker, title: c.directTitle, body: tiles("pl-tiles--4", direct, D) })}
-    <div id="nls-guide" class="nls-block nls-block--band pl-tint" data-hs-section>
-      <div class="pl-duo pl-duo--guide">
-        <div>${head(X.afterKicker, X.afterTitle, "")}${phases(X.after.map(([t, d], i) => [pad2(i + 1), t, d]), true)}</div>
-        <div class="pl-duo__b">${head(c.guideKicker, c.guideTitle, "")}${checks(c.guide)}</div>
-      </div>
-    </div>
-    ${section("nls-cfaq", { kicker: X.faqKicker, title: X.faqTitle, body: faqList(X.faq), extraClass: "pl-faqsec" })}
-  </div>
-  <div class="bp-page">${form}</div>
+  ${renderBizContact(petlogContactModel(lang))}
   <div class="nls__wrap">
     ${menuBlock(lang, D, "contact")}
   </div>`);
@@ -821,7 +802,7 @@ export function renderPetlogSite() {
       const header = renderGlobalHeader(flat, flatEn, { activeNav: "petlog", base: "../".repeat(depth), idSuffix: "hub" });
       const footer = renderStudioFooter(flat, flatEn, { base: "../".repeat(depth) });
       let main = page.render(lang.dir);
-      if (page.contact) main = toUnifiedContact(main, lang.dir, "petlog");
+      main = toUnifiedContact(main, lang.dir, "petlog", page.slug.split("/")[1] || "overview");
       if (lang.dir !== "ko" && lang.dir !== "en") main = main.replace('<section id="lifestage-detail"', '<section lang="en" id="lifestage-detail"');
       let html = applyTemplate(SHELL, flat, flatEn, {
         HTML_LANG: lang.htmlLang,
@@ -838,7 +819,7 @@ export function renderPetlogSite() {
         CHROME_FOOTER: footer,
         EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/flagship-subnav.css?v=20261019fsn3" />
-    <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />${page.contact ? `\n    <link rel="stylesheet" href="/business-pillar.css?v=20260923pad1" />` : ""}
+    <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />${page.contact ? `\n    <link rel="stylesheet" href="${BIZ_CONTACT_CSS}" />` : ""}
     ${PETLOG_CSS}`,
         EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,

@@ -16,6 +16,9 @@ import { escapeHtml as esc } from "./hub-utils.mjs";
 import { MYWORLD_PAGES, myworldPagePath } from "./myworld-site-copy.mjs";
 import { icon } from "./myworld-site-icons.mjs";
 import { renderFlagshipSubnav, FLAGSHIP_PAGES } from "./flagship-subnav.mjs";
+import { renderBizContact, ctaLabel, SEE_TYPES, TYPES_ID } from "./biz-contact-kit.mjs";
+import { myworldContactModel } from "./biz-contact-data.mjs";
+import { unifiedContactHref } from "./unified-contact-links.mjs";
 
 export const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.newon.myworld&pcampaignid=web_share";
 /** Same App Store listing the NEWON home/portfolio already links (scripts/six-businesses.mjs BUSINESS.myworld.stores.appStore). */
@@ -26,9 +29,9 @@ const pad = (n) => String(n).padStart(2, "0");
 const letter = (i) => String.fromCharCode(65 + i);
 const lines = (s) => esc(s).split("\n").join("<br />");
 const pageHref = (lang, id) => `/${lang}/${myworldPagePath(id)}`;
-const mailHref = (copy, topic) =>
-  `mailto:${MAIL}?subject=${encodeURIComponent(`${copy.ui.emailSubjectPrefix} ${topic}`)}`;
 const arrow = `<span class="mws-arrow" aria-hidden="true">→</span>`;
+/** Inquiry action → unified NEWON Contact page, MY WORLD preselected (owner, 2026-10-26). */
+const ask = (lang, type, page) => unifiedContactHref(lang, "myworld", { type, source: `myworld-${page}` });
 const ext = `<span class="mws-arrow" aria-hidden="true">↗</span>`;
 
 /* ---------- atoms ---------- */
@@ -44,8 +47,8 @@ function chips(list, cls = "") {
 }
 function itemCta(lang, copy, cta, topic) {
   if (cta === "app") return `<a class="mws-link" href="${GOOGLE_PLAY_URL}" target="_blank" rel="noopener noreferrer">${esc(copy.ui.appCta)} ${ext}</a>`;
-  if (cta === "partner") return `<a class="mws-link" href="${pageHref(lang, "partnerships")}">${esc(copy.ui.partnerCta)} ${arrow}</a>`;
-  return `<a class="mws-link" href="${esc(mailHref(copy, topic))}">${esc(copy.ui.inquiryCta)} ${arrow}</a>`;
+  if (cta === "partner") return `<a class="mws-link" href="${esc(ask(lang, "partnership", "platform"))}">${esc(copy.ui.partnerCta)} ${arrow}</a>`;
+  return `<a class="mws-link" href="${esc(ask(lang, "personal", "platform"))}">${esc(copy.ui.inquiryCta)} ${arrow}</a>`;
 }
 function notes(copy, keys) {
   return `<aside class="mws-notes" aria-label="${esc(copy.ui.notesAria)}">${keys.map((k) => `<p class="mws-note">${esc(copy.ui[k])}</p>`).join("")}</aside>`;
@@ -122,7 +125,6 @@ function nowNext(copy, now, next) {
 function storeButtons(copy, { ghost = false } = {}) {
   return btn(GOOGLE_PLAY_URL, copy.ui.appCta, { external: true, ghost }) + btn(APP_STORE_URL, copy.ui.appStoreCta, { external: true, ghost: true });
 }
-const formHref = (lang, type) => `/${lang}/business/contact/?type=${type}&platform=myworld`;
 const dl = (pairs, cls = "mws-dl") => `<dl class="${cls}">${pairs.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>`;
 
 /* ---------- hero (shared flagship film hero — keep as is) ---------- */
@@ -167,7 +169,7 @@ function pager(lang, copy, current) {
   return `<nav class="mws-pager mws__wrap" aria-label="${esc(copy.ui.prev)} / ${esc(copy.ui.next)}">${nav(MYWORLD_PAGES[i - 1], "prev")}${nav(MYWORLD_PAGES[i + 1], "next")}</nav>`;
 }
 
-function closeBand(lang, copy) {
+function closeBand(lang, copy, page = "overview") {
   const n = copy.overview.next;
   return `<section class="mws-close" aria-labelledby="mws-close-title">
     <div class="mws__wrap mws-close__inner">
@@ -177,7 +179,7 @@ function closeBand(lang, copy) {
       <div class="mws-actions mws-actions--center">
         ${btn(GOOGLE_PLAY_URL, copy.ui.appCta, { external: true })}
         ${btn(APP_STORE_URL, copy.ui.appStoreCta, { external: true, ghost: true })}
-        ${btn(pageHref(lang, "partnerships"), copy.ui.partnerCta, { ghost: true })}
+        ${btn(ask(lang, "partnership", page), copy.ui.partnerCta, { ghost: true })}
         ${btn(pageHref(lang, "contact"), copy.ui.contactCta, { ghost: true })}
       </div>
     </div>
@@ -190,7 +192,7 @@ const STATUS_ORDER = ["live", "partial", "planned", "review"];
 function overview(lang, copy) {
   const o = copy.overview;
   const h = hero(copy, o.hero, {
-    ctas: hbtn(pageHref(lang, "platform"), copy.ui.platformCta) + hbtn(pageHref(lang, "contact"), copy.ui.heroInquiryCta || copy.ui.contactCta, { ghost: true }),
+    ctas: hbtn(pageHref(lang, "platform"), copy.ui.platformCta) + hbtn(ask(lang, "business", "overview"), copy.ui.heroInquiryCta || copy.ui.contactCta, { ghost: true }),
   });
 
   // NOW — one quiet status line under the menu bar
@@ -333,7 +335,7 @@ function overview(lang, copy) {
   const faq = faqSection(o.faq);
 
   return [h, now, define, problems, values, customers, journey, scenes, compare, status, globalVision, roadmap, newon, faq,
-    `<div class="mws__wrap">${notes(copy, ["scopeNote", "planNote"])}</div>`, closeBand(lang, copy)].join("\n");
+    `<div class="mws__wrap">${notes(copy, ["scopeNote", "planNote"])}</div>`, closeBand(lang, copy, "overview")].join("\n");
 }
 
 /* ================= 02 PLATFORM ================= */
@@ -461,14 +463,14 @@ function platform(lang, copy) {
   const faq = faqSection(p.faq);
 
   return [h, shots, index, list, statusBoard, globalExp, flow, scenarios, users, trust, guide, faq,
-    `<div class="mws__wrap">${notes(copy, ["scopeNote", "planNote"])}</div>`, closeBand(lang, copy)].join("\n");
+    `<div class="mws__wrap">${notes(copy, ["scopeNote", "planNote"])}</div>`, closeBand(lang, copy, "platform")].join("\n");
 }
 
 /* ================= 03 BUSINESS ================= */
 function business(lang, copy) {
   const b = copy.business;
   const h = hero(copy, b.hero, {
-    ctas: hbtn(pageHref(lang, "partnerships"), copy.ui.partnerCta, {}) + hbtn(pageHref(lang, "contact"), copy.ui.contactCta, { ghost: true }),
+    ctas: hbtn(ask(lang, "partnership", "business"), copy.ui.partnerCta, {}) + hbtn(pageHref(lang, "contact"), copy.ui.contactCta, { ghost: true }),
   });
 
   // Model overview — four platform layers in the order the lead describes
@@ -597,21 +599,21 @@ function business(lang, copy) {
   const trust = section({
     id: "mws-trust",
     inner: `${head({ id: "mws-trust", kicker: t.kicker, title: t.title, lead: t.lead, cls: "mws-head--wide" })}${defRows(t.items, { cls: "mws-defs--cols2" })}
-      <div class="mws-actions">${btn(pageHref(lang, "partnerships"), copy.ui.partnerCta)}${btn(formHref(lang, "general"), copy.ui.formCta, { ghost: true })}</div>`,
+      <div class="mws-actions">${btn(ask(lang, "partnership", "business"), copy.ui.partnerCta)}${btn(ask(lang, "business", "business"), copy.ui.inquiryCta, { ghost: true })}</div>`,
   });
 
   // FAQ — split + accordion
   const faq = faqSection(b.faq);
 
   return [h, model, payers, groupsIdx, revenue, subscription, deals, saas, market, diff, gtm, roadmap, globalStrat, trust, faq,
-    `<div class="mws__wrap">${notes(copy, ["scopeNote", "planNote"])}</div>`, closeBand(lang, copy)].join("\n");
+    `<div class="mws__wrap">${notes(copy, ["scopeNote", "planNote"])}</div>`, closeBand(lang, copy, "business")].join("\n");
 }
 
 /* ================= 04 PARTNERSHIPS ================= */
 function partnerships(lang, copy) {
   const p = copy.partnerships;
   const h = hero(copy, p.hero, {
-    ctas: hbtn(mailHref(copy, copy.ui.partnerCta), copy.ui.partnerCta, {}) + hbtn(pageHref(lang, "business"), copy.ui.businessCta, { ghost: true }),
+    ctas: hbtn(ask(lang, "partnership", "partnerships"), copy.ui.partnerCta, {}) + hbtn(pageHref(lang, "business"), copy.ui.businessCta, { ghost: true }),
   });
 
   // Vision — large-type statement: first statement leads, the others follow in columns
@@ -640,7 +642,7 @@ function partnerships(lang, copy) {
         [copy.ui.revenueLabel, t.revenue],
         [copy.ui.termsLabel, t.terms],
       ], "mws-dl mws-dl--stack")}
-      <p class="mws-pcard__cta"><a class="mws-link" href="${esc(mailHref(copy, `${copy.ui.partnerCta} — ${t.name}`))}">${esc(copy.ui.partnerCta)} ${arrow}</a></p>
+      <p class="mws-pcard__cta"><a class="mws-link" href="${esc(ask(lang, "partnership", "partnerships"))}">${esc(copy.ui.partnerCta)} ${arrow}</a></p>
     </li>`;
   const ptabs = p.groups.map((g, gi) => `<button type="button" class="mws-seg" role="tab" id="mws-ptab-${gi + 1}" aria-controls="mws-pgroup-${gi + 1}" aria-selected="${gi === 0}" tabindex="${gi === 0 ? 0 : -1}"><span>${esc(g.name)}</span><span class="mws-seg__count">${pad(g.items.length)}</span></button>`).join("");
   const types = section({
@@ -673,7 +675,7 @@ function partnerships(lang, copy) {
   const gp = p.global;
   const globalPart = split({
     id: "mws-global", kicker: gp.kicker, title: gp.title, lead: gp.lead, note: gp.note,
-    aside: `<div class="mws-actions">${btn(`/${lang}/contact/?type=partnership&platform=myworld`, gp.cta)}${btn(mailHref(copy, gp.cta), copy.ui.mailCta, { ghost: true })}</div>`,
+    aside: `<div class="mws-actions">${btn(ask(lang, "partnership", "partnerships"), gp.cta)}</div>`,
     body: defRows(gp.items),
   });
 
@@ -684,7 +686,7 @@ function partnerships(lang, copy) {
       <div class="mws-spec__main">
         <p class="mws-body mws-body--ink mws-body--lg">${esc(it.intro)}</p>
         ${dl([[copy.ui.scopeLabel, it.scope], [copy.ui.measureLabel, it.measure], [copy.ui.conditionLabel, it.premise]], "mws-dl mws-dl--3")}
-        <p class="mws-spec__cta"><a class="mws-link" href="${esc(mailHref(copy, `PoC — ${it.name}`))}">${esc(copy.ui.partnerCta)} ${arrow}</a></p>
+        <p class="mws-spec__cta"><a class="mws-link" href="${esc(ask(lang, "partnership", "partnerships"))}">${esc(copy.ui.partnerCta)} ${arrow}</a></p>
       </div>
     </li>`;
   const poc = section({
@@ -718,75 +720,26 @@ function partnerships(lang, copy) {
   const ck = p.checklist;
   const checklist = split({
     id: "mws-checklist", kicker: ck.kicker, title: ck.title,
-    aside: `<div class="mws-actions">${btn(mailHref(copy, copy.ui.partnerCta), copy.ui.partnerCta)}${btn(formHref(lang, "brand"), copy.ui.formCta, { ghost: true })}</div>`,
+    aside: `<div class="mws-actions">${btn(ask(lang, "partnership", "partnerships"), copy.ui.partnerCta)}${btn(ask(lang, "business", "partnerships"), copy.ui.inquiryCta, { ghost: true })}</div>`,
     body: `<ul class="mws-checks">${ck.items.map((t) => `<li><span class="mws-checks__ico">${icon("check")}</span><p>${esc(t)}</p></li>`).join("")}</ul>`,
   });
 
   const faq = faqSection(p.faq);
 
-  return [h, why, models, types, scenarios, globalPart, poc, data, process, value, checklist, faq, closeBand(lang, copy)].join("\n");
+  return [h, why, models, types, scenarios, globalPart, poc, data, process, value, checklist, faq, closeBand(lang, copy, "partnerships")].join("\n");
 }
 
 /* ================= 05 CONTACT ================= */
+/* ONGIL-style Contact page (owner, 2026-10-26): film hero + menu unchanged (hero buttons → "문의하기" on the unified
+   Contact page and a scroll to the inquiry types); body = the shared Contact kit (biz-contact-kit.mjs, MY WORLD blue).
+   Every inquiry action is one "문의하기" → /{lang}/contact/?platform=myworld&type=… */
 function contact(lang, copy) {
   const c = copy.contact;
+  const L = lang === "ko" ? "ko" : "en";
   const h = hero(copy, c.hero, {
-    ctas: hbtn(`mailto:${MAIL}?subject=${encodeURIComponent(copy.ui.emailSubjectPrefix)}`, copy.ui.mailCta, {}) + hbtn(`/${lang}/contact/`, copy.ui.contactPageCta, { ghost: true }),
+    ctas: hbtn(ask(lang, "personal", "contact"), ctaLabel(L), {}) + hbtn(`#${TYPES_ID}`, L === "ko" ? SEE_TYPES.ko : SEE_TYPES.en, { ghost: true }),
   });
-  const links = (it) => {
-    const out = [`<a class="mws-link" href="${esc(mailHref(copy, it.name))}">${esc(copy.ui.mailCta)} ${arrow}</a>`];
-    if (it.route === "data") out.push(`<a class="mws-link" href="/${lang}/myworld/delete-account/">${esc(c.channels.items[2].name)} ${arrow}</a>`);
-    if (it.form) out.push(`<a class="mws-link" href="${esc(formHref(lang, it.form))}">${esc(copy.ui.formCta)} ${arrow}</a>`);
-    if (it.route === "partner") out.push(`<a class="mws-link" href="${pageHref(lang, "partnerships")}">${esc(copy.nav[3].label)} ${arrow}</a>`);
-    if (it.route === "press") out.push(`<a class="mws-link" href="/${lang}/contact/">${esc(copy.ui.contactPageCta)} ${arrow}</a>`);
-    return out.join("");
-  };
-
-  // Inquiry types — per group: heading column + inquiry rows (icon · text · links)
-  const types = section({
-    id: "mws-types", cls: "mws-sec--first",
-    inner: `${head({ id: "mws-types", kicker: c.typesKicker, title: c.typesTitle })}
-      ${c.groups.map((g, gi) => `<section class="mws-cgroup" aria-labelledby="mws-cgroup-${gi + 1}-title">
-        <div class="mws-cgroup__head"><span class="mws-letter">${letter(gi)}</span><p class="mws-en">${esc(g.en)}</p><h3 class="mws-gtitle" id="mws-cgroup-${gi + 1}-title">${esc(g.name)}</h3><p class="mws-body">${esc(g.lead)}</p></div>
-        <ul class="mws-inq">${g.items.map((n) => {
-          const it = c.items[n - 1];
-          return `<li class="mws-inq__row"><span class="mws-ico-box">${icon(it.icon)}</span><div class="mws-inq__text"><h4 class="mws-h4"><span class="mws-inq__n">${pad(n)}</span>${esc(it.name)}</h4><p class="mws-body">${esc(it.body)}</p></div><p class="mws-inq__links">${links(it)}</p></li>`;
-        }).join("")}</ul>
-      </section>`).join("")}
-      <p class="mws-callout"><strong>${esc(c.privacy.label)}</strong><span>${esc(copy.ui.sensitiveNote)}</span></p>`,
-  });
-
-  // Before you send — what to include per inquiry type (data table)
-  const pr = c.prep;
-  const prep = section({
-    id: "mws-prep",
-    inner: `${head({ id: "mws-prep", kicker: pr.kicker, title: pr.title, lead: pr.lead })}
-      <table class="mws-table mws-table--prep">
-        <caption class="mws-sr">${esc(pr.title.replace(/\n/g, " "))}</caption>
-        <thead><tr><th scope="col">${esc(pr.colType)}</th><th scope="col">${esc(pr.colInclude)}</th></tr></thead>
-        <tbody>${pr.items.map((it) => `<tr><th scope="row">${esc(it.name)}</th><td data-label="${esc(pr.colInclude)}">${esc(it.body)}</td></tr>`).join("")}</tbody>
-      </table>`,
-  });
-
-  // How — tinted band, three numbered steps
-  const how = section({
-    id: "mws-how", tone: "tint",
-    inner: `${head({ id: "mws-how", kicker: c.how.kicker, title: c.how.title })}${steps(c.how.steps, { cls: "mws-steps--big mws-steps--3" })}`,
-  });
-
-  // Channels — 2×2 link tiles (unchanged destinations)
-  const chHref = [`mailto:${MAIL}?subject=${encodeURIComponent(copy.ui.emailSubjectPrefix)}`, `/${lang}/contact/`, `/${lang}/myworld/delete-account/`, `/${lang}/privacy/`];
-  const chIcon = ["chat", "building", "shield", "book"];
-  const channels = section({
-    id: "mws-channels",
-    inner: `${head({ id: "mws-channels", kicker: c.channels.kicker, title: c.channels.title })}
-      <ul class="mws-links">${c.channels.items.map((ch, i) => `<li><a class="mws-links__a" href="${esc(chHref[i])}"><span class="mws-ico-box">${icon(chIcon[i])}</span><span class="mws-links__body"><span class="mws-links__name">${esc(ch.name)}</span><span class="mws-links__desc">${esc(ch.body)}</span></span><span class="mws-links__go" aria-hidden="true">→</span></a></li>`).join("")}</ul>`,
-  });
-
-  // FAQ — split + accordion
-  const faq = faqSection(c.faq);
-
-  return [h, types, prep, how, channels, faq, `<div class="mws__wrap">${notes(copy, ["scopeNote"])}</div>`, closeBand(lang, copy)].join("\n");
+  return [h, renderBizContact(myworldContactModel(lang, { googlePlay: GOOGLE_PLAY_URL, appStore: APP_STORE_URL }))].join("\n");
 }
 
 const RENDER = { overview, platform, business, partnerships, contact };

@@ -1149,17 +1149,17 @@ export const CONTACT = {
     purposeTitle: "문의 목적별 안내",
     purposeLead: "문의 목적을 고르면 알맞은 창구로 연결됩니다. 반려동물 진료 기록 원본이나 민감한 개인정보는 보내지 않아도 됩니다.",
     purposes: [
-      { key: "general", name: "일반 서비스 문의", body: "PETLOG가 무엇인지, 어떤 기능이 있는지 궁금할 때. 아래 양식의 '일반 문의·기타 제안'이 선택됩니다.", href: "petlog/contact/?type=general#inquiry", icon: "mail" },
+      { key: "general", name: "일반 서비스 문의", body: "PETLOG가 무엇인지, 어떤 기능이 있는지 궁금할 때. ‘문의하기’를 누르면 PETLOG가 선택된 NEWON 통합 문의 페이지가 열립니다.", href: "petlog/contact/?type=general#inquiry", icon: "mail" },
       { key: "app", name: "기능·사용 관련 문의", body: "앱 사용 방법, 오류, 계정·데이터 문의. 기기와 앱 버전을 함께 적어 주세요.", href: "petlog/contact/?type=app-support#inquiry", icon: "phone" },
       { key: "biz", name: "기업 제휴 문의", body: "동물병원·미용·호텔·브랜드 등 사업 제휴. 아래 12개 유형 중 가까운 분야를 골라 주세요.", href: "#nls-types", icon: "link" },
       { key: "public", name: "기관·공공 협력 문의", body: "지자체·공공기관의 동물복지 협력. 보호소·구조 단체는 '보험·입양·추모' 유형을 선택해 주세요.", href: "petlog/contact/?type=public#inquiry", icon: "building" },
       { key: "tech", name: "기술·API 협력 문의", body: "스마트 기기 연동, 데이터 연계, 기술 협력. 현재 공개 API는 없으며 협의 가능성을 함께 검토합니다.", href: "petlog/contact/?type=global#inquiry", icon: "tool" },
-      { key: "press", name: "언론·미디어 문의", body: "취재·인터뷰·자료 요청은 NEWON 공식 이메일로 보내 주세요. 매체명과 마감 일정을 적어 주시면 좋습니다.", href: "mailto:newon@newon.app?subject=%5BPETLOG%5D%20%EC%96%B8%EB%A1%A0%C2%B7%EB%AF%B8%EB%94%94%EC%96%B4%20%EB%AC%B8%EC%9D%98", icon: "megaphone" },
+      { key: "press", name: "언론·미디어 문의", body: "취재·인터뷰·자료 요청. 매체명과 마감 일정을 적어 주시면 좋습니다. NEWON 공식 이메일(newon@newon.app)로 보내셔도 됩니다.", href: "mailto:newon@newon.app?subject=%5BPETLOG%5D%20%EC%96%B8%EB%A1%A0%C2%B7%EB%AF%B8%EB%94%94%EC%96%B4%20%EB%AC%B8%EC%9D%98", icon: "megaphone" },
       { key: "invest", name: "투자 관련 문의", body: "투자 관련 문의는 NEWON 공식 문의 페이지에서 받습니다. 이 페이지의 내용은 투자 권유가 아니며 확정된 투자·계약을 뜻하지 않습니다.", href: "business/contact/?type=other&platform=petlog#bpt-form", icon: "chart" },
     ],
     kicker: "INQUIRY TYPES",
     listTitle: "12개 문의 유형",
-    listLead: "PETLOG 분야별 문의 유형입니다. 유형을 누르면 아래 양식에 바로 선택됩니다. 반려인 문의는 01·02, 동물병원은 04, 예약 업체 입점은 05·06, 펫 브랜드는 07·08, 보호소 협력은 09를 선택해 주세요.",
+    listLead: "PETLOG 분야별 문의 유형입니다. ‘문의하기’를 누르면 PETLOG와 문의 유형이 선택된 NEWON 통합 문의 페이지가 열립니다. 반려인 문의는 01·02, 동물병원은 04, 예약 업체 입점은 05·06, 펫 브랜드는 07·08, 보호소 협력은 09를 선택해 주세요.",
     directKicker: "OFFICIAL CHANNELS",
     directTitle: "공식 연락처",
     direct: [
@@ -1208,17 +1208,17 @@ export const CONTACT = {
     purposeTitle: "Contact by purpose",
     purposeLead: "Choose your purpose to reach the right channel. There is no need to send original veterinary records or sensitive personal data.",
     purposes: [
-      { key: "general", name: "General questions", body: "Wondering what PETLOG is or what it offers. Selects 'General and other proposals' in the form below.", href: "petlog/contact/?type=general#inquiry", icon: "mail" },
+      { key: "general", name: "General questions", body: "Wondering what PETLOG is or what it offers. ‘Contact us’ opens NEWON's contact page with PETLOG selected.", href: "petlog/contact/?type=general#inquiry", icon: "mail" },
       { key: "app", name: "Features and app use", body: "How to use the app, errors, account and data. Please include your device and app version.", href: "petlog/contact/?type=app-support#inquiry", icon: "phone" },
       { key: "biz", name: "Business partnerships", body: "Partnerships with vets, groomers, hotels, brands and more. Please pick the closest of the 12 types below.", href: "#nls-types", icon: "link" },
       { key: "public", name: "Public and institutional cooperation", body: "Animal welfare work with local government and public bodies. Shelters and rescue groups, please choose 'Insurance, adoption, memorial'.", href: "petlog/contact/?type=public#inquiry", icon: "building" },
       { key: "tech", name: "Technology and API", body: "Smart-device links, data integration and technology. There is no public API today; we explore possibilities together.", href: "petlog/contact/?type=global#inquiry", icon: "tool" },
-      { key: "press", name: "Press and media", body: "Please send interview and material requests to NEWON's official email, with your outlet and deadline.", href: "mailto:newon@newon.app?subject=%5BPETLOG%5D%20Press%20inquiry", icon: "megaphone" },
+      { key: "press", name: "Press and media", body: "Interview and material requests, with your outlet and deadline. You can also use NEWON's official email (newon@newon.app).", href: "mailto:newon@newon.app?subject=%5BPETLOG%5D%20Press%20inquiry", icon: "megaphone" },
       { key: "invest", name: "Investment", body: "Investment inquiries are taken on NEWON's official contact page. Nothing on this page is an offer of investment or implies a confirmed investment or contract.", href: "business/contact/?type=other&platform=petlog#bpt-form", icon: "chart" },
     ],
     kicker: "INQUIRY TYPES",
     listTitle: "12 inquiry types",
-    listLead: "PETLOG inquiry types by field. Choosing a type selects it in the form below. Owners: 01 or 02; vet clinics: 04; booking businesses: 05 or 06; pet brands: 07 or 08; shelters: 09.",
+    listLead: "PETLOG inquiry types by field. ‘Contact us’ opens NEWON's contact page with PETLOG and the inquiry type selected. Owners: 01 or 02; vet clinics: 04; booking businesses: 05 or 06; pet brands: 07 or 08; shelters: 09.",
     directKicker: "OFFICIAL CHANNELS",
     directTitle: "Official contacts",
     direct: [
@@ -1879,7 +1879,7 @@ V3.contact.ko.faq = [
   ["답변은 어떻게 받나요?", "검토 후 문의 양식에 남겨 주신 이메일로 회신드립니다."],
   ["반려동물이 아픈데 문의해도 되나요?", "PETLOG는 진단할 수 없습니다. 가까운 동물병원에 문의해 주시고, 응급 상황이면 바로 응급 진료기관에 연락해 주세요."],
   ["웹사이트에서 예약하거나 입점 신청을 할 수 있나요?", "아니요. 예약·결제·입점 신청·상품 판매는 웹사이트에서 제공하지 않습니다. 입점·협력 의사는 문의 양식으로 알려 주세요."],
-  ["투자나 언론 문의는 어디로 보내나요?", "투자 관련 문의는 NEWON 공식 문의 페이지에서, 취재·인터뷰 요청은 newon@newon.app에서 받습니다."],
+  ["투자나 언론 문의는 어디로 보내나요?", "투자 관련 문의와 취재·인터뷰 요청 모두 NEWON 통합 문의 페이지에서 받습니다. newon@newon.app으로 보내셔도 됩니다."],
 ];
 V3.contact.en.faqKicker = "CONTACT FAQ";
 V3.contact.en.faqTitle = "Common questions before writing";
@@ -1888,7 +1888,7 @@ V3.contact.en.faq = [
   ["How will I get an answer?", "After review we reply to the email you left in the form."],
   ["My pet is unwell — can I ask here?", "PETLOG cannot diagnose. Please contact a nearby vet, or an emergency clinic right away in an emergency."],
   ["Can I book or apply as a seller on the website?", "No. Booking, payment, seller applications and sales are not offered on this website. Tell us about listing or partnership interest through the form."],
-  ["Where do investment or press inquiries go?", "Investment inquiries go to NEWON's official contact page, and interview or press requests to newon@newon.app."],
+  ["Where do investment or press inquiries go?", "Both investment inquiries and interview or press requests go through NEWON's contact page; you can also write to newon@newon.app."],
 ];
 
 V3.business.ko.links = {

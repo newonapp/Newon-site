@@ -102,7 +102,7 @@ for (const p of pages) {
     const cats = count(body, /class="bl-link[^"]*" href="[^"]*#cat-0[1-9]"/g);
     const ctas = count(body.slice(body.indexOf('id="bl-close"')), /class="nls-btn/g);
     const imp = sect("bl-impact");
-    const impOk = count(imp, /<li><span>0[1-5]<\/span>/g) === 5 && count(imp, /class="nls-btn/g) === 2 && /#cat-07/.test(imp) && /#bl-cs-partners/.test(imp) && /nls-note/.test(imp);
+    const impOk = count(imp, /<li><span>0[1-5]<\/span>/g) === 5 && count(imp, /class="nls-btn/g) === 2 && /#cat-07/.test(imp) && /\/contact\/\?platform=babylog&amp;type=partnership/.test(imp) /* partnership inquiry → unified Contact page (owner 2026-10-26) */ && /nls-note/.test(imp);
     const sol = count(sect("bl-trust"), /class="bl-checks__item"/g);
     const values = count(sect("bl-connect"), /class="bl-val"/g);
     const core = count(sect("bl-daily"), /class="bl-bento__item/g);
@@ -146,13 +146,18 @@ for (const p of pages) {
     secOk = !lack.length && dts === 4 * 8 + 2 * 15 + 3 * 13 && steps === 5 && principles === 6 && models === 1 && rail === 8 + 15 + 13 && ids.has("bl-cs-partners") && ids.has("bl-industry");
     secInfo = `missing ${lack.join(",") || "-"}, dt ${dts}/${4 * 8 + 2 * 15 + 3 * 13}, steps ${steps}, principles ${principles}/6, model chips ${models}, jump links ${rail}/36`;
   } else {
-    const cards = [...body.matchAll(/class="bl-card[^"]*" href="([^"]+)"/g)].map((m) => m[1]);
-    const codes = cards.map((c) => (c.match(/source=babylog-contact-([a-z]+)/) || [])[1]);
-    const want = [...CONTACT_CODES, ...CONTACT_MORE_CODES, ...CONTACT_CS_CODES];
-    const purpose = sect("bl-contact-purpose");
-    const purposeOk = count(purpose, /class="bl-rows__item"/g) === 7 && /mailto:newon@newon\.app/.test(purpose) && /\/contact\/\?platform=babylog/.test(purpose) /* inquiry buttons open the unified Contact page (owner 2026-10-26) */;
-    secOk = cards.length === 26 && JSON.stringify(codes) === JSON.stringify(want) && /bl-emergency/.test(sect("bl-contact-cs")) && purposeOk;
-    secInfo = `cards ${cards.length}/26, purposes ${purposeOk}, codes ${codes.join(",")}`;
+    // Contact (owner 2026-10-26): ONGIL-style page (biz-contact-kit.mjs). The 26 contact categories (01–26, in order)
+    // and the 7 inquiry purposes are rows whose single "문의하기" opens /{lang}/contact/?platform=babylog&type=…
+    const types = sect("bct-types");
+    const rows = [...types.matchAll(/<span class="bct-tlist__n">(\d\d)<\/span>/g)].map((m) => m[1]);
+    const want = [...CONTACT_CODES, ...CONTACT_MORE_CODES, ...CONTACT_CS_CODES].map((_, i) => String(i + 1).padStart(2, "0"));
+    const go = [...types.matchAll(/class="bct-tlist__go" href="([^"]+)"/g)].map((m) => m[1].replace(/&amp;/g, "&"));
+    const unified = new RegExp(`^/${p.lang}/contact/\\?platform=babylog&type=(personal|business|public|partnership|investment|media)(&|$)`);
+    const route = sect("bct-route");
+    const purposeOk = count(route, /<li[ >]/g) === 7 && [...route.matchAll(/ href="([^"]+)"/g)].every((m) => unified.test(m[1].replace(/&amp;/g, "&")));
+    const mailButtons = count(body, /class="[^"]*(?:btn|__go)[^"]*" href="mailto:/g);
+    secOk = rows.length === 26 && JSON.stringify(rows) === JSON.stringify(want) && go.length === 26 && go.every((h) => unified.test(h)) && /bct-guard__alert/.test(body) && purposeOk && mailButtons === 0 && /bct-channels/.test(body);
+    secInfo = `rows ${rows.length}/26, unified links ${go.filter((h) => unified.test(h)).length}/26, purposes ${purposeOk}, mail buttons ${mailButtons}`;
   }
   rec(`sections ${tag}`, secOk, secInfo);
 
@@ -197,8 +202,9 @@ for (const p of pages) {
 
   /* ---- child safety: plan label, emergency routing, no external links, no child imagery ---- */
   {
-    const hasPlan = /bl-status--plan|nls-note/.test(body) && body.includes(p.lang === "ko" ? "비전과 계획" : "vision and plan");
-    const emerg = p.nav.id === "overview" ? true : /bl-emergency/.test(body);
+    const hasPlan = /bl-status--plan|nls-note|bct-tgroup__notes/.test(body) && body.includes(p.lang === "ko" ? "비전과 계획" : "vision and plan");
+    // Contact page (ONGIL-style kit): the emergency routing is the red "before you get in touch" callout
+    const emerg = p.nav.id === "overview" ? true : /bl-emergency|bct-guard__alert/.test(body);
     const ext = [...body.matchAll(/ href="(https?:[^"]+)"/g)].map((m) => m[1]).filter((u) => !/apps\.apple\.com|play\.google\.com/.test(u));
     // The owner-chosen first-screen background film (landscape, no children) is the only allowed media.
     const bodyNoHeroFilm = body.replace(/<video class="nls-film__video"[\s\S]*?<\/video>/, "");

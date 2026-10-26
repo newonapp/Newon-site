@@ -5,6 +5,12 @@
  * Life Stage styles (/home-lifestage.css, /home-lifestage-layout.css, scoped to .nls).
  */
 import { escapeHtml } from "./hub-utils.mjs";
+import { renderBizContact } from "./biz-contact-kit.mjs";
+import { livonContactModel } from "./biz-contact-data.mjs";
+import { unifiedContactHref } from "./unified-contact-links.mjs";
+
+/** Inquiry action → unified NEWON Contact page, LIVON preselected (owner, 2026-10-26). */
+const ask = (lang, type, page) => unifiedContactHref(lang, "livon", { type, source: `livon-${page}` });
 import { renderFlagshipSubnav, FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
 import { getLifeStageCopy } from "./home-lifestage-copy.mjs";
 import {
@@ -90,7 +96,9 @@ function dl(rows) {
 function textHero(lang, kicker, title, lead, titleId) {
   const c = siteCopy(lang);
   const isContact = kicker === "Contact";
-  const contactHref = isContact ? "#lvs-contact" : pageHref(lang, "contact");
+  // hero inquiry button → the unified Contact page (LIVON preselected; type by page)
+  const heroType = { Business: "business", Partnerships: "partnership" }[kicker] || "personal";
+  const contactHref = ask(lang, heroType, String(kicker).toLowerCase());
   return `<div class="nls-film lvs-film" data-nls-film data-hs-section>
     <div class="nls-film__stage">
       <div class="nls-film__fallback" aria-hidden="true"></div>
@@ -104,7 +112,7 @@ function textHero(lang, kicker, title, lead, titleId) {
         <p class="nls-film__lead">${e(lead)}</p>
         <div class="nls-film__actions">
           <a class="nls-btn" href="${e(pageHref(lang, "platform"))}#lvs-app">${e(c.tryWeb)} →</a>
-          <a class="nls-btn nls-btn--ghost" href="${e(contactHref)}"${isContact ? " data-nls-scroll" : ""}>${e(c.toContact)}${isContact ? " ↓" : ""}</a>
+          <a class="nls-btn nls-btn--ghost" href="${e(contactHref)}">${e(c.toContact)}</a>
         </div>
       </div>
     </div>
@@ -237,7 +245,7 @@ function overviewHero(lang) {
         <p class="nls-film__lead">${e(c.heroLead)}</p>
         <div class="nls-film__actions">
           <a class="nls-btn" href="${e(pageHref(lang, "platform"))}">${e(c.heroCta)} →</a>
-          <a class="nls-btn nls-btn--ghost" href="${e(pageHref(lang, "contact"))}">${e(siteCopy(lang).toContact)}</a>
+          <a class="nls-btn nls-btn--ghost" href="${e(ask(lang, "personal", "overview"))}">${e(siteCopy(lang).toContact)}</a>
         </div>
       </div>
     </div>
@@ -578,7 +586,7 @@ function categoryCard(lang, x) {
   const newon = app ? `${e(app.name)} — ${e(pick(lang, app.ko, app.en))} (${e(f.newonNote)})` : e(f.newonNone);
   const cta =
     st === "planned"
-      ? `<a class="lvs-link" href="${e(pageHref(lang, "contact"))}">${e(f.ctaPlanned)} ${arrow}</a>`
+      ? `<a class="lvs-link" href="${e(ask(lang, "personal", "platform"))}">${e(f.ctaPlanned)} ${arrow}</a>`
       : `<a class="lvs-link" href="${e(pageHref(lang, "platform"))}#lvs-app">${e(f.ctaWeb)} ${arrow}</a>`;
   const nt = pick(lang, x.noteKo, x.noteEn);
   return `<article class="lvs-cat" id="lvs-cat-${e(x.n)}" data-status="${e(st)}">
@@ -795,7 +803,7 @@ export function renderBusiness(lang) {
           [b.f.partners, e(d.partners)],
           [b.f.rule, e(d.rule)],
         ])}
-        <a class="lvs-link lvs-biz__cta" href="/${e(lang)}/contact/?type=business">${e(b.f.cta)} ${arrow}</a>
+        <a class="lvs-link lvs-biz__cta" href="${e(ask(lang, "business", "business"))}">${e(b.f.cta)} ${arrow}</a>
       </div>
     </details>`;
   }).join("");
@@ -885,7 +893,7 @@ export function renderBusiness(lang) {
       <h2 class="nls-hero__title">${nl(x.ctaTitle)}</h2>
       <p class="nls-lead">${e(x.ctaLead)}</p>
       <div class="nls-actions">
-        <a class="nls-btn lvs-btn-point" href="/${e(lang)}/business/contact/?type=saas&amp;platform=livon">${e(x.ctaBiz)} →</a>
+        <a class="nls-btn lvs-btn-point" href="${e(ask(lang, "business", "business"))}">${e(x.ctaBiz)} →</a>
         <a class="nls-btn nls-btn--ghost" href="${e(pageHref(lang, "partnerships"))}">${e(x.ctaPartner)}</a>
       </div>
     </div>`;
@@ -968,71 +976,23 @@ export function renderPartnerships(lang) {
       ${faqList(y3.pFaq.items, "2")}`, { rule: true })}
     ${block("lvs-global", `${headSplit(gq.kicker, gq.title, gq.lead)}
       ${feats(gq.items, 3, { mod: "card" })}
-      <p class="lvs-more-link"><a class="lvs-link" href="/${e(lang)}/contact/?type=partnership&amp;platform=livon">${e(gq.cta)} ${arrow}</a></p>`, { band: true })}
+      <p class="lvs-more-link"><a class="lvs-link" href="${e(ask(lang, "partnership", "partnerships"))}">${e(gq.cta)} ${arrow}</a></p>`, { band: true })}
     <div class="nls-block nls-close nls-block--ink lvs-close">
       <p class="nls-kicker">Partnership</p>
       <h2 class="nls-hero__title">${nl(p.heroTitle)}</h2>
-      <div class="nls-actions"><a class="nls-btn lvs-btn-point" href="/${e(lang)}/contact/?type=partnership">${e(p.f.cta)} →</a><a class="nls-btn nls-btn--ghost" href="/${e(lang)}/business/contact/?type=general&amp;platform=livon">${e(x.ctaSecond)}</a></div>
+      <div class="nls-actions"><a class="nls-btn lvs-btn-point" href="${e(ask(lang, "partnership", "partnerships"))}">${e(p.f.cta)} →</a><a class="nls-btn nls-btn--ghost" href="${e(ask(lang, "business", "partnerships"))}">${e(x.ctaSecond)}</a></div>
     </div>`;
   return shell(lang, "partnerships", "lvs-partnerships-title", textHero(lang, "Partnerships", p.heroTitle, p.heroLead, "lvs-partnerships-title"), body);
 }
 
 /* ════════════════════════ 05 Contact ════════════════════════ */
+/* ONGIL-style Contact page (owner, 2026-10-26): hero + menu unchanged, body = the shared Contact kit
+   (biz-contact-kit.mjs, LIVON brand colour). Every inquiry action is one "문의하기" → /{lang}/contact/?platform=livon. */
 export function renderContact(lang) {
-  const c = siteCopy(lang);
-  const k = c.contact;
-  const groups = Object.entries(CONTACT_GROUPS).map(([gid, g]) => {
-    const rows = CONTACT_TYPES.filter((y) => y.g === gid).map((y) => {
-      const label = pick(lang, y.ko, y.en);
-      return `<li class="lvs-contact__item"><div><strong>${e(label)}</strong><p>${e(k.subjectLabel)} · [LIVON] ${e(label)}</p></div><a class="lvs-link" href="/${e(lang)}/contact/?type=${e(y.type)}" aria-label="${e(label)} — ${e(k.go)}">${e(k.go)} ${arrow}</a></li>`;
-    }).join("");
-    return `<section class="lvs-cgroup" aria-labelledby="lvs-cgroup-${gid}">
-      <header class="lvs-cgroup__head"><span class="lvs-feats__i">${icon(CONTACT_ICON[gid] || "mail")}</span><h3 id="lvs-cgroup-${gid}" class="lvs-cgroup__title">${e(pick(lang, g.ko, g.en))}</h3><span class="lvs-count">${CONTACT_TYPES.filter((y) => y.g === gid).length}</span></header>
-      <ol class="lvs-clist">${rows}</ol>
-    </section>`;
-  }).join("");
-  const x = c30(lang).contact;
-  const purposes = x.items.map(([id, t, what, include]) => {
-    const href = CONTACT_PURPOSE_HREF[id](lang);
-    const mail = href.startsWith("mailto:");
-    return `<article class="lvs-biz lvs-purpose" id="lvs-purpose-${e(id)}">
-      <span class="lvs-feats__i">${icon(CONTACT_PURPOSE_ICON[id])}</span>
-      <div class="lvs-purpose__copy">
-        <h3>${e(t)}</h3>
-        <p class="lvs-biz__what">${e(what)}</p>
-        ${dl([[x.f.include, e(include)]])}
-        <a class="lvs-link lvs-biz__cta" href="${e(href)}">${e(mail ? "newon@newon.app" : x.f.go)} ${arrow}</a>
-      </div>
-    </article>`;
-  }).join("");
-  const y3 = v3(lang);
-  const ch = y3.channels;
-  const CH_HREF = { unified: `/${lang}/contact/?type=support`, business: `/${lang}/business/contact/?type=general&platform=livon`, mail: "mailto:newon@newon.app" };
-  const CH_ICON = { unified: "chat", business: "building", mail: "mail", none: "info" };
-  const channels = ch.items.map(([id, t, b]) => {
-    const href = CH_HREF[id];
-    return `<li class="lvs-chan${href ? "" : " is-off"}" data-chan="${e(id)}"><span class="lvs-feats__i">${icon(CH_ICON[id])}</span><h3>${e(t)}</h3><p>${e(b)}</p>${href ? `<a class="lvs-link" href="${e(href)}">${e(href.startsWith("mailto:") ? "newon@newon.app" : ch.go)} ${arrow}</a>` : ""}</li>`;
-  }).join("");
-  const body = `
-    ${block("lvs-contact", `${head(k.kicker, k.title, "")}
-      <div class="lvs-cgroups">${groups}</div>`)}
-    ${block("lvs-purpose", `${headSplit(x.purposeKicker, x.purposeTitle, x.purposeLead)}
-      <p class="lvs-notice lvs-notice--strong">${icon("shield", "lvs-notice__i")}<span>${e(x.privacy)}</span></p>
-      <div class="lvs-purposes">${purposes}</div>`, { band: true })}
-    ${block("lvs-channels", `${headSplit(ch.kicker, ch.title, ch.lead)}
-      <ul class="lvs-chans">${channels}</ul>`, { rule: true })}
-    ${block("lvs-contact-tips", `${head("Before you write", k.tipsTitle, "")}
-      <div class="lvs-tips">
-        <ul class="lvs-list">${k.tips.map((t) => `<li>${e(t)}</li>`).join("")}</ul>
-        <div class="lvs-notes">
-          ${k.note ? `<p class="lvs-notice">${icon("info", "lvs-notice__i")}<span>${e(k.note)}</span></p>` : ""}
-          <p class="lvs-notice">${icon("building", "lvs-notice__i")}<span>${e(k.bizNote)} <a href="/${e(lang)}/business/inquiry/">NEWON Business →</a></span></p>
-          <p class="lvs-notice">${icon("mail", "lvs-notice__i")}<span>${e(x.mailNote)} · <a href="mailto:newon@newon.app">newon@newon.app</a></span></p>
-        </div>
-      </div>`, { rule: true })}
-    ${block("lvs-cfaq", `${head(y3.cFaq.kicker, y3.cFaq.title, "")}
-      ${faqList(y3.cFaq.items, "2")}`, { rule: true })}`;
-  return shell(lang, "contact", "lvs-contact-title", textHero(lang, "Contact", k.heroTitle, k.heroLead, "lvs-contact-title"), body);
+  const k = siteCopy(lang).contact;
+  const hero = textHero(lang, "Contact", k.heroTitle, k.heroLead, "lvs-contact-title");
+  return `${shell(lang, "contact", "lvs-contact-title", hero, "")}
+${renderBizContact(livonContactModel(lang))}`;
 }
 
 export const LIVON_SITE_RENDERERS = {

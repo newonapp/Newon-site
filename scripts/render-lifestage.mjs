@@ -31,6 +31,7 @@ import { LIVON_SITE_PAGES, siteCopy } from "./livon-site-data.mjs";
 import { getLifeStageCopy } from "./home-lifestage-copy.mjs";
 import { LIVON_HUB_PATH, LIVON_LEGACY_PATH } from "./newon-business-units.mjs";
 import { toUnifiedContact } from "./unified-contact-links.mjs";
+import { BIZ_CONTACT_CSS } from "./biz-contact-kit.mjs";
 
 const HUB = LIVON_HUB_PATH.replace(/\/$/, "");
 const LEGACY = LIVON_LEGACY_PATH.replace(/\/$/, "");
@@ -70,12 +71,12 @@ function renderPage(lang, page) {
     HREFLANG_BLOCK: hreflangBlock(rel),
     SKIP_LABEL: pick(flat, flatEn, "common.skipToContent") || "Skip to content",
     CHROME_HEADER: header,
-    MAIN_CONTENT: page.id === "contact" ? toUnifiedContact(LIVON_SITE_RENDERERS[page.id](lang.dir), lang.dir, "livon") : LIVON_SITE_RENDERERS[page.id](lang.dir),
+    MAIN_CONTENT: toUnifiedContact(LIVON_SITE_RENDERERS[page.id](lang.dir), lang.dir, "livon", page.id),
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/flagship-subnav.css?v=20261019fsn3" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
-    <link rel="stylesheet" href="/livon-site.css?v=${LVS_VER}" />`,
+    <link rel="stylesheet" href="/livon-site.css?v=${LVS_VER}" />${page.id === "contact" ? `\n    <link rel="stylesheet" href="${BIZ_CONTACT_CSS}" />` : ""}`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>
     <script src="/livon-site.js?v=${LVS_VER}" defer></script>`,

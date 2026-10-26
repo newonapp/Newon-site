@@ -14,6 +14,9 @@ import { escapeHtml } from "./hub-utils.mjs";
 import { renderFlagshipSubnav } from "./flagship-subnav.mjs";
 import { BUSINESS } from "./six-businesses.mjs";
 import { BL_NAV, BL_SLUG, getBabylogCopy, copyLangFor } from "./babylog-site-copy.mjs";
+import { renderBizContact, TYPES_ID } from "./biz-contact-kit.mjs";
+import { babylogContactModel } from "./biz-contact-data.mjs";
+import { unifiedContactHref } from "./unified-contact-links.mjs";
 import { CS_PARTNER_CODES, IND_PARTNER_CODES } from "./babylog-expansion-copy.mjs";
 
 const esc = escapeHtml;
@@ -21,10 +24,11 @@ const nl = (s) => esc(s || "").replace(/\n/g, "<br>");
 
 export const pagePath = (lang, sub = "") => `/${lang}/${BL_SLUG}/${sub ? sub + "/" : ""}`;
 
-/** Existing official inquiry form, passing the BABYLOG source and inquiry type (no new data path). */
+/** Inquiry buttons → the unified NEWON Contact page with BABYLOG preselected (owner, 2026-10-26).
+ *  Type by page: platform → personal, business → business, partnerships → partnership. */
 export function inquiryHref(lang, page, code) {
-  const source = `babylog-${page}${code ? "-" + code : ""}`;
-  return `/${lang}/business/inquiry/?category=Partnership&source=${encodeURIComponent(source)}#inquiry`;
+  const type = { business: "business", partnerships: "partnership" }[page] || "personal";
+  return unifiedContactHref(lang, "babylog", { type, source: `babylog-${page}` });
 }
 
 /* ------------------------------------------------------------------ icons (inline SVG, decorative) */
@@ -120,13 +124,13 @@ function heroActions(lang, page, h) {
     platform: `<a class="nls-btn" href="#bl-access" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
     business: `<a class="nls-btn" href="#bl-biz" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
     partnerships: `<a class="nls-btn" href="#bl-types" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
-    contact: `<a class="nls-btn" href="#bl-contact-list" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
+    contact: `<a class="nls-btn" href="#${TYPES_ID}" data-nls-scroll>${esc(h.ctaMain)} →</a>`,
   }[page];
   const second = {
     overview: pagePath(lang, "platform"),
     platform: pagePath(lang, "business"),
     business: pagePath(lang, "partnerships"),
-    partnerships: pagePath(lang, "contact"),
+    partnerships: inquiryHref(lang, "partnerships", ""),
     contact: pagePath(lang, "partnerships"),
   }[page];
   return `${first}
@@ -404,7 +408,7 @@ function overviewBody(C, lang) {
         <p class="nls-lead">${esc(X.impact.body)}</p>
         <div class="nls-actions">
           <a class="nls-btn" href="${pagePath(lang, "business")}#cat-07">${esc(X.impact.ctaBusiness)} →</a>
-          <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "partnerships")}#bl-cs-partners">${esc(X.impact.ctaPartner)}</a>
+          <a class="nls-btn nls-btn--ghost" href="${esc(unifiedContactHref(lang, "babylog", { type: "partnership", source: "babylog-overview" }))}">${esc(X.impact.ctaPartner)}</a>
         </div>
       </div>
       <ol class="bl-ilist">${impactItems}</ol>
@@ -851,7 +855,7 @@ function businessBody(C, lang) {
     <p class="nls-note">${esc(GB.note)}</p>
     <p class="bl-biz__cta"><a class="bl-arrow" href="#biz-f">${esc(GB.toModel)} ${icon("arrow")}</a> <a class="bl-arrow" href="#grp-24">${esc(GB.toLine)} ${icon("arrow")}</a></p>`
   );
-  const ctas = `<a class="nls-btn" href="${pagePath(lang, "partnerships")}">${esc(C.ui.toPartnerships)} →</a>
+  const ctas = `<a class="nls-btn" href="${esc(unifiedContactHref(lang, "babylog", { type: "partnership", source: "babylog-business" }))}">${esc(C.ui.toPartnerships)} →</a>
       <a class="nls-btn nls-btn--ghost" href="${inquiryHref(lang, "business", "")}">${esc(C.ui.inquiryCta)}</a>`;
   return {
     hero: hero(C, lang, "business", b.hero, true),
@@ -961,13 +965,13 @@ function partnershipsBody(C, lang) {
     </div>
     <div class="bl-principles bl-principles--panel"><h3 class="bl-sub bl-sub--lg">${esc(GR.principlesTitle)}</h3>
     <ul class="bl-plist">${GR.principles.map((t) => `<li>${icon("lock")}<span>${esc(t)}</span></li>`).join("")}</ul></div>
-    <div class="nls-actions"><a class="nls-btn bl-btn-point" href="/${lang}/contact/?type=partnership&amp;platform=babylog">${esc(GR.cta)} →</a></div>
+    <div class="nls-actions"><a class="nls-btn bl-btn-point" href="${esc(inquiryHref(lang, "partnerships", ""))}">${esc(GR.cta)} →</a></div>
     <p class="nls-note">${esc(GR.ctaNote)}</p>`
   );
   const PP = C.v3.partnerships.prepare;
   const principleList = `<ul class="bl-plist">${p.principles.items.map((t) => `<li>${icon("check")}<span>${esc(t)}</span></li>`).join("")}</ul>`;
   const ctas = `<a class="nls-btn" href="${inquiryHref(lang, "partnerships", "")}">${esc(C.ui.inquiryCta)} →</a>
-      <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "contact")}">${esc(C.ui.toInquiry)}</a>`;
+      <a class="nls-btn nls-btn--ghost" href="${esc(unifiedContactHref(lang, "babylog", { type: "personal", source: "babylog-partnerships" }))}">${esc(C.ui.toInquiry)}</a>`;
   return {
     hero: hero(C, lang, "partnerships", p.hero, true),
     main: [
@@ -1024,71 +1028,11 @@ function partnershipsBody(C, lang) {
 }
 
 /* ------------------------------------------------------------------- Contact */
+/* ONGIL-style Contact page (owner, 2026-10-26): film hero + menu unchanged; the body is the shared Contact kit
+   (biz-contact-kit.mjs, BABYLOG pink), rendered after the Life Stage section. Every inquiry action is one
+   "문의하기" → /{lang}/contact/?platform=babylog&type=… */
 function contactBody(C, lang) {
-  const c = C.contact;
-  const CX = C.x.contact;
-  // Contact categories keep their 01–26 numbers: the copy refers to them ("09–17").
-  const card = (it, extra = "") => `<li><a class="bl-card${extra}" href="${inquiryHref(lang, "contact", it.code)}" data-analytics="babylog_contact_${it.code}">
-        <span class="bl-card__n" aria-hidden="true">${esc(it.n)}</span>
-        <strong class="bl-card__t">${esc(it.name)}</strong>
-        <span class="bl-card__d">${esc(it.lead)}</span>
-        <span class="bl-card__go">${esc(c.list.go)}</span>
-      </a></li>`;
-  const guideIcons = ["mail", "link", "chat", "lock"];
-  const K30 = C.c30.contact;
-  const KW = C.v3.contact.write;
-  const KF = C.v3.contact.faq;
-  const PU = K30.purpose;
-  const purposeHref = (to, i) => {
-    if (to.startsWith("babylog:")) return inquiryHref(lang, "contact", to.slice(8));
-    if (to.startsWith("biz:")) return `/${lang}/business/contact/?type=${to.slice(4)}&platform=babylog#bpt-form`;
-    const subject = i === PU.items.length - 1 ? PU.mailSubjectInvest : PU.mailSubjectMedia;
-    return `mailto:newon@newon.app?subject=${encodeURIComponent(subject)}`;
-  };
-  const purposeIcons = ["chat", "info", "store", "building", "link", "photo", "chart"];
-  const purpose = block(
-    "bl-contact-purpose",
-    `${titleBlock(PU.kicker, PU.title, PU.lead, 2, "bl-contact-purpose-title")}
-    <ul class="bl-rows bl-rows--purpose">${PU.items
-      .map(
-        (it, i) => `<li class="bl-rows__item">${ico(purposeIcons[i % 7])}<div><h3>${esc(it.name)}</h3><p>${esc(it.lead)}</p></div>
-        <p class="bl-rows__go"><a class="bl-arrow" href="${purposeHref(it.to, i)}">${esc(it.go)} ${icon("arrow")}</a></p></li>`
-      )
-      .join("")}</ul>`,
-    "accent"
-  );
-  const guide = [...c.guide.items, K30.sensitive]
-    .map((it, i) => `<li class="bl-guide__item">${ico(guideIcons[i % 4])}<h3>${esc(it.name)}</h3><p>${esc(it.body)}</p></li>`)
-    .join("");
-  const ctas = `<a class="nls-btn" href="${inquiryHref(lang, "contact", "")}">${esc(C.ui.toInquiry)} →</a>
-      <a class="nls-btn nls-btn--ghost" href="${pagePath(lang, "partnerships")}">${esc(C.ui.toPartnerships)}</a>`;
-  return {
-    hero: hero(C, lang, "contact", c.hero, true),
-    main: [
-      purpose,
-      block("bl-contact-list", `${titleBlock(c.list.kicker, c.list.title, c.list.lead, 2, "bl-contact-list-title")}<ul class="bl-cards">${c.list.items.map((it) => card(it)).join("")}</ul>`),
-      block(
-        "bl-contact-more",
-        `${titleBlock(CX.more.kicker, CX.more.title, CX.more.lead, 2, "bl-contact-more-title")}<ul class="bl-cards bl-cards--rows">${CX.more.items.map((it) => card(it, " bl-card--row")).join("")}</ul>`
-      ),
-      block(
-        "bl-contact-cs",
-        `${titleBlock(CX.cs.kicker, CX.cs.title, CX.cs.lead, 2, "bl-contact-cs-title")}
-    ${csNotices(C, true)}
-    <ul class="bl-cards bl-cards--cs">${CX.cs.items.map((it) => card(it)).join("")}</ul>`
-      ),
-      block("bl-contact-write", `${titleBlock(KW.kicker, KW.title, KW.lead, 2, "bl-contact-write-title")}${dtable([KW.fields.purpose, KW.fields.what], KW.items, "bl-dtable--kv bl-dtable--write")}`),
-      block(
-        "bl-guide",
-        `${titleBlock(c.guide.kicker, c.guide.title, "", 2, "bl-guide-title")}<ol class="bl-guide">${guide}</ol>
-    <p class="nls-note">${esc(C.ui.privacyNote)} <a class="bl-link" href="/${lang}/privacy/">${esc(C.ui.privacyLink)}</a></p>`
-      ),
-      block("bl-contact-faq", `<div class="bl-split bl-split--faq"><div>${titleBlock(KF.kicker, KF.title, "", 2, "bl-contact-faq-title")}</div><div class="bl-faq">${KF.items
-        .map((f) => `<details class="bl-faq__item"><summary>${esc(f.q)}</summary><p>${esc(f.a)}${f.link === "delete" ? ` <a class="bl-link" href="/${lang}/${BL_SLUG}/delete-account/">${esc(KF.deleteLink)}</a>` : ""}</p></details>`)
-        .join("")}</div></div>`),
-      closeBlock(C, lang, "contact", c, ctas),
-    ].join("\n"),
-  };
+  return { hero: hero(C, lang, "contact", C.contact.hero, true), main: "", after: renderBizContact(babylogContactModel(lang)) };
 }
 
 const BODY = { overview: overviewBody, platform: platformBody, business: businessBody, partnerships: partnershipsBody, contact: contactBody };
@@ -1096,13 +1040,13 @@ const BODY = { overview: overviewBody, platform: platformBody, business: busines
 /** @returns {string} the <section id="lifestage-detail" data-story="babylog"> markup for one page */
 export function renderBabylogSection(lang, page) {
   const C = getBabylogCopy(lang);
-  const { hero: heroHtml, main } = BODY[page](C, lang);
+  const { hero: heroHtml, main, after = "" } = BODY[page](C, lang);
   const fallbackLang = copyLangFor(lang) !== lang ? ` lang="${copyLangFor(lang)}"` : "";
   return `<section id="lifestage-detail" class="nls" data-story="babylog" data-bl-page="${page}"${fallbackLang} aria-labelledby="story-babylog-title">
     ${heroHtml}
   ${renderFlagshipSubnav({ biz: "babylog", lang, active: page })}
-  <div class="nls__wrap">
+  ${main ? `<div class="nls__wrap">
     ${main}
-  </div>
-</section>`;
+  </div>` : ""}
+</section>${after ? `\n${after}` : ""}`;
 }

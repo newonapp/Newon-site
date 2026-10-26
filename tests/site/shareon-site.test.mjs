@@ -49,7 +49,8 @@ test("counts follow the final plan: 18 areas, 10 revenue models, 10 partner type
   assert.equal((ko("shareon/platform").match(/id="svc-\d\d"/g) || []).length, 18);
   assert.equal((ko("shareon/business").match(/class="nsh-biz__item"/g) || []).length, 10);
   assert.equal((ko("shareon/partnerships").match(/class="nsh-dir__row"/g) || []).length, 10);
-  assert.equal((ko("shareon/contact").match(/class="nsh-tiles__item"/g) || []).length, 11);
+  // Contact (owner 2026-10-26, ONGIL-style kit): the 11 inquiry types are rows with one "문의하기" each
+  assert.equal((ko("shareon/contact").split('id="bct-types"')[1].split("</section>")[0].match(/class="bct-tlist__go"/g) || []).length, 11);
   assert.equal((ko("shareon/platform").match(/class="nsh-track__step is-off"/g) || []).length, 2);
   // inquiry types separate usage/joining from partner/institution/external inquiries, incl. press and investment
   const groups = KO.contact.items.map((it) => it.g);
@@ -114,7 +115,7 @@ test("no claims that future infrastructure is offered; excluded areas stay off t
   assert.ok(ko.includes("결제·보증금은 운영하지 않습니다") || ko.includes("결제·보증금은 아직 운영되지 않습니다") || ko.includes("운영하지 않습니다"));
 });
 
-test("inquiry links keep the NEWON form mechanism and internal links resolve", () => {
+test("inquiry links open the unified Contact page (platform + type + source) and internal links resolve", () => {
   for (const lang of ["ko", "en"]) {
     for (const p of SHAREON_PAGES) {
       const html = own(read(`${lang}/${p.path}/index.html`));
@@ -122,17 +123,13 @@ test("inquiry links keep the NEWON form mechanism and internal links resolve", (
         const rel = m[1].replace(/^\//, "");
         const file = rel.endsWith("/") || rel === "" ? path.join(rel, "index.html") : rel;
         assert.ok(fs.existsSync(path.join(ROOT, file)), `${lang}/${p.path} → ${m[1]}`);
-        if (m[1].endsWith("/business/contact/")) {
+        // owner 2026-10-26: every inquiry button opens the unified Contact page with SHAREON and a valid type
+        assert.ok(!/\/business\/(?:contact|inquiry)\/$/.test(m[1]), `${lang}/${p.path} old inquiry form link ${m[1]}`);
+        if (m[1] === `/${lang}/contact/` && m[2]) {
           const q = new URLSearchParams(m[2].slice(1).replace(/&amp;/g, "&"));
           assert.equal(q.get("platform"), "shareon");
-          assert.ok(["general", "participation", "saas", "public", "technology", "other"].includes(q.get("type")), q.get("type"));
-        }
-        if (m[1].endsWith("/business/inquiry/")) {
-          const q = new URLSearchParams(m[2].slice(1).replace(/&amp;/g, "&"));
-          assert.equal(q.get("type"), "partnership");
-          assert.equal(q.get("source"), "shareon");
-          assert.equal(q.get("utm_source"), "shareon");
-          assert.equal(m[3], "#inquiry");
+          assert.ok(["personal", "business", "public", "partnership", "investment", "media"].includes(q.get("type")), q.get("type"));
+          assert.match(q.get("source") || "", /^shareon-(overview|platform|business|partnerships|contact)$/);
         }
       }
       for (const m of html.matchAll(/href="#([^"]+)"/g)) assert.ok(html.includes(`id="${m[1]}"`), `${lang}/${p.path} anchor #${m[1]}`);

@@ -27,6 +27,7 @@ import { getMyWorldSiteCopy, MYWORLD_PAGES, myworldPagePath } from "./myworld-si
 import { renderMyWorldSitePage } from "./myworld-site-body.mjs";
 import { FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
 import { toUnifiedContact } from "./unified-contact-links.mjs";
+import { BIZ_CONTACT_CSS } from "./biz-contact-kit.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const MWS_VER = "20261026v3";
@@ -56,12 +57,12 @@ function renderPage(lang, page) {
     HREFLANG_BLOCK: hreflangBlock(rel),
     SKIP_LABEL: pick(flat, flatEn, "common.skipToContent") || "Skip to content",
     CHROME_HEADER: header,
-    MAIN_CONTENT: page === "contact" ? toUnifiedContact(renderMyWorldSitePage(lang.dir, page, site), lang.dir, "myworld") : renderMyWorldSitePage(lang.dir, page, site),
+    MAIN_CONTENT: toUnifiedContact(renderMyWorldSitePage(lang.dir, page, site), lang.dir, "myworld", page),
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=20261025ov1" />
     <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
-    <link rel="stylesheet" href="/myworld-site.css?v=20261026v3" />`,
+    <link rel="stylesheet" href="/myworld-site.css?v=20261026v3" />${page === "contact" ? `\n    <link rel="stylesheet" href="${BIZ_CONTACT_CSS}" />` : ""}`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=20261025ov1" defer></script>
     <script src="/myworld-site.js?v=${MWS_VER}" defer></script>`,

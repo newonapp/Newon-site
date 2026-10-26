@@ -430,7 +430,7 @@ const KO = {
     purpose: {
       kicker: "Inquiry Purposes",
       title: "문의 목적에 따라\n연결되는 곳이 다릅니다.",
-      lead: "일곱 가지 목적 중 가까운 것을 골라 주세요. 모든 경로는 NEWON의 기존 공식 문의 양식이나 공식 이메일로 이어집니다.",
+      lead: "일곱 가지 목적 중 가까운 것을 골라 주세요. ‘문의하기’를 누르면 BABYLOG와 알맞은 문의 유형이 선택된 NEWON 통합 문의 페이지가 열립니다.",
       items: [
         { name: "일반 서비스 문의", lead: "BABYLOG가 어떤 서비스인지, 어떤 가족에게 맞는지 같은 일반적인 궁금증.", to: "babylog:general", go: "문의 양식으로" },
         { name: "기능·사용 관련 문의", lead: "앱 기능, 오류, 계정, 구독 관련 문의. 기기 종류와 앱 버전을 함께 적어 주시면 확인이 빠릅니다.", to: "babylog:app", go: "문의 양식으로" },
@@ -928,7 +928,7 @@ const EN = {
     purpose: {
       kicker: "Inquiry Purposes",
       title: "Where your inquiry goes\ndepends on its purpose.",
-      lead: "Choose the closest of seven purposes. Every route leads to NEWON's existing official inquiry forms or official email address.",
+      lead: "Choose the closest of seven purposes. ‘Contact us’ opens NEWON's contact page with BABYLOG and a matching inquiry type selected.",
       items: [
         { name: "General service inquiry", lead: "General questions such as what BABYLOG is and which families it suits.", to: "babylog:general", go: "To the inquiry form" },
         { name: "Features and app use", lead: "App features, errors, accounts and subscriptions. Including your device type and app version helps us check faster.", to: "babylog:app", go: "To the inquiry form" },

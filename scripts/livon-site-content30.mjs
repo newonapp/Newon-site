@@ -646,11 +646,10 @@ export const V3 = {
     /* contact — channel chooser and FAQ (existing copy) */
     channels: {
       kicker: "Where to write", title: "어떤 창구로 보내면 되나요?",
-      lead: "문의 성격에 따라 세 창구 가운데 하나를 고르면 됩니다. LIVON 전용 문의 시스템이나 회원가입은 없습니다.",
+      lead: "모든 문의는 NEWON 통합 문의 페이지에서 받습니다. LIVON 전용 문의 시스템이나 회원가입은 없습니다.",
       items: [
-        ["unified", "NEWON 문의", "개인 이용, 기능·사용 문의, 정보 오류 제보, 언론·미디어 문의"],
-        ["business", "NEWON Business 문의", "기업 복지 협력, 생활 서비스 제휴, 공공기관·지자체 협력, 기술·API 연계"],
-        ["mail", "공식 이메일", "투자 관련 문의"],
+        ["unified", "NEWON 통합 문의", "개인 이용, 기능·사용 문의, 정보 오류 제보, 기업 복지 협력, 생활 서비스 제휴, 공공기관·지자체 협력, 기술·API 연계, 언론·미디어, 투자 관련 문의"],
+        ["mail", "공식 이메일", "문의 페이지 대신 공식 이메일로 보내셔도 됩니다."],
         ["none", "LIVON이 답하기 어려운 문의", "개인의 법률·의료·금융 자문은 해당 공식 기관을, 개인 간 중고 거래는 SHAREON을 안내합니다."],
       ],
       go: "열기",
@@ -756,11 +755,10 @@ export const V3 = {
     },
     channels: {
       kicker: "Where to write", title: "Which channel should I use?",
-      lead: "Pick one of three channels by the kind of question. There is no separate LIVON contact system or sign-up.",
+      lead: "Every inquiry goes through NEWON's contact page. There is no separate LIVON contact system or sign-up.",
       items: [
-        ["unified", "NEWON contact", "Using LIVON, features, reporting an error, press and media"],
-        ["business", "NEWON Business inquiry", "Employee benefits, living-service partnerships, public bodies, technology and API links"],
-        ["mail", "Official e-mail", "Investment inquiries"],
+        ["unified", "NEWON contact page", "Using LIVON, features, reporting an error, employee benefits, living-service partnerships, public bodies, technology and API links, press and media, investment"],
+        ["mail", "Official e-mail", "You can also write to the official e-mail instead of using the contact page."],
         ["none", "What LIVON cannot answer", "Personal legal, medical or financial advice — we point to the official body; personal used-goods trading — please use SHAREON."],
       ],
       go: "Open",

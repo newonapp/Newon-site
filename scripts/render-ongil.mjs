@@ -24,6 +24,7 @@ import {
 import { clampSeoDescription } from "./seo-meta.mjs";
 import { renderStudioHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { renderOngilSection } from "./home-ongil-body.mjs";
+import { toUnifiedContact } from "./unified-contact-links.mjs";
 import { getOngilCopy } from "./home-ongil-copy.mjs";
 
 import { lifeExtraHtml, LIFE_EXTRA_CSS } from "./render-business-intro.mjs";
@@ -71,7 +72,7 @@ function renderPage(lang) {
     HREFLANG_BLOCK: hreflangBlock("ongil"),
     SKIP_LABEL: pick(flat, flatEn, "common.skipToContent") || "Skip to content",
     CHROME_HEADER: header,
-    MAIN_CONTENT: renderOngilSection(lang.dir, { detail: true }) + lifeExtraHtml(lang.dir, "ongil"),
+    MAIN_CONTENT: toUnifiedContact(renderOngilSection(lang.dir, { detail: true }) + lifeExtraHtml(lang.dir, "ongil"), lang.dir, "ongil", "overview"),
     CHROME_FOOTER: footer,
     EXTRA_CSS: `${LIFE_EXTRA_CSS}
     <link rel="stylesheet" href="/home-ongil.css?v=${NOG_VER}" />

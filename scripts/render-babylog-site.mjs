@@ -40,6 +40,7 @@ import { renderStudioHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { BL_NAV, BL_SLUG, getBabylogCopy, copyLangFor } from "./babylog-site-copy.mjs";
 import { renderBabylogSection } from "./babylog-site-body.mjs";
 import { toUnifiedContact } from "./unified-contact-links.mjs";
+import { BIZ_CONTACT_CSS } from "./biz-contact-kit.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const NLS_VER = "20261025ov1"; // Life Stage assets are reused as-is
@@ -99,12 +100,12 @@ function renderPage(lang, nav) {
     HREFLANG_BLOCK: hreflangBlock(sub),
     SKIP_LABEL: pick(flat, flatEn, "common.skipToContent") || "Skip to content",
     CHROME_HEADER: header,
-    MAIN_CONTENT: nav.id === "contact" ? toUnifiedContact(renderBabylogSection(lang.dir, nav.id), lang.dir, "babylog") : renderBabylogSection(lang.dir, nav.id),
+    MAIN_CONTENT: toUnifiedContact(renderBabylogSection(lang.dir, nav.id), lang.dir, "babylog", nav.id),
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/flagship-subnav.css?v=20261019fsn3" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
-    <link rel="stylesheet" href="/babylog-site.css?v=20261026v3" />
+    <link rel="stylesheet" href="/babylog-site.css?v=20261026v3" />${nav.id === "contact" ? `\n    <link rel="stylesheet" href="${BIZ_CONTACT_CSS}" />` : ""}
 ${jsonLd(lang.dir, nav, seo, canonical)}`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,

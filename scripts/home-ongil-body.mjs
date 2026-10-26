@@ -2,6 +2,7 @@
  * Ongil detail section HTML. Scoped to #ongil-detail.
  * Reuses existing nls / nog patterns. Hero CARE TIMELINE still uses the four core services.
  */
+import { unifiedContactHref } from "./unified-contact-links.mjs";
 import { escapeHtml } from "./hub-utils.mjs";
 import { getOngilCopy } from "./home-ongil-copy.mjs";
 
@@ -99,7 +100,7 @@ function heroBlock(c, lang) {
         <p class="nog-film__lead">${escapeHtml(c.hero.lead)}</p>
         <div class="nog-film__actions">
           <a class="nls-btn" href="#nog-why" data-nls-scroll>${escapeHtml(c.hero.ctaMain)} →</a>
-          <a class="nls-btn nls-btn--ghost" href="/${escapeHtml(lang)}/business/inquiry/">${escapeHtml(c.hero.ctaSub)}</a>
+          <a class="nls-btn nls-btn--ghost" href="${escapeHtml(unifiedContactHref(lang, "ongil", { type: "personal", source: "ongil-overview" }))}">${escapeHtml(c.hero.ctaSub)}</a>
         </div>
       </div>
     </div>
@@ -333,7 +334,8 @@ function relatedBlock(c) {
 }
 
 function closeBlock(c, lang) {
-  const inquiry = `/${lang}/business/inquiry/`;
+  // inquiry → the unified NEWON Contact page, ONGIL preselected (owner, 2026-10-26)
+  const inquiry = unifiedContactHref(lang, "ongil", { type: "business", source: "ongil-overview" });
   return `<div id="nog-close" class="nls-block nls-close nls-block--ink" data-hs-section>
     <p class="nls-kicker">${escapeHtml(c.close.kicker)}</p>
     <h2 class="nls-hero__title">${c.close.titleHtml}</h2>

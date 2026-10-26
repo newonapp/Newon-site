@@ -5,7 +5,7 @@
  *   /{ko,en}/ongil/platform/      02 Platform      (29 long-term areas in 7 groups; Life Box · Friends · Safe Band as own sections; 29 Giving after them)
  *   /{ko,en}/ongil/business/      03 Business      (21 business groups in 8 categories + payers, fee principles, GTM, roadmap)
  *   /{ko,en}/ongil/partnerships/  04 Partnerships  (14 partner types + PoC proposals, data/API, campaigns)
- *   /{ko,en}/ongil/contact/       05 Contact       (14 inquiry types in 3 groups → the existing Newon email / business inquiry form)
+ *   /{ko,en}/ongil/contact/       05 Contact       (14 inquiry types in 3 groups → "문의하기" → the unified /{lang}/contact/ page)
  *
  * Design: the same Life Stage shell as PETLOG / BABYLOG / LIVON — the dark "film" first screen
  * (#lifestage-detail.nls .nls-film, home-lifestage.css + home-lifestage-layout.css + home-lifestage.js), then the shared
@@ -76,7 +76,10 @@ import {
   PARTNER_ICONS,
   PROCESS_ICONS,
 } from "./ongil-site-icons.mjs";
-import { toUnifiedContact } from "./unified-contact-links.mjs";
+import { toUnifiedContact, unifiedContactHref } from "./unified-contact-links.mjs";
+
+/** Inquiry action → the unified NEWON Contact page, ONGIL preselected (owner, 2026-10-26). */
+const ask = (lang, type, page, topic = "") => unifiedContactHref(lang, "ongil", { type, topic, source: `ongil-${page}` });
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 export const OGS_VER = "20261026v3";
@@ -98,6 +101,7 @@ function pagePath(lang, page) {
 function rel(lang, p) {
   // content links: "contact/" → ONGIL page, "lifestage/" etc → site page, "/x" absolute
   if (!p) return `/${lang}/ongil/`;
+  if (p.startsWith("ask:")) return ask(lang, p.slice(4), "overview"); // inquiry → unified Contact page
   if (p.startsWith("/") || /^https?:|^mailto:/.test(p)) return p;
   if (["platform/", "business/", "partnerships/", "contact/"].includes(p)) return `/${lang}/ongil/${p}`;
   return `/${lang}/${p}`;
@@ -176,9 +180,9 @@ function notesFoot(c) {
 }
 
 /** Item CTA. The web-preview ("start") entry points were removed by the owner; those items point to the inquiry page. */
-function ctaLink(c, lang, key) {
-  if (key === "partners") return `<a class="ogs-link" href="${pagePath(lang, "partnerships")}">${e(c.ui.propose)} →</a>`;
-  return `<a class="ogs-link" href="${pagePath(lang, "contact")}">${e(c.ui.inquiry)} →</a>`;
+function ctaLink(c, lang, key, page = "platform") {
+  if (key === "partners") return `<a class="ogs-link" href="${e(ask(lang, "partnership", page))}">${e(c.ui.propose)} →</a>`;
+  return `<a class="ogs-link" href="${e(ask(lang, page === "business" ? "business" : "personal", page))}">${e(c.ui.inquiry)} →</a>`;
 }
 const backLink = (c) => `<a class="ogs-top" href="#ogs-index">${e(c.ui.back)} ↑</a>`;
 const footLinks = (...links) => `<div class="ogs-foot-links">${links.join("")}</div>`;
@@ -672,7 +676,7 @@ function platformMain(c, S, lang) {
     [
       [c.ui.toBusiness, pagePath(lang, "business")],
       [c.ui.toPartnerships, pagePath(lang, "partnerships")],
-      [c.ui.inquiry, pagePath(lang, "contact")],
+      [c.ui.inquiry, ask(lang, "personal", "platform")],
     ],
     p
   );
@@ -788,7 +792,7 @@ function businessMain(c, S, lang) {
           const g = b.groups[i];
           return `<article class="ogs-card" id="b-${pad(i + 1)}" aria-labelledby="b-${pad(i + 1)}-t">
           ${tag(k.en, true, pad(i + 1))}<h3 id="b-${pad(i + 1)}-t">${e(g.name)}</h3><p class="ogs-card__desc">${e(g.intro)}</p>
-          ${groupSpec(c, g)}${footLinks(ctaLink(c, lang, g.cta), backLink(c))}
+          ${groupSpec(c, g)}${footLinks(ctaLink(c, lang, g.cta, "business"), backLink(c))}
         </article>`;
         })
         .join("");
@@ -871,7 +875,7 @@ function businessMain(c, S, lang) {
     lang,
     [
       [c.ui.toPartnerships, pagePath(lang, "partnerships")],
-      [c.ui.inquiry, pagePath(lang, "contact")],
+      [c.ui.inquiry, ask(lang, "business", "business")],
     ],
     b
   );
@@ -921,7 +925,7 @@ function partnershipsMain(c, S, lang) {
             <div><dt>${e(c.ui.structure)}</dt><dd>${e(it.structure)}</dd></div>
             <div><dt>${e(c.ui.conditions)}</dt><dd>${e(it.conditions)}</dd></div>
           </dl>
-          ${footLinks(`<a class="ogs-link" href="${pagePath(lang, "contact")}#ogs-types">${e(c.ui.propose)} →</a>`, backLink(c))}
+          ${footLinks(`<a class="ogs-link" href="${e(ask(lang, "partnership", "partnerships"))}">${e(c.ui.propose)} →</a>`, backLink(c))}
         </article>`
         )
         .join("")}</div>`
@@ -937,7 +941,7 @@ function partnershipsMain(c, S, lang) {
         [gp.typeLabel, c.ui.field, c.ui.conditions],
         gp.items.map((it) => ({ head: `<strong>${e(it.name)}</strong>`, cells: [e(it.field), e(it.conditions)] }))
       )}
-      <div class="ogs-actions"><a class="nls-btn ogs-btn--accent" href="/${lang}/contact/?type=partnership&amp;platform=ongil">${e(gp.cta)} →</a></div>`
+      <div class="ogs-actions"><a class="nls-btn ogs-btn--accent" href="${e(ask(lang, "partnership", "partnerships"))}">${e(gp.cta)} →</a></div>`
   );
 
   // C3 · partnership timing (v3): which partners each development stage needs
@@ -1021,7 +1025,7 @@ function partnershipsMain(c, S, lang) {
     c,
     lang,
     [
-      [c.ui.partnerInquiry, `${pagePath(lang, "contact")}#ogs-types`],
+      [c.ui.partnerInquiry, ask(lang, "partnership", "partnerships")],
       [c.ui.toBusiness, pagePath(lang, "business")],
     ],
     p
@@ -1033,9 +1037,8 @@ function partnershipsMain(c, S, lang) {
 
 function contactMain(c, S, lang) {
   const k = c.contact;
-  const formHref = (topic) =>
-    `/${lang}/business/inquiry/?service=partnership&source=${encodeURIComponent(`/${lang}/ongil/contact/`)}&topic=${encodeURIComponent(`ONGIL - ${topic}`)}`;
-  const mailHref = (topic) => `mailto:${k.email}?subject=${encodeURIComponent(`[ONGIL] ${topic}`)}`;
+  // every inquiry action → one "문의하기" button to the unified Contact page (type per inquiry row)
+  const go = (type, topic = "") => ask(lang, type, "contact", topic);
 
   // A · two large channel panels (email on apricot wash, form on white)
   const channels = sec(
@@ -1043,8 +1046,8 @@ function contactMain(c, S, lang) {
     `${head("ogs-channels", "Channels", k.channelsTitle, "")}
       <ul class="ogs-channels">${k.channels
         .map((ch) => {
-          const href = ch.href ? `/${lang}/${ch.href.replace("source=/ongil/", `source=/${lang}/ongil/`)}` : `mailto:${ch.v}`;
-          return `<li>${tile(ch.href ? "form" : "mail", "lg")}<p class="ogs-channels__k">${e(ch.k)}</p><a class="ogs-channels__v" href="${e(href)}">${e(ch.v)}${ch.href ? " →" : ""}</a><p class="ogs-channels__t">${e(ch.text)}</p></li>`;
+          const href = ch.type ? go(ch.type) : `mailto:${ch.v}`;
+          return `<li>${tile(ch.type ? "form" : "mail", "lg")}<p class="ogs-channels__k">${e(ch.k)}</p><a class="ogs-channels__v" href="${e(href)}">${e(ch.v)}${ch.type ? " →" : ""}</a><p class="ogs-channels__t">${e(ch.text)}</p></li>`;
         })
         .join("")}</ul>`
   );
@@ -1059,10 +1062,9 @@ function contactMain(c, S, lang) {
         <ol class="ogs-tlist">${list
           .map((t) => {
             n++;
-            const mail = t.channel === "mail";
             return `<li id="c-${pad(n)}">
           <div class="ogs-tlist__x"><h3>${e(t.name)}</h3><p>${e(t.text)}</p></div>
-          <a class="ogs-tlist__go" href="${e(mail ? mailHref(t.name) : formHref(t.name))}"><span class="ogs-tlist__ch" lang="en">${icon(mail ? "mail" : "form")}${mail ? "Email" : "Form"}</span><span>${e(mail ? k.mailCta : k.formCta)} →</span></a>
+          <a class="ogs-tlist__go" href="${e(go(t.type, t.topic))}" aria-label="${e(`${k.cta} — ${t.name}`)}"><span>${e(k.cta)} →</span></a>
         </li>`;
           })
           .join("")}</ol>
@@ -1112,10 +1114,7 @@ function contactMain(c, S, lang) {
   const close = closeInk(
     c,
     lang,
-    [
-      [k.formCta, formHref(c.lang === "ko" ? "일반 문의" : "General inquiry")],
-      [k.mailCta, mailHref(c.lang === "ko" ? "문의" : "Inquiry")],
-    ],
+    [[k.cta, go("personal")]],
     k
   );
 
@@ -1128,10 +1127,10 @@ function heroFor(c, lang, page) {
   const u = c.ui;
   const map = {
     overview: { h: c.overview.hero, main: [`${u.toAbout} ↓`, "#ogs-intro"], sub: [`${u.toPlatform} →`, pagePath(lang, "platform")] },
-    platform: { h: c.platform.hero, main: [u.heroCta.platform, "#ogs-index"], sub: [u.inquiry, pagePath(lang, "contact")] },
+    platform: { h: c.platform.hero, main: [u.heroCta.platform, "#ogs-index"], sub: [u.inquiry, ask(lang, "personal", "platform")] },
     business: { h: c.business.hero, main: [u.heroCta.business, "#ogs-index"], sub: [u.toPartnerships, pagePath(lang, "partnerships")] },
-    partnerships: { h: c.partnerships.hero, main: [u.heroCta.partnerships, "#ogs-index"], sub: [u.propose, `${pagePath(lang, "contact")}#ogs-types`] },
-    contact: { h: c.contact.hero, main: [u.heroCta.contact, "#ogs-types"], sub: [c.contact.mailCta, `mailto:${c.contact.email}?subject=${encodeURIComponent("[ONGIL]")}`] },
+    partnerships: { h: c.partnerships.hero, main: [u.heroCta.partnerships, "#ogs-index"], sub: [u.propose, ask(lang, "partnership", "partnerships")] },
+    contact: { h: c.contact.hero, main: [u.heroCta.contact, "#ogs-types"], sub: [c.contact.cta, ask(lang, "personal", "contact")] },
   }[page];
   return hero(c, map.h, { main: map.main, sub: map.sub, compact: page !== "overview" });
 }
@@ -1181,7 +1180,7 @@ function renderPage(lang, page) {
     HREFLANG_BLOCK: hreflangSub(page),
     SKIP_LABEL: pick(flat, flatEn, "common.skipToContent") || "Skip to content",
     CHROME_HEADER: header,
-    MAIN_CONTENT: page === "contact" ? toUnifiedContact(renderMain(lang, page), lang, "ongil") : renderMain(lang, page),
+    MAIN_CONTENT: toUnifiedContact(renderMain(lang, page), lang, "ongil", page),
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
