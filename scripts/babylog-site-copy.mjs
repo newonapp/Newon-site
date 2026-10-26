@@ -18,6 +18,7 @@
 import { getExpansionCopy } from "./babylog-expansion-copy.mjs";
 import { getContent30 } from "./babylog-content30.mjs";
 import { getContentV3 } from "./babylog-content-v3.mjs";
+import { getContentV6 } from "./babylog-content-v6.mjs";
 
 export const BL_SLUG = "babylog";
 
@@ -946,6 +947,7 @@ export function getBabylogCopy(lang) {
       x,
       c30,
       v3: getContentV3(key),
+      v6: getContentV6(key),
     };
   }
   return MERGED[key];

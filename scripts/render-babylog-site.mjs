@@ -72,6 +72,7 @@ sets.forEach(function(set,si){
 });
 function openHash(){var h=location.hash.slice(1),t=null;if(!h)return;try{t=document.getElementById(decodeURIComponent(h));}catch(e){}if(!t)return;var hit=false;
   api.forEach(function(s){s.panels.forEach(function(p,i){if(p===t||p.contains(t)){s.show(i);hit=true;}});});
+  for(var d=t.tagName==='DETAILS'?t:t.closest('details');d;d=d.parentElement&&d.parentElement.closest('details')){if(!d.open){d.open=true;hit=true;}}
   if(hit)requestAnimationFrame(function(){t.scrollIntoView({block:'start'});});}
 openHash();addEventListener('hashchange',openHash);
 var menu=root.querySelector('[data-bl-menu]'),mock=root.querySelector('.bl-mock--menu');
@@ -142,7 +143,7 @@ function renderPage(lang, nav) {
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/flagship-subnav.css?v=20261019fsn3" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
-    <link rel="stylesheet" href="/babylog-site.css?v=20261027v5" />${nav.id === "contact" ? `\n    <link rel="stylesheet" href="${BIZ_CONTACT_CSS}" />` : ""}
+    <link rel="stylesheet" href="/babylog-site.css?v=20261027v6" />${nav.id === "contact" ? `\n    <link rel="stylesheet" href="${BIZ_CONTACT_CSS}" />` : ""}
 ${jsonLd(lang.dir, nav, seo, canonical)}`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>${nav.id === "contact" ? "" : `\n    ${BL_TABS_JS}`}`,

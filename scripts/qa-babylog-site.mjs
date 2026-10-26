@@ -112,7 +112,7 @@ for (const p of pages) {
   } else if (p.nav.id === "platform") {
     const need = ["screens", "flow", "growth", "records", "family", "learning", "memories", "assist", "explore", "trust", "roles", "scenarios", "roadmap", "cs", ...CS_GROUP_CODES.map((c) => "cs-" + c), "access", "faq", "close"].map((x) => "bl-" + x);
     const lack = need.filter((i) => !ids.has(i));
-    const screens = count(sect("bl-screens"), /class="bl-screen"/g);
+    const screens = count(sect("bl-screens"), /data-bl-area="\d\d"/g); // v6: areas are accordion rows
     const csRail = count(sect("bl-cs"), /class="bl-rail__link"/g);
     // each public-welfare / child-safety area keeps its official-source and "what we do not do" rows
     const csGuard = CS_GROUP_CODES.every((c) => count(sect("bl-cs-" + c), /<dt>/g) === 2);
