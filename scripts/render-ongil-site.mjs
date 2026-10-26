@@ -77,6 +77,9 @@ import {
   PROCESS_ICONS,
 } from "./ongil-site-icons.mjs";
 import { toUnifiedContact, unifiedContactHref } from "./unified-contact-links.mjs";
+// Contact page only (v4 contact pass): illustrative unified-page screen, group icons, jump bar + /biz-contact.css
+import { cicon, contactMock, typeJump, groupIcon } from "./biz-contact-v4.mjs";
+import { BIZ_CONTACT_CSS } from "./biz-contact-kit.mjs";
 
 /** Inquiry action → the unified NEWON Contact page, ONGIL preselected (owner, 2026-10-26). */
 const ask = (lang, type, page, topic = "") => unifiedContactHref(lang, "ongil", { type, topic, source: `ongil-${page}` });
@@ -1044,21 +1047,24 @@ function contactMain(c, S, lang) {
   const channels = sec(
     "ogs-channels",
     `${head("ogs-channels", "Channels", k.channelsTitle, "")}
-      <ul class="ogs-channels">${k.channels
+      <div class="ogs-chx">
+      <ul class="ogs-channels" data-n="${k.channels.length}">${k.channels
         .map((ch) => {
           const href = ch.type ? go(ch.type) : `mailto:${ch.v}`;
           return `<li>${tile(ch.type ? "form" : "mail", "lg")}<p class="ogs-channels__k">${e(ch.k)}</p><a class="ogs-channels__v" href="${e(href)}">${e(ch.v)}${ch.type ? " →" : ""}</a><p class="ogs-channels__t">${e(ch.text)}</p></li>`;
         })
-        .join("")}</ul>`
+        .join("")}</ul>
+      ${contactMock(lang, c.lang, "ongil")}
+      </div>`
   );
 
   // B · inquiry types grouped by audience; each a row with its channel and a large action link
   let n = 0;
   const groups = k.groups
-    .map((g) => {
+    .map((g, gi) => {
       const list = k.types.filter((t) => t.grp === g.id);
-      return `<div class="ogs-tgroup">
-        <div class="ogs-tgroup__h"><p class="ogs-tgroup__t">${e(c.lang === "ko" ? g.ko : g.en)}</p>${c.lang === "ko" ? `<p class="ogs-tgroup__en" lang="en">${e(g.en)}</p>` : ""}</div>
+      return `<div class="ogs-tgroup" id="ogs-g-${gi + 1}">
+        <div class="ogs-tgroup__h"><span class="ogs-tile">${cicon(groupIcon("ongil", gi))}</span><p class="ogs-tgroup__t">${e(c.lang === "ko" ? g.ko : g.en)}</p>${c.lang === "ko" ? `<p class="ogs-tgroup__en" lang="en">${e(g.en)}</p>` : ""}</div>
         <ol class="ogs-tlist">${list
           .map((t) => {
             n++;
@@ -1074,6 +1080,7 @@ function contactMain(c, S, lang) {
   const types = sec(
     "ogs-types",
     `${head("ogs-types", `Inquiry Types · ${k.types.length}`, c.ui.typesTitle, k.typesLead, { split: true })}
+      ${typeJump("ongil", "ogs-g", c.ui.typesTitle.replace(/\n/g, " "), k.groups.map((g) => ({ title: c.lang === "ko" ? g.ko : g.en, count: k.types.filter((t) => t.grp === g.id).length })))}
       ${groups}
       ${notice(c)}`,
     { tone: "tint" }
@@ -1185,7 +1192,7 @@ function renderPage(lang, page) {
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="${FLAGSHIP_SUBNAV_CSS}" />
-    <link rel="stylesheet" href="/ongil-site.css?v=${OGS_VER}" />`,
+    <link rel="stylesheet" href="/ongil-site.css?v=${OGS_VER}" />${page === "contact" ? `\n    <link rel="stylesheet" href="${BIZ_CONTACT_CSS}" />` : ""}`,
     EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,
   });

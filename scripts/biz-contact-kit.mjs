@@ -16,7 +16,7 @@
  * like the CSS, so the two never drift apart.
  */
 import { escapeHtml } from "./hub-utils.mjs";
-import { icon } from "./ongil-site-icons.mjs";
+import { cicon as icon, contactMock, typeJump, typeIcon, groupIcon } from "./biz-contact-v4.mjs";
 import { unifiedContactHref } from "./unified-contact-links.mjs";
 
 const e = (s) => escapeHtml(s == null ? "" : String(s));
@@ -86,7 +86,8 @@ export function renderBizContact(m) {
     sec(
       "bct-channels",
       `${head("bct-channels", ch.kicker || "Channels", ch.title, ch.lead || "")}
-      <ul class="ogs-channels">${ch.items
+      <div class="ogs-chx">
+      <ul class="ogs-channels" data-n="${ch.items.length}">${ch.items
         .map((it) => {
           const href = it.ask ? go(it.ask) : it.href;
           const ext = /^https?:/.test(href || "") ? ' target="_blank" rel="noopener noreferrer"' : "";
@@ -95,19 +96,24 @@ export function renderBizContact(m) {
             href ? `<a class="ogs-channels__v" href="${e(href)}"${ext}>${e(v)}</a>` : `<p class="ogs-channels__v">${e(v)}</p>`
           }${it.text ? `<p class="ogs-channels__t">${e(it.text)}</p>` : ""}</li>`;
         })
-        .join("")}</ul>`
+        .join("")}</ul>
+      ${contactMock(m.lang, m.contentLang, m.biz)}
+      </div>`
     )
   );
 
   // A2 · where to go first / by purpose
   if (m.route && m.route.items && m.route.items.length) {
     const rt = m.route;
+    // purposes that each open the unified page → icon cards (mobile: snap rail); "need → row" choosers stay rows
+    const cards = rt.items.filter((it) => it.ask).length >= rt.items.length - 1;
     out.push(
       sec(
         "bct-route",
         `${head("bct-route", rt.kicker, rt.title, rt.lead, { split: true })}
-      <ul class="ogs-routes">${rt.items
+      <ul class="ogs-routes${cards ? ` ogs-routes--cards" tabindex="0" aria-label="${e(rt.title)}` : ""}">${rt.items
         .map((it) => {
+          const ic = cards ? tile(it.alert ? "alert" : it.ask ? typeIcon(m.biz, it.ask) : "info") : "";
           const right = it.ask
             ? `<p class="ogs-routes__w ogs-routes__go"><a href="${e(go(it.ask, it.topic))}" aria-label="${e(`${cta} — ${it.t}`)}">${e(cta)} →</a></p>`
             : it.whereHref
@@ -115,7 +121,7 @@ export function renderBizContact(m) {
               : it.where
                 ? `<p class="ogs-routes__w">${e(it.where)}</p>`
                 : "";
-          return `<li${it.alert ? ' class="ogs-routes__alert"' : ""}><div><h3>${e(it.t)}</h3>${it.text ? `<p>${e(it.text)}</p>` : ""}</div>${right}</li>`;
+          return `<li${it.alert ? ' class="ogs-routes__alert"' : ""}>${ic}<div><h3>${e(it.t)}</h3>${it.text ? `<p>${e(it.text)}</p>` : ""}</div>${right}</li>`;
         })
         .join("")}</ul>
       ${rt.note ? `<p class="nls-note ogs-note ogs-notice">${e(rt.note)}</p>` : ""}`
@@ -128,11 +134,11 @@ export function renderBizContact(m) {
   let n = 0;
   const groups = ty.groups
     .map(
-      (g) => `<div class="ogs-tgroup">
-        <div class="ogs-tgroup__h"><p class="ogs-tgroup__t">${e(g.title)}</p>${g.en ? `<p class="ogs-tgroup__en" lang="en">${e(g.en)}</p>` : ""}${
+      (g, gi) => `<div class="ogs-tgroup" id="bct-g-${gi + 1}">
+        <div class="ogs-tgroup__h">${tile(groupIcon(m.biz, gi))}<p class="ogs-tgroup__t">${e(g.title)}</p>${g.en ? `<p class="ogs-tgroup__en" lang="en">${e(g.en)}</p>` : ""}${
           g.lead ? `<p class="ogs-tgroup__lead">${e(g.lead)}</p>` : ""
         }${g.notes && g.notes.length ? `<div class="ogs-tgroup__notes">${g.notes.map((t) => `<p>${e(t)}</p>`).join("")}</div>` : ""}</div>
-        <ol class="ogs-tlist">${g.rows
+        <ol class="ogs-tlist${g.rows.length >= 4 && g.rows.every((r) => !r.n && (r.text || "").length <= 48) ? " ogs-tlist--grid" : ""}">${g.rows
           .map((r) => {
             n++;
             return `<li id="bct-c-${String(n).padStart(2, "0")}">
@@ -148,6 +154,7 @@ export function renderBizContact(m) {
     sec(
       TYPES_ID,
       `${head(TYPES_ID, ty.kicker, ty.title, ty.lead, { split: true })}
+      ${typeJump(m.biz, "bct-g", ty.title.replace(/\n/g, " "), ty.groups.map((g) => ({ title: g.title, count: g.rows.length })))}
       ${groups}
       ${ty.notice ? `<p class="nls-note ogs-note ogs-notice">${e(ty.notice)}</p>` : ""}`,
       { tone: "tint" }
@@ -179,8 +186,8 @@ export function renderBizContact(m) {
       sec(
         "bct-guard",
         `${head("bct-guard", gd.kicker || "Privacy & Safety", gd.title, gd.lead || "", { split: true })}
-      ${gd.checklist && gd.checklist.length ? `${gd.checklistTitle ? `<p class="ogs-dir__title">${e(gd.checklistTitle)}</p>` : ""}<ul class="ogs-cl">${gd.checklist.map((g) => `<li><h3>${e(g.g)}</h3>${ticks(g.items)}</li>`).join("")}</ul>` : ""}
-      ${gd.callouts && gd.callouts.length ? `<ul class="ogs-guard">${gd.callouts
+      ${gd.checklist && gd.checklist.length ? `${gd.checklistTitle ? `<p class="ogs-dir__title">${e(gd.checklistTitle)}</p>` : ""}<ul class="ogs-cl${gd.checklist.length >= 4 && gd.checklist.filter((g) => (g.items || []).length === 1).length >= gd.checklist.length * 0.75 ? " ogs-cl--rows" : ""}">${gd.checklist.map((g) => `<li><h3>${e(g.g)}</h3>${ticks(g.items)}</li>`).join("")}</ul>` : ""}
+      ${gd.callouts && gd.callouts.length ? `<ul class="ogs-guard${gd.callouts.length >= 5 ? " ogs-guard--list" : ""}" data-n="${gd.callouts.length}">${(gd.callouts.length >= 5 ? [...gd.callouts.filter((c) => !c.alert), ...gd.callouts.filter((c) => c.alert)] : gd.callouts)
         .map((c) => `<li${c.alert ? ' class="ogs-guard__alert"' : ""}>${tile(c.alert ? "alert" : c.icon || "info", "lg")}<p>${c.alert ? `<strong>${e(c.text)}</strong>` : e(c.text)}${c.linkHtml ? ` ${c.linkHtml}` : ""}</p></li>`)
         .join("")}</ul>` : ""}
       ${gd.noteHtml ? `<p class="nls-note ogs-note">${gd.noteHtml}</p>` : ""}`
@@ -227,4 +234,4 @@ export function renderBizContact(m) {
 }
 
 /** <link> for the kit stylesheet (add to the business's Contact page head). */
-export const BIZ_CONTACT_CSS = "/biz-contact.css?v=20261026ct1";
+export const BIZ_CONTACT_CSS = "/biz-contact.css?v=20261026v4";
