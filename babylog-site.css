@@ -3601,3 +3601,303 @@ html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babyl
 @media (min-width: 1000px) {
   #lifestage-detail.nls[data-story="babylog"] .is-tabs > .bl-rail--tabs:not(.bl-rail--cats):not(.bl-rail--types) .bl-rail__list { flex-wrap: wrap; overflow: visible; }
 }
+
+/* ===================================================================================================================
+   Design pass v5 (2026-10-27). Owner: every long list visible (no one-at-a-time tabs for 6 models, 8 categories,
+   8 partner types, 27 areas), no uneven pill clouds, no columns that end with empty bottoms, balanced full-width grids.
+   Hero (.nls-film) and the 01–05 menu (.fsn) are untouched.
+   =================================================================================================================== */
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap { --v5-gap: clamp(0.9rem, 1.6vw, 1.25rem); }
+
+/* -- Overview · who: four equal cards, the core family first and tinted (no tall card with an empty top) -- */
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icards.bl-icards--who { grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto; }
+@media (min-width: 640px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icards.bl-icards--who { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icards.bl-icards--who { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icards--who .bl-icard { grid-column: auto !important; grid-row: auto !important; min-height: 0; justify-content: flex-start; }
+
+/* -- Overview · core experience: white outlined tiles; only the first one carries the pale accent -- */
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-bento__item,
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-bento__item.is-wide { background: var(--bl-paper); border-color: var(--bl-line); }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-bento__item:first-child { background: var(--bl-wash); border-color: var(--bl-wash-line); }
+
+/* -- Status as stage rows (Overview · Now, Platform · Roadmap) -- */
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srows { margin-top: clamp(1.5rem, 3vw, 2.25rem); border-top: 1px solid var(--bl-ink); }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.9rem;
+  padding: clamp(1.15rem, 2vw, 1.5rem) 0;
+  border-bottom: 1px solid var(--bl-line);
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srow { grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); gap: clamp(1.5rem, 3vw, 2.75rem); }
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srow__t { display: flex; align-items: center; gap: 0.6rem; margin: 0; font-size: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srow__count { color: var(--bl-faint); font-size: 0.875rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srow__basis { margin: 0.6rem 0 0; color: var(--bl-faint); font-size: 0.875rem; line-height: 1.6; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srow__list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.15rem clamp(1rem, 2vw, 1.75rem); margin: 0; padding: 0; list-style: none; align-content: start; }
+@media (min-width: 640px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srow__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srow__list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srow__list li { position: relative; padding: 0.4rem 0 0.4rem 0.95rem; color: var(--bl-ink); font-size: 0.9688rem; line-height: 1.55; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srow__list li::before { content: ""; position: absolute; left: 0; top: 0.95rem; width: 5px; height: 5px; border-radius: 50%; background: var(--bl-line-strong); }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srow.is-now .bl-srow__list li::before { background: var(--bl-pt); }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srow[data-stage="now"] .bl-stage { border-color: var(--bl-pt-ink); background: var(--bl-pt-ink); color: #fff; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srow[data-stage="next"] .bl-stage { border-color: var(--bl-pt); color: var(--bl-pt-ink); }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srow[data-stage="review"] .bl-stage { border-style: dashed; color: var(--bl-muted); }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srows + .nls-note { margin-top: 1rem; }
+
+/* -- Segmented index strip (Platform · 27 areas): equal cells in one outlined bar; stacked on phones -- */
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-rail--seg { margin: clamp(1.25rem, 2.4vw, 1.75rem) 0 0; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-rail--seg .bl-rail__list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--bl-line);
+  border-radius: var(--bl-r-md);
+  list-style: none;
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-rail--seg .bl-rail__list > li + li { border-top: 1px solid var(--bl-line); }
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-rail--seg .bl-rail__list { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-rail--seg .bl-rail__list > li + li { border-top: 0; border-left: 1px solid var(--bl-line); }
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-rail--seg .bl-rail__link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-height: 3.4rem;
+  padding: 0.85rem 1.1rem;
+  border: 0;
+  border-radius: 0;
+  background: var(--bl-paper);
+  color: var(--bl-ink);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.45;
+  white-space: normal;
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-rail--seg .bl-rail__link:hover { color: var(--bl-pt-ink); background: var(--bl-wash); }
+
+/* -- Balanced index grid (Platform · 25–32, Business · categories 01–08): 4 × 2 equal tiles -- */
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-rail--grid { margin: clamp(1.25rem, 2.4vw, 1.75rem) 0 0; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-rail--grid .bl-rail__list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 560px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-rail--grid .bl-rail__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-rail--grid .bl-rail__list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-rail--grid .bl-rail__list > li { display: flex; min-width: 0; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-rail--grid .bl-rail__link {
+  display: flex;
+  flex: 1;
+  align-items: baseline;
+  gap: 0.6rem;
+  min-height: 3.25rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--bl-line);
+  border-radius: var(--bl-r-sm);
+  background: var(--bl-paper);
+  color: var(--bl-ink);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.45;
+  white-space: normal;
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-rail--grid .bl-rail__link > span { flex: none; color: var(--bl-pt-ink); font-size: 0.8125rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-rail--grid .bl-rail__link:hover { border-color: var(--bl-pt); }
+
+/* -- Platform · 27 areas, all five groups visible: range + group name left, two even columns right -- */
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-scr { margin-top: clamp(1.25rem, 2.4vw, 1.75rem); border-top: 1px solid var(--bl-ink); }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-scr__grp { padding: clamp(1.5rem, 2.6vw, 2rem) 0; border-bottom: 1px solid var(--bl-line); scroll-margin-top: calc(var(--gnav-h, 74px) + 4.6rem); }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-scr__grp:last-child { border-bottom: 0; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-scr__range { margin: 0 0 0.35rem; color: var(--bl-pt-ink); font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-scr__label { padding-top: 0 !important; }
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-scr__list > .bl-screen:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+
+/* -- Platform · global services: five rows in two columns, the fifth spans the row -- */
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-rows--2 > .bl-rows__item:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+
+/* -- Business · six models, all visible in a 3 × 2 grid of equal outlined cards -- */
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-biz__list.bl-mods { margin-top: clamp(1.75rem, 3vw, 2.5rem); }
+@media (min-width: 720px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-biz__list.bl-mods { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1100px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-biz__list.bl-mods { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-mods .bl-model-card { display: flex; flex-direction: column; gap: 0; padding: clamp(1.3rem, 2vw, 1.6rem); }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-mods .bl-biz__head { display: flex; align-items: center; gap: 0.85rem; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-mods .bl-biz__head > div { flex: 1; min-width: 0; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-mods .bl-biz__code { flex: none; display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: var(--bl-r-sm); background: var(--bl-wash); color: var(--bl-pt-ink); font-size: 1.25rem; font-weight: 800; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-mods .bl-biz__ico { display: none; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-mods .bl-biz__title { font-size: 1.25rem; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-mods .nls-chips { margin-top: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-mods .bl-dl.bl-dl--grid { display: block; margin-top: 1rem; border-top: 1px solid var(--bl-line); }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-mods .bl-dl--grid .bl-dl__row { display: block; padding: 0.6rem 0; border-bottom: 1px solid var(--bl-line); }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-mods .bl-dl--grid dt { color: var(--bl-faint); font-size: 0.8125rem; font-weight: 600; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-mods .bl-dl--grid dd { margin: 0.15rem 0 0; font-size: 0.9063rem; line-height: 1.6; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-mods .bl-biz__cta { margin-top: auto; padding-top: 1rem; }
+
+/* -- Business · 32 lines, all eight categories visible; sub-items as a calm dotted line, not pills -- */
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-grp__subs { display: flex; flex-wrap: wrap; margin: 0.75rem 0 0; padding: 0; list-style: none; color: var(--bl-muted); font-size: 0.9063rem; line-height: 1.6; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-grp__subs li:not(:last-child)::after { content: "·"; margin: 0 0.4rem; color: var(--bl-faint); }
+/* each category: an editorial header row (number + name + count | way of doing business + revenue), then its four
+   lines in one even row of four cards */
+@media (min-width: 1100px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-cat { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-cat__side { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 0.75rem clamp(2rem, 4vw, 3.5rem); align-items: start; }
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-cat__head { flex-direction: row; align-items: flex-end; flex-wrap: nowrap; }
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-cat__head > div { flex: 1 1 auto; }
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-cat__meta { margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-cat__meta .bl-dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.75rem; border-top: 1px solid var(--bl-line); }
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-cat__meta .bl-dl__row { display: block; padding: 0.75rem 0; border-bottom: 0; }
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-cat__meta .nls-note { margin-top: 0.25rem; }
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-cat__side > .bl-forbid { grid-column: 2; margin-top: 0; }
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-grp__list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-cat__main > .bl-notice { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-forbid .nls-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-grp { padding: 1.15rem 1.15rem 1.1rem; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-grp__head { display: block; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-grp__head .bl-grp__n { display: block; margin: 0 0 0.35rem; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-grp .bl-biz__title { font-size: 1.0625rem; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-grp .bl-more summary { font-size: 0.875rem; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-grp { display: flex; flex-direction: column; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-grp .bl-biz__cta { margin-top: auto; padding-top: 0.75rem; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-cat { scroll-margin-top: calc(var(--gnav-h, 74px) + 4.6rem); }
+
+/* -- Business · stage key: three stages as one segmented strip, the non-monetised area as a full row -- */
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-stagekey { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+@media (min-width: 900px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-stagekey { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-stagekey__item.is-free { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); column-gap: 2rem; align-items: start; }
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-stagekey__item.is-free .bl-tags { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; }
+}
+
+/* -- Partnerships · model list as an even 3 × 2 grid of tiles (no pill cloud) -- */
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-models-chips .nls-chips { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.6rem; margin: 0; }
+@media (min-width: 640px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-models-chips .nls-chips { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-models-chips .nls-chips { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-models-chips .nls-chips li { display: flex; align-items: center; min-height: 3.1rem; padding: 0.7rem 1rem; border: 1px solid var(--bl-line); border-left: 3px solid var(--bl-pt); border-radius: var(--bl-r-sm); background: var(--bl-paper); color: var(--bl-ink); font-size: 0.9375rem; font-weight: 600; line-height: 1.45; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-models-chips .nls-note { margin-top: 0.9rem; }
+
+/* -- Partnerships · eight partner types, all visible as a 2 × 4 grid -- */
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-biz__list.bl-ptypes { margin-top: clamp(1.75rem, 3vw, 2.5rem); }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-ptypes .bl-pcard { display: flex; flex-direction: column; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-ptypes .bl-biz__head { display: flex; align-items: center; gap: 0.85rem; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-ptypes .bl-biz__title { font-size: 1.25rem; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-ptypes .bl-dl.bl-dl--grid { margin-top: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-ptypes .bl-relarea { margin-top: 1rem; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-ptypes .bl-biz__cta { margin-top: auto; padding-top: 1.1rem; }
+
+/* -- Partnerships · 13 child-protection partner types as a table with three cells -- */
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-ttable--3 .bl-ttable__head,
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-ttable--3 .bl-trow { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 0.65fr); gap: 1.6rem; }
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-flow-note + .bl-ttable { margin-top: 1.5rem; }
+
+/* -- Partnerships · seven pilots as outlined numbered rows: name + inquiry left, three fields right -- */
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-prows { display: grid; gap: 0.75rem; margin: clamp(1.5rem, 3vw, 2.25rem) 0 0; padding: 0; list-style: none; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-prow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  padding: clamp(1.15rem, 2vw, 1.5rem) clamp(1.15rem, 2.2vw, 1.75rem);
+  border: 1px solid var(--bl-line);
+  border-radius: var(--bl-r-md);
+  background: var(--bl-paper);
+  scroll-margin-top: calc(var(--gnav-h, 74px) + 4.6rem);
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-prow:hover { border-color: var(--bl-pt); }
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-prow { grid-template-columns: minmax(0, 0.9fr) minmax(0, 2.6fr); gap: clamp(1.5rem, 3vw, 2.5rem); }
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-prow__name { display: flex; flex-direction: column; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-prow__n { margin: 0 0 0.35rem; color: var(--bl-pt-ink); font-size: 0.875rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-prow__name h3 { margin: 0; font-size: 1.125rem; line-height: 1.45; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-prow__go { margin: auto 0 0; padding-top: 0.9rem; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-prow__cells { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.85rem; margin: 0; border: 0; }
+@media (min-width: 760px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-prow__cells { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr) minmax(0, 1.1fr); gap: clamp(1rem, 2.4vw, 2rem); }
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-prow__cells .bl-dl__row { display: block; padding: 0; border: 0; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-prow__cells dt { color: var(--bl-faint); font-size: 0.8125rem; font-weight: 600; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-prow__cells dd { margin: 0.25rem 0 0; color: var(--bl-ink); font-size: 0.9375rem; line-height: 1.6; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-prows + .nls-note { margin-top: 1rem; }
+
+/* dark mode for the v5 pieces (light values above are tokens; these restate the few literal colours) */
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap :is(.bl-prow, .bl-rail--seg .bl-rail__link, .bl-rail--grid .bl-rail__link, .bl-models-chips .nls-chips li, .bl-bento__item:not(:first-child)) { background: var(--bl-paper) !important; border-color: var(--bl-line-strong) !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-models-chips .nls-chips li { border-left-color: var(--bl-pt) !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap :is(.bl-rail--seg .bl-rail__list, .bl-rail--seg .bl-rail__list > li) { border-color: var(--bl-line-strong) !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srows { border-top-color: #555; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srow[data-stage="now"] .bl-stage { background-color: #f49ab8 !important; color: #0a0a0a !important; border-color: #f49ab8 !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-mods .bl-biz__code { background: var(--bl-wash) !important; color: var(--bl-pt-ink) !important; }
+
+/* -- Partnerships · 15 partnership categories as an even 3 × 5 grid of compact cards -- */
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icats { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--v5-gap); margin-top: clamp(1.5rem, 3vw, 2.25rem); }
+@media (min-width: 700px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1100px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icat { display: flex; flex-direction: column; padding: 1.25rem 1.35rem 1.2rem; border: 1px solid var(--bl-line); border-radius: var(--bl-r-md); background: var(--bl-paper); scroll-margin-top: calc(var(--gnav-h, 74px) + 4.6rem); }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icat:hover { border-color: var(--bl-pt); }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icat__n { margin: 0 0 0.3rem; color: var(--bl-pt-ink); font-size: 0.8125rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icat__name { margin: 0; font-size: 1.125rem; line-height: 1.4; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icat__cells { display: block; margin: 0.85rem 0 0; border-top: 1px solid var(--bl-line); }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icat__cells .bl-dl__row { display: block; padding: 0.6rem 0; border-bottom: 1px solid var(--bl-line); }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icat__cells dt { color: var(--bl-faint); font-size: 0.8125rem; font-weight: 600; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icat__cells dd { margin: 0.15rem 0 0; color: var(--bl-ink); font-size: 0.9063rem; line-height: 1.6; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icat__go { margin: auto 0 0; padding-top: 0.85rem; }
+
+/* -- Partnerships · global: the partner table and the shared principles side by side -- */
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-gsplit { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(1.5rem, 3vw, 2.5rem); margin-top: clamp(1.5rem, 3vw, 2.25rem); }
+@media (min-width: 1100px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-gsplit { grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); align-items: start; }
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-gsplit .bl-plist { grid-template-columns: minmax(0, 1fr) !important; }
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-gsplit__side > .bl-principles--panel { margin-top: 0; }
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-gsplit__side > .nls-actions { margin-top: 1.25rem; }
+@media (min-width: 1000px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-ttable--g .bl-ttable__head,
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-ttable--g .bl-trow { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr) minmax(0, 1fr); gap: 1.5rem; }
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-ttable--3 .bl-ttable__head,
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-ttable--3 .bl-trow { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) max-content; }
+}
+#lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-trow__go .bl-arrow { white-space: nowrap; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-icat { background: var(--bl-paper) !important; border-color: var(--bl-line-strong) !important; }
+@media (min-width: 1100px) {
+  #lifestage-detail.nls[data-story="babylog"] .nls__wrap #bl-data .bl-plist { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap :is(.bl-scr__range, .bl-icat__n, .bl-prow__n, .bl-rail--grid .bl-rail__link > span) { color: #f49ab8 !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srow__list li::before { background: #555 !important; }
+html[data-newon-shell-theme="dark"] body #lifestage-detail.nls[data-story="babylog"] .nls__wrap .bl-srow.is-now .bl-srow__list li::before { background: #ee7fa3 !important; }
