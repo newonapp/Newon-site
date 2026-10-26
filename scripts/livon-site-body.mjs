@@ -502,7 +502,7 @@ function nextStep(lang) {
   const c = siteCopy(lang);
   const n = c.overview.next;
   const links = LIVON_SITE_PAGES.filter((p) => p.id !== "overview")
-    .map((p) => `<a class="nls-btn nls-btn--ghost" href="${e(p.id === "contact" ? `/${lang}/contact/` : pageHref(lang, p.id))}">${e(p.en)}${lang === "en" ? "" : ` · ${e(pageLabel(lang, p))}`}</a>`)
+    .map((p) => `<a class="nls-btn nls-btn--ghost" href="${e(pageHref(lang, p.id))}">${e(p.en)}${lang === "en" ? "" : ` · ${e(pageLabel(lang, p))}`}</a>`)
     .join("");
   return `<div id="lvs-next" class="nls-block nls-close nls-block--ink lvs-close" data-lvs-section="10">
     <p class="nls-kicker">${e(n.kicker)}</p>

@@ -23,11 +23,9 @@ test("5 top menus, in order, on every page of every language, current page marke
     const html = page(lang, p.id);
     const nav = html.match(/<nav class="fsn" data-biz="livon"[\s\S]*?<\/nav>/)[0];
     assert.equal(count(nav, /<a class="fsn__a" href=/g), 5, `${lang}/${p.id}`);
-    // 05 Contact opens the unified NEWON Contact page (owner, 2026-10-26)
-    const hrefOf = (q) => (q.id === "contact" ? `/${lang}/contact/` : `/${lang}/livon/${q.path}`);
-    for (const q of LIVON_SITE_PAGES) assert.ok(nav.includes(`href="${hrefOf(q)}"`), `${lang}/${p.id} → ${q.id}`);
+    for (const q of LIVON_SITE_PAGES) assert.ok(nav.includes(`href="/${lang}/livon/${q.path}"`), `${lang}/${p.id} → ${q.id}`);
     assert.equal(count(nav, /aria-current="page"/g), 1);
-    assert.match(nav, new RegExp(`href="${hrefOf(p)}" aria-current="page"`));
+    assert.match(nav, new RegExp(`href="/${lang}/livon/${p.path}" aria-current="page"`));
   }
 });
 
@@ -131,8 +129,11 @@ test("Business, Partnerships and Contact upgrade sections; contact purposes link
     for (const h of hrefs) {
       if (h.startsWith("mailto:")) { assert.equal(h, "mailto:newon@newon.app"); continue; }
       const u = new URL(h, "https://www.newon.app");
-      if (u.pathname === `/${lang}/business/contact/`) { assert.ok(bizTypes.includes(u.searchParams.get("type")), h); assert.equal(u.searchParams.get("platform"), "livon"); }
-      else { assert.equal(u.pathname, `/${lang}/contact/`); assert.ok(read("company.js").match(/CONTACT_TYPES = \[([^\]]+)\]/)[1].includes(`"${u.searchParams.get("type")}"`), h); }
+      // owner 2026-10-26: every inquiry button opens the unified NEWON Contact page with LIVON preselected
+      assert.equal(u.pathname, `/${lang}/contact/`, h);
+      if (u.searchParams.has("platform")) assert.equal(u.searchParams.get("platform"), "livon", h);
+      const t = u.searchParams.get("type");
+      if (t) assert.ok(bizTypes.includes(t) || read("company.js").match(/CONTACT_TYPES = \[([^\]]+)\]/)[1].includes(`"${t}"`), h);
     }
     assert.match(c, lang === "ko" ? /민감정보를 적지 말아 주세요/ : /do not include personal or sensitive information/);
   }

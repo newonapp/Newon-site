@@ -39,6 +39,7 @@ import { clampSeoDescription } from "./seo-meta.mjs";
 import { renderStudioHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { BL_NAV, BL_SLUG, getBabylogCopy, copyLangFor } from "./babylog-site-copy.mjs";
 import { renderBabylogSection } from "./babylog-site-body.mjs";
+import { toUnifiedContact } from "./unified-contact-links.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const NLS_VER = "20261025ov1"; // Life Stage assets are reused as-is
@@ -98,7 +99,7 @@ function renderPage(lang, nav) {
     HREFLANG_BLOCK: hreflangBlock(sub),
     SKIP_LABEL: pick(flat, flatEn, "common.skipToContent") || "Skip to content",
     CHROME_HEADER: header,
-    MAIN_CONTENT: renderBabylogSection(lang.dir, nav.id),
+    MAIN_CONTENT: nav.id === "contact" ? toUnifiedContact(renderBabylogSection(lang.dir, nav.id), lang.dir, "babylog") : renderBabylogSection(lang.dir, nav.id),
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/flagship-subnav.css?v=20261019fsn3" />

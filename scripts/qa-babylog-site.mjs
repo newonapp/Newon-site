@@ -74,8 +74,7 @@ for (const p of pages) {
   /* ---- menu ---- */
   const nav = (h.match(/<nav class="fsn" data-biz="babylog"[\s\S]*?<\/nav>/) || [""])[0];
   const links = [...nav.matchAll(/<a class="fsn__a" href="([^"]+)"( aria-current="page")?/g)];
-  /* 05 Contact opens the unified NEWON Contact page (owner, 2026-10-26) */
-  const want = BL_NAV.map((n) => (n.id === "contact" ? `/${p.lang}/contact/` : `/${p.lang}/babylog/${n.sub ? n.sub + "/" : ""}`));
+  const want = BL_NAV.map((n) => `/${p.lang}/babylog/${n.sub ? n.sub + "/" : ""}`);
   const gotHrefs = links.map((m) => m[1]);
   const cur = links.filter((m) => m[2]).map((m) => m[1]);
   rec(
@@ -151,7 +150,7 @@ for (const p of pages) {
     const codes = cards.map((c) => (c.match(/source=babylog-contact-([a-z]+)/) || [])[1]);
     const want = [...CONTACT_CODES, ...CONTACT_MORE_CODES, ...CONTACT_CS_CODES];
     const purpose = sect("bl-contact-purpose");
-    const purposeOk = count(purpose, /class="bl-rows__item"/g) === 7 && /mailto:newon@newon\.app/.test(purpose) && /business\/contact\/\?type=/.test(purpose);
+    const purposeOk = count(purpose, /class="bl-rows__item"/g) === 7 && /mailto:newon@newon\.app/.test(purpose) && /\/contact\/\?platform=babylog/.test(purpose) /* inquiry buttons open the unified Contact page (owner 2026-10-26) */;
     secOk = cards.length === 26 && JSON.stringify(codes) === JSON.stringify(want) && /bl-emergency/.test(sect("bl-contact-cs")) && purposeOk;
     secInfo = `cards ${cards.length}/26, purposes ${purposeOk}, codes ${codes.join(",")}`;
   }

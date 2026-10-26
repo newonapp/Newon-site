@@ -32,6 +32,7 @@ import { renderStudioHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { renderShareonPage, getShareonCopy } from "./shareon-body.mjs";
 import { SHAREON_PAGES } from "./shareon-copy.mjs";
 import { FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
+import { toUnifiedContact } from "./unified-contact-links.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const CSS_VER = "20261025ng1";
@@ -63,7 +64,7 @@ function renderPage(lang, page) {
     HREFLANG_BLOCK: hreflangBlock(page.path),
     SKIP_LABEL: pick(flat, flatEn, "common.skipToContent") || "Skip to content",
     CHROME_HEADER: header,
-    MAIN_CONTENT: renderShareonPage(lang.dir, page.id),
+    MAIN_CONTENT: page.id === "contact" ? toUnifiedContact(renderShareonPage(lang.dir, page.id), lang.dir, "shareon") : renderShareonPage(lang.dir, page.id),
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />

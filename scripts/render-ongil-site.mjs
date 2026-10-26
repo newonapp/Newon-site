@@ -70,6 +70,7 @@ import {
   PARTNER_ICONS,
   PROCESS_ICONS,
 } from "./ongil-site-icons.mjs";
+import { toUnifiedContact } from "./unified-contact-links.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 export const OGS_VER = "20261026ng2";
@@ -1043,7 +1044,7 @@ function renderPage(lang, page) {
     HREFLANG_BLOCK: hreflangSub(page),
     SKIP_LABEL: pick(flat, flatEn, "common.skipToContent") || "Skip to content",
     CHROME_HEADER: header,
-    MAIN_CONTENT: renderMain(lang, page),
+    MAIN_CONTENT: page === "contact" ? toUnifiedContact(renderMain(lang, page), lang, "ongil") : renderMain(lang, page),
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />

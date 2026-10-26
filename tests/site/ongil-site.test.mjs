@@ -158,11 +158,15 @@ test("JSON-LD sanity: none, or nothing that implies a medical / care / emergency
 test("contact links use the existing inquiry page with known params, and mailto subjects", () => {
   for (const lang of SITE) {
     const html = read(`${lang}/ongil/contact/index.html`);
-    const forms = [...own(html).matchAll(/href="(\/[a-z-]+\/business\/inquiry\/\?[^"]+)"/g)].map((m) => m[1].replace(/&amp;/g, "&"));
+    // owner 2026-10-26: the inquiry buttons open the unified NEWON Contact page with ONGIL preselected,
+    // keeping the original inquiry parameters (service, source)
+    assert.ok(!/href="\/[a-z-]+\/business\/inquiry\//.test(own(html)), `${lang} no direct business-inquiry links`);
+    const forms = [...own(html).matchAll(/href="(\/[a-z-]+\/contact\/\?platform=ongil[^"]*)"/g)].map((m) => m[1].replace(/&amp;/g, "&"));
     assert.ok(forms.length >= 10, `${lang} form links ${forms.length}`); // 8 form types + channel + closing CTA (V4: press/investor/personal types use email)
     for (const href of forms) {
       const u = new URL(href, "https://www.newon.app");
-      assert.equal(u.pathname, `/${lang}/business/inquiry/`);
+      assert.equal(u.pathname, `/${lang}/contact/`);
+      assert.equal(u.searchParams.get("platform"), "ongil");
       assert.equal(u.searchParams.get("service"), "partnership");
       assert.equal(u.searchParams.get("source"), `/${lang}/ongil/contact/`);
     }

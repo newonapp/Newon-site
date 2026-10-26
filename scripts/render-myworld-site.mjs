@@ -26,6 +26,7 @@ import { renderStudioHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { getMyWorldSiteCopy, MYWORLD_PAGES, myworldPagePath } from "./myworld-site-copy.mjs";
 import { renderMyWorldSitePage } from "./myworld-site-body.mjs";
 import { FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
+import { toUnifiedContact } from "./unified-contact-links.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const MWS_VER = "20261018film1";
@@ -55,7 +56,7 @@ function renderPage(lang, page) {
     HREFLANG_BLOCK: hreflangBlock(rel),
     SKIP_LABEL: pick(flat, flatEn, "common.skipToContent") || "Skip to content",
     CHROME_HEADER: header,
-    MAIN_CONTENT: renderMyWorldSitePage(lang.dir, page, site),
+    MAIN_CONTENT: page === "contact" ? toUnifiedContact(renderMyWorldSitePage(lang.dir, page, site), lang.dir, "myworld") : renderMyWorldSitePage(lang.dir, page, site),
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=20261019rest1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=20261025ov1" />

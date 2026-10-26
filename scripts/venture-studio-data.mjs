@@ -69,35 +69,35 @@ export const MEGA_DESTINATIONS = {
     { titleKey: "nav.livonMenuPlatform", descKey: "nav.livonMenuPlatformDesc", href: "livon/platform/", titleFb: "Platform" },
     { titleKey: "nav.livonMenuBusiness", descKey: "nav.livonMenuBusinessDesc", href: "livon/business/", titleFb: "Business" },
     { titleKey: "nav.livonMenuPartnerships", descKey: "nav.livonMenuPartnershipsDesc", href: "livon/partnerships/", titleFb: "Partnerships" },
-    { titleKey: "nav.livonMenuContact", descKey: "nav.livonMenuContactDesc", href: "contact/", titleFb: "Contact" },
+    { titleKey: "nav.livonMenuContact", descKey: "nav.livonMenuContactDesc", href: "livon/contact/", titleFb: "Contact" },
   ],
   ongil: [
     { titleKey: "nav.ongilMenuOverview", descKey: "nav.ongilMenuOverviewDesc", href: "ongil/", titleFb: "Overview" },
     { titleKey: "nav.ongilMenuPlatform", descKey: "nav.ongilMenuPlatformDesc", href: "ongil/platform/", titleFb: "Platform" },
     { titleKey: "nav.ongilMenuBusiness", descKey: "nav.ongilMenuBusinessDesc", href: "ongil/business/", titleFb: "Business" },
     { titleKey: "nav.ongilMenuPartnerships", descKey: "nav.ongilMenuPartnershipsDesc", href: "ongil/partnerships/", titleFb: "Partnerships" },
-    { titleKey: "nav.ongilMenuContact", descKey: "nav.ongilMenuContactDesc", href: "contact/", titleFb: "Contact" },
+    { titleKey: "nav.ongilMenuContact", descKey: "nav.ongilMenuContactDesc", href: "ongil/contact/", titleFb: "Contact" },
   ],
   babylog: [
     { titleKey: "nav.babylogMenuOverview", descKey: "nav.babylogMenuOverviewDesc", href: "babylog/", titleFb: "Overview" },
     { titleKey: "nav.babylogMenuPlatform", descKey: "nav.babylogMenuPlatformDesc", href: "babylog/platform/", titleFb: "Platform" },
     { titleKey: "nav.babylogMenuBusiness", descKey: "nav.babylogMenuBusinessDesc", href: "babylog/business/", titleFb: "Business" },
     { titleKey: "nav.babylogMenuPartnerships", descKey: "nav.babylogMenuPartnershipsDesc", href: "babylog/partnerships/", titleFb: "Partnerships" },
-    { titleKey: "nav.babylogMenuContact", descKey: "nav.babylogMenuContactDesc", href: "contact/", titleFb: "Contact" },
+    { titleKey: "nav.babylogMenuContact", descKey: "nav.babylogMenuContactDesc", href: "babylog/contact/", titleFb: "Contact" },
   ],
   myworld: [
     { titleKey: "nav.myworldMenuOverview", descKey: "nav.myworldMenuOverviewDesc", href: "myworld/", titleFb: "Overview" },
     { titleKey: "nav.myworldMenuPlatform", descKey: "nav.myworldMenuPlatformDesc", href: "myworld/platform/", titleFb: "Platform" },
     { titleKey: "nav.myworldMenuBusiness", descKey: "nav.myworldMenuBusinessDesc", href: "myworld/business/", titleFb: "Business" },
     { titleKey: "nav.myworldMenuPartnerships", descKey: "nav.myworldMenuPartnershipsDesc", href: "myworld/partnerships/", titleFb: "Partnerships" },
-    { titleKey: "nav.myworldMenuContact", descKey: "nav.myworldMenuContactDesc", href: "contact/", titleFb: "Contact" },
+    { titleKey: "nav.myworldMenuContact", descKey: "nav.myworldMenuContactDesc", href: "myworld/contact/", titleFb: "Contact" },
   ],
   shareon: [
     { titleKey: "nav.shareonOverview", descKey: "nav.shareonOverviewDesc", href: "shareon/", titleFb: "Overview" },
     { titleKey: "nav.shareonPlatform", descKey: "nav.shareonPlatformDesc", href: "shareon/platform/", titleFb: "Platform" },
     { titleKey: "nav.shareonBusiness", descKey: "nav.shareonBusinessDesc", href: "shareon/business/", titleFb: "Business" },
     { titleKey: "nav.shareonPartnerships", descKey: "nav.shareonPartnershipsDesc", href: "shareon/partnerships/", titleFb: "Partnerships" },
-    { titleKey: "nav.shareonContact", descKey: "nav.shareonContactDesc", href: "contact/", titleFb: "Contact" },
+    { titleKey: "nav.shareonContact", descKey: "nav.shareonContactDesc", href: "shareon/contact/", titleFb: "Contact" },
   ],
   // PETLOG business site (Oct 2026): Overview · Platform · Business · Partnerships · Contact (business row mega).
   petlog: [
@@ -105,7 +105,7 @@ export const MEGA_DESTINATIONS = {
     { titleKey: "nav.petlogMenuPlatform", descKey: "nav.petlogMenuPlatformDesc", href: "petlog/platform/", titleFb: "Platform" },
     { titleKey: "nav.petlogMenuBusiness", descKey: "nav.petlogMenuBusinessDesc", href: "petlog/business/", titleFb: "Business" },
     { titleKey: "nav.petlogMenuPartnerships", descKey: "nav.petlogMenuPartnershipsDesc", href: "petlog/partnerships/", titleFb: "Partnerships" },
-    { titleKey: "nav.petlogMenuContact", descKey: "nav.petlogMenuContactDesc", href: "contact/", titleFb: "Contact" },
+    { titleKey: "nav.petlogMenuContact", descKey: "nav.petlogMenuContactDesc", href: "petlog/contact/", titleFb: "Contact" },
   ],
   // Business & Partnerships (2026-10-19): five hub screens; each platform's own Business/Partnerships pages hold the detail.
   business: [

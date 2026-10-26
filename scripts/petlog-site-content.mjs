@@ -43,7 +43,7 @@ export const PETLOG_MENU = [
   { id: "platform", n: "02", name: "Platform", href: "petlog/platform/", ko: "서비스", en: "Services", koLead: "26개 장기 영역, 이용 시나리오, 개인정보 원칙과 FAQ", enLead: "26 long-term areas, user scenarios, privacy principles and FAQ" },
   { id: "business", n: "03", name: "Business", href: "petlog/business/", ko: "비즈니스", en: "Business", koLead: "고객·지불 구조, 12개 수익 모델, 진입 전략과 로드맵", enLead: "Customers and payers, 12 revenue models, go-to-market and roadmap" },
   { id: "partnerships", n: "04", name: "Partnerships", href: "petlog/partnerships/", ko: "파트너십", en: "Partnerships", koLead: "15개 협력 유형, 협업 시나리오, PoC와 데이터 연계 원칙", enLead: "15 partner types, scenarios, PoC and data principles" },
-  { id: "contact", n: "05", name: "Contact", href: "contact/", /* unified NEWON Contact page (owner 2026-10-26) */ ko: "문의", en: "Contact", koLead: "반려인 문의부터 업체·브랜드·보호소·기관 협력까지", enLead: "From owners' questions to business, brand, shelter and public partnerships" },
+  { id: "contact", n: "05", name: "Contact", href: "petlog/contact/", ko: "문의", en: "Contact", koLead: "반려인 문의부터 업체·브랜드·보호소·기관 협력까지", enLead: "From owners' questions to business, brand, shelter and public partnerships" },
 ];
 
 /* ======================================================================= OVERVIEW */

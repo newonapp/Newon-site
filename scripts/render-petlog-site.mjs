@@ -36,6 +36,7 @@ import { renderGlobalHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { inquiryFormHtml } from "./render-bsp.mjs";
 import { NOTICE, PETLOG_FILM, STORE, PETLOG_MENU, OVERVIEW, PLATFORM, BUSINESS, PARTNERS, CONTACT, GLOBAL } from "./petlog-site-content.mjs";
 import { renderFlagshipSubnav, FLAGSHIP_SUBNAV_CSS } from "./flagship-subnav.mjs";
+import { toUnifiedContact } from "./unified-contact-links.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const NLS_VER = "20261025ov1";
@@ -740,6 +741,7 @@ export function renderPetlogSite() {
       const header = renderGlobalHeader(flat, flatEn, { activeNav: "petlog", base: "../".repeat(depth), idSuffix: "hub" });
       const footer = renderStudioFooter(flat, flatEn, { base: "../".repeat(depth) });
       let main = page.render(lang.dir);
+      if (page.contact) main = toUnifiedContact(main, lang.dir, "petlog");
       if (lang.dir !== "ko" && lang.dir !== "en") main = main.replace('<section id="lifestage-detail"', '<section lang="en" id="lifestage-detail"');
       let html = applyTemplate(SHELL, flat, flatEn, {
         HTML_LANG: lang.htmlLang,
