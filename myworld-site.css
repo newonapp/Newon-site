@@ -3955,3 +3955,578 @@ html[data-newon-shell-theme="dark"] body #myworld-site :is(.mws-icard, .mws-snap
     margin-top: 0.5rem;
   }
 }
+
+/* =====================================================================================================
+   v5 (2026-10-27) — balance pass. Lessons applied: no cut-off rails or visible scrollbars on desktop
+   (rail only on phones, with snap), no tall cards with empty bottoms, no uneven pill clouds, long lists
+   always visible (no one-at-a-time tabs), grids whose rows fill evenly.
+   ===================================================================================================== */
+
+/* Overview · use cases: a 3 × 2 grid from 1040px, 2 × 3 from 760px, a snap rail on phones only */
+#myworld-site .mws-snap__top {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+#myworld-site .mws-snap__top .mws-snap__ico {
+  margin: 0;
+}
+#myworld-site .mws-snap__top .mws-h3 {
+  margin: 0;
+}
+#myworld-site .mws-snap__card {
+  gap: 0.75rem;
+}
+#myworld-site .mws-snap__card .mws-body {
+  margin: 0;
+}
+@media (max-width: 759px) {
+  #myworld-site .mws-snap {
+    scrollbar-width: none;
+  }
+  #myworld-site .mws-snap::-webkit-scrollbar {
+    display: none;
+  }
+  #myworld-site .mws-snap__list {
+    grid-auto-columns: min(82vw, 21rem);
+  }
+}
+@media (min-width: 760px) {
+  #myworld-site .mws-snap {
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+  #myworld-site .mws-snap__list {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #myworld-site .mws-snap__card {
+    padding: 1.4rem 1.45rem 1.5rem;
+  }
+}
+@media (min-width: 1040px) {
+  #myworld-site .mws-snap__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Overview · core values: the map value is a wide lead tile (two columns, content side by side), the other
+   four fill the grid evenly — no tall tile with an empty top */
+#myworld-site .mws-bento__cell--lead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem 2.25rem;
+  align-items: center;
+  justify-content: normal;
+  min-height: 0;
+}
+#myworld-site .mws-bento__text {
+  display: flex;
+  flex-direction: column;
+}
+#myworld-site .mws-bento__text .mws-bento__ico {
+  margin-bottom: 1rem;
+}
+#myworld-site .mws-bento__marks {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#myworld-site .mws-bento__marks li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: var(--mws-r-sm);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+#myworld-site .mws-bento__tick {
+  display: inline-grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  flex: none;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--mws-blue);
+}
+#myworld-site .mws-bento__tick .mws-ico {
+  width: 1rem;
+  height: 1rem;
+  stroke-width: 2.2;
+}
+@media (min-width: 700px) {
+  #myworld-site .mws-bento__cell--lead {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  }
+}
+@media (min-width: 1040px) {
+  #myworld-site .mws-bento {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  #myworld-site .mws-bento__cell--lead {
+    grid-column: 1 / span 2;
+    grid-row: auto;
+  }
+}
+html[data-newon-shell-theme="dark"] body #myworld-site .mws-bento__marks li {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
+}
+html[data-newon-shell-theme="dark"] body #myworld-site .mws-bento__tick {
+  background: #ffffff !important;
+  color: #1452c9 !important;
+}
+
+/* Overview · global vision: four equal columns (no tall lead card) */
+@media (min-width: 640px) {
+  #myworld-site .mws-icards--row4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 860px) {
+  #myworld-site .mws-icards--row4 .mws-icard:not(.mws-icard--lead) {
+    display: flex;
+    flex-direction: column;
+  }
+  #myworld-site .mws-icards--row4 .mws-icard:not(.mws-icard--lead) .mws-icard__ico {
+    margin: 0 0 0.55rem;
+  }
+  #myworld-site .mws-icards--row4 .mws-icard:not(.mws-icard--lead) :is(.mws-h3, .mws-body) {
+    margin: 0;
+  }
+}
+@media (min-width: 1040px) {
+  #myworld-site .mws-icards--row4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+#myworld-site .mws-icards--row4 .mws-icard:first-child {
+  border-color: var(--mws-blue-line);
+  box-shadow: inset 0 3px 0 var(--mws-blue);
+}
+#myworld-site .mws-icards--row4 .mws-icard:first-child .mws-icard__ico {
+  border-color: var(--mws-blue);
+  background: var(--mws-blue);
+  color: #ffffff;
+}
+
+/* Platform · 25 areas: every group visible; four-column rows (id · description · features · now/next) */
+#myworld-site .mws-agroups .mws-agroup + .mws-agroup {
+  margin-top: clamp(2.25rem, 4.5vw, 3.25rem);
+}
+#myworld-site .mws-agroups .mws-agroup__head {
+  background: transparent;
+  border: 0 !important;
+  border-top: 2px solid var(--mws-ink) !important;
+  border-radius: 0;
+  padding: 1.25rem 0 1rem;
+}
+#myworld-site .mws-area__feats .mws-label:first-child {
+  margin-top: 0;
+}
+#myworld-site .mws-area__feats .mws-chips + .mws-label {
+  margin-top: 0.9rem;
+}
+@media (min-width: 1000px) {
+  #myworld-site .mws-agroups .mws-area {
+    grid-template-columns: 3.5rem minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(1.25rem, 2.2vw, 2rem);
+  }
+}
+@media (min-width: 640px) and (max-width: 999px) {
+  #myworld-site .mws-agroups .mws-area {
+    grid-template-columns: 3.25rem minmax(0, 1fr);
+    column-gap: 1.25rem;
+  }
+  #myworld-site .mws-agroups .mws-area__id {
+    flex-direction: column;
+    align-items: flex-start;
+    grid-row: span 3;
+  }
+  #myworld-site .mws-agroups .mws-area > :not(.mws-area__id) {
+    grid-column: 2;
+  }
+}
+
+/* Platform · now & next: a 25-cell area map marked by status + four status keys */
+#myworld-site .mws-amap {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 640px) {
+  #myworld-site .mws-amap {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 900px) {
+  #myworld-site .mws-amap {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+}
+#myworld-site .mws-amap__cell a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  height: 100%;
+  min-height: 5.25rem;
+  padding: 0.85rem 0.95rem 0.95rem;
+  border: 1px solid var(--mws-line-strong);
+  border-radius: var(--mws-r-sm);
+  background: var(--mws-card);
+  color: var(--mws-ink);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+#myworld-site .mws-amap__cell a:hover {
+  border-color: var(--mws-blue);
+}
+#myworld-site .mws-amap__cell a:focus-visible {
+  outline: 2px solid var(--mws-blue);
+  outline-offset: 2px;
+}
+#myworld-site .mws-amap__n {
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--mws-faint);
+}
+#myworld-site .mws-amap__name {
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+#myworld-site .mws-amap__cell--live a {
+  border-color: var(--mws-blue);
+  background: var(--mws-blue);
+  color: #ffffff;
+}
+#myworld-site .mws-amap__cell--live .mws-amap__n {
+  color: rgba(255, 255, 255, 0.82);
+}
+#myworld-site .mws-amap__cell--partial a {
+  border-color: var(--mws-blue-line);
+  box-shadow: inset 0 3px 0 var(--mws-blue);
+}
+#myworld-site .mws-amap__cell--partial .mws-amap__n {
+  color: var(--mws-blue-ink);
+}
+#myworld-site .mws-amap__cell--review a {
+  border-style: dashed;
+}
+#myworld-site .mws-amap__legend {
+  display: grid;
+  gap: 0.75rem 1.5rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 640px) {
+  #myworld-site .mws-amap__legend {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1040px) {
+  #myworld-site .mws-amap__legend {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+#myworld-site .mws-amap__key {
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--mws-line-strong);
+}
+#myworld-site .mws-amap__keytop {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+#myworld-site .mws-amap__keytop .mws-count {
+  margin-left: auto;
+}
+#myworld-site .mws-amap__key .mws-body {
+  margin: 0.55rem 0 0;
+  font-size: 0.93rem;
+}
+#myworld-site .mws-amap__swatch {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: none;
+  border: 1px solid var(--mws-line-strong);
+  border-radius: 5px;
+  background: var(--mws-card);
+}
+#myworld-site .mws-amap__key--live .mws-amap__swatch {
+  border-color: var(--mws-blue);
+  background: var(--mws-blue);
+}
+#myworld-site .mws-amap__key--partial .mws-amap__swatch {
+  border-color: var(--mws-blue-line);
+  box-shadow: inset 0 3px 0 var(--mws-blue);
+}
+#myworld-site .mws-amap__key--review .mws-amap__swatch {
+  border-style: dashed;
+}
+html[data-newon-shell-theme="dark"] body #myworld-site .mws-amap__cell a {
+  background: #111111 !important;
+  color: #f2f2f2 !important;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+html[data-newon-shell-theme="dark"] body #myworld-site .mws-amap__cell--live a {
+  background: #1452c9 !important;
+  border-color: #1452c9;
+  color: #ffffff !important;
+}
+html[data-newon-shell-theme="dark"] body #myworld-site .mws-amap__cell--partial a {
+  border-color: rgba(91, 155, 255, 0.5);
+  box-shadow: inset 0 3px 0 #5b9bff;
+}
+html[data-newon-shell-theme="dark"] body #myworld-site .mws-amap__cell * {
+  color: inherit !important;
+  background: transparent !important;
+}
+html[data-newon-shell-theme="dark"] body #myworld-site .mws-amap__swatch {
+  background: #111111;
+}
+html[data-newon-shell-theme="dark"] body #myworld-site .mws-amap__key--live .mws-amap__swatch {
+  background: #1452c9;
+}
+
+/* Business · tools: the window mockup and the "who needs which tool" table side by side */
+#myworld-site .mws-saas5 {
+  display: grid;
+  gap: 1.75rem;
+}
+#myworld-site .mws-saas5 .mws-who {
+  margin-top: 0;
+}
+@media (min-width: 1040px) {
+  #myworld-site .mws-saas5 {
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: clamp(1.75rem, 3vw, 2.75rem);
+    align-items: start;
+  }
+  #myworld-site .mws-saas5 .mws-modules {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Partnerships · 18 partner types: an index strip, then one comparison table per group (always visible) */
+#myworld-site .mws-pindex {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0 0 clamp(1.75rem, 3.5vw, 2.5rem);
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 860px) {
+  #myworld-site .mws-pindex {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+#myworld-site .mws-pindex a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--mws-line);
+  border-radius: var(--mws-r-sm);
+  color: var(--mws-ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+#myworld-site .mws-pindex a:hover {
+  border-color: var(--mws-blue-line);
+}
+#myworld-site .mws-pindex .mws-count {
+  margin-left: auto;
+}
+#myworld-site .mws-pindex__name {
+  min-width: 0;
+  font-size: 0.97rem;
+  line-height: 1.35;
+}
+#myworld-site #mws-partners .mws-pgroup + .mws-pgroup {
+  margin-top: clamp(2.25rem, 4.5vw, 3.25rem);
+}
+#myworld-site #mws-partners .mws-pgroup__head {
+  flex-wrap: wrap;
+  padding-top: 1.1rem;
+  border-top: 2px solid var(--mws-ink);
+}
+#myworld-site .mws-pgroup__cta {
+  margin-left: auto;
+}
+#myworld-site #mws-partners .mws-pgroup__head .mws-count {
+  margin-left: 0;
+}
+#myworld-site .mws-ptable {
+  margin-top: 0.5rem;
+}
+#myworld-site .mws-ptable tbody th {
+  font-weight: 400;
+}
+#myworld-site .mws-ptable__who {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.8rem;
+  align-items: start;
+}
+#myworld-site .mws-ptable__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.5rem;
+  margin: 0 0 0.2rem;
+}
+#myworld-site .mws-ptable .mws-tag {
+  margin: 0;
+}
+#myworld-site .mws-pindex--5 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (min-width: 640px) {
+  #myworld-site .mws-pindex--5 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1040px) {
+  #myworld-site .mws-pindex--5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+#myworld-site .mws-ptable__name {
+  display: block;
+  font-size: 1.06rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--mws-ink);
+}
+#myworld-site .mws-ptable td {
+  font-size: 0.93rem;
+  color: var(--mws-ink);
+}
+@media (min-width: 860px) {
+  #myworld-site .mws-ptable {
+    table-layout: fixed;
+  }
+  #myworld-site .mws-ptable thead th:first-child {
+    width: 22%;
+  }
+  #myworld-site .mws-ptable td:last-child {
+    color: var(--mws-muted);
+  }
+}
+@media (max-width: 859px) {
+  #myworld-site .mws-ptable td[data-label] {
+    display: grid !important;
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    gap: 0.75rem;
+    padding: 0.4rem 0 !important;
+  }
+  #myworld-site .mws-ptable td[data-label]::before {
+    margin-top: 0.1rem !important;
+  }
+}
+
+/* Partnerships · campaign ideas: an even 4 × 2 grid of idea tiles instead of a pill cloud */
+#myworld-site .mws-ideas {
+  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+#myworld-site .mws-ideas__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 860px) {
+  #myworld-site .mws-ideas__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+}
+#myworld-site .mws-ideas__grid li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--mws-line);
+  border-radius: var(--mws-r-sm);
+  font-size: 0.97rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--mws-ink);
+}
+#myworld-site .mws-ideas__ico {
+  display: inline-grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  flex: none;
+  border-radius: 10px;
+  background: var(--mws-blue-soft);
+  color: var(--mws-blue-ink);
+}
+#myworld-site .mws-ideas__ico .mws-ico {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+html[data-newon-shell-theme="dark"] body #myworld-site .mws-ideas__grid li {
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #f2f2f2;
+}
+
+/* Overview · definition: the statement runs full width (editorial split header), then the four platform layers
+   beside the illustrative record screen — no phone stranded under a narrow left column */
+@media (min-width: 1100px) {
+  #myworld-site .mws-split--mock {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    grid-template-areas: "head head" "body mock";
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+  }
+  #myworld-site .mws-split--mock .mws-split__mock {
+    justify-self: center;
+    align-self: start;
+  }
+  #myworld-site .mws-split--mock .mws-split__head {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: end;
+  }
+  #myworld-site .mws-split--mock .mws-split__head > .mws-head {
+    display: contents;
+  }
+  #myworld-site .mws-split--mock .mws-split__head .mws-head__main {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: start;
+  }
+  #myworld-site .mws-split--mock .mws-split__head .mws-head__side {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+  }
+  #myworld-site .mws-split--mock .mws-split__head .mws-actions {
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 1.25rem;
+  }
+}
