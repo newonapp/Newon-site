@@ -65,6 +65,8 @@ export const KO = {
     planLabel: "계획 중인 기능",
     contactPageCta: "NEWON 공식 문의",
     emailSubjectPrefix: "[MY WORLD]",
+    mockLabel: "예시 화면",
+    railAria: "옆으로 넘겨 더 보기",
   },
   nav: [
     { id: "overview", n: "01", en: "Overview", label: "소개" },

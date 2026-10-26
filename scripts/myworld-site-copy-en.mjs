@@ -58,6 +58,8 @@ export const EN = {
     planLabel: "Planned features",
     contactPageCta: "Newon contact form",
     emailSubjectPrefix: "[MY WORLD]",
+    mockLabel: "Illustrative screen",
+    railAria: "Scroll sideways for more",
   },
   nav: [
     { id: "overview", n: "01", en: "Overview", label: "Overview" },
