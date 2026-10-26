@@ -600,3 +600,250 @@ html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl
 @media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-xt--stages th[scope="row"] { width: 15%; white-space: nowrap; } #lifestage-detail.nls--petlog .pl-xt--stages td:last-child { width: 18%; color: var(--pl-gi); font-weight: 600; } }
 html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-xt--stages td:last-child { color: var(--pl-gi) !important; }
 @media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-xt--links th[scope="row"] { width: 16%; } #lifestage-detail.nls--petlog .pl-xt--links td:nth-child(2) { width: 34%; } }
+
+/* ==================================================================== v4 design pass (2026-10-26)
+ * Varied section headers, illustrative product screens (labelled 예시 화면 / Illustrative, built from page copy only),
+ * a status board, a proposed-tab set, a status filter, a partner-type index, quiet hover and reveal motion.
+ * Light mode stays white with hairlines; the PETLOG green is the only colour.
+ */
+#lifestage-detail.nls--petlog { --pl-shadow: 0 22px 48px -30px rgba(16, 48, 31, 0.42); }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog { --pl-shadow: 0 22px 48px -30px rgba(0, 0, 0, 0.9); }
+
+/* header variants: hero (large editorial statement) and stack (kicker rule, title, lead underneath) */
+#lifestage-detail.nls--petlog .pl-head--hero { max-width: 62rem; margin-bottom: clamp(1.6rem, 1.2rem + 1.4vw, 2.4rem); }
+@media (min-width: 960px) {
+  #lifestage-detail.nls--petlog .pl-head--hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); column-gap: clamp(2rem, 4.5vw, 4rem); max-width: none; align-items: end; }
+  #lifestage-detail.nls--petlog .pl-head--hero .nls-kicker { grid-column: 1; grid-row: 1; }
+  #lifestage-detail.nls--petlog .pl-head--hero .nls-title { grid-column: 1; grid-row: 2; }
+  #lifestage-detail.nls--petlog .pl-head--hero .nls-lead { grid-column: 2; grid-row: 1 / span 2; align-self: end; margin: 0; padding-left: clamp(1.2rem, 2.4vw, 2rem); border-left: 2px solid var(--pl-g); }
+}
+#lifestage-detail.nls--petlog .pl-head--hero .nls-title { font-size: clamp(2.05rem, 1.35rem + 2.5vw, 3.45rem); line-height: 1.14; letter-spacing: -0.045em; }
+#lifestage-detail.nls--petlog .pl-head--hero .nls-lead { margin-top: 1.1rem; max-width: 46rem; font-size: clamp(1.03rem, 0.98rem + 0.25vw, 1.15rem); line-height: 1.75; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-head--stack { max-width: 46rem; }
+#lifestage-detail.nls--petlog :is(.pl-head--stack, .pl-head--hero) .nls-kicker { display: flex; align-items: center; gap: 0.6rem; }
+#lifestage-detail.nls--petlog :is(.pl-head--stack, .pl-head--hero) .nls-kicker::before { content: ""; flex: none; width: 1.6rem; height: 2px; background: var(--pl-g); }
+
+/* illustrative caption */
+#lifestage-detail.nls--petlog .pl-mockcap { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.3rem 0.5rem; margin: 0.8rem 0 0; font-size: 0.8125rem; line-height: 1.5; color: var(--pl-faint); text-align: center; }
+#lifestage-detail.nls--petlog .pl-mockcap span { padding: 0.12rem 0.55rem; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--pl-line); color: var(--pl-gi); font-weight: 700; }
+
+/* phone frame */
+#lifestage-detail.nls--petlog .pl-phone { width: 100%; max-width: 21rem; margin: 0 auto; }
+#lifestage-detail.nls--petlog .pl-phone__screen { display: grid; gap: 0.7rem; align-content: start; padding: 1.05rem 1rem 1.15rem; border: 9px solid var(--pl-ink); border-radius: 34px; background: var(--pl-card); box-shadow: var(--pl-shadow); }
+#lifestage-detail.nls--petlog .pl-phone__bar { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; padding: 0 0.15rem 0.55rem; border-bottom: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-phone__bar b { font-size: 0.875rem; font-weight: 800; letter-spacing: 0.08em; color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-phone__bar > svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: var(--pl-faint); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+#lifestage-detail.nls--petlog .pl-phone :is(strong, span, p, b) { word-break: keep-all; overflow-wrap: break-word; }
+#lifestage-detail.nls--petlog .pl-app-profile, #lifestage-detail.nls--petlog .pl-app-remind, #lifestage-detail.nls--petlog .pl-app-row { display: flex; align-items: center; gap: 0.75rem; min-width: 0; }
+#lifestage-detail.nls--petlog .pl-app-profile { padding: 0.75rem; border: 1px solid var(--pl-line); border-radius: 16px; }
+#lifestage-detail.nls--petlog :is(.pl-app-profile, .pl-app-remind, .pl-app-row) > div { display: grid; gap: 0.1rem; min-width: 0; }
+#lifestage-detail.nls--petlog :is(.pl-app-profile, .pl-app-remind, .pl-app-row) strong { font-size: 0.9375rem; font-weight: 700; line-height: 1.4; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog :is(.pl-app-profile, .pl-app-remind, .pl-app-row) span { font-size: 0.8125rem; line-height: 1.45; color: var(--pl-muted); }
+#lifestage-detail.nls--petlog .pl-app-profile .pl-ic--lg, #lifestage-detail.nls--petlog .pl-ic--lg { width: 3rem; height: 3rem; border-radius: 14px; }
+#lifestage-detail.nls--petlog .pl-ic--lg svg { width: 1.5rem; height: 1.5rem; }
+#lifestage-detail.nls--petlog .pl-app-h { margin: 0.3rem 0 -0.3rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-app-list { margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-app-list li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 0.65rem; padding: 0.5rem 0; border-bottom: 1px solid var(--pl-rule); font-size: 0.9rem; font-weight: 600; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-app-list li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-app-list .pl-ic { width: 2rem; height: 2rem; border-radius: 9px; }
+#lifestage-detail.nls--petlog .pl-app-list .pl-ic svg { width: 1rem; height: 1rem; }
+#lifestage-detail.nls--petlog .pl-app-list li > i { display: grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 6px; box-shadow: inset 0 0 0 1.5px var(--pl-dash); color: #fff; }
+#lifestage-detail.nls--petlog .pl-app-list li.is-done > i { background: var(--pl-g); box-shadow: none; }
+#lifestage-detail.nls--petlog .pl-app-list li > i svg { width: 0.8rem; height: 0.8rem; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+#lifestage-detail.nls--petlog .pl-app-list--plain li > i { box-shadow: none; color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-app-list--plain li > i svg { stroke-width: 2; }
+#lifestage-detail.nls--petlog .pl-app-remind { padding: 0.75rem 0.8rem; border-radius: 14px; background: var(--pl-soft); box-shadow: inset 3px 0 0 var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-app-remind .pl-ic { background: var(--pl-g); color: #fff; }
+#lifestage-detail.nls--petlog .pl-app-row { padding: 0.2rem 0; }
+#lifestage-detail.nls--petlog .pl-app-photos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.4rem; }
+#lifestage-detail.nls--petlog .pl-app-photos span { display: grid; place-items: center; aspect-ratio: 1; border-radius: 10px; background: var(--pl-soft); }
+#lifestage-detail.nls--petlog .pl-app-photos svg { width: 1.2rem; height: 1.2rem; fill: none; stroke: var(--pl-gi); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* overview: phone beside the feature list */
+#lifestage-detail.nls--petlog .pl-split { display: grid; gap: clamp(1.8rem, 3vw, 3rem); align-items: start; }
+@media (min-width: 960px) {
+  #lifestage-detail.nls--petlog .pl-split--phone { grid-template-columns: minmax(0, 21rem) minmax(0, 1fr); column-gap: clamp(2.4rem, 5vw, 4.5rem); }
+  #lifestage-detail.nls--petlog .pl-split--consent { grid-template-columns: minmax(0, 19rem) minmax(0, 1fr); column-gap: clamp(2.4rem, 5vw, 4.5rem); align-items: center; }
+}
+#lifestage-detail.nls--petlog .pl-flist { display: grid; gap: 0 clamp(1.4rem, 2.6vw, 2.2rem); margin: 0; padding: 0; list-style: none; }
+@media (min-width: 700px) { #lifestage-detail.nls--petlog .pl-flist { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+#lifestage-detail.nls--petlog .pl-flist > li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.85rem; align-items: start; padding: 1rem 0 1.1rem; border-top: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-flist > li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-flist > li > div { display: grid; gap: 0.3rem; min-width: 0; }
+#lifestage-detail.nls--petlog .pl-flist__top { display: flex; gap: 0.55rem; align-items: baseline; margin: 0; }
+#lifestage-detail.nls--petlog .pl-flist .pl-chips { margin-top: 0.25rem; }
+#lifestage-detail.nls--petlog .pl-flist > li.is-later .pl-ic { background: transparent; box-shadow: inset 0 0 0 1px var(--pl-dash); color: var(--pl-faint); }
+@media (min-width: 700px) { #lifestage-detail.nls--petlog .pl-flist > li:nth-child(-n + 2) { border-top-color: var(--pl-ink); } }
+@media (max-width: 699px) { #lifestage-detail.nls--petlog .pl-flist > li:first-child { border-top-color: var(--pl-ink); } }
+
+/* overview: comparison — PETLOG's column carries a green rule */
+#lifestage-detail.nls--petlog .pl-xt--vs tbody td:last-child { box-shadow: inset 3px 0 0 var(--pl-g); padding-left: 1rem; }
+#lifestage-detail.nls--petlog .pl-xt--vs tbody td:nth-child(2) { color: var(--pl-faint); }
+@media (max-width: 759px) { #lifestage-detail.nls--petlog .pl-xt--vs tbody td:last-child { padding: 0.15rem 0 0.15rem 0.85rem; } }
+
+/* platform: status board (four columns) */
+#lifestage-detail.nls--petlog .pl-kanban { display: grid; gap: var(--pl-gap); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 700px) and (max-width: 1099px) { #lifestage-detail.nls--petlog .pl-kanban { grid-template-columns: repeat(2, minmax(0, 1fr)); } #lifestage-detail.nls--petlog .pl-kcol--plan { grid-column: 1 / -1; grid-row: 2; } }
+@media (min-width: 1100px) { #lifestage-detail.nls--petlog .pl-kanban { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr) minmax(0, 2fr) minmax(0, 1fr); } }
+#lifestage-detail.nls--petlog .pl-kcol { display: flex; flex-direction: column; gap: 0.65rem; min-width: 0; padding: var(--pl-cpad); border-radius: var(--pl-r-lg); background: var(--pl-card); box-shadow: inset 0 0 0 1px var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-kcol--now { box-shadow: inset 0 0 0 1.5px var(--pl-line), inset 0 3px 0 var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-kcol--now .pl-ic { background: var(--pl-g); color: #fff; }
+#lifestage-detail.nls--petlog .pl-kcol:is(.pl-kcol--plan, .pl-kcol--review) { background: transparent; box-shadow: none; border: 1px dashed var(--pl-dash); }
+#lifestage-detail.nls--petlog .pl-kcol:is(.pl-kcol--plan, .pl-kcol--review) .pl-ic { background: transparent; box-shadow: inset 0 0 0 1px var(--pl-dash); color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-kcol__head { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 0.35rem 0.75rem; }
+#lifestage-detail.nls--petlog .pl-kcol__head h3 { font-size: 1.0625rem; }
+#lifestage-detail.nls--petlog .pl-kcol__head .pl-kcount { grid-column: 2; justify-self: start; }
+#lifestage-detail.nls--petlog .pl-kcol__head .pl-ic { grid-row: 1 / span 2; }
+#lifestage-detail.nls--petlog .pl-kcount { padding: 0.15rem 0.6rem; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--pl-line); color: var(--pl-gi); font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+#lifestage-detail.nls--petlog .pl-kcol ul { margin: 0.15rem 0 0; padding: 0; list-style: none; border-top: 1px solid var(--pl-rule); }
+@media (min-width: 700px) { #lifestage-detail.nls--petlog .pl-kcol--plan ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.2rem; } }
+@media (min-width: 700px) and (max-width: 1099px) { #lifestage-detail.nls--petlog .pl-kcol--plan ul { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+#lifestage-detail.nls--petlog .pl-kcol li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-kcol li a { display: flex; align-items: baseline; gap: 0.6rem; min-height: 40px; padding: 0.5rem 0; border-bottom: 1px solid var(--pl-rule); color: var(--pl-ink); font-size: 0.9375rem; font-weight: 600; line-height: 1.45; text-decoration: none; transition: color 0.18s ease; }
+#lifestage-detail.nls--petlog .pl-kcol li a:hover { color: var(--pl-gi); text-decoration: underline; text-underline-offset: 0.2em; }
+
+/* platform: proposed tabs — phone beside a vertical tab list */
+#lifestage-detail.nls--petlog .pl-tabset { display: grid; gap: clamp(1.8rem, 3vw, 3rem); align-items: center; }
+@media (min-width: 960px) { #lifestage-detail.nls--petlog .pl-tabset { grid-template-columns: minmax(0, 21rem) minmax(0, 1fr); column-gap: clamp(2.4rem, 5vw, 4.5rem); } }
+#lifestage-detail.nls--petlog .pl-phone--tabs .pl-phone__screen { grid-template-areas: "p" "t"; grid-template-rows: minmax(21rem, 1fr) auto; padding-bottom: 0.7rem; }
+#lifestage-detail.nls--petlog .pl-tabp { grid-area: p; display: grid; align-content: start; gap: 0.35rem; min-width: 0; }
+#lifestage-detail.nls--petlog .pl-tabp[hidden] { display: grid; visibility: hidden; }
+#lifestage-detail.nls--petlog .pl-app-kick { margin: 0.2rem 0 0; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-app-title { margin: 0 0 0.5rem; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.25; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-tabp .pl-app-list { border-top: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-app-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.45rem; margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-app-tiles li { display: grid; justify-items: center; align-content: start; gap: 0.4rem; min-width: 0; padding: 0.7rem 0.3rem 0.65rem; border: 1px solid var(--pl-rule); border-radius: 12px; font-size: 0.8125rem; font-weight: 650; line-height: 1.35; color: var(--pl-ink); text-align: center; }
+#lifestage-detail.nls--petlog .pl-app-tiles li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-app-tiles .pl-ic { width: 2.1rem; height: 2.1rem; border-radius: 10px; }
+#lifestage-detail.nls--petlog .pl-app-tiles .pl-ic svg { width: 1.05rem; height: 1.05rem; }
+#lifestage-detail.nls--petlog .pl-phone__tabs { grid-area: t; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.2rem; padding-top: 0.6rem; border-top: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-phone__tabs span { display: grid; justify-items: center; gap: 0.2rem; min-width: 0; color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-phone__tabs svg { width: 1.2rem; height: 1.2rem; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+#lifestage-detail.nls--petlog .pl-phone__tabs b { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.6875rem; font-weight: 700; }
+#lifestage-detail.nls--petlog .pl-phone__tabs .is-on { color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-tablist { display: grid; border-top: 1px solid var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-tabbtn { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: 0.25rem 0.6rem; align-items: baseline; width: 100%; min-height: 44px; margin: 0; padding: 0.95rem 0.9rem; border: 0; border-bottom: 1px solid var(--pl-rule); border-radius: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: box-shadow 0.18s ease; }
+#lifestage-detail.nls--petlog .pl-tabbtn > .pl-p { grid-column: 2; }
+#lifestage-detail.nls--petlog .pl-tabbtn__t { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.6rem; }
+#lifestage-detail.nls--petlog .pl-tabbtn strong { font-size: 1.1875rem; font-weight: 700; letter-spacing: -0.02em; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-tabbtn em { font-style: normal; font-size: 0.8125rem; font-weight: 600; color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-tabbtn:hover { box-shadow: inset 3px 0 0 var(--pl-line); }
+#lifestage-detail.nls--petlog .pl-tabbtn.is-on { box-shadow: inset 3px 0 0 var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-tabbtn.is-on strong { color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-tabbtn:focus-visible { outline-offset: -2px; }
+
+/* business: status filter */
+#lifestage-detail.nls--petlog .pl-seg { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0 0 1rem; }
+#lifestage-detail.nls--petlog .pl-seg[hidden] { display: none; }
+#lifestage-detail.nls--petlog .pl-seg button { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 40px; margin: 0; padding: 0.4rem 0.95rem; border: 1px solid var(--pl-rule); border-radius: 999px; background: var(--pl-card); color: var(--pl-muted); font: inherit; font-size: 0.875rem; font-weight: 650; cursor: pointer; transition: border-color 0.18s ease, box-shadow 0.18s ease; }
+#lifestage-detail.nls--petlog .pl-seg button span { color: var(--pl-faint); font-variant-numeric: tabular-nums; }
+#lifestage-detail.nls--petlog .pl-seg button:hover { border-color: var(--pl-line); }
+#lifestage-detail.nls--petlog .pl-seg button[aria-pressed="true"] { border-color: var(--pl-g); box-shadow: inset 0 0 0 1px var(--pl-g); color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-dot { display: inline-block; width: 0.6rem; height: 0.6rem; border-radius: 2px; }
+#lifestage-detail.nls--petlog .pl-dot--now { background: var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-dot--plan { box-shadow: inset 0 0 0 1.5px var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-dot--review { box-shadow: inset 0 0 0 1.5px var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-table li[hidden] { display: none; }
+
+/* business: illustrative console window */
+#lifestage-detail.nls--petlog .pl-console { margin: 0 0 1.6rem; border: 1px solid var(--pl-line); border-radius: var(--pl-r-lg); background: var(--pl-card); overflow: hidden; box-shadow: var(--pl-shadow); }
+#lifestage-detail.nls--petlog .pl-console__bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.4rem 1rem; padding: 0.7rem 1.1rem; border-bottom: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-console__bar b { font-size: 0.875rem; font-weight: 800; letter-spacing: 0.06em; color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-console__bar .pl-mockcap { margin: 0; justify-content: flex-end; text-align: right; }
+#lifestage-detail.nls--petlog .pl-console__body { display: grid; }
+@media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-console__body { grid-template-columns: 12.5rem minmax(0, 1fr); } }
+#lifestage-detail.nls--petlog .pl-console__nav { display: none; margin: 0; padding: 0.8rem; list-style: none; border-right: 1px solid var(--pl-rule); }
+@media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-console__nav { display: grid; align-content: start; gap: 0.2rem; } }
+#lifestage-detail.nls--petlog .pl-console__nav li { display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.7rem; border-radius: 8px; font-size: 0.875rem; font-weight: 650; color: var(--pl-muted); }
+#lifestage-detail.nls--petlog .pl-console__nav li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-console__nav li.is-on { background: var(--pl-soft); color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-console__nav svg { flex: none; width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+#lifestage-detail.nls--petlog .pl-console__main { display: grid; gap: 0 clamp(1.2rem, 2.4vw, 2rem); margin: 0; padding: 0.4rem clamp(1rem, 2vw, 1.4rem) 0.8rem; list-style: none; }
+@media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-console__main { grid-template-columns: repeat(2, minmax(0, 1fr)); } #lifestage-detail.nls--petlog .pl-console__main > li:last-child:nth-child(odd) { grid-column: 1 / -1; } }
+#lifestage-detail.nls--petlog .pl-console__main li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.8rem; align-items: start; padding: 0.85rem 0; border-bottom: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-console__main li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-console__main li > div { display: grid; gap: 0.2rem; min-width: 0; }
+#lifestage-detail.nls--petlog .pl-console__main b { font-size: 1rem; font-weight: 700; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-console__main .pl-ic { width: 2.2rem; height: 2.2rem; }
+#lifestage-detail.nls--petlog .pl-console__main .pl-ic svg { width: 1.1rem; height: 1.1rem; }
+
+/* partnerships: 15-type index */
+#lifestage-detail.nls--petlog .pl-index { margin-top: clamp(1.8rem, 3vw, 2.6rem); padding: var(--pl-cpad); border: 1px solid var(--pl-line); border-radius: var(--pl-r-lg); background: var(--pl-card); }
+#lifestage-detail.nls--petlog .pl-index__h { margin: 0 0 1rem; font-size: 1.1875rem; }
+#lifestage-detail.nls--petlog .pl-index__cols { display: grid; gap: 1.4rem clamp(1.4rem, 2.6vw, 2.4rem); }
+@media (min-width: 900px) { #lifestage-detail.nls--petlog .pl-index__cols { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+#lifestage-detail.nls--petlog .pl-index__g { margin: 0; }
+#lifestage-detail.nls--petlog .pl-index__g a { display: block; padding-bottom: 0.55rem; border-bottom: 1px solid var(--pl-ink); font-size: 0.9375rem; font-weight: 700; color: var(--pl-gi); text-decoration: none; }
+#lifestage-detail.nls--petlog .pl-index__g a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+#lifestage-detail.nls--petlog .pl-index ol { margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-index li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-index li a { display: grid; grid-template-columns: auto 1.6rem minmax(0, 1fr); align-items: center; gap: 0.65rem; min-height: 44px; padding: 0.45rem 0; border-bottom: 1px solid var(--pl-rule); color: var(--pl-ink); font-size: 0.9375rem; font-weight: 600; line-height: 1.45; text-decoration: none; transition: color 0.18s ease, box-shadow 0.18s ease; }
+#lifestage-detail.nls--petlog .pl-index li a .pl-ic { width: 1.9rem; height: 1.9rem; border-radius: 8px; }
+#lifestage-detail.nls--petlog .pl-index li a .pl-ic svg { width: 0.95rem; height: 0.95rem; }
+#lifestage-detail.nls--petlog .pl-index li a:hover { color: var(--pl-gi); }
+
+/* partnerships: consent screen */
+#lifestage-detail.nls--petlog .pl-phone--consent { max-width: 19rem; }
+#lifestage-detail.nls--petlog .pl-phone--consent .pl-phone__bar b { font-size: 0.9375rem; font-weight: 700; letter-spacing: -0.01em; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-phone--consent .pl-app-row { padding: 0.65rem 0.75rem; border: 1px solid var(--pl-rule); border-radius: 14px; }
+#lifestage-detail.nls--petlog .pl-app-toggles { margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-app-toggles li { display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; padding: 0.65rem 0.1rem; border-bottom: 1px solid var(--pl-rule); font-size: 0.9375rem; font-weight: 600; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-app-toggles li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-app-toggles li > i { position: relative; flex: none; width: 2.5rem; height: 1.45rem; border-radius: 999px; box-shadow: inset 0 0 0 1.5px var(--pl-dash); }
+#lifestage-detail.nls--petlog .pl-app-toggles li > i::after { content: ""; position: absolute; top: 0.22rem; left: 0.24rem; width: 1rem; height: 1rem; border-radius: 50%; background: var(--pl-dash); transition: left 0.2s ease; }
+#lifestage-detail.nls--petlog .pl-app-toggles li.is-on > i { background: var(--pl-g); box-shadow: none; }
+#lifestage-detail.nls--petlog .pl-app-toggles li.is-on > i::after { left: 1.26rem; background: #fff; }
+#lifestage-detail.nls--petlog .pl-app-btn { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin: 0.35rem 0 0; padding: 0.8rem 0.9rem; border-radius: 12px; background: var(--pl-gi); color: #fff; font-size: 0.875rem; font-weight: 700; line-height: 1.4; text-align: center; }
+#lifestage-detail.nls--petlog .pl-app-btn svg { flex: none; width: 1.05rem; height: 1.05rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+#lifestage-detail.nls--petlog .pl-split--consent .pl-people li:first-child { border-top-color: var(--pl-ink); }
+
+/* quiet hover on outlined cards */
+#lifestage-detail.nls--petlog :is(.pl-card, .pl-pcard, .pl-notes li, .pl-ladder > li) { transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease; }
+@media (hover: hover) {
+  #lifestage-detail.nls--petlog .pl-card:not(.pl-card--later):hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1px var(--pl-line), var(--pl-shadow); }
+  #lifestage-detail.nls--petlog :is(.pl-pcard, .pl-notes li, .pl-ladder > li):hover { transform: translateY(-2px); border-color: var(--pl-line); box-shadow: var(--pl-shadow); }
+}
+
+/* restrained reveal (scroll-driven; browsers without support, and reduced motion, show everything at once) */
+@keyframes pl-rise { from { opacity: 0.001; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    #lifestage-detail.nls--petlog .nls__wrap :is(.pl-card, .pl-col, .pl-pcard, .pl-flist > li, .pl-kcol, .pl-phone, .pl-console, .pl-notes li, .pl-ladder > li, .pl-values > div, .pl-models > div, .pl-index) { animation: pl-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 30%; }
+  }
+}
+@media (prefers-reduced-motion: reduce) { #lifestage-detail.nls--petlog .nls__wrap :is(.pl-card, .pl-pcard, .pl-notes li, .pl-ladder > li) { transition: none; transform: none !important; } }
+
+/* dark */
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-phone__screen, .pl-kcol--now, .pl-kcol--dev, .pl-console, .pl-index, .pl-seg button) { background-color: var(--pl-card) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-phone__screen { border-color: #3a3f3c !important; box-shadow: var(--pl-shadow) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-app-remind, .pl-app-photos span, .pl-console__nav li.is-on) { background-color: var(--pl-soft) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-app-list li.is-done > i, .pl-app-toggles li.is-on > i, .pl-dot--now, .pl-kcol--now .pl-ic, .pl-app-remind .pl-ic) { background-color: var(--pl-g) !important; color: #04140b !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-app-toggles li > i::after { background-color: var(--pl-dash) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-app-toggles li.is-on > i::after { background-color: #fff !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-app-btn { background-color: #278a53 !important; color: #fff !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-phone__bar b, .pl-console__bar b, .pl-app-kick, .pl-kcount, .pl-mockcap span, .pl-index__g a, .pl-tabbtn.is-on strong, .pl-seg button[aria-pressed="true"], .pl-phone__tabs .is-on, .pl-console__nav li.is-on, .pl-app-photos svg) { color: var(--pl-gi) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-mockcap, .pl-app-profile span, .pl-app-row span, .pl-phone__tabs span:not(.is-on), .pl-console__nav li:not(.is-on), .pl-seg button:not([aria-pressed="true"]), .pl-tabbtn em, .pl-app-h, .pl-xt--vs tbody td:nth-child(2), .pl-app-list--plain li > i) { color: var(--pl-faint) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-app-list li, .pl-app-tiles li, .pl-app-toggles li, .pl-app-title, .pl-tabbtn strong, .pl-kcol li a, .pl-index li a, .pl-console__main b, .pl-app-profile strong, .pl-app-row strong, .pl-app-remind strong, .pl-head--hero .nls-lead) { color: var(--pl-ink) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-app-list li > i { color: #04140b !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-kcol--plan, .pl-kcol--review) { border-color: var(--pl-dash) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-console, .pl-index, .pl-app-profile) { border-color: var(--pl-line) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-tablist, .pl-index__g a, .pl-flist > li:nth-child(-n + 2)) { border-color: rgba(255, 255, 255, 0.42) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-kcol--now { box-shadow: inset 0 0 0 1.5px var(--pl-line), inset 0 3px 0 var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-kcol--dev) { box-shadow: inset 0 0 0 1px var(--pl-rule) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-kcount, .pl-mockcap span) { box-shadow: inset 0 0 0 1px var(--pl-line) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-tabbtn.is-on { box-shadow: inset 3px 0 0 var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-app-remind { box-shadow: inset 3px 0 0 var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-xt--vs tbody td:last-child { box-shadow: inset 3px 0 0 var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-seg button[aria-pressed="true"] { border-color: var(--pl-g) !important; box-shadow: inset 0 0 0 1px var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-app-list li > i, .pl-app-toggles li > i, .pl-dot--review) { box-shadow: inset 0 0 0 1.5px var(--pl-dash) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-app-list li.is-done > i, .pl-app-toggles li.is-on > i, .pl-app-list--plain li > i) { box-shadow: none !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-dot--plan { box-shadow: inset 0 0 0 1.5px var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-head--stack, .pl-head--hero) .nls-kicker::before { background-color: var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-kcol--plan, .pl-kcol--review) .pl-ic, html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-flist > li.is-later .pl-ic { background-color: transparent !important; box-shadow: inset 0 0 0 1px var(--pl-dash) !important; color: var(--pl-faint) !important; }
+/* phone: the status board becomes a horizontal snap rail */
+@media (max-width: 699px) {
+  #lifestage-detail.nls--petlog .pl-kanban { display: flex; gap: 0.75rem; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; margin: 0 -1.2rem; padding: 0 1.2rem 0.5rem; scroll-padding: 0 1.2rem; align-items: stretch; }
+  #lifestage-detail.nls--petlog .pl-kcol { flex: 0 0 84%; scroll-snap-align: start; }
+  #lifestage-detail.nls--petlog .pl-kcol--plan ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 0.9rem; }
+  #lifestage-detail.nls--petlog .pl-kcol--plan { flex-basis: 92%; }
+}

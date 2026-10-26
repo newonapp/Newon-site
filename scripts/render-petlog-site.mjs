@@ -60,7 +60,7 @@ const rel = (depth, p) => (/^(https?:|mailto:|#|\/)/.test(p) ? p : "../".repeat(
  * a features bento, now/next scene cards, comparison rows, status board, data tables, directories, accordions —
  * with 16px body text and PETLOG green as a point colour only. No screenshots, images or decorative shapes.
  */
-const PETLOG_CSS_VER = "20261026v3";
+const PETLOG_CSS_VER = "20261026v4";
 const PETLOG_CSS = `<link rel="stylesheet" href="/petlog-site.css?v=${PETLOG_CSS_VER}" />
     <style>
   /* Background film framing: show more of the right side (owner request 2026-10-19). */
@@ -164,8 +164,9 @@ const isNow = (text) => /지금 제공|지금 앱에서 제공하는 단계|avai
 
 /* ---------------------------------------------------------------- shared blocks */
 /** Section header. row → on wide screens the kicker and title sit on the left and the lead on the right (no empty half). */
-function head(kicker, title, lead, row) {
-  return `<header class="nls-head${row && lead ? " pl-head--row" : ""}">
+function head(kicker, title, lead, row, hv) {
+  const cls = hv ? ` pl-head--${hv}` : row && lead ? " pl-head--row" : "";
+  return `<header class="nls-head${cls}">
     ${kicker ? `<p class="nls-kicker">${esc(kicker)}</p>` : ""}
     <h2 class="nls-title">${nl(title)}</h2>
     ${lead ? `<p class="nls-lead">${esc(lead)}</p>` : ""}
@@ -188,10 +189,10 @@ const bare = (name) => String(name || "").replace(/\s*\((향후|planned)\)\s*$/i
  * Section wrapper. tint → full-bleed band with hairlines (white in light mode); accent → the page's one full-bleed
  * PETLOG-green band; row (default) → wide header row.
  */
-function section(id, { kicker, title, lead, noteText, tint, accent, body, extraClass, row = true }) {
+function section(id, { kicker, title, lead, noteText, tint, accent, body, extraClass, row = true, hv }) {
   const band = accent ? " nls-block--band pl-accent" : tint ? " nls-block--band pl-tint" : "";
   return `<div id="${id}" class="nls-block${band}${extraClass ? ` ${extraClass}` : ""}" data-hs-section>
-    ${head(kicker, title, lead, row)}
+    ${head(kicker, title, lead, row, hv)}
     ${callout(noteText)}
     ${body}
   </div>`;
@@ -405,6 +406,142 @@ const panel = (kind, icon, title, body, chips, line) =>
 /** Status pill used inside a status column. */
 const stage = (now, label) => ({ html: `<span class="pl-stage${now ? " pl-stage--now" : ""}">${esc(label)}</span>` });
 
+/* ---------------------------------------------------------------- v4: illustrative product screens + small interactions
+ * HTML/CSS pictures of what the app records or proposes, built only from the copy already on the page. Every picture
+ * carries an "예시 화면 / Illustrative" label; no numbers, names, users or results are shown.
+ */
+const MOCK = {
+  ko: { cap: "예시 화면", capPlan: "예시 화면 · 제안", note: "실제 앱 화면과 다를 수 있습니다.", all: "전체", share: "보호자가 고른 기록만 전달", to: "받는 곳" },
+  en: { cap: "Illustrative", capPlan: "Illustrative · proposal", note: "May differ from the actual app.", all: "All", share: "Send only the records the owner picks", to: "To" },
+};
+const mockCap = (L, plan) => `<p class="pl-mockcap"><span>${esc(plan ? MOCK[L].capPlan : MOCK[L].cap)}</span>${esc(MOCK[L].note)}</p>`;
+
+/** Overview: one phone screen gathering the features available in the app today (01–07). */
+function phoneToday(L, list) {
+  const [profile, log, meals, weight, vacc, family, photos] = list;
+  const row = (icon, t, on) => `<li${on ? ' class="is-done"' : ""}>${ic(icon)}<span>${esc(t)}</span><i aria-hidden="true">${on ? svg("check") : ""}</i></li>`;
+  return `<figure class="pl-phone" aria-label="${esc(`${MOCK[L].cap} — PETLOG`)}">
+    <div class="pl-phone__screen">
+      <div class="pl-phone__bar"><b lang="en">PETLOG</b>${svg("calendar")}</div>
+      <div class="pl-app-profile">${ic("paw", true)}<div><strong>${esc(profile.name)}</strong><span>${esc(profile.chips.join(" · "))}</span></div></div>
+      <p class="pl-app-h">${esc(log.name)}</p>
+      <ul class="pl-app-list">${row("bowl", meals.chips[0], true)}${row("walk", meals.chips[1], true)}${row("pulse", weight.chips[0], false)}</ul>
+      <div class="pl-app-remind">${ic("calendar")}<div><strong>${esc(vacc.name)}</strong><span>${esc(vacc.chips.join(" · "))}</span></div></div>
+      <div class="pl-app-row">${ic("users")}<div><strong>${esc(family.name)}</strong><span>${esc(family.chips.join(" · "))}</span></div></div>
+      <p class="pl-app-h">${esc(photos.name)}</p>
+      <div class="pl-app-photos" aria-hidden="true"><span>${svg("camera")}</span><span>${svg("camera")}</span><span>${svg("camera")}</span></div>
+    </div>
+    <figcaption>${mockCap(L)}</figcaption>
+  </figure>`;
+}
+
+/** Platform: the proposed five bottom tabs as a real tab set; the phone shows the selected tab. */
+const TAB_ICONS = ["home", "note", "pin", "chat", "user"];
+/** Line icon per entry of the proposed tabs (keyed by the English wording, used for both languages). */
+const TAB_WORD = { "today's condition": "pulse", schedule: "calendar", "suggested services": "spark", health: "pulse", meals: "bowl", walks: "walk", sleep: "note", diary: "book", calendar: "calendar", vets: "clinic", grooming: "scissors", care: "heart", hotels: "home", training: "book", market: "cart", travel: "pin", shelters: "building", funerals: "star", information: "info", reviews: "star", "local groups": "users", "lost pets": "pin", "protection work": "shield", pets: "paw", "family account": "users", bookings: "calendar", orders: "bag", subscription: "cycle", devices: "phone" };
+function tabPhone(L, X) {
+  const list = X.tabs.items;
+  const tabs = list
+    .map(
+      ([n, name, en, d], i) => `<button type="button" role="tab" id="pl-tab-${n}" aria-controls="pl-tabp-${n}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}" class="pl-tabbtn${i === 0 ? " is-on" : ""}">
+        <span class="pl-n">${esc(n)}</span><span class="pl-tabbtn__t"><strong>${esc(name)}</strong>${name !== en ? `<em lang="en">${esc(en)}</em>` : ""}</span><span class="pl-p pl-sm">${esc(d)}</span></button>`
+    )
+    .join("");
+  const split = (d) => d.split(/,\s*|·|\s+and\s+/).map((x) => x.trim()).filter(Boolean);
+  const enItems = V3.platform.en.tabs.items;
+  const panels = list
+    .map(([n, name, en, d], i) => {
+      const parts = split(d);
+      const enParts = split(enItems[i][3]);
+      const icon = (j) => TAB_WORD[(enParts[j] || "").toLowerCase()] || TAB_ICONS[i];
+      // a few entries → rows; many → an app-style tile grid
+      const body =
+        parts.length <= 4
+          ? `<ul class="pl-app-list pl-app-list--plain">${parts.map((x, j) => `<li>${ic(icon(j))}<span>${esc(x)}</span><i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6"/></svg></i></li>`).join("")}</ul>`
+          : `<ul class="pl-app-tiles">${parts.map((x, j) => `<li>${ic(icon(j))}<span>${esc(x)}</span></li>`).join("")}</ul>`;
+      return `<div role="tabpanel" id="pl-tabp-${n}" aria-labelledby="pl-tab-${n}" class="pl-tabp"${i === 0 ? "" : " hidden"}>
+        <p class="pl-app-kick" lang="en">${esc(en)}</p><p class="pl-app-title">${esc(name)}</p>
+        ${body}
+      </div>`;
+    })
+    .join("");
+  const bar = list.map(([n, name], i) => `<span data-pl-mirror="${esc(n)}"${i === 0 ? ' class="is-on"' : ""}>${svg(TAB_ICONS[i])}<b>${esc(name)}</b></span>`).join("");
+  return `<div class="pl-tabset" data-pl-tabs>
+    <figure class="pl-phone pl-phone--tabs">
+      <div class="pl-phone__screen">${panels}<div class="pl-phone__tabs" aria-hidden="true">${bar}</div></div>
+      <figcaption>${mockCap(L, true)}</figcaption>
+    </figure>
+    <div class="pl-tablist" role="tablist" aria-orientation="vertical" aria-label="${esc(X.tabs.kicker)}">${tabs}</div>
+  </div>`;
+}
+
+/** Business: the proposed business tools inside one illustrative console window. */
+function consoleMock(L, saas) {
+  const SAAS_ICONS = ["calendar", "users", "note", "chart", "cycle"];
+  return `<figure class="pl-console">
+    <div class="pl-console__bar"><b lang="en">PETLOG Business</b>${mockCap(L, true)}</div>
+    <div class="pl-console__body">
+      <ul class="pl-console__nav" aria-hidden="true">${saas.map(([t], i) => `<li${i === 0 ? ' class="is-on"' : ""}>${svg(SAAS_ICONS[i])}<span lang="en">${esc(t.replace(/^PETLOG /, ""))}</span></li>`).join("")}</ul>
+      <ul class="pl-console__main">${saas.map(([t, d], i) => `<li>${ic(SAAS_ICONS[i])}<div><b lang="en">${esc(t)}</b><p class="pl-p pl-sm">${esc(d)}</p></div></li>`).join("")}</ul>
+    </div>
+  </figure>`;
+}
+
+/** Partnerships: an owner-side consent screen for sharing a record summary (under review). */
+function consentPhone(L, title, to, items, statusLabel) {
+  const row = (t, on) => `<li${on ? ' class="is-on"' : ""}><span>${esc(t)}</span><i aria-hidden="true"></i></li>`;
+  return `<figure class="pl-phone pl-phone--consent" aria-label="${esc(`${MOCK[L].cap} — ${title}`)}">
+    <div class="pl-phone__screen">
+      <div class="pl-phone__bar"><b>${esc(title)}</b><span class="pl-stage">${esc(statusLabel)}</span></div>
+      <div class="pl-app-row">${ic("clinic")}<div><span>${esc(MOCK[L].to)}</span><strong>${esc(to)}</strong></div></div>
+      <ul class="pl-app-toggles">${items.map((t, i) => row(t, i < 2)).join("")}</ul>
+      <p class="pl-app-btn">${svg("shield")}<span>${esc(MOCK[L].share)}</span></p>
+    </div>
+    <figcaption>${mockCap(L, true)}</figcaption>
+  </figure>`;
+}
+
+/** Tabs (vertical tablist, arrow keys) and status filters. Without JavaScript every item stays visible. */
+const PL_JS = `<script>
+(function () {
+  document.querySelectorAll("[data-pl-tabs]").forEach(function (root) {
+    var tabs = [].slice.call(root.querySelectorAll('[role="tab"]'));
+    function pick(t, focus) {
+      tabs.forEach(function (x) {
+        var on = x === t;
+        x.setAttribute("aria-selected", on); x.tabIndex = on ? 0 : -1; x.classList.toggle("is-on", on);
+        var p = document.getElementById(x.getAttribute("aria-controls")); if (p) p.hidden = !on;
+      });
+      var n = t.id.replace("pl-tab-", "");
+      root.querySelectorAll("[data-pl-mirror]").forEach(function (m) { m.classList.toggle("is-on", m.getAttribute("data-pl-mirror") === n); });
+      if (focus) t.focus();
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { pick(t); });
+      t.addEventListener("keydown", function (e) {
+        var k = e.key, j = -1;
+        if (k === "ArrowDown" || k === "ArrowRight") j = (i + 1) % tabs.length;
+        else if (k === "ArrowUp" || k === "ArrowLeft") j = (i - 1 + tabs.length) % tabs.length;
+        else if (k === "Home") j = 0; else if (k === "End") j = tabs.length - 1;
+        if (j >= 0) { e.preventDefault(); pick(tabs[j], true); }
+      });
+    });
+  });
+  document.querySelectorAll("[data-pl-filter]").forEach(function (bar) {
+    var list = document.getElementById(bar.getAttribute("data-pl-filter"));
+    var btns = [].slice.call(bar.querySelectorAll("button"));
+    bar.hidden = false;
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var v = b.getAttribute("data-v");
+        btns.forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+        list.querySelectorAll("[data-status]").forEach(function (r) { r.hidden = v !== "all" && r.getAttribute("data-status") !== v; });
+      });
+    });
+  });
+})();
+</script>`;
+
 function overviewPage(lang) {
   const c = OVERVIEW[bl(lang)];
   const L = bl(lang);
@@ -440,21 +577,20 @@ function overviewPage(lang) {
       </article>`
     )
     .join("")}</div>`;
-  // bento: 01 and 06–08 take two columns (4-column grid: 2+1+1 / 1+1+2 / 2+2); 08 is in development (dashed)
-  const WIDE = new Set([0, 5, 6, 7]);
+  // v4: asymmetric split — an illustrative phone screen (01–07) beside the eight features as a compact two-column list
   const last = c.core.items.length - 1;
-  const core = `<ul class="pl-core">${c.core.items
-    .map(
-      (x, i) => `<li${WIDE.has(i) ? ' class="is-wide"' : ""}><article class="pl-card${i === last ? " pl-card--later" : ""}">
-        <div class="pl-card__top">${ic(iconFor(x.label))}<span class="pl-n">${esc(x.n)}</span></div>
-        <p class="pl-label" lang="en">${esc(x.label)}</p><h3>${esc(x.name)}</h3><p class="pl-p">${esc(x.lead)}</p>${chipList(x.chips, i === last)}
-      </article></li>`
-    )
-    .join("")}</ul>`;
+  const core = `<div class="pl-split pl-split--phone">
+    ${phoneToday(L, c.core.items)}
+    <ul class="pl-flist">${c.core.items
+      .map(
+        (x, i) => `<li${i === last ? ' class="is-later"' : ""}>${ic(iconFor(x.label))}<div><p class="pl-flist__top"><span class="pl-n">${esc(x.n)}</span><span class="pl-label" lang="en">${esc(x.label)}</span></p><h3>${esc(x.name)}</h3><p class="pl-p pl-sm">${esc(x.lead)}</p>${chipList(x.chips, i === last)}</div></li>`
+      )
+      .join("")}</ul>
+  </div>`;
   const diff = xtable(
     X.diffHead,
     c.diff.items.map((x) => [{ html: `<span class="pl-xt__name">${ic(x.icon)}<span>${esc(x.name)}</span></span>` }, x.lead, { html: `<span class="pl-xt__strong">${esc(x.point)}</span>` }]),
-    "pl-xt--cmp"
+    "pl-xt--cmp pl-xt--vs"
   );
   const beyond = `<ol class="pl-ladder" tabindex="0" aria-label="${esc(c.beyond.kicker)}">${c.beyond.items
     .map(
@@ -467,14 +603,14 @@ function overviewPage(lang) {
   return wrap(`${hero({ wordmark: "PETLOG", titleHtml: c.heroTitle, lead: c.heroLead, main: [`${c.ctaMain} →`, "#nls-mission"], sub: [c.ctaSub, rel(D, "petlog/platform/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "overview" })}
   <div class="nls__wrap">
-    ${section("nls-mission", { kicker: c.mission.kicker, title: c.mission.title, lead: c.mission.lead, body: values })}
+    ${section("nls-mission", { kicker: c.mission.kicker, title: c.mission.title, lead: c.mission.lead, hv: "hero", body: values })}
     ${section("nls-problem", { kicker: c.problem.kicker, title: c.problem.title, lead: c.problem.lead, tint: true, body: problem })}
     ${section("nls-about", { kicker: c.about.kicker, title: c.about.title, lead: c.about.lead, accent: true, body: `${stepList(c.about.steps, true)}<p class="pl-band-note">${esc(X.bandNote)}</p>` })}
     ${railBlock("nls-journey", { kicker: c.journey.kicker, title: c.journey.title, lead: c.journey.lead, items: journey })}
     ${section("nls-stages", { kicker: X.stages.kicker, title: X.stages.title, lead: X.stages.lead, body: xtable(X.stages.head, X.stages.rows.map(([a, b, cc, d]) => [a, b, { html: `<span class="pl-xt__en">${esc(cc)}</span>` }, d]), "pl-xt--stages") })}
     ${section("nls-users", { kicker: c.users.kicker, title: c.users.title, lead: c.users.lead, body: users })}
     ${section("nls-scenes", { kicker: c.scenes.kicker, title: c.scenes.title, lead: c.scenes.lead, tint: true, body: scenes })}
-    ${section("nls-core", { kicker: c.core.kicker, title: c.core.title, lead: c.core.lead, body: `${core}${storePills(c.core.appLabel)}` })}
+    ${section("nls-core", { kicker: c.core.kicker, title: c.core.title, lead: c.core.lead, hv: "stack", body: `${core}${storePills(c.core.appLabel)}` })}
     ${section("nls-diff", { kicker: c.diff.kicker, title: c.diff.title, lead: c.diff.lead, tint: true, body: diff })}
     ${section("nls-beyond", { kicker: c.beyond.kicker, title: c.beyond.title, lead: c.beyond.lead, noteText: NOTICE[L], body: beyond })}
     ${section("nls-trust", { kicker: c.trust.kicker, title: c.trust.title, tint: true, body: `${trust}${sub("", X.notTitle, "", checks(X.not, true), "pl-sub--flat")}` })}
@@ -508,9 +644,9 @@ function platformPage(lang) {
   // a different layout per group so the page does not repeat one card grid
   const LAYOUT = {
     records: ["row", "", false],
-    services: ["grid", "pl-grid--bento", true],
+    services: ["grid", "pl-grid--bento", true, "stack"],
     community: ["cols", "pl-cols--3", false],
-    tech: ["row", "pl-rows--icon", true],
+    tech: ["row", "pl-rows--icon", true, "stack"],
     welfare: ["grid", "pl-grid--3", false],
   };
   const ai = X.ai;
@@ -521,17 +657,22 @@ function platformPage(lang) {
   };
   const groups = m.groups
     .map((g) => {
-      const [kind, cls, tint] = LAYOUT[g.id] || ["grid", "pl-grid--3", false];
-      return section(`nls-${g.id}`, { kicker: g.kicker, title: g.title, lead: g.lead, tint, body: `${items(kind, g.items.map(card), D, cls)}${extra[g.id] || ""}` });
+      const [kind, cls, tint, hv] = LAYOUT[g.id] || ["grid", "pl-grid--3", false];
+      return section(`nls-${g.id}`, { kicker: g.kicker, title: g.title, lead: g.lead, tint, hv, body: `${items(kind, g.items.map(card), D, cls)}${extra[g.id] || ""}` });
     })
     .join("\n");
-  const KIND = { now: "now", dev: "", plan: "next", review: "next" };
-  const legend = `<div class="pl-board pl-board--table">${m.legend
-    .map((p) => panel(KIND[p.kind], p.icon, p.title, p.body, p.areas.map((no) => `${no} ${PLATFORM.items[Number(no) - 1].name[L]}`), p.kind === "plan" || p.kind === "review"))
+  // v4: status board as four columns (now / in development / planned / under review); each area links to its card
+  const anchorOf = (it) => it.label.toLowerCase().replace(/[^a-z]+/g, "-").replace(/^-|-$/g, "");
+  const legend = `<div class="pl-kanban">${m.legend
+    .map(
+      (p) => `<div class="pl-kcol pl-kcol--${esc(p.kind)}">
+        <div class="pl-kcol__head">${ic(p.icon)}<h3>${esc(p.title)}</h3><span class="pl-kcount">${esc(L === "ko" ? `${p.areas.length}개 영역` : `${p.areas.length} areas`)}</span></div>
+        <p class="pl-p pl-sm">${esc(p.body)}</p>
+        <ul>${p.areas.map((no) => { const it = PLATFORM.items[Number(no) - 1]; return `<li><a href="#${esc(anchorOf(it))}"><span class="pl-n">${esc(no)}</span><span>${esc(it.name[L])}</span></a></li>`; }).join("")}</ul>
+      </div>`
+    )
     .join("")}</div><p class="pl-fine">${esc(X.legendExtra)}</p>`;
-  const tabs = `<ol class="pl-tabs5">${X.tabs.items
-    .map(([n, name, en, d]) => `<li><span class="pl-n">${esc(n)}</span><h3>${esc(name)}</h3>${name !== en ? `<p class="pl-label" lang="en">${esc(en)}</p>` : ""}<p class="pl-p pl-sm">${esc(d)}</p></li>`)
-    .join("")}</ol>`;
+  const tabs = tabPhone(L, X);
   const scen = m.scenarios;
   const scenarios = scen.items.map((it) => ({ id: it.id, n: it.n, tab: it.tab, mark: it.tab, label: it.label, name: it.name, lead: it.lead, chips: it.chips }));
   const roles = `<dl class="pl-roles">${m.roles.items
@@ -560,7 +701,7 @@ function platformPage(lang) {
     ${appFaq}
     ${menuBlock(lang, D, "platform")}
     ${closeBlock(close, D)}
-  </div>`);
+  </div>${PL_JS}`);
 }
 
 function businessPage(lang) {
@@ -601,7 +742,7 @@ function businessPage(lang) {
     m.saasKicker,
     m.saasTitle,
     m.saasLead,
-    `<ul class="pl-products">${m.saas.map(([t, d]) => `<li><b lang="en">${esc(t)}</b><p class="pl-p pl-sm">${esc(d)}</p></li>`).join("")}</ul>
+    `${consoleMock(L, m.saas)}
     <div class="pl-duo pl-duo--even">
       <div><h4 class="pl-minihead">${esc(X.saasTargetsTitle)}</h4>${xtable(X.saasTargetsHead, X.saasTargets, "pl-xt--2 pl-xt--mini")}</div>
       <div><h4 class="pl-minihead">${esc(X.saasTiersTitle)}</h4>${xtable([X.tiersHead[0], X.tiersHead[1]], X.saasTiers.map(([k, v]) => [{ html: `<span lang="en">${esc(k)}</span>` }, v]), "pl-xt--2 pl-xt--mini")}</div>
@@ -631,8 +772,14 @@ function businessPage(lang) {
     .join("")}</dl>`;
   const hd = m.revenueHead;
   const STAGE = { now: " pl-stage--now", plan: "", review: " pl-stage--review" };
-  const revenue = `<ul class="pl-table"><li class="pl-table__hd" aria-hidden="true"><span>${esc(hd[0])}</span><span>${esc(hd[1])}</span><span style="justify-self:end">${esc(hd[2])}</span></li>${BUSINESS.lines
-    .map((x) => `<li><span class="pl-table__name"><span class="pl-n">${esc(x.no)}</span>${esc(x.name[L])}</span><p class="pl-p">${esc(x.sum[L])}</p><span class="pl-stage${STAGE[x.status] || ""}">${esc(m.statusLabel[x.status])}</span></li>`)
+  // v4: status filter (segmented buttons; shown only with JavaScript — without it every row stays visible)
+  const counts = BUSINESS.lines.reduce((o, x) => ((o[x.status] = (o[x.status] || 0) + 1), o), {});
+  const filter = `<div class="pl-seg" role="group" aria-label="${esc(hd[2])}" data-pl-filter="pl-revenue-list" hidden><button type="button" data-v="all" aria-pressed="true">${esc(MOCK[L].all)} <span>${BUSINESS.lines.length}</span></button>${["now", "plan", "review"]
+    .filter((k) => counts[k])
+    .map((k) => `<button type="button" data-v="${k}" aria-pressed="false"><i class="pl-dot pl-dot--${k}" aria-hidden="true"></i>${esc(m.statusLabel[k])} <span>${counts[k]}</span></button>`)
+    .join("")}</div>`;
+  const revenue = `${filter}<ul class="pl-table" id="pl-revenue-list"><li class="pl-table__hd" aria-hidden="true"><span>${esc(hd[0])}</span><span>${esc(hd[1])}</span><span style="justify-self:end">${esc(hd[2])}</span></li>${BUSINESS.lines
+    .map((x) => `<li data-status="${esc(x.status)}"><span class="pl-table__name"><span class="pl-n">${esc(x.no)}</span>${esc(x.name[L])}</span><p class="pl-p">${esc(x.sum[L])}</p><span class="pl-stage${STAGE[x.status] || ""}">${esc(m.statusLabel[x.status])}</span></li>`)
     .join("")}</ul>${sub("", X.feeTitle, "", checks(X.fee, true), "pl-sub--flat")}`;
   const market = `<ul class="pl-notes">${m.market.map(([t, d, k]) => `<li>${ic(k)}<h3>${esc(t)}</h3><p class="pl-p pl-sm">${esc(d)}</p></li>`).join("")}</ul>`;
   const legal = dlRows(m.trust, true);
@@ -653,12 +800,12 @@ function businessPage(lang) {
   return wrap(`${hero({ wordmark: "Business", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "20개 사업 분야 보기 ↓" : "See 20 areas ↓", "#nls-groups"], sub: [m.close.ctaMain, rel(D, "petlog/partnerships/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "business" })}
   <div class="nls__wrap">
-    ${section("nls-structure", { kicker: m.structureKicker, title: m.structureTitle, lead: m.structureLead, noteText: NOTICE[L], body: models })}
+    ${section("nls-structure", { kicker: m.structureKicker, title: m.structureTitle, lead: m.structureLead, noteText: NOTICE[L], hv: "hero", body: models })}
     ${railBlock("nls-groups", { kicker: m.groupsKicker, title: m.groupsTitle, lead: m.groupsLead, items: rail })}
     ${groupSections}
     ${section("nls-revenue", { kicker: m.revenueKicker, title: m.revenueTitle, lead: m.revenueLead, tint: true, body: revenue })}
     ${section("nls-public", { kicker: m.publicKicker, title: m.publicTitle, lead: m.publicLead, accent: true, body: people(m.publicItems, 3) })}
-    ${section("nls-market", { kicker: m.marketKicker, title: m.marketTitle, lead: m.marketLead, body: market })}
+    ${section("nls-market", { kicker: m.marketKicker, title: m.marketTitle, lead: m.marketLead, hv: "stack", body: market })}
     ${section("nls-links", { kicker: X.links.kicker, title: X.links.title, lead: X.links.lead, body: xtable(X.links.head, X.links.rows.map(([a, b, cc]) => [{ html: `<span lang="en">${esc(a)}</span>` }, b, cc]), "pl-xt--links") })}
     ${section("nls-diff", { kicker: m.diffKicker, title: m.diffTitle, lead: m.diffLead, tint: true, body: items("cols", m.diff.map(([t, d, k]) => ({ icon: k, name: t, lead: d })), D, "pl-cols--4") })}
     ${section("nls-priority", { kicker: m.gtmKicker, title: m.gtmTitle, lead: m.gtmLead, body: `${stepList(m.gtm.map(([t, d], i) => [pad2(i + 1), t, d]), true)}${sub("", X.measure.title, "", xtable(X.measure.head, X.measure.rows, "pl-xt--2"), "pl-sub--flat")}` })}
@@ -667,7 +814,7 @@ function businessPage(lang) {
     ${section("nls-trust", { kicker: m.trustKicker, title: m.trustTitle, tint: true, body: legal })}
     ${menuBlock(lang, D, "business")}
     ${closeBlock({ ...m.close, main: [m.close.ctaMain, "petlog/partnerships/"], sub: [m.close.ctaSub, ask(lang, "business", "business")] }, D)}
-  </div>`);
+  </div>${PL_JS}`);
 }
 
 function partnershipsPage(lang) {
@@ -692,6 +839,23 @@ function partnershipsPage(lang) {
   const gq = GLOBAL.partners[L];
   const globalBody = `${items("cols", gq.items.map(([name, lead, field, icon], i) => ({ n: pad2(i + 1), icon, name, lead, points: [[gq.fieldLabel, field]] })), D, "pl-cols--4")}<div class="pl-actions">${more([gq.cta, GLOBAL_CONTACT_HREF(lang)], D)}</div>`;
   const compare = xtable(X.cmpHead, X.cmp, "pl-xt--cmp3");
+  // v4: index of the 15 partner types by group (links to each card)
+  const pname = (no) => PARTNERS.items.find((x) => x.no === no).name[L];
+  const typeIndex = `<div class="pl-index">
+    <h3 class="pl-index__h">${esc(lang === "ko" ? "15개 협력 분야" : "15 partner types")}</h3>
+    <div class="pl-index__cols">${m.groups
+      .map(
+        (g) => `<div class="pl-index__col"><p class="pl-index__g"><a href="#nls-p-${esc(g.id)}">${esc(g.title)}</a></p><ol>${g.items
+          .map((no) => `<li><a href="#partner-${esc(no)}">${ic(PARTNER_ICONS[no] || "paw")}<span class="pl-n">${esc(no)}</span><span>${esc(pname(no))}</span></a></li>`)
+          .join("")}</ol></div>`
+      )
+      .join("")}</div>
+  </div>`;
+  // v4: data section as a split — an owner-side consent screen (under review) beside the four integration directions
+  const sc4 = m.scenarios.find((x) => x.n === "04");
+  const recs = L === "ko" ? ["체중", "투약", "증상"] : ["Weight", "Medication", "Symptoms"];
+  const shareTitle = m.data[1][0].replace(/\s*\((검토|under review)\)\s*$/i, "");
+  const dataBody = `<div class="pl-split pl-split--consent">${consentPhone(L, shareTitle, sc4.who, recs, BUSINESS.meta[L].statusLabel.review)}${people(m.data)}</div>`;
   const principles = `<div class="pl-duo pl-duo--even">
       <div>${head(m.principlesKicker, m.principlesTitle, "")}${checks(m.principles)}</div>
       <div class="pl-duo__b">${head("CHECKLIST", X.prepTitle, "")}${checks(X.prep)}</div>
@@ -699,13 +863,13 @@ function partnershipsPage(lang) {
   return wrap(`${hero({ wordmark: "Partnerships", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "15개 협력 분야 ↓" : "15 partner types ↓", "#nls-p-care"], sub: [m.labels.cta, ask(lang, "partnership", "partnerships")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "partnerships" })}
   <div class="nls__wrap">
-    ${section("nls-offer", { kicker: m.offerKicker, title: m.offerTitle, lead: m.offerLead, body: items("cols", offer, D, "pl-cols--4") })}
+    ${section("nls-offer", { kicker: m.offerKicker, title: m.offerTitle, lead: m.offerLead, hv: "hero", body: `${items("cols", offer, D, "pl-cols--4")}${typeIndex}` })}
     ${groups}
     ${section("nls-compare", { kicker: X.cmpKicker, title: X.cmpTitle, lead: X.cmpLead, body: compare })}
     ${section("nls-global", { kicker: gq.kicker, title: gq.title, lead: gq.lead, tint: true, body: globalBody })}
     ${section("nls-scenarios", { kicker: m.scenariosKicker, title: m.scenariosTitle, lead: m.scenariosLead, body: items("grid", scenarios, D, "pl-grid--2 pl-snap") })}
     ${section("nls-poc", { kicker: m.pocKicker, title: m.pocTitle, lead: m.pocLead, tint: true, body: stepList(m.poc.map(([t, d], i) => [`STEP ${pad2(i + 1)}`, t, d])) })}
-    ${section("nls-data", { kicker: m.dataKicker, title: m.dataTitle, lead: m.dataLead, body: people(m.data, true) })}
+    ${section("nls-data", { kicker: m.dataKicker, title: m.dataTitle, lead: m.dataLead, hv: "stack", body: dataBody })}
     ${section("nls-joint", { kicker: m.jointKicker, title: m.jointTitle, tint: true, body: items("cols", m.joint.map((x) => ({ n: x.n, icon: x.icon, name: x.name, lead: x.lead })), D, "pl-cols--3") })}
     <div id="nls-principles" class="nls-block" data-hs-section>${principles}</div>
     ${section("nls-pfaq", { kicker: X.faqKicker, title: X.faqTitle, tint: true, body: faqList(X.faq), extraClass: "pl-faqsec" })}
