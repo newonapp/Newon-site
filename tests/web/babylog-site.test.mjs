@@ -36,6 +36,8 @@ function scratch() {
     fs.cpSync(src, path.join(dir, rel), { recursive: true });
   };
   for (const l of LANGS) cp(`${l}/babylog`);
+  // inquiry buttons open the unified Contact page (owner 2026-10-26), so the link check needs it
+  for (const l of LANGS) cp(`${l}/contact/index.html`);
   cp("babylog");
   cp("sitemap.xml");
   cp("ko/business/inquiry/index.html");
@@ -79,7 +81,7 @@ test("BL-3 a missing menu item fails the check", () => {
 test("BL-4 a form control in a BABYLOG page fails the check", () => {
   const d = scratch();
   try {
-    mutate(d, "de/babylog/contact/index.html", (h) => h.replace('<ul class="bl-cards">', '<form><input name="email"></form><ul class="bl-cards">'));
+    mutate(d, "de/babylog/contact/index.html", (h) => h.replace('<ol class="bct-tlist">', '<form><input name="email"></form><ol class="bct-tlist">'));
     const r = run(d);
     assert.notEqual(r.status, 0);
     assert.match(r.stdout, /FAIL info-only de\/contact/);
@@ -123,7 +125,7 @@ test("BL-7 a link to an unverified external site inside the child-safety area fa
 test("BL-8 removing the emergency routing note from a child-safety page fails the check", () => {
   const d = scratch();
   try {
-    mutate(d, "en/babylog/contact/index.html", (h) => h.replace(/bl-emergency/g, "bl-removed"));
+    mutate(d, "en/babylog/contact/index.html", (h) => h.replace(/bl-emergency|bct-guard__alert/g, "bl-removed"));
     const r = run(d);
     assert.notEqual(r.status, 0);
     assert.match(r.stdout, /FAIL (child-safety|sections) en\/contact/);

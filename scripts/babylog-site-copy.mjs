@@ -479,7 +479,7 @@ const KO = {
     list: {
       kicker: "Contact Categories",
       title: "어떤 이야기를\n나누고 싶으신가요?",
-      lead: "열일곱 가지 문의 분야 중 가까운 유형을 선택해 주세요. 선택한 유형은 NEWON 공식 문의 양식에 함께 전달됩니다.",
+      lead: "열일곱 가지 문의 분야 중 가까운 유형을 선택해 주세요. ‘문의하기’를 누르면 BABYLOG와 문의 유형이 선택된 NEWON 통합 문의 페이지가 열립니다.",
       items: [
         { code: "general", n: "01", name: "일반 문의", lead: "BABYLOG에 대한 일반 문의." },
         { code: "app", n: "02", name: "앱·제품 지원", lead: "앱 기능·이용·오류·계정 문의." },
@@ -492,12 +492,19 @@ const KO = {
       ],
       go: "이 유형으로 문의하기 →",
     },
+    channels: {
+      title: "연락 방법",
+      mailK: "이메일 · NEWON",
+      mailText: "언론·투자 문의를 포함한 모든 문의를 newon@newon.app으로도 받습니다.",
+      formK: "NEWON 통합 문의",
+      formText: "BABYLOG가 선택된 NEWON 통합 문의 페이지가 열립니다. 앱 이용 문의도 같은 페이지에서 접수합니다.",
+    },
     guide: {
       kicker: "Contact Information",
       title: "문의 전에 알아 두세요.",
       items: [
-        { n: "01", name: "NEWON", body: "문의는 NEWON 공식 문의 양식으로 이어지며, newon@newon.app으로도 보낼 수 있습니다. BABYLOG 웹페이지에서는 개인정보를 따로 받지 않습니다." },
-        { n: "02", name: "BABYLOG와 NEWON", body: "BABYLOG는 NEWON의 핵심 플랫폼입니다. 앱 이용 문의도 같은 양식으로 접수합니다." },
+        { n: "01", name: "NEWON", body: "문의는 NEWON 통합 문의 페이지로 이어지며, newon@newon.app으로도 보낼 수 있습니다. BABYLOG 웹페이지에서는 개인정보를 따로 받지 않습니다." },
+        { n: "02", name: "BABYLOG와 NEWON", body: "BABYLOG는 NEWON의 핵심 플랫폼입니다. 앱 이용 문의도 같은 문의 페이지로 접수합니다." },
         { n: "03", name: "답변 안내", body: "내용을 검토한 뒤 안내드립니다. 문의가 협력이나 계약을 보장하지는 않습니다." },
       ],
     },
@@ -879,7 +886,7 @@ const EN = {
     list: {
       kicker: "Contact Categories",
       title: "What would you like\nto talk about?",
-      lead: "Choose the closest of the seventeen contact categories. The type you choose is passed along with the official NEWON inquiry form.",
+      lead: "Choose the closest of the seventeen contact categories. ‘Contact us’ opens NEWON’s contact page with BABYLOG and the inquiry type selected.",
       items: [
         { code: "general", n: "01", name: "General inquiry", lead: "General questions about BABYLOG." },
         { code: "app", n: "02", name: "App & product support", lead: "Questions about app features, use, errors and accounts." },
@@ -892,12 +899,19 @@ const EN = {
       ],
       go: "Inquire as this type →",
     },
+    channels: {
+      title: "How to reach us",
+      mailK: "Email · NEWON",
+      mailText: "Every inquiry, including press and investment, can also be sent to newon@newon.app.",
+      formK: "NEWON contact page",
+      formText: "Opens NEWON’s contact page with BABYLOG selected. Questions about using the app go through the same page.",
+    },
     guide: {
       kicker: "Contact Information",
       title: "Before you get in touch.",
       items: [
-        { n: "01", name: "NEWON", body: "Inquiries go to the official NEWON inquiry form and can also be sent to newon@newon.app. This BABYLOG page does not collect personal data itself." },
-        { n: "02", name: "BABYLOG and NEWON", body: "BABYLOG is a core NEWON platform. Questions about using the app are received through the same form." },
+        { n: "01", name: "NEWON", body: "Inquiries go to NEWON’s contact page and can also be sent to newon@newon.app. This BABYLOG page does not collect personal data itself." },
+        { n: "02", name: "BABYLOG and NEWON", body: "BABYLOG is a core NEWON platform. Questions about using the app are received through the same contact page." },
         { n: "03", name: "Replies", body: "We reply after review. An inquiry does not guarantee cooperation or a contract." },
       ],
     },

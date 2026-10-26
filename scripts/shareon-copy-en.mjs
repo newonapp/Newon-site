@@ -784,7 +784,14 @@ export const EN = {
       "General and feature questions, personal rental, business listing, space partnerships, business asset management, delivery and insurance partners, institutions, technology and API, press and media, and investment inquiries about SHAREON go through NEWON’s official form and newon@newon.app.",
     kicker: "INQUIRY TYPES",
     title: "Choose an\ninquiry type.",
-    lead: "01–06 are about using and joining SHAREON; 07–11 are partnership, institutional and external inquiries. Each type links to NEWON’s official inquiry form or official email, and no account is needed.",
+    lead: "01–06 are about using and joining SHAREON; 07–11 are partnership, institutional and external inquiries. Each type’s ‘Contact us’ button opens NEWON’s contact page with SHAREON and the inquiry type selected, and no account is needed.",
+    channels: {
+      title: "How to reach us",
+      mailK: "Email · NEWON",
+      mailText: "SHAREON inquiries are also received at NEWON’s official email.",
+      formK: "NEWON contact page",
+      formText: "Opens NEWON’s contact page with SHAREON selected. No account is needed.",
+    },
     groups: { trade: "Use & joining", partner: "Partners, institutions & external" },
     formCta: "Inquiry form",
     mailCta: "Email",
@@ -810,7 +817,7 @@ export const EN = {
         "Include only the minimum needed for a reply (name, email and your question).",
         "Do not include sensitive personal data such as national ID numbers, card numbers, bank passwords or health information.",
         "Do not include the exact address where an item is kept, or other people’s contact details or personal data.",
-        "SHAREON inquiries are received only through NEWON’s official form and official email (newon@newon.app).",
+        "SHAREON inquiries are received only through NEWON’s contact page and official email (newon@newon.app).",
         "As the app has not launched, there is no customer support for real rentals, bookings, payments or refunds.",
         "Fee rates, prices and launch dates are not decided, so specific figures or dates cannot be given.",
         "Reply times depend on the inquiry, and no response deadline is guaranteed.",
@@ -821,7 +828,7 @@ export const EN = {
     chooser: {
       kicker: "WHICH TYPE?",
       title: "Not sure which type\nto choose?",
-      lead: "Pick the line closest to your situation to jump to the matching inquiry type above.",
+      lead: "Pick the line closest to your situation to jump to the matching inquiry type below.",
       rows: [
         { need: "I want to know what SHAREON is, or when it launches", n: "01" },
         { need: "I have feedback on booking, rental units or deposit terms", n: "02" },
@@ -861,7 +868,7 @@ export const EN = {
       lead: "",
       items: [
         { n: "01", title: "Choose a type", body: "Pick the closest inquiry type in the list above. If several fit, choose the one for your main purpose." },
-        { n: "02", title: "Form or email", body: "The inquiry form opens NEWON’s unified contact page with SHAREON already selected. For email, write to newon@newon.app." },
+        { n: "02", title: "Contact us", body: "‘Contact us’ opens NEWON’s unified contact page with SHAREON already selected. For email, write to newon@newon.app." },
         { n: "03", title: "Review", body: "We read your inquiry. Partnership proposals continue through the partnership process (intake → fit and legal review → pilot scope)." },
         { n: "04", title: "Reply", body: "We reply where needed. Timing depends on the inquiry, and no response deadline is guaranteed." },
       ],

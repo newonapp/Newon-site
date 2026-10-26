@@ -155,33 +155,34 @@ test("JSON-LD sanity: none, or nothing that implies a medical / care / emergency
   }
 });
 
-test("contact links use the existing inquiry page with known params, and mailto subjects", () => {
+test("contact: every inquiry button is one 문의하기 to the unified Contact page (platform + type + source); email only as an address", () => {
+  // owner 2026-10-26: "이메일로 문의하기, 문의 양식 … 말고 그냥 문의하기" → /{lang}/contact/?platform=ongil&type=…
+  const TYPES = ["personal", "business", "public", "partnership", "investment", "media"];
   for (const lang of SITE) {
     const html = read(`${lang}/ongil/contact/index.html`);
-    // owner 2026-10-26: the inquiry buttons open the unified NEWON Contact page with ONGIL preselected,
-    // keeping the original inquiry parameters (service, source)
-    assert.ok(!/href="\/[a-z-]+\/business\/inquiry\//.test(own(html)), `${lang} no direct business-inquiry links`);
-    const forms = [...own(html).matchAll(/href="(\/[a-z-]+\/contact\/\?platform=ongil[^"]*)"/g)].map((m) => m[1].replace(/&amp;/g, "&"));
-    assert.ok(forms.length >= 10, `${lang} form links ${forms.length}`); // 8 form types + channel + closing CTA (V4: press/investor/personal types use email)
-    for (const href of forms) {
+    const body = own(html);
+    assert.ok(!/href="[^"]*business\/(?:inquiry|contact)\//.test(body), `${lang} no old business form links`);
+    const links = [...body.matchAll(/href="(\/[a-z-]+\/contact\/\?[^"]*)"/g)].map((m) => m[1].replace(/&amp;/g, "&"));
+    assert.ok(links.length >= 16, `${lang} unified links ${links.length}`); // 14 types + channel panel + hero + closing band
+    for (const href of links) {
       const u = new URL(href, "https://www.newon.app");
       assert.equal(u.pathname, `/${lang}/contact/`);
       assert.equal(u.searchParams.get("platform"), "ongil");
-      assert.equal(u.searchParams.get("service"), "partnership");
-      assert.equal(u.searchParams.get("source"), `/${lang}/ongil/contact/`);
+      assert.ok(TYPES.includes(u.searchParams.get("type")), `${href} type`);
+      assert.equal(u.searchParams.get("source"), "ongil-contact");
     }
-    const mails = [...own(html).matchAll(/href="mailto:([^"?]+)\?subject=([^"]+)"/g)];
-    assert.ok(mails.length >= 6);
-    for (const m of mails) {
-      assert.equal(m[1], "newon@newon.app");
-      assert.ok(decodeURIComponent(m[2]).startsWith("[ONGIL]"));
-    }
-    assert.ok(fs.existsSync(path.join(ROOT, lang, "business", "inquiry", "index.html")));
+    // the 14 inquiry rows: one "문의하기" each, no Email/Form channel tags
+    const label = lang === "ko" ? "문의하기" : "Contact us";
+    const rows = [...body.matchAll(/class="ogs-tlist__go"[^>]*><span>([^<]+)<\/span><\/a>/g)].map((m) => m[1]);
+    assert.equal(rows.length, 14);
+    assert.ok(rows.every((t) => t === `${label} →`), `${lang} row labels`);
+    assert.doesNotMatch(body, /ogs-tlist__ch|>Email<|>Form<|이메일 보내기|문의 양식 열기|Send an email|Open the inquiry form/);
+    // press → media, investors → investment, institutions → public
+    assert.ok(links.some((h) => /type=media/.test(h)) && links.some((h) => /type=investment/.test(h)) && links.some((h) => /type=public/.test(h)));
+    // the e-mail address stays as text in the channel panel only (no mailto buttons)
+    const mails = [...body.matchAll(/<a class="([^"]*)" href="mailto:/g)].map((m) => m[1]);
+    assert.deepEqual(mails, ["ogs-channels__v"]);
   }
-  // the inquiry page maps service=partnership to an existing option (Business Inquiry, Oct 2026: brand/service partnership type)
-  const inq = read("ko/business/inquiry/index.html");
-  assert.match(inq, /"partnership":"Brand, Service & Content Partnership"/);
-  assert.match(inq, /<option value="Brand, Service &amp; Content Partnership"/);
 });
 
 test("role separation with LIVON and MY WORLD is stated", () => {

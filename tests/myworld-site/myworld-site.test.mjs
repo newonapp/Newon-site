@@ -160,7 +160,8 @@ test("global expansion: one section on overview, platform, business and partners
     }
     assert.doesNotMatch(main(read(`${l}/myworld/contact/index.html`)), /id="mws-global"/);
     const part = main(read(`${l}/myworld/partnerships/index.html`));
-    assert.ok(part.includes(`href="/${l}/contact/?type=partnership&amp;platform=myworld"`), `${l} partnerships global inquiry`);
+    // owner 2026-10-26: inquiry buttons → unified Contact page with MY WORLD, type, topic and source
+    assert.ok(part.includes(`href="/${l}/contact/?platform=myworld&amp;type=partnership&amp;topic=myworld-partnership&amp;source=myworld-partnerships"`), `${l} partnerships global inquiry`);
   }
   assert.match(KO.overview.global.note, /향후 계획/);
   assert.match(KO.business.global.note, /정해지지 않았습니다/);

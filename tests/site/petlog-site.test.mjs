@@ -41,8 +41,9 @@ test("section counts follow the V3 plan: 6 journey stages, 26 platform areas, 12
     assert.equal(count(biz, /<article class="pl-[a-z -]+" id="line-\d\d"/g), 12, `${lang} revenue models`);
     assert.equal(count(biz, /data-nls-decade-card=/g), 5, `${lang} revenue groups`);
     assert.equal(count(read(`${lang}/petlog/partnerships/index.html`), /<article class="pl-[a-z -]+" id="partner-\d\d"/g), 15, `${lang} partners`);
-    const sel = read(`${lang}/petlog/contact/index.html`).match(/<select id="bz-type"[\s\S]*?<\/select>/)[0];
-    assert.equal((sel.match(/<option value="[^"]+"/g) || []).length, 12, `${lang} inquiry types`);
+    // Contact (owner 2026-10-26, ONGIL-style kit): the 12 inquiry types are rows, each with one "문의하기"
+    const types = read(`${lang}/petlog/contact/index.html`).split('id="bct-types"')[1].split("</section>")[0];
+    assert.equal((types.match(/class="bct-tlist__go"/g) || []).length, 12, `${lang} inquiry types`);
   }
   assert.deepEqual(BUSINESS.groups.flatMap((g) => g.lines).sort(), BUSINESS.lines.map((l) => l.no), "every revenue model is in exactly one group");
   assert.equal(PLATFORM.items.length, 26);
@@ -74,16 +75,22 @@ test("no unconfirmed price or fee; no per-card status badge; one shared notice; 
   assert.deepEqual(BUSINESS.lines.filter((x) => x.status === "now").map((x) => x.no), ["01"], "only the store-listed subscription is shown as available now");
 });
 
-test("contact type links match the inquiry form options (preselected by the ?type= script)", () => {
+test("inquiry links open the unified Contact page with PETLOG and a valid type (no old ?type= shortcuts)", () => {
+  // owner 2026-10-26: every inquiry button → /{lang}/contact/?platform=petlog&type=…&source=petlog-<page>
+  const TYPES = ["personal", "business", "public", "partnership", "investment", "media"];
   for (const lang of LANGS) {
     for (const p of PETLOG_SITE_PATHS) {
       const html = read(`${lang}/${p}/index.html`);
-      const links = [...html.matchAll(/petlog\/contact\/\?type=([a-z-]+)/g)].map((m) => m[1]);
-      const opts = new Set(CONTACT.en.types.map(([k]) => k));
-      for (const t of links) assert.ok(opts.has(t), `${lang}/${p} links to unknown type ${t}`);
+      assert.doesNotMatch(main(html), /petlog\/contact\/\?type=|business\/(?:inquiry|contact)\//, `${lang}/${p} old inquiry links`);
+      const page = p.split("/")[1] || "overview";
+      for (const m of main(html).matchAll(/href="(\/[a-z-]+\/contact\/\?[^"]*)"/g)) {
+        const u = new URL(m[1].replace(/&amp;/g, "&"), "https://www.newon.app");
+        assert.equal(u.pathname, `/${lang}/contact/`);
+        assert.equal(u.searchParams.get("platform"), "petlog");
+        assert.ok(TYPES.includes(u.searchParams.get("type")), `${lang}/${p} ${m[1]}`);
+        assert.equal(u.searchParams.get("source"), `petlog-${page}`);
+      }
     }
-    const c = read(`${lang}/petlog/contact/index.html`);
-    assert.match(c, /var t = p\.get\("type"\);/);
   }
   assert.deepEqual(CONTACT.ko.types.map(([k]) => k), CONTACT.en.types.map(([k]) => k));
 });
@@ -110,20 +117,14 @@ test("JSON-LD does not declare future businesses as offered services", () => {
   }
 });
 
-test("no app feature on the web: only the shared Newon inquiry form, no login/order/payment/booking forms", () => {
+test("no app feature on the web: no forms at all (inquiries go to the unified Contact page), no login/order/payment/booking forms", () => {
   for (const lang of LANGS) {
     for (const p of PETLOG_SITE_PATHS) {
       const html = read(`${lang}/${p}/index.html`);
       const forms = html.match(/<form[\s\S]*?>/g) || [];
-      if (p === "petlog/contact") {
-        assert.equal(forms.length, 1);
-        assert.ok(html.includes("/business/inquiry.js"));
-        assert.match(html, /name="interest" value="PETLOG"/);
-        assert.match(html, /name="_honey"/);
-        assert.match(html, /name="consent" type="checkbox" value="yes" required/);
-      } else {
-        assert.equal(forms.length, 0, `${lang}/${p} must not contain a form`);
-      }
+      // owner 2026-10-26: the Contact page no longer embeds a form — the unified /{lang}/contact/ page is the form
+      assert.equal(forms.length, 0, `${lang}/${p} must not contain a form`);
+      assert.ok(!html.includes("/business/inquiry.js"), `${lang}/${p} no inquiry form script`);
       assert.doesNotMatch(html, /type="password"|name="card|data-checkout|data-booking-submit/);
     }
   }

@@ -19,6 +19,12 @@ import { escapeHtml } from "./hub-utils.mjs";
 import { getShareonCopy, SHAREON_PAGES } from "./shareon-copy.mjs";
 import { icon } from "./shareon-icons.mjs";
 import { renderFlagshipSubnav } from "./flagship-subnav.mjs";
+import { renderBizContact, ctaLabel, SEE_TYPES, TYPES_ID } from "./biz-contact-kit.mjs";
+import { shareonContactModel } from "./biz-contact-data.mjs";
+import { unifiedContactHref } from "./unified-contact-links.mjs";
+
+/** Inquiry action → unified NEWON Contact page, SHAREON preselected (owner, 2026-10-26). */
+const ask = (lang, type, page) => unifiedContactHref(lang, "shareon", { type, source: `shareon-${page}` });
 
 export { getShareonCopy };
 
@@ -33,14 +39,13 @@ function pageHref(lang, id) {
   return `/${lang}/${p.path}/`;
 }
 
+/** Inquiry buttons → the unified NEWON Contact page (SHAREON preselected). slug → inquiry type + source page. */
 export function inquiryHref(lang, slug = "general") {
-  const q = new URLSearchParams({ type: "partnership", source: "shareon", utm_source: "shareon", utm_content: slug });
-  return `/${lang}/business/inquiry/?${q.toString()}#inquiry`;
+  if (slug === "saas" || slug === "business") return ask(lang, "business", "business");
+  if (slug.startsWith("partner")) return ask(lang, "partnership", "partnerships");
+  return ask(lang, "personal", "contact");
 }
 
-function mailHref(c, title) {
-  return `mailto:newon@newon.app?subject=${encodeURIComponent(`${c.contact.mailSubjectPrefix} ${title}`)}`;
-}
 
 /* ───────── small building blocks ───────── */
 
@@ -396,7 +401,7 @@ function overview(c, lang) {
     closing("next", o.next, [
       [pageHref(lang, "platform"), o.next.ctas[0]],
       [pageHref(lang, "business"), o.next.ctas[1]],
-      [pageHref(lang, "contact"), o.next.ctas[2]],
+      [ask(lang, "personal", "overview"), o.next.ctas[2]],
     ]),
   ];
   return { hero: hero(c, lang, "overview", o.hero, pageHref(lang, "platform"), "#nsh-vision"), body };
@@ -599,7 +604,7 @@ function platform(c, lang) {
   );
 
   return {
-    hero: hero(c, lang, "platform", p.hero, pageHref(lang, "business"), pageHref(lang, "contact")),
+    hero: hero(c, lang, "platform", p.hero, pageHref(lang, "business"), ask(lang, "personal", "platform")),
     body: [
       index,
       a,
@@ -619,7 +624,7 @@ function platform(c, lang) {
       closing("next", p.next, [
         [pageHref(lang, "business"), p.next.ctas[0]],
         [pageHref(lang, "partnerships"), p.next.ctas[1]],
-        [pageHref(lang, "contact"), p.next.ctas[2]],
+        [ask(lang, "personal", "platform"), p.next.ctas[2]],
       ]),
     ],
   };
@@ -855,7 +860,7 @@ function partnerships(c, lang) {
   const gp = p.global;
   const globalSec = sec(
     "global",
-    `${rowHead("global", gp, { extra: `<div class="nsh-head__row">${link(`/${lang}/contact/?type=partnership&platform=shareon`, gp.cta)}</div>` })}${table("global", gp, ["who", "collab", "check"])}`,
+    `${rowHead("global", gp, { extra: `<div class="nsh-head__row">${link(ask(lang, "partnership", "partnerships"), gp.cta)}</div>` })}${table("global", gp, ["who", "collab", "check"])}`,
     "tint"
   );
   const process = steps("process", p.process, p.process.steps);
@@ -885,82 +890,16 @@ function partnerships(c, lang) {
 
 /* ───────── 05 Contact ───────── */
 
-/** NEWON's shared inquiry page with the type/platform codes it already understands. */
-function contactPageHref(lang, type) {
-  return `/${lang}/business/contact/?type=${encodeURIComponent(type)}&platform=shareon#bpt-form`;
-}
-
+/* ONGIL-style Contact page (owner, 2026-10-26): film hero (frozen copy) + menu unchanged; the hero's two buttons
+   now open the unified Contact page ("문의하기") and scroll to the inquiry types. Body = the shared Contact kit
+   (biz-contact-kit.mjs, SHAREON violet). Every inquiry action → /{lang}/contact/?platform=shareon&type=… */
 function contact(c, lang) {
   const k = c.contact;
-  const types = sec(
-    "types",
-    `${rowHead("types", k)}
-    <div class="nsh-tgroups">${Object.keys(k.groups)
-      .map((gid) => {
-        const list = k.items.filter((it) => it.g === gid);
-        return `<div class="nsh-tgroup nsh-tgroup--${e(gid)}">
-      <p class="nsh-tgroup__k"><span class="nsh-tgroup__name">${e(k.groups[gid])}</span><span class="nsh-count">${list.length}</span></p>
-      <ul class="nsh-tiles" role="list">${list
-        .map(
-          (it) => `<li class="nsh-tiles__item" id="ctype-${e(it.n)}">
-          <div class="nsh-tiles__top"><span class="nsh-ico-well">${icon(it.icon)}</span><span class="nsh-tiles__n">${e(k.groups[it.g])} <span aria-hidden="true">· ${e(it.n)}</span></span></div>
-          <h3 class="nsh-tiles__title">${e(it.title)}</h3>
-          <p class="nsh-tiles__body">${e(it.body)}</p>
-          <div class="nsh-tiles__acts">
-            <a class="nsh-tiles__btn" href="${e(inquiryHref(lang, it.slug))}">${e(k.formCta)}<span class="nsh-vh"> — ${e(it.title)}</span> <span aria-hidden="true">→</span></a>
-            <a class="nsh-tiles__mail" href="${e(mailHref(c, `${k.groups[it.g]} · ${it.title}`))}">${e(k.mailCta)}<span class="nsh-vh"> — ${e(it.title)}</span></a>
-            ${it.alt ? `<a class="nsh-tiles__mail" href="${e(contactPageHref(lang, it.alt))}">${e(k.altCta)}<span class="nsh-vh"> — ${e(it.title)}</span></a>` : ""}
-          </div>
-        </li>`
-        )
-        .join("")}</ul></div>`;
-      })
-      .join("")}</div>`
-  );
-  const g = k.guide;
-  const guide = split(
-    "guide",
-    { kicker: g.kicker, title: g.title, lead: "" },
-    checks(g.items),
-    {
-      extra: `<div class="nsh-guide__links"><p><a class="nsh-link" href="/${e(lang)}/privacy/">${e(g.privacy)} <span aria-hidden="true">→</span></a></p>
-        <p>${link(contactPageHref(lang, "general"), g.contactPage)}</p></div>`,
-    }
-  );
-  /* v3: situation → inquiry type chooser, answer scope on the violet band, how an inquiry travels */
-  const ch = k.chooser;
-  const byN = Object.fromEntries(k.items.map((it) => [it.n, it]));
-  const chooser = sec(
-    "chooser",
-    `${rowHead("chooser", ch)}<ul class="nsh-chooser" role="list">${ch.rows
-      .map(
-        (r) => `<li class="nsh-chooser__row"><p class="nsh-chooser__need">${e(r.need)}</p><a class="nsh-chooser__type" href="#ctype-${e(r.n)}"><span class="nsh-chooser__n" aria-hidden="true">${e(r.n)}</span><span>${e(
-          byN[r.n].title
-        )}</span> <span class="nsh-chooser__go" aria-hidden="true">↑</span></a></li>`
-      )
-      .join("")}</ul>`,
-    "tint"
-  );
-  const answer = sec("answer", `${rowHead("answer", k.answer)}${doDont(k.answer)}`, "accent");
-  const flowSteps = steps("flow", k.steps, k.steps.items);
+  const L = c.contentLang;
+  const h = { ...k.hero, ctaMain: ctaLabel(L), ctaSub: L === "ko" ? SEE_TYPES.ko : SEE_TYPES.en };
   return {
-    hero: hero(c, lang, "contact", k.hero, inquiryHref(lang, "general"), mailHref(c, "SHAREON")),
-    body: [
-      types,
-      chooser,
-      answer,
-      guide,
-      flowSteps,
-      closing(
-        "next",
-        { kicker: "NEWON · SHAREON", title: "newon@newon.app", lead: "" },
-        [
-          [inquiryHref(lang, "general"), k.hero.ctaMain],
-          [mailHref(c, "SHAREON"), k.hero.ctaSub],
-        ],
-        { big: true }
-      ),
-    ],
+    hero: hero(c, lang, "contact", h, ask(lang, "personal", "contact"), `#${TYPES_ID}`),
+    body: [renderBizContact(shareonContactModel(lang))],
   };
 }
 
