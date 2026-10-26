@@ -33,6 +33,12 @@
  * calm product site for seniors and families — one layout per content type (statement, paired rows, bento, comparison
  * tables, phase board, real step sequences, directories, accordions), body text >= 16px, no section numbers, no
  * decorative shapes. Copy, links, ids/anchors and status grouping are unchanged. Hero markup/CSS untouched.
+ *
+ * V3 design pass (2026-10-26): tighter rhythm (less whitespace), full-width section headers instead of half-empty
+ * heading columns, more varied layouts (data tables, do/don't table, tab strip, mobile scroll-snap rails, two-column
+ * accordions) and more detail from the integrated business plan (health scope, care delivery, AI and devices, app
+ * structure, development stages, partnership timing, proposal checklist, contact routing / next steps / FAQ).
+ * Hero + shared sub-menu markup unchanged; contact links still pass through unified-contact-links.mjs.
  */
 import fs from "fs";
 import path from "path";
@@ -73,7 +79,7 @@ import {
 import { toUnifiedContact } from "./unified-contact-links.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-export const OGS_VER = "20261026ng2";
+export const OGS_VER = "20261026v3";
 const NLS_VER = "20261025ov1"; // Life Stage assets are reused as-is
 /** ONGIL first-screen background film (owner-provided, 2026-10-18). */
 const ONGIL_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260323_071151_38c3924f-c312-48af-a196-3fbb80e4226f.mp4";
@@ -259,6 +265,14 @@ function table(cls, cols, rows) {
     </table></div>`;
 }
 
+/** Small stage label inside tables ("in preparation", "planned", …) — text only, outline pill. */
+const stage = (t) => `<span class="ogs-stage">${e(t)}</span>`;
+/** Mobile scroll-snap rail: lists marked with this become a horizontal rail below 760px (grid above). */
+const RAIL = ' ogs-rail" tabindex="0';
+/** Accordion list (native details), optionally in two columns. */
+const faqList = (items, two = false) =>
+  `<div class="ogs-faq${two ? " ogs-faq--2" : ""}">${items.map((f) => `<details><summary>${e(f.q)}</summary><p>${e(f.a)}</p></details>`).join("")}</div>`;
+
 /* ───────── 01 Overview ───────── */
 
 function overviewMain(c, S, lang) {
@@ -287,7 +301,7 @@ function overviewMain(c, S, lang) {
   const mission = sec(
     "ogs-vision",
     `${head("ogs-vision", o.mission.label, o.mission.title, o.mission.lead, { split: true })}
-      <ul class="ogs-vals">${o.mission.values
+      <ul class="ogs-vals${RAIL}">${o.mission.values
         .map(
           (v, i) => `<li>${mark(VALUE_ICONS[i % VALUE_ICONS.length])}<p class="ogs-vals__en" lang="en">${e(v.en)}</p>${c.lang === "ko" ? `<p class="ogs-vals__ko">${e(v.ko)}</p>` : ""}<p class="ogs-vals__t">${e(v.text)}</p></li>`
         )
@@ -313,12 +327,10 @@ function overviewMain(c, S, lang) {
   // E · use cases: asymmetric split, a calm list of moments
   const core = sec(
     "ogs-journey",
-    `<div class="ogs-split">
-      ${head("ogs-journey", o.core.label, o.core.title, o.core.lead)}
-      <ul class="ogs-moments">${o.core.steps
+    `${head("ogs-journey", o.core.label, o.core.title, o.core.lead, { split: true })}
+      <ul class="ogs-moments ogs-moments--grid${RAIL}">${o.core.steps
         .map((s, i) => `<li>${tile(CORE_ICONS[i % CORE_ICONS.length])}<div><h3>${e(s.name)}</h3><p>${e(s.text)}</p></div></li>`)
-        .join("")}</ul>
-    </div>`
+        .join("")}</ul>`
   );
 
   // F · three core users as columns; the consent rule as a full-width bar beneath
@@ -326,7 +338,7 @@ function overviewMain(c, S, lang) {
   const people = sec(
     "ogs-who",
     `${head("ogs-who", o.people.label, o.people.title, o.people.lead, { split: true })}
-      <ul class="ogs-people">${ppl
+      <ul class="ogs-people${RAIL}">${ppl
         .slice(0, -1)
         .map((s, i) => `<li>${tile(PEOPLE_ICONS[i % PEOPLE_ICONS.length], "lg")}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
         .join("")}</ul>
@@ -359,6 +371,9 @@ function overviewMain(c, S, lang) {
     "ogs-ecosystem",
     `${head("ogs-ecosystem", o.beyond.label, o.beyond.title, o.beyond.lead, { split: true })}
       ${steps(o.beyond.layers, LAYER_ICONS, 4)}
+      <div class="ogs-focus"><p class="ogs-dir__title">${e(o.beyond.focusTitle)}</p>
+        <ol class="ogs-focus__list">${o.beyond.focus.map((f) => `<li><p class="ogs-focus__k">${e(f.k)}</p><h3>${e(f.t)}</h3><p>${e(f.text)}</p></li>`).join("")}</ol>
+      </div>
       ${note(o.beyond.note)}`
   );
 
@@ -366,9 +381,23 @@ function overviewMain(c, S, lang) {
   const gv = o.global;
   const globalVision = sec(
     "ogs-global",
-    `${head("ogs-global", gv.label, gv.title, gv.lead, { split: true })}
-      <ul class="ogs-cols4">${gv.items.map((s, i) => `<li>${tile(["sun", "users", "hands", "shield"][i % 4], "lg")}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ul>`,
+    `<div class="ogs-pair2">
+      ${head("ogs-global", gv.label, gv.title, gv.lead)}
+      <ul class="ogs-grid2">${gv.items.map((s, i) => `<li>${mark(["sun", "users", "hands", "shield"][i % 4])}<div><h3>${e(s.name)}</h3><p>${e(s.text)}</p></div></li>`).join("")}</ul>
+    </div>`,
     { cls: "ogs-sec--rule" }
+  );
+
+  // I3 · what ONGIL does / does not do (v3): three-column table, the "does not" column marked
+  const lm = o.limits;
+  const limits = sec(
+    "ogs-limits",
+    `${head("ogs-limits", lm.label, lm.title, lm.lead, { split: true })}
+      ${table(
+        "ogs-table--dd",
+        [lm.topicLabel, lm.doLabel, lm.dontLabel],
+        lm.items.map((it) => ({ head: `<strong>${e(it.k)}</strong>`, cells: [`${mark("check")}<span>${e(it.do)}</span>`, `${mark("alert")}<span>${e(it.dont)}</span>`] }))
+      )}`
   );
 
   // J · trust & responsibility: two-column check list, emergency guidance as a red callout
@@ -401,7 +430,7 @@ function overviewMain(c, S, lang) {
     { tone: "ink" }
   );
 
-  return [intro, problems, mission, journey, core, people, compare, status, beyond, globalVision, trust, newon, next].join("\n");
+  return [intro, problems, mission, journey, core, people, compare, status, beyond, globalVision, limits, trust, newon, next].join("\n");
 }
 
 /* ───────── 02 Platform ───────── */
@@ -513,17 +542,51 @@ function platformMain(c, S, lang) {
         cls: tone ? "" : "ogs-sec--rule",
       }) };
     });
-  const groups = groupSecs.filter((g) => !g.after).map((g) => g.html).join("\n");
+  // v3 detail sections placed right after the group they unpack: A → health scope, B → care delivery, D → AI & devices
+  const hl = p.health;
+  const healthSec = sec(
+    "ogs-health",
+    `${head("ogs-health", hl.kicker, hl.title, hl.lead, { split: true })}
+      ${table("ogs-table--scope", hl.cols, hl.items.map((it) => ({ head: `<strong>${e(it.t)}</strong>`, cells: [e(it.scope), stage(it.stage)] })))}
+      ${note(hl.note)}`
+  );
+  const dv = p.delivery;
+  const deliverySec = sec(
+    "ogs-delivery",
+    `${head("ogs-delivery", dv.kicker, dv.title, dv.lead, { split: true })}
+      <ul class="ogs-strip">${dv.kinds.map((k, i) => `<li>${mark(["home", "building", "route", "landmark"][i % 4])}<div><h3>${e(k.name)}</h3><p>${e(k.text)}</p></div></li>`).join("")}</ul>
+      <div class="ogs-ways">${dv.ways.map((w) => `<div class="ogs-ways__i${w.key ? " ogs-ways__i--key" : ""}"><h3>${e(w.t)}</h3><p>${e(w.text)}</p></div>`).join("")}</div>`
+  );
+  const ad = p.aiDevices;
+  const aiSec = sec(
+    "ogs-ai-devices",
+    `${head("ogs-ai-devices", ad.kicker, ad.title, ad.lead, { split: true })}
+      <div class="ogs-pair2 ogs-pair2--ai">
+        <div>
+          <p class="ogs-dir__title">${e(ad.aiTitle)}</p>
+          <dl class="ogs-ex">${ad.ai.map((a) => `<div><dt>${e(a.t)}</dt><dd>${e(a.ex)}</dd></div>`).join("")}</dl>
+          ${note(ad.aiNote)}
+        </div>
+        <div>
+          <p class="ogs-dir__title">${e(ad.devTitle)}</p>
+          ${table("ogs-table--dev", ad.devCols, ad.devices.map((d) => ({ head: `<strong>${e(d.t)}</strong>`, cells: [e(d.f), stage(d.stage)] })))}
+          ${note(ad.devNote)}
+        </div>
+      </div>`
+  );
+  const extrasAfter = { 0: healthSec, 1: deliverySec, 3: aiSec };
+  const groups = groupSecs
+    .map((g, gi) => (g.after ? "" : g.html + (extrasAfter[gi] ? "\n" + extrasAfter[gi] : "")))
+    .filter(Boolean)
+    .join("\n");
   const later = groupSecs.filter((g) => g.after).map((g) => g.html).join("\n");
 
   // C2 · area 25 ONGIL Global unpacked (2026-10-26, planned / under review): directions in a spec panel + localization checks
   const gl = p.global;
   const globalSec = sec(
     "ogs-global",
-    `<div class="ogs-split">
-      ${head("ogs-global", gl.kicker, gl.title, gl.lead)}
-      <ul class="ogs-spec">${gl.items.map((s, i) => `<li>${tile(["sun", "hands", "users", "shield", "heart"][i % 5])}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ul>
-    </div>
+    `${head("ogs-global", gl.kicker, gl.title, gl.lead, { split: true })}
+      <ul class="ogs-cards3">${gl.items.map((s, i) => `<li>${tile(["sun", "hands", "users", "shield", "heart"][i % 5])}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ul>
       <p class="ogs-dir__title">${e(gl.localTitle)}</p>
       ${checkList(gl.points, "ogs-checks--2")}`,
     { cls: "ogs-sec--rule" }
@@ -549,7 +612,7 @@ function platformMain(c, S, lang) {
   const roles = sec(
     "ogs-roles",
     `${head("ogs-roles", ro.label, ro.title, ro.lead, { split: true })}
-      <ul class="ogs-people ogs-people--4">${ro.items
+      <ul class="ogs-people ogs-people--4${RAIL}">${ro.items
         .map((s, i) => `<li${i === ro.items.length - 1 ? ' class="ogs-people__key"' : ""}>${tile(["person", "users", "hands", "building"][i % 4], "lg")}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`)
         .join("")}</ul>`,
     { tone: "mist" }
@@ -565,14 +628,25 @@ function platformMain(c, S, lang) {
         .join("")}</ul>`
   );
 
+  // G2 · app structure (v3): five bottom tabs as a tab strip, the SOS rule, design principles as pills
+  const am = p.appMap;
+  const appMap = sec(
+    "ogs-appmap",
+    `${head("ogs-appmap", am.kicker, am.title, am.lead, { split: true })}
+      <ol class="ogs-tabbar">${am.tabs
+        .map((t) => `<li>${mark(t.icon)}<h3>${e(t.t)}</h3><p>${e(t.text)}</p>${t.more ? `<p class="ogs-tabbar__more">+ ${e(t.more)}</p>` : ""}</li>`)
+        .join("")}</ol>
+      <div class="ogs-callout ogs-callout--key">${mark("alert")}<div><p>${e(am.sos)}</p></div></div>
+      <div class="ogs-principles"><p class="ogs-dt">${e(am.principlesTitle)}</p>${ticks(am.principles, "ogs-ticks--pills")}</div>`,
+    { tone: "tint" }
+  );
+
   // H · privacy, security & trust: split, single-column check list + emergency callout
   const pv = p.privacy;
   const privacy = sec(
     "ogs-privacy",
-    `<div class="ogs-split">
-      ${head("ogs-privacy", pv.label, pv.title, pv.lead)}
-      <div>${checkList(pv.points, "ogs-checks--2")}</div>
-    </div>`,
+    `${head("ogs-privacy", pv.label, pv.title, pv.lead, { split: true })}
+      ${checkList(pv.points, "ogs-checks--2")}`,
     { cls: "ogs-sec--rule" }
   );
 
@@ -588,10 +662,8 @@ function platformMain(c, S, lang) {
   // J · FAQ (native disclosure, keyboard-operable, no script)
   const faq = sec(
     "ogs-faq",
-    `<div class="ogs-split">
-      ${head("ogs-faq", "FAQ", c.ui.faqTitle, "")}
-      <div class="ogs-faq">${p.faq.map((f) => `<details><summary>${e(f.q)}</summary><p>${e(f.a)}</p></details>`).join("")}</div>
-    </div>`
+    `${head("ogs-faq", "FAQ", c.ui.faqTitle, "")}
+      ${faqList(p.faq, true)}`
   );
 
   const close = closeInk(
@@ -604,7 +676,7 @@ function platformMain(c, S, lang) {
     ],
     p
   );
-  return [index, status, groups, globalSec, features, later, scenarios, roles, systems, privacy, app, faq, close].filter(Boolean).join("\n");
+  return [index, status, groups, globalSec, features, later, scenarios, roles, systems, appMap, privacy, app, faq, close].filter(Boolean).join("\n");
 }
 
 /* ───────── 03 Business ───────── */
@@ -646,10 +718,18 @@ function businessMain(c, S, lang) {
     `<div class="ogs-split ogs-split--even">
       <div>
         ${head("ogs-revenue", b.revenueKicker, b.revenueTitle, b.models, { wide: true })}
+        <div class="ogs-callout ogs-callout--key">${mark("route")}<div><strong>${e(b.revenueFocusTitle)}</strong><p>${e(b.revenueFocus)}</p></div></div>
         ${note(b.disclaimer)}
       </div>
       <div class="ogs-panel">
-        <ul class="ogs-dots">${b.revenue.map((r) => `<li>${e(r)}</li>`).join("")}</ul>
+        <p class="ogs-rev__h" aria-hidden="true"><span>${e(b.revenueCols[0])}</span><span>${e(b.revenueCols[1])}</span></p>
+        <ol class="ogs-rev">${b.revenue
+          .map((r, i) => {
+            const [what, payer] = r.split(c.lang === "ko" ? " · 지불: " : " · Payer: ");
+            const [name, desc] = what.split(" — ");
+            return `<li><span class="ogs-rev__n">${pad(i + 1)}</span><span class="ogs-rev__x"><strong>${e(name)}</strong>${desc ? `<span>${e(desc)}</span>` : ""}</span>${payer ? `<span class="ogs-rev__p">${e(payer)}</span>` : ""}</li>`;
+          })
+          .join("")}</ol>
         ${note(b.revenueNote, true)}
       </div>
     </div>`,
@@ -673,7 +753,7 @@ function businessMain(c, S, lang) {
   const market = sec(
     "ogs-market",
     `${head("ogs-market", mk.label, mk.title, mk.lead, { split: true })}
-      <ul class="ogs-duo">${mk.items
+      <ul class="ogs-duo${RAIL}">${mk.items
         .map(
           (it, i) => `<li>${tile(["info", "users", "clipboard", "link"][i % 4])}
           <div class="ogs-duo__q">${tag(mk.problemLabel)}<p>${e(it.problem)}</p></div>
@@ -699,13 +779,15 @@ function businessMain(c, S, lang) {
         </article>`;
         })
         .join("");
+      // v3: alternate a side-column layout and a full-width header with a card grid, so eight sections never look alike
+      const top = ci % 2 === 1;
       return sec(
         `bc-${k.id}`,
-        `<div class="ogs-cat">
-        <div class="ogs-cat__side">${tile(CATEGORY_ICONS[k.id], "lg")}${head(`bc-${k.id}`, kicker, title, "")}</div>
-        <div class="ogs-cat__list${ids.length > 1 ? " ogs-cat__list--multi" : ""}">${body}</div>
+        `<div class="ogs-cat${top ? " ogs-cat--top" : ""}">
+        <div class="ogs-cat__side">${tile(CATEGORY_ICONS[k.id], top ? "" : "lg")}${head(`bc-${k.id}`, kicker, title, "")}</div>
+        <div class="ogs-cat__list${ids.length > 1 ? " ogs-cat__list--multi" : ""}${top && ids.length > 2 ? " ogs-cat__list--3" : ""}">${body}</div>
       </div>`,
-        { tone: ci % 2 ? "mist" : "", cls: "ogs-sec--cat" }
+        { cls: "ogs-sec--cat" }
       );
     })
     .join("\n");
@@ -719,7 +801,8 @@ function businessMain(c, S, lang) {
       <div class="ogs-fees">
         <ul class="ogs-fees__col">${fe.points.filter((p) => !p.alert).map(feeItem).join("")}</ul>
         <ul class="ogs-fees__col ogs-fees__col--never">${fe.points.filter((p) => p.alert).map(feeItem).join("")}</ul>
-      </div>`,
+      </div>
+      ${note(fe.econNote)}`,
     { tone: "tint" }
   );
 
@@ -735,11 +818,16 @@ function businessMain(c, S, lang) {
   // H · growth roadmap: five priorities as an editorial vertical list
   const roadmap = sec(
     "ogs-roadmap",
-    `<div class="ogs-split">
-      ${head("ogs-roadmap", b.roadmapKicker, b.roadmapTitle, b.roadmapLead)}
-      <ol class="ogs-vlist">${b.roadmap.map((s) => `<li><span class="ogs-vlist__n">${e(s.n)}</span><div><h3>${e(s.name)}</h3><p>${e(s.text)}</p></div></li>`).join("")}</ol>
-    </div>`,
-    { tone: "mist" }
+    `${head("ogs-roadmap", b.roadmapKicker, b.roadmapTitle, b.roadmapLead, { split: true })}
+      <div class="ogs-pair2 ogs-pair2--road">
+        <ol class="ogs-vlist">${b.roadmap.map((s) => `<li><span class="ogs-vlist__n">${e(s.n)}</span><div><h3>${e(s.name)}</h3><p>${e(s.text)}</p></div></li>`).join("")}</ol>
+        <div>
+          <p class="ogs-dir__title">${e(b.phases.title)}</p>
+          <p class="ogs-sublead">${e(b.phases.lead)}</p>
+          ${table("ogs-table--phases", b.phases.cols, b.phases.items.map((it) => ({ head: `<span class="ogs-pill" lang="en">${e(it.n)}</span>`, cells: [e(it.t), e(it.done)] })))}
+          ${note(b.phases.note)}
+        </div>
+      </div>`
   );
 
   // H2 · global go-to-market (2026-10-26): overseas customer groups and revenue models under review, then the five phases
@@ -839,6 +927,15 @@ function partnershipsMain(c, S, lang) {
       <div class="ogs-actions"><a class="nls-btn ogs-btn--accent" href="/${lang}/contact/?type=partnership&amp;platform=ongil">${e(gp.cta)} →</a></div>`
   );
 
+  // C3 · partnership timing (v3): which partners each development stage needs
+  const sg = p.stages;
+  const stagesSec = sec(
+    "ogs-stages",
+    `${head("ogs-stages", sg.label, sg.title, sg.lead, { split: true })}
+      ${table("ogs-table--stages", sg.cols, sg.items.map((it) => ({ head: `<span class="ogs-pill" lang="en">${e(it.n)}</span>`, cells: [e(it.t), e(it.who)] })))}
+      ${note(sg.note)}`
+  );
+
   // D · PoC & pilot proposals: wide rows with a 2×2 spec grid
   const pc = p.pocs;
   const pocs = sec(
@@ -864,10 +961,18 @@ function partnershipsMain(c, S, lang) {
   const da = p.data;
   const data = sec(
     "ogs-data",
-    `<div class="ogs-split">
-      ${head("ogs-data", da.label, da.title, da.lead)}
-      <div>${checkList(da.points, "ogs-checks--boxed")}</div>
-    </div>`
+    `${head("ogs-data", da.label, da.title, da.lead, { split: true })}
+      ${checkList(da.points, "ogs-checks--boxed ogs-checks--3")}`
+  );
+
+  // E2 · before you propose (v3): checklist + "please do not send" callout
+  const pp = p.proposal;
+  const proposal = sec(
+    "ogs-proposal",
+    `${head("ogs-proposal", pp.label, pp.title, pp.lead, { split: true })}
+      <dl class="ogs-ex ogs-ex--3">${pp.items.map((it) => `<div><dt>${mark("check")}${e(it.t)}</dt><dd>${e(it.text)}</dd></div>`).join("")}</dl>
+      <div class="ogs-callout ogs-callout--alert">${mark("lock")}<div><strong>${e(pp.dont.t)}</strong><p>${e(pp.dont.text)}</p></div></div>`,
+    { cls: "ogs-sec--rule" }
   );
 
   // F · joint services & campaigns: four open columns on mist
@@ -875,7 +980,7 @@ function partnershipsMain(c, S, lang) {
   const campaigns = sec(
     "ogs-campaigns",
     `${head("ogs-campaigns", ca.label, ca.title, ca.lead, { split: true })}
-      <ul class="ogs-cols4">${ca.items.map((s, i) => `<li>${tile(["phone", "shield", "route", "heart"][i % 4], "lg")}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ul>`,
+      <ul class="ogs-cols4${RAIL}">${ca.items.map((s, i) => `<li>${tile(["phone", "shield", "route", "heart"][i % 4], "lg")}<h3>${e(s.name)}</h3><p>${e(s.text)}</p></li>`).join("")}</ul>`,
     { tone: "mist" }
   );
 
@@ -893,7 +998,7 @@ function partnershipsMain(c, S, lang) {
   const value = sec(
     "ogs-value",
     `${head("ogs-value", va.label, va.title, "", { split: true })}
-      <ul class="ogs-quad">${va.items
+      <ul class="ogs-quad${RAIL}">${va.items
         .map((s, i) => `<li>${tile(["building", "landmark", "briefcase", "heart"][i % 4])}<div><h3>${e(s.name)}</h3><p>${e(s.text)}</p></div></li>`)
         .join("")}</ul>`,
     { cls: "ogs-sec--rule" }
@@ -908,7 +1013,7 @@ function partnershipsMain(c, S, lang) {
     ],
     p
   );
-  return [vision, index, items, globalSec, pocs, data, campaigns, process, value, close].join("\n");
+  return [vision, index, items, stagesSec, pocs, globalSec, data, proposal, campaigns, process, value, close].join("\n");
 }
 
 /* ───────── 05 Contact ───────── */
@@ -959,17 +1064,36 @@ function contactMain(c, S, lang) {
     { tone: "tint" }
   );
 
+  // A2 · where to go first (v3): official services list, emergency rows in red
+  const rt = k.route;
+  const route = sec(
+    "ogs-route",
+    `${head("ogs-route", rt.label, rt.title, rt.lead, { split: true })}
+      <ul class="ogs-routes">${rt.items
+        .map((it) => `<li${it.alert ? ' class="ogs-routes__alert"' : ""}><div><h3>${e(it.t)}</h3><p>${e(it.text)}</p></div><p class="ogs-routes__w">${e(it.where)}</p></li>`)
+        .join("")}</ul>`
+  );
+
+  // B2 · what happens next (v3): a real three-step sequence
+  const af = k.after;
+  const after = sec("ogs-after", `${head("ogs-after", af.label, af.title, "", { split: true })}${steps(af.steps, ["mail", "clipboard", "check"], 3)}`);
+
   // C · before you get in touch: three callouts (emergency in red)
   const careTitle = c.lang === "ko" ? "문의 전에\n확인해 주세요." : "Before you\nget in touch.";
   const guard = sec(
     "ogs-guard",
     `${head("ogs-guard", "Privacy & Safety", careTitle, "", { split: true })}
+      <p class="ogs-dir__title">${e(k.checklistTitle)}</p>
+      <ul class="ogs-cl">${k.checklist.map((g) => `<li><h3>${e(g.g)}</h3>${ticks(g.items)}</li>`).join("")}</ul>
       <ul class="ogs-guard">
         <li>${tile("form", "lg")}<p>${e(k.include)}</p></li>
         <li>${tile("lock", "lg")}<p>${e(k.privacy)}</p></li>
         <li class="ogs-guard__alert">${tile("alert", "lg")}<p><strong>${e(k.emergency)}</strong></p></li>
       </ul>`
   );
+
+  // C2 · contact FAQ (v3): two-column accordion
+  const faq = sec("ogs-faq", `${head("ogs-faq", "FAQ", c.ui.faqTitle, "")}${faqList(k.faq, true)}`, { cls: "ogs-sec--rule" });
 
   // D · black close: Contact → the official inquiry form
   const close = closeInk(
@@ -982,7 +1106,7 @@ function contactMain(c, S, lang) {
     k
   );
 
-  return [channels, types, guard, close].join("\n");
+  return [channels, route, types, after, guard, faq, close].join("\n");
 }
 
 const MAINS = { overview: overviewMain, platform: platformMain, business: businessMain, partnerships: partnershipsMain, contact: contactMain };

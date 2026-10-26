@@ -214,3 +214,40 @@ test("internal links on ONGIL pages resolve to files in the repo", () => {
     }
   }
 });
+
+test("v3 detail sections (2026-10-26): rendered once, counts kept consistent, nothing shown as available now", () => {
+  for (const c of [KO, EN]) {
+    assert.equal(c.overview.limits.items.length, 6);
+    assert.equal(c.overview.beyond.focus.length, 4);
+    assert.equal(c.platform.health.items.length, 10);
+    assert.equal(c.platform.delivery.kinds.length, 4);
+    assert.equal(c.platform.aiDevices.devices.length, 8);
+    assert.equal(c.platform.appMap.tabs.length, 5);
+    assert.deepEqual(c.business.phases.items.map((p) => p.n), ["P0", "P1", "P2", "P3", "P4", "P5", "P6", "P7"]);
+    assert.equal(c.partnerships.stages.items.length, 5);
+    assert.equal(c.contact.after.steps.length, 3);
+    assert.ok(c.contact.route.items.some((r) => r.where === "119" && r.alert));
+    // UI counts match the content (7 groups, 7 opportunities, 16 partner types)
+    assert.ok(c.ui.groupMapTitle.includes(String(c.platform.groupMap.length)));
+    assert.ok(c.ui.partnerTypesTitle.includes(String(c.partnerships.items.length)));
+    assert.ok(c.ui.partnerIndexTitle.includes(String(new Set(c.partnerships.items.map((i) => i.opp)).size)));
+  }
+  const now = /지금 제공 중|이용 가능|available now|now available/i;
+  for (const c of [KO, EN]) {
+    for (const r of [...c.platform.health.items, ...c.platform.aiDevices.devices]) assert.doesNotMatch(r.stage, now, r.t);
+  }
+  const ids = {
+    "ongil": ["ogs-limits"],
+    "ongil/platform": ["ogs-health", "ogs-delivery", "ogs-ai-devices", "ogs-appmap"],
+    "ongil/business": ["ogs-roadmap"],
+    "ongil/partnerships": ["ogs-stages", "ogs-proposal"],
+    "ongil/contact": ["ogs-route", "ogs-after", "ogs-faq"],
+  };
+  for (const lang of SITE) {
+    for (const [p, list] of Object.entries(ids)) {
+      const html = read(`${lang}/${p}/index.html`);
+      for (const id of list) assert.equal((html.match(new RegExp(`<section id="${id}"`, "g")) || []).length, 1, `${lang}/${p} #${id}`);
+    }
+    assert.ok(read(`${lang}/ongil/business/index.html`).includes("P7"), `${lang} development stages`);
+  }
+});
