@@ -51,11 +51,12 @@ function notes(copy, keys) {
   return `<aside class="mws-notes" aria-label="${esc(copy.ui.notesAria)}">${keys.map((k) => `<p class="mws-note">${esc(copy.ui[k])}</p>`).join("")}</aside>`;
 }
 function head({ id, kicker, title, lead = "", note = "", cls = "" }) {
-  return `<div class="mws-head${cls ? ` ${cls}` : ""}">
-        ${kicker ? `<p class="mws-kicker">${esc(kicker)}</p>` : ""}
-        <h2 class="mws-title" id="${id}-title">${lines(title)}</h2>
-        ${lead ? `<p class="mws-lead">${esc(lead)}</p>` : ""}
-        ${note ? `<p class="mws-small">${esc(note)}</p>` : ""}
+  const side = lead || note
+    ? `<div class="mws-head__side">${lead ? `<p class="mws-lead">${esc(lead)}</p>` : ""}${note ? `<p class="mws-small">${esc(note)}</p>` : ""}</div>`
+    : "";
+  return `<div class="mws-head${side ? " mws-head--has-side" : ""}${cls ? ` ${cls}` : ""}">
+        <div class="mws-head__main">${kicker ? `<p class="mws-kicker">${esc(kicker)}</p>` : ""}<h2 class="mws-title" id="${id}-title">${lines(title)}</h2></div>
+        ${side}
       </div>`;
 }
 /** Section shell. tone: "" (white) · "tint" (light MY WORLD band). */
@@ -79,7 +80,7 @@ function split({ id, kicker, title, lead = "", note = "", aside = "", body, tone
 }
 /** Definition rows: name in the left column, text on the right. */
 function defRows(items, { nameKey = "name", bodyKey = "body", cls = "" } = {}) {
-  return `<ul class="mws-defs${cls ? ` ${cls}` : ""}">${items.map((it) => `<li${it.self ? ' class="is-self"' : ""}><h3 class="mws-defs__name">${esc(it[nameKey])}</h3><p class="mws-defs__body">${esc(it[bodyKey] || it.body || it.role)}</p></li>`).join("")}</ul>`;
+  return `<ul class="mws-defs${cls ? ` ${cls}` : ""}">${items.map((it) => `<li${it.self ? ' class="is-self"' : ""}><h3 class="mws-defs__name">${esc(it[nameKey])}</h3><div class="mws-defs__main"><p class="mws-defs__body">${esc(it[bodyKey] || it.body || it.role)}</p>${it.tags ? `<p class="mws-defs__tags">${esc(it.tags)}</p>` : ""}</div></li>`).join("")}</ul>`;
 }
 /** Hairline feature columns (no boxes). */
 function feats(items, { cols = 3, cls = "" } = {}) {
@@ -99,10 +100,18 @@ function roadSteps(copy, r) {
         <p class="mws-road__stage">${esc(s.stage)}${i === 0 ? ` <span class="mws-current">${esc(copy.ui.currentStage)}</span>` : ""}</p>
         <h3 class="mws-h3">${esc(s.name)}</h3>
         <p class="mws-body">${esc(s.body)}</p>
+        ${s.scope ? `<p class="mws-road__scope"><span>${esc(r.scopeLabel)}</span>${esc(s.scope)}</p>` : ""}
       </li>`).join("")}</ol>`;
 }
-function faqList(items) {
-  return `<ul class="mws-faq">${items.map((f) => `<li><details><summary><span class="mws-faq__text">${esc(f.q)}</span><span class="mws-faq__sign" aria-hidden="true"></span></summary><p class="mws-body">${esc(f.a)}</p></details></li>`).join("")}</ul>`;
+function faqList(items, cls = "") {
+  return `<ul class="mws-faq${cls ? ` ${cls}` : ""}">${items.map((f) => `<li><details><summary><span class="mws-faq__text">${esc(f.q)}</span><span class="mws-faq__sign" aria-hidden="true"></span></summary><p class="mws-body">${esc(f.a)}</p></details></li>`).join("")}</ul>`;
+}
+/** FAQ — full-width heading row, then a two-column accordion on wide screens. */
+function faqSection(fq, { tone = "" } = {}) {
+  return section({
+    id: "mws-faq", tone,
+    inner: `${head({ id: "mws-faq", kicker: fq.kicker, title: fq.title, lead: fq.lead || "" })}${faqList(fq.items, "mws-faq--cols")}`,
+  });
 }
 function nowNext(copy, now, next) {
   return `<dl class="mws-nn">
@@ -244,6 +253,7 @@ function overview(lang, copy) {
           <p class="mws-en">${pad(i + 1)} · ${esc(s.en)}</p>
           <h3 class="mws-h3 mws-h3--xl">${esc(s.head)}</h3>
           <p class="mws-body mws-body--lg">${esc(s.lead)}</p>
+          ${s.more ? `<p class="mws-body">${esc(s.more)}</p>` : ""}
           ${chips(s.chips)}
         </div>
         <div class="mws-panel__now">
@@ -314,9 +324,15 @@ function overview(lang, copy) {
 
   // NEWON — split + compact platform list (MY WORLD highlighted)
   const nw = o.newon;
-  const newon = split({ id: "mws-newon", kicker: nw.kicker, title: nw.title, lead: nw.lead, note: nw.note, body: defRows(nw.items, { bodyKey: "role", cls: "mws-defs--grid" }) });
+  const newon = section({
+    id: "mws-newon",
+    inner: `${head({ id: "mws-newon", kicker: nw.kicker, title: nw.title, lead: nw.lead, note: nw.note })}${defRows(nw.items, { bodyKey: "role", cls: "mws-defs--grid mws-defs--grid3" })}`,
+  });
 
-  return [h, now, define, problems, values, customers, journey, scenes, compare, status, globalVision, roadmap, newon,
+  // FAQ — split + accordion
+  const faq = faqSection(o.faq);
+
+  return [h, now, define, problems, values, customers, journey, scenes, compare, status, globalVision, roadmap, newon, faq,
     `<div class="mws__wrap">${notes(copy, ["scopeNote", "planNote"])}</div>`, closeBand(lang, copy)].join("\n");
 }
 
@@ -331,7 +347,7 @@ function platform(lang, copy) {
   const shots = section({
     id: "mws-shots", tone: "tint", cls: "mws-sec--first",
     inner: `<div class="mws-rowhead">${head({ id: "mws-shots", kicker: p.shotsKicker, title: p.shotsTitle })}<div class="mws-actions">${storeButtons(copy)}</div></div>
-      <ul class="mws-tiles">${p.shots.map((s) => `<li class="mws-tile"><span class="mws-ico-box">${icon(s.icon)}</span><p class="mws-tile__text">${esc(s.text)}</p></li>`).join("")}</ul>`,
+      <ul class="mws-tiles">${p.shots.map((s) => `<li class="mws-tile"><span class="mws-ico-box">${icon(s.icon)}</span><div><p class="mws-tile__text">${esc(s.text)}</p>${s.body ? `<p class="mws-tile__body">${esc(s.body)}</p>` : ""}</div></li>`).join("")}</ul>`,
   });
 
   // Area map — five group columns with jump links (letters / numbers = the plan's group and area IDs)
@@ -356,6 +372,7 @@ function platform(lang, copy) {
         <p class="mws-body">${esc(s.desc)}</p>
         <p class="mws-label">${esc(copy.ui.featuresLabel)}</p>
         ${chips(s.features)}
+        ${s.plan ? `<p class="mws-label">${esc(copy.ui.planLabel)}</p>${chips(s.plan, "mws-chips--plan")}` : ""}
         <p class="mws-area__target"><span class="mws-label">${esc(copy.ui.targetLabel)}</span>${esc(s.target)}</p>
       </div>
       <div class="mws-area__status">
@@ -363,13 +380,18 @@ function platform(lang, copy) {
         <p class="mws-area__cta">${itemCta(lang, copy, s.cta, s.name)}</p>
       </div>
     </li>`;
-  const groups = p.groups.map((g, gi) => `<section class="mws-agroup" id="mws-group-${gi + 1}" aria-labelledby="mws-group-${gi + 1}-title">
-      <div class="mws-agroup__head"><span class="mws-letter mws-letter--lg">${letter(gi)}</span><div><p class="mws-en">${esc(g.en)}</p><h3 class="mws-gtitle" id="mws-group-${gi + 1}-title">${esc(g.name)}</h3></div><p class="mws-body">${esc(g.lead)}</p></div>
+  const stabs = p.groups.map((g, gi) => `<button type="button" class="mws-seg" role="tab" id="mws-stab-${gi + 1}" aria-controls="mws-group-${gi + 1}" aria-selected="${gi === 0}" tabindex="${gi === 0 ? 0 : -1}"><span class="mws-seg__l">${letter(gi)}</span><span>${esc(g.name)}</span><span class="mws-seg__count">${pad(g.items.length)}</span></button>`).join("");
+  const groups = p.groups.map((g, gi) => `<section class="mws-agroup" role="tabpanel" id="mws-group-${gi + 1}" aria-labelledby="mws-group-${gi + 1}-title"${gi === 0 ? "" : " data-hidden"}>
+      <div class="mws-agroup__head"><span class="mws-letter mws-letter--lg">${letter(gi)}</span><div class="mws-agroup__title"><p class="mws-en">${esc(g.en)}</p><h3 class="mws-gtitle" id="mws-group-${gi + 1}-title">${esc(g.name)}</h3></div><div class="mws-agroup__text"><p class="mws-body mws-body--ink">${esc(g.lead)}</p>${g.intro ? `<p class="mws-body">${esc(g.intro)}</p>` : ""}</div></div>
       <ol class="mws-areas">${g.items.map((n) => svcCard(p.items[n - 1], n)).join("")}</ol>
     </section>`).join("");
   const list = section({
     id: "mws-services",
-    inner: `${head({ id: "mws-services", kicker: `${p.items.length} AREAS`, title: `${copy.ui.brand} ${copy.nav[1].label}` })}${groups}`,
+    inner: `${head({ id: "mws-services", kicker: `${p.items.length} AREAS`, title: `${copy.ui.brand} ${copy.nav[1].label}` })}
+      <div class="mws-tabs mws-tabs--seg mws-tabs--areas" data-mws-tabs>
+        <div class="mws-tabs__list mws-segs" role="tablist" aria-label="${esc(p.indexTitle)}">${stabs}</div>
+        ${groups}
+      </div>`,
   });
 
   // Now & next — the 25 areas regrouped by status (one label per column)
@@ -415,7 +437,10 @@ function platform(lang, copy) {
 
   // User types — split + definition rows
   const u = p.users;
-  const users = split({ id: "mws-users", kicker: u.kicker, title: u.title, lead: u.lead, note: u.note, body: defRows(u.items, { bodyKey: "role" }) });
+  const users = section({
+    id: "mws-users",
+    inner: `${head({ id: "mws-users", kicker: u.kicker, title: u.title, lead: u.lead, note: u.note })}${defRows(u.items, { bodyKey: "role", cls: "mws-defs--grid mws-defs--grid3" })}`,
+  });
 
   // Privacy & trust — four hairline columns
   const t = p.trust;
@@ -433,8 +458,7 @@ function platform(lang, copy) {
   });
 
   // FAQ — split + accordion
-  const fq = p.faq;
-  const faq = split({ id: "mws-faq", kicker: fq.kicker, title: fq.title, body: faqList(fq.items) });
+  const faq = faqSection(p.faq);
 
   return [h, shots, index, list, statusBoard, globalExp, flow, scenarios, users, trust, guide, faq,
     `<div class="mws__wrap">${notes(copy, ["scopeNote", "planNote"])}</div>`, closeBand(lang, copy)].join("\n");
@@ -459,14 +483,12 @@ function business(lang, copy) {
   const py = b.payers;
   const payers = section({
     id: "mws-payers", tone: "tint",
-    inner: `<div class="mws-split mws-split--table">
-        <div class="mws-split__head">${head({ id: "mws-payers", kicker: py.kicker, title: py.title, lead: py.lead })}</div>
-        <div class="mws-split__body"><table class="mws-table mws-table--payers">
+    inner: `${head({ id: "mws-payers", kicker: py.kicker, title: py.title, lead: py.lead })}
+        <table class="mws-table mws-table--payers">
           <caption class="mws-sr">${esc(py.title.replace(/\n/g, " "))}</caption>
           <thead><tr><th scope="col"><span class="mws-sr" lang="en">${esc(py.kicker)}</span></th><th scope="col">${esc(copy.ui.payerLabel)}</th><th scope="col">${esc(copy.ui.revenueLabel)}</th></tr></thead>
           <tbody>${py.items.map((it) => `<tr><th scope="row" lang="en">${esc(it.name)}</th><td data-label="${esc(copy.ui.payerLabel)}">${esc(it.target)}</td><td data-label="${esc(copy.ui.revenueLabel)}">${esc(it.how)}</td></tr>`).join("")}</tbody>
-        </table></div>
-      </div>`,
+        </table>`,
   });
 
   // 8 groups · 20 business lines — tiles; each line jumps to its revenue model
@@ -522,6 +544,15 @@ function business(lang, copy) {
     inner: `<div class="mws-panelbox">
         <div class="mws-panelbox__head">${head({ id: "mws-saas", kicker: s.kicker, title: s.title, lead: s.lead })}<p class="mws-saas__badge">${badge(copy, "review")}</p></div>
         <ul class="mws-modules">${s.items.map((it) => `<li><h3 class="mws-h4" lang="en">${esc(it.name)}</h3><p class="mws-body">${esc(it.body)}</p></li>`).join("")}</ul>
+      </div>
+      <div class="mws-who">
+        <h3 class="mws-h3 mws-who__title">${esc(s.whoTitle)}</h3>
+        <table class="mws-table mws-table--who">
+          <caption class="mws-sr">${esc(s.whoTitle)}</caption>
+          <thead><tr><th scope="col">${esc(copy.ui.customersLabel)}</th><th scope="col">${esc(copy.ui.featuresLabel)}</th></tr></thead>
+          <tbody>${s.who.map((it) => `<tr><th scope="row">${esc(it.name)}</th><td data-label="${esc(copy.ui.featuresLabel)}">${esc(it.body)}</td></tr>`).join("")}</tbody>
+        </table>
+        <p class="mws-small">${esc(s.whoNote)}</p>
       </div>`,
   });
 
@@ -565,11 +596,14 @@ function business(lang, copy) {
   const t = b.trust;
   const trust = section({
     id: "mws-trust",
-    inner: `${head({ id: "mws-trust", kicker: t.kicker, title: t.title, lead: t.lead, cls: "mws-head--wide" })}${feats(t.items, { cols: 3, cls: "mws-feats--compact" })}
+    inner: `${head({ id: "mws-trust", kicker: t.kicker, title: t.title, lead: t.lead, cls: "mws-head--wide" })}${defRows(t.items, { cls: "mws-defs--cols2" })}
       <div class="mws-actions">${btn(pageHref(lang, "partnerships"), copy.ui.partnerCta)}${btn(formHref(lang, "general"), copy.ui.formCta, { ghost: true })}</div>`,
   });
 
-  return [h, model, payers, groupsIdx, revenue, subscription, deals, saas, market, diff, gtm, roadmap, globalStrat, trust,
+  // FAQ — split + accordion
+  const faq = faqSection(b.faq);
+
+  return [h, model, payers, groupsIdx, revenue, subscription, deals, saas, market, diff, gtm, roadmap, globalStrat, trust, faq,
     `<div class="mws__wrap">${notes(copy, ["scopeNote", "planNote"])}</div>`, closeBand(lang, copy)].join("\n");
 }
 
@@ -616,6 +650,7 @@ function partnerships(lang, copy) {
         <div class="mws-tabs__list mws-segs" role="tablist" aria-label="${esc(p.typesTitle)}">${ptabs}</div>
         ${p.groups.map((g, gi) => `<section class="mws-pgroup" role="tabpanel" id="mws-pgroup-${gi + 1}" aria-labelledby="mws-pgroup-${gi + 1}-title"${gi === 0 ? "" : " data-hidden"}>
           <div class="mws-pgroup__head"><span class="mws-letter">${letter(gi)}</span><h3 class="mws-gtitle" id="mws-pgroup-${gi + 1}-title">${esc(g.name)}</h3><p class="mws-en">${esc(g.en)}</p><span class="mws-count">${pad(g.items.length)}</span></div>
+          ${g.lead ? `<p class="mws-body mws-pgroup__lead">${esc(g.lead)}</p>` : ""}
           <ul class="mws-pcards">${g.items.map((n) => card(p.items[n - 1], n)).join("")}</ul>
         </section>`).join("")}
       </div>
@@ -669,7 +704,7 @@ function partnerships(lang, copy) {
   const pr = p.process;
   const process = section({
     id: "mws-process", tone: "tint",
-    inner: `${head({ id: "mws-process", kicker: pr.kicker, title: pr.title })}${steps(pr.steps, { cls: "mws-steps--grid", en: true })}`,
+    inner: `${head({ id: "mws-process", kicker: pr.kicker, title: pr.title })}${steps(pr.steps, { cls: "mws-steps--big mws-steps--6", en: true })}`,
   });
 
   // Partner value — four hairline columns
@@ -687,7 +722,9 @@ function partnerships(lang, copy) {
     body: `<ul class="mws-checks">${ck.items.map((t) => `<li><span class="mws-checks__ico">${icon("check")}</span><p>${esc(t)}</p></li>`).join("")}</ul>`,
   });
 
-  return [h, why, models, types, scenarios, globalPart, poc, data, process, value, checklist, closeBand(lang, copy)].join("\n");
+  const faq = faqSection(p.faq);
+
+  return [h, why, models, types, scenarios, globalPart, poc, data, process, value, checklist, faq, closeBand(lang, copy)].join("\n");
 }
 
 /* ================= 05 CONTACT ================= */
@@ -719,6 +756,18 @@ function contact(lang, copy) {
       <p class="mws-callout"><strong>${esc(c.privacy.label)}</strong><span>${esc(copy.ui.sensitiveNote)}</span></p>`,
   });
 
+  // Before you send — what to include per inquiry type (data table)
+  const pr = c.prep;
+  const prep = section({
+    id: "mws-prep",
+    inner: `${head({ id: "mws-prep", kicker: pr.kicker, title: pr.title, lead: pr.lead })}
+      <table class="mws-table mws-table--prep">
+        <caption class="mws-sr">${esc(pr.title.replace(/\n/g, " "))}</caption>
+        <thead><tr><th scope="col">${esc(pr.colType)}</th><th scope="col">${esc(pr.colInclude)}</th></tr></thead>
+        <tbody>${pr.items.map((it) => `<tr><th scope="row">${esc(it.name)}</th><td data-label="${esc(pr.colInclude)}">${esc(it.body)}</td></tr>`).join("")}</tbody>
+      </table>`,
+  });
+
   // How — tinted band, three numbered steps
   const how = section({
     id: "mws-how", tone: "tint",
@@ -735,9 +784,9 @@ function contact(lang, copy) {
   });
 
   // FAQ — split + accordion
-  const faq = split({ id: "mws-faq", kicker: c.faq.kicker, title: c.faq.title, body: faqList(c.faq.items) });
+  const faq = faqSection(c.faq);
 
-  return [h, types, how, channels, faq, `<div class="mws__wrap">${notes(copy, ["scopeNote"])}</div>`, closeBand(lang, copy)].join("\n");
+  return [h, types, prep, how, channels, faq, `<div class="mws__wrap">${notes(copy, ["scopeNote"])}</div>`, closeBand(lang, copy)].join("\n");
 }
 
 const RENDER = { overview, platform, business, partnerships, contact };
