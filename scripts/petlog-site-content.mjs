@@ -698,7 +698,7 @@ export const BUSINESS = {
       ],
       groupsKicker: "REVENUE MAP",
       groupsTitle: "12개 수익 모델,\n다섯 묶음.",
-      groupsLead: "통합 사업계획서의 12개 수익 모델을 지불 방식에 따라 묶었습니다. 묶음을 선택하면 포함된 모델을 볼 수 있습니다.",
+      groupsLead: "통합 사업계획서의 12개 수익 모델을 지불 방식에 따라 묶었습니다. 모델 번호를 누르면 해당 설명으로 이동합니다.",
       labels: { payer: "지불 주체", how: "수익 방식", cond: "전제 조건", cta: "사업 문의" },
       subPanel: {
         kicker: "SUBSCRIPTION · NOW vs PROPOSED",
@@ -811,7 +811,7 @@ export const BUSINESS = {
       ],
       groupsKicker: "REVENUE MAP",
       groupsTitle: "Twelve revenue models,\nfive groups.",
-      groupsLead: "The integrated plan's 12 revenue models, grouped by how they are paid. Choose a group to see its models.",
+      groupsLead: "The integrated plan's 12 revenue models, grouped by how they are paid. Select a model number to jump to its description.",
       labels: { payer: "Payer", how: "Revenue mechanism", cond: "Preconditions", cta: "Business inquiry" },
       subPanel: {
         kicker: "SUBSCRIPTION · NOW vs PROPOSED",
