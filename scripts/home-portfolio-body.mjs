@@ -140,7 +140,7 @@ export function buildPortfolioHomeBody(lang) {
     .map((item) => {
       const rowHref = item.href ? href(L, item.href) : `#story-${item.id}`;
       const status = story.statusLabels[item.status] || "";
-      const meta = story.platforms && item.cat ? `${status} · ${item.cat}` : status;
+      const meta = story.platforms && item.cat ? [status, item.cat].filter(Boolean).join(" · ") : status;
       return `<li class="np-row np-reveal">
         <a href="${escapeHtml(rowHref)}">
           <span class="np-row__n">${escapeHtml(item.n)}</span>

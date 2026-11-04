@@ -125,7 +125,8 @@ test("invalid params are ignored safely; topic implies its platform and inquiry 
   ({ ctx, page, errors } = await open("/ko/contact/?topic=shareon-deposit"));
   s = await state(page);
   assert.deepEqual([s.platform, s.topic, s.inquiry], ["shareon", "shareon-deposit", "service"]);
-  assert.match(s.topicText, /보증금 · 향후 계획/);
+  assert.match(s.topicText, /보증금/);
+  assert.doesNotMatch(s.topicText, /향후 계획|출시 준비 중/, "SHAREON topics carry no status label");
   assert.ok(s.shown.includes("reference_id") && s.shown.includes("environment"), s.shown.join());
   await ctx.close();
   ({ ctx, page } = await open("/ko/contact/?platform=ongil&topic=shareon-deposit"));

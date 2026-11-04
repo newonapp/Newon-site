@@ -36,7 +36,7 @@ const config = (lang) => JSON.parse(read(`${lang}/contact/index.html`).match(/<s
 test("taxonomy: six inquirers, eleven inquiry types, the spec's topics per platform, unique ids, valid statuses", () => {
   assert.deepEqual(CONTACT_INQUIRER_IDS, ["personal", "company", "organization", "investor", "media", "other"]);
   assert.deepEqual(CONTACT_INQUIRY_IDS, ["general", "service", "support", "bug", "partnership", "listing", "investment", "advertising", "institution", "privacy", "other"]);
-  const want = { ongil: 8, shareon: 10, babylog: 9, petlog: 8 };
+  const want = { ongil: 8, shareon: 11, babylog: 9, petlog: 8 };
   assert.ok(!("livon" in CONTACT_TOPICS) && !CONTACT_PLATFORM_IDS.includes("livon"), "LIVON removed from the contact form (2026-11)");
   // MY WORLD left the business list (2026-11) but stays a selectable platform for its app users: support topics only
   assert.deepEqual(CONTACT_TOPICS.myworld.map((t) => t.id), ["myworld-map", "myworld-trips", "myworld-account", "myworld-bug"]);
@@ -83,8 +83,12 @@ test("the page config matches the taxonomy in every locale; ko labels for ko, en
     assert.deepEqual(c.platforms, CONTACT_PLATFORM_IDS);
     assert.equal(c.platformAliases["my-world"], "myworld");
     assert.equal(c.lang, lang);
+    // SHAREON (owner 2026-11-04): topics carry no launch / plan label; "planned" labels still render for other platforms
     const deposit = c.topics.shareon.find((t) => t.id === "shareon-deposit");
-    assert.equal(deposit.label, lang === "ko" ? "보증금 · 향후 계획" : "Deposits · future plan", lang);
+    assert.equal(deposit.label, lang === "ko" ? "보증금" : "Deposits", lang);
+    for (const t of c.topics.shareon) assert.doesNotMatch(t.label, /준비 중|향후 계획|in preparation|future plan/, `${lang} ${t.id}`);
+    const pregnancy = c.topics.babylog.find((t) => t.id === "babylog-pregnancy");
+    assert.equal(pregnancy.label, lang === "ko" ? "임신·출산 · 향후 계획" : "Pregnancy & birth · future plan", lang);
     const records = c.topics.petlog.find((t) => t.id === "petlog-records");
     assert.equal(records.label, lang === "ko" ? "반려동물 기록 · 출시 준비 중" : "Pet records · launch in preparation", lang);
     for (const [k, v] of Object.entries(c.t)) if (k !== "counterSuffix") assert.ok(typeof v === "string" && v.length, `${lang} ${k} message`);

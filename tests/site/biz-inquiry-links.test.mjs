@@ -34,7 +34,7 @@ const TAXONOMY = path.join(ROOT, "scripts", "contact-taxonomy.mjs");
 if (fs.existsSync(TAXONOMY)) TOPICS = new Set(Object.keys((await import(TAXONOMY)).CONTACT_TOPIC_INDEX));
 const FALLBACK_TOPICS = new Set([
   "ongil-senior", "ongil-guardian", "ongil-caregiver", "ongil-health", "ongil-welfare", "ongil-services", "ongil-bug", "ongil-partnership",
-  "shareon-sharing", "shareon-booking", "shareon-trade", "shareon-deposit", "shareon-payment", "shareon-dispute", "shareon-report",
+  "shareon-sharing", "shareon-space", "shareon-booking", "shareon-trade", "shareon-deposit", "shareon-payment", "shareon-dispute", "shareon-report",
   "shareon-provider", "shareon-business", "shareon-partnership",
   "babylog-pregnancy", "babylog-parenting", "babylog-growth", "babylog-family", "babylog-school", "babylog-safety", "babylog-institution",
   "babylog-bug", "babylog-partnership",

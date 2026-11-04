@@ -116,7 +116,7 @@ function hero(c, lang, id, h, main, sub) {
 /** Thin strip directly under the menu bar: the one shared notice per page (per-card status badges were removed in V2). */
 function status(c) {
   return `<div class="nsh-wrap nsh-status">
-    <p class="nsh-status__note"><span class="nsh-status__pilot" lang="en">Pilot</span><span class="nsh-vh">${e(c.statusLabel)}: </span>${e(c.statusNote)}</p>
+    <p class="nsh-status__note"><span class="nsh-status__pilot" lang="en">Notice</span><span class="nsh-vh">${e(c.statusLabel)}: </span>${e(c.statusNote)}</p>
   </div>`;
 }
 
@@ -463,11 +463,10 @@ function overview(c, lang) {
     sec(
       "connect",
       `${rowHead("connect", o.connect)}${matrix(c, o.connect.rest)}
-    <p class="nsh-more">${link(`${pageHref(lang, "platform")}#nsh-flow`, c.lang === "ko" ? "7단계 대여 흐름 보기" : "See the seven-step rental flow")}</p>`
+    <p class="nsh-more">${link(`${pageHref(lang, "platform")}#nsh-flow`, c.lang === "ko" ? "6단계 이용 흐름 보기" : "See the six-step rental flow")}</p>`
     ),
     role,
     sec("diff", `${rowHead("diff", o.diff)}${table("diff", o.diff, ["alt", "pain", "ours"], { accent: "ours" })}`),
-    phase("status", o.status, "tint"),
     steps("eco", o.eco, o.eco.items, { more: `<p class="nsh-more">${link(pageHref(lang, "business"), o.eco.cta)}</p>` }),
     /* Global vision (2026-10-26): long-term direction only; details on Business #nsh-global */
     stack("global", o.global, ["local", "global", "trust"], { mod: "tint", more: `<p class="nsh-more">${link(`${pageHref(lang, "business")}#nsh-global`, o.global.cta)}</p>` }),
@@ -505,10 +504,10 @@ function platform(c, lang) {
   const G = Object.fromEntries(p.groups.map((g) => [g.id, g]));
   const S = (gid) => p.services.filter((s) => s.g === gid);
 
-  /* Index — five group columns of anchor links (area numbers 01–18 are IDs used across the page) */
+  /* Index — five group columns of anchor links (area numbers are IDs used across the page) */
   const index = sec(
     "index",
-    `${rowHead("index", { kicker: "18 BUSINESS AREAS", title: p.indexTitle, lead: p.indexLead })}
+    `${rowHead("index", { kicker: p.indexKicker, title: p.indexTitle, lead: p.indexLead })}
     <div class="nsh-index">${p.groups
       .map(
         (g) => `<div class="nsh-index__group"><p class="nsh-index__k" lang="en">${e(g.kicker)}</p><p class="nsh-index__t">${e(g.title)}</p><ul class="nsh-index__list" role="list">${S(g.id)
@@ -586,7 +585,7 @@ function platform(c, lang) {
     "tint"
   );
 
-  /* Rental flow — 7 steps (a real sequence); payment and settlement are dashed (legend below) */
+  /* Rental flow — six steps (a real sequence) and one neutral note (2026-11-04: no per-feature status table) */
   const f = p.flow;
   const flow = sec(
     "flow",
@@ -600,22 +599,7 @@ function platform(c, lang) {
         </li>`
       )
       .join("")}</ol>
-    <p class="nsh-callout nsh-flow__legend"><span class="nsh-flow__key" aria-hidden="true"></span><span>${e(f.legend)}</span></p>
-    <div class="nsh-flow__booking">
-      <h3 class="nsh-flow__bt" id="nsh-booking-t">${e(f.bookingTitle)}</h3>
-      <div class="nsh-table-wrap" role="region" aria-labelledby="nsh-booking-t" tabindex="0">
-        <table class="nsh-table nsh-table--state">
-          <thead><tr><th scope="col">${e(f.booking.head.item)}</th><th scope="col">${e(f.booking.head.what)}</th><th scope="col">${e(f.booking.head.state)}</th></tr></thead>
-          <tbody>${f.booking.rows
-            .map(
-              (r) =>
-                `<tr><th scope="row">${e(r.item)}</th><td data-label="${e(f.booking.head.what)}">${e(r.what)}</td><td data-label="${e(f.booking.head.state)}" class="nsh-state nsh-state--${e(r.tone)}"><span class="nsh-state__dot" aria-hidden="true"></span>${e(r.state)}</td></tr>`
-            )
-            .join("")}</tbody>
-        </table>
-      </div>
-      <p class="nsh-note">${e(f.bookingNote)}</p>
-    </div>`
+    <p class="nsh-callout nsh-flow__legend"><span>${e(f.legend)}</span></p>`
   );
 
   const sc = p.scenarios;
@@ -681,7 +665,6 @@ function platform(c, lang) {
     ${T.note ? `<p class="nsh-callout">${e(T.note)}</p>` : ""}`,
     { mod: "tint" }
   );
-  const statusSec = phase("status", p.status);
 
   /* Global expansion (2026-10-26): services to take abroad + per-country localisation; all under review */
   const GL = p.global;
@@ -727,7 +710,6 @@ function platform(c, lang) {
       users,
       links,
       trust,
-      statusSec,
       globalSec,
       app,
       faq("faq", p.faq),
@@ -753,76 +735,6 @@ function fmt(n, lang) {
 function business(c, lang) {
   const b = c.business;
 
-  /* 10 revenue models — segmented tabs (3 groups) */
-  const k = b.models;
-  const L = k.labels;
-  const tabs = `<div class="nsh-tabs__list" role="tablist" aria-label="${e(k.tabsAria)}" hidden data-nsh-tablist>${k.cats
-    .map(
-      (cat, i) => `<button type="button" role="tab" class="nsh-tabs__tab" id="tab-${e(cat.id)}" aria-controls="panel-${e(cat.id)}" aria-selected="${
-        i === 0 ? "true" : "false"
-      }" tabindex="${i === 0 ? "0" : "-1"}"><span class="nsh-tabs__n" aria-hidden="true">${e(cat.n)}</span><span class="nsh-tabs__label">${e(cat.title)}</span></button>`
-    )
-    .join("")}</div>`;
-  const panels = k.cats
-    .map((cat) => {
-      const items = k.items.filter((it) => it.c === cat.id);
-      return `<div class="nsh-tabs__panel" id="panel-${e(cat.id)}" role="region" aria-labelledby="panel-${e(cat.id)}-t" data-nsh-panel>
-        <div class="nsh-tabs__side">
-          <p class="nsh-tabs__en" lang="en"><span aria-hidden="true">${e(cat.n)} · </span>${e(cat.en)}</p>
-          <h3 class="nsh-tabs__title" id="panel-${e(cat.id)}-t">${e(cat.title)}</h3>
-          <p class="nsh-tabs__count">${items.length} / ${k.items.length}</p>
-        </div>
-        <ul class="nsh-biz" role="list">${items
-          .map(
-            (it) => `<li class="nsh-biz__item">
-              <div class="nsh-biz__top">
-                <span class="nsh-ico-well">${icon(it.icon)}</span>
-                <div class="nsh-biz__name"><p class="nsh-biz__en"><span aria-hidden="true">${e(it.n)} · </span><span lang="en">${e(it.en)}</span></p><h4 class="nsh-biz__title">${e(
-                  it.title
-                )}</h4></div>
-              </div>
-              <dl class="nsh-biz__dl">
-                <div><dt>${e(L.payer)}</dt><dd>${e(it.payer)}</dd></div>
-                <div><dt>${e(L.how)}</dt><dd>${e(it.how)}</dd></div>
-                <div><dt>${e(L.stage)}</dt><dd>${e(it.stage)}</dd></div>
-                ${it.note ? `<div><dt>${e(L.note)}</dt><dd>${e(it.note)}</dd></div>` : ""}
-              </dl>
-            </li>`
-          )
-          .join("")}</ul>
-      </div>`;
-    })
-    .join("");
-  const models = sec("models", `${rowHead("models", k)}<div class="nsh-tabs" data-nsh-tabs>${tabs}${panels}</div>`, "tint");
-
-  /* One rental, illustrated — black band. Fee is on the rental fee only; the deposit is shown apart (not revenue). */
-  const k2 = b.calc;
-  const d = k2.defaults;
-  const field = (name, label, unit, val, attrs) =>
-    `<div class="nsh-calc__field"><label for="calc-${name}">${e(label)}</label><div class="nsh-calc__input"><input id="calc-${name}" name="${name}" type="number" inputmode="numeric" value="${val}" ${attrs} data-nsh-calc-in="${name}" />${
-      unit ? `<span>${e(unit)}</span>` : ""
-    }</div></div>`;
-  const calc = sec(
-    "calc",
-    `<div class="nsh-calc" data-nsh-calc data-lang="${e(lang === "ko" ? "ko-KR" : "en-US")}">
-      ${head("calc", k2.kicker, k2.title, k2.lead, { extra: `<p class="nsh-calc__badge">${e(k2.badge)}</p>`, cls: "nsh-head--side" })}
-      <form class="nsh-calc__form" aria-labelledby="nsh-calc-t">
-        <div class="nsh-calc__fields">
-          ${field("rent", k2.fields.rent, k2.fields.rentUnit, d.rent, 'min="0" max="100000000" step="1000"')}
-          ${field("deposit", k2.fields.deposit, k2.fields.depositUnit, d.deposit, 'min="0" max="100000000" step="1000"')}
-          ${field("rate", k2.fields.rate, k2.fields.rateUnit, d.rate, 'min="0" max="100" step="0.5"')}
-        </div>
-        <dl class="nsh-calc__out" aria-live="polite">
-          <div class="is-fee"><dt>${e(k2.out.fee)}</dt><dd><output data-nsh-calc-out="fee" for="calc-rent calc-rate">0</output> <span>${e(k2.currency)}</span></dd></div>
-          <div><dt>${e(k2.out.payout)}</dt><dd><output data-nsh-calc-out="payout" for="calc-rent calc-rate">${fmt(d.rent, lang)}</output> <span>${e(k2.currency)}</span></dd></div>
-          <div><dt>${e(k2.out.deposit)}</dt><dd><output data-nsh-calc-out="deposit" for="calc-deposit">${fmt(d.deposit, lang)}</output> <span>${e(k2.currency)}</span></dd></div>
-        </dl>
-        <p class="nsh-calc__note">${e(k2.note)}</p>
-      </form>
-    </div>`,
-    "ink"
-  );
-
   const s = b.saas;
   const saas = sec(
     "saas",
@@ -845,26 +757,6 @@ function business(c, lang) {
     </figure>`
   );
 
-  /* Roadmap — four priorities side by side (current one highlighted), then the P0–P7 development stages table */
-  const rm = b.roadmap;
-  const roadmap = split(
-    "roadmap",
-    rm,
-    `<ol class="nsh-timeline" role="list">${rm.steps
-      .map(
-        (st, i) => `<li class="nsh-timeline__item${i === 0 ? " is-now" : ""}"><p class="nsh-timeline__n" lang="en">STEP ${e(st.n)}</p><div><h3 class="nsh-timeline__title">${e(st.title)}${
-          st.tag ? ` <span class="nsh-tag">${e(st.tag)}</span>` : ""
-        }</h3><p class="nsh-timeline__body">${e(st.body)}</p></div></li>`
-      )
-      .join("")}</ol>
-    <div class="nsh-flow__booking">
-      <h3 class="nsh-flow__bt" id="nsh-phases-t">${e(rm.phasesTitle)}</h3>
-      ${table("phases", rm.phases, ["n", "work", "goal"])}
-      <p class="nsh-note">${e(rm.phasesNote)}</p>
-    </div>`,
-    { extra: `<p class="nsh-now"><span class="nsh-now__dot" aria-hidden="true"></span>${e(rm.now)}</p>` }
-  );
-
   /* Global go-to-market (2026-10-26): five stages, customer groups abroad and revenue models under review */
   const gb = b.global;
   const globalSec = steps("global", gb, gb.steps, {
@@ -878,9 +770,6 @@ function business(c, lang) {
 
   const pr = b.principles;
   const principles = sec("principles", `${rowHead("principles", pr)}${checks(pr.items)}`);
-  const pay = b.payment;
-  const payment = sec("payment", `${rowHead("payment", pay)}${spec(pay.items, { cols: 3 })}`, "tint");
-
   const mk = b.market;
   const market = split("market", mk, rows(mk.rows.map((r) => ({ ...r, titleHtml: roleTitle(r.title) })), { showN: true, cls: "nsh-rows--role nsh-rows--cols" }), { mod: "tint" });
 
@@ -893,15 +782,9 @@ function business(c, lang) {
         `${table("payers", b.payers, ["who", "use", "pay"])}<div class="nsh-flow__booking"><h3 class="nsh-flow__bt">${e(b.payers.logicTitle)}</h3>${spec(b.payers.logic, { cols: 4, cls: "nsh-spec--tiles" })}</div>`
       ),
       sec("structure", `${rowHead("structure", b.structure)}${flows(c, b.structure.rest)}`),
-      models,
-      sec("subs", `${rowHead("subs", b.subs, { cls: "nsh-head--display" })}${table("subs", b.subs, ["item", "now", "plan"], { accent: "plan", muted: "now" })}`),
-      calc,
-      trio("small", b.small, { numbered: true }),
-      payment,
       saas,
       market,
       steps("entry", b.entry, b.entry.items, { mod: "accent" }),
-      roadmap,
       globalSec,
       principles,
       closing("next", b.next, [

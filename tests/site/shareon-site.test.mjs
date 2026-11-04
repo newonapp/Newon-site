@@ -35,54 +35,82 @@ test("five SHAREON pages exist in all nine locales with SEO basics", () => {
   }
 });
 
-test("counts follow the final plan: 18 areas, 10 revenue models, 10 partner types, 11 inquiry types, 7-step flow", () => {
+test("structure follows the 2026-11-04 refresh: goods fields, 7 space groups with 35 categories, 4 trade types, 6-step flow, 10 partner types, 11 inquiry types", () => {
+  const SPACE35 = [
+    "회의·비즈니스", "사무실·공유오피스", "교육·강의·연수", "전시·갤러리", "팝업스토어·쇼룸", "매장·상업시설", "컨벤션·대형 행사",
+    "사진·영상 촬영", "방송·녹음·제작", "음악·댄스 연습", "공연·극장", "영화·상영", "공방·창작", "독서·문화모임",
+    "파티·프라이빗 모임", "카페·라운지", "레스토랑·다이닝", "공유주방·쿠킹", "웨딩·가족행사", "루프탑·테라스·정원",
+    "실내 스포츠", "야외 스포츠·레저", "피트니스·웰니스", "뷰티·미용", "반려동물 공간",
+    "독채·숙박·워크숍", "한옥·전통문화", "단기 주거·생활",
+    "창고·보관", "작업장·산업시설", "물류·상하차", "주차·차고",
+    "캠핑·야외 부지", "농업·원예 공간", "연구·실험·특수시설",
+  ];
   for (const c of [KO, EN]) {
-    assert.equal(c.platform.services.length, 18);
-    assert.equal(c.business.models.items.length, 10);
+    assert.deepEqual(c.trades.map((t) => t.en), ["C2C", "B2C", "C2B", "B2B"]);
+    const spaces = c.platform.services.filter((s) => s.g === "c");
+    assert.equal(spaces.length, 7, "seven space groups");
+    assert.equal(spaces.flatMap((s) => s.chips).length, 35, "35 space categories");
     assert.equal(c.partnerships.types.items.length, 10);
     assert.equal(c.contact.items.length, 11);
-    assert.equal(c.platform.flow.steps.length, 7);
-    // payment and settlement are the steps marked as not operating
-    assert.deepEqual(c.platform.flow.steps.filter((s) => s.off).map((s) => s.n), ["04", "07"]);
+    assert.equal(c.platform.flow.steps.length, 6);
+    assert.ok(c.platform.flow.steps.every((s) => !s.off), "no step is marked as not operating");
+    assert.equal(new Set(c.platform.services.map((s) => s.n)).size, c.platform.services.length);
+    for (const gone of ["status", "glance"]) assert.ok(!(gone in c.overview), `overview.${gone}`);
+    for (const gone of ["status"]) assert.ok(!(gone in c.platform), `platform.${gone}`);
+    for (const gone of ["models", "subs", "calc", "small", "payment", "roadmap", "glance"]) assert.ok(!(gone in c.business), `business.${gone}`);
   }
+  assert.deepEqual(KO.platform.services.filter((s) => s.g === "c").flatMap((s) => s.chips), SPACE35, "space taxonomy (S13 final, 2026-11-02)");
+  // the owner-confirmed goods fields all appear in the Korean platform copy
+  const plat = JSON.stringify(KO.platform.services);
+  for (const f of ["생활", "가전", "디지털·IT", "촬영", "스포츠·레저", "캠핑", "여행", "육아", "반려동물", "의료·재활", "시니어", "가구·인테리어", "사무·OA", "교육", "청소", "주방", "미용", "헬스", "패션·명품", "행사·공연", "산업·건설", "물류", "농업", "연구"]) assert.ok(plat.includes(f), f);
   const ko = (p) => read(`ko/${p}/index.html`);
-  assert.equal((ko("shareon/platform").match(/id="svc-\d\d"/g) || []).length, 18);
-  assert.equal((ko("shareon/business").match(/class="nsh-biz__item"/g) || []).length, 10);
+  assert.equal((ko("shareon/platform").match(/id="svc-\d\d"/g) || []).length, KO.platform.services.length);
   assert.equal((ko("shareon/partnerships").match(/class="nsh-dir__row"/g) || []).length, 10);
   // Contact (owner 2026-10-26, ONGIL-style kit): the 11 inquiry types are rows with one "문의하기" each
   assert.equal((ko("shareon/contact").split('id="bct-types"')[1].split("</section>")[0].match(/class="bct-tlist__go"/g) || []).length, 11);
-  assert.equal((ko("shareon/platform").match(/class="nsh-track__step is-off"/g) || []).length, 2);
+  assert.equal((ko("shareon/platform").match(/class="nsh-track__step is-off"/g) || []).length, 0);
   // inquiry types separate usage/joining from partner/institution/external inquiries, incl. press and investment
   const groups = KO.contact.items.map((it) => it.g);
   assert.deepEqual([...new Set(groups)], ["trade", "partner"]);
   assert.ok(KO.contact.items.some((it) => it.slug === "media") && KO.contact.items.some((it) => it.slug === "investment"));
 });
 
-test("no per-card status badges; exactly one shared notice per page", () => {
+test("no per-card status badges; exactly one shared neutral notice per page; no launch / development status", () => {
   for (const lang of LANGS) {
     for (const p of SHAREON_PAGES) {
       const html = read(`${lang}/${p.path}/index.html`);
       assert.equal((html.match(/class="nsh-badge/g) || []).length, 0, `${lang}/${p.path} badges`);
       assert.equal((html.match(/class="nsh-status__note"/g) || []).length, 1, `${lang}/${p.path} notice`);
+      assert.doesNotMatch(html, /class="nsh-phase__col|nsh-table--state|data-nsh-calc|class="nsh-biz__item"/, `${lang}/${p.path} status board, calculator or revenue-model tabs`);
     }
   }
-  assert.ok(KO.statusNote.includes("향후 개발 또는 운영 방향"));
-  // status is expressed by group columns, not per-card labels
-  assert.ok((read("ko/shareon/platform/index.html").match(/class="nsh-phase__col /g) || []).length >= 3);
+  assert.equal(KO.statusNote, "SHAREON의 서비스 이용은 모바일 앱을 통해 이루어지며, 본 웹사이트에서는 예약 및 결제 기능을 제공하지 않습니다.");
+  for (const lang of ["ko", "en"]) {
+    for (const p of SHAREON_PAGES) {
+      const t = text(read(`${lang}/${p.path}/index.html`));
+      assert.doesNotMatch(t, /개발 중|개발 예정|출시 준비|출시 전|미출시|출시되지|출시 일정|준비 중|검토 단계|향후 계획|개발 환경|추가 개발|설계 단계|꺼져 있|P[0-7]\b|in development|not launched|has not launched|in preparation|launch is being|under review|future plan|not operating|switched off/i, `${lang}/${p.path} status wording`);
+      assert.doesNotMatch(t, /동네|이웃 간|한 동네|세 카테고리|18개|열여덟|14개 (핵심 )?사업군|neighbourhood|neighborhood|eighteen|18 (business )?areas/i, `${lang}/${p.path} old structure`);
+      assert.doesNotMatch(t, /계약을 맺은 파트너사는 없습니다|계약한 파트너사는 없습니다|no contracted partners|no partners under contract/i, `${lang}/${p.path} contract status`);
+    }
+  }
 });
 
-test("no fee rates, prices or currency amounts are shown", () => {
+test("no fee rates, fee calculation, PG cost, prices or currency amounts are shown", () => {
   for (const lang of LANGS) {
     for (const p of SHAREON_PAGES) {
       const t = text(read(`${lang}/${p.path}/index.html`));
       assert.doesNotMatch(t, /\d\s*%/, `${lang}/${p.path} percent`);
-      assert.doesNotMatch(t, /₩\s*\d|\d\s*₩/, `${lang}/${p.path} won`);
+      assert.doesNotMatch(t, /₩\s*\d|\d\s*₩|\d\s*원\b/, `${lang}/${p.path} won`);
       assert.doesNotMatch(t, /9,900|29,900|99,000/, `${lang}/${p.path} subscription prices`);
+      assert.doesNotMatch(t, /\d+\s*(일|시간|분|days?|hours?|minutes?)\b.{0,12}(전|이내|기준|before|within)/i, `${lang}/${p.path} policy time limit`);
     }
   }
-  // the hypothetical calculator keeps an empty fee-rate field
-  const biz = read("ko/shareon/business/index.html");
-  assert.match(biz, /id="calc-rate" name="rate" type="number" inputmode="numeric" value=""/);
+  for (const lang of ["ko", "en"]) {
+    for (const p of SHAREON_PAGES) {
+      const t = text(read(`${lang}/${p.path}/index.html`));
+      assert.doesNotMatch(t, /수수료율|요율|결제대행 수수료|지급대행 비용|최소 수수료|fee rate|commission rate|PG fee|payout cost|minimum fee/i, `${lang}/${p.path} fee detail`);
+    }
+  }
 });
 
 test("fallback locales show no Korean and English locales keep EN body", () => {
@@ -111,8 +139,9 @@ test("no claims that future infrastructure is offered; excluded areas stay off t
       for (const term of terms) assert.ok(!t.includes(term), `${lang}/${p.path} mentions ${term}`);
     }
   }
+  // the website never offers booking or payment (one neutral sentence instead of a status)
   const ko = text(read("ko/shareon/platform/index.html"));
-  assert.ok(ko.includes("결제·보증금은 운영하지 않습니다") || ko.includes("결제·보증금은 아직 운영되지 않습니다") || ko.includes("운영하지 않습니다"));
+  assert.ok(ko.includes("본 웹사이트에서는 예약 및 결제 기능을 제공하지 않습니다"));
 });
 
 test("inquiry links open the unified Contact page (platform + type + source) and internal links resolve", () => {

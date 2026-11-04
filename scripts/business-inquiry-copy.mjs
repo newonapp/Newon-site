@@ -133,7 +133,7 @@ const KO = {
   plats: {
     babylog: "임신·출산·육아·성장 기록 앱을 중심으로 보육·교육기관 SaaS, 육아 브랜드·기업 가족복지 솔루션, 공공 육아지원 정보, 육아 상품·서비스 연결, 해외 라이선싱으로 확장하는 패밀리 라이프 플랫폼입니다.",
     petlog: "반려동물의 일상·건강 기록을 기반으로 커뮤니티·커머스, 동물병원·미용·돌봄 등 적격 사업자 연결, 반려동물 사업자용 SaaS, 동물복지 공공 협력과 글로벌 라이선싱으로 확장하는 반려생활 플랫폼입니다.",
-    shareon: "개인과 기업의 실물 자산 공유·대여(C2C·B2C·C2B·B2B)를 기반으로 대여업체·공간 운영자 입점, 기업 자산 공유, SaaS·공공·글로벌 분야로 확장을 준비하는 공유경제 플랫폼입니다. 앱 출시 전으로 실제 대여·결제·정산은 운영되지 않습니다.",
+    shareon: "개인과 기업이 물품·장비·공간을 C2C·B2C·C2B·B2B로 공유·대여하는 플랫폼입니다. 대여업체·공간 운영자 입점, 기업 자산 대여, 공공·글로벌 협력을 문의할 수 있습니다.",
     ongil: "시니어의 일상, 가족 연결, 건강 생활, 돌봄·복지 정보를 기반으로 돌봄 사업자 도구, 요양·복지기관 SaaS, 기업 임직원 가족 돌봄 복지, 공공·지자체 협력, 글로벌 라이선스로 확장하는 시니어 라이프 플랫폼입니다.",
   },
 
@@ -305,7 +305,7 @@ const EN = {
   plats: {
     babylog: "A family-life platform built around an app for pregnancy, birth, parenting and growth records, expanding into SaaS for childcare and education institutions, parenting-brand and employee family-welfare solutions, public parenting-support information, parenting products and services, and overseas licensing.",
     petlog: "A pet-life platform built on daily and health records for pets, expanding into community and commerce, connections with qualified providers such as vets, groomers and carers, SaaS for pet businesses, public animal-welfare collaboration and global licensing.",
-    shareon: "A sharing-economy platform for renting and sharing physical assets between individuals and businesses (C2C, B2C, C2B, B2B), preparing to expand into rental-business and space-operator listings, business asset sharing, SaaS, public and global areas. The app has not launched, so no rentals, payments or settlements are operating yet.",
+    shareon: "A platform where people and businesses share and rent goods, equipment and spaces across C2C, B2C, C2B and B2B. Inquiries are welcome on rental-business and space-operator listings, business asset rental, and public and global partnerships.",
     ongil: "A senior-life platform built on seniors' daily life, family connection, healthy living, and care and welfare information, expanding into tools for care providers, SaaS for care and welfare facilities, employee family-care welfare, public and local-government collaboration, and global licensing.",
   },
 
