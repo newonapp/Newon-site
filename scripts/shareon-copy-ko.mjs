@@ -205,7 +205,6 @@ export const KO = {
         { name: "BABYLOG", body: "육아·가족 용품 대여와 연결 검토" },
         { name: "PETLOG", body: "반려동물 장비 대여와 연결 검토" },
         { name: "MY WORLD", body: "여행·캠핑 장비 대여와 연결 검토" },
-        { name: "LIVON", body: "생활용품·공구·취미 장비 대여와 연결 검토" },
         { name: "ONGIL", body: "시니어 생활·취미 용품 대여와 연결 검토" },
       ],
     },

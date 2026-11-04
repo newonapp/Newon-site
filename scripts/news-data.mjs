@@ -151,17 +151,17 @@ export const NEWS_ARTICLES = [
     },
     copy: {
       ko: {
-        title: "Newon, 6개 사업 체계로 확장… 생활 앱부터 AI·시니어 플랫폼까지",
-        titleHtml: "Newon, 6개 사업 체계로 확장…<br />생활 앱부터 AI·시니어 플랫폼까지",
+        title: "Newon, 5개 사업 체계로 확장… 생활 앱부터 AI·시니어 플랫폼까지",
+        titleHtml: "Newon, 5개 사업 체계로 확장…<br />생활 앱부터 AI·시니어 플랫폼까지",
         summary:
-          "Newon이 기존 모바일 앱 사업을 기반으로 AI, 생애주기 플랫폼, 시니어 생활·돌봄, 기업용 솔루션, 커머스 등 6개 사업 분야를 중심으로 사업 구조를 정비했습니다.",
+          "Newon이 기존 모바일 앱 사업을 기반으로 AI, 시니어 생활·돌봄, 기업용 솔루션, 커머스 등 5개 사업 분야를 중심으로 사업 구조를 정비했습니다.",
         lead:
-          "Newon이 다양한 생활 영역을 연결하는 디지털 서비스 기업으로의 확장을 위해 새로운 6개 사업 체계를 공개했습니다.",
+          "Newon이 다양한 생활 영역을 연결하는 디지털 서비스 기업으로의 확장을 위해 새로운 5개 사업 체계를 공개했습니다.",
         linkLabel: "Newon 사업 소개 보기",
         blocks: [
           {
             type: "p",
-            text: "Newon이 다양한 생활 영역을 연결하는 디지털 서비스 기업으로의 확장을 위해 새로운 6개 사업 체계를 공개했습니다.",
+            text: "Newon이 다양한 생활 영역을 연결하는 디지털 서비스 기업으로의 확장을 위해 새로운 5개 사업 체계를 공개했습니다.",
           },
           {
             type: "p",
@@ -173,7 +173,6 @@ export const NEWS_ARTICLES = [
             items: [
               "Newon Consumer — 모바일 앱 및 소비자 서비스",
               "Newon AI — 개인·기업 AI 서비스",
-              "LivOn — 생애주기 플랫폼",
               "Ongil — 시니어 생활·돌봄 플랫폼",
               "Newon Business — 기업용 SaaS·AI 및 디지털 서비스",
               "Newon Commerce — 커머스 및 생활서비스 연결",
@@ -190,29 +189,28 @@ export const NEWS_ARTICLES = [
         ],
       },
       en: {
-        title: "Newon sets out six businesses, from everyday apps to AI and a senior platform",
-        titleHtml: "Newon sets out six businesses,<br />from everyday apps to AI and a senior platform",
+        title: "Newon sets out five businesses, from everyday apps to AI and a senior platform",
+        titleHtml: "Newon sets out five businesses,<br />from everyday apps to AI and a senior platform",
         summary:
-          "Newon has organized its work around six areas, building on its mobile apps: AI, a life-stage platform, senior living and care, business solutions, and commerce.",
+          "Newon has organized its work around five areas, building on its mobile apps: AI, senior living and care, business solutions, and commerce.",
         lead:
-          "Newon has published a six-business structure as it extends from mobile apps into digital services that connect more of everyday life.",
+          "Newon has published a five-business structure as it extends from mobile apps into digital services that connect more of everyday life.",
         linkLabel: "See Newon's businesses",
         blocks: [
           {
             type: "p",
-            text: "Newon has published a six-business structure as it extends into digital services that connect more of everyday life.",
+            text: "Newon has published a five-business structure as it extends into digital services that connect more of everyday life.",
           },
           {
             type: "p",
             text: "The structure builds on Newon's experience developing and operating mobile apps. It is a direction for services that can, over time, meet needs from personal life and family to seniors and companies.",
           },
-          { type: "p", text: "The six businesses are:" },
+          { type: "p", text: "The five businesses are:" },
           {
             type: "ol",
             items: [
               "Newon Consumer — mobile apps and consumer services",
               "Newon AI — AI services for people and companies",
-              "LivOn — a life-stage platform",
               "Ongil — a senior living and care platform",
               "Newon Business — SaaS, AI, and digital services for companies",
               "Newon Commerce — commerce and everyday-service connections",
@@ -353,6 +351,7 @@ export const NEWS_ARTICLES = [
   businessArticle({
     id: "livon-life-stage",
     slug: "livon-life-stage",
+    published: false, // LIVON was removed from the website (2026-11)
     categoryLabel: "FUTURE BUSINESS",
     brandName: "LivOn",
     linkHref: "/{{LANG}}/lifestage/",

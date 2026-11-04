@@ -1,5 +1,5 @@
 /**
- * Six business sites (ONGIL · LIVON · SHAREON · BABYLOG · PETLOG · MY WORLD) × 5 pages × 9 languages:
+ * Five business sites (ONGIL · SHAREON · BABYLOG · PETLOG · MY WORLD) × 5 pages × 9 languages (LIVON removed 2026-11):
  * every inquiry link opens the unified NEWON Contact page (owner, 2026-10-26).
  *
  *   /{lang}/contact/?platform=<biz>&type=<personal|business|public|partnership|investment|media>[&topic=…]&source=<biz>-<page>
@@ -22,7 +22,7 @@ import { fileURLToPath } from "url";
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 const read = (rel) => fs.readFileSync(path.join(ROOT, rel), "utf8");
 const LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
-const BIZ = ["ongil", "livon", "shareon", "babylog", "petlog", "myworld"];
+const BIZ = ["ongil", "shareon", "babylog", "petlog", "myworld"];
 const PAGES = ["overview", "platform", "business", "partnerships", "contact"];
 const TYPES = ["personal", "business", "public", "partnership", "investment", "media"];
 const rel = (biz, page) => (page === "overview" ? `${biz}/` : `${biz}/${page}/`);
@@ -34,7 +34,6 @@ const TAXONOMY = path.join(ROOT, "scripts", "contact-taxonomy.mjs");
 if (fs.existsSync(TAXONOMY)) TOPICS = new Set(Object.keys((await import(TAXONOMY)).CONTACT_TOPIC_INDEX));
 const FALLBACK_TOPICS = new Set([
   "ongil-senior", "ongil-guardian", "ongil-caregiver", "ongil-health", "ongil-welfare", "ongil-services", "ongil-bug", "ongil-partnership",
-  "livon-lifecycle", "livon-welfare", "livon-living", "livon-account", "livon-ai", "livon-experts", "livon-bug", "livon-partnership",
   "shareon-sharing", "shareon-booking", "shareon-trade", "shareon-deposit", "shareon-payment", "shareon-dispute", "shareon-report",
   "shareon-provider", "shareon-business", "shareon-partnership",
   "babylog-pregnancy", "babylog-parenting", "babylog-growth", "babylog-family", "babylog-school", "babylog-safety", "babylog-institution",
@@ -81,7 +80,7 @@ const ALL = pages();
 const INQUIRY_LABEL = /^(문의하기|Contact us|문의 양식|문의 양식 열기|이메일 보내기|이메일로 문의하기|공식 문의 양식|Form|Email|Send an email|Open the inquiry form|Send an inquiry|お問い合わせ|파트너십 문의하기|파트너십 문의|Partnership inquiry|사업 문의하기|사업 문의|Business inquiry|협력 문의|Partnership inquiries|협력 제안하기|Propose a partnership)\s*[→↓]?$/;
 const RETIRED_LABEL = /^(문의 양식|문의 양식 열기|이메일 보내기|이메일로 문의하기|공식 문의 양식|Form|Email|Send an email|Open the inquiry form)\s*[→↓]?$/;
 
-test("all 30 pages exist for the six businesses (ONGIL's other locales forward to English)", () => {
+test("all 25 pages exist for the five businesses (ONGIL's other locales forward to English)", () => {
   for (const biz of BIZ)
     for (const lang of LANGS)
       for (const page of PAGES) {
@@ -93,7 +92,7 @@ test("all 30 pages exist for the six businesses (ONGIL's other locales forward t
           assert.match(html, new RegExp(`url=/en/ongil/${page}/`), `${file} forwards to EN`);
         }
       }
-  assert.ok(ALL.filter((p) => !isStub(p.html)).length >= 5 * 6 * 2 + 5 * 5 * 7 + 7, "rendered pages");
+  assert.ok(ALL.filter((p) => !isStub(p.html)).length >= 5 * 5 * 2 + 5 * 4 * 7 + 7, "rendered pages");
 });
 
 test("every inquiry link opens /{lang}/contact/ with the business, a valid type and the page as source", () => {

@@ -142,7 +142,6 @@ const KO = {
   platformPlaceholder: "선택해 주세요",
   platforms: {
     newon: "NEWON 전체",
-    livon: "LIVON",
     ongil: "ONGIL",
     shareon: "SHAREON",
     babylog: "BABYLOG",
@@ -355,7 +354,6 @@ const EN = {
   platformPlaceholder: "Please select",
   platforms: {
     newon: "All of NEWON",
-    livon: "LIVON",
     ongil: "ONGIL",
     shareon: "SHAREON",
     babylog: "BABYLOG",

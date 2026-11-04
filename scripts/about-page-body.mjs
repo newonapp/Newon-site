@@ -457,7 +457,7 @@ function buildHtml(copy) {
     <div class="ab-build-board">
       <div class="ab-build-board__head" aria-hidden="true">
         <span class="ab-build-board__live"><i></i> ${escapeHtml(copy.buildBoardLabel || "AREAS")}</span>
-        <span>${escapeHtml(copy.buildBoardTags || "APPS · AI · LIVON · ONGIL · BUSINESS · STUDIO")}</span>
+        <span>${escapeHtml(copy.buildBoardTags || "APPS · AI · ONGIL · BUSINESS · STUDIO")}</span>
       </div>
       <div class="ab-build">${cards}</div>
     </div>

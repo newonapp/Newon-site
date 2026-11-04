@@ -97,7 +97,7 @@ const KO = {
       "플랫폼 간 통합 생태계는 장기적인 비전입니다. 지금은 각 플랫폼과 제품이 독립적으로 운영·구축되고 있습니다.",
     cta: "Newon 생태계 살펴보기 ↗",
     ctaHref: "ecosystem/",
-    names: ["BABYLOG", "PETLOG", "MY WORLD", "SHAREON", "LIVON", "ONGIL", "Apps", "AI", "Business", "Studio", "Games"],
+    names: ["BABYLOG", "PETLOG", "MY WORLD", "SHAREON", "ONGIL", "Apps", "AI", "Business", "Studio", "Games"],
   },
   about: {
     kicker: "04 / PARTNERSHIPS & CONTACT",
@@ -169,7 +169,7 @@ const EN = {
       "A fully connected ecosystem is our long-term vision. Today, each platform and product runs or is being built on its own.",
     cta: "Explore Newon Ecosystem ↗",
     ctaHref: "ecosystem/",
-    names: ["BABYLOG", "PETLOG", "MY WORLD", "SHAREON", "LIVON", "ONGIL", "Apps", "AI", "Business", "Studio", "Games"],
+    names: ["BABYLOG", "PETLOG", "MY WORLD", "SHAREON", "ONGIL", "Apps", "AI", "Business", "Studio", "Games"],
   },
   about: {
     kicker: "04 / PARTNERSHIPS & CONTACT",

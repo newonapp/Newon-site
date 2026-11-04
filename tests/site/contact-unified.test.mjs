@@ -36,7 +36,8 @@ const config = (lang) => JSON.parse(read(`${lang}/contact/index.html`).match(/<s
 test("taxonomy: six inquirers, eleven inquiry types, the spec's topics per platform, unique ids, valid statuses", () => {
   assert.deepEqual(CONTACT_INQUIRER_IDS, ["personal", "company", "organization", "investor", "media", "other"]);
   assert.deepEqual(CONTACT_INQUIRY_IDS, ["general", "service", "support", "bug", "partnership", "listing", "investment", "advertising", "institution", "privacy", "other"]);
-  const want = { livon: 8, ongil: 8, shareon: 10, babylog: 9, petlog: 8, myworld: 9 };
+  const want = { ongil: 8, shareon: 10, babylog: 9, petlog: 8, myworld: 9 };
+  assert.ok(!("livon" in CONTACT_TOPICS) && !CONTACT_PLATFORM_IDS.includes("livon"), "LIVON removed from the contact form (2026-11)");
   for (const [p, n] of Object.entries(want)) assert.equal(CONTACT_TOPICS[p].length, n, `${p} topics`);
   const all = Object.values(CONTACT_TOPICS).flat();
   assert.equal(new Set(all.map((t) => t.id)).size, all.length, "unique topic ids");

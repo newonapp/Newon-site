@@ -111,7 +111,7 @@ const en = {
   introHeading: "Our work",
   introText:
     "From ideas to products, from products to everyday change. These are the digital platforms and products NEWON plans and builds itself — problems found in everyday life, turned into real services that open new possibilities.",
-  introCta: "See the six platforms",
+  introCta: "See the five platforms",
 
   /* 02 · PORTFOLIO OVERVIEW */
   overviewHeading: "Overview",
@@ -119,7 +119,7 @@ const en = {
   overviewLead:
     "Everything here is a product NEWON owns, plans and builds itself. Nothing on this page is client work or a commissioned project.",
   overview: [
-    { number: "01", name: "Six core platforms", body: ["BABYLOG, PETLOG, MY WORLD, SHAREON, LIVON and ONGIL. Six areas of daily life — parenting, pets, travel, sharing, life stages and senior life — each run as its own platform."] },
+    { number: "01", name: "Five core platforms", body: ["BABYLOG, PETLOG, MY WORLD, SHAREON and ONGIL. Five areas of daily life — parenting, pets, travel, sharing and senior life — each run as its own platform."] },
     { number: "02", name: "Standalone apps", body: ["Mobile apps that each focus on one everyday problem in habits and goals, money or health: OX MONTH, GoalUp, CountUp, SAVY, SubPing, PiggyUp, Pillmate and the membership app Newon+."], link: { label: "All NEWON apps →", href: siteHref("apps/") } },
     { number: "03", name: "Digital software", body: ["Free web tools such as a QR code generator, a D-day calculator and a character counter that run in the browser with no install or sign-up."], link: { label: "Newon Tools →", href: siteHref("tools/") } },
     { number: "04", name: "Games", body: ["404: HUMAN is a choice-driven interactive game about surviving as the last human in an AI-only world, playable on the web."], link: { label: "Newon Games →", href: siteHref("games/") } },
@@ -127,11 +127,11 @@ const en = {
     { number: "06", name: "Building and shipping products", body: ["NEWON planned, designed and built 11 mobile apps and released them on the App Store and Google Play, and keeps updating them after launch."] },
   ] as PanelItem[],
 
-  /* 03 · SIX CORE PLATFORMS */
+  /* 03 · FIVE CORE PLATFORMS */
   platformsHeading: "Platforms",
-  platformsTitle: "Six areas of everyday life, connected.",
+  platformsTitle: "Five areas of everyday life, connected.",
   platformsLead:
-    "Each platform focuses on one area of life. The status on every card follows the platform's own page: three apps are released, LIVON is free on the web, ONGIL is a web preview, and the SHAREON, LIVON and ONGIL apps are in preparation.",
+    "Each platform focuses on one area of life. The status on every card follows the platform's own page: three apps are released, ONGIL is a web preview, and the SHAREON and ONGIL apps are in preparation.",
   platformCta: "View platform",
   platforms: [
     {
@@ -173,16 +173,6 @@ const en = {
       role: "For borrowers and owners of items, equipment and spaces · Items · Equipment · Spaces · Mobility",
       slogan: ["Borrow only what you need,", "share what you are not using."],
       lead: "The SHAREON app has not launched: no real rentals, confirmed bookings, payments, deposits or settlements run today. The first launch is being prepared around rentals and spaces with approval-based booking.",
-    },
-    {
-      id: "livon",
-      type: "Free on the web · App in preparation",
-      name: "LIVON",
-      summary:
-        "Life stage. Education, careers, jobs, military service, money, housing, marriage, birth, health, welfare and retirement information is scattered. LIVON starts from your current life stage, from the teens to 70 and over.",
-      role: "For people from their teens to 70+ · Life-stage information · Public programmes · Life records",
-      slogan: ["At every stage of life,", "the next thing you need."],
-      lead: "LIVON is free on the web today with no sign-up, and public programmes are shown with their official source and reference date. The LIVON app is in preparation.",
     },
     {
       id: "ongil",
@@ -290,16 +280,16 @@ const en = {
   milestonesLead:
     "Dates come from the official website's history and published news. Where an exact date cannot be confirmed, only the year is shown.",
   stats: [
-    { value: "6", label: "Core platforms", note: "BABYLOG to ONGIL." },
+    { value: "5", label: "Core platforms", note: "BABYLOG to ONGIL." },
     { value: "11", label: "Released apps", note: "On the App Store and Google Play." },
     { value: "9", label: "Site languages", note: "The official website's locales." },
-    { value: "2", label: "Web platforms", note: "LIVON web and the ONGIL web preview." },
+    { value: "1", label: "Web platforms", note: "The ONGIL web preview." },
   ] as Stat[],
   milestones: [
     { n: "2026.04", title: "Official website", body: ["The first version of the newon.app website went live and began introducing NEWON's services."] },
     { n: "2026", title: "11 mobile apps released", body: ["11 apps NEWON built itself, including BABYLOG, PETLOG and MY WORLD, were released on the App Store and Google Play."] },
-    { n: "2026.09", title: "LIVON and ONGIL", body: ["The life-stage platform LIVON and the senior-life platform ONGIL were introduced on the website, and LIVON opened free on the web."] },
-    { n: "NOW", title: "Six core platforms", body: ["NEWON is organised around six platforms, with Business & Partnerships and NEWON Studio alongside. The SHAREON, LIVON and ONGIL apps are in preparation."] },
+    { n: "2026.09", title: "ONGIL", body: ["The senior-life platform ONGIL was introduced on the website."] },
+    { n: "NOW", title: "Five core platforms", body: ["NEWON is organised around five platforms, with Business & Partnerships and NEWON Studio alongside. The SHAREON and ONGIL apps are in preparation."] },
   ] as Row[],
 
   /* 08 · TECHNOLOGY & CAPABILITIES */
@@ -308,7 +298,7 @@ const en = {
   capabilitiesLead: "Only technology used in NEWON's own products is listed here, with the role it plays.",
   capabilities: [
     { n: "01", title: "Mobile app development", body: ["NEWON apps are built with Flutter, one codebase for iOS and Android, and released on the App Store and Google Play."] },
-    { n: "02", title: "Web service development", body: ["The official website is generated as prebuilt HTML pages by Node.js scripts from shared data and templates. LIVON web has its own server API for data and conversation features."] },
+    { n: "02", title: "Web service development", body: ["The official website is generated as prebuilt HTML pages by Node.js scripts from shared data and templates."] },
     { n: "03", title: "UI/UX design", body: ["Each platform's screens are designed around its users and their record flow, while the official site and platform pages share one design system."] },
     { n: "04", title: "Multilingual service", body: ["The website is generated in nine languages — Korean, English, Japanese, Spanish, Portuguese (Brazil), French, German, Hindi and Indonesian — each with its own URLs and hreflang."] },
     { n: "05", title: "Data integration", body: ["Product names, descriptions and store links are kept in one data source, so the home page, product pages and this portfolio show the same information."] },
@@ -320,7 +310,7 @@ const en = {
   exploreHeading: "Explore NEWON.",
   exploreLead: "Meet NEWON's next possibilities.",
   exploreCtas: [
-    { label: "Explore the six platforms", href: siteHref("business/platforms/") },
+    { label: "Explore the five platforms", href: siteHref("business/platforms/") },
     { label: "NEWON Studio", href: siteHref("studio/") },
     { label: "Business & Partnerships", href: siteHref("business/") },
   ],
@@ -342,13 +332,13 @@ const ko: typeof en = {
   introHeading: "Our work",
   introText:
     "아이디어를 제품으로, 제품을 일상의 변화로. NEWON이 직접 기획하고 개발한 디지털 플랫폼과 제품을 소개합니다. 일상에서 발견한 문제를 실제 서비스로 구현하며 새로운 가능성을 만들어갑니다.",
-  introCta: "6개 플랫폼 보기",
+  introCta: "5개 플랫폼 보기",
 
   overviewHeading: "Overview",
   overviewTitle: "다양한 문제를 하나의 제품 경험으로.",
   overviewLead: "이 페이지의 모든 제품은 NEWON이 직접 소유하고 기획·개발한 것입니다. 고객별 외주 프로젝트나 제작 대행 실적은 포함하지 않습니다.",
   overview: [
-    { number: "01", name: "6개 핵심 플랫폼", body: ["BABYLOG, PETLOG, MY WORLD, SHAREON, LIVON, ONGIL. 육아·반려생활·여행·공유·생애주기·시니어 라이프의 여섯 영역을 각각의 플랫폼으로 직접 기획하고 운영합니다."] },
+    { number: "01", name: "5개 핵심 플랫폼", body: ["BABYLOG, PETLOG, MY WORLD, SHAREON, ONGIL. 육아·반려생활·여행·공유·시니어 라이프의 다섯 영역을 각각의 플랫폼으로 직접 기획하고 운영합니다."] },
     { number: "02", name: "독립형 앱", body: ["습관·목표, 금융, 건강처럼 일상의 한 가지 문제에 집중한 모바일 앱입니다. OX MONTH, GoalUp, CountUp, SAVY, SubPing, PiggyUp, Pillmate와 멤버십 앱 Newon+가 있습니다."], link: { label: "NEWON 앱 전체 보기 →", href: siteHref("apps/") } },
     { number: "03", name: "디지털 소프트웨어", body: ["QR 코드 생성기, 디데이 계산기, 글자 수 세기처럼 설치와 가입 없이 브라우저에서 바로 쓰는 무료 웹 도구를 만듭니다."], link: { label: "Newon Tools →", href: siteHref("tools/") } },
     { number: "04", name: "게임", body: ["404: HUMAN은 AI만 남은 세계에서 마지막 인간으로 살아남는 선택형 인터랙티브 게임으로, 웹에서 바로 플레이할 수 있습니다."], link: { label: "Newon Games →", href: siteHref("games/") } },
@@ -357,9 +347,9 @@ const ko: typeof en = {
   ],
 
   platformsHeading: "Platforms",
-  platformsTitle: "일상의 여섯 가지 영역을 연결합니다.",
+  platformsTitle: "일상의 다섯 가지 영역을 연결합니다.",
   platformsLead:
-    "플랫폼마다 한 영역에 집중합니다. 카드의 상태는 각 플랫폼 페이지의 표기를 그대로 따릅니다. 앱 3개는 출시되었고, LIVON은 웹에서 무료로, ONGIL은 웹 체험판으로 제공하며, SHAREON·LIVON·ONGIL 앱은 준비 중입니다.",
+    "플랫폼마다 한 영역에 집중합니다. 카드의 상태는 각 플랫폼 페이지의 표기를 그대로 따릅니다. 앱 3개는 출시되었고, ONGIL은 웹 체험판으로 제공하며, SHAREON·ONGIL 앱은 준비 중입니다.",
   platformCta: "플랫폼 보기",
   platforms: [
     {
@@ -400,16 +390,6 @@ const ko: typeof en = {
       role: "빌리려는 이용자와 물건·장비·공간을 가진 개인·기업 · 물건 · 장비 · 공간 · 이동수단",
       slogan: ["필요한 만큼만 빌리고,", "쓰지 않을 때는 나눕니다."],
       lead: "SHAREON 앱은 출시 전입니다. 지금은 실제 대여·예약 확정·결제·보증금·정산이 운영되지 않으며, 첫 출시는 대여·공간 중심의 승인형 예약으로 준비하고 있습니다.",
-    },
-    {
-      id: "livon",
-      type: "웹 무료 공개 · 앱 준비 중",
-      name: "LIVON",
-      summary:
-        "생애주기 플랫폼. 교육·진로·취업·군 복무·금융·주거·결혼·출산·건강·복지·은퇴까지 삶의 단계마다 흩어진 정보를 지금의 생애 단계에서 출발해 정리합니다.",
-      role: "10대부터 70대 이상까지 · 생애 단계별 정보 · 공공 제도 안내 · 생활 기록",
-      slogan: ["삶의 단계마다,", "다음에 필요한 것을."],
-      lead: "지금 LIVON 웹을 회원가입 없이 무료로 이용할 수 있고, 공공 제도는 공식 출처와 기준일을 함께 표시합니다. LIVON 앱은 출시 준비 중입니다.",
     },
     {
       id: "ongil",
@@ -510,16 +490,16 @@ const ko: typeof en = {
   milestonesTitle: "하나씩 완성해 온 제품의 기록.",
   milestonesLead: "날짜는 공식 웹사이트 기록과 공개된 소식으로 확인한 범위에서만 표기하고, 정확한 날짜를 확인할 수 없는 항목은 연도만 적습니다.",
   stats: [
-    { value: "6", label: "핵심 플랫폼", note: "BABYLOG부터 ONGIL까지." },
+    { value: "5", label: "핵심 플랫폼", note: "BABYLOG부터 ONGIL까지." },
     { value: "11", label: "출시 앱", note: "App Store·Google Play에 출시." },
     { value: "9", label: "웹사이트 언어", note: "공식 웹사이트의 언어 수." },
-    { value: "2", label: "웹 공개 플랫폼", note: "LIVON 웹, ONGIL 웹 체험판." },
+    { value: "1", label: "웹 공개 플랫폼", note: "ONGIL 웹 체험판." },
   ],
   milestones: [
     { n: "2026.04", title: "공식 웹사이트 시작", body: ["newon.app 공식 웹사이트의 첫 버전을 만들고, NEWON의 서비스를 소개하기 시작했습니다."] },
     { n: "2026", title: "모바일 앱 11개 출시", body: ["BABYLOG, PETLOG, MY WORLD를 포함해 NEWON이 직접 만든 모바일 앱 11개를 App Store와 Google Play에 출시했습니다."] },
-    { n: "2026.09", title: "LIVON·ONGIL 공개", body: ["생애주기 플랫폼 LIVON과 시니어 라이프 플랫폼 ONGIL을 웹사이트에 소개하고, LIVON 웹을 무료로 열었습니다."] },
-    { n: "NOW", title: "6개 핵심 플랫폼 체계", body: ["여섯 개의 핵심 플랫폼을 중심으로 Business & Partnerships와 NEWON Studio를 함께 전개합니다. SHAREON·LIVON·ONGIL 앱은 준비 중입니다."] },
+    { n: "2026.09", title: "ONGIL 공개", body: ["시니어 라이프 플랫폼 ONGIL을 웹사이트에 소개했습니다."] },
+    { n: "NOW", title: "5개 핵심 플랫폼 체계", body: ["다섯 개의 핵심 플랫폼을 중심으로 Business & Partnerships와 NEWON Studio를 함께 전개합니다. SHAREON·ONGIL 앱은 준비 중입니다."] },
   ],
 
   capabilitiesHeading: "Capabilities",
@@ -527,7 +507,7 @@ const ko: typeof en = {
   capabilitiesLead: "NEWON의 실제 제품에서 쓰고 있는 기술만, 제품 구현에서 맡은 역할과 함께 적었습니다.",
   capabilities: [
     { n: "01", title: "모바일 앱 개발", body: ["NEWON 앱은 Flutter로 iOS와 Android를 하나의 코드로 함께 개발하고, App Store와 Google Play에 출시합니다."] },
-    { n: "02", title: "웹 서비스 개발", body: ["공식 웹사이트는 Node.js 스크립트가 공통 데이터와 템플릿으로 정적 페이지를 생성하는 구조입니다. LIVON 웹은 데이터와 대화 기능을 위한 서버 API를 따로 갖추고 있습니다."] },
+    { n: "02", title: "웹 서비스 개발", body: ["공식 웹사이트는 Node.js 스크립트가 공통 데이터와 템플릿으로 정적 페이지를 생성하는 구조입니다."] },
     { n: "03", title: "UI·UX 설계", body: ["플랫폼마다 이용 대상과 기록 흐름에 맞춰 화면을 설계하고, 공식 사이트와 플랫폼 페이지는 하나의 디자인 시스템을 공유합니다."] },
     { n: "04", title: "다국어 서비스", body: ["공식 웹사이트는 한국어·영어·일본어·스페인어·포르투갈어(브라질)·프랑스어·독일어·힌디어·인도네시아어 9개 언어로 생성되며, 언어마다 주소와 hreflang을 따로 둡니다."] },
     { n: "05", title: "데이터 연동", body: ["제품 이름, 설명, 스토어 링크를 한 곳의 데이터에서 관리해 홈, 제품 페이지, 포트폴리오에 같은 정보를 보여 줍니다."] },
@@ -538,7 +518,7 @@ const ko: typeof en = {
   exploreHeading: "Explore NEWON.",
   exploreLead: "NEWON의 다음 가능성을 만나보세요.",
   exploreCtas: [
-    { label: "6개 플랫폼 살펴보기", href: siteHref("business/platforms/") },
+    { label: "5개 플랫폼 살펴보기", href: siteHref("business/platforms/") },
     { label: "NEWON Studio", href: siteHref("studio/") },
     { label: "Business & Partnerships", href: siteHref("business/") },
   ],

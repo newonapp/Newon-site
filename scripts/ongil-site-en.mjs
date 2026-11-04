@@ -316,12 +316,11 @@ export const EN = {
       title: "Where ONGIL fits\nwithin Newon.",
       lead: "ONGIL keeps its own senior brand and experience. Links with other Newon services are at the planning stage, and personal health, location and care data are never combined across apps without explicit consent.",
       items: [
-        { n: "01", name: "LIVON", text: "A life-event information platform. Life-stage information such as retirement planning and welfare schemes is covered by LIVON, while ONGIL focuses on daily life and care in later years.", href: "livon/" },
-        { n: "02", name: "BABYLOG", text: "A family growth record platform. Linking grandparents' shared family activities is under review.", href: "babylog/" },
-        { n: "03", name: "PETLOG", text: "A pet life record. Older adults living with pets can keep their pet's life in PETLOG.", href: "petlog/" },
-        { n: "04", name: "SHAREON", text: "A neighbourhood rental platform. Renting daily-living, hobby and assistive items only as long as needed is under review.", href: "shareon/" },
-        { n: "05", name: "MY WORLD", text: "A travel record app. Travel records are kept in MY WORLD, while ONGIL covers nearby leisure and culture.", href: "myworld/" },
-        { n: "06", name: "Newon Business", text: "Digital tools and a partnership desk for institutions and companies, including workflow automation for care and welfare institutions.", href: "business/" },
+        { n: "01", name: "BABYLOG", text: "A family growth record platform. Linking grandparents' shared family activities is under review.", href: "babylog/" },
+        { n: "02", name: "PETLOG", text: "A pet life record. Older adults living with pets can keep their pet's life in PETLOG.", href: "petlog/" },
+        { n: "03", name: "SHAREON", text: "A neighbourhood rental platform. Renting daily-living, hobby and assistive items only as long as needed is under review.", href: "shareon/" },
+        { n: "04", name: "MY WORLD", text: "A travel record app. Travel records are kept in MY WORLD, while ONGIL covers nearby leisure and culture.", href: "myworld/" },
+        { n: "05", name: "Newon Business", text: "Digital tools and a partnership desk for institutions and companies, including workflow automation for care and welfare institutions.", href: "business/" },
       ],
     },
     next: {

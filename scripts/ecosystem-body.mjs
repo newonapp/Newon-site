@@ -117,15 +117,6 @@ export function renderEcosystemSection(lang) {
     .map((item, i) => `<li><span>${String(i + 1).padStart(2, "0")}</span><p>${escapeHtml(item)}</p></li>`)
     .join("");
 
-  const livonStages = c.livonRows
-    .map(
-      (r, i) => `<article class="eco-stage" data-eco-reveal data-eco-delay="${Math.min(i, 4)}">
-      <span class="eco-stage__n">${String(i + 1).padStart(2, "0")}</span>
-      <h3 class="eco-stage__title">${escapeHtml(r.label)}</h3>
-      <div class="eco-chips">${chipsFor(r.slugs, bySlug)}</div>
-    </article>`
-    )
-    .join("");
   const ongilRails = c.ongilRows
     .map(
       (r, i) => `<li class="eco-rail__item" data-eco-reveal data-eco-delay="${Math.min(i, 4)}">
@@ -276,15 +267,6 @@ export function renderEcosystemSection(lang) {
     </div>
   </section>
 
-  <section class="eco-block eco-expand" id="eco-livon" aria-labelledby="eco-livon-title">
-    <div class="eco-wrap">
-      ${head(c.livonKicker, c.livonTitleHtml, "eco-livon-title", c.livonLead)}
-      <div class="eco-stages">${livonStages}</div>
-      <p class="eco-note"><em class="eco-badge">${escapeHtml(c.livonBadge)}</em> ${escapeHtml(c.livonNote)}</p>
-      <p class="eco-more"><a href="${escapeHtml(c.livonHref)}">${escapeHtml(c.livonCta)}</a></p>
-    </div>
-  </section>
-
   <section class="eco-block eco-expand eco-expand--rail" id="eco-ongil" aria-labelledby="eco-ongil-title">
     <div class="eco-wrap">
       ${head(c.ongilKicker, c.ongilTitleHtml, "eco-ongil-title", c.ongilLead)}
@@ -308,12 +290,6 @@ export function renderEcosystemSection(lang) {
         <div class="eco-spine__strip">${visionStrip}</div>
         <p class="eco-spine__to"><span class="eco-badge">${escapeHtml(c.visionFuture)}</span></p>
         <div class="eco-spine__next">
-          <a class="eco-spine__card" href="${escapeHtml(c.livonHref)}">
-            <strong>LivOn</strong>
-            <span>${escapeHtml(c.visionLivonRole)}</span>
-            <em>${escapeHtml(c.visionLivonWho)}</em>
-            <b class="eco-badge">${escapeHtml(c.nextBadge)}</b>
-          </a>
           <a class="eco-spine__card" href="${escapeHtml(c.ongilHref)}">
             <strong>Ongil</strong>
             <span>${escapeHtml(c.visionOngilRole)}</span>
@@ -334,7 +310,6 @@ export function renderEcosystemSection(lang) {
         <a class="eco-btn eco-btn--ghost" href="${escapeHtml(c.ctaAppsHref)}">${escapeHtml(c.ctaApps)}</a>
       </div>
       <p class="eco-actions eco-actions--sub" data-eco-reveal>
-        <a href="${escapeHtml(c.livonHref)}">${escapeHtml(c.ctaLivon)}</a>
         <a href="${escapeHtml(c.ongilHref)}">${escapeHtml(c.ctaOngil)}</a>
       </p>
     </div>

@@ -28,13 +28,12 @@ export const ST_NAV = STUDIO_PAGES.map((p) => ({ ...p, sub: p.sub.replace(/\/$/,
 /** First-screen film of every Studio screen (owner choice 2026-10-19; constant owned by studio-film-copy.mjs). */
 export const ST_FILM = STUDIO_PAGE_FILM_SRC;
 
-/** The six platforms (order = NEWON business row). `site` = the platform's own website folder. */
+/** The platforms (order = NEWON business row; LIVON removed from the website 2026-11). `site` = the platform's own website folder. */
 export const ST_PLATFORMS = [
   { id: "babylog", name: "BABYLOG", site: "babylog", category: "Parenting & Family" },
   { id: "petlog", name: "PETLOG", site: "petlog", category: "Pet Life" },
   { id: "myworld", name: "MY WORLD", site: "myworld", category: "Travel & Experience" },
   { id: "shareon", name: "SHAREON", site: "shareon", category: "Asset Sharing & Rental" },
-  { id: "livon", name: "LIVON", site: "livon", category: "Life Stage" },
   { id: "ongil", name: "ONGIL", site: "ongil", category: "Senior Life" },
 ];
 

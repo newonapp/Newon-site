@@ -27,7 +27,6 @@ const KO = {
         PETLOG: "반려동물과 아이가 함께하는 가족생활",
         "MY WORLD": "가족 여행·체험과 그 추억",
         SHAREON: "육아·가족 용품의 대여",
-        LIVON: "임신·출산·가족 제도, 진로, 성인 전환 이후의 생활",
         ONGIL: "조부모·가족 돌봄과 세대 활동",
       },
     },
@@ -120,7 +119,7 @@ const KO = {
         "25": {
           now: "향후 계획 영역입니다. 실제 기관 연계는 검증된 협력과 보호 체계를 갖춘 뒤 진행합니다.",
           fields: { k: "영역", v: "주요 서비스" },
-          rows: [["주거", "자립 주거·공식 지원 제도"], ["교육", "장학금·교육·자격증"], ["취업", "채용·직무·경력 준비"], ["금융", "생활 예산·금융 교육"], ["상담", "공식 상담기관 연결"], ["멘토링", "검증된 멘토·기관 프로그램"], ["생활", "계약·행정·일상 관리"], ["LIVON 연결", "성인 생활·취업·주거 관리"]],
+          rows: [["주거", "자립 주거·공식 지원 제도"], ["교육", "장학금·교육·자격증"], ["취업", "채용·직무·경력 준비"], ["금융", "생활 예산·금융 교육"], ["상담", "공식 상담기관 연결"], ["멘토링", "검증된 멘토·기관 프로그램"], ["생활", "계약·행정·일상 관리"]],
           note: "자립준비청년의 개인정보와 보호 이력은 특히 민감하므로 일반 커뮤니티나 광고 타기팅에 쓰지 않습니다.",
         },
       },
@@ -192,7 +191,6 @@ const KO = {
       lead: "BABYLOG는 다른 NEWON 플랫폼과 역할을 나누어, 같은 가족에게 같은 서비스를 두 번 팔거나 한 거래에 수수료를 이중으로 매기지 않는 구조를 원칙으로 합니다.",
       fields: { platform: "플랫폼", link: "BABYLOG와 이어지는 지점", split: "역할 구분" },
       items: [
-        ["LIVON", "임신·출산·가족·진로·성인 전환", "출산 지원금·육아휴직 같은 생활 제도 안내는 LIVON, 아이의 기록과 육아는 BABYLOG"],
         ["SHAREON", "육아·가족 용품 대여", "쇼핑·중고·공동구매는 BABYLOG 마켓, 대여는 SHAREON. 한 거래에 수수료를 이중으로 매기지 않습니다."],
         ["PETLOG", "반려동물과 아이가 함께하는 가족생활", "반려동물 기록과 서비스는 PETLOG"],
         ["ONGIL", "조부모·가족 돌봄과 세대 활동", "시니어 생활·돌봄은 ONGIL, 손주 돌봄 기록 공유는 BABYLOG 가족 공유"],
@@ -311,7 +309,6 @@ const EN = {
         PETLOG: "Family life with children and pets together",
         "MY WORLD": "Family trips, experiences and their memories",
         SHAREON: "Renting baby and family goods",
-        LIVON: "Pregnancy, birth and family benefits, careers and life after the adult transition",
         ONGIL: "Grandparent and family care and activities across generations",
       },
     },
@@ -402,7 +399,7 @@ const EN = {
         "25": {
           now: "A planned area. Real institution cooperation proceeds only after verified partnerships and protection systems are in place.",
           fields: { k: "Area", v: "Main services" },
-          rows: [["Housing", "Independent housing and official support"], ["Education", "Scholarships, education and certificates"], ["Jobs", "Hiring, job skills and career preparation"], ["Money", "Living budgets and financial education"], ["Counseling", "Links to official counseling agencies"], ["Mentoring", "Verified mentors and institution programs"], ["Daily life", "Contracts, paperwork and daily management"], ["LIVON link", "Adult life, jobs and housing"]],
+          rows: [["Housing", "Independent housing and official support"], ["Education", "Scholarships, education and certificates"], ["Jobs", "Hiring, job skills and career preparation"], ["Money", "Living budgets and financial education"], ["Counseling", "Links to official counseling agencies"], ["Mentoring", "Verified mentors and institution programs"], ["Daily life", "Contracts, paperwork and daily management"]],
           note: "The personal data and care history of young people leaving care are especially sensitive and are never used in the general community or for ad targeting.",
         },
       },
@@ -470,7 +467,6 @@ const EN = {
       lead: "BABYLOG divides roles with the other NEWON platforms, on the principle of never selling the same service twice to the same family or charging two fees on one transaction.",
       fields: { platform: "Platform", link: "Where it meets BABYLOG", split: "Who does what" },
       items: [
-        ["LIVON", "Pregnancy, birth, family, careers and the adult transition", "Life benefits such as birth grants and parental leave are guided by LIVON; the child's records and parenting are BABYLOG"],
         ["SHAREON", "Renting baby and family goods", "Shopping, used goods and group buying are the BABYLOG market; rental is SHAREON. One transaction never carries two fees."],
         ["PETLOG", "Family life with children and pets together", "Pet records and services are PETLOG"],
         ["ONGIL", "Grandparent and family care and activities across generations", "Senior life and care are ONGIL; sharing a grandchild's care records is BABYLOG family sharing"],

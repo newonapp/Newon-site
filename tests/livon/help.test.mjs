@@ -746,7 +746,7 @@ test('HF-52 anonymous mode: Help needs no account and tells the reader none exis
   assert.doesNotMatch(text(a.T.viewHome()), /로그인하세요|로그인이 필요|회원가입 후/);
 });
 
-test('HF-53 build: the Help files are part of the published LIVON page, the Admin is not', () => {
+test('HF-53 build: the Help files are part of the published LIVON page, the Admin is not', { skip: 'LIVON was removed from the website (2026-11): publish-site no longer publishes /livon/ (only the shared livon-api-config.js)' }, () => {
   for (const f of ['help-data.js', 'help-page.js', 'help-page.css']) {
     assert.ok(fs.existsSync(path.join(ROOT, 'livon', f)), f);
     assert.equal(INDEX.split('/livon/' + f + '?v=').length - 1, 1, f + ' referenced once with a version');

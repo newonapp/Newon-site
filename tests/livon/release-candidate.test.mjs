@@ -339,7 +339,7 @@ test('RC-3 secret scan: no real key, token or private key in the source or in th
   assert.match(src('tests/livon/ai-activation.test.mjs'), /sk-test-placeholder/);
 });
 
-test('RC-4 build: publish-site runs the LIVON steps in order and stops on any failure', () => {
+test('RC-4 build: publish-site runs the LIVON steps in order and stops on any failure', { skip: 'LIVON was removed from the website (2026-11): publish-site no longer publishes /livon/ (only the shared livon-api-config.js)' }, () => {
   assert.equal(spawnSync(process.execPath, ['--check', path.join(ROOT, 'scripts/publish-site.mjs')]).status, 0);
   const order = ['render-livon-life-routes.mjs', 'render-livon-today-routes.mjs', 'livon-seo-build.mjs', 'livon-seo-quality.mjs', 'livon-accessibility-quality.mjs', 'livon-performance-quality.mjs'].map(s => PUBLISH.indexOf(s));
   for (const i of order) assert.ok(i > 0);
@@ -347,7 +347,7 @@ test('RC-4 build: publish-site runs the LIVON steps in order and stops on any fa
   assert.ok((PUBLISH.match(/\.status === 0 \|\| process\.exit\(1\)/g) || []).length >= 4, 'each LIVON step is fatal on failure');
 });
 
-test('RC-5 publish exclusions: Admin/Data Manager removed and verified; source-only folders never copied', () => {
+test('RC-5 publish exclusions: Admin/Data Manager removed and verified; source-only folders never copied', { skip: 'LIVON was removed from the website (2026-11): publish-site no longer publishes /livon/ (only the shared livon-api-config.js)' }, () => {
   assert.match(PUBLISH, /fs\.rmSync\(path\.join\(OUT, "livon", "admin"\), \{ recursive: true, force: true \}\)/);
   assert.match(PUBLISH, /livon\/admin must not be published/);
   /* a built _publish, when one is present next to the source, is checked as shipped */
@@ -604,7 +604,7 @@ test('RC-37 privacy (static): no required name/phone/email/address field; Help s
   for (const f of ['help-page.js', 'community-page.js', 'community-service.js', 'livon-personalization.js', 'livon-onboarding.js']) assert.doesNotMatch(src('livon/' + f), /fetch\(|XMLHttpRequest|sendBeacon|navigator\.sendBeacon/, f);
 });
 
-test('RC-28 performance structure kept: lazy films, boot, card limit, optimized logo, 42 photos, 6 font variants, quality gate', () => {
+test('RC-28 performance structure kept: lazy films, boot, card limit, optimized logo, 42 photos, 6 font variants, quality gate', { skip: 'LIVON was removed from the website (2026-11): publish-site no longer publishes /livon/ (only the shared livon-api-config.js)' }, () => {
   const media = src('livon/livon-media.js');
   assert.match(media, /var FAIL_LIMIT = 2;/); assert.match(media, /data-src/);
   assert.match(src('livon/livon-boot.js'), /root\.LivonBoot = \{/);

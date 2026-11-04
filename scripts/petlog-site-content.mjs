@@ -182,14 +182,13 @@ export const OVERVIEW = {
     newon: {
       kicker: "A NEWON PLATFORM",
       title: "NEWON 안에서\nPETLOG가 맡는 자리.",
-      lead: "PETLOG는 NEWON의 6개 핵심 플랫폼 중 반려동물을 맡습니다. 아래 연결은 계획된 방향이며, 플랫폼 간 건강·가족·위치 정보는 사용자의 명시적 동의와 적법한 권한 없이 자동으로 공유하지 않습니다.",
+      lead: "PETLOG는 NEWON의 5개 핵심 플랫폼 중 반려동물을 맡습니다. 아래 연결은 계획된 방향이며, 플랫폼 간 건강·가족·위치 정보는 사용자의 명시적 동의와 적법한 권한 없이 자동으로 공유하지 않습니다.",
       items: [
         { n: "01", name: "PETLOG", body: "반려동물의 기록·건강·돌봄·생애 서비스", href: "petlog/" },
         { n: "02", name: "BABYLOG", body: "아이와 반려동물이 함께 사는 가족의 생활", href: "babylog/" },
         { n: "03", name: "MY WORLD", body: "반려동물 동반 여행의 기록과 준비", href: "myworld/" },
         { n: "04", name: "SHAREON", body: "이동장·장비 같은 펫용품 대여 — 판매는 PETLOG, 대여는 SHAREON", href: "shareon/" },
-        { n: "05", name: "LIVON", body: "이사·출산 등 가족 생활 일정 속 반려동물 준비", href: "livon/" },
-        { n: "06", name: "ONGIL", body: "어르신 보호자의 반려동물 관리와 돌봄", href: "ongil/" },
+        { n: "05", name: "ONGIL", body: "어르신 보호자의 반려동물 관리와 돌봄", href: "ongil/" },
       ],
     },
     close: {
@@ -334,14 +333,13 @@ export const OVERVIEW = {
     newon: {
       kicker: "A NEWON PLATFORM",
       title: "PETLOG's place\nin NEWON.",
-      lead: "PETLOG covers pets among NEWON's six core platforms. The links below are planned directions; health, family and location data are never shared between platforms automatically, without the user's explicit consent and lawful authority.",
+      lead: "PETLOG covers pets among NEWON's five core platforms. The links below are planned directions; health, family and location data are never shared between platforms automatically, without the user's explicit consent and lawful authority.",
       items: [
         { n: "01", name: "PETLOG", body: "Pets' records, health, care and life-stage services", href: "petlog/" },
         { n: "02", name: "BABYLOG", body: "Family life with children and pets together", href: "babylog/" },
         { n: "03", name: "MY WORLD", body: "Recording and preparing pet-friendly travel", href: "myworld/" },
         { n: "04", name: "SHAREON", body: "Renting carriers and gear — PETLOG sells, SHAREON rents", href: "shareon/" },
-        { n: "05", name: "LIVON", body: "Getting pets ready around moves, births and other family events", href: "livon/" },
-        { n: "06", name: "ONGIL", body: "Pet care for senior owners", href: "ongil/" },
+        { n: "05", name: "ONGIL", body: "Pet care for senior owners", href: "ongil/" },
       ],
     },
     close: {
@@ -1900,7 +1898,6 @@ V3.business.ko.links = {
     ["SHAREON", "이동장·장비·펫용품 대여", "판매·중고·공동구매는 PETLOG, 공유·대여는 SHAREON"],
     ["MY WORLD", "반려동물 동반 여행", "여행 기록은 MY WORLD, 동반 조건과 반려동물 준비는 PETLOG"],
     ["BABYLOG", "아이와 반려동물이 함께하는 가족생활", "아이 기록은 BABYLOG, 반려동물 기록은 PETLOG"],
-    ["LIVON", "가족 생활·반려동물 관련 일정", "이사·출산 같은 생활 일정은 LIVON, 반려동물 준비는 PETLOG"],
     ["ONGIL", "어르신의 반려동물 관리·돌봄", "어르신 생활은 ONGIL, 반려동물 돌봄 기록은 PETLOG"],
   ],
 };
@@ -1913,7 +1910,6 @@ V3.business.en.links = {
     ["SHAREON", "Renting carriers, gear and pet goods", "PETLOG sells, trades secondhand and runs group buys; SHAREON shares and rents"],
     ["MY WORLD", "Pet-friendly travel", "MY WORLD keeps travel records; PETLOG covers pet policies and preparation"],
     ["BABYLOG", "Family life with children and pets", "BABYLOG records the child; PETLOG records the pet"],
-    ["LIVON", "Family life events involving pets", "LIVON covers moves, births and other life events; PETLOG gets the pet ready"],
     ["ONGIL", "Pet care for senior owners", "ONGIL covers senior daily life; PETLOG keeps the pet's care records"],
   ],
 };

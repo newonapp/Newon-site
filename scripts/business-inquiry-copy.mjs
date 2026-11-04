@@ -1,7 +1,7 @@
 /**
  * /{lang}/business/inquiry/ — Business Inquiry copy (owner brief, Oct 2026).
  *
- * The page is a six-platform business · partnership inquiry page, not a production / outsourcing
+ * The page is a five-platform business · partnership inquiry page, not a production / outsourcing
  * request page. Korean is primary, English is written; the other seven locales reuse the English
  * copy (rendered with lang="en" on <main>), the same fallback the generator already used via pick().
  *
@@ -26,7 +26,6 @@ export const INQ_PLATFORMS = [
   { id: "petlog", value: "PETLOG", name: "PETLOG", href: "petlog/business/" },
   { id: "myworld", value: "MY WORLD", name: "MY WORLD", href: "myworld/business/" },
   { id: "shareon", value: "SHAREON", name: "SHAREON", href: "shareon/business/" },
-  { id: "livon", value: "LIVON", name: "LIVON", href: "livon/business/" },
   { id: "ongil", value: "ONGIL", name: "ONGIL", href: "ongil/business/" },
 ];
 export const INQ_PLATFORM_EXTRA = [
@@ -79,7 +78,7 @@ export function inquiryTypeAliasMap() {
 const KO = {
   seoTitle: "사업 문의 | NEWON",
   metaDescription:
-    "NEWON의 여섯 개 디지털 플랫폼(BABYLOG·PETLOG·MY WORLD·SHAREON·LIVON·ONGIL)에 관한 입점, 사업 제휴, 기업용 서비스 도입, 기관 협력 문의를 받습니다.",
+    "NEWON의 다섯 개 디지털 플랫폼(BABYLOG·PETLOG·MY WORLD·SHAREON·ONGIL)에 관한 입점, 사업 제휴, 기업용 서비스 도입, 기관 협력 문의를 받습니다.",
 
   heroCrumbLeft: "Business & Partnerships",
   heroCrumbRight: "INQUIRY",
@@ -128,16 +127,15 @@ const KO = {
     },
   ],
 
-  platLabel: "SIX PLATFORMS",
+  platLabel: "FIVE PLATFORMS",
   platTitle: "플랫폼별 사업 분야",
-  platLead: "문의는 NEWON의 여섯 개 플랫폼을 기준으로 검토합니다. 소개된 사업 분야 중 상당수는 준비·검토 단계이며, 현재 상태는 각 플랫폼의 비즈니스 페이지에서 확인할 수 있습니다.",
+  platLead: "문의는 NEWON의 다섯 개 플랫폼을 기준으로 검토합니다. 소개된 사업 분야 중 상당수는 준비·검토 단계이며, 현재 상태는 각 플랫폼의 비즈니스 페이지에서 확인할 수 있습니다.",
   platMore: "비즈니스 페이지 보기 →",
   plats: {
     babylog: "임신·출산·육아·성장 기록 앱을 중심으로 보육·교육기관 SaaS, 육아 브랜드·기업 가족복지 솔루션, 공공 육아지원 정보, 육아 상품·서비스 연결, 해외 라이선싱으로 확장하는 패밀리 라이프 플랫폼입니다.",
     petlog: "반려동물의 일상·건강 기록을 기반으로 커뮤니티·커머스, 동물병원·미용·돌봄 등 적격 사업자 연결, 반려동물 사업자용 SaaS, 동물복지 공공 협력과 글로벌 라이선싱으로 확장하는 반려생활 플랫폼입니다.",
     myworld: "세계지도 기반 여행 기록에서 출발해 숙박·교통·패키지·액티비티 예약 제휴, 여행 커머스, 기업 출장·여행업체 SaaS, 지역 관광·관광기관 협력으로 넓혀 가는 여행 플랫폼입니다.",
     shareon: "개인과 기업의 실물 자산 공유·대여(C2C·B2C·C2B·B2B)를 기반으로 대여업체·공간 운영자 입점, 기업 자산 공유, SaaS·공공·글로벌 분야로 확장을 준비하는 공유경제 플랫폼입니다. 앱 출시 전으로 실제 대여·결제·정산은 운영되지 않습니다.",
-    livon: "교육·커리어·주거·금융교육 등 생애 단계별 정보와 서비스를 연결하는 플랫폼입니다. 상품 직접 판매보다 정보·사용자 경험·기업용 솔루션 중심의 사업을 지향하며, 대부분의 사업 영역은 준비 또는 구상 단계입니다. 현재 앱 출시를 준비하고 있습니다.",
     ongil: "시니어의 일상, 가족 연결, 건강 생활, 돌봄·복지 정보를 기반으로 돌봄 사업자 도구, 요양·복지기관 SaaS, 기업 임직원 가족 돌봄 복지, 공공·지자체 협력, 글로벌 라이선스로 확장하는 시니어 라이프 플랫폼입니다.",
   },
 
@@ -216,7 +214,7 @@ const KO = {
     },
     {
       q: "어떤 플랫폼에 관한 문의를 할 수 있나요?",
-      a: "BABYLOG, PETLOG, MY WORLD, SHAREON, LIVON, ONGIL 여섯 개 플랫폼에 관한 입점·제휴·도입·협력 문의를 받습니다. 플랫폼별 사업 분야와 현재 상태는 각 플랫폼의 비즈니스 페이지에서 확인할 수 있습니다.",
+      a: "BABYLOG, PETLOG, MY WORLD, SHAREON, ONGIL 다섯 개 플랫폼에 관한 입점·제휴·도입·협력 문의를 받습니다. 플랫폼별 사업 분야와 현재 상태는 각 플랫폼의 비즈니스 페이지에서 확인할 수 있습니다.",
     },
     {
       q: "여러 플랫폼을 함께 제안할 수 있나요?",
@@ -240,7 +238,7 @@ const KO = {
     },
     {
       q: "외주 웹·앱 제작도 의뢰할 수 있나요?",
-      a: "아니요. NEWON은 고객별 외주 웹·앱 제작, 맞춤 개발, 디자인 대행 서비스를 운영하지 않습니다. NEWON은 여섯 개 플랫폼과 자체 제품을 중심으로 사업하며, 이 페이지에서는 해당 플랫폼과 관련된 입점·제휴·도입·협력 문의만 받습니다.",
+      a: "아니요. NEWON은 고객별 외주 웹·앱 제작, 맞춤 개발, 디자인 대행 서비스를 운영하지 않습니다. NEWON은 다섯 개 플랫폼과 자체 제품을 중심으로 사업하며, 이 페이지에서는 해당 플랫폼과 관련된 입점·제휴·도입·협력 문의만 받습니다.",
     },
   ],
 
@@ -253,14 +251,14 @@ const KO = {
 const EN = {
   seoTitle: "Business Inquiry | NEWON",
   metaDescription:
-    "Inquiries about joining, partnering with, adopting enterprise services from, or collaborating with NEWON's six digital platforms: BABYLOG, PETLOG, MY WORLD, SHAREON, LIVON and ONGIL.",
+    "Inquiries about joining, partnering with, adopting enterprise services from, or collaborating with NEWON's five digital platforms: BABYLOG, PETLOG, MY WORLD, SHAREON and ONGIL.",
 
   heroCrumbLeft: "Business & Partnerships",
   heroCrumbRight: "INQUIRY",
   heroLabel: "BUSINESS INQUIRY",
   heroRole: "Business & partnership inquiries",
   heroTitleHtml: "Connecting new<br />business possibilities.",
-  heroLead: "Built on NEWON's six digital platforms, we take inquiries about platform participation, business partnerships, enterprise service adoption and institutional collaboration.",
+  heroLead: "Built on NEWON's five digital platforms, we take inquiries about platform participation, business partnerships, enterprise service adoption and institutional collaboration.",
   heroDomainsAria: "Inquiry areas",
   heroDomains: ["Participation", "Partnerships", "Enterprise", "Institutions"],
   heroCta: "Make a business inquiry",
@@ -302,16 +300,15 @@ const EN = {
     },
   ],
 
-  platLabel: "SIX PLATFORMS",
+  platLabel: "FIVE PLATFORMS",
   platTitle: "Business areas by platform",
-  platLead: "Inquiries are reviewed against NEWON's six platforms. Many of the business areas described are still in preparation or under review; each platform's business page shows the current status.",
+  platLead: "Inquiries are reviewed against NEWON's five platforms. Many of the business areas described are still in preparation or under review; each platform's business page shows the current status.",
   platMore: "View business page →",
   plats: {
     babylog: "A family-life platform built around an app for pregnancy, birth, parenting and growth records, expanding into SaaS for childcare and education institutions, parenting-brand and employee family-welfare solutions, public parenting-support information, parenting products and services, and overseas licensing.",
     petlog: "A pet-life platform built on daily and health records for pets, expanding into community and commerce, connections with qualified providers such as vets, groomers and carers, SaaS for pet businesses, public animal-welfare collaboration and global licensing.",
     myworld: "A travel platform that starts from map-based travel records and extends toward booking partnerships for stays, transport, packages and activities, travel commerce, SaaS for business travel and travel companies, and local tourism and tourism-agency collaboration.",
     shareon: "A sharing-economy platform for renting and sharing physical assets between individuals and businesses (C2C, B2C, C2B, B2B), preparing to expand into rental-business and space-operator listings, business asset sharing, SaaS, public and global areas. The app has not launched, so no rentals, payments or settlements are operating yet.",
-    livon: "A platform connecting life-stage information and services such as education, careers, housing and financial education. Rather than selling products directly, it focuses on information, user experience and solutions for organizations; most business areas are in preparation or at the concept stage. The app is being prepared for launch.",
     ongil: "A senior-life platform built on seniors' daily life, family connection, healthy living, and care and welfare information, expanding into tools for care providers, SaaS for care and welfare facilities, employee family-care welfare, public and local-government collaboration, and global licensing.",
   },
 
@@ -390,7 +387,7 @@ const EN = {
     },
     {
       q: "Which platforms can I ask about?",
-      a: "We take participation, partnership, adoption and collaboration inquiries about six platforms: BABYLOG, PETLOG, MY WORLD, SHAREON, LIVON and ONGIL. Each platform's business page shows its business areas and current status.",
+      a: "We take participation, partnership, adoption and collaboration inquiries about five platforms: BABYLOG, PETLOG, MY WORLD, SHAREON and ONGIL. Each platform's business page shows its business areas and current status.",
     },
     {
       q: "Can I propose something across several platforms?",
@@ -414,7 +411,7 @@ const EN = {
     },
     {
       q: "Can I commission outsourced web or app production?",
-      a: "No. NEWON does not operate client-specific outsourced web or app production, custom development or design agency services. NEWON's business centers on its six platforms and its own products, and this page only takes participation, partnership, adoption and collaboration inquiries related to those platforms.",
+      a: "No. NEWON does not operate client-specific outsourced web or app production, custom development or design agency services. NEWON's business centers on its five platforms and its own products, and this page only takes participation, partnership, adoption and collaboration inquiries related to those platforms.",
     },
   ],
 

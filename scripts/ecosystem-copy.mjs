@@ -225,27 +225,10 @@ const KO = {
     "사용자 동의를 기반으로 한 관련 데이터 연계",
     "생활 상황에 맞는 서비스 추천",
     "Newon AI를 활용한 개인화 기능",
-    "LivOn 및 Ongil과의 서비스 연결",
   ],
 
-  livonKicker: "07 / LIVON",
-  livonTitleHtml: "일상 앱에서,<br>인생의 모든 단계로.",
-  livonLead:
-    "생활 앱이 일상의 개별적인 순간을 지원한다면, LivOn은 10대부터 70대까지 인생의 다양한 단계와 변화를 연결하는 플랫폼으로 확장됩니다. 진학, 취업, 독립, 경제생활, 결혼, 육아, 가족, 건강, 은퇴 등 각 생애 상황에서 필요한 정보와 서비스를 하나의 흐름으로 제공하는 것을 목표로 합니다.",
-  livonNote:
-    "아래는 향후 LivOn에서 관련 Newon 앱을 안내하거나 서비스 경험을 연결할 수 있다는 사업 확장 구상입니다. 현재 LivOn이 이 앱들과 기술적으로 연동되어 있거나 데이터가 자동 공유되는 것은 아닙니다. LivOn은 생애주기 플랫폼이며, 시니어 돌봄에 특화된 Ongil과 역할이 다릅니다.",
-  livonBadge: "향후 제공 예정",
-  livonRows: [
-    { label: "첫 경제생활·독립", apps: "SAVY · SubPing · PiggyUp", slugs: ["savy", "subping", "piggyup"] },
-    { label: "목표 설정·자기관리", apps: "GoalUp · OX MONTH · CountUp", slugs: ["goalup", "ox-month", "countup"] },
-    { label: "결혼·출산·육아", apps: "BabyLog", slugs: ["babylog"] },
-    { label: "건강한 생활 관리", apps: "Pillmate · EatOn · FitOn", slugs: ["pillmate", "eaton", "fiton"] },
-    { label: "여행·여가·새로운 경험", apps: "My World", slugs: ["myworld"] },
-  ],
-  livonCta: "LivOn 알아보기 →",
-  livonHref: "../lifestage/",
 
-  ongilKicker: "08 / ONGIL",
+  ongilKicker: "07 / ONGIL",
   ongilTitleHtml: "개인의 일상에서,<br>부모님과 가족의 일상까지.",
   ongilLead:
     "Ongil은 시니어의 일상과 생활 지원, 가족 연결, 지역사회 및 돌봄 서비스 탐색으로 확장되는 Newon의 시니어 특화 플랫폼입니다. 기존 생활 관리 경험을 바탕으로, 시니어와 가족에게 필요한 서비스를 단계적으로 연결하는 것을 목표로 합니다.",
@@ -261,25 +244,22 @@ const KO = {
   ongilCta: "Ongil 알아보기 →",
   ongilHref: "../ongil/",
 
-  visionKicker: "09 / LONG VIEW",
+  visionKicker: "08 / LONG VIEW",
   visionTitleHtml: "Newon+에서 시작해,<br>생활의 다음 단계로.",
-  visionLead: "이 다이어그램은 개념적인 사업 연결 구조입니다. LivOn과 Ongil은 현재 출시된 13개 앱의 일부가 아니라 향후 확장입니다.",
+  visionLead: "이 다이어그램은 개념적인 사업 연결 구조입니다. Ongil은 현재 출시된 13개 앱의 일부가 아니라 향후 확장입니다.",
   visionHub: "통합 계정",
   visionFuture: "향후 확장",
   visionAi: "Newon AI는 향후 개인화와 안내를 돕는 공통 기술 방향으로 확장됩니다.",
-  visionLivonRole: "생애주기 플랫폼",
-  visionLivonWho: "10대~70대",
   visionOngilRole: "시니어 생활·돌봄",
   visionOngilWho: "시니어·가족",
 
-  ctaKicker: "10 / START HERE",
+  ctaKicker: "09 / START HERE",
   ctaTitleHtml: "하나의 Newon 계정으로,<br>나에게 필요한 앱을 만나보세요.",
   ctaLead: "Newon+에서 시작해 목표 관리, 금융, 건강, 가족, 여행까지. 필요한 앱을 선택하고 하나의 계정으로 이용하세요.",
   ctaPlus: "Newon+ 알아보기",
   ctaPlusHref: "../portfolio/newon-plus/",
   ctaApps: "13개 앱 살펴보기",
   ctaAppsHref: "../apps/",
-  ctaLivon: "LivOn 알아보기",
   ctaOngil: "Ongil 알아보기",
 };
 
@@ -417,27 +397,10 @@ const EN = {
     "Related data sharing with user consent",
     "Suggestions that match a life situation",
     "Personalization with Newon AI",
-    "Links to LivOn and Ongil",
   ],
 
-  livonKicker: "07 / LIVON",
-  livonTitleHtml: "From daily apps<br>to every life stage.",
-  livonLead:
-    "Lifestyle apps support single moments of the day. LivOn is meant to grow into a platform that connects change from teens to the 70s — school, work, living independently, money, marriage, parenting, family, health, and retirement.",
-  livonNote:
-    "The links below are a future plan: LivOn may guide people to related Newon apps. LivOn is not technically connected to these apps today, and data is not auto-shared. LivOn is a life-stage platform. Ongil is the senior-care platform.",
-  livonBadge: "Planned",
-  livonRows: [
-    { label: "First money · living independently", apps: "SAVY · SubPing · PiggyUp", slugs: ["savy", "subping", "piggyup"] },
-    { label: "Goals · self-management", apps: "GoalUp · OX MONTH · CountUp", slugs: ["goalup", "ox-month", "countup"] },
-    { label: "Marriage · birth · parenting", apps: "BabyLog", slugs: ["babylog"] },
-    { label: "Healthy daily life", apps: "Pillmate · EatOn · FitOn", slugs: ["pillmate", "eaton", "fiton"] },
-    { label: "Travel · leisure · new experience", apps: "My World", slugs: ["myworld"] },
-  ],
-  livonCta: "Learn about LivOn →",
-  livonHref: "../lifestage/",
 
-  ongilKicker: "08 / ONGIL",
+  ongilKicker: "07 / ONGIL",
   ongilTitleHtml: "From your day<br>to a parent’s day.",
   ongilLead:
     "Ongil is Newon’s senior platform — daily life, living support, family connection, and finding local and care information. The aim is to connect what seniors and families need, step by step, on top of Newon’s daily-life apps.",
@@ -453,26 +416,23 @@ const EN = {
   ongilCta: "Learn about Ongil →",
   ongilHref: "../ongil/",
 
-  visionKicker: "09 / LONG VIEW",
+  visionKicker: "08 / LONG VIEW",
   visionTitleHtml: "Start with Newon+.<br>Grow into the next stage of life.",
   visionLead:
-    "This diagram is a conceptual map. LivOn and Ongil are future expansions — not part of the 13 apps that are live today.",
+    "This diagram is a conceptual map. Ongil is a future expansion — not part of the 13 apps that are live today.",
   visionHub: "Shared account",
   visionFuture: "Later expansion",
   visionAi: "Newon AI is a future shared layer for personalization and guidance.",
-  visionLivonRole: "Life-stage platform",
-  visionLivonWho: "Teens to 70s",
   visionOngilRole: "Senior living · care",
   visionOngilWho: "Seniors · family",
 
-  ctaKicker: "10 / START HERE",
+  ctaKicker: "09 / START HERE",
   ctaTitleHtml: "One Newon account.<br>The apps you need.",
   ctaLead: "Start in Newon+. Then choose goals, money, health, family, and travel — and use them with one account.",
   ctaPlus: "Learn about Newon+",
   ctaPlusHref: "../portfolio/newon-plus/",
   ctaApps: "Browse 13 apps",
   ctaAppsHref: "../apps/",
-  ctaLivon: "Learn about LivOn",
   ctaOngil: "Learn about Ongil",
 };
 

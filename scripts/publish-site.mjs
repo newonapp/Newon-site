@@ -63,8 +63,6 @@ const PUBLISH_ROOT_CORE = [
   "biz-contact.css",
   "shareon.css",
   "flagship-subnav.css",
-  "livon-site.css",
-  "livon-site.js",
   "myworld-site.css",
   "myworld-site.js",
   "shareon.js",
@@ -197,13 +195,12 @@ const PUBLISH_COPY_DIRS = [
   { from: "admin", to: "admin", required: false },
   { from: "oxmonth", to: "oxmonth", required: false },
   { from: "subping", to: "subping", required: false },
-  { from: "livon", to: "livon", required: true },
+  /* LIVON (/livon/ web app + its SEO pages) was removed from the website (2026-11): the livon/ source stays in the repo but is not published. */
   /** Newon+ consumer auth foundation (shared by Newon web services; anonymous until a Newon+ project is configured). */
   { from: "newon-auth", to: "newon-auth", required: true },
   { from: "ongil-start", to: "ongil-start", required: true },
-  /** Root /ongil/ and /lifestage/ → /{lang}/… language redirects (same pattern as /studio/, /business/). */
+  /** Root /ongil/ → /{lang}/… language redirects (same pattern as /studio/, /business/). */
   { from: "ongil", to: "ongil", required: true },
-  { from: "lifestage", to: "lifestage", required: true },
   /** Information-only business intro pages (BabyLog · PetLog · My World · ShareOn). */
   /** Business Hub landing (business/seller-center and business/partners ride along with the business dir). */
   { from: "business-hub", to: "business-hub", required: true },
@@ -332,10 +329,16 @@ function assemble() {
     copyDir(src, dest);
   }
 
-  /* LIVON Data Manager (/livon/admin/) is a local-only QA tool: it is never published. */
-  fs.rmSync(path.join(OUT, "livon", "admin"), { recursive: true, force: true });
-  if (fs.existsSync(path.join(OUT, "livon", "admin"))) {
-    console.error("publish-site: livon/admin must not be published");
+  /* LIVON was removed from the website (2026-11): no LIVON page under /livon/ or /lifestage/ is published, and the
+     LIVON logo files (only used by the LIVON app) stay out of /assets/. The one exception is the shared API location
+     file /livon/livon-api-config.js: ONGIL (/ongil-start/) loads it to reach the shared data API, so it keeps its URL. */
+  for (const f of ["livon-mark.jpg", "livon-mark-icon.jpg", "livon-mark-icon-120.jpg"]) fs.rmSync(path.join(OUT, "assets", f), { force: true });
+  const sharedApiConfig = ["livon", "livon-api-config.js"];
+  fs.mkdirSync(path.join(OUT, sharedApiConfig[0]), { recursive: true });
+  fs.copyFileSync(path.join(ROOT, ...sharedApiConfig), path.join(OUT, ...sharedApiConfig));
+  const livonLeft = fs.readdirSync(path.join(OUT, sharedApiConfig[0]));
+  if (fs.existsSync(path.join(OUT, "lifestage")) || livonLeft.length !== 1 || livonLeft[0] !== sharedApiConfig[1]) {
+    console.error("publish-site: only livon/livon-api-config.js may be published under /livon/ (LIVON was removed from the website)");
     process.exit(1);
   }
 
@@ -546,36 +549,9 @@ function verify() {
   required.push(path.join(OUT, "ko", "portfolio", "index.html"));
   required.push(path.join(OUT, "en", "portfolio", "index.html"));
   required.push(path.join(OUT, "ja", "portfolio", "index.html"));
-  required.push(path.join(OUT, "livon", "index.html"));
-  required.push(path.join(OUT, "livon", "ai-page.css"));
-  required.push(path.join(OUT, "livon", "explore-page.css"));
-  required.push(path.join(OUT, "livon", "home-page.css"));
-  required.push(path.join(OUT, "livon", "today-data.js"));
-  required.push(path.join(OUT, "livon", "life-data.js"));
-  required.push(path.join(OUT, "livon", "life-hub.js"));
-  required.push(path.join(OUT, "livon", "life-topics.json"));
-  required.push(path.join(OUT, "livon", "life", "20s", "first-independence", "index.html"));
-  required.push(path.join(OUT, "livon", "today-feed.js"));
-  required.push(path.join(OUT, "livon", "today", "td-indep-missed", "index.html"));
-  required.push(path.join(OUT, "livon", "seo.css"));
-  required.push(path.join(OUT, "livon", "livon-a11y.css"));
-  required.push(path.join(OUT, "livon", "livon-a11y.js"));
-  required.push(path.join(OUT, "livon", "livon-media.js"));
-  required.push(path.join(OUT, "livon", "livon-boot.js"));
-  required.push(path.join(OUT, "livon", "seo-manifest.json"));
-  required.push(path.join(OUT, "livon", "help", "index.html"));
-  required.push(path.join(OUT, "livon", "life-events", "index.html"));
-  required.push(path.join(OUT, "livon", "community-data.js"));
-  required.push(path.join(OUT, "livon", "explore-data.js"));
-  required.push(path.join(OUT, "livon", "assets", "topics", "hangang.jpg"));
-  required.push(path.join(OUT, "livon", "assets", "topics", "pottery.jpg"));
   required.push(path.join(OUT, "ongil-start", "index.html"));
   required.push(path.join(OUT, "ongil", "index.html"));
-  required.push(path.join(OUT, "lifestage", "index.html"));
   for (const s of ["babylog", "petlog", "myworld", "shareon", "business-hub", "business/seller-center", "business/partners"]) required.push(path.join(OUT, s, "index.html"));
-  required.push(path.join(OUT, "assets", "livon-mark.jpg"));
-  required.push(path.join(OUT, "assets", "livon-mark-icon.jpg"));
-  required.push(path.join(OUT, "assets", "livon-mark-icon-120.jpg"));
   required.push(path.join(OUT, "assets", "ongil-mark.svg"));
   required.push(path.join(OUT, "film-keep.js"));
   required.push(path.join(OUT, "search-index.json"));
@@ -641,38 +617,6 @@ spawnSync(process.execPath, [path.join(ROOT, "scripts", "apply-hero-motion.mjs")
 }).status === 0 || process.exit(1);
 validateHuman404Game();
 assemble();
-// LIVON Life Stage direct URLs (/livon/life/{stage}/{topic}/ → /livon/#life/...).
-spawnSync(process.execPath, [path.join(ROOT, "scripts", "render-livon-life-routes.mjs"), "--out", path.join(OUT, "livon")], {
-  cwd: ROOT,
-  stdio: "inherit",
-}).status === 0 || process.exit(1);
-// LIVON 오늘의 발견 direct URLs (/livon/today/{id}/ → /livon/#today/{id}).
-spawnSync(process.execPath, [path.join(ROOT, "scripts", "render-livon-today-routes.mjs"), "--out", path.join(OUT, "livon")], {
-  cwd: ROOT,
-  stdio: "inherit",
-}).status === 0 || process.exit(1);
-
-// LIVON static SEO pages (Life Stage, Life Event, Help) + sitemap entries + seo-manifest.json, generated from the app's own data.
-// Runs after the route stubs above: indexable pages replace their redirect stub; everything else keeps the noindex stub.
-spawnSync(process.execPath, [path.join(ROOT, "scripts", "livon-seo-build.mjs"), "--out", OUT], {
-  cwd: ROOT,
-  stdio: "inherit",
-}).status === 0 || process.exit(1);
-spawnSync(process.execPath, [path.join(ROOT, "scripts", "livon-seo-quality.mjs"), "--root", OUT], {
-  cwd: ROOT,
-  stdio: "inherit",
-}).status === 0 || process.exit(1);
-// LIVON accessibility: static checks on the app page, its CSS/JS templates and every generated static page.
-spawnSync(process.execPath, [path.join(ROOT, "scripts", "livon-accessibility-quality.mjs"), "--root", OUT], {
-  cwd: ROOT,
-  stdio: "inherit",
-}).status === 0 || process.exit(1);
-// LIVON performance: static budgets and loading rules (video/data-src, start-up scheduler, fonts, image sizes, static pages).
-spawnSync(process.execPath, [path.join(ROOT, "scripts", "livon-performance-quality.mjs"), "--root", OUT], {
-  cwd: ROOT,
-  stdio: "inherit",
-}).status === 0 || process.exit(1);
-
 // One ?v= cache key per shared nav script on every page (see normalize-asset-versions.mjs).
 spawnSync(process.execPath, [path.join(ROOT, "scripts", "normalize-asset-versions.mjs"), "--root", OUT], {
   cwd: ROOT,
@@ -684,8 +628,9 @@ spawnSync(process.execPath, [path.join(ROOT, "scripts", "normalize-asset-version
   const cfg = newonAuthConfigFromEnv(process.env);
   if (cfg) fs.writeFileSync(path.join(OUT, "newon-auth", "newon-auth-config.js"), newonAuthConfigScript(cfg), "utf8");
 }
-// LIVON API origin (public): written only when LIVON_API_ORIGIN / LIVON_API_ORIGIN_PREVIEW is a valid https origin
-// (otherwise same-origin /api). Production and preview hosts pick their own origin in the browser.
+
+// Shared API location (public, read by ONGIL /ongil-start/): written only when LIVON_API_ORIGIN / LIVON_API_ORIGIN_PREVIEW is a
+// valid https origin (otherwise same-origin /api). Production and preview hosts pick their own origin in the browser.
 {
   const origin = livonApiOriginFromEnv(process.env);
   const { preview } = livonApiOriginsFromEnv(process.env);

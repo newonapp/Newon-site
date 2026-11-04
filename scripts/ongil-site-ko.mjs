@@ -328,12 +328,11 @@ export const KO = {
       title: "Newon 안에서\nONGIL이 맡는 자리.",
       lead: "ONGIL은 독립적인 시니어 브랜드와 사용 경험을 유지합니다. 다른 Newon 서비스와의 연결은 계획 단계이며, 개인의 건강·위치·돌봄 데이터는 명시적 동의 없이 앱 간에 결합하지 않습니다.",
       items: [
-        { n: "01", name: "LIVON", text: "생애 이벤트 정보 플랫폼. 은퇴·노후 준비와 복지·생활 지원 제도 같은 생애 단계 정보는 LIVON이 다루고, ONGIL은 노후의 일상과 돌봄에 집중합니다.", href: "livon/" },
-        { n: "02", name: "BABYLOG", text: "가족 성장 기록 플랫폼. 손주와 함께하는 조부모의 가족 활동을 잇는 방향을 검토합니다.", href: "babylog/" },
-        { n: "03", name: "PETLOG", text: "반려동물 생애 기록. 반려동물과 사는 어르신의 생활은 PETLOG에서 따로 기록할 수 있습니다.", href: "petlog/" },
-        { n: "04", name: "SHAREON", text: "동네 대여 플랫폼. 생활·취미·보조용품을 필요한 기간만 빌리는 연결을 검토합니다.", href: "shareon/" },
-        { n: "05", name: "MY WORLD", text: "여행 기록 앱. 시니어의 여행 기록은 MY WORLD가, 가까운 여가·문화 정보는 ONGIL이 맡습니다.", href: "myworld/" },
-        { n: "06", name: "Newon Business", text: "기관·기업을 위한 디지털 도구와 협력 창구. 돌봄·복지기관의 업무 자동화 문의를 함께 받습니다.", href: "business/" },
+        { n: "01", name: "BABYLOG", text: "가족 성장 기록 플랫폼. 손주와 함께하는 조부모의 가족 활동을 잇는 방향을 검토합니다.", href: "babylog/" },
+        { n: "02", name: "PETLOG", text: "반려동물 생애 기록. 반려동물과 사는 어르신의 생활은 PETLOG에서 따로 기록할 수 있습니다.", href: "petlog/" },
+        { n: "03", name: "SHAREON", text: "동네 대여 플랫폼. 생활·취미·보조용품을 필요한 기간만 빌리는 연결을 검토합니다.", href: "shareon/" },
+        { n: "04", name: "MY WORLD", text: "여행 기록 앱. 시니어의 여행 기록은 MY WORLD가, 가까운 여가·문화 정보는 ONGIL이 맡습니다.", href: "myworld/" },
+        { n: "05", name: "Newon Business", text: "기관·기업을 위한 디지털 도구와 협력 창구. 돌봄·복지기관의 업무 자동화 문의를 함께 받습니다.", href: "business/" },
       ],
     },
     next: {

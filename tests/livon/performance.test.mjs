@@ -540,7 +540,7 @@ test('PERF-44 the check catches the regressions this phase removed', () => {
   for (const re of [/a static page loads a script/, /static pages use seo\.css only/, /source map file/, /livon-media\.js is missing/]) assert.match(bad, re);
 });
 
-test('PERF-45 the build runs the check after the accessibility check and requires the new files', () => {
+test('PERF-45 the build runs the check after the accessibility check and requires the new files', { skip: 'LIVON was removed from the website (2026-11): publish-site no longer publishes /livon/ (only the shared livon-api-config.js)' }, () => {
   const p = src('scripts/publish-site.mjs');
   assert.match(p, /"livon-performance-quality\.mjs"\), "--root", OUT\]/);
   assert.ok(p.indexOf('livon-performance-quality.mjs') > p.indexOf('livon-accessibility-quality.mjs'));

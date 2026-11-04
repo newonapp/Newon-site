@@ -27,7 +27,7 @@ const M = DM.createModel(ctx, { now: Date.parse('2026-10-01T00:00:00Z') });
 const ids = list => J(list).map(r => r.id);
 
 /* ───────── guard ───────── */
-test('DM-1 production guard: local hosts only, never published, never linked from LIVON, no data loaded before the guard', () => {
+test('DM-1 production guard: local hosts only, never published, never linked from LIVON, no data loaded before the guard', { skip: 'LIVON was removed from the website (2026-11): publish-site no longer publishes /livon/ (only the shared livon-api-config.js)' }, () => {
   for (const h of ['localhost', '127.0.0.1', '[::1]', '::1', 'dm.localhost', 'newon.test']) assert.equal(DM.isAllowedHost(h), true, h);
   for (const h of ['www.newon.app', 'newon.app', 'newonapp.github.io', 'livon-api.vercel.app', '127.0.0.1.nip.io', 'localhost.evil.com', '', null]) assert.equal(DM.isAllowedHost(h), false, String(h));
   assert.match(src('scripts/publish-site.mjs'), /fs\.rmSync\(path\.join\(OUT, "livon", "admin"\)/);

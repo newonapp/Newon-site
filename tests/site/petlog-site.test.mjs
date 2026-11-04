@@ -134,7 +134,7 @@ test("no app feature on the web: no forms at all (inquiries go to the unified Co
 });
 
 test("business row: PETLOG has its own 5-item menu on every page header", () => {
-  for (const rel of ["ko/index.html", "en/petlog/index.html", "ja/portfolio/petlog/index.html", "de/business/partnerships/index.html", "id/livon/index.html"]) {
+  for (const rel of ["ko/index.html", "en/petlog/index.html", "ja/portfolio/petlog/index.html", "de/business/partnerships/index.html", "id/shareon/index.html"]) {
     const h = read(rel).match(/<header class="gnav[\s\S]*?<\/header>/)[0];
     assert.match(h, /data-gnav-menu="petlog"/, rel);
     const panel = h.match(/data-gnav-mega="petlog"[\s\S]*?<p class="gnav-mega__foot">/)[0];

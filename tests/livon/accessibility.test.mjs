@@ -567,7 +567,7 @@ test('A11Y-62 Onboarding regression: never a dialog on arrival; skip and resume 
   assert.match(o, /p\.complete\(ui\.draft\);/);
 });
 
-test('A11Y-63 Admin regression: local-only guard and read-only data are untouched', () => {
+test('A11Y-63 Admin regression: local-only guard and read-only data are untouched', { skip: 'LIVON was removed from the website (2026-11): publish-site no longer publishes /livon/ (only the shared livon-api-config.js)' }, () => {
   assert.match(ADMIN_JS, /localhost/); assert.match(ADMIN_HTML, /noindex, nofollow/);
   assert.match(src('scripts/publish-site.mjs'), /fs\.rmSync\(path\.join\(OUT, "livon", "admin"\), \{ recursive: true, force: true \}\);/);
   assert.match(ADMIN_JS, /READ-ONLY/);
@@ -599,7 +599,7 @@ test('A11Y-66 anonymous mode: the layer sends nothing and keeps one classified l
   assert.doesNotMatch(A11Y_JS, /personalization|lifeStage|cmStore/, 'the layer reads no personal data');
 });
 
-test('A11Y-67 build: the site build runs the accessibility check and ships the layer', () => {
+test('A11Y-67 build: the site build runs the accessibility check and ships the layer', { skip: 'LIVON was removed from the website (2026-11): publish-site no longer publishes /livon/ (only the shared livon-api-config.js)' }, () => {
   const p = src('scripts/publish-site.mjs');
   assert.match(p, /"livon-accessibility-quality\.mjs"\), "--root", OUT\]/);
   assert.ok(p.indexOf('livon-accessibility-quality.mjs') > p.indexOf('livon-seo-quality.mjs'));

@@ -44,7 +44,6 @@ export function Marquee() {
   const wordmarks = [
     ["Newon", "App"],
     ["Newon AI"],
-    ["LivOn"],
     ["Ongil"],
     ["Newon Business"],
     ["Newon Studio"],

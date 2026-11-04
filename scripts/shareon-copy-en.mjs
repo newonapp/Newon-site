@@ -195,7 +195,6 @@ export const EN = {
         { name: "BABYLOG", body: "Link with baby and family gear rental under review" },
         { name: "PETLOG", body: "Link with pet equipment rental under review" },
         { name: "MY WORLD", body: "Link with travel and camping gear rental under review" },
-        { name: "LIVON", body: "Link with household, tool and hobby gear rental under review" },
         { name: "ONGIL", body: "Link with senior daily-life and hobby item rental under review" },
       ],
     },

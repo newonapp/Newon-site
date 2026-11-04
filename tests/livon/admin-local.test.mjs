@@ -44,7 +44,7 @@ test('AD-1 local-only guard: the Admin stops before any data request on a non-lo
   assert.equal(boot({ host: 'www.newon.app' }).svc.system().find(s => s.key === 'Environment').value, 'UNAVAILABLE');
 });
 
-test('AD-2 production exclusion: the whole livon/admin/** tree is removed from _publish and never linked', () => {
+test('AD-2 production exclusion: the whole livon/admin/** tree is removed from _publish and never linked', { skip: 'LIVON was removed from the website (2026-11): publish-site no longer publishes /livon/ (only the shared livon-api-config.js)' }, () => {
   const p = src('scripts/publish-site.mjs');
   assert.match(p, /fs\.rmSync\(path\.join\(OUT, "livon", "admin"\), \{ recursive: true, force: true \}\)/);
   assert.match(p, /livon\/admin must not be published/);

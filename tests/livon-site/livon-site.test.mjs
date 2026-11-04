@@ -1,6 +1,9 @@
 // LIVON corporate site (/{lang}/livon/ + 4 sub pages): structure, content counts, honesty rules, SEO and links.
 // Run: node scripts/render-lifestage.mjs && node --test tests/livon-site/*.test.mjs
-import test from "node:test";
+import nodeTest from "node:test";
+/* LIVON was removed from the website (2026-11): the /{lang}/livon/ pages these tests read are no longer rendered or
+   published. The tests are kept, skipped, so they can be re-enabled if LIVON returns to the website. */
+const test = (name, fn) => nodeTest(name, { skip: "LIVON was removed from the website (2026-11)" }, fn);
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";

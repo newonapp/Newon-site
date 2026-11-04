@@ -599,8 +599,9 @@ function writeSitemap() {
     }
   }
 
-  // Six flagship business sites — five pages each (ONGIL sub-pages exist in KO/EN only; other languages are noindex forwards)
-  for (const biz of ["babylog", "petlog", "myworld", "shareon", "livon"]) {
+  // Flagship business sites — five pages each (ONGIL sub-pages exist in KO/EN only; other languages are noindex forwards).
+  // LIVON was removed from the website (2026-11): no /{lang}/livon/ pages are published.
+  for (const biz of ["babylog", "petlog", "myworld", "shareon"]) {
     for (const sub of ["", "/platform", "/business", "/partnerships", "/contact"]) addAllLocales(`${biz}${sub}`, "0.65", "monthly");
   }
   addAllLocales("ongil", "0.65", "monthly");
@@ -618,7 +619,7 @@ function writeSitemap() {
   }
 
   // Product hubs
-  for (const page of ["products", "apps", "ecosystem", "ai", "ai/enterprise", "business-hub", "business/seller-center", "business/partners", "babylog", "babylog/platform", "babylog/business", "babylog/partnerships", "babylog/contact", "petlog", "myworld", "shareon", "lifestage", "ongil", "saas", "games", "tools", "market", "contact", "media"]) {
+  for (const page of ["products", "apps", "ecosystem", "ai", "ai/enterprise", "business-hub", "business/seller-center", "business/partners", "babylog", "babylog/platform", "babylog/business", "babylog/partnerships", "babylog/contact", "petlog", "myworld", "shareon", "ongil", "saas", "games", "tools", "market", "contact", "media"]) {
     addAllLocales(page, "0.65", "monthly");
   }
 
@@ -748,7 +749,7 @@ runScript("render-bizhub.mjs");
 runScript("business-model-sanitize.mjs");
 runScript("business-model-reframe.mjs");
 runScript("build-biz-contact-css.mjs"); // ONGIL Contact design for the five other business Contact pages
-runScript("render-lifestage.mjs");
+// render-lifestage.mjs (LIVON pages) is no longer run: LIVON was removed from the website (2026-11).
 runScript("render-babylog-site.mjs");
 runScript("render-ongil.mjs");
 runScript("render-shareon.mjs");

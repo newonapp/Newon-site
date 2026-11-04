@@ -262,7 +262,6 @@ export const EN = {
         { name: "BABYLOG", role: "Preparing family trips with children. We are considering links to itineraries and packing suited to travelling with kids." },
         { name: "PETLOG", role: "Travelling with pets and pet-friendly information. We are considering links to pet-friendly stays and travel information." },
         { name: "ONGIL", role: "Travelling with older relatives, accessibility information. We are considering links to travel information that accounts for mobility and accessibility." },
-        { name: "LivOn", role: "Holidays, life goals and travel budgets. We are considering a link that shows travel goals and budgets within life plans." },
         { name: "SHAREON", role: "Renting travel, camping and camera gear. We are considering a structure where booking, deposits and returns run through SHAREON (SHAREON is in development)." },
       ],
     },

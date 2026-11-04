@@ -107,7 +107,7 @@ for (const p of pages) {
     const values = count(sect("bl-connect"), /class="bl-val"/g);
     const core = count(sect("bl-daily"), /class="bl-bento__item/g);
     const pl = count(sect("bl-platforms"), /class="bl-plat[ "]/g);
-    secOk = !lack.length && stages === 6 && eco === 4 && biz === 6 && cats === 8 && ctas === 2 && impOk && sol === 6 && values === 6 && core === 8 && pl === 6 && /story-babylog-title/.test(body);
+    secOk = !lack.length && stages === 6 && eco === 4 && biz === 6 && cats === 8 && ctas === 2 && impOk && sol === 6 && values === 6 && core === 8 && pl === 5 && /story-babylog-title/.test(body);
     secInfo = `missing ${lack.join(",") || "-"}, stages ${stages}, values ${values}/6, core experience ${core}/8, ecosystem ${eco}, business links ${biz}, category links ${cats}, impact ${impOk}, trust ${sol}/6, platforms ${pl}, closing CTAs ${ctas}`;
   } else if (p.nav.id === "platform") {
     const need = ["screens", "flow", "growth", "records", "family", "learning", "memories", "assist", "explore", "trust", "roles", "scenarios", "roadmap", "cs", ...CS_GROUP_CODES.map((c) => "cs-" + c), "access", "faq", "close"].map((x) => "bl-" + x);

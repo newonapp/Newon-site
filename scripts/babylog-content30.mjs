@@ -120,7 +120,7 @@ const KO = {
         { id: "s3", n: "03", age: "영아·유아", name: "성장·발달·놀이, 그리고 어린이집", lead: "키·몸무게와 이유식 기록, 성장 통계를 앱에서 확인합니다. 놀이·발달 정보와 어린이집 연결은 다음 단계 영역입니다.", topics: ["성장 그래프", "이유식", "발달 기록", "어린이집"] },
         { id: "s4", n: "04", age: "초등학생", name: "학교생활이 시작되는 시기", lead: "시간표·학사 일정·과제·준비물, 방과 후 프로그램과 생활 안전 정보를 가족이 함께 관리하는 단계로 계획합니다.", topics: ["학교 일정", "준비물", "방과 후", "생활 안전"] },
         { id: "s5", n: "05", age: "중·고등학생", name: "학습·진로·진학을 준비하는 시기", lead: "공부 계획과 진로·진학 정보, 졸업 준비로 이어지는 단계입니다. 청소년이 스스로 관리하는 범위를 넓히는 권한 구조로 계획합니다.", topics: ["학습 계획", "진로 탐색", "진학·자격증", "청소년 계정"] },
-        { id: "s6", n: "06", age: "성인 전환", name: "기록을 본인에게 돌려주는 순간", lead: "성인이 된 자녀가 본인 계정으로 기록을 넘겨받아 관리하는 구조를 계획합니다. 이후의 생활은 LIVON과 연결하는 방향을 검토합니다.", topics: ["본인 계정", "기록 통제", "LIVON 연계"] },
+        { id: "s6", n: "06", age: "성인 전환", name: "기록을 본인에게 돌려주는 순간", lead: "성인이 된 자녀가 본인 계정으로 기록을 넘겨받아 관리하는 구조를 계획합니다.", topics: ["본인 계정", "기록 통제"] },
       ],
     },
     diff: {
@@ -152,7 +152,7 @@ const KO = {
         {
           id: "s-a", name: "A · Family & Growth · 가족·성장 코어", items: [
             { n: "01", en: "BABYLOG Family", name: "가족 계정·권한", lead: "부모·조부모·보호자를 한 가족으로 연결하고 아이별 프로필, 공동 일정, 가족 알림을 관리합니다. 가족 공유는 지금 앱에서 제공하며, 역할별 세부 권한과 청소년 계정·성인 전환은 단계적으로 설계합니다." },
-            { n: "02", en: "BABYLOG Pregnancy", name: "임신·출산·산후", lead: "임신 주차별 기록과 검진 일정은 앱에서 관리합니다. 임신 준비, 출산 준비물, 산후 회복, 정부 지원 제도 안내로 넓혀 가며, 생애 이벤트 전반의 제도 안내는 LIVON과 역할을 나눕니다." },
+            { n: "02", en: "BABYLOG Pregnancy", name: "임신·출산·산후", lead: "임신 주차별 기록과 검진 일정은 앱에서 관리합니다. 임신 준비, 출산 준비물, 산후 회복, 정부 지원 제도 안내로 넓혀 갑니다." },
             { n: "03", en: "BABYLOG Growth", name: "성장·발달·건강 기록", lead: "키·몸무게 성장 그래프, 수유·수면·기저귀·이유식, 예방접종과 진료 일정·건강 메모를 앱에서 기록합니다. 발달 평가나 의료적 판단은 하지 않으며 전문 의료진을 대신하지 않습니다." },
             { n: "04", en: "BABYLOG Education", name: "학교·학습·진로", lead: "시간표·학사 일정·과제·준비물, 공부 계획, 진로·진학 정보, 방과 후 프로그램을 가족이 함께 관리하는 영역으로 계획합니다. 학교·기관 정보 연동은 출처와 사용 권한, 학생 정보 보호를 확인한 뒤 진행합니다." },
             { n: "05", en: "BABYLOG Memories", name: "사진·영상·성장 앨범", lead: "첫걸음·첫말·입학·졸업 같은 순간을 가족 앨범과 성장 타임라인으로 남기는 영역입니다. 유료 기능이 생기더라도 기록의 기본 접근, 내보내기와 삭제는 부당하게 제한하지 않습니다." },
@@ -191,7 +191,7 @@ const KO = {
             { n: "22", en: "BABYLOG Foster", name: "가정위탁 정보·지원", lead: "공식 가정위탁 제도, 신청 자격, 절차, 교육과 담당 기관을 안내합니다. 아동과 위탁가정을 개인 간에 직접 연결하지 않으며, 위탁 결정은 법적 권한이 있는 기관의 절차로 이루어집니다." },
             { n: "23", en: "BABYLOG Adoption Support", name: "공식 입양 절차·정보", lead: "공식 입양 절차, 상담 기관, 자격·서류, 교육, 입양 후 지원 정보를 안내합니다. 아동 프로필 공개, 아동 검색·선택, 직접 매칭, 입양 성사 수수료는 운영하지 않습니다." },
             { n: "24", en: "BABYLOG Hope", name: "후원·기부·봉사 연결", lead: "공식 기관의 필요 물품과 검증된 봉사 프로그램을 연결합니다. 법적 요건과 계약을 갖추기 전까지 BABYLOG가 기부금을 직접 모금·보관하지 않고 공식 채널로 안내합니다." },
-            { n: "25", en: "BABYLOG Independence", name: "자립준비청년 지원", lead: "주거·장학금·취업·금융 교육·공식 상담기관·검증된 멘토링 정보를 연결하고, 성인 생활 관리는 LIVON과 이어지도록 합니다. 보호 이력은 커뮤니티나 광고 타기팅에 쓰지 않습니다." },
+            { n: "25", en: "BABYLOG Independence", name: "자립준비청년 지원", lead: "주거·장학금·취업·금융 교육·공식 상담기관·검증된 멘토링 정보를 연결합니다. 보호 이력은 커뮤니티나 광고 타기팅에 쓰지 않습니다." },
             { n: "26", en: "BABYLOG Welfare Business", name: "아동복지기관 SaaS·CSR", lead: "아동복지기관의 일정·프로그램·물품 수요·봉사·후원 관리와 기관 보고를 돕는 도구, 기업 사회공헌 연결을 검토합니다. 실종 신고·보호·위탁·입양 안내 자체는 계속 무료로 유지합니다." },
             { n: "27", en: "BABYLOG Giving", name: "아동·청소년 나눔·기부", lead: "경제적 어려움이나 돌봄 공백을 겪는 아동·청소년의 건강한 성장과 자립을 돕는 나눔 서비스로 계획합니다. 이용자의 자발적 참여와 아동복지기관·비영리단체 연계로 저소득·위기 가정 아동, 결식 아동 식사·생필품, 교육비·학습용품, 의료·건강·재활, 아동복지시설·그룹홈, 보호대상 아동·자립준비청년을 지원하고 지원 결과를 안내하는 방향입니다. 지금은 기부를 받지 않으며, 아동의 이름·사진·사연 같은 개인정보와 신원은 공개하지 않습니다." },
           ],
@@ -209,7 +209,7 @@ const KO = {
         { n: "04", name: "가족 공유", body: "허용된 범위 안에서 부모·조부모·보호자가 같은 정보를 보고 이어서 기록합니다." },
         { n: "05", name: "탐색·마켓", body: "단계에 맞는 기관·서비스·상품 정보로 이어지는 단계입니다. 다음 버전에서 준비 중이며, 아동 데이터 기반 개인화 광고는 하지 않습니다." },
       ],
-      note: "다른 NEWON 앱(LIVON·SHAREON·PETLOG·ONGIL·MY WORLD)과 아동·건강·가족 데이터는 명시적 동의와 적법한 권한 없이 자동으로 공유하지 않습니다.",
+      note: "다른 NEWON 앱(SHAREON·PETLOG·ONGIL·MY WORLD)과 아동·건강·가족 데이터는 명시적 동의와 적법한 권한 없이 자동으로 공유하지 않습니다.",
     },
     roles: {
       kicker: "Roles & Permissions",
@@ -622,7 +622,7 @@ const EN = {
         { id: "s3", n: "03", age: "Baby & Toddler", name: "Growth, development, play and daycare", lead: "Height, weight, baby food records and growth statistics are in the app. Play and development information and daycare links are next-stage areas.", topics: ["Growth charts", "Baby food", "Development notes", "Daycare"] },
         { id: "s4", n: "04", age: "Elementary School", name: "When school life begins", lead: "Planned as the stage where the family manages timetables, school calendars, homework, supplies, after-school programs and everyday safety together.", topics: ["School schedule", "Supplies", "After school", "Everyday safety"] },
         { id: "s5", n: "05", age: "Middle & High School", name: "Preparing for study, careers and higher education", lead: "The stage of study plans, career and admissions information and graduation. Planned with permissions that widen what teens manage themselves.", topics: ["Study plans", "Career exploration", "Admissions · certificates", "Teen accounts"] },
-        { id: "s6", n: "06", age: "Adulthood", name: "Handing the record back to its owner", lead: "The plan is for an adult child to take over their records in their own account. Links to adult life through LIVON are under consideration.", topics: ["Own account", "Control of records", "LIVON link"] },
+        { id: "s6", n: "06", age: "Adulthood", name: "Handing the record back to its owner", lead: "The plan is for an adult child to take over their records in their own account.", topics: ["Own account", "Control of records"] },
       ],
     },
     diff: {
@@ -653,7 +653,7 @@ const EN = {
         {
           id: "s-a", name: "A · Family & Growth", items: [
             { n: "01", en: "BABYLOG Family", name: "Family accounts and permissions", lead: "Connects parents, grandparents and guardians as one family and manages per-child profiles, shared schedules and family notifications. Family sharing is in the app today; role-based permissions, teen accounts and the move to adulthood are being designed step by step." },
-            { n: "02", en: "BABYLOG Pregnancy", name: "Pregnancy, birth and postpartum", lead: "Weekly pregnancy records and checkup schedules are managed in the app. It will widen to pregnancy planning, birth essentials, postpartum recovery and government support programs, while LIVON handles guidance on life-event programs in general." },
+            { n: "02", en: "BABYLOG Pregnancy", name: "Pregnancy, birth and postpartum", lead: "Weekly pregnancy records and checkup schedules are managed in the app. It will widen to pregnancy planning, birth essentials, postpartum recovery and government support programs." },
             { n: "03", en: "BABYLOG Growth", name: "Growth, development and health records", lead: "Height and weight growth charts, feeding, sleep, diapers, baby food, vaccinations, appointments and health notes are recorded in the app. It makes no developmental assessment or medical judgment and does not replace medical professionals." },
             { n: "04", en: "BABYLOG Education", name: "School, learning and careers", lead: "Planned as an area where the family manages timetables, school calendars, homework, supplies, study plans, career and admissions information and after-school programs together. Links to school and institution data come only after checking sources, rights of use and student data protection." },
             { n: "05", en: "BABYLOG Memories", name: "Photos, videos and growth albums", lead: "An area for keeping moments such as first steps, first words, school entry and graduation in family albums and a growth timeline. Even if paid features appear, basic access, export and deletion of records will not be unfairly restricted." },
@@ -692,7 +692,7 @@ const EN = {
             { n: "22", en: "BABYLOG Foster", name: "Foster care information and support", lead: "Guides the official foster care system, eligibility, procedures, training and responsible agencies. Children and foster families are never matched person to person; foster decisions are made through the procedures of legally authorized agencies." },
             { n: "23", en: "BABYLOG Adoption Support", name: "Official adoption procedures and information", lead: "Guides official adoption procedures, counseling agencies, eligibility and documents, training and post-adoption support. No child profiles, child search or selection, direct matching or adoption success fees." },
             { n: "24", en: "BABYLOG Hope", name: "Links to sponsorship, giving and volunteering", lead: "Connects official institutions' needed goods and verified volunteer programs. Until the legal requirements and contracts are in place, BABYLOG does not collect or hold donations itself and points to official channels." },
-            { n: "25", en: "BABYLOG Independence", name: "Support for young people leaving care", lead: "Connects information on housing, scholarships, jobs, financial education, official counseling agencies and verified mentoring, with adult life management linked to LIVON. Care history is never used for community features or ad targeting." },
+            { n: "25", en: "BABYLOG Independence", name: "Support for young people leaving care", lead: "Connects information on housing, scholarships, jobs, financial education, official counseling agencies and verified mentoring. Care history is never used for community features or ad targeting." },
             { n: "26", en: "BABYLOG Welfare Business", name: "SaaS and CSR for child welfare institutions", lead: "Reviews tools that help child welfare institutions manage schedules, programs, needed goods, volunteering, sponsorship and reporting, and links to corporate social contribution. Guidance on missing-child reporting, protection, foster care and adoption itself stays free." },
             { n: "27", en: "BABYLOG Giving", name: "Giving for children and teens", lead: "Planned as a giving service that helps children and teens facing economic hardship or gaps in care grow up healthy and independent. Through users' voluntary participation and links with child welfare institutions and nonprofits, it would support children in low-income and at-risk families, meals and daily necessities for children who go without, education costs and learning supplies, medical, health and rehabilitation care, child welfare facilities and group homes, and protected children and youth leaving care, and report on support results. No donations are accepted today, and children's personal information and identity, such as names, photos and stories, are never published." },
           ],
@@ -710,7 +710,7 @@ const EN = {
         { n: "04", name: "Family sharing", body: "Within the permitted scope, parents, grandparents and guardians see the same information and keep adding to it." },
         { n: "05", name: "Explore and market", body: "The stage that leads on to institutions, services and goods suited to the child's stage. Being prepared for the next version, with no personalized ads based on children's data." },
       ],
-      note: "Children's, health and family data is never shared automatically with other NEWON apps (LIVON, SHAREON, PETLOG, ONGIL, MY WORLD) without explicit consent and lawful authority.",
+      note: "Children's, health and family data is never shared automatically with other NEWON apps (SHAREON, PETLOG, ONGIL, MY WORLD) without explicit consent and lawful authority.",
     },
     roles: {
       kicker: "Roles & Permissions",

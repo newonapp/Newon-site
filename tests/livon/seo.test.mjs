@@ -254,7 +254,7 @@ test('SEO-17 sitemap consistency: patching is idempotent and equals the manifest
   assert.equal(patchSitemap(once, Object.assign({}, M, { indexing: false, pages: P.map(p => Object.assign({}, p, { index: false })) })), src('sitemap.xml'), 'switching off removes exactly the block');
 });
 
-test('SEO-18 robots: the sitemap is declared, the Admin is disallowed and — more importantly — not published', () => {
+test('SEO-18 robots: the sitemap is declared, the Admin is disallowed and — more importantly — not published', { skip: 'LIVON was removed from the website (2026-11): publish-site no longer publishes /livon/ (only the shared livon-api-config.js)' }, () => {
   const r = src('robots.txt');
   assert.match(r, /Sitemap: https:\/\/www\.newon\.app\/sitemap\.xml/);
   assert.match(r, /Disallow: \/admin\//);
@@ -565,7 +565,7 @@ test('SEO-53 Onboarding regression: states, steps and the dialog markup are as b
   assert.match(INDEX, /<div class="lv-life-modal lv-ob" id="livon-onboard-modal" hidden>/);
 });
 
-test('SEO-54 Admin regression: still local-only, noindex and removed from the build', () => {
+test('SEO-54 Admin regression: still local-only, noindex and removed from the build', { skip: 'LIVON was removed from the website (2026-11): publish-site no longer publishes /livon/ (only the shared livon-api-config.js)' }, () => {
   assert.match(src('livon/admin/index.html'), /<meta name="robots" content="noindex, nofollow">/);
   assert.match(PUBLISH, /console\.error\("publish-site: livon\/admin must not be published"\)/);
   assert.ok(Q.errors.every(e => e.code !== 'admin-published'));
@@ -599,7 +599,7 @@ test('SEO-57 anonymous mode: static pages ask for nothing and promise no account
   assert.match(all, /회원가입 없이 쓸 수 있어요/);
 });
 
-test('SEO-58 build: the generator and the quality check are part of publish-site, after the route stubs and before verification', () => {
+test('SEO-58 build: the generator and the quality check are part of publish-site, after the route stubs and before verification', { skip: 'LIVON was removed from the website (2026-11): publish-site no longer publishes /livon/ (only the shared livon-api-config.js)' }, () => {
   const a = PUBLISH.indexOf('render-livon-today-routes.mjs"), "--out"'), b = PUBLISH.indexOf('"livon-seo-build.mjs"), "--out", OUT'), c = PUBLISH.indexOf('"livon-seo-quality.mjs"), "--root", OUT'), d = PUBLISH.lastIndexOf('\nverify();');
   assert.ok(a > 0 && a < b && b < c && c < d, [a, b, c, d].join());
   for (const f of ['"seo.css"', '"seo-manifest.json"', '"help", "index.html"', '"life-events", "index.html"']) assert.ok(PUBLISH.includes('required.push(path.join(OUT, "livon", ' + f + '));'), f);

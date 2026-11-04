@@ -155,8 +155,7 @@ const KO = {
       items: [
         { n: "01", name: "자체 제품 중심", body: "고객별 외주가 아닌 표준화된 자체 SaaS·플랫폼·라이선스·자동화 제품을 중심으로 합니다." },
         { n: "02", name: "SHAREON과의 역할 구분", body: "육아용품 쇼핑·중고·공동구매는 BABYLOG 안에서, 대여는 공유·대여 전문인 SHAREON과 연계하는 것으로 역할을 나눕니다. 하나의 거래에 수수료가 이중으로 부과되지 않도록 설계하는 것을 원칙으로 합니다." },
-        { n: "03", name: "LIVON·ONGIL과의 역할 구분", body: "출산 지원금·육아휴직 같은 생활 제도 안내는 LIVON이 맡고, 아이의 성장 이후 생애 단계와의 연결은 장기 방향으로 살펴봅니다." },
-        { n: "04", name: "웹과 앱의 역할", body: "웹사이트는 브랜드·서비스·사업·협력 소개와 문의 연결을, 앱은 실제 기록과 관리 기능을 담당합니다." },
+        { n: "03", name: "웹과 앱의 역할", body: "웹사이트는 브랜드·서비스·사업·협력 소개와 문의 연결을, 앱은 실제 기록과 관리 기능을 담당합니다." },
       ],
     },
     next: {
@@ -610,8 +609,7 @@ const EN = {
       items: [
         { n: "01", name: "In-house products first", body: "Standardized in-house SaaS, platforms, licenses and automation products — not per-client outsourcing." },
         { n: "02", name: "Roles divided with SHAREON", body: "Baby goods shopping, used goods and group buying stay in BABYLOG, while rental links to SHAREON, the sharing and rental platform. The principle is that a single transaction is never charged fees twice." },
-        { n: "03", name: "Roles divided with LIVON and ONGIL", body: "Guidance on life-stage systems such as childbirth support and parental leave is handled by LIVON, and links to life stages after childhood are a long-term direction." },
-        { n: "04", name: "Roles of the web and the app", body: "The website introduces the brand, services, business and partnerships and routes inquiries; the app handles actual recording and management." },
+        { n: "03", name: "Roles of the web and the app", body: "The website introduces the brand, services, business and partnerships and routes inquiries; the app handles actual recording and management." },
       ],
     },
     next: {

@@ -46,12 +46,11 @@ function navTopLabel(flat, flatEn, id) {
 }
 
 /**
- * Second row: Newon's six flagship businesses, equal weight, each linking to its own page.
- * Brand names are not translated. LIVON / ONGIL keep their existing mega menus.
+ * Second row: Newon's flagship businesses, equal weight, each linking to its own page.
+ * Brand names are not translated. LIVON was removed from the website (2026-11).
  */
 export const VENTURE_NAV = [
   { id: "ongil", label: "ONGIL", path: "ongil/", mega: true },
-  { id: "lifestage", label: "LIVON", path: "livon/", mega: true },
   { id: "shareon", label: "SHAREON", path: "shareon/", mega: true },
   { id: "babylog", label: "BABYLOG", path: "babylog/", mega: true },
   { id: "petlog", label: "PETLOG", path: "petlog/", mega: true },
@@ -482,7 +481,6 @@ export const FOOTER_MENUS = [
   ["consumer", "products/"],
   ["ai", "ai/"],
   ["ongil", "ongil/"],
-  ["lifestage", "livon/"],
   ["shareon", "shareon/"],
   ["babylog", "babylog/"],
   ["petlog", "petlog/"],

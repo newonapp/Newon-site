@@ -43,7 +43,7 @@ const KO = {
       "02": {
         now: "지금 앱에서는 임신 주차와 검진 일정을 관리합니다. 나머지 구성은 계획입니다.",
         rows: [["임신 준비", "준비 정보와 가족 계획"], ["주차별 기록", "임신 주차별 변화"], ["검진 일정", "병원 검진 일정"], ["출산 준비", "출산 준비물"], ["산후 회복", "산후 생활 정보"], ["지원 제도", "정부 지원 제도 안내"], ["가족 일정", "가족이 함께 보는 일정"]],
-        note: "생애 이벤트 전반의 제도 안내는 LIVON이 맡고, BABYLOG는 임신·출산에서 이후의 육아까지 깊이 있게 잇습니다.",
+        note: "BABYLOG는 임신·출산에서 이후의 육아까지 깊이 있게 잇습니다.",
       },
       "05": {
         now: "향후 계획 영역입니다.",
@@ -167,7 +167,7 @@ const EN = {
       "02": {
         now: "Today's app manages pregnancy weeks and check-up schedules. The rest is planned.",
         rows: [["Preparing for pregnancy", "Preparation information and family planning"], ["Weekly records", "Changes week by week"], ["Check-ups", "Hospital check-up schedule"], ["Birth preparation", "What to prepare for the birth"], ["Postpartum recovery", "Postpartum life information"], ["Support programs", "Government support programs"], ["Family schedule", "A schedule the family shares"]],
-        note: "LIVON covers programs across life events; BABYLOG connects pregnancy and birth in depth to the parenting that follows.",
+        note: "BABYLOG connects pregnancy and birth in depth to the parenting that follows.",
       },
       "05": {
         now: "A planned area.",
