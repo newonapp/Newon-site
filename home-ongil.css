@@ -1,0 +1,1634 @@
+/* Ongil detail — scoped to #ongil-detail (black & white) */
+.hub-page:has(#ongil-detail) {
+  padding: 0;
+  max-width: none;
+  overflow-x: clip;
+}
+
+#ongil-detail.nls,
+#ongil-detail.nls [id^="nog-"],
+#ongil-detail.nls [id^="nls-"] {
+  scroll-margin-top: 5.5rem;
+}
+
+#ongil-detail.nls {
+  --nls-ink: #171717;
+  --nls-muted: #525252;
+  --nls-faint: #6b6b6b;
+  --nls-line: #ebebeb;
+  --nls-line-strong: #d8d8d8;
+  --nls-paper: #ffffff;
+  --nls-card: #ffffff;
+  --nls-wash: #ffffff;
+  --nls-accent: #0a0a0a;
+  --nls-accent-ink: #ffffff;
+  --nls-radius: 2px;
+  background: #fff;
+  color: var(--nls-ink);
+  padding: 0 0 clamp(3rem, 7vw, 5rem);
+  border-top: 0;
+}
+
+#ongil-detail.nls :where(h1, h2, h3, h4, p, li, a, span, button, strong, em) {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+#ongil-detail.nls .nls__wrap {
+  width: min(1180px, calc(100% - 2.4rem));
+  margin: 0 auto;
+}
+
+#ongil-detail.nls .nls-head {
+  max-width: 42rem;
+  margin: 0 0 0.35rem;
+}
+
+#ongil-detail.nls .nls-block {
+  padding: clamp(2.75rem, 5.5vw, 4.5rem) 0;
+  border-top: 1px solid var(--nls-line);
+}
+
+#ongil-detail.nls .nls-crumb {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 1rem 0 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nls-crumb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#ongil-detail.nls .nls-crumb a:hover {
+  color: var(--nls-ink);
+}
+
+#ongil-detail.nls .nls-hero {
+  padding: clamp(1.25rem, 3vw, 2rem) 0 clamp(2.5rem, 5vw, 3.75rem);
+}
+
+#ongil-detail.nls .nls-hero__grid {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  #ongil-detail.nls .nls-hero__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+}
+
+#ongil-detail.nls .nls-kicker,
+#ongil-detail.nls .nls-mini,
+#ongil-detail.nls .nls-panel__kicker {
+  margin: 0 0 0.4rem;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nls-kicker__sep {
+  margin: 0 0.55rem;
+  opacity: 0.45;
+}
+
+#ongil-detail.nls .nls-hero__title,
+#ongil-detail.nls .nls-title {
+  margin: 0;
+  color: var(--nls-ink);
+  font-size: clamp(2.2rem, 5vw, 3.85rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.28;
+  overflow-wrap: anywhere;
+}
+
+#ongil-detail.nls .nls-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.55rem);
+  letter-spacing: -0.04em;
+}
+
+#ongil-detail.nls .nls-lead {
+  margin: 1.15rem 0 0;
+  max-width: 34rem;
+  font-size: clamp(1rem, 1.65vw, 1.1rem);
+  line-height: 1.65;
+  color: var(--nls-muted);
+}
+
+#ongil-detail.nls .nls-lead--quiet {
+  margin-top: 0.7rem;
+  font-size: 0.98rem;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nls-note {
+  margin: 0.7rem 0 0;
+  max-width: 44rem;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nog-status {
+  display: inline-flex;
+  margin: 1.15rem 0 0;
+  padding: 0.28rem 0.55rem;
+  border: 1px solid var(--nls-line);
+  border-radius: var(--nls-radius);
+  background: var(--nls-wash);
+  color: var(--nls-muted);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+#ongil-detail.nls .nls-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.75rem;
+}
+
+#ongil-detail.nls .nls-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
+  border: 1px solid #1a1a1a;
+  border-radius: var(--nls-radius);
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+}
+
+#ongil-detail.nls .nls-btn--ghost {
+  background: transparent;
+  color: var(--nls-ink);
+  border-color: var(--nls-line);
+}
+
+#ongil-detail.nls .nls-btn:hover,
+#ongil-detail.nls .nls-btn:focus-visible {
+  opacity: 0.88;
+  background: #0a0a0a;
+  border-color: #1a1a1a;
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-btn--ghost:hover,
+#ongil-detail.nls .nls-btn--ghost:focus-visible {
+  opacity: 1;
+  background: transparent;
+  color: var(--nls-ink);
+  border-color: color-mix(in srgb, var(--nls-ink) 35%, var(--nls-line));
+}
+
+#ongil-detail.nls .nls-visual,
+#ongil-detail.nls .nls-sv {
+  width: 100%;
+  min-width: 0;
+}
+
+#ongil-detail.nls .nls-sv__rail {
+  min-width: 0;
+}
+
+#ongil-detail.nls .nls-sv {
+  padding: 1.1rem 1.15rem 1.2rem;
+  border: 1px solid var(--nls-line);
+  border-radius: var(--nls-radius);
+  background: #fff;
+}
+
+#ongil-detail.nls .nls-sv__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nls-sv__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--nls-ink);
+}
+
+#ongil-detail.nls .nls-sv__live i {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #0a0a0a;
+}
+
+#ongil-detail.nls .nls-sv__rail {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.28rem;
+  margin-bottom: 0.9rem;
+  overflow-x: auto;
+}
+
+#ongil-detail.nls .nls-node {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1 1 0;
+  min-height: 44px;
+  min-width: 0;
+  padding: 0.4rem 0.28rem;
+  border: 1px solid var(--nls-line);
+  border-radius: var(--nls-radius);
+  background: #fff;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+#ongil-detail.nls .nls-node__n {
+  display: none;
+}
+
+#ongil-detail.nls .nls-node__age {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nls-node__name {
+  display: none;
+}
+
+#ongil-detail.nls .nls-node.is-active {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-node.is-active .nls-node__n,
+#ongil-detail.nls .nls-node.is-active .nls-node__age {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+#ongil-detail.nls .nls-sv__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem;
+}
+
+#ongil-detail.nls .nls-sv__now {
+  grid-column: 1 / -1;
+}
+
+#ongil-detail.nls .nls-sv__grid article {
+  padding: 0.85rem 0.85rem;
+  border: 1px solid var(--nls-line);
+  border-radius: var(--nls-radius);
+  background: #fff;
+  min-width: 0;
+}
+
+#ongil-detail.nls .nls-sv__grid article.is-on {
+  grid-column: 1 / -1;
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-sv__now:not(.is-on) {
+  background: #fff;
+  color: inherit;
+}
+
+#ongil-detail.nls .nls-sv__k {
+  margin: 0 0 0.35rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nls-sv__grid article.is-on .nls-sv__k,
+#ongil-detail.nls .nls-sv__grid article.is-on em {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+#ongil-detail.nls .nls-sv__grid strong {
+  display: block;
+  font-size: 0.86rem;
+  letter-spacing: -0.02em;
+}
+
+#ongil-detail.nls .nls-sv__grid em {
+  display: block;
+  margin-top: 0.2rem;
+  font-style: normal;
+  font-size: 0.75rem;
+  color: var(--nls-muted);
+}
+
+#ongil-detail.nls .nls-node:focus-visible {
+  outline: 2px solid var(--nls-accent);
+  outline-offset: 2px;
+}
+
+#ongil-detail.nls .nls-closebar {
+  margin: 0;
+  padding: 1rem 0 0;
+}
+
+#ongil-detail.nls .nls-closebar .nls-btn {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--nls-faint);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+#ongil-detail.nls .nls-closebar .nls-btn:hover,
+#ongil-detail.nls .nls-closebar .nls-btn:focus-visible {
+  opacity: 1;
+  background: transparent;
+  border: 0;
+  color: var(--nls-ink);
+}
+
+#ongil-detail.nls .nls-block--band {
+  position: relative;
+  box-sizing: border-box;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding-left: max(1.2rem, calc(50vw - 590px));
+  padding-right: max(1.2rem, calc(50vw - 590px));
+  background: var(--nls-wash);
+}
+
+#ongil-detail.nls .nog-block--care.nls-block--band {
+  background: #0a0a0a;
+  color: #fff;
+  border-top-color: #0a0a0a;
+}
+
+#ongil-detail.nls .nog-block--care .nls-kicker,
+#ongil-detail.nls .nog-block--care .nls-note,
+#ongil-detail.nls .nog-block--care .nls-mini {
+  color: #a3a3a3;
+}
+
+#ongil-detail.nls .nog-block--care .nls-title {
+  color: #fff;
+}
+
+#ongil-detail.nls .nog-pillars {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.6rem;
+}
+
+@media (min-width: 900px) {
+  #ongil-detail.nls .nog-pillars {
+    grid-template-columns: 1.12fr 1fr 0.94fr;
+    align-items: stretch;
+  }
+}
+
+#ongil-detail.nls .nog-pillar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 1.35rem 1.2rem 1.15rem;
+  border: 1px solid var(--nls-line);
+  border-radius: var(--nls-radius);
+  background: #fff;
+}
+
+#ongil-detail.nls .nog-pillar--care {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+
+#ongil-detail.nls .nog-pillar--hobby {
+  background: #fff;
+}
+
+#ongil-detail.nls .nog-pillar__n {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nog-pillar--care .nog-pillar__n {
+  color: #a3a3a3;
+}
+
+#ongil-detail.nls .nog-pillar__name {
+  margin: 0.35rem 0 0;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+#ongil-detail.nls .nog-pillar__lead {
+  margin: 0.75rem 0 1rem;
+  font-size: 0.98rem;
+  line-height: 1.62;
+  color: inherit;
+  opacity: 0.88;
+}
+
+#ongil-detail.nls .nog-badge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.16rem 0.42rem;
+  border: 1px solid var(--nls-line-strong);
+  border-radius: var(--nls-radius);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--nls-muted);
+}
+
+#ongil-detail.nls .nog-badge--core {
+  border-color: #525252;
+  color: #d4d4d4;
+}
+
+#ongil-detail.nls .nog-day {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1.6rem;
+  position: relative;
+}
+
+@media (min-width: 880px) {
+  #ongil-detail.nls .nog-day {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  #ongil-detail.nls .nog-day::before {
+    content: "";
+    position: absolute;
+    top: 1.25rem;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: var(--nls-line-strong);
+    pointer-events: none;
+  }
+}
+
+#ongil-detail.nls .nog-moment {
+  position: relative;
+  padding: 1.05rem 0.95rem 1.1rem;
+  border-radius: var(--nls-radius);
+  background: #fff;
+  border: 1px solid var(--nls-line);
+}
+
+#ongil-detail.nls .nog-moment:nth-child(even) {
+  background: var(--nls-wash);
+}
+
+#ongil-detail.nls .nog-moment__n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: var(--nls-radius);
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+#ongil-detail.nls .nog-moment h3 {
+  margin: 0.65rem 0 0.4rem;
+  font-size: 1.05rem;
+  letter-spacing: -0.03em;
+}
+
+#ongil-detail.nls .nog-moment p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.58;
+  color: var(--nls-muted);
+}
+
+#ongil-detail.nls .nog-family {
+  display: grid;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 960px) {
+  #ongil-detail.nls .nog-family {
+    grid-template-columns: 0.92fr 1.08fr;
+    align-items: start;
+  }
+}
+
+#ongil-detail.nls .nog-family__feats {
+  display: grid;
+  gap: 0.55rem;
+}
+
+@media (min-width: 640px) {
+  #ongil-detail.nls .nog-family__feats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+#ongil-detail.nls .nog-feat {
+  padding: 0.9rem 0.95rem;
+  border-radius: var(--nls-radius);
+  background: #fff;
+  border: 1px solid var(--nls-line);
+}
+
+#ongil-detail.nls .nog-feat h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.98rem;
+  letter-spacing: -0.02em;
+}
+
+#ongil-detail.nls .nog-family__preview {
+  padding: 1.05rem;
+  border-radius: var(--nls-radius);
+  background: var(--nls-wash);
+  border: 1px solid var(--nls-line);
+}
+
+#ongil-detail.nls .nog-scene-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.5rem 0 0.85rem;
+}
+
+#ongil-detail.nls .nog-scene-tab {
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--nls-radius);
+  border: 1px solid var(--nls-line);
+  background: #fff;
+  color: var(--nls-muted);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+#ongil-detail.nls .nog-scene-tab.is-active,
+#ongil-detail.nls .nog-scene-tab[aria-selected="true"] {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+
+#ongil-detail.nls .nog-device {
+  padding: 0;
+}
+
+#ongil-detail.nls .nog-scene-grid {
+  display: grid;
+  gap: 0.55rem;
+}
+
+@media (min-width: 640px) {
+  #ongil-detail.nls .nog-scene-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+#ongil-detail.nls .nog-scene-card {
+  padding: 0.8rem 0.85rem;
+  border-radius: var(--nls-radius);
+  background: #fff;
+  border: 1px solid var(--nls-line);
+}
+
+#ongil-detail.nls .nog-care-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  #ongil-detail.nls .nog-care-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 800px) {
+  #ongil-detail.nls .nog-care-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+#ongil-detail.nls .nog-care-tile {
+  padding: 1.15rem 1.1rem;
+  border-radius: var(--nls-radius);
+  background: transparent;
+  border: 1px solid #2a2a2a;
+}
+
+#ongil-detail.nls .nog-care-tile--lead {
+  background: #141414;
+}
+
+#ongil-detail.nls .nog-care-tile__n {
+  margin: 0 0 0.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: #a3a3a3;
+}
+
+#ongil-detail.nls .nog-care-tile h3 {
+  margin: 0 0 0.65rem;
+  font-size: 1.15rem;
+  letter-spacing: -0.03em;
+}
+
+#ongil-detail.nls .nog-disc-grid {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 760px) {
+  #ongil-detail.nls .nog-disc-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+#ongil-detail.nls .nog-disc-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  min-height: 7rem;
+  padding: 1rem;
+  border-radius: var(--nls-radius);
+  border: 1px solid var(--nls-line);
+  background: #fff;
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+#ongil-detail.nls .nog-disc-tab strong {
+  font-size: 1.02rem;
+  letter-spacing: -0.02em;
+}
+
+#ongil-detail.nls .nog-disc-tab span {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--nls-muted);
+}
+
+#ongil-detail.nls .nog-disc-tab.is-active,
+#ongil-detail.nls .nog-disc-tab[aria-selected="true"] {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+
+#ongil-detail.nls .nog-disc-tab.is-active span {
+  color: #a3a3a3;
+}
+
+#ongil-detail.nls .nog-disc-grid4 {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 760px) {
+  #ongil-detail.nls .nog-disc-grid4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+#ongil-detail.nls .nog-disc-panel {
+  margin-top: 0.85rem;
+  padding: 1.15rem 1.1rem;
+  border-radius: var(--nls-radius);
+  background: #fff;
+  border: 1px solid var(--nls-line);
+}
+
+#ongil-detail.nls .nog-know-layout {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 960px) {
+  #ongil-detail.nls .nog-know-layout {
+    grid-template-columns: 1.4fr 0.8fr;
+  }
+}
+
+#ongil-detail.nls .nog-know-grid {
+  display: grid;
+  gap: 0.55rem;
+}
+
+@media (min-width: 700px) {
+  #ongil-detail.nls .nog-know-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+#ongil-detail.nls .nog-know {
+  padding: 1rem 0.95rem 1.05rem;
+  border-radius: var(--nls-radius);
+  background: #fff;
+  border: 1px solid var(--nls-line);
+}
+
+#ongil-detail.nls .nog-know h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+#ongil-detail.nls .nog-know p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--nls-muted);
+}
+
+#ongil-detail.nls .nog-lesson {
+  padding: 1.15rem 1.1rem;
+  border-radius: var(--nls-radius);
+  background: #0a0a0a;
+  color: #fff;
+}
+
+#ongil-detail.nls .nog-lesson .nls-mini,
+#ongil-detail.nls .nog-lesson h3 {
+  color: inherit;
+}
+
+#ongil-detail.nls .nog-lesson .nls-mini {
+  color: #a3a3a3;
+}
+
+#ongil-detail.nls .nog-lesson h3 {
+  margin: 0.2rem 0 0.75rem;
+  font-size: 1.15rem;
+}
+
+#ongil-detail.nls .nls-list.nog-ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#ongil-detail.nls .nls-list.nog-ol li {
+  display: flex;
+  gap: 0.65rem;
+  padding: 0.4rem 0;
+  border-top: 1px solid #2a2a2a;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+#ongil-detail.nls .nls-list.nog-ol li span {
+  flex: 0 0 auto;
+  color: #a3a3a3;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+#ongil-detail.nls .nog-extras {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 800px) {
+  #ongil-detail.nls .nog-extras {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+#ongil-detail.nls .nog-extra {
+  padding: 0.95rem;
+  border-radius: var(--nls-radius);
+  background: #fff;
+  border: 1px solid var(--nls-line);
+}
+
+#ongil-detail.nls .nog-links {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.8rem;
+}
+
+@media (min-width: 760px) {
+  #ongil-detail.nls .nog-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+#ongil-detail.nls .nls-app {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.9rem 0.95rem;
+  border-radius: var(--nls-radius);
+  border: 1px solid var(--nls-line);
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+}
+
+#ongil-detail.nls .nls-app span {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+#ongil-detail.nls .nls-app em {
+  font-style: normal;
+  font-size: 0.88rem;
+  color: var(--nls-muted);
+}
+
+#ongil-detail.nls .nls-app:hover {
+  border-color: #111;
+}
+
+#ongil-detail.nls .nog-vs {
+  margin-top: 1.25rem;
+  padding: 1.15rem 1.1rem 1.2rem;
+  border-radius: var(--nls-radius);
+  background: #0a0a0a;
+  color: #fff;
+}
+
+#ongil-detail.nls .nog-vs .nls-mini {
+  color: #a3a3a3;
+}
+
+#ongil-detail.nls .nog-vs p {
+  margin: 0.35rem 0 0;
+  line-height: 1.65;
+}
+
+#ongil-detail.nls .nog-biz-list {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 1.3rem;
+}
+
+#ongil-detail.nls .nog-biz {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1.05rem 1.1rem;
+  border-radius: var(--nls-radius);
+  background: #fff;
+  border: 1px solid var(--nls-line);
+}
+
+#ongil-detail.nls .nog-biz:nth-child(odd) {
+  background: var(--nls-wash);
+}
+
+#ongil-detail.nls .nog-biz__n {
+  margin: 0.15rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nog-biz h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.08rem;
+  letter-spacing: -0.025em;
+}
+
+#ongil-detail.nls .nls-road {
+  position: relative;
+  margin: 1.6rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+#ongil-detail.nls .nls-road::before {
+  content: "";
+  position: absolute;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  left: 1.05rem;
+  width: 1px;
+  background: var(--nls-line-strong);
+}
+
+#ongil-detail.nls .nls-road li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3.2rem 1fr;
+  gap: 0.9rem;
+  padding: 0 0 1.4rem;
+}
+
+#ongil-detail.nls .nls-road li:last-child {
+  padding-bottom: 0;
+}
+
+#ongil-detail.nls .nls-road span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: var(--nls-radius);
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  z-index: 1;
+}
+
+#ongil-detail.nls .nls-road strong {
+  display: block;
+  margin: 0.15rem 0 0.35rem;
+  font-size: 1.18rem;
+  letter-spacing: -0.03em;
+}
+
+#ongil-detail.nls .nls-road p {
+  margin: 0;
+  max-width: 38rem;
+  color: var(--nls-muted);
+  line-height: 1.62;
+}
+
+#ongil-detail.nls .nls-close {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  max-width: 100vw;
+  min-height: calc(100svh - 5.75rem);
+  margin-left: calc(50% - 50vw);
+  margin-top: 2rem;
+  padding: clamp(3.5rem, 8vw, 5.5rem) clamp(1.25rem, 4vw, 2.5rem);
+  border-radius: 0;
+  background: #0a0a0a;
+  color: #fff;
+  border-top: 0;
+  text-align: center;
+}
+
+#ongil-detail.nls .nls-close .nls-kicker,
+#ongil-detail.nls .nls-close .nls-lead,
+#ongil-detail.nls .nls-close .nls-note {
+  color: rgba(255, 255, 255, 0.58);
+}
+
+#ongil-detail.nls .nls-close .nls-hero__title {
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-close .nls-hero__title,
+#ongil-detail.nls .nls-close .nls-lead,
+#ongil-detail.nls .nls-close .nls-note {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#ongil-detail.nls .nls-close .nls-actions {
+  justify-content: center;
+}
+
+#ongil-detail.nls .nls-close .nls-btn {
+  background: #fff;
+  border-color: #fff;
+  color: #080808;
+}
+
+#ongil-detail.nls .nls-close .nls-btn:hover {
+  opacity: 1;
+  background: #fff;
+  border-color: #fff;
+  color: #080808;
+}
+
+#ongil-detail.nls .nls-close .nls-btn--ghost {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-close .nls-btn--ghost:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-chips,
+#ongil-detail.nls .nls-points,
+#ongil-detail.nls .nls-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#ongil-detail.nls .nls-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+#ongil-detail.nls .nls-chips li {
+  padding: 0.28rem 0.5rem;
+  border-radius: var(--nls-radius);
+  border: 1px solid #0a0a0a;
+  background: #fff;
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+#ongil-detail.nls .nog-pillar--care .nls-chips li {
+  border-color: #2a2a2a;
+  background: #141414;
+}
+
+#ongil-detail.nls .nls-points li,
+#ongil-detail.nls .nls-list li {
+  position: relative;
+  padding: 0.28rem 0 0.28rem 0.95rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: inherit;
+}
+
+#ongil-detail.nls .nls-points li::before,
+#ongil-detail.nls .nls-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72rem;
+  width: 0.28rem;
+  height: 0.28rem;
+  background: #111;
+}
+
+#ongil-detail.nls .nog-pillar--care .nls-points li::before,
+#ongil-detail.nls .nog-pillar--care .nls-list li::before,
+#ongil-detail.nls .nog-care-tile .nls-points li::before {
+  background: #d4d4d4;
+}
+
+#ongil-detail.nls .nls-more {
+  margin-top: auto;
+  padding-top: 0.85rem;
+}
+
+#ongil-detail.nls .nls-more summary {
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 650;
+  color: inherit;
+  list-style: none;
+}
+
+#ongil-detail.nls .nls-more summary::-webkit-details-marker {
+  display: none;
+}
+
+#ongil-detail.nls .nls-more__body {
+  margin-top: 0.65rem;
+}
+
+#ongil-detail.nls .nls-empty {
+  margin: 0.85rem 0 0;
+  color: var(--nls-faint);
+  font-size: 0.92rem;
+}
+
+#ongil-detail.nls .nls-empty[hidden],
+#ongil-detail.nls [hidden] {
+  display: none !important;
+}
+
+#ongil-detail.nls .nls-panel__title {
+  margin: 0 0 0.4rem;
+  font-size: 1.2rem;
+  letter-spacing: -0.03em;
+}
+
+#ongil-detail.nls .nls-panel__intro {
+  margin: 0;
+  color: var(--nls-muted);
+  line-height: 1.6;
+}
+
+#ongil-detail.nls .nls-tab {
+  font: inherit;
+}
+
+@media (max-width: 720px) {
+  #ongil-detail.nls .nls-hero__title {
+    font-size: clamp(2.05rem, 10vw, 2.7rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ongil-detail.nls * {
+    scroll-behavior: auto !important;
+  }
+}
+
+html[data-theme="dark"] #ongil-detail.nls {
+  --nls-ink: #f5f5f5;
+  --nls-muted: #a3a3a3;
+  --nls-faint: #8a8a8a;
+  --nls-line: #2a2a2a;
+  --nls-line-strong: #3f3f3f;
+  --nls-paper: #0a0a0a;
+  --nls-card: #111;
+  --nls-wash: #000000;
+  background: #0a0a0a;
+}
+
+html[data-theme="dark"] #ongil-detail.nls .nog-scene-card,
+html[data-theme="dark"] #ongil-detail.nls .nls-app,
+html[data-theme="dark"] #ongil-detail.nls .nog-disc-panel,
+html[data-theme="dark"] #ongil-detail.nls .nog-axis,
+html[data-theme="dark"] #ongil-detail.nls .nog-pillar,
+html[data-theme="dark"] #ongil-detail.nls .nog-know,
+html[data-theme="dark"] #ongil-detail.nls .nog-feat {
+  background: #111;
+}
+
+html[data-theme="dark"] #ongil-detail.nls .nls-block--band {
+  background: #111;
+}
+
+html[data-theme="dark"] #ongil-detail.nls .nog-block--care.nls-block--band,
+html[data-theme="dark"] #ongil-detail.nls .nog-pillar--care,
+html[data-theme="dark"] #ongil-detail.nls .nls-close,
+html[data-theme="dark"] #ongil-detail.nls .nog-lesson,
+html[data-theme="dark"] #ongil-detail.nls .nog-vs {
+  background: #000;
+}
+
+#ongil-detail.nls .nog-id {
+  border: 1px solid var(--nls-line);
+  background: var(--nls-wash);
+  padding: clamp(1.8rem, 4vw, 2.8rem);
+  min-height: 16rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.35rem;
+}
+
+#ongil-detail.nls .nog-id__en {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+
+#ongil-detail.nls .nog-id__ko {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+#ongil-detail.nls .nog-id__line {
+  margin: 1.1rem 0 0;
+  max-width: 18rem;
+  color: var(--nls-muted);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+#ongil-detail.nls .nog-why {
+  display: grid;
+  gap: 0.9rem;
+  max-width: 42rem;
+  margin-top: 1.4rem;
+}
+
+#ongil-detail.nls .nog-why p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--nls-muted);
+}
+
+#ongil-detail.nls .nog-services {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1.6rem;
+}
+
+@media (min-width: 800px) {
+  #ongil-detail.nls .nog-services {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+#ongil-detail.nls .nog-svc {
+  border: 1px solid var(--nls-line);
+  background: var(--nls-card);
+  padding: 1.35rem 1.3rem 1.25rem;
+  min-width: 0;
+  width: 100%;
+}
+
+#ongil-detail.nls .nog-svc__n {
+  margin: 0 0 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nog-svc h3 {
+  margin: 0;
+  font-size: 1.28rem;
+  letter-spacing: -0.03em;
+}
+
+#ongil-detail.nls .nog-svc__lead {
+  margin: 0.55rem 0 0.9rem;
+  color: var(--nls-muted);
+  line-height: 1.55;
+}
+
+#ongil-detail.nls .nog-svc .nls-note {
+  margin-top: 0.9rem;
+}
+
+#ongil-detail.nls .nog-svc .nog-status {
+  margin: 0.45rem 0 0;
+}
+
+#ongil-detail.nls .nls-block .nls-chips {
+  margin-top: 1.25rem;
+}
+
+#ongil-detail.nls .nog-services + .nls-note,
+#ongil-detail.nls .nls-chips + .nog-services {
+  margin-top: 1.25rem;
+}
+
+#ongil-detail.nls .nog-status + .nls-chips,
+#ongil-detail.nls .nog-status + .nog-services {
+  margin-top: 1.15rem;
+}
+
+#ongil-detail.nls .nog-how {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 860px) {
+  #ongil-detail.nls .nog-how {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+#ongil-detail.nls .nog-step {
+  border-top: 1px solid var(--nls-line-strong);
+  padding: 1.1rem 0 0.2rem;
+}
+
+#ongil-detail.nls .nog-step__n {
+  margin: 0 0 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nog-step h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.15rem;
+  letter-spacing: -0.03em;
+}
+
+#ongil-detail.nls .nog-step p {
+  margin: 0;
+  color: var(--nls-muted);
+  line-height: 1.55;
+}
+
+html[data-theme="dark"] #ongil-detail.nls .nog-id,
+html[data-theme="dark"] #ongil-detail.nls .nog-svc {
+  background: #111;
+  border-color: #2a2a2a;
+}
+
+/* Ongil first-screen film hero only. Does not restyle body sections. */
+#ongil-detail.nls .nog-film {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  width: 100vw;
+  max-width: 100vw;
+  margin: calc(-1 * var(--gnav-h, 74px)) 0 0 calc(50% - 50vw);
+  min-height: 100svh;
+  height: 100svh;
+  max-height: 100svh;
+  overflow: hidden;
+  background: #8fb8c9;
+}
+
+#ongil-detail.nls .nog-film__stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, #cfe6f0 0%, #8fb8c9 42%, #5f8f55 100%);
+}
+
+#ongil-detail.nls .nog-film__fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    url("/assets/hero-film/ongil-poster.jpg") center 58% / cover no-repeat,
+    linear-gradient(180deg, #cfe6f0 0%, #8fb8c9 42%, #5f8f55 100%);
+}
+
+#ongil-detail.nls .nog-film__video {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
+  pointer-events: none;
+}
+
+#ongil-detail.nls .nog-film__video::-webkit-media-controls,
+#ongil-detail.nls .nog-film__video::-webkit-media-controls-enclosure,
+#ongil-detail.nls .nog-film__video::-webkit-media-controls-start-playback-button,
+#ongil-detail.nls .nog-film__video::-webkit-media-controls-play-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+#ongil-detail.nls .nog-film__lockup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(44rem, calc(100vw - 2.4rem));
+  margin: 0;
+  padding: 1.4rem 1rem 1.6rem;
+  transform: translate(-50%, -48%);
+  text-align: center;
+}
+
+#ongil-detail.nls .nog-film__veil {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  z-index: 0;
+  width: min(48rem, 122%);
+  height: min(32rem, 160%);
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(
+      ellipse 58% 52% at 50% 46%,
+      rgba(8, 16, 18, 0.4) 0%,
+      rgba(8, 16, 18, 0.2) 46%,
+      rgba(8, 16, 18, 0) 78%
+    );
+  pointer-events: none;
+}
+
+#ongil-detail.nls .nog-film__wordmark,
+#ongil-detail.nls .nog-film__slogan,
+#ongil-detail.nls .nog-film__lead,
+#ongil-detail.nls .nog-film__actions {
+  position: relative;
+  z-index: 1;
+}
+
+#ongil-detail.nls .nog-film__wordmark {
+  margin: 0 0 2.15rem;
+  color: #fff;
+  font-family: "Noto Sans", "Noto Sans KR", "Pretendard", sans-serif;
+  font-size: clamp(6.2rem, 22vw, 12.5rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+}
+
+#ongil-detail.nls .nog-film__slogan {
+  margin: 0;
+  color: #fff;
+  font-family: "Noto Sans KR", "Noto Sans", "Pretendard", sans-serif;
+  font-size: clamp(1.45rem, 3.2vw, 2.35rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.28;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.36);
+}
+
+#ongil-detail.nls .nog-film__lead {
+  margin: 0.95rem 0 0;
+  max-width: 28rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: "Noto Sans KR", "Noto Sans", "Pretendard", sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  font-weight: 430;
+  letter-spacing: -0.02em;
+  line-height: 1.62;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.34);
+}
+
+#ongil-detail.nls .nog-film__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+#ongil-detail.nls .nog-film .nls-btn {
+  background: #fff;
+  color: #111;
+  border-color: #fff;
+}
+
+#ongil-detail.nls .nog-film .nls-btn--ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.72);
+}
+
+#ongil-detail.nls .nog-film .nls-btn:hover,
+#ongil-detail.nls .nog-film .nls-btn:focus-visible {
+  opacity: 1;
+  background: #f3f3f3;
+  border-color: #f3f3f3;
+  color: #111;
+}
+
+#ongil-detail.nls .nog-film .nls-btn--ghost:hover,
+#ongil-detail.nls .nog-film .nls-btn--ghost:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+  color: #fff;
+}
+
+#ongil-detail.nls .nog-film__wordmark,
+#ongil-detail.nls .nog-film__slogan,
+#ongil-detail.nls .nog-film__lead,
+#ongil-detail.nls .nog-film__actions {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+#ongil-detail.nls .nog-film.is-ready .nog-film__wordmark,
+#ongil-detail.nls .nog-film.is-ready .nog-film__slogan,
+#ongil-detail.nls .nog-film.is-ready .nog-film__lead,
+#ongil-detail.nls .nog-film.is-ready .nog-film__actions {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+#ongil-detail.nls .nog-film.is-ready .nog-film__wordmark {
+  transition-delay: 0.12s;
+}
+
+#ongil-detail.nls .nog-film.is-ready .nog-film__slogan {
+  transition-delay: 0.3s;
+}
+
+#ongil-detail.nls .nog-film.is-ready .nog-film__lead {
+  transition-delay: 0.48s;
+}
+
+#ongil-detail.nls .nog-film.is-ready .nog-film__actions {
+  transition-delay: 0.64s;
+}
+
+@media (max-width: 760px) {
+  #ongil-detail.nls .nog-film__lockup {
+    top: 52%;
+    width: min(44rem, calc(100vw - 1.6rem));
+    padding: 1rem 0.5rem 1.2rem;
+    transform: translate(-50%, -46%);
+  }
+
+  #ongil-detail.nls .nog-film__wordmark {
+    font-size: clamp(4rem, 22vw, 6.6rem);
+    margin-bottom: 1.65rem;
+  }
+
+  #ongil-detail.nls .nog-film__slogan {
+    font-size: clamp(1.28rem, 5.8vw, 1.75rem);
+  }
+
+  #ongil-detail.nls .nog-film__lead {
+    max-width: 22rem;
+    font-size: 0.9rem;
+  }
+
+  #ongil-detail.nls .nog-film__video,
+  #ongil-detail.nls .nog-film__fallback {
+    object-position: center 62%;
+    background-position: center 62%;
+  }
+}
+
+@media (max-height: 720px) {
+  #ongil-detail.nls .nog-film__lockup {
+    top: 50%;
+    padding-block: 0.7rem;
+  }
+
+  #ongil-detail.nls .nog-film__wordmark {
+    font-size: clamp(3.8rem, 15vw, 7.4rem);
+    margin-bottom: 1.45rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  #ongil-detail.nls .nog-film__wordmark,
+  #ongil-detail.nls .nog-film__slogan,
+  #ongil-detail.nls .nog-film__lead,
+  #ongil-detail.nls .nog-film__actions,
+  #ongil-detail.nls .nog-film.is-ready .nog-film__wordmark,
+  #ongil-detail.nls .nog-film.is-ready .nog-film__slogan,
+  #ongil-detail.nls .nog-film.is-ready .nog-film__lead,
+  #ongil-detail.nls .nog-film.is-ready .nog-film__actions {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

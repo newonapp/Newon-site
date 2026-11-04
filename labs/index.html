@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="refresh" content="0;url=/ko/labs/" />
+<script src="/lang-nav.js"></script>
+<script>
+(function(){
+  var LANGS=["ko","en","ja","es","pt-br","fr","de","hi","id"];
+  var pref="ko";
+  try{var s=localStorage.getItem("newon-lang-dir");if(s&&LANGS.indexOf(s)!==-1)pref=s;}catch(e){}
+  location.replace("/"+pref+"/labs/");
+})();
+</script>
+<title>Redirect</title>
+</head>
+<body><p><a href="/ko/labs/">Continue</a></p></body>
+</html>
