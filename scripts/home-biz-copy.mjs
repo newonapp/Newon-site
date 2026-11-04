@@ -50,9 +50,9 @@ export const STORY_KO = {
       n: "03",
       name: "SHAREON",
       cat: "SHARING · RENTAL · MARKETPLACE",
-      status: "planned",
+      status: "", // 2026-11-04 (owner): no launch / plan status for SHAREON
       href: "#hc-ecosystem",
-      lead: "소유하지 않아도, 필요한 순간에. 개인과 기업이 보유한 물건, 장비, 공간을 필요한 사람과 연결하는 공유·대여 전문 마켓플레이스입니다.",
+      lead: "소유하지 않아도, 필요한 순간에. 개인과 기업이 보유한 물건, 장비, 공간을 필요한 사람과 연결하는 공유·대여 전문 플랫폼입니다.",
     },
     {
       id: "ongil",
@@ -179,7 +179,7 @@ export const STORY_KO = {
     kicker: "ONE NEWON · FOUR CORE PLATFORMS · ONE CONNECTED ECOSYSTEM",
     titleHtml: "네 개의 플랫폼.<br />하나의 Newon.",
     lead: "각기 다른 삶의 영역을 연결하는 네 개의 플랫폼을 만들어갑니다. 여기에 Apps, AI, Business, Studio, Games의 디지털 제품과 사업이 함께합니다.",
-    note: "BABYLOG, PETLOG 앱과 생활 앱, 404: HUMAN은 지금 이용할 수 있습니다. SHAREON, ONGIL과 일부 사업 영역은 구축·확장 계획 단계입니다.",
+    note: "BABYLOG, PETLOG 앱과 생활 앱, 404: HUMAN은 지금 이용할 수 있습니다. ONGIL과 일부 사업 영역은 구축·확장 계획 단계입니다. SHAREON의 서비스 이용은 모바일 앱을 통해 이루어집니다.",
     center: "NEWON",
     ctaAbout: "회사 소개",
     ctaAboutHref: "about/",
@@ -223,7 +223,7 @@ export const STORY_EN = {
       n: "03",
       name: "SHAREON",
       cat: "SHARING · RENTAL · MARKETPLACE",
-      status: "planned",
+      status: "", // 2026-11-04 (owner): no launch / plan status for SHAREON
       href: "#hc-ecosystem",
       lead: "No need to own it — just when you need it. A sharing and rental marketplace that connects the things, equipment, and spaces people and companies own with those who need them.",
     },
@@ -352,7 +352,7 @@ export const STORY_EN = {
     kicker: "ONE NEWON · FOUR CORE PLATFORMS · ONE CONNECTED ECOSYSTEM",
     titleHtml: "Four platforms.<br />One Newon.",
     lead: "Four platforms, each connecting a different part of life — together with Newon’s digital products and businesses in Apps, AI, Business, Studio, and Games.",
-    note: "The BABYLOG and PETLOG apps, our life apps, and 404: HUMAN are available now. SHAREON, ONGIL, and some business areas are being built or planned.",
+    note: "The BABYLOG and PETLOG apps, our life apps, and 404: HUMAN are available now. ONGIL and some business areas are being built or planned. SHAREON services are used through the mobile app.",
     center: "NEWON",
     ctaAbout: "About Newon",
     ctaAboutHref: "about/",

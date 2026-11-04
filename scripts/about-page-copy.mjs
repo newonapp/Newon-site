@@ -146,7 +146,7 @@ const KO = {
     {
       n: "03",
       title: "SHAREON — Sharing & Rental",
-      body: "자주 쓰지 않지만 사기에는 부담스러운 물건, 쓰지 않는 시간이 긴 장비와 공간의 문제를 다룹니다. 필요한 기간만 빌리려는 이용자와 물건·장비·공간을 가진 개인·기업 공급자를 잇는 공유·대여 오픈 마켓플레이스를 지향합니다. SHAREON 앱은 출시 전으로, 지금은 실제 대여·예약 확정·결제·보증금·정산이 운영되지 않으며 첫 출시는 대여·공간 중심의 승인형 예약으로 준비하고 있습니다.",
+      body: "자주 쓰지 않지만 사기에는 부담스러운 물건, 쓰지 않는 시간이 긴 장비와 공간의 문제를 다룹니다. 필요한 기간만 빌리려는 이용자와 물건·장비·공간을 가진 개인·기업 공급자를 잇는 공유·대여 오픈 마켓플레이스를 지향합니다. SHAREON의 서비스 이용은 모바일 앱을 통해 이루어지며, 본 웹사이트에서는 예약 및 결제 기능을 제공하지 않습니다.",
       tags: ["물건", "장비", "공간", "이동수단"],
       href: "../shareon/",
     },
@@ -172,7 +172,7 @@ const KO = {
       body: "BABYLOG, PETLOG, SHAREON, ONGIL 네 플랫폼을 직접 운영합니다. 각 플랫폼은 이용자에게 기록·정보·서비스를 제공하고, 그 영역에서 플랫폼 기반 사업이 자라는 토대가 됩니다.",
       notes: [
         "이용 가능 — BABYLOG·PETLOG 앱",
-        "준비 중 — SHAREON 앱, ONGIL 앱",
+        "준비 중 — ONGIL 앱",
       ],
       links: [{ href: "#ab-build-title", label: "4개 플랫폼 보기 →" }],
     },
@@ -366,7 +366,7 @@ const KO = {
   explorePanels: [
     { n: "01", title: "BABYLOG", body: "Parenting & Family — 아이와 가족의 기록, 성장, 가족생활.", cta: "BABYLOG →", href: "../babylog/" },
     { n: "02", title: "PETLOG", body: "Pet Life — 반려동물의 일상·건강 기록과 가족 공동 관리.", cta: "PETLOG →", href: "../petlog/" },
-    { n: "03", title: "SHAREON", body: "Sharing & Rental — 물건·장비·공간을 공유하고 대여하는 마켓플레이스 (앱 출시 준비 중).", cta: "SHAREON →", href: "../shareon/" },
+    { n: "03", title: "SHAREON", body: "Sharing & Rental — 개인과 기업이 물건·장비·공간을 공유하고 대여하는 플랫폼.", cta: "SHAREON →", href: "../shareon/" },
     { n: "04", title: "ONGIL", body: "Senior Life — 시니어의 일상, 가족 연결, 돌봄·복지 정보 (앱 출시 준비 중).", cta: "ONGIL →", href: "../ongil/" },
     { n: "05", title: "BUSINESS & PARTNERSHIPS", body: "플랫폼 입점, 제휴, 기업·기관 협력과 플랫폼 기반 비즈니스.", cta: "Business & Partnerships →", href: "../business/" },
     { n: "06", title: "NEWON STUDIO", body: "NEWON이 직접 만드는 디지털 상품, 소프트웨어, 기업용 표준 제품.", cta: "NEWON Studio →", href: "../studio/" },
@@ -509,7 +509,7 @@ const EN = {
     {
       n: "03",
       title: "SHAREON — Sharing & Rental",
-      body: "SHAREON deals with things that are used rarely but cost too much to buy, and equipment and spaces that sit idle. It aims to be an open sharing and rental marketplace connecting people who want to borrow for just the time they need with individuals and businesses that own items, equipment and spaces. The SHAREON app has not launched yet: no real rentals, confirmed bookings, payments, deposits or settlements run today. The first launch is being prepared around rentals and spaces with approval-based booking.",
+      body: "SHAREON deals with things that are used rarely but cost too much to buy, and equipment and spaces that sit idle. It aims to be an open sharing and rental marketplace connecting people who want to borrow for just the time they need with individuals and businesses that own items, equipment and spaces. SHAREON services are used through the mobile app; this website does not offer booking or payment.",
       tags: ["Things", "Equipment", "Spaces", "Mobility"],
       href: "../shareon/",
     },
@@ -534,7 +534,7 @@ const EN = {
       body: "NEWON runs four platforms itself: BABYLOG, PETLOG, SHAREON and ONGIL. Each gives people records, information and services, and becomes the base on which platform business grows in its area.",
       notes: [
         "Available — BABYLOG and PETLOG apps",
-        "In preparation — SHAREON app, ONGIL app",
+        "In preparation — ONGIL app",
       ],
       links: [{ href: "#ab-build-title", label: "See the four platforms →" }],
     },
@@ -723,7 +723,7 @@ const EN = {
   explorePanels: [
     { n: "01", title: "BABYLOG", body: "Parenting & Family — records, growth and family life for children and families.", cta: "BABYLOG →", href: "../babylog/" },
     { n: "02", title: "PETLOG", body: "Pet Life — daily and health records for pets, with shared family care.", cta: "PETLOG →", href: "../petlog/" },
-    { n: "03", title: "SHAREON", body: "Sharing & Rental — a marketplace for sharing and renting items, equipment and spaces (app in preparation).", cta: "SHAREON →", href: "../shareon/" },
+    { n: "03", title: "SHAREON", body: "Sharing & Rental — a platform where people and businesses share and rent items, equipment and spaces.", cta: "SHAREON →", href: "../shareon/" },
     { n: "04", title: "ONGIL", body: "Senior Life — daily life, family connection and care and welfare information for seniors (app in preparation).", cta: "ONGIL →", href: "../ongil/" },
     { n: "05", title: "BUSINESS & PARTNERSHIPS", body: "Platform listings, partnerships, collaboration with companies and institutions, and platform-based business.", cta: "Business & Partnerships →", href: "../business/" },
     { n: "06", title: "NEWON STUDIO", body: "Digital goods, software and standard business products NEWON builds itself.", cta: "NEWON Studio →", href: "../studio/" },

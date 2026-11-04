@@ -19,7 +19,7 @@ const koOrEn = (lang) => (lang === "ko" ? "ko" : "en");
 
 /* ─────────────────────────── SHAREON ─────────────────────────── */
 /** Rows with a clearly matching unified-page topic (contact-taxonomy.mjs). */
-const SHAREON_TOPIC = { "04": "shareon-business" };
+const SHAREON_TOPIC = { "02": "shareon-booking", "03": "shareon-sharing", "04": "shareon-business", "05": "shareon-space" };
 const SHAREON_TYPE = { "01": "personal", "02": "personal", "03": "personal", "04": "business", "05": "business", "06": "business", "07": "partnership", "08": "public", "09": "partnership", "10": "media", "11": "investment" };
 
 export function shareonContactModel(lang) {
