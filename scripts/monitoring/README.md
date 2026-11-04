@@ -9,13 +9,14 @@ Goal: detect outages and broken critical surfaces **before** users report them.
 |--------|--------|
 | Critical routes (home, products, business, contact, inquiry) | HTTP + structural content markers |
 | 11 product portfolio pages | HTTP + `pf-main` / brand markers |
-| Core business service pages | HTTP + markers |
+| NEWON Business & Partnerships screens (Overview, Our Platforms, Business Models, Partnerships) | HTTP + markers (hub sub-menu with the screen current) |
+| Retired business URLs (build, automation, research, solutions, care, mvp) | Redirect stub: 200 + noindex + canonical + meta refresh to the screen in `LEGACY_REDIRECTS`, and the destination must load |
 | Portfolio / store / tools / sample delete-account | HTTP |
 | Custom 404 behavior | Intentional missing path |
 | Critical CSS/JS/logo assets | HEAD with GET fallback |
-| Inquiry / contact form structure + endpoint config in JS | Markers only |
+| Inquiry form (`/ko/business/inquiry/`) and unified Contact form (`/ko/contact/`, `#ct-form`) structure + FormSubmit endpoint in `business/inquiry.js` / `contact/contact-page.js` | Markers only |
 | HQ `/admin/` public shell | Reachable + `noindex` + login control |
-| App Store / Google Play URLs | HTTP (inventory from locales) |
+| App Store / Google Play URLs | HTTP (inventory from locales); an App Store developer page used instead of a listing (Newon+) is probed too and must exist |
 
 ## What is not monitored
 
@@ -112,3 +113,13 @@ No automatic rollback.
 3. Choose level + severity.
 4. Run `npm run monitor:production` once.
 5. Prefer smoke set only for true critical paths.
+
+## Keeping targets in step with the site
+
+`tests/monitoring/production-monitor.test.mjs` checks that every monitored marker exists in the committed pages, that the
+business redirect stubs match `LEGACY_REDIRECTS` (scripts/render-bizpart.mjs), and — against a local fixture site — that
+broken stubs, missing destinations and a missing contact form still FAIL. Run it whenever a monitored page is redesigned:
+
+```bash
+node --test tests/monitoring/production-monitor.test.mjs
+```

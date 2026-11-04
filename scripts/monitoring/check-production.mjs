@@ -191,7 +191,7 @@ function makeCheck(partial) {
     id: partial.id,
     type: partial.type || "http",
     level: partial.level,
-    severity: partial.severityity || "P2",
+    severity: partial.severity || "P2",
     target: partial.target,
     status: partial.status,
     httpStatus: partial.httpStatus ?? null,
@@ -230,6 +230,58 @@ async function withRetry(fn, retries, delayMs) {
   return last;
 }
 
+/**
+ * Retired URL kept as a static redirect stub (GitHub Pages has no server-side 301): the stub must answer 200 with
+ * noindex, a canonical and an immediate meta refresh to `target.redirectTo`, and that destination must load as a real
+ * page (2xx, site chrome, no soft 404). Anything else is FAIL, exactly like a broken page.
+ */
+async function checkRedirectStub(target, url, opts) {
+  const base = { id: target.id, type: target.type, level: target.level, severity: target.severity, target: url };
+  const res = await requestFollow(url, { timeoutMs: opts.timeoutMs });
+  if (!res.ok) {
+    return makeCheck({
+      ...base,
+      status: res.error === "timeout" ? STATUS.FAIL : STATUS.UNKNOWN,
+      httpStatus: 0,
+      latencyMs: res.latencyMs,
+      classification: res.error === "timeout" ? CLASS.DEGRADED : CLASS.MONITORING_ERROR,
+      reason: res.error === "timeout" ? `Timeout after ${opts.timeoutMs}ms` : `Network failure (${res.error}) — not confirmed production outage`,
+    });
+  }
+  const fail = (reason, extra = {}) =>
+    makeCheck({ ...base, status: STATUS.FAIL, httpStatus: res.status, latencyMs: res.latencyMs, classification: CLASS.DEGRADED, reason, ...extra });
+  if (res.status >= 400) return fail(`HTTP ${res.status}`);
+  const to = target.redirectTo;
+  const missing = [];
+  if (!res.body.includes(`http-equiv="refresh" content="0;url=${to}`)) missing.push(`meta refresh → ${to}`);
+  if (!/<meta name="robots" content="noindex/.test(res.body)) missing.push("noindex");
+  if (!res.body.includes(`<link rel="canonical" href="${DEFAULTS.origin}${to}"`)) missing.push(`canonical → ${to}`);
+  if (missing.length) return fail(`Redirect stub incomplete: ${missing.join(", ")}`, { details: { missingCount: missing.length } });
+  const dest = await requestFollow(`${opts.origin}${to}`, { timeoutMs: opts.timeoutMs });
+  if (!dest.ok) {
+    return makeCheck({
+      ...base,
+      status: dest.error === "timeout" ? STATUS.FAIL : STATUS.UNKNOWN,
+      httpStatus: res.status,
+      latencyMs: res.latencyMs,
+      classification: dest.error === "timeout" ? CLASS.DEGRADED : CLASS.MONITORING_ERROR,
+      reason: `Redirect destination ${to}: ${dest.error}`,
+    });
+  }
+  if (dest.status >= 400 || soft404Detected(dest.body) || !dest.body.includes("data-gnav")) {
+    return fail(`Redirect destination ${to} is broken (HTTP ${dest.status})`);
+  }
+  return makeCheck({
+    ...base,
+    status: STATUS.PASS,
+    httpStatus: res.status,
+    latencyMs: res.latencyMs,
+    classification: CLASS.OK,
+    reason: `Redirect stub OK → ${to} (HTTP ${dest.status})`,
+    details: { redirectTo: to, destinationStatus: dest.status },
+  });
+}
+
 async function checkRoute(target, opts) {
   const url = `${opts.origin}${target.path}`;
 
@@ -241,7 +293,7 @@ async function checkRoute(target, opts) {
           id: target.id,
           type: target.type,
           level: target.level,
-          severity: target.severityity,
+          severity: target.severity,
           target: url,
           status: STATUS.WARN,
           httpStatus: 0,
@@ -255,7 +307,7 @@ async function checkRoute(target, opts) {
           id: target.id,
           type: target.type,
           level: target.level,
-          severity: target.severityity,
+          severity: target.severity,
           target: url,
           status: STATUS.UNKNOWN,
           latencyMs: res.latencyMs,
@@ -270,7 +322,7 @@ async function checkRoute(target, opts) {
           id: target.id,
           type: target.type,
           level: target.level,
-          severity: target.severityity,
+          severity: target.severity,
           target: url,
           status: STATUS.PASS,
           httpStatus: res.status,
@@ -283,7 +335,7 @@ async function checkRoute(target, opts) {
         id: target.id,
         type: target.type,
         level: target.level,
-        severity: target.severityity,
+        severity: target.severity,
         target: url,
         status: STATUS.WARN,
         httpStatus: res.status,
@@ -292,6 +344,10 @@ async function checkRoute(target, opts) {
         reason: `Missing path returned unexpected HTTP ${res.status} without 404 markers`,
       });
     }, opts.retries, DEFAULTS.retryDelayMs);
+  }
+
+  if (target.type === "http/redirect-stub") {
+    return withRetry(() => checkRedirectStub(target, url, opts), opts.retries, DEFAULTS.retryDelayMs);
   }
 
   return withRetry(async () => {
@@ -304,7 +360,7 @@ async function checkRoute(target, opts) {
           id: target.id,
           type: target.type || "http/content",
           level: target.level,
-          severity: target.severityity,
+          severity: target.severity,
           target: url,
           status: STATUS.UNKNOWN,
           httpStatus: 0,
@@ -317,7 +373,7 @@ async function checkRoute(target, opts) {
         id: target.id,
         type: target.type || "http/content",
         level: target.level,
-        severity: target.severityity,
+        severity: target.severity,
         target: url,
         status: STATUS.FAIL,
         httpStatus: 0,
@@ -332,7 +388,7 @@ async function checkRoute(target, opts) {
         id: target.id,
         type: target.type || "http/content",
         level: target.level,
-        severity: target.severityity,
+        severity: target.severity,
         target: url,
         status: STATUS.FAIL,
         httpStatus: res.status,
@@ -347,7 +403,7 @@ async function checkRoute(target, opts) {
         id: target.id,
         type: target.type || "http/content",
         level: target.level,
-        severity: target.severityity,
+        severity: target.severity,
         target: url,
         status: STATUS.FAIL,
         httpStatus: res.status,
@@ -363,7 +419,7 @@ async function checkRoute(target, opts) {
         id: target.id,
         type: target.type || "http/content",
         level: target.level,
-        severity: target.severityity,
+        severity: target.severity,
         target: url,
         status: STATUS.FAIL,
         httpStatus: res.status,
@@ -378,7 +434,7 @@ async function checkRoute(target, opts) {
         id: target.id,
         type: target.type || "http/content",
         level: target.level,
-        severity: target.severityity,
+        severity: target.severity,
         target: url,
         status: STATUS.FAIL,
         httpStatus: res.status,
@@ -404,8 +460,9 @@ async function checkRoute(target, opts) {
       if (!res.body.includes("/business/inquiry.js")) missing.push("inquiry.js script");
     }
     if (target.id === "contact-ko") {
-      if (!res.body.includes("co-contact-form")) missing.push("co-contact-form");
-      if (!res.body.includes("/company.js")) missing.push("company.js script");
+      // Unified NEWON Contact page (2026-10-26): #ct-form is driven by /contact/contact-page.js
+      if (!res.body.includes('id="ct-form"')) missing.push("ct-form");
+      if (!res.body.includes("/contact/contact-page.js")) missing.push("contact-page.js script");
     }
 
     if (missing.length) {
@@ -413,7 +470,7 @@ async function checkRoute(target, opts) {
         id: target.id,
         type: target.type || "http/content",
         level: target.level,
-        severity: target.severityity,
+        severity: target.severity,
         target: url,
         status: STATUS.FAIL,
         httpStatus: res.status,
@@ -430,7 +487,7 @@ async function checkRoute(target, opts) {
       id: target.id,
       type: target.type || "http/content",
       level: target.level,
-      severity: target.severityity,
+      severity: target.severity,
       target: url,
       status,
       httpStatus: res.status,
@@ -472,7 +529,7 @@ async function checkAsset(asset, opts) {
         id: asset.id,
         type: "asset",
         level: "ASSET",
-        severity: asset.severityity,
+        severity: asset.severity,
         target: url,
         status: res.error === "timeout" ? STATUS.FAIL : STATUS.UNKNOWN,
         latencyMs: res.latencyMs,
@@ -486,7 +543,7 @@ async function checkAsset(asset, opts) {
         id: asset.id,
         type: "asset",
         level: "ASSET",
-        severity: asset.severityity,
+        severity: asset.severity,
         target: url,
         status: STATUS.PASS,
         httpStatus: res.status,
@@ -500,7 +557,7 @@ async function checkAsset(asset, opts) {
       id: asset.id,
       type: "asset",
       level: "ASSET",
-      severity: asset.severityity,
+      severity: asset.severity,
       target: url,
       status: STATUS.FAIL,
       httpStatus: res.status,
@@ -514,7 +571,7 @@ async function checkAsset(asset, opts) {
 /**
  * Store URL probe with GET fallback, rate-limit awareness, Newon+ exception.
  */
-async function checkStoreUrl({ appId, store, url, optional }) {
+async function checkStoreUrl({ appId, store, url, optional, probeOnly = false }) {
   if (!url) {
     if (optional) {
       return makeCheck({
@@ -540,7 +597,14 @@ async function checkStoreUrl({ appId, store, url, optional }) {
     });
   }
 
-  if (store === "appstore" && isDeveloperAppStoreUrl(url)) {
+  if (!probeOnly && store === "appstore" && isDeveloperAppStoreUrl(url)) {
+    // A developer page instead of a product listing is an accepted exception (Newon+), but the page itself must
+    // exist: probe it like any store URL (404 → FAIL, rate-limit → WARN); only a reachable page gets the exception.
+    const probe = await checkStoreUrl({ appId, store, url, optional: false, probeOnly: true });
+    if (probe.status !== STATUS.PASS) {
+      probe.reason = `App Store developer page: ${probe.reason}`;
+      return probe;
+    }
     return makeCheck({
       id: `store-${appId}-${store}`,
       type: "store",
@@ -684,7 +748,8 @@ async function checkInquiryEndpointConfigured(opts) {
 }
 
 async function checkContactEndpointConfigured(opts) {
-  const url = `${opts.origin}/company.js`;
+  // The unified Contact form (/ko/contact/, since 2026-10-26) sends through /contact/contact-page.js (was company.js).
+  const url = `${opts.origin}/contact/contact-page.js`;
   return withRetry(async () => {
     const res = await requestFollow(url, { timeoutMs: opts.timeoutMs });
     if (!res.ok) {
@@ -696,7 +761,7 @@ async function checkContactEndpointConfigured(opts) {
         target: url,
         status: res.error === "timeout" ? STATUS.WARN : STATUS.UNKNOWN,
         classification: CLASS.MONITORING_ERROR,
-        reason: `Could not load company.js (${res.error || res.status})`,
+        reason: `Could not load contact-page.js (${res.error || res.status})`,
         latencyMs: res.latencyMs,
       });
     }
@@ -713,7 +778,7 @@ async function checkContactEndpointConfigured(opts) {
         httpStatus: res.status,
         latencyMs: res.latencyMs,
         classification: CLASS.DEGRADED,
-        reason: "company.js missing FormSubmit endpoint configuration markers",
+        reason: "contact-page.js missing FormSubmit endpoint configuration markers",
       });
     }
     return makeCheck({

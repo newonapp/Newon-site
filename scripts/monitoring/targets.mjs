@@ -87,7 +87,8 @@ export const CRITICAL_ROUTES = /** @type {RouteTarget[]} */ ([
     level: "CRITICAL",
     severity: "P1",
     type: "http/content",
-    markers: ['id="hub-main"', "data-gnav", "Newon Business"],
+    // Brand is written "NEWON Business & Partnerships" since the 2026-10-19 hub redesign (was "Newon Business").
+    markers: ['id="hub-main"', "data-gnav", "NEWON Business", 'data-biz="bizpart"'],
     minBytes: 800,
   },
   {
@@ -96,7 +97,8 @@ export const CRITICAL_ROUTES = /** @type {RouteTarget[]} */ ([
     level: "CRITICAL",
     severity: "P1",
     type: "http/form",
-    markers: ['id="co-contact-form"', "data-co-contact-form", "data-gnav"],
+    // Unified NEWON Contact page (2026-10-26): form #ct-form driven by /contact/contact-page.js (was #co-contact-form + company.js).
+    markers: ['id="ct-form"', "data-ct-form", "data-ct-submit", "data-gnav"],
     minBytes: 800,
   },
   {
@@ -135,62 +137,39 @@ export const PRODUCT_ROUTES = PRODUCT_SLUGS.map((slug) => ({
   minBytes: 800,
 }));
 
-/** LEVEL 3 — BUSINESS (core service hubs) */
+/** LEVEL 3 — BUSINESS
+ *  The NEWON Business & Partnerships hub has five screens since 2026-10-19 (render-bizpart.mjs). The old service pages
+ *  (build, automation, research, solutions, care, mvp …) are intentional noindex redirect stubs (LEGACY_REDIRECTS), so they
+ *  are checked as stubs (type "http/redirect-stub": refresh + canonical + noindex to the right screen, and that screen
+ *  must load), not as full pages. */
+const BIZ_SCREEN = (id, path) => ({
+  id,
+  path,
+  level: "BUSINESS",
+  severity: "P2",
+  type: "http/content",
+  // the hub's own sub-menu, with this screen marked current
+  markers: ["data-gnav", 'data-biz="bizpart"', "BUSINESS &amp; PARTNERSHIPS", `href="${path}" aria-current="page"`],
+  minBytes: 800,
+});
+const BIZ_STUB = (id, path, redirectTo) => ({
+  id,
+  path,
+  level: "BUSINESS",
+  severity: "P2",
+  type: "http/redirect-stub",
+  redirectTo,
+});
 export const BUSINESS_ROUTES = /** @type {RouteTarget[]} */ ([
-  {
-    id: "biz-build",
-    path: "/ko/business/build/",
-    level: "BUSINESS",
-    severity: "P2",
-    type: "http/content",
-    markers: ["data-gnav", "Newon"],
-    minBytes: 600,
-  },
-  {
-    id: "biz-automation",
-    path: "/ko/business/automation/",
-    level: "BUSINESS",
-    severity: "P2",
-    type: "http/content",
-    markers: ["data-gnav", "Newon"],
-    minBytes: 600,
-  },
-  {
-    id: "biz-research",
-    path: "/ko/business/research/",
-    level: "BUSINESS",
-    severity: "P2",
-    type: "http/content",
-    markers: ["data-gnav", "Newon"],
-    minBytes: 600,
-  },
-  {
-    id: "biz-solutions",
-    path: "/ko/business/solutions/",
-    level: "BUSINESS",
-    severity: "P2",
-    type: "http/content",
-    markers: ["data-gnav", "Newon"],
-    minBytes: 600,
-  },
-  {
-    id: "biz-care",
-    path: "/ko/business/care/",
-    level: "BUSINESS",
-    severity: "P2",
-    type: "http/content",
-    markers: ["data-gnav", "Newon"],
-    minBytes: 600,
-  },
-  {
-    id: "biz-mvp",
-    path: "/ko/business/mvp/",
-    level: "BUSINESS",
-    severity: "P2",
-    type: "http/content",
-    markers: ["data-gnav", "Newon"],
-    minBytes: 600,
-  },
+  BIZ_SCREEN("biz-platforms", "/ko/business/platforms/"),
+  BIZ_SCREEN("biz-models", "/ko/business/models/"),
+  BIZ_SCREEN("biz-partnerships", "/ko/business/partnerships/"),
+  BIZ_STUB("biz-build", "/ko/business/build/", "/ko/business/"),
+  BIZ_STUB("biz-automation", "/ko/business/automation/", "/ko/business/models/"),
+  BIZ_STUB("biz-research", "/ko/business/research/", "/ko/business/"),
+  BIZ_STUB("biz-solutions", "/ko/business/solutions/", "/ko/business/models/"),
+  BIZ_STUB("biz-care", "/ko/business/care/", "/ko/business/"),
+  BIZ_STUB("biz-mvp", "/ko/business/mvp/", "/ko/business/"),
 ]);
 
 /** LEVEL 4 — SUPPORTING */
@@ -273,6 +252,7 @@ export const CRITICAL_ASSETS = [
   { id: "asset-logo-nav", path: "/logo-nav.png", level: "ASSET", severity: "P2" },
   { id: "asset-inquiry-js", path: "/business/inquiry.js", level: "ASSET", severity: "P1" },
   { id: "asset-company-js", path: "/company.js", level: "ASSET", severity: "P1" },
+  { id: "asset-contact-page-js", path: "/contact/contact-page.js", level: "ASSET", severity: "P1" },
 ];
 
 export const SMOKE_ROUTE_IDS = new Set([
