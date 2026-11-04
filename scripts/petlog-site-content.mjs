@@ -161,7 +161,7 @@ export const OVERVIEW = {
       lead: "통합 사업계획서는 PETLOG의 장기 사업을 26개 영역, 다섯 묶음으로 정리합니다. 영역 수는 장기 기획 단위이며, 영역마다 별도 앱을 만드는 것이 아니라 하나의 PETLOG 앱 안에서 단계적으로 더해 갑니다.",
       items: [
         { n: "01", label: "Records & Care Core", name: "기록·관리 코어", lead: "프로필·건강·생활·캘린더·노트. 지금 앱에서 기본 기능을 제공하는 영역으로, 모든 서비스의 바탕이 됩니다.", chips: ["Profile", "Health", "Life", "Calendar", "Note"] },
-        { n: "02", label: "Pet Services", name: "펫 서비스 연결", lead: "동물병원 정보, 미용, 펫시터·산책, 호텔·유치원, 훈련. 전문 업체 예약과, 보호자가 조건을 정해 사람을 찾는 반려동물 알바를 구분해 다루며 예약은 앱에서만 이루어집니다.", chips: ["Medical", "Grooming", "Care", "Hotel", "Training"] },
+        { n: "02", label: "Pet Services", name: "펫 서비스 연결", lead: "동물병원 정보, 미용, 펫시터·산책, 호텔·유치원, 훈련. 전문 서비스 예약 기능은 현재 준비 중이며, 제공 요건을 충족한 후 앱에서 지원할 예정입니다.", chips: ["Medical", "Grooming", "Care", "Hotel", "Training"] },
         { n: "03", label: "Community & Commerce", name: "커뮤니티·마켓", lead: "게시글·질문·후기·지역 소통의 보호자 커뮤니티, 업체 검증·후기, 쇼핑·중고거래·공동구매의 마켓, 구독, 동반 여행.", chips: ["Community", "Trust", "Market", "Subscription", "Travel"] },
         { n: "04", label: "Technology & Business", name: "기술·사업", lead: "기록 요약 AI, 안전 관리, 스마트 기기 연동, 업체용 운영 도구, 기업·기관 제휴.", chips: ["AI", "Safety", "Devices", "Business", "Partners"] },
         { n: "05", label: "Protection, Adoption & Memorial", name: "보호·입양·추모", lead: "보호소 정보, 실종·발견, 공식 입양 연결, 임시보호·봉사, 장례·추모, 나눔·기부. 반려동물의 평생 돌봄을 넘어 보호가 필요한 동물의 복지까지 잇는 영역으로, 필수 공익 기능은 무료를 원칙으로 합니다.", chips: ["Shelter", "Find", "Adoption", "Foster", "Memorial", "Giving"] },
@@ -311,7 +311,7 @@ export const OVERVIEW = {
       lead: "The integrated business plan organises PETLOG's long-term business into 26 areas in five groups. The count is a planning unit: areas are added step by step inside one PETLOG app, not built as separate apps.",
       items: [
         { n: "01", label: "Records & Care Core", name: "Records and care core", lead: "Profile, health, life, calendar and notes. The basics are in the app today and underpin every other service.", chips: ["Profile", "Health", "Life", "Calendar", "Note"] },
-        { n: "02", label: "Pet Services", name: "Pet services", lead: "Vet information, grooming, sitting and walking, hotels and daycare, training. Booking with professional businesses is kept apart from pet jobs, where owners set the terms and find a helper; booking happens only in the app.", chips: ["Medical", "Grooming", "Care", "Hotel", "Training"] },
+        { n: "02", label: "Pet Services", name: "Pet services", lead: "Vet information, grooming, sitting and walking, hotels and daycare, training. Booking for professional services is being prepared and will be supported in the app once the requirements for offering it are met.", chips: ["Medical", "Grooming", "Care", "Hotel", "Training"] },
         { n: "03", label: "Community & Commerce", name: "Community and market", lead: "An owner community of posts, questions, reviews and local talk; provider checks and reviews; a market for shopping, secondhand and group buying; subscription; pet-friendly travel.", chips: ["Community", "Trust", "Market", "Subscription", "Travel"] },
         { n: "04", label: "Technology & Business", name: "Technology and business", lead: "Record-summary AI, safety, smart-device links, business operations tools, corporate and institutional partnerships.", chips: ["AI", "Safety", "Devices", "Business", "Partners"] },
         { n: "05", label: "Protection, Adoption & Memorial", name: "Protection, adoption and memorial", lead: "Shelter information, lost and found pets, official adoption links, fostering and volunteering, funerals and memorials, and giving. Beyond a pet's lifelong care, these areas reach the welfare of animals that need protection; essential public-good features are meant to be free.", chips: ["Shelter", "Find", "Adoption", "Foster", "Memorial", "Giving"] },
@@ -605,8 +605,8 @@ export const PLATFORM = {
       ["미용·목욕 예약", "미용실의 서비스 범위·가격 정책·수용 조건·후기를 비교하고, 반려동물의 성격·피부·주의사항을 미리 전달해 예약과 재예약까지 잇는 영역입니다. 목욕·발톱·털 관리 같은 비의료 서비스를 다룹니다.", "보호자·미용실", "프로필 · 캘린더 · 업체 검증", ["업체 탐색", "특성 전달", "이용 후기", "재예약"]],
       ["Grooming and bathing booking", "Compare groomers' services, pricing policy, accepted pets and reviews; pass on temperament, skin and cautions in advance; book and rebook. Covers non-medical services such as bathing, nails and coat care.", "Owners and groomers", "Profile · Calendar · Trust", ["Find groomers", "Pet notes", "Reviews", "Rebooking"]]),
     A("PETLOG Care", "review", "sitting",
-      ["펫시터·산책·방문 돌봄·반려동물 알바", "보호자가 집을 비울 때 방문 돌봄, 펫시팅, 산책 대행을 연결하고 식사·산책·배변을 담은 돌봄 일지를 공유받는 영역입니다. 전문 업체 예약과는 별도로, 보호자가 업무 종류·가격·날짜·시간·장소·모집 인원·조건을 직접 정해 반려동물 알바를 올리고 지원자 가운데 함께할 사람을 고르는 개인 매칭도 이 영역에서 다룹니다. 제공자의 신원·자격·영업 요건, 사고 시 책임과 배상 절차, 긴급 연락망을 함께 설계합니다.", "보호자·돌봄 제공자·알바 지원자", "프로필(필요 정보만) · 안전", ["방문 돌봄", "산책 대행", "돌봄 일지", "반려동물 알바", "지원자 선택", "사고 대응 절차"]],
-      ["Pet sitting, walking, home visits and pet jobs", "Connecting home visits, sitting and dog walking while owners are away, with a care log of meals, walks and toilet. Apart from booking a business, this area also covers person-to-person pet jobs: the owner posts the task, pay, date, time, place, number of helpers and conditions, and picks who to work with from the applicants. Provider identity, qualifications and licensing, liability and compensation, and emergency contacts are designed in from the start.", "Owners, carers and pet-job applicants", "Profile (only what's needed) · Safety", ["Home visits", "Dog walking", "Care log", "Pet jobs", "Choosing an applicant", "Incident process"]]),
+      ["펫시터·산책·방문 돌봄·반려동물 알바", "보호자가 집을 비울 때 방문 돌봄, 펫시팅, 산책 대행을 연결하고 식사·산책·배변을 담은 돌봄 일지를 공유받는 영역입니다. 개인 돌봄 매칭 기능도 향후 이 영역에서 제공할 예정입니다. 전문 업체 예약과는 별도로, 보호자가 업무 종류·가격·날짜·시간·장소·모집 인원·조건을 직접 정해 반려동물 알바를 올리고 지원자 가운데 함께할 사람을 고르는 방식입니다. 제공자의 신원·자격·영업 요건, 사고 시 책임과 배상 절차, 긴급 연락망을 함께 설계합니다.", "보호자·돌봄 제공자·알바 지원자", "프로필(필요 정보만) · 안전", ["방문 돌봄", "산책 대행", "돌봄 일지", "반려동물 알바", "지원자 선택", "사고 대응 절차"]],
+      ["Pet sitting, walking, home visits and pet jobs", "Connecting home visits, sitting and dog walking while owners are away, with a care log of meals, walks and toilet. Personal care matching will also be offered in this area in the future. Apart from booking a business, these pet jobs let the owner post the task, pay, date, time, place, number of helpers and conditions, and pick who to work with from the applicants. Provider identity, qualifications and licensing, liability and compensation, and emergency contacts are designed in from the start.", "Owners, carers and pet-job applicants", "Profile (only what's needed) · Safety", ["Home visits", "Dog walking", "Care log", "Pet jobs", "Choosing an applicant", "Incident process"]]),
     A("PETLOG Hotel", "plan", "booking-provider",
       ["호텔·유치원·위탁", "펫 호텔과 유치원의 시설 정보, 이용 조건, 예방접종 요건, 취소·환불 규정을 확인하고, 이용 중 활동 기록을 받아 보는 영역입니다. 시설과 사업자의 적격성(동물위탁관리업 등)을 먼저 확인합니다.", "보호자·시설 운영자", "건강(접종 이력) · 캘린더", ["시설 정보", "접종 요건", "취소·환불 규정", "활동 기록"]],
       ["Hotels, daycare and boarding", "Check facility details, conditions, vaccination requirements and cancellation and refund rules for pet hotels and daycare, and receive activity logs during the stay. Facility and business eligibility (such as boarding licences) is checked first.", "Owners and operators", "Health (vaccination history) · Calendar", ["Facility info", "Vaccination rules", "Refund rules", "Activity log"]]),
@@ -1763,9 +1763,9 @@ export const V3 = {
 
 V3.overview.ko.stages = {
   kicker: "LIFE STAGES",
-  title: "생애 다섯 단계와\nPETLOG의 영역.",
-  lead: "사업계획서는 반려동물의 생애를 다섯 단계로 나누고, 단계마다 필요한 영역을 잇습니다. 마지막 열은 지금 앱에서 쓸 수 있는 기능입니다.",
-  head: ["단계", "이때 필요한 것", "관련 영역", "지금 앱에서"],
+  title: "사업계획서의 다섯 가지\n필요 영역.",
+  lead: "사업계획서가 제시하는 다섯 가지 필요 영역과 연결되는 PETLOG 영역입니다. 위의 생애 6단계와의 대응은 사업계획서 원본을 확인하기 전의 잠정 비교입니다: 가족 맞이는 01, 건강·성장은 02·04, 생활·예약은 03, 이별·추모는 06에 대응하고, 05 노령기는 건강·성장에 포함되며, 안전·보호는 모든 단계에 걸칩니다. 마지막 열은 지금 앱에서 쓸 수 있는 기능입니다.",
+  head: ["필요 영역", "이때 필요한 것", "관련 영역", "지금 앱에서"],
   rows: [
     ["가족 맞이", "프로필 만들기, 첫 접종 일정, 입양 준비 안내", "Profile · Calendar · Adoption", "프로필·접종 일정"],
     ["건강·성장", "체중·성장 기록, 예방접종·투약, 병원 정보", "Health · Note · Medical", "건강·사진 기록"],
@@ -1776,9 +1776,9 @@ V3.overview.ko.stages = {
 };
 V3.overview.en.stages = {
   kicker: "LIFE STAGES",
-  title: "Five life stages\nand PETLOG's areas.",
-  lead: "The business plan divides a pet's life into five stages and links the areas each one needs. The last column is what the app offers today.",
-  head: ["Stage", "What is needed", "Related areas", "In the app today"],
+  title: "Five areas of need\nin the business plan.",
+  lead: "The five areas of need set out in the business plan, and the PETLOG areas linked to each. How they map to the six life stages above is a provisional comparison, made before the business plan itself was checked: Welcoming matches 01, Health and growth 02 and 04, Daily life and booking 03, Farewell and memory 06; 05 Senior years falls under Health and growth, and Safety and protection spans every stage. The last column is what the app offers today.",
+  head: ["Area of need", "What is needed", "Related areas", "In the app today"],
   rows: [
     ["Welcoming", "A profile, the first vaccination schedule, adoption preparation", "Profile · Calendar · Adoption", "Profile, vaccination dates"],
     ["Health and growth", "Weight and growth records, vaccinations and medication, clinic information", "Health · Note · Medical", "Health and photo records"],
