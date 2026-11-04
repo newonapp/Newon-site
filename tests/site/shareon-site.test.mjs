@@ -7,7 +7,7 @@ import assert from "node:assert/strict";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { SHAREON_PAGES, KO, EN, EXCLUDED_BUSINESS_TERMS } from "../../scripts/shareon-copy.mjs";
+import { SHAREON_PAGES, KO, EN, EXCLUDED_BUSINESS_TERMS, SPACE_TAXONOMY_S13, SPACE_ACTIVE_S13 } from "../../scripts/shareon-copy.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 const LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
@@ -35,21 +35,16 @@ test("five SHAREON pages exist in all nine locales with SEO basics", () => {
   }
 });
 
-test("structure follows the 2026-11-04 refresh: goods fields, 7 space groups with 35 categories, 4 trade types, 6-step flow, 10 partner types, 11 inquiry types", () => {
-  const SPACE35 = [
-    "회의·비즈니스", "사무실·공유오피스", "교육·강의·연수", "전시·갤러리", "팝업스토어·쇼룸", "매장·상업시설", "컨벤션·대형 행사",
-    "사진·영상 촬영", "방송·녹음·제작", "음악·댄스 연습", "공연·극장", "영화·상영", "공방·창작", "독서·문화모임",
-    "파티·프라이빗 모임", "카페·라운지", "레스토랑·다이닝", "공유주방·쿠킹", "웨딩·가족행사", "루프탑·테라스·정원",
-    "실내 스포츠", "야외 스포츠·레저", "피트니스·웰니스", "뷰티·미용", "반려동물 공간",
-    "독채·숙박·워크숍", "한옥·전통문화", "단기 주거·생활",
-    "창고·보관", "작업장·산업시설", "물류·상하차", "주차·차고",
-    "캠핑·야외 부지", "농업·원예 공간", "연구·실험·특수시설",
-  ];
+test("structure follows the 2026-11-04 refresh: goods fields, the 7 active space categories only, 4 trade types, 6-step flow, 10 partner types, 11 inquiry types", () => {
+  // owner 2026-11-04: the S13 35-category taxonomy is kept as data; only its 7 active categories are introduced
+  assert.equal(SPACE_TAXONOMY_S13.length, 35);
+  const phases = SPACE_TAXONOMY_S13.reduce((o, x) => ((o[x.phase] = (o[x.phase] || 0) + 1), o), {});
+  assert.deepEqual(phases, { active: 7, phase2_review: 11, phase1_candidate: 2, legal_hold: 12, legal_hold_prohibited: 3 });
+  assert.deepEqual(SPACE_ACTIVE_S13, ["회의·비즈니스", "사무실·공유오피스", "팝업스토어·쇼룸", "컨벤션·대형 행사", "사진·영상 촬영", "음악·댄스 연습", "파티·프라이빗 모임"]);
   for (const c of [KO, EN]) {
     assert.deepEqual(c.trades.map((t) => t.en), ["C2C", "B2C", "C2B", "B2B"]);
     const spaces = c.platform.services.filter((s) => s.g === "c");
-    assert.equal(spaces.length, 7, "seven space groups");
-    assert.equal(spaces.flatMap((s) => s.chips).length, 35, "35 space categories");
+    assert.equal(spaces.flatMap((s) => s.chips).length, 7, "seven active space categories");
     assert.equal(c.partnerships.types.items.length, 10);
     assert.equal(c.contact.items.length, 11);
     assert.equal(c.platform.flow.steps.length, 6);
@@ -59,7 +54,13 @@ test("structure follows the 2026-11-04 refresh: goods fields, 7 space groups wit
     for (const gone of ["status"]) assert.ok(!(gone in c.platform), `platform.${gone}`);
     for (const gone of ["models", "subs", "calc", "small", "payment", "roadmap", "glance"]) assert.ok(!(gone in c.business), `business.${gone}`);
   }
-  assert.deepEqual(KO.platform.services.filter((s) => s.g === "c").flatMap((s) => s.chips), SPACE35, "space taxonomy (S13 final, 2026-11-02)");
+  assert.deepEqual(KO.platform.services.filter((s) => s.g === "c").flatMap((s) => s.chips), SPACE_ACTIVE_S13, "only the active space categories");
+  // candidates, review, legal-hold and prohibited categories are not listed on any Korean SHAREON page
+  for (const p of SHAREON_PAGES) {
+    const t = text(read(`ko/${p.path}/index.html`));
+    for (const x of SPACE_TAXONOMY_S13.filter((x) => x.phase !== "active")) assert.ok(!t.includes(x.ko), `ko/${p.path} lists ${x.ko}`);
+    assert.doesNotMatch(t, /35개|7개 그룹|35 categories|7 groups/, `ko/${p.path} 35-category wording`);
+  }
   // the owner-confirmed goods fields all appear in the Korean platform copy
   const plat = JSON.stringify(KO.platform.services);
   for (const f of ["생활", "가전", "디지털·IT", "촬영", "스포츠·레저", "캠핑", "여행", "육아", "반려동물", "의료·재활", "시니어", "가구·인테리어", "사무·OA", "교육", "청소", "주방", "미용", "헬스", "패션·명품", "행사·공연", "산업·건설", "물류", "농업", "연구"]) assert.ok(plat.includes(f), f);
@@ -90,6 +91,8 @@ test("no per-card status badges; exactly one shared neutral notice per page; no 
       const t = text(read(`${lang}/${p.path}/index.html`));
       assert.doesNotMatch(t, /개발 중|개발 예정|출시 준비|출시 전|미출시|출시되지|출시 일정|준비 중|검토 단계|향후 계획|개발 환경|추가 개발|설계 단계|꺼져 있|P[0-7]\b|in development|not launched|has not launched|in preparation|launch is being|under review|future plan|not operating|switched off/i, `${lang}/${p.path} status wording`);
       assert.doesNotMatch(t, /동네|이웃 간|한 동네|세 카테고리|18개|열여덟|14개 (핵심 )?사업군|neighbourhood|neighborhood|eighteen|18 (business )?areas/i, `${lang}/${p.path} old structure`);
+      assert.doesNotMatch(t, /쉐어지수|share ?score|trust score|신뢰 ?점수|신뢰지수/i, `${lang}/${p.path} Share Score (owner 2026-11-04: not until implemented)`);
+      assert.doesNotMatch(t, /35개|7개 그룹|35 categories|across 7 groups|in 7 groups/i, `${lang}/${p.path} 35-category wording`);
       assert.doesNotMatch(t, /계약을 맺은 파트너사는 없습니다|계약한 파트너사는 없습니다|no contracted partners|no partners under contract/i, `${lang}/${p.path} contract status`);
     }
   }
