@@ -93,12 +93,11 @@ function block(id, inner, tone = "", cls = "") {
   return `<section id="${id}" class="nls-block bl-sec${t}${cls ? " " + cls : ""}" data-hs-section aria-labelledby="${id}-title">${inner}</section>`;
 }
 
-/** BABYLOG first-screen background (owner-provided, 2026-10-27): three films that crossfade in turn
- *  (1.2 s fade), all looping, muted and inline. Background only; text and layout unchanged. */
+/** BABYLOG first-screen background (owner-provided, 2026-11-04): one film on every BABYLOG first screen, looping,
+ *  muted, inline and autoplaying. Replaces the three crossfading films of 2026-10-27. Background only; text and layout
+ *  unchanged. (The crossfade script in render-babylog-site.mjs stays idle with a single film.) */
 const BABYLOG_FILMS = [
-  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260629_030107_874273ea-684a-4e90-bb96-8fdfde48d53d.mp4",
-  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260629_032424_3c9c2a9d-807b-4482-80e6-dd6d9dfd4545.mp4",
-  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260627_094019_4214ea73-b963-46a4-8327-61489192de99.mp4",
+  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261029_084140_553c4785-d33c-496e-9702-45247fa2fcf3.mp4",
 ];
 const filmTag = (src, i) => `<video class="nls-film__video bl-film__clip${i === 0 ? " is-on" : ""}" src="${src}" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" aria-hidden="true">
         <source src="${src}" type="video/mp4" />

@@ -31,8 +31,8 @@ export { getShareonCopy };
 const e = (s) => escapeHtml(s == null ? "" : String(s));
 const nl = (s) => e(s).replace(/\n/g, "<br />");
 
-/** SHAREON first-screen background film (owner-provided, 2026-10-18). */
-const SHAREON_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_171521_25968ba2-b594-4b32-aab7-f6b69398a6fa.mp4";
+/** SHAREON first-screen background film (owner-provided, 2026-11-04; replaces the 2026-10-18 film). */
+const SHAREON_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261027_023235_75ce0422-4086-4e6c-96e3-2de418138eed.mp4";
 
 function pageHref(lang, id) {
   const p = SHAREON_PAGES.find((x) => x.id === id);
