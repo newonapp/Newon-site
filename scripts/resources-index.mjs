@@ -214,7 +214,7 @@ export function buildResourcesIndexBody(copies, lang, ctx) {
       <p class="ns-lead">${heroLead}</p>
       <div class="ns-actions">
         <a class="btn btn-ghost" href="#rx-cats">${heroCtaBrowse}</a>
-        <a class="btn btn-primary" href="labs/">${heroCtaLabs}</a>
+        <a class="btn btn-primary" href="../labs/">${heroCtaLabs}</a>
       </div>
       ${heroRail(heroAreas, ko ? "Resources 영역" : "Resources areas")}
     </div>

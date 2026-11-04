@@ -204,6 +204,16 @@ const PUBLISH_COPY_DIRS = [
   { from: "babylog", to: "babylog", required: true },
   { from: "petlog", to: "petlog", required: true },
   { from: "myworld", to: "myworld", required: true },
+  /** Root /{app}/delete-account/ → /{lang}/{app}/delete-account/ redirect stubs (2026-11-04): the root page's app shells link
+   *  to these paths; without them the account-deletion links 404. The stubs and the localized pages already exist. */
+  { from: "pillmate/delete-account", to: "pillmate/delete-account", required: true },
+  { from: "savy/delete-account", to: "savy/delete-account", required: true },
+  { from: "piggyup/delete-account", to: "piggyup/delete-account", required: true },
+  { from: "goalup/delete-account", to: "goalup/delete-account", required: true },
+  { from: "countup/delete-account", to: "countup/delete-account", required: true },
+  { from: "newon/delete-account", to: "newon/delete-account", required: true },
+  { from: "eaton/delete-account", to: "eaton/delete-account", required: true },
+  { from: "fiton/delete-account", to: "fiton/delete-account", required: true },
   { from: "shareon", to: "shareon", required: true },
   { from: "assets", to: "assets", required: true },
   { from: "vendor/three", to: "vendor/three", required: true },
