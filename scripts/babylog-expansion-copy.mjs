@@ -97,15 +97,14 @@ const KO = {
     },
     platforms: {
       kicker: "NEWON Ecosystem",
-      title: "NEWON의 다섯 플랫폼 속\nBABYLOG의 자리.",
+      title: "NEWON의 네 플랫폼 속\nBABYLOG의 자리.",
       lead: "각 플랫폼은 서로 다른 영역을 맡습니다.",
-      note: "SHAREON은 육아용품 대여를, PETLOG는 반려동물과 함께하는 가족 생활을, ONGIL은 조부모 세대의 돌봄을, MY WORLD는 가족 여행의 추억을 맡습니다. 서로 다른 앱의 아동·건강·가족 데이터는 명시적 동의와 적법한 권한 없이 자동으로 공유하지 않습니다.",
+      note: "SHAREON은 육아용품 대여를, PETLOG는 반려동물과 함께하는 가족 생활을, ONGIL은 조부모 세대의 돌봄을 맡습니다. 서로 다른 앱의 아동·건강·가족 데이터는 명시적 동의와 적법한 권한 없이 자동으로 공유하지 않습니다.",
       items: [
         { n: "01", name: "BABYLOG", body: "임신·출산·육아·성장·교육·가족생활·아동 안전" },
         { n: "02", name: "PETLOG", body: "반려동물 건강·생활·상품·서비스" },
-        { n: "03", name: "MY WORLD", body: "여행·경험·여행 서비스" },
-        { n: "04", name: "SHAREON", body: "물건·장비·공간 공유·대여" },
-        { n: "05", name: "ONGIL", body: "시니어 생활·돌봄·복지" },
+        { n: "03", name: "SHAREON", body: "물건·장비·공간 공유·대여" },
+        { n: "04", name: "ONGIL", body: "시니어 생활·돌봄·복지" },
       ],
     },
     groupsIndex: {
@@ -427,15 +426,14 @@ const EN = {
     },
     platforms: {
       kicker: "NEWON Ecosystem",
-      title: "BABYLOG's place among\nNEWON's five platforms.",
+      title: "BABYLOG's place among\nNEWON's four platforms.",
       lead: "Each platform covers a different area.",
-      note: "SHAREON covers renting baby goods, PETLOG covers family life with pets, ONGIL covers care for the grandparent generation, and MY WORLD covers family travel memories. Children's, health and family data from different apps is never shared automatically without explicit consent and lawful authority.",
+      note: "SHAREON covers renting baby goods, PETLOG covers family life with pets, and ONGIL covers care for the grandparent generation. Children's, health and family data from different apps is never shared automatically without explicit consent and lawful authority.",
       items: [
         { n: "01", name: "BABYLOG", body: "Pregnancy, birth, parenting, growth, education, family life, child safety" },
         { n: "02", name: "PETLOG", body: "Pet health, daily life, products, services" },
-        { n: "03", name: "MY WORLD", body: "Travel, experiences, travel services" },
-        { n: "04", name: "SHAREON", body: "Sharing and renting goods, equipment, space" },
-        { n: "05", name: "ONGIL", body: "Senior living, care, welfare" },
+        { n: "03", name: "SHAREON", body: "Sharing and renting goods, equipment, space" },
+        { n: "04", name: "ONGIL", body: "Senior living, care, welfare" },
       ],
     },
     groupsIndex: {

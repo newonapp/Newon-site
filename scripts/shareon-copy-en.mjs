@@ -194,7 +194,6 @@ export const EN = {
         { name: "SHAREON", body: "Sharing and rental of things, equipment and spaces", self: true },
         { name: "BABYLOG", body: "Link with baby and family gear rental under review" },
         { name: "PETLOG", body: "Link with pet equipment rental under review" },
-        { name: "MY WORLD", body: "Link with travel and camping gear rental under review" },
         { name: "ONGIL", body: "Link with senior daily-life and hobby item rental under review" },
       ],
     },
@@ -696,7 +695,7 @@ export const EN = {
       points: [
         { n: "01", title: "Neighbourhood free-lending week", body: "A campaign around free lending, where neighbours lend things they don’t use, possibly with usage guidance from local rental shops or institutions." },
         { n: "02", title: "Seasonal gear features", body: "Bringing together relevant firms’ equipment for peak times such as camping season, moving season or event season." },
-        { n: "03", title: "Links with NEWON services", body: "Connecting baby gear from BABYLOG, pet equipment from PETLOG and travel and camping gear from MY WORLD to rental is a long-term idea. There is no integration today." },
+        { n: "03", title: "Links with NEWON services", body: "Connecting baby gear from BABYLOG and pet equipment from PETLOG to rental is a long-term idea. There is no integration today." },
       ],
     },
     global: {

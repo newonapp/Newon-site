@@ -1,6 +1,6 @@
 /**
  * Business Contact page kit — the ONGIL Contact page (render-ongil-site.mjs contactMain) as a shared component for
- * SHAREON · BABYLOG · PETLOG · MY WORLD (owner, 2026-10-26: "6개 사업 각각 … 문의 누르면 보이는 화면 기능이랑
+ * SHAREON · BABYLOG · PETLOG (owner, 2026-10-26: "6개 사업 각각 … 문의 누르면 보이는 화면 기능이랑
  * 디자인 ONGIL 문의 화면처럼 해 줘"). Same section order, same component types, same markup and CSS (derived from
  * ongil-site.css by build-biz-contact-css.mjs → /biz-contact.css), each in its own brand colour (data-bct-biz).
  *

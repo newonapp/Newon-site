@@ -37,7 +37,6 @@ export const CONTACT_ICONS = {
   shareon: { personal: "swap", groups: ["users", "link"] },
   babylog: { personal: "stroller", groups: ["heart", "building", "shield"] },
   petlog: { personal: "paw", groups: ["paw", "heart", "bag", "shield", "globe"] },
-  myworld: { personal: "pin", groups: ["pin", "suitcase", "building", "chat"] },
 };
 const TYPE_ICON = { personal: "person", business: "briefcase", public: "landmark", partnership: "link", media: "chat", investment: "spark" };
 export const typeIcon = (biz, type) => (type === "personal" && CONTACT_ICONS[biz] ? CONTACT_ICONS[biz].personal : TYPE_ICON[type] || "info");

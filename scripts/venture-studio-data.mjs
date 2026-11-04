@@ -41,7 +41,7 @@ export const LEGACY_STATUS_MAP = {
  * Top-level nav order. Business and Partnerships are one menu since 2026-10-19 ("Business & Partnerships",
  * id "business", where Business used to be); the separate Partnerships item is gone.
  */
-export const TOP_NAV = ["consumer", "ai", "ongil", "shareon", "babylog", "petlog", "myworld", "business", "studio", "company"];
+export const TOP_NAV = ["consumer", "ai", "ongil", "shareon", "babylog", "petlog", "business", "studio", "company"];
 
 /**
  * Mega menu destinations per top menu.
@@ -77,13 +77,6 @@ export const MEGA_DESTINATIONS = {
     { titleKey: "nav.babylogMenuBusiness", descKey: "nav.babylogMenuBusinessDesc", href: "babylog/business/", titleFb: "Business" },
     { titleKey: "nav.babylogMenuPartnerships", descKey: "nav.babylogMenuPartnershipsDesc", href: "babylog/partnerships/", titleFb: "Partnerships" },
     { titleKey: "nav.babylogMenuContact", descKey: "nav.babylogMenuContactDesc", href: "babylog/contact/", titleFb: "Contact" },
-  ],
-  myworld: [
-    { titleKey: "nav.myworldMenuOverview", descKey: "nav.myworldMenuOverviewDesc", href: "myworld/", titleFb: "Overview" },
-    { titleKey: "nav.myworldMenuPlatform", descKey: "nav.myworldMenuPlatformDesc", href: "myworld/platform/", titleFb: "Platform" },
-    { titleKey: "nav.myworldMenuBusiness", descKey: "nav.myworldMenuBusinessDesc", href: "myworld/business/", titleFb: "Business" },
-    { titleKey: "nav.myworldMenuPartnerships", descKey: "nav.myworldMenuPartnershipsDesc", href: "myworld/partnerships/", titleFb: "Partnerships" },
-    { titleKey: "nav.myworldMenuContact", descKey: "nav.myworldMenuContactDesc", href: "myworld/contact/", titleFb: "Contact" },
   ],
   shareon: [
     { titleKey: "nav.shareonOverview", descKey: "nav.shareonOverviewDesc", href: "shareon/", titleFb: "Overview" },

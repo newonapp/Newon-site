@@ -63,8 +63,6 @@ const PUBLISH_ROOT_CORE = [
   "biz-contact.css",
   "shareon.css",
   "flagship-subnav.css",
-  "myworld-site.css",
-  "myworld-site.js",
   "shareon.js",
   "ecosystem.css",
   "ecosystem.js",
@@ -200,7 +198,7 @@ const PUBLISH_COPY_DIRS = [
   { from: "ongil-start", to: "ongil-start", required: true },
   /** Root /ongil/ → /{lang}/… language redirects (same pattern as /studio/, /business/). */
   { from: "ongil", to: "ongil", required: true },
-  /** Information-only business intro pages (BabyLog · PetLog · My World · ShareOn). */
+  /** Information-only business intro pages (BabyLog · PetLog · ShareOn). /myworld/ keeps only the MY WORLD app account-deletion page. */
   /** Business Hub landing (business/seller-center and business/partners ride along with the business dir). */
   { from: "business-hub", to: "business-hub", required: true },
   { from: "babylog", to: "babylog", required: true },
@@ -551,7 +549,7 @@ function verify() {
   required.push(path.join(OUT, "ja", "portfolio", "index.html"));
   required.push(path.join(OUT, "ongil-start", "index.html"));
   required.push(path.join(OUT, "ongil", "index.html"));
-  for (const s of ["babylog", "petlog", "myworld", "shareon", "business-hub", "business/seller-center", "business/partners"]) required.push(path.join(OUT, s, "index.html"));
+  for (const s of ["babylog", "petlog", "myworld/delete-account", "shareon", "business-hub", "business/seller-center", "business/partners"]) required.push(path.join(OUT, s, "index.html"));
   required.push(path.join(OUT, "assets", "ongil-mark.svg"));
   required.push(path.join(OUT, "film-keep.js"));
   required.push(path.join(OUT, "search-index.json"));

@@ -123,7 +123,6 @@ const COPY = {
         { id: "areas", label: "사업별 제휴 안내", lead: "사업별 협력 방식은 각 소개 페이지에서 볼 수 있습니다.", cards: [
           ["BabyLog", "육아 생태계 제휴", "babylog/#partners"],
           ["PetLog", "반려 생태계 제휴", "petlog/#partners"],
-          ["My World", "여행·장소 제휴", "myworld/#partners"],
           ["ShareOn", "나눔 생태계 제휴 (출시 준비 중)", "shareon/#partners"],
           ["Ongil", "시니어 생활·돌봄 제휴", "ongil/#bi-partners"],
         ] },
@@ -208,7 +207,6 @@ const COPY = {
         { id: "areas", label: "Partnerships by business", lead: "Each business page describes how we work with partners.", cards: [
           ["BabyLog", "Parenting ecosystem partnerships", "babylog/#partners"],
           ["PetLog", "Pet ecosystem partnerships", "petlog/#partners"],
-          ["My World", "Travel and places partnerships", "myworld/#partners"],
           ["ShareOn", "Sharing ecosystem partnerships (coming soon)", "shareon/#partners"],
           ["Ongil", "Senior living and care partnerships", "ongil/#bi-partners"],
         ] },

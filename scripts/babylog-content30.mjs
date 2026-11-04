@@ -209,7 +209,7 @@ const KO = {
         { n: "04", name: "가족 공유", body: "허용된 범위 안에서 부모·조부모·보호자가 같은 정보를 보고 이어서 기록합니다." },
         { n: "05", name: "탐색·마켓", body: "단계에 맞는 기관·서비스·상품 정보로 이어지는 단계입니다. 다음 버전에서 준비 중이며, 아동 데이터 기반 개인화 광고는 하지 않습니다." },
       ],
-      note: "다른 NEWON 앱(SHAREON·PETLOG·ONGIL·MY WORLD)과 아동·건강·가족 데이터는 명시적 동의와 적법한 권한 없이 자동으로 공유하지 않습니다.",
+      note: "다른 NEWON 앱(SHAREON·PETLOG·ONGIL)과 아동·건강·가족 데이터는 명시적 동의와 적법한 권한 없이 자동으로 공유하지 않습니다.",
     },
     roles: {
       kicker: "Roles & Permissions",
@@ -710,7 +710,7 @@ const EN = {
         { n: "04", name: "Family sharing", body: "Within the permitted scope, parents, grandparents and guardians see the same information and keep adding to it." },
         { n: "05", name: "Explore and market", body: "The stage that leads on to institutions, services and goods suited to the child's stage. Being prepared for the next version, with no personalized ads based on children's data." },
       ],
-      note: "Children's, health and family data is never shared automatically with other NEWON apps (SHAREON, PETLOG, ONGIL, MY WORLD) without explicit consent and lawful authority.",
+      note: "Children's, health and family data is never shared automatically with other NEWON apps (SHAREON, PETLOG, ONGIL) without explicit consent and lawful authority.",
     },
     roles: {
       kicker: "Roles & Permissions",

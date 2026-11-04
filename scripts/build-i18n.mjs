@@ -600,7 +600,7 @@ function writeSitemap() {
   }
 
   // Flagship business sites — five pages each (ONGIL sub-pages exist in KO/EN only; other languages are noindex forwards).
-  for (const biz of ["babylog", "petlog", "myworld", "shareon"]) {
+  for (const biz of ["babylog", "petlog", "shareon"]) {
     for (const sub of ["", "/platform", "/business", "/partnerships", "/contact"]) addAllLocales(`${biz}${sub}`, "0.65", "monthly");
   }
   addAllLocales("ongil", "0.65", "monthly");
@@ -618,7 +618,7 @@ function writeSitemap() {
   }
 
   // Product hubs
-  for (const page of ["products", "apps", "ecosystem", "ai", "ai/enterprise", "business-hub", "business/seller-center", "business/partners", "babylog", "babylog/platform", "babylog/business", "babylog/partnerships", "babylog/contact", "petlog", "myworld", "shareon", "ongil", "saas", "games", "tools", "market", "contact", "media"]) {
+  for (const page of ["products", "apps", "ecosystem", "ai", "ai/enterprise", "business-hub", "business/seller-center", "business/partners", "babylog", "babylog/platform", "babylog/business", "babylog/partnerships", "babylog/contact", "petlog", "shareon", "ongil", "saas", "games", "tools", "market", "contact", "media"]) {
     addAllLocales(page, "0.65", "monthly");
   }
 
@@ -753,7 +753,6 @@ runScript("render-ongil.mjs");
 runScript("render-shareon.mjs");
 runScript("render-bsp.mjs");
 runScript("render-petlog-site.mjs");
-runScript("render-myworld-site.mjs");
 // ONGIL corporate website (KO/EN five pages) — overwrites the KO/EN ONGIL overview written just above
 runScript("render-ongil-site.mjs");
 runScript("render-ox-month-web.mjs");

@@ -107,7 +107,7 @@ for (const p of pages) {
     const values = count(sect("bl-connect"), /class="bl-val"/g);
     const core = count(sect("bl-daily"), /class="bl-bento__item/g);
     const pl = count(sect("bl-platforms"), /class="bl-plat[ "]/g);
-    secOk = !lack.length && stages === 6 && eco === 4 && biz === 6 && cats === 8 && ctas === 2 && impOk && sol === 6 && values === 6 && core === 8 && pl === 5 && /story-babylog-title/.test(body);
+    secOk = !lack.length && stages === 6 && eco === 4 && biz === 6 && cats === 8 && ctas === 2 && impOk && sol === 6 && values === 6 && core === 8 && pl === 4 && /story-babylog-title/.test(body);
     secInfo = `missing ${lack.join(",") || "-"}, stages ${stages}, values ${values}/6, core experience ${core}/8, ecosystem ${eco}, business links ${biz}, category links ${cats}, impact ${impOk}, trust ${sol}/6, platforms ${pl}, closing CTAs ${ctas}`;
   } else if (p.nav.id === "platform") {
     const need = ["screens", "flow", "growth", "records", "family", "learning", "memories", "assist", "explore", "trust", "roles", "scenarios", "roadmap", "cs", ...CS_GROUP_CODES.map((c) => "cs-" + c), "access", "faq", "close"].map((x) => "bl-" + x);
@@ -303,7 +303,7 @@ if (AGAINST) {
   const sha = (b) => crypto.createHash("sha256").update(b).digest("hex");
   const git = (...a) => execFileSync("git", ["-C", ROOT, ...a], { encoding: "buffer", maxBuffer: 1 << 28 });
   const watch = [];
-  for (const l of LANGS) for (const s of ["petlog", "myworld", "shareon", "ongil", "ai", "business", "studio", "company", "business-hub"]) watch.push(`${l}/${s}/index.html`);
+  for (const l of LANGS) for (const s of ["petlog", "shareon", "ongil", "ai", "business", "studio", "company", "business-hub"]) watch.push(`${l}/${s}/index.html`);
   watch.push(
     "home-lifestage.css", "home-lifestage-layout.css", "home-lifestage.js", "templates/hub-shell.html",
     "scripts/site-chrome.mjs", "scripts/render-business-intro.mjs", "scripts/six-businesses.mjs"

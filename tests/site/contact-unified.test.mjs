@@ -36,8 +36,9 @@ const config = (lang) => JSON.parse(read(`${lang}/contact/index.html`).match(/<s
 test("taxonomy: six inquirers, eleven inquiry types, the spec's topics per platform, unique ids, valid statuses", () => {
   assert.deepEqual(CONTACT_INQUIRER_IDS, ["personal", "company", "organization", "investor", "media", "other"]);
   assert.deepEqual(CONTACT_INQUIRY_IDS, ["general", "service", "support", "bug", "partnership", "listing", "investment", "advertising", "institution", "privacy", "other"]);
-  const want = { ongil: 8, shareon: 10, babylog: 9, petlog: 8, myworld: 9 };
+  const want = { ongil: 8, shareon: 10, babylog: 9, petlog: 8 };
   assert.ok(!("livon" in CONTACT_TOPICS) && !CONTACT_PLATFORM_IDS.includes("livon"), "LIVON removed from the contact form (2026-11)");
+  assert.ok(!("myworld" in CONTACT_TOPICS) && !CONTACT_PLATFORM_IDS.includes("myworld"), "MY WORLD removed from the business platform list of the contact form (2026-11)");
   for (const [p, n] of Object.entries(want)) assert.equal(CONTACT_TOPICS[p].length, n, `${p} topics`);
   const all = Object.values(CONTACT_TOPICS).flat();
   assert.equal(new Set(all.map((t) => t.id)).size, all.length, "unique topic ids");
@@ -55,13 +56,14 @@ test("taxonomy: six inquirers, eleven inquiry types, the spec's topics per platf
   for (const name of Object.keys(CONTACT_CONDITIONAL_FIELDS)) assert.ok(read("ko/contact/index.html").includes(`data-ct-when="${name}"`), `${name} rendered`);
 });
 
-test("presets, derived category and URL resolution (my-world alias, invalid values, topic → platform)", () => {
+test("presets, derived category and URL resolution (retired my-world alias, invalid values, topic → platform)", () => {
   for (const [k, v] of Object.entries(CONTACT_TYPE_PRESETS)) {
     assert.ok(CONTACT_CATEGORY_IDS.includes(v.category), k);
     assert.equal(deriveContactCategory(v.inquirer, v.inquiry || ""), v.category, `${k} preset derives back to its category`);
   }
   const r = (q) => resolveContactParams(new URLSearchParams(q));
-  assert.deepEqual(r("platform=my-world&type=business&source=x"), { category: "business", inquirer: "company", inquiry: "", platform: "myworld", topic: "", source: "x" });
+  assert.deepEqual(r("platform=my-world&type=business&source=x"), { category: "business", inquirer: "company", inquiry: "", platform: "", topic: "", source: "x" });
+  assert.equal(r("platform=myworld").platform, "", "MY WORLD is no longer a contact platform");
   assert.deepEqual(r("type=<x>&platform=../../&topic=nope&inquirer=admin&inquiry=1"), { category: "", inquirer: "", inquiry: "", platform: "", topic: "", source: "" });
   assert.deepEqual(r("topic=petlog-shelter"), { category: "", inquirer: "", inquiry: "institution", platform: "petlog", topic: "petlog-shelter", source: "" });
   assert.equal(r("platform=ongil&topic=petlog-shelter").topic, "", "mismatched topic ignored");
@@ -77,7 +79,7 @@ test("the page config matches the taxonomy in every locale; ko labels for ko, en
     assert.deepEqual(c.inquiries.map((x) => x.id), CONTACT_INQUIRY_IDS, lang);
     assert.deepEqual(Object.keys(c.topics), Object.keys(CONTACT_TOPICS), lang);
     assert.deepEqual(c.platforms, CONTACT_PLATFORM_IDS);
-    assert.equal(c.platformAliases["my-world"], "myworld");
+    assert.deepEqual(c.platformAliases, {});
     assert.equal(c.lang, lang);
     const deposit = c.topics.shareon.find((t) => t.id === "shareon-deposit");
     assert.equal(deposit.label, lang === "ko" ? "보증금 · 향후 계획" : "Deposits · future plan", lang);

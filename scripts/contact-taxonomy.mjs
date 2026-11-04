@@ -6,14 +6,14 @@
  *
  *   Level 1  inquirer       who is asking            (개인 · 기업 · 기관·단체 · 투자자 · 언론 · 기타)
  *   Level 2  inquiry type   what the inquiry is about (일반 문의 … 기타)
- *   Level 3  topic          platform-specific detail (ONGIL / SHAREON / BABYLOG / PETLOG / MY WORLD / NEWON)
+ *   Level 3  topic          platform-specific detail (ONGIL / SHAREON / BABYLOG / PETLOG / NEWON)
  *
  * The page's six existing categories (personal · business · public · partnership · investment · media — the cards in
  * "01 / CONTACT CATEGORIES" and the URL `type`) are kept: a category is a preset of level 1 + level 2, and the
  * category recorded with a submission is derived from the visitor's final level 1 + level 2 choice.
  *
  * URL contract (both agents):
- *   platform = ongil | shareon | babylog | petlog | myworld | newon | other   (alias my-world → myworld)
+ *   platform = ongil | shareon | babylog | petlog | newon | other
  *   type     = category id or one of its aliases (CONTACT_TYPE_PRESETS)
  *   inquirer = level-1 id (optional)      inquiry = level-2 id (optional)
  *   topic    = level-3 id from CONTACT_TOPICS (optional; implies its platform)
@@ -25,11 +25,11 @@
  *   "prep"      — part of an app whose launch is in preparation (앱 출시 준비 중)
  *   "planned"   — a long-term plan, not built yet (향후 계획)
  *   null        — not a feature (bug reports, partnership proposals …)
- * All five platforms are "앱 출시 준비 중" (none runs a web version), so no platform topic is "available".
+ * All four platforms are "앱 출시 준비 중" (none runs a web version), so no platform topic is "available".
  */
 
-export const CONTACT_PLATFORM_IDS = ["newon", "ongil", "shareon", "babylog", "petlog", "myworld", "other"];
-export const CONTACT_PLATFORM_ALIASES = { "my-world": "myworld", my_world: "myworld" };
+export const CONTACT_PLATFORM_IDS = ["newon", "ongil", "shareon", "babylog", "petlog", "other"];
+export const CONTACT_PLATFORM_ALIASES = {};
 
 /** Level 1 — inquirer. */
 export const CONTACT_INQUIRERS = [
@@ -156,17 +156,6 @@ export const CONTACT_TOPICS = {
     T("petlog-business", "기업 입점", "Business listings", "planned", "listing"),
     T("petlog-bug", "오류", "Bugs", null, "bug"),
     T("petlog-partnership", "제휴", "Partnerships", null, "partnership"),
-  ],
-  myworld: [
-    T("myworld-map", "세계 지도", "World map", "prep", "service"),
-    T("myworld-visits", "방문 기록", "Visit records", "prep", "service"),
-    T("myworld-trips", "여행 기록", "Travel records", "prep", "service"),
-    T("myworld-travel-services", "여행 서비스", "Travel services", "planned", "service"),
-    T("myworld-booking", "예약", "Booking", "planned", "service", true),
-    T("myworld-agencies", "여행 업체", "Travel businesses", "planned", "listing"),
-    T("myworld-tourism", "관광기관", "Tourism organizations", null, "institution"),
-    T("myworld-bug", "오류", "Bugs", null, "bug"),
-    T("myworld-partnership", "제휴", "Partnerships", null, "partnership"),
   ],
   newon: [
     T("newon-company", "NEWON 회사·서비스 전반", "NEWON in general", null, "general"),
@@ -302,7 +291,7 @@ if(!m&&k==="business-inquiry"&&c==="studio")m={type:"business",topic:"newon-stud
 m=m||{};var ty=m.type||D.def.type,tp=m.topic||"",iq=m.inquiry||"";
 var p=(q.get("platform")||q.get("area")||"").toLowerCase().replace(/\\s+/g,"");p=D.aliases[p]||p;
 if(p==="multiple"||p==="general"||p==="store"||p==="business")p="newon";
-if(D.platforms.indexOf(p)===-1){var src0=(q.get("source")||"").toLowerCase().match(/babylog|petlog|myworld|shareon|ongil/);p=src0?src0[0]:"";}
+if(D.platforms.indexOf(p)===-1){var src0=(q.get("source")||"").toLowerCase().match(/babylog|petlog|shareon|ongil/);p=src0?src0[0]:"";}
 if(k==="studio-contact"||c==="studio")p="newon";
 var qt=(q.get("topic")||"").toLowerCase();if(D.topics.indexOf(qt)!==-1)tp=qt;
 if(!tp&&!m.type&&!p)tp=D.def.topic;
@@ -341,7 +330,7 @@ export function legacyContactUrl(lang, kind, query = "", hash = "") {
   p = CONTACT_PLATFORM_ALIASES[p] || p;
   if (["multiple", "general", "store", "business"].includes(p)) p = "newon";
   if (!CONTACT_PLATFORM_IDS.includes(p)) {
-    const s = String(q.get("source") || "").toLowerCase().match(/babylog|petlog|myworld|shareon|ongil/);
+    const s = String(q.get("source") || "").toLowerCase().match(/babylog|petlog|shareon|ongil/);
     p = s ? s[0] : "";
   }
   if (kind === "studio-contact" || c === "studio") p = "newon";

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Business Inquiry | NEWON</title>
-    <meta name="description" content="Inquiries about joining, partnering with, adopting enterprise services from, or collaborating with NEWON's five digital platforms: BABYLOG, PETLOG, MY WORLD, SHAREON and ONGIL." />
+    <meta name="description" content="Inquiries about joining, partnering with, adopting enterprise services from, or collaborating with NEWON's four digital platforms: BABYLOG, PETLOG, SHAREON and ONGIL." />
     <meta name="keywords" content="Newon, यात्रा जर्नल, यात्रा ट्रैकर, देखे गए देश, travel journal, travel tracker, My World, EatOn, FitOn" />
     <meta name="robots" content="noindex, follow" />
     <link rel="canonical" href="https://www.newon.app/hi/business/inquiry/" />
@@ -18,7 +18,7 @@
         if (!m) return;
         var q = new URLSearchParams(location.search);
         if ((q.get("category") || "").toLowerCase() === "store" || /^store\s*\//i.test(q.get("type") || "")) return;
-        (function(){var D={"lang":"hi","kind":"business-inquiry","biz":{"general":{"type":"business","topic":"newon-business","inquiry":"general"},"participation":{"type":"business","inquiry":"listing"},"commerce":{"type":"partnership"},"saas":{"type":"business","topic":"newon-saas"},"institution":{"type":"public"},"brand":{"type":"partnership"},"technology":{"type":"partnership"},"public":{"type":"public"},"global":{"type":"partnership","topic":"newon-global"},"other":{"type":"business","inquiry":"other"}},"studio":{"product":{"type":"personal","topic":"newon-studio"},"purchase":{"type":"personal","topic":"newon-studio"},"usage":{"type":"personal","topic":"newon-studio-support"},"support":{"type":"personal","topic":"newon-studio-support"},"business":{"type":"business","topic":"newon-studio-business"},"license":{"type":"business","topic":"newon-studio-license"}},"def":{"type":"business","topic":"newon-business","source":"business-inquiry"},"presets":["personal","support","app-support","business","project","enterprise","public","institution","government","partnership","partner","technology","investment","invest","ir","media","press","general","other"],"platforms":["newon","ongil","shareon","babylog","petlog","myworld","other"],"aliases":{"my-world":"myworld","my_world":"myworld"},"topics":["ongil-senior","ongil-guardian","ongil-caregiver","ongil-health","ongil-welfare","ongil-services","ongil-bug","ongil-partnership","shareon-sharing","shareon-booking","shareon-trade","shareon-deposit","shareon-payment","shareon-dispute","shareon-report","shareon-provider","shareon-business","shareon-partnership","babylog-pregnancy","babylog-parenting","babylog-growth","babylog-family","babylog-school","babylog-safety","babylog-institution","babylog-bug","babylog-partnership","petlog-records","petlog-health","petlog-booking","petlog-providers","petlog-shelter","petlog-business","petlog-bug","petlog-partnership","myworld-map","myworld-visits","myworld-trips","myworld-travel-services","myworld-booking","myworld-agencies","myworld-tourism","myworld-bug","myworld-partnership","newon-company","newon-business","newon-saas","newon-studio","newon-studio-license","newon-studio-support","newon-studio-business","newon-partnership","newon-global","newon-ir","newon-press","newon-privacy"]};
+        (function(){var D={"lang":"hi","kind":"business-inquiry","biz":{"general":{"type":"business","topic":"newon-business","inquiry":"general"},"participation":{"type":"business","inquiry":"listing"},"commerce":{"type":"partnership"},"saas":{"type":"business","topic":"newon-saas"},"institution":{"type":"public"},"brand":{"type":"partnership"},"technology":{"type":"partnership"},"public":{"type":"public"},"global":{"type":"partnership","topic":"newon-global"},"other":{"type":"business","inquiry":"other"}},"studio":{"product":{"type":"personal","topic":"newon-studio"},"purchase":{"type":"personal","topic":"newon-studio"},"usage":{"type":"personal","topic":"newon-studio-support"},"support":{"type":"personal","topic":"newon-studio-support"},"business":{"type":"business","topic":"newon-studio-business"},"license":{"type":"business","topic":"newon-studio-license"}},"def":{"type":"business","topic":"newon-business","source":"business-inquiry"},"presets":["personal","support","app-support","business","project","enterprise","public","institution","government","partnership","partner","technology","investment","invest","ir","media","press","general","other"],"platforms":["newon","ongil","shareon","babylog","petlog","other"],"aliases":{},"topics":["ongil-senior","ongil-guardian","ongil-caregiver","ongil-health","ongil-welfare","ongil-services","ongil-bug","ongil-partnership","shareon-sharing","shareon-booking","shareon-trade","shareon-deposit","shareon-payment","shareon-dispute","shareon-report","shareon-provider","shareon-business","shareon-partnership","babylog-pregnancy","babylog-parenting","babylog-growth","babylog-family","babylog-school","babylog-safety","babylog-institution","babylog-bug","babylog-partnership","petlog-records","petlog-health","petlog-booking","petlog-providers","petlog-shelter","petlog-business","petlog-bug","petlog-partnership","newon-company","newon-business","newon-saas","newon-studio","newon-studio-license","newon-studio-support","newon-studio-business","newon-partnership","newon-global","newon-ir","newon-press","newon-privacy"]};
 try{var q=new URLSearchParams(location.search),o=new URLSearchParams(),k=D.kind;
 var t=(q.get("type")||"").toLowerCase().trim(),c=(q.get("category")||"").toLowerCase().trim(),m=null;
 if(k==="studio-contact"||c==="studio")m=D.studio[t]||null;
@@ -30,7 +30,7 @@ if(!m&&k==="business-inquiry"&&c==="studio")m={type:"business",topic:"newon-stud
 m=m||{};var ty=m.type||D.def.type,tp=m.topic||"",iq=m.inquiry||"";
 var p=(q.get("platform")||q.get("area")||"").toLowerCase().replace(/\s+/g,"");p=D.aliases[p]||p;
 if(p==="multiple"||p==="general"||p==="store"||p==="business")p="newon";
-if(D.platforms.indexOf(p)===-1){var src0=(q.get("source")||"").toLowerCase().match(/babylog|petlog|myworld|shareon|ongil/);p=src0?src0[0]:"";}
+if(D.platforms.indexOf(p)===-1){var src0=(q.get("source")||"").toLowerCase().match(/babylog|petlog|shareon|ongil/);p=src0?src0[0]:"";}
 if(k==="studio-contact"||c==="studio")p="newon";
 var qt=(q.get("topic")||"").toLowerCase();if(D.topics.indexOf(qt)!==-1)tp=qt;
 if(!tp&&!m.type&&!p)tp=D.def.topic;
@@ -49,12 +49,12 @@ catch(e){location.replace("/"+D.lang+"/contact/");}})();
     <meta property="og:url" content="https://www.newon.app/hi/business/inquiry/" />
     <meta property="og:locale" content="hi_IN" />
     <meta property="og:title" content="Business Inquiry | NEWON" />
-    <meta property="og:description" content="Inquiries about joining, partnering with, adopting enterprise services from, or collaborating with NEWON's five digital platforms: BABYLOG, PETLOG, MY WORLD, SHAREON and ONGIL." />
+    <meta property="og:description" content="Inquiries about joining, partnering with, adopting enterprise services from, or collaborating with NEWON's four digital platforms: BABYLOG, PETLOG, SHAREON and ONGIL." />
     <meta property="og:site_name" content="Newon" />
     <meta property="og:image" content="https://www.newon.app/logo.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Business Inquiry | NEWON" />
-    <meta name="twitter:description" content="Inquiries about joining, partnering with, adopting enterprise services from, or collaborating with NEWON's five digital platforms: BABYLOG, PETLOG, MY WORLD, SHAREON and ONGIL." />
+    <meta name="twitter:description" content="Inquiries about joining, partnering with, adopting enterprise services from, or collaborating with NEWON's four digital platforms: BABYLOG, PETLOG, SHAREON and ONGIL." />
     <meta name="twitter:image" content="https://www.newon.app/logo.png" />
     <script type="application/ld+json">
 {
@@ -62,7 +62,7 @@ catch(e){location.replace("/"+D.lang+"/contact/");}})();
   "@type": "WebPage",
   "name": "Business Inquiry | NEWON",
   "url": "https://www.newon.app/hi/business/inquiry/",
-  "description": "Inquiries about joining, partnering with, adopting enterprise services from, or collaborating with NEWON's five digital platforms: BABYLOG, PETLOG, MY WORLD, SHAREON and ONGIL.",
+  "description": "Inquiries about joining, partnering with, adopting enterprise services from, or collaborating with NEWON's four digital platforms: BABYLOG, PETLOG, SHAREON and ONGIL.",
   "publisher": {
     "@type": "Organization",
     "name": "Newon",
@@ -1972,65 +1972,18 @@ catch(e){location.replace("/"+D.lang+"/contact/");}})();
     <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../petlog/">PETLOG देखें →</a></p></div>
       </div>
     </div>
-          <div class="gnav-mega" data-gnav-mega="myworld" role="menu" hidden>
-      <div class="gnav-mega__panel">
-        <div class="gnav-mega__inner"><div class="gnav-mega__head">
-      <p class="gnav-mega__kicker">MY WORLD</p>
-      <p class="gnav-mega__lead">Map-based travel records</p>
-    </div>
-    <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
-      <a class="gnav-mega__row" href="../../myworld/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Overview</span>
-        <span class="gnav-mega__row-desc">Every moment of travel, in one place</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../../myworld/platform/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Platform</span>
-        <span class="gnav-mega__row-desc">20 services from records to booking and commerce</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../../myworld/business/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Business</span>
-        <span class="gnav-mega__row-desc">20 business lines in 8 groups</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../../myworld/partnerships/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Partnerships</span>
-        <span class="gnav-mega__row-desc">14 ways to partner in travel</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../../myworld/contact/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Contact</span>
-        <span class="gnav-mega__row-desc">Talk to MY WORLD</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a>
-    </div>
-    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../myworld/">View My World →</a></p></div>
-      </div>
-    </div>
           <div class="gnav-mega" data-gnav-mega="business" role="menu" hidden>
       <div class="gnav-mega__panel">
         <div class="gnav-mega__inner"><div class="gnav-mega__head">
       <p class="gnav-mega__kicker">व्यापार और साझेदारी</p>
-      <p class="gnav-mega__lead">NEWON के पाँच प्लेटफ़ॉर्म के लिए व्यापार और साझेदारी केंद्र</p>
+      <p class="gnav-mega__lead">NEWON के चार प्लेटफ़ॉर्म के लिए व्यापार और साझेदारी केंद्र</p>
     </div>
     <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
       <a class="gnav-mega__row" href="../../business/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">परिचय</span>
-        <span class="gnav-mega__row-desc">पाँच प्लेटफ़ॉर्म पर आधारित व्यापार केंद्र</span>
+        <span class="gnav-mega__row-desc">चार प्लेटफ़ॉर्म पर आधारित व्यापार केंद्र</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../../business/platforms/" role="menuitem">
@@ -2091,7 +2044,7 @@ catch(e){location.replace("/"+D.lang+"/contact/");}})();
       <span class="gnav-mega__row-n" aria-hidden="true">03</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">हमारे प्लेटफ़ॉर्म</span>
-        <span class="gnav-mega__row-desc">पाँच प्लेटफ़ॉर्म के उत्पाद</span>
+        <span class="gnav-mega__row-desc">चार प्लेटफ़ॉर्म के उत्पाद</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../../studio/business/" role="menuitem">
@@ -2215,12 +2168,6 @@ catch(e){location.replace("/"+D.lang+"/contact/");}})();
       <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
-            <div class="gnav-dd" data-gnav-dd data-gnav-menu="myworld">
-    <a class="gnav__link gnav-dd__label" href="../../myworld/">MY WORLD</a>
-    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-label="MY WORLD">
-      <svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-  </div>
           </div>
         </nav>
       </div>
@@ -2266,13 +2213,6 @@ catch(e){location.replace("/"+D.lang+"/contact/");}})();
           <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="PETLOG"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
         <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../petlog/">Overview</a><a class="gnav-mobile__sublink" href="../../petlog/platform/">Platform</a><a class="gnav-mobile__sublink" href="../../petlog/business/">Business</a><a class="gnav-mobile__sublink" href="../../petlog/partnerships/">Partnerships</a><a class="gnav-mobile__sublink" href="../../petlog/contact/">Contact</a></div>
-      </div>
-        <div class="gnav-mobile__acc" data-gnav-acc>
-        <div class="gnav-mobile__acc-head">
-          <a class="gnav-mobile__acc-link" href="../../myworld/">MY WORLD</a>
-          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="MY WORLD"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        </div>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../myworld/">Overview</a><a class="gnav-mobile__sublink" href="../../myworld/platform/">Platform</a><a class="gnav-mobile__sublink" href="../../myworld/business/">Business</a><a class="gnav-mobile__sublink" href="../../myworld/partnerships/">Partnerships</a><a class="gnav-mobile__sublink" href="../../myworld/contact/">Contact</a></div>
       </div>
         </div>
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
@@ -2332,7 +2272,7 @@ catch(e){location.replace("/"+D.lang+"/contact/");}})();
               <p class="bz-hero__eyebrow bz-hero-enter" style="--d: 1">BUSINESS INQUIRY<span class="bz-hero__eyebrow-sep" aria-hidden="true">·</span><span class="bz-hero__eyebrow-role">Business &amp; partnership inquiries</span></p>
               <p class="bz-hero__word bz-hero-enter" style="--d: 2" aria-hidden="true">Newon</p>
               <h1 class="bz-hero__title bz-hero-enter" id="bz-hero-title" style="--d: 3">Connecting new<br />business possibilities.</h1>
-              <p class="bz-hero__lead bz-hero-enter" style="--d: 4">Built on NEWON's five digital platforms, we take inquiries about platform participation, business partnerships, enterprise service adoption and institutional collaboration.</p>
+              <p class="bz-hero__lead bz-hero-enter" style="--d: 4">Built on NEWON's four digital platforms, we take inquiries about platform participation, business partnerships, enterprise service adoption and institutional collaboration.</p>
               <ul class="bz-hero__domains bz-hero-enter" style="--d: 5" aria-label="Inquiry areas">
                 <li>Participation</li>
                 <li>Partnerships</li>
@@ -2418,9 +2358,9 @@ catch(e){location.replace("/"+D.lang+"/contact/");}})();
 
       <section id="platforms" class="bz-section bz-reveal" aria-labelledby="bz-plat-title">
         <div class="bz-inner">
-          <p class="bz-label">FIVE PLATFORMS</p>
+          <p class="bz-label">FOUR PLATFORMS</p>
           <h2 class="bz-title" id="bz-plat-title">Business areas by platform</h2>
-          <p class="bz-lead">Inquiries are reviewed against NEWON's five platforms. Many of the business areas described are still in preparation or under review; each platform's business page shows the current status.</p>
+          <p class="bz-lead">Inquiries are reviewed against NEWON's four platforms. Many of the business areas described are still in preparation or under review; each platform's business page shows the current status.</p>
           <div class="bz-grid bz-grid--3">
             <a class="bz-card" href="../../babylog/business/">
               <h3>BABYLOG</h3>
@@ -2430,11 +2370,6 @@ catch(e){location.replace("/"+D.lang+"/contact/");}})();
             <a class="bz-card" href="../../petlog/business/">
               <h3>PETLOG</h3>
               <p>A pet-life platform built on daily and health records for pets, expanding into community and commerce, connections with qualified providers such as vets, groomers and carers, SaaS for pet businesses, public animal-welfare collaboration and global licensing.</p>
-              <span class="bz-card__more">View business page →</span>
-            </a>
-            <a class="bz-card" href="../../myworld/business/">
-              <h3>MY WORLD</h3>
-              <p>A travel platform that starts from map-based travel records and extends toward booking partnerships for stays, transport, packages and activities, travel commerce, SaaS for business travel and travel companies, and local tourism and tourism-agency collaboration.</p>
               <span class="bz-card__more">View business page →</span>
             </a>
             <a class="bz-card" href="../../shareon/business/">
@@ -2582,7 +2517,6 @@ catch(e){location.replace("/"+D.lang+"/contact/");}})();
                 <option value="">Please select</option>
                 <option value="BABYLOG">BABYLOG</option>
                 <option value="PETLOG">PETLOG</option>
-                <option value="MY WORLD">MY WORLD</option>
                 <option value="SHAREON">SHAREON</option>
                 <option value="ONGIL">ONGIL</option>
                 <option value="Multiple Platforms">Multiple platforms</option>
@@ -2637,7 +2571,7 @@ catch(e){location.replace("/"+D.lang+"/contact/");}})();
                 <span>Which platforms can I ask about?</span>
                 <span class="bz-faq-icon" aria-hidden="true"></span>
               </button>
-              <div class="bz-faq-a"><p>We take participation, partnership, adoption and collaboration inquiries about five platforms: BABYLOG, PETLOG, MY WORLD, SHAREON and ONGIL. Each platform's business page shows its business areas and current status.</p></div>
+              <div class="bz-faq-a"><p>We take participation, partnership, adoption and collaboration inquiries about four platforms: BABYLOG, PETLOG, SHAREON and ONGIL. Each platform's business page shows its business areas and current status.</p></div>
             </div>
             <div class="bz-faq-item">
               <button type="button" class="bz-faq-q" aria-expanded="false">
@@ -2679,7 +2613,7 @@ catch(e){location.replace("/"+D.lang+"/contact/");}})();
                 <span>Can I commission outsourced web or app production?</span>
                 <span class="bz-faq-icon" aria-hidden="true"></span>
               </button>
-              <div class="bz-faq-a"><p>No. NEWON does not operate client-specific outsourced web or app production, custom development or design agency services. NEWON's business centers on its five platforms and its own products, and this page only takes participation, partnership, adoption and collaboration inquiries related to those platforms.</p></div>
+              <div class="bz-faq-a"><p>No. NEWON does not operate client-specific outsourced web or app production, custom development or design agency services. NEWON's business centers on its four platforms and its own products, and this page only takes participation, partnership, adoption and collaboration inquiries related to those platforms.</p></div>
             </div>
           </div>
         </div>
@@ -2717,7 +2651,7 @@ catch(e){location.replace("/"+D.lang+"/contact/");}})();
       </a>
       <a class="site-foot__url" href="https://newon.app">https://newon.app</a>
       <p class="site-foot__tagline">विचारों को हकीकत से जोड़ने वाला ऐप स्टूडियो</p>
-      <nav class="site-foot__nav" aria-label="Footer"><a href="../../products/">ऐप्स</a><a href="../../ai/">AI</a><a href="../../ongil/">ONGIL</a><a href="../../shareon/">SHAREON</a><a href="../../babylog/">BABYLOG</a><a href="../../petlog/">PETLOG</a><a href="../../myworld/">MY WORLD</a><a href="../../business/">व्यापार और साझेदारी</a><a href="../../studio/">Studio</a><a href="../../about/">कंपनी</a><a href="../../privacy/">गोपनीयता नीति</a><a href="../../terms/">सेवा की शर्तें</a></nav>
+      <nav class="site-foot__nav" aria-label="Footer"><a href="../../products/">ऐप्स</a><a href="../../ai/">AI</a><a href="../../ongil/">ONGIL</a><a href="../../shareon/">SHAREON</a><a href="../../babylog/">BABYLOG</a><a href="../../petlog/">PETLOG</a><a href="../../business/">व्यापार और साझेदारी</a><a href="../../studio/">Studio</a><a href="../../about/">कंपनी</a><a href="../../privacy/">गोपनीयता नीति</a><a href="../../terms/">सेवा की शर्तें</a></nav>
       <div class="site-foot__icons" role="group" aria-label="संपर्क और सोशल"><a class="site-foot__icon" href="mailto:newon@newon.app" aria-label="newon@newon.app पर ईमेल करें"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" points="22,6 12,13 2,6"/></svg></a><a class="site-foot__icon" href="https://www.instagram.com/newon.app.global?igsh=MTdxZ3U3cjZyZ29p&amp;utm_source=qr" aria-label="Newon Instagram · नया टैब" target="_blank" rel="noopener noreferrer"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a class="site-foot__icon" href="https://youtube.com/@newonglobal?si=pviB1hC7yMuD_tXw" aria-label="Newon YouTube · नया टैब" target="_blank" rel="noopener noreferrer"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a class="site-foot__icon" href="https://www.threads.com/@newon.app.dev?invite=0" aria-label="Newon Threads · नए टैब में खुलता है" target="_blank" rel="noopener noreferrer"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18.263 11.097c-.03-3.486-1.92-5.586-5.111-5.586-2.13 0-3.922.963-4.863 2.499l2.062 1.438c.535-.843 1.272-1.543 2.628-1.543 1.528 0 2.318.85 2.544 2.431a15 15 0 0 0-2.236-.173c-4.125 0-6.068 1.867-6.068 4.336s1.943 3.99 4.804 3.99c3.139 0 5.013-2.115 5.781-4.735.798.361 1.348 1.204 1.348 2.47 0 3.387-3.907 5.232-7.22 5.232-4.885 0-8.077-3.207-8.077-8.424 0-6.392 4.223-10.487 9.9-10.487 3.808 0 5.69 1.671 6.97 3.914l2.108-1.475C21.44 2.078 18.331 0 13.663 0 6.227 0 1.168 5.277 1.168 12.934c0 7 4.953 11.066 10.856 11.066 4.878 0 9.809-2.846 9.809-7.716 0-2.545-1.46-4.231-3.569-5.187m-6.33 4.855c-1.077 0-2.026-.512-2.026-1.453 0-1.483 1.822-1.934 3.606-1.934.678 0 1.34.045 1.927.173-.422 1.927-1.671 3.215-3.508 3.214Z"/></svg></a><a class="site-foot__icon" href="https://m.blog.naver.com/newonapp" aria-label="Newon Naver ब्लॉग पर · एक नए टैब में खुलता है" target="_blank" rel="noopener noreferrer"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M5 2H19A3 3 0 0 1 22 5V19A3 3 0 0 1 19 22H5A3 3 0 0 1 2 19V5A3 3 0 0 1 5 2ZM8 6.5H10.2V10.5H16V17.5H8ZM11.8 12.7H14.2V15.3H11.8Z"/></svg></a><a class="site-foot__icon" href="https://www.tiktok.com/@newon.app?_r=1&amp;_t=ZS-95LGrSuOcfF" aria-label="Newon TikTok · नया टैब" target="_blank" rel="noopener noreferrer"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.28v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg></a></div>
       <p class="site-foot__copy">© 2026 Newon. सर्वाधिकार सुरक्षित।</p>
     </div>
@@ -2789,7 +2723,7 @@ catch(e){location.replace("/"+D.lang+"/contact/");}})();
         var selectedEl = document.getElementById("bz-studio-selected");
         var msgEl = document.getElementById("bz-message");
         var typeMap = {"platform-participation":"Platform Participation & Transactions","Platform Participation & Transactions":"Platform Participation & Transactions","brand-partnership":"Brand, Service & Content Partnership","Brand, Service & Content Partnership":"Brand, Service & Content Partnership","enterprise-adoption":"Enterprise Service Adoption","Enterprise Service Adoption":"Enterprise Service Adoption","public-partnership":"Public Sector & Organization Partnership","Public Sector & Organization Partnership":"Public Sector & Organization Partnership","tech-global":"Technology & Global Partnership","Technology & Global Partnership":"Technology & Global Partnership","other":"Other Business Inquiry","Other Business Inquiry":"Other Business Inquiry","partnership":"Brand, Service & Content Partnership","Partnership":"Brand, Service & Content Partnership","product-service-collaboration":"Brand, Service & Content Partnership","service":"Brand, Service & Content Partnership","App Collaboration":"Brand, Service & Content Partnership","advertising-promotion":"Brand, Service & Content Partnership","promotion":"Brand, Service & Content Partnership","Advertising":"Brand, Service & Content Partnership","product-adoption":"Enterprise Service Adoption","PRODUCT / Product adoption":"Enterprise Service Adoption","enterprise-solution":"Enterprise Service Adoption","PRODUCT / Enterprise solution":"Enterprise Service Adoption","automation-product":"Enterprise Service Adoption","PRODUCT / Automation product":"Enterprise Service Adoption","ai-automation":"Enterprise Service Adoption","AI Automation":"Enterprise Service Adoption","sales-distribution":"Platform Participation & Transactions","PRODUCT / Sales & distribution":"Platform Participation & Transactions","platform-integration":"Technology & Global Partnership","PRODUCT / Platform integration":"Technology & Global Partnership","license":"Technology & Global Partnership","PRODUCT / License":"Technology & Global Partnership","Other":"Other Business Inquiry"};
-        var platformMap = {"babylog":"BABYLOG","BABYLOG":"BABYLOG","petlog":"PETLOG","PETLOG":"PETLOG","myworld":"MY WORLD","MY WORLD":"MY WORLD","my world":"MY WORLD","shareon":"SHAREON","SHAREON":"SHAREON","ongil":"ONGIL","ONGIL":"ONGIL","multiple":"Multiple Platforms","Multiple Platforms":"Multiple Platforms","multiple platforms":"Multiple Platforms","undecided":"Not decided yet","Not decided yet":"Not decided yet","not decided yet":"Not decided yet"};
+        var platformMap = {"babylog":"BABYLOG","BABYLOG":"BABYLOG","petlog":"PETLOG","PETLOG":"PETLOG","shareon":"SHAREON","SHAREON":"SHAREON","ongil":"ONGIL","ONGIL":"ONGIL","multiple":"Multiple Platforms","Multiple Platforms":"Multiple Platforms","multiple platforms":"Multiple Platforms","undecided":"Not decided yet","Not decided yet":"Not decided yet","not decided yet":"Not decided yet"};
         var STORE_TYPE = "Store / Digital Product";
         var pageLang = (document.documentElement.lang || "en").slice(0, 2);
         function decodeParamSafe(v) {

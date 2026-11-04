@@ -90,16 +90,16 @@ async function waitFill(page) {
   await page.waitForTimeout(3100);
 }
 
-test("URL preselection: platform alias my-world + type=business + source; user can change it", { skip }, async () => {
-  const { ctx, page, errors } = await open("/ko/contact/?platform=my-world&type=business&source=qa");
+test("URL preselection: platform + type=business + source; user can change it", { skip }, async () => {
+  const { ctx, page, errors } = await open("/ko/contact/?platform=babylog&type=business&source=qa");
   let s = await state(page);
   assert.equal(s.inquirer, "company");
-  assert.equal(s.platform, "myworld");
+  assert.equal(s.platform, "babylog");
   assert.equal(s.inquiry, "");
   assert.ok(s.shown.includes("organization") && s.shown.includes("position") && s.shown.includes("topic"), s.shown.join());
   assert.equal(s.orgRequired, true);
   assert.equal(s.orgLabel.replace(/\s+/g, " "), "기업명 *");
-  assert.ok(s.topicOptions.length === 9 && s.topicOptions.every((t) => t.startsWith("myworld-")), s.topicOptions.join());
+  assert.ok(s.topicOptions.length === 9 && s.topicOptions.every((t) => t.startsWith("babylog-")), s.topicOptions.join());
   assert.deepEqual(s.picked, ["business"]);
   await page.check('input[name="inquirer"][value="personal"]', { force: true });
   await page.selectOption("#ct-platform", "ongil");
@@ -195,11 +195,11 @@ test("validation: required fields, inquirer, email format, consent — nothing i
 });
 
 test("success: one confirmed POST with the classification, source and timestamp; hidden fields are not sent", { skip }, async () => {
-  const { ctx, page, posts } = await open("/ko/contact/?platform=my-world&type=business&source=qa-e2e");
+  const { ctx, page, posts } = await open("/ko/contact/?platform=petlog&type=business&source=qa-e2e");
   await fillValid(page, { inquirer: "company", inquiry: "partnership" });
   await page.fill("#ct-org-name", "테스트 회사");
   await page.fill("#ct-goal", "공동 프로모션");
-  await page.selectOption("#ct-topic", "myworld-agencies");
+  await page.selectOption("#ct-topic", "petlog-business");
   // a value typed into a field that is then hidden must not be sent
   await page.selectOption("#ct-type", "investment");
   await page.fill("#ct-investor", "hidden later");
@@ -210,13 +210,13 @@ test("success: one confirmed POST with the classification, source and timestamp;
   await page.waitForSelector("[data-ct-success]:not([hidden])");
   assert.equal(posts.length, 1);
   const p = posts[0];
-  assert.equal(p._subject, "[NEWON Contact][MYWORLD][partnership/partnership/myworld-agencies] 통합 문의 테스트");
-  assert.equal(p.platform_id, "myworld");
+  assert.equal(p._subject, "[NEWON Contact][PETLOG][partnership/partnership/petlog-business] 통합 문의 테스트");
+  assert.equal(p.platform_id, "petlog");
   assert.equal(p.type_id, "partnership");
   assert.equal(p.inquirer_id, "company");
   assert.equal(p.inquiry_id, "partnership");
-  assert.equal(p.topic_id, "myworld-agencies");
-  assert.match(p.topic, /여행 업체 · 향후 계획/);
+  assert.equal(p.topic_id, "petlog-business");
+  assert.match(p.topic, /기업 입점 · 향후 계획/);
   assert.equal(p.source, "qa-e2e");
   assert.match(p.submitted_at, /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z$/);
   assert.match(p.client_ref, /^NW-\d{6}-[0-9A-F]{8}$/);
@@ -227,7 +227,7 @@ test("success: one confirmed POST with the classification, source and timestamp;
   assert.equal(p._fp, undefined);
   assert.equal(p.privacy_consent, "yes");
   assert.equal(p.lang, "ko");
-  assert.match(await page.textContent("[data-ct-success-meta]"), /접수 분류: MY WORLD · 제휴·파트너십 · 여행 업체/);
+  assert.match(await page.textContent("[data-ct-success-meta]"), /접수 분류: PETLOG · 제휴·파트너십 · 기업 입점/);
   await ctx.close();
 });
 

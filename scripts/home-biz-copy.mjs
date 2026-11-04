@@ -25,7 +25,7 @@ export const STORY_KO = {
     planned: "확장 계획",
     playable: "플레이 가능",
   },
-  /** Five core platforms — listed in the services rows (status is real, not aspirational). */
+  /** Four core platforms — listed in the services rows (status is real, not aspirational). */
   platforms: [
     {
       id: "babylog",
@@ -46,17 +46,8 @@ export const STORY_KO = {
       lead: "반려동물과 함께하는 모든 순간을, 하나로. 반려동물의 일상 기록과 건강, 가족 공유, 커뮤니티와 반려동물 서비스까지 연결하는 반려생활 플랫폼입니다.",
     },
     {
-      id: "myworld",
-      n: "03",
-      name: "MY WORLD",
-      cat: "TRAVEL · EXPERIENCE · DISCOVERY",
-      status: "live",
-      href: "#myworld-app",
-      lead: "세상을 여행하는 모든 순간을, 하나로. 방문한 세상을 기록하고 새로운 여행을 계획하며, 여행 경험과 커뮤니티까지 연결하는 글로벌 여행 플랫폼입니다.",
-    },
-    {
       id: "shareon",
-      n: "04",
+      n: "03",
       name: "SHAREON",
       cat: "SHARING · RENTAL · MARKETPLACE",
       status: "planned",
@@ -65,7 +56,7 @@ export const STORY_KO = {
     },
     {
       id: "ongil",
-      n: "05",
+      n: "04",
       name: "ONGIL",
       cat: "SENIOR LIFE · CARE · WELLNESS",
       status: "planned",
@@ -108,7 +99,7 @@ export const STORY_KO = {
       name: "Newon Studio",
       cat: "DIGITAL PRODUCTS · DESIGN SYSTEMS · PROJECTS",
       titleHtml: "아이디어를 현실로,<br />경험을 새로운 가치로.",
-      lead: "Newon의 자체 디지털 제품과 디자인 시스템을 만들고, 5개 핵심 플랫폼과 연결된 프로젝트를 진행합니다. 고객별 제작 대행이 아닌 Newon의 제품을 만드는 스튜디오입니다.",
+      lead: "Newon의 자체 디지털 제품과 디자인 시스템을 만들고, 4개 핵심 플랫폼과 연결된 프로젝트를 진행합니다. 고객별 제작 대행이 아닌 Newon의 제품을 만드는 스튜디오입니다.",
       keys: ["Digital Products", "Design Systems", "Projects", "Partnerships"],
       tone: "studio",
       cta: "스튜디오 둘러보기",
@@ -185,10 +176,10 @@ export const STORY_KO = {
   ],
   eco: {
     id: "story-ecosystem",
-    kicker: "ONE NEWON · FIVE CORE PLATFORMS · ONE CONNECTED ECOSYSTEM",
-    titleHtml: "다섯 개의 플랫폼.<br />하나의 Newon.",
-    lead: "각기 다른 삶의 영역을 연결하는 다섯 개의 플랫폼을 만들어갑니다. 여기에 Apps, AI, Business, Studio, Games의 디지털 제품과 사업이 함께합니다.",
-    note: "BABYLOG, PETLOG, MY WORLD 앱과 생활 앱, 404: HUMAN은 지금 이용할 수 있습니다. SHAREON, ONGIL과 일부 사업 영역은 구축·확장 계획 단계입니다.",
+    kicker: "ONE NEWON · FOUR CORE PLATFORMS · ONE CONNECTED ECOSYSTEM",
+    titleHtml: "네 개의 플랫폼.<br />하나의 Newon.",
+    lead: "각기 다른 삶의 영역을 연결하는 네 개의 플랫폼을 만들어갑니다. 여기에 Apps, AI, Business, Studio, Games의 디지털 제품과 사업이 함께합니다.",
+    note: "BABYLOG, PETLOG 앱과 생활 앱, 404: HUMAN은 지금 이용할 수 있습니다. SHAREON, ONGIL과 일부 사업 영역은 구축·확장 계획 단계입니다.",
     center: "NEWON",
     ctaAbout: "회사 소개",
     ctaAboutHref: "about/",
@@ -207,7 +198,7 @@ export const STORY_EN = {
     planned: "Expansion plan",
     playable: "Playable",
   },
-  /** Five core platforms — listed in the services rows (status is real, not aspirational). */
+  /** Four core platforms — listed in the services rows (status is real, not aspirational). */
   platforms: [
     {
       id: "babylog",
@@ -228,17 +219,8 @@ export const STORY_EN = {
       lead: "Every moment with your pet, in one place. A pet-life platform that connects daily records, health, family sharing, community, and pet services.",
     },
     {
-      id: "myworld",
-      n: "03",
-      name: "MY WORLD",
-      cat: "TRAVEL · EXPERIENCE · DISCOVERY",
-      status: "live",
-      href: "#myworld-app",
-      lead: "Every moment of travelling the world, in one place. A global travel platform to record where you have been, plan the next trip, and share the experience.",
-    },
-    {
       id: "shareon",
-      n: "04",
+      n: "03",
       name: "SHAREON",
       cat: "SHARING · RENTAL · MARKETPLACE",
       status: "planned",
@@ -247,7 +229,7 @@ export const STORY_EN = {
     },
     {
       id: "ongil",
-      n: "05",
+      n: "04",
       name: "ONGIL",
       cat: "SENIOR LIFE · CARE · WELLNESS",
       status: "planned",
@@ -290,7 +272,7 @@ export const STORY_EN = {
       name: "Newon Studio",
       cat: "DIGITAL PRODUCTS · DESIGN SYSTEMS · PROJECTS",
       titleHtml: "From idea to reality,<br />from experience to new value.",
-      lead: "We build Newon's own digital products and design systems, and run projects connected to the five core platforms. A studio that makes Newon products — not a per-client agency.",
+      lead: "We build Newon's own digital products and design systems, and run projects connected to the four core platforms. A studio that makes Newon products — not a per-client agency.",
       keys: ["Digital Products", "Design Systems", "Projects", "Partnerships"],
       tone: "studio",
       cta: "Explore the studio",
@@ -367,10 +349,10 @@ export const STORY_EN = {
   ],
   eco: {
     id: "story-ecosystem",
-    kicker: "ONE NEWON · FIVE CORE PLATFORMS · ONE CONNECTED ECOSYSTEM",
-    titleHtml: "Five platforms.<br />One Newon.",
-    lead: "Five platforms, each connecting a different part of life — together with Newon’s digital products and businesses in Apps, AI, Business, Studio, and Games.",
-    note: "The BABYLOG, PETLOG, and MY WORLD apps, our life apps, and 404: HUMAN are available now. SHAREON, ONGIL, and some business areas are being built or planned.",
+    kicker: "ONE NEWON · FOUR CORE PLATFORMS · ONE CONNECTED ECOSYSTEM",
+    titleHtml: "Four platforms.<br />One Newon.",
+    lead: "Four platforms, each connecting a different part of life — together with Newon’s digital products and businesses in Apps, AI, Business, Studio, and Games.",
+    note: "The BABYLOG and PETLOG apps, our life apps, and 404: HUMAN are available now. SHAREON, ONGIL, and some business areas are being built or planned.",
     center: "NEWON",
     ctaAbout: "About Newon",
     ctaAboutHref: "about/",

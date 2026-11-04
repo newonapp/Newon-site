@@ -83,8 +83,8 @@ test("global header: one Business & Partnerships menu with the five screens; foo
   assert.match(footerNav(read("ko/about/index.html")), />비즈니스·파트너십<\/a>/);
 });
 
-test("the five business sites' sub-menus are unchanged by the bizpart option", () => {
-  for (const biz of ["babylog", "petlog", "myworld", "shareon", "ongil"]) {
+test("the four business sites' sub-menus are unchanged by the bizpart option", () => {
+  for (const biz of ["babylog", "petlog", "shareon", "ongil"]) {
     const html = read(`ko/${biz}/index.html`);
     const bar = html.match(/<nav class="fsn" data-biz="[a-z]+"[\s\S]*?<\/nav>/)[0];
     assert.equal(bar, renderFlagshipSubnav({ biz, lang: "ko", active: "overview" }), biz);
@@ -95,8 +95,8 @@ test("the five business sites' sub-menus are unchanged by the bizpart option", (
   assert.ok(bp.includes("BUSINESS &amp; PARTNERSHIPS"));
 });
 
-test("the ten platform Business / Partnerships links exist and stay on their own platform and language", () => {
-  assert.equal(BP_PLATFORMS.length, 5);
+test("the eight platform Business / Partnerships links exist and stay on their own platform and language", () => {
+  assert.equal(BP_PLATFORMS.length, 4);
   for (const lang of LANGS) {
     const ov = read(pageRel(lang, "business"));
     const pl = read(pageRel(lang, "business/platforms"));
@@ -144,26 +144,26 @@ test("ko / en copy: no outsourcing offers, prices, quotes or invented track reco
   assert.ok(read(pageRel("ko", "business/models")).includes("NEWON은 자체 플랫폼을 기반으로 다양한 비즈니스 모델을 발전시키고 있습니다. 실제 제공 서비스와 계약 조건은 플랫폼 및 운영 단계에 따라 달라질 수 있습니다."));
 });
 
-test("screen contents: 5 platforms, 4 approaches, 6 ecosystem roles, 6 models, 6 principles, 6 partnership types, 5 steps", () => {
+test("screen contents: 4 platforms, 4 approaches, 6 ecosystem roles, 6 models, 6 principles, 6 partnership types, 5 steps", () => {
   const count = (rel, re) => (read(rel).match(re) || []).length;
   for (const lang of ["ko", "en"]) {
-    assert.equal(count(pageRel(lang, "business"), /class="bpt-biz bpt-plat"/g), 5);
+    assert.equal(count(pageRel(lang, "business"), /class="bpt-biz bpt-plat"/g), 4);
     assert.equal(count(pageRel(lang, "business"), /class="nls-flow__item"/g), 4);
     assert.equal(count(pageRel(lang, "business"), /class="nls-proc__item"/g), 6);
-    assert.equal(count(pageRel(lang, "business/platforms"), /<article id="platform-/g), 5);
+    assert.equal(count(pageRel(lang, "business/platforms"), /<article id="platform-/g), 4);
     assert.equal(count(pageRel(lang, "business/models"), /<article id="model-/g), 6);
     assert.equal(count(pageRel(lang, "business/models"), /<ol class="nls-dir">(?:[\s\S]*?<li>){6}/g), 1);
     assert.equal(count(pageRel(lang, "business/partnerships"), /<article id="type-/g), 6);
     assert.equal(count(pageRel(lang, "business/partnerships"), /class="nls-pipe__item/g), 5);
   }
-  assert.match(read(pageRel("ko", "business")), /다섯 개의 플랫폼,<br>더 넓은 비즈니스의 가능성\./);
+  assert.match(read(pageRel("ko", "business")), /네 개의 플랫폼,<br>더 넓은 비즈니스의 가능성\./);
   assert.match(read(pageRel("ko", "business")), /<title>NEWON Business &amp; Partnerships \| 플랫폼 비즈니스·기업 제휴<\/title>/);
   assert.match(read(pageRel("ko", "business/contact")), /<link rel="canonical" href="https:\/\/www\.newon\.app\/ko\/contact\/" \/>/);
 });
 
 test("Business Contact (retired 2026-10-26): redirect stub to /{lang}/contact/ mapping every old type and platform code", () => {
   assert.equal(BP_INQUIRY_TYPES.length, 10);
-  assert.equal(BP_INQUIRY_PLATFORMS.length, 7);
+  assert.equal(BP_INQUIRY_PLATFORMS.length, 6);
   for (const t of BP_INQUIRY_TYPES) assert.ok(LEGACY_BUSINESS_TYPES[t.code], `old type ${t.code} mapped`);
   for (const lang of LANGS) {
     const html = read(pageRel(lang, "business/contact"));
@@ -196,7 +196,7 @@ test("retired URLs are noindex redirect stubs to the right new screen (lang + ro
   for (const t of targets) {
     if (t === "business/contact/") continue; // retired 05 Contact stub → /{lang}/contact/ (checked above)
     if (t.startsWith("business/")) assert.ok(BIZPART_PATHS.includes(t.replace(/\/$/, "")), `${t} is a new screen`);
-    else assert.match(t, /^(babylog|petlog|myworld|shareon|ongil)\/partnerships\/$/, `${t} is a platform page`);
+    else assert.match(t, /^(babylog|petlog|shareon|ongil)\/partnerships\/$/, `${t} is a platform page`);
   }
   for (const [from, to] of Object.entries(LEGACY_REDIRECTS)) {
     for (const lang of LANGS) {

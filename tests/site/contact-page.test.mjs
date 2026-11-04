@@ -98,7 +98,7 @@ test("form: required and optional fields, persona/org fields, no file upload, ho
     assert.ok(!/<form[^>]*\baction=/.test(f), `${lang} no form action`);
   }
   const ko = text(form(page("ko")));
-  for (const s of ["NEWON 전체", "ONGIL", "SHAREON", "BABYLOG", "PETLOG", "MY WORLD", "기업 제휴", "서비스 입점", "공동 사업", "기술 협력", "기관 서비스", "투자", "문의 보내기 →", "기관·단체", "투자자", "오류 신고", "개인정보·계정 관련", "보증금 · 향후 계획", "반려동물 기록 · 출시 준비 중"]) assert.ok(ko.includes(s), s);
+  for (const s of ["NEWON 전체", "ONGIL", "SHAREON", "BABYLOG", "PETLOG", "기업 제휴", "서비스 입점", "공동 사업", "기술 협력", "기관 서비스", "투자", "문의 보내기 →", "기관·단체", "투자자", "오류 신고", "개인정보·계정 관련", "보증금 · 향후 계획", "반려동물 기록 · 출시 준비 중"]) assert.ok(ko.includes(s), s);
   assert.match(form(page("ko")), /placeholder="문의하실 내용이나 협력 제안을 자세히 작성해 주세요\."/);
 });
 

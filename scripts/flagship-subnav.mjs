@@ -1,6 +1,6 @@
 /**
  * Shared five-menu bar for the six flagship business sites
- * (BABYLOG · PETLOG · MY WORLD · SHAREON · ONGIL).
+ * (BABYLOG · PETLOG · SHAREON · ONGIL).
  *
  *   01 Overview 개요 · 02 Platform 플랫폼 · 03 Business 비즈니스 · 04 Partnerships 파트너십 · 05 Contact 문의
  *
@@ -13,8 +13,8 @@
 
 export const FLAGSHIP_SUBNAV_CSS = "/flagship-subnav.css?v=20261019fsn3";
 
-const SLUG = { babylog: "babylog", petlog: "petlog", myworld: "myworld", shareon: "shareon", ongil: "ongil", bizpart: "business", studio: "studio" };
-const BRAND = { babylog: "BABYLOG", petlog: "PETLOG", myworld: "MY WORLD", shareon: "SHAREON", ongil: "ONGIL", bizpart: "BUSINESS & PARTNERSHIPS", studio: "NEWON STUDIO" };
+const SLUG = { babylog: "babylog", petlog: "petlog", shareon: "shareon", ongil: "ongil", bizpart: "business", studio: "studio" };
+const BRAND = { babylog: "BABYLOG", petlog: "PETLOG", shareon: "SHAREON", ongil: "ONGIL", bizpart: "BUSINESS & PARTNERSHIPS", studio: "NEWON STUDIO" };
 /** Korean aria label for the menu (the six businesses use "<BRAND> 메뉴"). */
 const BRAND_KO = { bizpart: "비즈니스·파트너십", studio: "NEWON 스튜디오" };
 

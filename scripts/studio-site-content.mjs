@@ -4,7 +4,7 @@
  *   01 Overview            /{lang}/studio/
  *   02 Digital Store       /{lang}/studio/store/
  *   03 Our Platforms       /{lang}/studio/platforms/
- *        + six platform product pages /{lang}/studio/platforms/{babylog,petlog,myworld,shareon,ongil}/
+ *        + six platform product pages /{lang}/studio/platforms/{babylog,petlog,shareon,ongil}/
  *   04 Business Products   /{lang}/studio/business/
  *   05 Contact             /{lang}/studio/contact/
  *
@@ -32,7 +32,6 @@ export const ST_FILM = STUDIO_PAGE_FILM_SRC;
 export const ST_PLATFORMS = [
   { id: "babylog", name: "BABYLOG", site: "babylog", category: "Parenting & Family" },
   { id: "petlog", name: "PETLOG", site: "petlog", category: "Pet Life" },
-  { id: "myworld", name: "MY WORLD", site: "myworld", category: "Travel & Experience" },
   { id: "shareon", name: "SHAREON", site: "shareon", category: "Asset Sharing & Rental" },
   { id: "ongil", name: "ONGIL", site: "ongil", category: "Senior Life" },
 ];

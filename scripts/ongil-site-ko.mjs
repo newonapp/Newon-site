@@ -331,8 +331,7 @@ export const KO = {
         { n: "01", name: "BABYLOG", text: "가족 성장 기록 플랫폼. 손주와 함께하는 조부모의 가족 활동을 잇는 방향을 검토합니다.", href: "babylog/" },
         { n: "02", name: "PETLOG", text: "반려동물 생애 기록. 반려동물과 사는 어르신의 생활은 PETLOG에서 따로 기록할 수 있습니다.", href: "petlog/" },
         { n: "03", name: "SHAREON", text: "동네 대여 플랫폼. 생활·취미·보조용품을 필요한 기간만 빌리는 연결을 검토합니다.", href: "shareon/" },
-        { n: "04", name: "MY WORLD", text: "여행 기록 앱. 시니어의 여행 기록은 MY WORLD가, 가까운 여가·문화 정보는 ONGIL이 맡습니다.", href: "myworld/" },
-        { n: "05", name: "Newon Business", text: "기관·기업을 위한 디지털 도구와 협력 창구. 돌봄·복지기관의 업무 자동화 문의를 함께 받습니다.", href: "business/" },
+        { n: "04", name: "Newon Business", text: "기관·기업을 위한 디지털 도구와 협력 창구. 돌봄·복지기관의 업무 자동화 문의를 함께 받습니다.", href: "business/" },
       ],
     },
     next: {
@@ -464,7 +463,7 @@ export const KO = {
         desc: "지역 평생학습 강좌와 관광·장소 같은 공공정보를 찾아보고 관심 정보를 저장합니다. 앱 출시를 위해 준비 중입니다. 복지관 행사·문화 프로그램 안내와 신청 연결은 향후 계획입니다.",
         services: ["평생학습 강좌 탐색", "지역 관광·문화·장소 정보", "관심 정보 저장·정렬", "복지관 행사·프로그램 안내(계획)", "디지털 생활·스마트폰 교육(계획)"],
         audience: "배움과 여가를 즐기고 싶은 어르신", cta: "contact",
-        note: "여행 기록과 지도 위의 추억은 Newon의 MY WORLD가 맡고, ONGIL은 가까운 여가·문화 정보에 집중합니다.",
+        note: "ONGIL은 가까운 여가·문화 정보에 집중합니다.",
       },
       {
         id: "jobs", grp: "C", label: "14 Senior Jobs", title: "일자리·봉사·사회활동",

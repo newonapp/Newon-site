@@ -185,13 +185,13 @@ test("contact: every inquiry button is one 문의하기 to the unified Contact p
   }
 });
 
-test("role separation with MY WORLD is stated; LIVON is no longer listed (removed from the website 2026-11)", () => {
+test("LIVON and MY WORLD are no longer listed as NEWON platforms (removed from the website 2026-11)", () => {
   for (const c of [KO, EN]) {
     const all = JSON.stringify(c);
-    assert.ok(!all.includes("LIVON") && all.includes("MY WORLD"));
+    assert.ok(!all.includes("LIVON") && !all.includes("MY WORLD"));
   }
   const t = text(read("ko/ongil/index.html"));
-  assert.ok(!t.includes("LIVON") && t.includes("MY WORLD가"));
+  assert.ok(!t.includes("LIVON") && !t.includes("MY WORLD"));
 });
 
 test("internal links on ONGIL pages resolve to files in the repo", () => {

@@ -2,7 +2,7 @@
  * About page copy (KO / EN). Structural lists live with the page body builder.
  *
  * Corporate positioning (2026-10): NEWON is a digital platform company that plans,
- * builds and runs five core platforms (BABYLOG, PETLOG, MY WORLD, SHAREON, ONGIL),
+ * builds and runs four core platforms (BABYLOG, PETLOG, SHAREON, ONGIL),
  * with Business & Partnerships and NEWON Studio (own digital products — never outsourcing).
  *
  * Facts rules:
@@ -28,13 +28,13 @@ export function getAboutPageCopy(lang) {
 const KO = {
   seoTitle: "회사 소개 | Newon",
   metaDescription:
-    "NEWON은 육아·반려생활·여행·자산 공유·시니어 라이프의 5개 핵심 플랫폼을 직접 만들고 운영하는 디지털 플랫폼 기업입니다.",
+    "NEWON은 육아·반려생활·자산 공유·시니어 라이프의 4개 핵심 플랫폼을 직접 만들고 운영하는 디지털 플랫폼 기업입니다.",
   metaKeywords:
-    "NEWON, 뉴온, 디지털 플랫폼 기업, BABYLOG, PETLOG, MY WORLD, SHAREON, ONGIL, NEWON Business & Partnerships, NEWON Studio",
+    "NEWON, 뉴온, 디지털 플랫폼 기업, BABYLOG, PETLOG, SHAREON, ONGIL, NEWON Business & Partnerships, NEWON Studio",
   brandAria: "Newon",
   brandMarkAlt: "Newon",
   brandWord: "Newon",
-  brandLine: "5개 핵심 플랫폼",
+  brandLine: "4개 핵심 플랫폼",
   brandCrumb: "회사 / ABOUT",
   brandScroll: "아래로 스크롤",
   brandPointTitle: "NEWON CARD",
@@ -43,14 +43,14 @@ const KO = {
   brandMetaLeft: "NEWON",
   brandMetaRight: "5 PLATFORMS",
   brandKicker: "NEW + ON",
-  brandTag: "BABYLOG · PETLOG · MY WORLD · SHAREON · ONGIL",
-  brandDomainsAria: "5개 핵심 플랫폼",
-  brandDomains: ["BABYLOG", "PETLOG", "MY WORLD", "SHAREON", "ONGIL"],
+  brandTag: "BABYLOG · PETLOG · SHAREON · ONGIL",
+  brandDomainsAria: "4개 핵심 플랫폼",
+  brandDomains: ["BABYLOG", "PETLOG", "SHAREON", "ONGIL"],
   brandMeaning: "새로운 일상의 경험을 실제로 작동하게 만듭니다.",
   heroEyebrow: "ABOUT NEWON",
   heroTitleHtml: "일상을 연결하는<br />디지털 플랫폼 기업.",
   heroLeadHtml:
-    "NEWON은 육아, 반려생활, 여행, 자산 공유, 시니어 라이프 분야의 다섯 플랫폼을 직접 기획하고 개발합니다.",
+    "NEWON은 육아, 반려생활, 자산 공유, 시니어 라이프 분야의 네 플랫폼을 직접 기획하고 개발합니다.",
   heroNameAria: "New + On",
   heroNameKicker: "NEW + ON",
   heroNameNew: "NEW",
@@ -62,7 +62,7 @@ const KO = {
   cardAria: "Newon 디지털 명함 열기",
   cardAlt: "Newon 명함",
   cardHint: "디지털 명함 · 터치하여 열기",
-  ctaProducts: "5개 플랫폼 →",
+  ctaProducts: "4개 플랫폼 →",
   ctaProductsHref: "#ab-build-title",
   ctaBusiness: "비즈니스·파트너십 →",
   ctaBusinessHref: "../business/",
@@ -87,7 +87,7 @@ const KO = {
   whyTaglineEn: "TURN POSSIBILITIES ON",
   whyBody: [
     "NEWON은 일상의 다양한 영역을 연결하는 디지털 플랫폼 기업입니다. 고객의 의뢰를 받아 대신 만들어 주는 회사가 아니라, 직접 기획하고 개발한 자체 플랫폼과 디지털 제품으로 사업을 하는 회사입니다.",
-    "육아, 반려생활, 여행, 자산 공유, 시니어 라이프는 서로 다른 영역이지만, 기록을 남기고, 믿을 수 있는 정보를 찾고, 필요한 서비스와 연결되어야 한다는 같은 필요를 갖고 있습니다. NEWON은 이 공통의 필요를 각 영역에 맞는 다섯 개의 플랫폼으로 풀어 갑니다.",
+    "육아, 반려생활, 자산 공유, 시니어 라이프는 서로 다른 영역이지만, 기록을 남기고, 믿을 수 있는 정보를 찾고, 필요한 서비스와 연결되어야 한다는 같은 필요를 갖고 있습니다. NEWON은 이 공통의 필요를 각 영역에 맞는 네 개의 플랫폼으로 풀어 갑니다.",
     "NEWON이라는 이름은 New + On에서 시작했습니다. 새로운(New) 일상의 경험을 실제로 작동하게(On) 만들고, 각 플랫폼의 사용자 경험을 꾸준히 개선하며, 개인과 기업이 함께 참여하는 지속 가능한 디지털 생태계를 만드는 것을 지향합니다.",
   ],
   whyNewCols: [
@@ -103,12 +103,12 @@ const KO = {
   missionEyebrow: "OUR PHILOSOPHY",
   missionTitle: "영역마다 맞는 플랫폼을 만듭니다.",
   missionLead:
-    "하나의 앱에 모든 기능을 담기보다, 영역마다 필요한 기록·정보·서비스를 그 영역의 이용자에게 맞게 설계합니다. NEWON이 다섯 개의 플랫폼을 따로 운영하는 이유입니다.",
+    "하나의 앱에 모든 기능을 담기보다, 영역마다 필요한 기록·정보·서비스를 그 영역의 이용자에게 맞게 설계합니다. NEWON이 네 개의 플랫폼을 따로 운영하는 이유입니다.",
   missionPoints: [
     {
       n: "01",
       title: "FOCUS",
-      body: "육아와 시니어 돌봄, 여행과 자산 대여는 이용자도 필요도 다릅니다. 플랫폼마다 한 영역에 집중해 그 영역의 문제를 깊게 다룹니다.",
+      body: "육아와 시니어 돌봄, 자산 대여는 이용자도 필요도 다릅니다. 플랫폼마다 한 영역에 집중해 그 영역의 문제를 깊게 다룹니다.",
     },
     {
       n: "02",
@@ -122,12 +122,12 @@ const KO = {
     },
   ],
 
-  /* 3 · OUR FIVE PLATFORMS — status wording follows each platform page */
-  buildEyebrow: "OUR FIVE PLATFORMS",
-  buildTitle: "다섯 개의 핵심 플랫폼.",
+  /* 3 · OUR FOUR PLATFORMS — status wording follows each platform page */
+  buildEyebrow: "OUR FOUR PLATFORMS",
+  buildTitle: "네 개의 핵심 플랫폼.",
   buildMeta: "NEWON · 6",
   buildBoardLabel: "PLATFORMS",
-  buildBoardTags: "BABYLOG · PETLOG · MY WORLD · SHAREON · ONGIL",
+  buildBoardTags: "BABYLOG · PETLOG · SHAREON · ONGIL",
   buildAreas: [
     {
       n: "01",
@@ -145,20 +145,13 @@ const KO = {
     },
     {
       n: "03",
-      title: "MY WORLD — Travel & Experience",
-      body: "여행의 탐색, 계획, 예약, 기록, 공유가 여러 서비스에 흩어져 있는 문제에서 출발합니다. 여행자가 주요 이용 대상이며, 지금 MY WORLD 앱은 방문한 국가와 도시를 홈 화면의 세계지도에 기록하고 이동 경로·사진·통계·AI 여행 리포트로 여행을 돌아보는 여행 기록 서비스입니다. 예약·커머스·공유형 커뮤니티는 단계적으로 준비하고 있으며, 여행사·숙박·투어 사업자와 브랜드, 지역과 기관이 여행자를 만나는 구조를 함께 만들어 가려 합니다.",
-      tags: ["세계지도 여행 기록", "여행 계획", "예약·체험", "여행자 커뮤니티"],
-      href: "../myworld/",
-    },
-    {
-      n: "04",
       title: "SHAREON — Sharing & Rental",
       body: "자주 쓰지 않지만 사기에는 부담스러운 물건, 쓰지 않는 시간이 긴 장비와 공간의 문제를 다룹니다. 필요한 기간만 빌리려는 이용자와 물건·장비·공간을 가진 개인·기업 공급자를 잇는 공유·대여 오픈 마켓플레이스를 지향합니다. SHAREON 앱은 출시 전으로, 지금은 실제 대여·예약 확정·결제·보증금·정산이 운영되지 않으며 첫 출시는 대여·공간 중심의 승인형 예약으로 준비하고 있습니다.",
       tags: ["물건", "장비", "공간", "이동수단"],
       href: "../shareon/",
     },
     {
-      n: "05",
+      n: "04",
       title: "ONGIL — Senior Life",
       body: "시니어가 자신의 속도와 방식으로 일상을 이어 갈 수 있도록 생활정보와 가족 연결, 돌봄·복지 정보를 잇습니다. 시니어 본인과 가족이 주요 이용 대상이며, 현재 iOS·Android 앱의 국내 첫 출시를 준비하고 있습니다. 돌봄 사업자, 복지기관, 기업·지자체와의 협력을 검토하고 있으며, 공식 제휴가 확정된 기관은 아직 없습니다.",
       tags: ["일상생활", "건강 기록", "가족 연결", "돌봄·복지 안내"],
@@ -174,14 +167,14 @@ const KO = {
   ventures: [
     {
       n: "01",
-      title: "FIVE CORE PLATFORMS",
+      title: "FOUR CORE PLATFORMS",
       badge: "플랫폼 운영",
-      body: "BABYLOG, PETLOG, MY WORLD, SHAREON, ONGIL 다섯 플랫폼을 직접 운영합니다. 각 플랫폼은 이용자에게 기록·정보·서비스를 제공하고, 그 영역에서 플랫폼 기반 사업이 자라는 토대가 됩니다.",
+      body: "BABYLOG, PETLOG, SHAREON, ONGIL 네 플랫폼을 직접 운영합니다. 각 플랫폼은 이용자에게 기록·정보·서비스를 제공하고, 그 영역에서 플랫폼 기반 사업이 자라는 토대가 됩니다.",
       notes: [
-        "이용 가능 — BABYLOG·PETLOG·MY WORLD 앱",
+        "이용 가능 — BABYLOG·PETLOG 앱",
         "준비 중 — SHAREON 앱, ONGIL 앱",
       ],
-      links: [{ href: "#ab-build-title", label: "5개 플랫폼 보기 →" }],
+      links: [{ href: "#ab-build-title", label: "4개 플랫폼 보기 →" }],
     },
     {
       n: "02",
@@ -214,10 +207,10 @@ const KO = {
   glanceRoles: [
     {
       n: "01",
-      title: "FIVE CORE PLATFORMS",
+      title: "FOUR CORE PLATFORMS",
       via: "이용자 접점",
       body: "개인과 가족이 매일 쓰는 기록·정보·서비스를 제공합니다. 플랫폼마다 이용자가 실제로 겪는 문제를 확인하고, 그 결과가 Business와 Studio의 출발점이 됩니다.",
-      tags: ["개인", "가족", "보호자", "여행자"],
+      tags: ["개인", "가족", "보호자"],
     },
     {
       n: "02",
@@ -259,7 +252,7 @@ const KO = {
   studioNoteEyebrow: "OUR VISION",
   studioNoteTitle: "삶의 여러 단계에 함께하는 플랫폼 기업.",
   studioNoteBody:
-    "NEWON은 아이를 기다리는 순간부터 반려동물과의 일상, 여행, 필요한 물건을 빌리는 일, 인생의 중요한 결정, 나이 들어가는 시간까지 삶의 여러 단계에 필요한 서비스를 연결하는 기업을 지향합니다. 각 플랫폼이 자기 영역에서 신뢰를 쌓고, 그 위에 개인과 기업이 함께 참여하는 지속 가능한 디지털 생태계를 만들어 가려 합니다.",
+    "NEWON은 아이를 기다리는 순간부터 반려동물과의 일상, 필요한 물건을 빌리는 일, 인생의 중요한 결정, 나이 들어가는 시간까지 삶의 여러 단계에 필요한 서비스를 연결하는 기업을 지향합니다. 각 플랫폼이 자기 영역에서 신뢰를 쌓고, 그 위에 개인과 기업이 함께 참여하는 지속 가능한 디지털 생태계를 만들어 가려 합니다.",
   spacesEyebrow: "LONG-TERM DIRECTION",
   spacesTitle: "장기적으로 지향하는 방향.",
   spaces: [
@@ -267,7 +260,7 @@ const KO = {
       n: "01",
       title: "CONNECTED EVERYDAY",
       count: "LIFE",
-      body: "다섯 플랫폼이 각자의 영역에서 깊어지고, 삶의 단계가 바뀔 때 필요한 서비스로 자연스럽게 이어지는 경험을 지향합니다. 지금 플랫폼 사이의 데이터는 자동으로 연결되거나 공유되지 않습니다.",
+      body: "네 플랫폼이 각자의 영역에서 깊어지고, 삶의 단계가 바뀔 때 필요한 서비스로 자연스럽게 이어지는 경험을 지향합니다. 지금 플랫폼 사이의 데이터는 자동으로 연결되거나 공유되지 않습니다.",
       slugs: [],
     },
     {
@@ -318,15 +311,15 @@ const KO = {
     },
     {
       year: "NOW",
-      title: "5개 핵심 플랫폼 체계",
-      body: "다섯 개의 핵심 플랫폼을 중심으로 사업 구조를 정리하고, Business & Partnerships와 NEWON Studio를 함께 전개합니다.",
+      title: "4개 핵심 플랫폼 체계",
+      body: "네 개의 핵심 플랫폼을 중심으로 사업 구조를 정리하고, Business & Partnerships와 NEWON Studio를 함께 전개합니다.",
       isNow: true,
     },
   ],
   selectedEyebrow: "PRODUCT HISTORY",
   selectedTitle: "NEWON이 출시한 앱.",
   selectedLead:
-    "NEWON이 직접 기획·개발해 App Store와 Google Play에 출시한 모바일 앱입니다. BABYLOG, PETLOG, MY WORLD 앱은 지금 각 플랫폼의 기반이 되고 있습니다.",
+    "NEWON이 직접 기획·개발해 App Store와 Google Play에 출시한 모바일 앱입니다. BABYLOG, PETLOG 앱은 지금 각 플랫폼의 기반이 되고 있습니다.",
   selectedAll: "VIEW ALL PRODUCTS →",
   selectedProductsMax: 11,
   universeView: "제품 보기 ↗",
@@ -373,11 +366,10 @@ const KO = {
   explorePanels: [
     { n: "01", title: "BABYLOG", body: "Parenting & Family — 아이와 가족의 기록, 성장, 가족생활.", cta: "BABYLOG →", href: "../babylog/" },
     { n: "02", title: "PETLOG", body: "Pet Life — 반려동물의 일상·건강 기록과 가족 공동 관리.", cta: "PETLOG →", href: "../petlog/" },
-    { n: "03", title: "MY WORLD", body: "Travel & Experience — 세계지도 여행 기록에서 출발하는 여행 플랫폼.", cta: "MY WORLD →", href: "../myworld/" },
-    { n: "04", title: "SHAREON", body: "Sharing & Rental — 물건·장비·공간을 공유하고 대여하는 마켓플레이스 (앱 출시 준비 중).", cta: "SHAREON →", href: "../shareon/" },
-    { n: "05", title: "ONGIL", body: "Senior Life — 시니어의 일상, 가족 연결, 돌봄·복지 정보 (앱 출시 준비 중).", cta: "ONGIL →", href: "../ongil/" },
-    { n: "06", title: "BUSINESS & PARTNERSHIPS", body: "플랫폼 입점, 제휴, 기업·기관 협력과 플랫폼 기반 비즈니스.", cta: "Business & Partnerships →", href: "../business/" },
-    { n: "07", title: "NEWON STUDIO", body: "NEWON이 직접 만드는 디지털 상품, 소프트웨어, 기업용 표준 제품.", cta: "NEWON Studio →", href: "../studio/" },
+    { n: "03", title: "SHAREON", body: "Sharing & Rental — 물건·장비·공간을 공유하고 대여하는 마켓플레이스 (앱 출시 준비 중).", cta: "SHAREON →", href: "../shareon/" },
+    { n: "04", title: "ONGIL", body: "Senior Life — 시니어의 일상, 가족 연결, 돌봄·복지 정보 (앱 출시 준비 중).", cta: "ONGIL →", href: "../ongil/" },
+    { n: "05", title: "BUSINESS & PARTNERSHIPS", body: "플랫폼 입점, 제휴, 기업·기관 협력과 플랫폼 기반 비즈니스.", cta: "Business & Partnerships →", href: "../business/" },
+    { n: "06", title: "NEWON STUDIO", body: "NEWON이 직접 만드는 디지털 상품, 소프트웨어, 기업용 표준 제품.", cta: "NEWON Studio →", href: "../studio/" },
   ],
   ideaEyebrow: "PARTNER WITH NEWON",
   ideaTitleHtml: "NEWON의 플랫폼과<br />함께할 기업과 기관을 찾습니다.",
@@ -385,13 +377,13 @@ const KO = {
     "입점, 제휴, 기업·기관 협력은 Business & Partnerships에서 안내합니다. 플랫폼별 협력 가능성은 각 플랫폼의 Partnerships 페이지에서 확인할 수 있습니다.",
   ideaCta: "협력 문의하기 →",
   ideaHref: "../contact/?type=partnership&source=about#contact-form",
-  ideaHint: "BABYLOG · PETLOG · MY WORLD · SHAREON · ONGIL",
+  ideaHint: "BABYLOG · PETLOG · SHAREON · ONGIL",
   closeEyebrow: "NEWON",
   closeTitleHtml: "일상의 다양한 영역을<br />하나로 연결합니다.",
   closeLead:
-    "다섯 개의 핵심 플랫폼과 Business & Partnerships, NEWON Studio로 개인과 기업이 함께 참여하는 디지털 생태계를 만들어 갑니다.",
+    "네 개의 핵심 플랫폼과 Business & Partnerships, NEWON Studio로 개인과 기업이 함께 참여하는 디지털 생태계를 만들어 갑니다.",
   closeTaglineEn: "",
-  closeProducts: "5개 플랫폼 보기 →",
+  closeProducts: "4개 플랫폼 보기 →",
   closeProductsHref: "#ab-build-title",
   closeBusiness: "Business & Partnerships →",
   closeBusinessHref: "../business/",
@@ -402,13 +394,13 @@ const KO = {
 const EN = {
   seoTitle: "About | Newon",
   metaDescription:
-    "NEWON is a digital platform company that builds and runs five core platforms.",
+    "NEWON is a digital platform company that builds and runs four core platforms.",
   metaKeywords:
-    "NEWON, digital platform company, BABYLOG, PETLOG, MY WORLD, SHAREON, ONGIL, NEWON Business & Partnerships, NEWON Studio",
+    "NEWON, digital platform company, BABYLOG, PETLOG, SHAREON, ONGIL, NEWON Business & Partnerships, NEWON Studio",
   brandAria: "Newon",
   brandMarkAlt: "Newon",
   brandWord: "Newon",
-  brandLine: "Five Core Platforms",
+  brandLine: "Four Core Platforms",
   brandCrumb: "Company / ABOUT",
   brandScroll: "Scroll down",
   brandPointTitle: "NEWON CARD",
@@ -417,14 +409,14 @@ const EN = {
   brandMetaLeft: "NEWON",
   brandMetaRight: "5 PLATFORMS",
   brandKicker: "NEW + ON",
-  brandTag: "BABYLOG · PETLOG · MY WORLD · SHAREON · ONGIL",
-  brandDomainsAria: "Five core platforms",
-  brandDomains: ["BABYLOG", "PETLOG", "MY WORLD", "SHAREON", "ONGIL"],
+  brandTag: "BABYLOG · PETLOG · SHAREON · ONGIL",
+  brandDomainsAria: "Four core platforms",
+  brandDomains: ["BABYLOG", "PETLOG", "SHAREON", "ONGIL"],
   brandMeaning: "Switching new everyday experiences on.",
   heroEyebrow: "ABOUT NEWON",
   heroTitleHtml: "A digital platform company<br />connecting everyday life.",
   heroLeadHtml:
-    "NEWON plans and builds five core platforms for parenting, pets, travel, sharing and senior life.",
+    "NEWON plans and builds four core platforms for parenting, pets, sharing and senior life.",
   heroNameAria: "New + On",
   heroNameKicker: "NEW + ON",
   heroNameNew: "NEW",
@@ -435,7 +427,7 @@ const EN = {
   cardAria: "Open Newon digital card",
   cardAlt: "Newon business card",
   cardHint: "Digital card · tap to open",
-  ctaProducts: "Five platforms →",
+  ctaProducts: "Four platforms →",
   ctaProductsHref: "#ab-build-title",
   ctaBusiness: "Business & Partnerships →",
   ctaBusinessHref: "../business/",
@@ -459,7 +451,7 @@ const EN = {
   whyTaglineEn: "TURN POSSIBILITIES ON",
   whyBody: [
     "NEWON is a digital platform company that connects many areas of everyday life. We are not a studio that builds to order for clients: our business is the platforms and digital products we plan and build ourselves.",
-    "Parenting, pet life, travel, sharing and senior life are different areas, but they share the same needs — keeping records, finding information you can trust and reaching the right services. NEWON answers those shared needs with five platforms, each designed for its own area.",
+    "Parenting, pet life, sharing and senior life are different areas, but they share the same needs — keeping records, finding information you can trust and reaching the right services. NEWON answers those shared needs with four platforms, each designed for its own area.",
     "The name NEWON starts from New + On: switching new everyday experiences on and making them work. We keep improving each platform's experience and aim to build a sustainable digital ecosystem that people and companies can take part in.",
   ],
   whyNewCols: [
@@ -475,12 +467,12 @@ const EN = {
   missionEyebrow: "OUR PHILOSOPHY",
   missionTitle: "A platform built for each area of life.",
   missionLead:
-    "Rather than putting everything into one app, we design the records, information and services each area needs for the people in that area. That is why NEWON runs five separate platforms.",
+    "Rather than putting everything into one app, we design the records, information and services each area needs for the people in that area. That is why NEWON runs four separate platforms.",
   missionPoints: [
     {
       n: "01",
       title: "FOCUS",
-      body: "Parenting and senior care, travel and renting things have different users and different needs. Each platform focuses on one area and goes deep into its problems.",
+      body: "Parenting and senior care, and renting things have different users and different needs. Each platform focuses on one area and goes deep into its problems.",
     },
     {
       n: "02",
@@ -494,11 +486,11 @@ const EN = {
     },
   ],
 
-  buildEyebrow: "OUR FIVE PLATFORMS",
-  buildTitle: "Five core platforms.",
+  buildEyebrow: "OUR FOUR PLATFORMS",
+  buildTitle: "Four core platforms.",
   buildMeta: "NEWON · 6",
   buildBoardLabel: "PLATFORMS",
-  buildBoardTags: "BABYLOG · PETLOG · MY WORLD · SHAREON · ONGIL",
+  buildBoardTags: "BABYLOG · PETLOG · SHAREON · ONGIL",
   buildAreas: [
     {
       n: "01",
@@ -516,20 +508,13 @@ const EN = {
     },
     {
       n: "03",
-      title: "MY WORLD — Travel & Experience",
-      body: "MY WORLD starts from the problem that discovery, planning, booking, records and sharing are spread across many services. It is built for travellers. Today the MY WORLD app is a travel-record service: mark the countries and cities you have visited on the world map on its home screen, and look back on trips through routes, photos, stats and an AI travel report. Booking, commerce and a shared community are being prepared in stages, with travel agencies, stays, tour operators, brands, regions and institutions meeting travellers.",
-      tags: ["World-map travel records", "Trip planning", "Booking & experiences", "Traveller community"],
-      href: "../myworld/",
-    },
-    {
-      n: "04",
       title: "SHAREON — Sharing & Rental",
       body: "SHAREON deals with things that are used rarely but cost too much to buy, and equipment and spaces that sit idle. It aims to be an open sharing and rental marketplace connecting people who want to borrow for just the time they need with individuals and businesses that own items, equipment and spaces. The SHAREON app has not launched yet: no real rentals, confirmed bookings, payments, deposits or settlements run today. The first launch is being prepared around rentals and spaces with approval-based booking.",
       tags: ["Things", "Equipment", "Spaces", "Mobility"],
       href: "../shareon/",
     },
     {
-      n: "05",
+      n: "04",
       title: "ONGIL — Senior Life",
       body: "ONGIL connects everyday information, family connection and care and welfare information so that seniors can carry on their lives at their own pace and in their own way. It is built for seniors and their families. The iOS and Android app is being prepared for its first release in Korea. Collaboration with care providers, welfare bodies, companies and local governments is under review, and no institution has a confirmed official partnership yet.",
       tags: ["Daily life", "Health records", "Family connection", "Care & welfare guidance"],
@@ -544,14 +529,14 @@ const EN = {
   ventures: [
     {
       n: "01",
-      title: "FIVE CORE PLATFORMS",
+      title: "FOUR CORE PLATFORMS",
       badge: "Platforms",
-      body: "NEWON runs five platforms itself: BABYLOG, PETLOG, MY WORLD, SHAREON and ONGIL. Each gives people records, information and services, and becomes the base on which platform business grows in its area.",
+      body: "NEWON runs four platforms itself: BABYLOG, PETLOG, SHAREON and ONGIL. Each gives people records, information and services, and becomes the base on which platform business grows in its area.",
       notes: [
-        "Available — BABYLOG, PETLOG and MY WORLD apps",
+        "Available — BABYLOG and PETLOG apps",
         "In preparation — SHAREON app, ONGIL app",
       ],
-      links: [{ href: "#ab-build-title", label: "See the five platforms →" }],
+      links: [{ href: "#ab-build-title", label: "See the four platforms →" }],
     },
     {
       n: "02",
@@ -583,10 +568,10 @@ const EN = {
   glanceRoles: [
     {
       n: "01",
-      title: "FIVE CORE PLATFORMS",
+      title: "FOUR CORE PLATFORMS",
       via: "WHERE PEOPLE MEET US",
       body: "Records, information and services that people and families use every day. Each platform shows us the real problems people face, and that becomes the starting point for Business and Studio.",
-      tags: ["People", "Families", "Carers", "Travellers"],
+      tags: ["People", "Families", "Carers"],
     },
     {
       n: "02",
@@ -626,7 +611,7 @@ const EN = {
   studioNoteEyebrow: "OUR VISION",
   studioNoteTitle: "A platform company for every stage of life.",
   studioNoteBody:
-    "NEWON aims to be a company that connects the services people need across many stages of life — from waiting for a child to daily life with a pet, travel, borrowing what you need, big life decisions and growing older. Each platform earns trust in its own area, and on that base we want to build a sustainable digital ecosystem that people and companies take part in together.",
+    "NEWON aims to be a company that connects the services people need across many stages of life — from waiting for a child to daily life with a pet, borrowing what you need, big life decisions and growing older. Each platform earns trust in its own area, and on that base we want to build a sustainable digital ecosystem that people and companies take part in together.",
   spacesEyebrow: "LONG-TERM DIRECTION",
   spacesTitle: "Where we are heading.",
   spaces: [
@@ -634,7 +619,7 @@ const EN = {
       n: "01",
       title: "CONNECTED EVERYDAY",
       count: "LIFE",
-      body: "Five platforms that grow deeper in their own areas and lead naturally to the services people need as their life stage changes. Today data is not linked or automatically shared between the platforms.",
+      body: "Four platforms that grow deeper in their own areas and lead naturally to the services people need as their life stage changes. Today data is not linked or automatically shared between the platforms.",
       slugs: [],
     },
     {
@@ -684,15 +669,15 @@ const EN = {
     },
     {
       year: "NOW",
-      title: "Five core platforms",
-      body: "The business is organised around five core platforms, alongside Business & Partnerships and NEWON Studio.",
+      title: "Four core platforms",
+      body: "The business is organised around four core platforms, alongside Business & Partnerships and NEWON Studio.",
       isNow: true,
     },
   ],
   selectedEyebrow: "PRODUCT HISTORY",
   selectedTitle: "Apps NEWON has released.",
   selectedLead:
-    "Mobile apps NEWON planned, built and released on the App Store and Google Play. The BABYLOG, PETLOG and MY WORLD apps are now the base of their platforms.",
+    "Mobile apps NEWON planned, built and released on the App Store and Google Play. The BABYLOG and PETLOG apps are now the base of their platforms.",
   selectedAll: "VIEW ALL PRODUCTS →",
   selectedProductsMax: 11,
   universeView: "View product ↗",
@@ -738,11 +723,10 @@ const EN = {
   explorePanels: [
     { n: "01", title: "BABYLOG", body: "Parenting & Family — records, growth and family life for children and families.", cta: "BABYLOG →", href: "../babylog/" },
     { n: "02", title: "PETLOG", body: "Pet Life — daily and health records for pets, with shared family care.", cta: "PETLOG →", href: "../petlog/" },
-    { n: "03", title: "MY WORLD", body: "Travel & Experience — a travel platform that starts from your world-map travel records.", cta: "MY WORLD →", href: "../myworld/" },
-    { n: "04", title: "SHAREON", body: "Sharing & Rental — a marketplace for sharing and renting items, equipment and spaces (app in preparation).", cta: "SHAREON →", href: "../shareon/" },
-    { n: "05", title: "ONGIL", body: "Senior Life — daily life, family connection and care and welfare information for seniors (app in preparation).", cta: "ONGIL →", href: "../ongil/" },
-    { n: "06", title: "BUSINESS & PARTNERSHIPS", body: "Platform listings, partnerships, collaboration with companies and institutions, and platform-based business.", cta: "Business & Partnerships →", href: "../business/" },
-    { n: "07", title: "NEWON STUDIO", body: "Digital goods, software and standard business products NEWON builds itself.", cta: "NEWON Studio →", href: "../studio/" },
+    { n: "03", title: "SHAREON", body: "Sharing & Rental — a marketplace for sharing and renting items, equipment and spaces (app in preparation).", cta: "SHAREON →", href: "../shareon/" },
+    { n: "04", title: "ONGIL", body: "Senior Life — daily life, family connection and care and welfare information for seniors (app in preparation).", cta: "ONGIL →", href: "../ongil/" },
+    { n: "05", title: "BUSINESS & PARTNERSHIPS", body: "Platform listings, partnerships, collaboration with companies and institutions, and platform-based business.", cta: "Business & Partnerships →", href: "../business/" },
+    { n: "06", title: "NEWON STUDIO", body: "Digital goods, software and standard business products NEWON builds itself.", cta: "NEWON Studio →", href: "../studio/" },
   ],
   ideaEyebrow: "PARTNER WITH NEWON",
   ideaTitleHtml: "Companies and institutions<br />to grow with NEWON's platforms.",
@@ -750,13 +734,13 @@ const EN = {
     "Listings, partnerships and collaboration with companies and institutions are handled through Business & Partnerships. Each platform's Partnerships page shows how you could work with it.",
   ideaCta: "Partnership inquiry →",
   ideaHref: "../contact/?type=partnership&source=about#contact-form",
-  ideaHint: "BABYLOG · PETLOG · MY WORLD · SHAREON · ONGIL",
+  ideaHint: "BABYLOG · PETLOG · SHAREON · ONGIL",
   closeEyebrow: "NEWON",
   closeTitleHtml: "Connecting many areas<br />of everyday life.",
   closeLead:
-    "With five core platforms, Business & Partnerships and NEWON Studio, we are building a digital ecosystem that people and companies take part in together.",
+    "With four core platforms, Business & Partnerships and NEWON Studio, we are building a digital ecosystem that people and companies take part in together.",
   closeTaglineEn: "",
-  closeProducts: "See the five platforms →",
+  closeProducts: "See the four platforms →",
   closeProductsHref: "#ab-build-title",
   closeBusiness: "Business & Partnerships →",
   closeBusinessHref: "../business/",

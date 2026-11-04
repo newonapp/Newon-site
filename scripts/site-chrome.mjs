@@ -52,7 +52,6 @@ export const VENTURE_NAV = [
   { id: "shareon", label: "SHAREON", path: "shareon/", mega: true },
   { id: "babylog", label: "BABYLOG", path: "babylog/", mega: true },
   { id: "petlog", label: "PETLOG", path: "petlog/", mega: true },
-  { id: "myworld", label: "MY WORLD", path: "myworld/", mega: true },
 ];
 const VENTURE_IDS = new Set(VENTURE_NAV.map((v) => v.id));
 /** Business-row items with their own mega menu: the label links to the business page, the chevron opens the menu. */
@@ -92,13 +91,6 @@ const MENU_META = {
     footHref: "babylog/",
     footKey: "nav.babylogExploreCta",
     footFb: "View BABYLOG →",
-  },
-  myworld: {
-    kicker: "nav.myworldMenuLabel",
-    lead: "nav.myworldMenuLead",
-    footHref: "myworld/",
-    footKey: "nav.myworldExploreCta",
-    footFb: "View MY WORLD →",
   },
   shareon: {
     kicker: "nav.shareonMenuLabel",
@@ -212,7 +204,7 @@ function menuRows(menuId, langDir = "") {
 
 function megaItemLimit(menuId) {
   if (menuId === "company") return 12;
-  if (["consumer", "ai", "business", "studio", "partnerships", "petlog", "babylog", "myworld", "shareon", "ongil"].includes(menuId)) return 8;
+  if (["consumer", "ai", "business", "studio", "partnerships", "petlog", "babylog", "shareon", "ongil"].includes(menuId)) return 8;
   return 4;
 }
 
@@ -268,7 +260,6 @@ const MEGA_RENDERERS = {
   ongil: (f, fe, b, ld) => editorialMega(f, fe, b, "ongil", ld),
   babylog: (f, fe, b, ld) => editorialMega(f, fe, b, "babylog", ld),
   petlog: (f, fe, b, ld) => editorialMega(f, fe, b, "petlog", ld),
-  myworld: (f, fe, b, ld) => editorialMega(f, fe, b, "myworld", ld),
   shareon: (f, fe, b, ld) => editorialMega(f, fe, b, "shareon", ld),
   business: (f, fe, b, ld) => editorialMega(f, fe, b, "business", ld),
   studio: (f, fe, b, ld) => editorialMega(f, fe, b, "studio", ld),
@@ -473,7 +464,6 @@ export const FOOTER_MENUS = [
   ["shareon", "shareon/"],
   ["babylog", "babylog/"],
   ["petlog", "petlog/"],
-  ["myworld", "myworld/"],
   ["business", "business/"],
   ["studio", "studio/"],
   ["company", "about/"],

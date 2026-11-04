@@ -319,8 +319,7 @@ export const EN = {
         { n: "01", name: "BABYLOG", text: "A family growth record platform. Linking grandparents' shared family activities is under review.", href: "babylog/" },
         { n: "02", name: "PETLOG", text: "A pet life record. Older adults living with pets can keep their pet's life in PETLOG.", href: "petlog/" },
         { n: "03", name: "SHAREON", text: "A neighbourhood rental platform. Renting daily-living, hobby and assistive items only as long as needed is under review.", href: "shareon/" },
-        { n: "04", name: "MY WORLD", text: "A travel record app. Travel records are kept in MY WORLD, while ONGIL covers nearby leisure and culture.", href: "myworld/" },
-        { n: "05", name: "Newon Business", text: "Digital tools and a partnership desk for institutions and companies, including workflow automation for care and welfare institutions.", href: "business/" },
+        { n: "04", name: "Newon Business", text: "Digital tools and a partnership desk for institutions and companies, including workflow automation for care and welfare institutions.", href: "business/" },
       ],
     },
     next: {
@@ -449,7 +448,7 @@ export const EN = {
         desc: "Find lifelong-learning courses and public information on tourism and places, and save what interests you. Being prepared for the app launch. Welfare-center events and cultural program sign-up links are planned.",
         services: ["Lifelong-learning courses", "Local tourism, culture and places", "Saving and sorting favourites", "Welfare-center events and programs (planned)", "Digital and smartphone classes (planned)"],
         audience: "Older adults who enjoy learning and leisure", cta: "contact",
-        note: "Travel records and memories on a map belong to Newon's MY WORLD; ONGIL focuses on nearby leisure and culture.",
+        note: "ONGIL focuses on nearby leisure and culture.",
       },
       {
         id: "jobs", grp: "C", label: "14 Senior Jobs", title: "Work, volunteering and social activity",

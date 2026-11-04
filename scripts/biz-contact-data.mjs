@@ -10,7 +10,6 @@
 import { getShareonCopy } from "./shareon-copy.mjs";
 import { getBabylogCopy, copyLangFor as babylogLang, BL_SLUG } from "./babylog-site-copy.mjs";
 import { CONTACT as PL_CONTACT, V3 as PL_V3, OVERVIEW as PL_OVERVIEW, STORE as PL_STORE } from "./petlog-site-content.mjs";
-import { getMyWorldSiteCopy } from "./myworld-site-copy.mjs";
 import { escapeHtml } from "./hub-utils.mjs";
 import { ctaLabel } from "./biz-contact-kit.mjs";
 
@@ -212,71 +211,8 @@ export function petlogContactModel(lang) {
   };
 }
 
-/* ─────────────────────────── MY WORLD ─────────────────────────── */
-/** Rows with a clearly matching unified-page topic (contact-taxonomy.mjs). */
-const MYWORLD_TOPIC = { 5: "myworld-agencies", 6: "myworld-agencies", 7: "myworld-agencies", 8: "myworld-agencies", 12: "myworld-tourism" };
-const MYWORLD_TYPE = [
-  "personal", "personal", "personal", "personal",
-  "business", "business", "business", "business", "business", "partnership",
-  "business", "public", "partnership", "partnership",
-  "media", "investment",
-];
-
-export function myworldContactModel(lang, stores = {}) {
-  const { copy, contentLang } = getMyWorldSiteCopy(lang);
-  const c = copy.contact;
-  const ui = copy.ui;
-  const chs = c.channels.items;
-  const next = copy.overview.next;
-  const pad = (n) => String(n).padStart(2, "0");
-  return {
-    biz: "myworld",
-    lang,
-    contentLang,
-    cta: ctaLabel(contentLang),
-    channels: {
-      kicker: c.channels.kicker,
-      title: c.channels.title,
-      items: [
-        { k: chs[0].name, v: MAIL, href: `mailto:${MAIL}`, text: "", icon: "mail" },
-        { k: chs[1].name, ask: "personal", text: chs[1].body, icon: "form" },
-        { k: chs[2].name, v: `${chs[2].name} →`, href: `/${lang}/myworld/delete-account/`, text: chs[2].body, icon: "shield" },
-        { k: chs[3].name, v: `${chs[3].name} →`, href: `/${lang}/privacy/`, text: chs[3].body, icon: "book" },
-        ...(stores.googlePlay ? [{ k: "MY WORLD · Google Play", v: `${ui.appCta} ↗`, href: stores.googlePlay, text: "", icon: "phone" }] : []),
-        ...(stores.appStore ? [{ k: "MY WORLD · App Store", v: `${ui.appStoreCta} ↗`, href: stores.appStore, text: "", icon: "phone" }] : []),
-      ],
-    },
-    types: {
-      kicker: c.typesKicker,
-      title: c.typesTitle,
-      lead: "",
-      groups: c.groups.map((g) => ({
-        title: g.name,
-        en: contentLang === "ko" ? g.en : "",
-        lead: g.lead,
-        rows: g.items.map((n) => ({ n: pad(n), name: c.items[n - 1].name, text: c.items[n - 1].body, ask: MYWORLD_TYPE[n - 1], topic: MYWORLD_TOPIC[n] || "" })),
-      })),
-    },
-    after: { kicker: c.how.kicker, title: c.how.title, steps: c.how.steps.map((s, i) => ({ n: pad(i + 1), name: s.name, text: s.body })) },
-    guard: {
-      kicker: c.prep.kicker,
-      title: c.prep.title,
-      lead: c.prep.lead,
-      checklistTitle: c.prep.colInclude,
-      checklist: c.prep.items.map((it) => ({ g: it.name, items: [it.body] })),
-      callouts: [
-        { icon: "lock", text: `${c.privacy.label} · ${ui.sensitiveNote}` },
-        { icon: "info", text: ui.scopeNote },
-      ],
-    },
-    faq: { kicker: c.faq.kicker, title: c.faq.title, items: c.faq.items.map((f) => ({ q: f.q, a: f.a })) },
-    close: { kicker: next.kicker, titleHtml: e(next.title).replace(/\n/g, "<br>"), lead: next.lead },
-  };
-}
-
 export const BIZ_CONTACT_MODELS = {
   shareon: shareonContactModel,
   babylog: babylogContactModel,
   petlog: petlogContactModel,
-  myworld: myworldContactModel,
 };

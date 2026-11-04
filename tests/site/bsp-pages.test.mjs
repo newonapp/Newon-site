@@ -50,7 +50,8 @@ test("global header: Business & Partnerships 5, Studio 5, no separate Partnershi
     assert.equal(megaRows(h, "studio"), 5, `${rel} studio`);
     assert.equal(megaRows(h, "partnerships"), 0, `${rel} partnerships merged`);
     assert.ok(!h.includes('data-gnav-menu="partnerships"'), `${rel} no Partnerships trigger`);
-    for (const v of ["BABYLOG", "PETLOG", "MY WORLD", "SHAREON", "ONGIL"]) assert.ok(h.includes(`>${v}<`), `${rel} venture row ${v}`);
+    for (const v of ["BABYLOG", "PETLOG", "SHAREON", "ONGIL"]) assert.ok(h.includes(`>${v}<`), `${rel} venture row ${v}`);
+    assert.ok(!h.includes(">MY WORLD<") && !h.includes('data-gnav-menu="myworld"') && !/href="[^"]*\/myworld\/"/.test(h), `${rel} no MY WORLD business menu (business pages removed 2026-11; the Apps menu keeps the MY WORLD app)`);
     assert.ok(!h.includes(">LIVON<") && !h.includes("/livon/"), `${rel} no LIVON in the header (removed 2026-11)`);
   }
 });

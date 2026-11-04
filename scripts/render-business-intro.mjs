@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Information-only introduction pages for BabyLog · PetLog · My World · ShareOn
- * → /{lang}/{babylog,petlog,myworld,shareon}/ (all 9 locales; ko + en copy, other locales reuse en).
+ * Information-only introduction pages for BabyLog · PetLog · ShareOn
+ * → /{lang}/{babylog,petlog,shareon}/ (all 9 locales; ko + en copy, other locales reuse en).
  *
  * Seven common sections (ids): intro · problem · features · audience · partners · download · contact.
  * No forms, inputs, sign-in or service controls. Real features live in each app.

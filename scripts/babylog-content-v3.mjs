@@ -25,7 +25,6 @@ const KO = {
       label: "BABYLOG와",
       items: {
         PETLOG: "반려동물과 아이가 함께하는 가족생활",
-        "MY WORLD": "가족 여행·체험과 그 추억",
         SHAREON: "육아·가족 용품의 대여",
         ONGIL: "조부모·가족 돌봄과 세대 활동",
       },
@@ -194,7 +193,6 @@ const KO = {
         ["SHAREON", "육아·가족 용품 대여", "쇼핑·중고·공동구매는 BABYLOG 마켓, 대여는 SHAREON. 한 거래에 수수료를 이중으로 매기지 않습니다."],
         ["PETLOG", "반려동물과 아이가 함께하는 가족생활", "반려동물 기록과 서비스는 PETLOG"],
         ["ONGIL", "조부모·가족 돌봄과 세대 활동", "시니어 생활·돌봄은 ONGIL, 손주 돌봄 기록 공유는 BABYLOG 가족 공유"],
-        ["MY WORLD", "가족 여행·체험과 추억", "여행 기록과 여행 서비스는 MY WORLD"],
       ],
       note: "서로 다른 앱의 아동·건강·가족 데이터는 명시적 동의와 적법한 권한 없이 자동으로 공유하지 않습니다.",
     },
@@ -307,7 +305,6 @@ const EN = {
       label: "With BABYLOG",
       items: {
         PETLOG: "Family life with children and pets together",
-        "MY WORLD": "Family trips, experiences and their memories",
         SHAREON: "Renting baby and family goods",
         ONGIL: "Grandparent and family care and activities across generations",
       },
@@ -470,7 +467,6 @@ const EN = {
         ["SHAREON", "Renting baby and family goods", "Shopping, used goods and group buying are the BABYLOG market; rental is SHAREON. One transaction never carries two fees."],
         ["PETLOG", "Family life with children and pets together", "Pet records and services are PETLOG"],
         ["ONGIL", "Grandparent and family care and activities across generations", "Senior life and care are ONGIL; sharing a grandchild's care records is BABYLOG family sharing"],
-        ["MY WORLD", "Family trips, experiences and memories", "Travel records and travel services are MY WORLD"],
       ],
       note: "Child, health and family data are never shared automatically between apps without explicit consent and lawful authority.",
     },

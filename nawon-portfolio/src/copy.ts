@@ -111,7 +111,7 @@ const en = {
   introHeading: "Our work",
   introText:
     "From ideas to products, from products to everyday change. These are the digital platforms and products NEWON plans and builds itself — problems found in everyday life, turned into real services that open new possibilities.",
-  introCta: "See the five platforms",
+  introCta: "See the four platforms",
 
   /* 02 · PORTFOLIO OVERVIEW */
   overviewHeading: "Overview",
@@ -119,19 +119,19 @@ const en = {
   overviewLead:
     "Everything here is a product NEWON owns, plans and builds itself. Nothing on this page is client work or a commissioned project.",
   overview: [
-    { number: "01", name: "Five core platforms", body: ["BABYLOG, PETLOG, MY WORLD, SHAREON and ONGIL. Five areas of daily life — parenting, pets, travel, sharing and senior life — each run as its own platform."] },
-    { number: "02", name: "Standalone apps", body: ["Mobile apps that each focus on one everyday problem in habits and goals, money or health: OX MONTH, GoalUp, CountUp, SAVY, SubPing, PiggyUp, Pillmate and the membership app Newon+."], link: { label: "All NEWON apps →", href: siteHref("apps/") } },
+    { number: "01", name: "Four core platforms", body: ["BABYLOG, PETLOG, SHAREON and ONGIL. Four areas of daily life — parenting, pets, sharing and senior life — each run as its own platform."] },
+    { number: "02", name: "Standalone apps", body: ["Mobile apps that each focus on one everyday problem in habits and goals, money, health or travel: OX MONTH, GoalUp, CountUp, SAVY, SubPing, PiggyUp, Pillmate, My World and the membership app Newon+."], link: { label: "All NEWON apps →", href: siteHref("apps/") } },
     { number: "03", name: "Digital software", body: ["Free web tools such as a QR code generator, a D-day calculator and a character counter that run in the browser with no install or sign-up."], link: { label: "Newon Tools →", href: siteHref("tools/") } },
     { number: "04", name: "Games", body: ["404: HUMAN is a choice-driven interactive game about surviving as the last human in an AI-only world, playable on the web."], link: { label: "Newon Games →", href: siteHref("games/") } },
     { number: "05", name: "Studio digital products", body: ["NEWON Studio plans templates, productivity tools, software and standard business products. The free web tools and the NEWON Project Starter Kit are available today; the other product families are still being planned."] },
     { number: "06", name: "Building and shipping products", body: ["NEWON planned, designed and built 11 mobile apps and released them on the App Store and Google Play, and keeps updating them after launch."] },
   ] as PanelItem[],
 
-  /* 03 · FIVE CORE PLATFORMS */
+  /* 03 · FOUR CORE PLATFORMS */
   platformsHeading: "Platforms",
-  platformsTitle: "Five areas of everyday life, connected.",
+  platformsTitle: "Four areas of everyday life, connected.",
   platformsLead:
-    "Each platform focuses on one area of life. The status on every card follows the platform's own page: three apps are released, ONGIL is a web preview, and the SHAREON and ONGIL apps are in preparation.",
+    "Each platform focuses on one area of life. The status on every card follows the platform's own page: two apps are released, ONGIL is a web preview, and the SHAREON and ONGIL apps are in preparation.",
   platformCta: "View platform",
   platforms: [
     {
@@ -153,16 +153,6 @@ const en = {
       role: "For pet owners and their families · Daily & health records · Vaccination & vet schedules · Shared family care",
       slogan: ["A pet's day and health,", "recorded together as a family."],
       lead: "Today the PETLOG app offers profiles, daily and health records, vaccination and vet schedules and shared family care. Pet life information and a community are in preparation.",
-    },
-    {
-      id: "myworld",
-      type: "App released · iOS · Android",
-      name: "MY WORLD",
-      summary:
-        "Travel. Discovery, planning, booking, records and sharing are spread across many services. MY WORLD starts with the record: the countries and cities you have visited, on a world map.",
-      role: "For travellers · World-map travel records · Routes & photos · Travel stats · AI travel report",
-      slogan: ["Every place you have been,", "on your own world map."],
-      lead: "Today the MY WORLD app records visited countries and cities, routes and photos, travel stats and an AI travel report. Booking, commerce and a traveller community are being prepared in stages.",
     },
     {
       id: "shareon",
@@ -194,7 +184,7 @@ const en = {
   products: [
     { n: "01", title: "BabyLog", body: ["A growth-record app from pregnancy to the teen years. It replaces parenting records scattered across notes, photos and chats with one timeline.", "Parenting records · Growth & health · Schedules · Growth stats · Family sharing · AI parenting insights", "iOS · Android · Released — the base of the BABYLOG platform"], links: productLinks("babylog", "Product page →", "babylog") },
     { n: "02", title: "PetLog", body: ["A pet-record app for daily life, health and memories. Meals, walks, health records and vet dates are kept in one record the family shares.", "Meal & walk logs · Health records · Schedules · Stats · Family sharing · AI health insights", "iOS · Android · Released — the base of the PETLOG platform"], links: productLinks("petlog", "Product page →", "petlog") },
-    { n: "03", title: "My World", body: ["A travel-record app that marks visited countries and cities on a world map, so visits, itineraries and photos stay in one place.", "Travel map · Visited countries · Itineraries · Travel journal · Travel stats · AI travel report", "iOS · Android · Released — the base of the MY WORLD platform"], links: productLinks("myworld", "Product page →", "myworld") },
+    { n: "03", title: "My World", body: ["A travel-record app that marks visited countries and cities on a world map, so visits, itineraries and photos stay in one place.", "Travel map · Visited countries · Itineraries · Travel journal · Travel stats · AI travel report", "iOS · Android · Released"], links: productLinks("myworld", "Product page →", "myworld") },
     { n: "04", title: "OX MONTH", body: ["A monthly habit app built on one O/X check a day, for people who want to keep going without a heavy tracking app.", "Today's check · Monthly calendar · Goals · Quick start · Stats · Reminders · Widgets", "iOS · Android · Released"], links: productLinks("ox-month", "Product page →", "ox-month") },
     { n: "05", title: "GoalUp", body: ["A goal app from setting goals to carrying them out, so goals do not stop at the plan.", "Goal management · Challenges · Goal reminders · Growth analysis · Streaks · AI growth insights", "iOS · Android · Released"], links: productLinks("goalup", "Product page →", "goalup") },
     { n: "06", title: "CountUp", body: ["A counting app that turns repeated actions — workouts, study, reading, quitting smoking — into numbers and a visible trend.", "Count logging · Goals · Streaks · Milestones · Charts · AI insights", "iOS · Android · Released"], links: productLinks("countup", "Product page →", "countup") },
@@ -248,7 +238,7 @@ const en = {
       number: "02",
       name: "My World",
       body: [
-        "Product overview — A travel-record app that marks visited countries and cities on a world map, and the starting point of the MY WORLD platform.",
+        "Product overview — A travel-record app that marks visited countries and cities on a world map.",
         "Problem — Visited places, itineraries and photos are spread out and hard to see in one place.",
         "Approach — The travel map, itineraries, photos and stats are joined into one record.",
         "Core features — Travel map, visited countries, itineraries, travel journal, travel stats, AI travel report and travel goals.",
@@ -289,7 +279,7 @@ const en = {
     { n: "2026.04", title: "Official website", body: ["The first version of the newon.app website went live and began introducing NEWON's services."] },
     { n: "2026", title: "11 mobile apps released", body: ["11 apps NEWON built itself, including BABYLOG, PETLOG and MY WORLD, were released on the App Store and Google Play."] },
     { n: "2026.09", title: "ONGIL", body: ["The senior-life platform ONGIL was introduced on the website."] },
-    { n: "NOW", title: "Five core platforms", body: ["NEWON is organised around five platforms, with Business & Partnerships and NEWON Studio alongside. The SHAREON and ONGIL apps are in preparation."] },
+    { n: "NOW", title: "Four core platforms", body: ["NEWON is organised around four platforms, with Business & Partnerships and NEWON Studio alongside. The SHAREON and ONGIL apps are in preparation."] },
   ] as Row[],
 
   /* 08 · TECHNOLOGY & CAPABILITIES */
@@ -310,7 +300,7 @@ const en = {
   exploreHeading: "Explore NEWON.",
   exploreLead: "Meet NEWON's next possibilities.",
   exploreCtas: [
-    { label: "Explore the five platforms", href: siteHref("business/platforms/") },
+    { label: "Explore the four platforms", href: siteHref("business/platforms/") },
     { label: "NEWON Studio", href: siteHref("studio/") },
     { label: "Business & Partnerships", href: siteHref("business/") },
   ],
@@ -332,14 +322,14 @@ const ko: typeof en = {
   introHeading: "Our work",
   introText:
     "아이디어를 제품으로, 제품을 일상의 변화로. NEWON이 직접 기획하고 개발한 디지털 플랫폼과 제품을 소개합니다. 일상에서 발견한 문제를 실제 서비스로 구현하며 새로운 가능성을 만들어갑니다.",
-  introCta: "5개 플랫폼 보기",
+  introCta: "4개 플랫폼 보기",
 
   overviewHeading: "Overview",
   overviewTitle: "다양한 문제를 하나의 제품 경험으로.",
   overviewLead: "이 페이지의 모든 제품은 NEWON이 직접 소유하고 기획·개발한 것입니다. 고객별 외주 프로젝트나 제작 대행 실적은 포함하지 않습니다.",
   overview: [
-    { number: "01", name: "5개 핵심 플랫폼", body: ["BABYLOG, PETLOG, MY WORLD, SHAREON, ONGIL. 육아·반려생활·여행·공유·시니어 라이프의 다섯 영역을 각각의 플랫폼으로 직접 기획하고 운영합니다."] },
-    { number: "02", name: "독립형 앱", body: ["습관·목표, 금융, 건강처럼 일상의 한 가지 문제에 집중한 모바일 앱입니다. OX MONTH, GoalUp, CountUp, SAVY, SubPing, PiggyUp, Pillmate와 멤버십 앱 Newon+가 있습니다."], link: { label: "NEWON 앱 전체 보기 →", href: siteHref("apps/") } },
+    { number: "01", name: "4개 핵심 플랫폼", body: ["BABYLOG, PETLOG, SHAREON, ONGIL. 육아·반려생활·공유·시니어 라이프의 네 영역을 각각의 플랫폼으로 직접 기획하고 운영합니다."] },
+    { number: "02", name: "독립형 앱", body: ["습관·목표, 금융, 건강, 여행처럼 일상의 한 가지 문제에 집중한 모바일 앱입니다. OX MONTH, GoalUp, CountUp, SAVY, SubPing, PiggyUp, Pillmate, My World와 멤버십 앱 Newon+가 있습니다."], link: { label: "NEWON 앱 전체 보기 →", href: siteHref("apps/") } },
     { number: "03", name: "디지털 소프트웨어", body: ["QR 코드 생성기, 디데이 계산기, 글자 수 세기처럼 설치와 가입 없이 브라우저에서 바로 쓰는 무료 웹 도구를 만듭니다."], link: { label: "Newon Tools →", href: siteHref("tools/") } },
     { number: "04", name: "게임", body: ["404: HUMAN은 AI만 남은 세계에서 마지막 인간으로 살아남는 선택형 인터랙티브 게임으로, 웹에서 바로 플레이할 수 있습니다."], link: { label: "Newon Games →", href: siteHref("games/") } },
     { number: "05", name: "Studio 디지털 상품", body: ["NEWON Studio는 템플릿, 생산성 도구, 소프트웨어, 기업용 표준 제품을 직접 기획합니다. 지금은 무료 웹 도구와 NEWON Project Starter Kit을 이용할 수 있고, 나머지 제품군은 기획 중입니다."] },
@@ -347,9 +337,9 @@ const ko: typeof en = {
   ],
 
   platformsHeading: "Platforms",
-  platformsTitle: "일상의 다섯 가지 영역을 연결합니다.",
+  platformsTitle: "일상의 네 가지 영역을 연결합니다.",
   platformsLead:
-    "플랫폼마다 한 영역에 집중합니다. 카드의 상태는 각 플랫폼 페이지의 표기를 그대로 따릅니다. 앱 3개는 출시되었고, ONGIL은 웹 체험판으로 제공하며, SHAREON·ONGIL 앱은 준비 중입니다.",
+    "플랫폼마다 한 영역에 집중합니다. 카드의 상태는 각 플랫폼 페이지의 표기를 그대로 따릅니다. 앱 2개는 출시되었고, ONGIL은 웹 체험판으로 제공하며, SHAREON·ONGIL 앱은 준비 중입니다.",
   platformCta: "플랫폼 보기",
   platforms: [
     {
@@ -370,16 +360,6 @@ const ko: typeof en = {
       role: "반려동물 보호자와 가족 · 일상·건강 기록 · 예방접종·병원 일정 · 가족 공동 관리",
       slogan: ["반려동물의 하루와 건강을,", "가족이 함께 기록합니다."],
       lead: "지금 PETLOG 앱에서 프로필, 일상·건강 기록, 예방접종·병원 일정, 가족 공동 관리를 이용할 수 있습니다. 반려생활 정보와 커뮤니티는 준비 중입니다.",
-    },
-    {
-      id: "myworld",
-      type: "앱 출시 · iOS · Android",
-      name: "MY WORLD",
-      summary:
-        "여행 플랫폼. 여행의 탐색·계획·예약·기록·공유가 여러 서비스에 흩어진 문제에서 출발해, 방문한 국가와 도시를 세계지도에 남기는 여행 기록부터 제공합니다.",
-      role: "여행자 · 세계지도 여행 기록 · 이동 경로·사진 · 여행 통계 · AI 여행 리포트",
-      slogan: ["다녀온 모든 곳을,", "나만의 세계지도로."],
-      lead: "지금 MY WORLD 앱에서 방문 국가·도시 기록, 이동 경로·사진, 여행 통계와 AI 여행 리포트를 제공합니다. 예약·커머스·여행자 커뮤니티는 단계적으로 준비하고 있습니다.",
     },
     {
       id: "shareon",
@@ -409,7 +389,7 @@ const ko: typeof en = {
   products: [
     { n: "01", title: "BabyLog", body: ["임신부터 청소년기까지 아이의 성장과 일상을 기록하는 성장 기록 앱입니다. 메모·사진·채팅에 흩어진 육아 기록을 하나의 타임라인으로 모읍니다.", "육아 기록 · 성장·건강 기록 · 일정 관리 · 성장 통계 · 가족 공유 · AI 육아 분석", "iOS · Android · 출시 — BABYLOG 플랫폼의 기반 앱"], links: productLinks("babylog", "제품 상세 →", "babylog") },
     { n: "02", title: "PetLog", body: ["반려동물의 일상·건강·추억을 쌓는 반려 기록 앱입니다. 식사·산책·건강 기록과 병원 일정을 가족이 함께 쓰는 하나의 기록으로 모읍니다.", "식사·산책 기록 · 건강 기록 · 일정 관리 · 통계 · 가족 공유 · AI 건강 분석", "iOS · Android · 출시 — PETLOG 플랫폼의 기반 앱"], links: productLinks("petlog", "제품 상세 →", "petlog") },
-    { n: "03", title: "My World", body: ["방문한 나라와 도시를 세계지도에 남기는 여행 기록 앱입니다. 흩어진 방문 기록·여행 일정·사진을 한곳에서 봅니다.", "여행 지도 · 방문 국가 · 여행 일정 · 여행 기록 · 여행 통계 · AI 여행 리포트", "iOS · Android · 출시 — MY WORLD 플랫폼의 기반 앱"], links: productLinks("myworld", "제품 상세 →", "myworld") },
+    { n: "03", title: "My World", body: ["방문한 나라와 도시를 세계지도에 남기는 여행 기록 앱입니다. 흩어진 방문 기록·여행 일정·사진을 한곳에서 봅니다.", "여행 지도 · 방문 국가 · 여행 일정 · 여행 기록 · 여행 통계 · AI 여행 리포트", "iOS · Android · 출시"], links: productLinks("myworld", "제품 상세 →", "myworld") },
     { n: "04", title: "OX MONTH", body: ["하루 한 번의 O/X 체크로 습관을 이어 가는 월간 습관 앱입니다. 복잡한 기록 앱 없이 매일의 실천을 가볍게 남기고 싶은 사람을 위해 만들었습니다.", "오늘 기록하기 · 월간 캘린더 · 목표 설정 · 빠른 시작 · 통계 분석 · 알림 · 위젯", "iOS · Android · 출시"], links: productLinks("ox-month", "제품 상세 →", "ox-month") },
     { n: "05", title: "GoalUp", body: ["목표 설정부터 실행 관리와 챌린지까지 이어 주는 목표 관리 앱입니다. 세운 목표가 계획에서 멈추지 않도록 돕습니다.", "목표 관리 · 챌린지 · 목표 알림 · 성장 분석 · 연속 기록 · AI 성장 분석", "iOS · Android · 출시"], links: productLinks("goalup", "제품 상세 →", "goalup") },
     { n: "06", title: "CountUp", body: ["운동·공부·독서·금연처럼 반복되는 행동을 숫자로 기록하고 성장 흐름을 확인하는 카운팅 앱입니다.", "카운트 기록 · 목표 설정 · 연속 기록 · 마일스톤 · 그래프 시각화 · AI 인사이트", "iOS · Android · 출시"], links: productLinks("countup", "제품 상세 →", "countup") },
@@ -460,7 +440,7 @@ const ko: typeof en = {
       number: "02",
       name: "My World",
       body: [
-        "Product Overview — 방문한 국가와 도시를 세계지도에 기록하는 여행 기록 앱이자 MY WORLD 플랫폼의 출발점입니다.",
+        "Product Overview — 방문한 국가와 도시를 세계지도에 기록하는 여행 기록 앱입니다.",
         "Problem — 방문한 나라·도시와 여행 일정·사진이 흩어져 한곳에서 보기 어렵습니다.",
         "Approach — 여행 지도·일정·사진·통계를 하나의 기록으로 연결했습니다.",
         "Core Features — 여행 지도, 방문 국가, 여행 일정, 여행 기록, 여행 통계, AI 여행 리포트, 여행 목표.",
@@ -499,7 +479,7 @@ const ko: typeof en = {
     { n: "2026.04", title: "공식 웹사이트 시작", body: ["newon.app 공식 웹사이트의 첫 버전을 만들고, NEWON의 서비스를 소개하기 시작했습니다."] },
     { n: "2026", title: "모바일 앱 11개 출시", body: ["BABYLOG, PETLOG, MY WORLD를 포함해 NEWON이 직접 만든 모바일 앱 11개를 App Store와 Google Play에 출시했습니다."] },
     { n: "2026.09", title: "ONGIL 공개", body: ["시니어 라이프 플랫폼 ONGIL을 웹사이트에 소개했습니다."] },
-    { n: "NOW", title: "5개 핵심 플랫폼 체계", body: ["다섯 개의 핵심 플랫폼을 중심으로 Business & Partnerships와 NEWON Studio를 함께 전개합니다. SHAREON·ONGIL 앱은 준비 중입니다."] },
+    { n: "NOW", title: "4개 핵심 플랫폼 체계", body: ["네 개의 핵심 플랫폼을 중심으로 Business & Partnerships와 NEWON Studio를 함께 전개합니다. SHAREON·ONGIL 앱은 준비 중입니다."] },
   ],
 
   capabilitiesHeading: "Capabilities",
@@ -518,7 +498,7 @@ const ko: typeof en = {
   exploreHeading: "Explore NEWON.",
   exploreLead: "NEWON의 다음 가능성을 만나보세요.",
   exploreCtas: [
-    { label: "5개 플랫폼 살펴보기", href: siteHref("business/platforms/") },
+    { label: "4개 플랫폼 살펴보기", href: siteHref("business/platforms/") },
     { label: "NEWON Studio", href: siteHref("studio/") },
     { label: "Business & Partnerships", href: siteHref("business/") },
   ],

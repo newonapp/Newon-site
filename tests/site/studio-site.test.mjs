@@ -25,14 +25,14 @@ const section = (html, id) => (own(html).match(new RegExp(`<section id="${id}"[\
 const rel = (lang, p) => `${lang}/${p}/index.html`;
 const OWNER_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260819_212700_3bb9329b-5c50-4257-a09b-ca85cf3654a3.mp4";
 
-test("nine screens in nine locales (05 Contact retired into /{lang}/contact/): one h1, canonical, 9+1 hreflang, JSON-LD, studio section, five-item sub-menu", () => {
-  assert.equal(STUDIO_SCREENS.length, 9);
+test("eight screens in nine locales (05 Contact retired into /{lang}/contact/): one h1, canonical, 9+1 hreflang, JSON-LD, studio section, five-item sub-menu", () => {
+  assert.equal(STUDIO_SCREENS.length, 8);
   assert.deepEqual(STUDIO_SITE_PATHS, [
     "studio",
     "studio/store",
     "studio/platforms",
     "studio/business",
-    ...["babylog", "petlog", "myworld", "shareon", "ongil"].map((p) => `studio/platforms/${p}`),
+    ...["babylog", "petlog", "shareon", "ongil"].map((p) => `studio/platforms/${p}`),
   ]);
   for (const lang of LANGS) {
     for (const s of STUDIO_SCREENS) {
@@ -191,9 +191,9 @@ test("FAQ, use-case and content counts follow the brief; platform pages are not 
       assert.ok(links.includes(`href="/${lang}/studio/business/#industry-${pl.id}"`), `${lang} ${pl.id} business link`);
       assert.ok(links.includes(`href="/${lang}/${pl.site}/"`), `${lang} ${pl.id} platform link`);
       assert.ok(own(read(rel(lang, "studio/business"))).includes(`id="industry-${pl.id}"`), `industry-${pl.id} anchor`);
-      // in-page switcher between the five
+      // in-page switcher between the four
       const sw = own(html).match(/<nav class="sts-switch"[\s\S]*?<\/nav>/)[0];
-      assert.equal((sw.match(/class="sts-switch__a"/g) || []).length, 5, `${lang} ${pl.id} switcher`);
+      assert.equal((sw.match(/class="sts-switch__a"/g) || []).length, 4, `${lang} ${pl.id} switcher`);
       assert.match(sw, new RegExp(`href="/${lang}/studio/platforms/${pl.id}/" aria-current="page"`), `${lang} ${pl.id} switcher current`);
     }
   }
@@ -212,7 +212,7 @@ test("FAQ, use-case and content counts follow the brief; platform pages are not 
     const names = ST_PLATFORMS.flatMap((p) => C.plat[p.id].products.map((x) => x.name));
     assert.equal(new Set(names).size, names.length, `${L} candidate names unique`);
     const leads = ST_PLATFORMS.map((p) => C.plat[p.id].hero.lead);
-    assert.equal(new Set(leads).size, 5, `${L} platform leads unique`);
+    assert.equal(new Set(leads).size, ST_PLATFORMS.length, `${L} platform leads unique`);
   }
 });
 

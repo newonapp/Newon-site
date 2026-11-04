@@ -1,7 +1,7 @@
 /**
- * Newon — five representative businesses (information-only website).
+ * Newon — four representative businesses (information-only website).
  *
- *   BabyLog · PetLog · My World · ShareOn · Ongil
+ *   BabyLog · PetLog · ShareOn · Ongil
  *
  * Principle (Oct 2026): the website only introduces the business, explains features, points to app
  * download / launch status, takes partnership and general inquiries and posts notices. The real
@@ -9,23 +9,22 @@
  * No new web service feature may be added here.
  *
  * Used by: site-chrome.mjs / venture-studio-data.mjs (top-level menus), render-business-intro.mjs
- * (BabyLog / PetLog / My World / ShareOn pages), render-ongil.mjs (Ongil
+ * (BabyLog / PetLog / ShareOn pages), render-ongil.mjs (Ongil
  * keeps its editorial pages and get the shared "partners" + "download" blocks).
  *
  * Copy exists in Korean and English; other locales reuse the English body (like the rest of Studio).
  */
 
-/** Top-level menu ids for the five businesses, in menu order. */
-export const SIX_IDS = ["ongil", "shareon", "babylog", "petlog", "myworld"];
+/** Top-level menu ids for the four businesses, in menu order. */
+export const SIX_IDS = ["ongil", "shareon", "babylog", "petlog"];
 
 /** Businesses whose intro page is rendered by render-business-intro.mjs. */
-export const NEW_INTRO_IDS = ["babylog", "petlog", "myworld", "shareon"];
+export const NEW_INTRO_IDS = ["babylog", "petlog", "shareon"];
 
 /** Nav id → URL slug under /{lang}/. */
 export const SLUG = {
   babylog: "babylog",
   petlog: "petlog",
-  myworld: "myworld",
   shareon: "shareon",
   ongil: "ongil",
 };
@@ -57,15 +56,6 @@ export const BUSINESS = {
     stores: {
       appStore: "https://apps.apple.com/kr/app/petlog-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-ai-%EB%B0%98%EB%A0%A4-%EA%B8%B0%EB%A1%9D/id6770971033",
       googlePlay: "https://play.google.com/store/apps/details?id=com.newon.petlog&pcampaignid=web_share",
-    },
-  },
-  myworld: {
-    name: "My World",
-    accent: "#1769FF",
-    launch: "stores",
-    stores: {
-      appStore: "https://apps.apple.com/kr/app/my-world-%EC%97%AC%ED%96%89%EC%A7%80%EB%8F%84-%EB%B0%A9%EB%AC%B8%EA%B5%AD%EA%B0%80/id6792314945",
-      googlePlay: "https://play.google.com/store/apps/details?id=com.newon.myworld&pcampaignid=web_share",
     },
   },
   shareon: {
@@ -181,7 +171,7 @@ export const COMMON = {
   },
 };
 
-/** Per business page copy for BabyLog / PetLog / My World / ShareOn (cards are [title, lead]). */
+/** Per business page copy for BabyLog / PetLog / ShareOn (cards are [title, lead]). */
 export const PAGES = {
   babylog: {
     ko: {
@@ -393,113 +383,6 @@ export const PAGES = {
       },
       download: {
         lead: "PetLog is used as an iOS and Android app.",
-      },
-    },
-  },
-
-  myworld: {
-    ko: {
-      title: "My World | Newon — 여행한 세계를 나만의 지도로 기록하는 여행 기록 앱",
-      desc: "My World 사업 소개. 방문 국가·도시 지도, 여행 기록, AI 여행 리포트를 앱에서 이용합니다. 이 웹사이트는 소개, 앱 다운로드 안내, 제휴·문의만 제공합니다.",
-      h1: "여행한 세계가,<br />나만의 지도가 됩니다.",
-      lead: "My World는 방문한 나라와 도시, 일정과 사진을 세계 지도 위에 기록하는 지도 기반 여행 기록 앱입니다.",
-      intro: {
-        lead: "여행을 많이 할수록 나만의 세계 지도가 채워집니다.",
-        cards: [
-          ["지도", "방문한 국가와 도시를 세계 지도에서 한눈에 확인합니다."],
-          ["기록", "일정, 사진, 메모를 여행별로 모아 둡니다."],
-          ["돌아보기", "여행 통계와 AI 리포트로 나의 여행을 돌아봅니다."],
-        ],
-      },
-      problem: {
-        lead: "여행의 기억은 여러 곳에 흩어지기 쉽습니다.",
-        cards: [
-          ["흩어진 여행 기록", "일정, 사진, 메모가 여러 앱과 앨범에 나뉘어 있습니다."],
-          ["어디를 다녀왔는지 흐릿함", "방문한 나라와 도시를 한눈에 보기 어렵습니다."],
-          ["돌아볼 기준이 없음", "나의 여행 스타일과 변화를 되짚어 볼 방법이 부족합니다."],
-        ],
-      },
-      features: {
-        lead: "아래 기능은 My World 앱에서 이용합니다. 웹사이트에서는 제공하지 않습니다.",
-        cards: [
-          ["여행 지도", "방문 국가와 도시를 세계 지도에 기록합니다."],
-          ["여행 일정", "계획부터 완료된 일정까지 캘린더로 관리합니다."],
-          ["여행 기록", "사진, 메모, 여행 노트를 함께 보관합니다."],
-          ["여행 통계", "방문 국가 수, 여행일, 거리, 대륙 달성률을 확인합니다."],
-          ["AI 여행 리포트", "여행 패턴을 정리해 여행 스타일과 요약을 보여 줍니다."],
-          ["여행 목표", "가고 싶은 나라와 목표를 정하고 지도를 채워 갑니다."],
-        ],
-      },
-      audience: {
-        lead: "여행의 순간을 오래 남기고 싶은 분들을 위한 앱입니다.",
-        cards: [
-          ["여행을 자주 다니는 분", "방문한 곳을 하나의 지도에 쌓아 가고 싶은 분."],
-          ["기록을 좋아하는 분", "사진과 메모로 여행을 정리하고 싶은 분."],
-          ["목표를 세워 여행하는 분", "방문 국가 목표를 세우고 달성 현황을 보고 싶은 분."],
-        ],
-      },
-      partners: {
-        lead: "여행 생태계를 함께 만들 기업·판매자·기관의 제휴 문의를 받습니다.",
-        cards: [
-          ["여행 서비스·콘텐츠 사업자", "여행 정보와 콘텐츠를 제공하는 사업자와의 협업."],
-          ["지역·관광 기관", "지역 여행 정보를 소개하는 관광 기관·지자체와의 협력."],
-          ["여행 상품·브랜드", "여행 상품과 용품을 소개하려는 판매자·브랜드와의 협업. 제휴 계약이 확정되기 전에는 상품 예약·결제를 연결하지 않습니다."],
-        ],
-      },
-      download: {
-        lead: "My World는 iOS와 Android 앱으로 이용합니다.",
-      },
-    },
-    en: {
-      title: "My World | Newon — A travel log app that turns the world you have visited into your own map",
-      desc: "My World business overview. Use the visited country and city map, travel records and AI travel reports in the app. This website only provides information, app download guidance, partnerships and inquiries.",
-      h1: "The world you travel<br />becomes your own map.",
-      lead: "My World is a map-based travel log app that records the countries and cities you visit, with your itinerary and photos, on a world map.",
-      intro: {
-        lead: "The more you travel, the more of your own world map fills in.",
-        cards: [
-          ["Map", "See the countries and cities you have visited on a world map."],
-          ["Record", "Keep itineraries, photos and notes together per trip."],
-          ["Look back", "Review your travel with statistics and an AI report."],
-        ],
-      },
-      problem: {
-        lead: "Travel memories are easily scattered.",
-        cards: [
-          ["Scattered trip records", "Itineraries, photos and notes sit in different apps and albums."],
-          ["Where you have been is blurry", "It is hard to see every country and city you have visited at a glance."],
-          ["No way to look back", "There is little to help you review your travel style and how it changes."],
-        ],
-      },
-      features: {
-        lead: "The features below are used in the My World app. They are not provided on the website.",
-        cards: [
-          ["Travel map", "Record visited countries and cities on the world map."],
-          ["Trip schedule", "Manage plans and completed trips in a calendar."],
-          ["Travel records", "Keep photos, notes and travel journals together."],
-          ["Travel statistics", "See countries visited, travel days, distance and continent progress."],
-          ["AI travel report", "Summarizes your travel patterns, style and highlights."],
-          ["Travel goals", "Set the countries you want to visit and fill in the map."],
-        ],
-      },
-      audience: {
-        lead: "For people who want to keep their travel moments for a long time.",
-        cards: [
-          ["Frequent travelers", "Those who want to build every place they visit on one map."],
-          ["Record keepers", "Those who like to organize trips with photos and notes."],
-          ["Goal-driven travelers", "Those who set country goals and want to see progress."],
-        ],
-      },
-      partners: {
-        lead: "We welcome partnership inquiries from businesses, sellers and institutions that want to build the travel ecosystem together.",
-        cards: [
-          ["Travel service and content providers", "Collaboration with businesses that provide travel information and content."],
-          ["Regional and tourism bodies", "Cooperation with tourism organizations and local governments that introduce regional travel information."],
-          ["Travel products and brands", "Collaboration with sellers and brands that introduce travel products. Booking and payment are not connected until partnership contracts are confirmed."],
-        ],
-      },
-      download: {
-        lead: "My World is used as an iOS and Android app.",
       },
     },
   },
