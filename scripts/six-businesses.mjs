@@ -1,7 +1,7 @@
 /**
- * Newon — six representative businesses (information-only website).
+ * Newon — five representative businesses (information-only website).
  *
- *   BabyLog · PetLog · My World · ShareOn · LivOn · Ongil
+ *   BabyLog · PetLog · My World · ShareOn · Ongil
  *
  * Principle (Oct 2026): the website only introduces the business, explains features, points to app
  * download / launch status, takes partnership and general inquiries and posts notices. The real
@@ -9,14 +9,14 @@
  * No new web service feature may be added here.
  *
  * Used by: site-chrome.mjs / venture-studio-data.mjs (top-level menus), render-business-intro.mjs
- * (BabyLog / PetLog / My World / ShareOn pages), render-lifestage.mjs + render-ongil.mjs (LivOn / Ongil
- * keep their editorial pages and get the shared "partners" + "download" blocks).
+ * (BabyLog / PetLog / My World / ShareOn pages), render-ongil.mjs (Ongil
+ * keeps its editorial pages and get the shared "partners" + "download" blocks).
  *
  * Copy exists in Korean and English; other locales reuse the English body (like the rest of Studio).
  */
 
-/** Top-level menu ids for the six businesses, in menu order. */
-export const SIX_IDS = ["ongil", "lifestage", "shareon", "babylog", "petlog", "myworld"];
+/** Top-level menu ids for the five businesses, in menu order. */
+export const SIX_IDS = ["ongil", "shareon", "babylog", "petlog", "myworld"];
 
 /** Businesses whose intro page is rendered by render-business-intro.mjs. */
 export const NEW_INTRO_IDS = ["babylog", "petlog", "myworld", "shareon"];
@@ -27,7 +27,6 @@ export const SLUG = {
   petlog: "petlog",
   myworld: "myworld",
   shareon: "shareon",
-  lifestage: "lifestage",
   ongil: "ongil",
 };
 
@@ -35,7 +34,7 @@ export const SLUG = {
  * Per business facts. `launch`:
  *   "stores"     – released in the App Store / Google Play (links below)
  *   "coming"     – app is being prepared; no store link may be shown
- * `webStart` (LivOn / Ongil only): the existing web experience stays online as a transition until the
+ * `webStart` (Ongil only): the existing web experience stays online as a transition until the
  * app is released AND the migration is verified (see docs/web-closure/). Allowed values:
  *   "transition" – keep the 시작하기 entry (current state)
  *   "app-download" – replace it with the app download guide (after app release + verification)
@@ -74,14 +73,6 @@ export const BUSINESS = {
     accent: "#7771E8",
     launch: "coming",
     stores: null,
-  },
-  lifestage: {
-    name: "LivOn",
-    accent: "#F6D76B",
-    launch: "coming",
-    stores: null,
-    webStart: "removed", // owner 2026-10-26: no web preview is promoted; app launch in preparation
-    webStartHref: "/livon/",
   },
   ongil: {
     name: "Ongil",
@@ -617,28 +608,8 @@ export const PAGES = {
   },
 };
 
-/** Closing blocks appended to the existing LivOn / Ongil editorial pages (ko + en). */
+/** Closing blocks appended to the existing Ongil editorial pages (ko + en). */
 export const LIFE_BLOCKS = {
-  lifestage: {
-    ko: {
-      partnersLead: "LivOn은 삶의 단계마다 필요한 정보와 서비스를 연결하는 사업입니다. 정보를 제공하는 기업·기관과 서비스·상품을 제공하는 판매자의 제휴 문의를 받습니다.",
-      partnersCards: [
-        ["정보·콘텐츠 제공 기관", "교육, 진로, 취업, 금융 등 생활 정보를 제공하는 기관·기업과의 협력."],
-        ["서비스·상품 판매자", "생애 단계에 맞는 서비스와 상품을 제공하려는 사업자와 판매자."],
-        ["공공·지역 기관", "청년·가족·은퇴 등 지원 정보를 함께 안내할 공공·지역 기관."],
-      ],
-      downloadLead: "LivOn은 iOS · Android 앱으로 출시를 준비하고 있습니다.",
-    },
-    en: {
-      partnersLead: "LivOn connects the information and services people need at each life stage. We welcome partnership inquiries from organizations that provide information and sellers that provide services and products.",
-      partnersCards: [
-        ["Information and content providers", "Cooperation with organizations and companies that provide life information such as education, career, jobs and finance."],
-        ["Service and product sellers", "Businesses and sellers that offer services and products suited to each life stage."],
-        ["Public and local bodies", "Public and local organizations that guide support information for youth, families and retirement together."],
-      ],
-      downloadLead: "LivOn is being prepared for launch as an iOS and Android app.",
-    },
-  },
   ongil: {
     ko: {
       partnersLead: "Ongil은 시니어의 일상과 돌봄, 가족과 지역을 잇는 사업입니다. 돌봄·생활 서비스를 제공하는 기업·판매자와 지역·복지 기관의 제휴 문의를 받습니다.",

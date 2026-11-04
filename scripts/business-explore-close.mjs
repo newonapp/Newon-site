@@ -20,7 +20,7 @@ const FAQ = {
     { q: "어떤 곳과 제휴할 수 있나요?", a: "기업, 판매자, 공공·지역 기관과 제휴할 수 있습니다. 범위와 조건은 문의 후 개별 협의합니다." },
     { q: "자동화 솔루션을 도입하고 싶습니다.", a: "현재 업무 흐름과 목표를 알려주세요. 적합한 도입 방식을 함께 검토합니다." },
     { q: "비용은 어떻게 정해지나요?", a: "고정된 가격표를 두지 않고, 문의 내용을 확인한 뒤 개별 협의합니다." },
-    { q: "각 사업은 어디서 확인하나요?", a: "BabyLog, PetLog, My World, ShareOn, LivOn, Ongil 메뉴에서 각 사업을 소개합니다." },
+    { q: "각 사업은 어디서 확인하나요?", a: "BabyLog, PetLog, My World, ShareOn, Ongil 메뉴에서 각 사업을 소개합니다." },
   ],
   en: [
     { q: "What does Business cover?", a: "The products Newon builds and runs itself, automation solutions that reduce repetitive work, and partnerships with businesses, sellers and institutions." },
@@ -28,7 +28,7 @@ const FAQ = {
     { q: "Who can partner with Newon?", a: "Businesses, sellers, and public or local institutions. Scope and terms are agreed individually after an inquiry." },
     { q: "I want to adopt an automation solution.", a: "Tell us about your current workflow and goals. We will review the right way to adopt it together." },
     { q: "How is pricing decided?", a: "There is no fixed price list. Terms are discussed individually after we review your inquiry." },
-    { q: "Where can I see each business?", a: "BabyLog, PetLog, My World, ShareOn, LivOn and Ongil each have their own menu." },
+    { q: "Where can I see each business?", a: "BabyLog, PetLog, My World, ShareOn and Ongil each have their own menu." },
   ],
 };
 

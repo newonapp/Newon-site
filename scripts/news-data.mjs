@@ -349,69 +349,6 @@ export const NEWS_ARTICLES = [
     },
   }),
   businessArticle({
-    id: "livon-life-stage",
-    slug: "livon-life-stage",
-    published: false, // LIVON was removed from the website (2026-11)
-    categoryLabel: "FUTURE BUSINESS",
-    brandName: "LivOn",
-    linkHref: "/{{LANG}}/lifestage/",
-    imageAlt: { ko: "Newon 로고", en: "Newon logo" },
-    copy: {
-      ko: {
-        title: "LivOn, 삶의 변화에 필요한 서비스를 연결하는 생애주기 플랫폼 구상",
-        titleHtml: "LivOn, 삶의 변화에 필요한 서비스를<br />연결하는 생애주기 플랫폼 구상",
-        summary: "10대부터 70대까지 생애 단계별로 달라지는 생활의 필요를 연결하는 플랫폼을 준비합니다.",
-        lead: "LivOn은 인생의 각 단계에서 필요한 정보와 서비스를 하나의 흐름으로 연결하는 생애주기 플랫폼입니다.",
-        linkLabel: "LivOn 소개 보기",
-        blocks: [
-          {
-            type: "p",
-            text: "LivOn은 인생의 각 단계에서 필요한 정보와 서비스를 하나의 흐름으로 연결하는 생애주기 플랫폼입니다.",
-          },
-          {
-            type: "p",
-            text: "진로와 학업, 취업과 경제생활, 독립과 주거, 가족과 중장년기, 은퇴 이후의 생활 등 생애 단계에 따라 달라지는 필요를 고려하여 서비스를 구성할 계획입니다.",
-          },
-          {
-            type: "p",
-            text: "Newon은 각 연령대의 실제 생활 문제와 사용자 경험을 검토하며, 핵심 서비스부터 단계적으로 구현하는 방향을 준비하고 있습니다.",
-          },
-          {
-            type: "p",
-            text: "현재 LivOn은 향후 사업 계획에 포함된 플랫폼이며, 구체적인 기능과 출시 일정은 개발 및 검증 상황에 따라 확정할 예정입니다.",
-          },
-        ],
-      },
-      en: {
-        title: "LivOn is a life-stage platform in preparation, connecting services as life changes",
-        titleHtml: "LivOn is a life-stage platform in preparation,<br />connecting services as life changes",
-        summary:
-          "Newon is preparing a platform that connects the different needs of life from the teens through the seventies.",
-        lead:
-          "LivOn is a life-stage platform meant to connect the information and services each stage of life needs.",
-        linkLabel: "See LivOn",
-        blocks: [
-          {
-            type: "p",
-            text: "LivOn is a life-stage platform meant to connect the information and services each stage of life needs.",
-          },
-          {
-            type: "p",
-            text: "The plan is to shape services around how needs change: study and direction, work and money, independence and housing, family and midlife, and life after retirement.",
-          },
-          {
-            type: "p",
-            text: "Newon is reviewing the real living problems and experiences of each age group, and preparing to build from a core service in stages.",
-          },
-          {
-            type: "p",
-            text: "LivOn is part of the plan ahead. Specific functions and a launch date will be set as development and validation proceed. It is not a launched service.",
-          },
-        ],
-      },
-    },
-  }),
-  businessArticle({
     id: "ongil-senior-care",
     slug: "ongil-senior-care",
     categoryLabel: "FUTURE BUSINESS",

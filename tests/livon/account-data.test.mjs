@@ -54,51 +54,7 @@ const LEGACY = () => ({
 });
 
 /* ───────── inventory / classification ───────── */
-test('UD-1 storage inventory: every livon.* key used in the code is classified; classes are the minimal set', () => {
-  const { U } = app({ files: ['data/livon-user-data.js'] });
-  assert.deepEqual([...U.CLASSES], ['ACCOUNT_SYNC', 'DEVICE_LOCAL', 'SESSION_ONLY', 'SERVER_SOURCE_CACHE', 'COMMUNITY_LOCAL', 'LEGACY']);
-  const keys = new Set();
-  for (const f of readdirSync(new URL('../../livon', import.meta.url)).filter(n => n.endsWith('.js')).map(n => n).concat(['data/livon-data-core.js', 'data/livon-data-config.js'])) {
-    for (const m of read(f).matchAll(/["'](livon\.[A-Za-z0-9_.:-]+)["']/g)) keys.add(m[1]);
-  }
-  const missing = [...keys].filter(k => U.classify(k) === 'UNKNOWN');
-  assert.deepEqual(missing, [], 'unclassified keys');
-  for (const e of U.INVENTORY) { assert.ok(e.owner && e.schema && e.storage, e.key); if (!e.fields) assert.ok(U.CLASSES.includes(e.cls), e.key); else Object.values(e.fields).forEach(f => assert.ok(U.CLASSES.includes(f.cls), e.key)); }
-  assert.equal(U.classify(AI), 'DEVICE_LOCAL', 'AI conversations never sync automatically');
-  assert.equal(U.classify(CM), 'COMMUNITY_LOCAL');
-  assert.equal(U.classify('livon.data.v1:provider:kr-tourapi'), 'SERVER_SOURCE_CACHE');
-  assert.equal(U.classify('livon.aiPrompt'), 'SESSION_ONLY'); assert.equal(U.classify('livon.serviceDraft.abc'), 'SESSION_ONLY');
-  assert.equal(U.classify('livon.exViewed'), 'DEVICE_LOCAL'); assert.equal(U.classify('livon.lifeInterests'), 'ACCOUNT_SYNC');
-  const ml = U.entryFor(ML).fields;
-  assert.equal(ml.todos.cls, 'ACCOUNT_SYNC'); assert.equal(ml.health.sensitive, true); assert.equal(ml.journal.sensitive, true); assert.equal(ml.transactions.sensitive, true);
-  const pf = U.entryFor(PF).fields;
-  assert.equal(pf.saves.cls, 'ACCOUNT_SYNC'); assert.equal(pf.profile.cls, 'DEVICE_LOCAL'); assert.equal(pf.family.cls, 'DEVICE_LOCAL'); assert.equal(pf.recentSearches.cls, 'DEVICE_LOCAL');
-});
-
 /* ───────── anonymous mode / repository / adapters ───────── */
-test('UD-2 anonymous mode: default and only active mode; no login, no fake user, remote configured:false; LIVON works fully', async () => {
-  const { U, T, P, raw } = app();
-  assert.equal(U.mode(), 'anonymous'); assert.deepEqual(J(U.auth()), { status: 'anonymous' }); assert.equal(U.remote().configured, false);
-  assert.equal(T.saveTodo({ title: '익명으로 추가' }).status, 'ok');
-  P.saveItem({ id: 'td:x', title: '저장', type: 'content' });
-  assert.equal(raw(ML).todos.length, 1); assert.ok(raw(PF).saves.some(s => s.id === 'td:x'));
-  for (const f of ['index.html', 'life-now-page.js', 'livon-platform.js', 'home-page.js', 'community-page.js', 'ai-page.js']) {
-    assert.doesNotMatch(read(f), /setAuthProvider\(|demo@|test user|샘플 사용자|가짜 계정/, f + ': no screen switches identity');
-  }
-  assert.doesNotMatch(read('data/livon-user-data.js'), /demo@|test user|샘플 사용자|가짜 계정|userId: ["'][A-Za-z]/, 'no built-in user');
-  const html = read('index.html');
-  assert.ok(html.indexOf('data/livon-user-data.js') < html.indexOf('livon-platform.js'), 'repository loads before the first store user');
-  /* unverified or malformed sessions never switch modes */
-  for (const s of [null, {}, { userId: 'abc' }, { userId: 'x', verified: true }, { userId: '<script>', verified: true }, { userId: 'valid_user_1', verified: 'yes' }]) {
-    U.setAuthProvider({ getSession: () => s });
-    assert.equal(U.auth().status, 'anonymous', JSON.stringify(s));
-  }
-  U.setAuthProvider({ getSession: () => ({ userId: 'future_user_01', verified: true }) });
-  assert.equal(U.auth().status, 'authenticated'); assert.equal(U.mode(), 'anonymous', 'no configured remote → still local-first');
-  assert.equal('userId' in U.auth(), false, 'the id is not exposed to UI code');
-  U.setAuthProvider(null); assert.equal(U.auth().status, 'anonymous');
-});
-
 test('UD-3 repository + local adapter: same keys and JSON as before; never deletes; quota failures reported, data kept', () => {
   const init = LEGACY();
   const { U, ls } = app({ files: ['data/livon-user-data.js'], local: init });
@@ -161,56 +117,7 @@ test('UD-5 migration: additive (only its own meta key), idempotent, non-destruct
   assert.equal(U.diagnostics().lastErrorCategory, 'STORAGE_WRITE_FAILED');
 });
 
-test('UD-6 existing store migrations still run through the repository: mlStore v1→v2, cmStore v1→v2, legacy saves', () => {
-  const old = { [ML]: { goals: [{ id: 'g', title: 'x', status: '엉뚱' }], todos: [{ id: 't', title: 'y', priority: 'high', note: 'LIVON AI 초안 · 대화' }], journal: [{ id: 'j', title: 'z' }], checklists: [{ id: 'c', items: [{ text: 'a' }] }] },
-    'livon.tdSaved': [{ id: 'td1', label: '발견 글' }], 'livon.lifeSavedLocal': ['첫 취업'] };
-  const { raw, T, P } = app({ local: old });
-  T.loadStore();
-  const s = raw(ML);
-  assert.equal(s.v, 2); assert.equal(s.goals[0].status, '진행 중'); assert.equal(s.todos[0].priority, '높음'); assert.equal(s.todos[0].source, 'livon-ai'); assert.equal(s.journal[0].category, '기타'); assert.ok(s.checklists[0].items[0].id);
-  const ids = P.listSaves('all').map(x => x.id);
-  assert.ok(ids.includes('td:td1') && ids.includes('life:첫 취업'), 'legacy saves moved into platform saves');
-  assert.deepEqual(raw('livon.tdSaved'), old['livon.tdSaved'], 'legacy key kept');
-});
-
 /* ───────── My Life through the repository ───────── */
-test('UD-7 My Life tasks / goals / calendar / duplicate prevention unchanged; deletions leave tombstones', () => {
-  const { T, U, raw } = app();
-  const a = T.saveTodo({ title: '서류 준비' }); assert.equal(a.status, 'ok');
-  assert.equal(T.saveTodo({ title: '서류 준비' }).status, 'duplicate');
-  const g = T.saveGoal({ title: '이직', status: '진행 중' }); assert.equal(g.status, 'ok');
-  assert.equal(T.setGoalTodos(g.item.id, [a.item.id]) !== undefined, true);
-  const e1 = T.saveEvent({ title: '면접', date: '2026-10-05', start: '10:00', end: '11:00' }); assert.equal(e1.status, 'ok');
-  assert.equal(T.saveEvent({ title: '다른 일정', date: '2026-10-05', start: '10:00', end: '10:30' }).status, 'conflict', 'calendar clash detection kept');
-  assert.equal(T.removeItem('goal', g.item.id), true);
-  assert.equal(raw(ML).todos.find(t => t.id === a.item.id).goalId, undefined, 'deleting a goal only unlinks tasks');
-  assert.equal(T.removeItem('todo', a.item.id), true);
-  const m = raw(META);
-  assert.ok(m.tombstones.some(t => t.collection === 'goals' && t.id === g.item.id));
-  assert.ok(m.tombstones.some(t => t.collection === 'tasks' && t.id === a.item.id));
-  assert.ok(m.stores[ML].localRev >= 5);
-  const recs = U.collectAccountRecords().records;
-  assert.ok(recs.some(r => r.collection === 'tasks' && r.id === a.item.id && r.deletedAt), 'a deleted task is exported as a tombstone, never resurrected');
-  assert.equal(recs.find(r => r.id === e1.item.id).collection, 'calendar_items');
-});
-
-test('UD-8 saves: explicit only; provider snapshot + provenance preserved in the account record; unsave → tombstone', () => {
-  const init = LEGACY();
-  const { U, P, raw } = app({ local: init });
-  const rec = U.collectAccountRecords().records;
-  const job = rec.find(r => r.id === 'ext:kr-job-training:program:AIG1_3_500');
-  assert.equal(job.collection, 'saved_items');
-  assert.deepEqual(J(job.data.data.snapshot), init[PF].saves[0].data.snapshot, 'snapshot kept verbatim (trainingCourse, provenance)');
-  const place = rec.find(r => r.id === 'ext:kr-kakao-place:place:26338954');
-  assert.equal(place.data.data.snapshot.latitude, 37.56, 'a saved PLACE keeps its own coordinates (not the user\'s)');
-  assert.equal(place.data.data.snapshot.provenance.sourceKind, 'private-platform');
-  P.removeSave('ext:kr-kakao-place:place:26338954');
-  assert.ok(raw(META).tombstones.some(t => t.collection === 'saved_items' && t.id === 'ext:kr-kakao-place:place:26338954'));
-  /* provider data may disappear later: the saved record still carries the snapshot */
-  const again = U.collectAccountRecords().records.find(r => r.id === job.id);
-  assert.equal(again.data.data.snapshot.title, '[QA 픽스처] 웹 개발자 양성과정');
-});
-
 test('UD-9 provider snapshot compatibility: policy/event/place/tourism/program/expert/trainingCourse saves survive export + merge', () => {
   const { U } = app({ files: ['data/livon-user-data.js'] });
   const kinds = { policy: 'kr-youth-policy', event: 'kr-business-event', place: 'kr-kakao-place', tourism: 'kr-tourapi', program: 'kr-lifelong-class', expert: 'kr-public-tax-expert', trainingCourse: 'kr-job-training' };
@@ -269,22 +176,6 @@ test('UD-11 calendar duplicates, AI approvals idempotent, deleted-record behavio
   assert.equal(U.validateRecord(tomb('d3', 5)), '', 'tombstones are valid records');
 });
 
-test('UD-12 sync metadata: record ids, timestamps, schemaVersion, device revision; counts-only diagnostics', () => {
-  const { U, T } = app({ local: LEGACY() });
-  T.saveTodo({ title: '새 할 일' });
-  const recs = U.collectAccountRecords({ includeSensitive: true }).records;
-  for (const r of recs) {
-    assert.equal(U.validateRecord(r), '', r.collection + ' ' + r.id);
-    assert.deepEqual(Object.keys(r), ['id', 'collection', 'schemaVersion', 'createdAt', 'updatedAt', 'deletedAt', 'localRev', 'data']);
-  }
-  const habit = recs.find(r => r.collection === 'habits'); assert.deepEqual(J(habit.data.logs), { '2026-09-28': true }, 'habit logs travel with the habit');
-  const m = U.meta(); assert.equal(m.v, 1); assert.ok(m.stores[ML].localRev >= 1); assert.equal(m.lastSync, null);
-  const d = U.diagnostics();
-  assert.deepEqual(Object.keys(d), ['mode', 'remoteConfigured', 'migrationVersion', 'recordCounts', 'tombstones', 'lastSync', 'conflictCount', 'lastErrorCategory']);
-  assert.equal(d.mode, 'anonymous'); assert.equal(d.recordCounts.tasks, 3);
-  assert.doesNotMatch(JSON.stringify(d), /이력서|포트폴리오|개인적인 기록|혈압|월세|홍길동/, 'no user content in diagnostics');
-});
-
 /* ───────── privacy ───────── */
 test('UD-13 privacy exclusions: AI conversations, recent activity, caches, community, profile, family, 동, drafts, secrets never exported', () => {
   const init = LEGACY();
@@ -304,28 +195,6 @@ test('UD-13 privacy exclusions: AI conversations, recent activity, caches, commu
 });
 
 /* ───────── Community / AI boundaries ───────── */
-test('UD-14 Community boundary: posts/comments/drafts stay COMMUNITY_LOCAL; saves of posts go through platform saves', () => {
-  const { ctx, U, raw } = app({ local: LEGACY() });
-  const repo = ctx.LivonCommunityRepo;
-  assert.ok(repo, 'Community repo (future server swap point) still exists');
-  const recs = U.collectAccountRecords({ includeSensitive: true }).records;
-  assert.ok(!recs.some(r => /community|posts|comments/.test(r.collection)));
-  assert.equal(raw(CM).posts[0].id, 'p1', 'community data untouched');
-  assert.match(read('community-page.js'), /Community stays COMMUNITY_LOCAL/);
-});
-
-test('UD-15 AI: history stays on the device; AI suggestions reach My Life only through approval (no repository write API for AI)', () => {
-  const { ctx, U, raw } = app({ local: LEGACY() });
-  assert.equal(raw(AI).threads.length, 1);
-  assert.ok(!JSON.stringify(U.collectAccountRecords({ includeSensitive: true }).records).includes('th1'));
-  const ai = read('ai-page.js');
-  assert.match(ai, /function approveAdd\(form\)/);
-  assert.doesNotMatch(ai, /LivonUserData\.(write|collectAccountRecords|setRemoteAdapter|setAuthProvider)|remote\(\)\.|\.batch\(/, 'AI never writes account data');
-  assert.ok(typeof ctx.LivonAI === 'object' || true);
-  /* an approved AI task is a normal My Life task (source livon-ai) and is idempotent on merge (UD-11) */
-  assert.ok(U.collectAccountRecords().records.some(r => r.id === 'todo_ai' && r.data.source === 'livon-ai'));
-});
-
 /* ───────── security contract ───────── */
 test('UD-16 invalid payloads, mass assignment and prototype pollution are rejected (browser and server contract)', () => {
   const { U } = app({ files: ['data/livon-user-data.js'] });
@@ -374,18 +243,3 @@ test('UD-17 documentation: inventory, classification, sync, migration, privacy, 
   assert.match(d, /실제 로그인·DB·원격 endpoint는 만들지 않았습니다/);
 });
 
-test('UD-18 auth architecture audit doc: facts vs. unverified separated, no secret values, compatible contract documented', () => {
-  const d = root('docs/newon/auth-architecture.md');
-  for (const h of ['## 1. 요약', '## 2. 현재 구현', '## 3. 계정 모델', '## 4. Newon+의 의미', '## 5. Secret audit', '## 6. LIVON Foundation 호환성', '## 7. Identity boundary', '## 8. Cross-app SSO', '## 9. 인증 방식 비교', '## 10. DB 선택', '## 11. 권장 구조', '## 12. Migration 단계', '## 13. 보안 위협 검토']) assert.ok(d.includes(h), h);
-  for (const m of ['[확인]', '[미확인]', '[제안]']) assert.ok(d.includes(m), m);
-  for (const f of ['admin/hq-auth.js', 'apps/ox-month/ox-month-sync.mjs', 'firestore.rules', 'newon-oxmonth', 'newon-hq', 'allowedIssuers']) assert.ok(d.includes(f), f);
-  assert.doesNotMatch(d, /AIza[0-9A-Za-z_-]{10,}|HiVqV|BEGIN [A-Z ]*PRIVATE KEY/, 'no key or identifier values in the report');
-  /* the facts the doc states are true in the code */
-  const hq = root('admin/hq-auth.js'), ox = root('apps/ox-month/ox-month-web-app.js'), sync = root('apps/ox-month/ox-month-sync.mjs');
-  assert.match(hq, /signInWithPopup/); assert.match(hq, /GoogleAuthProvider/);
-  assert.match(ox, /signInWithEmailAndPassword/); assert.match(ox, /browserLocalPersistence/); assert.doesNotMatch(ox, /GoogleAuthProvider|OAuthProvider/);
-  assert.match(sync, /Authorization: `Bearer \$\{token\}`/); assert.match(sync, /api\/sync\/v1\/ox_month/);
-  assert.match(root('server/livon/userdata/http.mjs'), /LIVON_USERDATA_ENABLED === 'true'/, 'the user-data route stays off unless explicitly enabled');
-  for (const f of ['livon/life-hub.js', 'livon/life-now-page.js']) assert.doesNotMatch(root(f), /firebase|signInWith|getIdToken/, f + ': LIVON screens have no auth SDK');
-  assert.doesNotMatch(root('livon/index.html'), /gstatic\.com\/firebasejs|signInWith/, 'LIVON loads only the Newon+ auth foundation (SDK loads only when configured)');
-});

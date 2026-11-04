@@ -224,24 +224,18 @@
     },
     {
       "n": "03",
-      "title": "LivOn",
-      "body": "Kami menyiapkan platform yang menghubungkan informasi dan layanan hidup, dari remaja hingga usia 70-an.",
-      "href": "../lifestage/"
-    },
-    {
-      "n": "04",
       "title": "Ongil",
       "body": "Kami menyiapkan platform hidup untuk keseharian lansia, dukungan perawatan, dan hubungan keluarga.",
       "href": "../ongil/"
     },
     {
-      "n": "05",
+      "n": "04",
       "title": "Business",
       "body": "Perangkat lunak untuk perusahaan, dari otomatisasi sampai operasi dan perbaikan. Build · Automation · Solutions · Care",
       "href": "../business/"
     },
     {
-      "n": "06",
+      "n": "05",
       "title": "Studio",
       "body": "Identitas, layar, dan konten sebagai pekerjaan desain. Brand · UI/UX · Content",
       "href": "../studio/"

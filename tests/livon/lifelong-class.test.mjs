@@ -39,21 +39,6 @@ const S = () => globalThis.LivonDataSchema;
 const E = (o, at = new Date().toISOString()) => S().validateEntity(lc.toEntity(row(o), at)).entity;
 
 /* ───────── server ───────── */
-test('1 official contract: fixed endpoint, serviceKey decoded once, pageNo/numOfRows(≤1000)/type=json, key server-only', async () => {
-  assert.equal(lc.UPSTREAM, 'https://api.data.go.kr/openapi/tn_pubr_public_lftm_lrn_lctre_api');
-  assert.equal(lc.ENV_KEY, 'PUBLIC_DATA_SERVICE_KEY'); assert.equal(lc.PAGE_ROWS, 1000);
-  const up = upstream(() => reply(ok([row()])));
-  await call(handler({ PUBLIC_DATA_SERVICE_KEY: encodeURIComponent(KEY) }, up), Q());
-  const u = up.calls[0].url;
-  assert.equal(u.origin + u.pathname, lc.UPSTREAM);
-  assert.deepEqual([...u.searchParams.keys()], ['serviceKey', 'pageNo', 'numOfRows', 'type']);
-  assert.equal(u.searchParams.get('serviceKey'), KEY); assert.equal(u.searchParams.get('type'), 'json');
-  assert.match(root('.env.example'), /\nPUBLIC_DATA_SERVICE_KEY=\n/);
-  for (const f of ['data/livon-data-core.js', 'data/livon-data-providers.js', 'data/livon-data-schema.js', 'explore-page.js', 'life-hub.js', 'today-feed.js', 'ai-page.js', 'index.html']) {
-    assert.doesNotMatch(read(f), /PUBLIC_DATA_SERVICE_KEY|serviceKey|api\.data\.go\.kr/, f);
-  }
-});
-
 test('2 auth / no key: configured=false, NOT_CONFIGURED, zero upstream calls', async () => {
   const up = upstream(() => reply(ok([row()])));
   const h = handler({}, up);
@@ -123,43 +108,6 @@ test('10 id: composite hash of official fields; stable across refreshes; no inst
   assert.equal(lc.toEntity(row({ lctreNm: '' }), 'x'), null); assert.equal(lc.toEntity(row({ operInstitutionNm: '' }), 'x'), null);
 });
 
-test('11-13 schedule, application period and status (dates only; nothing inferred from text)', async () => {
-  const e = E();
-  assert.ok(e.schedule.startAt && e.schedule.endAt); assert.equal(e.schedule.recurrence, '월+화+목 10:10~10:50');
-  const { D } = await loaded();
-  assert.equal(D.registrationLabel(E()), '접수 중');
-  assert.equal(D.registrationLabel(E({ rceptStartDate: day(3), rceptEndDate: day(9) })), '접수 예정');
-  assert.equal(D.registrationLabel(E({ rceptStartDate: day(-9), rceptEndDate: day(-3) })), '접수 마감');
-  assert.equal(D.registrationLabel(E({ rceptStartDate: '', rceptEndDate: '' })), '', 'no dates → no status');
-  assert.equal(D.registrationLabel(E({ rceptStartDate: '상시', rceptEndDate: '선착순 마감' })), '');
-  assert.equal(D.freshness(E({ edcStartDay: day(-30), edcEndDay: day(-1), rceptStartDate: '', rceptEndDate: '' })), 'expired', 'course ended');
-  assert.notEqual(D.freshness(E({ rceptStartDate: day(-9), rceptEndDate: day(-3) })), 'expired', 'closed registration ≠ ended course');
-  assert.equal(D.freshness(E()), 'unknown', 'no LIVON verification');
-  const ended = await lc.fetchAll({ key: KEY, fetcher: upstream(() => reply(ok([row({ edcStartDay: day(-9), edcEndDay: day(-2) }), row({ edcPlace: 'Z' })]))).fetcher });
-  assert.equal(ended.length, 1, 'ended courses are not offered');
-});
-
-test('14-15 price and capacity: raw values only; "0" is 0원 (never "무료"); non-numeric kept as a note; no availability', async () => {
-  assert.equal(E({ lctreCost: '0' }).pricing.amount, 0);
-  const note = E({ lctreCost: '재료비 별도' }); assert.equal(note.pricing, null); assert.equal(note.metadata.costNote, '재료비 별도');
-  assert.equal(E({ psncpa: '' }).capacity, null); assert.equal(E({ psncpa: '약 20' }).capacity, null);
-  const { D } = await loaded();
-  const html = D.ui.list([E({ lctreCost: '0' })], D.ui.note('program'), 'life');
-  assert.match(html, /수강료 0원/); assert.match(html, /정원 15명/);
-  assert.doesNotMatch(html, /무료|남은 자리|잔여|마감 임박|예약 가능|바로 수강|평점|후기|별점|인기|신청자/);
-});
-
-test('16-19 institution, instructor, address, official URL: shown as given; http(s) only; CTA "공식 안내 보기", no URL → no button', async () => {
-  const { D } = await loaded();
-  const e = E();
-  assert.equal(e.location.address, '경상남도 거제시 계룡로 175'); assert.equal(e.location.region, '경남'); assert.equal(e.contact.phone, '055-639-8162');
-  assert.equal(D.action(e).label, '공식 안내 보기'); assert.equal(D.action(e).url, 'https://www.gmdc.co.kr/_gjyc/');
-  const txt = E({ homepageUrl: '성주군청 (sj.go.kr)' });
-  assert.equal(txt.contact.website, null); assert.equal(txt.metadata.homepageText, '성주군청 (sj.go.kr)'); assert.equal(D.action(txt), null, 'no URL → no CTA');
-  assert.equal(E({ homepageUrl: 'www.gmdc.co.kr/_gjyc/' }).contact.website, null, 'scheme-less value is not rewritten');
-  assert.equal(E({ edcMthType: '온라인' }).registrationUrl, null, 'no application URL in the dataset → never "신청 페이지로 이동" / "바로 수강"');
-});
-
 test('20-21 unsafe URL and unsafe text', () => {
   for (const u of ['javascript:alert(1)', 'https://user:pw@evil.example', 'data:text/html,x', 'https://localhost']) assert.equal(lc.webUrl(u), '', u);
   const e = E({ lctreNm: '<b>[QA 픽스처] 요가</b><script>alert(1)</script>', lctreCo: '<img src=x onerror=alert(1)>설명' });
@@ -220,103 +168,6 @@ async function loaded({ env = ENV, rows = rowsDefault(), extra = {} } = {}) {
   return { ctx, D: ctx.LivonData, up };
 }
 const ours = D => D.repository.list({ includeExpired: true }).filter(e => e.provider === 'kr-lifelong-class');
-
-test('no key (browser): planned, nothing loaded, links hidden, LIVON unaffected', async () => {
-  const { D, up } = await loaded({ env: {} });
-  assert.equal(D.registry.get('kr-lifelong-class').enabled, false); assert.equal(D.classes.configured(), false);
-  assert.equal(ours(D).length, 0); assert.equal(up.calls.length, 0); assert.ok(D.repository.size() > 30);
-});
-
-test('23 Explore: real courses searchable under 클래스; region + online/offline filters; facts; CTA/save; ended excluded', async () => {
-  const { ctx, D } = await loaded({ rows: [...rowsDefault(), row({ lctreNm: '[QA 픽스처] 끝난 강좌', edcStartDay: day(-20), edcEndDay: day(-1), edcPlace: 'E' })] });
-  assert.equal(ours(D).length, 3, 'ended course dropped on the server');
-  const L = ctx.LivonSearch;
-  const hit = (q, f) => L.search(q, f || {}).items.filter(x => String(x.item.key).startsWith('ext:kr-lifelong-class') && !x.via && x.item.title.includes(q.split(' ')[0]));
-  assert.equal(hit('요가').length, 1);
-  assert.ok(L.search('거제시청소년수련관').items.some(x => String(x.item.key).startsWith('ext:kr-lifelong-class') && x.item.title.includes('요가')), 'institution is searchable');
-  const y = hit('요가')[0].item;
-  assert.equal(y.type, 'class'); assert.equal(y.typeLabel, '클래스·프로그램'); assert.equal(y.status, '접수 중'); assert.equal(y.actionLabel, '공식 안내 보기');
-  assert.ok(y.facts.some(f => f === '강사 김수미') && y.facts.some(f => f === '수강료 90,000원') && y.facts.some(f => f.startsWith('접수 기간')));
-  assert.equal(hit('스마트폰', { region: '서울' }).length, 1); assert.equal(hit('요가', { region: '서울' }).length, 0);
-  assert.equal(hit('요가', { mode: 'online' }).length, 0); assert.equal(hit('요가', { mode: 'offline' }).length, 1);
-  assert.equal(hit('창업 교육')[0].item.href, '', 'no URL → no link (the card renders no button)');
-  const ex = read('explore-page.js');
-  assert.match(ex, /x\.href \? "<a class/); assert.match(ex, /data-livon-entity-save/); assert.match(ex, /<summary>상세 정보<\/summary>/);
-});
-
-test('24-25 Life Stage / Today: no automatic courses (no category); explicit keyword links only when connected', async () => {
-  const { D } = await loaded();
-  for (const t of LIFE.topics) assert.equal(D.forTopic(t, 'program').filter(e => e.provider === 'kr-lifelong-class').length, 0, t.id);
-  assert.equal(D.forToday({ category: '요가', tags: ['요가'] }, 'program').filter(e => e.provider === 'kr-lifelong-class').length, 0);
-  for (const t of LIFE.topics.filter(x => x.category === '디지털 생활')) assert.equal(D.classes.planForTopic(t).href, '#ex-results?q=%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%8F%B0&type=class');
-  for (const c of ['창업', '돈/재테크', '여행', '건강']) for (const t of LIFE.topics.filter(x => x.category === c)) assert.equal(D.classes.planForTopic(t), null, t.id);
-  assert.equal(D.classes.planForContent({ category: '요가' }).query, '요가'); assert.equal(D.classes.planForContent({ category: '커플 데이트' }), null);
-  assert.match(read('life-hub.js'), /C\.configured\(\) && C\.planForTopic/); assert.match(read('today-feed.js'), /C\.configured\(\) && C\.planForContent/);
-});
-
-test('26 Home: unchanged — courses without a category never enter the programme column', async () => {
-  const { D } = await loaded();
-  const r = D.forHome({ stage: '30', interests: ['요가', '디지털', '창업', '배움'] });
-  assert.equal(r.programs.filter(e => e.provider === 'kr-lifelong-class').length, 0);
-  assert.doesNotMatch(read('home-page.js'), /kr-lifelong-class/);
-});
-
-test('27 My Life save: snapshot keeps real course facts only', async () => {
-  const { ctx, D } = await loaded();
-  const e = ours(D).find(x => x.title.includes('요가'));
-  assert.equal(D.save(e.id), 'saved');
-  const rec = ctx.LivonPlatform._saves.get('ext:' + e.id), s = rec.data.snapshot;
-  assert.equal(rec.type, 'class'); assert.equal(rec.source, '전국평생학습강좌표준데이터');
-  assert.deepEqual([s.title, s.provider, s.providerRef, s.agency, s.instructor, s.eligibility, s.format, s.venue, s.days, s.timeText, s.price, s.capacity, s.referenceDate],
-    ['[QA 픽스처] 성인 요가 A', 'kr-lifelong-class', e.providerId, '거제시청소년수련관', '김수미', '시민', '오프라인', '3층 풍물연습실', '월+화+목', '10:10~10:50', 90000, 15, '2026-07-14']);
-  assert.ok(s.startAt && s.endAt && s.registrationPeriod.start && s.registrationPeriod.end);
-  assert.equal(s.address, '경상남도 거제시 계룡로 175'); assert.equal(s.externalUrl, 'https://www.gmdc.co.kr/_gjyc/'); assert.equal(s.actionLabel, '공식 안내 보기');
-  assert.match(s.attribution, /전국평생학습강좌표준데이터/);
-  assert.equal(s.category, null);
-});
-
-test('28 calendar: only on an explicit call; deadline/start → My Life to-do; duplicates prevented; missing dates refused', async () => {
-  const { ctx, D } = await loaded();
-  assert.equal(ctx.LivonMyLife._todos.length, 0, 'nothing added automatically');
-  const e = ours(D).find(x => x.title.includes('요가'));
-  const r1 = D.addToMyLife(e.id, 'deadline');
-  assert.equal(r1.status, 'ok'); assert.equal(r1.item.title, '[접수 마감] [QA 픽스처] 성인 요가 A'); assert.equal(r1.item.due, day(5)); assert.equal(r1.item.source, 'saved'); assert.equal(r1.item.sourceId, 'ext:' + e.id);
-  assert.equal(D.addToMyLife(e.id, 'deadline').status, 'duplicate');
-  assert.equal(D.addToMyLife(e.id, 'start').item.due, day(10));
-  const noDates = ours(D).find(x => x.title.includes('스마트폰'));
-  assert.equal(D.addToMyLife('kr-lifelong-class:program:nope', 'start').status, 'unavailable');
-  const html = D.ui.list([e], '', 'life');
-  assert.match(html, /접수 마감일을 할 일에 추가/); assert.match(html, /교육 시작일을 할 일에 추가/);
-  void noDates;
-});
-
-test('29 AI reference: only kind/title/href via the search index; http links skipped client-side', () => {
-  const ai = read('ai-page.js');
-  /* Completion audit: the client filter is now the chat server's own pattern (REF_HREF), stricter than "# or https" — http links are still skipped */
-  assert.match(ai, /if \(!REF_HREF\.test\(it\.href\) \|\| it\.href\.length > 200\) return;/); assert.equal(/var REF_HREF = (\/.*\/i);/.exec(ai)[1].includes('https:'), true); assert.equal(new RegExp(/var REF_HREF = \/(.*)\/i;/.exec(ai)[1], 'i').test('http://example.or.kr/'), false);
-  assert.match(ai, /return \{ kind: String\(it\.typeLabel/);
-});
-
-test('30-31 dedupe: same composite id → one; cross-provider/type needs strong evidence (기업마당 교육 event never merges with a course)', async () => {
-  const { D } = await loaded();
-  const a = E(), b = E({ referenceDate: '2026-09-01' });
-  assert.equal(D.dedupe([a, b]).length, 1);
-  const bizEdu = Object.assign({}, a, { id: 'kr-business-event:event:EV1', type: 'event', provider: 'kr-business-event', providerId: 'EV1', source: Object.assign({}, a.source, { providerName: '기업마당' }) });
-  assert.equal(D.dedupe([a, bizEdu]).length, 2, 'different entity types never merge');
-  const otherProv = Object.assign({}, a, { id: 'partner-programs:program:P1', provider: 'partner-programs', providerId: 'P1', organizer: '다른 기관', location: { country: 'KR' }, contact: null, schedule: { startAt: new Date(Date.now() + 99 * 864e5).toISOString() } });
-  assert.equal(D.dedupe([a, otherProv]).length, 2, 'title only');
-});
-
-test('32-34 coexistence: 기업마당 events, Kakao, TourAPI untouched; status lists all providers', async () => {
-  const { D } = await loaded({ env: { ...ENV, BIZINFO_API_KEY: 'biz-test-key-123456' }, extra: { bizRows: [] } });
-  assert.equal(D.registry.get('kr-business-event').enabled, true);
-  const h = handler({ ...ENV, KAKAO_REST_API_KEY: 'kakao-key-123', TOURAPI_SERVICE_KEY: 'tour-key-12345' }, upstream(() => reply('{}')));
-  const st = (await call(h, '/api/livon/data?action=status')).json().providers;
-  assert.deepEqual(Object.keys(st).slice(0, 6), ['kr-youth-policy', 'kr-business-support', 'kr-business-event', 'kr-kakao-place', 'kr-tourapi', 'kr-lifelong-class']);
-  assert.equal(st['kr-kakao-place'].mode, 'search'); assert.equal(st['kr-tourapi'].mode, 'search'); assert.equal(st['kr-lifelong-class'].mode, undefined);
-  assert.equal((await call(h, '/api/livon/data?provider=kr-kakao-place&method=online&query=a')).statusCode, 400, 'course filters are course-only');
-  assert.equal(PROVIDERS['kr-lifelong-class'].entityTypes[0], 'program');
-});
 
 test('35-36 no fake availability / popularity / rating / reviews anywhere in the adapter output or UI copy', () => {
   const e = E();

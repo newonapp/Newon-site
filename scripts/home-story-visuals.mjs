@@ -142,38 +142,6 @@ export function visualAi(lang = "en") {
   });
 }
 
-/** 03 LivOn — horizontal journey timeline */
-export function visualLifeStage() {
-  return panelShell({
-    mod: "life",
-    live: "LIFE TIMELINE",
-    meta: "DIRECTION",
-    body: `
-      <div class="hs-sv-l">
-        <div class="hs-sv-l__track">
-          <div class="hs-sv-l__line" aria-hidden="true"></div>
-          <div class="hs-sv-l__node"><span>01</span><strong>Start</strong><em>Career</em></div>
-          <div class="hs-sv-l__node"><span>02</span><strong>Grow</strong><em>Work</em></div>
-          <div class="hs-sv-l__node is-on"><span>03</span><strong>Family</strong><em>Home</em></div>
-          <div class="hs-sv-l__node"><span>04</span><strong>Raise</strong><em>Kids</em></div>
-          <div class="hs-sv-l__node is-run"><span>05</span><strong>Later</strong><em>Support</em></div>
-        </div>
-        <div class="hs-sv-l__detail">
-          <div class="hs-sv-l__card is-on">
-            <p class="hs-sv__k">NOW</p>
-            <strong>Family stage</strong>
-            <em>Housing · care · planning</em>
-          </div>
-          <div class="hs-sv-l__card">
-            <p class="hs-sv__k">CONNECT</p>
-            <strong>Info → Service → Expert</strong>
-            <em>When each stage needs help</em>
-          </div>
-        </div>
-      </div>`,
-  });
-}
-
 /** 04 Ongil — dual panes: senior living ↔ family link */
 export function visualOngil() {
   return panelShell({

@@ -303,10 +303,9 @@ if (AGAINST) {
   const sha = (b) => crypto.createHash("sha256").update(b).digest("hex");
   const git = (...a) => execFileSync("git", ["-C", ROOT, ...a], { encoding: "buffer", maxBuffer: 1 << 28 });
   const watch = [];
-  for (const l of LANGS) for (const s of ["petlog", "myworld", "shareon", "lifestage", "ongil", "ai", "business", "studio", "company", "business-hub"]) watch.push(`${l}/${s}/index.html`);
+  for (const l of LANGS) for (const s of ["petlog", "myworld", "shareon", "ongil", "ai", "business", "studio", "company", "business-hub"]) watch.push(`${l}/${s}/index.html`);
   watch.push(
     "home-lifestage.css", "home-lifestage-layout.css", "home-lifestage.js", "templates/hub-shell.html",
-    "scripts/render-lifestage.mjs", "scripts/home-lifestage-body.mjs", "scripts/home-lifestage-copy.mjs",
     "scripts/site-chrome.mjs", "scripts/render-business-intro.mjs", "scripts/six-businesses.mjs"
   );
   const changed = [];

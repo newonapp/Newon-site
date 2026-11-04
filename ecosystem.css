@@ -1259,7 +1259,7 @@ html[data-newon-shell-theme="dark"] #ecosystem-detail.eco .eco-block--close {
   }
 }
 
-/* Hero / LivOn / Ongil / vision — personal-AI type, new layouts */
+/* Hero / Ongil / vision — personal-AI type, new layouts */
 #ecosystem-detail.eco .eco-hero__title,
 #ecosystem-detail.eco .eco-expand .eco-title {
   font-size: clamp(2.15rem, 5vw, 3.35rem);
@@ -1359,36 +1359,6 @@ html[data-newon-shell-theme="dark"] #ecosystem-detail.eco .eco-block--close {
 }
 #ecosystem-detail.eco .eco-chip:hover { border-color: var(--eco-ink); }
 
-#ecosystem-detail.eco .eco-stages {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0.75rem;
-  margin-top: 2.4rem;
-}
-#ecosystem-detail.eco .eco-stage {
-  min-height: 11rem;
-  padding: 1.15rem 1.05rem 1.2rem;
-  border: 1px solid var(--eco-line);
-  background: var(--eco-paper);
-}
-#ecosystem-detail.eco .eco-stage__n {
-  display: block;
-  margin-bottom: 0.7rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  color: var(--eco-soft);
-}
-#ecosystem-detail.eco .eco-stage__title {
-  margin: 0;
-  font-size: 1.02rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.35;
-  word-break: keep-all;
-}
-
 #ecosystem-detail.eco .eco-rail {
   margin: 2.4rem 0 0;
   padding: 0;
@@ -1475,7 +1445,7 @@ html[data-newon-shell-theme="dark"] #ecosystem-detail.eco .eco-block--close {
 #ecosystem-detail.eco .eco-spine__to .eco-badge { margin-left: 0; }
 #ecosystem-detail.eco .eco-spine__next {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 0.85rem;
 }
 #ecosystem-detail.eco .eco-spine__card {
@@ -1513,12 +1483,10 @@ html[data-newon-shell-theme="dark"] #ecosystem-detail.eco .eco-block--close {
 
 @media (max-width: 900px) {
   #ecosystem-detail.eco .eco-board__apps { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  #ecosystem-detail.eco .eco-stages { grid-template-columns: 1fr 1fr; }
   #ecosystem-detail.eco .eco-spine__next { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   #ecosystem-detail.eco .eco-board__apps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  #ecosystem-detail.eco .eco-stages { grid-template-columns: 1fr; }
 }
 
 /* ===== 2026-10-19 · Unified film first screen (shared spec, identical in every film hero) =====

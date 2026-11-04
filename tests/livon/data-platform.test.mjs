@@ -292,18 +292,3 @@ test('D-10 missing source: unsourced facts are not shown as real, samples are op
 });
 
 /* ───────── browser integration (additive only) ───────── */
-test('browser: platform script loads after the data layer, reads existing globals lazily, holds no secrets or endpoints', async () => {
-  const html = read('livon/index.html');
-  const i = n => html.indexOf(n);
-  assert.ok(i('/livon/data/livon-data-platform.js') > i('/livon/data/livon-data-providers.js'));
-  assert.ok(i('/livon/data/livon-data-platform.js') < i('/livon/life-hub.js'));
-  const src = read('livon/data/livon-data-platform.js');
-  assert.doesNotMatch(src, /OPENAI|API_KEY|SERVICE_KEY|UPSTASH|secret|Bearer|fetch\(/i);
-  assert.doesNotMatch(src, /localStorage|sessionStorage|document\./, 'no storage or DOM work');
-  /* shared(): builds from window globals + the Life Hub topics without touching the network */
-  const ctx = load();
-  ctx.LivonLifeHub = { repo: { status: 'ready', data: LIFE } };
-  const repo = await ctx.LivonDataPlatform.shared();
-  assert.ok(repo.size() > 400);
-  assert.strictEqual(await ctx.LivonDataPlatform.shared(), repo, 'cached');
-});

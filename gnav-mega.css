@@ -1283,7 +1283,7 @@ body.gnav-mega-open { overflow: visible; }
 }
 
 /* ── Flagship-business row (second tier, desktop) ──────────────────────────────
-   BABYLOG · PETLOG · MY WORLD · SHAREON · LIVON · ONGIL with equal weight.
+   BABYLOG · PETLOG · MY WORLD · SHAREON · ONGIL with equal weight.
    Only headers marked .gnav--ventures get the taller bar, so pages that still carry the
    one-row header keep their 74px offset. --gnav-h stays the total bar height, so every
    page offset that already uses it (padding, sticky tops, scroll margins) follows. */
@@ -1359,12 +1359,11 @@ body.gnav-mega-open { overflow: visible; }
 
   /* First-row menus open right under the first row (covering the business row while open),
      so moving the pointer from a first-row menu to its panel never crosses the business row.
-     LIVON / ONGIL / PETLOG open under the business row. */
+     The business-row menus open under the business row. */
   .gnav.site-header.gnav--ventures .gnav-mega {
     top: var(--gnav-row-h);
   }
 
-  .gnav.site-header.gnav--ventures .gnav-mega[data-gnav-mega="lifestage"],
   .gnav.site-header.gnav--ventures .gnav-mega[data-gnav-mega="ongil"],
   .gnav.site-header.gnav--ventures .gnav-mega[data-gnav-mega="petlog"],
   .gnav.site-header.gnav--ventures .gnav-mega[data-gnav-mega="babylog"],

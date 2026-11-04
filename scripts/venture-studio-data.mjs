@@ -64,13 +64,6 @@ export const MEGA_DESTINATIONS = {
       titleFb: "Enterprise AI",
     },
   ],
-  lifestage: [
-    { titleKey: "nav.livonMenuOverview", descKey: "nav.livonMenuOverviewDesc", href: "livon/", titleFb: "Overview" },
-    { titleKey: "nav.livonMenuPlatform", descKey: "nav.livonMenuPlatformDesc", href: "livon/platform/", titleFb: "Platform" },
-    { titleKey: "nav.livonMenuBusiness", descKey: "nav.livonMenuBusinessDesc", href: "livon/business/", titleFb: "Business" },
-    { titleKey: "nav.livonMenuPartnerships", descKey: "nav.livonMenuPartnershipsDesc", href: "livon/partnerships/", titleFb: "Partnerships" },
-    { titleKey: "nav.livonMenuContact", descKey: "nav.livonMenuContactDesc", href: "livon/contact/", titleFb: "Contact" },
-  ],
   ongil: [
     { titleKey: "nav.ongilMenuOverview", descKey: "nav.ongilMenuOverviewDesc", href: "ongil/", titleFb: "Overview" },
     { titleKey: "nav.ongilMenuPlatform", descKey: "nav.ongilMenuPlatformDesc", href: "ongil/platform/", titleFb: "Platform" },

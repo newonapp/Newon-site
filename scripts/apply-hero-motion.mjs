@@ -33,8 +33,8 @@ export const HERO_FILMS = {
   eco: { src: `${CF}hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4`, poster: "/assets/hero-film/ecosystem-poster.jpg" },
   /** NEWON AI (glass crystal). */
   ai: { src: `${CF}hf_20260723_145606_ab143199-b593-4941-bb1b-9afca215416b.mp4`, poster: "/assets/hero-film/ai-poster.jpg" },
-  /** LIVON (floating rock garden). */
-  livon: { src: `${CF}hf_20260702_102608_5fa1187d-9ac6-44fb-82ab-54376200abc0.mp4`, poster: "/assets/hero-film/livon-poster.jpg" },
+  /** Floating rock garden. */
+  garden: { src: `${CF}hf_20260702_102608_5fa1187d-9ac6-44fb-82ab-54376200abc0.mp4`, poster: "/assets/hero-film/garden-poster.jpg" },
   /** Newon Business (field robot, blue sky). */
   biz: { src: `${CF}hf_20260622_204103_f607742e-09da-4cf5-bb06-4e67b0a531de.mp4`, poster: "/assets/hero-film/business-poster.jpg" },
   /** ONGIL (lakeside gathering). */
@@ -83,13 +83,13 @@ const PORTFOLIO_PROJECTS = [
   "savy",
   "subping",
 ];
-const PORTFOLIO_ROTATION = ["livon", "ai", "eco", "ongil", "home", "biz"];
+const PORTFOLIO_ROTATION = ["garden", "ai", "eco", "ongil", "home", "biz"];
 
 /** Page (path inside /{lang}/) → hero family + film. Neighbouring sections get different films. */
 export const HERO_MOTION_PAGES = [
   { page: "about/", kind: "about", film: "eco" },
   { page: "news/", kind: "nr", film: "ai" },
-  { page: "media/", kind: "mh", film: "livon" },
+  { page: "media/", kind: "mh", film: "garden" },
   { page: "ideas/", kind: "co", film: "home" },
   { page: "404-human/", kind: "ox", film: "ai" },
   { page: "products/", kind: "hub", film: "ongil" },
@@ -98,7 +98,7 @@ export const HERO_MOTION_PAGES = [
   { page: "tools/", kind: "tools", film: "eco" },
   { page: "resources/", kind: "ns", film: "ai" },
   { page: "resources/store/", kind: "bp", film: "biz" },
-  { page: "resources/insights/", kind: "bp", film: "livon" },
+  { page: "resources/insights/", kind: "bp", film: "garden" },
   { page: "resources/blog/", kind: "bp", film: "ongil" },
   { page: "resources/education/", kind: "bp", film: "home" },
   { page: "resources/newsletter/", kind: "bp", film: "eco" },

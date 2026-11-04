@@ -7,8 +7,6 @@
  * Content language: KO pages use the Korean copy; every other locale uses the business's English copy (the same
  * fallback each business site already uses).
  */
-import { siteCopy, CONTACT_GROUPS, CONTACT_TYPES } from "./livon-site-data.mjs";
-import { c30 as livonC30, v3 as livonV3 } from "./livon-site-content30.mjs";
 import { getShareonCopy } from "./shareon-copy.mjs";
 import { getBabylogCopy, copyLangFor as babylogLang, BL_SLUG } from "./babylog-site-copy.mjs";
 import { CONTACT as PL_CONTACT, V3 as PL_V3, OVERVIEW as PL_OVERVIEW, STORE as PL_STORE } from "./petlog-site-content.mjs";
@@ -19,72 +17,6 @@ import { ctaLabel } from "./biz-contact-kit.mjs";
 const e = (s) => escapeHtml(s == null ? "" : String(s));
 const MAIL = "newon@newon.app";
 const koOrEn = (lang) => (lang === "ko" ? "ko" : "en");
-
-/* ─────────────────────────── LIVON ─────────────────────────── */
-const LIVON_TYPE = { support: "personal", other: "media", partnership: "partnership", business: "business" };
-const LIVON_ROW_TYPE = (y) => (/공공기관|Public bodies/.test(y.ko + y.en) ? "public" : LIVON_TYPE[y.type] || "personal");
-const LIVON_PURPOSE = { personal: "personal", feature: "personal", welfare: "business", service: "business", public: "public", tech: "partnership", media: "media", invest: "investment" };
-
-export function livonContactModel(lang) {
-  const L = koOrEn(lang);
-  const c = siteCopy(L);
-  const k = c.contact;
-  const x = livonC30(L).contact;
-  const y = livonV3(L);
-  const ch = y.channels;
-  const chItem = (id) => ch.items.find(([i]) => i === id) || [];
-  const [, unifiedT, unifiedB] = chItem("unified");
-  const [, mailT, mailB] = chItem("mail");
-  const [, noneT, noneB] = chItem("none");
-  return {
-    biz: "livon",
-    lang,
-    contentLang: L,
-    cta: ctaLabel(L),
-    channels: {
-      kicker: ch.kicker,
-      title: ch.title,
-      items: [
-        { k: mailT, v: MAIL, href: `mailto:${MAIL}`, text: mailB, icon: "mail" },
-        { k: unifiedT, ask: "personal", text: unifiedB, icon: "form" },
-      ],
-    },
-    route: {
-      kicker: x.purposeKicker,
-      title: x.purposeTitle,
-      lead: x.purposeLead,
-      items: [
-        ...x.items.map(([id, t, what]) => ({ t, text: what, ask: LIVON_PURPOSE[id] })),
-        ...(noneT ? [{ t: noneT, text: noneB, where: L === "ko" ? "공식 기관 · SHAREON" : "Official bodies · SHAREON" }] : []),
-      ],
-    },
-    types: {
-      kicker: k.kicker,
-      title: k.title,
-      lead: "",
-      groups: Object.entries(CONTACT_GROUPS).map(([gid, g]) => ({
-        title: L === "ko" ? g.ko : g.en,
-        en: L === "ko" ? g.en : "",
-        rows: CONTACT_TYPES.filter((t) => t.g === gid).map((t) => {
-          const label = L === "ko" ? t.ko : t.en;
-          return { name: label, text: `${k.subjectLabel} · [LIVON] ${label}`, ask: LIVON_ROW_TYPE(t) };
-        }),
-      })),
-    },
-    guard: {
-      kicker: "Before you write",
-      title: k.tipsTitle,
-      checklistTitle: x.f.include,
-      checklist: [{ g: L === "ko" ? "모든 문의" : "Every inquiry", items: k.tips }, ...x.items.map(([, t, , include]) => ({ g: t, items: [include] }))],
-      callouts: [
-        { icon: "lock", text: x.privacy },
-        ...(k.note ? [{ icon: "info", text: k.note }] : []),
-      ],
-    },
-    faq: { kicker: y.cFaq.kicker, title: y.cFaq.title, items: y.cFaq.items.map(([q, a]) => ({ q, a })) },
-    close: { kicker: "Contact", titleHtml: e(k.heroTitle).replace(/\n/g, "<br>"), lead: "", note: c.appStatus },
-  };
-}
 
 /* ─────────────────────────── SHAREON ─────────────────────────── */
 /** Rows with a clearly matching unified-page topic (contact-taxonomy.mjs). */
@@ -343,7 +275,6 @@ export function myworldContactModel(lang, stores = {}) {
 }
 
 export const BIZ_CONTACT_MODELS = {
-  livon: livonContactModel,
   shareon: shareonContactModel,
   babylog: babylogContactModel,
   petlog: petlogContactModel,

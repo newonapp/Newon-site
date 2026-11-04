@@ -102,13 +102,13 @@ test("URL preselection: platform alias my-world + type=business + source; user c
   assert.ok(s.topicOptions.length === 9 && s.topicOptions.every((t) => t.startsWith("myworld-")), s.topicOptions.join());
   assert.deepEqual(s.picked, ["business"]);
   await page.check('input[name="inquirer"][value="personal"]', { force: true });
-  await page.selectOption("#ct-platform", "livon");
+  await page.selectOption("#ct-platform", "ongil");
   s = await state(page);
   assert.equal(s.inquirer, "personal");
   assert.ok(!s.shown.includes("organization"));
-  assert.ok(s.topicOptions.every((t) => t.startsWith("livon-")));
+  assert.ok(s.topicOptions.every((t) => t.startsWith("ongil-")));
   assert.match(s.search, /inquirer=personal/);
-  assert.match(s.search, /platform=livon/);
+  assert.match(s.search, /platform=ongil/);
   assert.match(s.search, /source=qa/);
   assert.deepEqual(errors, []);
   await ctx.close();
@@ -128,9 +128,9 @@ test("invalid params are ignored safely; topic implies its platform and inquiry 
   assert.match(s.topicText, /보증금 · 향후 계획/);
   assert.ok(s.shown.includes("reference_id") && s.shown.includes("environment"), s.shown.join());
   await ctx.close();
-  ({ ctx, page } = await open("/ko/contact/?platform=livon&topic=shareon-deposit"));
+  ({ ctx, page } = await open("/ko/contact/?platform=ongil&topic=shareon-deposit"));
   s = await state(page);
-  assert.deepEqual([s.platform, s.topic], ["livon", ""], "mismatched topic ignored");
+  assert.deepEqual([s.platform, s.topic], ["ongil", ""], "mismatched topic ignored");
   await ctx.close();
 });
 

@@ -9,7 +9,6 @@ import { APP_CATALOG, NAV_FLYOUT_SLUGS } from "./portfolio-data.mjs";
 import {
   visualConsumer,
   visualAi,
-  visualLifeStage,
   visualOngil,
   visualBusiness,
   visualCommerce,
@@ -60,8 +59,6 @@ function storyVisual(story, bySlug, lang) {
     }
     case "ai":
       return visualAi(lang);
-    case "lifestage":
-      return visualLifeStage();
     case "ongil":
       return visualOngil();
     case "business":

@@ -20,7 +20,6 @@ const LANG_OPTIONS = [
 const NAV_LABEL_KEYS = {
   consumer: "nav.topConsumer",
   ai: "nav.topAi",
-  lifestage: "nav.topLifeStage",
   ongil: "nav.topOngil",
   business: "nav.topBizPart",
   studio: "nav.topStudio",
@@ -31,7 +30,6 @@ const NAV_LABEL_KEYS = {
 const NAV_LABEL_FB = {
   consumer: "Apps",
   ai: "AI",
-  lifestage: "LivOn",
   ongil: "Ongil",
   business: "Business & Partnerships",
   studio: "Studio",
@@ -47,7 +45,7 @@ function navTopLabel(flat, flatEn, id) {
 
 /**
  * Second row: Newon's flagship businesses, equal weight, each linking to its own page.
- * Brand names are not translated. LIVON was removed from the website (2026-11).
+ * Brand names are not translated.
  */
 export const VENTURE_NAV = [
   { id: "ongil", label: "ONGIL", path: "ongil/", mega: true },
@@ -80,13 +78,6 @@ const MENU_META = {
     footHref: "ai/",
     footKey: "nav.aiExploreCta",
     footFb: "Explore Newon AI →",
-  },
-  lifestage: {
-    kicker: "nav.lifeStageMenuLabel",
-    lead: "nav.lifeStageMenuLead",
-    footHref: "livon/",
-    footKey: "nav.lifeStageExploreCta",
-    footFb: "View LivOn →",
   },
   ongil: {
     kicker: "nav.ongilMenuLabel",
@@ -183,7 +174,6 @@ export function resolveActiveNav(pathname = "") {
   const parts = p.split("/").filter(Boolean);
   const seg = parts[0] || "";
   if (seg === "ai") return "ai";
-  if (seg === "lifestage") return "lifestage";
   if (seg === "ongil") return "ongil";
   if (seg === "shareon") return "shareon";
   if (seg === "petlog") return "petlog";
@@ -222,7 +212,7 @@ function menuRows(menuId, langDir = "") {
 
 function megaItemLimit(menuId) {
   if (menuId === "company") return 12;
-  if (["consumer", "ai", "business", "studio", "partnerships", "petlog", "babylog", "myworld", "shareon", "lifestage", "ongil"].includes(menuId)) return 8;
+  if (["consumer", "ai", "business", "studio", "partnerships", "petlog", "babylog", "myworld", "shareon", "ongil"].includes(menuId)) return 8;
   return 4;
 }
 
@@ -275,7 +265,6 @@ function editorialMega(flat, flatEn, base, menuId, langDir = "") {
 const MEGA_RENDERERS = {
   consumer: (f, fe, b, ld) => editorialMega(f, fe, b, "consumer", ld),
   ai: (f, fe, b, ld) => editorialMega(f, fe, b, "ai", ld),
-  lifestage: (f, fe, b, ld) => editorialMega(f, fe, b, "lifestage", ld),
   ongil: (f, fe, b, ld) => editorialMega(f, fe, b, "ongil", ld),
   babylog: (f, fe, b, ld) => editorialMega(f, fe, b, "babylog", ld),
   petlog: (f, fe, b, ld) => editorialMega(f, fe, b, "petlog", ld),
@@ -389,7 +378,7 @@ function mobileNav(flat, flatEn, base, suffix, langDir = "") {
         <div class="gnav-mobile__acc-panel" hidden>${links}</div>
       </div>`;
   };
-  // Six flagship businesses first, each its own item (LIVON / ONGIL keep their sub-menus).
+  // Flagship businesses first, each its own item with its sub-menu.
   const ventures = VENTURE_NAV.map((v) => {
     if (v.mega) return accordion(v.id, v.label);
     return `<div class="gnav-mobile__acc gnav-mobile__acc--solo">

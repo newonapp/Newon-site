@@ -34,7 +34,6 @@ export function cicon(name, cls = "ogs-ico") {
 /** One icon set per business: the "personal" purpose glyph + audience-group glyphs in group order. */
 export const CONTACT_ICONS = {
   ongil: { personal: "sun", groups: ["person", "building", "chat"] },
-  livon: { personal: "sprout", groups: ["person", "book", "briefcase"] },
   shareon: { personal: "swap", groups: ["users", "link"] },
   babylog: { personal: "stroller", groups: ["heart", "building", "shield"] },
   petlog: { personal: "paw", groups: ["paw", "heart", "bag", "shield", "globe"] },

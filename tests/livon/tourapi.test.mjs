@@ -45,23 +45,6 @@ const handler = (env, up, extra = {}) => createDataHandler({ env, fetcher: up.fe
 const op = c => c.url.pathname.split('/').pop();
 
 /* ───────── server ───────── */
-test('1 official contract: KorService2 base, current operation names, required params, decoded key sent once, no deprecated params', async () => {
-  assert.equal(tour.BASE, 'https://apis.data.go.kr/B551011/KorService2');
-  assert.deepEqual(Object.values(tour.OPS), ['searchKeyword2', 'areaBasedList2', 'locationBasedList2', 'detailCommon2', 'detailIntro2', 'detailImage2']);
-  assert.deepEqual(Object.keys(tour.CONTENT_TYPES), ['12', '14', '15', '25', '28', '32', '38', '39']);
-  const up = upstream(() => reply(ok([item()])));
-  await call(handler({ TOURAPI_SERVICE_KEY: enc(KEY) }, up), Q('query=' + enc('경복궁')));
-  const u = up.calls[0].url;
-  assert.equal(u.origin + u.pathname, tour.BASE + '/searchKeyword2');
-  assert.equal(u.searchParams.get('serviceKey'), KEY, 'an "Encoding" key is decoded, then encoded exactly once');
-  assert.equal(u.searchParams.get('MobileOS'), 'WEB'); assert.equal(u.searchParams.get('MobileApp'), 'LIVON'); assert.equal(u.searchParams.get('_type'), 'json');
-  for (const dep of ['areaCode', 'sigunguCode', 'cat1', 'cat2', 'cat3']) assert.equal(u.searchParams.has(dep), false, dep + ' is 미사용항목(삭제예정)');
-  assert.match(root('.env.example'), /\nTOURAPI_SERVICE_KEY=\n/);
-  for (const f of ['data/livon-data-config.js', 'data/livon-data-core.js', 'data/livon-data-providers.js', 'data/livon-data-schema.js', 'explore-page.js', 'life-hub.js', 'today-feed.js', 'index.html']) {
-    assert.doesNotMatch(read(f), /TOURAPI_SERVICE_KEY|serviceKey|apis\.data\.go\.kr/, f + ' never touches the key or the endpoint');
-  }
-});
-
 test('2 no key: configured=false, NOT_CONFIGURED, zero upstream calls; bad params still 400', async () => {
   const up = upstream(() => reply(ok([item()])));
   const h = handler({}, up);
@@ -208,16 +191,6 @@ test('13-14 address + phone: addr1/addr2/zipcode kept; region only 시/도 name;
   assert.equal(tour.toEntity(item({ tel: '' }), 'x').contact, null);
 });
 
-test('15 category mapping: only existing LIVON categories; codes preserved in metadata', () => {
-  const c = type => tour.toEntity(item({ contenttypeid: type }), 'x').category;
-  assert.equal(c('12'), '여행'); assert.equal(c('14'), '취미'); assert.equal(c('32'), '여행');
-  for (const x of ['28', '38', '39']) assert.equal(c(x), null, x);
-  const explore = read('explore-search.js');
-  for (const label of new Set(Object.values(tour.LIVON_CATEGORY))) assert.match(explore, new RegExp('label: "' + label + '"'));
-  const e = tour.toEntity(item(), 'x');
-  assert.deepEqual([e.metadata.contentTypeId, e.metadata.lclsSystm1, e.metadata.lclsSystm2, e.metadata.lclsSystm3], ['12', 'HS', 'HS01', 'HS010100']);
-});
-
 test('16-17 sanitation: markup, scripts and entities removed; unsafe/foreign URLs removed', () => {
   assert.equal(tour.plain('a<br/>b<br><br>c &amp; d<script>x()</script><style>p{}</style>'), 'a / b / c & d');
   assert.equal(tour.homepageUrl('<a href="javascript:alert(1)">x</a>'), '');
@@ -237,16 +210,6 @@ test('18-19 list photo: firstimage shown only with a 공공누리 type; licence 
   const none = S.validateEntity(tour.toEntity(item({ cpyrhtDivCd: '' }), 'x')).entity;
   assert.deepEqual(none.photos, []); assert.match(none.metadata.imageUrl, /tong\.visitkorea/, 'URL kept as source metadata only');
   assert.equal(S.validateEntity({ type: 'place', provider: 'x', providerId: '1', title: 't', source: { providerName: 'x' }, photos: [{ url: 'https://a.kr/x.jpg' }] }).entity.photos.length, 0, 'schema drops photos without licence/credit');
-});
-
-test('20 modifiedtime semantics: source updatedAt (출처 수정일), freshness unknown, never "최근 확인"', async () => {
-  const { D } = await loaded();
-  const r = await D.tour.search({ query: '경복궁' });
-  const e = r.items[0];
-  assert.equal(e.source.updatedAt, '2025-09-09T01:10:10.000Z');
-  assert.equal(D.freshness(e), 'unknown');
-  const html = D.ui.list([e], '', 'life');
-  assert.match(html, /출처 업데이트 2025\.09\.09/); assert.doesNotMatch(html, /최근 확인|검증|확인 완료/);
 });
 
 test('31-35 zero results, timeout, upstream/quota/malformed errors → fixed LIVON codes; nothing cached', async () => {
@@ -323,98 +286,6 @@ async function loaded({ env = { ...ENV, KAKAO_REST_API_KEY: 'kakao-test-key-123'
   return { ctx, D: ctx.LivonData, up };
 }
 const tourCalls = up => up.calls.filter(c => c.url.origin === 'https://apis.data.go.kr');
-
-test('no-key in the browser: provider planned, D.tour refuses, zero calls; Kakao and curated data unaffected', async () => {
-  const { D, up } = await loaded({ env: { KAKAO_REST_API_KEY: 'kakao-test-key-123' } });
-  assert.equal(D.tour.configured(), false); assert.equal(D.places.configured(), true);
-  await assert.rejects(D.tour.search({ query: 'a' }), e => e.code === 'NOT_CONFIGURED');
-  await assert.rejects(D.tour.detail('126508'), e => e.code === 'NOT_CONFIGURED');
-  assert.equal(tourCalls(up).length, 0);
-  assert.equal((await D.places.search({ query: '경복궁' })).items.length, 1, 'Kakao still works');
-  assert.ok(D.repository.size() > 30);
-});
-
-test('21 Explore readiness: keyword/region search, no bulk load, no static-index leak, no N+1 detail/image calls', async () => {
-  const { ctx, D, up } = await loaded();
-  assert.equal(tourCalls(up).length, 0, 'status + refresh make no TourAPI call');
-  const r = await D.tour.search({ query: '경복궁' });
-  assert.equal(r.items.length, 2); assert.equal(tourCalls(up).length, 1, 'one list call, no detail/image per item');
-  await D.tour.search({ region: '서울', type: '12' });
-  assert.equal(op(tourCalls(up)[1]), 'areaBasedList2');
-  await assert.rejects(D.tour.search({ type: '12' }), e => e.code === 'NEEDS_INPUT', 'no query/region/position → nothing');
-  assert.ok(!ctx.LivonSearch.search('경복궁').items.some(x => String(x.item.key).includes('kr-tourapi')));
-  const ex = read('explore-page.js');
-  assert.match(ex, /관광정보/); assert.match(ex, /출처: ⓒ한국관광공사/); assert.match(ex, /저작권 정책/); assert.match(ex, /object-fit:contain/, 'photos are not cropped (Type3 변경금지)');
-  assert.doesNotMatch(ex.slice(ex.indexOf('한국관광공사 TourAPI 관광정보 (shown')), /공식 홈페이지|예약하기|별점|★/);
-  const d = await D.tour.detail('126508');
-  assert.deepEqual(tourCalls(up).slice(2).map(op), ['detailCommon2', 'detailIntro2']);
-  assert.equal(d.info.length, 2); assert.equal(d.homepageUrl, 'https://www.royalpalace.go.kr/');
-  const ph = await D.tour.images('126508');
-  assert.equal(ph.length, 1); assert.equal(ph[0].license, 'Type1'); assert.equal(op(tourCalls(up).at(-1)), 'detailImage2');
-});
-
-test('Nearby (browser): position only from an explicit call, sent as POST body rounded to ≈100 m; never persisted', async () => {
-  const { ctx, D, up } = await loaded();
-  const r = await D.tour.search({ type: '14', coords: { lat: 37.5665351, lng: 126.9779692 } });
-  assert.equal(r.nearby, true); assert.equal(r.items[0].distanceMeters, 250);
-  const sent = ctx._requested.find(u => u.includes('kr-tourapi') && u.includes('BODY'));
-  assert.match(sent, /^\/api\/livon\/data BODY /);
-  assert.deepEqual((({ lat, lng, action, type }) => [lat, lng, action, type])(JSON.parse(sent.split(' BODY ')[1])), [37.567, 126.978, 'nearby', '14']);
-  assert.equal(tourCalls(up)[0].url.searchParams.get('mapY'), '37.567');
-  await D.places.search({ query: '경복궁', coords: { lat: 37.5665351, lng: 126.9779692 } });
-  assert.ok(ctx._requested.every(u => !/lat=|lng=/.test(u.split(' BODY ')[0])), 'no coordinates in any URL (Kakao moved to POST as well)');
-  D.save(r.items[0].id);
-  const blob = JSON.stringify([...ctx.localStorage._m.entries(), ...ctx.sessionStorage._m.entries(), [...ctx.LivonPlatform._saves.values()], r.items]);
-  assert.doesNotMatch(blob, /37\.566|37\.567|126\.977(?!0)|126\.978/, 'user origin never stored (place coordinates are 37.5788 / 126.9769…)');
-});
-
-test('22-23 Life Stage / Today: explicit category relations only, never by age; links only when connected', async () => {
-  const { D } = await loaded();
-  for (const t of LIFE.topics.filter(x => x.category === '여행')) assert.equal(D.tour.planForTopic(t).type, '12');
-  for (const t of LIFE.topics.filter(x => x.category === '취미/문화')) assert.equal(D.tour.planForTopic(t).type, '14');
-  for (const c of ['창업', '돈/재테크', '주거', '건강', '운동', '취업']) for (const t of LIFE.topics.filter(x => x.category === c)) assert.equal(D.tour.planForTopic(t), null, t.id);
-  assert.equal(D.tour.planForContent({ category: '미술관' }).query, '미술관');
-  assert.equal(D.tour.planForContent({ category: '지역별 하루 여행' }).type, '12');
-  for (const c of ['창업', '돈 관리', '베이킹', '커플 데이트']) assert.equal(D.tour.planForContent({ category: c }), null, c);
-  assert.match(read('life-hub.js'), /T\.configured\(\) && T\.planForTopic/); assert.match(read('today-feed.js'), /T\.configured\(\) && T\.planForContent/);
-});
-
-test('24 Home unchanged: no TourAPI section, no "내 주변", no automatic calls', async () => {
-  const { D, up } = await loaded();
-  const r = D.forHome({ stage: '30', interests: ['여행', '취미'] });
-  assert.ok([...r.events, ...r.policies, ...r.programs].every(e => e.provider !== 'kr-tourapi'));
-  assert.doesNotMatch(read('home-page.js'), /kr-tourapi|관광정보|내 주변/);
-  assert.equal(tourCalls(up).length, 0);
-});
-
-test('25 My Life snapshot: title, provider, contentId/type, category, address, phone, place coordinates, attribution; no photo, no origin', async () => {
-  const { ctx, D } = await loaded();
-  const r = await D.tour.search({ query: '경복궁' });
-  const e = r.items[0];
-  assert.equal(D.save(e.id), 'saved');
-  const rec = ctx.LivonPlatform._saves.get('ext:' + e.id), s = rec.data.snapshot;
-  assert.equal(rec.type, 'place'); assert.equal(rec.source, '한국관광공사 TourAPI');
-  assert.deepEqual([s.title, s.provider, s.providerRef, s.contentTypeId, s.category], ['[QA 픽스처] 경복궁', 'kr-tourapi', '126508', '12', '여행']);
-  assert.deepEqual([s.address, s.detailAddress, s.phone, s.latitude, s.longitude], ['서울특별시 종로구 사직로 161', '(세종로)', '02-3700-3900', 37.5788222356, 126.9769930325]);
-  assert.equal(s.attribution, '출처: ⓒ한국관광공사');
-  assert.doesNotMatch(JSON.stringify(rec), /tong\.visitkorea|firstimage|distance/);
-});
-
-test('26-28 Kakao coexistence, strict dedupe, no automatic enrichment', async () => {
-  const { D, up } = await loaded();
-  const k = (await D.places.search({ query: '경복궁' })).items[0];
-  const t = (await D.tour.search({ query: '경복궁' })).items[0];
-  assert.equal(tourCalls(up).length, 1, 'a Kakao search never triggers a TourAPI call');
-  assert.equal(up.calls.filter(c => c.url.origin === 'https://dapi.kakao.com').length, 1, 'and vice versa');
-  assert.equal(D.action(k).label, '카카오맵에서 보기'); assert.equal(D.action(t), null, 'TourAPI list items get no external CTA (no KTO page URL in the API)');
-  assert.equal(D.dedupe([k, t]).length, 1, 'same title + same phone + same ≈100 m cell → one place (strong evidence)');
-  const kNoPhone = Object.assign({}, k, { contact: null });
-  assert.equal(D.dedupe([kNoPhone, t]).length, 2, 'same title + nearby only (address spelled differently) → kept separate');
-  assert.equal(D.dedupe([Object.assign({}, kNoPhone, { location: Object.assign({}, k.location, { latitude: 35, longitude: 129 }) }), t]).length, 2, 'title only → kept separate');
-  const twin = Object.assign({}, t, { location: Object.assign({}, t.location, { address: k.location.roadAddress, roadAddress: k.location.roadAddress, latitude: k.location.latitude, longitude: k.location.longitude }), contact: k.contact });
-  assert.equal(D.dedupe([k, twin]).length, 1, 'title + address + phone + coordinates → one');
-  assert.equal(D.dedupe([k, Object.assign({}, twin, { contact: null, location: Object.assign({}, twin.location, { latitude: 35, longitude: 129 }) })]).length, 2, 'title + address only');
-});
 
 test('36 existing providers regression: status lists the five earlier providers first; bizinfo/youth list routes unaffected', async () => {
   const h = handler({ ...ENV, BIZINFO_API_KEY: 'biz-test-key-123456' }, upstream(u => reply(u.origin === 'https://apis.data.go.kr' ? ok([]) : '{}')));

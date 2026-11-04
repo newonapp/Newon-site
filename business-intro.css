@@ -1,5 +1,5 @@
 /* Business introduction pages (BabyLog · PetLog · My World · ShareOn) and the
-   shared partnership / app-download blocks on the LivOn and Ongil pages.
+   shared partnership / app-download blocks on the Ongil pages.
    Information-only: no forms, inputs or service controls. Builds on business-pillar.css (.bp-*). */
 
 .bp-page.bi-page {
@@ -135,7 +135,7 @@
   color: var(--bp-ink);
 }
 
-/* Closing blocks appended to the LivOn / Ongil editorial pages */
+/* Closing blocks appended to the Ongil editorial pages */
 .bi-extra {
   padding: clamp(2.5rem, 6vw, 4.5rem) 0;
   background: var(--bp-bg);

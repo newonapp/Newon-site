@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Verify a deployed NEWON API (the Vercel API project that serves LIVON and ONGIL) from the outside, like a browser would.
+ * Verify a deployed NEWON API (the Vercel API project that serves the shared data API) from the outside, like a browser would.
  *
  *   node scripts/verify-api-deployment.mjs https://<project>.vercel.app
  *   node scripts/verify-api-deployment.mjs https://<project>.vercel.app --site-origin https://www.newon.app --json

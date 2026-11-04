@@ -179,40 +179,6 @@ test('LB-8 server cache: shared Upstash cache failures fall back (never fail a r
 });
 
 /* ───────── API base URL (frontend) ───────── */
-test('LB-9 API base: one config file, https origin only, default same-origin; AI page + data layer use it; build writes it from LIVON_API_ORIGIN', () => {
-  assert.equal(livonApiOriginFromEnv({}), '');
-  assert.equal(livonApiOriginFromEnv({ LIVON_API_ORIGIN: 'https://livon-api.example.app/' }), 'https://livon-api.example.app');
-  for (const bad of ['http://api.example.app', 'https://api.example.app/api', 'https://*.example.app', 'javascript:alert(1)', 'https://user:pw@api.example.app', 'api.example.app'])
-    assert.equal(livonApiOriginFromEnv({ LIVON_API_ORIGIN: bad }), '', bad);
-  assert.equal(src('livon/livon-api-config.js'), livonApiConfigScript(''), 'committed file = generated default');
-  const run = code => { const ctx = { window: {} }; ctx.window = ctx; vm.createContext(ctx); vm.runInContext(code, ctx); return ctx; };
-  const d = run(livonApiConfigScript(''));
-  assert.equal(d.LivonApi.base, ''); assert.equal(d.LivonApi.url('/api/livon/data'), '/api/livon/data');
-  const g = run(livonApiConfigScript('https://livon-api.example.app'));
-  /* Production routing: the API project has no trailing-slash rule, so a separate-origin URL is the canonical route without
-     a slash, and a slash form is normalised to it (completion.test LC-16, api-routing-cors.test CORS-1) */
-  assert.equal(g.LivonApi.url('/api/health'), 'https://livon-api.example.app/api/health');
-  assert.equal(g.LivonApi.url('/api/health/'), 'https://livon-api.example.app/api/health');
-  assert.equal(run(livonApiConfigScript('http://x.example')).LivonApi.base, '', 'generator refuses http');
-  vm.runInContext(src('livon/data/livon-data-config.js'), g);
-  assert.equal(g.LivonDataConfig.serverEndpoint, 'https://livon-api.example.app/api/livon/data');
-  const plain = run(''); vm.runInContext(src('livon/data/livon-data-config.js'), plain);
-  assert.equal(plain.LivonDataConfig.serverEndpoint, '/api/livon/data', 'no config → same origin as before');
-  const ai = src('livon/ai-page.js');
-  assert.match(ai, /API\.url\("\/api\/livon\/chat"\)/); assert.match(ai, /fetch\(API\.url\("\/api\/health"\)/);
-  assert.doesNotMatch(ai.replace(/\/\*[\s\S]*?\*\//g, ''), /fetch\("\/api\//, 'no hardcoded /api fetch left');
-  const html = src('livon/index.html');
-  const i = n => html.indexOf(n);
-  assert.ok(i('/livon/livon-api-config.js') > 0 && i('/livon/livon-api-config.js') < i('/livon/data/livon-data-config.js') && i('/livon/data/livon-data-config.js') < i('/livon/ai-page.js'));
-  const pub = src('scripts/publish-site.mjs');
-  assert.match(pub, /livonApiOriginFromEnv\(process\.env\)/); assert.match(pub, /"livon", "livon-api-config\.js"/);
-  const wf = src('.github/workflows/github-pages.yml');
-  assert.match(wf, /LIVON_API_ORIGIN: \$\{\{ vars\.LIVON_API_ORIGIN \}\}/, 'Pages build reads a public repository variable, not a secret');
-  /* the one *_API_KEY allowed is the public Firebase WEB key, read from a repository variable (Account Backend V1) */
-  const wfRest = wf.replace(/^ {10}NEWON_PLUS_FIREBASE_API_KEY: \$\{\{ vars\.NEWON_PLUS_FIREBASE_API_KEY \}\}$/m, '');
-  assert.doesNotMatch(wfRest, /OPENAI|UPSTASH|_API_KEY|SERVICE_KEY|RATE_LIMIT_SECRET/, 'no server secret in the Pages workflow');
-});
-
 /* ───────── Vercel API-only deployment ───────── */
 test('LB-10 Vercel: API-only build publishes no site copy (noindex + robots disallow); full build unchanged by default; /api noindex', () => {
   const v = JSON.parse(src('vercel.json'));
@@ -227,11 +193,3 @@ test('LB-10 Vercel: API-only build publishes no site copy (noindex + robots disa
   assert.match(b, /LIVON_API_ONLY === "1"/); assert.match(b, /publish-site\.mjs/);
 });
 
-test('LB-11 no browser → OpenAI path; no secret names in browser code', () => {
-  const files = ['livon/ai-page.js', 'livon/livon-api-config.js', 'livon/data/livon-data-config.js', 'livon/data/livon-data-providers.js', 'livon/data/livon-data-core.js', 'livon/index.html'];
-  for (const f of files) {
-    const c = src(f);
-    assert.doesNotMatch(c, /api\.openai\.com|OPENAI_API_KEY|UPSTASH|RATE_LIMIT_SECRET|_API_KEY|SERVICE_KEY|dapi\.kakao\.com/, f);
-  }
-  assert.match(src('server/livon/chat.mjs'), /store: false/, 'OpenAI requests are not stored by the API');
-});

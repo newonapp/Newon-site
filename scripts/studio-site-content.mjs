@@ -4,7 +4,7 @@
  *   01 Overview            /{lang}/studio/
  *   02 Digital Store       /{lang}/studio/store/
  *   03 Our Platforms       /{lang}/studio/platforms/
- *        + six platform product pages /{lang}/studio/platforms/{babylog,petlog,myworld,shareon,livon,ongil}/
+ *        + six platform product pages /{lang}/studio/platforms/{babylog,petlog,myworld,shareon,ongil}/
  *   04 Business Products   /{lang}/studio/business/
  *   05 Contact             /{lang}/studio/contact/
  *
@@ -28,7 +28,7 @@ export const ST_NAV = STUDIO_PAGES.map((p) => ({ ...p, sub: p.sub.replace(/\/$/,
 /** First-screen film of every Studio screen (owner choice 2026-10-19; constant owned by studio-film-copy.mjs). */
 export const ST_FILM = STUDIO_PAGE_FILM_SRC;
 
-/** The platforms (order = NEWON business row; LIVON removed from the website 2026-11). `site` = the platform's own website folder. */
+/** The platforms (order = NEWON business row). `site` = the platform's own website folder. */
 export const ST_PLATFORMS = [
   { id: "babylog", name: "BABYLOG", site: "babylog", category: "Parenting & Family" },
   { id: "petlog", name: "PETLOG", site: "petlog", category: "Pet Life" },

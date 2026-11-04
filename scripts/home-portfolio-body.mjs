@@ -9,7 +9,6 @@ import { getCompanyProjects } from "./company-portfolio-data.mjs";
 import { NAV_FLYOUT_SLUGS } from "./portfolio-data.mjs";
 import { getAppsFilmCopy } from "./apps-showcase-render.mjs";
 import { getAiFilmCopy } from "./ai-film-hero.mjs";
-import { getLifeStageCopy } from "./home-lifestage-copy.mjs";
 import { getOngilCopy } from "./home-ongil-copy.mjs";
 import { getBusinessFilmCopy } from "./business-film-copy.mjs";
 import { getEcosystemCopy } from "./ecosystem-copy.mjs";
@@ -19,8 +18,6 @@ const FILM = {
   consumer:
     "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260330_153826_e9005cf7-a1c7-4c7d-886f-fea22d644a9c.mp4",
   ai: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260723_145606_ab143199-b593-4941-bb1b-9afca215416b.mp4",
-  lifestage:
-    "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_102608_5fa1187d-9ac6-44fb-82ab-54376200abc0.mp4",
   ongil:
     "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260323_071151_38c3924f-c312-48af-a196-3fbb80e4226f.mp4",
   business:
@@ -54,7 +51,6 @@ function plain(html) {
 function filmLockup(id, lang) {
   const apps = getAppsFilmCopy(lang);
   const ai = getAiFilmCopy("personal", lang);
-  const life = getLifeStageCopy(lang);
   const ongil = getOngilCopy(lang);
   const business = getBusinessFilmCopy(lang);
   const eco = getEcosystemCopy(lang);
@@ -65,7 +61,6 @@ function filmLockup(id, lang) {
   const map = {
     consumer: { wordmark: "Newon<br>App", slogan: apps.sloganHtml },
     ai: { wordmark: "Newon AI", slogan: ai.sloganHtml },
-    lifestage: { wordmark: "LivOn", slogan: life.hero.titleHtml },
     ongil: { wordmark: "Ongil", slogan: ongil.hero.titleHtml },
     business: { wordmark: "Newon Business", slogan: business.sloganHtml },
     commerce: { wordmark: "Newon<br>Ecosystem", slogan: eco.sloganHtml },

@@ -86,26 +86,6 @@ test('CORS-1 canonical API path does not require a redirect: vercel.json sets no
   for (const p of ROUTES) { const r = await call(p, { headers: { Origin: WWW } }); assert.ok(r.status !== 301 && r.status !== 302 && r.status !== 307 && r.status !== 308, p + ' → ' + r.status); assert.equal(r.headers.get('location'), null); }
 });
 
-test('CORS-1b the paths browsers really call are the canonical ones (no trailing slash) in ONGIL, LIVON and the verification script', () => {
-  /* ONGIL's data client is not on every deployment branch (main has only ongil-start/index.html until the ONGIL branch is
-     merged). Where the file is in the source tree its DATA_PATH must be the canonical route; where it is not, there is no
-     ONGIL client to check. Existence is decided by the file system only — a read or match failure is never swallowed. */
-  const ONGIL_DATA_SOURCE = 'ongil-start/js/data-source.js';
-  if (existsSync(new URL('../../' + ONGIL_DATA_SOURCE, import.meta.url))) {
-    const ongil = src(ONGIL_DATA_SOURCE);
-    assert.match(ongil, /const DATA_PATH = '\/api\/livon\/data';/, 'ONGIL calls the canonical data route');
-    assert.doesNotMatch(ongil, /['"`]\/api\/[a-z/]*\/['"`?]/, 'no API path with a trailing slash in the ONGIL data client');
-  } else {
-    assert.equal(existsSync(new URL('../../ongil-start/js/', import.meta.url)), false, 'no ONGIL script directory on this branch: nothing in ONGIL calls the API');
-  }
-  assert.match(src('livon/data/livon-data-config.js'), /LivonApi\.url\("\/api\/livon\/data"\)/);
-  assert.match(src('livon/data/livon-sync.js'), /api\.url\("\/api\/health"\)/); assert.match(src('livon/data/livon-sync.js'), /api\.url\("\/api\/livon\/userdata"\)/);
-  assert.match(src('livon/ai-page.js'), /API\.url\("\/api\/livon\/chat"\)/); assert.match(src('livon/ai-page.js'), /API\.url\("\/api\/health"\)/);
-  const v = src('scripts/verify-api-deployment.mjs');
-  assert.match(v, /base \+ '\/api\/health'/); assert.match(v, /base \+ '\/api\/livon\/data'/); assert.match(v, /redirect: 'manual'/, 'the script never follows a redirect, so a platform redirect fails the check');
-  for (const p of ROUTES) assert.ok(existsSync(new URL('../../' + p.slice(1) + '.mjs', import.meta.url)), p + ' has a function file');
-});
-
 test('CORS-2 www.newon.app (and newon.app) are allowed on every route, with the exact origin', async t => {
   assert.deepEqual(DEFAULT_PRODUCTION_ORIGINS, [WWW, APEX]);
   const call = await platform(t, VERCEL);

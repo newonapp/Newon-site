@@ -140,25 +140,6 @@ test('AI-5 size limits: message 4,000 chars, history 12 / 12,000 chars, body 64 
 });
 
 /* ───────── AI-6 timeout ───────── */
-test('AI-6 timeouts: upstream timeout → 504 TIMEOUT; a slow data lookup never delays the answer beyond its 1.5 s budget', async t => {
-  const timeoutErr = Object.assign(new Error('timed out'), { name: 'TimeoutError' });
-  const url = await serve(t, createChatHandler({ env: { ...PROD, OPENAI_API_KEY: KEY }, limiter: async () => {}, grounder: async i => i.refs, fetcher: async () => { throw timeoutErr; } }));
-  const r = await post(url, { message: '안녕' });
-  assert.equal(r.status, 504); assert.equal((await r.json()).code, 'TIMEOUT');
-  let sent = null;
-  const slow = await serve(t, createChatHandler({ env: { ...PROD, OPENAI_API_KEY: KEY }, limiter: async () => {}, grounder: () => new Promise(() => {}), fetcher: async (u, o) => { sent = JSON.parse(o.body); return okReply(); } }));
-  const t0 = Date.now();
-  const ok = await post(slow, { message: '이사 준비' });
-  assert.equal(ok.status, 200);
-  assert.ok(Date.now() - t0 < 4000, 'bounded wait');
-  assert.equal(sent.input.some(m => /LIVON 참고 항목/.test(m.content)), false, 'no refs when lookup timed out');
-  /* a throwing lookup is ignored too */
-  const boom = await serve(t, createChatHandler({ env: { ...PROD, OPENAI_API_KEY: KEY }, limiter: async () => {}, grounder: async () => { throw new Error('index broken'); }, fetcher: async () => okReply() }));
-  assert.equal((await post(boom, { message: '이사' })).status, 200);
-  /* the browser gives up after its own timeout and says so */
-  assert.match(src('livon/ai-page.js'), /timedOut \? errorFor\(504, "TIMEOUT"\)/);
-});
-
 /* ───────── AI-7 rate limit ───────── */
 test('AI-7 rate limit: anonymous per-client + site caps; 429 with Retry-After; production without Upstash fails closed', async t => {
   /* development: in-process limiter (burst 1 per 3 s per client) */
@@ -203,25 +184,6 @@ test('AI-8 server/upstream errors map to fixed codes; internal details never lea
 });
 
 /* ───────── AI-9 invalid model response ───────── */
-test('AI-9 invalid model responses are rejected (502 INVALID_AI_RESPONSE), refusals pass through as text', async t => {
-  const env = { ...PROD, OPENAI_API_KEY: KEY };
-  for (const payload of [{ status: 'failed', output: [] }, { status: 'completed', output: [] }, { status: 'completed', output: [{ type: 'message', content: [{ type: 'output_text', text: '' }] }] }, { output: 'nonsense' }]) {
-    const url = await serve(t, createChatHandler({ env, limiter: async () => {}, grounder: null, fetcher: async () => new Response(JSON.stringify(payload)) }));
-    const r = await post(url, { message: 'x' });
-    assert.equal(r.status, 502, JSON.stringify(payload)); assert.equal((await r.json()).code, 'INVALID_AI_RESPONSE');
-  }
-  const notJson = await serve(t, createChatHandler({ env, limiter: async () => {}, grounder: null, fetcher: async () => new Response('<html>gateway</html>') }));
-  const nj = await post(notJson, { message: 'x' });
-  assert.equal(nj.status, 502); assert.equal((await nj.json()).code, 'INVALID_AI_RESPONSE');
-  const refusal = await serve(t, createChatHandler({ env, limiter: async () => {}, grounder: null, fetcher: async () => new Response(JSON.stringify({ status: 'completed', output: [{ type: 'message', content: [{ type: 'refusal', refusal: '도와드릴 수 없습니다.' }] }] })) }));
-  assert.equal((await (await post(refusal, { message: 'x' })).json()).message, '도와드릴 수 없습니다.');
-  /* the browser treats a non-JSON or malformed success as an invalid response, not a crash */
-  const ai = src('livon/ai-page.js');
-  assert.match(ai, /errorFor\(r\.status, "INVALID_AI_RESPONSE"\)/);
-  assert.match(ai, /kind: "offline"/, 'offline is its own state');
-  for (const kind of ['unconfigured', 'rate', 'timeout', 'invalid', 'unavailable', 'server']) assert.match(ai, new RegExp('kind: "' + kind + '"'));
-});
-
 /* ───────── AI-10 CORS ───────── */
 test('AI-10 CORS: www.newon.app / newon.app allowed exactly, never "*", evil origins refused before upstream, preview via env', async t => {
   let upstream = 0;
@@ -253,52 +215,4 @@ function walk(dir, out = []) {
   }
   return out;
 }
-test('AI-11 no secret reaches the browser: LIVON client files, the API config and the built site hold no keys', () => {
-  const root = new URL('../../', import.meta.url).pathname;
-  const files = walk(root + 'livon');
-  if (existsSync(root + '_publish/livon')) files.push(...walk(root + '_publish/livon'));
-  assert.ok(files.length > 30);
-  const SECRET = /(sk-[A-Za-z0-9_-]{16,}|OPENAI_API_KEY|UPSTASH_REDIS_REST_TOKEN|LIVON_RATE_LIMIT_SECRET|Bearer [A-Za-z0-9._-]{20,}|serviceKey=[A-Za-z0-9%]{10,})/;
-  for (const f of files) assert.doesNotMatch(readFileSync(f, 'utf8'), SECRET, f);
-  /* API config: https origins only; production / preview / local picked from the page's host */
-  const run = (code, host) => { const c = { window: {} }; c.window = c; if (host) c.location = { hostname: host }; vm.createContext(c); vm.runInContext(code, c); return c.LivonApi; };
-  const code = livonApiConfigScript('https://api.livon.example.app', 'https://preview-api.livon.example.app');
-  assert.deepEqual([run(code, 'www.newon.app').env, run(code, 'www.newon.app').base], ['production', 'https://api.livon.example.app']);
-  assert.equal(run(code, 'newon.app').base, 'https://api.livon.example.app');
-  assert.deepEqual([run(code, 'livon-git-x.vercel.app').env, run(code, 'livon-git-x.vercel.app').base], ['preview', 'https://preview-api.livon.example.app']);
-  assert.deepEqual([run(code, 'localhost').env, run(code, 'localhost').url('/api/health')], ['local', '/api/health']);
-  assert.equal(run(code, '127.0.0.1').base, '');
-  assert.equal(run(livonApiConfigScript(''), 'www.newon.app').base, '', 'no origin configured → same origin (today\'s Pages behaviour)');
-  assert.deepEqual(livonApiOriginsFromEnv({ LIVON_API_ORIGIN: 'https://a.example.app', LIVON_API_ORIGIN_PREVIEW: 'http://insecure.example' }), { production: 'https://a.example.app', preview: '' });
-  assert.equal(run(livonApiConfigScript('https://x.example.app/?key=sk-123')).base, '', 'a URL with a path/query is refused');
-  assert.equal(src('livon/livon-api-config.js'), livonApiConfigScript(''), 'committed file = generated default');
-});
-
 /* ───────── AI-12 privacy: no automatic sensitive-data persistence ───────── */
-test('AI-12 privacy: the server stores nothing; My Life data never leaves the device without an explicit action; saving needs approval', async t => {
-  /* server: one request touches only OpenAI and the limiter — no database, no log sink */
-  const touched = [];
-  const url = await serve(t, createChatHandler({ env: PROTECTED, fetcher: async (u, o) => { touched.push(String(u)); return /upstash|redis/.test(String(u)) ? upstashOk() : okReply(); } }));
-  const r = await post(url, { message: '요즘 불면증이 심하고 대출 이자가 걱정돼' });
-  assert.equal(r.status, 200);
-  assert.deepEqual(touched.sort(), ['https://api.openai.com/v1/responses', 'https://redis.example.test'].sort());
-  const chatSrc = src('server/livon/chat.mjs') + src('server/livon/http.mjs') + src('server/livon/ai/tools.mjs');
-  assert.doesNotMatch(chatSrc, /console\.(log|info)\(|writeFile|appendFile|INSERT INTO|userdata/i, 'no body logging or persistence in the AI path');
-  assert.match(src('server/livon/chat.mjs'), /store: false/);
-  /* personal settings reach the server only when the user turned personalisation on */
-  const n = normalizeInput({ message: 'x', context: { personalize: false, stage: '30대', region: '서울', goal: '빚 갚기', health: '당뇨', mlStore: { todos: [1] } } });
-  assert.deepEqual(Object.keys(n.context), ['answerLength']);
-  const on = normalizeInput({ message: 'x', context: { personalize: true, stage: '30대', health: '당뇨' } });
-  assert.equal(on.context.stage, '30대'); assert.equal(on.context.health, undefined, 'unknown fields are dropped');
-  /* browser: the request is built from the thread + settings only; My Life storage is never read into it */
-  const ai = src('livon/ai-page.js');
-  const payloadFn = ai.slice(ai.indexOf('function requestPayload'), ai.indexOf('function errorFor'));
-  assert.doesNotMatch(payloadFn, /mlStore|livon\.mlStore|LivonMyLife|localStorage/);
-  assert.match(payloadFn, /settings\.personalize === true/);
-  /* AI → My Life: preview → select → approve; nothing is saved before "승인하고 추가" */
-  assert.match(ai, /승인 전에는 아무것도 저장되지 않습니다/);
-  const approve = ai.slice(ai.indexOf('function approveAdd'), ai.indexOf('function showApiNote'));
-  assert.match(approve, /saveTodo/);
-  const beforeApprove = ai.slice(0, ai.indexOf('function approveAdd'));
-  assert.doesNotMatch(beforeApprove.replace(/function openAddPreview[\s\S]*?function approveAdd/, ''), /api\.saveTodo\(|api\.saveGoal\(/, 'no save call outside the approval handler');
-});

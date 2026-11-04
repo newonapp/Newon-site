@@ -421,7 +421,7 @@ function hero(section, name, b, depth) {
 
 /**
  * Full-screen film hero — the existing Newon Studio first screen (#studio-film, studio-film.css/js),
- * reused as-is . `film.src` is the moving background (Partnerships uses the LIVON Community film).
+ * reused as-is . `film.src` is the moving background (Partnerships uses the Community film).
  */
 function filmHero(page, b, depth) {
   const f = page.film;

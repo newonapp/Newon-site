@@ -47,21 +47,6 @@ function res() { const r = { statusCode: 0, headers: {}, body: '', setHeader(k, 
 async function call(h, url, method = 'GET') { const r = res(); await h({ method, url, headers: {} }, r); return r; }
 const handler = (env, up, log = () => {}) => createDataHandler({ env, fetcher: up.fetcher, cache: memoryCache(), log });
 
-test('official contract: fixed endpoint, documented parameters, bounded searchCnt, key server-only', () => {
-  assert.equal(biz.UPSTREAM, 'https://www.bizinfo.go.kr/uss/rss/bizinfoApi.do');
-  assert.equal(biz.ENV_KEY, 'BIZINFO_API_KEY'); assert.equal(biz.PROVIDER_ID, 'kr-business-support');
-  const u = new URL(biz.requestUrl('K', { pageIndex: 2, searchLclasId: '06', hashtags: '서울' }));
-  assert.deepEqual([...u.searchParams.keys()], ['crtfcKey', 'dataType', 'searchCnt', 'searchLclasId', 'hashtags', 'pageUnit', 'pageIndex']);
-  assert.equal(u.searchParams.get('dataType'), 'json');
-  assert.ok(Number(u.searchParams.get('searchCnt')) > 0, 'searchCnt never 0/empty (would return the whole database)');
-  assert.ok(Number(u.searchParams.get('pageUnit')) <= 100);
-  assert.deepEqual(Object.keys(biz.FIELD_CODES), ['01', '02', '03', '04', '05', '06', '07', '09']);
-  for (const f of ['livon-data-config.js', 'livon-data-core.js', 'livon-data-providers.js', 'livon-data-schema.js']) {
-    assert.doesNotMatch(read('data/' + f), /crtfcKey|bizinfoApi\.do|BIZINFO_API_KEY/, f + ' (browser) never touches the key or the endpoint');
-  }
-  assert.match(readFileSync(new URL('../../.env.example', import.meta.url), 'utf8'), /\nBIZINFO_API_KEY=\n/);
-});
-
 test('no key: configured=false, NOT_CONFIGURED, no upstream call', async () => {
   const up = upstream(() => reply(jsonBody([item()])));
   const h = handler({}, up);
@@ -215,87 +200,3 @@ async function loaded({ bizRows = bizItems(), youthRows = [], env = { BIZINFO_AP
   return { ctx, D: ctx.LivonData, up };
 }
 
-test('browser no-key: provider stays planned, nothing added, LIVON curated data unaffected', async () => {
-  const { D, up } = await loaded({ env: {} });
-  const p = D.registry.get('kr-business-support');
-  assert.equal(p.enabled, false); assert.equal(p.status, 'planned');
-  assert.equal(D.external(D.repository.list({ includeExpired: true })).length, 0);
-  assert.equal(up.calls.length, 0);
-  assert.ok(D.repository.size() > 30);
-});
-
-test('freshness, actions and attribution', async () => {
-  const { D } = await loaded();
-  const all = D.repository.list({ includeExpired: true }).filter(e => e.provider === 'kr-business-support');
-  const open = all.find(e => e.providerId === 'PBLN_000000000100001'), old = all.find(e => e.providerId === 'OLD1'), fin = all.find(e => e.providerId === 'FIN1');
-  assert.equal(D.freshness(old), 'expired'); assert.equal(D.action(old).label, '공식 안내 보기');
-  assert.equal(D.action(open).label, '공식 신청 페이지로 이동'); assert.equal(D.action(open).url, 'https://www.k-startup.go.kr/');
-  assert.equal(D.action(fin).label, '공식 안내 보기', 'no application URL → official notice page');
-  assert.equal(D.freshness(open), 'unknown', 'no verification date → not "fresh"');
-  assert.equal(D.attribution(open).text, '출처: 기업마당');
-  const html = D.ui.list([open], D.ui.note('policy'), 'life');
-  assert.match(html, /정책·지원 · 기업마당/); assert.match(html, /출처: 기업마당/); assert.match(html, /공고 등록 2026\.09\.01/); assert.match(html, /대상 여부를 판단하지 않습니다/);
-  assert.doesNotMatch(html, /LIVON 지원사업|LIVON 인증/);
-});
-
-test('Explore: searchable under 정책·지원 by title/summary/agency/category/region/tags; LIVON content still leads', async () => {
-  const { ctx } = await loaded();
-  const S = ctx.LivonSearch;
-  const found = q => S.search(q).items.some(x => String(x.item.key).startsWith('ext:kr-business-support'));
-  for (const q of ['예비창업패키지', '사업화 자금', '중소벤처기업부', '정책자금', '예비창업자']) assert.ok(found(q), q);
-  const pol = S.search('창업', { type: 'policy' });
-  assert.ok(pol.items.every(x => x.item.type === 'policy')); assert.ok(pol.items.some(x => String(x.item.key).startsWith('ext:kr-business-support')));
-  assert.ok(!S.search('창업').items[0].item.key.startsWith('ext:'), 'LIVON topics keep the top spot');
-  assert.ok(!S.search('지난 창업 경진대회').items.some(x => x.item.key === 'ext:kr-business-support:policy:OLD1'), 'closed programmes are not offered in search');
-});
-
-test('Life Stage: business support attaches by exact category (창업) only — never by age or loose words', async () => {
-  const { D } = await loaded();
-  const ids = t => D.forTopic(t, 'policy').filter(e => e.provider === 'kr-business-support').map(e => e.providerId);
-  const startup20 = LIFE.topics.find(t => t.lifeStageId === '20' && t.category === '창업');
-  const startup40 = LIFE.topics.find(t => t.lifeStageId !== '20' && t.category === '창업');
-  const money20 = LIFE.topics.find(t => t.lifeStageId === '20' && t.category === '돈/재테크');
-  const job20 = LIFE.topics.find(t => t.lifeStageId === '20' && t.category === '취업');
-  const housing20 = LIFE.topics.find(t => t.lifeStageId === '20' && t.category === '주거');
-  assert.deepEqual([...ids(startup20)], ['PBLN_000000000100001'], 'open 창업 support only (expired hidden)');
-  if (startup40) assert.deepEqual([...ids(startup40)], ['PBLN_000000000100001'], 'topic-based, not age-based');
-  assert.deepEqual([...ids(money20)], [], 'business finance is not personal money');
-  assert.deepEqual([...ids(job20)], []); assert.deepEqual([...ids(housing20)], []);
-});
-
-test('Home: only for matching interests; a life stage alone does not pull business programmes', async () => {
-  const { D } = await loaded();
-  const bizOnly = r => r.policies.filter(e => e.provider === 'kr-business-support').map(e => e.providerId);
-  assert.deepEqual([...bizOnly(D.forHome({ stage: '20', interests: [] }))], []);
-  assert.deepEqual([...bizOnly(D.forHome({ stage: '', interests: [] }))], []);
-  assert.deepEqual([...bizOnly(D.forHome({ stage: '20', interests: ['창업'] }))], ['PBLN_000000000100001']);
-  assert.deepEqual([...bizOnly(D.forHome({ stage: '', interests: ['주거', '여행'] }))], []);
-});
-
-test('My Life: snapshot keeps title, agency, source, official/application URLs, period, category and date', async () => {
-  const { ctx, D } = await loaded();
-  const id = 'kr-business-support:policy:PBLN_000000000100001';
-  assert.equal(D.save(id), 'saved');
-  const rec = ctx.LivonPlatform._saves.get('ext:' + id);
-  const s = rec.data.snapshot;
-  assert.equal(rec.type, 'policy'); assert.equal(rec.source, '기업마당');
-  assert.equal(s.title, '2026년 예비창업패키지 참여자 모집'); assert.equal(s.agency, '중소벤처기업부'); assert.equal(s.providerName, '기업마당');
-  assert.equal(s.officialSource, 'https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000100001');
-  assert.equal(s.applicationUrl, 'https://www.k-startup.go.kr/'); assert.ok(s.applicationPeriod.end); assert.equal(s.category, '창업');
-  assert.equal(s.registeredAt, '2026-09-01T01:00:00.000Z');
-  D.registry.setEnabled('kr-business-support', false); await D.repository.refresh({ force: true });
-  const back = D.fromSave(rec); assert.equal(back.fromSnapshot, true); assert.equal(back.entity.title, s.title);
-});
-
-test('dedupe with 온통청년 and curated data: merge only with same title + agency + official URL', async () => {
-  const shared = { plcyNm: '2026년 예비창업패키지 참여자 모집', sprvsnInstCdNm: '중소벤처기업부', refUrlAddr1: 'https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000100001', lclsfNm: '일자리', mclsfNm: '창업', sprtTrgtMinAge: '20', sprtTrgtMaxAge: '39', sprtTrgtAgeLmtYn: 'Y', plcyExplnCn: '같은 사업' };
-  const { D } = await loaded({ env: { BIZINFO_API_KEY: KEY, YOUTHCENTER_API_KEY: KEY }, youthRows: [
-    Object.assign({ plcyNo: 'Y-SAME' }, shared),
-    Object.assign({ plcyNo: 'Y-TITLE-ONLY' }, shared, { plcyNm: '중소기업 정책자금 융자', sprvsnInstCdNm: '다른 기관', refUrlAddr1: 'https://example.org/other' })
-  ] });
-  const list = D.repository.list({ includeExpired: true });
-  const merged = list.find(e => e.providerId === 'PBLN_000000000100001' || e.providerId === 'Y-SAME');
-  assert.ok(merged.alsoFrom.length === 1, 'same title + agency + official URL → one entity with both sources');
-  assert.match(D.attribution(merged).text, /온통청년 · 기업마당|기업마당 · 온통청년/);
-  assert.ok(list.find(e => e.providerId === 'FIN1') && list.find(e => e.providerId === 'Y-TITLE-ONLY'), 'same title only → kept separate');
-});

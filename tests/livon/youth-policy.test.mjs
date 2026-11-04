@@ -43,18 +43,6 @@ function res() {
 }
 async function call(handler, url, method = 'GET') { const r = res(); await handler({ method, url, headers: {} }, r); return r; }
 
-test('official contract: fixed upstream URL, documented parameters, key only server-side', () => {
-  assert.equal(youth.UPSTREAM, 'https://www.youthcenter.go.kr/go/ythip/getPlcy');
-  assert.equal(youth.ENV_KEY, 'YOUTHCENTER_API_KEY');
-  const u = new URL(youth.requestUrl('K', { pageNum: 3, pageSize: 50 }));
-  assert.deepEqual([...u.searchParams.keys()], ['apiKeyNm', 'pageNum', 'pageSize', 'pageType', 'rtnType']);
-  assert.equal(u.searchParams.get('rtnType'), 'json');
-  for (const f of ['livon-data-config.js', 'livon-data-core.js', 'livon-data-providers.js', 'livon-data-schema.js']) {
-    const src = read('data/' + f);
-    assert.doesNotMatch(src, /apiKeyNm|getPlcy|YOUTHCENTER_API_KEY/, f + ' (browser) never touches the key or the upstream URL');
-  }
-});
-
 test('disabled without key: status reports false, list is NOT_CONFIGURED, no upstream call, app unaffected', async () => {
   const up = upstream(() => reply(jsonBody([row()])));
   const h = createDataHandler({ env: {}, fetcher: up.fetcher, cache: memoryCache(), log: () => {} });
@@ -192,101 +180,6 @@ const policies = () => [
   row({ plcyNo: 'OLD', plcyNm: '지난 청년 면접정장 대여', lclsfNm: '일자리', mclsfNm: '취업', aplyYmd: `${ymdOf(-90)} ~ ${ymdOf(-3)}` }),
   row({ plcyNo: 'NOAGE', plcyNm: '주민 누구나 주거 상담', sprtTrgtAgeLmtYn: 'N', sprtTrgtMinAge: '0', sprtTrgtMaxAge: '0' })
 ];
-
-test('browser: provider switches on only when the server reports it configured; without key nothing loads', async () => {
-  const off = await loaded(policies(), {});
-  const p = off.D.registry.get('kr-youth-policy');
-  assert.equal(p.enabled, false); assert.equal(p.status, 'planned');
-  assert.equal(off.D.external(off.D.repository.list()).length, 0);
-  assert.equal(off.up.calls.length, 0);
-  const on = await loaded(policies());
-  const q = on.D.registry.get('kr-youth-policy');
-  assert.equal(q.enabled, true); assert.equal(q.status, 'active');
-  assert.equal(on.D.external(on.D.repository.list({ includeExpired: true })).length, 4);
-});
-
-test('freshness + attribution: deadline passed → expired; update date is not a verification; official links kept', async () => {
-  const { D } = await loaded(policies());
-  const all = D.repository.list({ includeExpired: true }).filter(e => e.provider === 'kr-youth-policy');
-  const old = all.find(e => e.providerId === 'OLD'), cur = all.find(e => e.providerId === 'R2026010100001');
-  assert.equal(D.freshness(old), 'expired'); assert.equal(D.action(old).label, '공식 안내 보기', 'no apply button after the deadline');
-  assert.equal(D.freshness(cur), 'unknown', 'fetched/updated dates never make a policy "verified"');
-  assert.equal(cur.lastVerifiedAt, null);
-  assert.equal(D.action(cur).label, '공식 신청 페이지로 이동'); assert.equal(D.action(cur).url, 'https://www.bokjiro.go.kr/');
-  const att = D.attribution(cur);
-  assert.equal(att.text, '출처: 온통청년(한국고용정보원)');
-  assert.equal(att.sourceUrl, 'https://www.molit.go.kr/');
-  const html = D.ui.list([cur], D.ui.note('policy'), 'life');
-  assert.match(html, /정책·지원 · 온통청년/); assert.match(html, /출처 업데이트 2026\.09\.20/); assert.match(html, /원문 보기/);
-  assert.doesNotMatch(html, /LIVON 정책|LIVON 인증/);
-  assert.equal(D.repository.search('면접정장').length, 0, 'expired policies hidden from default lists');
-});
-
-test('Explore: youth policies are searchable by title/summary/agency/category/region/tags under 정책·지원', async () => {
-  const { ctx } = await loaded(policies());
-  const S = ctx.LivonSearch;
-  const keysFor = q => S.search(q).items.filter(x => String(x.item.key).startsWith('ext:kr-youth-policy')).map(x => x.item.key);
-  assert.ok(keysFor('월세').length, 'title');
-  assert.ok(keysFor('무주택').length, 'summary');
-  assert.ok(keysFor('국토교통부').length, 'agency');
-  assert.ok(keysFor('사업화').length, 'tags');
-  const r = S.search('월세', { type: 'policy' });
-  assert.ok(r.items.every(x => x.item.type === 'policy'));
-  assert.ok(r.items.some(x => x.item.key === 'ext:kr-youth-policy:policy:R2026010100001'));
-  // existing ranking kept: LIVON topics still lead a generic query
-  const first = S.search('주거').items[0].item;
-  assert.notEqual(String(first.key).slice(0, 4), 'ext:', 'real data does not jump ahead of LIVON topics');
-});
-
-test('Life Stage: attaches only where life stage AND topic category match', async () => {
-  const { D } = await loaded(policies());
-  const topic = id => LIFE.topics.find(t => t.id === id);
-  const ids = (t) => D.forTopic(t, 'policy').map(e => e.providerId);
-  const housing20 = LIFE.topics.find(t => t.lifeStageId === '20' && t.category === '주거');
-  const startup20 = LIFE.topics.find(t => t.lifeStageId === '20' && t.category === '창업');
-  const housing60 = LIFE.topics.find(t => t.lifeStageId === '60' && /주거/.test(t.category)) || LIFE.topics.find(t => t.lifeStageId === '60');
-  const health20 = LIFE.topics.find(t => t.lifeStageId === '20' && t.category === '건강');
-  assert.deepEqual([...ids(housing20)], ['R2026010100001']);
-  assert.deepEqual([...ids(startup20)], ['S1']);
-  assert.deepEqual([...ids(housing60)], [], 'age 19–34 policy is not attached to 60대');
-  assert.deepEqual([...ids(health20)], [], 'different category → not attached');
-  assert.ok(!ids(housing20).includes('NOAGE'), 'no age information → never attached by guesswork');
-  assert.ok(topic('20s.first-independence'));
-});
-
-test('Home: related policies only for a matching stage/interest; nothing otherwise', async () => {
-  const { D } = await loaded(policies());
-  assert.ok(D.forHome({ stage: '20', interests: [] }).policies.length >= 1);
-  assert.deepEqual([...D.forHome({ stage: '60', interests: [] }).policies], []);
-  assert.deepEqual([...D.forHome({ stage: '', interests: [] }).policies], []);
-  assert.equal(D.forHome({ stage: '', interests: ['창업'] }).policies[0].providerId, 'S1');
-});
-
-test('My Life: saved youth policy keeps agency, sources, application info and dates in its snapshot', async () => {
-  const { ctx, D } = await loaded(policies());
-  const id = 'kr-youth-policy:policy:R2026010100001';
-  assert.equal(D.save(id), 'saved');
-  const snap = ctx.LivonPlatform._saves.get('ext:' + id).data.snapshot;
-  assert.equal(snap.title, '청년 월세 한시 특별지원'); assert.equal(snap.agency, '국토교통부');
-  assert.equal(snap.officialSource, 'https://www.molit.go.kr/'); assert.equal(snap.applicationUrl, 'https://www.bokjiro.go.kr/');
-  assert.ok(snap.applicationPeriod && snap.applicationPeriod.end); assert.equal(snap.updatedAt, '2026-09-20T01:30:00.000Z');
-  assert.equal(snap.providerName, '온통청년');
-});
-
-test('zero results and upstream failure: honest empty state, never sample policies', async () => {
-  const zero = await loaded([]);
-  assert.equal(zero.D.external(zero.D.repository.list({ includeExpired: true })).length, 0);
-  assert.equal(zero.D.ui.list(zero.D.forHome({ stage: '20' }).policies, '', 'life'), '');
-  const up = upstream(() => reply('', { status: 503, type: 'text/plain' }));
-  const h = createDataHandler({ env: { YOUTHCENTER_API_KEY: KEY }, fetcher: up.fetcher, cache: memoryCache(), log: () => {} });
-  const ctx = browser({ server: url => call(h, url) });
-  await new Promise(r => setTimeout(r, 30));
-  await ctx.LivonData.repository.refresh({ force: true });
-  assert.equal(ctx.LivonData.external(ctx.LivonData.repository.list()).length, 0);
-  const st = ctx.LivonData.status().monitor.find(m => m.provider === 'kr-youth-policy');
-  assert.equal(st.errorCode, 'HTTP_5XX'); assert.equal(ctx.LivonData.registry.get('kr-youth-policy').status, 'configured');
-  assert.ok(ctx.LivonData.repository.size() > 0, 'LIVON curated data still works');
-});
 
 test('server cache: one upstream fetch serves later pages; pagination stops on empty page or total', async () => {
   let pages = 0;

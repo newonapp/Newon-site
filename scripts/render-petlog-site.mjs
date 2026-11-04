@@ -2,7 +2,7 @@
 /**
  * PETLOG business website — /{lang}/petlog/{,platform/,business/,partnerships/,contact/} for all locales.
  *
- * Design: the existing LivOn Life Stage page shell and film hero (/lifestage/) — same shell, same #lifestage-detail.nls
+ * Design: the shared Life Stage page shell and film hero — same shell, same #lifestage-detail.nls
  * components (film hero, roster, journey rail, flow/board/signal/index/dir/pipe lists, ink close) and the same
  * home-lifestage.css / home-lifestage-layout.css / home-lifestage.js. The PETLOG green is used only for the
  * small kicker labels and status tags (scoped .nls--petlog rules in /petlog-site.css). The Contact form is the shared Newon

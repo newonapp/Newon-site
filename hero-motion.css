@@ -43,7 +43,7 @@
 .hm-film--home:not(#hm) .hm-film__stage { background-image: url("/assets/hero-film/poster.jpg") !important; }
 .hm-film--eco:not(#hm) .hm-film__stage { background-image: url("/assets/hero-film/ecosystem-poster.jpg") !important; }
 .hm-film--ai:not(#hm) .hm-film__stage { background-image: url("/assets/hero-film/ai-poster.jpg") !important; }
-.hm-film--livon:not(#hm) .hm-film__stage { background-image: url("/assets/hero-film/livon-poster.jpg") !important; }
+.hm-film--garden:not(#hm) .hm-film__stage { background-image: url("/assets/hero-film/garden-poster.jpg") !important; }
 .hm-film--biz:not(#hm) .hm-film__stage { background-image: url("/assets/hero-film/business-poster.jpg") !important; }
 .hm-film--ongil:not(#hm) .hm-film__stage { background-image: url("/assets/hero-film/ongil-poster.jpg") !important; }
 

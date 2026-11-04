@@ -195,7 +195,6 @@ const PUBLISH_COPY_DIRS = [
   { from: "admin", to: "admin", required: false },
   { from: "oxmonth", to: "oxmonth", required: false },
   { from: "subping", to: "subping", required: false },
-  /* LIVON (/livon/ web app + its SEO pages) was removed from the website (2026-11): the livon/ source stays in the repo but is not published. */
   /** Newon+ consumer auth foundation (shared by Newon web services; anonymous until a Newon+ project is configured). */
   { from: "newon-auth", to: "newon-auth", required: true },
   { from: "ongil-start", to: "ongil-start", required: true },
@@ -329,10 +328,11 @@ function assemble() {
     copyDir(src, dest);
   }
 
-  /* LIVON was removed from the website (2026-11): no LIVON page under /livon/ or /lifestage/ is published, and the
-     LIVON logo files (only used by the LIVON app) stay out of /assets/. The one exception is the shared API location
-     file /livon/livon-api-config.js: ONGIL (/ongil-start/) loads it to reach the shared data API, so it keeps its URL. */
-  for (const f of ["livon-mark.jpg", "livon-mark-icon.jpg", "livon-mark-icon-120.jpg"]) fs.rmSync(path.join(OUT, "assets", f), { force: true });
+  /* LIVON was removed from the website (2026-11): no LIVON page under /livon/ or /lifestage/ is published. The one
+     exception is the shared API location file /livon/livon-api-config.js: ONGIL (/ongil-start/) loads it to reach the
+     shared data API, so it keeps its URL. */
+  /* Legacy IR documents that still describe LIVON are kept in the repository but not published (2026-11). */
+  for (const f of ["NEWON_IR_KR.pdf", "NEWON_IR_EN.pdf", "NEWON IR SEED KO.pdf", "NEWON IR SEED EN.pdf", "NEWON IR SEED KO-EN.pdf"]) fs.rmSync(path.join(OUT, "ir", f), { force: true });
   const sharedApiConfig = ["livon", "livon-api-config.js"];
   fs.mkdirSync(path.join(OUT, sharedApiConfig[0]), { recursive: true });
   fs.copyFileSync(path.join(ROOT, ...sharedApiConfig), path.join(OUT, ...sharedApiConfig));

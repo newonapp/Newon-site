@@ -1,5 +1,5 @@
 /**
- * Inquiry links of the six business sites (ONGIL · LIVON · SHAREON · BABYLOG · PETLOG · MY WORLD).
+ * Inquiry links of the five business sites (ONGIL · SHAREON · BABYLOG · PETLOG · MY WORLD).
  *
  * Owner (2026-10-26): every inquiry action on the six businesses' pages is ONE button "문의하기" / "Contact us"
  * that opens the unified NEWON Contact page with the business (and a fitting inquiry type) preselected:
@@ -34,7 +34,7 @@ export function normalizeType(t) {
 
 /** The six businesses. A partnership button also names the business's "<biz>-partnership" topic
  *  (scripts/contact-taxonomy.mjs CONTACT_TOPICS, agent U's unified-page taxonomy). */
-export const SIX_BUSINESSES = ["ongil", "livon", "shareon", "babylog", "petlog", "myworld"];
+export const SIX_BUSINESSES = ["ongil", "shareon", "babylog", "petlog", "myworld"];
 
 export function unifiedContactHref(lang, biz, { type = "", source = "", topic = "" } = {}) {
   const q = [`platform=${encodeURIComponent(biz)}`];
@@ -60,7 +60,7 @@ function typeFromQuery(params) {
 /**
  * @param {string} html  rendered main content of one business page
  * @param {string} lang  page language
- * @param {string} biz   ongil | livon | shareon | babylog | petlog | myworld
+ * @param {string} biz   ongil | shareon | babylog | petlog | myworld
  * @param {string} [page] overview | platform | business | partnerships | contact (used for source=<biz>-<page>)
  */
 export function toUnifiedContact(html, lang, biz, page = "contact") {

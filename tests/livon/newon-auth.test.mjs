@@ -132,27 +132,6 @@ test('NA-5 session normalization: only issuer + subject + signInProvider; no ema
   for (const bad of ['someone@example.com', '홍길동', 'photo', 'secret', '+8210']) assert.ok(!all.includes(bad), bad);
 });
 
-test('NA-6 tokens: fresh from SDK, shape-checked, never stored/logged; Bearer only for HTTPS allowed origins', async () => {
-  const w = ctxWith({ doc: true }); w.run('newon-auth/newon-auth.js');
-  const A = w.ctx.NewonAuth.create(); const f = fakeAdapter({ user: USER, token: 'hdr.payload.sig' });
-  await A.initialize({ config: CFG, adapterFactory: () => f.adapter });
-  assert.equal(await A.getIdToken(), 'hdr.payload.sig'); assert.equal(await A.getIdToken({ forceRefresh: true }), 'hdr.payload.sig');
-  assert.deepEqual(f.calls.filter(c => c.startsWith('token')), ['token:false', 'token:true'], 'asks the SDK every time');
-  assert.deepEqual(J(await A.authHeaders('/api/livon/data')), { Authorization: 'Bearer hdr.payload.sig' });
-  assert.equal(await A.authHeaders('http://www.newon.app/api'), null, 'no bearer over http');
-  assert.equal(await A.authHeaders('https://evil.example/api'), null, 'no bearer to foreign origins');
-  assert.deepEqual(J(await A.authHeaders('https://api.newon.app/x', { allowedOrigins: ['https://api.newon.app'] })), { Authorization: 'Bearer hdr.payload.sig' });
-  assert.equal(await A.authHeaders('https://user:pw@www.newon.app/api'), null);
-  assert.equal(w.ls.writes.length + w.ss.writes.length + w.cookies.length, 0, 'no storage writes by Newon code');
-  assert.equal(w.net.filter(x => x === 'log').length, 0, 'nothing logged');
-  const bad = w.ctx.NewonAuth.create(); await bad.initialize({ config: CFG, adapterFactory: () => fakeAdapter({ user: USER, token: 'not a jwt' }).adapter });
-  assert.equal(await bad.getIdToken(), null);
-  for (const f2 of ['newon-auth/newon-auth.js', 'newon-auth/newon-auth-firebase.js', 'newon-auth/newon-auth-ui.js', 'livon/data/livon-auth-bridge.js']) {
-    const code = src(f2).replace(/\/\*[\s\S]*?\*\//g, '');
-    assert.ok(!/localStorage|sessionStorage|document\.cookie|console\.|indexedDB/.test(code), f2 + ' touches storage/log');
-  }
-});
-
 test('NA-7 logout clears state even if the SDK call fails', async () => {
   const w = ctxWith(); w.run('newon-auth/newon-auth.js');
   const A = w.ctx.NewonAuth.create(); const evs = [];
@@ -204,53 +183,6 @@ function livon() {
   const w = ctxWith(); w.run('livon/data/livon-user-data.js'); w.run('newon-auth/newon-auth.js'); w.run('livon/data/livon-auth-bridge.js');
   return w;
 }
-test('NA-9 LIVON bridge: one subscription point; sign-in ≠ upload; import is offered with counts and needs a choice', async () => {
-  const w = livon(); const { ctx } = w; const U = ctx.LivonUserData, B = ctx.LivonAuthBridge;
-  w.ls.setItem('livon.mlStore.v1', JSON.stringify({ v: 2, todos: [{ id: 'todo_1', title: 'a', createdAt: 1, updatedAt: 1 }], health: [{ id: 'h1', title: 'b' }] }));
-  const before = new Map(w.ls._m); w.ls.writes.length = 0;
-  assert.equal(B.SYNC_ENDPOINT_ENABLED, false); assert.equal(ENDPOINT_ENABLED, false);
-  assert.equal(B.offerImport().status, 'NOT_SIGNED_IN');
-  const f = fakeAdapter({ user: USER });
-  await ctx.NewonAuth.initialize({ config: CFG, adapterFactory: () => f.adapter });
-  assert.equal(U.auth().status, 'authenticated'); assert.equal(U.mode(), 'anonymous', 'no remote adapter → still local mode');
-  assert.equal(B.status().auth, 'authenticated'); assert.equal(B.status().consent, 'none');
-  assert.equal(B.approveImport({}).status, 'NOT_OFFERED', 'approval without an offer is refused');
-  const o = B.offerImport();
-  assert.equal(o.status, 'OFFERED'); assert.equal(o.requiresUserChoice, true); assert.equal(o.autoUpload, false);
-  assert.equal(o.plan.counts.tasks, 1); assert.equal(o.plan.sensitiveDefault, 'excluded'); assert.ok(o.plan.sensitiveCounts.health_records >= 1);
-  const r = B.approveImport({});
-  assert.deepEqual(J(r), { status: 'SYNC_NOT_AVAILABLE', uploaded: 0 });
-  assert.equal(w.net.filter(x => x !== 'log').length, 0, 'no network request at all');
-  assert.equal(w.ls.writes.filter(k => !/^livon\.userData\.meta/.test(k)).length, 0, 'no data rewritten');
-  for (const [k, v] of before) if (k !== 'livon.userData.meta.v1') assert.equal(w.ls._m.get(k), v, 'local data kept: ' + k);
-  await ctx.NewonAuth.signOut();
-  assert.equal(U.auth().status, 'anonymous'); assert.equal(B.status().consent, 'none');
-  for (const [k, v] of before) if (k !== 'livon.userData.meta.v1') assert.equal(w.ls._m.get(k), v, 'logout never deletes local data: ' + k);
-});
-
-test('NA-10 sensitive import boundary: sensitive data needs its own opt-in; consent is per page session, never stored', async () => {
-  const w = livon(); const B = w.ctx.LivonAuthBridge;
-  await w.ctx.NewonAuth.initialize({ config: CFG, adapterFactory: () => fakeAdapter({ user: USER }).adapter });
-  B.offerImport(); B.approveImport({});
-  assert.equal(B.status().consent, 'approved');
-  const code = src('livon/data/livon-auth-bridge.js');
-  assert.match(code, /includeSensitive: !!\(choice && choice\.includeSensitive === true\)/, 'sensitive only with explicit true');
-  B.offerImport(); assert.equal(B.declineImport().status, 'DECLINED');
-  assert.equal(w.ls.writes.filter(k => /consent/i.test(k)).length, 0);
-  assert.equal(w.ctx.LivonUserData.planLoginImport().sensitiveDefault, 'excluded');
-});
-
-test('NA-11 LIVON loads auth scripts in the right order, synchronously, without a static SDK or a mounted login UI', () => {
-  const html = src('livon/index.html');
-  const order = ['/livon/data/livon-user-data.js', '/newon-auth/newon-auth-config.js', '/newon-auth/newon-auth-firebase.js', '/newon-auth/newon-auth.js', '/livon/data/livon-auth-bridge.js'];
-  const pos = order.map(p => html.indexOf(p)); pos.forEach((p, i) => assert.ok(p > 0, order[i]));
-  assert.deepEqual([...pos].sort((a, b) => a - b), pos, 'script order');
-  for (const p of order.slice(1)) { const tag = html.slice(html.lastIndexOf('<script', html.indexOf(p)), html.indexOf('</script>', html.indexOf(p))); assert.ok(!/\b(async|defer|type="module")/.test(tag), p); }
-  assert.ok(!/gstatic\.com\/firebasejs/.test(html)); assert.ok(!/newon-auth-ui\.js/.test(html));
-  const pages = []; (function walk(d) { for (const e of readdirSync(new URL('../../' + d, import.meta.url), { withFileTypes: true })) { if (['node_modules', '_publish', '.git'].includes(e.name)) continue; const p = d + e.name; if (e.isDirectory()) walk(p + '/'); else if (p.endsWith('.html')) pages.push(p); } })('');
-  assert.deepEqual(pages.filter(p => src(p).includes('newon-auth-ui.js')), [], 'login UI is not mounted anywhere in V1');
-});
-
 test('NA-12 UI boundary: nothing when unconfigured; one neutral button; no provider buttons, no personal data', () => {
   const w = ctxWith(); w.run('newon-auth/newon-auth-ui.js');
   const R = w.ctx.NewonAuthUI.render, L = w.ctx.NewonAuthUI.LABELS;
@@ -386,22 +318,6 @@ test('NA-17 account linking: explicit confirmation + fresh re-auth on BOTH sides
 });
 
 /* ───────── separation from HQ / OX ───────── */
-test('NA-18 HQ admin + OX MONTH code is untouched and never referenced by Newon+ auth', () => {
-  let git = true; try { execFileSync('git', ['--version'], { stdio: 'ignore' }); } catch { git = false; }
-  if (git) {
-    let inRepo = true; try { execFileSync('git', ['rev-parse', '--git-dir'], { stdio: 'ignore', cwd: new URL('../../', import.meta.url) }); } catch { inRepo = false; }
-    if (inRepo) {
-      const out = execFileSync('git', ['status', '--porcelain', '--', 'admin', 'firestore.rules', 'apps/ox-month', 'ox-month', 'firebase.json'], { cwd: new URL('../../', import.meta.url), encoding: 'utf8' });
-      assert.equal(out.trim(), '', 'HQ / OX files changed');
-    }
-  }
-  for (const f of ['newon-auth/newon-auth.js', 'newon-auth/newon-auth-firebase.js', 'newon-auth/newon-auth-ui.js', 'livon/data/livon-auth-bridge.js', 'server/newon/auth/verify.mjs', 'server/newon/auth/accounts.mjs']) {
-    const c = src(f);
-    assert.ok(!/hq-auth|firebase-config\.js|ox-month\//.test(c), f);
-  }
-  assert.ok(!/newon-auth/.test(src('admin/hq-auth.js')));
-});
-
 /* ───────── build config ───────── */
 test('NA-19 build-time public config: only complete, valid, non-HQ/OX values; server values never reach the bundle', () => {
   const env = { NEWON_PLUS_FIREBASE_API_KEY: CFG.apiKey, NEWON_PLUS_FIREBASE_AUTH_DOMAIN: CFG.authDomain, NEWON_PLUS_FIREBASE_PROJECT_ID: PROJECT, NEWON_PLUS_FIREBASE_APP_ID: CFG.appId,
@@ -443,30 +359,3 @@ function inlineHashes(html) {
   return out;
 }
 const hdr = (rule, key) => (rule.headers.find(h => h.key.toLowerCase() === key.toLowerCase()) || {}).value;
-test('NA-21 security headers: safe enforced headers + CSP report-only matching the inventoried dependencies', () => {
-  const v = JSON.parse(src('vercel.json'));
-  assert.ok(v.headers.find(r => r.source === '/app-ads.txt'), 'existing header kept');
-  const all = v.headers.find(r => r.source === '/(.*)');
-  assert.equal(hdr(all, 'X-Content-Type-Options'), 'nosniff');
-  assert.equal(hdr(all, 'Referrer-Policy'), 'strict-origin-when-cross-origin');
-  assert.match(hdr(all, 'Permissions-Policy'), /geolocation=\(self\)/); assert.match(hdr(all, 'Permissions-Policy'), /camera=\(\)/);
-  for (const r of v.headers) for (const h of r.headers) assert.notEqual(h.key.toLowerCase(), 'content-security-policy', 'CSP is report-only in V1');
-  const site = v.headers.find(r => r.source === '/((?!livon/?$).*)'); const siteCsp = hdr(site, 'Content-Security-Policy-Report-Only');
-  for (const host of ['https://fonts.googleapis.com', 'https://fonts.gstatic.com', 'https://www.gstatic.com', 'https://cdn.jsdelivr.net', 'https://d8j0ntlcm91z4.cloudfront.net', 'https://www.youtube.com', 'https://formsubmit.co', 'https://api.newon.app', 'https://db.onlinewebfonts.com', 'https://fonts.cdnfonts.com'])
-    assert.ok(siteCsp.includes(host), host);
-  for (const d of ["object-src 'none'", "base-uri 'self'", "frame-ancestors 'self'"]) assert.ok(siteCsp.includes(d), d);
-  /* LIVON index: hashes must equal the page's current inline scripts */
-  const livonRules = v.headers.filter(r => r.source === '/livon' || r.source === '/livon/');
-  assert.equal(livonRules.length, 2);
-  const want = inlineHashes(src('livon/index.html')); assert.equal(want.length, 4);
-  for (const r of livonRules) {
-    const csp = hdr(r, 'Content-Security-Policy-Report-Only'); const scriptSrc = csp.split(';').find(d => d.trim().startsWith('script-src'));
-    for (const h of want) assert.ok(scriptSrc.includes(h), 'missing hash ' + h + ' — recompute after editing inline scripts in livon/index.html');
-    assert.ok(!scriptSrc.includes("'unsafe-inline'")); assert.ok(!scriptSrc.includes("'unsafe-eval'"));
-    for (const host of ['https://identitytoolkit.googleapis.com', 'https://securetoken.googleapis.com', 'https://*.firebaseapp.com', 'https://www.gstatic.com']) assert.ok(csp.includes(host), host);
-  }
-  /* path matching (JS approximation of the Vercel source patterns): LIVON index gets exactly one CSP, others the site policy */
-  const re = new RegExp('^/((?!livon/?$).*)$');
-  for (const p of ['/', '/livon/life/10s/friends/', '/livon/livon-platform.js', '/admin/', '/apps/ox-month/']) assert.ok(re.test(p), p);
-  for (const p of ['/livon', '/livon/']) assert.ok(!re.test(p), p);
-});

@@ -174,7 +174,7 @@ function accent({ id, inner, cls = "" }) {
 }
 
 /* ---------- hero (shared flagship film hero — keep as is) ---------- */
-/** Hero — the same dark film hero as the other flagship pages (PETLOG · BABYLOG · LIVON):
+/** Hero — the same dark film hero as the other flagship pages (PETLOG · BABYLOG):
  *  wordmark, slogan, lead and two buttons. No art, kicker or stats. */
 /** MY WORLD first-screen background film (owner-provided, 2026-10-18). */
 const MYWORLD_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260407_043131_ebe2f0b5-9acc-4a4f-b2c1-7297f1a3beb9.mp4";

@@ -224,24 +224,18 @@
     },
     {
       "n": "03",
-      "title": "LivOn",
-      "body": "Preparamos una plataforma que conecta información y servicios de vida, de la adolescencia a los 70.",
-      "href": "../lifestage/"
-    },
-    {
-      "n": "04",
       "title": "Ongil",
       "body": "Preparamos una plataforma de vida para el día a día de las personas mayores, el apoyo en el cuidado y el vínculo familiar.",
       "href": "../ongil/"
     },
     {
-      "n": "05",
+      "n": "04",
       "title": "Business",
       "body": "Software para empresas y operadores, de la automatización a la operación y la mejora. Build · Automation · Solutions · Care",
       "href": "../business/"
     },
     {
-      "n": "06",
+      "n": "05",
       "title": "Studio",
       "body": "Identidad, pantallas y contenido, diseñados como trabajo de diseño. Brand · UI/UX · Content",
       "href": "../studio/"

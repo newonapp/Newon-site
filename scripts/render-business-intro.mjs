@@ -51,7 +51,7 @@ function sectionHtml(id, label, lead, inner, extra = "") {
 </section>`;
 }
 
-/** App download / launch block (also used by the LivOn and Ongil pages). `id` = element id. */
+/** App download / launch block (also used by the Ongil pages). `id` = element id. */
 export function downloadBlockHtml(lang, bizId, lead, id = "download") {
   const C = COMMON[copyLang(lang)];
   const b = BUSINESS[bizId];
@@ -161,12 +161,12 @@ function jsonLd(lang, id, P) {
 }
 
 
-/** Stylesheets needed by the appended blocks on the LivOn / Ongil pages. */
+/** Stylesheets needed by the appended blocks on the Ongil pages. */
 export const LIFE_EXTRA_CSS = `<link rel="stylesheet" href="/business-pillar.css?v=20261017p4a" />
     <link rel="stylesheet" href="/business-intro.css?v=${CSS_VER}" />`;
 
 /**
- * Closing blocks appended to the existing LivOn (`lifestage`) and Ongil pages, in /{lang}/{lifestage|ongil}/:
+ * Closing blocks appended to the existing Ongil pages, in /{lang}/ongil/:
  * #bi-partners (business / seller / institution partnerships), #bi-download (app launch guide + info-only notice),
  * and — while the app migration is not verified — a notice that the existing web preview stays online.
  * The existing editorial sections are not touched.

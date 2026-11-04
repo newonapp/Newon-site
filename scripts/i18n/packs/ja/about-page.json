@@ -224,24 +224,18 @@
     },
     {
       "n": "03",
-      "title": "LivOn",
-      "body": "10代から70代まで、人生の段階に必要な情報と生活サービスをつなぐプラットフォームを準備しています。",
-      "href": "../lifestage/"
-    },
-    {
-      "n": "04",
       "title": "Ongil",
       "body": "シニアの日常とケアを支え、家族をつなぐ生活プラットフォームを準備しています。",
       "href": "../ongil/"
     },
     {
-      "n": "05",
+      "n": "04",
       "title": "Business",
       "body": "企業と事業者のためのソフトウェアを構築し、自動化から運営・改善まで支援します. Build · Automation · Solutions · Care",
       "href": "../business/"
     },
     {
-      "n": "06",
+      "n": "05",
       "title": "Studio",
       "body": "ブランドのアイデンティティから画面とコンテンツまで、デザインとして設計します. Brand · UI/UX · Content",
       "href": "../studio/"

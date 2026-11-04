@@ -2796,7 +2796,7 @@ html[data-theme="dark"] #lifestage-detail.nls .nls-id__path {
   border-left-color: #fff;
 }
 
-/* LivOn first-screen film hero only. Does not restyle body sections. */
+/* Life Stage shell: first-screen film hero only. Does not restyle body sections. */
 #lifestage-detail.nls .nls-film {
   position: relative;
   z-index: 1;
@@ -2823,7 +2823,7 @@ html[data-theme="dark"] #lifestage-detail.nls .nls-id__path {
   inset: 0;
   z-index: 0;
   background:
-    url("/assets/hero-film/livon-poster.jpg") center 50% / cover no-repeat,
+    url("/assets/hero-film/garden-poster.jpg") center 50% / cover no-repeat,
     #0a0a0a;
 }
 

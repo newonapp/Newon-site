@@ -7,7 +7,7 @@
  *   /{ko,en}/ongil/partnerships/  04 Partnerships  (14 partner types + PoC proposals, data/API, campaigns)
  *   /{ko,en}/ongil/contact/       05 Contact       (14 inquiry types in 3 groups → "문의하기" → the unified /{lang}/contact/ page)
  *
- * Design: the same Life Stage shell as PETLOG / BABYLOG / LIVON — the dark "film" first screen
+ * Design: the same Life Stage shell as PETLOG / BABYLOG — the dark "film" first screen
  * (#lifestage-detail.nls .nls-film, home-lifestage.css + home-lifestage-layout.css + home-lifestage.js), then the shared
  * five-menu bar (flagship-subnav.mjs), then white/black minimal sections. ONGIL-only layouts are ogs-* classes in
  * /ongil-site.css, scoped to #lifestage-detail.ogs (ONGIL Warm Apricot used only as a point colour).

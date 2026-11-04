@@ -7,7 +7,6 @@
 export const STORY_STATUS_BY_ID = {
   consumer: "live",
   ai: "planned",
-  lifestage: "planned",
   ongil: "planned",
   business: "live",
   commerce: "planned",
@@ -385,7 +384,6 @@ const STORY_CTA_I18N = {
   ja: {
     consumer: "アプリを見る",
     ai: "AIサービスを見る",
-    lifestage: "LivOnを見る",
     ongil: "Ongilを見る",
     business: "ビジネスソリューションを見る",
     commerce: "Newon Ecosystemを見る",
@@ -396,7 +394,6 @@ const STORY_CTA_I18N = {
   es: {
     consumer: "Explorar apps",
     ai: "Conocer servicios de IA",
-    lifestage: "Conocer LivOn",
     ongil: "Conocer Ongil",
     business: "Explorar soluciones business",
     commerce: "Explorar Newon Ecosystem",
@@ -407,7 +404,6 @@ const STORY_CTA_I18N = {
   "pt-br": {
     consumer: "Explorar apps",
     ai: "Conhecer serviços de IA",
-    lifestage: "Conhecer LivOn",
     ongil: "Conhecer Ongil",
     business: "Explorar soluções business",
     commerce: "Explorar Newon Ecosystem",
@@ -418,7 +414,6 @@ const STORY_CTA_I18N = {
   fr: {
     consumer: "Découvrir les apps",
     ai: "Découvrir les services IA",
-    lifestage: "Découvrir LivOn",
     ongil: "Découvrir Ongil",
     business: "Découvrir les solutions business",
     commerce: "Découvrir Newon Ecosystem",
@@ -429,7 +424,6 @@ const STORY_CTA_I18N = {
   de: {
     consumer: "Apps entdecken",
     ai: "KI-Services entdecken",
-    lifestage: "LivOn entdecken",
     ongil: "Ongil entdecken",
     business: "Business-Lösungen entdecken",
     commerce: "Newon Ecosystem entdecken",
@@ -440,7 +434,6 @@ const STORY_CTA_I18N = {
   hi: {
     consumer: "ऐप्स देखें",
     ai: "AI सेवाएँ जानें",
-    lifestage: "LivOn जानें",
     ongil: "Ongil जानें",
     business: "बिज़नेस समाधान जानें",
     commerce: "Newon Ecosystem देखें",
@@ -451,7 +444,6 @@ const STORY_CTA_I18N = {
   id: {
     consumer: "Jelajahi aplikasi",
     ai: "Pelajari layanan AI",
-    lifestage: "Pelajari LivOn",
     ongil: "Pelajari Ongil",
     business: "Pelajari solusi bisnis",
     commerce: "Jelajahi Newon Ecosystem",

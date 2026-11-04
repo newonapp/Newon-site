@@ -1967,7 +1967,7 @@
             var direct = platformMap[qPlatform] || platformMap[qPlatform.toLowerCase()];
             if (direct) return direct;
           }
-          var m = /(babylog|petlog|myworld|my-world|shareon|livon|ongil)/i.exec(qSource);
+          var m = /(babylog|petlog|myworld|my-world|shareon|ongil)/i.exec(qSource);
           return m ? platformMap[m[1].toLowerCase().replace("-", "")] || "" : "";
         }
         function syncServiceHidden() {

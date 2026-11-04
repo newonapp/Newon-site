@@ -42,24 +42,6 @@ const handler = (env, up, extra = {}) => createDataHandler({ env, fetcher: up.fe
 const ENV = { KAKAO_REST_API_KEY: KEY };
 
 /* ───────── server ───────── */
-test('official contract: fixed endpoints, KakaoAK header, documented params, key server-only, .env.example empty', async () => {
-  assert.equal(kakao.ENDPOINTS.keyword, 'https://dapi.kakao.com/v2/local/search/keyword.json');
-  assert.equal(kakao.ENDPOINTS.category, 'https://dapi.kakao.com/v2/local/search/category.json');
-  assert.equal(kakao.PROVIDER_ID, 'kr-kakao-place'); assert.equal(kakao.ENV_KEY, 'KAKAO_REST_API_KEY');
-  assert.deepEqual(Object.keys(kakao.CATEGORY_CODES), ['MT1', 'CS2', 'PS3', 'SC4', 'AC5', 'PK6', 'OL7', 'SW8', 'BK9', 'CT1', 'AG2', 'PO3', 'AT4', 'AD5', 'FD6', 'CE7', 'HP8', 'PM9']);
-  const up = upstream(() => reply(body([doc()])));
-  await call(handler(ENV, up), Q('query=' + enc('도서관')));
-  const c = up.calls[0];
-  assert.equal(c.url.origin + c.url.pathname, kakao.ENDPOINTS.keyword);
-  assert.equal(c.init.headers.Authorization, 'KakaoAK ' + KEY);
-  assert.equal(c.url.search.includes(KEY), false, 'key only in the header, never in the URL');
-  assert.deepEqual([...c.url.searchParams.keys()], ['query', 'page', 'size', 'sort']);
-  assert.match(root('.env.example'), /\nKAKAO_REST_API_KEY=\n/);
-  for (const f of ['data/livon-data-config.js', 'data/livon-data-core.js', 'data/livon-data-providers.js', 'data/livon-data-schema.js', 'explore-page.js', 'index.html']) {
-    assert.doesNotMatch(read(f), /KAKAO_REST_API_KEY|KakaoAK|dapi\.kakao\.com/, f + ' never touches the key or the endpoint');
-  }
-});
-
 test('no key: status configured=false, NOT_CONFIGURED, no upstream call; bad params still 400 first', async () => {
   const up = upstream(() => reply(body([doc()])));
   const h = handler({}, up);
@@ -166,15 +148,6 @@ test('coordinates: x/y orientation, numeric range checks; invalid pairs dropped,
   }
 });
 
-test('category mapping: only unambiguous groups map to existing LIVON categories; phone missing is null', () => {
-  const cat = code => kakao.toEntity(doc({ category_group_code: code }), 'x').category;
-  assert.equal(cat('CT1'), '취미'); assert.equal(cat('AT4'), '여행'); assert.equal(cat('HP8'), '건강'); assert.equal(cat('PM9'), '건강'); assert.equal(cat('AC5'), '배움');
-  for (const c of ['FD6', 'CE7', 'MT1', 'PK6', 'BK9', 'PO3', 'AD5', '']) assert.equal(cat(c), null, c + ' keeps only the Kakao category');
-  const explore = read('explore-search.js');
-  for (const label of new Set(Object.values(kakao.LIVON_CATEGORY))) assert.match(explore, new RegExp('label: "' + label + '"'), label + ' exists in the LIVON taxonomy');
-  assert.equal(kakao.toEntity(doc({ phone: '' }), 'x').contact, null);
-});
-
 test('distance and Kakao Map URL: distance only when a centre was sent; place_url only on kakao.com', () => {
   assert.equal(kakao.toEntity(doc({ distance: '418' }), 'x', { nearby: true }).distanceMeters, 418);
   assert.equal(kakao.toEntity(doc({ distance: '418' }), 'x', { nearby: false }).distanceMeters, null);
@@ -254,114 +227,6 @@ async function loaded({ env = ENV, docs = [doc(), doc({ id: '777', place_name: '
   return { ctx, D: ctx.LivonData, up };
 }
 
-test('browser no-key: provider stays planned, no search, no calls, curated data unaffected', async () => {
-  const { D, up, ctx } = await loaded({ env: {} });
-  const p = D.registry.get('kr-kakao-place');
-  assert.equal(p.enabled, false); assert.equal(D.places.configured(), false);
-  await assert.rejects(D.places.search({ query: '도서관' }), e => e.code === 'NOT_CONFIGURED');
-  assert.equal(up.calls.length, 0); assert.ok(!ctx._requested.some(u => u.includes('kr-kakao-place')));
-  assert.match(read('life-hub.js'), /P\.configured\(\) && P\.planForTopic/, 'Life link only when connected');
-  assert.match(read('today-feed.js'), /P\.configured\(\) && P\.planForContent/, 'Today link only when connected');
-  assert.ok(D.repository.size() > 30);
-});
-
-test('configured: never bulk-loaded; Explore index unchanged; keyword search returns validated place entities', async () => {
-  const { D, up, ctx } = await loaded();
-  assert.equal(D.places.configured(), true);
-  assert.equal(up.calls.length, 0, 'status check + refresh make no Kakao call');
-  assert.equal(D.repository.list({ includeExpired: true }).filter(e => e.provider === 'kr-kakao-place').length, 0);
-  const r = await D.places.search({ query: '도서관' });
-  assert.equal(r.items.length, 2); assert.equal(r.nearby, false);
-  assert.equal(up.calls.length, 1); assert.equal(up.calls[0].url.searchParams.get('x'), null, 'no position → no coordinates sent');
-  const e = r.items[0];
-  assert.equal(D.action(e).label, '카카오맵에서 보기'); assert.equal(D.action(e).url, 'http://place.map.kakao.com/26338954');
-  assert.equal(D.attribution(e).text, '장소 정보 출처: Kakao Local');
-  assert.equal(D.freshness(e), 'unknown', 'fetch time is not a verification date');
-  assert.ok(!ctx.LivonSearch.search('마포 중앙도서관').items.some(x => String(x.item.key).includes('kr-kakao-place')), 'results do not leak into the static index');
-  const html = D.ui.list(r.items, D.ui.note('place'), 'life');
-  assert.match(html, /장소 · Kakao Local/); assert.match(html, /서울 마포구 성산로 128/); assert.match(html, /02-3153-5800/); assert.match(html, /카카오맵에서 보기/);
-  assert.doesNotMatch(html, /공식 페이지|공식 홈페이지|원문 보기|최근 확인|평점|리뷰|영업시간/);
-  assert.doesNotMatch(html, /거리 /, 'no distance without a position');
-});
-
-test('nearby: only with explicit coordinates; rounded before leaving the page; distance formatted from Kakao meters', async () => {
-  const { D, up, ctx } = await loaded();
-  await assert.rejects(D.places.search({ category: 'HP8' }), e => e.code === 'NEEDS_INPUT', 'no location → no "near me" results');
-  assert.equal(up.calls.length, 0);
-  const r = await D.places.search({ query: '약국', coords: { lat: 37.5665351234, lng: 126.9779692345 }, radius: 1000 });
-  assert.equal(r.nearby, true);
-  const sent = ctx._requested.find(u => u.includes('kr-kakao-place'));
-  assert.match(sent, /^\/api\/livon\/data BODY /, 'position goes in a POST body, not the URL');
-  const sentBody = JSON.parse(sent.split(' BODY ')[1]);
-  assert.deepEqual([sentBody.lat, sentBody.lng, sentBody.radius, sentBody.sort, sentBody.action], [37.567, 126.978, 1000, 'distance', 'nearby']);
-  assert.doesNotMatch(sent, /5351234|9692345/);
-  assert.equal(up.calls[0].url.searchParams.get('y'), '37.567', 'server receives the rounded position');
-  assert.equal(D.ui.distance(350), '350m'); assert.equal(D.ui.distance(1234), '1.2km'); assert.equal(D.ui.distance(null), '');
-  const html = D.ui.list(r.items, '', 'life');
-  assert.match(html, /거리 350m/);
-  await D.places.search({ query: '약국', coords: { lat: 37.5, lng: 127 }, radius: 777 });
-  assert.match(ctx._requested.at(-1), /"radius":5000/, 'radius outside the LIVON list → default');
-});
-
-test('user origin is never persisted: not in entities, saves, localStorage or sessionStorage', async () => {
-  const { D, ctx } = await loaded();
-  const r = await D.places.search({ query: '약국', coords: { lat: 37.5665351, lng: 126.9779692 } });
-  const e = r.items.find(x => x.providerId === '777');
-  assert.equal(D.save(e.id), 'saved');
-  const blob = JSON.stringify([...ctx.localStorage._m.entries(), ...ctx.sessionStorage._m.entries(), [...ctx.LivonPlatform._saves.values()], r.items]);
-  assert.doesNotMatch(blob, /37\.566|37\.567|126\.977|126\.978/);
-  assert.doesNotMatch(JSON.stringify([...ctx.localStorage._m.keys()]), /kakao/i, 'search results are not written to browser storage');
-});
-
-test('My Life snapshot: place facts (place coordinates, not the user’s) + Kakao Map URL; no distance', async () => {
-  const { D, ctx } = await loaded();
-  const r = await D.places.search({ query: '도서관', coords: { lat: 37.5, lng: 127.0 } });
-  const id = r.items[0].id;
-  assert.equal(D.save(id), 'saved');
-  const rec = ctx.LivonPlatform._saves.get('ext:' + id), s = rec.data.snapshot;
-  assert.equal(rec.type, 'place'); assert.equal(rec.source, 'Kakao Local');
-  assert.equal(s.title, '[QA 픽스처] 마포 중앙도서관'); assert.equal(s.provider, 'kr-kakao-place'); assert.equal(s.category, '취미');
-  assert.equal(s.address, '서울 마포구 성산동 370-1'); assert.equal(s.roadAddress, '서울 마포구 성산로 128'); assert.equal(s.phone, '02-3153-5800');
-  assert.equal(s.latitude, 37.5636); assert.equal(s.longitude, 126.9084); assert.equal(s.mapUrl, 'http://place.map.kakao.com/26338954');
-  assert.equal(s.actionLabel, '카카오맵에서 보기'); assert.equal('distanceMeters' in s, false); assert.doesNotMatch(JSON.stringify(rec), /"distance/);
-  const back = D.fromSave(rec); assert.equal(back.entity.title, s.title);
-});
-
-test('Life Stage / Today relevance: explicit category relations only, never by age', async () => {
-  const { D } = await loaded();
-  const byCat = c => LIFE.topics.filter(t => t.category === c);
-  for (const t of byCat('창업')) assert.equal(D.places.planForTopic(t).query, '창업지원센터', t.id);
-  for (const t of byCat('건강')) { const p = D.places.planForTopic(t); assert.equal(p.category, 'HP8'); assert.equal(p.needsLocation, true); }
-  for (const c of ['돈/재테크', '주거', '취업', '연금', '자기계발', '관계', '운동']) for (const t of byCat(c)) assert.equal(D.places.planForTopic(t), null, t.id);
-  assert.ok(LIFE.topics.filter(t => t.lifeStageId === '20').some(t => D.places.planForTopic(t) === null), 'a life stage alone never adds places');
-  assert.equal(D.places.planForContent({ category: '문화 행사', tags: [] }).category, 'CT1');
-  assert.equal(D.places.planForContent({ category: '창업' }).query, '창업지원센터');
-  for (const c of ['커플 데이트', '베이킹', '돈 관리', '가을']) assert.equal(D.places.planForContent({ category: c }), null, c);
-  assert.equal(D.forTopic(byCat('창업')[0], 'place').filter(e => e.provider === 'kr-kakao-place').length, 0, 'no automatic Kakao calls from topics');
-});
-
-test('Home: Kakao places never appear as "내 주변" or by interest alone (no place column, no automatic calls)', async () => {
-  const { D, up } = await loaded();
-  await D.places.search({ query: '도서관' });
-  const r = D.forHome({ stage: '20', interests: ['여행', '건강', '취미'] });
-  assert.equal(Object.keys(r).includes('places'), false);
-  assert.ok([...r.events, ...r.policies, ...r.programs].every(e => e.provider !== 'kr-kakao-place'));
-  assert.doesNotMatch(read('home-page.js'), /내 주변|가까운 장소|kr-kakao-place/);
-  assert.equal(up.calls.length, 1);
-});
-
-test('dedupe: same Kakao id → one; cross-provider only with title + address + phone/coordinates, never title alone', async () => {
-  const { D } = await loaded();
-  const S = D.schema;
-  const k = S.validateEntity(kakao.toEntity(doc(), new Date().toISOString())).entity;
-  const kNewer = Object.assign({}, k, { source: Object.assign({}, k.source, { fetchedAt: new Date(Date.now() + 1000).toISOString() }) });
-  assert.equal(D.dedupe([k, kNewer]).length, 1);
-  const other = over => Object.assign({}, k, { id: 'kr-public-places:place:T1', provider: 'kr-public-places', providerId: 'T1', source: Object.assign({}, k.source, { providerName: '공공 장소' }) }, over);
-  assert.equal(D.dedupe([k, other({})]).length, 1, 'title + address + phone + coordinates');
-  assert.equal(D.dedupe([k, other({ location: Object.assign({}, k.location, { roadAddress: '다른 주소', address: '다른 주소', latitude: 35, longitude: 129 }), contact: null })]).length, 2, 'title only');
-  assert.equal(D.dedupe([k, other({ contact: null, location: Object.assign({}, k.location, { latitude: 35, longitude: 129 }) })]).length, 2, 'title + address only');
-});
-
 test('existing providers unaffected: business event list route and bulk refresh still work next to Kakao', async () => {
   const h = handler({ ...ENV, BIZINFO_API_KEY: 'biz-test-key-123456' }, upstream(u => reply(u.origin === 'https://dapi.kakao.com' ? body([]) : JSON.stringify({ jsonArray: { item: [] } }))));
   const st = (await call(h, '/api/livon/data?action=status')).json().providers;
@@ -371,12 +236,3 @@ test('existing providers unaffected: business event list route and bulk refresh 
   assert.deepEqual(PROVIDERS['kr-kakao-place'].entityTypes, ['place']);
 });
 
-test('docs + Explore wiring: provider documented; Explore search block, consent button and honest wording present', () => {
-  const docs = root('docs/livon/real-data-providers.md');
-  assert.match(docs, /kr-kakao-place/); assert.match(docs, /KAKAO_REST_API_KEY/);
-  const ex = read('explore-page.js');
-  assert.match(ex, /내 위치 기준으로 찾기/); assert.match(ex, /장소 정보 출처: Kakao Local/); assert.match(ex, /저장되지 않습니다/);
-  assert.doesNotMatch(ex, /localStorage\.setItem\([^)]*(lat|coords)/);
-  assert.doesNotMatch(ex.slice(ex.indexOf('Kakao Local place search')), /공식 홈페이지|리뷰 수|★/);
-  assert.match(ex, /영업시간·평점·가격은 제공되지 않습니다/);
-});

@@ -19,8 +19,8 @@ const OUT = path.join(ROOT, "_publish");
 export function apiOnlyFiles() {
   return {
     "index.html": '<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow">' +
-      '<meta name="viewport" content="width=device-width, initial-scale=1"><title>LIVON API</title></head>' +
-      '<body><p>LIVON API. 서비스는 <a href="https://www.newon.app/livon/">www.newon.app/livon</a>에서 이용할 수 있습니다.</p></body></html>\n',
+      '<meta name="viewport" content="width=device-width, initial-scale=1"><title>NEWON API</title></head>' +
+      '<body><p>NEWON API. 서비스 안내는 <a href="https://www.newon.app/">www.newon.app</a>에서 확인할 수 있습니다.</p></body></html>\n',
     "robots.txt": "User-agent: *\nDisallow: /\n"
   };
 }
@@ -30,7 +30,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     fs.rmSync(OUT, { recursive: true, force: true });
     fs.mkdirSync(OUT, { recursive: true });
     for (const [name, body] of Object.entries(apiOnlyFiles())) fs.writeFileSync(path.join(OUT, name), body, "utf8");
-    console.log("vercel-build: LIVON API-only output → _publish (placeholder + robots)");
+    console.log("vercel-build: API-only output → _publish (placeholder + robots)");
   } else {
     const r = spawnSync(process.execPath, [path.join(ROOT, "scripts", "publish-site.mjs")], { cwd: ROOT, stdio: "inherit", env: process.env });
     process.exit(r.status === null ? 1 : r.status);

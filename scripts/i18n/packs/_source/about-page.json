@@ -224,24 +224,18 @@
     },
     {
       "n": "03",
-      "title": "LivOn",
-      "body": "A platform in preparation, connecting information and living services from the teens through the 70s.",
-      "href": "../lifestage/"
-    },
-    {
-      "n": "04",
       "title": "Ongil",
       "body": "A living platform in preparation for seniors’ daily life, care support, and family connection.",
       "href": "../ongil/"
     },
     {
-      "n": "05",
+      "n": "04",
       "title": "Business",
       "body": "Software for companies and operators, from automation through operations and improvement. Build · Automation · Solutions · Care",
       "href": "../business/"
     },
     {
-      "n": "06",
+      "n": "05",
       "title": "Studio",
       "body": "Identity, screens, and content, designed as design work. Brand · UI/UX · Content",
       "href": "../studio/"

@@ -224,24 +224,18 @@
     },
     {
       "n": "03",
-      "title": "LivOn",
-      "body": "Wir bereiten eine Plattform vor, die Informationen und Alltagsdienste von den Teenagern bis zu den 70ern verbindet.",
-      "href": "../lifestage/"
-    },
-    {
-      "n": "04",
       "title": "Ongil",
       "body": "Wir bereiten eine Lebensplattform für den Alltag älterer Menschen, Unterstützung in der Pflege und die Verbindung zur Familie vor.",
       "href": "../ongil/"
     },
     {
-      "n": "05",
+      "n": "04",
       "title": "Business",
       "body": "Software für Unternehmen, von Automatisierung bis Betrieb und Verbesserung. Build · Automation · Solutions · Care",
       "href": "../business/"
     },
     {
-      "n": "06",
+      "n": "05",
       "title": "Studio",
       "body": "Identität, Oberflächen und Inhalte als Designarbeit. Brand · UI/UX · Content",
       "href": "../studio/"

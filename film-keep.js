@@ -1,28 +1,20 @@
 (function () {
   var style = document.createElement("style");
   style.textContent =
-    "video.nhv-video,video[class*='film__video'],video[class*='film__bg'],video.og-film__bg,video.og-hero__video,video.lv-lum__bg,video.games-hero__video,video.ir-hero__film,.np-film video,.ir-marquee__film video,.ir-lane video,.livon-hero__bg video{pointer-events:none}" +
+    "video.nhv-video,video[class*='film__video'],video[class*='film__bg'],video.og-film__bg,video.og-hero__video,video.games-hero__video,video.ir-hero__film,.np-film video,.ir-marquee__film video,.ir-lane video{pointer-events:none}" +
     "video.nhv-video::-webkit-media-controls,video.nhv-video::-webkit-media-controls-start-playback-button," +
     "video[class*='film__video']::-webkit-media-controls,video[class*='film__video']::-webkit-media-controls-start-playback-button," +
     "video[class*='film__bg']::-webkit-media-controls-start-playback-button," +
     "video.og-film__bg::-webkit-media-controls-start-playback-button,video.og-hero__video::-webkit-media-controls-start-playback-button," +
-    "video.lv-lum__bg::-webkit-media-controls-start-playback-button," +
     "video.games-hero__video::-webkit-media-controls-start-playback-button,video.ir-hero__film::-webkit-media-controls-start-playback-button," +
     ".np-film video::-webkit-media-controls-start-playback-button,.ir-marquee__film video::-webkit-media-controls-start-playback-button," +
-    ".ir-lane video::-webkit-media-controls-start-playback-button,.livon-hero__bg video::-webkit-media-controls-start-playback-button" +
+    ".ir-lane video::-webkit-media-controls-start-playback-button" +
     "{display:none!important;-webkit-appearance:none;opacity:0;pointer-events:none}";
   document.head.appendChild(style);
 
   var HERO_SEL = [
     "video.og-hero__video",
     "video.og-film__bg",
-    "video.lv-lum__bg",
-    "video.lv-ex-film__bg",
-    "video.lv-cm-film__bg",
-    "video.lv-td-film__bg",
-    "video.lv-ai-film__bg",
-    "video[data-livon-video]",
-    ".livon-hero__bg video",
     "video.nhv-video",
     "video[class*='film__video']",
     "video.games-hero__video",
@@ -36,7 +28,7 @@
     if (video.matches(HERO_SEL)) return true;
     return !!(
       video.closest(
-        "[data-og-film], [data-lv-life-hero], [data-lv-ml-hero], [data-lv-ex-hero], [data-lv-cm-hero], [data-lv-td-hero], [data-lv-ai-hero], .livon-hero, .og-hero, .lv-life__hero, .lv-ml__hero"
+        "[data-og-film], .og-hero"
       )
     );
   }
@@ -53,7 +45,7 @@
   function hostFor(video) {
     return (
       video.closest(
-        "[data-og-film], [data-lv-life-hero], [data-lv-ml-hero], [data-lv-ex-hero], [data-lv-cm-hero], [data-lv-td-hero], [data-lv-ai-hero], [data-bz-film], [data-st-film], [data-eco-film], [data-nog-film], [data-nls-film], [data-nai-film], [data-games-film], [data-apps-film], .livon-hero, .og-hero, .lv-life__hero, .lv-ml__hero, .hero--film"
+        "[data-og-film], [data-bz-film], [data-st-film], [data-eco-film], [data-nog-film], [data-nls-film], [data-nai-film], [data-games-film], [data-apps-film], .og-hero, .hero--film"
       ) || video.parentElement
     );
   }

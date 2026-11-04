@@ -600,7 +600,6 @@ function writeSitemap() {
   }
 
   // Flagship business sites — five pages each (ONGIL sub-pages exist in KO/EN only; other languages are noindex forwards).
-  // LIVON was removed from the website (2026-11): no /{lang}/livon/ pages are published.
   for (const biz of ["babylog", "petlog", "myworld", "shareon"]) {
     for (const sub of ["", "/platform", "/business", "/partnerships", "/contact"]) addAllLocales(`${biz}${sub}`, "0.65", "monthly");
   }
@@ -749,7 +748,6 @@ runScript("render-bizhub.mjs");
 runScript("business-model-sanitize.mjs");
 runScript("business-model-reframe.mjs");
 runScript("build-biz-contact-css.mjs"); // ONGIL Contact design for the five other business Contact pages
-// render-lifestage.mjs (LIVON pages) is no longer run: LIVON was removed from the website (2026-11).
 runScript("render-babylog-site.mjs");
 runScript("render-ongil.mjs");
 runScript("render-shareon.mjs");

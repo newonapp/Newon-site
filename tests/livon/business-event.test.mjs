@@ -52,20 +52,6 @@ const handler = (env, up, log = () => {}) => createDataHandler({ env, fetcher: u
 const E = (o, at = new Date().toISOString()) => ev.toEntity(item(o), at);
 
 /* ───────── server side ───────── */
-test('1 official contract: fixed event endpoint, same 기업마당 key, documented parameters, bounded searchCnt', () => {
-  assert.equal(ev.UPSTREAM, 'https://www.bizinfo.go.kr/uss/rss/bizinfoEventApi.do');
-  assert.equal(ev.PROVIDER_ID, 'kr-business-event'); assert.equal(ev.ENV_KEY, 'BIZINFO_API_KEY'); assert.equal(ev.ENV_KEY, biz.ENV_KEY);
-  const u = new URL(ev.requestUrl('K', { pageIndex: 3, searchLclasId: '07', hashtags: '부산' }));
-  assert.equal(u.origin + u.pathname, ev.UPSTREAM);
-  assert.deepEqual([...u.searchParams.keys()], ['crtfcKey', 'dataType', 'searchCnt', 'searchLclasId', 'hashtags', 'pageUnit', 'pageIndex']);
-  assert.ok(Number(u.searchParams.get('searchCnt')) > 0 && Number(u.searchParams.get('searchCnt')) <= common.MAX_TOTAL);
-  assert.ok(Number(u.searchParams.get('pageUnit')) <= 100);
-  assert.deepEqual(PROVIDERS['kr-business-event'].entityTypes, ['event']);
-  for (const f of ['livon-data-config.js', 'livon-data-core.js', 'livon-data-providers.js', 'livon-data-schema.js']) {
-    assert.doesNotMatch(read('data/' + f), /crtfcKey|bizinfoEventApi\.do|BIZINFO_API_KEY/, f + ' (browser) never touches the key or the endpoint');
-  }
-});
-
 test('2 shared helpers: support and event adapters use the same parsing/paging code (no copy)', () => {
   assert.equal(biz.filters, common.filters); assert.equal(ev.filters, common.filters);
   assert.equal(biz.parseBody, common.parseBody);
@@ -249,130 +235,6 @@ async function loaded({ rows = evItems(), supportRows = [], env = { BIZINFO_API_
 const evs = (D, o = { includeExpired: true }) => D.repository.list(o).filter(e => e.provider === 'kr-business-event');
 const byId = (D, id) => evs(D).find(e => e.providerId === id);
 
-test('15 browser no-key: provider stays planned, nothing added, curated data unaffected', async () => {
-  const { D, up } = await loaded({ env: {} });
-  const p = D.registry.get('kr-business-event');
-  assert.equal(p.enabled, false); assert.equal(p.status, 'planned'); assert.equal(p.topicMatch, 'category');
-  assert.equal(evs(D).length, 0); assert.equal(up.calls.length, 0); assert.ok(D.repository.size() > 30);
-});
-
-test('16 no data: configured provider with zero events shows nothing (no placeholders)', async () => {
-  const { D } = await loaded({ rows: [] });
-  assert.equal(D.registry.get('kr-business-event').enabled, true);
-  assert.equal(evs(D).length, 0);
-  assert.equal(D.ui.list(D.forTopic(LIFE.topics.find(t => t.category === '창업'), 'event'), '', 'life'), '');
-});
-
-test('17 expired only after the event end; closed registration is not an ended event; no auto-cancel from text', async () => {
-  const { D } = await loaded();
-  assert.equal(D.freshness(byId(D, 'ENDED')), 'expired');
-  const closed = byId(D, 'CLOSED');
-  assert.notEqual(D.freshness(closed), 'expired'); assert.equal(D.registrationState(closed), 'closed');
-  assert.equal(D.registrationState(byId(D, 'EVEN_000000000100001')), 'open');
-  const text = byId(D, 'TEXT');
-  assert.equal(text.eventStatus, 'unknown'); assert.notEqual(D.freshness(text), 'expired'); assert.equal(D.registrationState(text), 'unknown');
-});
-
-test('18 CTA: no official registration URL → "공식 안내 보기"; "신청 페이지로 이동" only while open with a registration URL', async () => {
-  const { D } = await loaded();
-  for (const id of ['EVEN_000000000100001', 'CLOSED', 'TEXT', 'ENDED']) {
-    const a = D.action(byId(D, id));
-    assert.equal(a.label, '공식 안내 보기', id); assert.match(a.url, /^https:\/\/www\.bizinfo\.go\.kr\//);
-  }
-  const base = byId(D, 'EVEN_000000000100001');
-  assert.equal(D.action(Object.assign({}, base, { registrationUrl: 'https://apply.example.go.kr/' })).label, '신청 페이지로 이동');
-  assert.equal(D.action(Object.assign({}, byId(D, 'CLOSED'), { registrationUrl: 'https://apply.example.go.kr/' })).label, '공식 안내 보기', 'closed');
-  assert.equal(D.action(Object.assign({}, base, { registrationUrl: 'https://apply.example.go.kr/', registrationStart: new Date(Date.now() + 5 * 864e5).toISOString() })).label, '공식 안내 보기', 'not yet open');
-});
-
-test('19 attribution "기관: X / 데이터 출처: 기업마당" and card facts (행사유형, 접수 기간/원문)', async () => {
-  const { D } = await loaded();
-  const e = byId(D, 'EVEN_000000000100001');
-  assert.equal(D.attribution(e).text, '기관: 창업진흥원 / 데이터 출처: 기업마당');
-  const html = D.ui.list([e, byId(D, 'TEXT'), byId(D, 'CLOSED')], D.ui.note('event'), 'life');
-  assert.match(html, /행사 · 기업마당/); assert.match(html, /기관: 창업진흥원 \/ 데이터 출처: 기업마당/);
-  assert.match(html, /사업설명회 · 접수 [\d.]+ – [\d.]+ \(접수 중\)/); assert.match(html, /교육 · 접수: 상시 접수/); assert.match(html, /접수 마감/);
-  assert.match(html, /전국/); assert.match(html, /서울,경기/); assert.match(html, /등록 2026\.09\.15/);
-  assert.doesNotMatch(html, /<img|getImageFile|98765|조회/);
-});
-
-test('20 Explore: title/description/organizer/eventType/category/region/tags; ended events excluded', async () => {
-  const { ctx } = await loaded();
-  const S = ctx.LivonSearch;
-  const found = (q, id) => S.search(q).items.some(x => x.item.key === 'ext:kr-business-event:event:' + id);
-  assert.ok(found('창업 사업설명회', 'EVEN_000000000100001'), 'title');
-  assert.ok(found('초기 창업기업', 'EVEN_000000000100001'), 'description');
-  assert.ok(found('창업진흥원', 'EVEN_000000000100001'), 'organizer');
-  assert.ok(found('세미나', 'CLOSED'), 'eventType'); assert.ok(found('수출', 'CLOSED'), 'category');
-  assert.ok(found('부산', 'CLOSED'), 'region'); assert.ok(found('중소벤처기업부', 'EVEN_000000000100001'), 'tags');
-  assert.ok(!found('지난 창업 박람회', 'ENDED'), 'ended event not offered');
-  const r = S.search('창업', { type: 'event' });
-  assert.ok(r.items.every(x => x.item.type === 'event'));
-});
-
-test('21 Life Stage: exact category/field only (창업 via "경영@창업"), never by age', async () => {
-  const { D } = await loaded();
-  const ids = t => [...D.forTopic(t, 'event').filter(e => e.provider === 'kr-business-event').map(e => e.providerId)];
-  const startupTopics = LIFE.topics.filter(t => t.category === '창업');
-  assert.ok(startupTopics.length);
-  for (const t of startupTopics) assert.deepEqual(ids(t), ['EVEN_000000000100001'], t.id + ' (ended hidden, other fields excluded)');
-  for (const cat of ['돈/재테크', '취업', '자산관리', '여행', '커리어 성장', '자기계발']) for (const t of LIFE.topics.filter(x => x.category === cat)) assert.deepEqual(ids(t), [], t.id);
-  assert.ok(evs(D).every(e => e.lifeStages.length === 0));
-  assert.deepEqual([...D.repository.listByLifeStage('20', { type: 'event' }).filter(e => e.provider === 'kr-business-event')], []);
-});
-
-test('22 Today: only content whose category/tags name an official field', async () => {
-  const { ctx, D } = await loaded();
-  const today = ctx.LivonTodayData || ctx.LIVON_TODAY || null;
-  const startup = { category: '창업', tags: ['창업', '커리어', '새로운 도전'] };
-  assert.deepEqual([...D.forToday(startup, 'event').filter(e => e.provider === 'kr-business-event').map(e => e.providerId)], ['EVEN_000000000100001']);
-  for (const c of [{ category: '문화 행사', tags: ['주말', '전시'] }, { category: '돈 관리', tags: ['사업', '경영 습관'] }, { category: '독립', tags: ['부산'] }]) {
-    assert.deepEqual([...D.forToday(c, 'event').filter(e => e.provider === 'kr-business-event')], [], c.category);
-  }
-  void today;
-});
-
-test('23 Home: "관련 행사" wording, relevant interests only, never "내 주변"', async () => {
-  const { D } = await loaded();
-  const home = read('home-page.js');
-  assert.match(home, /col\("관련 행사"/); assert.doesNotMatch(home, /가까운 행사|내 주변 행사/);
-  const ids = r => [...r.events.filter(e => e.provider === 'kr-business-event').map(e => e.providerId)];
-  assert.deepEqual(ids(D.forHome({ stage: '30', interests: [] })), [], 'life stage alone');
-  assert.deepEqual(ids(D.forHome({ stage: '', interests: ['여행'] })), []);
-  assert.deepEqual(ids(D.forHome({ stage: '30', interests: ['창업'] })), ['EVEN_000000000100001']);
-});
-
-test('24 My Life snapshot: title, organizer, eventType, region, event/registration period, source, URLs, date', async () => {
-  const { ctx, D } = await loaded();
-  const id = 'kr-business-event:event:EVEN_000000000100001';
-  assert.equal(D.save(id), 'saved');
-  const rec = ctx.LivonPlatform._saves.get('ext:' + id);
-  const s = rec.data.snapshot;
-  assert.equal(rec.type, 'event'); assert.equal(rec.data.kind, 'event'); assert.equal(rec.source, '기업마당');
-  assert.equal(s.title, '[전국] 2026 창업 사업설명회 개최 안내'); assert.equal(s.organizer, '창업진흥원'); assert.equal(s.eventType, '사업설명회');
-  assert.equal(s.regionText, '전국'); assert.ok(s.startAt && s.endAt);
-  assert.ok(s.registrationPeriod.start && s.registrationPeriod.end && s.registrationPeriod.note);
-  assert.equal(s.providerName, '기업마당'); assert.match(s.sourceUrl, /eventInfoId=EVEN_000000000100001$/);
-  assert.equal(s.originUrl, 'https://www.kised.or.kr/board/notice/1'); assert.equal(s.actionLabel, '공식 안내 보기');
-  assert.equal(s.registeredAt, '2026-09-14T15:00:00.000Z');
-  D.registry.setEnabled('kr-business-event', false); await D.repository.refresh({ force: true });
-  const back = D.fromSave(rec); assert.equal(back.fromSnapshot, true); assert.equal(back.entity.title, s.title);
-});
-
-test('25 dedupe: strong evidence only (same title + start day + organizer/URL); similar titles stay separate', () => {
-  const ctx = browser(async () => ({ statusCode: 503, body: '{}' }));
-  const D = ctx.LivonData;
-  const at = new Date().toISOString();
-  const a = ctx.LivonDataSchema.validateEntity(ev.toEntity(item(), at)).entity;
-  const twin = Object.assign({}, a, { id: 'kr-public-events:event:X1', provider: 'kr-public-events', providerId: 'X1', source: Object.assign({}, a.source, { providerName: '공공 행사' }) });
-  const otherDay = Object.assign({}, twin, { id: 'kr-public-events:event:X2', providerId: 'X2', schedule: { startAt: new Date(Date.now() + 40 * 864e5).toISOString(), endAt: null } });
-  const titleOnly = Object.assign({}, twin, { id: 'kr-public-events:event:X3', providerId: 'X3', organizer: '다른 기관', source: Object.assign({}, twin.source, { sourceUrl: 'https://example.org/x' }), contact: null });
-  assert.equal(D.dedupe([a, twin]).length, 1);
-  assert.equal(D.dedupe([a, otherDay]).length, 2, 'different start day');
-  const t3 = D.dedupe([a, Object.assign({}, titleOnly, { schedule: { startAt: '2000-01-01T00:00:00.000Z' } })]);
-  assert.equal(t3.length, 2);
-});
-
 test('26 route/doc wiring: vercel function, serve route, .env.example unchanged key, docs section', () => {
   const root = p => readFileSync(new URL('../../' + p, import.meta.url), 'utf8');
   assert.match(root('.env.example'), /\nBIZINFO_API_KEY=\n/); assert.doesNotMatch(root('.env.example'), /BIZINFO_EVENT/);
@@ -380,13 +242,3 @@ test('26 route/doc wiring: vercel function, serve route, .env.example unchanged 
   assert.match(root('docs/livon/real-data-providers.md'), /bizinfoEventApi\.do/);
 });
 
-test('support regression: kr-business-support still loads, normalizes and acts the same alongside events', async () => {
-  const supportRow = { pblancId: 'PBLN_1', seq: 'PBLN_1', pblancNm: '예비창업패키지', title: '예비창업패키지', jrsdInsttNm: '중소벤처기업부', pldirSportRealmLclasCodeNm: '창업', lcategory: '창업',
-    pblancUrl: 'https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_1', rceptEngnHmpgUrl: 'https://www.k-startup.go.kr/', reqstBeginEndDe: `${ymd(-3)} ~ ${ymd(30)}`, hashTags: '2026,창업', totCnt: '1', creatPnttm: '2026-09-01 10:00:00' };
-  const { D } = await loaded({ supportRows: [supportRow] });
-  const p = D.repository.list().find(e => e.provider === 'kr-business-support');
-  assert.ok(p); assert.equal(p.type, 'policy'); assert.equal(D.action(p).label, '공식 신청 페이지로 이동'); assert.equal(D.attribution(p).text, '출처: 기업마당');
-  assert.ok(evs(D).length >= 3, 'events loaded next to support');
-  const t = LIFE.topics.find(x => x.category === '창업');
-  assert.deepEqual([...D.forTopic(t, 'policy').filter(e => e.provider === 'kr-business-support').map(e => e.providerId)], ['PBLN_1']);
-});
