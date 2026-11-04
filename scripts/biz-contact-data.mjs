@@ -155,7 +155,7 @@ export function babylogContactModel(lang) {
 
 /* ─────────────────────────── PETLOG ─────────────────────────── */
 /** Rows with a clearly matching unified-page topic (contact-taxonomy.mjs). */
-const PETLOG_TOPIC = { "booking-provider": "petlog-providers", sitting: "petlog-providers", brand: "petlog-business", "group-buying": "petlog-business", "insurance-adoption": "petlog-shelter" };
+const PETLOG_TOPIC = { "booking-provider": "petlog-providers", sitting: "petlog-care", brand: "petlog-market", "group-buying": "petlog-market", "insurance-adoption": "petlog-shelter", saas: "petlog-business" };
 export const PETLOG_TYPE = {
   general: "personal", "app-support": "personal", content: "partnership", vet: "partnership", "booking-provider": "business", sitting: "business",
   brand: "business", "group-buying": "business", "insurance-adoption": "partnership", saas: "business", public: "public", global: "partnership",

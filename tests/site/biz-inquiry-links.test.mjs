@@ -38,7 +38,8 @@ const FALLBACK_TOPICS = new Set([
   "shareon-provider", "shareon-business", "shareon-partnership",
   "babylog-pregnancy", "babylog-parenting", "babylog-growth", "babylog-family", "babylog-school", "babylog-safety", "babylog-institution",
   "babylog-bug", "babylog-partnership",
-  "petlog-records", "petlog-health", "petlog-booking", "petlog-providers", "petlog-shelter", "petlog-business", "petlog-bug", "petlog-partnership",
+  "petlog-records", "petlog-health", "petlog-care", "petlog-booking", "petlog-providers", "petlog-market", "petlog-shelter", "petlog-business",
+  "petlog-bug", "petlog-partnership",
 ]);
 const validTopic = (id) => (TOPICS || FALLBACK_TOPICS).has(id);
 

@@ -448,9 +448,9 @@ function phoneToday(L, list) {
 }
 
 /** Platform: the proposed five bottom tabs as a real tab set; the phone shows the selected tab. */
-const TAB_ICONS = ["home", "note", "pin", "chat", "user"];
+const TAB_ICONS = ["home", "note", "heart", "chat", "cart"];
 /** Line icon per entry of the proposed tabs (keyed by the English wording, used for both languages). */
-const TAB_WORD = { "today's condition": "pulse", schedule: "calendar", "suggested services": "spark", health: "pulse", meals: "bowl", walks: "walk", sleep: "note", diary: "book", calendar: "calendar", vets: "clinic", grooming: "scissors", care: "heart", hotels: "home", training: "book", market: "cart", travel: "pin", shelters: "building", funerals: "star", information: "info", reviews: "star", "local groups": "users", "lost pets": "pin", "protection work": "shield", pets: "paw", "family account": "users", bookings: "calendar", orders: "bag", subscription: "cycle", devices: "phone" };
+const TAB_WORD = { "today's condition": "pulse", schedule: "calendar", "suggested services": "spark", health: "pulse", meals: "bowl", walks: "walk", sleep: "note", diary: "book", calendar: "calendar", vets: "clinic", grooming: "scissors", care: "heart", hotels: "home", training: "book", market: "cart", travel: "pin", shelters: "building", funerals: "star", information: "info", reviews: "star", "local groups": "users", "lost pets": "pin", "protection work": "shield", pets: "paw", "family account": "users", bookings: "calendar", orders: "bag", subscription: "cycle", devices: "phone", "pet jobs": "users", posts: "note", questions: "chat", "local talk": "users", adoption: "heart", shopping: "bag", secondhand: "cycle", "group buying": "cart", "recurring delivery": "calendar" };
 function tabPhone(L, X) {
   const list = X.tabs.items;
   const tabs = list
@@ -574,9 +574,9 @@ function overviewPage(lang) {
       </article>`
     )
     .join("")}</div>`;
-  // v5: five outlined user tiles in one row (status chip on each; future types dashed)
+  // v5: five outlined user tiles in one row (future types dashed); 2026-11-04: no status chip
   const users = `<ul class="pl-who">${c.users.items
-    .map(([t, d, k]) => `<li${isLater(t) ? ' class="is-later"' : ""}>${ic(k)}<h3>${esc(bare(t))}</h3><p class="pl-p pl-sm">${esc(d)}</p>${stage(!isLater(t), isLater(t) ? X.usersLater : X.usersNow).html}</li>`)
+    .map(([t, d, k]) => `<li${isLater(t) ? ' class="is-later"' : ""}>${ic(k)}<h3>${esc(bare(t))}</h3><p class="pl-p pl-sm">${esc(d)}</p></li>`)
     .join("")}</ul>`;
   const sceneList = [...c.scenes.items, ...X.scenes];
   const scenes = `<div class="pl-grid pl-grid--3 pl-snap">${sceneList
@@ -699,7 +699,7 @@ function platformPage(lang) {
   const SCEN_ICONS = { adopt: "heart", daily: "users", vet: "clinic", away: "home", senior: "star" };
   const scenarios = scen.items.map((it) => ({ n: it.n, icon: SCEN_ICONS[it.id] || "paw", label: it.label, name: it.name, lead: it.lead, chips: it.chips }));
   const roles = `<dl class="pl-roles">${m.roles.items
-    .map(([t, d, k]) => `<div${isLater(t) ? ' class="is-later"' : ""}><dt>${ic(k)}<span>${esc(t)}</span></dt><dd><p class="pl-p">${esc(d)}</p></dd></div>`)
+    .map(([t, d, k]) => `<div${isLater(t) ? ' class="is-later"' : ""}><dt>${ic(k)}<span>${esc(bare(t))}</span></dt><dd><p class="pl-p">${esc(d)}</p></dd></div>`)
     .join("")}</dl>`;
   const close = { ...m.close, main: [m.close.ctaMain, "petlog/business/"], sub: [m.close.ctaSub, STORE.ios] };
   const gp = GLOBAL.platform[L];
@@ -710,11 +710,11 @@ function platformPage(lang) {
       <div class="pl-duo__b" id="nls-faq">${head(m.faq.kicker, m.faq.title, "")}${faqList(m.faq.items)}</div>
     </div>
   </div>`;
-  return wrap(`${hero({ wordmark: "Platform", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "18개 서비스 보기 ↓" : "See 18 services ↓", "#nls-records"], sub: [lang === "ko" ? "PETLOG 소개" : "About PETLOG", rel(D, "petlog/")] })}
+  return wrap(`${hero({ wordmark: "Platform", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "26개 영역 보기 ↓" : "See 26 areas ↓", "#nls-legend"], sub: [lang === "ko" ? "PETLOG 소개" : "About PETLOG", rel(D, "petlog/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "platform" })}
   <div class="nls__wrap">
     ${section("nls-legend", { kicker: m.legendKicker, title: m.legendTitle, lead: m.legendLead, noteText: NOTICE[L], body: legend })}
-    ${section("nls-tabs", { kicker: X.tabs.kicker, title: X.tabs.title, lead: X.tabs.lead, tint: true, body: tabs })}
+    ${section("nls-tabs", { kicker: X.tabs.kicker, title: X.tabs.title, lead: X.tabs.lead, tint: true, body: `${tabs}${X.tabs.note ? `<p class="pl-fine">${esc(X.tabs.note)}</p>` : ""}` })}
     ${groups}
     ${section("nls-global", { kicker: gp.kicker, title: gp.title, lead: gp.lead, tint: true, body: globalBody })}
     ${section("nls-scenarios", { kicker: scen.kicker, title: scen.title, lead: scen.lead, body: items("grid", scenarios, D, "pl-grid--32 pl-grid--story pl-snap") })}
@@ -775,7 +775,7 @@ function businessPage(lang) {
       <div class="pl-plans__next">
         <div class="pl-plans__h">${ic("sprout")}<div><h3>${esc(sp.next[0])}</h3><p class="pl-p pl-sm">${esc(sp.next[1])}</p></div></div>
         <p class="pl-minihead">${esc(X.tiersHead[0])}</p>
-        <ol class="pl-tiers">${X.tiers.map(([k, v], i) => `<li><span class="pl-n">${pad2(i + 1)}</span><b lang="en">${esc(k)}</b><p class="pl-p pl-sm">${esc(v)}</p></li>`).join("")}</ol>
+        <ol class="pl-tiers">${X.tiers.map(([k, v], i) => `<li><span class="pl-n">${pad2(i + 1)}</span><b${/^[\x00-\x7f]+$/.test(k) ? ' lang="en"' : ""}>${esc(k)}</b><p class="pl-p pl-sm">${esc(v)}</p></li>`).join("")}</ol>
         <p class="pl-fine">${esc(X.tiersNote)}</p>
       </div>
     </div>`
@@ -787,7 +787,7 @@ function businessPage(lang) {
     `${consoleMock(L, m.saas)}
     <div class="pl-duo pl-duo--even">
       <div><h4 class="pl-minihead">${esc(X.saasTargetsTitle)}</h4>${xtable(X.saasTargetsHead, X.saasTargets, "pl-xt--2 pl-xt--mini")}</div>
-      <div><h4 class="pl-minihead">${esc(X.saasTiersTitle)}</h4>${xtable([X.tiersHead[0], X.tiersHead[1]], X.saasTiers.map(([k, v]) => [{ html: `<span lang="en">${esc(k)}</span>` }, v]), "pl-xt--2 pl-xt--mini")}</div>
+      <div><h4 class="pl-minihead">${esc(X.saasTiersTitle)}</h4>${xtable([X.tiersHead[0], X.tiersHead[1]], X.saasTiers.map(([k, v]) => [k, v]), "pl-xt--2 pl-xt--mini")}</div>
     </div>`
   );
   const LAYOUT = {
@@ -813,15 +813,10 @@ function businessPage(lang) {
     })
     .join("")}</dl>`;
   const hd = m.revenueHead;
-  const STAGE = { now: " pl-stage--now", plan: "", review: " pl-stage--review" };
-  // v4: status filter (segmented buttons; shown only with JavaScript — without it every row stays visible)
-  const counts = BUSINESS.lines.reduce((o, x) => ((o[x.status] = (o[x.status] || 0) + 1), o), {});
-  const filter = `<div class="pl-seg" role="group" aria-label="${esc(hd[2])}" data-pl-filter="pl-revenue-list" hidden><button type="button" data-v="all" aria-pressed="true">${esc(MOCK[L].all)} <span>${BUSINESS.lines.length}</span></button>${["now", "plan", "review"]
-    .filter((k) => counts[k])
-    .map((k) => `<button type="button" data-v="${k}" aria-pressed="false"><i class="pl-dot pl-dot--${k}" aria-hidden="true"></i>${esc(m.statusLabel[k])} <span>${counts[k]}</span></button>`)
-    .join("")}</div>`;
-  const revenue = `${filter}<ul class="pl-table" id="pl-revenue-list"><li class="pl-table__hd" aria-hidden="true"><span>${esc(hd[0])}</span><span>${esc(hd[1])}</span><span style="justify-self:end">${esc(hd[2])}</span></li>${BUSINESS.lines
-    .map((x) => `<li data-status="${esc(x.status)}"><span class="pl-table__name"><span class="pl-n">${esc(x.no)}</span>${esc(x.name[L])}</span><p class="pl-p">${esc(x.sum[L])}</p><span class="pl-stage${STAGE[x.status] || ""}">${esc(m.statusLabel[x.status])}</span></li>`)
+  // 2026-11-04: no status column or status filter — the third column names the model's revenue group
+  const groupOf = (no) => BUSINESS.groups.find((g) => g.lines.includes(no));
+  const revenue = `<ul class="pl-table" id="pl-revenue-list"><li class="pl-table__hd" aria-hidden="true"><span>${esc(hd[0])}</span><span>${esc(hd[1])}</span><span style="justify-self:end">${esc(hd[2])}</span></li>${BUSINESS.lines
+    .map((x) => `<li><span class="pl-table__name"><span class="pl-n">${esc(x.no)}</span>${esc(x.name[L])}</span><p class="pl-p">${esc(x.sum[L])}</p><span class="pl-stage">${esc(groupOf(x.no)[L])}</span></li>`)
     .join("")}</ul>${sub("", X.feeTitle, "", checks(X.fee, true), "pl-sub--flat")}`;
   const market = `<ul class="pl-notes">${m.market.map(([t, d, k]) => `<li>${ic(k)}<h3>${esc(t)}</h3><p class="pl-p pl-sm">${esc(d)}</p></li>`).join("")}</ul>`;
   const legal = dlRows(m.trust, true);
@@ -835,11 +830,11 @@ function businessPage(lang) {
       ${panel("next", "chart", gb.revenue[0], gb.revenue[1], gb.revenue[2], true)}
     </div>`
   )}`;
+  // 2026-11-04: expansion order only (no internal P0–P8 development stages); the last column names the related areas
   const roadmap = `<div class="pl-duo pl-duo--road">
       <div><h3 class="pl-subhead">${esc(X.prioTitle)}</h3>${xtable(X.prioHead, X.prio.map(([r, s, goal, p]) => [r, { html: `<b>${esc(s)}</b>` }, goal, { html: `<span class="pl-code" lang="en">${esc(p)}</span>` }]), "pl-xt--prio")}</div>
-      <div><h3 class="pl-subhead">${esc(X.phasesTitle)}</h3>${phases(m.roadmap)}</div>
     </div>`;
-  return wrap(`${hero({ wordmark: "Business", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "20개 사업 분야 보기 ↓" : "See 20 areas ↓", "#nls-groups"], sub: [m.close.ctaMain, rel(D, "petlog/partnerships/")] })}
+  return wrap(`${hero({ wordmark: "Business", titleHtml: m.heroTitle, lead: m.heroLead, main: [lang === "ko" ? "12개 수익 모델 보기 ↓" : "See 12 revenue models ↓", "#nls-groups"], sub: [m.close.ctaMain, rel(D, "petlog/partnerships/")] })}
   ${renderFlagshipSubnav({ biz: "petlog", lang, active: "business" })}
   <div class="nls__wrap">
     ${section("nls-structure", { kicker: m.structureKicker, title: m.structureTitle, lead: m.structureLead, noteText: NOTICE[L], hv: "hero", body: models })}
@@ -850,7 +845,7 @@ function businessPage(lang) {
     ${section("nls-market", { kicker: m.marketKicker, title: m.marketTitle, lead: m.marketLead, hv: "stack", body: market })}
     ${section("nls-links", { kicker: X.links.kicker, title: X.links.title, lead: X.links.lead, body: xtable(X.links.head, X.links.rows.map(([a, b, cc]) => [{ html: `<span lang="en">${esc(a)}</span>` }, b, cc]), "pl-xt--links") })}
     ${section("nls-diff", { kicker: m.diffKicker, title: m.diffTitle, lead: m.diffLead, tint: true, body: items("cols", m.diff.map(([t, d, k]) => ({ icon: k, name: t, lead: d })), D, "pl-cols--4") })}
-    ${section("nls-priority", { kicker: m.gtmKicker, title: m.gtmTitle, lead: m.gtmLead, body: `${stepList(m.gtm.map(([t, d], i) => [pad2(i + 1), t, d]), true)}${sub("", X.measure.title, "", xtable(X.measure.head, X.measure.rows, "pl-xt--2"), "pl-sub--flat")}` })}
+    ${section("nls-priority", { kicker: m.gtmKicker, title: m.gtmTitle, lead: m.gtmLead, body: stepList(m.gtm.map(([t, d], i) => [pad2(i + 1), t, d]), true) })}
     ${section("nls-roadmap", { kicker: m.roadmapKicker, title: m.roadmapTitle, lead: m.roadmapNote, tint: true, body: roadmap })}
     ${section("nls-global", { kicker: gb.kicker, title: gb.title, lead: gb.lead, body: globalBody })}
     ${section("nls-trust", { kicker: m.trustKicker, title: m.trustTitle, tint: true, body: legal })}
@@ -901,7 +896,7 @@ function partnershipsPage(lang) {
   const sc4 = m.scenarios.find((x) => x.n === "04");
   const recs = L === "ko" ? ["체중", "투약", "증상"] : ["Weight", "Medication", "Symptoms"];
   const shareTitle = m.data[1][0].replace(/\s*\((검토|under review)\)\s*$/i, "");
-  const dataBody = `<div class="pl-split pl-split--consent">${consentPhone(L, shareTitle, sc4.who, recs, BUSINESS.meta[L].statusLabel.review)}${people(m.data)}</div>`;
+  const dataBody = `<div class="pl-split pl-split--consent">${consentPhone(L, shareTitle, sc4.who, recs, L === "ko" ? "동의 후 전달" : "With consent")}${people(m.data)}</div>`;
   const principles = `<div class="pl-duo pl-duo--even">
       <div>${head(m.principlesKicker, m.principlesTitle, "")}${checks(m.principles)}</div>
       <div class="pl-duo__b">${head("CHECKLIST", X.prepTitle, "")}${checks(X.prep)}</div>

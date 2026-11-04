@@ -36,7 +36,7 @@ const config = (lang) => JSON.parse(read(`${lang}/contact/index.html`).match(/<s
 test("taxonomy: six inquirers, eleven inquiry types, the spec's topics per platform, unique ids, valid statuses", () => {
   assert.deepEqual(CONTACT_INQUIRER_IDS, ["personal", "company", "organization", "investor", "media", "other"]);
   assert.deepEqual(CONTACT_INQUIRY_IDS, ["general", "service", "support", "bug", "partnership", "listing", "investment", "advertising", "institution", "privacy", "other"]);
-  const want = { ongil: 8, shareon: 10, babylog: 9, petlog: 8 };
+  const want = { ongil: 8, shareon: 10, babylog: 9, petlog: 10 };
   assert.ok(!("livon" in CONTACT_TOPICS) && !CONTACT_PLATFORM_IDS.includes("livon"), "LIVON removed from the contact form (2026-11)");
   // MY WORLD left the business list (2026-11) but stays a selectable platform for its app users: support topics only
   assert.deepEqual(CONTACT_TOPICS.myworld.map((t) => t.id), ["myworld-map", "myworld-trips", "myworld-account", "myworld-bug"]);
@@ -53,8 +53,12 @@ test("taxonomy: six inquirers, eleven inquiry types, the spec's topics per platf
       assert.ok(t.ko && t.en, `${t.id} labels`);
     }
   }
-  // the six platforms are all "앱 출시 준비 중": nothing of theirs may read as available today
-  for (const p of Object.keys(want)) for (const t of CONTACT_TOPICS[p]) assert.notEqual(t.status, "available", t.id);
+  // ONGIL, SHAREON and BABYLOG are "앱 출시 준비 중": nothing of theirs may read as available today
+  for (const p of ["ongil", "shareon", "babylog"]) for (const t of CONTACT_TOPICS[p]) assert.notEqual(t.status, "available", t.id);
+  // PETLOG is released (2026-11-04): only its record and health topics are "available"; no topic says "출시 준비 중"
+  assert.deepEqual(CONTACT_TOPICS.petlog.filter((t) => t.status === "available").map((t) => t.id), ["petlog-records", "petlog-health"]);
+  assert.ok(CONTACT_TOPICS.petlog.every((t) => t.status !== "prep"), "petlog prep label");
+  for (const id of ["petlog-care", "petlog-market", "petlog-shelter"]) assert.ok(CONTACT_TOPICS.petlog.some((t) => t.id === id), id);
   for (const name of Object.keys(CONTACT_CONDITIONAL_FIELDS)) assert.ok(read("ko/contact/index.html").includes(`data-ct-when="${name}"`), `${name} rendered`);
 });
 
@@ -86,7 +90,7 @@ test("the page config matches the taxonomy in every locale; ko labels for ko, en
     const deposit = c.topics.shareon.find((t) => t.id === "shareon-deposit");
     assert.equal(deposit.label, lang === "ko" ? "보증금 · 향후 계획" : "Deposits · future plan", lang);
     const records = c.topics.petlog.find((t) => t.id === "petlog-records");
-    assert.equal(records.label, lang === "ko" ? "반려동물 기록 · 출시 준비 중" : "Pet records · launch in preparation", lang);
+    assert.equal(records.label, lang === "ko" ? "반려동물 기록" : "Pet records", lang);
     for (const [k, v] of Object.entries(c.t)) if (k !== "counterSuffix") assert.ok(typeof v === "string" && v.length, `${lang} ${k} message`);
   }
 });

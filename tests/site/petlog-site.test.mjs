@@ -51,11 +51,12 @@ test("section counts follow the V3 plan: 6 journey stages, 26 platform areas, 12
   assert.deepEqual(BUSINESS.groups.flatMap((g) => g.lines).sort(), BUSINESS.lines.map((l) => l.no), "every revenue model is in exactly one group");
   assert.equal(PLATFORM.items.length, 26);
   for (const lang of ["ko", "en"]) {
-    // the four status panels list every area exactly once, matching each area's own status
-    const listed = PLATFORM.meta[lang].legend.flatMap((p) => p.areas.map((no) => [no, p.kind]));
-    assert.deepEqual(listed.map(([no]) => no).sort(), PLATFORM.items.map((_, i) => String(i + 1).padStart(2, "0")), `${lang} legend covers 26 areas once`);
-    const KIND = { now: "app", dev: "dev", plan: "plan", review: "review" };
-    for (const [no, kind] of listed) assert.equal(PLATFORM.items[Number(no) - 1].status, KIND[kind], `${lang} area ${no} status`);
+    // 2026-11-04: the overview ledger groups the 26 areas (no status rows); every area once, and the one
+    // "in the app today" row holds exactly the areas whose basics are in the released app
+    const legend = PLATFORM.meta[lang].legend;
+    assert.deepEqual(legend.flatMap((p) => p.areas).sort(), PLATFORM.items.map((_, i) => String(i + 1).padStart(2, "0")), `${lang} legend covers 26 areas once`);
+    assert.deepEqual(legend.find((p) => p.kind === "now").areas.map((no) => PLATFORM.items[Number(no) - 1].status), ["app", "app", "app", "app", "app"], `${lang} legend now row`);
+    assert.equal(legend.filter((p) => p.kind === "now").length, 1);
   }
 });
 
@@ -68,6 +69,9 @@ test("no unconfirmed price or fee; no per-card status badge; one shared notice; 
       assert.doesNotMatch(text, /연동 완료|integration is complete|계약 체결 완료|official partner of/i, `${lang}/${p} overclaim`);
       assert.doesNotMatch(html, /class="nls-status"/, `${lang}/${p} still renders a status badge`);
       assert.doesNotMatch(text, /검토 중|출시 일정 미정|기관 협력 확인 전|스토어 소개 기준/, `${lang}/${p} repeated status wording`);
+      // 2026-11-04 refresh: no status labels, status columns/filters, internal roadmap or unconfirmed plan names
+      assert.doesNotMatch(text, /개발 중|개발 예정|검토 단계|향후 계획|서비스 준비 중|출시 준비 중|In development|Under review|\bP[0-8]\b|AI Pro|Starter|Enterprise/, `${lang}/${p} status label or internal roadmap`);
+      assert.doesNotMatch(html.replace(/<script[\s\S]*?<\/script>/g, ""), /data-pl-filter|data-status=/, `${lang}/${p} status filter`);
     }
     for (const p of ["petlog", "petlog/platform", "petlog/business"]) {
       const html = main(read(`${lang}/${p}/index.html`));
@@ -76,6 +80,34 @@ test("no unconfirmed price or fee; no per-card status badge; one shared notice; 
   }
   assert.deepEqual(PLATFORM.items.filter((x) => x.status === "app").map((x) => x.label), ["PETLOG Profile", "PETLOG Health", "PETLOG Life", "PETLOG Calendar", "PETLOG Note"]);
   assert.deepEqual(BUSINESS.lines.filter((x) => x.status === "now").map((x) => x.no), ["01"], "only the store-listed subscription is shown as available now");
+});
+
+test("2026-11-04 content refresh: hero counts, five target tabs, pet jobs inside area 08, protection group", () => {
+  const plat = { ko: main(read("ko/petlog/platform/index.html")), en: main(read("en/petlog/platform/index.html")) };
+  assert.match(read("ko/petlog/platform/index.html"), /26개 영역 보기/);
+  assert.match(read("en/petlog/platform/index.html"), /See 26 areas/);
+  assert.match(read("ko/petlog/business/index.html"), /12개 수익 모델 보기/);
+  assert.match(read("en/petlog/business/index.html"), /See 12 revenue models/);
+  for (const lang of LANGS) {
+    const pl = read(`${lang}/petlog/platform/index.html`);
+    const bz = read(`${lang}/petlog/business/index.html`);
+    assert.doesNotMatch(pl, /18개 서비스|See 18 services/, `${lang} platform hero`);
+    assert.doesNotMatch(bz, /20개 사업 분야|See 20 areas/, `${lang} business hero`);
+  }
+  // target app structure: Home · Records · Care · Community · Market + My Page (top right), never "applied today"
+  const tabs = (h) => [...h.matchAll(/class="pl-tabbtn[^"]*">\s*<span class="pl-n">\d\d<\/span><span class="pl-tabbtn__t"><strong>([^<]+)<\/strong>/g)].map((m) => m[1]);
+  assert.deepEqual(tabs(plat.ko), ["홈", "기록", "케어", "커뮤니티", "마켓"]);
+  assert.deepEqual(tabs(plat.en), ["Home", "Records", "Care", "Community", "Market"]);
+  assert.match(plat.ko, /마이페이지/);
+  assert.match(plat.en, /My Page/);
+  // pet jobs (알바) live in area 08 Care and are told apart from booking a business
+  assert.equal(PLATFORM.items.length, 26);
+  assert.match(PLATFORM.items[7].lead.ko, /반려동물 알바/);
+  assert.match(PLATFORM.items[7].lead.ko, /업무 종류·가격·날짜·시간·장소·모집 인원·조건/);
+  assert.match(PLATFORM.items[7].lead.ko, /전문 업체 예약과는 별도로/);
+  assert.match(PLATFORM.items[7].lead.en, /pet jobs/);
+  assert.equal(PLATFORM.meta.ko.groups[4].title, "보호·입양·추모");
+  assert.deepEqual(PLATFORM.meta.ko.groups[4].items, [20, 21, 22, 23, 24, 25]);
 });
 
 test("inquiry links open the unified Contact page with PETLOG and a valid type (no old ?type= shortcuts)", () => {

@@ -26,7 +26,8 @@
  *   "prep"      — part of an app whose launch is in preparation (앱 출시 준비 중)
  *   "planned"   — a long-term plan, not built yet (향후 계획)
  *   null        — not a feature (bug reports, partnership proposals …)
- * All four platforms are "앱 출시 준비 중" (none runs a web version), so no platform topic is "available".
+ * ONGIL, SHAREON and BABYLOG are "앱 출시 준비 중". PETLOG is released on the App Store and Google Play (2026-11-04):
+ * its record and health topics are "available"; its other topics are inquiry subjects (no badge) except booking.
  */
 
 export const CONTACT_PLATFORM_IDS = ["newon", "ongil", "shareon", "babylog", "petlog", "myworld", "other"];
@@ -149,12 +150,14 @@ export const CONTACT_TOPICS = {
     T("babylog-partnership", "제휴", "Partnerships", null, "partnership"),
   ],
   petlog: [
-    T("petlog-records", "반려동물 기록", "Pet records", "prep", "service"),
-    T("petlog-health", "건강", "Health", "prep", "service"),
-    T("petlog-booking", "예약·돌봄", "Booking & care", "planned", "service", true),
-    T("petlog-providers", "병원·미용·훈련", "Vets, grooming & training", "planned", "listing"),
-    T("petlog-shelter", "보호소·구조동물", "Shelters & rescued animals", "planned", "institution"),
-    T("petlog-business", "기업 입점", "Business listings", "planned", "listing"),
+    T("petlog-records", "반려동물 기록", "Pet records", "available", "service"),
+    T("petlog-health", "건강", "Health", "available", "service"),
+    T("petlog-care", "케어·반려동물 알바", "Care & pet jobs", null, "service"),
+    T("petlog-booking", "전문 업체 예약", "Booking a business", "planned", "service", true),
+    T("petlog-providers", "병원·미용·훈련 업체", "Vets, grooming & training businesses", null, "listing"),
+    T("petlog-market", "마켓·중고거래·공동구매", "Market, secondhand & group buying", null, "service"),
+    T("petlog-shelter", "보호·입양·추모", "Protection, adoption & memorial", null, "institution"),
+    T("petlog-business", "기업 입점", "Business listings", null, "listing"),
     T("petlog-bug", "오류", "Bugs", null, "bug"),
     T("petlog-partnership", "제휴", "Partnerships", null, "partnership"),
   ],
