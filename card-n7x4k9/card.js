@@ -162,7 +162,9 @@
         el(
           '<a class="ncard-details__link" href="' +
             page.href +
-            '"><span class="ncard-details__kicker">' +
+            '"' +
+            (page.newTab ? ' target="_blank" rel="noopener noreferrer"' : "") +
+            '><span class="ncard-details__kicker">' +
             (page.kicker || "") +
             '</span><span class="ncard-details__value">' +
             (page.label || page.href) +
