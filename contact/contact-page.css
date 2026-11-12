@@ -74,6 +74,8 @@
   z-index: 1;
   object-fit: cover;
   object-position: center center;
+  /* Clear, vivid film: lift colour instead of covering it with a dark wash. */
+  filter: saturate(1.28) contrast(1.06) brightness(1.03);
 }
 .ct-hero .nhv-video::-webkit-media-controls,
 .ct-hero .nhv-video::-webkit-media-controls-enclosure,
@@ -88,11 +90,12 @@
    Shade + veil together keep white text ≥ 4.5:1 even over a pure-white frame behind the copy. */
 .ct-hero .ct-hero__shade {
   z-index: 2;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.36) 38%, rgba(0, 0, 0, 0.4) 72%, rgba(0, 0, 0, 0.55) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.04) 40%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0.32) 100%);
 }
+/* A small, soft pool behind the copy only — the rest of the film stays clear. */
 .ct-hero .ct-hero__veil {
   z-index: 2;
-  background: radial-gradient(ellipse 64% 56% at 50% 56%, rgba(8, 12, 16, 0.5) 0%, rgba(8, 12, 16, 0.36) 55%, rgba(8, 12, 16, 0) 92%);
+  background: radial-gradient(ellipse 50% 42% at 50% 60%, rgba(8, 12, 16, 0.42) 0%, rgba(8, 12, 16, 0.24) 55%, rgba(8, 12, 16, 0) 100%);
 }
 
 .ct-hero__lockup {
@@ -115,7 +118,7 @@
   font-size: clamp(3.6rem, 11vw, 9.5rem);
   letter-spacing: -0.06em;
   line-height: 0.92;
-  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.32);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.28), 0 8px 32px rgba(0, 0, 0, 0.45);
 }
 .ct-page .ct-hero__title {
   margin: 0;
@@ -126,7 +129,7 @@
   font-weight: 650;
   letter-spacing: -0.045em;
   line-height: 1.28;
-  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 20px rgba(0, 0, 0, 0.5);
   text-wrap: balance;
 }
 .ct-hero__rule {
@@ -145,7 +148,7 @@
   font-weight: 450;
   letter-spacing: -0.02em;
   line-height: 1.66;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), 0 2px 14px rgba(0, 0, 0, 0.6);
 }
 .ct-page .ct-hero__line { display: block; }
 .ct-hero__topics {
@@ -163,7 +166,7 @@
   font-weight: 500;
   letter-spacing: 0.08em;
   line-height: 1.4;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), 0 2px 12px rgba(0, 0, 0, 0.6);
 }
 .ct-page .ct-hero__topics li + li::before {
   content: "·";
@@ -178,7 +181,7 @@
   margin-top: 1.9rem;
 }
 .ct-hero__actions .np-pill:not(.np-pill--solid) {
-  background: rgba(0, 0, 0, 0.18);
+  background: rgba(10, 14, 18, 0.32);
 }
 
 /* Reveal — the home hero's staggered rise (only once JS is known to run). */
@@ -695,7 +698,7 @@ html:not(.ct-js) .ct-page .np-reveal { opacity: 1; transform: none; }
 @media (max-width: 760px) {
   .ct-page .ct-hero.hero--film { padding-top: 4.5rem; padding-bottom: 5rem; }
   .ct-hero .nhv-video { object-position: center 42%; }
-  .ct-hero .ct-hero__veil { background: radial-gradient(ellipse 110% 50% at 50% 54%, rgba(8, 12, 16, 0.52) 0%, rgba(8, 12, 16, 0.4) 60%, rgba(8, 12, 16, 0) 100%); }
+  .ct-hero .ct-hero__veil { background: radial-gradient(ellipse 90% 40% at 50% 52%, rgba(8, 12, 16, 0.32) 0%, rgba(8, 12, 16, 0.16) 60%, rgba(8, 12, 16, 0) 100%); }
   .ct-page .ct-hero__title { font-size: clamp(1.4rem, 6.4vw, 1.85rem); }
   .ct-page .ct-hero__lead { font-size: 0.92rem; }
   .ct-page .ct-hero__lead .ct-hero__line { display: inline; }

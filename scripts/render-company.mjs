@@ -36,7 +36,7 @@ const template = fs.readFileSync(path.join(ROOT, "templates", "company.html"), "
 const TIMELINE_ABOUT_LIMIT = 16;
 const TIMELINE_NEWS_LIMIT = 24;
 /** Cache key for /contact/contact-page.css and /contact/contact-page.js. */
-const CONTACT_ASSET_V = "20261026ct2";
+const CONTACT_ASSET_V = "20261112ct3";
 
 function loadJson(file) {
   return JSON.parse(fs.readFileSync(path.join(ROOT, "locales", file), "utf8"));
