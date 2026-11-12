@@ -72,20 +72,20 @@ window.NEWON_CARD = {
       external: true,
     },
     contact: {
-      type: "contact",
       icon: "contact",
       label: "Contact",
-      hint: "이메일 · 전화",
+      hint: "문의하기",
+      href: "/ko/contact/",
+    },
+    saveContact: {
+      type: "contact",
+      icon: "save",
+      label: "Save Contact",
+      hint: "전화 · 이메일",
       phone: "010-3923-8904",
       phoneHref: "tel:01039238904",
       email: "newon@newon.app",
       emailHref: "mailto:newon@newon.app",
-    },
-    saveContact: {
-      type: "vcard",
-      icon: "save",
-      label: "Save Contact",
-      hint: "경나원 연락처 저장",
     },
   },
 };
