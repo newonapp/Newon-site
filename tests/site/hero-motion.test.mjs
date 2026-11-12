@@ -28,8 +28,8 @@ const siteFilmSources = () => {
   return all;
 };
 
-test("36 editorial first screens × 9 languages carry one film hero", () => {
-  assert.equal(HERO_MOTION_PAGES.length, 36);
+test("35 editorial first screens × 9 languages carry one film hero", () => {
+  assert.equal(HERO_MOTION_PAGES.length, 35);
   for (const lang of HERO_MOTION_LANGS) {
     for (const { page, film } of HERO_MOTION_PAGES) {
       const html = read(`${lang}/${page}index.html`);
@@ -50,6 +50,14 @@ test("36 editorial first screens × 9 languages carry one film hero", () => {
   }
 });
 
+test("About keeps its plain white first screen (no film)", () => {
+  for (const lang of HERO_MOTION_LANGS) {
+    const html = read(`${lang}/about/index.html`);
+    assert.ok(!html.includes("data-hm-film="), `${lang}/about no film`);
+    assert.ok(!html.includes("/hero-motion.css"), `${lang}/about no hero-motion.css`);
+  }
+});
+
 test("films are existing site films with local posters; film-keep.js covers the video class", () => {
   const sources = siteFilmSources();
   for (const [key, { src, poster }] of Object.entries(HERO_FILMS)) {
@@ -66,8 +74,8 @@ test("films are existing site films with local posters; film-keep.js covers the 
 });
 
 test("applyHeroMotion is idempotent and keeps the hero content", () => {
-  const html = read("ko/about/index.html");
-  assert.equal(applyHeroMotion(html, { kind: "about", film: "eco" }), html);
+  const html = read("ko/news/index.html");
+  assert.equal(applyHeroMotion(html, { kind: "nr", film: "ai" }), html);
   const raw = `<html><head></head><body><main><section class="bp-hero" data-rs-reveal aria-labelledby="t"><h1 id="t">Blog</h1></section></main></body></html>`;
   const once = applyHeroMotion(raw, { kind: "bp", film: "ongil" });
   assert.match(once, /<section class="bp-hero hm-film hm-film--ongil" data-rs-reveal aria-labelledby="t" data-hm-film="ongil"><div class="hm-film__stage"/);

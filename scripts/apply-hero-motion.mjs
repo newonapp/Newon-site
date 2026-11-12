@@ -87,7 +87,6 @@ const PORTFOLIO_ROTATION = ["garden", "ai", "eco", "ongil", "home", "biz"];
 
 /** Page (path inside /{lang}/) → hero family + film. Neighbouring sections get different films. */
 export const HERO_MOTION_PAGES = [
-  { page: "about/", kind: "about", film: "eco" },
   { page: "news/", kind: "nr", film: "ai" },
   { page: "media/", kind: "mh", film: "garden" },
   { page: "ideas/", kind: "co", film: "home" },

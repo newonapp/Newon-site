@@ -75,6 +75,10 @@ function verifiedFacts(copy) {
     businessAreas: String((copy.ventures || []).length),
     languages: String(COPY_LANGS.length),
     apps: String(APP_COUNT),
+    /* Company-stated figures (CEO, 2026-11-12): 4 business areas, apps in 13 languages, released in 177 countries. */
+    businessLines: "4",
+    appLanguages: "13",
+    countries: "177",
   };
 }
 

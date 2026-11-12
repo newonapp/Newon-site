@@ -68,10 +68,10 @@ const KO = {
   ctaBusinessHref: "../business/",
 
   metricItems: [
-    { key: "platforms", label: "PLATFORMS" },
-    { key: "businessAreas", label: "BUSINESS AREAS" },
-    { key: "languages", label: "SITE LANGUAGES" },
     { key: "apps", label: "APPS RELEASED" },
+    { key: "businessLines", label: "BUSINESS AREAS" },
+    { key: "appLanguages", label: "LANGUAGES SUPPORTED" },
+    { key: "countries", label: "COUNTRIES" },
   ],
   metricLabels: {
     apps: "APPS",
@@ -433,10 +433,10 @@ const EN = {
   ctaBusinessHref: "../business/",
 
   metricItems: [
-    { key: "platforms", label: "PLATFORMS" },
-    { key: "businessAreas", label: "BUSINESS AREAS" },
-    { key: "languages", label: "SITE LANGUAGES" },
     { key: "apps", label: "APPS RELEASED" },
+    { key: "businessLines", label: "BUSINESS AREAS" },
+    { key: "appLanguages", label: "LANGUAGES SUPPORTED" },
+    { key: "countries", label: "COUNTRIES" },
   ],
   metricLabels: {
     apps: "APPS",
