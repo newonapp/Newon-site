@@ -270,10 +270,10 @@ const en = {
   milestonesLead:
     "Dates come from the official website's history and published news. Where an exact date cannot be confirmed, only the year is shown.",
   stats: [
-    { value: "5", label: "Core platforms", note: "BABYLOG to ONGIL." },
     { value: "11", label: "Released apps", note: "On the App Store and Google Play." },
-    { value: "9", label: "Site languages", note: "The official website's locales." },
-    { value: "1", label: "Web platforms", note: "The ONGIL web preview." },
+    { value: "4", label: "Business areas", note: "SHAREON, BABYLOG, PETLOG and ONGIL." },
+    { value: "13", label: "Languages supported", note: "Languages our apps support." },
+    { value: "177", label: "Countries", note: "Countries where our apps are released." },
   ] as Stat[],
   milestones: [
     { n: "2026.04", title: "Official website", body: ["The first version of the newon.app website went live and began introducing NEWON's services."] },
@@ -470,10 +470,10 @@ const ko: typeof en = {
   milestonesTitle: "하나씩 완성해 온 제품의 기록.",
   milestonesLead: "날짜는 공식 웹사이트 기록과 공개된 소식으로 확인한 범위에서만 표기하고, 정확한 날짜를 확인할 수 없는 항목은 연도만 적습니다.",
   stats: [
-    { value: "5", label: "핵심 플랫폼", note: "BABYLOG부터 ONGIL까지." },
     { value: "11", label: "출시 앱", note: "App Store·Google Play에 출시." },
-    { value: "9", label: "웹사이트 언어", note: "공식 웹사이트의 언어 수." },
-    { value: "1", label: "웹 공개 플랫폼", note: "ONGIL 웹 체험판." },
+    { value: "4", label: "사업 영역", note: "SHAREON·BABYLOG·PETLOG·ONGIL." },
+    { value: "13", label: "지원 언어", note: "앱에서 지원하는 언어 수." },
+    { value: "177", label: "출시 국가", note: "앱을 출시한 국가 수." },
   ],
   milestones: [
     { n: "2026.04", title: "공식 웹사이트 시작", body: ["newon.app 공식 웹사이트의 첫 버전을 만들고, NEWON의 서비스를 소개하기 시작했습니다."] },
