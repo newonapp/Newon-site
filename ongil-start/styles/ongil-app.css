@@ -1,0 +1,160 @@
+/*
+ * ONGIL app components added in Phase 1 (view shells, Saved, 내 정보, onboarding, states).
+ * Built only from ongil-tokens.css: dark background, cream ink, #212121 / #101010 surfaces,
+ * 1.1rem / 1.5rem radii, pill buttons, white-on-black accent.
+ */
+
+/* text size preference (내 정보 → 보기 설정) */
+html[data-og-text="large"] { font-size: 112.5%; }
+html[data-og-text="xlarge"] { font-size: 125%; }
+
+/* readable body copy in every content area */
+.og-band, .og-page, .og-dialog { font-size: var(--og-size-body); font-weight: var(--og-weight-body); line-height: 1.6; }
+.og-band p, .og-page p, .og-dialog p { font-size: var(--og-size-body); }
+.og-band .og-lead, .og-page .og-lead { margin: 0 0 1.5rem; max-width: 40rem; font-size: 1.1rem; font-weight: var(--og-weight-body); color: var(--og-ink-soft); }
+.og-band .og-label, .og-page .og-label { font-size: 0.9rem; }
+
+/* focus is always visible on the dark surface */
+.og a:focus-visible, .og button:focus-visible, .og input:focus-visible, .og select:focus-visible,
+.og-dialog a:focus-visible, .og-dialog button:focus-visible, .og-dialog input:focus-visible, .og-dialog select:focus-visible,
+.og [tabindex="-1"]:focus-visible, .og-dialog [tabindex="-1"]:focus-visible { outline: var(--og-focus); outline-offset: var(--og-focus-offset); }
+.og h1:focus, .og h2:focus, .og-dialog h2:focus, #og-main:focus { outline: none; }
+.og h1:focus-visible, .og h2:focus-visible, .og-dialog h2:focus-visible { outline: var(--og-focus); outline-offset: 6px; }
+.og-hero-title:focus-visible { outline-color: #000; }
+
+/* film extras */
+.og-hero.is-blank .og-hero-title { color: var(--og-ink); } /* no film frame painted yet: black title would be invisible */
+.og-motion { position: absolute; right: 1.25rem; bottom: 1.25rem; z-index: 4; display: inline-flex; align-items: center; min-height: var(--og-control); padding: 0 1.1rem; border: 0; border-radius: var(--og-radius-pill); color: var(--og-white); font-family: inherit; font-size: var(--og-size-body); font-weight: 500; cursor: pointer; text-shadow: var(--og-shadow-lead); }
+.og-hero .og-motion { bottom: auto; top: calc(var(--gnav-h, 74px) + 1rem); }
+
+/* plain page header for views without a film (Saved, 내 정보) */
+.og-page { min-height: 100svh; padding-top: var(--gnav-h, 74px); color: var(--og-ink); }
+.og-page .og-wrap { padding-top: 3rem; }
+.og-page__title { margin: 0 0 0.8rem; font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.15; color: var(--og-ink); }
+
+/* notices and states */
+.og-notice { margin: 0 0 1.5rem; padding: 1rem 1.1rem; border-radius: var(--og-radius-card); background: var(--og-surface-deep); border: 1px solid var(--og-line-strong); color: var(--og-ink); max-width: 46rem; }
+.og-notice strong { font-weight: 700; }
+.og-region { margin: 0 0 2.5rem; }
+.og-state { margin: 0; padding: 1.4rem 1.1rem; border-radius: var(--og-radius-card); background: var(--og-surface-deep); border: 1px dashed var(--og-line-strong); color: var(--og-ink-soft); }
+.og-state--error { border-style: solid; }
+.og-state--error::before { content: "오류: "; font-weight: 700; }
+.og-region[aria-busy="true"] .og-state::before { content: "· "; }
+.og-live { min-height: 1.6rem; margin: 1rem 0 0; color: var(--og-ink); font-weight: 700; }
+.og-extra:empty { display: none; }
+.og-extra { margin: 0 0 1.5rem; }
+
+/* module slots */
+.og-sub { margin: 0 0 0.3rem; font-size: 1.35rem; font-weight: 700; color: var(--og-ink); }
+.og-sub__lead { margin: 0 0 1.1rem; color: var(--og-muted); }
+.og-chips--slots { margin: 0; padding: 0; list-style: none; }
+.og-chip--slot { display: flex; flex-direction: column; }
+.og-chip--slot h4 { font-size: 1.15rem; }
+.og-band .og-chip--slot p { font-size: var(--og-size-body); font-weight: var(--og-weight-body); line-height: 1.5; color: var(--og-muted); }
+.og-band .og-chip--slot .og-chip__status { margin-top: auto; padding-top: 0.8rem; color: var(--og-ink-soft); font-size: 1rem; font-weight: 700; } /* [P2C] 0.95rem → 1rem */
+.og-chip__status::before { content: "○ "; }
+.og-chip--slot[data-og-available="true"] .og-chip__status::before { content: "● "; }
+
+/* buttons (the hero's pill language) */
+.og-btn { display: inline-flex; align-items: center; justify-content: center; min-height: var(--og-control); padding: 0.7rem 1.4rem; border: 1.5px solid transparent; border-radius: var(--og-radius-pill); font-family: inherit; font-size: var(--og-size-body); font-weight: 700; line-height: 1.2; text-decoration: none; cursor: pointer; transition: transform var(--og-ease-press), box-shadow var(--og-ease-press); }
+.og-btn:active { transform: scale(0.97); }
+.og-btn--primary { background: var(--og-accent); color: var(--og-accent-ink); }
+.og-btn--primary:hover { box-shadow: var(--og-glow); }
+.og-btn--ghost { background: transparent; color: var(--og-ink); border-color: var(--og-line-strong); }
+.og-btn--ghost:hover { border-color: var(--og-ink); }
+.og-btn--danger { background: var(--og-ink); color: var(--og-accent-ink); }
+.og-btn--text { background: transparent; color: var(--og-ink-soft); text-decoration: underline; text-underline-offset: 0.25em; padding-inline: 0.6rem; }
+
+/* cards for forms and lists */
+.og-panelcard { margin: 0 0 1rem; padding: 1.5rem 1.25rem; border-radius: var(--og-radius-lg); background: var(--og-surface-deep); max-width: 46rem; }
+.og-panelcard__title { margin: 0 0 0.8rem; font-size: 1.4rem; font-weight: 700; color: var(--og-ink); }
+.og-panelcard p { margin: 0 0 0.8rem; color: var(--og-ink-soft); }
+.og-panelcard .og-notice { background: var(--og-surface); }
+.og-mode strong { color: var(--og-white); }
+.og-empty-card { padding: 2rem 1.25rem; border-radius: var(--og-radius-lg); background: var(--og-surface-deep); max-width: 46rem; }
+.og-empty-card__title { margin: 0 0 0.8rem; font-size: 1.4rem; font-weight: 700; color: var(--og-ink); }
+.og-empty-card p { margin: 0 0 0.6rem; color: var(--og-ink-soft); }
+.og-invite { padding: 1.5rem 1.25rem; border-radius: var(--og-radius-lg); background: var(--og-surface); max-width: 46rem; }
+.og-invite__title { margin: 0 0 0.5rem; font-size: 1.3rem; font-weight: 700; color: var(--og-ink); }
+.og-invite p { margin: 0 0 1rem; color: var(--og-ink-soft); }
+
+/* forms */
+.og-form { display: grid; gap: 1.3rem; }
+.og-field { display: grid; gap: 0.4rem; }
+.og-field__label { padding: 0; font-size: 1.05rem; font-weight: 700; color: var(--og-ink); }
+.og-field__hint { margin: 0; color: var(--og-muted); font-size: 1rem; } /* [P2C] 0.95rem → 1rem */
+.og-input { width: 100%; max-width: 26rem; min-height: var(--og-input); padding: 0 0.9rem; border: 1.5px solid var(--og-line-strong); border-radius: var(--og-radius-input); background: var(--og-bg); color: var(--og-ink); font: inherit; font-size: var(--og-size-body); }
+select.og-input { appearance: auto; }
+.og-choices { margin: 0; padding: 0; border: 0; min-width: 0; display: grid; gap: 0.5rem; }
+.og-choices__list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.og-choices--stack .og-choices__list { flex-direction: column; }
+.og-choice { display: inline-flex; align-items: center; gap: 0.6rem; min-height: var(--og-control); padding: 0.5rem 1rem 0.5rem 0.8rem; border: 1.5px solid var(--og-line-strong); border-radius: var(--og-radius-pill); color: var(--og-ink); cursor: pointer; }
+.og-choices--stack .og-choice { border-radius: var(--og-radius-card); }
+.og-choice input { width: 1.35rem; height: 1.35rem; margin: 0; accent-color: var(--og-ink); flex: none; }
+.og-choice:has(input:checked) { border-color: var(--og-ink); background: var(--og-surface); font-weight: 700; }
+.og-choice:has(input:focus-visible) { outline: var(--og-focus); outline-offset: var(--og-focus-offset); }
+.og-form__actions { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+.og-confirm { margin-top: 1rem; padding: 1rem; border-radius: var(--og-radius-card); border: 1px solid var(--og-line-strong); }
+
+/* saved list */
+.og-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.2rem; }
+.og-filter { min-height: var(--og-control); padding: 0.5rem 1rem; border: 1.5px solid var(--og-line-strong); border-radius: var(--og-radius-pill); background: transparent; color: var(--og-ink); font: inherit; font-size: var(--og-size-body); cursor: pointer; }
+.og-filter[aria-pressed="true"] { border-color: var(--og-ink); background: var(--og-surface); font-weight: 700; }
+.og-filter[aria-pressed="true"]::before { content: "✓ "; }
+.og-items { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.6rem; max-width: 46rem; }
+.og-item { display: flex; gap: 1rem; align-items: center; justify-content: space-between; padding: 1.1rem 1.2rem; border-radius: var(--og-radius-card); background: var(--og-surface); }
+.og-item__body { min-width: 0; }
+.og-item__type { margin: 0 0 0.2rem; color: var(--og-ink-soft); font-size: 1rem; font-weight: 700; } /* [P2C] 0.95rem → 1rem */
+.og-item__heading { margin: 0 0 0.3rem; font-size: 1.15rem; font-weight: 700; }
+.og-item__title { color: var(--og-ink); overflow-wrap: anywhere; }
+a.og-item__title { display: inline-flex; align-items: center; min-height: var(--og-control); text-decoration: underline; text-underline-offset: 0.2em; } /* [P7] a saved item's link is a 44px target */
+.og-item__desc, .og-item__meta { margin: 0; color: var(--og-muted); overflow-wrap: anywhere; }
+/* [P8] 저장함: named actions on each row, a count line and the snapshot note */
+.og-item--saved { align-items: flex-start; }
+.og-item__actions { display: flex; flex-wrap: wrap; gap: 0.4rem; flex: none; max-width: 100%; }
+.og-item__gone { margin-top: 0.4rem; color: var(--og-ink); font-weight: 700; }
+.og-saved-count { max-width: 46rem; margin: 0 0 0.8rem; padding: 0.8rem 1.1rem; }
+.og-saved-note { max-width: 46rem; margin-top: 1rem; }
+
+/* onboarding dialog */
+.og-dialog { width: min(34rem, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); padding: 0; border: 1px solid var(--og-line-strong); border-radius: var(--og-radius-lg); background: var(--og-surface-deep); color: var(--og-ink); overflow: auto; }
+.og-dialog::backdrop { background: rgba(0, 0, 0, 0.72); }
+.og-dialog__body { display: grid; gap: 1rem; padding: 1.75rem 1.5rem 1.5rem; }
+.og-dialog__progress { margin: 0; color: var(--og-ink-soft); font-size: 1rem; font-weight: 700; } /* [P2C] 0.95rem → 1rem */
+.og-dialog__title { margin: 0; font-size: clamp(1.45rem, 4vw, 1.9rem); font-weight: 700; line-height: 1.3; color: var(--og-ink); }
+.og-dialog__lead { margin: 0; color: var(--og-ink-soft); }
+.og-dialog .og-notice { margin: 0; background: var(--og-surface); }
+.og-dialog__actions { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin-top: 0.5rem; }
+
+.og-noscript { margin: 0; padding: calc(var(--gnav-h, 74px) + 2rem) 1.25rem 2rem; color: var(--og-ink); font-size: 1.1rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .og-btn { transition: none; }
+  html { scroll-behavior: auto; }
+}
+@media (max-width: 700px) {
+  .og-wrap { padding: 3rem 0; }
+  .og-item { flex-direction: column; align-items: flex-start; }
+  .og-motion { right: 0.75rem; bottom: 0.75rem; }
+  .og-tool--wide { display: none; } /* 저장 · 내 정보 live in the menu sheet on small screens */
+  .og-panel { position: fixed; top: calc(var(--gnav-h, 74px) + 0.4rem); right: 1rem; left: 1rem; width: auto; }
+  .og-dialog__actions .og-btn { flex: 1 1 auto; }
+}
+
+/* [P9] 운영 보기 (#admin): the Home / My Life cards and tabs, with label–value rows that wrap on a phone. No table, no chart. */
+.og-admin > .og-notice { max-width: 60rem; margin: 0 0 1rem; }
+.og-admin-actions { margin: 0 0 1.2rem; }
+.og-admin-group { min-width: 0; padding-top: 0.6rem; border-top: 1px solid var(--og-line); }
+.og-admin-group:first-child { padding-top: 0; border-top: 0; }
+.og-admin-rows li { flex-wrap: wrap; align-items: flex-start; gap: 0.1rem 1rem; }
+.og-admin-rows .og-life-days__date { flex: 0 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.og-admin-value { flex: 1 1 12rem; min-width: 0; text-align: right; color: var(--og-ink); overflow-wrap: anywhere; }
+.og-admin-list { margin: 0.3rem 0 0; padding-left: 1.2rem; display: grid; gap: 0.35rem; color: var(--og-ink); font-size: var(--og-size-body); overflow-wrap: anywhere; }
+.og-admin-list .og-admin-value { text-align: left; }
+@media (max-width: 480px) {
+  .og-admin-value { flex-basis: 100%; text-align: left; color: var(--og-ink-soft); }
+}
+
+/* Product Completion Audit V1 */
+.og-field[hidden] { display: none; } /* display:grid above beat the browser's [hidden] rule: a hidden field stayed on screen */
+html[data-og-view]:has(dialog[open]), html[data-og-view]:has(dialog[open]) body { overflow: hidden; } /* the page behind a modal dialog does not scroll */

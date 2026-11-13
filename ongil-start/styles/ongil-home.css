@@ -1,0 +1,120 @@
+/*
+ * Home V1 (Phase 2A). Tokens only — the same dark surfaces, cream ink, radii and pill controls as the rest of
+ * the shell. Weight comes from surface and size, in four levels, so Home is not a wall of equal cards:
+ *   level 1  deep surface, large title      오늘의 안부 · 오늘 일정
+ *   level 2  card surface                   복약 · 오늘의 생활
+ *   level 3  outlined                       가족 · 오늘 뭐 하지?
+ *   level 4  quiet, outlined thin           내 주변 · 빠른 실행
+ */
+
+/* hero greeting (replaces the left sentence of the hero foot when scripts run) */
+.og-greeting__hello { display: block; color: var(--og-white); font-size: 1.3rem; font-weight: 500; line-height: 1.35; }
+.og-greeting__date { display: block; margin-top: 0.3rem; }
+
+.og-home .og-lead { margin-bottom: 1.75rem; }
+
+/* [P2C] what is left today — plain counts in one quiet line of pills, above the cards; hidden when there is nothing */
+.og-home-summary { margin: -0.5rem 0 1.5rem; }
+.og-home-summary[hidden] { display: none; }
+.og-home-summary__list { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.og-home-summary__item { display: inline-flex; align-items: baseline; gap: 0.5rem; padding: 0.55rem 1rem; border: 1px solid var(--og-line-strong); border-radius: var(--og-radius-pill); font-size: 1.05rem; color: var(--og-ink-soft); }
+.og-home-summary__value { color: var(--og-ink); font-weight: 700; }
+
+/* [P2C] links from a Home card to the full screen in My Life */
+.og-band .og-home-more { margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+.og-home-more__link { display: inline-flex; align-items: center; min-height: var(--og-control); color: var(--og-ink); font-size: 1.05rem; font-weight: 700; text-underline-offset: 0.25em; }
+.og-home-more__link::after { content: " →"; white-space: pre; }
+.og-home-after { display: grid; gap: 0.8rem; }
+.og-band .og-home-count { margin: 0; color: var(--og-ink-soft); font-size: 1.05rem; }
+.og-home-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 0 0 1rem; align-items: start; }
+
+.og-home-card { min-width: 0; padding: 1.5rem 1.4rem; border-radius: var(--og-radius-lg); color: var(--og-ink); scroll-margin-top: calc(var(--gnav-h, 74px) + 1rem); }
+.og-home-card--l1 { background: var(--og-surface-deep); padding: 1.9rem 1.6rem; }
+.og-home-card--l2 { background: var(--og-surface); border-radius: var(--og-radius-card); }
+.og-home-card--l3 { border: 1.5px solid var(--og-line-strong); border-radius: var(--og-radius-card); }
+.og-home-card--l4 { border: 1px solid var(--og-line); border-radius: var(--og-radius-card); }
+.og-home-card__title { margin: 0 0 0.5rem; font-size: 1.4rem; font-weight: 700; line-height: 1.3; color: var(--og-ink); }
+.og-home-card--l1 .og-home-card__title { font-size: 1.75rem; }
+.og-home-card--l4 .og-home-card__title { font-size: 1.2rem; }
+.og-home-card__lead { margin: 0 0 1rem; color: var(--og-ink-soft); font-size: 1.1rem; }
+.og-home-card--l1 .og-home-card__lead { font-size: 1.3rem; color: var(--og-white); }
+.og-home-card__body { display: grid; gap: 1rem; }
+.og-home-card__body > * { min-width: 0; } /* [P2C] a long unbroken word inside a card wraps instead of widening the card */
+.og-home-card__status { margin: 0.6rem 0 0; }
+.og-home-card__status:empty { min-height: 0; margin: 0; }
+.og-home-empty { margin: 0; color: var(--og-ink-soft); font-size: 1.1rem; }
+.og-band .og-home-note { margin: 0; color: var(--og-muted); font-size: 1rem; line-height: 1.55; overflow-wrap: anywhere; } /* [P2C] 0.95rem → 1rem: text people read is never under 16px */
+.og-home-help { margin: 0; background: var(--og-surface); }
+.og-home-help p { margin: 0 0 0.4rem; }
+.og-home-help p:last-child { margin: 0; }
+
+/* choices: one of several, with a tick as well as the pressed state */
+.og-picks { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.og-picks--stack { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.og-pick { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 3rem; padding: 0.6rem 1.1rem; border: 1.5px solid var(--og-line-strong); border-radius: var(--og-radius-pill); background: transparent; color: var(--og-ink); font-family: inherit; font-size: 1.05rem; font-weight: var(--og-weight-body); text-align: left; cursor: pointer; }
+.og-picks--stack .og-pick { border-radius: var(--og-radius-card); min-height: 3.5rem; font-size: 1.15rem; }
+.og-pick__mark { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 1.4rem; height: 1.4rem; border: 1.5px solid var(--og-line-strong); border-radius: 50%; font-size: 1rem; line-height: 1; }
+.og-pick[aria-pressed="true"] { border-color: var(--og-ink); background: var(--og-bg); font-weight: 700; }
+.og-pick[aria-pressed="true"] .og-pick__mark { border-color: var(--og-ink); background: var(--og-ink); color: var(--og-accent-ink); }
+.og-home-card--l1 .og-pick[aria-pressed="true"] { background: var(--og-surface); }
+
+/* daily life rows */
+.og-life-row { display: grid; gap: 0.5rem; }
+.og-band .og-life-row__label { margin: 0; font-size: 1.1rem; font-weight: 700; color: var(--og-ink); }
+.og-stepper { display: inline-flex; align-items: center; gap: 0.8rem; }
+.og-stepper__btn { width: 3rem; height: 3rem; border: 1.5px solid var(--og-line-strong); border-radius: 50%; background: transparent; color: var(--og-ink); font-family: inherit; font-size: 1.5rem; line-height: 1; cursor: pointer; }
+.og-stepper__btn:disabled { opacity: 0.4; cursor: default; }
+.og-band .og-stepper__value { min-width: 4rem; margin: 0; text-align: center; font-size: 1.35rem; font-weight: 700; color: var(--og-ink); }
+
+/* lists: schedule, medication, nearby */
+.og-home-items { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.5rem; }
+.og-home-item { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; align-items: center; justify-content: space-between; padding: 0.9rem 1rem; border: 1px solid var(--og-line); border-radius: var(--og-radius-card); background: var(--og-bg); }
+.og-home-item--editing, .og-home-item--confirm { display: grid; }
+.og-home-item__main { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 0.8rem; align-items: center; min-width: 0; flex: 1 1 12rem; }
+.og-home-item__main > p { grid-column: 1 / -1; }
+.og-home-item__check { width: 1.7rem; height: 1.7rem; margin: 0; accent-color: var(--og-ink); }
+.og-home-item__check ~ p { grid-column: 2; }
+.og-home-item__label { min-height: var(--og-control); display: flex; align-items: center; flex-wrap: wrap; cursor: pointer; }
+.og-band .og-home-item__title { margin: 0; font-size: 1.15rem; font-weight: 700; color: var(--og-ink); overflow-wrap: anywhere; }
+.og-home-item.is-done .og-home-item__title { text-decoration: line-through; text-decoration-thickness: 1.5px; }
+.og-home-item__done { color: var(--og-ink-soft); font-weight: 700; white-space: pre; }
+.og-band .og-home-item__meta { margin: 0; color: var(--og-muted); font-size: 1rem; overflow-wrap: anywhere; }
+.og-home-item__meta a { display: inline-flex; align-items: center; min-height: var(--og-control); color: var(--og-ink); text-underline-offset: 0.2em; }
+.og-home-item__actions { display: flex; gap: 0.4rem; flex: none; }
+.og-btn--small { padding: 0.5rem 1rem; }
+.og-home-item .og-confirm { margin-top: 0.6rem; }
+.og-home-form { padding: 1rem; border: 1px solid var(--og-line-strong); border-radius: var(--og-radius-card); background: var(--og-bg); }
+.og-home-item--editing .og-home-form { padding: 0; border: 0; }
+.og-field__optional { color: var(--og-muted); font-weight: var(--og-weight-body); }
+.og-band .og-form-error { margin: 0; color: var(--og-white); font-weight: 700; }
+.og-form-error:empty { display: none; }
+.og-form-error::before { content: "⚠ "; }
+.og-input[aria-invalid="true"] { border-color: var(--og-white); border-width: 2.5px; }
+.og-input[type="time"] { max-width: 12rem; color-scheme: dark; }
+.og-home-region:empty { display: none; }
+.og-home-region { margin: 0; }
+
+/* 오늘 뭐 하지? */
+.og-linkchips { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.og-linkchip { display: inline-flex; align-items: center; min-height: 3rem; padding: 0.6rem 1.3rem; border: 1.5px solid var(--og-line-strong); border-radius: var(--og-radius-pill); color: var(--og-ink); font-size: 1.1rem; font-weight: 700; text-decoration: none; }
+.og-linkchip:hover { border-color: var(--og-ink); }
+.og-linkchip::after { content: " →"; white-space: pre; }
+
+/* 빠른 실행 */
+.og-quick { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
+.og-quick__item { display: flex; align-items: center; width: 100%; min-height: 3.5rem; padding: 0.7rem 1rem; border: 0; border-radius: var(--og-radius-card); background: var(--og-surface); color: var(--og-ink); font-family: inherit; font-size: 1.05rem; font-weight: 700; text-align: left; text-decoration: none; cursor: pointer; }
+.og-quick__item:hover { background: #2b2b2b; }
+
+@media (max-width: 860px) {
+  .og-home-row { grid-template-columns: 1fr; }
+  .og-greeting__hello { font-size: 1.2rem; }
+  /* on narrow screens the film button sat on top of the hero title: move it to the bottom corner and lift the foot above it */
+  .og-hero .og-motion { top: auto; bottom: 0.75rem; right: 0.75rem; }
+  .og-hero .og-hero__foot { bottom: 4.5rem; }
+}
+@media (max-width: 480px) {
+  .og-home-card, .og-home-card--l1 { padding: 1.4rem 1.1rem; }
+  .og-picks--stack { grid-template-columns: 1fr; }
+  .og-home-item__actions { width: 100%; }
+  .og-home-item__actions .og-btn { flex: 1; }
+}

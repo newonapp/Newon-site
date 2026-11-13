@@ -1,0 +1,1008 @@
+/* PETLOG business website — body sections below the film hero (/{lang}/petlog/…).
+ * Scoped to #lifestage-detail.nls--petlog. The film hero (.nls-film) and the flagship sub-menu (.fsn) are not styled here.
+ * Rendered by scripts/render-petlog-site.mjs.
+ * 2026-10-26 design pass v3: less whitespace (sections ~2.6rem mobile → ~4.3rem desktop, header→content ~1.5rem, cards
+ * ~1.25–1.6rem, grid gaps ~0.9–1.25rem), wide header rows, real tables, one green accent band per page,
+ * snap rails on phones. Light mode: white surfaces with hairline outlines (no grey fills); PETLOG green as the point colour.
+ *   light: #278A53 brand · #1E6B41 text on white (AA) · #E6F2EA small accent tint (icons, chips only)
+ *   dark:  #4FBF80 brand · #8FDDB0 text · #0C1511 band tint · rgba(111,207,151,.12) wash
+ */
+
+#lifestage-detail.nls--petlog {
+  --pl-g: #278a53;
+  --pl-gi: #1e6b41;
+  --pl-tint: #ffffff;
+  --pl-soft: #e6f2ea;
+  --pl-line: rgba(39, 138, 83, 0.32);
+  --pl-card: #ffffff;
+  --pl-rule: #e4e4e4;
+  --pl-dash: #cfcfcf;
+  --pl-ink: var(--nls-ink);
+  --pl-muted: #474747;
+  --pl-faint: #666666;
+  --pl-band: #1e6b41;
+  --pl-r-lg: 16px;
+  --pl-r: 10px;
+  --pl-pad: clamp(2.6rem, 2rem + 2.6vw, 4.5rem);
+  --pl-hgap: clamp(1.25rem, 0.9rem + 0.9vw, 1.75rem);
+  --pl-cpad: clamp(1.2rem, 0.9rem + 0.9vw, 1.6rem);
+  --pl-gap: clamp(0.85rem, 0.6rem + 0.7vw, 1.25rem);
+}
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog {
+  --pl-g: #4fbf80;
+  --pl-gi: #8fddb0;
+  --pl-tint: #0c1511;
+  --pl-soft: rgba(111, 207, 151, 0.12);
+  --pl-line: rgba(111, 207, 151, 0.34);
+  --pl-card: #121513;
+  --pl-rule: rgba(255, 255, 255, 0.12);
+  --pl-dash: rgba(255, 255, 255, 0.26);
+  --pl-ink: #f2f2f2;
+  --pl-muted: #c4c4c4;
+  --pl-faint: #a3a3a3;
+  --pl-band: #10301f;
+}
+
+/* ------------------------------------------------------------------ section rhythm + type scale */
+#lifestage-detail.nls--petlog .nls__wrap .nls-block { padding-top: var(--pl-pad); padding-bottom: var(--pl-pad); border-top: 0; }
+#lifestage-detail.nls--petlog .nls__wrap .nls-block:not(.nls-block--band):not(.nls-block--ink) + .nls-block:not(.nls-block--band):not(.nls-block--ink) { border-top: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .nls__wrap .nls-block--band.pl-tint { background: var(--pl-tint); border-top: 1px solid var(--pl-rule); border-bottom: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .nls__wrap .nls-block--band.pl-tint + .nls-block--band.pl-tint { border-top: 0; }
+#lifestage-detail.nls--petlog .nls__wrap .nls-close { margin-top: 0; padding-top: clamp(3rem, 2.4rem + 3vw, 5rem); padding-bottom: clamp(3rem, 2.4rem + 3vw, 5rem); }
+#lifestage-detail.nls--petlog .nls-head { margin: 0 0 var(--pl-hgap); max-width: 48rem; }
+#lifestage-detail.nls--petlog .nls-kicker { margin: 0 0 0.6rem; font-size: 0.8125rem; font-weight: 650; letter-spacing: 0.08em; color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .nls-title { margin: 0; font-size: clamp(1.7rem, 1.25rem + 1.5vw, 2.5rem); line-height: 1.24; letter-spacing: -0.035em; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .nls-lead { margin: 0.75rem 0 0; max-width: 44rem; font-size: clamp(1rem, 0.95rem + 0.2vw, 1.0625rem); line-height: 1.72; color: var(--pl-muted); }
+@media (min-width: 960px) {
+  #lifestage-detail.nls--petlog .pl-head--row { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr); column-gap: clamp(2rem, 4vw, 3.5rem); max-width: none; align-items: end; }
+  #lifestage-detail.nls--petlog .pl-head--row .nls-kicker { grid-column: 1; grid-row: 1; }
+  #lifestage-detail.nls--petlog .pl-head--row .nls-title { grid-column: 1; grid-row: 2; }
+  #lifestage-detail.nls--petlog .pl-head--row .nls-lead { grid-column: 2; grid-row: 1 / span 2; align-self: end; margin: 0; max-width: 40rem; }
+}
+#lifestage-detail.nls--petlog h3 { margin: 0; font-size: 1.125rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.42; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-p { margin: 0; max-width: 70ch; font-size: 1rem; line-height: 1.7; color: var(--pl-muted); }
+#lifestage-detail.nls--petlog .pl-sm { font-size: 0.9375rem; line-height: 1.65; }
+#lifestage-detail.nls--petlog .pl-fine { margin: 0.9rem 0 0; font-size: 0.875rem; line-height: 1.6; color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-n { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.04em; color: var(--pl-gi); font-variant-numeric: tabular-nums; }
+#lifestage-detail.nls--petlog .pl-label { margin: 0; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.02em; color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-subhead { margin: 0 0 0.9rem; font-size: 1.0625rem; font-weight: 700; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-minihead { margin: 0 0 0.6rem; font-size: 0.9375rem; font-weight: 700; color: var(--pl-ink); }
+
+/* ------------------------------------------------------------------ small parts */
+#lifestage-detail.nls--petlog .pl-ic { flex: none; display: inline-grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: var(--pl-r); background: var(--pl-soft); color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-ic svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+#lifestage-detail.nls--petlog .pl-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-chips li { padding: 0.25rem 0.65rem; border-radius: 999px; background: var(--pl-soft); color: var(--pl-gi); font-size: 0.8125rem; font-weight: 600; line-height: 1.35; }
+#lifestage-detail.nls--petlog .pl-chips li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-chips--line li { background: transparent; box-shadow: inset 0 0 0 1px var(--pl-dash); color: var(--pl-muted); }
+#lifestage-detail.nls--petlog .pl-more { display: inline-flex; align-items: center; gap: 0.35rem; min-height: 44px; width: fit-content; font-size: 0.9375rem; font-weight: 650; color: var(--pl-gi); text-decoration: none; }
+#lifestage-detail.nls--petlog .pl-more span { transition: transform 0.18s ease; }
+#lifestage-detail.nls--petlog .pl-more:hover { text-decoration: underline; text-underline-offset: 0.22em; }
+#lifestage-detail.nls--petlog .pl-more:hover span { transform: translateX(2px); }
+#lifestage-detail.nls--petlog :is(a, button, summary, [tabindex="0"]):focus-visible { outline: 2px solid var(--pl-g); outline-offset: 3px; border-radius: 6px; }
+#lifestage-detail.nls--petlog .pl-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.9rem; margin-top: 1.4rem; }
+#lifestage-detail.nls--petlog .pl-pill { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 46px; padding: 0.55rem 1.15rem; border: 1px solid var(--pl-line); border-radius: 999px; background: var(--pl-card); color: var(--pl-gi); font-size: 0.9375rem; font-weight: 650; text-decoration: none; transition: border-color 0.18s ease, box-shadow 0.18s ease; }
+#lifestage-detail.nls--petlog .pl-pill:hover { border-color: var(--pl-g); box-shadow: inset 0 0 0 1px var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-pill svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+#lifestage-detail.nls--petlog .pl-aside { margin: 0; font-size: 0.9375rem; font-weight: 600; color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-stage { display: inline-flex; align-items: center; width: fit-content; padding: 0.24rem 0.7rem; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--pl-line); color: var(--pl-gi); font-size: 0.8125rem; font-weight: 700; white-space: nowrap; }
+#lifestage-detail.nls--petlog .pl-stage--now { background: var(--pl-g); box-shadow: none; color: #fff; }
+#lifestage-detail.nls--petlog .pl-stage--review { box-shadow: inset 0 0 0 1px var(--pl-dash); color: var(--pl-muted); }
+
+/* notice */
+#lifestage-detail.nls--petlog .pl-callout { display: flex; gap: 0.75rem; align-items: flex-start; max-width: none; margin: 0 0 var(--pl-hgap); padding: 0.85rem 1.1rem; border: 1px solid var(--pl-line); border-radius: var(--pl-r); background: var(--pl-card); font-size: 0.9375rem; line-height: 1.65; color: var(--pl-muted); }
+#lifestage-detail.nls--petlog .pl-callout svg { flex: none; width: 1.15rem; height: 1.15rem; margin-top: 0.2rem; fill: none; stroke: var(--pl-gi); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+/* key/value list */
+#lifestage-detail.nls--petlog .pl-meta { display: grid; gap: 0.45rem; margin: 0; }
+#lifestage-detail.nls--petlog .pl-meta div { display: grid; grid-template-columns: 5.25rem minmax(0, 1fr); gap: 0.8rem; font-size: 0.9375rem; line-height: 1.6; }
+html:not([lang="ko"]) #lifestage-detail.nls--petlog .pl-meta div { grid-template-columns: 7rem minmax(0, 1fr); }
+#lifestage-detail.nls--petlog .pl-meta dt { font-weight: 650; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-meta dd { margin: 0; color: var(--pl-muted); }
+
+/* ------------------------------------------------------------------ two-up blocks (both columns carry content) */
+#lifestage-detail.nls--petlog .pl-duo { display: grid; gap: clamp(1.8rem, 3vw, 2.6rem); }
+#lifestage-detail.nls--petlog .pl-duo .nls-head { margin-bottom: 1.1rem; }
+@media (min-width: 960px) {
+  #lifestage-detail.nls--petlog .pl-duo { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
+  #lifestage-detail.nls--petlog .pl-duo--app { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
+  #lifestage-detail.nls--petlog .pl-duo--road { grid-template-columns: minmax(0, 1fr); }
+  #lifestage-detail.nls--petlog .pl-duo--road .pl-phases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(1.4rem, 2.6vw, 2.2rem); border-top: 0; }
+  #lifestage-detail.nls--petlog .pl-duo--road .pl-phases li:nth-child(-n + 3) { border-top: 1px solid var(--pl-ink); }
+  #lifestage-detail.nls--petlog .pl-duo--guide { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
+  #lifestage-detail.nls--petlog .pl-duo > .pl-duo__b { padding-left: clamp(2rem, 4vw, 3.5rem); border-left: 1px solid var(--pl-rule); margin-left: calc(-1 * clamp(2rem, 4vw, 3.5rem) / 2); }
+}
+
+/* values (mission): five ruled columns */
+#lifestage-detail.nls--petlog .pl-values { display: grid; gap: 0 var(--pl-gap); margin: 0; grid-template-columns: minmax(0, 1fr); }
+#lifestage-detail.nls--petlog .pl-values > div { display: grid; gap: 0.35rem; align-content: start; padding: 0.95rem 0 1rem; border-top: 2px solid var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-values dt { font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-values dd { display: grid; gap: 0.3rem; margin: 0; }
+#lifestage-detail.nls--petlog .pl-values strong { font-size: 1rem; font-weight: 700; line-height: 1.5; color: var(--pl-ink); }
+@media (min-width: 640px) and (max-width: 1099px) { #lifestage-detail.nls--petlog .pl-values { grid-template-columns: repeat(2, minmax(0, 1fr)); } #lifestage-detail.nls--petlog .pl-values > div:last-child { grid-column: 1 / -1; } }
+@media (min-width: 1100px) { #lifestage-detail.nls--petlog .pl-values { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+
+/* ------------------------------------------------------------------ problem → solution (3 columns) */
+#lifestage-detail.nls--petlog .pl-pcards { display: grid; gap: var(--pl-gap); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 900px) { #lifestage-detail.nls--petlog .pl-pcards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+#lifestage-detail.nls--petlog .pl-pcard { display: flex; flex-direction: column; border: 1px solid var(--pl-rule); border-radius: var(--pl-r-lg); background: var(--pl-card); overflow: hidden; }
+#lifestage-detail.nls--petlog .pl-pcard__q { display: grid; gap: 0.5rem; align-content: start; padding: var(--pl-cpad); flex: 1; }
+#lifestage-detail.nls--petlog .pl-pcard__a { display: grid; gap: 0.4rem; padding: 1rem var(--pl-cpad) 1.15rem; border-top: 1px solid var(--pl-line); }
+#lifestage-detail.nls--petlog .pl-pcard__a b { display: flex; align-items: center; gap: 0.45rem; font-size: 0.875rem; font-weight: 700; color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-pcard__a b svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+#lifestage-detail.nls--petlog .pl-pcard__a .pl-p { color: var(--pl-ink); font-size: 0.9375rem; }
+
+/* ------------------------------------------------------------------ steps (real sequences only) */
+#lifestage-detail.nls--petlog .pl-steps { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-steps li { display: grid; gap: 0.4rem; align-content: start; padding: 1rem 0 1.15rem; border-top: 3px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-steps li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-steps li.is-on { border-top-color: var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-steps .pl-big { font-size: 0.9375rem; font-weight: 700; letter-spacing: 0.02em; color: var(--pl-gi); font-variant-numeric: tabular-nums; }
+#lifestage-detail.nls--petlog .pl-steps h3 { font-size: 1.125rem; }
+@media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.4rem; } }
+@media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-steps { grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); column-gap: clamp(1.1rem, 2vw, 1.75rem); } }
+#lifestage-detail.nls--petlog .pl-steps--lg .pl-big { font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.35rem); letter-spacing: -0.04em; line-height: 1.1; }
+
+/* vertical numbered list (roadmap, getting started, after you send) */
+#lifestage-detail.nls--petlog .pl-phases { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-phases li { display: grid; align-content: start; grid-template-columns: 3.4rem minmax(0, 1fr); gap: 0.2rem 0.9rem; padding: 0.8rem 0; border-bottom: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-phases li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-phases .pl-code { grid-row: 1 / span 2; font-size: 1.0625rem; font-weight: 700; letter-spacing: -0.01em; color: var(--pl-gi); font-variant-numeric: tabular-nums; line-height: 1.45; }
+#lifestage-detail.nls--petlog .pl-phases h3 { font-size: 1.0625rem; }
+#lifestage-detail.nls--petlog .pl-phases .pl-p { font-size: 0.9375rem; }
+#lifestage-detail.nls--petlog .pl-phases--step .pl-code { font-size: 0.875rem; letter-spacing: 0.04em; padding-top: 0.1rem; }
+
+/* ------------------------------------------------------------------ people rows (trust / data / public) */
+#lifestage-detail.nls--petlog .pl-people { margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-people li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.9rem; align-items: start; padding: 1rem 0; border-top: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-people li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-people li > div { display: grid; gap: 0.25rem; }
+#lifestage-detail.nls--petlog .pl-people h3 { font-size: 1.0625rem; }
+#lifestage-detail.nls--petlog .pl-people li.is-later .pl-ic { background: transparent; box-shadow: inset 0 0 0 1px var(--pl-dash); color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-people li.is-later h3 { color: var(--pl-muted); }
+#lifestage-detail.nls--petlog .pl-people--grid { display: grid; gap: 0 clamp(1.4rem, 2.6vw, 2.2rem); }
+@media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-people--grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-people--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* roles table */
+#lifestage-detail.nls--petlog .pl-roles { display: grid; margin: 0; border-top: 1px solid var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-roles > div { display: grid; gap: 0.35rem 2rem; padding: 0.9rem 0; border-bottom: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-roles dt { display: flex; align-items: center; gap: 0.75rem; font-size: 1.0625rem; font-weight: 700; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-roles dt .pl-ic { width: 2.2rem; height: 2.2rem; }
+#lifestage-detail.nls--petlog .pl-roles dt .pl-ic svg { width: 1.1rem; height: 1.1rem; }
+#lifestage-detail.nls--petlog .pl-roles dd { margin: 0; }
+#lifestage-detail.nls--petlog .pl-roles .is-later dt { color: var(--pl-muted); }
+#lifestage-detail.nls--petlog .pl-roles .is-later .pl-ic { background: transparent; box-shadow: inset 0 0 0 1px var(--pl-dash); color: var(--pl-faint); }
+@media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-roles > div { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.8fr); align-items: center; } }
+
+/* ------------------------------------------------------------------ cards */
+#lifestage-detail.nls--petlog .pl-card { display: flex; flex-direction: column; gap: 0.55rem; min-width: 0; margin: 0; padding: var(--pl-cpad); border-radius: var(--pl-r-lg); background: var(--pl-card); box-shadow: inset 0 0 0 1px var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-card__top { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.15rem; }
+#lifestage-detail.nls--petlog .pl-card__top .pl-label { order: 1; flex: 1; min-width: 0; }
+#lifestage-detail.nls--petlog .pl-card__top .pl-n { order: 2; margin-left: auto; }
+#lifestage-detail.nls--petlog .pl-card .pl-foot { display: grid; gap: 0.75rem; margin-top: auto; padding-top: 0.9rem; border-top: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-card .pl-foot:empty { display: none; }
+#lifestage-detail.nls--petlog .pl-card .pl-more { min-height: 0; padding: 0.2rem 0; }
+#lifestage-detail.nls--petlog .pl-card--later { background: transparent; box-shadow: inset 0 0 0 1px var(--pl-dash); }
+#lifestage-detail.nls--petlog .pl-grid { display: grid; gap: var(--pl-gap); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 700px) { #lifestage-detail.nls--petlog .pl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1040px) {
+  #lifestage-detail.nls--petlog .pl-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #lifestage-detail.nls--petlog .pl-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (min-width: 700px) and (max-width: 1039px) { #lifestage-detail.nls--petlog .pl-grid--odd > :last-child:nth-child(odd), #lifestage-detail.nls--petlog .pl-grid--bento > :first-child { grid-column: 1 / -1; } }
+@media (min-width: 700px) { #lifestage-detail.nls--petlog .pl-grid--2.pl-grid--odd > :last-child:nth-child(odd) { grid-column: 1 / -1; } }
+@media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-grid--3.pl-grid--odd > :last-child:nth-child(3n + 2) { grid-column: span 2; } }
+/* bento: first tile wide (5 tiles → 2+1 / 1+1+1) */
+@media (min-width: 1040px) {
+  #lifestage-detail.nls--petlog .pl-grid--bento { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #lifestage-detail.nls--petlog .pl-grid--bento > :first-child { grid-column: span 2; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 1.8rem; align-content: start; box-shadow: inset 0 0 0 1.5px var(--pl-line); }
+  #lifestage-detail.nls--petlog .pl-grid--bento > :first-child > * { grid-column: 1; }
+  #lifestage-detail.nls--petlog .pl-grid--bento > :first-child > .pl-foot { grid-column: 2; grid-row: 1 / span 6; margin-top: 0; padding: 0 0 0 1.8rem; border-top: 0; border-left: 1px solid var(--pl-rule); align-content: start; }
+  #lifestage-detail.nls--petlog .pl-grid--bento > :first-child h3 { font-size: 1.375rem; }
+}
+
+/* phone: horizontal snap rail for long card sets */
+@media (max-width: 699px) {
+  #lifestage-detail.nls--petlog .pl-snap { display: flex; gap: 0.75rem; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; margin: 0 -1.2rem; padding: 0 1.2rem 0.5rem; scroll-padding: 0 1.2rem; }
+  #lifestage-detail.nls--petlog .pl-snap > * { flex: 0 0 84%; scroll-snap-align: start; }
+}
+
+/* ------------------------------------------------------------------ feature rows (area / line rows) */
+#lifestage-detail.nls--petlog .pl-rows { border-top: 1px solid var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-row { display: grid; gap: 0.9rem 2.6rem; padding: clamp(1.05rem, 0.8rem + 0.8vw, 1.45rem) 0; border-bottom: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-row__lead { display: grid; gap: 0.45rem; align-content: start; min-width: 0; }
+#lifestage-detail.nls--petlog .pl-row__lead h3 { font-size: clamp(1.15rem, 1.05rem + 0.4vw, 1.3rem); }
+#lifestage-detail.nls--petlog .pl-row__tag { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+#lifestage-detail.nls--petlog .pl-row__tag .pl-ic { width: 2.2rem; height: 2.2rem; }
+#lifestage-detail.nls--petlog .pl-row__tag .pl-ic svg { width: 1.1rem; height: 1.1rem; }
+#lifestage-detail.nls--petlog .pl-row__side { display: grid; gap: 0.75rem; align-content: start; min-width: 0; }
+#lifestage-detail.nls--petlog .pl-row__side .pl-more { min-height: 0; padding: 0.1rem 0; }
+@media (min-width: 900px) { #lifestage-detail.nls--petlog .pl-row { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); } }
+
+/* ruled columns (no box) */
+#lifestage-detail.nls--petlog .pl-cols { display: grid; gap: 1.5rem clamp(1.4rem, 2.4vw, 2rem); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-cols--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } #lifestage-detail.nls--petlog .pl-cols--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+#lifestage-detail.nls--petlog .pl-col { display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; margin: 0; padding-top: 0.95rem; border-top: 2px solid var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-col .pl-row__tag { margin-bottom: 0.1rem; }
+#lifestage-detail.nls--petlog .pl-col .pl-meta { margin-top: 0.2rem; padding-top: 0.75rem; border-top: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-col .pl-chips { margin-top: 0.2rem; }
+
+/* ------------------------------------------------------------------ scenes: now / next */
+#lifestage-detail.nls--petlog .pl-nn { display: grid; gap: 0.7rem; margin: auto 0 0; padding-top: 0.9rem; border-top: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-nn > div { display: grid; gap: 0.2rem; }
+#lifestage-detail.nls--petlog .pl-nn dt { display: flex; align-items: center; gap: 0.45rem; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.02em; color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-nn dt i { display: inline-block; width: 0.55rem; height: 0.55rem; border-radius: 2px; background: var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-nn .is-next dt { color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-nn .is-next dt i { background: transparent; box-shadow: inset 0 0 0 1.5px var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-nn dd { margin: 0; font-size: 0.9375rem; line-height: 1.58; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-nn .is-next dd { color: var(--pl-muted); }
+
+/* ------------------------------------------------------------------ core features bento (8 tiles) */
+#lifestage-detail.nls--petlog .pl-core { display: grid; gap: var(--pl-gap); grid-template-columns: minmax(0, 1fr); margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-core > li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-core .pl-card { height: 100%; }
+@media (min-width: 700px) { #lifestage-detail.nls--petlog .pl-core { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1040px) {
+  #lifestage-detail.nls--petlog .pl-core { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  #lifestage-detail.nls--petlog .pl-core > li.is-wide { grid-column: span 2; }
+}
+#lifestage-detail.nls--petlog .pl-core > li.is-wide .pl-card:not(.pl-card--later) { box-shadow: inset 0 0 0 1.5px var(--pl-line); }
+#lifestage-detail.nls--petlog .pl-core > li.is-wide h3 { font-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.4rem); }
+#lifestage-detail.nls--petlog .pl-core .pl-chips { margin-top: auto; padding-top: 0.3rem; }
+
+/* ------------------------------------------------------------------ data / comparison tables */
+#lifestage-detail.nls--petlog .pl-xt-wrap { min-width: 0; }
+#lifestage-detail.nls--petlog .pl-xt { width: 100%; border-collapse: collapse; font-size: 0.9375rem; line-height: 1.6; color: var(--pl-muted); }
+#lifestage-detail.nls--petlog .pl-xt caption { text-align: left; }
+#lifestage-detail.nls--petlog .pl-xt thead th { padding: 0.6rem 1rem 0.6rem 0; border-bottom: 1px solid var(--pl-ink); text-align: left; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.02em; color: var(--pl-gi); white-space: nowrap; }
+#lifestage-detail.nls--petlog .pl-xt tbody :is(th, td) { padding: 0.8rem 1rem 0.8rem 0; border-bottom: 1px solid var(--pl-rule); text-align: left; vertical-align: top; }
+#lifestage-detail.nls--petlog .pl-xt tbody th { font-size: 1rem; font-weight: 700; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-xt :is(th, td):last-child { padding-right: 0; }
+#lifestage-detail.nls--petlog .pl-xt__name { display: flex; align-items: center; gap: 0.7rem; }
+#lifestage-detail.nls--petlog .pl-xt__name .pl-ic { width: 2.1rem; height: 2.1rem; }
+#lifestage-detail.nls--petlog .pl-xt__name .pl-ic svg { width: 1.05rem; height: 1.05rem; }
+#lifestage-detail.nls--petlog .pl-xt__strong { color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-xt b { font-weight: 700; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-xt .pl-code { font-weight: 700; color: var(--pl-gi); font-variant-numeric: tabular-nums; white-space: nowrap; }
+@media (min-width: 760px) {
+  #lifestage-detail.nls--petlog .pl-xt--users th[scope="row"] { width: 30%; }
+  #lifestage-detail.nls--petlog .pl-xt--users td:last-child { width: 9.5rem; text-align: right; }
+  #lifestage-detail.nls--petlog .pl-xt--users thead th:last-child { text-align: right; }
+  #lifestage-detail.nls--petlog .pl-xt--cmp th[scope="row"] { width: 26%; }
+  #lifestage-detail.nls--petlog .pl-xt--cmp td:nth-child(2) { width: 32%; }
+  #lifestage-detail.nls--petlog .pl-xt--cmp3 th[scope="row"] { width: 14%; }
+  #lifestage-detail.nls--petlog .pl-xt--cmp3 td { width: 43%; }
+  #lifestage-detail.nls--petlog .pl-xt--2 th[scope="row"] { width: 34%; }
+  #lifestage-detail.nls--petlog .pl-xt--prio th[scope="row"] { width: 4.5rem; white-space: nowrap; color: var(--pl-gi); }
+  #lifestage-detail.nls--petlog .pl-xt--prio td:last-child { width: 4.5rem; }
+}
+#lifestage-detail.nls--petlog .pl-xt--mini { font-size: 0.875rem; }
+#lifestage-detail.nls--petlog .pl-xt--mini tbody :is(th, td) { padding-top: 0.55rem; padding-bottom: 0.55rem; }
+#lifestage-detail.nls--petlog .pl-xt--mini tbody th { font-size: 0.9375rem; }
+@media (min-width: 960px) {
+  /* long two-column tables split into two side-by-side halves */
+  #lifestage-detail.nls--petlog .pl-xt--split tbody { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(1.6rem, 3vw, 2.6rem); }
+  #lifestage-detail.nls--petlog .pl-xt--split thead { display: none; }
+  #lifestage-detail.nls--petlog .pl-xt--split tbody tr { display: grid; grid-template-columns: minmax(8.5rem, 0.5fr) minmax(0, 1fr); column-gap: 1rem; border-bottom: 1px solid var(--pl-rule); }
+  #lifestage-detail.nls--petlog .pl-xt.pl-xt--split tbody tr > :is(th[scope="row"], td) { width: auto; }
+  #lifestage-detail.nls--petlog .pl-xt--split tbody tr:nth-child(-n + 2) { border-top: 1px solid var(--pl-ink); }
+  #lifestage-detail.nls--petlog .pl-xt--split tbody :is(th, td) { width: auto; padding-right: 0; border-bottom: 0; }
+}
+@media (max-width: 759px) {
+  #lifestage-detail.nls--petlog .pl-xt, #lifestage-detail.nls--petlog .pl-xt :is(tbody, tr, th, td) { display: block; width: auto; }
+  #lifestage-detail.nls--petlog .pl-xt thead { display: none; }
+  #lifestage-detail.nls--petlog .pl-xt tbody tr { padding: 0.85rem 0; border-bottom: 1px solid var(--pl-rule); }
+  #lifestage-detail.nls--petlog .pl-xt tbody tr:first-child { border-top: 1px solid var(--pl-ink); }
+  #lifestage-detail.nls--petlog .pl-xt tbody :is(th, td) { padding: 0; border: 0; }
+  #lifestage-detail.nls--petlog .pl-xt tbody td { margin-top: 0.35rem; }
+  #lifestage-detail.nls--petlog .pl-xt tbody td[data-label]:not([data-label=""])::before { content: attr(data-label); display: block; margin-bottom: 0.1rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.02em; color: var(--pl-gi); }
+  #lifestage-detail.nls--petlog .pl-xt--2 tbody td::before, #lifestage-detail.nls--petlog .pl-xt--users tbody td:last-child::before { content: none !important; }
+}
+
+/* ------------------------------------------------------------------ long-term areas: 5 columns (rail on small screens) */
+#lifestage-detail.nls--petlog .pl-ladder { display: grid; gap: var(--pl-gap); margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-ladder > li { display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; padding: 1.15rem 1.1rem 1.2rem; border: 1px solid var(--pl-rule); border-radius: var(--pl-r-lg); background: var(--pl-card); }
+#lifestage-detail.nls--petlog .pl-ladder > li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-ladder > li:first-child { border-color: var(--pl-line); box-shadow: inset 0 3px 0 var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-ladder .pl-chips { margin-top: auto; padding-top: 0.3rem; }
+@media (min-width: 1100px) { #lifestage-detail.nls--petlog .pl-ladder { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (min-width: 700px) and (max-width: 1099px) { #lifestage-detail.nls--petlog .pl-ladder { grid-template-columns: repeat(2, minmax(0, 1fr)); } #lifestage-detail.nls--petlog .pl-ladder > li:last-child { grid-column: 1 / -1; } }
+@media (max-width: 699px) {
+  #lifestage-detail.nls--petlog .pl-ladder { display: flex; gap: 0.75rem; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; margin: 0 -1.2rem; padding: 0 1.2rem 0.5rem; scroll-padding: 0 1.2rem; }
+  #lifestage-detail.nls--petlog .pl-ladder > li { flex: 0 0 82%; scroll-snap-align: start; }
+}
+
+/* ------------------------------------------------------------------ directory rows (NEWON family, purposes) */
+#lifestage-detail.nls--petlog .pl-dir { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-dir li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-dir li { border-bottom: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-dir a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.25rem 1rem; align-items: center; min-height: 44px; height: 100%; padding: 0.9rem 0.35rem; color: inherit; text-decoration: none; transition: box-shadow 0.18s ease; }
+#lifestage-detail.nls--petlog .pl-dir .pl-ic + div { min-width: 0; }
+#lifestage-detail.nls--petlog .pl-dir a:has(.pl-ic) { grid-template-columns: auto minmax(0, 1fr) auto; }
+#lifestage-detail.nls--petlog .pl-dir strong { display: block; font-size: 1.0625rem; font-weight: 700; letter-spacing: -0.01em; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-dir .pl-p { margin-top: 0.15rem; font-size: 0.9375rem; }
+#lifestage-detail.nls--petlog .pl-dir em { font-style: normal; font-weight: 600; color: var(--pl-gi); transition: transform 0.18s ease; }
+#lifestage-detail.nls--petlog .pl-dir a:hover { box-shadow: inset 3px 0 0 var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-dir a:hover strong { color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-dir a:hover em { transform: translateX(3px); }
+#lifestage-detail.nls--petlog .pl-dir a.is-self { box-shadow: inset 3px 0 0 var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-dir a.is-self strong { color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-dir a.is-self, #lifestage-detail.nls--petlog .pl-dir a:hover { padding-left: 0.9rem; }
+@media (min-width: 760px) {
+  #lifestage-detail.nls--petlog .pl-dir--grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(1.4rem, 2.6vw, 2.2rem); border-top: 0; }
+  #lifestage-detail.nls--petlog .pl-dir--grid li:nth-child(-n + 2) { border-top: 1px solid var(--pl-ink); }
+}
+@media (min-width: 1040px) {
+  #lifestage-detail.nls--petlog .pl-dir--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #lifestage-detail.nls--petlog .pl-dir--3 li:nth-child(3) { border-top: 1px solid var(--pl-ink); }
+}
+
+/* link tiles (inquiry types, channels, menu) */
+#lifestage-detail.nls--petlog .pl-tiles { display: grid; gap: 0.65rem; grid-template-columns: minmax(0, 1fr); margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-tiles > li::before { content: none; }
+@media (min-width: 640px) { #lifestage-detail.nls--petlog .pl-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-tiles--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } #lifestage-detail.nls--petlog .pl-tiles--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } #lifestage-detail.nls--petlog .pl-tiles--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (min-width: 640px) and (max-width: 1039px) { #lifestage-detail.nls--petlog .pl-tiles--5 > li:last-child:nth-child(odd) { grid-column: 1 / -1; } }
+#lifestage-detail.nls--petlog .pl-tile { display: flex; flex-direction: column; gap: 0.35rem; height: 100%; min-height: 44px; padding: 1rem 1.1rem 1.05rem; border-radius: var(--pl-r); background: var(--pl-card); box-shadow: inset 0 0 0 1px var(--pl-rule); color: inherit; text-decoration: none; transition: box-shadow 0.18s ease; }
+#lifestage-detail.nls--petlog a.pl-tile:hover { box-shadow: inset 0 0 0 1.5px var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-tile strong { display: flex; justify-content: space-between; align-items: baseline; gap: 0.6rem; font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.4; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-tile strong em { flex: none; font-style: normal; font-weight: 600; color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-tile .pl-p { font-size: 0.9rem; line-height: 1.58; }
+#lifestage-detail.nls--petlog .pl-tile--row { flex-direction: row; align-items: flex-start; gap: 0.85rem; }
+#lifestage-detail.nls--petlog .pl-tile--row .pl-ic { width: 2.2rem; height: 2.2rem; }
+#lifestage-detail.nls--petlog .pl-tile--row .pl-ic svg { width: 1.1rem; height: 1.1rem; }
+#lifestage-detail.nls--petlog .pl-tile__body { display: grid; gap: 0.25rem; min-width: 0; flex: 1; }
+#lifestage-detail.nls--petlog .pl-tile[aria-current="page"] { box-shadow: inset 0 0 0 1.5px var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-tile[aria-current="page"] strong { color: var(--pl-gi); }
+
+/* contact: inquiry types grouped by audience */
+#lifestage-detail.nls--petlog .pl-tgroups { display: grid; border-top: 1px solid var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-tgroup { display: grid; gap: 0.7rem 2rem; padding: 1rem 0; border-bottom: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-tgroup__h { font-size: 1rem; color: var(--pl-gi); }
+@media (min-width: 900px) { #lifestage-detail.nls--petlog .pl-tgroup { grid-template-columns: 11rem minmax(0, 1fr); align-items: start; } #lifestage-detail.nls--petlog .pl-tgroup__h { padding-top: 0.9rem; } }
+
+/* ------------------------------------------------------------------ status board (platform legend): one outlined table */
+#lifestage-detail.nls--petlog .pl-board { display: grid; gap: var(--pl-gap); grid-template-columns: minmax(0, 1fr); }
+#lifestage-detail.nls--petlog .pl-panel { display: grid; gap: 0.8rem 2rem; align-content: start; padding: var(--pl-cpad); border-radius: var(--pl-r-lg); background: var(--pl-card); box-shadow: inset 0 0 0 1px var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-panel__head { display: flex; align-items: center; gap: 0.75rem; }
+#lifestage-detail.nls--petlog .pl-panel__body { display: grid; gap: 0.55rem; }
+#lifestage-detail.nls--petlog .pl-panel--now { box-shadow: inset 0 0 0 1.5px var(--pl-line); }
+#lifestage-detail.nls--petlog .pl-panel--now .pl-ic { background: var(--pl-g); color: #fff; }
+#lifestage-detail.nls--petlog .pl-panel--next { box-shadow: inset 0 0 0 1px var(--pl-dash); background: transparent; }
+#lifestage-detail.nls--petlog .pl-panel--next .pl-ic { background: transparent; box-shadow: inset 0 0 0 1px var(--pl-dash); color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-board--table { gap: 0; border: 1px solid var(--pl-rule); border-radius: var(--pl-r-lg); overflow: hidden; }
+#lifestage-detail.nls--petlog .pl-board--table .pl-panel { border-radius: 0; box-shadow: none; background: transparent; padding: 1rem var(--pl-cpad); border-top: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-board--table .pl-panel:first-child { border-top: 0; box-shadow: inset 3px 0 0 var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-board--table .pl-panel .pl-p { font-size: 0.9375rem; }
+@media (min-width: 900px) {
+  #lifestage-detail.nls--petlog .pl-board--table .pl-panel { grid-template-columns: minmax(0, 0.62fr) minmax(0, 1.6fr); align-items: start; }
+  #lifestage-detail.nls--petlog .pl-board--pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+#lifestage-detail.nls--petlog .pl-panel .pl-chips li { font-variant-numeric: tabular-nums; }
+#lifestage-detail.nls--petlog .pl-panel .pl-xt-wrap { margin-top: 0.2rem; }
+#lifestage-detail.nls--petlog .pl-panel .pl-fine { margin-top: 0; }
+
+/* sub-panels inside a section */
+#lifestage-detail.nls--petlog .pl-sub { margin-top: clamp(1.6rem, 2.6vw, 2.2rem); padding: var(--pl-cpad); border: 1px solid var(--pl-line); border-radius: var(--pl-r-lg); background: var(--pl-card); }
+#lifestage-detail.nls--petlog .pl-sub .nls-head { margin-bottom: 1.1rem; }
+#lifestage-detail.nls--petlog .pl-sub .nls-title { font-size: clamp(1.3rem, 1.1rem + 0.7vw, 1.65rem); }
+#lifestage-detail.nls--petlog .pl-sub .nls-lead { font-size: 0.9375rem; }
+#lifestage-detail.nls--petlog .pl-sub .pl-duo { margin-top: 1.4rem; }
+#lifestage-detail.nls--petlog .pl-sub--flat { border-color: var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-sub--flat .nls-title { font-size: 1.1875rem; }
+#lifestage-detail.nls--petlog .pl-products { display: grid; gap: 1rem 1.6rem; grid-template-columns: minmax(0, 1fr); margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-products li { display: grid; gap: 0.3rem; align-content: start; padding-top: 0.75rem; border-top: 2px solid var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-products li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-products b { font-size: 1rem; font-weight: 700; color: var(--pl-gi); }
+@media (min-width: 640px) { #lifestage-detail.nls--petlog .pl-products { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { #lifestage-detail.nls--petlog .pl-products { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+
+/* app tab structure (platform) */
+#lifestage-detail.nls--petlog .pl-tabs5 { display: grid; grid-template-columns: minmax(0, 1fr); margin: 0; padding: 0; list-style: none; border: 1px solid var(--pl-line); border-radius: var(--pl-r-lg); overflow: hidden; }
+#lifestage-detail.nls--petlog .pl-tabs5 li { display: grid; gap: 0.25rem; align-content: start; padding: 1rem 1.1rem 1.1rem; border-top: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-tabs5 li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-tabs5 li:first-child { border-top: 0; box-shadow: inset 0 3px 0 var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-tabs5 h3 { font-size: 1.1875rem; }
+@media (min-width: 700px) and (max-width: 1039px) { #lifestage-detail.nls--petlog .pl-tabs5 { grid-template-columns: repeat(2, minmax(0, 1fr)); } #lifestage-detail.nls--petlog .pl-tabs5 li:nth-child(2) { border-top: 0; } #lifestage-detail.nls--petlog .pl-tabs5 li:nth-child(odd) { border-right: 1px solid var(--pl-rule); } #lifestage-detail.nls--petlog .pl-tabs5 li:last-child { grid-column: 1 / -1; border-right: 0; } }
+@media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-tabs5 { grid-template-columns: repeat(5, minmax(0, 1fr)); } #lifestage-detail.nls--petlog .pl-tabs5 li { border-top: 0; border-left: 1px solid var(--pl-rule); } #lifestage-detail.nls--petlog .pl-tabs5 li:first-child { border-left: 0; } }
+
+/* business models (B2C … B2G) */
+#lifestage-detail.nls--petlog .pl-models { display: grid; gap: var(--pl-gap); grid-template-columns: minmax(0, 1fr); margin: 0; }
+#lifestage-detail.nls--petlog .pl-models > div { display: grid; gap: 0.4rem; align-content: start; padding: 1rem 1.1rem 1.1rem; border: 1px solid var(--pl-rule); border-radius: var(--pl-r-lg); }
+#lifestage-detail.nls--petlog .pl-models > div:first-child { border-color: var(--pl-line); box-shadow: inset 0 3px 0 var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-models dt { font-size: clamp(1.35rem, 1.15rem + 0.6vw, 1.65rem); font-weight: 750; letter-spacing: -0.03em; line-height: 1.15; color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-models dd { display: grid; gap: 0.3rem; margin: 0; }
+#lifestage-detail.nls--petlog .pl-models dd b { font-size: 0.9375rem; font-weight: 700; line-height: 1.5; color: var(--pl-ink); }
+@media (min-width: 640px) and (max-width: 1099px) { #lifestage-detail.nls--petlog .pl-models { grid-template-columns: repeat(2, minmax(0, 1fr)); } #lifestage-detail.nls--petlog .pl-models > div:last-child { grid-column: 1 / -1; } }
+@media (min-width: 1100px) { #lifestage-detail.nls--petlog .pl-models { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+
+/* ------------------------------------------------------------------ data tables (legal) */
+#lifestage-detail.nls--petlog .pl-dl { margin: 0; border-top: 1px solid var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-dl > div { display: grid; gap: 0.25rem 1.6rem; padding: 0.8rem 0; border-bottom: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-dl dt { font-size: 1rem; font-weight: 700; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-dl dd { margin: 0; }
+#lifestage-detail.nls--petlog .pl-dl .pl-p { font-size: 0.9375rem; }
+@media (min-width: 760px) {
+  #lifestage-detail.nls--petlog .pl-dl > div { grid-template-columns: minmax(0, 0.38fr) minmax(0, 1.6fr); align-items: baseline; }
+  #lifestage-detail.nls--petlog .pl-dl > div.is-span dd { grid-column: 1 / -1; }
+}
+@media (min-width: 1040px) {
+  #lifestage-detail.nls--petlog .pl-dl--2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(1.6rem, 3vw, 2.6rem); border-top: 0; }
+  #lifestage-detail.nls--petlog .pl-dl--2 > div:nth-child(-n + 2) { border-top: 1px solid var(--pl-ink); }
+  #lifestage-detail.nls--petlog .pl-dl--2 > div { grid-template-columns: minmax(0, 0.5fr) minmax(0, 1.5fr); }
+}
+
+#lifestage-detail.nls--petlog .pl-table { margin: 0; padding: 0; list-style: none; border: 1px solid var(--pl-rule); border-radius: var(--pl-r-lg); background: var(--pl-card); overflow: hidden; }
+#lifestage-detail.nls--petlog .pl-table li { display: grid; gap: 0.35rem 1.4rem; padding: 0.85rem clamp(1rem, 2vw, 1.5rem); border-bottom: 1px solid var(--pl-rule); grid-template-columns: minmax(0, 1fr) auto; }
+#lifestage-detail.nls--petlog .pl-table li:last-child { border-bottom: 0; }
+#lifestage-detail.nls--petlog .pl-table li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-table .pl-table__name { display: flex; gap: 0.75rem; align-items: baseline; font-size: 1rem; font-weight: 700; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-table .pl-p { grid-column: 1 / -1; font-size: 0.9375rem; }
+#lifestage-detail.nls--petlog .pl-table .pl-stage { grid-column: 2; grid-row: 1; align-self: center; }
+#lifestage-detail.nls--petlog .pl-table__hd { display: none; }
+@media (min-width: 900px) {
+  #lifestage-detail.nls--petlog .pl-table li { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.8fr) 8.5rem; align-items: center; }
+  #lifestage-detail.nls--petlog .pl-table .pl-p { grid-column: 2; grid-row: 1; }
+  #lifestage-detail.nls--petlog .pl-table .pl-stage { grid-column: 3; justify-self: end; }
+  #lifestage-detail.nls--petlog .pl-table li.pl-table__hd { display: grid; padding-top: 0.7rem; padding-bottom: 0.7rem; border-bottom: 1px solid var(--pl-ink); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.02em; color: var(--pl-gi); }
+}
+
+/* ------------------------------------------------------------------ market notes (4 up, last outlined in green) */
+#lifestage-detail.nls--petlog .pl-notes { display: grid; gap: var(--pl-gap); grid-template-columns: minmax(0, 1fr); margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-notes li { display: grid; gap: 0.45rem; align-content: start; padding: var(--pl-cpad); border: 1px solid var(--pl-rule); border-radius: var(--pl-r-lg); background: var(--pl-card); }
+#lifestage-detail.nls--petlog .pl-notes li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-notes li .pl-ic { margin-bottom: 0.3rem; }
+#lifestage-detail.nls--petlog .pl-notes li:last-child { border: 1.5px solid var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-notes li:last-child .pl-ic { background: var(--pl-g); color: #fff; }
+@media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-notes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { #lifestage-detail.nls--petlog .pl-notes { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* ------------------------------------------------------------------ checklist */
+#lifestage-detail.nls--petlog .pl-checks { display: grid; gap: 0 clamp(1.6rem, 3vw, 2.4rem); grid-template-columns: minmax(0, 1fr); margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-checks li { display: grid; grid-template-columns: 1.4rem minmax(0, 1fr); gap: 0.75rem; align-items: start; padding: 0.75rem 0; border-top: 1px solid var(--pl-rule); font-size: 0.9875rem; line-height: 1.65; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-checks li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-checks li > i { display: grid; place-items: center; width: 1.4rem; height: 1.4rem; margin-top: 0.12rem; border-radius: 6px; background: var(--pl-soft); color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-checks li > i svg { width: 0.85rem; height: 0.85rem; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+@media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-checks--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ------------------------------------------------------------------ FAQ accordion */
+#lifestage-detail.nls--petlog .pl-faq { border-top: 1px solid var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-faq details { border-bottom: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-faq summary { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 44px; padding: 0.85rem 0; cursor: pointer; list-style: none; font-size: 1rem; font-weight: 700; line-height: 1.5; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-faq summary::-webkit-details-marker { display: none; }
+#lifestage-detail.nls--petlog .pl-faq summary::after { content: "+"; flex: none; display: grid; place-items: center; width: 1.8rem; height: 1.8rem; border-radius: 8px; background: var(--pl-soft); color: var(--pl-gi); font-size: 1.1rem; font-weight: 500; line-height: 1; }
+#lifestage-detail.nls--petlog .pl-faq details[open] summary::after { content: "\2212"; }
+#lifestage-detail.nls--petlog .pl-faq summary:hover { color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-faq details > .pl-p { padding: 0 2.8rem 1rem 0; font-size: 0.9375rem; }
+
+/* ------------------------------------------------------------------ accent band (one per page) */
+#lifestage-detail.nls--petlog .nls__wrap .nls-block--band.pl-accent { background: var(--pl-band); color: #fff; border-top: 0; border-bottom: 0; }
+#lifestage-detail.nls--petlog .pl-accent :is(.nls-title, h3) { color: #fff; }
+#lifestage-detail.nls--petlog .pl-accent .nls-kicker { color: #a9e6c3; }
+#lifestage-detail.nls--petlog .pl-accent :is(.nls-lead, .pl-p) { color: rgba(255, 255, 255, 0.86); }
+#lifestage-detail.nls--petlog .pl-accent .pl-steps li { border-top-color: rgba(255, 255, 255, 0.28); }
+#lifestage-detail.nls--petlog .pl-accent .pl-steps li.is-on { border-top-color: #a9e6c3; }
+#lifestage-detail.nls--petlog .pl-accent .pl-steps .pl-big { color: #a9e6c3; }
+#lifestage-detail.nls--petlog .pl-accent .pl-people li { border-top-color: rgba(255, 255, 255, 0.24); }
+#lifestage-detail.nls--petlog .pl-accent .pl-ic { background: rgba(255, 255, 255, 0.14); color: #fff; }
+#lifestage-detail.nls--petlog .pl-accent .pl-callout { background: transparent; border-color: rgba(255, 255, 255, 0.34); color: rgba(255, 255, 255, 0.88); }
+#lifestage-detail.nls--petlog .pl-accent .pl-callout svg { stroke: #a9e6c3; }
+#lifestage-detail.nls--petlog .pl-band-note { margin: 1.1rem 0 0; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.24); max-width: 62rem; font-size: 1rem; line-height: 1.7; color: #fff; }
+
+/* ------------------------------------------------------------------ journey rail (shared component, PETLOG colours) */
+#lifestage-detail.nls--petlog .nls-journey-sec .nls-rail { margin-top: 0; border: 1px solid var(--pl-rule); border-bottom: 0; border-radius: var(--pl-r-lg) var(--pl-r-lg) 0 0; overflow: hidden; gap: 0; }
+#lifestage-detail.nls--petlog .nls-journey { margin-top: 0; border-radius: 0 0 var(--pl-r-lg) var(--pl-r-lg); overflow: hidden; background: var(--pl-card); }
+#lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn { min-height: 46px; border: 0; border-left: 1px solid var(--pl-rule); background: var(--pl-card); }
+#lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn:first-child { border-left: 0; }
+#lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn em { color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on { background: var(--pl-card); box-shadow: inset 0 -3px 0 var(--pl-g); color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .nls-journey-sec .nls-rail__btn.is-on :is(em, span) { color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .nls-decade { background: var(--pl-card); border-color: var(--pl-rule); }
+#lifestage-detail.nls--petlog .nls-decade__mark { background: var(--pl-card); color: var(--pl-gi); border-right: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .nls-decade__mark em { color: var(--pl-gi); opacity: 0.7; }
+#lifestage-detail.nls--petlog .nls-decade__n { color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .nls-decade h3 { font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.45rem); }
+#lifestage-detail.nls--petlog .nls-decade__copy { padding: 1.15rem 1.3rem 1.25rem; }
+#lifestage-detail.nls--petlog .nls-decade__lead { font-size: 1rem; line-height: 1.7; color: var(--pl-muted); }
+#lifestage-detail.nls--petlog .nls-decade .nls-chips li { border-color: var(--pl-line); color: var(--pl-gi); background: transparent; }
+@media (min-width: 900px) {
+  #lifestage-detail.nls--petlog .nls-journey-sec .nls-rail--petlog { display: grid; grid-template-columns: repeat(var(--petlog-rail-n, 7), minmax(0, 1fr)); }
+}
+@media (max-width: 899px) {
+  #lifestage-detail.nls--petlog .nls-journey { gap: 0.65rem; border-radius: 0; overflow: visible; background: transparent; }
+  #lifestage-detail.nls--petlog .nls-decade { border-radius: var(--pl-r-lg); }
+  #lifestage-detail.nls--petlog .nls-decade__mark { border-right: 0; border-bottom: 1px solid var(--pl-rule); }
+}
+
+/* ------------------------------------------------------------------ closing band */
+#lifestage-detail.nls--petlog .nls-close .nls-kicker { color: #7fd6a4; }
+#lifestage-detail.nls--petlog .nls-close .nls-btn:not(.nls-btn--ghost) { background: #278a53; border-color: #278a53; color: #fff; }
+#lifestage-detail.nls--petlog .nls-close .nls-btn:not(.nls-btn--ghost):hover { background: #1e6b41; border-color: #1e6b41; color: #fff; }
+
+/* contact form accents (form markup, names and hooks unchanged) */
+#lifestage-detail.nls--petlog .bp-page .bp-label { color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .bp-page .bz-submit { background: #1e6b41; border-color: #1e6b41; color: #fff; }
+#lifestage-detail.nls--petlog .bp-page .bz-submit:hover { background: #278a53; border-color: #278a53; }
+#lifestage-detail.nls--petlog .bp-page :where(input, select, textarea):focus-visible { outline: 2px solid var(--pl-g); outline-offset: 1px; }
+
+@media (prefers-reduced-motion: reduce) {
+  #lifestage-detail.nls--petlog .nls__wrap *, #lifestage-detail.nls--petlog .nls__wrap *::after { transition: none !important; }
+}
+
+/* ------------------------------------------------------------------ dark
+ * site-dark.css paints every .hub-page descendant (and its ::before/::after) black/white with !important.
+ * Inside the PETLOG content wrapper only, colours are re-applied here (hero + sub-menu untouched). */
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :where(*) { background-color: transparent !important; color: inherit !important; border-color: var(--pl-rule) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :where(*)::after, html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :where(*)::before { background-color: transparent !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap { color: var(--pl-ink) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-block--band.pl-tint { background-color: var(--pl-tint) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-block--band.pl-accent { background-color: var(--pl-band) !important; color: #fff !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-block--ink { background-color: #000 !important; color: #fff !important; }
+/* text roles */
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-p, .nls-lead, .pl-meta dd, .nls-decade__lead, .pl-callout, .pl-nn .is-next dd, .pl-chips--line li, .pl-stage--review, .pl-people li.is-later h3, .pl-roles .is-later dt, .pl-xt) { color: var(--pl-muted) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-label, .pl-aside, .pl-fine, .pl-nn .is-next dt, .nls-journey-sec .nls-rail__btn em, .pl-people li.is-later .pl-ic, .pl-roles .is-later .pl-ic, .pl-panel--next .pl-ic) { color: var(--pl-faint) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.nls-kicker, .pl-n, .pl-ic, .pl-chips li:not(.x), .pl-stage, .pl-more, .pl-pill, .pl-values dt, .pl-models dt, .pl-pcard__a b, .pl-steps .pl-big, .pl-phases .pl-code, .pl-xt .pl-code, .pl-xt thead th, .pl-products b, .pl-tile strong em, .pl-dir em, .pl-dir a.is-self strong, .pl-tile[aria-current="page"] strong, .pl-nn dt, .pl-faq summary::after, .pl-table li.pl-table__hd, .pl-tgroup__h, .nls-decade__mark, .nls-decade__mark *, .nls-decade__n, .nls-decade .nls-chips li, .nls-journey-sec .nls-rail__btn.is-on, .nls-journey-sec .nls-rail__btn.is-on *, .pl-callout svg) { color: var(--pl-gi) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-chips--line li { color: var(--pl-muted) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-pcard__a .pl-p, .pl-nn dd, .pl-xt tbody th, .pl-xt b, .pl-xt__strong, .pl-values strong, .pl-models dd b) { color: var(--pl-ink) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-nn .is-next dd) { color: var(--pl-muted) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-xt--prio th[scope="row"] { color: var(--pl-gi) !important; }
+/* surfaces */
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-card, .pl-tile, .pl-pcard, .pl-table, .pl-notes li, .pl-panel, .pl-pill, .pl-sub, .pl-callout, .pl-ladder > li, .pl-models > div, .nls-journey, .nls-decade, .nls-decade__mark, .nls-journey-sec .nls-rail__btn) { background-color: var(--pl-card) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-ic, .pl-chips li, .pl-checks li > i, .pl-faq summary::after) { background-color: var(--pl-soft) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-card--later, .pl-panel--next, .pl-board--table .pl-panel, .pl-chips--line li, .pl-people li.is-later .pl-ic, .pl-roles .is-later .pl-ic, .pl-panel--next .pl-ic, .pl-nn .is-next dt i) { background-color: transparent !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-stage--now, .pl-nn > div:not(.is-next) dt i, .pl-panel--now .pl-ic, .pl-notes li:last-child .pl-ic) { background-color: var(--pl-g) !important; color: #04140b !important; }
+/* accent band in dark */
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-accent :is(.nls-title, h3, .pl-band-note) { color: #fff !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-accent :is(.nls-lead, .pl-p, .pl-callout) { color: rgba(255, 255, 255, 0.84) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-accent :is(.nls-kicker, .pl-steps .pl-big, .pl-callout svg) { color: #a9e6c3 !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-accent .pl-ic { background-color: rgba(255, 255, 255, 0.12) !important; color: #fff !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-accent .pl-callout { background-color: transparent !important; border-color: rgba(255, 255, 255, 0.3) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-accent :is(.pl-steps li, .pl-people li, .pl-band-note) { border-color: rgba(255, 255, 255, 0.22) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-accent .pl-steps li.is-on { border-top-color: #a9e6c3 !important; }
+/* rules */
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-rows, .pl-phases, .pl-roles, .pl-dl:not(.pl-dl--2), .pl-dir:not(.pl-dir--grid), .pl-faq, .pl-tgroups) { border-top-color: rgba(255, 255, 255, 0.42) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-col, .pl-values > div, .pl-dl--2 > div:nth-child(-n + 2), .pl-dir--grid li:nth-child(-n + 3)) { border-top-color: rgba(255, 255, 255, 0.42) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-xt thead th, .pl-table li.pl-table__hd) { border-bottom-color: rgba(255, 255, 255, 0.42) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-steps li.is-on, html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-products li { border-top-color: var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-stage, .pl-pill, .pl-sub:not(.pl-sub--flat), .pl-callout, .pl-tabs5, .pl-pcard__a, .nls-decade .nls-chips li, .pl-ladder > li:first-child, .pl-models > div:first-child) { border-color: var(--pl-line) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-notes li:last-child { border-color: var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-journey-sec .nls-rail__btn.is-on { box-shadow: inset 0 -3px 0 var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-journey-sec .nls-rail__btn span { color: #f2f2f2 !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-journey-sec .nls-rail__btn.is-on span { color: var(--pl-gi) !important; }
+/* closing band */
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-close :is(.nls-lead) { color: rgba(255, 255, 255, 0.62) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-close .nls-kicker { color: #7fd6a4 !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-close .nls-btn:not(.nls-btn--ghost) { background-color: #278a53 !important; border-color: #278a53 !important; color: #fff !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-close .nls-btn:not(.nls-btn--ghost):hover { background-color: #1e6b41 !important; border-color: #1e6b41 !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .nls-close .nls-btn--ghost { color: #fff !important; border-color: rgba(255, 255, 255, 0.32) !important; }
+/* the dark canvas also removes box-shadows — re-apply the hairline outlines used as borders */
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-card, .pl-tile, .pl-panel) { box-shadow: inset 0 0 0 1px var(--pl-rule) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-board--table .pl-panel) { box-shadow: none !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-board--table .pl-panel:first-child { box-shadow: inset 3px 0 0 var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-card--later, .pl-panel--next, .pl-chips--line li, .pl-stage--review, .pl-people li.is-later .pl-ic, .pl-roles .is-later .pl-ic, .pl-panel--next .pl-ic) { box-shadow: inset 0 0 0 1px var(--pl-dash) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-stage, .pl-panel--now, .pl-core > li.is-wide .pl-card:not(.pl-card--later), .pl-grid--bento > :first-child) { box-shadow: inset 0 0 0 1.5px var(--pl-line) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-stage--now { box-shadow: none !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(a.pl-tile:hover, .pl-tile[aria-current="page"]) { box-shadow: inset 0 0 0 1.5px var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-dir a.is-self, .pl-dir a:hover) { box-shadow: inset 3px 0 0 var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-ladder > li:first-child, .pl-models > div:first-child, .pl-tabs5 li:first-child) { box-shadow: inset 0 3px 0 var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-nn .is-next dt i { box-shadow: inset 0 0 0 1.5px var(--pl-faint) !important; }
+#lifestage-detail.nls--petlog .nls__wrap :where(td, th, dd, dt, b, strong, summary, caption) { word-break: keep-all; overflow-wrap: break-word; }
+@media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-people--3 > li:last-child:nth-child(3n + 2) { grid-column: span 2; } }
+/* FAQ sections: two columns of questions on wide screens */
+@media (min-width: 960px) {
+  #lifestage-detail.nls--petlog .pl-faqsec .pl-faq { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(1.6rem, 3vw, 2.6rem); align-items: start; border-top: 0; }
+  #lifestage-detail.nls--petlog .pl-faqsec .pl-faq details:nth-child(-n + 2) { border-top: 1px solid var(--pl-ink); }
+}
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-faqsec .pl-faq details:nth-child(-n + 2) { border-top-color: rgba(255, 255, 255, 0.42) !important; }
+#lifestage-detail.nls--petlog .pl-xt__en { font-size: 0.875rem; color: var(--pl-muted); }
+@media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-xt--stages th[scope="row"] { width: 15%; white-space: nowrap; } #lifestage-detail.nls--petlog .pl-xt--stages td:last-child { width: 18%; color: var(--pl-gi); font-weight: 600; } }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-xt--stages td:last-child { color: var(--pl-gi) !important; }
+@media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-xt--links th[scope="row"] { width: 16%; } #lifestage-detail.nls--petlog .pl-xt--links td:nth-child(2) { width: 34%; } }
+
+/* ==================================================================== v4 design pass (2026-10-26)
+ * Varied section headers, illustrative product screens (labelled 예시 화면 / Illustrative, built from page copy only),
+ * a status board, a proposed-tab set, a status filter, a partner-type index, quiet hover and reveal motion.
+ * Light mode stays white with hairlines; the PETLOG green is the only colour.
+ */
+#lifestage-detail.nls--petlog { --pl-shadow: 0 22px 48px -30px rgba(16, 48, 31, 0.42); }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog { --pl-shadow: 0 22px 48px -30px rgba(0, 0, 0, 0.9); }
+
+/* header variants: hero (large editorial statement) and stack (kicker rule, title, lead underneath) */
+#lifestage-detail.nls--petlog .pl-head--hero { max-width: 62rem; margin-bottom: clamp(1.6rem, 1.2rem + 1.4vw, 2.4rem); }
+@media (min-width: 960px) {
+  #lifestage-detail.nls--petlog .pl-head--hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); column-gap: clamp(2rem, 4.5vw, 4rem); max-width: none; align-items: end; }
+  #lifestage-detail.nls--petlog .pl-head--hero .nls-kicker { grid-column: 1; grid-row: 1; }
+  #lifestage-detail.nls--petlog .pl-head--hero .nls-title { grid-column: 1; grid-row: 2; }
+  #lifestage-detail.nls--petlog .pl-head--hero .nls-lead { grid-column: 2; grid-row: 1 / span 2; align-self: end; margin: 0; padding-left: clamp(1.2rem, 2.4vw, 2rem); border-left: 2px solid var(--pl-g); }
+}
+#lifestage-detail.nls--petlog .pl-head--hero .nls-title { font-size: clamp(2.05rem, 1.35rem + 2.5vw, 3.45rem); line-height: 1.14; letter-spacing: -0.045em; }
+#lifestage-detail.nls--petlog .pl-head--hero .nls-lead { margin-top: 1.1rem; max-width: 46rem; font-size: clamp(1.03rem, 0.98rem + 0.25vw, 1.15rem); line-height: 1.75; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-head--stack { max-width: 46rem; }
+#lifestage-detail.nls--petlog :is(.pl-head--stack, .pl-head--hero) .nls-kicker { display: flex; align-items: center; gap: 0.6rem; }
+#lifestage-detail.nls--petlog :is(.pl-head--stack, .pl-head--hero) .nls-kicker::before { content: ""; flex: none; width: 1.6rem; height: 2px; background: var(--pl-g); }
+
+/* illustrative caption */
+#lifestage-detail.nls--petlog .pl-mockcap { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.3rem 0.5rem; margin: 0.8rem 0 0; font-size: 0.8125rem; line-height: 1.5; color: var(--pl-faint); text-align: center; }
+#lifestage-detail.nls--petlog .pl-mockcap span { padding: 0.12rem 0.55rem; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--pl-line); color: var(--pl-gi); font-weight: 700; }
+
+/* phone frame */
+#lifestage-detail.nls--petlog .pl-phone { width: 100%; max-width: 21rem; margin: 0 auto; }
+#lifestage-detail.nls--petlog .pl-phone__screen { display: grid; gap: 0.7rem; align-content: start; padding: 1.05rem 1rem 1.15rem; border: 9px solid var(--pl-ink); border-radius: 34px; background: var(--pl-card); box-shadow: var(--pl-shadow); }
+#lifestage-detail.nls--petlog .pl-phone__bar { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; padding: 0 0.15rem 0.55rem; border-bottom: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-phone__bar b { font-size: 0.875rem; font-weight: 800; letter-spacing: 0.08em; color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-phone__bar > svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: var(--pl-faint); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+#lifestage-detail.nls--petlog .pl-phone :is(strong, span, p, b) { word-break: keep-all; overflow-wrap: break-word; }
+#lifestage-detail.nls--petlog .pl-app-profile, #lifestage-detail.nls--petlog .pl-app-remind, #lifestage-detail.nls--petlog .pl-app-row { display: flex; align-items: center; gap: 0.75rem; min-width: 0; }
+#lifestage-detail.nls--petlog .pl-app-profile { padding: 0.75rem; border: 1px solid var(--pl-line); border-radius: 16px; }
+#lifestage-detail.nls--petlog :is(.pl-app-profile, .pl-app-remind, .pl-app-row) > div { display: grid; gap: 0.1rem; min-width: 0; }
+#lifestage-detail.nls--petlog :is(.pl-app-profile, .pl-app-remind, .pl-app-row) strong { font-size: 0.9375rem; font-weight: 700; line-height: 1.4; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog :is(.pl-app-profile, .pl-app-remind, .pl-app-row) span { font-size: 0.8125rem; line-height: 1.45; color: var(--pl-muted); }
+#lifestage-detail.nls--petlog .pl-app-profile .pl-ic--lg, #lifestage-detail.nls--petlog .pl-ic--lg { width: 3rem; height: 3rem; border-radius: 14px; }
+#lifestage-detail.nls--petlog .pl-ic--lg svg { width: 1.5rem; height: 1.5rem; }
+#lifestage-detail.nls--petlog .pl-app-h { margin: 0.3rem 0 -0.3rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-app-list { margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-app-list li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 0.65rem; padding: 0.5rem 0; border-bottom: 1px solid var(--pl-rule); font-size: 0.9rem; font-weight: 600; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-app-list li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-app-list .pl-ic { width: 2rem; height: 2rem; border-radius: 9px; }
+#lifestage-detail.nls--petlog .pl-app-list .pl-ic svg { width: 1rem; height: 1rem; }
+#lifestage-detail.nls--petlog .pl-app-list li > i { display: grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 6px; box-shadow: inset 0 0 0 1.5px var(--pl-dash); color: #fff; }
+#lifestage-detail.nls--petlog .pl-app-list li.is-done > i { background: var(--pl-g); box-shadow: none; }
+#lifestage-detail.nls--petlog .pl-app-list li > i svg { width: 0.8rem; height: 0.8rem; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+#lifestage-detail.nls--petlog .pl-app-list--plain li > i { box-shadow: none; color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-app-list--plain li > i svg { stroke-width: 2; }
+#lifestage-detail.nls--petlog .pl-app-remind { padding: 0.75rem 0.8rem; border-radius: 14px; background: var(--pl-soft); box-shadow: inset 3px 0 0 var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-app-remind .pl-ic { background: var(--pl-g); color: #fff; }
+#lifestage-detail.nls--petlog .pl-app-row { padding: 0.2rem 0; }
+#lifestage-detail.nls--petlog .pl-app-photos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.4rem; }
+#lifestage-detail.nls--petlog .pl-app-photos span { display: grid; place-items: center; aspect-ratio: 1; border-radius: 10px; background: var(--pl-soft); }
+#lifestage-detail.nls--petlog .pl-app-photos svg { width: 1.2rem; height: 1.2rem; fill: none; stroke: var(--pl-gi); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* overview: phone beside the feature list */
+#lifestage-detail.nls--petlog .pl-split { display: grid; gap: clamp(1.8rem, 3vw, 3rem); align-items: start; }
+@media (min-width: 960px) {
+  #lifestage-detail.nls--petlog .pl-split--phone { grid-template-columns: minmax(0, 21rem) minmax(0, 1fr); column-gap: clamp(2.4rem, 5vw, 4.5rem); }
+  #lifestage-detail.nls--petlog .pl-split--consent { grid-template-columns: minmax(0, 19rem) minmax(0, 1fr); column-gap: clamp(2.4rem, 5vw, 4.5rem); align-items: center; }
+}
+#lifestage-detail.nls--petlog .pl-flist { display: grid; gap: 0 clamp(1.4rem, 2.6vw, 2.2rem); margin: 0; padding: 0; list-style: none; }
+@media (min-width: 700px) { #lifestage-detail.nls--petlog .pl-flist { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+#lifestage-detail.nls--petlog .pl-flist > li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.85rem; align-items: start; padding: 1rem 0 1.1rem; border-top: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-flist > li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-flist > li > div { display: grid; gap: 0.3rem; min-width: 0; }
+#lifestage-detail.nls--petlog .pl-flist__top { display: flex; gap: 0.55rem; align-items: baseline; margin: 0; }
+#lifestage-detail.nls--petlog .pl-flist .pl-chips { margin-top: 0.25rem; }
+#lifestage-detail.nls--petlog .pl-flist > li.is-later .pl-ic { background: transparent; box-shadow: inset 0 0 0 1px var(--pl-dash); color: var(--pl-faint); }
+@media (min-width: 700px) { #lifestage-detail.nls--petlog .pl-flist > li:nth-child(-n + 2) { border-top-color: var(--pl-ink); } }
+@media (max-width: 699px) { #lifestage-detail.nls--petlog .pl-flist > li:first-child { border-top-color: var(--pl-ink); } }
+
+/* overview: comparison — PETLOG's column carries a green rule */
+#lifestage-detail.nls--petlog .pl-xt--vs tbody td:last-child { box-shadow: inset 3px 0 0 var(--pl-g); padding-left: 1rem; }
+#lifestage-detail.nls--petlog .pl-xt--vs tbody td:nth-child(2) { color: var(--pl-faint); }
+@media (max-width: 759px) { #lifestage-detail.nls--petlog .pl-xt--vs tbody td:last-child { padding: 0.15rem 0 0.15rem 0.85rem; } }
+
+/* platform: status board (four columns) */
+#lifestage-detail.nls--petlog .pl-kanban { display: grid; gap: var(--pl-gap); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 700px) and (max-width: 1099px) { #lifestage-detail.nls--petlog .pl-kanban { grid-template-columns: repeat(2, minmax(0, 1fr)); } #lifestage-detail.nls--petlog .pl-kcol--plan { grid-column: 1 / -1; grid-row: 2; } }
+@media (min-width: 1100px) { #lifestage-detail.nls--petlog .pl-kanban { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr) minmax(0, 2fr) minmax(0, 1fr); } }
+#lifestage-detail.nls--petlog .pl-kcol { display: flex; flex-direction: column; gap: 0.65rem; min-width: 0; padding: var(--pl-cpad); border-radius: var(--pl-r-lg); background: var(--pl-card); box-shadow: inset 0 0 0 1px var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-kcol--now { box-shadow: inset 0 0 0 1.5px var(--pl-line), inset 0 3px 0 var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-kcol--now .pl-ic { background: var(--pl-g); color: #fff; }
+#lifestage-detail.nls--petlog .pl-kcol:is(.pl-kcol--plan, .pl-kcol--review) { background: transparent; box-shadow: none; border: 1px dashed var(--pl-dash); }
+#lifestage-detail.nls--petlog .pl-kcol:is(.pl-kcol--plan, .pl-kcol--review) .pl-ic { background: transparent; box-shadow: inset 0 0 0 1px var(--pl-dash); color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-kcol__head { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 0.35rem 0.75rem; }
+#lifestage-detail.nls--petlog .pl-kcol__head h3 { font-size: 1.0625rem; }
+#lifestage-detail.nls--petlog .pl-kcol__head .pl-kcount { grid-column: 2; justify-self: start; }
+#lifestage-detail.nls--petlog .pl-kcol__head .pl-ic { grid-row: 1 / span 2; }
+#lifestage-detail.nls--petlog .pl-kcount { padding: 0.15rem 0.6rem; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--pl-line); color: var(--pl-gi); font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+#lifestage-detail.nls--petlog .pl-kcol ul { margin: 0.15rem 0 0; padding: 0; list-style: none; border-top: 1px solid var(--pl-rule); }
+@media (min-width: 700px) { #lifestage-detail.nls--petlog .pl-kcol--plan ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.2rem; } }
+@media (min-width: 700px) and (max-width: 1099px) { #lifestage-detail.nls--petlog .pl-kcol--plan ul { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+#lifestage-detail.nls--petlog .pl-kcol li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-kcol li a { display: flex; align-items: baseline; gap: 0.6rem; min-height: 40px; padding: 0.5rem 0; border-bottom: 1px solid var(--pl-rule); color: var(--pl-ink); font-size: 0.9375rem; font-weight: 600; line-height: 1.45; text-decoration: none; transition: color 0.18s ease; }
+#lifestage-detail.nls--petlog .pl-kcol li a:hover { color: var(--pl-gi); text-decoration: underline; text-underline-offset: 0.2em; }
+
+/* platform: proposed tabs — phone beside a vertical tab list */
+#lifestage-detail.nls--petlog .pl-tabset { display: grid; gap: clamp(1.8rem, 3vw, 3rem); align-items: center; }
+@media (min-width: 960px) { #lifestage-detail.nls--petlog .pl-tabset { grid-template-columns: minmax(0, 21rem) minmax(0, 1fr); column-gap: clamp(2.4rem, 5vw, 4.5rem); } }
+#lifestage-detail.nls--petlog .pl-phone--tabs .pl-phone__screen { grid-template-areas: "p" "t"; grid-template-rows: minmax(21rem, 1fr) auto; padding-bottom: 0.7rem; }
+#lifestage-detail.nls--petlog .pl-tabp { grid-area: p; display: grid; align-content: start; gap: 0.35rem; min-width: 0; }
+#lifestage-detail.nls--petlog .pl-tabp[hidden] { display: grid; visibility: hidden; }
+#lifestage-detail.nls--petlog .pl-app-kick { margin: 0.2rem 0 0; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-app-title { margin: 0 0 0.5rem; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.25; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-tabp .pl-app-list { border-top: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-app-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.45rem; margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-app-tiles li { display: grid; justify-items: center; align-content: start; gap: 0.4rem; min-width: 0; padding: 0.7rem 0.3rem 0.65rem; border: 1px solid var(--pl-rule); border-radius: 12px; font-size: 0.8125rem; font-weight: 650; line-height: 1.35; color: var(--pl-ink); text-align: center; }
+#lifestage-detail.nls--petlog .pl-app-tiles li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-app-tiles .pl-ic { width: 2.1rem; height: 2.1rem; border-radius: 10px; }
+#lifestage-detail.nls--petlog .pl-app-tiles .pl-ic svg { width: 1.05rem; height: 1.05rem; }
+#lifestage-detail.nls--petlog .pl-phone__tabs { grid-area: t; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.2rem; padding-top: 0.6rem; border-top: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-phone__tabs span { display: grid; justify-items: center; gap: 0.2rem; min-width: 0; color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-phone__tabs svg { width: 1.2rem; height: 1.2rem; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+#lifestage-detail.nls--petlog .pl-phone__tabs b { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.6875rem; font-weight: 700; }
+#lifestage-detail.nls--petlog .pl-phone__tabs .is-on { color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-tablist { display: grid; border-top: 1px solid var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-tabbtn { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: 0.25rem 0.6rem; align-items: baseline; width: 100%; min-height: 44px; margin: 0; padding: 0.95rem 0.9rem; border: 0; border-bottom: 1px solid var(--pl-rule); border-radius: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: box-shadow 0.18s ease; }
+#lifestage-detail.nls--petlog .pl-tabbtn > .pl-p { grid-column: 2; }
+#lifestage-detail.nls--petlog .pl-tabbtn__t { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.6rem; }
+#lifestage-detail.nls--petlog .pl-tabbtn strong { font-size: 1.1875rem; font-weight: 700; letter-spacing: -0.02em; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-tabbtn em { font-style: normal; font-size: 0.8125rem; font-weight: 600; color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-tabbtn:hover { box-shadow: inset 3px 0 0 var(--pl-line); }
+#lifestage-detail.nls--petlog .pl-tabbtn.is-on { box-shadow: inset 3px 0 0 var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-tabbtn.is-on strong { color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-tabbtn:focus-visible { outline-offset: -2px; }
+
+/* business: status filter */
+#lifestage-detail.nls--petlog .pl-seg { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0 0 1rem; }
+#lifestage-detail.nls--petlog .pl-seg[hidden] { display: none; }
+#lifestage-detail.nls--petlog .pl-seg button { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 40px; margin: 0; padding: 0.4rem 0.95rem; border: 1px solid var(--pl-rule); border-radius: 999px; background: var(--pl-card); color: var(--pl-muted); font: inherit; font-size: 0.875rem; font-weight: 650; cursor: pointer; transition: border-color 0.18s ease, box-shadow 0.18s ease; }
+#lifestage-detail.nls--petlog .pl-seg button span { color: var(--pl-faint); font-variant-numeric: tabular-nums; }
+#lifestage-detail.nls--petlog .pl-seg button:hover { border-color: var(--pl-line); }
+#lifestage-detail.nls--petlog .pl-seg button[aria-pressed="true"] { border-color: var(--pl-g); box-shadow: inset 0 0 0 1px var(--pl-g); color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-dot { display: inline-block; width: 0.6rem; height: 0.6rem; border-radius: 2px; }
+#lifestage-detail.nls--petlog .pl-dot--now { background: var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-dot--plan { box-shadow: inset 0 0 0 1.5px var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-dot--review { box-shadow: inset 0 0 0 1.5px var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-table li[hidden] { display: none; }
+
+/* business: illustrative console window */
+#lifestage-detail.nls--petlog .pl-console { margin: 0 0 1.6rem; border: 1px solid var(--pl-line); border-radius: var(--pl-r-lg); background: var(--pl-card); overflow: hidden; box-shadow: var(--pl-shadow); }
+#lifestage-detail.nls--petlog .pl-console__bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.4rem 1rem; padding: 0.7rem 1.1rem; border-bottom: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-console__bar b { font-size: 0.875rem; font-weight: 800; letter-spacing: 0.06em; color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-console__bar .pl-mockcap { margin: 0; justify-content: flex-end; text-align: right; }
+#lifestage-detail.nls--petlog .pl-console__body { display: grid; }
+@media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-console__body { grid-template-columns: 12.5rem minmax(0, 1fr); } }
+#lifestage-detail.nls--petlog .pl-console__nav { display: none; margin: 0; padding: 0.8rem; list-style: none; border-right: 1px solid var(--pl-rule); }
+@media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-console__nav { display: grid; align-content: start; gap: 0.2rem; } }
+#lifestage-detail.nls--petlog .pl-console__nav li { display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.7rem; border-radius: 8px; font-size: 0.875rem; font-weight: 650; color: var(--pl-muted); }
+#lifestage-detail.nls--petlog .pl-console__nav li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-console__nav li.is-on { background: var(--pl-soft); color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-console__nav svg { flex: none; width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+#lifestage-detail.nls--petlog .pl-console__main { display: grid; gap: 0 clamp(1.2rem, 2.4vw, 2rem); margin: 0; padding: 0.4rem clamp(1rem, 2vw, 1.4rem) 0.8rem; list-style: none; }
+@media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-console__main { grid-template-columns: repeat(2, minmax(0, 1fr)); } #lifestage-detail.nls--petlog .pl-console__main > li:last-child:nth-child(odd) { grid-column: 1 / -1; } }
+#lifestage-detail.nls--petlog .pl-console__main li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.8rem; align-items: start; padding: 0.85rem 0; border-bottom: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-console__main li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-console__main li > div { display: grid; gap: 0.2rem; min-width: 0; }
+#lifestage-detail.nls--petlog .pl-console__main b { font-size: 1rem; font-weight: 700; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-console__main .pl-ic { width: 2.2rem; height: 2.2rem; }
+#lifestage-detail.nls--petlog .pl-console__main .pl-ic svg { width: 1.1rem; height: 1.1rem; }
+
+/* partnerships: 15-type index */
+#lifestage-detail.nls--petlog .pl-index { margin-top: clamp(1.8rem, 3vw, 2.6rem); padding: var(--pl-cpad); border: 1px solid var(--pl-line); border-radius: var(--pl-r-lg); background: var(--pl-card); }
+#lifestage-detail.nls--petlog .pl-index__h { margin: 0 0 1rem; font-size: 1.1875rem; }
+#lifestage-detail.nls--petlog .pl-index__cols { display: grid; gap: 1.4rem clamp(1.4rem, 2.6vw, 2.4rem); }
+#lifestage-detail.nls--petlog .pl-index__g { margin: 0; }
+#lifestage-detail.nls--petlog .pl-index__g a { display: block; padding-bottom: 0.55rem; border-bottom: 1px solid var(--pl-ink); font-size: 0.9375rem; font-weight: 700; color: var(--pl-gi); text-decoration: none; }
+#lifestage-detail.nls--petlog .pl-index__g a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+#lifestage-detail.nls--petlog .pl-index li::before { content: none; }
+
+/* partnerships: consent screen */
+#lifestage-detail.nls--petlog .pl-phone--consent { max-width: 19rem; }
+#lifestage-detail.nls--petlog .pl-phone--consent .pl-phone__bar b { font-size: 0.9375rem; font-weight: 700; letter-spacing: -0.01em; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-phone--consent .pl-app-row { padding: 0.65rem 0.75rem; border: 1px solid var(--pl-rule); border-radius: 14px; }
+#lifestage-detail.nls--petlog .pl-app-toggles { margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-app-toggles li { display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; padding: 0.65rem 0.1rem; border-bottom: 1px solid var(--pl-rule); font-size: 0.9375rem; font-weight: 600; color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-app-toggles li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-app-toggles li > i { position: relative; flex: none; width: 2.5rem; height: 1.45rem; border-radius: 999px; box-shadow: inset 0 0 0 1.5px var(--pl-dash); }
+#lifestage-detail.nls--petlog .pl-app-toggles li > i::after { content: ""; position: absolute; top: 0.22rem; left: 0.24rem; width: 1rem; height: 1rem; border-radius: 50%; background: var(--pl-dash); transition: left 0.2s ease; }
+#lifestage-detail.nls--petlog .pl-app-toggles li.is-on > i { background: var(--pl-g); box-shadow: none; }
+#lifestage-detail.nls--petlog .pl-app-toggles li.is-on > i::after { left: 1.26rem; background: #fff; }
+#lifestage-detail.nls--petlog .pl-app-btn { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin: 0.35rem 0 0; padding: 0.8rem 0.9rem; border-radius: 12px; background: var(--pl-gi); color: #fff; font-size: 0.875rem; font-weight: 700; line-height: 1.4; text-align: center; }
+#lifestage-detail.nls--petlog .pl-app-btn svg { flex: none; width: 1.05rem; height: 1.05rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+#lifestage-detail.nls--petlog .pl-split--consent .pl-people li:first-child { border-top-color: var(--pl-ink); }
+
+/* quiet hover on outlined cards */
+#lifestage-detail.nls--petlog :is(.pl-card, .pl-pcard, .pl-notes li, .pl-ladder > li) { transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease; }
+@media (hover: hover) {
+  #lifestage-detail.nls--petlog .pl-card:not(.pl-card--later):hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1px var(--pl-line), var(--pl-shadow); }
+  #lifestage-detail.nls--petlog :is(.pl-pcard, .pl-notes li, .pl-ladder > li):hover { transform: translateY(-2px); border-color: var(--pl-line); box-shadow: var(--pl-shadow); }
+}
+
+/* restrained reveal (scroll-driven; browsers without support, and reduced motion, show everything at once) */
+@keyframes pl-rise { from { opacity: 0.001; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    #lifestage-detail.nls--petlog .nls__wrap :is(.pl-card, .pl-col, .pl-pcard, .pl-flist > li, .pl-kcol, .pl-phone, .pl-console, .pl-notes li, .pl-ladder > li, .pl-values > div, .pl-models > div, .pl-index) { animation: pl-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 30%; }
+  }
+}
+@media (prefers-reduced-motion: reduce) { #lifestage-detail.nls--petlog .nls__wrap :is(.pl-card, .pl-pcard, .pl-notes li, .pl-ladder > li) { transition: none; transform: none !important; } }
+
+/* dark */
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-phone__screen, .pl-kcol--now, .pl-kcol--dev, .pl-console, .pl-index, .pl-seg button) { background-color: var(--pl-card) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-phone__screen { border-color: #3a3f3c !important; box-shadow: var(--pl-shadow) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-app-remind, .pl-app-photos span, .pl-console__nav li.is-on) { background-color: var(--pl-soft) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-app-list li.is-done > i, .pl-app-toggles li.is-on > i, .pl-dot--now, .pl-kcol--now .pl-ic, .pl-app-remind .pl-ic) { background-color: var(--pl-g) !important; color: #04140b !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-app-toggles li > i::after { background-color: var(--pl-dash) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-app-toggles li.is-on > i::after { background-color: #fff !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-app-btn { background-color: #278a53 !important; color: #fff !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-phone__bar b, .pl-console__bar b, .pl-app-kick, .pl-kcount, .pl-mockcap span, .pl-index__g a, .pl-tabbtn.is-on strong, .pl-seg button[aria-pressed="true"], .pl-phone__tabs .is-on, .pl-console__nav li.is-on, .pl-app-photos svg) { color: var(--pl-gi) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-mockcap, .pl-app-profile span, .pl-app-row span, .pl-phone__tabs span:not(.is-on), .pl-console__nav li:not(.is-on), .pl-seg button:not([aria-pressed="true"]), .pl-tabbtn em, .pl-app-h, .pl-xt--vs tbody td:nth-child(2), .pl-app-list--plain li > i) { color: var(--pl-faint) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-app-list li, .pl-app-tiles li, .pl-app-toggles li, .pl-app-title, .pl-tabbtn strong, .pl-kcol li a, .pl-index li a, .pl-console__main b, .pl-app-profile strong, .pl-app-row strong, .pl-app-remind strong, .pl-head--hero .nls-lead) { color: var(--pl-ink) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-app-list li > i { color: #04140b !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-kcol--plan, .pl-kcol--review) { border-color: var(--pl-dash) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-console, .pl-index, .pl-app-profile) { border-color: var(--pl-line) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-tablist, .pl-index__g a, .pl-flist > li:nth-child(-n + 2)) { border-color: rgba(255, 255, 255, 0.42) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-kcol--now { box-shadow: inset 0 0 0 1.5px var(--pl-line), inset 0 3px 0 var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-kcol--dev) { box-shadow: inset 0 0 0 1px var(--pl-rule) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-kcount, .pl-mockcap span) { box-shadow: inset 0 0 0 1px var(--pl-line) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-tabbtn.is-on { box-shadow: inset 3px 0 0 var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-app-remind { box-shadow: inset 3px 0 0 var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-xt--vs tbody td:last-child { box-shadow: inset 3px 0 0 var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-seg button[aria-pressed="true"] { border-color: var(--pl-g) !important; box-shadow: inset 0 0 0 1px var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-app-list li > i, .pl-app-toggles li > i, .pl-dot--review) { box-shadow: inset 0 0 0 1.5px var(--pl-dash) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-app-list li.is-done > i, .pl-app-toggles li.is-on > i, .pl-app-list--plain li > i) { box-shadow: none !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-dot--plan { box-shadow: inset 0 0 0 1.5px var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-head--stack, .pl-head--hero) .nls-kicker::before { background-color: var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-kcol--plan, .pl-kcol--review) .pl-ic, html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-flist > li.is-later .pl-ic { background-color: transparent !important; box-shadow: inset 0 0 0 1px var(--pl-dash) !important; color: var(--pl-faint) !important; }
+/* phone: the status board becomes a horizontal snap rail */
+@media (max-width: 699px) {
+  #lifestage-detail.nls--petlog .pl-kanban { display: flex; gap: 0.75rem; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; margin: 0 -1.2rem; padding: 0 1.2rem 0.5rem; scroll-padding: 0 1.2rem; align-items: stretch; }
+  #lifestage-detail.nls--petlog .pl-kcol { flex: 0 0 84%; scroll-snap-align: start; }
+  #lifestage-detail.nls--petlog .pl-kcol--plan ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 0.9rem; }
+  #lifestage-detail.nls--petlog .pl-kcol--plan { flex-basis: 92%; }
+}
+
+/* ==================================================================== v5 design pass (2026-10-27)
+ * Owner: no half-width content beside an empty half, no cut-off rails or scrollbars on desktop, no uneven pill
+ * clouds or columns, no tall half-empty cards. Every set is visible at once; grids fill their rows evenly.
+ */
+/* overview: life stages as a ruled lifeline (3 × 2 / 2 × 3 / snap rail on phones) */
+#lifestage-detail.nls--petlog .pl-life { display: grid; gap: 1.6rem clamp(1.4rem, 2.6vw, 2.4rem); margin: 0; padding: 0; list-style: none; grid-template-columns: minmax(0, 1fr); }
+#lifestage-detail.nls--petlog .pl-life > li { display: flex; flex-direction: column; gap: 0.45rem; min-width: 0; padding-top: 1rem; border-top: 2px solid var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-life > li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-life__k { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.6rem; margin: 0 0 0.1rem; }
+#lifestage-detail.nls--petlog .pl-life__k > span:not(.pl-n) { font-size: 0.875rem; font-weight: 800; letter-spacing: 0.08em; color: var(--pl-gi); }
+#lifestage-detail.nls--petlog .pl-life__k em { margin-left: auto; font-style: normal; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-life h3 { font-size: clamp(1.15rem, 1.05rem + 0.35vw, 1.3rem); }
+#lifestage-detail.nls--petlog .pl-life .pl-chips { margin-top: 0.35rem; }
+@media (min-width: 700px) { #lifestage-detail.nls--petlog .pl-life { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-life { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 2.2rem; } }
+
+/* wide rows: head · lead · side (overview long-term groups, business revenue map) */
+#lifestage-detail.nls--petlog .pl-wide { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-wide > li { display: grid; gap: 0.7rem 2rem; padding: clamp(1.05rem, 0.8rem + 0.7vw, 1.4rem) 0; border-bottom: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-wide > li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-wide__h { display: flex; align-items: flex-start; gap: 0.9rem; min-width: 0; }
+#lifestage-detail.nls--petlog .pl-wide__h > div { display: grid; gap: 0.2rem; min-width: 0; }
+#lifestage-detail.nls--petlog .pl-wide__k { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.55rem; margin: 0; }
+#lifestage-detail.nls--petlog .pl-wide h3 { font-size: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem); }
+#lifestage-detail.nls--petlog .pl-wide__c { display: grid; gap: 0.55rem; align-content: start; min-width: 0; }
+#lifestage-detail.nls--petlog .pl-wide > li.is-now { box-shadow: inset 3px 0 0 var(--pl-g); padding-left: 1rem; }
+#lifestage-detail.nls--petlog .pl-range { width: fit-content; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.02em; color: var(--pl-gi); font-variant-numeric: tabular-nums; }
+@media (min-width: 900px) { #lifestage-detail.nls--petlog .pl-wide > li { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; } }
+#lifestage-detail.nls--petlog .pl-linkchips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-linkchips li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-linkchips a { display: inline-flex; align-items: baseline; gap: 0.45rem; min-height: 40px; align-items: center; padding: 0.35rem 0.8rem; border: 1px solid var(--pl-line); border-radius: 999px; background: var(--pl-card); color: var(--pl-ink); font-size: 0.875rem; font-weight: 650; line-height: 1.35; text-decoration: none; transition: border-color 0.18s ease, box-shadow 0.18s ease; }
+#lifestage-detail.nls--petlog .pl-linkchips a:hover { border-color: var(--pl-g); box-shadow: inset 0 0 0 1px var(--pl-g); color: var(--pl-gi); }
+
+/* editorial column on the left, list on the right (overview global vision) */
+#lifestage-detail.nls--petlog .pl-aside2 { display: grid; gap: 1.4rem clamp(2rem, 5vw, 4.5rem); }
+#lifestage-detail.nls--petlog .pl-aside2__a .nls-head { margin-bottom: 0; }
+#lifestage-detail.nls--petlog .pl-aside2__a .nls-title { font-size: clamp(1.8rem, 1.3rem + 1.8vw, 2.75rem); }
+#lifestage-detail.nls--petlog .pl-aside2__b .pl-people li:first-child { border-top-color: var(--pl-ink); }
+#lifestage-detail.nls--petlog .pl-people li > div > .pl-n { margin-bottom: -0.1rem; }
+@media (min-width: 960px) { #lifestage-detail.nls--petlog .pl-aside2 { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); align-items: start; } }
+
+/* platform: status ledger — one row per status, areas in an even auto-fit grid */
+#lifestage-detail.nls--petlog .pl-ledger { border: 1px solid var(--pl-rule); border-radius: var(--pl-r-lg); background: var(--pl-card); overflow: hidden; }
+#lifestage-detail.nls--petlog .pl-lrow { display: grid; gap: 0.9rem 2.4rem; padding: var(--pl-cpad); border-top: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-lrow:first-child { border-top: 0; }
+#lifestage-detail.nls--petlog .pl-lrow__h { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.55rem 0.8rem; align-content: start; }
+#lifestage-detail.nls--petlog .pl-lrow__h > div { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.6rem; align-self: center; }
+#lifestage-detail.nls--petlog .pl-lrow__h .pl-p { grid-column: 1 / -1; }
+#lifestage-detail.nls--petlog .pl-lrow h3 { font-size: 1.0625rem; }
+#lifestage-detail.nls--petlog .pl-lrow--now { box-shadow: inset 3px 0 0 var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-lrow--now .pl-ic { background: var(--pl-g); color: #fff; }
+#lifestage-detail.nls--petlog .pl-lrow:is(.pl-lrow--plan, .pl-lrow--review) .pl-ic { background: transparent; box-shadow: inset 0 0 0 1px var(--pl-dash); color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-lrow ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr)); column-gap: 1.4rem; align-content: start; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-lrow li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-lrow li a { display: flex; align-items: baseline; gap: 0.6rem; min-height: 44px; padding: 0.6rem 0; border-bottom: 1px solid var(--pl-rule); color: var(--pl-ink); font-size: 0.9375rem; font-weight: 600; line-height: 1.45; text-decoration: none; transition: color 0.18s ease; }
+#lifestage-detail.nls--petlog .pl-lrow li a:hover { color: var(--pl-gi); text-decoration: underline; text-underline-offset: 0.2em; }
+@media (min-width: 900px) { #lifestage-detail.nls--petlog .pl-lrow { grid-template-columns: minmax(14rem, 0.75fr) minmax(0, 2.25fr); align-items: start; } #lifestage-detail.nls--petlog .pl-lrow ul { border-top: 0; } }
+
+/* 5 items as 2 wide + 3 (platform services, scenarios) */
+@media (min-width: 700px) and (max-width: 1039px) { #lifestage-detail.nls--petlog :is(.pl-grid--32, .pl-cols--32) > :last-child:nth-child(odd) { grid-column: 1 / -1; } }
+@media (min-width: 1040px) {
+  #lifestage-detail.nls--petlog :is(.pl-grid--32, .pl-cols--32) { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  #lifestage-detail.nls--petlog :is(.pl-grid--32, .pl-cols--32) > * { grid-column: span 2; }
+  #lifestage-detail.nls--petlog :is(.pl-grid--32, .pl-cols--32) > :nth-child(-n + 2) { grid-column: span 3; }
+}
+#lifestage-detail.nls--petlog .pl-grid--story .pl-card h3 { font-size: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem); }
+#lifestage-detail.nls--petlog .pl-grid--story .pl-foot { border-top: 0; padding-top: 0.2rem; }
+#lifestage-detail.nls--petlog .pl-grid--story .pl-chips li { background: transparent; box-shadow: inset 0 0 0 1px var(--pl-line); }
+
+/* two-column lists: an odd last row spans both columns */
+@media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-dl--2 > div:last-child:nth-child(odd) { grid-column: 1 / -1; } #lifestage-detail.nls--petlog .pl-dl--2 > div:last-child:nth-child(odd) { grid-template-columns: minmax(0, 0.24fr) minmax(0, 1.6fr); } }
+@media (min-width: 960px) { #lifestage-detail.nls--petlog .pl-xt--split tbody tr:last-child:nth-child(odd) { grid-column: 1 / -1; grid-template-columns: minmax(8.5rem, 0.24fr) minmax(0, 1.6fr); } }
+
+/* business: plans — today's store listing as a strip, proposed plans as four even tiles */
+#lifestage-detail.nls--petlog .pl-plans { display: grid; gap: var(--pl-gap); }
+#lifestage-detail.nls--petlog .pl-plans__now { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.8rem 1rem; align-items: start; padding: var(--pl-cpad); border-radius: var(--pl-r-lg); box-shadow: inset 0 0 0 1.5px var(--pl-line); background: var(--pl-card); }
+#lifestage-detail.nls--petlog .pl-plans__now > div { display: grid; gap: 0.3rem; }
+#lifestage-detail.nls--petlog .pl-plans__now .pl-ic { background: var(--pl-g); color: #fff; }
+#lifestage-detail.nls--petlog .pl-plans__now .pl-chips { grid-column: 2; }
+@media (min-width: 900px) { #lifestage-detail.nls--petlog .pl-plans__now { grid-template-columns: auto minmax(0, 1.7fr) minmax(0, 1fr); align-items: center; } #lifestage-detail.nls--petlog .pl-plans__now .pl-chips { grid-column: 3; justify-content: flex-end; } }
+#lifestage-detail.nls--petlog .pl-plans__next { display: grid; gap: 0.9rem; padding: var(--pl-cpad); border-radius: var(--pl-r-lg); box-shadow: inset 0 0 0 1px var(--pl-dash); }
+#lifestage-detail.nls--petlog .pl-plans__h { display: flex; gap: 1rem; align-items: flex-start; }
+#lifestage-detail.nls--petlog .pl-plans__h > div { display: grid; gap: 0.3rem; }
+#lifestage-detail.nls--petlog .pl-plans__h .pl-ic { background: transparent; box-shadow: inset 0 0 0 1px var(--pl-dash); color: var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-plans__next .pl-minihead { margin: 0.3rem 0 -0.3rem; color: var(--pl-gi); font-size: 0.8125rem; letter-spacing: 0.02em; }
+#lifestage-detail.nls--petlog .pl-plans__next .pl-fine { margin: 0; }
+#lifestage-detail.nls--petlog .pl-tiers { display: grid; gap: 0.7rem; grid-template-columns: minmax(0, 1fr); margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-tiers li { display: grid; gap: 0.25rem; align-content: start; padding: 0.95rem 1.05rem 1.05rem; border: 1px solid var(--pl-rule); border-radius: var(--pl-r); background: var(--pl-card); }
+#lifestage-detail.nls--petlog .pl-tiers li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-tiers b { font-size: 1.25rem; font-weight: 750; letter-spacing: -0.02em; color: var(--pl-ink); }
+@media (min-width: 560px) { #lifestage-detail.nls--petlog .pl-tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 960px) { #lifestage-detail.nls--petlog .pl-tiers { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* partnerships: 15 partner types — one even grid with a group legend */
+#lifestage-detail.nls--petlog .pl-index__top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.6rem 1.6rem; margin-bottom: 1rem; }
+#lifestage-detail.nls--petlog .pl-index__top .pl-index__h { margin: 0; }
+#lifestage-detail.nls--petlog .pl-index__legend { display: flex; flex-wrap: wrap; gap: 0.3rem 1.2rem; margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-index__legend li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-index__legend a { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 40px; color: var(--pl-muted); font-size: 0.875rem; font-weight: 650; text-decoration: none; }
+#lifestage-detail.nls--petlog .pl-index__legend a:hover { color: var(--pl-gi); text-decoration: underline; text-underline-offset: 0.2em; }
+#lifestage-detail.nls--petlog .pl-gdot { display: inline-block; width: 0.65rem; height: 0.65rem; border-radius: 2px; }
+#lifestage-detail.nls--petlog .pl-gdot--1 { background: var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-gdot--2 { box-shadow: inset 0 0 0 2px var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-gdot--3 { box-shadow: inset 0 0 0 2px var(--pl-faint); }
+#lifestage-detail.nls--petlog .pl-index__grid { display: grid; gap: 0.6rem; grid-template-columns: minmax(0, 1fr); margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-index__grid li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-index__grid a { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto; align-items: center; gap: 0.35rem 0.7rem; height: 100%; min-height: 44px; padding: 0.8rem 0.9rem 0.85rem; border-radius: var(--pl-r); box-shadow: inset 0 0 0 1px var(--pl-rule); color: var(--pl-ink); font-size: 0.9375rem; font-weight: 650; line-height: 1.42; text-decoration: none; transition: box-shadow 0.18s ease, color 0.18s ease; }
+#lifestage-detail.nls--petlog .pl-index__grid a .pl-ic { grid-row: 1 / span 2; width: 2.1rem; height: 2.1rem; border-radius: 9px; }
+#lifestage-detail.nls--petlog .pl-index__grid a .pl-ic svg { width: 1.05rem; height: 1.05rem; }
+#lifestage-detail.nls--petlog .pl-index__grid a .pl-n { align-self: end; }
+#lifestage-detail.nls--petlog .pl-index__name { grid-column: 2; align-self: start; min-width: 0; word-break: keep-all; overflow-wrap: break-word; }
+#lifestage-detail.nls--petlog .pl-index__grid .pl-g1 a { box-shadow: inset 0 0 0 1px var(--pl-rule), inset 0 3px 0 var(--pl-g); }
+#lifestage-detail.nls--petlog .pl-index__grid .pl-g2 a { box-shadow: inset 0 0 0 1px var(--pl-rule), inset 0 3px 0 var(--pl-line); }
+#lifestage-detail.nls--petlog .pl-index__grid .pl-g3 a { box-shadow: inset 0 0 0 1px var(--pl-rule), inset 0 3px 0 var(--pl-dash); }
+#lifestage-detail.nls--petlog .pl-index__grid a:hover { color: var(--pl-gi); box-shadow: inset 0 0 0 1.5px var(--pl-g); }
+@media (min-width: 560px) { #lifestage-detail.nls--petlog .pl-index__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1040px) { #lifestage-detail.nls--petlog .pl-index__grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (max-width: 559px) { #lifestage-detail.nls--petlog .pl-index__grid a { grid-template-rows: auto; grid-template-columns: auto 1.7rem minmax(0, 1fr); } #lifestage-detail.nls--petlog .pl-index__grid a .pl-ic { grid-row: auto; } #lifestage-detail.nls--petlog .pl-index__grid a .pl-n { align-self: center; } #lifestage-detail.nls--petlog .pl-index__name { grid-column: 3; align-self: center; } }
+
+/* partnerships: global directions table */
+@media (min-width: 760px) { #lifestage-detail.nls--petlog .pl-xt--global th[scope="row"] { width: 28%; } #lifestage-detail.nls--petlog .pl-xt--global td:last-child { width: 24%; color: var(--pl-ink); } }
+#lifestage-detail.nls--petlog .pl-xt--global .pl-xt__name .pl-n { margin-right: 0.2rem; }
+
+/* reveal for the new parts */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    #lifestage-detail.nls--petlog .nls__wrap :is(.pl-life > li, .pl-wide > li, .pl-lrow, .pl-tiers li, .pl-index__grid li) { animation: pl-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 30%; }
+  }
+}
+
+/* dark */
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-ledger, .pl-plans__now, .pl-tiers li, .pl-linkchips a) { background-color: var(--pl-card) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-life__k > span:not(.pl-n), .pl-range, .pl-plans__next .pl-minihead, .pl-gdot--1) { color: var(--pl-gi) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-life__k em, .pl-index__legend a) { color: var(--pl-faint) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-lrow li a, .pl-index__grid a, .pl-linkchips a, .pl-tiers b, .pl-xt--global td:last-child) { color: var(--pl-ink) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-life > li, .pl-wide, .pl-aside2__b .pl-people li:first-child) { border-top-color: rgba(255, 255, 255, 0.42) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-linkchips a { border-color: var(--pl-line) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-lrow--now, .pl-wide > li.is-now) { box-shadow: inset 3px 0 0 var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-lrow--now .pl-ic, .pl-plans__now .pl-ic, .pl-gdot--1) { background-color: var(--pl-g) !important; color: #04140b !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap :is(.pl-lrow--plan, .pl-lrow--review, .pl-plans__h) .pl-ic { background-color: transparent !important; box-shadow: inset 0 0 0 1px var(--pl-dash) !important; color: var(--pl-faint) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-plans__now { box-shadow: inset 0 0 0 1.5px var(--pl-line) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-plans__next { box-shadow: inset 0 0 0 1px var(--pl-dash) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-index__grid .pl-g1 a { box-shadow: inset 0 0 0 1px var(--pl-rule), inset 0 3px 0 var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-index__grid .pl-g2 a { box-shadow: inset 0 0 0 1px var(--pl-rule), inset 0 3px 0 var(--pl-line) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-index__grid .pl-g3 a { box-shadow: inset 0 0 0 1px var(--pl-rule), inset 0 3px 0 var(--pl-dash) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-index__grid a:hover { box-shadow: inset 0 0 0 1.5px var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-gdot--2 { box-shadow: inset 0 0 0 2px var(--pl-g) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-gdot--3 { box-shadow: inset 0 0 0 2px var(--pl-faint) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-grid--story .pl-chips li { background-color: transparent !important; box-shadow: inset 0 0 0 1px var(--pl-line) !important; }
+/* overview: who it's for — five outlined tiles */
+#lifestage-detail.nls--petlog .pl-who { display: grid; gap: var(--pl-gap); grid-template-columns: minmax(0, 1fr); margin: 0; padding: 0; list-style: none; }
+#lifestage-detail.nls--petlog .pl-who > li { display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; padding: var(--pl-cpad); border-radius: var(--pl-r-lg); background: var(--pl-card); box-shadow: inset 0 0 0 1px var(--pl-rule); }
+#lifestage-detail.nls--petlog .pl-who > li::before { content: none; }
+#lifestage-detail.nls--petlog .pl-who > li .pl-ic { margin-bottom: 0.25rem; }
+#lifestage-detail.nls--petlog .pl-who > li .pl-stage { margin-top: auto; }
+#lifestage-detail.nls--petlog .pl-who > li .pl-p { margin-bottom: 0.4rem; }
+#lifestage-detail.nls--petlog .pl-who > li.is-later { background: transparent; box-shadow: inset 0 0 0 1px var(--pl-dash); }
+#lifestage-detail.nls--petlog .pl-who > li.is-later .pl-ic { background: transparent; box-shadow: inset 0 0 0 1px var(--pl-dash); color: var(--pl-faint); }
+@media (min-width: 640px) { #lifestage-detail.nls--petlog .pl-who { grid-template-columns: repeat(2, minmax(0, 1fr)); } #lifestage-detail.nls--petlog .pl-who > li:last-child { grid-column: 1 / -1; } }
+@media (min-width: 1100px) { #lifestage-detail.nls--petlog .pl-who { grid-template-columns: repeat(5, minmax(0, 1fr)); } #lifestage-detail.nls--petlog .pl-who > li:last-child { grid-column: auto; } }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-who > li { background-color: var(--pl-card) !important; box-shadow: inset 0 0 0 1px var(--pl-rule) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-who > li.is-later { background-color: transparent !important; box-shadow: inset 0 0 0 1px var(--pl-dash) !important; }
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls--petlog .nls__wrap .pl-who > li.is-later .pl-ic { background-color: transparent !important; box-shadow: inset 0 0 0 1px var(--pl-dash) !important; color: var(--pl-faint) !important; }
+@media (min-width: 1100px) { #lifestage-detail.nls--petlog .pl-lrow ul { grid-template-columns: repeat(var(--lc, 3), minmax(0, 1fr)); } }
