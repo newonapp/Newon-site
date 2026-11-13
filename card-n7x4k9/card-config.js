@@ -45,12 +45,12 @@ window.NEWON_CARD = {
       label: "NEWON IR",
       hint: "투자 자료 · 한국어 / English",
       items: [
-        { kicker: "KR", label: "메인 IR · 투자제안서", href: "ir/NEWON_MAIN_IR_PRINT_KR.pdf", newTab: true },
-        { kicker: "EN", label: "Main IR · Investment Proposal", href: "ir/NEWON_MAIN_IR_PRINT_EN.pdf", newTab: true },
-        { kicker: "KR", label: "상세 부록", href: "ir/NEWON_DETAILED_APPENDIX_KR.pdf", newTab: true },
-        { kicker: "EN", label: "Detailed Appendix", href: "ir/NEWON_DETAILED_APPENDIX_EN.pdf", newTab: true },
-        { kicker: "KR", label: "팩트시트 · 투자 요약", href: "ir/NEWON_FACT_SHEET_KR.pdf", newTab: true },
-        { kicker: "EN", label: "Fact Sheet · Investment Summary", href: "ir/NEWON_FACT_SHEET_EN.pdf", newTab: true },
+        { kicker: "KR", label: "메인 IR · 투자제안서", href: "ir/NEWON_MAIN_IR_PRINT_KR.pdf?v=20261113", newTab: true },
+        { kicker: "EN", label: "Main IR · Investment Proposal", href: "ir/NEWON_MAIN_IR_PRINT_EN.pdf?v=20261113", newTab: true },
+        { kicker: "KR", label: "상세 부록", href: "ir/NEWON_DETAILED_APPENDIX_KR.pdf?v=20261113", newTab: true },
+        { kicker: "EN", label: "Detailed Appendix", href: "ir/NEWON_DETAILED_APPENDIX_EN.pdf?v=20261113", newTab: true },
+        { kicker: "KR", label: "팩트시트 · 투자 요약", href: "ir/NEWON_FACT_SHEET_KR.pdf?v=20261113", newTab: true },
+        { kicker: "EN", label: "Fact Sheet · Investment Summary", href: "ir/NEWON_FACT_SHEET_EN.pdf?v=20261113", newTab: true },
       ],
     },
     portfolio: {
