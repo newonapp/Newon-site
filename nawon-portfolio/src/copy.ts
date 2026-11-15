@@ -90,7 +90,6 @@ function productLinks(slug: string, detail: string, store?: StoreSlug) {
 const filmSlogans = [
   ["Everyday apps you need,", "in one Newon."],
   ["Closer AI,", "for your everyday life."],
-  ["At every stage of life,", "the next thing you need."],
   ["Warm connection,", "through the years of daily life."],
   ["Expanding what business can do,", "with technology."],
   ["From idea to reality,", "from experience to new value."],
@@ -100,17 +99,29 @@ const filmSlogans = [
 const en = {
   htmlLang: "en",
   title: "Portfolio — NEWON",
-  heroTitle: "Hi, i'm nawon",
-  viewWork: "View my work",
-  contactMe: "Contact me",
   selectedWork: "Selected work",
-  portraitAlt: "Nawon",
+  hero: {
+    navLabel: "Portfolio",
+    nav: [
+      { label: "Home", href: siteHref(""), top: true },
+      { label: "Platforms", href: "#platforms", top: false },
+      { label: "Products", href: "#projects", top: false },
+      { label: "Contact", href: siteHref("contact/"), top: true },
+    ],
+    soundLabel: "Sound waves on or off (the film has no sound)",
+    copy: "NEWON turns ideas into real products and builds digital platforms that solve everyday problems — planned, designed, built, launched and run in-house.",
+    cta: "Let's Go NEWON",
+  },
+  cardSection: {
+    label: "Business card",
+    alt: "NEWON business card — 경나원 · Nawon Kyung · CEO & App Developer · M. 010-3923-8904 · E. newon@newon.app · W. newon.app",
+  },
   filmSlogans,
 
   /* 01 · HERO statement */
   introHeading: "Our work",
   introText:
-    "From ideas to products, from products to everyday change. These are the digital platforms and products NEWON plans and builds itself — problems found in everyday life, turned into real services that open new possibilities.",
+    "We turn ideas into real products and build digital platforms that solve everyday problems. NEWON plans, designs, develops, launches and operates its services itself, building digital services that last.",
   introCta: "See the four platforms",
 
   /* 02 · PORTFOLIO OVERVIEW */
@@ -119,24 +130,34 @@ const en = {
   overviewLead:
     "Everything here is a product NEWON owns, plans and builds itself. Nothing on this page is client work or a commissioned project.",
   overview: [
-    { number: "01", name: "Four core platforms", body: ["BABYLOG, PETLOG, SHAREON and ONGIL. Four areas of daily life — parenting, pets, sharing and senior life — each run as its own platform."] },
+    { number: "01", name: "Four core platforms", body: ["SHAREON, BABYLOG, PETLOG and ONGIL. Four areas of daily life — sharing, parenting, pets and senior life — each planned as its own platform. SHAREON is the first to be commercialised, BABYLOG and PETLOG are live, and ONGIL development is paused."] },
     { number: "02", name: "Standalone apps", body: ["Mobile apps that each focus on one everyday problem in habits and goals, money, health or travel: OX MONTH, GoalUp, CountUp, SAVY, SubPing, PiggyUp, Pillmate, My World and the membership app Newon+."], link: { label: "All NEWON apps →", href: siteHref("apps/") } },
     { number: "03", name: "Digital software", body: ["Free web tools such as a QR code generator, a D-day calculator and a character counter that run in the browser with no install or sign-up."], link: { label: "Newon Tools →", href: siteHref("tools/") } },
     { number: "04", name: "Games", body: ["404: HUMAN is a choice-driven interactive game about surviving as the last human in an AI-only world, playable on the web."], link: { label: "Newon Games →", href: siteHref("games/") } },
     { number: "05", name: "Studio digital products", body: ["NEWON Studio plans templates, productivity tools, software and standard business products. The free web tools and the NEWON Project Starter Kit are available today; the other product families are still being planned."] },
-    { number: "06", name: "Building and shipping products", body: ["NEWON planned, designed and built 11 mobile apps and released them on the App Store and Google Play, and keeps updating them after launch."] },
+    { number: "06", name: "Building and shipping products", body: ["In about six months NEWON planned, designed and built 11 mobile apps and released them on the App Store and Google Play. Ongoing operation and improvement focus on BABYLOG and PETLOG."] },
   ] as PanelItem[],
 
   /* 03 · FOUR CORE PLATFORMS */
   platformsHeading: "Platforms",
   platformsTitle: "Four areas of everyday life, connected.",
   platformsLead:
-    "Each platform focuses on one area of life. The status on every card follows the platform's own page: two apps are released, ONGIL is a web preview, and the SHAREON and ONGIL apps are in preparation.",
+    "NEWON is commercialising SHAREON first while operating and improving the released BABYLOG and PETLOG apps. ONGIL development is paused after its core features were partly built, and NEWON is preparing to resume it. Card status as of November 2026.",
   platformCta: "View platform",
   platforms: [
     {
+      id: "shareon",
+      type: "First priority · App in preparation",
+      name: "SHAREON",
+      summary:
+        "Sharing & rental. Things used rarely but too costly to buy, and equipment and spaces that sit idle. SHAREON aims to connect people who want to borrow for just the time they need with individuals and businesses that own them.",
+      role: "For borrowers and owners of items, equipment and spaces · Items · Equipment · Spaces · Mobility",
+      slogan: ["Borrow only what you need,", "share what you are not using."],
+      lead: "The SHAREON app has not launched. Rental requests, handover and return checks, identity verification and dispute handling are in development; payments and settlement do not run yet. The first launch is being prepared around rentals and spaces with approval-based booking.",
+    },
+    {
       id: "babylog",
-      type: "App released · iOS · Android",
+      type: "Released & operating · iOS · Android",
       name: "BABYLOG",
       summary:
         "Parenting & family. From preparing for pregnancy to birth, parenting, growth records and family life, BABYLOG brings a child's and a family's records together instead of leaving them scattered across notes, photos and chats.",
@@ -146,33 +167,23 @@ const en = {
     },
     {
       id: "petlog",
-      type: "App released · iOS · Android",
+      type: "Released & operating · iOS · Android",
       name: "PETLOG",
       summary:
         "Pet life. PETLOG reduces the problem of a pet's daily life, health history and vet dates being split across different owners in the same family.",
       role: "For pet owners and their families · Daily & health records · Vaccination & vet schedules · Shared family care",
       slogan: ["A pet's day and health,", "recorded together as a family."],
-      lead: "Today the PETLOG app offers profiles, daily and health records, vaccination and vet schedules and shared family care. Pet life information and a community are in preparation.",
-    },
-    {
-      id: "shareon",
-      type: "App in preparation",
-      name: "SHAREON",
-      summary:
-        "Sharing & rental. Things used rarely but too costly to buy, and equipment and spaces that sit idle. SHAREON aims to connect people who want to borrow for just the time they need with individuals and businesses that own them.",
-      role: "For borrowers and owners of items, equipment and spaces · Items · Equipment · Spaces · Mobility",
-      slogan: ["Borrow only what you need,", "share what you are not using."],
-      lead: "The SHAREON app has not launched: no real rentals, confirmed bookings, payments, deposits or settlements run today. The first launch is being prepared around rentals and spaces with approval-based booking.",
+      lead: "Today the PETLOG app offers profiles, daily and health records, vaccination and vet schedules and shared family care. Pet-service booking and a community are in development and not running yet.",
     },
     {
       id: "ongil",
-      type: "Web preview · App in preparation for Korea",
+      type: "Core features partly built · Development paused",
       name: "ONGIL",
       summary:
         "Senior life. ONGIL connects everyday information, family connection and care and welfare information so seniors can carry on their lives at their own pace.",
       role: "For seniors and their families · Daily life · Health records · Family connection · Care & welfare guides",
       slogan: ["Warm connection,", "through the years of daily life."],
-      lead: "Some features run today as a web preview that needs no sign-in and stores data on this device only. The iOS and Android app is being prepared for its first release in Korea; no institution has a confirmed partnership yet.",
+      lead: "ONGIL has not launched. After part of its core features was built, development was paused so NEWON can commercialise SHAREON first; NEWON is preparing to resume development and launch. No institution has a confirmed partnership yet.",
     },
   ] as PlatformCopy[],
 
@@ -180,10 +191,10 @@ const en = {
   productsHeading: "Products",
   productsTitle: "Products we built and keep improving.",
   productsLead:
-    "Release status is taken from the store links on each product page. Released means the app has an App Store or Google Play listing; in preparation means there is no store listing yet.",
+    "Release status is taken from the store links on each product page. Released means the app has an App Store or Google Play listing; in preparation means there is no store listing yet. Ongoing operation and improvement focus on BabyLog and PetLog; the other apps are shown as products NEWON has released.",
   products: [
-    { n: "01", title: "BabyLog", body: ["A growth-record app from pregnancy to the teen years. It replaces parenting records scattered across notes, photos and chats with one timeline.", "Parenting records · Growth & health · Schedules · Growth stats · Family sharing · AI parenting insights", "iOS · Android · Released — the base of the BABYLOG platform"], links: productLinks("babylog", "Product page →", "babylog") },
-    { n: "02", title: "PetLog", body: ["A pet-record app for daily life, health and memories. Meals, walks, health records and vet dates are kept in one record the family shares.", "Meal & walk logs · Health records · Schedules · Stats · Family sharing · AI health insights", "iOS · Android · Released — the base of the PETLOG platform"], links: productLinks("petlog", "Product page →", "petlog") },
+    { n: "01", title: "BabyLog", body: ["A growth-record app from pregnancy to the teen years. It replaces parenting records scattered across notes, photos and chats with one timeline.", "Parenting records · Growth & health · Schedules · Growth stats · Family sharing · AI parenting insights", "iOS · Android · Released & operating — the base of the BABYLOG platform"], links: productLinks("babylog", "Product page →", "babylog") },
+    { n: "02", title: "PetLog", body: ["A pet-record app for daily life, health and memories. Meals, walks, health records and vet dates are kept in one record the family shares.", "Meal & walk logs · Health records · Schedules · Stats · Family sharing · AI health insights", "iOS · Android · Released & operating — the base of the PETLOG platform"], links: productLinks("petlog", "Product page →", "petlog") },
     { n: "03", title: "My World", body: ["A travel-record app that marks visited countries and cities on a world map, so visits, itineraries and photos stay in one place.", "Travel map · Visited countries · Itineraries · Travel journal · Travel stats · AI travel report", "iOS · Android · Released"], links: productLinks("myworld", "Product page →", "myworld") },
     { n: "04", title: "OX MONTH", body: ["A monthly habit app built on one O/X check a day, for people who want to keep going without a heavy tracking app.", "Today's check · Monthly calendar · Goals · Quick start · Stats · Reminders · Widgets", "iOS · Android · Released"], links: productLinks("ox-month", "Product page →", "ox-month") },
     { n: "05", title: "GoalUp", body: ["A goal app from setting goals to carrying them out, so goals do not stop at the plan.", "Goal management · Challenges · Goal reminders · Growth analysis · Streaks · AI growth insights", "iOS · Android · Released"], links: productLinks("goalup", "Product page →", "goalup") },
@@ -244,7 +255,7 @@ const en = {
         "Core features — Travel map, visited countries, itineraries, travel journal, travel stats, AI travel report and travel goals.",
         "User experience — The main screens follow map → records → report so the travel story stays continuous.",
         "Development — An iOS and Android app built with Flutter: travel map, itinerary and photo records, reports and multiple languages.",
-        "Current status — Released on the App Store and Google Play. Booking, commerce and a traveller community are in preparation.",
+        "Current status — Released on the App Store and Google Play. New feature work is focused on the four core platforms.",
       ],
       link: { label: "My World product page →", href: siteHref("portfolio/myworld/") },
     },
@@ -268,18 +279,21 @@ const en = {
   milestonesHeading: "Milestones",
   milestonesTitle: "A record of products completed one by one.",
   milestonesLead:
-    "Dates come from the official website's history and published news. Where an exact date cannot be confirmed, only the year is shown.",
+    "Dates come from the official website's history, store release dates and NEWON's business records. Where an exact date cannot be confirmed, only the year is shown.",
   stats: [
-    { value: "11", label: "Released apps", note: "On the App Store and Google Play." },
+    { value: "11", label: "Released apps", note: "Release history. BABYLOG and PETLOG are the core apps in operation." },
     { value: "4", label: "Business areas", note: "SHAREON, BABYLOG, PETLOG and ONGIL." },
     { value: "13", label: "Languages supported", note: "Languages our apps support." },
     { value: "177", label: "Countries", note: "Countries where our apps are released." },
   ] as Stat[],
   milestones: [
+    { n: "2026.03", title: "NEWON founded", body: ["NEWON started as a sole proprietorship. Converting to a corporation is a future plan."] },
     { n: "2026.04", title: "Official website", body: ["The first version of the newon.app website went live and began introducing NEWON's services."] },
+    { n: "2026.06", title: "BABYLOG and PETLOG released", body: ["BABYLOG (13 June) and PETLOG (24 June) were released on the App Store and Google Play and are still operated today."] },
     { n: "2026", title: "11 mobile apps released", body: ["11 apps NEWON built itself, including BABYLOG, PETLOG and MY WORLD, were released on the App Store and Google Play."] },
     { n: "2026.09", title: "ONGIL", body: ["The senior-life platform ONGIL was introduced on the website."] },
-    { n: "NOW", title: "Four core platforms", body: ["NEWON is organised around four platforms, with Business & Partnerships and NEWON Studio alongside. The SHAREON and ONGIL apps are in preparation."] },
+    { n: "2026.10", title: "ONGIL development paused", body: ["After part of its core features was built, ONGIL development was paused so NEWON can commercialise SHAREON first."] },
+    { n: "NOW", title: "SHAREON first", body: ["NEWON is preparing the SHAREON launch as its first commercial priority while operating and improving BABYLOG and PETLOG. Business & Partnerships and NEWON Studio are built around the four platforms."] },
   ] as Row[],
 
   /* 08 · TECHNOLOGY & CAPABILITIES */
@@ -287,19 +301,21 @@ const en = {
   capabilitiesTitle: "The capability to turn ideas into real services.",
   capabilitiesLead: "Only technology used in NEWON's own products is listed here, with the role it plays.",
   capabilities: [
-    { n: "01", title: "Mobile app development", body: ["NEWON apps are built with Flutter, one codebase for iOS and Android, and released on the App Store and Google Play."] },
+    { n: "01", title: "Mobile app development", body: ["NEWON apps are built with Flutter, one codebase for iOS and Android, use Firebase for sign-in and data storage, and are released on the App Store and Google Play."] },
     { n: "02", title: "Web service development", body: ["The official website is generated as prebuilt HTML pages by Node.js scripts from shared data and templates."] },
     { n: "03", title: "UI/UX design", body: ["Each platform's screens are designed around its users and their record flow, while the official site and platform pages share one design system."] },
     { n: "04", title: "Multilingual service", body: ["The website is generated in nine languages — Korean, English, Japanese, Spanish, Portuguese (Brazil), French, German, Hindi and Indonesian — each with its own URLs and hreflang."] },
     { n: "05", title: "Data integration", body: ["Product names, descriptions and store links are kept in one data source, so the home page, product pages and this portfolio show the same information."] },
     { n: "06", title: "Service operation", body: ["Operational check scripts review the public product pages and app status after release."] },
     { n: "07", title: "Testing and quality", body: ["Node tests, link checks and Playwright browser checks cover desktop and mobile layouts and every language before a release."] },
+    { n: "08", title: "Using AI", body: ["AI development tools speed up research, writing, development and testing. The AI insight features in our apps summarise the user's own records; NEWON has not built its own AI model."] },
   ] as Row[],
 
   /* 09 · EXPLORE NEWON */
   exploreHeading: "Explore NEWON.",
-  exploreLead: "Meet NEWON's next possibilities.",
+  exploreLead: "For investment, partnerships, adopting our services or general questions, use the contact page or email.",
   exploreCtas: [
+    { label: "Contact", href: siteHref("contact/") },
     { label: "Explore the four platforms", href: siteHref("business/platforms/") },
     { label: "NEWON Studio", href: siteHref("studio/") },
     { label: "Business & Partnerships", href: siteHref("business/") },
@@ -312,83 +328,95 @@ const en = {
 const ko: typeof en = {
   htmlLang: "ko",
   title: "Portfolio — NEWON",
-  heroTitle: "Hi, i'm nawon",
-  viewWork: "View my work",
-  contactMe: "Contact me",
   selectedWork: "Selected work",
-  portraitAlt: "경나원",
+  hero: {
+    navLabel: "포트폴리오",
+    nav: [
+      { label: "홈", href: siteHref(""), top: true },
+      { label: "플랫폼", href: "#platforms", top: false },
+      { label: "제품", href: "#projects", top: false },
+      { label: "문의", href: siteHref("contact/"), top: true },
+    ],
+    soundLabel: "소리 표시 켜기·끄기 (영상에는 소리가 없습니다)",
+    copy: "NEWON은 아이디어를 실제 제품으로 구현하고, 일상의 문제를 해결하는 디지털 플랫폼을 만듭니다. 기획부터 디자인, 개발, 출시, 운영까지 직접 수행합니다.",
+    cta: "Let's Go NEWON",
+  },
+  cardSection: {
+    label: "명함",
+    alt: "NEWON 명함 — 경나원 · Nawon Kyung · CEO & App Developer · M. 010-3923-8904 · E. newon@newon.app · W. newon.app",
+  },
   filmSlogans,
 
   introHeading: "Our work",
   introText:
-    "아이디어를 제품으로, 제품을 일상의 변화로. NEWON이 직접 기획하고 개발한 디지털 플랫폼과 제품을 소개합니다. 일상에서 발견한 문제를 실제 서비스로 구현하며 새로운 가능성을 만들어갑니다.",
+    "아이디어를 실제 제품으로 구현하고, 일상의 문제를 해결하는 디지털 플랫폼을 만듭니다. NEWON은 기획부터 디자인, 개발, 출시, 운영까지 직접 수행하며 지속 가능한 디지털 서비스를 구축합니다.",
   introCta: "4개 플랫폼 보기",
 
   overviewHeading: "Overview",
   overviewTitle: "다양한 문제를 하나의 제품 경험으로.",
   overviewLead: "이 페이지의 모든 제품은 NEWON이 직접 소유하고 기획·개발한 것입니다. 고객별 외주 프로젝트나 제작 대행 실적은 포함하지 않습니다.",
   overview: [
-    { number: "01", name: "4개 핵심 플랫폼", body: ["BABYLOG, PETLOG, SHAREON, ONGIL. 육아·반려생활·공유·시니어 라이프의 네 영역을 각각의 플랫폼으로 직접 기획하고 운영합니다."] },
+    { number: "01", name: "4개 핵심 플랫폼", body: ["SHAREON, BABYLOG, PETLOG, ONGIL. 공유·육아·반려생활·시니어 라이프의 네 영역을 각각의 플랫폼으로 직접 기획합니다. SHAREON 사업화를 가장 먼저 추진하고, BABYLOG와 PETLOG를 운영하며, ONGIL은 개발을 일시 중단한 상태입니다."] },
     { number: "02", name: "독립형 앱", body: ["습관·목표, 금융, 건강, 여행처럼 일상의 한 가지 문제에 집중한 모바일 앱입니다. OX MONTH, GoalUp, CountUp, SAVY, SubPing, PiggyUp, Pillmate, My World와 멤버십 앱 Newon+가 있습니다."], link: { label: "NEWON 앱 전체 보기 →", href: siteHref("apps/") } },
     { number: "03", name: "디지털 소프트웨어", body: ["QR 코드 생성기, 디데이 계산기, 글자 수 세기처럼 설치와 가입 없이 브라우저에서 바로 쓰는 무료 웹 도구를 만듭니다."], link: { label: "Newon Tools →", href: siteHref("tools/") } },
     { number: "04", name: "게임", body: ["404: HUMAN은 AI만 남은 세계에서 마지막 인간으로 살아남는 선택형 인터랙티브 게임으로, 웹에서 바로 플레이할 수 있습니다."], link: { label: "Newon Games →", href: siteHref("games/") } },
     { number: "05", name: "Studio 디지털 상품", body: ["NEWON Studio는 템플릿, 생산성 도구, 소프트웨어, 기업용 표준 제품을 직접 기획합니다. 지금은 무료 웹 도구와 NEWON Project Starter Kit을 이용할 수 있고, 나머지 제품군은 기획 중입니다."] },
-    { number: "06", name: "제품 개발과 출시 경험", body: ["모바일 앱 11개를 직접 기획·디자인·개발해 App Store와 Google Play에 출시했고, 출시 후에도 이용 흐름과 의견을 바탕으로 업데이트합니다."] },
+    { number: "06", name: "제품 개발과 출시 경험", body: ["약 6개월 동안 모바일 앱 11개를 직접 기획·디자인·개발해 App Store와 Google Play에 출시했습니다. 지금 운영과 고도화에 집중하는 앱은 BABYLOG와 PETLOG입니다."] },
   ],
 
   platformsHeading: "Platforms",
   platformsTitle: "일상의 네 가지 영역을 연결합니다.",
   platformsLead:
-    "플랫폼마다 한 영역에 집중합니다. 카드의 상태는 각 플랫폼 페이지의 표기를 그대로 따릅니다. 앱 2개는 출시되었고, ONGIL은 웹 체험판으로 제공하며, SHAREON·ONGIL 앱은 준비 중입니다.",
+    "NEWON은 SHAREON의 사업화를 우선 추진하면서, 이미 출시한 BABYLOG와 PETLOG를 운영·고도화하고 있습니다. ONGIL은 일부 핵심 기능을 개발한 뒤 개발을 일시 중단했으며, 향후 개발 재개를 준비하고 있습니다. 카드의 상태는 2026년 11월 기준입니다.",
   platformCta: "플랫폼 보기",
   platforms: [
     {
+      id: "shareon",
+      type: "최우선 사업화 · 앱 출시 준비 중",
+      name: "SHAREON",
+      summary:
+        "공유·대여 플랫폼. 개인과 기업이 보유한 물건, 장비, 공간 등을 필요한 사람과 연결합니다. 개인 간 거래와 기업·개인 간 거래, 기업 간 거래를 하나의 대여 흐름으로 다루는 것을 목표로 합니다.",
+      role: "빌리려는 이용자와 물건·장비·공간을 가진 개인·기업 · 물건 · 장비 · 공간 · 이동수단",
+      slogan: ["필요한 만큼만 빌리고,", "쓰지 않을 때는 나눕니다."],
+      lead: "SHAREON 앱은 출시 전입니다. 거래 요청, 인수·반납 확인, 본인확인과 분쟁 대응 흐름을 개발하고 있으며, 결제·정산은 아직 운영하지 않습니다. 첫 출시는 대여·공간 중심의 승인형 예약으로 준비하고 있습니다.",
+    },
+    {
       id: "babylog",
-      type: "앱 출시 · iOS · Android",
+      type: "출시·운영 중 · iOS · Android",
       name: "BABYLOG",
       summary:
         "육아·가족 플랫폼. 임신 준비부터 출산, 육아, 성장 기록과 가족생활까지 메모·사진·채팅에 흩어지기 쉬운 아이와 가족의 기록과 정보를 하나로 잇습니다.",
       role: "예비 부모, 아이를 키우는 가족, 함께 돌보는 보호자 · 육아 기록 · 성장·건강 기록 · 가족 공유",
       slogan: ["아이의 모든 순간을,", "하나의 성장 이야기로."],
-      lead: "지금 iOS·Android 앱에서 육아 기록, 성장·건강 기록, 일정 관리, 가족 공유를 제공합니다. 교육·돌봄 분야의 제휴는 앞으로의 협력 방향입니다.",
+      lead: "지금 iOS·Android 앱에서 육아 기록, 성장·건강 기록, 일정 관리, 가족 공유를 제공합니다. 가족 프리미엄 같은 확장 기능은 개발 중이며, 교육·돌봄 분야의 제휴는 앞으로의 협력 방향입니다.",
     },
     {
       id: "petlog",
-      type: "앱 출시 · iOS · Android",
+      type: "출시·운영 중 · iOS · Android",
       name: "PETLOG",
       summary: "반려생활 플랫폼. 반려동물의 일상과 건강 이력, 예방접종·병원 일정이 보호자마다 따로 흩어지는 문제를 줄입니다.",
       role: "반려동물 보호자와 가족 · 일상·건강 기록 · 예방접종·병원 일정 · 가족 공동 관리",
       slogan: ["반려동물의 하루와 건강을,", "가족이 함께 기록합니다."],
-      lead: "지금 PETLOG 앱에서 프로필, 일상·건강 기록, 예방접종·병원 일정, 가족 공동 관리를 이용할 수 있습니다. 반려생활 정보와 커뮤니티는 준비 중입니다.",
-    },
-    {
-      id: "shareon",
-      type: "앱 출시 준비 중",
-      name: "SHAREON",
-      summary:
-        "자산 공유·대여 플랫폼. 자주 쓰지 않지만 사기엔 부담스러운 물건, 쓰지 않는 시간이 긴 장비와 공간의 문제를 다루며, 필요한 기간만 빌리려는 이용자와 개인·기업 공급자를 잇는 마켓플레이스를 지향합니다.",
-      role: "빌리려는 이용자와 물건·장비·공간을 가진 개인·기업 · 물건 · 장비 · 공간 · 이동수단",
-      slogan: ["필요한 만큼만 빌리고,", "쓰지 않을 때는 나눕니다."],
-      lead: "SHAREON 앱은 출시 전입니다. 지금은 실제 대여·예약 확정·결제·보증금·정산이 운영되지 않으며, 첫 출시는 대여·공간 중심의 승인형 예약으로 준비하고 있습니다.",
+      lead: "지금 PETLOG 앱에서 프로필, 일상·건강 기록, 예방접종·병원 일정, 가족 공동 관리를 이용할 수 있습니다. 반려생활 서비스 예약과 커뮤니티 같은 확장 기능은 개발 중이며 아직 운영하지 않습니다.",
     },
     {
       id: "ongil",
-      type: "웹 체험판 · 앱 국내 출시 준비 중",
+      type: "일부 핵심 기능 개발 · 개발 일시 중단",
       name: "ONGIL",
       summary: "시니어 라이프 플랫폼. 시니어가 자신의 속도와 방식으로 일상을 이어 갈 수 있도록 생활정보와 가족 연결, 돌봄·복지 정보를 잇습니다.",
       role: "시니어 본인과 가족 · 일상생활 · 건강 기록 · 가족 연결 · 돌봄·복지 안내",
       slogan: ["따뜻한 연결로,", "일상의 시간을 잇습니다."],
-      lead: "지금은 로그인 없이 이 기기에만 저장되는 웹 체험판으로 일부 기능을 제공하고, iOS·Android 앱은 국내 첫 출시를 준비 중입니다. 공식 제휴가 확정된 기관은 아직 없습니다.",
+      lead: "ONGIL은 아직 출시하지 않았습니다. 일부 핵심 기능을 개발한 뒤 SHAREON 사업화를 우선하기 위해 개발을 일시 중단했으며, 향후 개발 재개와 출시를 준비하고 있습니다. 공식 제휴가 확정된 기관은 아직 없습니다.",
     },
   ],
 
   productsHeading: "Products",
   productsTitle: "직접 만들고 발전시켜 온 제품들.",
   productsLead:
-    "출시 상태는 각 제품 페이지의 스토어 링크로 확인했습니다. 출시는 App Store 또는 Google Play에 등록된 앱이고, 준비 중은 아직 스토어에 등록되지 않은 제품입니다.",
+    "출시 상태는 각 제품 페이지의 스토어 링크로 확인했습니다. 출시는 App Store 또는 Google Play에 등록된 앱이고, 준비 중은 아직 스토어에 등록되지 않은 제품입니다. 지금 운영과 고도화에 집중하는 앱은 BabyLog와 PetLog이며, 나머지 앱은 NEWON이 직접 출시한 제품 이력으로 소개합니다.",
   products: [
-    { n: "01", title: "BabyLog", body: ["임신부터 청소년기까지 아이의 성장과 일상을 기록하는 성장 기록 앱입니다. 메모·사진·채팅에 흩어진 육아 기록을 하나의 타임라인으로 모읍니다.", "육아 기록 · 성장·건강 기록 · 일정 관리 · 성장 통계 · 가족 공유 · AI 육아 분석", "iOS · Android · 출시 — BABYLOG 플랫폼의 기반 앱"], links: productLinks("babylog", "제품 상세 →", "babylog") },
-    { n: "02", title: "PetLog", body: ["반려동물의 일상·건강·추억을 쌓는 반려 기록 앱입니다. 식사·산책·건강 기록과 병원 일정을 가족이 함께 쓰는 하나의 기록으로 모읍니다.", "식사·산책 기록 · 건강 기록 · 일정 관리 · 통계 · 가족 공유 · AI 건강 분석", "iOS · Android · 출시 — PETLOG 플랫폼의 기반 앱"], links: productLinks("petlog", "제품 상세 →", "petlog") },
+    { n: "01", title: "BabyLog", body: ["임신부터 청소년기까지 아이의 성장과 일상을 기록하는 성장 기록 앱입니다. 메모·사진·채팅에 흩어진 육아 기록을 하나의 타임라인으로 모읍니다.", "육아 기록 · 성장·건강 기록 · 일정 관리 · 성장 통계 · 가족 공유 · AI 육아 분석", "iOS · Android · 출시·운영 중 — BABYLOG 플랫폼의 기반 앱"], links: productLinks("babylog", "제품 상세 →", "babylog") },
+    { n: "02", title: "PetLog", body: ["반려동물의 일상·건강·추억을 쌓는 반려 기록 앱입니다. 식사·산책·건강 기록과 병원 일정을 가족이 함께 쓰는 하나의 기록으로 모읍니다.", "식사·산책 기록 · 건강 기록 · 일정 관리 · 통계 · 가족 공유 · AI 건강 분석", "iOS · Android · 출시·운영 중 — PETLOG 플랫폼의 기반 앱"], links: productLinks("petlog", "제품 상세 →", "petlog") },
     { n: "03", title: "My World", body: ["방문한 나라와 도시를 세계지도에 남기는 여행 기록 앱입니다. 흩어진 방문 기록·여행 일정·사진을 한곳에서 봅니다.", "여행 지도 · 방문 국가 · 여행 일정 · 여행 기록 · 여행 통계 · AI 여행 리포트", "iOS · Android · 출시"], links: productLinks("myworld", "제품 상세 →", "myworld") },
     { n: "04", title: "OX MONTH", body: ["하루 한 번의 O/X 체크로 습관을 이어 가는 월간 습관 앱입니다. 복잡한 기록 앱 없이 매일의 실천을 가볍게 남기고 싶은 사람을 위해 만들었습니다.", "오늘 기록하기 · 월간 캘린더 · 목표 설정 · 빠른 시작 · 통계 분석 · 알림 · 위젯", "iOS · Android · 출시"], links: productLinks("ox-month", "제품 상세 →", "ox-month") },
     { n: "05", title: "GoalUp", body: ["목표 설정부터 실행 관리와 챌린지까지 이어 주는 목표 관리 앱입니다. 세운 목표가 계획에서 멈추지 않도록 돕습니다.", "목표 관리 · 챌린지 · 목표 알림 · 성장 분석 · 연속 기록 · AI 성장 분석", "iOS · Android · 출시"], links: productLinks("goalup", "제품 상세 →", "goalup") },
@@ -446,7 +474,7 @@ const ko: typeof en = {
         "Core Features — 여행 지도, 방문 국가, 여행 일정, 여행 기록, 여행 통계, AI 여행 리포트, 여행 목표.",
         "User Experience — 지도 → 기록 → 리포트로 이어지는 흐름으로 주요 화면을 구성했습니다.",
         "Development — Flutter로 만든 iOS·Android 앱으로 여행 지도, 일정·사진 기록, 리포트, 다국어를 구현했습니다.",
-        "Current Status — App Store·Google Play 출시. 예약·커머스·여행자 커뮤니티는 준비 중입니다.",
+        "Current Status — App Store·Google Play 출시. 신규 기능 개발은 4개 핵심 플랫폼에 집중하고 있습니다.",
       ],
       link: { label: "My World 제품 상세 →", href: siteHref("portfolio/myworld/") },
     },
@@ -468,36 +496,41 @@ const ko: typeof en = {
 
   milestonesHeading: "Milestones",
   milestonesTitle: "하나씩 완성해 온 제품의 기록.",
-  milestonesLead: "날짜는 공식 웹사이트 기록과 공개된 소식으로 확인한 범위에서만 표기하고, 정확한 날짜를 확인할 수 없는 항목은 연도만 적습니다.",
+  milestonesLead: "날짜는 공식 웹사이트 기록, 앱 스토어 출시일, NEWON의 사업 기록으로 확인한 범위에서만 표기하고, 정확한 날짜를 확인할 수 없는 항목은 연도만 적습니다.",
   stats: [
-    { value: "11", label: "출시 앱", note: "App Store·Google Play에 출시." },
+    { value: "11", label: "출시 앱", note: "출시 이력 기준. 운영 중인 핵심 앱은 BABYLOG·PETLOG." },
     { value: "4", label: "사업 영역", note: "SHAREON·BABYLOG·PETLOG·ONGIL." },
     { value: "13", label: "지원 언어", note: "앱에서 지원하는 언어 수." },
     { value: "177", label: "출시 국가", note: "앱을 출시한 국가 수." },
   ],
   milestones: [
+    { n: "2026.03", title: "NEWON 시작", body: ["개인사업자로 NEWON을 시작했습니다. 법인 전환은 향후 계획입니다."] },
     { n: "2026.04", title: "공식 웹사이트 시작", body: ["newon.app 공식 웹사이트의 첫 버전을 만들고, NEWON의 서비스를 소개하기 시작했습니다."] },
+    { n: "2026.06", title: "BABYLOG·PETLOG 출시", body: ["BABYLOG(6월 13일)와 PETLOG(6월 24일)를 App Store와 Google Play에 출시하고, 지금까지 운영하고 있습니다."] },
     { n: "2026", title: "모바일 앱 11개 출시", body: ["BABYLOG, PETLOG, MY WORLD를 포함해 NEWON이 직접 만든 모바일 앱 11개를 App Store와 Google Play에 출시했습니다."] },
     { n: "2026.09", title: "ONGIL 공개", body: ["시니어 라이프 플랫폼 ONGIL을 웹사이트에 소개했습니다."] },
-    { n: "NOW", title: "4개 핵심 플랫폼 체계", body: ["네 개의 핵심 플랫폼을 중심으로 Business & Partnerships와 NEWON Studio를 함께 전개합니다. SHAREON·ONGIL 앱은 준비 중입니다."] },
+    { n: "2026.10", title: "ONGIL 개발 일시 중단", body: ["일부 핵심 기능을 개발한 뒤, SHAREON 사업화를 우선하기 위해 ONGIL 개발을 일시 중단했습니다."] },
+    { n: "NOW", title: "SHAREON 우선 사업화", body: ["SHAREON 출시를 준비하며 사업화를 가장 먼저 추진하고, BABYLOG와 PETLOG를 운영·고도화합니다. Business & Partnerships와 NEWON Studio는 네 플랫폼을 중심으로 전개합니다."] },
   ],
 
   capabilitiesHeading: "Capabilities",
   capabilitiesTitle: "아이디어를 실제 서비스로 구현하는 역량.",
   capabilitiesLead: "NEWON의 실제 제품에서 쓰고 있는 기술만, 제품 구현에서 맡은 역할과 함께 적었습니다.",
   capabilities: [
-    { n: "01", title: "모바일 앱 개발", body: ["NEWON 앱은 Flutter로 iOS와 Android를 하나의 코드로 함께 개발하고, App Store와 Google Play에 출시합니다."] },
+    { n: "01", title: "모바일 앱 개발", body: ["NEWON 앱은 Flutter로 iOS와 Android를 하나의 코드로 함께 개발하고, Firebase로 인증과 데이터 저장을 구성해 App Store와 Google Play에 출시합니다."] },
     { n: "02", title: "웹 서비스 개발", body: ["공식 웹사이트는 Node.js 스크립트가 공통 데이터와 템플릿으로 정적 페이지를 생성하는 구조입니다."] },
     { n: "03", title: "UI·UX 설계", body: ["플랫폼마다 이용 대상과 기록 흐름에 맞춰 화면을 설계하고, 공식 사이트와 플랫폼 페이지는 하나의 디자인 시스템을 공유합니다."] },
     { n: "04", title: "다국어 서비스", body: ["공식 웹사이트는 한국어·영어·일본어·스페인어·포르투갈어(브라질)·프랑스어·독일어·힌디어·인도네시아어 9개 언어로 생성되며, 언어마다 주소와 hreflang을 따로 둡니다."] },
     { n: "05", title: "데이터 연동", body: ["제품 이름, 설명, 스토어 링크를 한 곳의 데이터에서 관리해 홈, 제품 페이지, 포트폴리오에 같은 정보를 보여 줍니다."] },
     { n: "06", title: "서비스 운영", body: ["출시 후에는 운영 점검 스크립트로 공개된 제품 페이지와 앱 상태를 확인합니다."] },
     { n: "07", title: "테스트 및 품질 관리", body: ["Node 테스트, 링크 검사, Playwright 브라우저 검사로 데스크톱·모바일 화면과 모든 언어 페이지를 확인한 뒤 배포합니다."] },
+    { n: "08", title: "AI 활용", body: ["조사, 작성, 개발, 테스트에 AI 개발 도구를 활용해 제품을 빠르게 만듭니다. 앱의 AI 분석 기능은 사용자의 기록을 정리해 보여 주는 기능이며, NEWON이 자체 AI 모델을 개발한 것은 아닙니다."] },
   ],
 
   exploreHeading: "Explore NEWON.",
-  exploreLead: "NEWON의 다음 가능성을 만나보세요.",
+  exploreLead: "투자, 기업 제휴, 서비스 도입, 일반 문의는 문의 페이지나 이메일로 받습니다.",
   exploreCtas: [
+    { label: "문의하기", href: siteHref("contact/") },
     { label: "4개 플랫폼 살펴보기", href: siteHref("business/platforms/") },
     { label: "NEWON Studio", href: siteHref("studio/") },
     { label: "Business & Partnerships", href: siteHref("business/") },

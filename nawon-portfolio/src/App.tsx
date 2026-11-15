@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { isKo, t } from "./copy";
 import { platforms } from "./data";
 import { About } from "./components/About";
+import { BusinessCard } from "./components/BusinessCard";
 import { Contact } from "./components/Contact";
 import { Hero } from "./components/Hero";
 import { Marquee } from "./components/Marquee";
@@ -27,6 +28,7 @@ export default function App() {
     <main className="overflow-x-clip bg-ink text-mist">
       {/* 01 · HERO (unchanged) + statement */}
       <Hero />
+      <BusinessCard />
       <Marquee />
       <About />
 

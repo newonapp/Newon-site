@@ -1,167 +1,287 @@
-import { useLayoutEffect, useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { t } from "../copy";
-import { publicUrl } from "../data";
-import { FadeIn } from "./FadeIn";
-import { Magnet } from "./Magnet";
 
-function hairEdges(img: HTMLImageElement, box: HTMLElement, sampleY: number) {
-  const ir = img.getBoundingClientRect();
-  const br = box.getBoundingClientRect();
-  if (ir.width < 2 || ir.height < 2) return null;
-  const scale = Math.min(1, 560 / ir.width);
-  const canvas = document.createElement("canvas");
-  canvas.width = Math.max(1, Math.round(ir.width * scale));
-  canvas.height = Math.max(1, Math.round(ir.height * scale));
-  const ctx = canvas.getContext("2d", { willReadFrequently: true });
-  if (!ctx) return null;
-  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-  const y = Math.max(0, Math.min(canvas.height - 1, Math.round((sampleY - ir.top) * scale)));
-  const row = ctx.getImageData(0, y, canvas.width, 1).data;
-  let hairL = -1;
-  let hairR = -1;
-  for (let x = 0; x < canvas.width; x += 1) {
-    if (row[x * 4 + 3] > 28) {
-      if (hairL < 0) hairL = x;
-      hairR = x;
-    }
+/**
+ * 01 · HERO — "NEW · pill · ON".
+ * The page opens on white with NEWON and a hairline between W and O. The line opens into a slit,
+ * a circle, then a wide pill that pushes "NEW" and "ON" apart and shows a looping island film.
+ * Paper and white lines fade in behind, the inner nav drops in and the footer rises.
+ * One 2.1 s Web Animations timeline; "Let's Go" plays it in reverse and opens it again.
+ * Phones (≤ 720 px) stack NEW / pill / ON and open the pill vertically.
+ */
+
+const VIDEO = "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/175fbbcd-e50a-480c-bab2-ca16d4678322.mp4";
+const POSTER = "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/726b168c-da47-4682-a255-cc3e02f89bae.jpg";
+const DURATION = 2100;
+const PHONE = "(max-width: 720px)";
+
+type Kf = Keyframe[];
+
+/** Gentle S-curves sweeping up and to the right (deterministic, viewBox 1000 × 600). */
+const LINES = Array.from({ length: 15 }, (_, i) => {
+  const y = 90 + i * 42;
+  const lift = 150 + ((i * 37) % 90);
+  const w = 1.2 + ((i * 7) % 10) * 0.3;
+  const o = 0.55 + ((i * 3) % 7) * 0.05;
+  return { d: `M -60 ${y + 120} C 220 ${y + 150}, 420 ${y - 40}, 600 ${y - lift * 0.55} S 900 ${y - lift - 40}, 1080 ${y - lift - 120}`, w, o };
+});
+
+function timelines(phone: boolean, pillHeight: number): { pill: Kf; clip: Kf; row: Kf } {
+  if (phone) {
+    const h = pillHeight;
+    return {
+      pill: [
+        { height: "1.5px", offset: 0 },
+        { height: "1.5px", offset: 0.14, easing: "cubic-bezier(.5,0,.3,1)" },
+        { height: `${h * 0.1}px`, offset: 0.3, easing: "cubic-bezier(.45,0,.3,1)" },
+        { height: `${h * 0.55}px`, offset: 0.58, easing: "cubic-bezier(.4,0,.2,1)" },
+        { height: `${h}px`, offset: 1 },
+      ],
+      clip: [
+        { clipPath: "inset(0 50%)", offset: 0 },
+        { clipPath: "inset(0 0%)", offset: 0.14 },
+        { clipPath: "inset(0 0%)", offset: 1 },
+      ],
+      row: [
+        { rowGap: "0.03em", offset: 0 },
+        { rowGap: "0.03em", offset: 0.14 },
+        { rowGap: "0.06em", offset: 0.58 },
+        { rowGap: "0.1em", offset: 1 },
+      ],
+    };
   }
-  if (hairL < 0 || hairR < 0) return null;
   return {
-    headL: ir.left - br.left + hairL / scale,
-    headR: ir.left - br.left + hairR / scale,
-    width: br.width,
+    pill: [
+      { width: "0.012em", offset: 0 },
+      { width: "0.012em", offset: 0.14, easing: "cubic-bezier(.5,0,.3,1)" },
+      { width: "0.16em", offset: 0.3, easing: "cubic-bezier(.45,0,.3,1)" },
+      { width: "1.81em", offset: 0.58, easing: "cubic-bezier(.4,0,.2,1)" },
+      { width: "3.62em", offset: 1 },
+    ],
+    clip: [
+      { clipPath: "inset(50% 0)", offset: 0 },
+      { clipPath: "inset(0% 0)", offset: 0.14 },
+      { clipPath: "inset(0% 0)", offset: 1 },
+    ],
+    row: [
+      { columnGap: "0.026em", offset: 0 },
+      { columnGap: "0.026em", offset: 0.14 },
+      { columnGap: "0.05em", offset: 0.58 },
+      { columnGap: "0.085em", offset: 1 },
+    ],
   };
 }
 
-function placeSideWords(img: HTMLImageElement, ceo: HTMLSpanElement, developer: HTMLSpanElement) {
-  const box = ceo.offsetParent as HTMLElement | null;
-  const stage = box?.parentElement;
-  const title = stage?.querySelector("h1");
-  if (!box || !stage || !title || !img.complete || !img.naturalWidth) return;
-
-  title.style.fontSize = "";
-  const stageBox = stage.getBoundingClientRect();
-  const titleBottom = title.getBoundingClientRect().bottom - stageBox.top;
-  box.style.top = `${titleBottom + 10}px`;
-
-  const probe = parseFloat(getComputedStyle(developer).fontSize) || 32;
-  const ratio = developer.getBoundingClientRect().width / Math.max(probe, 1);
-  if (!Number.isFinite(ratio) || ratio < 2) return;
-
-  const sampleY = title.getBoundingClientRect().bottom + 10 + 18;
-  const edges = hairEdges(img, box, sampleY);
-  const width = stageBox.width;
-  const headL = edges ? edges.headL : width * 0.34;
-  const headR = edges ? edges.headR : width * 0.66;
-  const gap = Math.min(headL, width - headR);
-  const margin = 14;
-  let size = Math.max(14, Math.min((Math.max(gap, 72) - margin * 2) / ratio, width * 0.04));
-  let ceoW = 0;
-  let devW = 0;
-  for (let i = 0; i < 8; i += 1) {
-    ceo.style.fontSize = `${size}px`;
-    developer.style.fontSize = `${size}px`;
-    ceoW = ceo.getBoundingClientRect().width;
-    devW = developer.getBoundingClientRect().width;
-    if (ceoW + margin * 2 <= headL && devW + margin * 2 <= width - headR) break;
-    size = Math.max(13, size * 0.88);
-  }
-  const leftCenter = Math.max(margin + ceoW / 2, Math.min(headL / 2, headL - margin - ceoW / 2));
-  const rightCenter = Math.min(width - margin - devW / 2, Math.max(headR + (width - headR) / 2, headR + margin + devW / 2));
-  ceo.style.left = `${leftCenter}px`;
-  developer.style.left = `${rightCenter}px`;
-}
-
 export function Hero() {
-  const imgRef = useRef<HTMLImageElement>(null);
-  const ceoRef = useRef<HTMLSpanElement>(null);
-  const developerRef = useRef<HTMLSpanElement>(null);
+  const root = useRef<HTMLElement>(null);
+  const anims = useRef<Animation[]>([]);
+  const busy = useRef(false);
+  const [sound, setSound] = useState(false);
 
-  useLayoutEffect(() => {
-    const img = imgRef.current;
-    const ceo = ceoRef.current;
-    const developer = developerRef.current;
-    if (!img || !ceo || !developer) return;
+  const build = useCallback(() => {
+    const el = root.current;
+    if (!el) return;
+    anims.current.forEach((a) => a.cancel());
+    anims.current = [];
+    const q = <T extends Element>(s: string) => el.querySelector(s) as T;
+    const phone = window.matchMedia(PHONE).matches;
+    const pill = q<HTMLElement>(".wh-pill");
+    // Phones: width ÷ 1.85, capped on short screens so the word never meets the footer.
+    const pillHeight = phone ? Math.min(pill.parentElement!.clientWidth / 1.85, window.innerHeight * 0.24) : 0;
+    el.style.setProperty("--pill-h", `${pillHeight}px`);
+    const tl = timelines(phone, pillHeight);
+    const opts: KeyframeAnimationOptions = { duration: DURATION, fill: "both", easing: "linear" };
+    const add = (target: Element | null, kf: Kf) => target && anims.current.push(target.animate(kf, opts));
 
-    const place = () => placeSideWords(img, ceo, developer);
-    place();
-    img.addEventListener("load", place);
-    const view = img.ownerDocument.defaultView || window;
-    view.addEventListener("resize", place);
-    const observer = new ResizeObserver(place);
-    observer.observe(img);
-    const header = img.closest("header");
-    if (header) observer.observe(header);
-    return () => {
-      img.removeEventListener("load", place);
-      view.removeEventListener("resize", place);
-      observer.disconnect();
-    };
+    add(pill, tl.pill);
+    add(pill, tl.clip);
+    add(q(".wh-row"), tl.row);
+    add(q(".wh-hair"), [{ opacity: 1, offset: 0 }, { opacity: 1, offset: 0.14 }, { opacity: 0, offset: 0.3 }, { opacity: 0, offset: 1 }]);
+    add(q(".wh-bg"), [{ opacity: 0, offset: 0 }, { opacity: 0, offset: 0.45 }, { opacity: 1, offset: 0.78 }, { opacity: 1, offset: 1 }]);
+    add(q(".wh-nav"), [
+      { transform: "translateY(-140%)", opacity: 0, offset: 0 },
+      { transform: "translateY(-140%)", opacity: 0, offset: 0.5, easing: "cubic-bezier(.2,.8,.2,1)" },
+      { transform: "translateY(0)", opacity: 1, offset: 0.86 },
+      { transform: "translateY(0)", opacity: 1, offset: 1 },
+    ]);
+    add(q(".wh-foot"), [
+      { transform: "translateY(160%)", opacity: 0, offset: 0 },
+      { transform: "translateY(160%)", opacity: 0, offset: 0.52, easing: "cubic-bezier(.2,.8,.2,1)" },
+      { transform: "translateY(0)", opacity: 1, offset: 0.9 },
+      { transform: "translateY(0)", opacity: 1, offset: 1 },
+    ]);
+    add(q(".wh-rule"), [
+      { transform: "scaleX(0)", offset: 0 },
+      { transform: "scaleX(0)", offset: 0.4, easing: "cubic-bezier(.4,0,.2,1)" },
+      { transform: "scaleX(1)", offset: 0.95 },
+      { transform: "scaleX(1)", offset: 1 },
+    ]);
+    el.querySelectorAll(".wh-icon").forEach((icon) =>
+      add(icon, [{ opacity: 0, offset: 0 }, { opacity: 0, offset: 0.8 }, { opacity: 0.85, offset: 1 }]),
+    );
+    return anims.current;
   }, []);
 
+  useEffect(() => {
+    const el = root.current;
+    if (!el) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const video = el.querySelector("video");
+    const rec = new URLSearchParams(window.location.search).get("rec") === "1";
+
+    if (reduce) {
+      // Final state, film paused on its poster.
+      const list = build();
+      list?.forEach((a) => a.finish());
+      video?.pause();
+      el.dataset.ready = "true";
+      return;
+    }
+
+    let cancelled = false;
+    let recTimer = 0;
+    const start = () => {
+      if (cancelled) return;
+      const list = build();
+      el.dataset.ready = "true";
+      list?.forEach((a) => {
+        a.currentTime = 0;
+        a.play();
+      });
+      if (rec) {
+        recTimer = window.setTimeout(() => anims.current.forEach((a) => a.reverse()), 4900);
+      }
+    };
+    // Start once the type is ready so the word does not reflow mid-animation.
+    const ready = document.fonts?.ready ?? Promise.resolve();
+    Promise.race([ready, new Promise((r) => setTimeout(r, 1500))]).then(start);
+
+    if (rec && video) {
+      (window as unknown as { __recVideo: (t: number) => number }).__recVideo = (t: number) => {
+        const d = video.duration || 4.25;
+        const v = (t % d) + 1 / 120;
+        video.currentTime = v;
+        return v;
+      };
+    }
+
+    // Resize: finish anything running and rebuild at the new size (final state).
+    let raf = 0;
+    const onResize = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        if (busy.current) busy.current = false;
+        const list = build();
+        list?.forEach((a) => a.finish());
+      });
+    };
+    window.addEventListener("resize", onResize);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(recTimer);
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", onResize);
+      anims.current.forEach((a) => a.cancel());
+    };
+  }, [build]);
+
+  // "Let's Go": collapse to the hairline with everything leaving, then open again.
+  const replay = useCallback(async () => {
+    if (busy.current || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    busy.current = true;
+    const list = anims.current;
+    list.forEach((a) => {
+      a.finish();
+      a.playbackRate = -1;
+      a.play();
+    });
+    await Promise.all(list.map((a) => a.finished.catch(() => undefined)));
+    if (!busy.current) return;
+    list.forEach((a) => {
+      a.playbackRate = 1;
+      a.currentTime = 0;
+      a.play();
+    });
+    await Promise.all(list.map((a) => a.finished.catch(() => undefined)));
+    busy.current = false;
+  }, []);
+
+  const h = t.hero;
   return (
-    <header className="relative flex h-[100svh] flex-col overflow-x-clip">
-      <div className="relative min-h-0 flex-1">
-        <FadeIn delay={0.15} y={40} className="pointer-events-none absolute inset-x-0 top-1 z-20 overflow-hidden px-2 sm:top-2">
-          <h1
-            className="hero-title w-full whitespace-nowrap text-center text-[9.2vw] font-black uppercase leading-none tracking-tight sm:text-[10.6vw] lg:text-[12.4vw]"
-          >
-            {t.heroTitle}
-          </h1>
-        </FadeIn>
-
-        <FadeIn delay={0.28} y={24} className="pointer-events-none absolute inset-x-0 top-[27%] z-20 h-0 sm:top-[25%] lg:top-[23%]">
-          <span
-            ref={ceoRef}
-            className="hero-title absolute top-0 -translate-x-1/2 whitespace-nowrap text-[clamp(1.35rem,4.6vw,3.6rem)] font-black uppercase leading-none tracking-tight"
-            style={{ left: "18%" }}
-          >
-            CEO
-          </span>
-          <span
-            ref={developerRef}
-            className="hero-title absolute top-0 -translate-x-1/2 whitespace-nowrap text-[clamp(1.35rem,4.6vw,3.6rem)] font-black uppercase leading-none tracking-tight"
-            style={{ left: "82%" }}
-          >
-            DEVELOPER
-          </span>
-        </FadeIn>
-
-        <FadeIn delay={0.4} y={30} className="absolute inset-x-0 bottom-0 top-[calc(0.35rem+9.6vw)] z-10 flex justify-center sm:top-[calc(0.4rem+11vw)] lg:top-[calc(0.45rem+12.8vw)]">
-          <Magnet className="flex h-full items-start justify-center">
-            <img
-              ref={imgRef}
-              src={publicUrl("nawon-cutout.png?v=shirt")}
-              alt={t.portraitAlt}
-              width={1024}
-              height={1024}
-              className="h-[158%] w-auto max-w-none -translate-y-[18%] object-contain object-top"
-              draggable={false}
-            />
-          </Magnet>
-        </FadeIn>
+    <header ref={root} className="wh" data-ready="false">
+      <div className="wh-bg" aria-hidden="true">
+        <svg viewBox="0 0 1000 600" preserveAspectRatio="none">
+          {LINES.map((l, i) => (
+            <path key={i} d={l.d} fill="none" stroke="#fff" strokeWidth={l.w} strokeOpacity={l.o} vectorEffect="non-scaling-stroke" />
+          ))}
+        </svg>
       </div>
 
-      <div className="pointer-events-none relative z-30 flex items-end justify-between gap-4 px-5 pb-6 sm:px-8 sm:pb-8 md:px-10 md:pb-10">
-        <FadeIn delay={0.7} y={20} className="pointer-events-auto">
-          <a
-            href="#projects"
-            className="inline-flex rounded-full border-2 border-mist px-4 py-2.5 text-center text-[0.68rem] font-medium uppercase tracking-widest text-mist transition-colors duration-200 hover:bg-mist/10 sm:px-7 sm:py-3 sm:text-sm"
-          >
-            {t.viewWork}
-          </a>
-        </FadeIn>
-        <FadeIn delay={0.7} y={20} className="pointer-events-auto">
-          <a
-            href="#contact"
-            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-mist px-4 py-2.5 text-[0.68rem] font-medium uppercase tracking-widest text-ink transition-opacity duration-200 hover:opacity-80 sm:px-7 sm:py-3 sm:text-sm"
-          >
-            {t.contactMe}
-            <ArrowUpRight size={15} aria-hidden="true" />
-          </a>
-        </FadeIn>
+      <nav className="wh-nav" aria-label={h.navLabel}>
+        <ul>
+          {h.nav.map((n) => (
+            <li key={n.label}>
+              <a href={n.href} target={n.top ? "_top" : undefined}>
+                {n.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <ul className="wh-social">
+          <li>
+            <a href="https://www.instagram.com/newon.app" target="_blank" rel="noopener noreferrer">
+              Instagram
+            </a>
+          </li>
+          <li>
+            <a href="https://www.threads.com/@newon.app.dev" target="_blank" rel="noopener noreferrer">
+              Threads
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div className="wh-stage">
+        <h1 className="sr-only">NEWON</h1>
+        <div className="wh-row">
+          <span className="wh-part" aria-hidden="true">
+            NEW
+          </span>
+          <span className="wh-pill">
+            <video className="wh-video" src={VIDEO} poster={POSTER} muted loop playsInline autoPlay preload="auto" aria-hidden="true" />
+            <span className="wh-hair" aria-hidden="true" />
+            <svg className="wh-icon wh-icon--breeze" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
+              <path d="M3 8h10a3 3 0 1 0-3-3" />
+              <path d="M3 12h15a3 3 0 1 1-3 3" />
+              <path d="M3 16h7" />
+            </svg>
+            <button type="button" className="wh-icon wh-sound" aria-pressed={sound} aria-label={h.soundLabel} onClick={() => setSound((v) => !v)}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" />
+                {sound ? (
+                  <>
+                    <path d="M15.5 9a4 4 0 0 1 0 6" />
+                    <path d="M18 6.5a7.5 7.5 0 0 1 0 11" />
+                  </>
+                ) : (
+                  <path d="M16 10l4 4M20 10l-4 4" />
+                )}
+              </svg>
+            </button>
+          </span>
+          <span className="wh-part" aria-hidden="true">
+            ON
+          </span>
+        </div>
       </div>
+
+      <footer className="wh-foot">
+        <p className="wh-copy">{h.copy}</p>
+        <span className="wh-rule" aria-hidden="true" />
+        <button type="button" className="wh-cta" onClick={replay}>
+          {h.cta}
+        </button>
+      </footer>
     </header>
   );
 }

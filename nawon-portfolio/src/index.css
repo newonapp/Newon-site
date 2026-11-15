@@ -129,3 +129,405 @@ body {
     mask-image: none;
   }
 }
+
+/* ───────────────────── 01 · HERO — NEW · pill · ON ─────────────────────
+   Every size comes from --fs, the font size of the word. Inter is self-hosted (OFL). */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/nawon/fonts/inter-regular.woff") format("woff");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/nawon/fonts/inter-medium.woff") format("woff");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/nawon/fonts/inter-semibold.woff") format("woff");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/nawon/fonts/inter-extrabold.woff") format("woff");
+}
+
+.wh {
+  --fs: min(19.6svh, 11.4vw);
+  --ink: #1d1d1d;
+  --ink-2: #3a3a3a;
+  --rule: #a9a9a6;
+  --pill-fill: #d8d3cf;
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+  background: #ffffff;
+  color: var(--ink);
+  font-family: "Inter", "Noto Sans KR", system-ui, sans-serif;
+  font-size: var(--fs);
+}
+
+/* Before the timeline starts, show the opening frame (white, hairline only). */
+.wh[data-ready="false"] .wh-bg,
+.wh[data-ready="false"] .wh-nav,
+.wh[data-ready="false"] .wh-foot,
+.wh[data-ready="false"] .wh-icon {
+  opacity: 0;
+}
+
+.wh[data-ready="false"] .wh-pill {
+  width: 0.012em;
+  clip-path: inset(50% 0);
+}
+
+.wh-bg {
+  position: absolute;
+  inset: 0;
+  background: #f2f2f1;
+  pointer-events: none;
+}
+
+.wh-bg svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Nav */
+.wh-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  padding: calc(var(--fs) * 0.14) calc(var(--fs) * 0.27) 0;
+  font-size: max(12px, calc(var(--fs) * 0.072));
+  font-weight: 500;
+}
+
+.wh-nav ul {
+  display: flex;
+  gap: 1.6em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wh-nav a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.wh-nav a:hover {
+  color: var(--ink-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Hero row: NEW · pill · ON, centred 43 % from the top */
+.wh-stage {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 43%;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.wh-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.085em;
+  margin: 0;
+}
+
+.wh-part {
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.8;
+  white-space: nowrap;
+}
+
+.wh-pill {
+  position: relative;
+  flex: none;
+  width: 3.62em;
+  height: 1.81em;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--pill-fill);
+}
+
+.wh-video {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: max(4.2em, 100%);
+  height: 100%;
+  transform: translateX(-50%);
+  object-fit: cover;
+  object-position: center top;
+  pointer-events: none;
+}
+
+.wh-hair {
+  position: absolute;
+  inset: 0;
+  background: #b9b9b9;
+  pointer-events: none;
+}
+
+.wh-icon {
+  position: absolute;
+  top: 50%;
+  width: max(14px, 0.11em);
+  height: max(14px, 0.11em);
+  transform: translateY(-50%);
+  opacity: 0.85;
+}
+
+.wh-icon--breeze {
+  left: 0.26em;
+  pointer-events: none;
+}
+
+.wh-sound {
+  right: 0.22em;
+  width: max(26px, 0.17em);
+  height: max(26px, 0.17em);
+  padding: 0.03em;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.wh-sound svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.wh-sound:focus-visible,
+.wh-cta:focus-visible,
+.wh-nav a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.wh-sound:focus-visible {
+  outline-color: #fff;
+}
+
+/* Footer: paragraph · rule · button */
+.wh-foot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.18em;
+  padding: 0 0.27em 0.2em;
+}
+
+.wh-copy {
+  flex: none;
+  width: max(250px, 1.42em);
+  margin: 0;
+  font-size: max(12px, calc(var(--fs) * 0.066));
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.wh-copy::first-letter {
+  float: left;
+  margin: 0.08em 0.12em 0 0;
+  font-size: 2.35em;
+  font-weight: 600;
+  line-height: 0.8;
+  color: var(--ink);
+}
+
+.wh-rule {
+  flex: 1;
+  height: 1px;
+  margin-bottom: 0.11em;
+  background: var(--rule);
+  transform-origin: center;
+}
+
+.wh-cta {
+  flex: none;
+  padding: 0 1.5em;
+  height: max(40px, 0.27em);
+  border: 0;
+  border-radius: 999px;
+  background: #1b1b1b;
+  color: #fff;
+  font: inherit;
+  font-size: max(13px, calc(var(--fs) * 0.075));
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+.wh-cta:hover {
+  background: #000;
+}
+
+/* Phones: NEW over the pill over ON; the pill opens vertically. */
+@media (max-width: 720px) {
+  .wh {
+    --fs: min(30vw, 13svh);
+  }
+
+  .wh-nav {
+    padding: 14px 20px 0;
+    font-size: 12.5px;
+  }
+
+  .wh-social {
+    display: none !important;
+  }
+
+  .wh-stage {
+    top: 47%;
+    padding: 0 20px;
+  }
+
+  .wh-row {
+    flex-direction: column;
+    column-gap: 0;
+    row-gap: 0.1em;
+  }
+
+  .wh-pill {
+    width: 100%;
+    height: var(--pill-h);
+  }
+
+  .wh[data-ready="false"] .wh-pill {
+    width: 100%;
+    height: 1.5px;
+    clip-path: inset(0 50%);
+  }
+
+  .wh-video {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: var(--pill-h);
+    transform: translateY(-50%);
+  }
+
+  .wh-icon--breeze {
+    left: 18px;
+  }
+
+  .wh-sound {
+    right: 12px;
+  }
+
+  .wh-foot {
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 0 20px 20px;
+  }
+
+  .wh-copy {
+    width: 100%;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .wh-rule {
+    margin-bottom: 19px;
+  }
+
+  .wh-cta {
+    height: 38px;
+    padding: 0 18px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 720px) and (max-height: 600px) {
+  .wh-stage {
+    top: 43%;
+  }
+
+  .wh-copy {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wh-video {
+    animation: none;
+  }
+}
+
+/* ───────────────────── Business card (after the hero) ─────────────────────
+   Continues the hero's paper ground; the printed card sits on it like a real card. */
+.bcard {
+  display: flex;
+  justify-content: center;
+  padding: clamp(56px, 12svh, 140px) 20px clamp(64px, 14svh, 160px);
+  background: #f2f2f1;
+}
+
+.bcard__wrap {
+  width: min(100%, 780px);
+}
+
+.bcard__card {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 266.25 / 153;
+  overflow: hidden;
+  border-radius: clamp(6px, 1.1vw, 12px);
+  background: #fff;
+  box-shadow:
+    0 1px 2px rgba(29, 29, 29, 0.06),
+    0 18px 40px -18px rgba(29, 29, 29, 0.28),
+    0 40px 90px -40px rgba(29, 29, 29, 0.22);
+}
+
+.bcard__card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  /* The PDF's logo photo sits on #fefefe; lift it to pure white so no box shows around it. */
+  filter: brightness(1.008);
+}
+
+.bcard__link {
+  position: absolute;
+  border-radius: 3px;
+}
+
+.bcard__link:hover {
+  background: rgba(29, 29, 29, 0.05);
+}
+
+.bcard__link:focus-visible {
+  outline: 2px solid #1d1d1d;
+  outline-offset: 2px;
+}
