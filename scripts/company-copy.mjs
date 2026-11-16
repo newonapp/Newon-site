@@ -106,8 +106,8 @@ const KO = {
     visionCtaContact: "Newon과 프로젝트 시작하기 →",
   },
   portfolio: {
-    seoTitle: "Portfolio | Newon Company",
-    metaDescription: "NEWON이 직접 기획하고 개발한 4개 핵심 플랫폼(BABYLOG·PETLOG·SHAREON·ONGIL)과 출시한 앱, 웹 게임, 소프트웨어, 개발 과정과 이정표를 소개합니다.",
+    seoTitle: "포트폴리오 | NEWON — 직접 만들고 운영하는 디지털 플랫폼",
+    metaDescription: "NEWON이 직접 기획·디자인·개발·출시하고 운영하는 4개 핵심 플랫폼(SHAREON·BABYLOG·PETLOG·ONGIL)과 App Store·Google Play에 출시한 앱 11개, 개발 과정, 이정표, 사업 방향을 소개합니다.",
     eyebrow: "PORTFOLIO",
     subEyebrow: "SELECTED WORK",
     headline: "아이디어에서\n출시까지.",

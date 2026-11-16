@@ -67,7 +67,7 @@ function copyLang(dir) {
   return dir;
 }
 
-// ko portfolio hub: static about/contact-style page (other languages keep the /nawon/ embed).
+// ko portfolio hub: about-style first screen + /ko/contact/ lower-section design (other languages keep the /nawon/ embed).
 const KO_PORTFOLIO_MAIN_PATH = path.join(ROOT, "scripts", "templates", "portfolio-ko-main.html");
 const KO_PORTFOLIO_MAIN = fs.existsSync(KO_PORTFOLIO_MAIN_PATH)
   ? fs.readFileSync(KO_PORTFOLIO_MAIN_PATH, "utf8").replace(/^<!--[\s\S]*?-->\s*/, "").trim()
@@ -1332,7 +1332,10 @@ function renderCompany() {
         }),
         extraHead: KO_PORTFOLIO_MAIN && dir === "ko"
           ? `<link rel="stylesheet" href="/about-page.css?v=20260923vent3" />
-    <link rel="stylesheet" href="/assets/portfolio/portfolio-site.css?v=20261116pf3" />`
+    <link rel="stylesheet" href="/home-portfolio.css?v=20261019np13" />
+    <link rel="stylesheet" href="/contact/contact-page.css?v=${CONTACT_ASSET_V}" />
+    <link rel="stylesheet" href="/assets/portfolio/portfolio-site.css?v=20261116pf8" />
+    <script src="/assets/portfolio/portfolio-page.js?v=20261116pf4" defer></script>`
           : `<style>
       .nawon-embed { height: calc(100svh - var(--gnav-h, 74px)); margin: 0; padding: 0; background: #0c0c0c; }
       .nawon-embed__frame { display: block; width: 100%; height: 100%; border: 0; background: #0c0c0c; }
@@ -1349,6 +1352,12 @@ function renderCompany() {
       <iframe class="nawon-embed__frame" src="/nawon/?v=20261019pf15" title="NEWON Portfolio"></iframe>
     </main>`
       );
+      if (KO_PORTFOLIO_MAIN && dir === "ko") {
+        // ko portfolio: dedicated share image (1200×630) instead of the square logo
+        html = html
+          .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${SITE_ORIGIN}/assets/portfolio/og-portfolio.png$2`)
+          .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${SITE_ORIGIN}/assets/portfolio/og-portfolio.png$2`);
+      }
       writeFile(path.join(ROOT, dir, "portfolio", "index.html"), html);
       pageCount += 1;
     }
