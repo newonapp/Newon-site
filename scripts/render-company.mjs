@@ -67,6 +67,12 @@ function copyLang(dir) {
   return dir;
 }
 
+// ko portfolio hub: static about/contact-style page (other languages keep the /nawon/ embed).
+const KO_PORTFOLIO_MAIN_PATH = path.join(ROOT, "scripts", "templates", "portfolio-ko-main.html");
+const KO_PORTFOLIO_MAIN = fs.existsSync(KO_PORTFOLIO_MAIN_PATH)
+  ? fs.readFileSync(KO_PORTFOLIO_MAIN_PATH, "utf8").replace(/^<!--[\s\S]*?-->\s*/, "").trim()
+  : "";
+
 function writeFile(filePath, contents) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, contents);
@@ -1324,7 +1330,10 @@ function renderCompany() {
           isPartOf: { "@type": "WebSite", name: "NEWON", url: `${SITE_ORIGIN}/` },
           publisher: { "@type": "Organization", name: "NEWON", url: `${SITE_ORIGIN}/` },
         }),
-        extraHead: `<style>
+        extraHead: KO_PORTFOLIO_MAIN && dir === "ko"
+          ? `<link rel="stylesheet" href="/about-page.css?v=20260923vent3" />
+    <link rel="stylesheet" href="/assets/portfolio/portfolio-site.css?v=20261116pf3" />`
+          : `<style>
       .nawon-embed { height: calc(100svh - var(--gnav-h, 74px)); margin: 0; padding: 0; background: #0c0c0c; }
       .nawon-embed__frame { display: block; width: 100%; height: 100%; border: 0; background: #0c0c0c; }
       body:has(.nawon-embed) { overflow: hidden; }
@@ -1333,7 +1342,10 @@ function renderCompany() {
       });
       html = html.replace(
         /<main id="co-main" class="co-page"[\s\S]*?<\/main>/,
-        `<main id="co-main" class="nawon-embed" data-co-page="portfolio" data-co-analytics="company_portfolio">
+        () =>
+          KO_PORTFOLIO_MAIN && dir === "ko"
+            ? KO_PORTFOLIO_MAIN
+            : `<main id="co-main" class="nawon-embed" data-co-page="portfolio" data-co-analytics="company_portfolio">
       <iframe class="nawon-embed__frame" src="/nawon/?v=20261019pf15" title="NEWON Portfolio"></iframe>
     </main>`
       );
