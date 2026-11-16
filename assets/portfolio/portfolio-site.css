@@ -379,3 +379,8 @@ html[data-newon-shell-theme="dark"] body .pf-page .pf-top .ab-metrics .ab-metric
 /* section rhythm */
 .pf-ct .ct-head { margin-bottom: 3.5rem; }
 @media (min-width: 1024px) { .pf-ct .ct-sec { padding-top: 7.5rem; padding-bottom: 8rem; } .pf-ct .ct-info.pf-sec { padding-bottom: 4rem; } }
+
+/* v9: iPhone-proportioned home screens (390×844 artwork incl. status bar + Dynamic Island) */
+.pf-ct .pf-phone { padding: 7px; border-radius: 50px; background: #0c0c0c !important; }
+.pf-ct .pf-phone img { aspect-ratio: 390 / 844; object-fit: cover; border-radius: 43px; }
+.pf-ct .pf-app--game .pf-app__top img { background: #0c0c0c; }

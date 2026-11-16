@@ -1334,7 +1334,7 @@ function renderCompany() {
           ? `<link rel="stylesheet" href="/about-page.css?v=20260923vent3" />
     <link rel="stylesheet" href="/home-portfolio.css?v=20261019np13" />
     <link rel="stylesheet" href="/contact/contact-page.css?v=${CONTACT_ASSET_V}" />
-    <link rel="stylesheet" href="/assets/portfolio/portfolio-site.css?v=20261116pf8" />
+    <link rel="stylesheet" href="/assets/portfolio/portfolio-site.css?v=20261117pf9" />
     <script src="/assets/portfolio/portfolio-page.js?v=20261116pf4" defer></script>`
           : `<style>
       .nawon-embed { height: calc(100svh - var(--gnav-h, 74px)); margin: 0; padding: 0; background: #0c0c0c; }
