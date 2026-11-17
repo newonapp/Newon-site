@@ -10,6 +10,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import {
+  HERO_MOTION_MODE,
   HERO_MOTION_ENABLED,
   HERO_MOTION_PAGES,
   HERO_MOTION_LANGS,
@@ -32,7 +33,23 @@ const siteFilmSources = () => {
   return all;
 };
 
-test("switched off: the 35 editorial first screens × 9 languages are still (no film)", { skip: HERO_MOTION_ENABLED }, () => {
+test("black mode: the 35 editorial first screens × 9 languages are dark on plain black (no film)", { skip: HERO_MOTION_MODE !== "black" }, () => {
+  assert.equal(HERO_MOTION_PAGES.length, 35);
+  for (const lang of HERO_MOTION_LANGS) {
+    for (const { page } of HERO_MOTION_PAGES) {
+      const html = read(`${lang}/${page}index.html`);
+      const where = `${lang}/${page}`;
+      assert.equal((html.match(/data-hm-film="black"/g) || []).length, 1, `${where} one black hero`);
+      assert.ok(html.includes('<div class="hm-film__stage" aria-hidden="true"><div class="hm-film__scrim"></div></div>'), `${where} black stage`);
+      assert.ok(!html.includes("hm-film__video"), `${where} no film video`);
+      assert.match(html, /<link rel="stylesheet" href="\/hero-motion\.css\?v=/, `${where} css`);
+      assert.match(html, /<script src="\/hero-motion\.js\?v=[^"]+" defer><\/script>/, `${where} hero-motion.js`);
+    }
+  }
+  assert.match(read("hero-motion.css"), /\.hm-film--black:not\(#hm\) \.hm-film__stage \{ background-image: none !important; background-color: #0c0c0c !important; \}/);
+});
+
+test("switched off: the 35 editorial first screens × 9 languages are still (no film)", { skip: HERO_MOTION_MODE !== "off" }, () => {
   assert.equal(HERO_MOTION_PAGES.length, 35);
   for (const lang of HERO_MOTION_LANGS) {
     for (const { page } of HERO_MOTION_PAGES) {

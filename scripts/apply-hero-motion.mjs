@@ -19,15 +19,17 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 
 /**
- * Off (2026-11-17, owner's request): these editorial pages keep their original white, still first
- * screen. With the switch off, runHeroMotion() strips the film backdrop again (removeHeroMotion).
- * Set to true to bring the moving first screens back.
+ * Mode of the editorial first screens (owner's request, 2026-11-17):
+ *   "black" — the dark first screen (white copy, breadcrumb strip on the backdrop) on plain black, no film
+ *   "film"  — the moving film backdrop with its poster
+ *   "off"   — the original white, still first screen
  */
-export const HERO_MOTION_ENABLED = false;
+export const HERO_MOTION_MODE = "black";
+export const HERO_MOTION_ENABLED = HERO_MOTION_MODE === "film";
 
 export const HERO_MOTION_LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
-export const HERO_MOTION_CSS_V = "20261027hm1";
-export const HERO_MOTION_JS_V = "20261027hm1";
+export const HERO_MOTION_CSS_V = "20261117hm2";
+export const HERO_MOTION_JS_V = "20261117hm2";
 const FILM_KEEP_V = "20260924play2";
 
 const CF = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/";
@@ -117,6 +119,7 @@ export const HERO_MOTION_PAGES = [
 ];
 
 export function heroFilmStageHtml(filmKey) {
+  if (filmKey === "black") return `<div class="hm-film__stage" aria-hidden="true"><div class="hm-film__scrim"></div></div>`;
   const film = HERO_FILMS[filmKey];
   if (!film) throw new Error(`hero-motion: unknown film ${filmKey}`);
   return (
@@ -149,7 +152,7 @@ export function applyHeroMotion(html, { kind, film }) {
     out = out.replace(/<\/head>/i, `<link rel="stylesheet" href="/hero-motion.css?v=${HERO_MOTION_CSS_V}" />\n</head>`);
   }
   const tail = [];
-  if (!out.includes("/film-keep.js")) tail.push(`<script src="/film-keep.js?v=${FILM_KEEP_V}"></script>`);
+  if (film !== "black" && !out.includes("/film-keep.js")) tail.push(`<script src="/film-keep.js?v=${FILM_KEEP_V}"></script>`);
   if (!out.includes("/hero-motion.js")) tail.push(`<script src="/hero-motion.js?v=${HERO_MOTION_JS_V}" defer></script>`);
   if (tail.length) {
     const idx = out.toLowerCase().lastIndexOf("</body>");
@@ -165,6 +168,7 @@ export function removeHeroMotion(html) {
   // opening tag: drop the added classes + data attribute, then the film stage right after it
   out = out.replace(/(<[a-z]+\b[^>]*?)\s+hm-film hm-film--[a-z]+("[^>]*?)\s+data-hm-film="[a-z]+">/, "$1$2>");
   out = out.replace(/<div class="hm-film__stage" aria-hidden="true"><video class="hm-film__video"[\s\S]*?<\/video><div class="hm-film__scrim"><\/div><\/div>/, "");
+  out = out.replace(/<div class="hm-film__stage" aria-hidden="true"><div class="hm-film__scrim"><\/div><\/div>/, "");
   out = out.replace(/<link rel="stylesheet" href="\/hero-motion\.css\?v=[^"]*" \/>\n/, "");
   // film-keep.js was only added together with hero-motion.js (both appended before </body>)
   out = out.replace(/<script src="\/film-keep\.js\?v=[^"]*"><\/script>\n(<script src="\/hero-motion\.js\?v=[^"]*" defer><\/script>\n)/, "$1");
@@ -188,7 +192,14 @@ export function runHeroMotion(root = ROOT) {
         missing.push(`${lang}/${entry.page} (redirect stub)`);
         continue;
       }
-      const next = HERO_MOTION_ENABLED ? applyHeroMotion(html, entry) : removeHeroMotion(html);
+      const want = HERO_MOTION_MODE === "black" ? { ...entry, film: "black" } : entry;
+      const already = html.includes(`data-hm-film="${want.film}"`);
+      const next =
+        HERO_MOTION_MODE === "off"
+          ? removeHeroMotion(html)
+          : already
+            ? html
+            : applyHeroMotion(removeHeroMotion(html), want);
       if (next === null) {
         missing.push(`${lang}/${entry.page} (no ${entry.kind} hero)`);
         continue;
@@ -209,8 +220,8 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     process.exit(1);
   }
   console.log(
-    HERO_MOTION_ENABLED
-      ? `apply-hero-motion: ${changed} converted · ${kept} already moving · ${HERO_MOTION_PAGES.length} pages × ${HERO_MOTION_LANGS.length} langs`
-      : `apply-hero-motion: off — ${changed} restored to still heroes · ${kept} already still`,
+    HERO_MOTION_MODE === "off"
+      ? `apply-hero-motion: off — ${changed} restored to still heroes · ${kept} already still`
+      : `apply-hero-motion: ${HERO_MOTION_MODE} — ${changed} converted · ${kept} unchanged · ${HERO_MOTION_PAGES.length} pages × ${HERO_MOTION_LANGS.length} langs`,
   );
 }
