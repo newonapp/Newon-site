@@ -267,7 +267,3 @@ html[data-newon-shell-theme="dark"] .hm-lifted :is(.bp-crumb, .co-crumb, .rs-cru
   background: transparent !important;
   background-color: transparent !important;
 }
-
-/* Black first screen (HERO_MOTION_MODE = "black"): same dark hero and white copy, plain black, no film. */
-.hm-film--black:not(#hm) .hm-film__stage { background-image: none !important; background-color: #0c0c0c !important; }
-.hm-film--black:not(#hm) .hm-film__scrim { background: none !important; }
