@@ -14,6 +14,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { spawnSync } from "child_process";
 import { publishedArticles } from "./news-data.mjs";
+import { localizeFilms } from "./localize-films.mjs";
 
 /** Build timestamp. SOURCE_DATE_EPOCH (seconds, reproducible-builds convention) pins it; unset = the current time, as before. */
 const buildDate = () => (process.env.SOURCE_DATE_EPOCH && /^\d+$/.test(process.env.SOURCE_DATE_EPOCH) ? new Date(Number(process.env.SOURCE_DATE_EPOCH) * 1000) : new Date());
@@ -643,6 +644,12 @@ spawnSync(process.execPath, [path.join(ROOT, "scripts", "normalize-asset-version
   const origin = livonApiOriginFromEnv(process.env);
   const { preview } = livonApiOriginsFromEnv(process.env);
   if (origin || preview) fs.writeFileSync(path.join(OUT, "livon", "livon-api-config.js"), livonApiConfigScript(origin, preview), "utf8");
+}
+
+// Background films: serve the optimised copies from newon.app (assets/films) with first-frame posters.
+{
+  const r = localizeFilms(OUT);
+  console.log(`publish-site: films localized — ${r.urls} URLs in ${r.files} files, ${r.posters} posters`);
 }
 
 verify();
