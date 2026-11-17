@@ -18,6 +18,13 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 
+/**
+ * Off (2026-11-17, owner's request): these editorial pages keep their original white, still first
+ * screen. With the switch off, runHeroMotion() strips the film backdrop again (removeHeroMotion).
+ * Set to true to bring the moving first screens back.
+ */
+export const HERO_MOTION_ENABLED = false;
+
 export const HERO_MOTION_LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
 export const HERO_MOTION_CSS_V = "20261027hm1";
 export const HERO_MOTION_JS_V = "20261027hm1";
@@ -151,6 +158,20 @@ export function applyHeroMotion(html, { kind, film }) {
   return out;
 }
 
+/** Exact inverse of applyHeroMotion: restores the page's original editorial hero. */
+export function removeHeroMotion(html) {
+  if (!html.includes("data-hm-film=")) return html;
+  let out = html;
+  // opening tag: drop the added classes + data attribute, then the film stage right after it
+  out = out.replace(/(<[a-z]+\b[^>]*?)\s+hm-film hm-film--[a-z]+("[^>]*?)\s+data-hm-film="[a-z]+">/, "$1$2>");
+  out = out.replace(/<div class="hm-film__stage" aria-hidden="true"><video class="hm-film__video"[\s\S]*?<\/video><div class="hm-film__scrim"><\/div><\/div>/, "");
+  out = out.replace(/<link rel="stylesheet" href="\/hero-motion\.css\?v=[^"]*" \/>\n/, "");
+  // film-keep.js was only added together with hero-motion.js (both appended before </body>)
+  out = out.replace(/<script src="\/film-keep\.js\?v=[^"]*"><\/script>\n(<script src="\/hero-motion\.js\?v=[^"]*" defer><\/script>\n)/, "$1");
+  out = out.replace(/<script src="\/hero-motion\.js\?v=[^"]*" defer><\/script>\n/, "");
+  return out;
+}
+
 export function runHeroMotion(root = ROOT) {
   let changed = 0;
   let kept = 0;
@@ -167,7 +188,7 @@ export function runHeroMotion(root = ROOT) {
         missing.push(`${lang}/${entry.page} (redirect stub)`);
         continue;
       }
-      const next = applyHeroMotion(html, entry);
+      const next = HERO_MOTION_ENABLED ? applyHeroMotion(html, entry) : removeHeroMotion(html);
       if (next === null) {
         missing.push(`${lang}/${entry.page} (no ${entry.kind} hero)`);
         continue;
@@ -187,5 +208,9 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     console.error(`apply-hero-motion: ${missing.length} page(s) without a convertible hero:\n  ${missing.join("\n  ")}`);
     process.exit(1);
   }
-  console.log(`apply-hero-motion: ${changed} converted · ${kept} already moving · ${HERO_MOTION_PAGES.length} pages × ${HERO_MOTION_LANGS.length} langs`);
+  console.log(
+    HERO_MOTION_ENABLED
+      ? `apply-hero-motion: ${changed} converted · ${kept} already moving · ${HERO_MOTION_PAGES.length} pages × ${HERO_MOTION_LANGS.length} langs`
+      : `apply-hero-motion: off — ${changed} restored to still heroes · ${kept} already still`,
+  );
 }

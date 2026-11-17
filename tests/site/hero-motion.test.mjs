@@ -1,5 +1,7 @@
 /**
- * Moving first screens: every editorial hero carries a muted autoplay loop film (scripts/apply-hero-motion.mjs).
+ * Moving first screens (scripts/apply-hero-motion.mjs). Switched off on 2026-11-17 at the owner's request:
+ * the 35 editorial pages keep their original white, still first screen. With HERO_MOTION_ENABLED = true
+ * every editorial hero carries a muted autoplay loop film again.
  * Run: node --test tests/site/hero-motion.test.mjs   (reads the committed HTML; no build needed)
  */
 import test from "node:test";
@@ -8,10 +10,12 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import {
+  HERO_MOTION_ENABLED,
   HERO_MOTION_PAGES,
   HERO_MOTION_LANGS,
   HERO_FILMS,
   applyHeroMotion,
+  removeHeroMotion,
 } from "../../scripts/apply-hero-motion.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
@@ -28,7 +32,21 @@ const siteFilmSources = () => {
   return all;
 };
 
-test("35 editorial first screens × 9 languages carry one film hero", () => {
+test("switched off: the 35 editorial first screens × 9 languages are still (no film)", { skip: HERO_MOTION_ENABLED }, () => {
+  assert.equal(HERO_MOTION_PAGES.length, 35);
+  for (const lang of HERO_MOTION_LANGS) {
+    for (const { page } of HERO_MOTION_PAGES) {
+      const html = read(`${lang}/${page}index.html`);
+      const where = `${lang}/${page}`;
+      assert.ok(!html.includes("data-hm-film="), `${where} no film host`);
+      assert.ok(!html.includes("hm-film__video"), `${where} no film video`);
+      assert.ok(!html.includes("/hero-motion.css"), `${where} no hero-motion.css`);
+      assert.ok(!html.includes("/hero-motion.js"), `${where} no hero-motion.js`);
+    }
+  }
+});
+
+test("35 editorial first screens × 9 languages carry one film hero", { skip: !HERO_MOTION_ENABLED }, () => {
   assert.equal(HERO_MOTION_PAGES.length, 35);
   for (const lang of HERO_MOTION_LANGS) {
     for (const { page, film } of HERO_MOTION_PAGES) {
@@ -75,10 +93,22 @@ test("films are existing site films with local posters; film-keep.js covers the 
 
 test("applyHeroMotion is idempotent and keeps the hero content", () => {
   const html = read("ko/news/index.html");
-  assert.equal(applyHeroMotion(html, { kind: "nr", film: "ai" }), html);
+  const moving = applyHeroMotion(html, { kind: "nr", film: "ai" });
+  assert.equal(applyHeroMotion(moving, { kind: "nr", film: "ai" }), moving);
   const raw = `<html><head></head><body><main><section class="bp-hero" data-rs-reveal aria-labelledby="t"><h1 id="t">Blog</h1></section></main></body></html>`;
   const once = applyHeroMotion(raw, { kind: "bp", film: "ongil" });
   assert.match(once, /<section class="bp-hero hm-film hm-film--ongil" data-rs-reveal aria-labelledby="t" data-hm-film="ongil"><div class="hm-film__stage"/);
   assert.ok(once.includes('<h1 id="t">Blog</h1>'));
   assert.equal(applyHeroMotion(once, { kind: "bp", film: "ongil" }), once);
+});
+
+test("removeHeroMotion is the exact inverse of applyHeroMotion", () => {
+  for (const lang of HERO_MOTION_LANGS) {
+    for (const entry of HERO_MOTION_PAGES) {
+      const still = read(`${lang}/${entry.page}index.html`);
+      const moving = applyHeroMotion(removeHeroMotion(still), entry);
+      assert.ok(moving && moving.includes(`data-hm-film="${entry.film}"`), `${lang}/${entry.page} converts`);
+      assert.equal(removeHeroMotion(moving), removeHeroMotion(still), `${lang}/${entry.page} round trip`);
+    }
+  }
 });
