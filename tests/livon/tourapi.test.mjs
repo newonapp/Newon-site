@@ -394,6 +394,13 @@ test('30 route: every TourAPI region the ONGIL app or legacy LIVON can send is a
   }
   assert.deepEqual(Object.keys(tour.REGION_CODES), ONGIL_APP_TOUR_REGIONS, 'route table and ONGIL app list stay the same 16 names, same order');
 });
+test('30b 광주·전남 items keep their province: the merged name the live service sends is a known 시·도', () => {
+  const e = tour.toEntity(item({ addr1: '전남광주통합특별시 신안군 흑산면 가거도길 38-2' }), 'x');
+  assert.equal(e.location.region, '전남광주통합특별시');
+  for (const [a, r] of [['서울특별시 종로구 사직로 161', '서울특별시'], ['강원특별자치도 강릉시 x', '강원특별자치도'], ['세종특별자치시 x', '세종특별자치시'], ['어딘가 x', null]]) {
+    assert.equal(tour.toEntity(item({ addr1: a }), 'x').location.region, r, a);
+  }
+});
 test('31 both LIVON client versions are served: main\'s 광주 → empty without a provider call; LIVON Next V1\'s 광주·전남 → code 12', async () => {
   const up = upstream(() => reply(ok([item()])));
   const h = handler(ENV, up);
@@ -403,4 +410,109 @@ test('31 both LIVON client versions are served: main\'s 광주 → empty without
   assert.equal(r.statusCode, 200);
   assert.equal(up.calls[0].url.searchParams.get('lDongRegnCd'), '12');
   assert.equal(JSON.parse(r.body).items.length, 1);
+});
+
+/* ───────── festivals (type 15) — ONGIL 축제·행사: list, date window, paging, detail (added in PR #1 review round) ───────── */
+const NOW = Date.parse('2026-11-20T03:00:00Z');               /* 2026-11-20 12:00 KST */
+const fhandler = (up, now = NOW) => createDataHandler({ env: ENV, fetcher: up.fetcher, cache: memoryCache(), now: () => now, log: () => {} });
+const fest = (o = {}) => Object.assign({ contentid: '3001', contenttypeid: '15', title: '[QA 픽스처] 축제', addr1: '전남광주통합특별시 담양군 x',
+  eventstartdate: '20261201', eventenddate: '20261203', mapx: '127.0', mapy: '35.3', tel: '061-000-0000' }, o);
+const body = r => JSON.parse(r.body);
+
+test('F1 festival list: searchFestival2, eventStartDate = today in Korea, region code, no end date without a window', async () => {
+  const up = upstream(() => reply(ok([fest()])));
+  const r = await call(fhandler(up), Q('type=15&region=' + enc('광주·전남') + '&page=1&limit=20'));
+  assert.equal(r.statusCode, 200);
+  const u = up.calls[0].url;
+  assert.equal(op(up.calls[0]), 'searchFestival2');
+  assert.equal(u.searchParams.get('eventStartDate'), '20261120');
+  assert.equal(u.searchParams.get('lDongRegnCd'), '12');
+  assert.equal(u.searchParams.has('eventEndDate'), false);
+  assert.equal(u.searchParams.has('contentTypeId'), false, 'the festival operation takes no type');
+  const e = body(r).items[0];
+  assert.deepEqual([e.type, e.providerId, e.schedule.startAt, e.schedule.endAt, e.location.region], ['event', '3001', '2026-11-30T15:00:00.000Z', '2026-12-03T14:59:59.000Z', '전남광주통합특별시'], 'Korean calendar days as UTC instants (start 00:00 KST, end 23:59:59 KST)');
+  /* without a region: nationwide, no region code sent */
+  const up2 = upstream(() => reply(ok([fest()])));
+  assert.equal((await call(fhandler(up2), Q('type=15&page=1&limit=20'))).statusCode, 200);
+  assert.equal(up2.calls[0].url.searchParams.has('lDongRegnCd'), false);
+});
+
+test('F2 festival rows: no valid start date → dropped; end before start → no end; wrong content type → dropped', async () => {
+  const up = upstream(() => reply(ok([fest(), fest({ contentid: '3002', eventstartdate: '' }), fest({ contentid: '3003', eventstartdate: '20261340' }),
+    fest({ contentid: '3004', eventenddate: '20261101' }), fest({ contentid: '3005', contenttypeid: '12' })], 5)));
+  const items = body(await call(fhandler(up), Q('type=15&page=1&limit=20'))).items;
+  assert.deepEqual(items.map(i => i.providerId), ['3001', '3004']);
+  assert.equal(items[1].schedule.endAt, null);
+});
+
+test('F3 date window (query=YYYYMMDD-YYYYMMDD): start clamped to today, end sent, rows outside the window removed', async () => {
+  const up = upstream(() => reply(ok([fest(), fest({ contentid: '3010', eventstartdate: '20270301', eventenddate: '20270302' }),
+    fest({ contentid: '3011', eventstartdate: '20261101', eventenddate: '20261125' })], 3)));
+  const r = await call(fhandler(up), Q('type=15&query=20261110-20261210&page=1&limit=20'));
+  assert.equal(r.statusCode, 200);
+  const u = up.calls[0].url;
+  assert.equal(u.searchParams.get('eventStartDate'), '20261120', 'never before today');
+  assert.equal(u.searchParams.get('eventEndDate'), '20261210');
+  assert.deepEqual(body(r).items.map(i => i.providerId), ['3001', '3011'], 'overlapping festivals only (3011 is still on today)');
+  /* edge days: starts the day after the window → out; starts on the window's last day → in (dates compared as Korean days) */
+  const upE = upstream(() => reply(ok([fest({ contentid: '3020', eventstartdate: '20261211', eventenddate: '20261212' }), fest({ contentid: '3021', eventstartdate: '20261210', eventenddate: '20261210' })], 2)));
+  assert.deepEqual(body(await call(fhandler(upE), Q('type=15&query=20261201-20261210'))).items.map(i => i.providerId), ['3021']);
+  /* a window in the future starts on its own first day */
+  const up2 = upstream(() => reply(ok([])));
+  await call(fhandler(up2), Q('type=15&query=20261201-20261231'));
+  assert.equal(up2.calls[0].url.searchParams.get('eventStartDate'), '20261201');
+  /* a window that ended before today asks nothing */
+  const up3 = upstream(() => reply(ok([fest()])));
+  assert.ok(emptyOk(await call(fhandler(up3), Q('type=15&query=20261001-20261031'))));
+  assert.equal(up3.calls.length, 0);
+});
+
+test('F4 date window refusals: reversed, impossible dates, longer than 92 days, any other text → 400 without a call', async () => {
+  const up = upstream(() => reply(ok([fest()])));
+  for (const q of ['20261210-20261201', '20261131-20261201', '20261201-20270310', '축제', '2026-12-01', '20261201-']) {
+    assert.equal((await call(fhandler(up), Q('type=15&query=' + enc(q)))).statusCode, 400, q);
+  }
+  for (const q of ['type=15&lat=35.1&lng=126.9', 'type=15&region=' + enc('서울') + '&sigungu=110', 'type=15&region=' + enc('광주')]) {
+    assert.equal((await call(fhandler(up), Q(q))).statusCode, 400, q);
+  }
+  assert.equal(up.calls.length, 0);
+});
+
+test('F5 festival paging: hasMore follows the source total; the last page says no more', async () => {
+  const rows = n => Array.from({ length: n }, (_, i) => fest({ contentid: String(4000 + i) }));
+  const up = upstream(u => reply(ok(rows(u.searchParams.get('pageNo') === '1' ? 20 : 5), 25)));
+  const p1 = body(await call(fhandler(up), Q('type=15&page=1&limit=20')));
+  const p2 = body(await call(fhandler(up), Q('type=15&page=2&limit=20')));
+  assert.deepEqual([p1.items.length, p1.hasMore, p1.total], [20, true, 25]);
+  assert.deepEqual([p2.items.length, p2.hasMore], [5, false]);
+  assert.equal(up.calls[1].url.searchParams.get('pageNo'), '2');
+});
+
+test('F6 festival detail: detailCommon2 then detailIntro2 with type 15; dates/venue from intro; a non-festival id → empty', async () => {
+  const up = upstream(u => {
+    const name = op({ url: u });
+    if (name === 'detailCommon2') return reply(ok([fest({ overview: '픽스처 <b>개요</b>', homepage: '<a href="https://festival.example.org">x</a>' })]));
+    if (name === 'detailIntro2') return reply(ok([{ eventstartdate: '20261202', eventenddate: '20261204', eventplace: '픽스처 광장', sponsor1: '픽스처 군청' }]));
+    return reply(ok([]));
+  });
+  const r = await call(fhandler(up), Q('id=3001&type=15'));
+  assert.equal(r.statusCode, 200);
+  assert.deepEqual(up.calls.map(op), ['detailCommon2', 'detailIntro2']);
+  assert.equal(up.calls[1].url.searchParams.get('contentTypeId'), '15');
+  const e = body(r).items[0];
+  assert.deepEqual([e.schedule.startAt, e.schedule.endAt, e.venue, e.organizer], ['2026-12-01T15:00:00.000Z', '2026-12-04T14:59:59.000Z', '픽스처 광장', '픽스처 군청']);
+  assert.equal(e.description, '픽스처 개요');
+  const up2 = upstream(() => reply(ok([fest({ contenttypeid: '12' })])));
+  assert.ok(emptyOk(await call(fhandler(up2), Q('id=3001&type=15'))));
+  assert.equal(up2.calls.length, 1, 'no intro call for a record that is not a festival');
+});
+
+test('F7 festival upstream failures keep fixed codes and are not cached', async () => {
+  let n = 0;
+  const up = upstream(() => { n++; return n === 1 ? reply('oops', { status: 500 }) : reply(ok([fest()])); });
+  const h = fhandler(up);
+  const a = await call(h, Q('type=15&page=1&limit=20'));
+  assert.equal(a.statusCode, 502); assert.equal(body(a).code, 'UPSTREAM_ERROR'); assert.doesNotMatch(a.body, /oops|DO\/NOT|serviceKey/);
+  const b = await call(h, Q('type=15&page=1&limit=20'));
+  assert.equal(b.statusCode, 200, 'the failure was not cached');
 });
