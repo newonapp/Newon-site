@@ -1,0 +1,297 @@
+/* Newon Creative — Business sub-brand page */
+.cr-page {
+  --cr-bg: #ffffff;
+  --cr-off: #f7f7f5;
+  --cr-text: #0a0a0a;
+  --cr-muted: #6e6e73;
+  --cr-border: #e7e7e7;
+  background: var(--cr-bg);
+  color: var(--cr-text);
+}
+
+html[data-newon-shell-theme="dark"] .cr-page {
+  --cr-bg: #090909;
+  --cr-off: #121212;
+  --cr-text: #f5f5f5;
+  --cr-muted: #a1a1a6;
+  --cr-border: rgba(255, 255, 255, 0.12);
+}
+
+.cr-inner {
+  width: min(1120px, calc(100% - 2.5rem));
+  margin: 0 auto;
+}
+
+.cr-hero {
+  padding: calc(var(--header-h, 64px) + 4.5rem) 0 4rem;
+  border-bottom: 1px solid var(--cr-border);
+}
+
+.cr-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cr-muted);
+}
+
+.cr-title {
+  margin: 0 0 1.15rem;
+  max-width: 16ch;
+  font-size: clamp(2rem, 5.2vw, 3.35rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.12;
+  word-break: keep-all;
+}
+
+.cr-lead {
+  margin: 0 0 1.75rem;
+  max-width: 38rem;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--cr-muted);
+  word-break: keep-all;
+}
+
+.cr-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+}
+
+.cr-section {
+  padding: 5rem 0;
+}
+
+.cr-section--off {
+  background: var(--cr-off);
+}
+
+.cr-label {
+  margin: 0 0 0.65rem;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cr-muted);
+}
+
+.cr-h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  word-break: keep-all;
+}
+
+.cr-sec-head {
+  margin-bottom: 2.25rem;
+}
+
+.cr-svc-grid {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--cr-border);
+}
+
+@media (min-width: 800px) {
+  .cr-svc-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.cr-svc {
+  padding: 1.75rem 0 1.25rem;
+  border-bottom: 1px solid var(--cr-border);
+}
+
+@media (min-width: 800px) {
+  .cr-svc {
+    padding: 1.75rem 1.5rem 1.25rem 0;
+    border-bottom: 0;
+    border-right: 1px solid var(--cr-border);
+  }
+  .cr-svc:last-child {
+    border-right: 0;
+    padding-right: 0;
+  }
+  .cr-svc:not(:first-child) {
+    padding-left: 1.5rem;
+  }
+}
+
+.cr-svc__label {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  color: var(--cr-muted);
+}
+
+.cr-svc__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cr-svc__list li {
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--cr-border);
+  font-size: 0.9875rem;
+  font-weight: 550;
+  letter-spacing: -0.015em;
+}
+
+.cr-process {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 800px) {
+  .cr-process {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+.cr-step {
+  padding-top: 1rem;
+  border-top: 1px solid var(--cr-border);
+}
+
+.cr-step__n {
+  display: block;
+  margin-bottom: 0.65rem;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  color: var(--cr-muted);
+}
+
+.cr-step__t {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.cr-step__d {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--cr-muted);
+  word-break: keep-all;
+}
+
+.cr-inquiry {
+  max-width: 760px;
+}
+
+.cr-form-lead {
+  margin: 0.85rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--cr-muted);
+}
+
+.cr-form__grid {
+  display: grid;
+  gap: 1rem;
+  margin: 1.75rem 0 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .cr-form__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cr-field--full {
+    grid-column: 1 / -1;
+  }
+}
+
+.cr-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 0.9375rem;
+  font-weight: 550;
+  color: var(--cr-muted);
+}
+
+.cr-field input,
+.cr-field select,
+.cr-field textarea {
+  width: 100%;
+  padding: 0.8125rem 0.8rem;
+  border: 1px solid var(--cr-border);
+  border-radius: 2px;
+  background: var(--cr-bg);
+  color: var(--cr-text);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 400;
+}
+
+.cr-field input:focus-visible,
+.cr-field select:focus-visible,
+.cr-field textarea:focus-visible {
+  outline: 2px solid var(--cr-text);
+  outline-offset: 1px;
+}
+
+.cr-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  margin-top: 0.35rem;
+}
+
+.cr-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1rem;
+  font-weight: 450;
+  color: var(--cr-text);
+  cursor: pointer;
+}
+
+.cr-form__note {
+  margin: 0.85rem 0 0;
+  font-size: 1rem;
+  color: var(--cr-muted);
+}
+
+.cr-success {
+  padding: 2rem 0;
+  border-top: 1px solid var(--cr-border);
+}
+
+.cr-success h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.cr-success p {
+  margin: 0;
+  color: var(--cr-muted);
+}
+
+@media (max-width: 639px) {
+  .cr-hero {
+    padding: calc(var(--header-h, 64px) + 3rem) 0 3rem;
+  }
+  .cr-section {
+    padding: 3.5rem 0;
+  }
+}
