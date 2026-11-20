@@ -297,3 +297,222 @@ test('36 existing providers regression: status lists the five earlier providers 
   const docs = root('docs/livon/real-data-providers.md');
   assert.match(docs, /kr-tourapi/); assert.match(docs, /KorService2/); assert.match(docs, /TOURAPI_SERVICE_KEY/);
 });
+
+/* ───────── region codes (ONGIL Enjoy Phase B) ───────── */
+const LIVE_CODES = { 서울: '11', 부산: '26', 대구: '27', 인천: '28', '광주·전남': '12', 대전: '30', 울산: '31', 세종: '36110', 경기: '41', 강원: '51', 충북: '43', 충남: '44', 전북: '52', 경북: '47', 경남: '48', 제주: '50' };
+
+test('26 regions: every region name is sent as the code the live service answers for it — nationwide, in a natural order', async () => {
+  assert.deepEqual({ ...tour.REGION_CODES }, LIVE_CODES);
+  assert.deepEqual(Object.keys(tour.REGION_CODES), ['서울', '부산', '대구', '인천', '광주·전남', '대전', '울산', '세종', '경기', '강원', '충북', '충남', '전북', '경북', '경남', '제주']);
+  const up = upstream(() => reply(ok([item()])));
+  const h = handler(ENV, up);
+  for (const [name, code] of Object.entries(LIVE_CODES)) {
+    const before = up.calls.length;
+    assert.equal((await call(h, Q('region=' + enc(name) + '&type=12'))).statusCode, 200, name);
+    const u = up.calls[before].url;
+    assert.equal(op(up.calls[before]), 'areaBasedList2');
+    assert.equal(u.searchParams.get('lDongRegnCd'), code, name + ' → ' + code);
+    assert.equal(u.searchParams.get('contentTypeId'), '12');
+    assert.equal(u.searchParams.has('areaCode'), false);
+  }
+  /* the keyword search carries the same code */
+  const k = up.calls.length;
+  await call(h, Q('query=' + enc('호수공원') + '&region=' + enc('세종')));
+  assert.equal(up.calls[k].url.searchParams.get('lDongRegnCd'), '36110');
+});
+
+/* [Shared compat V1] BEFORE (Phase B): 광주 alone and the dead two-digit codes answered 400. AFTER: they answer exactly what the
+   route on main answered for them — 200 with an empty list (production, 2026-10-15: region=광주 → 0 of 0, area=29 → 0, area=99 → 0)
+   — but without a provider call. The LIVON client on main still sends region=광주; with a 400 its 광주 chip would turn into an error. */
+const emptyOk = (r) => { const b = JSON.parse(r.body); return r.statusCode === 200 && b.ok === true && Array.isArray(b.items) && b.items.length === 0 && b.hasMore === false; };
+
+test('27 광주·전남 is one upstream region (12); 광주 alone keeps main\'s empty answer (no provider call), never the merged list; other spellings are refused', async () => {
+  const up = upstream(() => reply(ok([item()])));
+  const h = handler(ENV, up);
+  assert.equal(tour.parseParams({ region: '광주·전남' }).area, '12');
+  assert.equal('광주' in tour.REGION_CODES, false, '광주 is not a region of its own');
+  assert.deepEqual([...tour.LEGACY_EMPTY_REGIONS], ['광주']);
+  for (const q of ['region=' + enc('광주') + '&type=12', 'region=' + enc('광주'), 'query=' + enc('공원') + '&region=' + enc('광주'), 'region=' + enc('광주') + '&sigungu=110', 'region=' + enc('광주') + '&area=29&type=14']) {
+    const r = await call(h, Q(q));
+    assert.ok(emptyOk(r), q + ' → 200, empty');
+  }
+  for (const alone of ['전남', '광주광역시', '전라남도', '광주전남', '전남광주통합특별시']) {
+    assert.equal((await call(h, Q('region=' + enc(alone) + '&type=12'))).statusCode, 400, alone);
+  }
+  /* shape rules main had still hold for 광주: no coordinates or radius with a region, no conflicting live area */
+  for (const q of ['region=' + enc('광주') + '&area=12', 'region=' + enc('광주') + '&radius=5000', 'region=' + enc('광주') + '&lat=35.1&lng=126.9', 'region=' + enc('광주') + '&type=15' /* main never answered 15: no answer to keep */, 'area=29&type=15']) assert.equal((await call(h, Q(q))).statusCode, 400, q);
+  assert.equal(up.calls.length, 0, '광주 and the refused names never reach the provider');
+});
+
+test('28 codes that return nothing upstream (29, 36, 42, 45, 46) are in no mapping; as two-digit area values they keep main\'s empty answer without a call', async () => {
+  const dead = ['29', '36', '42', '45', '46'];
+  for (const c of dead) assert.equal(Object.values(tour.REGION_CODES).includes(c), false, c);
+  const up = upstream(() => reply(ok([item()])));
+  const h = handler(ENV, up);
+  for (const c of [...dead, '99', '00']) assert.ok(emptyOk(await call(h, Q('area=' + c + '&type=12'))), 'area=' + c + ' → 200, empty');
+  for (const c of ['1', '3611', '361100', '36110x']) assert.equal((await call(h, Q('area=' + c + '&type=12'))).statusCode, 400, 'area=' + c);
+  assert.equal(up.calls.length, 0);
+  /* live codes still work as area values, 세종's five digits included, with a 시군구 code */
+  assert.equal((await call(h, Q('area=36110&type=14'))).statusCode, 200);
+  assert.equal(up.calls[0].url.searchParams.get('lDongRegnCd'), '36110');
+  assert.equal((await call(h, Q('area=12&sigungu=240'))).statusCode, 200);
+  assert.deepEqual(['lDongRegnCd', 'lDongSignguCd'].map(x => up.calls[1].url.searchParams.get(x)), ['12', '240']);
+  assert.equal((await call(h, Q('region=' + enc('세종') + '&area=36'))).statusCode, 400, 'a live region with a conflicting code');
+  assert.equal(up.calls.length, 2);
+});
+
+/* ONGIL Enjoy Phase C: 행사 15 is now answered as a festival list (searchFestival2) — see tests/ongil/enjoy-phase-c.test.mjs.
+   BEFORE: 15 and 25 were both refused and no festival operation existed. Places are unchanged; 25 stays refused. */
+test('29 content types: places unchanged (12, 14, 28, 32, 38, 39); 여행코스 25 stays refused; 행사 15 only as a festival list', async () => {
+  assert.deepEqual([...tour.PLACE_TYPES], ['12', '14', '28', '32', '38', '39']);
+  assert.deepEqual([...tour.LIVON_TYPES], ['12', '14', '28', '32']);
+  assert.deepEqual(Object.values(tour.OPS).filter(o => /festival/i.test(o)), ['searchFestival2'], 'one festival operation');
+  const up = upstream(() => reply(ok([item()])));
+  const h = handler(ENV, up);
+  assert.equal((await call(h, Q('region=' + enc('제주') + '&type=25'))).statusCode, 400, 'type 25');
+  for (const q of ['query=a&type=15', 'type=15&lat=37.5&lng=127', 'type=15&sigungu=110&region=' + enc('서울')]) assert.equal((await call(h, Q(q))).statusCode, 400, q);
+  assert.equal(up.calls.length, 0);
+});
+
+/* [Shared compat V1] BEFORE: 30/31 asserted the LIVON Next V1 client (광주·전남 chip alias) — LIVON files this shared change does
+   not carry, so they failed on main's LIVON. AFTER: they assert the route against the LIVON client actually in the tree, whichever
+   version it is (main: 광주; LIVON Next V1: 광주·전남). LIVON Next V1 keeps its own client assertions when it ships. */
+/* [rebased onto main 4ace882] main no longer ships the LIVON browser client (livon/life-hub.js, explore-search.js), so this
+   check runs on the route only: every region name the ONGIL app (lib/core/catalog.dart tourRegions) and the legacy LIVON
+   client can send is answered 200 — none becomes a 400. */
+const ONGIL_APP_TOUR_REGIONS = ['서울', '부산', '대구', '인천', '광주·전남', '대전', '울산', '세종', '경기', '강원', '충북', '충남', '전북', '경북', '경남', '제주'];
+test('30 route: every TourAPI region the ONGIL app or legacy LIVON can send is answered 200 — none becomes a 400', async () => {
+  const up = upstream(() => reply(ok([item()])));
+  const h = handler(ENV, up);
+  for (const r of [...ONGIL_APP_TOUR_REGIONS, ...tour.LEGACY_EMPTY_REGIONS]) {
+    const before = up.calls.length;
+    const res = await call(h, Q('region=' + enc(r) + '&type=12&page=1&limit=20'));
+    assert.equal(res.statusCode, 200, r);
+    const sent = up.calls.slice(before);
+    if (Object.prototype.hasOwnProperty.call(tour.REGION_CODES, r)) assert.equal(sent[sent.length - 1].url.searchParams.get('lDongRegnCd'), tour.REGION_CODES[r], r);
+    else { assert.ok(tour.LEGACY_EMPTY_REGIONS.includes(r), r); assert.equal(sent.length, 0, r + ' → empty without a provider call'); }
+  }
+  assert.deepEqual(Object.keys(tour.REGION_CODES), ONGIL_APP_TOUR_REGIONS, 'route table and ONGIL app list stay the same 16 names, same order');
+});
+test('30b 광주·전남 items keep their province: the merged name the live service sends is a known 시·도', () => {
+  const e = tour.toEntity(item({ addr1: '전남광주통합특별시 신안군 흑산면 가거도길 38-2' }), 'x');
+  assert.equal(e.location.region, '전남광주통합특별시');
+  for (const [a, r] of [['서울특별시 종로구 사직로 161', '서울특별시'], ['강원특별자치도 강릉시 x', '강원특별자치도'], ['세종특별자치시 x', '세종특별자치시'], ['어딘가 x', null]]) {
+    assert.equal(tour.toEntity(item({ addr1: a }), 'x').location.region, r, a);
+  }
+});
+test('31 both LIVON client versions are served: main\'s 광주 → empty without a provider call; LIVON Next V1\'s 광주·전남 → code 12', async () => {
+  const up = upstream(() => reply(ok([item()])));
+  const h = handler(ENV, up);
+  assert.ok(emptyOk(await call(h, Q('region=' + enc('광주') + '&type=12&page=1&limit=20'))));
+  assert.equal(up.calls.length, 0);
+  const r = await call(h, Q('region=' + enc('광주·전남') + '&type=12&page=1&limit=20'));
+  assert.equal(r.statusCode, 200);
+  assert.equal(up.calls[0].url.searchParams.get('lDongRegnCd'), '12');
+  assert.equal(JSON.parse(r.body).items.length, 1);
+});
+
+/* ───────── festivals (type 15) — ONGIL 축제·행사: list, date window, paging, detail (added in PR #1 review round) ───────── */
+const NOW = Date.parse('2026-11-20T03:00:00Z');               /* 2026-11-20 12:00 KST */
+const fhandler = (up, now = NOW) => createDataHandler({ env: ENV, fetcher: up.fetcher, cache: memoryCache(), now: () => now, log: () => {} });
+const fest = (o = {}) => Object.assign({ contentid: '3001', contenttypeid: '15', title: '[QA 픽스처] 축제', addr1: '전남광주통합특별시 담양군 x',
+  eventstartdate: '20261201', eventenddate: '20261203', mapx: '127.0', mapy: '35.3', tel: '061-000-0000' }, o);
+const body = r => JSON.parse(r.body);
+
+test('F1 festival list: searchFestival2, eventStartDate = today in Korea, region code, no end date without a window', async () => {
+  const up = upstream(() => reply(ok([fest()])));
+  const r = await call(fhandler(up), Q('type=15&region=' + enc('광주·전남') + '&page=1&limit=20'));
+  assert.equal(r.statusCode, 200);
+  const u = up.calls[0].url;
+  assert.equal(op(up.calls[0]), 'searchFestival2');
+  assert.equal(u.searchParams.get('eventStartDate'), '20261120');
+  assert.equal(u.searchParams.get('lDongRegnCd'), '12');
+  assert.equal(u.searchParams.has('eventEndDate'), false);
+  assert.equal(u.searchParams.has('contentTypeId'), false, 'the festival operation takes no type');
+  const e = body(r).items[0];
+  assert.deepEqual([e.type, e.providerId, e.schedule.startAt, e.schedule.endAt, e.location.region], ['event', '3001', '2026-11-30T15:00:00.000Z', '2026-12-03T14:59:59.000Z', '전남광주통합특별시'], 'Korean calendar days as UTC instants (start 00:00 KST, end 23:59:59 KST)');
+  /* without a region: nationwide, no region code sent */
+  const up2 = upstream(() => reply(ok([fest()])));
+  assert.equal((await call(fhandler(up2), Q('type=15&page=1&limit=20'))).statusCode, 200);
+  assert.equal(up2.calls[0].url.searchParams.has('lDongRegnCd'), false);
+});
+
+test('F2 festival rows: no valid start date → dropped; end before start → no end; wrong content type → dropped', async () => {
+  const up = upstream(() => reply(ok([fest(), fest({ contentid: '3002', eventstartdate: '' }), fest({ contentid: '3003', eventstartdate: '20261340' }),
+    fest({ contentid: '3004', eventenddate: '20261101' }), fest({ contentid: '3005', contenttypeid: '12' })], 5)));
+  const items = body(await call(fhandler(up), Q('type=15&page=1&limit=20'))).items;
+  assert.deepEqual(items.map(i => i.providerId), ['3001', '3004']);
+  assert.equal(items[1].schedule.endAt, null);
+});
+
+test('F3 date window (query=YYYYMMDD-YYYYMMDD): start clamped to today, end sent, rows outside the window removed', async () => {
+  const up = upstream(() => reply(ok([fest(), fest({ contentid: '3010', eventstartdate: '20270301', eventenddate: '20270302' }),
+    fest({ contentid: '3011', eventstartdate: '20261101', eventenddate: '20261125' })], 3)));
+  const r = await call(fhandler(up), Q('type=15&query=20261110-20261210&page=1&limit=20'));
+  assert.equal(r.statusCode, 200);
+  const u = up.calls[0].url;
+  assert.equal(u.searchParams.get('eventStartDate'), '20261120', 'never before today');
+  assert.equal(u.searchParams.get('eventEndDate'), '20261210');
+  assert.deepEqual(body(r).items.map(i => i.providerId), ['3001', '3011'], 'overlapping festivals only (3011 is still on today)');
+  /* edge days: starts the day after the window → out; starts on the window's last day → in (dates compared as Korean days) */
+  const upE = upstream(() => reply(ok([fest({ contentid: '3020', eventstartdate: '20261211', eventenddate: '20261212' }), fest({ contentid: '3021', eventstartdate: '20261210', eventenddate: '20261210' })], 2)));
+  assert.deepEqual(body(await call(fhandler(upE), Q('type=15&query=20261201-20261210'))).items.map(i => i.providerId), ['3021']);
+  /* a window in the future starts on its own first day */
+  const up2 = upstream(() => reply(ok([])));
+  await call(fhandler(up2), Q('type=15&query=20261201-20261231'));
+  assert.equal(up2.calls[0].url.searchParams.get('eventStartDate'), '20261201');
+  /* a window that ended before today asks nothing */
+  const up3 = upstream(() => reply(ok([fest()])));
+  assert.ok(emptyOk(await call(fhandler(up3), Q('type=15&query=20261001-20261031'))));
+  assert.equal(up3.calls.length, 0);
+});
+
+test('F4 date window refusals: reversed, impossible dates, longer than 92 days, any other text → 400 without a call', async () => {
+  const up = upstream(() => reply(ok([fest()])));
+  for (const q of ['20261210-20261201', '20261131-20261201', '20261201-20270310', '축제', '2026-12-01', '20261201-']) {
+    assert.equal((await call(fhandler(up), Q('type=15&query=' + enc(q)))).statusCode, 400, q);
+  }
+  for (const q of ['type=15&lat=35.1&lng=126.9', 'type=15&region=' + enc('서울') + '&sigungu=110', 'type=15&region=' + enc('광주')]) {
+    assert.equal((await call(fhandler(up), Q(q))).statusCode, 400, q);
+  }
+  assert.equal(up.calls.length, 0);
+});
+
+test('F5 festival paging: hasMore follows the source total; the last page says no more', async () => {
+  const rows = n => Array.from({ length: n }, (_, i) => fest({ contentid: String(4000 + i) }));
+  const up = upstream(u => reply(ok(rows(u.searchParams.get('pageNo') === '1' ? 20 : 5), 25)));
+  const p1 = body(await call(fhandler(up), Q('type=15&page=1&limit=20')));
+  const p2 = body(await call(fhandler(up), Q('type=15&page=2&limit=20')));
+  assert.deepEqual([p1.items.length, p1.hasMore, p1.total], [20, true, 25]);
+  assert.deepEqual([p2.items.length, p2.hasMore], [5, false]);
+  assert.equal(up.calls[1].url.searchParams.get('pageNo'), '2');
+});
+
+test('F6 festival detail: detailCommon2 then detailIntro2 with type 15; dates/venue from intro; a non-festival id → empty', async () => {
+  const up = upstream(u => {
+    const name = op({ url: u });
+    if (name === 'detailCommon2') return reply(ok([fest({ overview: '픽스처 <b>개요</b>', homepage: '<a href="https://festival.example.org">x</a>' })]));
+    if (name === 'detailIntro2') return reply(ok([{ eventstartdate: '20261202', eventenddate: '20261204', eventplace: '픽스처 광장', sponsor1: '픽스처 군청' }]));
+    return reply(ok([]));
+  });
+  const r = await call(fhandler(up), Q('id=3001&type=15'));
+  assert.equal(r.statusCode, 200);
+  assert.deepEqual(up.calls.map(op), ['detailCommon2', 'detailIntro2']);
+  assert.equal(up.calls[1].url.searchParams.get('contentTypeId'), '15');
+  const e = body(r).items[0];
+  assert.deepEqual([e.schedule.startAt, e.schedule.endAt, e.venue, e.organizer], ['2026-12-01T15:00:00.000Z', '2026-12-04T14:59:59.000Z', '픽스처 광장', '픽스처 군청']);
+  assert.equal(e.description, '픽스처 개요');
+  const up2 = upstream(() => reply(ok([fest({ contenttypeid: '12' })])));
+  assert.ok(emptyOk(await call(fhandler(up2), Q('id=3001&type=15'))));
+  assert.equal(up2.calls.length, 1, 'no intro call for a record that is not a festival');
+});
+
+test('F7 festival upstream failures keep fixed codes and are not cached', async () => {
+  let n = 0;
+  const up = upstream(() => { n++; return n === 1 ? reply('oops', { status: 500 }) : reply(ok([fest()])); });
+  const h = fhandler(up);
+  const a = await call(h, Q('type=15&page=1&limit=20'));
+  assert.equal(a.statusCode, 502); assert.equal(body(a).code, 'UPSTREAM_ERROR'); assert.doesNotMatch(a.body, /oops|DO\/NOT|serviceKey/);
+  const b = await call(h, Q('type=15&page=1&limit=20'));
+  assert.equal(b.statusCode, 200, 'the failure was not cached');
+});

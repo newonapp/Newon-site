@@ -116,7 +116,9 @@ const str = v => (v == null ? '' : String(v)).trim();
 /* 시/도 names as Kakao writes them (short or full form); the first address token is kept only if it is one of these */
 const SIDO = ['서울', '부산', '대구', '인천', '광주', '대전', '울산', '세종', '경기', '강원', '충북', '충남', '전북', '전남', '경북', '경남', '제주',
   '서울특별시', '부산광역시', '대구광역시', '인천광역시', '광주광역시', '대전광역시', '울산광역시', '세종특별자치시', '경기도', '강원도', '강원특별자치도',
-  '충청북도', '충청남도', '전라북도', '전북특별자치도', '전라남도', '경상북도', '경상남도', '제주특별자치도'];
+  '충청북도', '충청남도', '전라북도', '전북특별자치도', '전라남도', '경상북도', '경상남도', '제주특별자치도',
+  /* TourAPI (lDongRegnCd 12) names 광주·전남 items this way since the merger; checked on production 2026-11-20 */
+  '전남광주통합특별시'];
 export function regionOf(addr) {
   const t = str(addr).split(/\s+/)[0] || '';
   return SIDO.includes(t) ? t : null;
