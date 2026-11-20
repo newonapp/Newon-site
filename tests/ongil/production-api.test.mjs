@@ -95,9 +95,27 @@ test('API-03 query validation: oversized or markup queries and unknown parameter
   assert.equal(s.up.calls.length, 0);
 });
 
-test('API-04 region validation: TourAPI accepts only its seven regions, lifelong only real 시·도 names', async () => {
+/*
+ * WHY CHANGED (O3, TourAPI shared route 57bfd409e): the route's region table follows the codes the live tourism service
+ * answers. BEFORE: seven regions; 제주 → 400. AFTER: the sixteen regions ONGIL offers → 200 and reach the provider with their
+ * code; 광주 alone keeps main's answer (200, empty, no provider call); everything else is still refused BEFORE any upstream call.
+ */
+test('API-04 region validation: TourAPI accepts exactly the sixteen regions it has a live code for, lifelong only real 시·도 names', async () => {
+  const REGIONS = ['서울', '부산', '대구', '인천', '광주·전남', '대전', '울산', '세종', '경기', '강원', '충북', '충남', '전북', '경북', '경남', '제주'];
+  for (const r of REGIONS) {
+    const s = stack();
+    assert.equal((await s.raw(`?provider=${TOUR_PROVIDER}&region=${encodeURIComponent(r)}&type=12`)).status, 200, r);
+    assert.ok(s.up.calls.length >= 1, r + ' reaches the provider');
+  }
+  { const s = stack(); const r = await s.raw(`?provider=${TOUR_PROVIDER}&region=${encodeURIComponent('광주')}&type=12`);
+    assert.equal(r.status, 200, '광주'); assert.deepEqual((await r.json()).items, [], '광주 → empty'); assert.equal(s.up.calls.length, 0, '광주 asks nothing'); }
+  /* refused, and refused before the provider is asked — not weaker than before */
   const s = stack();
-  assert.equal((await s.raw(`?provider=${TOUR_PROVIDER}&region=${encodeURIComponent('제주')}&type=12`)).status, 400);
+  for (const bad of ['전남', '광주광역시', '제주도', '강원도', 'Seoul', '서울 ', '<서울>', '서울,부산'])
+    assert.equal((await s.raw(`?provider=${TOUR_PROVIDER}&region=${encodeURIComponent(bad)}&type=12`)).status, 400, bad);
+  for (const q of [`&region=${encodeURIComponent('서울')}&type=99`, `&region=${encodeURIComponent('서울')}&type=25`, `&type=15&region=${encodeURIComponent('광주')}`, `&type=15&query=${encodeURIComponent('불꽃')}`, `&area=29&type=15`, `&area=99999`])
+    assert.equal((await s.raw(`?provider=${TOUR_PROVIDER}${q}`)).status, 400, q);
+  assert.equal(s.up.calls.length, 0, 'no refused request reached the provider');
   assert.equal((await s.raw(`?provider=${LIFELONG_PROVIDER}&region=${encodeURIComponent('화성시청')}`)).status, 400);
   assert.equal((await s.raw(`?provider=${TOUR_PROVIDER}&region=${encodeURIComponent('서울')}&type=32`)).status, 200, 'lodging is a valid route type …');
   assert.doesNotMatch(read('ongil-start/js/data-source.js'), /TOUR_TYPE_IDS = Object\.freeze\(\[[^\]]*'32'/, '… but ONGIL never asks for lodging (12, 14, 28 only)');

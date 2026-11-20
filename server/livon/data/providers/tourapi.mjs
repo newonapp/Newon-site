@@ -29,11 +29,16 @@ export const PROVIDER_ID = 'kr-tourapi';
 export const PROVIDER_NAME = '한국관광공사 TourAPI';
 export const ENV_KEY = 'TOURAPI_SERVICE_KEY';
 export const BASE = 'https://apis.data.go.kr/B551011/KorService2';     // fixed; clients can never choose it
-export const OPS = Object.freeze({ keyword: 'searchKeyword2', area: 'areaBasedList2', location: 'locationBasedList2', common: 'detailCommon2', intro: 'detailIntro2', images: 'detailImage2' });
+export const OPS = Object.freeze({ keyword: 'searchKeyword2', area: 'areaBasedList2', location: 'locationBasedList2', common: 'detailCommon2', intro: 'detailIntro2', images: 'detailImage2', festival: 'searchFestival2' });
 export const MOBILE_APP = 'LIVON';
 export const LICENSE = '한국관광공사 국문 관광정보 서비스 (공공데이터포털)';
 export const POLICY_URL = 'https://api.visitkorea.or.kr/#/useServiceGuide/2';
 export const ATTRIBUTION = '출처: ⓒ한국관광공사';
+/* [ONGIL Enjoy Phase C] the public page of the dataset itself. A festival list row has no page of its own; an event entity
+   needs a source link, and this is the true one (the dataset the row came from) — never presented as the festival's site. */
+export const DATASET_URL = 'https://www.data.go.kr/data/15101578/openapi.do';
+export const FESTIVAL_TYPE = '15';
+export const FESTIVAL_MAX_DAYS = 92;
 export const PHOTO_CREDIT = '사진 데이터 제공: ⓒ한국관광콘텐츠랩';
 
 export const CONTENT_TYPES = Object.freeze({ 12: '관광지', 14: '문화시설', 15: '축제공연행사', 25: '여행코스', 28: '레포츠', 32: '숙박', 38: '쇼핑', 39: '음식점' });
@@ -45,10 +50,30 @@ export const LIVON_TYPES = Object.freeze(['12', '14', '28', '32']);
 export const LIVON_CATEGORY = Object.freeze({ 12: '여행', 14: '취미', 32: '여행' });
 export const COPYRIGHT = Object.freeze({ Type1: '공공누리 제1유형(출처표시)', Type3: '공공누리 제3유형(출처표시·변경금지)' });
 /*
- * LIVON region names → 법정동 시도코드 (lDongRegnCd). Values follow the national 법정동 code standard;
- * the TourAPI 명세 points to ldongCode2 for the list — re-check with ldongCode2 once a key is issued (문서 확인 필요).
+ * Region names → 법정동 시도코드 (lDongRegnCd), as the live service answers them (checked 2026-10-07 through the
+ * production route; every code below returned data or is the code the service itself puts on that region's items):
+ *   - 광주 and 전남 are one upstream region, 전남광주통합특별시 = 12. The old 광주 code 29 and 전남 code 46 return
+ *     nothing, so the only honest name for this choice is '광주·전남' — a request for '광주' alone is refused.
+ *   - 강원특별자치도 = 51 (old 42 returns nothing), 전북특별자치도 = 52 (old 45 returns nothing).
+ *   - 세종특별자치시 = 36110: the service uses the five-digit code as the 시도 code on 세종 items (36 returns nothing).
+ * Codes that return nothing (29, 36, 42, 45, 46) are not in this table and are refused as `area` values too.
  */
-export const REGION_CODES = Object.freeze({ 서울: '11', 부산: '26', 대구: '27', 인천: '28', 광주: '29', 대전: '30', 경기: '41' });
+export const REGION_CODES = Object.freeze({
+  서울: '11', 부산: '26', 대구: '27', 인천: '28', '광주·전남': '12', 대전: '30', 울산: '31', 세종: '36110',
+  경기: '41', 강원: '51', 충북: '43', 충남: '44', 전북: '52', 경북: '47', 경남: '48', 제주: '50'
+});
+const ACTIVE_CODES = Object.freeze(Object.values(REGION_CODES));
+/*
+ * [Shared compat V1] Names and codes the route on main (70a816aa9) accepted that have no region of their own any more.
+ * Main sent them upstream and the live service answered an EMPTY list (checked on production 2026-10-15:
+ * region=광주 → 200, 0 items, total 0; area=29 → 200, 0 items). To keep every caller that main answered with 200
+ * working, they still answer 200 with an empty list — now WITHOUT asking the provider (the answer is already known)
+ * and without ever being turned into the merged 광주·전남 list. The LIVON client on main sends region=광주.
+ *   - region: '광주' (main's table; '전남' was never accepted and stays refused)
+ *   - area  : any other two-digit code (main accepted /^\d{2}$/); 3–5 digit codes other than 36110 stay refused
+ */
+export const LEGACY_EMPTY_REGIONS = Object.freeze(['광주']);
+function legacyEmptyArea(a) { return /^\d{2}$/.test(a) && !ACTIVE_CODES.includes(a); }
 
 export const LIMITS = Object.freeze({ maxPage: 50, maxRows: 20, maxRadius: 20000, maxImages: 20 });
 export const RADII = Object.freeze([500, 1000, 3000, 5000, 10000, 20000]);
@@ -74,7 +99,8 @@ export function parseParams({ query, region, area, sigungu, type, lat, lng, radi
   if (!Number.isInteger(pg) || pg < 1 || pg > LIMITS.maxPage) throw bad();
   const rows = Math.min(Math.max(1, Number(limit) || LIMITS.maxRows), LIMITS.maxRows);
   const t = type == null || type === '' ? '' : String(type);
-  if (t && !PLACE_TYPES.includes(t)) throw bad();
+  /* [Phase C] 15 축제공연행사: only as a festival list (region optional, no query / coordinates) or a detail */
+  if (t && !PLACE_TYPES.includes(t) && t !== FESTIVAL_TYPE) throw bad();
   const v = view == null || view === '' ? '' : String(view);
   if (v && v !== 'detail' && v !== 'images') throw bad();
   if (id != null && id !== '') {
@@ -85,13 +111,42 @@ export function parseParams({ query, region, area, sigungu, type, lat, lng, radi
   if (v) throw bad();
   const q = query == null ? '' : String(query).replace(/\s+/g, ' ').trim();
   if (q.length > QUERY_MAX || /[\u0000-\u001f\u007f<>]/.test(q)) throw bad();
-  let regn = '';
-  if (region != null && region !== '') { if (!Object.prototype.hasOwnProperty.call(REGION_CODES, region)) throw bad(); regn = REGION_CODES[region]; }
-  if (area != null && area !== '') { if (!/^\d{2}$/.test(String(area)) || (regn && regn !== String(area))) throw bad(); regn = String(area); }
+  let regn = '', legacy = false;
+  if (region != null && region !== '') {
+    if (LEGACY_EMPTY_REGIONS.includes(region)) legacy = true;
+    else if (!Object.prototype.hasOwnProperty.call(REGION_CODES, region)) throw bad();
+    else regn = REGION_CODES[region];
+  }
+  if (area != null && area !== '') {
+    const ar = String(area);
+    if (legacyEmptyArea(ar)) { if (regn) throw bad(); legacy = true; }
+    else if (!ACTIVE_CODES.includes(ar) || legacy || (regn && regn !== ar)) throw bad();
+    else regn = ar;
+  }
   let sgg = '';
-  if (sigungu != null && sigungu !== '') { if (!regn || !/^\d{3,5}$/.test(String(sigungu))) throw bad(); sgg = String(sigungu); }
+  if (sigungu != null && sigungu !== '') { if ((!regn && !legacy) || !/^\d{3,5}$/.test(String(sigungu))) throw bad(); sgg = String(sigungu); }
   const la = num(lat), ln = num(lng);
   if ((la == null) !== (ln == null)) throw bad();
+  if (legacy) {
+    /* [Shared compat V1] same shape checks main made for a region (no coordinates or radius with it), then a known-empty answer */
+    if (la != null || (radius != null && radius !== '')) throw bad();
+    /* main never answered 15 at all, so there is nothing to keep: a festival list asks for a live region only */
+    if (t === FESTIVAL_TYPE) throw bad();
+    return { mode: 'none', type: t, page: pg, rows, nearby: false };
+  }
+  if (t === FESTIVAL_TYPE) {
+    /* [Phase C integration] an optional date window travels in `query` as YYYYMMDD-YYYYMMDD (the route's parameter list —
+       server/livon/data/http.mjs, byte-identical to main — has no date parameter). Any other query text is refused here. */
+    let window = null;
+    if (q) {
+      const m = /^(\d{8})-(\d{8})$/.exec(q);
+      const f = m ? ymd(m[1]) : null, e = m ? ymd(m[2]) : null;
+      if (!f || !e || e < f || (Date.parse(e) - Date.parse(f)) / 864e5 > FESTIVAL_MAX_DAYS) throw bad();
+      window = { from: m[1], to: m[2] };
+    }
+    if (la != null || sgg || (radius != null && radius !== '')) throw bad();
+    return { mode: 'festival', type: t, area: regn, page: pg, rows, nearby: false, ...(window ? { window } : {}) };
+  }
   if (la != null) {
     if (la < -90 || la > 90 || ln < -180 || ln > 180) throw bad();
     if (q || regn) throw bad();
@@ -113,7 +168,7 @@ export function requestUrl(op, p, key) {
   u.searchParams.set('MobileOS', 'WEB');
   u.searchParams.set('MobileApp', MOBILE_APP);
   u.searchParams.set('_type', 'json');
-  if (op === 'keyword' || op === 'area' || op === 'location') {
+  if (op === 'keyword' || op === 'area' || op === 'location' || op === 'festival') {
     u.searchParams.set('numOfRows', String(p.rows));
     u.searchParams.set('pageNo', String(p.page));
   }
@@ -123,6 +178,14 @@ export function requestUrl(op, p, key) {
     if (p.sigungu) u.searchParams.set('lDongSignguCd', p.sigungu);
   }
   if (op === 'area') { u.searchParams.set('arrange', 'A'); if (p.type) u.searchParams.set('contentTypeId', p.type); }
+  /* [Phase C] searchFestival2: eventStartDate (필수, YYYYMMDD) = today in Korea, set by search(); lDongRegnCd when a region is chosen */
+  if (op === 'festival') {
+    u.searchParams.set('arrange', 'A');
+    u.searchParams.set('eventStartDate', p.from);
+    /* [Phase C integration] the window's last day (overlap with the window: NOT VERIFIED against the official 명세 — see the doc) */
+    if (p.to) u.searchParams.set('eventEndDate', p.to);
+    if (p.area) u.searchParams.set('lDongRegnCd', p.area);
+  }
   if (op === 'location') {
     u.searchParams.set('mapX', String(p.lng));     /* mapX = WGS84 경도 (longitude) */
     u.searchParams.set('mapY', String(p.lat));     /* mapY = WGS84 위도 (latitude) */
@@ -255,6 +318,52 @@ export function toEntity(raw, fetchedAt, { nearby = false } = {}) {
   };
 }
 
+/*
+ * [Phase C] 축제공연행사 (contentTypeId 15) → an `event` entity. Dates come only from the source (eventstartdate /
+ * eventenddate, YYYYMMDD); a row without a valid start date is dropped, never given one. The festival's own homepage
+ * comes from the detail (detailCommon2 homepage / detailIntro2 eventhomepage) — never invented for a list row.
+ */
+function ymd(v) { const m = /^(\d{4})(\d{2})(\d{2})$/.exec(str(v)); if (!m) return null; const d = new Date(`${m[1]}-${m[2]}-${m[3]}T00:00:00Z`); return isNaN(d) || d.getUTCFullYear() < 1990 || d.toISOString().slice(0, 10) !== `${m[1]}-${m[2]}-${m[3]}` ? null : `${m[1]}-${m[2]}-${m[3]}`; }
+export const FESTIVAL_FIELDS = Object.freeze([['eventplace', '행사 장소'], ['playtime', '공연 시간'], ['usetimefestival', '이용 요금'], ['agelimit', '관람 가능 연령'], ['spendtimefestival', '관람 소요 시간'], ['bookingplace', '예매처'], ['sponsor1', '주최'], ['sponsor2', '주관'], ['program', '행사 프로그램']]);
+export function toEvent(raw, fetchedAt, intro = null) {
+  if (!raw || typeof raw !== 'object') return null;
+  const id = str(raw.contentid), title = plain(raw.title, 200);
+  if (!/^\d{1,12}$/.test(id) || !title || str(raw.contenttypeid || FESTIVAL_TYPE) !== FESTIVAL_TYPE) return null;
+  const dates = intro && typeof intro === 'object' ? intro : raw;
+  const start = ymd(dates.eventstartdate) || ymd(raw.eventstartdate), end = ymd(dates.eventenddate) || ymd(raw.eventenddate);
+  if (!start) return null;
+  const lat = coord(raw.mapy, -90, 90), lng = coord(raw.mapx, -180, 180);
+  const both = lat != null && lng != null;
+  const a1 = plain(raw.addr1, 300), a2 = plain(raw.addr2, 300);
+  const cover = photo(raw.firstimage, raw.firstimage2, '', raw.cpyrhtDivCd);
+  const it = intro && typeof intro === 'object' ? intro : {};
+  const meta = { contentId: id, contentTypeId: FESTIVAL_TYPE, contentTypeName: CONTENT_TYPES[FESTIVAL_TYPE], lDongRegnCd: str(raw.lDongRegnCd), lDongSignguCd: str(raw.lDongSignguCd), modifiedtime: str(raw.modifiedtime), policyUrl: POLICY_URL, datasetUrl: DATASET_URL };
+  for (const [k] of FESTIVAL_FIELDS) { const v = plain(it[k], 200); if (v) meta[k] = v; }
+  if (cover && cover.license) { meta.imageUrl = cover.url; meta.imageLicense = cover.license; }
+  const site = homepageUrl(raw.homepage) || homepageUrl(it.eventhomepage);
+  return {
+    type: 'event',
+    provider: PROVIDER_ID,
+    providerId: id,
+    title,
+    summary: null,
+    category: null,
+    tags: [CONTENT_TYPES[FESTIVAL_TYPE]],
+    interests: [],
+    lifeStages: [],
+    eventType: CONTENT_TYPES[FESTIVAL_TYPE],
+    eventStatus: 'unknown',                                  /* the API states no cancellation / postponement */
+    organizer: plain(it.sponsor1, 120) || null,
+    venue: plain(it.eventplace, 200) || null,
+    schedule: { startAt: start, endAt: end && end >= start ? end : null, timezone: 'Asia/Seoul' },
+    location: { country: 'KR', region: regionOf(a1), address: a1 || null, detailAddress: a2 || null, latitude: both ? lat : null, longitude: both ? lng : null },
+    contact: str(raw.tel) || str(it.sponsor1tel) || site ? { phone: plain(str(raw.tel) || str(it.sponsor1tel), 40) || null, website: site || null } : null,
+    media: cover && cover.license ? { thumbnail: cover.thumb, images: [] } : null,
+    source: { providerName: PROVIDER_NAME, sourceUrl: DATASET_URL, fetchedAt, updatedAt: tsIso(raw.modifiedtime), license: LICENSE, attribution: ATTRIBUTION },
+    metadata: meta
+  };
+}
+
 /* detailIntro2 fields per contentTypeId with the 명세 labels — shown only when the value exists */
 export const INTRO_FIELDS = Object.freeze({
   12: [['usetime', '이용시간'], ['restdate', '쉬는날'], ['useseason', '이용시기'], ['opendate', '개장일'], ['parking', '주차시설'], ['infocenter', '문의및안내'],
@@ -298,9 +407,37 @@ async function get(fetcher, url, timeoutMs) {
 
 export async function search({ key, fetcher, params: p, timeoutMs = 8000, now = Date.now() }) {
   const fetchedAt = new Date(now).toISOString();
+  /* [Shared compat V1] a legacy region main answered with an empty list: same answer, no provider call */
+  if (p.mode === 'none') return { items: [], hasMore: false, total: 0, fetchedAt };
   if (p.mode === 'images') {
     const r = await get(fetcher, requestUrl('images', p, key), timeoutMs);
     return { items: [], photos: photosFrom(r.rows), hasMore: false, total: null, fetchedAt };
+  }
+  if (p.mode === 'festival') {
+    /* today in Korea (UTC+9) as YYYYMMDD — the API's required start; past festivals are not asked for */
+    const today = new Date(now + 9 * 3600e3).toISOString().slice(0, 10).replace(/-/g, '');
+    /* [Phase C integration] a window never starts before today (past festivals are not asked for); one that ended before today asks nothing */
+    if (p.window && p.window.to < today) return { items: [], hasMore: false, total: 0, fetchedAt };
+    const from = p.window && p.window.from > today ? p.window.from : today;
+    const r = await get(fetcher, requestUrl('festival', { ...p, from, to: p.window ? p.window.to : '' }, key), timeoutMs);
+    /* [RH-V1] the route itself keeps only festivals that overlap the asked days (start ≤ window end, last day ≥ the asked
+       start): the source's own window rule is NOT VERIFIED, so a row outside the window never leaves the route whatever the
+       client. Paging (hasMore / total) still follows the source's rows, so no page of the source is skipped. */
+    const keep = e => !p.window || (e.schedule.startAt.slice(0, 10).replace(/-/g, '') <= p.window.to && (e.schedule.endAt || e.schedule.startAt).slice(0, 10).replace(/-/g, '') >= from);
+    const items = r.rows.map(x => toEvent(x, fetchedAt)).filter(Boolean).filter(keep);
+    const hasMore = r.total != null ? p.page * p.rows < r.total && p.page < LIMITS.maxPage : r.rows.length === p.rows && p.page < LIMITS.maxPage;
+    return { items, hasMore, total: r.total, fetchedAt };
+  }
+  if (p.mode === 'detail' && p.type === FESTIVAL_TYPE) {
+    const common = await get(fetcher, requestUrl('common', p, key), timeoutMs);
+    const raw = common.rows[0];
+    if (!raw || str(raw.contenttypeid) !== FESTIVAL_TYPE) return { items: [], hasMore: false, total: 0, fetchedAt };
+    const intro = await get(fetcher, requestUrl('intro', p, key), timeoutMs);
+    const e = toEvent(raw, fetchedAt, intro.rows[0] || null);
+    if (!e) return { items: [], hasMore: false, total: 0, fetchedAt };
+    e.description = plain(raw.overview, 5000) || null;
+    e.summary = e.description ? e.description.slice(0, 180) + (e.description.length > 180 ? '…' : '') : null;
+    return { items: [e], hasMore: false, total: 1, fetchedAt };
   }
   if (p.mode === 'detail') {
     const common = await get(fetcher, requestUrl('common', p, key), timeoutMs);

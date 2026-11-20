@@ -297,3 +297,110 @@ test('36 existing providers regression: status lists the five earlier providers 
   const docs = root('docs/livon/real-data-providers.md');
   assert.match(docs, /kr-tourapi/); assert.match(docs, /KorService2/); assert.match(docs, /TOURAPI_SERVICE_KEY/);
 });
+
+/* ───────── region codes (ONGIL Enjoy Phase B) ───────── */
+const LIVE_CODES = { 서울: '11', 부산: '26', 대구: '27', 인천: '28', '광주·전남': '12', 대전: '30', 울산: '31', 세종: '36110', 경기: '41', 강원: '51', 충북: '43', 충남: '44', 전북: '52', 경북: '47', 경남: '48', 제주: '50' };
+
+test('26 regions: every region name is sent as the code the live service answers for it — nationwide, in a natural order', async () => {
+  assert.deepEqual({ ...tour.REGION_CODES }, LIVE_CODES);
+  assert.deepEqual(Object.keys(tour.REGION_CODES), ['서울', '부산', '대구', '인천', '광주·전남', '대전', '울산', '세종', '경기', '강원', '충북', '충남', '전북', '경북', '경남', '제주']);
+  const up = upstream(() => reply(ok([item()])));
+  const h = handler(ENV, up);
+  for (const [name, code] of Object.entries(LIVE_CODES)) {
+    const before = up.calls.length;
+    assert.equal((await call(h, Q('region=' + enc(name) + '&type=12'))).statusCode, 200, name);
+    const u = up.calls[before].url;
+    assert.equal(op(up.calls[before]), 'areaBasedList2');
+    assert.equal(u.searchParams.get('lDongRegnCd'), code, name + ' → ' + code);
+    assert.equal(u.searchParams.get('contentTypeId'), '12');
+    assert.equal(u.searchParams.has('areaCode'), false);
+  }
+  /* the keyword search carries the same code */
+  const k = up.calls.length;
+  await call(h, Q('query=' + enc('호수공원') + '&region=' + enc('세종')));
+  assert.equal(up.calls[k].url.searchParams.get('lDongRegnCd'), '36110');
+});
+
+/* [Shared compat V1] BEFORE (Phase B): 광주 alone and the dead two-digit codes answered 400. AFTER: they answer exactly what the
+   route on main answered for them — 200 with an empty list (production, 2026-10-15: region=광주 → 0 of 0, area=29 → 0, area=99 → 0)
+   — but without a provider call. The LIVON client on main still sends region=광주; with a 400 its 광주 chip would turn into an error. */
+const emptyOk = (r) => { const b = JSON.parse(r.body); return r.statusCode === 200 && b.ok === true && Array.isArray(b.items) && b.items.length === 0 && b.hasMore === false; };
+
+test('27 광주·전남 is one upstream region (12); 광주 alone keeps main\'s empty answer (no provider call), never the merged list; other spellings are refused', async () => {
+  const up = upstream(() => reply(ok([item()])));
+  const h = handler(ENV, up);
+  assert.equal(tour.parseParams({ region: '광주·전남' }).area, '12');
+  assert.equal('광주' in tour.REGION_CODES, false, '광주 is not a region of its own');
+  assert.deepEqual([...tour.LEGACY_EMPTY_REGIONS], ['광주']);
+  for (const q of ['region=' + enc('광주') + '&type=12', 'region=' + enc('광주'), 'query=' + enc('공원') + '&region=' + enc('광주'), 'region=' + enc('광주') + '&sigungu=110', 'region=' + enc('광주') + '&area=29&type=14']) {
+    const r = await call(h, Q(q));
+    assert.ok(emptyOk(r), q + ' → 200, empty');
+  }
+  for (const alone of ['전남', '광주광역시', '전라남도', '광주전남', '전남광주통합특별시']) {
+    assert.equal((await call(h, Q('region=' + enc(alone) + '&type=12'))).statusCode, 400, alone);
+  }
+  /* shape rules main had still hold for 광주: no coordinates or radius with a region, no conflicting live area */
+  for (const q of ['region=' + enc('광주') + '&area=12', 'region=' + enc('광주') + '&radius=5000', 'region=' + enc('광주') + '&lat=35.1&lng=126.9', 'region=' + enc('광주') + '&type=15' /* main never answered 15: no answer to keep */, 'area=29&type=15']) assert.equal((await call(h, Q(q))).statusCode, 400, q);
+  assert.equal(up.calls.length, 0, '광주 and the refused names never reach the provider');
+});
+
+test('28 codes that return nothing upstream (29, 36, 42, 45, 46) are in no mapping; as two-digit area values they keep main\'s empty answer without a call', async () => {
+  const dead = ['29', '36', '42', '45', '46'];
+  for (const c of dead) assert.equal(Object.values(tour.REGION_CODES).includes(c), false, c);
+  const up = upstream(() => reply(ok([item()])));
+  const h = handler(ENV, up);
+  for (const c of [...dead, '99', '00']) assert.ok(emptyOk(await call(h, Q('area=' + c + '&type=12'))), 'area=' + c + ' → 200, empty');
+  for (const c of ['1', '3611', '361100', '36110x']) assert.equal((await call(h, Q('area=' + c + '&type=12'))).statusCode, 400, 'area=' + c);
+  assert.equal(up.calls.length, 0);
+  /* live codes still work as area values, 세종's five digits included, with a 시군구 code */
+  assert.equal((await call(h, Q('area=36110&type=14'))).statusCode, 200);
+  assert.equal(up.calls[0].url.searchParams.get('lDongRegnCd'), '36110');
+  assert.equal((await call(h, Q('area=12&sigungu=240'))).statusCode, 200);
+  assert.deepEqual(['lDongRegnCd', 'lDongSignguCd'].map(x => up.calls[1].url.searchParams.get(x)), ['12', '240']);
+  assert.equal((await call(h, Q('region=' + enc('세종') + '&area=36'))).statusCode, 400, 'a live region with a conflicting code');
+  assert.equal(up.calls.length, 2);
+});
+
+/* ONGIL Enjoy Phase C: 행사 15 is now answered as a festival list (searchFestival2) — see tests/ongil/enjoy-phase-c.test.mjs.
+   BEFORE: 15 and 25 were both refused and no festival operation existed. Places are unchanged; 25 stays refused. */
+test('29 content types: places unchanged (12, 14, 28, 32, 38, 39); 여행코스 25 stays refused; 행사 15 only as a festival list', async () => {
+  assert.deepEqual([...tour.PLACE_TYPES], ['12', '14', '28', '32', '38', '39']);
+  assert.deepEqual([...tour.LIVON_TYPES], ['12', '14', '28', '32']);
+  assert.deepEqual(Object.values(tour.OPS).filter(o => /festival/i.test(o)), ['searchFestival2'], 'one festival operation');
+  const up = upstream(() => reply(ok([item()])));
+  const h = handler(ENV, up);
+  assert.equal((await call(h, Q('region=' + enc('제주') + '&type=25'))).statusCode, 400, 'type 25');
+  for (const q of ['query=a&type=15', 'type=15&lat=37.5&lng=127', 'type=15&sigungu=110&region=' + enc('서울')]) assert.equal((await call(h, Q(q))).statusCode, 400, q);
+  assert.equal(up.calls.length, 0);
+});
+
+/* [Shared compat V1] BEFORE: 30/31 asserted the LIVON Next V1 client (광주·전남 chip alias) — LIVON files this shared change does
+   not carry, so they failed on main's LIVON. AFTER: they assert the route against the LIVON client actually in the tree, whichever
+   version it is (main: 광주; LIVON Next V1: 광주·전남). LIVON Next V1 keeps its own client assertions when it ships. */
+/* [rebased onto main 4ace882] main no longer ships the LIVON browser client (livon/life-hub.js, explore-search.js), so this
+   check runs on the route only: every region name the ONGIL app (lib/core/catalog.dart tourRegions) and the legacy LIVON
+   client can send is answered 200 — none becomes a 400. */
+const ONGIL_APP_TOUR_REGIONS = ['서울', '부산', '대구', '인천', '광주·전남', '대전', '울산', '세종', '경기', '강원', '충북', '충남', '전북', '경북', '경남', '제주'];
+test('30 route: every TourAPI region the ONGIL app or legacy LIVON can send is answered 200 — none becomes a 400', async () => {
+  const up = upstream(() => reply(ok([item()])));
+  const h = handler(ENV, up);
+  for (const r of [...ONGIL_APP_TOUR_REGIONS, ...tour.LEGACY_EMPTY_REGIONS]) {
+    const before = up.calls.length;
+    const res = await call(h, Q('region=' + enc(r) + '&type=12&page=1&limit=20'));
+    assert.equal(res.statusCode, 200, r);
+    const sent = up.calls.slice(before);
+    if (Object.prototype.hasOwnProperty.call(tour.REGION_CODES, r)) assert.equal(sent[sent.length - 1].url.searchParams.get('lDongRegnCd'), tour.REGION_CODES[r], r);
+    else { assert.ok(tour.LEGACY_EMPTY_REGIONS.includes(r), r); assert.equal(sent.length, 0, r + ' → empty without a provider call'); }
+  }
+  assert.deepEqual(Object.keys(tour.REGION_CODES), ONGIL_APP_TOUR_REGIONS, 'route table and ONGIL app list stay the same 16 names, same order');
+});
+test('31 both LIVON client versions are served: main\'s 광주 → empty without a provider call; LIVON Next V1\'s 광주·전남 → code 12', async () => {
+  const up = upstream(() => reply(ok([item()])));
+  const h = handler(ENV, up);
+  assert.ok(emptyOk(await call(h, Q('region=' + enc('광주') + '&type=12&page=1&limit=20'))));
+  assert.equal(up.calls.length, 0);
+  const r = await call(h, Q('region=' + enc('광주·전남') + '&type=12&page=1&limit=20'));
+  assert.equal(r.statusCode, 200);
+  assert.equal(up.calls[0].url.searchParams.get('lDongRegnCd'), '12');
+  assert.equal(JSON.parse(r.body).items.length, 1);
+});
