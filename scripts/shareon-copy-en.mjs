@@ -173,7 +173,6 @@ export const EN = {
       items: [
         { name: "SHAREON", body: "Sharing and rental of goods, equipment and spaces", self: true },
         { name: "BABYLOG", body: "Links to baby and family gear rental" },
-        { name: "PETLOG", body: "Links to pet supply rental" },
         { name: "ONGIL", body: "Links to senior living and care goods rental" },
       ],
     },
@@ -535,7 +534,7 @@ export const EN = {
       points: [
         { n: "01", title: "Free lending campaign", body: "A campaign around free lending of things people do not use, which rental businesses or institutions can join with usage guidance." },
         { n: "02", title: "Seasonal equipment and spaces", body: "Bringing together relevant businesses’ equipment and spaces at busy times such as camping season, moving season and event season." },
-        { n: "03", title: "Links with NEWON services", body: "Exploring links to rentals of BABYLOG baby gear, PETLOG pet supplies and ONGIL senior-care goods." },
+        { n: "03", title: "Links with NEWON services", body: "Exploring links to rentals of BABYLOG baby gear and ONGIL senior-care goods." },
       ],
     },
     global: {

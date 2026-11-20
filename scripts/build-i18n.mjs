@@ -35,7 +35,7 @@ import {
 } from "./studio-pricing.mjs";
 import { STUDIO_AREA_PAGES } from "./studio-areas.mjs";
 import { BSP_SITEMAP_PATHS } from "./render-bsp.mjs";
-import { PETLOG_SITE_PATHS } from "./render-petlog-site.mjs";
+import { PETLOG_SITE_PATHS, PETLOG_SITE_RETIRED } from "./render-petlog-site.mjs";
 import { BIZPART_PATHS, isLegacyBizpartPath } from "./render-bizpart.mjs";
 import { STUDIO_SITE_PATHS, isLegacyStudioPath } from "./render-studio-site.mjs";
 
@@ -600,7 +600,7 @@ function writeSitemap() {
   }
 
   // Flagship business sites — five pages each (ONGIL sub-pages exist in KO/EN only; other languages are noindex forwards).
-  for (const biz of ["babylog", "petlog", "shareon"]) {
+  for (const biz of ["babylog", "shareon"]) {
     for (const sub of ["", "/platform", "/business", "/partnerships", "/contact"]) addAllLocales(`${biz}${sub}`, "0.65", "monthly");
   }
   addAllLocales("ongil", "0.65", "monthly");
@@ -618,7 +618,7 @@ function writeSitemap() {
   }
 
   // Product hubs
-  for (const page of ["products", "apps", "ecosystem", "ai", "ai/enterprise", "business-hub", "business/seller-center", "business/partners", "babylog", "babylog/platform", "babylog/business", "babylog/partnerships", "babylog/contact", "petlog", "shareon", "ongil", "saas", "games", "tools", "market", "contact", "media"]) {
+  for (const page of ["products", "apps", "ecosystem", "ai", "ai/enterprise", "business-hub", "business/seller-center", "business/partners", "babylog", "babylog/platform", "babylog/business", "babylog/partnerships", "babylog/contact", "shareon", "ongil", "saas", "games", "tools", "market", "contact", "media"]) {
     addAllLocales(page, "0.65", "monthly");
   }
 
@@ -676,8 +676,8 @@ function writeSitemap() {
     addAllLocales(p, p.startsWith("business") ? "0.7" : "0.65", "monthly");
   }
 
-  // PETLOG business site (render-petlog-site.mjs)
-  for (const p of PETLOG_SITE_PATHS) {
+  // PETLOG business site (render-petlog-site.mjs) — retired 2026-11-20: redirect stubs only, kept out of the sitemap.
+  for (const p of PETLOG_SITE_RETIRED ? [] : PETLOG_SITE_PATHS) {
     addAllLocales(p, p === "petlog" ? "0.7" : "0.6", "monthly");
   }
 

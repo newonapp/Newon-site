@@ -329,9 +329,8 @@ export const KO = {
       lead: "ONGIL은 독립적인 시니어 브랜드와 사용 경험을 유지합니다. 다른 Newon 서비스와의 연결은 계획 단계이며, 개인의 건강·위치·돌봄 데이터는 명시적 동의 없이 앱 간에 결합하지 않습니다.",
       items: [
         { n: "01", name: "BABYLOG", text: "가족 성장 기록 플랫폼. 손주와 함께하는 조부모의 가족 활동을 잇는 방향을 검토합니다.", href: "babylog/" },
-        { n: "02", name: "PETLOG", text: "반려동물 생애 기록. 반려동물과 사는 어르신의 생활은 PETLOG에서 따로 기록할 수 있습니다.", href: "petlog/" },
-        { n: "03", name: "SHAREON", text: "동네 대여 플랫폼. 생활·취미·보조용품을 필요한 기간만 빌리는 연결을 검토합니다.", href: "shareon/" },
-        { n: "04", name: "Newon Business", text: "기관·기업을 위한 디지털 도구와 협력 창구. 돌봄·복지기관의 업무 자동화 문의를 함께 받습니다.", href: "business/" },
+        { n: "02", name: "SHAREON", text: "동네 대여 플랫폼. 생활·취미·보조용품을 필요한 기간만 빌리는 연결을 검토합니다.", href: "shareon/" },
+        { n: "03", name: "Newon Business", text: "기관·기업을 위한 디지털 도구와 협력 창구. 돌봄·복지기관의 업무 자동화 문의를 함께 받습니다.", href: "business/" },
       ],
     },
     next: {

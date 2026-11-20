@@ -25,14 +25,14 @@ const section = (html, id) => (own(html).match(new RegExp(`<section id="${id}"[\
 const rel = (lang, p) => `${lang}/${p}/index.html`;
 const OWNER_FILM = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260819_212700_3bb9329b-5c50-4257-a09b-ca85cf3654a3.mp4";
 
-test("eight screens in nine locales (05 Contact retired into /{lang}/contact/): one h1, canonical, 9+1 hreflang, JSON-LD, studio section, five-item sub-menu", () => {
-  assert.equal(STUDIO_SCREENS.length, 8);
+test("seven screens in nine locales (05 Contact retired into /{lang}/contact/; PETLOG products retired 2026-11-20): one h1, canonical, 9+1 hreflang, JSON-LD, studio section, five-item sub-menu", () => {
+  assert.equal(STUDIO_SCREENS.length, 7);
   assert.deepEqual(STUDIO_SITE_PATHS, [
     "studio",
     "studio/store",
     "studio/platforms",
     "studio/business",
-    ...["babylog", "petlog", "shareon", "ongil"].map((p) => `studio/platforms/${p}`),
+    ...["babylog", "shareon", "ongil"].map((p) => `studio/platforms/${p}`),
   ]);
   for (const lang of LANGS) {
     for (const s of STUDIO_SCREENS) {
@@ -106,7 +106,8 @@ test("global header: Studio dropdown lists the five screens (desktop and mobile)
 });
 
 test("old Studio URLs are redirect stubs (noindex, canonical, refresh, location.replace) to existing new screens", () => {
-  assert.equal(Object.keys(LEGACY_STUDIO_REDIRECTS).length, 25);
+  assert.equal(Object.keys(LEGACY_STUDIO_REDIRECTS).length, 26);
+  assert.equal(LEGACY_STUDIO_REDIRECTS["studio/platforms/petlog"], "studio/platforms/", "retired PETLOG products page → platform list");
   for (const [from, to] of Object.entries(LEGACY_STUDIO_REDIRECTS)) {
     assert.ok(STUDIO_SITE_PATHS.includes(to.replace(/\/$/, "")), `${from} → ${to} is a new screen`);
     for (const lang of LANGS) {
@@ -191,9 +192,9 @@ test("FAQ, use-case and content counts follow the brief; platform pages are not 
       assert.ok(links.includes(`href="/${lang}/studio/business/#industry-${pl.id}"`), `${lang} ${pl.id} business link`);
       assert.ok(links.includes(`href="/${lang}/${pl.site}/"`), `${lang} ${pl.id} platform link`);
       assert.ok(own(read(rel(lang, "studio/business"))).includes(`id="industry-${pl.id}"`), `industry-${pl.id} anchor`);
-      // in-page switcher between the four
+      // in-page switcher between the three
       const sw = own(html).match(/<nav class="sts-switch"[\s\S]*?<\/nav>/)[0];
-      assert.equal((sw.match(/class="sts-switch__a"/g) || []).length, 4, `${lang} ${pl.id} switcher`);
+      assert.equal((sw.match(/class="sts-switch__a"/g) || []).length, 3, `${lang} ${pl.id} switcher`);
       assert.match(sw, new RegExp(`href="/${lang}/studio/platforms/${pl.id}/" aria-current="page"`), `${lang} ${pl.id} switcher current`);
     }
   }
@@ -219,7 +220,7 @@ test("FAQ, use-case and content counts follow the brief; platform pages are not 
 test("regulated areas: care, health and finance products stay on records (no diagnosis / treatment / professional-service wording)", () => {
   const med = /진단|치료|처방|진료|투약 지도|요양 서비스를 제공|diagnos|treatment|prescri|medical advice|financial advice we provide/i;
   for (const lang of ["ko", "en"]) {
-    for (const id of ["babylog", "petlog", "ongil"]) {
+    for (const id of ["babylog", "ongil"]) {
       const t = text(read(rel(lang, `studio/platforms/${id}`)));
       assert.doesNotMatch(t, med, `${lang} ${id}`);
       assert.ok(own(read(rel(lang, `studio/platforms/${id}`))).includes('class="nls-note sts-caution"'), `${lang} ${id} caution note`);

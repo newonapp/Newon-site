@@ -107,7 +107,7 @@ const KO = {
   },
   portfolio: {
     seoTitle: "포트폴리오 | NEWON — 직접 만들고 운영하는 디지털 플랫폼",
-    metaDescription: "NEWON이 직접 기획·디자인·개발·출시하고 운영하는 4개 핵심 플랫폼(SHAREON·BABYLOG·PETLOG·ONGIL)과 App Store·Google Play에 출시한 앱 11개, 개발 과정, 이정표, 사업 방향을 소개합니다.",
+    metaDescription: "NEWON이 직접 기획·디자인·개발·출시하고 운영하는 3개 핵심 플랫폼(SHAREON·BABYLOG·ONGIL)과 App Store·Google Play에 출시한 앱 11개, 개발 과정, 이정표, 사업 방향을 소개합니다.",
     eyebrow: "PORTFOLIO",
     subEyebrow: "SELECTED WORK",
     headline: "아이디어에서\n출시까지.",
@@ -356,7 +356,7 @@ const EN = {
   },
   portfolio: {
     seoTitle: "Portfolio | Newon Company",
-    metaDescription: "Digital platforms and products NEWON plans and builds itself: four core platforms (BABYLOG, PETLOG, SHAREON, ONGIL), released apps, a web game, software, how we build and our milestones.",
+    metaDescription: "Digital platforms and products NEWON plans and builds itself: three core platforms (BABYLOG, SHAREON, ONGIL), released apps, a web game, software, how we build and our milestones.",
     eyebrow: "PORTFOLIO",
     subEyebrow: "SELECTED WORK",
     headline: "From idea\nto launch.",

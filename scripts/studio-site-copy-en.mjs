@@ -35,7 +35,7 @@ export const EN = {
   seo: {
     overview: { title: "NEWON Studio — Our own digital products | Newon", desc: "NEWON Studio is NEWON's digital product business: templates, productivity tools, software and standard business products that we plan and build ourselves. Product families, how to buy and use them, and our principles." },
     store: { title: "Digital Store — NEWON Studio | Newon", desc: "Planners and templates, calculators and web tools, software and packages: the NEWON Studio Digital Store's categories, how to use the products, licences and what to check before you buy." },
-    platforms: { title: "Products by platform — NEWON Studio | Newon", desc: "BABYLOG, PETLOG, SHAREON and ONGIL: the purpose of the NEWON Studio products linked to each platform and their product areas for individuals and businesses." },
+    platforms: { title: "Products by platform — NEWON Studio | Newon", desc: "BABYLOG, SHAREON and ONGIL: the purpose of the NEWON Studio products linked to each platform and their product areas for individuals and businesses." },
     business: { title: "Business products — NEWON Studio | Newon", desc: "Standard templates, calculation tools and software by industry; individual, team and business licence concepts; how adoption and support work. No custom development for individual clients." },
     contact: { title: "Contact — NEWON Studio | Newon", desc: "Questions about product information, purchase and download, software use, business products, licences and technical support. Guidance by inquiry type and what happens after you write." },
     babylog: { title: "BABYLOG products — NEWON Studio | Newon", desc: "Pregnancy and birth preparation, parenting and growth records, family schedules, parenting budgets and materials for childcare facilities: NEWON Studio product areas linked to BABYLOG." },
@@ -57,7 +57,7 @@ export const EN = {
       kicker: "01 · WHAT STUDIO DOES",
       title: "What does\nNEWON Studio do?",
       lines: [
-        "We turn everyday and work problems that come up again and again across NEWON's four platforms into digital products. Parenting records, pet care schedules, rental asset management, goal tracking and family care plans are all things many people handle in much the same way.",
+        "We turn everyday and work problems that come up again and again across NEWON's three platforms into digital products. Parenting records, rental asset management, goal tracking and family care plans are all things many people handle in much the same way.",
         "Products come in four forms: digital templates you download and fill in, productivity tools that run in the browser, software for keeping records and schedules over time, and standard products that businesses and organisations use together.",
         "Every product is a standard product NEWON plans and owns. Once made, it is used by many customers on the same terms. We do not do custom design or development for clients, or production on commission.",
       ],
@@ -67,7 +67,7 @@ export const EN = {
       title: "Why do we build\nour own products?",
       lead: "To turn what we learn running the platforms into products anyone can use on the same terms.",
       items: [
-        { n: "01", name: "Needs seen on the platforms", body: "The record, schedule, cost and operations problems we mapped while designing four platforms' service areas are where product planning starts." },
+        { n: "01", name: "Needs seen on the platforms", body: "The record, schedule, cost and operations problems we mapped while designing three platforms' service areas are where product planning starts." },
         { n: "02", name: "Tools needed outside the app", body: "Not everything happens inside an app. A printed checklist or a budget kept in a spreadsheet is often what people use alongside it." },
         { n: "03", name: "Same quality, same terms", body: "A standard product has the same contents and terms for everyone. Terms are not set per client and nothing is built separately." },
         { n: "04", name: "Products that keep improving", body: "Each product carries a version; improvements go into the next version. It is not a one-off deliverable." },
@@ -96,8 +96,8 @@ export const EN = {
       note: "For business customers too, a product's contents and features are fixed, just as for personal products. We do not offer separate development or design changes for an organisation.",
     },
     platforms: {
-      kicker: "05 · FOUR PLATFORMS",
-      title: "How the four platforms relate\nto Studio products.",
+      kicker: "05 · THREE PLATFORMS",
+      title: "How the three platforms relate\nto Studio products.",
       lead: "The platforms provide services; Studio makes digital products for the same areas of life that can be used on their own. Products are designed to work without the platform app.",
       items: {
         babylog: "Products for birth preparation, parenting records and family schedules, plus operating materials for childcare facilities",
@@ -320,8 +320,8 @@ export const EN = {
     hero: {
       eyebrow: "OUR PLATFORMS",
       wordmark: "Platforms",
-      titleHtml: "Four platforms' areas of life,<br>as digital products.",
-      lead: "BABYLOG, PETLOG, SHAREON and ONGIL. For each platform's area of life, Studio plans products that individuals and businesses can use on their own.",
+      titleHtml: "Three platforms' areas of life,<br>as digital products.",
+      lead: "BABYLOG, SHAREON and ONGIL. For each platform's area of life, Studio plans products that individuals and businesses can use on their own.",
       ctaMain: "Products by platform",
       ctaSub: "Business products",
     },
@@ -329,13 +329,13 @@ export const EN = {
       kicker: "01 · PLATFORMS AND PRODUCTS",
       title: "Platforms are services;\nStudio makes products.",
       lines: [
-        "The four platforms are NEWON's services for parenting, pet life, asset sharing and senior life. Each platform's services are introduced on its own website.",
+        "The three platforms are NEWON's services for parenting, asset sharing and senior life. Each platform's services are introduced on its own website.",
         "Studio makes templates, tools and software for the same areas of life that work separately from the platform apps. You can buy and use a product without using the app.",
         "For each platform, products for individuals and products for businesses and organisations are planned separately. Everything below is a candidate; products are listed on the Newon Store as their launch is confirmed.",
       ],
     },
     list: {
-      kicker: "02 · FOUR PLATFORMS",
+      kicker: "02 · THREE PLATFORMS",
       title: "A different product area\nfor each platform.",
       lead: "Each platform has a different purpose and audience, so its products are designed differently. Candidates and use cases are on each platform's product page.",
     },
@@ -408,7 +408,7 @@ export const EN = {
     industries: {
       kicker: "03 · BY INDUSTRY",
       title: "Product families\nby industry.",
-      lead: "Families are grouped by the industries linked to the four platforms' areas of life. All are candidates.",
+      lead: "Families are grouped by the industries linked to the three platforms' areas of life. All are candidates.",
       items: {
         babylog: { name: "Childcare & parenting facilities", items: ["Daily childcare log", "Parent notice templates", "Events & schedule planner", "Facility supplies register"] },
         petlog: { name: "Pet shops & pet care services", items: ["Care booking schedule", "Care record card per pet", "Supplies inventory sheet", "Owner notice forms"] },

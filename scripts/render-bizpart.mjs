@@ -151,6 +151,8 @@ export const LEGACY_REDIRECTS = {
   "partnerships/inquiry": CO,
   // Per-platform partnership pages → that platform's own Partnerships page (not modified)
   ...Object.fromEntries(BP_PLATFORMS.map((p) => [`partnerships/platforms/${p.id}`, `${p.slug}/partnerships/`])),
+  // PETLOG left the core businesses (2026-11-20): its old partnership URL goes to the PetLog release & development history.
+  "partnerships/platforms/petlog": "portfolio/petlog/",
 };
 /** Root-only legacy stub (no /{lang}/ page ever existed). */
 const ROOT_ONLY_REDIRECTS = { "business/workflow-automation": MO };

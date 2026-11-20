@@ -121,6 +121,8 @@ export const LEGACY_STUDIO_REDIRECTS = {
   "studio/ip/digital-stickers": ST,
   "studio/ip/character-lab": ST,
   "studio/ip/experimental-ip": ST,
+  // PETLOG left the core businesses (2026-11-20): its Studio product page goes to the platform list.
+  "studio/platforms/petlog": PL,
 };
 
 /** True when a path (with or without the /{lang}/ prefix) is a retired Studio URL. */

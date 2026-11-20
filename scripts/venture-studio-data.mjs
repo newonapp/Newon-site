@@ -41,7 +41,7 @@ export const LEGACY_STATUS_MAP = {
  * Top-level nav order. Business and Partnerships are one menu since 2026-10-19 ("Business & Partnerships",
  * id "business", where Business used to be); the separate Partnerships item is gone.
  */
-export const TOP_NAV = ["consumer", "ai", "ongil", "shareon", "babylog", "petlog", "business", "studio", "company"];
+export const TOP_NAV = ["consumer", "ai", "ongil", "shareon", "babylog", "business", "studio", "company"];
 
 /**
  * Mega menu destinations per top menu.
@@ -84,14 +84,6 @@ export const MEGA_DESTINATIONS = {
     { titleKey: "nav.shareonBusiness", descKey: "nav.shareonBusinessDesc", href: "shareon/business/", titleFb: "Business" },
     { titleKey: "nav.shareonPartnerships", descKey: "nav.shareonPartnershipsDesc", href: "shareon/partnerships/", titleFb: "Partnerships" },
     { titleKey: "nav.shareonContact", descKey: "nav.shareonContactDesc", href: "shareon/contact/", titleFb: "Contact" },
-  ],
-  // PETLOG business site (Oct 2026): Overview · Platform · Business · Partnerships · Contact (business row mega).
-  petlog: [
-    { titleKey: "nav.petlogMenuOverview", descKey: "nav.petlogMenuOverviewDesc", href: "petlog/", titleFb: "Overview" },
-    { titleKey: "nav.petlogMenuPlatform", descKey: "nav.petlogMenuPlatformDesc", href: "petlog/platform/", titleFb: "Platform" },
-    { titleKey: "nav.petlogMenuBusiness", descKey: "nav.petlogMenuBusinessDesc", href: "petlog/business/", titleFb: "Business" },
-    { titleKey: "nav.petlogMenuPartnerships", descKey: "nav.petlogMenuPartnershipsDesc", href: "petlog/partnerships/", titleFb: "Partnerships" },
-    { titleKey: "nav.petlogMenuContact", descKey: "nav.petlogMenuContactDesc", href: "petlog/contact/", titleFb: "Contact" },
   ],
   // Business & Partnerships (2026-10-19): five hub screens; each platform's own Business/Partnerships pages hold the detail.
   business: [

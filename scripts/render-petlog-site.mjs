@@ -995,7 +995,7 @@ function writeRootStub(slug) {
   );
 }
 
-export function renderPetlogSite() {
+function renderPetlogSitePages() {
   const en = loadJson("en.json");
   const flatEn = flatten(en);
   let n = 0;
@@ -1036,6 +1036,81 @@ export function renderPetlogSite() {
     }
   }
   for (const page of PAGES) writeRootStub(page.slug);
+  return n;
+}
+
+/**
+ * 2026-11-20: PETLOG is no longer one of NEWON's core businesses (core = SHAREON · BABYLOG · ONGIL).
+ * The PETLOG business site is retired; its URLs stay alive as static redirect stubs (GitHub Pages has no server 301):
+ *   petlog/, petlog/platform/, petlog/business/, petlog/partnerships/ → /{lang}/portfolio/petlog/ (release & development history)
+ *   petlog/contact/                                                   → /{lang}/contact/ with PETLOG preselected
+ * PETLOG account deletion (/{lang}/petlog/delete-account/), privacy, terms and the unified contact form are unchanged.
+ * The page renderers above are kept for reference; set PETLOG_SITE_RETIRED = false to publish the pages again.
+ */
+export const PETLOG_SITE_RETIRED = true;
+const retiredTarget = (lang, slug) =>
+  slug === "petlog/contact" ? unifiedContactHref(lang, "petlog", { source: "petlog-contact" }) : `/${lang}/portfolio/petlog/`;
+
+function retiredStub(lang, slug) {
+  const to = retiredTarget(lang.dir, slug);
+  const label = lang.dir === "ko" ? (slug === "petlog/contact" ? "NEWON 문의하기 →" : "PetLog 출시·개발 이력 →") : slug === "petlog/contact" ? "Contact NEWON →" : "PetLog release & development history →";
+  return `<!DOCTYPE html>
+<html lang="${lang.htmlLang}">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, follow" />
+<title>PetLog | Newon</title>
+<link rel="canonical" href="${SITE_ORIGIN}${to}" />
+<meta http-equiv="refresh" content="0;url=${esc(to)}" />
+<script>location.replace(${JSON.stringify(to)});</script>
+</head>
+<body><p><a href="${esc(to)}">${esc(label)}</a></p></body>
+</html>
+`;
+}
+
+function writeRetiredRootStub(slug) {
+  const to = retiredTarget("ko", slug);
+  const dir = path.join(ROOT, slug);
+  fs.mkdirSync(dir, { recursive: true });
+  const target = slug === "petlog/contact" ? "contact/?platform=petlog&source=petlog-contact" : "portfolio/petlog/";
+  fs.writeFileSync(
+    path.join(dir, "index.html"),
+    `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="${SITE_ORIGIN}${to}" />
+<meta http-equiv="refresh" content="0;url=${esc(to)}" />
+<script>
+(function(){
+  var LANGS=["ko","en","ja","es","pt-br","fr","de","hi","id"];
+  var pref="ko";
+  try{var s=localStorage.getItem("newon-lang-dir");if(s&&LANGS.indexOf(s)!==-1)pref=s;}catch(e){}
+  location.replace("/"+pref+"/${target}");
+})();
+</script>
+<title>Redirect</title>
+</head>
+<body><p><a href="${esc(to)}">Continue</a></p></body>
+</html>`
+  );
+}
+
+export function renderPetlogSite() {
+  if (!PETLOG_SITE_RETIRED) return renderPetlogSitePages();
+  let n = 0;
+  for (const lang of LANGS) {
+    for (const page of PAGES) {
+      const out = path.join(ROOT, lang.dir, page.slug, "index.html");
+      ensureDir(out);
+      fs.writeFileSync(out, retiredStub(lang, page.slug));
+      n++;
+    }
+  }
+  for (const page of PAGES) writeRetiredRootStub(page.slug);
   return n;
 }
 

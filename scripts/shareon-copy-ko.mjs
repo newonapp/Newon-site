@@ -187,7 +187,6 @@ export const KO = {
       items: [
         { name: "SHAREON", body: "물품·장비·공간의 공유·대여", self: true },
         { name: "BABYLOG", body: "육아·가족 용품 대여와 연결" },
-        { name: "PETLOG", body: "반려동물 용품 대여와 연결" },
         { name: "ONGIL", body: "시니어 생활·돌봄 용품 대여와 연결" },
       ],
     },
@@ -549,7 +548,7 @@ export const KO = {
       points: [
         { n: "01", title: "나눔 대여 캠페인", body: "무료 대여를 중심으로 쓰지 않는 물건을 빌려주는 캠페인입니다. 대여업체나 기관과 함께 사용 안내를 붙일 수 있습니다." },
         { n: "02", title: "시즌 장비·공간 기획", body: "캠핑철, 이사철, 행사 시즌처럼 수요가 몰리는 시기에 맞춰 관련 업체의 장비와 공간을 모아 보여 주는 기획입니다." },
-        { n: "03", title: "NEWON 서비스 연계", body: "BABYLOG의 육아 용품, PETLOG의 반려동물 용품, ONGIL의 시니어 돌봄 용품 대여를 연결하는 방향을 함께 검토합니다." },
+        { n: "03", title: "NEWON 서비스 연계", body: "BABYLOG의 육아 용품, ONGIL의 시니어 돌봄 용품 대여를 연결하는 방향을 함께 검토합니다." },
       ],
     },
     global: {

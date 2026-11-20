@@ -51,7 +51,6 @@ export const VENTURE_NAV = [
   { id: "ongil", label: "ONGIL", path: "ongil/", mega: true },
   { id: "shareon", label: "SHAREON", path: "shareon/", mega: true },
   { id: "babylog", label: "BABYLOG", path: "babylog/", mega: true },
-  { id: "petlog", label: "PETLOG", path: "petlog/", mega: true },
 ];
 const VENTURE_IDS = new Set(VENTURE_NAV.map((v) => v.id));
 /** Business-row items with their own mega menu: the label links to the business page, the chevron opens the menu. */
@@ -98,13 +97,6 @@ const MENU_META = {
     footHref: "shareon/",
     footKey: "nav.shareonExploreCta",
     footFb: "View SHAREON →",
-  },
-  petlog: {
-    kicker: "nav.petlogMenuLabel",
-    lead: "nav.petlogMenuLead",
-    footHref: "petlog/",
-    footKey: "nav.petlogExploreCta",
-    footFb: "View PETLOG →",
   },
   business: {
     kicker: "nav.bizPartMenuLabel",
@@ -168,7 +160,6 @@ export function resolveActiveNav(pathname = "") {
   if (seg === "ai") return "ai";
   if (seg === "ongil") return "ongil";
   if (seg === "shareon") return "shareon";
-  if (seg === "petlog") return "petlog";
   if (["products", "apps", "saas", "games", "ecosystem"].includes(seg)) return "consumer";
   if (seg === "tools") return "business";
   if (seg === "business") {
@@ -204,7 +195,7 @@ function menuRows(menuId, langDir = "") {
 
 function megaItemLimit(menuId) {
   if (menuId === "company") return 12;
-  if (["consumer", "ai", "business", "studio", "partnerships", "petlog", "babylog", "shareon", "ongil"].includes(menuId)) return 8;
+  if (["consumer", "ai", "business", "studio", "partnerships", "babylog", "shareon", "ongil"].includes(menuId)) return 8;
   return 4;
 }
 
@@ -259,7 +250,6 @@ const MEGA_RENDERERS = {
   ai: (f, fe, b, ld) => editorialMega(f, fe, b, "ai", ld),
   ongil: (f, fe, b, ld) => editorialMega(f, fe, b, "ongil", ld),
   babylog: (f, fe, b, ld) => editorialMega(f, fe, b, "babylog", ld),
-  petlog: (f, fe, b, ld) => editorialMega(f, fe, b, "petlog", ld),
   shareon: (f, fe, b, ld) => editorialMega(f, fe, b, "shareon", ld),
   business: (f, fe, b, ld) => editorialMega(f, fe, b, "business", ld),
   studio: (f, fe, b, ld) => editorialMega(f, fe, b, "studio", ld),
@@ -463,7 +453,6 @@ export const FOOTER_MENUS = [
   ["ongil", "ongil/"],
   ["shareon", "shareon/"],
   ["babylog", "babylog/"],
-  ["petlog", "petlog/"],
   ["business", "business/"],
   ["studio", "studio/"],
   ["company", "about/"],

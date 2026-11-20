@@ -1,7 +1,7 @@
 /**
- * Newon — four representative businesses (information-only website).
+ * Newon — three representative businesses (information-only website).
  *
- *   BabyLog · PetLog · ShareOn · Ongil
+ *   BabyLog · ShareOn · Ongil (PetLog left the core businesses 2026-11-20; its intro data below is kept but not rendered)
  *
  * Principle (Oct 2026): the website only introduces the business, explains features, points to app
  * download / launch status, takes partnership and general inquiries and posts notices. The real
@@ -16,10 +16,10 @@
  */
 
 /** Top-level menu ids for the four businesses, in menu order. */
-export const SIX_IDS = ["ongil", "shareon", "babylog", "petlog"];
+export const SIX_IDS = ["ongil", "shareon", "babylog"];
 
 /** Businesses whose intro page is rendered by render-business-intro.mjs. */
-export const NEW_INTRO_IDS = ["babylog", "petlog", "shareon"];
+export const NEW_INTRO_IDS = ["babylog", "shareon"];
 
 /** Nav id → URL slug under /{lang}/. */
 export const SLUG = {

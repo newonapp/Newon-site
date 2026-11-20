@@ -37,7 +37,7 @@ export const BP_FILMS = {
 };
 export const BP_PAGE_FILM = { overview: "partnerships", platforms: "partnerships", models: "partnerships", partnerships: "partnerships", contact: "partnerships" };
 
-/** The six flagship platforms. `slug` = their own site folder (/{lang}/{slug}/business/ and /partnerships/). */
+/** The flagship platforms (SHAREON · BABYLOG · ONGIL; PETLOG removed from the core businesses 2026-11-20). `slug` = their own site folder (/{lang}/{slug}/business/ and /partnerships/). */
 export const BP_PLATFORMS = [
   {
     id: "babylog",
@@ -63,32 +63,6 @@ export const BP_PLATFORMS = [
       areas: ["Parenting & family life", "Education", "Care", "Family products", "Business solutions"],
       partners: ["Parenting brands", "Education providers", "Family services", "Institutions"],
       find: "Parenting, family, education and care",
-    },
-  },
-  {
-    id: "petlog",
-    slug: "petlog",
-    name: "PETLOG",
-    category: "Pet Life",
-    ko: {
-      headline: "반려동물과 함께하는 삶을 연결합니다.",
-      desc: "반려동물의 일상과 건강 관련 정보, 생활·돌봄 서비스를 아우르는 플랫폼.",
-      keywords: ["반려동물 브랜드", "커머스", "생활 서비스", "돌봄", "기업 솔루션"],
-      title: "반려생활의 새로운 가치를 연결합니다.",
-      lead: "반려동물 브랜드와 생활 서비스, 돌봄 사업자, 기업 솔루션의 다양한 협력 기회를 지향합니다.",
-      areas: ["반려동물 생활", "커머스", "건강 관련 정보", "돌봄", "기업 솔루션"],
-      partners: ["반려동물 브랜드", "생활 서비스", "돌봄 사업자", "기관 협력"],
-      find: "반려동물·생활 서비스·커머스 협력",
-    },
-    en: {
-      headline: "Connecting life with pets.",
-      desc: "A platform covering pets' everyday life, health-related information and life and care services.",
-      keywords: ["Pet brands", "Commerce", "Life services", "Care", "Business solutions"],
-      title: "Connecting new value in life with pets.",
-      lead: "Aims for a range of partnerships with pet brands, life services, care providers and business solutions.",
-      areas: ["Pet life", "Commerce", "Health-related information", "Care", "Business solutions"],
-      partners: ["Pet brands", "Life services", "Care providers", "Institutions"],
-      find: "Pets, life services and commerce",
     },
   },
   {
@@ -186,19 +160,19 @@ const KO = {
     askType: "이 유형으로 문의하기",
   },
   seo: {
-    overview: { title: "NEWON Business & Partnerships | 플랫폼 비즈니스·기업 제휴", desc: "NEWON의 4개 플랫폼을 기반으로 한 기업사업, SaaS, 거래 수수료, 기업·기관 계약과 파트너십 기회를 살펴보세요." },
-    platforms: { title: "Our Platforms | NEWON Business & Partnerships", desc: "BABYLOG, PETLOG, SHAREON, ONGIL의 플랫폼별 사업 분야와 기업·기관 협력 기회를 확인하세요." },
+    overview: { title: "NEWON Business & Partnerships | 플랫폼 비즈니스·기업 제휴", desc: "NEWON의 3개 플랫폼을 기반으로 한 기업사업, SaaS, 거래 수수료, 기업·기관 계약과 파트너십 기회를 살펴보세요." },
+    platforms: { title: "Our Platforms | NEWON Business & Partnerships", desc: "BABYLOG, SHAREON, ONGIL의 플랫폼별 사업 분야와 기업·기관 협력 기회를 확인하세요." },
     models: { title: "Business Models | NEWON", desc: "NEWON의 플랫폼 기반 거래 수수료, 기업용 SaaS, 기업·기관 계약, 제휴와 자체 제품 라이선싱 사업모델을 소개합니다." },
-    partnerships: { title: "Partnerships | NEWON", desc: "NEWON의 4개 플랫폼과 관련된 기업 입점, 브랜드·서비스 제휴, 기관 협력과 기술·글로벌 파트너십을 살펴보세요." },
+    partnerships: { title: "Partnerships | NEWON", desc: "NEWON의 3개 플랫폼과 관련된 기업 입점, 브랜드·서비스 제휴, 기관 협력과 기술·글로벌 파트너십을 살펴보세요." },
     contact: { title: "Business Contact | NEWON", desc: "NEWON 플랫폼 입점, 기업용 SaaS 도입, 브랜드·서비스 제휴와 기관 협력에 관한 비즈니스 문의를 접수합니다." },
   },
   overview: {
     hero: {
       eyebrow: "NEWON BUSINESS & PARTNERSHIPS",
       wordmark: "Business",
-      titleHtml: "네 개의 플랫폼,<br>더 넓은 비즈니스의 가능성.",
-      lead: "NEWON은 육아·반려생활·자산 공유·생애주기·시니어 라이프 분야의 자체 디지털 플랫폼을 개발하고 운영합니다. 각 플랫폼의 전문성을 기반으로 개인과 기업, 기관이 연결되는 새로운 비즈니스 생태계를 만들어갑니다.",
-      ctaMain: "4개 플랫폼 살펴보기",
+      titleHtml: "세 개의 플랫폼,<br>더 넓은 비즈니스의 가능성.",
+      lead: "NEWON은 육아·자산 공유·생애주기·시니어 라이프 분야의 자체 디지털 플랫폼을 개발하고 운영합니다. 각 플랫폼의 전문성을 기반으로 개인과 기업, 기관이 연결되는 새로운 비즈니스 생태계를 만들어갑니다.",
+      ctaMain: "3개 플랫폼 살펴보기",
       ctaSub: "비즈니스 모델 알아보기",
     },
     about: {
@@ -206,12 +180,12 @@ const KO = {
       title: "제품을 넘어,\n플랫폼의 가치를 확장합니다.",
       lines: [
         "NEWON은 고객별 외주 제작이 아닌 자체 플랫폼과 디지털 제품을 중심으로 사업을 전개합니다.",
-        "서로 다른 생활 영역에 집중하는 네 개의 플랫폼을 통해 기업 참여, 적격 거래, 서비스 협력, 기업용 솔루션과 기관 협력의 기회를 확대하고자 합니다.",
+        "서로 다른 생활 영역에 집중하는 세 개의 플랫폼을 통해 기업 참여, 적격 거래, 서비스 협력, 기업용 솔루션과 기관 협력의 기회를 확대하고자 합니다.",
         "각 플랫폼의 사업 방향과 협력 가능성은 해당 플랫폼의 상세 페이지에서 확인할 수 있습니다.",
       ],
     },
     platforms: {
-      kicker: "02 · FOUR CORE PLATFORMS",
+      kicker: "02 · THREE CORE PLATFORMS",
       title: "서로 다른 일상,\n하나의 NEWON 생태계.",
       lead: "각자의 삶에 필요한 플랫폼에서 새로운 연결과 사업 기회를 발견할 수 있습니다.",
     },
@@ -253,13 +227,13 @@ const KO = {
     hero: {
       eyebrow: "OUR PLATFORMS",
       wordmark: "Business",
-      titleHtml: "네 개의 플랫폼,<br>네 개의 비즈니스 생태계.",
+      titleHtml: "세 개의 플랫폼,<br>세 개의 비즈니스 생태계.",
       lead: "NEWON의 각 플랫폼은 서로 다른 생활 영역에 집중합니다. 기업과 파트너는 사업 분야에 맞는 플랫폼을 선택하고, 해당 플랫폼의 Business와 Partnerships 페이지에서 상세 내용을 확인할 수 있습니다.",
       ctaMain: "플랫폼 보기",
       ctaSub: "비즈니스 모델",
     },
     list: {
-      kicker: "01 · FOUR PLATFORMS",
+      kicker: "01 · THREE PLATFORMS",
       title: "사업 분야에 맞는\n플랫폼을 선택하세요.",
       lead: "각 플랫폼의 사업 분야와 협력 대상을 요약했습니다. 상세 내용은 각 플랫폼의 Business와 Partnerships 페이지에서 소개합니다.",
     },
@@ -291,7 +265,7 @@ const KO = {
         category: "MARKETPLACE",
         name: "플랫폼 거래 수수료",
         body: ["적격 개인과 기업이 플랫폼에서 상품·서비스·실물 자산 거래에 참여하고, 실제 거래 구조에 따라 수수료를 적용하는 사업모델입니다."],
-        apps: ["SHAREON 자산 대여 거래", "PETLOG 관련 커머스", "BABYLOG 관련 커머스", "기타 적격 플랫폼 거래"],
+        apps: ["SHAREON 자산 대여 거래", "BABYLOG 관련 커머스", "기타 적격 플랫폼 거래"],
         note: "의료·보험·돌봄 등 규제 분야는 관련 자격과 법적 요건을 확인한 뒤 검토합니다.",
       },
       {
@@ -302,7 +276,7 @@ const KO = {
           "기업과 기관이 NEWON의 자체 디지털 제품과 표준화된 솔루션을 구독 형태로 이용하는 사업모델입니다.",
           "고객별 주문형 개발이 아니라 반복 제공 가능한 자체 제품을 중심으로 운영합니다.",
         ],
-        apps: ["육아·가족 사업자 솔루션", "반려동물 사업자 솔루션", "관광 사업자 솔루션", "기업 자산 관리", "기업 복지·생애주기 솔루션", "시니어 생활·돌봄 사업자 솔루션"],
+        apps: ["육아·가족 사업자 솔루션", "관광 사업자 솔루션", "기업 자산 관리", "기업 복지·생애주기 솔루션", "시니어 생활·돌봄 사업자 솔루션"],
         note: "업무·고객 응대·주문·예약·보고 자동화 등 준비 중인 자체 제품은 출시가 확정되면 안내합니다.",
       },
       {
@@ -367,7 +341,7 @@ const KO = {
       kicker: "NEXT STEP",
       titleHtml: "NEWON의 플랫폼에서<br>새로운 사업 기회를 확인하세요.",
       lead: "플랫폼별 사업 분야를 살펴보고, 사업모델에 맞는 협력 가능성을 문의해 주세요.",
-      ctaMain: "4개 플랫폼 보기",
+      ctaMain: "3개 플랫폼 보기",
       ctaSub: "사업 문의하기",
     },
   },
@@ -376,7 +350,7 @@ const KO = {
       eyebrow: "PARTNERSHIPS",
       wordmark: "Partnerships",
       titleHtml: "서로 다른 가능성을<br>연결하는 파트너십.",
-      lead: "NEWON은 네 개 플랫폼을 기반으로 개인·브랜드·기업·기관·기술 파트너와 새로운 사업 기회를 만들어가는 협력 생태계를 지향합니다.",
+      lead: "NEWON은 세 개 플랫폼을 기반으로 개인·브랜드·기업·기관·기술 파트너와 새로운 사업 기회를 만들어가는 협력 생태계를 지향합니다.",
       ctaMain: "협력 유형 보기",
       ctaSub: "파트너십 문의",
     },
@@ -386,7 +360,7 @@ const KO = {
       lead: "협력 방식은 플랫폼과 사업 분야에 따라 달라집니다. 일반적인 플랫폼 참여와 별도 전략적 제휴 계약은 구분합니다.",
       items: [
         { code: "01", type: "participation", en: "PLATFORM PARTICIPATION", name: "플랫폼 참여와 입점", body: ["적격 개인과 기업이 NEWON의 플랫폼에 참여하여 상품·서비스·실물 자산을 제공하거나 이용하는 협력 형태입니다.", "SHAREON은 개인과 기업이 직접 참여하는 오픈 마켓플레이스 구조를 지향합니다."] },
-        { code: "02", type: "commerce", en: "BRAND & COMMERCE", name: "브랜드와 커머스 협력", body: ["육아, 반려생활 등 플랫폼별 이용자와 관련된 상품·브랜드·서비스를 연결하는 협력입니다.", "브랜드 캠페인이나 제휴 판매는 실제 계약과 서비스 운영 가능성을 확인한 후 진행합니다."] },
+        { code: "02", type: "commerce", en: "BRAND & COMMERCE", name: "브랜드와 커머스 협력", body: ["육아, 시니어 라이프 등 플랫폼별 이용자와 관련된 상품·브랜드·서비스를 연결하는 협력입니다.", "브랜드 캠페인이나 제휴 판매는 실제 계약과 서비스 운영 가능성을 확인한 후 진행합니다."] },
         { code: "03", type: "brand", en: "SERVICE & CONTENT", name: "서비스와 콘텐츠 협력", body: ["교육·생활·돌봄·복지 등 이용자에게 필요한 정보와 서비스를 연결하는 협력입니다.", "관련 업종의 자격·허가·규제 요건을 준수합니다."] },
         { code: "04", type: "saas", en: "BUSINESS SOLUTIONS", name: "기업용 솔루션 협력", body: ["기업과 기관이 NEWON의 자체 플랫폼과 표준화된 SaaS를 도입하거나 관련 생태계에 참여하는 협력입니다.", "주문형 웹·앱 외주 개발은 제공하지 않습니다."] },
         { code: "05", type: "public", en: "PUBLIC & INSTITUTIONS", name: "공공·기관 협력", body: ["교육기관, 복지기관, 지자체와 공공기관 등을 대상으로 생활 서비스 접근성, 정보 연결과 적격 디지털 솔루션 활용 기회를 검토합니다.", "체결하지 않은 공공기관 협약이나 인증은 표시하지 않습니다."] },
@@ -425,7 +399,7 @@ const KO = {
       titleHtml: "NEWON과 함께<br>새로운 가능성을 만들어가세요.",
       lead: "각 플랫폼의 전문성과 파트너의 역량이 만나는 지점에서 새로운 사업 기회가 시작됩니다.",
       ctaMain: "파트너십 문의하기",
-      ctaSub: "4개 플랫폼 보기",
+      ctaSub: "3개 플랫폼 보기",
     },
   },
   contact: {
@@ -433,7 +407,7 @@ const KO = {
       eyebrow: "BUSINESS CONTACT",
       wordmark: "Partnerships",
       titleHtml: "NEWON과 새로운 비즈니스를<br>이야기해 주세요.",
-      lead: "플랫폼 참여, 기업용 솔루션 도입, 브랜드·서비스 제휴, 기관 협력과 글로벌 사업 제안까지. NEWON의 네 개 플랫폼과 관련된 비즈니스 문의를 접수합니다.",
+      lead: "플랫폼 참여, 기업용 솔루션 도입, 브랜드·서비스 제휴, 기관 협력과 글로벌 사업 제안까지. NEWON의 세 개 플랫폼과 관련된 비즈니스 문의를 접수합니다.",
       ctaMain: "문의 작성하기",
       ctaSub: "파트너십 보기",
     },
@@ -471,7 +445,7 @@ const KO = {
       kicker: "03 · BEFORE YOU WRITE",
       title: "문의 전에\n알아 두세요.",
       items: [
-        { n: "01", name: "검토 범위", body: "NEWON의 네 개 플랫폼과 자체 제품에 관련된 사업·제휴 문의를 검토합니다. 외주 제작·견적 요청은 받지 않습니다." },
+        { n: "01", name: "검토 범위", body: "NEWON의 세 개 플랫폼과 자체 제품에 관련된 사업·제휴 문의를 검토합니다. 외주 제작·견적 요청은 받지 않습니다." },
         { n: "02", name: "개인정보", body: "문의 처리에 필요한 이름·이메일·문의 내용만 받습니다. 민감한 개인정보는 적지 말아 주세요." },
         { n: "03", name: "답변 안내", body: "내용을 검토한 뒤 이메일로 안내합니다. 문의가 협력이나 계약 체결을 보장하지는 않습니다." },
       ],
@@ -480,9 +454,9 @@ const KO = {
     },
     close: {
       kicker: "BUSINESS CONTACT",
-      titleHtml: "네 개 플랫폼에서 시작되는<br>새로운 가능성.",
+      titleHtml: "세 개 플랫폼에서 시작되는<br>새로운 가능성.",
       lead: "NEWON의 플랫폼과 사업 방향에 맞는 협력 제안을 기다립니다.",
-      ctaMain: "4개 플랫폼 보기",
+      ctaMain: "3개 플랫폼 보기",
       ctaSub: "파트너십 보기",
     },
   },
@@ -508,19 +482,19 @@ const EN = {
     askType: "Inquire about this type",
   },
   seo: {
-    overview: { title: "NEWON Business & Partnerships | Platform business and partnerships", desc: "Explore business, SaaS, transaction fees, enterprise and institutional contracts and partnership opportunities built on NEWON's four platforms." },
-    platforms: { title: "Our Platforms | NEWON Business & Partnerships", desc: "Business areas and partnership opportunities for companies and institutions on BABYLOG, PETLOG, SHAREON and ONGIL." },
+    overview: { title: "NEWON Business & Partnerships | Platform business and partnerships", desc: "Explore business, SaaS, transaction fees, enterprise and institutional contracts and partnership opportunities built on NEWON's three platforms." },
+    platforms: { title: "Our Platforms | NEWON Business & Partnerships", desc: "Business areas and partnership opportunities for companies and institutions on BABYLOG, SHAREON and ONGIL." },
     models: { title: "Business Models | NEWON", desc: "NEWON's platform business models: transaction fees, enterprise SaaS, enterprise and institutional contracts, partnerships and licensing of its own products." },
-    partnerships: { title: "Partnerships | NEWON", desc: "Platform participation, brand and service partnerships, institutional, technology and global partnerships around NEWON's four platforms." },
+    partnerships: { title: "Partnerships | NEWON", desc: "Platform participation, brand and service partnerships, institutional, technology and global partnerships around NEWON's three platforms." },
     contact: { title: "Business Contact | NEWON", desc: "Business inquiries about platform participation, enterprise SaaS, brand and service partnerships and institutional cooperation with NEWON." },
   },
   overview: {
     hero: {
       eyebrow: "NEWON BUSINESS & PARTNERSHIPS",
       wordmark: "Business",
-      titleHtml: "Four platforms,<br>wider business possibilities.",
-      lead: "NEWON builds and runs its own digital platforms for parenting, life with pets, asset sharing, life stages and senior life. On each platform's expertise we are building a new business ecosystem that connects people, companies and institutions.",
-      ctaMain: "Explore the four platforms",
+      titleHtml: "Three platforms,<br>wider business possibilities.",
+      lead: "NEWON builds and runs its own digital platforms for parenting, asset sharing, life stages and senior life. On each platform's expertise we are building a new business ecosystem that connects people, companies and institutions.",
+      ctaMain: "Explore the three platforms",
       ctaSub: "See business models",
     },
     about: {
@@ -528,12 +502,12 @@ const EN = {
       title: "Beyond products,\nwe grow the value of platforms.",
       lines: [
         "NEWON builds its business on its own platforms and digital products, not on outsourced work for individual clients.",
-        "Through four platforms that each focus on a different part of everyday life, we aim to widen opportunities for business participation, eligible transactions, service partnerships, business solutions and work with institutions.",
+        "Through three platforms that each focus on a different part of everyday life, we aim to widen opportunities for business participation, eligible transactions, service partnerships, business solutions and work with institutions.",
         "Each platform's business direction and partnership options are described on that platform's own pages.",
       ],
     },
     platforms: {
-      kicker: "02 · FOUR CORE PLATFORMS",
+      kicker: "02 · THREE CORE PLATFORMS",
       title: "Different days,\none NEWON ecosystem.",
       lead: "Find new connections and business opportunities on the platform that fits each part of life.",
     },
@@ -575,13 +549,13 @@ const EN = {
     hero: {
       eyebrow: "OUR PLATFORMS",
       wordmark: "Business",
-      titleHtml: "Four platforms,<br>four business ecosystems.",
+      titleHtml: "Three platforms,<br>three business ecosystems.",
       lead: "Each NEWON platform focuses on a different part of everyday life. Companies and partners choose the platform that fits their field and find the details on that platform's Business and Partnerships pages.",
       ctaMain: "See the platforms",
       ctaSub: "Business models",
     },
     list: {
-      kicker: "01 · FOUR PLATFORMS",
+      kicker: "01 · THREE PLATFORMS",
       title: "Choose the platform\nthat fits your field.",
       lead: "A short summary of each platform's business areas and partners. The details are on each platform's Business and Partnerships pages.",
     },
@@ -613,7 +587,7 @@ const EN = {
         category: "MARKETPLACE",
         name: "Platform transaction fees",
         body: ["A model in which eligible people and businesses trade goods, services or physical assets on a platform, with fees applied according to the actual transaction structure."],
-        apps: ["SHAREON asset rental transactions", "PETLOG-related commerce", "BABYLOG-related commerce", "Other eligible platform transactions"],
+        apps: ["SHAREON asset rental transactions", "BABYLOG-related commerce", "Other eligible platform transactions"],
         note: "Regulated fields such as medical, insurance and care are reviewed only after the required qualifications and legal requirements are confirmed.",
       },
       {
@@ -624,7 +598,7 @@ const EN = {
           "A model in which companies and institutions subscribe to NEWON's own digital products and standard solutions.",
           "It runs on our own products that can be offered again and again, not on custom development for each client.",
         ],
-        apps: ["Solutions for parenting and family businesses", "Solutions for pet businesses", "Solutions for tourism businesses", "Business asset management", "Employee benefits and life-stage solutions", "Solutions for senior life and care providers"],
+        apps: ["Solutions for parenting and family businesses", "Solutions for tourism businesses", "Business asset management", "Employee benefits and life-stage solutions", "Solutions for senior life and care providers"],
         note: "Own products in preparation, such as work, customer reply, order, booking and report automation, will be announced once their launch is confirmed.",
       },
       {
@@ -689,7 +663,7 @@ const EN = {
       kicker: "NEXT STEP",
       titleHtml: "See new business opportunities<br>on NEWON's platforms.",
       lead: "Look at each platform's business areas and ask about the partnership that fits a model.",
-      ctaMain: "See the four platforms",
+      ctaMain: "See the three platforms",
       ctaSub: "Business inquiry",
     },
   },
@@ -698,7 +672,7 @@ const EN = {
       eyebrow: "PARTNERSHIPS",
       wordmark: "Partnerships",
       titleHtml: "Partnerships that connect<br>different possibilities.",
-      lead: "On its four platforms, NEWON aims for a partnership ecosystem that creates new business opportunities with individuals, brands, companies, institutions and technology partners.",
+      lead: "On its three platforms, NEWON aims for a partnership ecosystem that creates new business opportunities with individuals, brands, companies, institutions and technology partners.",
       ctaMain: "See partnership types",
       ctaSub: "Partnership inquiry",
     },
@@ -708,7 +682,7 @@ const EN = {
       lead: "How we partner depends on the platform and field. Ordinary platform participation is kept separate from strategic partnership contracts.",
       items: [
         { code: "01", type: "participation", en: "PLATFORM PARTICIPATION", name: "Platform participation and listing", body: ["Eligible people and businesses join a NEWON platform to offer or use goods, services or physical assets.", "SHAREON aims to be an open marketplace that people and businesses join directly."] },
-        { code: "02", type: "commerce", en: "BRAND & COMMERCE", name: "Brand and commerce partnerships", body: ["Connecting products, brands and services relevant to each platform's users, such as parenting and pets.", "Brand campaigns and partner sales go ahead only after actual contracts and service operations are confirmed."] },
+        { code: "02", type: "commerce", en: "BRAND & COMMERCE", name: "Brand and commerce partnerships", body: ["Connecting products, brands and services relevant to each platform's users, such as parenting and senior life.", "Brand campaigns and partner sales go ahead only after actual contracts and service operations are confirmed."] },
         { code: "03", type: "brand", en: "SERVICE & CONTENT", name: "Service and content partnerships", body: ["Connecting information and services users need in education, everyday life, care and welfare.", "We follow the qualification, licence and regulatory requirements of each field."] },
         { code: "04", type: "saas", en: "BUSINESS SOLUTIONS", name: "Business solution partnerships", body: ["Companies and institutions adopt NEWON's own platforms and standard SaaS, or take part in their ecosystems.", "We do not offer custom web or app development."] },
         { code: "05", type: "public", en: "PUBLIC & INSTITUTIONS", name: "Public and institutional partnerships", body: ["With education and welfare institutions, local governments and public bodies, we review access to life services, information links and the use of eligible digital solutions.", "We never show public agreements or certifications that have not been signed."] },
@@ -747,7 +721,7 @@ const EN = {
       titleHtml: "Create new possibilities<br>with NEWON.",
       lead: "New business opportunities start where each platform's expertise meets a partner's strengths.",
       ctaMain: "Partnership inquiry",
-      ctaSub: "See the four platforms",
+      ctaSub: "See the three platforms",
     },
   },
   contact: {
@@ -755,7 +729,7 @@ const EN = {
       eyebrow: "BUSINESS CONTACT",
       wordmark: "Partnerships",
       titleHtml: "Talk to NEWON about<br>new business.",
-      lead: "Platform participation, business solutions, brand and service partnerships, institutional cooperation and global proposals: we take business inquiries related to NEWON's four platforms.",
+      lead: "Platform participation, business solutions, brand and service partnerships, institutional cooperation and global proposals: we take business inquiries related to NEWON's three platforms.",
       ctaMain: "Write an inquiry",
       ctaSub: "See partnerships",
     },
@@ -793,7 +767,7 @@ const EN = {
       kicker: "03 · BEFORE YOU WRITE",
       title: "Good to know\nbefore you write.",
       items: [
-        { n: "01", name: "What we review", body: "Business and partnership inquiries about NEWON's four platforms and own products. We do not take outsourcing or quote requests." },
+        { n: "01", name: "What we review", body: "Business and partnership inquiries about NEWON's three platforms and own products. We do not take outsourcing or quote requests." },
         { n: "02", name: "Personal data", body: "We ask only for the name, email and message needed to handle the inquiry. Please leave out sensitive personal data." },
         { n: "03", name: "Replies", body: "We reply by email after review. An inquiry does not guarantee a partnership or contract." },
       ],
@@ -802,9 +776,9 @@ const EN = {
     },
     close: {
       kicker: "BUSINESS CONTACT",
-      titleHtml: "New possibilities that start<br>on four platforms.",
+      titleHtml: "New possibilities that start<br>on three platforms.",
       lead: "We look forward to proposals that fit NEWON's platforms and business direction.",
-      ctaMain: "See the four platforms",
+      ctaMain: "See the three platforms",
       ctaSub: "See partnerships",
     },
   },

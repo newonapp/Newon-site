@@ -97,7 +97,6 @@ const COPY = {
         ] },
         { id: "apps", label: "관련 앱", lead: "각 앱 소개 페이지의 제휴 안내에서 분야별 협력 방식을 볼 수 있습니다.", link: true, cards: [
           ["BabyLog", "육아용품·육아 서비스 협업", "babylog/#partners"],
-          ["PetLog", "반려 용품·서비스 협업", "petlog/#partners"],
           ["ShareOn", "물품·공간·서비스 나눔 (출시 준비 중)", "shareon/#partners"],
           ["Ongil", "시니어 생활·돌봄 서비스 협업", "ongil/#bi-partners"],
         ] },
@@ -122,7 +121,6 @@ const COPY = {
         ] },
         { id: "areas", label: "사업별 제휴 안내", lead: "사업별 협력 방식은 각 소개 페이지에서 볼 수 있습니다.", cards: [
           ["BabyLog", "육아 생태계 제휴", "babylog/#partners"],
-          ["PetLog", "반려 생태계 제휴", "petlog/#partners"],
           ["ShareOn", "나눔 생태계 제휴 (출시 준비 중)", "shareon/#partners"],
           ["Ongil", "시니어 생활·돌봄 제휴", "ongil/#bi-partners"],
         ] },
@@ -181,7 +179,6 @@ const COPY = {
         ] },
         { id: "apps", label: "Related apps", lead: "Each app page has a partnership section describing how we work in that field.", link: true, cards: [
           ["BabyLog", "Parenting products and services", "babylog/#partners"],
-          ["PetLog", "Pet products and services", "petlog/#partners"],
           ["ShareOn", "Sharing items, spaces and services (coming soon)", "shareon/#partners"],
           ["Ongil", "Senior living and care services", "ongil/#bi-partners"],
         ] },
@@ -206,7 +203,6 @@ const COPY = {
         ] },
         { id: "areas", label: "Partnerships by business", lead: "Each business page describes how we work with partners.", cards: [
           ["BabyLog", "Parenting ecosystem partnerships", "babylog/#partners"],
-          ["PetLog", "Pet ecosystem partnerships", "petlog/#partners"],
           ["ShareOn", "Sharing ecosystem partnerships (coming soon)", "shareon/#partners"],
           ["Ongil", "Senior living and care partnerships", "ongil/#bi-partners"],
         ] },
